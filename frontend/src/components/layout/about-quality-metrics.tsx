@@ -11,7 +11,7 @@ export async function AboutQualityMetrics() {
   ];
 
   return (
-    <section className="rounded-2xl border border-border/40 bg-white px-6 py-6">
+    <section className="rounded-[3px] border border-border/40 bg-white px-6 py-6">
       {/* Header */}
       <h2 className="text-[12px] font-bold text-primary">{t('title')}</h2>
 

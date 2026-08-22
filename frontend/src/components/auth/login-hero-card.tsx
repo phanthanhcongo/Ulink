@@ -3,7 +3,7 @@ import { ShieldCheck, Zap, HeartHandshake } from 'lucide-react';
 
 export function LoginHeroCard() {
   return (
-    <div className="relative flex flex-col justify-between rounded-[5px] bg-brand p-8 lg:p-10 text-white shadow-xl h-full min-h-[600px] overflow-hidden">
+    <div className="relative flex flex-col justify-between rounded-[3px] bg-brand p-8 lg:p-10 text-white shadow-xl h-full min-h-[600px] overflow-hidden">
       {/* Subtle Background Terminal Image Layer with lowered opacity */}
       <div className="absolute inset-0 opacity-20 pointer-events-none mix-blend-overlay">
         <Image
@@ -29,7 +29,7 @@ export function LoginHeroCard() {
       </div>
 
       {/* Foreground Featured Image Overlay (kho_1.png) */}
-      <div className="relative z-10 aspect-[4/3] w-full overflow-hidden rounded-[5px] shadow-2xl border border-white/30 my-6">
+      <div className="relative z-10 aspect-[4/3] w-full overflow-hidden rounded-[3px] shadow-2xl border border-white/30 my-6">
         <Image
           src="/images/about/kho_1.png"
           alt="Hệ thống kệ kho tự động ULink Industries"
@@ -42,7 +42,7 @@ export function LoginHeroCard() {
       {/* Bottom 3 Feature Badges */}
       <div className="relative z-10 grid grid-cols-3 gap-3 pt-4 border-t border-white/15">
         <div className="flex items-center gap-2">
-          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[5px] bg-white/10 text-blue-200 backdrop-blur">
+          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[3px] bg-white/10 text-blue-200 backdrop-blur">
             <ShieldCheck className="h-4 w-4" />
           </div>
           <div>
@@ -52,7 +52,7 @@ export function LoginHeroCard() {
         </div>
 
         <div className="flex items-center gap-2">
-          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[5px] bg-white/10 text-blue-200 backdrop-blur">
+          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[3px] bg-white/10 text-blue-200 backdrop-blur">
             <Zap className="h-4 w-4" />
           </div>
           <div>
@@ -62,7 +62,7 @@ export function LoginHeroCard() {
         </div>
 
         <div className="flex items-center gap-2">
-          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[5px] bg-white/10 text-blue-200 backdrop-blur">
+          <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[3px] bg-white/10 text-blue-200 backdrop-blur">
             <HeartHandshake className="h-4 w-4" />
           </div>
           <div>

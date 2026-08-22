@@ -77,7 +77,7 @@ export default function ProductFilter({ groups, totalCount = 0, labels }: Produc
 
   return (
     <div
-      className={`rounded-[5px] border border-gray-200 bg-white shadow-sm overflow-hidden ${isPending ? 'opacity-70' : ''}`}
+      className={`rounded-[3px] border border-gray-200 bg-white shadow-sm overflow-hidden ${isPending ? 'opacity-70' : ''}`}
     >
       {/* Header */}
       <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
@@ -175,7 +175,7 @@ export default function ProductFilter({ groups, totalCount = 0, labels }: Produc
           onClick={() => {
             /* filters already applied on change */
           }}
-          className="w-full flex items-center justify-center gap-2 rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-blue-700 transition-colors"
+          className="w-full flex items-center justify-center gap-2 rounded-[3px] bg-blue-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-blue-700 transition-colors"
         >
           <Filter className="h-4 w-4" />
           {labels?.applyFilter ?? 'Áp dụng bộ lọc'}

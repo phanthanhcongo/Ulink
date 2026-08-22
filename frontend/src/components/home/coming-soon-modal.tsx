@@ -14,7 +14,7 @@ export function ComingSoonModal({ isOpen, onClose, title }: ComingSoonModalProps
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/40 backdrop-blur-xs animate-in fade-in duration-200">
-      <div className="relative w-full max-w-md bg-white rounded-[5px] p-6 sm:p-8 shadow-2xl border border-slate-100 text-center space-y-5 animate-in zoom-in-95 duration-300">
+      <div className="relative w-full max-w-md bg-white rounded-[3px] p-6 sm:p-8 shadow-2xl border border-slate-100 text-center space-y-5 animate-in zoom-in-95 duration-300">
         <button
           onClick={onClose}
           className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 rounded-full p-1.5 bg-slate-50 hover:bg-slate-100 transition-all duration-200"
@@ -22,7 +22,7 @@ export function ComingSoonModal({ isOpen, onClose, title }: ComingSoonModalProps
           <X className="h-4.5 w-4.5" />
         </button>
 
-        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 text-blue-600 border border-blue-100 shadow-xs relative">
+        <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-[3px] bg-blue-50 text-blue-600 border border-blue-100 shadow-xs relative">
           <Clock className="h-7 w-7 stroke-[2.2] animate-pulse" />
         </div>
 
@@ -41,7 +41,7 @@ export function ComingSoonModal({ isOpen, onClose, title }: ComingSoonModalProps
         <div className="pt-2">
           <button
             onClick={onClose}
-            className="w-full py-3 rounded-[5px] bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs font-bold shadow-md hover:shadow-lg transition-all duration-300 transform active:scale-98"
+            className="w-full py-3 rounded-[3px] bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-xs font-bold shadow-md hover:shadow-lg transition-all duration-300 transform active:scale-98"
           >
             Đã hiểu & Đóng lại
           </button>

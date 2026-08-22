@@ -307,7 +307,7 @@ export async function SiteFooter() {
             </div>
 
             {/* QR Card */}
-            <div className="mt-5 rounded-lg border border-[#dfe8f3] bg-[#eaf1fa] p-4 text-center">
+            <div className="mt-5 rounded-[3px] border border-[#dfe8f3] bg-[#eaf1fa] p-4 text-center">
               <strong className="block text-[15px] font-bold text-[#172033]">
                 {t('downloadApp')}
               </strong>

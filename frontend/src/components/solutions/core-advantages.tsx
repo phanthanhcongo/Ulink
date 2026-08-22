@@ -105,7 +105,7 @@ export default async function CoreAdvantages({ locale }: CoreAdvantagesProps) {
     <div className="w-full flex flex-col">
       {/* 4-Column Summary Bar */}
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
-        <div className="bg-white border border-slate-100 rounded-[5px] p-6 sm:p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-6 lg:gap-x-2 xl:gap-x-4">
+        <div className="bg-white border border-slate-100 rounded-[3px] p-6 sm:p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-6 lg:gap-x-2 xl:gap-x-4">
           {summaryFeatures.map((feat, idx) => {
             const IconComp = feat.icon;
             return (
@@ -157,9 +157,9 @@ export default async function CoreAdvantages({ locale }: CoreAdvantagesProps) {
               return (
                 <div
                   key={idx}
-                  className="group bg-white rounded-[8px] border border-slate-100 p-6 sm:p-8 flex flex-col items-start"
+                  className="group bg-white rounded-[3px] border border-slate-100 p-6 sm:p-8 flex flex-col items-start"
                 >
-                  <div className="w-9 h-9 rounded-[6px] bg-slate-50 flex items-center justify-center text-slate-700 shrink-0 mb-5">
+                  <div className="w-9 h-9 rounded-[3px] bg-slate-50 flex items-center justify-center text-slate-700 shrink-0 mb-5">
                     <IconComp className="h-5 w-5" />
                   </div>
                   <h3 className="text-base font-bold text-slate-900 mb-2.5 leading-snug">

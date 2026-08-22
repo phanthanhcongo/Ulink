@@ -107,7 +107,7 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
       {/* Mobile Top Header Bar */}
       <div className="fixed top-0 left-0 right-0 h-16 bg-white/90 backdrop-blur-md border-b border-sky-100 flex items-center justify-between px-5 z-30 md:hidden shadow-sm">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-[5px] bg-sky-600 flex items-center justify-center font-black text-white tracking-wider text-sm shadow-inner shadow-sky-300/40">
+          <div className="w-8 h-8 rounded-[3px] bg-sky-600 flex items-center justify-center font-black text-white tracking-wider text-sm shadow-inner shadow-sky-300/40">
             U
           </div>
           <span className="font-extrabold text-sm tracking-tight text-slate-900">
@@ -116,7 +116,7 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
         </div>
         <button
           onClick={() => setIsOpen(true)}
-          className="p-2 rounded-[5px] bg-sky-50 text-sky-600 hover:bg-sky-100 transition-colors border border-sky-100"
+          className="p-2 rounded-[3px] bg-sky-50 text-sky-600 hover:bg-sky-100 transition-colors border border-sky-100"
           aria-label="Toggle Menu"
         >
           <Menu className="h-5 w-5" />
@@ -145,7 +145,7 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
           isCollapsed ? "justify-center" : "justify-between"
         )}>
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-[5px] bg-sky-600 flex items-center justify-center font-black text-white tracking-wider text-base shadow-inner shadow-sky-300/40 shrink-0">
+            <div className="w-8 h-8 rounded-[3px] bg-sky-600 flex items-center justify-center font-black text-white tracking-wider text-base shadow-inner shadow-sky-300/40 shrink-0">
               U
             </div>
             {!isCollapsed && (
@@ -163,7 +163,7 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(false)}
-              className="flex h-9 w-9 items-center justify-center rounded-[5px] bg-sky-50 text-sky-600 hover:bg-sky-100 transition-colors border border-sky-150"
+              className="flex h-9 w-9 items-center justify-center rounded-[3px] bg-sky-50 text-sky-600 hover:bg-sky-100 transition-colors border border-sky-150"
             >
               <X className="h-5 w-5" />
             </button>
@@ -174,7 +174,7 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
               <Link
                 href="/"
                 title="Quay lại trang chủ website"
-                className="flex h-9 w-9 items-center justify-center rounded-[5px] bg-sky-100 text-sky-600 hover:bg-sky-600 hover:text-white transition-colors border border-sky-200"
+                className="flex h-9 w-9 items-center justify-center rounded-[3px] bg-sky-100 text-sky-600 hover:bg-sky-600 hover:text-white transition-colors border border-sky-200"
               >
                 <Home className="h-4 w-4" />
               </Link>
@@ -182,7 +182,7 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
                 <button
                   onClick={toggleCollapse}
                   title="Thu gọn Sidebar"
-                  className="flex h-9 w-9 items-center justify-center rounded-[5px] bg-sky-100 text-sky-600 hover:bg-sky-600 hover:text-white transition-colors border border-sky-200"
+                  className="flex h-9 w-9 items-center justify-center rounded-[3px] bg-sky-100 text-sky-600 hover:bg-sky-600 hover:text-white transition-colors border border-sky-200"
                 >
                   <ChevronLeft className="h-4 w-4" />
                 </button>
@@ -195,7 +195,7 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
               <button
                 onClick={toggleCollapse}
                 title="Mở rộng Sidebar"
-                className="flex h-9 w-9 items-center justify-center rounded-[5px] bg-sky-100 text-sky-600 hover:bg-sky-600 hover:text-white transition-colors border border-sky-200"
+                className="flex h-9 w-9 items-center justify-center rounded-[3px] bg-sky-100 text-sky-600 hover:bg-sky-600 hover:text-white transition-colors border border-sky-200"
               >
                 <ChevronRight className="h-4 w-4" />
               </button>
@@ -209,7 +209,7 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
             <Link
               href="/"
               onClick={() => setIsOpen(false)}
-              className="flex items-center gap-3.5 px-4 py-3 rounded-[5px] text-xs font-bold text-sky-700 bg-sky-100 hover:bg-sky-200 hover:text-sky-900 border border-sky-200 transition-all mb-4"
+              className="flex items-center gap-3.5 px-4 py-3 rounded-[3px] text-xs font-bold text-sky-700 bg-sky-100 hover:bg-sky-200 hover:text-sky-900 border border-sky-200 transition-all mb-4"
             >
               <Home className="h-4 w-4 text-sky-600" />
               <span>Về Trang chủ Website</span>
@@ -219,7 +219,7 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
               href="/"
               title="Về Trang chủ Website"
               onClick={() => setIsOpen(false)}
-              className="flex items-center justify-center h-10 w-10 mx-auto rounded-[5px] text-sky-700 bg-sky-100 hover:bg-sky-200 hover:text-sky-900 border border-sky-200 transition-all mb-4"
+              className="flex items-center justify-center h-10 w-10 mx-auto rounded-[3px] text-sky-700 bg-sky-100 hover:bg-sky-200 hover:text-sky-900 border border-sky-200 transition-all mb-4"
             >
               <Home className="h-4 w-4 text-sky-600" />
             </Link>
@@ -239,8 +239,8 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
                 className={cn(
                   'flex items-center transition-all group',
                   isCollapsed
-                    ? 'justify-center h-10 w-10 mx-auto rounded-[5px]'
-                    : 'gap-3.5 px-4 py-3 rounded-[5px] text-sm font-bold',
+                    ? 'justify-center h-10 w-10 mx-auto rounded-[3px]'
+                    : 'gap-3.5 px-4 py-3 rounded-[3px] text-sm font-bold',
                   isActive
                     ? 'bg-sky-600 text-white shadow-sm shadow-sky-300/40'
                     : 'text-slate-600 hover:text-slate-900 hover:bg-sky-100/80'
@@ -265,7 +265,7 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
         )}>
           {!isCollapsed ? (
             <div className="flex items-center gap-3 px-2 py-2 mb-4">
-              <div className="w-9 h-9 rounded-[5px] bg-sky-100 flex items-center justify-center text-sky-600 border border-sky-200 shrink-0">
+              <div className="w-9 h-9 rounded-[3px] bg-sky-100 flex items-center justify-center text-sky-600 border border-sky-200 shrink-0">
                 <User className="h-4.5 w-4.5" />
               </div>
               <div className="flex flex-col min-w-0">
@@ -279,7 +279,7 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
             </div>
           ) : (
             <div
-              className="w-9 h-9 rounded-[5px] bg-sky-100 flex items-center justify-center text-sky-600 border border-sky-200 shrink-0 cursor-default"
+              className="w-9 h-9 rounded-[3px] bg-sky-100 flex items-center justify-center text-sky-600 border border-sky-200 shrink-0 cursor-default"
               title={user?.first_name ? `${user.first_name} ${user.last_name || ''} (${user?.role ? 'Administrator' : 'Sales Representative'})` : user?.email}
             >
               <User className="h-4.5 w-4.5" />
@@ -291,7 +291,7 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
             title={isCollapsed ? "Đăng xuất" : undefined}
             className={cn(
               "flex items-center justify-center font-bold bg-sky-100 hover:bg-red-600 hover:text-white text-sky-700 border border-sky-200 transition-colors shadow-sm",
-              isCollapsed ? "h-9 w-9 rounded-[5px]" : "gap-2 w-full px-4 py-2.5 rounded-[5px] text-xs"
+              isCollapsed ? "h-9 w-9 rounded-[3px]" : "gap-2 w-full px-4 py-2.5 rounded-[3px] text-xs"
             )}
           >
             <LogOut className="h-3.5 w-3.5" />

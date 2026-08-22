@@ -206,13 +206,13 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
 
       {/* Error Alert Banner */}
       {error && (
-        <div className="mb-6 p-4 bg-rose-50 border border-rose-200 rounded-[5px] text-rose-800 text-xs sm:text-sm font-semibold flex items-start gap-2.5 shadow-sm">
+        <div className="mb-6 p-4 bg-rose-50 border border-rose-200 rounded-[3px] text-rose-800 text-xs sm:text-sm font-semibold flex items-start gap-2.5 shadow-sm">
           <AlertTriangle className="h-5 w-5 text-rose-500 shrink-0 mt-0.5" />
           <div className="flex-1">
             <span className="font-extrabold text-rose-900 block mb-1">
               Đã xảy ra lỗi khi tải dữ liệu thuộc tính từ API
             </span>
-            <pre className="font-mono text-[11px] bg-white/60 p-2.5 rounded-[5px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all">
+            <pre className="font-mono text-[11px] bg-white/60 p-2.5 rounded-[3px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all">
               {error}
             </pre>
           </div>
@@ -234,7 +234,7 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
                 setAttrModalOpen(true);
                 setAttrFormError('');
               }}
-              className="p-1.5 rounded-[5px] bg-blue-50 text-blue-600 hover:bg-blue-100 transition-colors"
+              className="p-1.5 rounded-[3px] bg-blue-50 text-blue-600 hover:bg-blue-100 transition-colors"
               title="Thêm thuộc tính"
             >
               <Plus className="h-4 w-4" />
@@ -249,7 +249,7 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Tìm thuộc tính..."
-              className="w-full pl-9 pr-3 py-1.5 rounded-[5px] border border-slate-200 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+              className="w-full pl-9 pr-3 py-1.5 rounded-[3px] border border-slate-200 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
             />
           </div>
 
@@ -265,7 +265,7 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
                   key={attr.id}
                   onClick={() => setSelectedAttrId(attr.id)}
                   className={cn(
-                    'flex items-center justify-between p-3 rounded-[5px] border text-xs sm:text-sm font-bold cursor-pointer transition-all group',
+                    'flex items-center justify-between p-3 rounded-[3px] border text-xs sm:text-sm font-bold cursor-pointer transition-all group',
                     selectedAttrId === attr.id
                       ? 'bg-blue-50/50 border-blue-200 text-blue-700 shadow-sm'
                       : 'bg-white border-slate-100 text-primary hover:bg-slate-50/60'
@@ -286,7 +286,7 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
                         setAttrModalOpen(true);
                         setAttrFormError('');
                       }}
-                      className="p-1 rounded-[5px] hover:bg-slate-200/50 text-slate-500"
+                      className="p-1 rounded-[3px] hover:bg-slate-200/50 text-slate-500"
                     >
                       <Edit className="h-3.5 w-3.5" />
                     </button>
@@ -295,7 +295,7 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
                         e.stopPropagation();
                         handleDeleteAttr(attr.id);
                       }}
-                      className="p-1 rounded-[5px] hover:bg-slate-200/50 text-slate-500 hover:text-rose-600"
+                      className="p-1 rounded-[3px] hover:bg-slate-200/50 text-slate-500 hover:text-rose-600"
                     >
                       <Trash className="h-3.5 w-3.5" />
                     </button>
@@ -317,7 +317,7 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
                     <h2 className="text-base sm:text-lg font-extrabold text-primary">
                       Tùy chọn cho thuộc tính: {selectedAttr.name}
                     </h2>
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-[5px] bg-slate-100 text-slate-650">
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-[3px] bg-slate-100 text-slate-650">
                       key: {selectedAttr.slug}
                     </span>
                   </div>
@@ -332,7 +332,7 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
                     setOptModalOpen(true);
                     setOptFormError('');
                   }}
-                  className="inline-flex h-9 items-center justify-center gap-1.5 rounded-[5px] bg-blue-600 px-4 text-xs font-bold text-white shadow-sm hover:bg-blue-700 transition-colors"
+                  className="inline-flex h-9 items-center justify-center gap-1.5 rounded-[3px] bg-blue-600 px-4 text-xs font-bold text-white shadow-sm hover:bg-blue-700 transition-colors"
                 >
                   <Plus className="h-3.5 w-3.5" />
                   Thêm tùy chọn mới
@@ -351,7 +351,7 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
                   </span>
                 </div>
               ) : (
-                <div className="overflow-hidden border border-slate-100 rounded-[5px]">
+                <div className="overflow-hidden border border-slate-100 rounded-[3px]">
                   <table className="w-full border-collapse text-left text-xs sm:text-sm">
                     <thead>
                       <tr className="bg-slate-50 border-b border-slate-100 text-[10px] font-bold text-slate-450 uppercase tracking-wider">
@@ -394,13 +394,13 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
                                     setOptModalOpen(true);
                                     setOptFormError('');
                                   }}
-                                  className="p-1 rounded-[5px] hover:bg-slate-100 text-slate-500 hover:text-blue-600 transition-colors"
+                                  className="p-1 rounded-[3px] hover:bg-slate-100 text-slate-500 hover:text-blue-600 transition-colors"
                                 >
                                   <Edit className="h-3.5 w-3.5" />
                                 </button>
                                 <button
                                   onClick={() => handleDeleteOpt(opt.id)}
-                                  className="p-1 rounded-[5px] hover:bg-slate-100 text-slate-500 hover:text-rose-600 transition-colors"
+                                  className="p-1 rounded-[3px] hover:bg-slate-100 text-slate-500 hover:text-rose-600 transition-colors"
                                 >
                                   <Trash className="h-3.5 w-3.5" />
                                 </button>
@@ -438,7 +438,7 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
                   setActiveAttr(null);
                   setAttrFormError('');
                 }}
-                className="p-1 rounded-[5px] hover:bg-slate-100 text-slate-400 hover:text-slate-600"
+                className="p-1 rounded-[3px] hover:bg-slate-100 text-slate-400 hover:text-slate-600"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -446,7 +446,7 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
 
             <form onSubmit={handleAttrSubmit} className="p-6 flex flex-col gap-4.5">
               {attrFormError && (
-                <div className="p-3 bg-rose-50 border border-rose-100 rounded-[5px] text-xs font-bold text-rose-600 flex items-center gap-2 animate-in fade-in duration-200">
+                <div className="p-3 bg-rose-50 border border-rose-100 rounded-[3px] text-xs font-bold text-rose-600 flex items-center gap-2 animate-in fade-in duration-200">
                   <AlertTriangle className="h-4 w-4 shrink-0" />
                   <span>{attrFormError}</span>
                 </div>
@@ -470,7 +470,7 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
                     setActiveAttr({ ...activeAttr, name, slug });
                   }}
                   placeholder="Ví dụ: Kích cỡ, Màu sắc, Chất liệu..."
-                  className="px-3.5 py-2 rounded-[5px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
                 />
               </div>
 
@@ -491,7 +491,7 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
                   }
                   placeholder="size, color, material"
                   className={cn(
-                    'px-3.5 py-2 rounded-[5px] border border-slate-200 text-xs sm:text-sm font-mono focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600',
+                    'px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-mono focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600',
                     activeAttr.id && 'bg-slate-100 cursor-not-allowed text-slate-400'
                   )}
                 />
@@ -505,7 +505,7 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
                   type="number"
                   value={activeAttr.sort || 1}
                   onChange={(e) => setActiveAttr({ ...activeAttr, sort: Number(e.target.value) })}
-                  className="px-3.5 py-2 rounded-[5px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
                 />
               </div>
 
@@ -517,14 +517,14 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
                     setActiveAttr(null);
                     setAttrFormError('');
                   }}
-                  className="px-4 py-2.5 rounded-[5px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-500 hover:bg-slate-50"
+                  className="px-4 py-2.5 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-500 hover:bg-slate-50"
                 >
                   Hủy bỏ
                 </button>
                 <button
                   type="submit"
                   disabled={isPending}
-                  className="inline-flex items-center justify-center px-4 py-2.5 rounded-[5px] bg-blue-600 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors disabled:opacity-50"
+                  className="inline-flex items-center justify-center px-4 py-2.5 rounded-[3px] bg-blue-600 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors disabled:opacity-50"
                 >
                   {isPending ? 'Đang lưu...' : 'Lưu thuộc tính'}
                 </button>
@@ -548,7 +548,7 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
                   setActiveOpt(null);
                   setOptFormError('');
                 }}
-                className="p-1 rounded-[5px] hover:bg-slate-100 text-slate-400 hover:text-slate-600"
+                className="p-1 rounded-[3px] hover:bg-slate-100 text-slate-400 hover:text-slate-600"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -556,7 +556,7 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
 
             <form onSubmit={handleOptSubmit} className="p-6 flex flex-col gap-4.5">
               {optFormError && (
-                <div className="p-3 bg-rose-50 border border-rose-100 rounded-[5px] text-xs font-bold text-rose-600 flex items-center gap-2 animate-in fade-in duration-200">
+                <div className="p-3 bg-rose-50 border border-rose-100 rounded-[3px] text-xs font-bold text-rose-600 flex items-center gap-2 animate-in fade-in duration-200">
                   <AlertTriangle className="h-4 w-4 shrink-0" />
                   <span>{optFormError}</span>
                 </div>
@@ -577,7 +577,7 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
                     setActiveOpt({ ...activeOpt, value, sku_suffix: suffix });
                   }}
                   placeholder="Ví dụ: Size S, Đỏ, Nhám..."
-                  className="px-3.5 py-2 rounded-[5px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
                 />
               </div>
 
@@ -596,7 +596,7 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
                     })
                   }
                   placeholder="Ví dụ: S, RED, MATT"
-                  className="px-3.5 py-2 rounded-[5px] border border-slate-200 text-xs sm:text-sm font-mono focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-mono focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
                 />
               </div>
 
@@ -606,7 +606,7 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
                   type="number"
                   value={activeOpt.sort || 1}
                   onChange={(e) => setActiveOpt({ ...activeOpt, sort: Number(e.target.value) })}
-                  className="px-3.5 py-2 rounded-[5px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
                 />
               </div>
 
@@ -618,14 +618,14 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
                     setActiveOpt(null);
                     setOptFormError('');
                   }}
-                  className="px-4 py-2.5 rounded-[5px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-500 hover:bg-slate-50"
+                  className="px-4 py-2.5 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-500 hover:bg-slate-50"
                 >
                   Hủy bỏ
                 </button>
                 <button
                   type="submit"
                   disabled={isPending}
-                  className="inline-flex items-center justify-center px-4 py-2.5 rounded-[5px] bg-blue-600 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors disabled:opacity-50"
+                  className="inline-flex items-center justify-center px-4 py-2.5 rounded-[3px] bg-blue-600 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors disabled:opacity-50"
                 >
                   {isPending ? 'Đang lưu...' : 'Lưu tùy chọn'}
                 </button>

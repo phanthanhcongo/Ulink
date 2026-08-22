@@ -183,7 +183,7 @@ export default function ProductCard({ product, locale, roundedClass }: ProductCa
 
   return (
     <article
-      className={`group relative min-w-0 flex flex-col overflow-hidden bg-white border border-[#d7e0ea] ${roundedClass || 'rounded-lg'
+      className={`group relative min-w-0 flex flex-col overflow-hidden bg-white border border-[#d7e0ea] ${roundedClass || 'rounded-[3px]'
         } shadow-[0_8px_24px_rgba(16,43,73,0.045)] transition-all duration-[240ms] ease-out hover:-translate-y-1.5 hover:border-[#9fc2ef] hover:shadow-[0_18px_42px_rgba(16,61,111,0.13)]`}
       data-product={productName}
     >
@@ -191,7 +191,7 @@ export default function ProductCard({ product, locale, roundedClass }: ProductCa
       <Link
         href={`/${locale}/products/${product.slug}`}
         aria-label={locale === 'vi' ? `Xem ${productName}` : `View ${productName}`}
-        className="relative block h-[250px] m-2 overflow-hidden bg-[#eef2f6] rounded-[5px]"
+        className="relative block h-[250px] m-2 overflow-hidden bg-[#eef2f6] rounded-[3px]"
       >
         <Image
           src={imageSrc}
@@ -202,7 +202,7 @@ export default function ProductCard({ product, locale, roundedClass }: ProductCa
         />
 
         {/* Product Badge */}
-        <span className="absolute top-3 left-3 px-[9px] py-[7px] bg-[rgba(255,255,255,0.94)] border border-[rgba(23,105,226,0.16)] text-[#1769e2] text-[9px] font-[900] tracking-[0.06em] uppercase shadow-[0_4px_12px_rgba(0,0,0,0.06)] rounded-[5px] z-10">
+        <span className="absolute top-3 left-3 px-[9px] py-[7px] bg-[rgba(255,255,255,0.94)] border border-[rgba(23,105,226,0.16)] text-[#1769e2] text-[9px] font-[900] tracking-[0.06em] uppercase shadow-[0_4px_12px_rgba(0,0,0,0.06)] rounded-[3px] z-10">
           {moqInfo.status}
         </span>
 
@@ -261,7 +261,7 @@ export default function ProductCard({ product, locale, roundedClass }: ProductCa
           <button
             type="button"
             onClick={handleRfqClick}
-            className={`group/btn min-h-[42px] px-4 rounded-[5px] text-white text-[13px] font-[800] text-center shadow-[0_7px_16px_rgba(23,105,226,0.18)] transition-all duration-200 cursor-pointer flex items-center justify-center ${added
+            className={`group/btn min-h-[42px] px-4 rounded-[3px] text-white text-[13px] font-[800] text-center shadow-[0_7px_16px_rgba(23,105,226,0.18)] transition-all duration-200 cursor-pointer flex items-center justify-center ${added
                 ? 'bg-emerald-600 hover:bg-emerald-700'
                 : 'bg-gradient-to-b from-[#2c7beb] to-[#1769e2] hover:from-[#0d57c9] hover:to-[#0d57c9]'
               }`}
@@ -286,7 +286,7 @@ export default function ProductCard({ product, locale, roundedClass }: ProductCa
             onClick={handleRfqClick}
             aria-label={locale === 'vi' ? `Lưu ${productName}` : `Save ${productName}`}
             aria-pressed={isSaved}
-            className={`w-full h-[42px] grid place-items-center border rounded-[5px] transition-all duration-[180ms] cursor-pointer ${isSaved
+            className={`w-full h-[42px] grid place-items-center border rounded-[3px] transition-all duration-[180ms] cursor-pointer ${isSaved
                 ? 'border-[#1769e2] bg-[#1769e2] text-white'
                 : 'border-[#cfe0f6] bg-[#eaf3ff] text-[#1769e2] hover:border-[#1769e2] hover:bg-white'
               }`}

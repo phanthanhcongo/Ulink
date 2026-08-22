@@ -169,9 +169,9 @@ export default function HubRfqModal({ hubId, hubName, open, onClose, labels }: H
       <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={handleClose} />
 
       {/* Modal */}
-      <div className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-2xl bg-white dark:bg-card shadow-2xl border">
+      <div className="relative w-full max-w-lg max-h-[90vh] overflow-y-auto rounded-[3px] bg-white dark:bg-card shadow-2xl border">
         {/* Header */}
-        <div className="sticky top-0 z-10 border-b bg-white/95 dark:bg-card/95 backdrop-blur px-6 py-5 rounded-t-2xl">
+        <div className="sticky top-0 z-10 border-b bg-white/95 dark:bg-card/95 backdrop-blur px-6 py-5 rounded-[3px]">
           <div className="flex items-start justify-between gap-4">
             <div>
               <h2 className="text-xl font-bold tracking-tight">{labels.title}</h2>
@@ -205,7 +205,7 @@ export default function HubRfqModal({ hubId, hubName, open, onClose, labels }: H
             <button
               type="button"
               onClick={handleClose}
-              className="mt-2 rounded-lg bg-primary px-8 py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
+              className="mt-2 rounded-[3px] bg-primary px-8 py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
             >
               Đóng
             </button>
@@ -220,7 +220,7 @@ export default function HubRfqModal({ hubId, hubName, open, onClose, labels }: H
                 value={contactName}
                 onChange={(e) => setContactName(e.target.value)}
                 placeholder="Nguyễn Văn A"
-                className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
+                className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
               />
             </Field>
 
@@ -232,7 +232,7 @@ export default function HubRfqModal({ hubId, hubName, open, onClose, labels }: H
                   value={company}
                   onChange={(e) => setCompany(e.target.value)}
                   placeholder="Công ty TNHH ABC"
-                  className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
+                  className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
                 />
               </Field>
 
@@ -244,7 +244,7 @@ export default function HubRfqModal({ hubId, hubName, open, onClose, labels }: H
                   value={phone}
                   onChange={(e) => setPhone(e.target.value.replace(/\D/g, ''))}
                   placeholder="0901234567"
-                  className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
+                  className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
                 />
               </Field>
             </div>
@@ -256,7 +256,7 @@ export default function HubRfqModal({ hubId, hubName, open, onClose, labels }: H
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="email@congty.com"
-                className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
+                className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
               />
             </Field>
 
@@ -267,13 +267,13 @@ export default function HubRfqModal({ hubId, hubName, open, onClose, labels }: H
                 onChange={(e) => setMessage(e.target.value)}
                 rows={3}
                 placeholder={labels.notePlaceholder}
-                className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors resize-y"
+                className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors resize-y"
               />
             </Field>
 
             {/* Form-level error */}
             {errors._form && (
-              <div className="rounded-lg bg-red-50 border border-red-200 px-4 py-3">
+              <div className="rounded-[3px] bg-red-50 border border-red-200 px-4 py-3">
                 <p className="text-sm text-red-700">{errors._form}</p>
               </div>
             )}
@@ -283,7 +283,7 @@ export default function HubRfqModal({ hubId, hubName, open, onClose, labels }: H
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full flex items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 disabled:opacity-50 transition-colors"
+                className="w-full flex items-center justify-center gap-2 rounded-[3px] bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 disabled:opacity-50 transition-colors"
               >
                 {submitting ? (
                   <>

@@ -40,13 +40,13 @@ export function AboutSidebar() {
                 <Link
                   href={item.href}
                   aria-current={active ? 'page' : undefined}
-                  className={`relative block overflow-hidden rounded-[5px] px-4 py-2.5 text-[11px] font-bold transition-all duration-200 ${active
+                  className={`relative block overflow-hidden rounded-[3px] px-4 py-2.5 text-[11px] font-bold transition-all duration-200 ${active
                       ? 'bg-[#ECF3FD] text-brand'
                       : 'text-primary/65 hover:bg-muted hover:text-primary'
                     }`}
                 >
                   <span
-                    className={`absolute inset-y-0 left-0 w-[3px] rounded-l-xl bg-brand transition-transform duration-200 ${active ? 'translate-x-0' : '-translate-x-full'
+                    className={`absolute inset-y-0 left-0 w-[3px] rounded-[3px] bg-brand transition-transform duration-200 ${active ? 'translate-x-0' : '-translate-x-full'
                       }`}
                   />
                   {t(item.key)}
@@ -63,13 +63,13 @@ export function AboutSidebar() {
         <Link
           href="/about/careers"
           aria-current={isActive('/about/careers') ? 'page' : undefined}
-          className={`relative flex items-center gap-2 overflow-hidden rounded-[5px] px-4 py-2.5 text-[11px] font-bold transition-all duration-200 ${isActive('/about/careers')
+          className={`relative flex items-center gap-2 overflow-hidden rounded-[3px] px-4 py-2.5 text-[11px] font-bold transition-all duration-200 ${isActive('/about/careers')
               ? 'bg-[#ECF3FD] text-brand'
               : 'text-primary/65 hover:bg-muted hover:text-primary'
             }`}
         >
           <span
-            className={`absolute inset-y-0 left-0 w-[3px] rounded-l-xl bg-brand transition-transform duration-200 ${isActive('/about/careers') ? 'translate-x-0' : '-translate-x-full'
+            className={`absolute inset-y-0 left-0 w-[3px] rounded-[3px] bg-brand transition-transform duration-200 ${isActive('/about/careers') ? 'translate-x-0' : '-translate-x-full'
               }`}
           />
           <Briefcase className="h-[15px] w-[15px]" strokeWidth={1.6} />

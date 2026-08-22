@@ -34,7 +34,7 @@ export function CareersGallery() {
         {row1Photos.map((p, idx) => (
           <div
             key={idx}
-            className="relative aspect-square w-full overflow-hidden rounded-xl shadow-xs border border-slate-100 group"
+            className="relative aspect-square w-full overflow-hidden rounded-[3px] shadow-xs border border-slate-100 group"
           >
             <Image
               src={p.src}
@@ -54,7 +54,7 @@ export function CareersGallery() {
         {row2Photos.map((p, idx) => (
           <div
             key={idx}
-            className="relative aspect-[3/4] w-full overflow-hidden rounded-xl shadow-xs border border-slate-100 group"
+            className="relative aspect-[3/4] w-full overflow-hidden rounded-[3px] shadow-xs border border-slate-100 group"
           >
             <Image
               src={p.src}

@@ -383,7 +383,7 @@ export function SampleRequestsClient({
         <button
           type="button"
           onClick={handleOpenCreateForm}
-          className="inline-flex h-10 items-center justify-center gap-1.5 px-4 rounded-[5px] bg-blue-600 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors shrink-0 animate-fade-in"
+          className="inline-flex h-10 items-center justify-center gap-1.5 px-4 rounded-[3px] bg-blue-600 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors shrink-0 animate-fade-in"
         >
           <Plus className="h-4 w-4" />
           Tạo yêu cầu hàng mẫu
@@ -392,13 +392,13 @@ export function SampleRequestsClient({
 
       {/* Error Alert Banner */}
       {error && (
-        <div className="mb-6 p-4 bg-rose-50 border border-rose-200 rounded-[5px] text-rose-800 text-xs sm:text-sm font-semibold flex items-start gap-2.5 shadow-sm">
+        <div className="mb-6 p-4 bg-rose-50 border border-rose-200 rounded-[3px] text-rose-800 text-xs sm:text-sm font-semibold flex items-start gap-2.5 shadow-sm">
           <AlertTriangle className="h-5 w-5 text-rose-500 shrink-0 mt-0.5" />
           <div className="flex-1">
             <span className="font-extrabold text-rose-900 block mb-1">
               Đã xảy ra lỗi khi tải dữ liệu hàng mẫu từ API
             </span>
-            <pre className="font-mono text-[11px] bg-white/60 p-2.5 rounded-[5px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all">
+            <pre className="font-mono text-[11px] bg-white/60 p-2.5 rounded-[3px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all">
               {error}
             </pre>
           </div>
@@ -406,7 +406,7 @@ export function SampleRequestsClient({
       )}
 
       {/* Search and Filters */}
-      <div className="bg-white border border-slate-100 rounded-[5px] p-5 shadow-sm mb-8 flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between">
+      <div className="bg-white border border-slate-100 rounded-[3px] p-5 shadow-sm mb-8 flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between">
         {/* Search */}
         <div className="relative flex-1">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
@@ -415,7 +415,7 @@ export function SampleRequestsClient({
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Tìm theo tên người liên hệ, doanh nghiệp, email..."
-            className="w-full pl-10 pr-4 py-2.5 rounded-[5px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand"
+            className="w-full pl-10 pr-4 py-2.5 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand"
           />
         </div>
 
@@ -424,7 +424,7 @@ export function SampleRequestsClient({
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value)}
-            className="px-3.5 py-2.5 rounded-[5px] border border-slate-200 text-xs font-bold text-slate-700 focus:outline-none bg-white shadow-sm"
+            className="px-3.5 py-2.5 rounded-[3px] border border-slate-200 text-xs font-bold text-slate-700 focus:outline-none bg-white shadow-sm"
           >
             <option value="all">Tất cả trạng thái</option>
             <option value="pending">Đang chờ xử lý</option>
@@ -435,7 +435,7 @@ export function SampleRequestsClient({
       </div>
 
       {/* List Table */}
-      <div className="bg-white border border-slate-100 rounded-[5px] shadow-sm overflow-hidden">
+      <div className="bg-white border border-slate-100 rounded-[3px] shadow-sm overflow-hidden">
         {filteredRequests.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 text-center">
             <Package className="h-12 w-12 text-slate-300 mb-3" />
@@ -473,7 +473,7 @@ export function SampleRequestsClient({
                         {/* Company & Contact Name (Sticky with expand toggle) */}
                         <td className="px-4 py-3 sticky left-0 bg-white group-hover:bg-slate-50/80 transition-colors shadow-[2px_0_5px_rgba(0,0,0,0.03)] z-10">
                           <div className="flex items-center gap-2">
-                            <span className="p-0.5 rounded-[5px] hover:bg-slate-100 text-slate-400 shrink-0">
+                            <span className="p-0.5 rounded-[3px] hover:bg-slate-100 text-slate-400 shrink-0">
                               {isExpanded ? (
                                 <ChevronDown className="h-3.5 w-3.5" />
                               ) : (
@@ -503,7 +503,7 @@ export function SampleRequestsClient({
 
                         {/* Province */}
                         <td className="px-4 py-3">
-                          <span className="inline-flex items-center px-2 py-0.5 rounded-[5px] bg-blue-50 text-[10px] font-bold text-blue-600">
+                          <span className="inline-flex items-center px-2 py-0.5 rounded-[3px] bg-blue-50 text-[10px] font-bold text-blue-600">
                             {req.province}
                           </span>
                         </td>
@@ -512,7 +512,7 @@ export function SampleRequestsClient({
                         <td className="px-4 py-3">
                           <span
                             className={cn(
-                              'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[5px] text-[10px] font-bold border shadow-sm select-none',
+                              'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[3px] text-[10px] font-bold border shadow-sm select-none',
                               req.status === 'approved' && 'bg-emerald-50 text-emerald-700 border-emerald-100',
                               req.status === 'rejected' && 'bg-rose-50 text-rose-700 border-rose-100',
                               req.status === 'pending' && 'bg-amber-50 text-amber-800 border-amber-100'
@@ -520,7 +520,7 @@ export function SampleRequestsClient({
                           >
                             <span
                               className={cn(
-                                'h-1.5 w-1.5 rounded-[5px] shrink-0',
+                                'h-1.5 w-1.5 rounded-[3px] shrink-0',
                                 req.status === 'approved' && 'bg-emerald-500',
                                 req.status === 'rejected' && 'bg-rose-500',
                                 req.status === 'pending' && 'bg-amber-500 animate-pulse'
@@ -549,7 +549,7 @@ export function SampleRequestsClient({
                               }}
                               onClick={(e) => e.stopPropagation()}
                               disabled={isPending}
-                              className="px-2 py-1 rounded-[5px] border border-slate-200 text-xs font-semibold focus:outline-none bg-white max-w-[150px] truncate cursor-pointer shadow-sm"
+                              className="px-2 py-1 rounded-[3px] border border-slate-200 text-xs font-semibold focus:outline-none bg-white max-w-[150px] truncate cursor-pointer shadow-sm"
                             >
                               <option value="">-- Chưa gán --</option>
                               {salesTeam.map((sales) => (
@@ -586,7 +586,7 @@ export function SampleRequestsClient({
                                 setRejectReason(req.reject_reason || '');
                                 setSelectedSalesId(req.assigned_sales?.id || '');
                               }}
-                              className="p-1 rounded-[5px] hover:bg-slate-100 text-slate-400 hover:text-blue-600 transition-colors"
+                              className="p-1 rounded-[3px] hover:bg-slate-100 text-slate-400 hover:text-blue-600 transition-colors"
                               title="Xem chi tiết"
                             >
                               <Eye className="h-4 w-4" />
@@ -597,7 +597,7 @@ export function SampleRequestsClient({
                                 e.stopPropagation();
                                 handleOpenEditForm(req);
                               }}
-                              className="p-1 rounded-[5px] hover:bg-slate-100 text-slate-400 hover:text-blue-600 transition-colors"
+                              className="p-1 rounded-[3px] hover:bg-slate-100 text-slate-400 hover:text-blue-600 transition-colors"
                               title="Sửa yêu cầu"
                             >
                               <Edit className="h-4 w-4" />
@@ -608,7 +608,7 @@ export function SampleRequestsClient({
                                 e.stopPropagation();
                                 handleDeleteReq(req.id);
                               }}
-                              className="p-1 rounded-[5px] hover:bg-slate-100 text-rose-500 hover:text-rose-700 transition-colors"
+                              className="p-1 rounded-[3px] hover:bg-slate-100 text-rose-500 hover:text-rose-700 transition-colors"
                               title="Xóa yêu cầu"
                             >
                               <Trash2 className="h-4 w-4" />
@@ -631,7 +631,7 @@ export function SampleRequestsClient({
                                     {req.skus.map((skuCode) => (
                                       <span
                                         key={skuCode}
-                                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-[5px] bg-white border border-slate-200 text-xs font-mono font-bold text-primary shadow-xs"
+                                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-[3px] bg-white border border-slate-200 text-xs font-mono font-bold text-primary shadow-xs"
                                       >
                                         <Package className="h-3.5 w-3.5 text-blue-500" />
                                         {skuCode}
@@ -649,7 +649,7 @@ export function SampleRequestsClient({
                                   <span className="text-[10px] font-extrabold text-slate-450 uppercase tracking-wider block mb-1">
                                     Yêu cầu & Ghi chú từ khách hàng:
                                   </span>
-                                  <p className="text-slate-650 bg-white p-3.5 rounded-[5px] border border-slate-200/80 whitespace-pre-wrap leading-relaxed">
+                                  <p className="text-slate-650 bg-white p-3.5 rounded-[3px] border border-slate-200/80 whitespace-pre-wrap leading-relaxed">
                                     {req.message}
                                   </p>
                                 </div>
@@ -670,7 +670,7 @@ export function SampleRequestsClient({
       {/* Modal: View Details & Approve/Reject */}
       {selectedReq && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4 backdrop-blur-sm overflow-y-auto">
-          <div className="my-8 w-full max-w-4xl bg-white rounded-[5px] shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-200 border border-slate-100">
+          <div className="my-8 w-full max-w-4xl bg-white rounded-[3px] shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-200 border border-slate-100">
             {/* Modal Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
               <div>
@@ -689,7 +689,7 @@ export function SampleRequestsClient({
                   setActionType(null);
                   setDetailError('');
                 }}
-                className="p-1.5 rounded-[5px] hover:bg-slate-100 text-slate-400 hover:text-slate-655"
+                className="p-1.5 rounded-[3px] hover:bg-slate-100 text-slate-400 hover:text-slate-655"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -698,13 +698,13 @@ export function SampleRequestsClient({
             {/* Modal Content */}
             <div className="p-6 max-h-[70vh] overflow-y-auto flex flex-col gap-6">
               {detailError && (
-                <div className="p-3 bg-rose-50 border border-rose-100 rounded-[5px] text-xs font-bold text-rose-600 flex items-center gap-2 animate-in fade-in duration-200">
+                <div className="p-3 bg-rose-50 border border-rose-100 rounded-[3px] text-xs font-bold text-rose-600 flex items-center gap-2 animate-in fade-in duration-200">
                   <AlertTriangle className="h-4 w-4 shrink-0" />
                   <span>{detailError}</span>
                 </div>
               )}
               {/* Information grid */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50/50 p-5 rounded-[5px] border border-slate-100">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50/50 p-5 rounded-[3px] border border-slate-100">
                 <div className="flex flex-col gap-3">
                   <h3 className="text-xs font-extrabold text-primary uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-150 pb-2">
                     <Building className="h-4 w-4 text-blue-500" />
@@ -770,7 +770,7 @@ export function SampleRequestsClient({
                     {selectedReq.skus.map((skuCode, idx) => (
                       <span
                         key={idx}
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-[5px] bg-slate-50 border border-slate-150 text-xs font-mono font-extrabold text-primary select-all shadow-sm"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-[3px] bg-slate-50 border border-slate-150 text-xs font-mono font-extrabold text-primary select-all shadow-sm"
                       >
                         {skuCode}
                       </span>
@@ -789,7 +789,7 @@ export function SampleRequestsClient({
                   <span className="text-[10px] font-extrabold text-slate-450 uppercase tracking-wider">
                     Tin nhắn / Yêu cầu thêm của khách hàng
                   </span>
-                  <div className="px-4 py-3 bg-slate-50 rounded-[5px] border border-slate-100 text-xs sm:text-sm text-slate-650 leading-relaxed whitespace-pre-wrap">
+                  <div className="px-4 py-3 bg-slate-50 rounded-[3px] border border-slate-100 text-xs sm:text-sm text-slate-650 leading-relaxed whitespace-pre-wrap">
                     {selectedReq.message}
                   </div>
                 </div>
@@ -804,7 +804,7 @@ export function SampleRequestsClient({
                     </span>
                     <span
                       className={cn(
-                        'inline-flex items-center px-2.5 py-1 rounded-[5px] text-xs font-extrabold',
+                        'inline-flex items-center px-2.5 py-1 rounded-[3px] text-xs font-extrabold',
                         selectedReq.status === 'approved'
                           ? 'bg-emerald-50 text-emerald-800 border border-emerald-100'
                           : selectedReq.status === 'rejected'
@@ -825,7 +825,7 @@ export function SampleRequestsClient({
                       <button
                         type="button"
                         onClick={() => setActionType('reject')}
-                        className="inline-flex h-9 items-center justify-center gap-1 rounded-[5px] border border-rose-200 px-4 text-xs font-bold text-rose-600 hover:bg-rose-50 transition-colors shadow-sm bg-white"
+                        className="inline-flex h-9 items-center justify-center gap-1 rounded-[3px] border border-rose-200 px-4 text-xs font-bold text-rose-600 hover:bg-rose-50 transition-colors shadow-sm bg-white"
                       >
                         <XCircle className="h-4 w-4" />
                         Từ chối gửi mẫu
@@ -836,7 +836,7 @@ export function SampleRequestsClient({
                           setActionType('approve');
                           setSelectedSalesId(selectedReq.assigned_sales?.id || '');
                         }}
-                        className="inline-flex h-9 items-center justify-center gap-1 rounded-[5px] bg-blue-600 px-4 text-xs font-bold text-white shadow-sm hover:bg-blue-700 transition-colors"
+                        className="inline-flex h-9 items-center justify-center gap-1 rounded-[3px] bg-blue-600 px-4 text-xs font-bold text-white shadow-sm hover:bg-blue-700 transition-colors"
                       >
                         <CheckCircle2 className="h-4 w-4" />
                         Duyệt & Phân công Sales
@@ -849,7 +849,7 @@ export function SampleRequestsClient({
                 {actionType && (
                   <form
                     onSubmit={handleProcessSubmit}
-                    className="p-4 rounded-[5px] border border-slate-100 bg-slate-50/50 flex flex-col gap-4 animate-in fade-in slide-in-from-top-2 duration-200"
+                    className="p-4 rounded-[3px] border border-slate-100 bg-slate-50/50 flex flex-col gap-4 animate-in fade-in slide-in-from-top-2 duration-200"
                   >
                     <div className="flex items-center justify-between border-b border-slate-150 pb-2 mb-1">
                       <h4 className="text-xs font-extrabold text-primary uppercase tracking-wider">
@@ -877,7 +877,7 @@ export function SampleRequestsClient({
                             required
                             value={selectedSalesId}
                             onChange={(e) => setSelectedSalesId(e.target.value)}
-                            className="px-3 py-2 rounded-[5px] border border-slate-200 text-xs font-bold text-slate-700 focus:outline-none bg-white"
+                            className="px-3 py-2 rounded-[3px] border border-slate-200 text-xs font-bold text-slate-700 focus:outline-none bg-white"
                           >
                             <option value="">-- Chọn Salesman --</option>
                             {salesTeam.map((sales) => (
@@ -899,7 +899,7 @@ export function SampleRequestsClient({
                             value={approvalNote}
                             onChange={(e) => setApprovalNote(e.target.value)}
                             placeholder="Ghi chú đóng gói hoặc gửi hàng..."
-                            className="px-3.5 py-2 rounded-[5px] border border-slate-200 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                            className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
                           />
                         </div>
                       </div>
@@ -916,7 +916,7 @@ export function SampleRequestsClient({
                           value={rejectReason}
                           onChange={(e) => setRejectReason(e.target.value)}
                           placeholder="Nhập lý do từ chối (ví dụ: Không thể gửi hạt nhựa mẫu khối lượng lớn, thông tin doanh nghiệp không khớp)..."
-                          className="px-3.5 py-2 rounded-[5px] border border-slate-200 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                          className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
                         />
                       </div>
                     )}
@@ -925,7 +925,7 @@ export function SampleRequestsClient({
                       <button
                         type="button"
                         onClick={() => setActionType(null)}
-                        className="px-3 py-1.5 rounded-[5px] border border-slate-250 text-xs font-bold text-slate-550 hover:bg-slate-100"
+                        className="px-3 py-1.5 rounded-[3px] border border-slate-250 text-xs font-bold text-slate-550 hover:bg-slate-100"
                       >
                         Hủy
                       </button>
@@ -933,7 +933,7 @@ export function SampleRequestsClient({
                         type="submit"
                         disabled={isPending}
                         className={cn(
-                          'px-4 py-1.5 rounded-[5px] text-xs font-bold text-white shadow-sm transition-colors',
+                          'px-4 py-1.5 rounded-[3px] text-xs font-bold text-white shadow-sm transition-colors',
                           actionType === 'approve'
                             ? 'bg-emerald-600 hover:bg-emerald-700'
                             : 'bg-rose-600 hover:bg-rose-700'
@@ -951,7 +951,7 @@ export function SampleRequestsClient({
 
                 {/* Display resolved info */}
                 {selectedReq.status === 'approved' && (
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-emerald-50/30 p-4 rounded-[5px] border border-emerald-100/50 text-xs animate-fade-in">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-emerald-50/30 p-4 rounded-[3px] border border-emerald-100/50 text-xs animate-fade-in">
                     <div className="flex flex-col gap-1">
                       <span className="text-[10px] font-bold text-emerald-700 uppercase">
                         Ghi chú gửi mẫu:
@@ -976,7 +976,7 @@ export function SampleRequestsClient({
                 )}
 
                 {selectedReq.status === 'rejected' && (
-                  <div className="bg-rose-50/30 p-4 rounded-[5px] border border-rose-100/50 text-xs flex flex-col gap-1 animate-fade-in">
+                  <div className="bg-rose-50/30 p-4 rounded-[3px] border border-rose-100/50 text-xs flex flex-col gap-1 animate-fade-in">
                     <span className="text-[10px] font-bold text-rose-700 uppercase">
                       Lý do từ chối:
                     </span>
@@ -996,7 +996,7 @@ export function SampleRequestsClient({
                   setSelectedReq(null);
                   setActionType(null);
                 }}
-                className="px-5 py-2.5 rounded-[5px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-550 hover:bg-slate-100 transition-colors"
+                className="px-5 py-2.5 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-550 hover:bg-slate-100 transition-colors"
               >
                 Đóng lại
               </button>
@@ -1008,7 +1008,7 @@ export function SampleRequestsClient({
       {/* Modal: Create or Edit Sample Request Form */}
       {formOpen && activeReq && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4 backdrop-blur-sm overflow-y-auto">
-          <div className="my-8 w-full max-w-4xl bg-white rounded-[5px] shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-200 border border-slate-100">
+          <div className="my-8 w-full max-w-4xl bg-white rounded-[3px] shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-200 border border-slate-100">
             {/* Modal Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
               <div>
@@ -1028,7 +1028,7 @@ export function SampleRequestsClient({
                   setActiveReq(null);
                   setFormError('');
                 }}
-                className="p-1.5 rounded-[5px] hover:bg-slate-100 text-slate-400 hover:text-slate-655"
+                className="p-1.5 rounded-[3px] hover:bg-slate-100 text-slate-400 hover:text-slate-655"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -1041,7 +1041,7 @@ export function SampleRequestsClient({
             >
               <div className="p-6 overflow-y-auto flex-1 bg-white">
                 {formError && (
-                  <div className="p-3 bg-rose-50 border border-rose-100 rounded-[5px] text-xs font-bold text-rose-600 flex items-center gap-2 animate-in fade-in duration-200 mb-6">
+                  <div className="p-3 bg-rose-50 border border-rose-100 rounded-[3px] text-xs font-bold text-rose-600 flex items-center gap-2 animate-in fade-in duration-200 mb-6">
                     <AlertTriangle className="h-4 w-4 shrink-0" />
                     <span>{formError}</span>
                   </div>
@@ -1065,7 +1065,7 @@ export function SampleRequestsClient({
                       value={activeReq.company || ''}
                       onChange={(e) => setActiveReq({ ...activeReq, company: e.target.value })}
                       placeholder="Công ty TNHH ULink Việt Nam"
-                      className="px-3.5 py-2.5 rounded-[5px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand shadow-sm"
+                      className="px-3.5 py-2.5 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand shadow-sm"
                     />
                   </div>
 
@@ -1080,7 +1080,7 @@ export function SampleRequestsClient({
                       value={activeReq.contact_name || ''}
                       onChange={(e) => setActiveReq({ ...activeReq, contact_name: e.target.value })}
                       placeholder="Nguyễn Văn B"
-                      className="px-3.5 py-2.5 rounded-[5px] border border-slate-200 text-xs sm:text-sm font-semibold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand"
+                      className="px-3.5 py-2.5 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-semibold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand"
                     />
                   </div>
 
@@ -1096,7 +1096,7 @@ export function SampleRequestsClient({
                         value={activeReq.email || ''}
                         onChange={(e) => setActiveReq({ ...activeReq, email: e.target.value })}
                         placeholder="recipient@company.com"
-                        className="px-3.5 py-2 rounded-[5px] border border-slate-200 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand"
+                        className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand"
                       />
                     </div>
                     <div className="flex flex-col gap-1.5">
@@ -1109,7 +1109,7 @@ export function SampleRequestsClient({
                         value={activeReq.phone || ''}
                         onChange={(e) => setActiveReq({ ...activeReq, phone: e.target.value })}
                         placeholder="0912345678"
-                        className="px-3.5 py-2 rounded-[5px] border border-slate-200 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand"
+                        className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand"
                       />
                     </div>
                   </div>
@@ -1126,7 +1126,7 @@ export function SampleRequestsClient({
                         value={activeReq.province || ''}
                         onChange={(e) => setActiveReq({ ...activeReq, province: e.target.value })}
                         placeholder="Hà Nội"
-                        className="px-3.5 py-2 rounded-[5px] border border-slate-200 text-xs font-semibold text-slate-700 focus:outline-none"
+                        className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs font-semibold text-slate-700 focus:outline-none"
                       />
                     </div>
                     <div className="flex flex-col gap-1.5">
@@ -1139,7 +1139,7 @@ export function SampleRequestsClient({
                         value={activeReq.district || ''}
                         onChange={(e) => setActiveReq({ ...activeReq, district: e.target.value })}
                         placeholder="Đông Anh"
-                        className="px-3.5 py-2 rounded-[5px] border border-slate-200 text-xs font-semibold text-slate-700 focus:outline-none"
+                        className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs font-semibold text-slate-700 focus:outline-none"
                       />
                     </div>
                   </div>
@@ -1156,7 +1156,7 @@ export function SampleRequestsClient({
                         setActiveReq({ ...activeReq, address_detail: e.target.value })
                       }
                       placeholder="Lô C4, KCN Thăng Long"
-                      className="px-3.5 py-2 rounded-[5px] border border-slate-200 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand"
+                      className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand"
                     />
                   </div>
 
@@ -1171,7 +1171,7 @@ export function SampleRequestsClient({
                       value={activeReq.product_slug || ''}
                       onChange={(e) => setActiveReq({ ...activeReq, product_slug: e.target.value })}
                       placeholder="gang-tay-nitrile-chong-tinh-dien"
-                      className="px-3.5 py-2 rounded-[5px] border border-slate-200 text-xs font-semibold text-slate-700 focus:outline-none"
+                      className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs font-semibold text-slate-700 focus:outline-none"
                     />
                   </div>
 
@@ -1189,7 +1189,7 @@ export function SampleRequestsClient({
                             status: e.target.value as SampleRequestItem['status']
                           })
                         }
-                        className="px-3 py-2 rounded-[5px] border border-slate-200 text-xs font-bold text-slate-700 focus:outline-none bg-white shadow-sm"
+                        className="px-3 py-2 rounded-[3px] border border-slate-200 text-xs font-bold text-slate-700 focus:outline-none bg-white shadow-sm"
                       >
                         <option value="pending">Đang chờ (Pending)</option>
                         <option value="approved">Đã duyệt (Approved)</option>
@@ -1208,7 +1208,7 @@ export function SampleRequestsClient({
                             assigned_sales_id: e.target.value || undefined
                           })
                         }
-                        className="px-3 py-2 rounded-[5px] border border-slate-200 text-xs font-bold text-slate-700 focus:outline-none bg-white shadow-sm"
+                        className="px-3 py-2 rounded-[3px] border border-slate-200 text-xs font-bold text-slate-700 focus:outline-none bg-white shadow-sm"
                       >
                         <option value="">-- Chưa gán --</option>
                         {salesTeam.map((sales) => (
@@ -1231,7 +1231,7 @@ export function SampleRequestsClient({
                       value={activeReq.message || ''}
                       onChange={(e) => setActiveReq({ ...activeReq, message: e.target.value })}
                       placeholder="Lời nhắn từ khách hàng..."
-                      className="px-3.5 py-2 rounded-[5px] border border-slate-200 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand"
+                      className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand"
                     />
                   </div>
                 </div>
@@ -1246,7 +1246,7 @@ export function SampleRequestsClient({
                     <button
                       type="button"
                       onClick={handleAddFormItem}
-                      className="inline-flex h-7 items-center justify-center gap-1 px-3.5 rounded-[5px] border border-blue-200 text-[10px] font-extrabold text-blue-600 hover:bg-blue-50 bg-white transition-all shadow-sm"
+                      className="inline-flex h-7 items-center justify-center gap-1 px-3.5 rounded-[3px] border border-blue-200 text-[10px] font-extrabold text-blue-600 hover:bg-blue-50 bg-white transition-all shadow-sm"
                     >
                       <PlusCircle className="h-3.5 w-3.5" />
                       Thêm SKU mẫu
@@ -1257,7 +1257,7 @@ export function SampleRequestsClient({
                     {(activeReq.skus || []).map((skuCode: string, idx: number) => (
                       <div
                         key={idx}
-                        className="p-4 border border-slate-150 rounded-[5px] bg-slate-50/30 flex items-center justify-between gap-3 relative animate-in fade-in duration-150"
+                        className="p-4 border border-slate-150 rounded-[3px] bg-slate-50/30 flex items-center justify-between gap-3 relative animate-in fade-in duration-150"
                       >
                         <div className="flex-1 flex flex-col gap-1">
                           <label className="text-[9px] font-bold text-slate-450 uppercase">
@@ -1267,7 +1267,7 @@ export function SampleRequestsClient({
                             required
                             value={skuCode}
                             onChange={(e) => handleUpdateFormItem(idx, e.target.value)}
-                            className="w-full px-2.5 py-1.5 rounded-[5px] border border-slate-200 text-xs font-mono font-bold text-primary bg-white focus:outline-none"
+                            className="w-full px-2.5 py-1.5 rounded-[3px] border border-slate-200 text-xs font-mono font-bold text-primary bg-white focus:outline-none"
                           >
                             <option value="">-- Chọn sản phẩm --</option>
                             {skus.map((skuOption) => (
@@ -1281,7 +1281,7 @@ export function SampleRequestsClient({
                         <button
                           type="button"
                           onClick={() => handleRemoveFormItem(idx)}
-                          className="text-slate-400 hover:text-rose-600 p-2 rounded-[5px] hover:bg-rose-50 transition-colors mt-4"
+                          className="text-slate-400 hover:text-rose-600 p-2 rounded-[3px] hover:bg-rose-50 transition-colors mt-4"
                           title="Xóa dòng"
                         >
                           <X className="h-4 w-4" />
@@ -1290,7 +1290,7 @@ export function SampleRequestsClient({
                     ))}
 
                     {(activeReq.skus || []).length === 0 && (
-                      <div className="text-center py-8 text-xs text-slate-400 italic bg-slate-50/50 rounded-[5px] border border-dashed border-slate-200">
+                      <div className="text-center py-8 text-xs text-slate-400 italic bg-slate-50/50 rounded-[3px] border border-dashed border-slate-200">
                         Chưa chọn sản phẩm mẫu nào. Nhấp &quot;+ Thêm SKU mẫu&quot; để chọn hàng.
                       </div>
                     )}
@@ -1307,14 +1307,14 @@ export function SampleRequestsClient({
                     setFormOpen(false);
                     setActiveReq(null);
                   }}
-                  className="px-5 py-2.5 rounded-[5px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-550 hover:bg-slate-100 transition-colors"
+                  className="px-5 py-2.5 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-550 hover:bg-slate-100 transition-colors"
                 >
                   Hủy bỏ
                 </button>
                 <button
                   type="submit"
                   disabled={isPending}
-                  className="inline-flex items-center justify-center px-5 py-2.5 rounded-[5px] bg-blue-600 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors disabled:opacity-50"
+                  className="inline-flex items-center justify-center px-5 py-2.5 rounded-[3px] bg-blue-600 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors disabled:opacity-50"
                 >
                   {isPending ? 'Đang lưu...' : 'Lưu yêu cầu'}
                 </button>

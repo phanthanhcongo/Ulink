@@ -146,21 +146,21 @@ export function MyRfqsClient() {
 
             {/* Stats cards */}
             <div className="grid grid-cols-3 gap-3">
-              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-3 border border-white/20">
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-[3px] px-4 py-3 border border-white/20">
                 <Clock className="h-4 w-4 text-amber-300" />
                 <div>
                   <p className="text-lg font-bold text-white">{counts.pending}</p>
                   <p className="text-[10px] text-indigo-200">{t('pending')}</p>
                 </div>
               </div>
-              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-3 border border-white/20">
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-[3px] px-4 py-3 border border-white/20">
                 <CheckCircle2 className="h-4 w-4 text-emerald-300" />
                 <div>
                   <p className="text-lg font-bold text-white">{counts.quoted}</p>
                   <p className="text-[10px] text-indigo-200">{t('quoted')}</p>
                 </div>
               </div>
-              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-3 border border-white/20">
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-[3px] px-4 py-3 border border-white/20">
                 <XCircle className="h-4 w-4 text-rose-300" />
                 <div>
                   <p className="text-lg font-bold text-white">{counts.rejected}</p>
@@ -175,7 +175,7 @@ export function MyRfqsClient() {
       {/* Main content */}
       <div className="container mx-auto px-4 py-6">
         {/* Toolbar */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-6 bg-white rounded-[5px] border border-gray-200 shadow-sm px-4 py-3">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-6 bg-white rounded-[3px] border border-gray-200 shadow-sm px-4 py-3">
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
             <input
@@ -183,17 +183,17 @@ export function MyRfqsClient() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={t('searchPlaceholder')}
-              className="w-full rounded-lg border border-gray-200 bg-gray-50 pl-9 pr-3 py-2 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:bg-white focus:outline-none transition-all"
+              className="w-full rounded-[3px] border border-gray-200 bg-gray-50 pl-9 pr-3 py-2 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:bg-white focus:outline-none transition-all"
             />
           </div>
 
-          <div className="flex items-center gap-1 bg-gray-100 rounded-lg p-1">
+          <div className="flex items-center gap-1 bg-gray-100 rounded-[3px] p-1">
             {(['all', 'pending', 'quoted', 'rejected'] as const).map((s) => (
               <button
                 key={s}
                 onClick={() => setStatusFilter(s)}
                 className={cn(
-                  'px-3 py-1.5 rounded-md text-xs font-medium transition-all',
+                  'px-3 py-1.5 rounded-[3px] text-xs font-medium transition-all',
                   statusFilter === s
                     ? 'bg-white text-gray-900 shadow-sm'
                     : 'text-gray-500 hover:text-gray-700'
@@ -212,11 +212,11 @@ export function MyRfqsClient() {
             <Loader2 className="h-6 w-6 animate-spin text-gray-400" />
           </div>
         ) : error ? (
-          <div className="flex flex-col items-center justify-center py-20 bg-white rounded-[5px] border border-gray-200">
+          <div className="flex flex-col items-center justify-center py-20 bg-white rounded-[3px] border border-gray-200">
             <p className="text-red-600 text-sm">{error}</p>
           </div>
         ) : filtered.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-20 bg-white rounded-[5px] border border-gray-200">
+          <div className="flex flex-col items-center justify-center py-20 bg-white rounded-[3px] border border-gray-200">
             <FileBox className="h-14 w-14 text-gray-200 mb-4" />
             <p className="text-gray-600 font-medium">{t('noResults')}</p>
             <p className="text-gray-400 text-sm mt-1">{t('noResultsDesc')}</p>
@@ -231,11 +231,11 @@ export function MyRfqsClient() {
               return (
                 <div
                   key={req.id}
-                  className="group flex flex-col sm:flex-row sm:items-center gap-4 bg-white rounded-[5px] border border-gray-200 shadow-sm px-5 py-4 hover:shadow-md hover:border-blue-200 transition-all"
+                  className="group flex flex-col sm:flex-row sm:items-center gap-4 bg-white rounded-[3px] border border-gray-200 shadow-sm px-5 py-4 hover:shadow-md hover:border-blue-200 transition-all"
                 >
                   {/* Left: icon + info */}
                   <div className="flex items-start gap-4 flex-1 min-w-0">
-                    <div className="shrink-0 w-10 h-10 rounded-lg bg-indigo-50 flex items-center justify-center">
+                    <div className="shrink-0 w-10 h-10 rounded-[3px] bg-indigo-50 flex items-center justify-center">
                       <FileText className="h-5 w-5 text-indigo-600" />
                     </div>
                     <div className="min-w-0 flex-1">
@@ -283,7 +283,7 @@ export function MyRfqsClient() {
                           {req.line_items.slice(0, 3).map((li) => (
                             <span
                               key={li.sku}
-                              className="inline-flex items-center rounded-md bg-gray-100 px-1.5 py-0.5 text-[10px] font-mono text-gray-600"
+                              className="inline-flex items-center rounded-[3px] bg-gray-100 px-1.5 py-0.5 text-[10px] font-mono text-gray-600"
                             >
                               {li.sku}
                             </span>
@@ -312,7 +312,7 @@ export function MyRfqsClient() {
 
                     <button
                       onClick={() => setSelectedRfq(req)}
-                      className="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-3 py-2 text-xs font-medium text-gray-700 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-200 transition-all shadow-sm"
+                      className="inline-flex items-center gap-1.5 rounded-[3px] border border-gray-200 bg-white px-3 py-2 text-xs font-medium text-gray-700 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-200 transition-all shadow-sm"
                     >
                       <Eye className="h-3.5 w-3.5" />
                       {t('viewDetail')}
@@ -345,14 +345,14 @@ function RfqDetailModal({ rfq, onClose }: { rfq: RfqItem; onClose: () => void })
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative bg-white rounded-2xl shadow-2xl w-full max-w-lg max-h-[85vh] overflow-hidden flex flex-col">
+      <div className="relative bg-white rounded-[3px] shadow-2xl w-full max-w-lg max-h-[85vh] overflow-hidden flex flex-col">
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
           <div>
             <h2 className="text-lg font-semibold text-gray-900">{t('title')}</h2>
             <p className="text-xs text-gray-500 mt-0.5">#{rfq.id}</p>
           </div>
-          <button onClick={onClose} className="p-2 rounded-lg hover:bg-gray-100 transition-colors">
+          <button onClick={onClose} className="p-2 rounded-[3px] hover:bg-gray-100 transition-colors">
             <X className="h-5 w-5 text-gray-500" />
           </button>
         </div>
@@ -404,7 +404,7 @@ function RfqDetailModal({ rfq, onClose }: { rfq: RfqItem; onClose: () => void })
                 <Package className="h-3.5 w-3.5" />
                 {t('lineItems')}
               </h3>
-              <div className="border border-gray-200 rounded-lg overflow-hidden">
+              <div className="border border-gray-200 rounded-[3px] overflow-hidden">
                 <table className="w-full text-sm">
                   <thead className="bg-gray-50">
                     <tr>
@@ -476,14 +476,14 @@ function RfqDetailModal({ rfq, onClose }: { rfq: RfqItem; onClose: () => void })
             </div>
 
             {rfq.approval_note && (
-              <div className="bg-emerald-50 border border-emerald-200 rounded-lg px-3 py-2 mb-2">
+              <div className="bg-emerald-50 border border-emerald-200 rounded-[3px] px-3 py-2 mb-2">
                 <p className="text-xs text-emerald-600 font-medium">{t('approvalNote')}</p>
                 <p className="text-sm text-emerald-800 mt-0.5">{rfq.approval_note}</p>
               </div>
             )}
 
             {rfq.reject_reason && (
-              <div className="bg-rose-50 border border-rose-200 rounded-lg px-3 py-2 mb-2">
+              <div className="bg-rose-50 border border-rose-200 rounded-[3px] px-3 py-2 mb-2">
                 <p className="text-xs text-rose-600 font-medium">{t('rejectReason')}</p>
                 <p className="text-sm text-rose-800 mt-0.5">{rfq.reject_reason}</p>
               </div>
@@ -515,7 +515,7 @@ function RfqDetailModal({ rfq, onClose }: { rfq: RfqItem; onClose: () => void })
         <div className="px-6 py-4 border-t border-gray-100">
           <button
             onClick={onClose}
-            className="w-full rounded-lg bg-gray-100 px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-200 transition-colors"
+            className="w-full rounded-[3px] bg-gray-100 px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-200 transition-colors"
           >
             {t('close')}
           </button>

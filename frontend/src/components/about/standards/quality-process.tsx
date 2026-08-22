@@ -28,7 +28,7 @@ const steps = [
 
 export function QualityProcess() {
   return (
-    <section className="py-12 px-6 sm:px-10 rounded-2xl bg-brand text-white my-8 shadow-xl">
+    <section className="py-12 px-6 sm:px-10 rounded-[3px] bg-brand text-white my-8 shadow-xl">
       <div className="flex flex-col items-center text-center mb-10">
         <span className="inline-flex items-center rounded-full bg-white/15 px-3.5 py-1 text-xs font-semibold text-white border border-white/20 mb-2">
           QUY TRÌNH VẬN HÀNH
@@ -46,9 +46,9 @@ export function QualityProcess() {
         {steps.map((step, idx) => (
           <div
             key={idx}
-            className="flex flex-col rounded-[5px] bg-white/10 p-5 border border-white/15 backdrop-blur transition-all hover:bg-white/15"
+            className="flex flex-col rounded-[3px] bg-white/10 p-5 border border-white/15 backdrop-blur transition-all hover:bg-white/15"
           >
-            <div className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-lg bg-white text-xs font-extrabold text-brand shadow">
+            <div className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-[3px] bg-white text-xs font-extrabold text-brand shadow">
               {step.num}
             </div>
             <h3 className="text-sm font-bold text-white mb-1.5">{step.title}</h3>

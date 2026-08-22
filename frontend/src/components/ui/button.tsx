@@ -3,7 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
 export const buttonVariants = cva(
-  'ui-btn rounded-[5px] transition-all disabled:pointer-events-none disabled:opacity-60',
+  'ui-btn rounded-[3px] transition-all disabled:pointer-events-none disabled:opacity-60',
   {
     variants: {
       variant: {

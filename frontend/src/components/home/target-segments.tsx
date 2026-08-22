@@ -20,11 +20,11 @@ export async function TargetSegments() {
       {/* ── 2 CARDS GRID ── */}
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10">
         {/* CARD 1: DOANH NGHIỆP FDI */}
-        <div className="group flex flex-col overflow-hidden rounded-[5px] border border-slate-200 bg-white shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+        <div className="group flex flex-col overflow-hidden rounded-[3px] border border-slate-200 bg-white shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
           {/* Card Top: Header Area (Light Background) */}
           <div className="bg-[#f4f7fc] p-6 sm:p-8 lg:p-10 border-b border-slate-200">
             {/* Icon box outline */}
-            <div className="flex h-14 w-14 items-center justify-center rounded-[8px] bg-white border border-slate-200 text-blue-600 shadow-sm transition-transform duration-300 group-hover:scale-105">
+            <div className="flex h-14 w-14 items-center justify-center rounded-[3px] bg-white border border-slate-200 text-blue-600 shadow-sm transition-transform duration-300 group-hover:scale-105">
               <Building2 className="h-7 w-7 text-blue-600" />
             </div>
             <h3 className="mt-5 text-[20px] sm:text-[22px] font-bold text-slate-900 leading-tight">
@@ -85,11 +85,11 @@ export async function TargetSegments() {
         </div>
 
         {/* CARD 2: DOANH NGHIỆP SẢN XUẤT */}
-        <div className="group flex flex-col overflow-hidden rounded-[5px] border border-slate-200 bg-white shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+        <div className="group flex flex-col overflow-hidden rounded-[3px] border border-slate-200 bg-white shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
           {/* Card Top: Header Area (Light Background) */}
           <div className="bg-[#f4f7fc] p-6 sm:p-8 lg:p-10 border-b border-slate-200">
             {/* Icon box outline */}
-            <div className="flex h-14 w-14 items-center justify-center rounded-[8px] bg-white border border-slate-200 text-blue-600 shadow-sm transition-transform duration-300 group-hover:scale-105">
+            <div className="flex h-14 w-14 items-center justify-center rounded-[3px] bg-white border border-slate-200 text-blue-600 shadow-sm transition-transform duration-300 group-hover:scale-105">
               <Settings className="h-7 w-7 text-blue-600" />
             </div>
             <h3 className="mt-5 text-[20px] sm:text-[22px] font-bold text-slate-900 leading-tight">

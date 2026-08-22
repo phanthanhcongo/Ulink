@@ -21,7 +21,7 @@ export function AboutHero() {
           </p>
         </div>
         <div className="lg:col-span-6">
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[5px] shadow-xl ring-1 ring-slate-900/10">
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[3px] shadow-xl ring-1 ring-slate-900/10">
             <Image
               src="/images/about/gallery/image.png"
               alt="Hub Hà Nam - Trung tâm vật tư ULink"

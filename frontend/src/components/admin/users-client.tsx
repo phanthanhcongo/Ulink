@@ -196,7 +196,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
         <button
           type="button"
           onClick={handleOpenCreateForm}
-          className="inline-flex h-10 items-center justify-center gap-1.5 px-4 rounded-[5px] bg-blue-600 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors shrink-0 animate-fade-in"
+          className="inline-flex h-10 items-center justify-center gap-1.5 px-4 rounded-[3px] bg-blue-600 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors shrink-0 animate-fade-in"
         >
           <Plus className="h-4 w-4" />
           Thêm tài khoản mới
@@ -205,13 +205,13 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
 
       {/* Error Alert Banner */}
       {error && (
-        <div className="mb-6 p-4 bg-rose-50 border border-rose-200 rounded-[5px] text-rose-800 text-xs sm:text-sm font-semibold flex items-start gap-2.5 shadow-sm">
+        <div className="mb-6 p-4 bg-rose-50 border border-rose-200 rounded-[3px] text-rose-800 text-xs sm:text-sm font-semibold flex items-start gap-2.5 shadow-sm">
           <AlertTriangle className="h-5 w-5 text-rose-500 shrink-0 mt-0.5" />
           <div className="flex-1">
             <span className="font-extrabold text-rose-900 block mb-1">
               Đã xảy ra lỗi khi tải dữ liệu người dùng từ Directus API
             </span>
-            <pre className="font-mono text-[11px] bg-white/60 p-2.5 rounded-[5px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all">
+            <pre className="font-mono text-[11px] bg-white/60 p-2.5 rounded-[3px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all">
               {error}
             </pre>
           </div>
@@ -219,7 +219,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
       )}
 
       {/* Search and Filters */}
-      <div className="bg-white border border-slate-100 rounded-[5px] p-5 sm:p-6 shadow-sm mb-8 flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between">
+      <div className="bg-white border border-slate-100 rounded-[3px] p-5 sm:p-6 shadow-sm mb-8 flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between">
         {/* Search */}
         <div className="relative flex-1">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
@@ -228,7 +228,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Tìm theo tên người dùng, email..."
-            className="w-full pl-10 pr-4 py-2.5 rounded-[5px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand"
+            className="w-full pl-10 pr-4 py-2.5 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand"
           />
         </div>
 
@@ -237,7 +237,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
           <select
             value={roleFilter}
             onChange={(e) => setRoleFilter(e.target.value)}
-            className="px-3.5 py-2.5 rounded-[5px] border border-slate-200 text-xs font-bold text-slate-700 focus:outline-none bg-white shadow-sm"
+            className="px-3.5 py-2.5 rounded-[3px] border border-slate-200 text-xs font-bold text-slate-700 focus:outline-none bg-white shadow-sm"
           >
             <option value="all">Tất cả vai trò</option>
             {roles.map((r) => (
@@ -250,7 +250,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
       </div>
 
       {/* User Table List */}
-      <div className="bg-white border border-slate-100 rounded-[5px] shadow-sm overflow-hidden">
+      <div className="bg-white border border-slate-100 rounded-[3px] shadow-sm overflow-hidden">
         {filteredUsers.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 text-center">
             <Users className="h-12 w-12 text-slate-300 mb-3" />
@@ -300,7 +300,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
                       <td className="px-4 py-3">
                         <span
                           className={cn(
-                            'inline-flex items-center px-2 py-0.5 rounded-[5px] text-[10px] font-bold border shadow-xs select-none',
+                            'inline-flex items-center px-2 py-0.5 rounded-[3px] text-[10px] font-bold border shadow-xs select-none',
                             isSystemAdmin && 'bg-rose-50 text-rose-700 border-rose-100',
                             isManager && 'bg-amber-50 text-amber-700 border-amber-100',
                             !isSystemAdmin && !isManager && 'bg-emerald-50 text-emerald-700 border-emerald-100'
@@ -314,7 +314,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
                       <td className="px-4 py-3">
                         <span
                           className={cn(
-                            'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[5px] text-[10px] font-bold border shadow-sm select-none',
+                            'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[3px] text-[10px] font-bold border shadow-sm select-none',
                             u.status === 'active' && 'bg-emerald-50 text-emerald-700 border-emerald-100',
                             u.status === 'suspended' && 'bg-rose-50 text-rose-750 border-rose-100',
                             u.status === 'invited' && 'bg-blue-50 text-blue-700 border-blue-100',
@@ -323,7 +323,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
                         >
                           <span
                             className={cn(
-                              'h-1.5 w-1.5 rounded-[5px] shrink-0',
+                              'h-1.5 w-1.5 rounded-[3px] shrink-0',
                               u.status === 'active' && 'bg-emerald-500',
                               u.status === 'suspended' && 'bg-rose-500',
                               u.status === 'invited' && 'bg-blue-500 animate-pulse',
@@ -348,7 +348,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
                           <button
                             type="button"
                             onClick={() => handleOpenEditForm(u)}
-                            className="p-1 rounded-[5px] hover:bg-slate-100 text-slate-400 hover:text-blue-600 transition-colors"
+                            className="p-1 rounded-[3px] hover:bg-slate-100 text-slate-400 hover:text-blue-600 transition-colors"
                             title="Sửa tài khoản"
                           >
                             <Edit2 className="h-4 w-4" />
@@ -356,7 +356,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
                           <button
                             type="button"
                             onClick={() => handleDeleteUser(u.id)}
-                            className="p-1 rounded-[5px] hover:bg-slate-100 text-rose-500 hover:text-rose-700 transition-colors"
+                            className="p-1 rounded-[3px] hover:bg-slate-100 text-rose-500 hover:text-rose-700 transition-colors"
                             title="Xóa tài khoản"
                           >
                             <Trash2 className="h-4 w-4" />
@@ -375,7 +375,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
       {/* Modal: Create or Edit User Form */}
       {formOpen && activeUser && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4 backdrop-blur-sm overflow-y-auto">
-          <div className="my-8 w-full max-w-lg bg-white rounded-[5px] shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-200 border border-slate-100">
+          <div className="my-8 w-full max-w-lg bg-white rounded-[3px] shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-200 border border-slate-100">
             {/* Modal Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
               <div>
@@ -393,7 +393,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
                   setActiveUser(null);
                   setFormError('');
                 }}
-                className="p-1.5 rounded-[5px] hover:bg-slate-100 text-slate-400 hover:text-slate-655"
+                className="p-1.5 rounded-[3px] hover:bg-slate-100 text-slate-400 hover:text-slate-655"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -403,7 +403,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
             <form onSubmit={handleFormSubmit} className="flex flex-col">
               <div className="p-6 flex flex-col gap-4 bg-white">
                 {formError && (
-                  <div className="p-3 bg-rose-50 border border-rose-100 rounded-[5px] text-xs font-bold text-rose-600 flex items-center gap-2 animate-in fade-in duration-200">
+                  <div className="p-3 bg-rose-50 border border-rose-100 rounded-[3px] text-xs font-bold text-rose-600 flex items-center gap-2 animate-in fade-in duration-200">
                     <AlertTriangle className="h-4 w-4 shrink-0" />
                     <span>{formError}</span>
                   </div>
@@ -420,7 +420,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
                       value={activeUser.first_name || ''}
                       onChange={(e) => setActiveUser({ ...activeUser, first_name: e.target.value })}
                       placeholder="Nguyễn"
-                      className="px-3.5 py-2 rounded-[5px] border border-slate-200 text-xs sm:text-sm font-semibold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand shadow-sm"
+                      className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-semibold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand shadow-sm"
                     />
                   </div>
                   <div className="flex flex-col gap-1.5">
@@ -433,7 +433,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
                       value={activeUser.last_name || ''}
                       onChange={(e) => setActiveUser({ ...activeUser, last_name: e.target.value })}
                       placeholder="Văn A"
-                      className="px-3.5 py-2 rounded-[5px] border border-slate-200 text-xs sm:text-sm font-semibold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand shadow-sm"
+                      className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-semibold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand shadow-sm"
                     />
                   </div>
                 </div>
@@ -450,7 +450,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
                     value={activeUser.email || ''}
                     onChange={(e) => setActiveUser({ ...activeUser, email: e.target.value })}
                     placeholder="email@company.com"
-                    className="px-3.5 py-2.5 rounded-[5px] border border-slate-200 text-xs sm:text-sm font-semibold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand shadow-sm"
+                    className="px-3.5 py-2.5 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-semibold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand shadow-sm"
                   />
                 </div>
 
@@ -470,7 +470,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
                         ? 'Để trống nếu không muốn đổi mật khẩu...'
                         : 'Nhập mật khẩu an toàn...'
                     }
-                    className="px-3.5 py-2.5 rounded-[5px] border border-slate-200 text-xs sm:text-sm font-semibold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand shadow-sm"
+                    className="px-3.5 py-2.5 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-semibold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand shadow-sm"
                   />
                 </div>
 
@@ -488,7 +488,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
                            key={r.id}
                            onClick={() => setActiveUser({ ...activeUser, roleId: r.id })}
                            className={cn(
-                             'p-3.5 rounded-[5px] border-2 text-left cursor-pointer transition-all flex flex-col gap-1.5 select-none hover:border-blue-400 hover:bg-blue-50/10',
+                             'p-3.5 rounded-[3px] border-2 text-left cursor-pointer transition-all flex flex-col gap-1.5 select-none hover:border-blue-400 hover:bg-blue-50/10',
                              isSelected
                                ? 'border-blue-600 bg-blue-50/20 shadow-xs'
                                : 'border-slate-200 bg-white'
@@ -500,13 +500,13 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
                              </span>
                              <span
                                className={cn(
-                                 'h-3.5 w-3.5 rounded-[5px] border flex items-center justify-center shrink-0',
+                                 'h-3.5 w-3.5 rounded-[3px] border flex items-center justify-center shrink-0',
                                  isSelected
                                    ? 'border-blue-600 bg-blue-600'
                                    : 'border-slate-350 bg-white'
                                )}
                              >
-                               {isSelected && <span className="h-1.5 w-1.5 rounded-[5px] bg-white" />}
+                               {isSelected && <span className="h-1.5 w-1.5 rounded-[3px] bg-white" />}
                              </span>
                            </div>
                            <span className="text-[10px] text-slate-400 font-semibold leading-tight">
@@ -531,7 +531,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
                         status: e.target.value as UserItem['status']
                       })
                     }
-                    className="px-3.5 py-2.5 rounded-[5px] border border-slate-200 text-xs font-bold text-slate-700 focus:outline-none bg-white shadow-sm"
+                    className="px-3.5 py-2.5 rounded-[3px] border border-slate-200 text-xs font-bold text-slate-700 focus:outline-none bg-white shadow-sm"
                   >
                     <option value="active">Hoạt động (Active)</option>
                     <option value="suspended">Khóa tài khoản (Suspended)</option>
@@ -549,14 +549,14 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
                     setFormOpen(false);
                     setActiveUser(null);
                   }}
-                  className="px-5 py-2.5 rounded-[5px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-550 hover:bg-slate-100 transition-colors"
+                  className="px-5 py-2.5 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-550 hover:bg-slate-100 transition-colors"
                 >
                   Hủy bỏ
                 </button>
                 <button
                   type="submit"
                   disabled={isPending}
-                  className="inline-flex items-center justify-center px-5 py-2.5 rounded-[5px] bg-blue-600 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors disabled:opacity-50"
+                  className="inline-flex items-center justify-center px-5 py-2.5 rounded-[3px] bg-blue-600 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors disabled:opacity-50"
                 >
                   {isPending ? 'Đang lưu...' : 'Lưu tài khoản'}
                 </button>

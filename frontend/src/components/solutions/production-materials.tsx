@@ -49,7 +49,7 @@ export default async function ProductionMaterials({ locale }: ProductionMaterial
         {/* Section Header */}
         <div className="flex flex-col items-start">
           <div className="flex items-center gap-2">
-            <span className="h-4 w-1 bg-blue-600 rounded-none" />
+            <span className="h-4 w-1 bg-blue-600 rounded-[3px]" />
             <span className="text-xs font-bold uppercase tracking-wider text-slate-800">
               {t('skuSection.eyebrow')}
             </span>
@@ -67,7 +67,7 @@ export default async function ProductionMaterials({ locale }: ProductionMaterial
           {cards.map((card, idx) => (
             <div
               key={idx}
-              className="flex flex-col bg-white rounded-none border border-gray-100 shadow-sm hover:shadow-md transition-shadow overflow-hidden"
+              className="flex flex-col bg-white rounded-[3px] border border-gray-100 shadow-sm hover:shadow-md transition-shadow overflow-hidden"
             >
               <div className="h-[240px] relative overflow-hidden bg-gray-50">
                 <Image
@@ -84,7 +84,7 @@ export default async function ProductionMaterials({ locale }: ProductionMaterial
                 <ul className="mt-6 space-y-3 flex-1">
                   {card.items.map((item, itemIdx) => (
                     <li key={itemIdx} className="flex items-center gap-2 text-sm text-slate-600">
-                      <span className="w-1.5 h-1.5 bg-blue-500 shrink-0 rounded-none" />
+                      <span className="w-1.5 h-1.5 bg-blue-500 shrink-0 rounded-[3px]" />
                       {item}
                     </li>
                   ))}
@@ -94,7 +94,7 @@ export default async function ProductionMaterials({ locale }: ProductionMaterial
                 <div className="mt-8">
                   <Link
                     href={card.href}
-                    className="inline-flex items-center justify-center gap-2 rounded-none bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 transition-colors w-full sm:w-auto"
+                    className="inline-flex items-center justify-center gap-2 rounded-[3px] bg-blue-600 px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 transition-colors w-full sm:w-auto"
                   >
                     {t('skuSection.cta')}
                     <ArrowRight className="h-4 w-4" />

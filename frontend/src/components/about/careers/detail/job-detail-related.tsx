@@ -42,7 +42,7 @@ export function JobDetailRelated() {
         {relatedJobs.map((job) => (
           <div
             key={job.id}
-            className="flex flex-col justify-between rounded-[5px] bg-white p-5 shadow-sm border border-slate-100 transition-all hover:shadow-md hover:border-blue-200"
+            className="flex flex-col justify-between rounded-[3px] bg-white p-5 shadow-sm border border-slate-100 transition-all hover:shadow-md hover:border-blue-200"
           >
             <div>
               <h3 className="text-sm font-bold text-slate-900 mb-2">{job.title}</h3>
@@ -57,7 +57,7 @@ export function JobDetailRelated() {
             </div>
             <Link
               href="/about/careers/b2b-sales"
-              className="inline-flex justify-center rounded-lg border border-slate-200 py-2 text-xs font-semibold text-slate-700 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all"
+              className="inline-flex justify-center rounded-[3px] border border-slate-200 py-2 text-xs font-semibold text-slate-700 hover:bg-blue-600 hover:text-white hover:border-blue-600 transition-all"
             >
               Xem chi tiết
             </Link>

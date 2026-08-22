@@ -141,7 +141,7 @@ export function ResourcesNews() {
       <div className="mt-10 flex justify-center">
         <Link
           href="/resources"
-          className="group inline-flex h-11 items-center justify-center gap-2.5 rounded-[5px] border border-blue-600 bg-white px-6 text-sm font-bold text-blue-600 transition-all hover:bg-blue-50/50 hover:shadow-xs active:scale-98"
+          className="group inline-flex h-11 items-center justify-center gap-2.5 rounded-[3px] border border-blue-600 bg-white px-6 text-sm font-bold text-blue-600 transition-all hover:bg-blue-50/50 hover:shadow-xs active:scale-98"
         >
           {t('viewMore') || 'Xem thêm'}
           <ArrowRight className="h-4.5 w-4.5 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />

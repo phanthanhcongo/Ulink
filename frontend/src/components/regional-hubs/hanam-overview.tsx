@@ -27,14 +27,14 @@ export default async function HanamOverview() {
         <div className="mt-8 flex flex-wrap justify-center items-center gap-4">
           <Link
             href="/contact"
-            className="bg-brand text-white text-[13px] font-semibold py-3 px-6 rounded-none flex items-center gap-2 hover:bg-brand-strong transition-colors"
+            className="bg-brand text-white text-[13px] font-semibold py-3 px-6 rounded-[3px] flex items-center gap-2 hover:bg-brand-strong transition-colors"
           >
             {t('hanamIntro.contactSales')}
             <ArrowRight className="h-4 w-4" />
           </Link>
           <Link
             href="/about"
-            className="border border-brand text-brand text-[13px] font-semibold py-3 px-6 rounded-none hover:bg-blue-50 transition-colors flex items-center gap-2"
+            className="border border-brand text-brand text-[13px] font-semibold py-3 px-6 rounded-[3px] hover:bg-blue-50 transition-colors flex items-center gap-2"
           >
             {t('hanamIntro.learnMore')}
             <ArrowRight className="h-4 w-4" />
@@ -42,7 +42,7 @@ export default async function HanamOverview() {
         </div>
 
         {/* Large Video Showcase */}
-        <div className="mt-12 max-w-[900px] mx-auto aspect-[16/9] rounded-none overflow-hidden shadow-md border border-slate-100 bg-slate-50">
+        <div className="mt-12 max-w-[900px] mx-auto aspect-[16/9] rounded-[3px] overflow-hidden shadow-md border border-slate-100 bg-slate-50">
           <video
             src="/images/regional_hubs/Hub.mp4"
             autoPlay

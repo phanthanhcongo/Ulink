@@ -74,7 +74,7 @@ export default function FavoritesClient({ products, locale }: FavoritesClientPro
 
       {/* ── WISHLIST HERO BANNER ── */}
       <header className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 mb-8">
-        <div className="rounded-[5px] bg-gradient-to-r from-primary via-brand to-brand-strong p-6 sm:p-8 lg:p-10 text-white shadow-md relative overflow-hidden">
+        <div className="rounded-[3px] bg-gradient-to-r from-primary via-brand to-brand-strong p-6 sm:p-8 lg:p-10 text-white shadow-md relative overflow-hidden">
           {/* Background Decorative Accent */}
           <div className="absolute right-0 top-0 -mt-10 -mr-10 h-72 w-72 rounded-full bg-blue-400/10 blur-3xl pointer-events-none" />
 
@@ -115,7 +115,7 @@ export default function FavoritesClient({ products, locale }: FavoritesClientPro
             ))}
           </div>
         ) : (
-          <div className="flex flex-col items-center justify-center py-16 px-4 bg-white rounded-2xl border border-slate-200/80 shadow-xs text-center max-w-xl mx-auto mt-8">
+          <div className="flex flex-col items-center justify-center py-16 px-4 bg-white rounded-[3px] border border-slate-200/80 shadow-xs text-center max-w-xl mx-auto mt-8">
             <div className="w-16 h-16 rounded-full bg-rose-50 border border-rose-100 flex items-center justify-center text-rose-500 mb-5 shadow-inner">
               <Heart className="h-7 w-7 fill-current animate-pulse" />
             </div>
@@ -135,7 +135,7 @@ export default function FavoritesClient({ products, locale }: FavoritesClientPro
             </p>
             <Link
               href="/products"
-              className="inline-flex items-center justify-center px-6 py-3 rounded-[5px] bg-blue-600 text-white font-extrabold text-sm shadow-md hover:bg-blue-700 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-[3px] bg-blue-600 text-white font-extrabold text-sm shadow-md hover:bg-blue-700 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
             >
               {isVi ? 'Khám phá sản phẩm ngay' : locale === 'ja' ? '製品を探索する' : 'Explore products now'}
             </Link>

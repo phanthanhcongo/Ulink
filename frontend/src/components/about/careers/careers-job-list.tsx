@@ -106,13 +106,13 @@ export function CareersJobList() {
                 placeholder="Từ khóa, vị trí cần tìm..."
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                className="w-full rounded-lg border border-slate-200 pl-10 pr-4 py-2.5 text-xs outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600/20 bg-white"
+                className="w-full rounded-[3px] border border-slate-200 pl-10 pr-4 py-2.5 text-xs outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600/20 bg-white"
               />
             </div>
             <select
               value={department}
               onChange={(e) => setDepartment(e.target.value)}
-              className="rounded-lg border border-slate-200 px-3 py-2.5 text-xs text-slate-600 outline-none focus:border-blue-600 bg-white"
+              className="rounded-[3px] border border-slate-200 px-3 py-2.5 text-xs text-slate-600 outline-none focus:border-blue-600 bg-white"
             >
               <option value="">Phòng ban</option>
               <option value="kinh-doanh">Kinh doanh</option>
@@ -122,7 +122,7 @@ export function CareersJobList() {
             <select
               value={location}
               onChange={(e) => setLocation(e.target.value)}
-              className="rounded-lg border border-slate-200 px-3 py-2.5 text-xs text-slate-600 outline-none focus:border-blue-600 bg-white"
+              className="rounded-[3px] border border-slate-200 px-3 py-2.5 text-xs text-slate-600 outline-none focus:border-blue-600 bg-white"
             >
               <option value="">Địa điểm</option>
               <option value="hanoi">Hà Nội</option>
@@ -135,7 +135,7 @@ export function CareersJobList() {
             {filteredJobs.map((job) => (
               <div
                 key={job.id}
-                className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 rounded-xl bg-white p-5 border border-slate-200/80 transition-all hover:border-blue-300 hover:shadow-md"
+                className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 rounded-[3px] bg-white p-5 border border-slate-200/80 transition-all hover:border-blue-300 hover:shadow-md"
               >
                 <div className="flex flex-col gap-2">
                   <div className="flex flex-wrap items-center gap-2">
@@ -173,7 +173,7 @@ export function CareersJobList() {
                   </span>
                   <Link
                     href={`/about/careers/${job.slug}`}
-                    className="inline-flex shrink-0 items-center justify-center rounded-lg bg-orange-600 px-5 py-2 text-xs sm:text-sm font-semibold text-white shadow-xs hover:bg-orange-700 transition-colors"
+                    className="inline-flex shrink-0 items-center justify-center rounded-[3px] bg-orange-600 px-5 py-2 text-xs sm:text-sm font-semibold text-white shadow-xs hover:bg-orange-700 transition-colors"
                   >
                     Ứng tuyển
                   </Link>
@@ -210,9 +210,9 @@ export function CareersJobList() {
               return (
                 <div
                   key={idx}
-                  className="flex items-start gap-4 p-4 rounded-xl bg-slate-50/50 border border-slate-100/80 transition-all hover:bg-white hover:border-slate-200 hover:shadow-xs"
+                  className="flex items-start gap-4 p-4 rounded-[3px] bg-slate-50/50 border border-slate-100/80 transition-all hover:bg-white hover:border-slate-200 hover:shadow-xs"
                 >
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-blue-600">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[3px] bg-blue-50 text-blue-600">
                     <Icon className="h-5 w-5" />
                   </div>
                   <div className="flex flex-col">

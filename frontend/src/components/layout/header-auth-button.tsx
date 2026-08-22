@@ -24,7 +24,7 @@ export function HeaderAuthButton() {
   // Still loading — render placeholder to avoid layout shift
   if (status === 'idle' || status === 'loading') {
     return (
-      <div className="flex h-9 w-9 animate-pulse rounded-[5px] bg-muted sm:h-[38px] sm:w-[100px]" />
+      <div className="flex h-9 w-9 animate-pulse rounded-[3px] bg-muted sm:h-[38px] sm:w-[100px]" />
     );
   }
 
@@ -52,7 +52,7 @@ export function HeaderAuthButton() {
         </button>
 
         {/* Dropdown */}
-        <div className="invisible absolute right-0 top-full z-50 mt-2 min-w-[200px] rounded-[5px] border border-border bg-card py-1 shadow-lg opacity-0 transition-all group-hover:visible group-hover:opacity-100">
+        <div className="invisible absolute right-0 top-full z-50 mt-2 min-w-[200px] rounded-[3px] border border-border bg-card py-1 shadow-lg opacity-0 transition-all group-hover:visible group-hover:opacity-100">
           {isAdmin && (
             <Link
               href="/admin"

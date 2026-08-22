@@ -67,14 +67,14 @@ export function EventSidebar({
   const calDate = getCalendarDate();
 
   return (
-    <div className="sticky top-6 rounded-[5px] bg-[#0E2142] text-white p-6 sm:p-8 shadow-2xl border border-slate-800">
+    <div className="sticky top-6 rounded-[3px] bg-[#0E2142] text-white p-6 sm:p-8 shadow-2xl border border-slate-800">
       <div className="flex justify-between items-start gap-4">
         <h3 className="text-xl font-extrabold leading-snug tracking-tight text-white pr-4">
           {title}
         </h3>
 
         {/* Calendar Badge */}
-        <div className="bg-slate-800/80 rounded-[5px] border border-slate-700 p-2 text-center shrink-0 min-w-[56px]">
+        <div className="bg-slate-800/80 rounded-[3px] border border-slate-700 p-2 text-center shrink-0 min-w-[56px]">
           <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none">{calDate.month}</p>
           <p className="text-lg font-black text-white mt-1 leading-none">{calDate.day}</p>
         </div>
@@ -119,7 +119,7 @@ export function EventSidebar({
         <div className="mt-6">
           <Link
             href={`/events/${slug}/register`}
-            className="flex w-full items-center justify-center rounded-[5px] bg-emerald-500 hover:bg-emerald-600 active:scale-[0.98] py-3 text-sm font-bold text-white transition-all shadow-md shadow-emerald-950/20 font-sans"
+            className="flex w-full items-center justify-center rounded-[3px] bg-emerald-500 hover:bg-emerald-600 active:scale-[0.98] py-3 text-sm font-bold text-white transition-all shadow-md shadow-emerald-950/20 font-sans"
           >
             Đăng ký ngay
           </Link>
@@ -141,7 +141,7 @@ export function EventSidebar({
           </div>
 
           {/* Copy Link Input */}
-          <div className="flex items-center gap-2 rounded-[5px] bg-slate-900 border border-slate-800 p-2 pl-3">
+          <div className="flex items-center gap-2 rounded-[3px] bg-slate-900 border border-slate-800 p-2 pl-3">
             <input
               type="text"
               readOnly
@@ -150,7 +150,7 @@ export function EventSidebar({
             />
             <button
               onClick={handleCopyLink}
-              className="p-2 rounded-[5px] hover:bg-slate-800 active:bg-slate-700 text-slate-400 hover:text-white transition-colors shrink-0"
+              className="p-2 rounded-[3px] hover:bg-slate-800 active:bg-slate-700 text-slate-400 hover:text-white transition-colors shrink-0"
               title="Copy link"
             >
               {copied ? <Check className="h-4 w-4 text-emerald-400" /> : <Link2 className="h-4 w-4" />}

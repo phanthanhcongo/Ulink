@@ -42,7 +42,7 @@ export function ContactFeaturedSolutions() {
         {solutions.map((item) => (
           <div
             key={item.id}
-            className="flex flex-col overflow-hidden rounded-[5px] bg-white border border-slate-100 shadow-sm transition-all hover:shadow-md group"
+            className="flex flex-col overflow-hidden rounded-[3px] bg-white border border-slate-100 shadow-sm transition-all hover:shadow-md group"
           >
             <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100">
               <Image

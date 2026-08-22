@@ -192,7 +192,7 @@ export default function CheckoutClient({
       case 'Viettel Post':
         return (
           <div
-            className="w-14 h-10 shrink-0 rounded-[5px] bg-[#EE0000] text-white flex flex-col items-center justify-center font-extrabold text-[9px] shadow-sm select-none"
+            className="w-14 h-10 shrink-0 rounded-[3px] bg-[#EE0000] text-white flex flex-col items-center justify-center font-extrabold text-[9px] shadow-sm select-none"
             title="Viettel Post"
           >
             <span className="leading-none tracking-tighter">VIETTEL</span>
@@ -202,7 +202,7 @@ export default function CheckoutClient({
       case 'Giao Hàng Nhanh':
         return (
           <div
-            className="w-14 h-10 shrink-0 rounded-[5px] bg-[#FFCC00] text-black flex flex-col items-center justify-center font-extrabold text-[8px] shadow-sm select-none font-bold"
+            className="w-14 h-10 shrink-0 rounded-[3px] bg-[#FFCC00] text-black flex flex-col items-center justify-center font-extrabold text-[8px] shadow-sm select-none font-bold"
             title="Giao Hàng Nhanh (GHN)"
           >
             <span className="leading-none tracking-tight">GHN</span>
@@ -212,7 +212,7 @@ export default function CheckoutClient({
       case 'Giao Hàng Tiết Kiệm':
         return (
           <div
-            className="w-14 h-10 shrink-0 rounded-[5px] bg-[#069A57] text-white flex flex-col items-center justify-center font-extrabold text-[9px] shadow-sm select-none"
+            className="w-14 h-10 shrink-0 rounded-[3px] bg-[#069A57] text-white flex flex-col items-center justify-center font-extrabold text-[9px] shadow-sm select-none"
             title="Giao Hàng Tiết Kiệm (GHTK)"
           >
             <span className="leading-none tracking-tighter">GHTK</span>
@@ -222,7 +222,7 @@ export default function CheckoutClient({
       case 'J&T Express':
         return (
           <div
-            className="w-14 h-10 shrink-0 rounded-[5px] bg-[#F26522] text-white flex flex-col items-center justify-center font-extrabold text-[9px] shadow-sm select-none font-bold"
+            className="w-14 h-10 shrink-0 rounded-[3px] bg-[#F26522] text-white flex flex-col items-center justify-center font-extrabold text-[9px] shadow-sm select-none font-bold"
             title="J&T Express"
           >
             <span className="leading-none tracking-tighter">J&T</span>
@@ -232,7 +232,7 @@ export default function CheckoutClient({
       case 'Ninja Van':
         return (
           <div
-            className="w-14 h-10 shrink-0 rounded-[5px] bg-[#FF0000] text-white flex flex-col items-center justify-center font-extrabold text-[9px] shadow-sm select-none"
+            className="w-14 h-10 shrink-0 rounded-[3px] bg-[#FF0000] text-white flex flex-col items-center justify-center font-extrabold text-[9px] shadow-sm select-none"
             title="Ninja Van"
           >
             <span className="leading-none tracking-tighter">NINJA</span>
@@ -242,7 +242,7 @@ export default function CheckoutClient({
       default:
         return (
           <div
-            className="w-14 h-10 shrink-0 rounded-[5px] bg-slate-400 text-white flex items-center justify-center font-extrabold text-xs shadow-sm select-none"
+            className="w-14 h-10 shrink-0 rounded-[3px] bg-slate-400 text-white flex items-center justify-center font-extrabold text-xs shadow-sm select-none"
             title="Other"
           >
             <Truck className="h-5 w-5" />
@@ -289,7 +289,7 @@ export default function CheckoutClient({
         </nav>
 
         {/* Step Progress bar */}
-        <div className="flex w-full overflow-hidden text-xs sm:text-sm font-semibold rounded-[5px] border border-slate-100">
+        <div className="flex w-full overflow-hidden text-xs sm:text-sm font-semibold rounded-[3px] border border-slate-100">
           {/* Step 1: Giỏ hàng */}
           <Link
             href="/cart"
@@ -328,7 +328,7 @@ export default function CheckoutClient({
 
         <div className="grid gap-8 lg:grid-cols-12 pt-2">
           <div className="lg:col-span-8 space-y-8">
-            <div className="rounded-[5px] border border-slate-200 bg-white p-6 shadow-sm space-y-6">
+            <div className="rounded-[3px] border border-slate-200 bg-white p-6 shadow-sm space-y-6">
               <div className="flex items-center gap-2 pb-1 border-b border-slate-100">
                 <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand text-[10px] font-extrabold text-white">
                   1
@@ -348,7 +348,7 @@ export default function CheckoutClient({
                     value={formData.fullName}
                     onChange={(e) => handleInputChange('fullName', e.target.value)}
                     className={cn(
-                      'w-full rounded-[5px] border border-slate-200 bg-white px-3.5 py-2.5 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand',
+                      'w-full rounded-[3px] border border-slate-200 bg-white px-3.5 py-2.5 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand',
                       errors.fullName && 'border-rose-400 focus:ring-rose-200'
                     )}
                   />
@@ -368,7 +368,7 @@ export default function CheckoutClient({
                     value={formData.phone}
                     onChange={(e) => handleInputChange('phone', e.target.value)}
                     className={cn(
-                      'w-full rounded-[5px] border border-slate-200 bg-white px-3.5 py-2.5 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand',
+                      'w-full rounded-[3px] border border-slate-200 bg-white px-3.5 py-2.5 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand',
                       errors.phone && 'border-rose-400 focus:ring-rose-200'
                     )}
                   />
@@ -388,7 +388,7 @@ export default function CheckoutClient({
                     value={formData.email}
                     onChange={(e) => handleInputChange('email', e.target.value)}
                     className={cn(
-                      'w-full rounded-[5px] border border-slate-200 bg-white px-3.5 py-2.5 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand',
+                      'w-full rounded-[3px] border border-slate-200 bg-white px-3.5 py-2.5 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand',
                       errors.email && 'border-rose-400 focus:ring-rose-200'
                     )}
                   />
@@ -407,7 +407,7 @@ export default function CheckoutClient({
                     type="text"
                     value={formData.province}
                     onChange={(e) => handleInputChange('province', e.target.value)}
-                    className="w-full rounded-[5px] border border-slate-200 bg-white px-3.5 py-2.5 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand"
+                    className="w-full rounded-[3px] border border-slate-200 bg-white px-3.5 py-2.5 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand"
                   />
                 </div>
 
@@ -419,7 +419,7 @@ export default function CheckoutClient({
                     type="text"
                     value={formData.district}
                     onChange={(e) => handleInputChange('district', e.target.value)}
-                    className="w-full rounded-[5px] border border-slate-200 bg-white px-3.5 py-2.5 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand"
+                    className="w-full rounded-[3px] border border-slate-200 bg-white px-3.5 py-2.5 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand"
                   />
                 </div>
 
@@ -431,7 +431,7 @@ export default function CheckoutClient({
                     type="text"
                     value={formData.ward}
                     onChange={(e) => handleInputChange('ward', e.target.value)}
-                    className="w-full rounded-[5px] border border-slate-200 bg-white px-3.5 py-2.5 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand"
+                    className="w-full rounded-[3px] border border-slate-200 bg-white px-3.5 py-2.5 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand"
                   />
                 </div>
 
@@ -444,7 +444,7 @@ export default function CheckoutClient({
                     value={formData.address}
                     onChange={(e) => handleInputChange('address', e.target.value)}
                     className={cn(
-                      'w-full rounded-[5px] border border-slate-200 bg-white px-3.5 py-2.5 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand',
+                      'w-full rounded-[3px] border border-slate-200 bg-white px-3.5 py-2.5 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand',
                       errors.address && 'border-rose-400 focus:ring-rose-200'
                     )}
                   />
@@ -462,13 +462,13 @@ export default function CheckoutClient({
                     onChange={(e) => handleInputChange('note', e.target.value)}
                     placeholder={t('notePlaceholder')}
                     rows={3}
-                    className="w-full rounded-[5px] border border-slate-200 bg-white px-3.5 py-2.5 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand"
+                    className="w-full rounded-[3px] border border-slate-200 bg-white px-3.5 py-2.5 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand"
                   />
                 </div>
               </div>
             </div>
 
-            <div className="rounded-[5px] border border-slate-200 bg-white p-6 shadow-sm space-y-6">
+            <div className="rounded-[3px] border border-slate-200 bg-white p-6 shadow-sm space-y-6">
               <div className="flex items-center gap-2 pb-1 border-b border-slate-100">
                 <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand text-[10px] font-extrabold text-white">
                   3
@@ -483,7 +483,7 @@ export default function CheckoutClient({
                   type="button"
                   onClick={() => setPaymentMethod('bank')}
                   className={cn(
-                    'flex gap-4 p-4 rounded-[5px] border text-left cursor-pointer transition-all hover:bg-slate-50/50',
+                    'flex gap-4 p-4 rounded-[3px] border text-left cursor-pointer transition-all hover:bg-slate-50/50',
                     paymentMethod === 'bank'
                       ? 'border-brand bg-brand-light/10'
                       : 'border-slate-200 bg-white'
@@ -507,7 +507,7 @@ export default function CheckoutClient({
                   type="button"
                   onClick={() => setPaymentMethod('cod')}
                   className={cn(
-                    'flex gap-4 p-4 rounded-[5px] border text-left cursor-pointer transition-all hover:bg-slate-50/50',
+                    'flex gap-4 p-4 rounded-[3px] border text-left cursor-pointer transition-all hover:bg-slate-50/50',
                     paymentMethod === 'cod'
                       ? 'border-brand bg-brand-light/10'
                       : 'border-slate-200 bg-white'
@@ -531,7 +531,7 @@ export default function CheckoutClient({
                   type="button"
                   onClick={() => setPaymentMethod('wallet')}
                   className={cn(
-                    'flex gap-4 p-4 rounded-[5px] border text-left cursor-pointer transition-all hover:bg-slate-50/50',
+                    'flex gap-4 p-4 rounded-[3px] border text-left cursor-pointer transition-all hover:bg-slate-50/50',
                     paymentMethod === 'wallet'
                       ? 'border-brand bg-brand-light/10'
                       : 'border-slate-200 bg-white'
@@ -554,7 +554,7 @@ export default function CheckoutClient({
             </div>
 
             {paymentMethod === 'bank' && (
-              <div className="rounded-[5px] border border-slate-200 bg-white p-6 shadow-sm space-y-6">
+              <div className="rounded-[3px] border border-slate-200 bg-white p-6 shadow-sm space-y-6">
                 <div className="flex items-center gap-2 pb-1 border-b border-slate-100">
                   <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand text-[10px] font-extrabold text-white">
                     3
@@ -565,7 +565,7 @@ export default function CheckoutClient({
                 </div>
 
                 <div className="flex flex-col sm:flex-row gap-5 items-center sm:items-start text-left">
-                  <div className="border border-slate-200 p-3 bg-white rounded-[5px] flex flex-col items-center justify-center shrink-0 w-[145px] h-[145px] shadow-sm">
+                  <div className="border border-slate-200 p-3 bg-white rounded-[3px] flex flex-col items-center justify-center shrink-0 w-[145px] h-[145px] shadow-sm">
                     <svg width="90" height="90" viewBox="0 0 100 100" className="text-slate-800">
                       <path
                         d="M0 0h28v8H8v20H0V0zm72 0h28v28h-8V8H72V0zM0 72h8v20h20v8H0V72zm92 0h8v28H72v-8h20V72z"
@@ -603,7 +603,7 @@ export default function CheckoutClient({
                         <button
                           type="button"
                           onClick={handleCopy}
-                          className="p-1.5 border border-slate-200 rounded-[5px] hover:bg-slate-50 text-slate-400 hover:text-slate-700 transition-all"
+                          className="p-1.5 border border-slate-200 rounded-[3px] hover:bg-slate-50 text-slate-400 hover:text-slate-700 transition-all"
                           title="Copy account number"
                         >
                           {copied ? (
@@ -620,12 +620,12 @@ export default function CheckoutClient({
                       </span>
 
                       <span className="font-bold text-slate-500">{t('bankMemoLabel')}</span>
-                      <span className="col-span-2 font-mono font-semibold text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded-[5px] w-fit border border-blue-100">
+                      <span className="col-span-2 font-mono font-semibold text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded-[3px] w-fit border border-blue-100">
                         {orderId}
                       </span>
                     </div>
 
-                    <div className="bg-blue-50/50 border border-blue-100/80 p-3.5 rounded-[5px] text-xs text-blue-700 leading-relaxed">
+                    <div className="bg-blue-50/50 border border-blue-100/80 p-3.5 rounded-[3px] text-xs text-blue-700 leading-relaxed">
                       {t('bankWarning')}
                     </div>
                   </div>
@@ -633,7 +633,7 @@ export default function CheckoutClient({
               </div>
             )}
 
-            <div className="rounded-[5px] border border-slate-200 bg-white p-6 shadow-sm space-y-6">
+            <div className="rounded-[3px] border border-slate-200 bg-white p-6 shadow-sm space-y-6">
               <div className="flex items-center gap-2 pb-1 border-b border-slate-100">
                 <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand text-[10px] font-extrabold text-white">
                   2
@@ -648,7 +648,7 @@ export default function CheckoutClient({
                   type="button"
                   onClick={() => setShippingMethod('standard')}
                   className={cn(
-                    'flex gap-4 p-4 rounded-[5px] border text-left cursor-pointer transition-all hover:bg-slate-50/50',
+                    'flex gap-4 p-4 rounded-[3px] border text-left cursor-pointer transition-all hover:bg-slate-50/50',
                     shippingMethod === 'standard'
                       ? 'border-brand bg-brand-light/10'
                       : 'border-slate-200 bg-white'
@@ -673,7 +673,7 @@ export default function CheckoutClient({
                   type="button"
                   onClick={() => setShippingMethod('express')}
                   className={cn(
-                    'flex gap-4 p-4 rounded-[5px] border text-left cursor-pointer transition-all hover:bg-slate-50/50',
+                    'flex gap-4 p-4 rounded-[3px] border text-left cursor-pointer transition-all hover:bg-slate-50/50',
                     shippingMethod === 'express'
                       ? 'border-brand bg-brand-light/10'
                       : 'border-slate-200 bg-white'
@@ -698,7 +698,7 @@ export default function CheckoutClient({
                   type="button"
                   onClick={() => setShippingMethod('3pl')}
                   className={cn(
-                    'flex gap-4 p-4 rounded-[5px] border text-left cursor-pointer transition-all hover:bg-slate-50/50',
+                    'flex gap-4 p-4 rounded-[3px] border text-left cursor-pointer transition-all hover:bg-slate-50/50',
                     shippingMethod === '3pl'
                       ? 'border-brand bg-brand-light/10'
                       : 'border-slate-200 bg-white'
@@ -719,7 +719,7 @@ export default function CheckoutClient({
                 </button>
 
                 {shippingMethod === '3pl' && (
-                  <div className="mt-2 p-4 border border-dashed border-slate-200 bg-slate-50/50 rounded-[5px] space-y-4 text-left animate-fadeIn">
+                  <div className="mt-2 p-4 border border-dashed border-slate-200 bg-slate-50/50 rounded-[3px] space-y-4 text-left animate-fadeIn">
                     <div className="grid gap-4 sm:grid-cols-2">
                       <div className="space-y-1.5 text-left">
                         <label className="text-[11px] font-bold text-slate-500 block">
@@ -730,7 +730,7 @@ export default function CheckoutClient({
                           <select
                             value={carrierName}
                             onChange={(e) => setCarrierName(e.target.value)}
-                            className="flex-1 rounded-[5px] border border-slate-200 bg-white px-3 py-2.5 text-xs outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand font-medium cursor-pointer"
+                            className="flex-1 rounded-[3px] border border-slate-200 bg-white px-3 py-2.5 text-xs outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand font-medium cursor-pointer"
                           >
                             <option value="Viettel Post">Viettel Post</option>
                             <option value="Giao Hàng Nhanh">Giao Hàng Nhanh</option>
@@ -749,11 +749,11 @@ export default function CheckoutClient({
                           type="text"
                           value={carrierAccount}
                           onChange={(e) => setCarrierAccount(e.target.value)}
-                          className="w-full rounded-[5px] border border-slate-200 bg-white px-3 py-2 text-xs outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand font-medium"
+                          className="w-full rounded-[3px] border border-slate-200 bg-white px-3 py-2 text-xs outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand font-medium"
                         />
                       </div>
                     </div>
-                    <div className="bg-sky-50 border border-sky-100 p-3 rounded-[5px] text-xs text-sky-700 leading-relaxed">
+                    <div className="bg-sky-50 border border-sky-100 p-3 rounded-[3px] text-xs text-sky-700 leading-relaxed">
                       {t('ship3plWarning')}
                     </div>
                   </div>
@@ -763,7 +763,7 @@ export default function CheckoutClient({
           </div>
 
           <div className="lg:col-span-4 space-y-6">
-            <div className="rounded-[5px] border border-slate-200 bg-card p-6 shadow-sm space-y-5 text-left">
+            <div className="rounded-[3px] border border-slate-200 bg-card p-6 shadow-sm space-y-5 text-left">
               <h3 className="text-lg font-bold text-slate-900">{t('orderSummaryTitle')}</h3>
 
               <div className="divide-y divide-slate-200/60 max-h-[280px] overflow-y-auto pr-2 space-y-3.5">
@@ -772,7 +772,7 @@ export default function CheckoutClient({
                     {item.slug ? (
                       <Link
                         href={`/solutions/${item.slug}`}
-                        className="relative h-12 w-12 shrink-0 rounded-[5px] border border-slate-200 bg-white flex items-center justify-center overflow-hidden hover:opacity-90 transition-opacity block"
+                        className="relative h-12 w-12 shrink-0 rounded-[3px] border border-slate-200 bg-white flex items-center justify-center overflow-hidden hover:opacity-90 transition-opacity block"
                       >
                         {item.hero ? (
                           <Image
@@ -787,7 +787,7 @@ export default function CheckoutClient({
                         )}
                       </Link>
                     ) : (
-                      <div className="relative h-12 w-12 shrink-0 rounded-[5px] border border-slate-200 bg-white flex items-center justify-center overflow-hidden">
+                      <div className="relative h-12 w-12 shrink-0 rounded-[3px] border border-slate-200 bg-white flex items-center justify-center overflow-hidden">
                         <Package className="h-5 w-5 text-slate-300" />
                       </div>
                     )}
@@ -847,14 +847,14 @@ export default function CheckoutClient({
                 <button
                   type="button"
                   onClick={handleSubmitOrder}
-                  className="inline-flex items-center justify-center gap-2 w-full rounded-[5px] bg-brand py-3.5 text-sm font-bold text-white shadow hover:bg-brand/95 transition-all text-center"
+                  className="inline-flex items-center justify-center gap-2 w-full rounded-[3px] bg-brand py-3.5 text-sm font-bold text-white shadow hover:bg-brand/95 transition-all text-center"
                 >
                   {t('btnPayNow')}
                   <ArrowRight className="h-4 w-4" />
                 </button>
                 <Link
                   href="/cart"
-                  className="inline-flex items-center justify-center gap-2 w-full rounded-[5px] border border-brand text-brand hover:bg-brand/5 py-3.5 text-sm font-bold transition-all text-center"
+                  className="inline-flex items-center justify-center gap-2 w-full rounded-[3px] border border-brand text-brand hover:bg-brand/5 py-3.5 text-sm font-bold transition-all text-center"
                 >
                   <ArrowLeft className="h-4 w-4" />
                   {t('btnBackToCart')}
@@ -862,7 +862,7 @@ export default function CheckoutClient({
               </div>
             </div>
 
-            <div className="rounded-[5px] border border-slate-200/80 bg-slate-50/50 p-4 flex gap-3 text-left">
+            <div className="rounded-[3px] border border-slate-200/80 bg-slate-50/50 p-4 flex gap-3 text-left">
               <ShieldCheck className="h-5 w-5 text-slate-400 shrink-0 mt-0.5" />
               <span className="text-[10.5px] text-slate-400 leading-relaxed">
                 {t('secureCheckout')}
@@ -874,7 +874,7 @@ export default function CheckoutClient({
 
       {showSuccessModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4">
-          <div className="bg-white rounded-[5px] shadow-xl border border-slate-100 max-w-[480px] w-full p-5 sm:p-8 relative flex flex-col items-center text-center space-y-5 sm:space-y-6 animate-scaleIn">
+          <div className="bg-white rounded-[3px] shadow-xl border border-slate-100 max-w-[480px] w-full p-5 sm:p-8 relative flex flex-col items-center text-center space-y-5 sm:space-y-6 animate-scaleIn">
             <button
               onClick={() => {
                 setShowSuccessModal(false);
@@ -895,7 +895,7 @@ export default function CheckoutClient({
                 {t('successMsg', { orderId })}
               </p>
             </div>
-            <div className="bg-card rounded-[5px] p-4 w-full flex flex-col items-center justify-center">
+            <div className="bg-card rounded-[3px] p-4 w-full flex flex-col items-center justify-center">
               <span className="text-[10px] font-bold text-[#3B82F6] tracking-wider uppercase">
                 {t('totalPayment')}
               </span>
@@ -920,7 +920,7 @@ export default function CheckoutClient({
 
       {showPendingModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4">
-          <div className="bg-white rounded-[5px] shadow-xl border border-slate-100 max-w-[480px] w-full p-5 sm:p-8 relative flex flex-col items-center text-center space-y-5 sm:space-y-6 animate-scaleIn">
+          <div className="bg-white rounded-[3px] shadow-xl border border-slate-100 max-w-[480px] w-full p-5 sm:p-8 relative flex flex-col items-center text-center space-y-5 sm:space-y-6 animate-scaleIn">
             <button
               onClick={() => setShowPendingModal(false)}
               className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 transition-colors"
@@ -936,7 +936,7 @@ export default function CheckoutClient({
                 {t('pendingMsg')}
               </p>
             </div>
-            <div className="bg-[#FFFBEB] rounded-[5px] p-4 w-full flex flex-col items-center justify-center border border-amber-100">
+            <div className="bg-[#FFFBEB] rounded-[3px] p-4 w-full flex flex-col items-center justify-center border border-amber-100">
               <span className="text-[10px] font-bold text-[#D97706] tracking-wider uppercase">
                 {t('txnCode')}
               </span>
@@ -959,7 +959,7 @@ export default function CheckoutClient({
 
       {showFailureModal && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4">
-          <div className="bg-white rounded-[5px] shadow-xl border border-slate-100 max-w-[480px] w-full p-5 sm:p-8 relative flex flex-col items-center text-center space-y-5 sm:space-y-6 animate-scaleIn">
+          <div className="bg-white rounded-[3px] shadow-xl border border-slate-100 max-w-[480px] w-full p-5 sm:p-8 relative flex flex-col items-center text-center space-y-5 sm:space-y-6 animate-scaleIn">
             <button
               onClick={() => setShowFailureModal(false)}
               className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 transition-colors"
@@ -967,7 +967,7 @@ export default function CheckoutClient({
               <X className="h-5 w-5" />
             </button>
             <div className="h-16 w-16 rounded-full bg-[#FEE2E2] text-[#DC2626] flex items-center justify-center">
-              <div className="border-4 border-[#DC2626] rounded-[5px] p-1.5 flex items-center justify-center h-8 w-8 font-black text-lg leading-none">
+              <div className="border-4 border-[#DC2626] rounded-[3px] p-1.5 flex items-center justify-center h-8 w-8 font-black text-lg leading-none">
                 !
               </div>
             </div>
@@ -977,7 +977,7 @@ export default function CheckoutClient({
                 {t('failureMsg')}
               </p>
             </div>
-            <div className="bg-[#FEF2F2] rounded-[5px] p-4 w-full flex flex-col items-center justify-center border border-red-100">
+            <div className="bg-[#FEF2F2] rounded-[3px] p-4 w-full flex flex-col items-center justify-center border border-red-100">
               <span className="text-[10px] font-bold text-red-500 tracking-wider uppercase">
                 {t('errorDetail')}
               </span>

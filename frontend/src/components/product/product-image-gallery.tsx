@@ -22,8 +22,8 @@ export function ProductImageGallery({ images, productName }: ProductImageGallery
   // If product has NO images in Database
   if (!images || images.length === 0) {
     return (
-      <div className="w-full aspect-square rounded-2xl bg-white border border-slate-200/90 shadow-sm flex flex-col items-center justify-center p-8 text-center">
-        <div className="w-20 h-20 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-300 mb-4">
+      <div className="w-full aspect-square rounded-[3px] bg-white border border-slate-200/90 shadow-sm flex flex-col items-center justify-center p-8 text-center">
+        <div className="w-20 h-20 rounded-[3px] bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-300 mb-4">
           <Package className="h-10 w-10 text-slate-400 stroke-[1.5]" />
         </div>
         <p className="text-sm font-bold text-slate-700">Chưa có hình ảnh trong Database</p>
@@ -49,7 +49,7 @@ export function ProductImageGallery({ images, productName }: ProductImageGallery
   return (
     <div className="flex flex-col gap-4 w-full">
       {/* MAIN SLIDE STAGE */}
-      <div className="relative aspect-square w-full rounded-2xl overflow-hidden bg-white border border-slate-200/90 shadow-sm flex items-center justify-center group">
+      <div className="relative aspect-square w-full rounded-[3px] overflow-hidden bg-white border border-slate-200/90 shadow-sm flex items-center justify-center group">
         {/* Main Image */}
         <div
           onClick={() => setZoomOpen(true)}
@@ -91,7 +91,7 @@ export function ProductImageGallery({ images, productName }: ProductImageGallery
 
         {/* Slide Counter Badge Top Left */}
         {images.length > 1 && (
-          <span className="absolute top-3 left-3 z-10 px-2.5 py-1 rounded-lg bg-slate-900/70 text-white text-[11px] font-extrabold backdrop-blur-md shadow-xs">
+          <span className="absolute top-3 left-3 z-10 px-2.5 py-1 rounded-[3px] bg-slate-900/70 text-white text-[11px] font-extrabold backdrop-blur-md shadow-xs">
             {activeIndex + 1} / {images.length}
           </span>
         )}
@@ -100,7 +100,7 @@ export function ProductImageGallery({ images, productName }: ProductImageGallery
         <button
           type="button"
           onClick={() => setZoomOpen(true)}
-          className="absolute bottom-3 right-3 z-10 flex items-center gap-1.5 px-3 py-1.5 rounded-[5px] bg-white/90 hover:bg-blue-600 text-slate-700 hover:text-white text-xs font-bold shadow-md border border-slate-200/60 backdrop-blur-md transition-all cursor-pointer"
+          className="absolute bottom-3 right-3 z-10 flex items-center gap-1.5 px-3 py-1.5 rounded-[3px] bg-white/90 hover:bg-blue-600 text-slate-700 hover:text-white text-xs font-bold shadow-md border border-slate-200/60 backdrop-blur-md transition-all cursor-pointer"
         >
           <ZoomIn className="h-3.5 w-3.5" />
           <span>Phóng to</span>
@@ -117,7 +117,7 @@ export function ProductImageGallery({ images, productName }: ProductImageGallery
                 key={idx}
                 type="button"
                 onClick={() => setActiveIndex(idx)}
-                className={`relative w-20 h-20 sm:w-22 sm:h-22 rounded-[5px] overflow-hidden border-2 bg-white transition-all shrink-0 cursor-pointer ${isActive
+                className={`relative w-20 h-20 sm:w-22 sm:h-22 rounded-[3px] overflow-hidden border-2 bg-white transition-all shrink-0 cursor-pointer ${isActive
                     ? 'border-blue-600 ring-2 ring-blue-600/30 scale-102 shadow-sm'
                     : 'border-slate-200/80 hover:border-slate-400 opacity-70 hover:opacity-100'
                   }`}

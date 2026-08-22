@@ -20,9 +20,9 @@ export function HeroBanner() {
   };
 
   return (
-    <section className="relative flex w-full items-center overflow-hidden bg-slate-50 aspect-auto sm:aspect-[16/9] md:aspect-[16/8] lg:aspect-[1440/500] xl:aspect-[1440/540] min-h-[380px] sm:min-h-[420px] md:min-h-[450px] lg:min-h-[460px] xl:min-h-[500px]">
-      {/* Full-width background image */}
-      <div className="absolute inset-0 w-full h-full select-none">
+    <section className="relative flex w-full flex-col overflow-hidden bg-slate-50 sm:aspect-[16/9] md:aspect-[16/8] lg:aspect-[1440/500] xl:aspect-[1440/540] sm:min-h-[420px] md:min-h-[450px] lg:min-h-[460px] xl:min-h-[500px]">
+      {/* Image section — full viewport on mobile */}
+      <div className="relative w-full h-screen sm:h-full sm:absolute sm:inset-0 select-none">
         <Image
           src={ASSETS.home.hero}
           alt="ULINK Industrial Consumable Materials"
@@ -30,23 +30,23 @@ export function HeroBanner() {
           priority
           quality={100}
           sizes="100vw"
-          className="object-cover object-center"
+          className="object-cover object-center sm:object-center"
         />
       </div>
 
-      {/* Decorative Translucent Blue Glow (Hiệu ứng khối mờ #1769E2 tan ra mềm mại không lộ viền cứng với blur-3xl & radial gradient) */}
+      {/* Decorative Translucent Blue Glow */}
       <div
-        className="pointer-events-none absolute -top-[140px] -left-[160px] sm:-left-[100px] lg:-left-[60px] z-20 h-[650px] w-[650px] rotate-[-15deg] rounded-[50px] bg-gradient-to-br from-[#1769E2]/25 via-[#1769E2]/12 to-transparent blur-[60px] sm:blur-[80px] opacity-90"
+        className="pointer-events-none absolute -top-[140px] -left-[160px] sm:-left-[100px] lg:-left-[60px] z-20 h-[650px] w-[650px] rotate-[-15deg] rounded-[3px] bg-gradient-to-br from-[#1769E2]/25 via-[#1769E2]/12 to-transparent blur-[60px] sm:blur-[80px] opacity-90"
         aria-hidden="true"
       />
 
-      <div className="mx-auto relative flex h-full w-full max-w-[1440px] items-center justify-center sm:justify-start px-4 sm:px-8 lg:px-[80px] py-[28px] sm:py-[40px] lg:py-[58px]">
+      <div className="relative flex w-full items-center justify-center sm:justify-start px-4 sm:px-8 lg:px-[80px] py-[28px] sm:py-[40px] lg:py-[58px] sm:absolute sm:inset-0 sm:h-full">
         {/* Content Container Frame */}
         <div className="relative flex w-full max-w-full lg:w-[672px] lg:max-w-[672px] lg:min-h-[568px] flex-col justify-between p-6 sm:p-8 lg:p-[48px] gap-[32px]">
-          {/* Tầng z-10: Nền Card trắng mờ Frosted Glass theo chuẩn Figma (Radius 3px) */}
+          {/* Frosted Glass Card */}
           <div className="absolute inset-0 z-10 rounded-[3px] border border-white/50 bg-white/[0.92] backdrop-blur-[24px] shadow-[0px_20px_40px_-10px_rgba(0,0,0,0.102)]" />
 
-          {/* Tầng z-30: Nội dung Văn bản (Nổi 100% lên trên cùng, không bị mờ hay ám màu) */}
+          {/* Text content */}
           <div className="relative z-30 flex flex-col">
             <p className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-brand">
               {t('hero.eyebrowTop')}
@@ -65,7 +65,7 @@ export function HeroBanner() {
             </p>
           </div>
 
-          {/* Tầng z-30: Nút bấm CTA (Nổi 100% lên trên cùng, Radius 3px) */}
+          {/* CTA Buttons */}
           <div className="relative z-30 flex flex-col sm:flex-row items-center gap-3.5 pt-2">
             <Link
               href="/quick-order"
@@ -94,7 +94,7 @@ export function HeroBanner() {
 
       {/* Toast Notification */}
       {showToast && (
-        <div className="fixed bottom-5 right-5 z-50 flex items-center gap-2.5 rounded-[5px] border border-amber-200 bg-amber-50 px-4 py-3 text-amber-800 shadow-lg animate-in fade-in slide-in-from-bottom-5 duration-300 dark:bg-amber-950/20 dark:text-amber-400 dark:border-amber-500/20">
+        <div className="fixed bottom-5 right-5 z-50 flex items-center gap-2.5 rounded-[3px] border border-amber-200 bg-amber-50 px-4 py-3 text-amber-800 shadow-lg animate-in fade-in slide-in-from-bottom-5 duration-300 dark:bg-amber-950/20 dark:text-amber-400 dark:border-amber-500/20">
           <Clock className="h-5 w-5 text-amber-500 shrink-0 animate-pulse" />
           <span className="text-sm font-semibold">{t('hero.cataloguePending')}</span>
         </div>

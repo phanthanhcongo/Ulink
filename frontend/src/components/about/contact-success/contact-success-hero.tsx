@@ -22,7 +22,7 @@ export function ContactSuccessHero() {
       </p>
 
       {/* Reference Code Box */}
-      <div className="mt-8 rounded-[5px] border border-blue-200 bg-white py-4 px-8 shadow-sm text-center w-full max-w-md">
+      <div className="mt-8 rounded-[3px] border border-blue-200 bg-white py-4 px-8 shadow-sm text-center w-full max-w-md">
         <span className="block text-[11px] font-bold uppercase tracking-wider text-slate-500 mb-1">
           MÃ TIẾP NHẬN YÊU CẦU
         </span>
@@ -35,7 +35,7 @@ export function ContactSuccessHero() {
       <div className="mt-8">
         <Link
           href="/"
-          className="inline-flex items-center justify-center gap-2 rounded-[5px] bg-blue-600 px-7 py-3 text-sm font-semibold text-white shadow-md hover:bg-blue-700 transition-all hover:shadow-lg"
+          className="inline-flex items-center justify-center gap-2 rounded-[3px] bg-blue-600 px-7 py-3 text-sm font-semibold text-white shadow-md hover:bg-blue-700 transition-all hover:shadow-lg"
         >
           <ArrowLeft className="h-4 w-4" /> Quay về Trang chủ
         </Link>

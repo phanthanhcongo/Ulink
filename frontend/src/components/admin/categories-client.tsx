@@ -194,7 +194,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
             setModalOpen(true);
             setFormError('');
           }}
-          className="inline-flex h-11 items-center justify-center gap-2 rounded-[5px] bg-blue-600 px-5 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors shrink-0"
+          className="inline-flex h-11 items-center justify-center gap-2 rounded-[3px] bg-blue-600 px-5 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors shrink-0"
         >
           <Plus className="h-4 w-4" />
           Tạo danh mục mới
@@ -203,13 +203,13 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
 
       {/* Error Alert Banner */}
       {error && (
-        <div className="mb-6 p-4 bg-rose-50 border border-rose-200 rounded-[5px] text-rose-800 text-xs sm:text-sm font-semibold flex items-start gap-2.5 shadow-sm">
+        <div className="mb-6 p-4 bg-rose-50 border border-rose-200 rounded-[3px] text-rose-800 text-xs sm:text-sm font-semibold flex items-start gap-2.5 shadow-sm">
           <AlertTriangle className="h-5 w-5 text-rose-500 shrink-0 mt-0.5" />
           <div className="flex-1">
             <span className="font-extrabold text-rose-900 block mb-1">
               Đã xảy ra lỗi khi tải dữ liệu danh mục từ API
             </span>
-            <pre className="font-mono text-[11px] bg-white/60 p-2.5 rounded-[5px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all">
+            <pre className="font-mono text-[11px] bg-white/60 p-2.5 rounded-[3px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all">
               {error}
             </pre>
           </div>
@@ -217,7 +217,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
       )}
 
       {/* Search and Filters */}
-      <div className="bg-white border border-slate-100 rounded-[5px] p-5 shadow-sm mb-8">
+      <div className="bg-white border border-slate-100 rounded-[3px] p-5 shadow-sm mb-8">
         <div className="relative">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
           <input
@@ -225,13 +225,13 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Tìm kiếm danh mục theo tên, slug, mô tả..."
-            className="w-full pl-10 pr-4 py-2.5 rounded-[5px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+            className="w-full pl-10 pr-4 py-2.5 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
           />
         </div>
       </div>
 
       {/* Main Table Content */}
-      <div className="bg-white border border-slate-100 rounded-[5px] shadow-sm overflow-hidden">
+      <div className="bg-white border border-slate-100 rounded-[3px] shadow-sm overflow-hidden">
         {displayCategories.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 text-center">
             <FolderTree className="h-12 w-12 text-slate-300 mb-3" />
@@ -272,7 +272,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
                             <button
                               type="button"
                               onClick={() => toggleCollapse(cat.id)}
-                              className="p-1 rounded-[5px] hover:bg-slate-100 text-slate-400 hover:text-slate-650 transition-colors cursor-pointer shrink-0"
+                              className="p-1 rounded-[3px] hover:bg-slate-100 text-slate-400 hover:text-slate-650 transition-colors cursor-pointer shrink-0"
                             >
                               {isCollapsed ? (
                                 <ChevronRight className="h-3.5 w-3.5" />
@@ -309,7 +309,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
                       {/* Parent */}
                       <td className="px-6 py-3.5">
                         {cat.parent ? (
-                          <span className="inline-flex items-center px-2 py-0.5 rounded-[5px] bg-slate-100 text-[10px] font-bold text-slate-600">
+                          <span className="inline-flex items-center px-2 py-0.5 rounded-[3px] bg-slate-100 text-[10px] font-bold text-slate-600">
                             {cat.parent.name}
                           </span>
                         ) : (
@@ -321,7 +321,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
                       <td className="px-6 py-3.5">
                         <span
                           className={cn(
-                            'inline-flex items-center px-2 py-0.5 rounded-[5px] text-[10px] font-bold',
+                            'inline-flex items-center px-2 py-0.5 rounded-[3px] text-[10px] font-bold',
                             cat.status === 'published'
                               ? 'bg-emerald-50 text-emerald-700'
                               : cat.status === 'draft'
@@ -351,7 +351,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
                               setModalOpen(true);
                               setFormError('');
                             }}
-                            className="p-1 rounded-[5px] hover:bg-slate-100 text-slate-400 hover:text-blue-600 transition-colors"
+                            className="p-1 rounded-[3px] hover:bg-slate-100 text-slate-400 hover:text-blue-600 transition-colors"
                             title="Thêm danh mục con"
                           >
                             <Plus className="h-4 w-4" />
@@ -374,7 +374,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
                               setModalOpen(true);
                               setFormError('');
                             }}
-                            className="p-1 rounded-[5px] hover:bg-slate-100 text-slate-400 hover:text-slate-650 transition-colors"
+                            className="p-1 rounded-[3px] hover:bg-slate-100 text-slate-400 hover:text-slate-650 transition-colors"
                             title="Sửa danh mục"
                           >
                             <Edit className="h-4 w-4" />
@@ -384,7 +384,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
                           <button
                             type="button"
                             onClick={() => handleArchiveCategory(cat.id)}
-                            className="p-1 rounded-[5px] hover:bg-slate-100 text-slate-400 hover:text-rose-600 transition-colors"
+                            className="p-1 rounded-[3px] hover:bg-slate-100 text-slate-400 hover:text-rose-600 transition-colors"
                             title="Lưu trữ (Xóa)"
                           >
                             <Trash className="h-4 w-4" />
@@ -403,7 +403,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
       {/* Modal: Create or Edit Category */}
       {modalOpen && activeCategory && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm">
-          <div className="w-full max-w-lg bg-white rounded-[5px] shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
+          <div className="w-full max-w-lg bg-white rounded-[3px] shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
             {/* Modal Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
               <h2 className="text-base sm:text-lg font-extrabold text-primary">
@@ -415,7 +415,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
                    setActiveCategory(null);
                    setFormError('');
                  }}
-                className="p-1 rounded-[5px] hover:bg-slate-100 text-slate-400 hover:text-slate-600 transition-colors"
+                className="p-1 rounded-[3px] hover:bg-slate-100 text-slate-400 hover:text-slate-600 transition-colors"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -424,7 +424,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
             {/* Form */}
             <form onSubmit={handleSubmit} className="p-6 flex flex-col gap-5">
               {formError && (
-                <div className="p-3 bg-rose-50 border border-rose-100 rounded-[5px] text-xs font-bold text-rose-600 flex items-center gap-2 animate-in fade-in duration-200">
+                <div className="p-3 bg-rose-50 border border-rose-100 rounded-[3px] text-xs font-bold text-rose-600 flex items-center gap-2 animate-in fade-in duration-200">
                   <AlertTriangle className="h-4 w-4 shrink-0" />
                   <span>{formError}</span>
                 </div>
@@ -448,7 +448,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
                     setActiveCategory({ ...activeCategory, name, slug });
                   }}
                   placeholder="Ví dụ: Găng tay phòng sạch, Quần áo..."
-                  className="px-3.5 py-2 rounded-[5px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
                 />
               </div>
 
@@ -463,7 +463,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
                   value={activeCategory.slug || ''}
                   readOnly
                   placeholder="Tự động tạo từ tên..."
-                  className="px-3.5 py-2 rounded-[5px] border border-slate-200 text-xs sm:text-sm font-mono focus:outline-none bg-slate-50 cursor-not-allowed text-slate-450 select-none"
+                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-mono focus:outline-none bg-slate-50 cursor-not-allowed text-slate-450 select-none"
                 />
               </div>
 
@@ -480,7 +480,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
                       parent: id ? { id, name } : null
                     });
                   }}
-                  className="px-3.5 py-2 rounded-[5px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600 bg-white"
+                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600 bg-white"
                 >
                   <option value="">Không có (Danh mục cấp cao nhất)</option>
                   {categories
@@ -503,7 +503,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
                     setActiveCategory({ ...activeCategory, description: e.target.value })
                   }
                   placeholder="Mô tả sơ lược về danh mục sản phẩm này..."
-                  className="px-3.5 py-2 rounded-[5px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
                 />
               </div>
 
@@ -520,7 +520,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
                       status: e.target.value as 'published' | 'draft' | 'archived'
                     })
                   }
-                  className="px-3.5 py-2 rounded-[5px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-700 focus:outline-none bg-white"
+                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-700 focus:outline-none bg-white"
                 >
                   <option value="published">Đã xuất bản (Công khai)</option>
                   <option value="draft">Bản thảo (Nháp)</option>
@@ -536,14 +536,14 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
                     setFormError('');
                     setActiveCategory(null);
                   }}
-                  className="px-4 py-2.5 rounded-[5px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-500 hover:bg-slate-50 transition-colors"
+                  className="px-4 py-2.5 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-500 hover:bg-slate-50 transition-colors"
                 >
                   Hủy bỏ
                 </button>
                 <button
                   type="submit"
                   disabled={isPending}
-                  className="inline-flex items-center justify-center px-4 py-2.5 rounded-[5px] bg-blue-600 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="inline-flex items-center justify-center px-4 py-2.5 rounded-[3px] bg-blue-600 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isPending ? 'Đang lưu...' : 'Lưu danh mục'}
                 </button>

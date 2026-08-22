@@ -202,7 +202,7 @@ export function CategoryProductsClient({
               LEFT SIDEBAR FILTER COLUMN (Only Product Categories)
              ════════════════════════════════════════════════════════════ */}
           <aside className="hidden lg:block lg:col-span-1 sticky top-24">
-            <div className="rounded-[5px] bg-white p-5 border border-slate-200/90 shadow-sm space-y-4">
+            <div className="rounded-[3px] bg-white p-5 border border-slate-200/90 shadow-sm space-y-4">
               {/* Sidebar Header */}
               <div className="flex items-center justify-between border-b border-slate-100 pb-3">
                 <div className="flex items-center gap-2">
@@ -218,7 +218,7 @@ export function CategoryProductsClient({
                 {/* All Categories Option */}
                 <button
                   onClick={() => setSelectedCategory('all')}
-                  className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-[5px] text-left font-semibold transition-all cursor-pointer ${
+                  className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-[3px] text-left font-semibold transition-all cursor-pointer ${
                     selectedCategory === 'all'
                       ? 'bg-blue-600 text-white font-extrabold shadow-sm'
                       : 'text-slate-700 hover:bg-slate-100 font-semibold'
@@ -244,7 +244,7 @@ export function CategoryProductsClient({
                     <button
                       key={cat.id}
                       onClick={() => setSelectedCategory(cat.slug)}
-                      className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-[5px] text-left transition-all cursor-pointer ${
+                      className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-[3px] text-left transition-all cursor-pointer ${
                         isSelected
                           ? 'bg-blue-600 text-white font-extrabold shadow-sm'
                           : 'text-slate-700 hover:bg-slate-100 font-semibold'
@@ -272,13 +272,13 @@ export function CategoryProductsClient({
              ════════════════════════════════════════════════════════════ */}
           <main className="lg:col-span-3 space-y-6">
             {/* Top Toolbar */}
-            <div className="rounded-[5px] bg-white p-4 border border-slate-200/80 shadow-sm flex flex-wrap items-center justify-between gap-4">
+            <div className="rounded-[3px] bg-white p-4 border border-slate-200/80 shadow-sm flex flex-wrap items-center justify-between gap-4">
               {/* Left: Result Count & Mobile Filter Toggle */}
               <div className="flex items-center gap-3">
                 {/* Mobile Filter Button */}
                 <button
                   onClick={() => setMobileFilterOpen(true)}
-                  className="lg:hidden inline-flex items-center gap-2 px-3.5 py-2 rounded-[5px] bg-blue-50 text-blue-700 border border-blue-200 text-xs font-bold shadow-xs"
+                  className="lg:hidden inline-flex items-center gap-2 px-3.5 py-2 rounded-[3px] bg-blue-50 text-blue-700 border border-blue-200 text-xs font-bold shadow-xs"
                 >
                   <SlidersHorizontal className="h-4 w-4 text-blue-600" />
                   Danh mục sản phẩm
@@ -298,7 +298,7 @@ export function CategoryProductsClient({
                 <select
                   value={sortBy}
                   onChange={(e) => setSortBy(e.target.value)}
-                  className="px-3 py-2 rounded-[5px] border border-slate-200 text-xs font-bold text-slate-700 bg-white focus:outline-none focus:ring-1 focus:ring-blue-600 shadow-xs cursor-pointer"
+                  className="px-3 py-2 rounded-[3px] border border-slate-200 text-xs font-bold text-slate-700 bg-white focus:outline-none focus:ring-1 focus:ring-blue-600 shadow-xs cursor-pointer"
                 >
                   <option value="popular">Nổi bật nhất</option>
                   <option value="newest">Sản phẩm mới nhất</option>
@@ -310,7 +310,7 @@ export function CategoryProductsClient({
 
             {/* PRODUCT GRID LIST */}
             {filteredProducts.length === 0 ? (
-              <div className="rounded-[5px] bg-white p-12 border border-slate-200/80 shadow-sm text-center flex flex-col items-center justify-center">
+              <div className="rounded-[3px] bg-white p-12 border border-slate-200/80 shadow-sm text-center flex flex-col items-center justify-center">
                 <Package className="h-16 w-16 text-slate-300 mb-4" />
                 <h3 className="text-lg font-extrabold text-slate-800">
                   Chưa có sản phẩm trong danh mục này
@@ -320,7 +320,7 @@ export function CategoryProductsClient({
                 </p>
                 <button
                   onClick={() => setSelectedCategory('all')}
-                  className="mt-6 px-5 py-2.5 rounded-[5px] bg-blue-600 text-white text-xs font-bold shadow-sm hover:bg-blue-700 transition-colors flex items-center gap-2"
+                  className="mt-6 px-5 py-2.5 rounded-[3px] bg-blue-600 text-white text-xs font-bold shadow-sm hover:bg-blue-700 transition-colors flex items-center gap-2"
                 >
                   <RotateCcw className="h-4 w-4" />
                   Xem tất cả sản phẩm
@@ -352,7 +352,7 @@ export function CategoryProductsClient({
                       ]
                     } as any;
                     return (
-                      <ProductCard key={product.id} product={mappedProduct} locale={locale} roundedClass="rounded-[5px]" />
+                      <ProductCard key={product.id} product={mappedProduct} locale={locale} roundedClass="rounded-[3px]" />
                     );
                   })}
                 </div>
@@ -366,7 +366,7 @@ export function CategoryProductsClient({
                         window.scrollTo({ top: 300, behavior: 'smooth' });
                       }}
                       disabled={currentPage === 1}
-                      className="h-9 w-9 rounded-[5px] border border-slate-200 text-sm font-bold text-slate-600 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center transition-colors cursor-pointer"
+                      className="h-9 w-9 rounded-[3px] border border-slate-200 text-sm font-bold text-slate-600 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center transition-colors cursor-pointer"
                     >
                       &lt;
                     </button>
@@ -377,7 +377,7 @@ export function CategoryProductsClient({
                           setCurrentPage(page);
                           window.scrollTo({ top: 300, behavior: 'smooth' });
                         }}
-                        className={`h-9 w-9 rounded-[5px] text-xs font-bold transition-all cursor-pointer ${
+                        className={`h-9 w-9 rounded-[3px] text-xs font-bold transition-all cursor-pointer ${
                           currentPage === page
                             ? 'bg-blue-600 text-white shadow-md'
                             : 'border border-slate-200 text-slate-600 hover:bg-slate-50'
@@ -392,7 +392,7 @@ export function CategoryProductsClient({
                         window.scrollTo({ top: 300, behavior: 'smooth' });
                       }}
                       disabled={currentPage === totalPages}
-                      className="h-9 w-9 rounded-[5px] border border-slate-200 text-sm font-bold text-slate-600 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center transition-colors cursor-pointer"
+                      className="h-9 w-9 rounded-[3px] border border-slate-200 text-sm font-bold text-slate-600 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center transition-colors cursor-pointer"
                     >
                       &gt;
                     </button>
@@ -408,7 +408,7 @@ export function CategoryProductsClient({
           FLOATING TOAST NOTIFICATION ON ADD TO RFQ
          ════════════════════════════════════════════════════════════ */}
       {addedToast && (
-        <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-slate-900 text-white p-4 rounded-[5px] shadow-2xl border border-slate-800 animate-in slide-in-from-bottom duration-300">
+        <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3 bg-slate-900 text-white p-4 rounded-[3px] shadow-2xl border border-slate-800 animate-in slide-in-from-bottom duration-300">
           <div className="flex h-9 w-9 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 shrink-0">
             <CheckCircle2 className="h-5 w-5" />
           </div>
@@ -418,7 +418,7 @@ export function CategoryProductsClient({
           </div>
           <Link
             href="/cart"
-            className="ml-2 px-3.5 py-2 bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-xs rounded-[5px] transition-colors shrink-0 shadow-sm"
+            className="ml-2 px-3.5 py-2 bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-xs rounded-[3px] transition-colors shrink-0 shadow-sm"
           >
             Xem giỏ hàng &gt;
           </Link>
@@ -447,7 +447,7 @@ export function CategoryProductsClient({
               </div>
               <button
                 onClick={() => setMobileFilterOpen(false)}
-                className="rounded-[5px] p-1.5 text-slate-400 hover:bg-slate-100 hover:text-slate-600"
+                className="rounded-[3px] p-1.5 text-slate-400 hover:bg-slate-100 hover:text-slate-600"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -459,7 +459,7 @@ export function CategoryProductsClient({
                   setSelectedCategory('all');
                   setMobileFilterOpen(false);
                 }}
-                className={`w-full text-left px-3.5 py-2.5 rounded-[5px] text-xs font-semibold ${
+                className={`w-full text-left px-3.5 py-2.5 rounded-[3px] text-xs font-semibold ${
                   selectedCategory === 'all'
                     ? 'bg-blue-600 text-white font-extrabold'
                     : 'text-slate-700 bg-slate-50'
@@ -475,7 +475,7 @@ export function CategoryProductsClient({
                     setSelectedCategory(c.slug);
                     setMobileFilterOpen(false);
                   }}
-                  className={`w-full text-left px-3.5 py-2.5 rounded-[5px] text-xs font-semibold truncate flex items-center justify-between ${
+                  className={`w-full text-left px-3.5 py-2.5 rounded-[3px] text-xs font-semibold truncate flex items-center justify-between ${
                     selectedCategory === c.slug
                       ? 'bg-blue-600 text-white font-extrabold'
                       : 'text-slate-700 bg-slate-50'

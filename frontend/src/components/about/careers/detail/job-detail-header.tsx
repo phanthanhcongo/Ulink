@@ -9,7 +9,7 @@ export function JobDetailHeader() {
       {/* Title & Top Badges */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
         <div className="flex items-start gap-4">
-          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl bg-blue-600 text-white font-extrabold text-xl shadow-md">
+          <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-[3px] bg-blue-600 text-white font-extrabold text-xl shadow-md">
             UL
           </div>
           <div>
@@ -40,7 +40,7 @@ export function JobDetailHeader() {
           </Button>
           <Link
             href="/about/careers/b2b-sales/apply"
-            className="inline-flex items-center justify-center rounded-[5px] bg-blue-600 px-6 py-2.5 text-xs font-semibold text-white shadow-md hover:bg-blue-700 transition-all"
+            className="inline-flex items-center justify-center rounded-[3px] bg-blue-600 px-6 py-2.5 text-xs font-semibold text-white shadow-md hover:bg-blue-700 transition-all"
           >
             Ứng tuyển ngay
           </Link>
@@ -49,8 +49,8 @@ export function JobDetailHeader() {
 
       {/* 4 Quick Info Cards */}
       <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-4">
-        <div className="flex items-center gap-3.5 rounded-[5px] bg-slate-50 p-4 border border-slate-100">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100 text-blue-600">
+        <div className="flex items-center gap-3.5 rounded-[3px] bg-slate-50 p-4 border border-slate-100">
+          <div className="flex h-10 w-10 items-center justify-center rounded-[3px] bg-blue-100 text-blue-600">
             <DollarSign className="h-5 w-5" />
           </div>
           <div>
@@ -59,8 +59,8 @@ export function JobDetailHeader() {
           </div>
         </div>
 
-        <div className="flex items-center gap-3.5 rounded-[5px] bg-slate-50 p-4 border border-slate-100">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100 text-blue-600">
+        <div className="flex items-center gap-3.5 rounded-[3px] bg-slate-50 p-4 border border-slate-100">
+          <div className="flex h-10 w-10 items-center justify-center rounded-[3px] bg-blue-100 text-blue-600">
             <Clock className="h-5 w-5" />
           </div>
           <div>
@@ -69,8 +69,8 @@ export function JobDetailHeader() {
           </div>
         </div>
 
-        <div className="flex items-center gap-3.5 rounded-[5px] bg-slate-50 p-4 border border-slate-100">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100 text-blue-600">
+        <div className="flex items-center gap-3.5 rounded-[3px] bg-slate-50 p-4 border border-slate-100">
+          <div className="flex h-10 w-10 items-center justify-center rounded-[3px] bg-blue-100 text-blue-600">
             <Award className="h-5 w-5" />
           </div>
           <div>
@@ -79,8 +79,8 @@ export function JobDetailHeader() {
           </div>
         </div>
 
-        <div className="flex items-center gap-3.5 rounded-[5px] bg-slate-50 p-4 border border-slate-100">
-          <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100 text-blue-600">
+        <div className="flex items-center gap-3.5 rounded-[3px] bg-slate-50 p-4 border border-slate-100">
+          <div className="flex h-10 w-10 items-center justify-center rounded-[3px] bg-blue-100 text-blue-600">
             <Briefcase className="h-5 w-5" />
           </div>
           <div>

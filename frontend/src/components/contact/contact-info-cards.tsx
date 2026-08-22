@@ -45,7 +45,7 @@ export function ContactInfoCards() {
   };
 
   const controlClass =
-    'rounded-[5px] border border-border bg-card px-3.5 py-2.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-brand focus:ring-1 focus:ring-brand';
+    'rounded-[3px] border border-border bg-card px-3.5 py-2.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-brand focus:ring-1 focus:ring-brand';
 
   return (
     <section className="py-8 lg:py-12">
@@ -57,7 +57,7 @@ export function ContactInfoCards() {
 
           <div className="space-y-4 text-xs">
             <div className="flex items-start gap-3">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-blue-600">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[3px] bg-blue-50 text-blue-600">
                 <MapPin className="h-4 w-4" />
               </div>
               <div>
@@ -69,7 +69,7 @@ export function ContactInfoCards() {
             </div>
 
             <div className="flex items-start gap-3">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-blue-600">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[3px] bg-blue-50 text-blue-600">
                 <Phone className="h-4 w-4" />
               </div>
               <div>
@@ -79,7 +79,7 @@ export function ContactInfoCards() {
             </div>
 
             <div className="flex items-start gap-3">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-blue-600">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[3px] bg-blue-50 text-blue-600">
                 <Mail className="h-4 w-4" />
               </div>
               <div>
@@ -89,7 +89,7 @@ export function ContactInfoCards() {
             </div>
 
             <div className="flex items-start gap-3">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-blue-600">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[3px] bg-blue-50 text-blue-600">
                 <Clock className="h-4 w-4" />
               </div>
               <div>
@@ -180,7 +180,7 @@ export function ContactInfoCards() {
             </div>
 
             {error && (
-              <p className="rounded-lg bg-rose-50 px-3 py-2 text-xs font-medium text-rose-700">
+              <p className="rounded-[3px] bg-rose-50 px-3 py-2 text-xs font-medium text-rose-700">
                 {error}
               </p>
             )}
@@ -197,7 +197,7 @@ export function ContactInfoCards() {
             <h2 className="border-b border-border pb-3 text-xs font-bold uppercase tracking-wider text-slate-900">
               VỊ TRÍ TRUNG TÂM
             </h2>
-            <div className="relative mt-3 aspect-square w-full overflow-hidden rounded-[5px] border border-border">
+            <div className="relative mt-3 aspect-square w-full overflow-hidden rounded-[3px] border border-border">
               <iframe
                 title="ULink Hub Ha Nam Location"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3733.473595677843!2d105.975765!3d20.650228!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135c345a5555555%3A0x1!2zS0NOIMSQ4buTbmcgVsSDbiwgRHV5IFRpw6puLCBIw6AgTmFt!5e0!3m2!1svi!2s!4v1700000000000!5m2!1svi!2s"

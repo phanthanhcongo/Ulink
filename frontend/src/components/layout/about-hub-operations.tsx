@@ -59,7 +59,7 @@ export async function AboutHubOperations() {
                   </p>
                 </div>
               </div>
-              <div className="relative mt-3 h-[103px] w-full overflow-hidden rounded-[5px]">
+              <div className="relative mt-3 h-[103px] w-full overflow-hidden rounded-[3px]">
                 <Image
                   src={card.img}
                   alt={card.title}

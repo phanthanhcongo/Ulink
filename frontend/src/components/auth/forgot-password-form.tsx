@@ -124,7 +124,7 @@ export function ForgotPasswordForm() {
   }
 
   const inputBase =
-    'w-full rounded-[5px] border bg-card py-2.5 pl-10 pr-4 text-sm outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-brand focus:ring-1 focus:ring-brand';
+    'w-full rounded-[3px] border bg-card py-2.5 pl-10 pr-4 text-sm outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-brand focus:ring-1 focus:ring-brand';
 
   const isLocked = lockedUntil != null && lockedUntil > now;
 
@@ -136,7 +136,7 @@ export function ForgotPasswordForm() {
         {isLocked && (
           <div
             role="alert"
-            className="mb-6 rounded-[5px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-left text-sm text-destructive"
+            className="mb-6 rounded-[3px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-left text-sm text-destructive"
           >
             <p className="font-medium">{t('resetPasswordLockedTitle')}</p>
             <p className="mt-1 text-xs">
@@ -217,7 +217,7 @@ export function ForgotPasswordForm() {
       {isLocked && (
         <div
           role="alert"
-          className="mt-4 rounded-[5px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-sm text-destructive"
+          className="mt-4 rounded-[3px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-sm text-destructive"
         >
           <p className="font-medium">{t('resetPasswordLockedTitle')}</p>
           <p className="mt-1 text-xs">
@@ -236,7 +236,7 @@ export function ForgotPasswordForm() {
         {formError && !isLocked && (
           <p
             role="alert"
-            className="rounded-[5px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-sm text-destructive"
+            className="rounded-[3px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-sm text-destructive"
           >
             {formError}
           </p>
@@ -261,7 +261,7 @@ export function ForgotPasswordForm() {
               placeholder={t('emailPlaceholder')}
               disabled={isLocked}
               invalid={!!emailError}
-              className="bg-slate-50/50 pl-11 hover:bg-white focus:bg-white rounded-[5px]"
+              className="bg-slate-50/50 pl-11 hover:bg-white focus:bg-white rounded-[3px]"
             />
           </div>
           {emailError && (
@@ -276,7 +276,7 @@ export function ForgotPasswordForm() {
           disabled={loading || isLocked}
           variant="primary"
           fullWidth
-          className="group py-3.5 text-sm font-bold shadow-brand/20 hover:shadow-lg hover:shadow-brand/30 active:scale-[0.99] rounded-[5px]"
+          className="group py-3.5 text-sm font-bold shadow-brand/20 hover:shadow-lg hover:shadow-brand/30 active:scale-[0.99] rounded-[3px]"
         >
           {loading ? (
             <>

@@ -21,7 +21,7 @@ export function AboutNews() {
             key={item.id}
             href={`/about/news/${item.id}`}
             aria-label={`Xem chi tiết bài viết: ${item.title}`}
-            className="group flex h-full flex-col overflow-hidden rounded-[5px] border border-slate-100 bg-white shadow-sm transition-all hover:shadow-md"
+            className="group flex h-full flex-col overflow-hidden rounded-[3px] border border-slate-100 bg-white shadow-sm transition-all hover:shadow-md"
           >
             <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100">
               <Image src={item.coverImage} alt={item.title} fill className="object-cover" />

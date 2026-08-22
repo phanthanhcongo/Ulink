@@ -4,7 +4,7 @@ import { ASSETS } from '@/lib/assets';
 export function QualityBadges() {
   return (
     <section className="py-8">
-      <div className="rounded-2xl bg-slate-50 p-6 sm:p-10 border border-slate-100 flex flex-col items-center text-center">
+      <div className="rounded-[3px] bg-slate-50 p-6 sm:p-10 border border-slate-100 flex flex-col items-center text-center">
         <h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl mb-2">
           Chứng nhận ISO
         </h2>
@@ -14,7 +14,7 @@ export function QualityBadges() {
 
         <div className="grid grid-cols-1 gap-6 items-center sm:grid-cols-2 lg:grid-cols-4 w-full max-w-4xl">
           {/* ISO 9001:2015 / QUACERT / JAS-ANZ */}
-          <div className="flex h-32 items-center justify-center p-3 rounded-[5px] bg-white border border-slate-200 shadow-sm transition-transform hover:scale-105">
+          <div className="flex h-32 items-center justify-center p-3 rounded-[3px] bg-white border border-slate-200 shadow-sm transition-transform hover:scale-105">
             <Image
               src={ASSETS.home.certIso9001}
               alt="ISO 9001:2015 QUACERT JAS-ANZ"
@@ -25,7 +25,7 @@ export function QualityBadges() {
           </div>
 
           {/* SGS */}
-          <div className="flex h-32 items-center justify-center p-3 rounded-[5px] bg-white border border-slate-200 shadow-sm transition-transform hover:scale-105">
+          <div className="flex h-32 items-center justify-center p-3 rounded-[3px] bg-white border border-slate-200 shadow-sm transition-transform hover:scale-105">
             <Image
               src={ASSETS.home.certSgs}
               alt="SGS Certification"
@@ -36,7 +36,7 @@ export function QualityBadges() {
           </div>
 
           {/* RoHS compliant */}
-          <div className="flex h-32 items-center justify-center p-3 rounded-[5px] bg-white border border-slate-200 shadow-sm transition-transform hover:scale-105">
+          <div className="flex h-32 items-center justify-center p-3 rounded-[3px] bg-white border border-slate-200 shadow-sm transition-transform hover:scale-105">
             <Image
               src={ASSETS.home.certRohs}
               alt="RoHS Compliant"
@@ -47,7 +47,7 @@ export function QualityBadges() {
           </div>
 
           {/* MSDS Material Safety Data Sheet */}
-          <div className="flex h-32 items-center justify-center p-3 rounded-[5px] bg-white border border-slate-200 shadow-sm transition-transform hover:scale-105">
+          <div className="flex h-32 items-center justify-center p-3 rounded-[3px] bg-white border border-slate-200 shadow-sm transition-transform hover:scale-105">
             <Image
               src={ASSETS.home.certMsds}
               alt="MSDS Material Safety Data Sheet"

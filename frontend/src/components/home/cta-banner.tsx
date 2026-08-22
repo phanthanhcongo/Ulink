@@ -41,7 +41,7 @@ export function CtaBanner({
             <div className="mt-8 flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
               <Link
                 href="/quick-order"
-                className="inline-flex items-center justify-center gap-3 rounded-lg bg-white px-6 py-2.5 text-[14px] font-bold text-brand shadow-lg transition-transform hover:scale-102 hover:bg-slate-50 w-full sm:w-auto h-11 sm:h-12 lg:h-11.5 xl:h-12 xl:px-8 xl:text-[15px]"
+                className="inline-flex items-center justify-center gap-3 rounded-[3px] bg-white px-6 py-2.5 text-[14px] font-bold text-brand shadow-lg transition-transform hover:scale-102 hover:bg-slate-50 w-full sm:w-auto h-11 sm:h-12 lg:h-11.5 xl:h-12 xl:px-8 xl:text-[15px]"
               >
                 {tCta('ctaRfq')}
                 <ArrowRight className="h-5 w-5" aria-hidden="true" />
@@ -49,7 +49,7 @@ export function CtaBanner({
               <Link
                 href="/resources"
                 onClick={handleCatalogueClick}
-                className="inline-flex items-center justify-center gap-3 rounded-lg border border-white/40 bg-transparent px-6 py-2.5 text-[14px] font-bold text-white transition-all hover:bg-white/10 hover:border-white w-full sm:w-auto h-11 sm:h-12 lg:h-11.5 xl:h-12 xl:px-8 xl:text-[15px]"
+                className="inline-flex items-center justify-center gap-3 rounded-[3px] border border-white/40 bg-transparent px-6 py-2.5 text-[14px] font-bold text-white transition-all hover:bg-white/10 hover:border-white w-full sm:w-auto h-11 sm:h-12 lg:h-11.5 xl:h-12 xl:px-8 xl:text-[15px]"
               >
                 {tCta('ctaCatalogue')}
                 <ArrowRight className="h-5 w-5" aria-hidden="true" />
@@ -108,7 +108,7 @@ export function CtaBanner({
 
       {/* Toast Notification */}
       {showToast && (
-        <div className="fixed bottom-5 right-5 z-50 flex items-center gap-2.5 rounded-[5px] border border-amber-200 bg-amber-50 px-4 py-3 text-amber-800 shadow-lg animate-in fade-in slide-in-from-bottom-5 duration-300 dark:bg-amber-950/20 dark:text-amber-400 dark:border-amber-500/20">
+        <div className="fixed bottom-5 right-5 z-50 flex items-center gap-2.5 rounded-[3px] border border-amber-200 bg-amber-50 px-4 py-3 text-amber-800 shadow-lg animate-in fade-in slide-in-from-bottom-5 duration-300 dark:bg-amber-950/20 dark:text-amber-400 dark:border-amber-500/20">
           <Clock className="h-5 w-5 text-amber-500 shrink-0 animate-pulse" />
           <span className="text-sm font-semibold">{tCta('cataloguePending')}</span>
         </div>

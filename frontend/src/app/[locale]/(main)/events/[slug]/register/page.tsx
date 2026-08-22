@@ -97,7 +97,7 @@ export default async function EventRegisterPage({ params }: Props) {
         </div>
 
         {/* Khối 1: Thông tin vé & Thanh toán */}
-        <div className="mt-10  rounded-[12px] bg-white p-5">
+        <div className="mt-10  rounded-[3px] bg-white p-5">
           <h2 className="text-lg font-bold text-slate-900 font-sans">
             {L.paymentTitle[locale as 'vi' | 'en' | 'ja']}
           </h2>
@@ -109,8 +109,8 @@ export default async function EventRegisterPage({ params }: Props) {
             {/* Cột trái: Thông tin vé và tài khoản */}
             <div className="space-y-6 flex flex-col justify-between">
               {/* Thẻ Vé tham dự */}
-              <div className="rounded-[5px] border border-slate-200 bg-[#F5F8FC] p-5 shadow-xs flex-1">
-                <span className="inline-flex items-center gap-1 rounded-[5px] bg-yellow-50 px-2.5 py-1 text-[10px] font-bold text-yellow-700 border border-yellow-100 font-sans">
+              <div className="rounded-[3px] border border-slate-200 bg-[#F5F8FC] p-5 shadow-xs flex-1">
+                <span className="inline-flex items-center gap-1 rounded-[3px] bg-yellow-50 px-2.5 py-1 text-[10px] font-bold text-yellow-700 border border-yellow-100 font-sans">
                   🎫 {L.ticketInfo[locale as 'vi' | 'en' | 'ja']}
                 </span>
 
@@ -130,7 +130,7 @@ export default async function EventRegisterPage({ params }: Props) {
               </div>
 
               {/* Thẻ Thông tin chuyển khoản */}
-              <div className="rounded-[5px] border border-slate-200 bg-white p-5 shadow-xs">
+              <div className="rounded-[3px] border border-slate-200 bg-white p-5 shadow-xs">
                 <h4 className="text-sm font-bold text-slate-800 border-b border-slate-100 pb-2.5 font-sans">
                   {L.bankTitle[locale as 'vi' | 'en' | 'ja']}
                 </h4>
@@ -155,14 +155,14 @@ export default async function EventRegisterPage({ params }: Props) {
             </div>
 
             {/* Cột phải: QR Code */}
-            <div className="rounded-[5px] border border-slate-200 bg-[#F5F8FC] p-6 flex flex-col items-center justify-between text-center shadow-xs h-fit">
+            <div className="rounded-[3px] border border-slate-200 bg-[#F5F8FC] p-6 flex flex-col items-center justify-between text-center shadow-xs h-fit">
               <div>
                 <p className="text-xs font-bold uppercase tracking-wider text-slate-400">
                   {L.qrTitle[locale as 'vi' | 'en' | 'ja']}
                 </p>
 
                 {/* SVG QR Code Pattern */}
-                <div className="mt-4 bg-white p-3 border border-slate-100 rounded-[5px] shadow-xs inline-block">
+                <div className="mt-4 bg-white p-3 border border-slate-100 rounded-[3px] shadow-xs inline-block">
                   <svg className="h-32 w-32 text-slate-900" viewBox="0 0 100 100" fill="currentColor">
                     <rect x="0" y="0" width="30" height="30" />
                     <rect x="5" y="5" width="20" height="20" fill="white" />

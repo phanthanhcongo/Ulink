@@ -47,7 +47,7 @@ export default async function FeaturedProduct({ locale }: FeaturedProductProps) 
           <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-8 lg:pl-4">
             {/* Feature 1 */}
             <div className="flex flex-col items-start">
-              <div className="w-10 h-10 rounded-[5px] flex items-center justify-center text-blue-600 shrink-0 mb-4">
+              <div className="w-10 h-10 rounded-[3px] flex items-center justify-center text-blue-600 shrink-0 mb-4">
                 <ShoppingBag className="h-6 w-6" />
               </div>
               <p className="text-sm text-slate-600 leading-relaxed font-medium">
@@ -57,7 +57,7 @@ export default async function FeaturedProduct({ locale }: FeaturedProductProps) 
 
             {/* Feature 2 */}
             <div className="flex flex-col items-start">
-              <div className="w-10 h-10 rounded-[5px] flex items-center justify-center text-blue-600 shrink-0 mb-4">
+              <div className="w-10 h-10 rounded-[3px] flex items-center justify-center text-blue-600 shrink-0 mb-4">
                 <ShieldCheck className="h-6 w-6" />
               </div>
               <p className="text-sm text-slate-600 leading-relaxed font-medium">
@@ -67,7 +67,7 @@ export default async function FeaturedProduct({ locale }: FeaturedProductProps) 
 
             {/* Feature 3 */}
             <div className="flex flex-col items-start">
-              <div className="w-10 h-10 rounded-[5px] flex items-center justify-center text-blue-600 shrink-0 mb-4">
+              <div className="w-10 h-10 rounded-[3px] flex items-center justify-center text-blue-600 shrink-0 mb-4">
                 <Activity className="h-6 w-6" />
               </div>
               <p className="text-sm text-slate-600 leading-relaxed font-medium">
@@ -77,7 +77,7 @@ export default async function FeaturedProduct({ locale }: FeaturedProductProps) 
 
             {/* Feature 4 */}
             <div className="flex flex-col items-start">
-              <div className="w-10 h-10 rounded-[5px] flex items-center justify-center text-blue-600 shrink-0 mb-4">
+              <div className="w-10 h-10 rounded-[3px] flex items-center justify-center text-blue-600 shrink-0 mb-4">
                 <Truck className="h-6 w-6" />
               </div>
               <p className="text-sm text-slate-600 leading-relaxed font-medium">
@@ -111,7 +111,7 @@ export default async function FeaturedProduct({ locale }: FeaturedProductProps) 
             <div className="mt-8">
               <Link
                 href={`/${locale}/solutions/categories/industrial-packaging`}
-                className="inline-flex items-center justify-center rounded-lg bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 transition-colors"
+                className="inline-flex items-center justify-center rounded-[3px] bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 transition-colors"
               >
                 {t('featuredProduct.learnMore')}
               </Link>

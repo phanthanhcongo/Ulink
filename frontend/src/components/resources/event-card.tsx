@@ -81,7 +81,7 @@ export function EventCard({ event, locale }: EventCardProps) {
 
   return (
     <div
-      className="flex flex-col bg-white border border-slate-100 rounded-[5px] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 group"
+      className="flex flex-col bg-white border border-slate-100 rounded-[3px] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 group"
     >
       {/* Top Image Area */}
       <div className="relative aspect-[16/10] w-full bg-slate-50 overflow-hidden">
@@ -167,7 +167,7 @@ export function EventCard({ event, locale }: EventCardProps) {
         <div className="mt-6 pt-4 border-t border-slate-50">
           <Link
             href={href}
-            className="w-full inline-flex items-center justify-center py-3 border-2 border-blue-600 hover:bg-blue-50 text-blue-600 font-bold rounded-[5px] text-xs sm:text-sm transition-colors shadow-xs"
+            className="w-full inline-flex items-center justify-center py-3 border-2 border-blue-600 hover:bg-blue-50 text-blue-600 font-bold rounded-[3px] text-xs sm:text-sm transition-colors shadow-xs"
           >
             {ctaText}
           </Link>

@@ -35,14 +35,14 @@ export const revalidate = 0;
 export default async function ChangePasswordPage({ params: { locale }, searchParams }: Props) {
   setRequestLocale(locale);
   if (searchParams.token) return (
-    <div className="mx-auto w-full max-w-md rounded-[5px] bg-white p-6 sm:p-10 border border-slate-100 shadow-sm">
+    <div className="mx-auto w-full max-w-md rounded-[3px] bg-white p-6 sm:p-10 border border-slate-100 shadow-sm">
       <ChangePasswordForm />
     </div>
   );
   const user = await getCurrentUser();
   if (!user) redirect('/login?next=/change-password');
   return (
-    <div className="mx-auto w-full max-w-md rounded-[5px] bg-white p-6 sm:p-10 border border-slate-100 shadow-sm">
+    <div className="mx-auto w-full max-w-md rounded-[3px] bg-white p-6 sm:p-10 border border-slate-100 shadow-sm">
       <ChangePasswordForm />
     </div>
   );

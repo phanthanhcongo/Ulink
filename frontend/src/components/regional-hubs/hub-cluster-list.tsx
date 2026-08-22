@@ -43,7 +43,7 @@ export default function HubClusterList({ hubs, labels }: HubClusterListProps) {
         {hubs.map((hub, index) => (
           <div
             key={hub.id}
-            className="group flex items-center justify-between gap-4 rounded-none border border-blue-500/35 bg-[#0E2142]/60 px-6 py-3 shadow-md shadow-black/20 backdrop-blur-md transition-all hover:border-[#00e5ff]/50 hover:bg-[#0E2142]/85 hover:shadow-[0_0_15px_rgba(0,229,255,0.15)]"
+            className="group flex items-center justify-between gap-4 rounded-[3px] border border-blue-500/35 bg-[#0E2142]/60 px-6 py-3 shadow-md shadow-black/20 backdrop-blur-md transition-all hover:border-[#00e5ff]/50 hover:bg-[#0E2142]/85 hover:shadow-[0_0_15px_rgba(0,229,255,0.15)]"
           >
             {/* Clickable area → navigate to hub detail */}
             <Link
@@ -51,7 +51,7 @@ export default function HubClusterList({ hubs, labels }: HubClusterListProps) {
               className="flex flex-1 items-center gap-5 min-w-0"
             >
               {/* Rectangular number badge */}
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-none bg-brand shadow-sm transition-colors group-hover:bg-brand-strong">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[3px] bg-brand shadow-sm transition-colors group-hover:bg-brand-strong">
                 <span className="text-[16px] font-bold text-background">
                   {String(index + 1).padStart(2, '0')}
                 </span>
@@ -73,7 +73,7 @@ export default function HubClusterList({ hubs, labels }: HubClusterListProps) {
             <button
               type="button"
               onClick={() => setSelectedHub(hub)}
-              className="rounded-none p-2 hover:bg-white/5 transition-colors shrink-0"
+              className="rounded-[3px] p-2 hover:bg-white/5 transition-colors shrink-0"
               aria-label={`${labels.title} - ${hub.localizedName}`}
             >
               <ArrowRight className="h-5 w-5 text-background/60 group-hover:text-[#00e5ff] group-hover:translate-x-0.5 transition-all" />

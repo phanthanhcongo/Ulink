@@ -26,7 +26,7 @@ export function LoginPartners() {
         {partnerLogos.map((p, idx) => (
           <div
             key={idx}
-            className="flex h-16 w-full items-center justify-center rounded-[5px] bg-slate-50 p-3 text-lg sm:text-xl transition-all hover:bg-white hover:shadow-md hover:scale-105"
+            className="flex h-16 w-full items-center justify-center rounded-[3px] bg-slate-50 p-3 text-lg sm:text-xl transition-all hover:bg-white hover:shadow-md hover:scale-105"
           >
             <span className={p.color}>{p.name}</span>
           </div>

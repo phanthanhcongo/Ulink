@@ -129,7 +129,7 @@ function LoginFormInner() {
         {reasonBanner && (
           <div
             role="status"
-            className="mt-4 flex items-start gap-2.5 rounded-[5px] border border-emerald-200 bg-emerald-50/70 p-3.5 text-xs text-emerald-800"
+            className="mt-4 flex items-start gap-2.5 rounded-[3px] border border-emerald-200 bg-emerald-50/70 p-3.5 text-xs text-emerald-800"
           >
             <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" aria-hidden="true" />
             <span className="font-medium">{t(reasonBanner.key)}</span>
@@ -140,7 +140,7 @@ function LoginFormInner() {
           {formError && (
             <div
               role="alert"
-              className="rounded-[5px] border border-rose-200 bg-rose-50/80 p-3.5 text-xs font-medium leading-relaxed text-rose-700"
+              className="rounded-[3px] border border-rose-200 bg-rose-50/80 p-3.5 text-xs font-medium leading-relaxed text-rose-700"
             >
               {formError}
             </div>
@@ -164,7 +164,7 @@ function LoginFormInner() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="vd: contact@company.com"
                 invalid={!!fieldErrors.email}
-                className="bg-slate-50/50 pl-11 hover:bg-white focus:bg-white rounded-[5px]"
+                className="bg-slate-50/50 pl-11 hover:bg-white focus:bg-white rounded-[3px]"
               />
             </div>
             {fieldErrors.email && (
@@ -192,7 +192,7 @@ function LoginFormInner() {
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder="Nhập mật khẩu của bạn"
                 invalid={!!fieldErrors.password}
-                className="bg-slate-50/50 pl-11 pr-11 hover:bg-white focus:bg-white rounded-[5px]"
+                className="bg-slate-50/50 pl-11 pr-11 hover:bg-white focus:bg-white rounded-[3px]"
               />
               <Button
                 type="button"
@@ -200,7 +200,7 @@ function LoginFormInner() {
                 aria-label={showPassword ? 'Ẩn mật khẩu' : 'Hiện mật khẩu'}
                 variant="ghost"
                 size="icon"
-                className="absolute right-2.5 top-1/2 -translate-y-1/2 rounded-[5px] text-slate-400 hover:bg-slate-100 hover:text-slate-600"
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 rounded-[3px] text-slate-400 hover:bg-slate-100 hover:text-slate-600"
               >
                 {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
               </Button>

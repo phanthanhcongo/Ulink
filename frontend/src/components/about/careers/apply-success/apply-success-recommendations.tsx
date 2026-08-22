@@ -36,7 +36,7 @@ export function ApplySuccessRecommendations() {
           <Link
             key={item.id}
             href={item.href}
-            className="flex flex-col justify-between rounded-[5px] bg-white p-6 border border-slate-100 shadow-sm transition-all hover:shadow-md hover:border-blue-200 group"
+            className="flex flex-col justify-between rounded-[3px] bg-white p-6 border border-slate-100 shadow-sm transition-all hover:shadow-md hover:border-blue-200 group"
           >
             <div>
               <span className="text-[11px] font-bold text-blue-600 uppercase tracking-wider block mb-1">

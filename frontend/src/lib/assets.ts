@@ -17,6 +17,7 @@ export const ASSETS = {
   home: {
     /** Section 1: Hero & Feature Bar */
     hero: '/images/home/section1/HomeBanner.webp',
+    heroMobile: '/images/home/section1/HomeBanner-mobile.png',
     iconNation: '/images/home/section1/nation.webp',
     iconAdapter: '/images/home/section1/adapter.webp',
     iconFile: '/images/home/section1/file.webp',

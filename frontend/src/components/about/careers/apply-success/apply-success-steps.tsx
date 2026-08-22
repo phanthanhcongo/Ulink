@@ -32,7 +32,7 @@ export function ApplySuccessSteps() {
         {steps.map((item) => (
           <div
             key={item.num}
-            className="flex flex-col rounded-[5px] bg-slate-50 p-6 border border-slate-100 shadow-sm transition-all hover:bg-white hover:shadow-md"
+            className="flex flex-col rounded-[3px] bg-slate-50 p-6 border border-slate-100 shadow-sm transition-all hover:bg-white hover:shadow-md"
           >
             <div className="flex h-8 w-8 items-center justify-center rounded-full bg-blue-600 text-xs font-extrabold text-white mb-4 shadow-sm">
               {item.num}

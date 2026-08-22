@@ -31,7 +31,7 @@ export function CaseStudyCard({
   return (
     <Link
       href={`/resources/case-study-${num}`}
-      className="group flex flex-col overflow-hidden rounded-[5px] border border-border bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
+      className="group flex flex-col overflow-hidden rounded-[3px] border border-border bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-md"
     >
       {/* Top Banner Image */}
       <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100">

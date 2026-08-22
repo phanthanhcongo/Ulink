@@ -88,7 +88,7 @@ export async function AboutHubStats() {
         </div>
 
         {/* Aerial image */}
-        <div className="relative h-[150px] w-full shrink-0 overflow-hidden rounded-[5px] lg:h-auto lg:w-[150px]">
+        <div className="relative h-[150px] w-full shrink-0 overflow-hidden rounded-[3px] lg:h-auto lg:w-[150px]">
           <Image
             src={ASSETS.about.locationAerial}
             alt="Vị trí chiến lược — Trung tâm phân phối Hà Nam"

@@ -20,13 +20,16 @@ import { isAdminUser } from '@/lib/auth';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
+import type { NavItem } from './header-nav';
+
 interface MobileNavProps {
-  items: { href: string; label: string }[];
+  items: NavItem[];
 }
 
 export function MobileNav({ items }: MobileNavProps) {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>({});
   const t = useTranslations('nav');
   const { status, user, logout } = useAuth();
   const isAdmin = isAdminUser(user);
@@ -35,6 +38,10 @@ export function MobileNav({ items }: MobileNavProps) {
     setMounted(true);
     return () => setMounted(false);
   }, []);
+
+  const toggleExpand = (href: string) => {
+    setExpandedItems((prev) => ({ ...prev, [href]: !prev[href] }));
+  };
 
   const menuContent = open && (
         <div className="fixed inset-0 z-[9999] md:hidden">
@@ -54,16 +61,52 @@ export function MobileNav({ items }: MobileNavProps) {
               </button>
             </div>
             <nav className="flex flex-col px-5 py-3">
-              {items.map((it) => (
-                <Link
-                  key={it.href}
-                  href={it.href}
-                  onClick={() => setOpen(false)}
-                  className="border-b border-border py-3 text-sm text-primary transition-colors hover:text-brand"
-                >
-                  {it.label}
-                </Link>
-              ))}
+              {items.map((it) => {
+                const hasChildren = it.children && it.children.length > 0;
+                const isExpanded = !!expandedItems[it.href];
+
+                return (
+                  <div key={it.href} className="border-b border-border py-2">
+                    <div className="flex items-center justify-between">
+                      <Link
+                        href={it.href}
+                        onClick={() => setOpen(false)}
+                        className="py-1 text-sm font-semibold text-primary transition-colors hover:text-brand"
+                      >
+                        {it.label}
+                      </Link>
+                      {hasChildren && (
+                        <button
+                          type="button"
+                          onClick={() => toggleExpand(it.href)}
+                          className="p-2 text-slate-500 hover:text-brand"
+                          aria-label={`Toggle ${it.label}`}
+                        >
+                          <ChevronDown
+                            className={`h-4 w-4 transition-transform duration-200 ${
+                              isExpanded ? 'rotate-180 text-brand' : ''
+                            }`}
+                          />
+                        </button>
+                      )}
+                    </div>
+                    {hasChildren && isExpanded && (
+                      <div className="flex flex-col gap-1 pl-4 pt-1 pb-2">
+                        {it.children!.map((child) => (
+                          <Link
+                            key={child.href}
+                            href={child.href}
+                            onClick={() => setOpen(false)}
+                            className="py-1 text-xs font-medium text-slate-600 transition-colors hover:text-brand"
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                );
+              })}
 
               {/* Authentication links for Mobile */}
               {status === 'authenticated' && user ? (

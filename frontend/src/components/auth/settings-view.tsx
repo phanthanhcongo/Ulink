@@ -55,7 +55,7 @@ export function SettingsView({ user, customer }: Props) {
 
       <div className="grid gap-6 lg:grid-cols-3">
         {/* Profile (read-only) */}
-        <div className="rounded-[5px] border border-border bg-card p-5 sm:p-6 lg:col-span-2">
+        <div className="rounded-[3px] border border-border bg-card p-5 sm:p-6 lg:col-span-2">
           <h2 className="text-base font-semibold text-foreground">{t('profileSection')}</h2>
           <p className="mt-1 text-xs text-muted-foreground">{t('profileReadOnlyHint')}</p>
 
@@ -77,7 +77,7 @@ export function SettingsView({ user, customer }: Props) {
             link. Email-link (not in-session navigation) is intentional: it
             re-requires email-inbox control before the change goes through,
             which is the stronger security signal for an account setting. */}
-        <div className="rounded-[5px] border border-border bg-card p-5 sm:p-6">
+        <div className="rounded-[3px] border border-border bg-card p-5 sm:p-6">
           <h2 className="text-base font-semibold text-foreground">{t('securitySection')}</h2>
           <p className="mt-1 text-xs text-muted-foreground">{t('securityChangePasswordDesc')}</p>
 
@@ -95,8 +95,8 @@ export function SettingsView({ user, customer }: Props) {
 
 function Field({ icon: Icon, label, value }: { icon: LucideIcon; label: string; value: string }) {
   return (
-    <div className="flex items-start gap-3 rounded-[5px] border border-border bg-background/40 px-3.5 py-3">
-      <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-[5px] bg-brand/10 text-brand">
+    <div className="flex items-start gap-3 rounded-[3px] border border-border bg-background/40 px-3.5 py-3">
+      <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-[3px] bg-brand/10 text-brand">
         <Icon className="h-4 w-4" aria-hidden={true} />
       </span>
       <div className="min-w-0">
@@ -117,7 +117,7 @@ function ChangePasswordButton({ email: _email }: { email: string }) {
     <button
       type="button"
       onClick={() => window.dispatchEvent(new CustomEvent('settings:open-change-password'))}
-      className="mt-5 inline-flex h-9 w-full items-center justify-center gap-2 rounded-[5px] border border-brand bg-brand px-4 text-sm font-medium text-brand-foreground transition-colors hover:bg-brand-strong sm:w-auto"
+      className="mt-5 inline-flex h-9 w-full items-center justify-center gap-2 rounded-[3px] border border-brand bg-brand px-4 text-sm font-medium text-brand-foreground transition-colors hover:bg-brand-strong sm:w-auto"
     >
       <KeyRound className="h-4 w-4" aria-hidden={true} />
       {t('changePasswordCta')}
@@ -224,12 +224,12 @@ function ChangePasswordDialog({ email }: { email: string }) {
       onClick={close}
     >
       <div
-        className="w-full max-w-md rounded-[5px] border border-border bg-card p-6 shadow-2xl"
+        className="w-full max-w-md rounded-[3px] border border-border bg-card p-6 shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
         <div className="flex items-start justify-between gap-3">
           <div className="flex items-center gap-2.5">
-            <span className="flex h-9 w-9 items-center justify-center rounded-[5px] bg-brand/10 text-brand">
+            <span className="flex h-9 w-9 items-center justify-center rounded-[3px] bg-brand/10 text-brand">
               <KeyRound className="h-5 w-5" aria-hidden={true} />
             </span>
             <h3 id="settings-change-pw-title" className="text-base font-semibold text-foreground">
@@ -242,7 +242,7 @@ function ChangePasswordDialog({ email }: { email: string }) {
             type="button"
             onClick={close}
             aria-label={t('settingsChangePasswordDialogClose')}
-            className="rounded-[5px] p-1 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            className="rounded-[3px] p-1 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
           >
             <X className="h-4 w-4" aria-hidden={true} />
           </button>
@@ -260,7 +260,7 @@ function ChangePasswordDialog({ email }: { email: string }) {
         {isLocked && (
           <div
             role="alert"
-            className="mt-3 rounded-[5px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-sm text-destructive"
+            className="mt-3 rounded-[3px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-sm text-destructive"
           >
             <p className="font-medium">{t('resetPasswordLockedTitle')}</p>
             <p className="mt-1 text-xs">
@@ -278,7 +278,7 @@ function ChangePasswordDialog({ email }: { email: string }) {
         {error && !isLocked && (
           <p
             role="alert"
-            className="mt-3 rounded-[5px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-xs text-destructive"
+            className="mt-3 rounded-[3px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-xs text-destructive"
           >
             {error}
           </p>
@@ -289,7 +289,7 @@ function ChangePasswordDialog({ email }: { email: string }) {
             <button
               type="button"
               onClick={close}
-              className="inline-flex h-9 items-center rounded-[5px] border border-border bg-card px-4 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+              className="inline-flex h-9 items-center rounded-[3px] border border-border bg-card px-4 text-sm font-medium text-foreground transition-colors hover:bg-muted"
             >
               {t('settingsChangePasswordDialogClose')}
             </button>
@@ -299,7 +299,7 @@ function ChangePasswordDialog({ email }: { email: string }) {
                 type="button"
                 onClick={close}
                 disabled={sending}
-                className="inline-flex h-9 items-center rounded-[5px] border border-border bg-card px-4 text-sm font-medium text-foreground transition-colors hover:bg-muted disabled:opacity-60"
+                className="inline-flex h-9 items-center rounded-[3px] border border-border bg-card px-4 text-sm font-medium text-foreground transition-colors hover:bg-muted disabled:opacity-60"
               >
                 {t('settingsChangePasswordDialogCancel')}
               </button>
@@ -307,7 +307,7 @@ function ChangePasswordDialog({ email }: { email: string }) {
                 type="button"
                 onClick={onSend}
                 disabled={sending || isLocked}
-                className="inline-flex h-9 items-center gap-2 rounded-[5px] border border-brand bg-brand px-4 text-sm font-medium text-brand-foreground transition-colors hover:bg-brand-strong disabled:opacity-60"
+                className="inline-flex h-9 items-center gap-2 rounded-[3px] border border-brand bg-brand px-4 text-sm font-medium text-brand-foreground transition-colors hover:bg-brand-strong disabled:opacity-60"
               >
                 {sending && <Loader2 className="h-4 w-4 animate-spin" aria-hidden={true} />}
                 {sending

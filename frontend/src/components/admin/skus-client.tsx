@@ -289,7 +289,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
             setSkuModalOpen(true);
             setFormError('');
           }}
-          className="inline-flex h-11 items-center justify-center gap-2 rounded-[5px] bg-blue-600 px-5 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors shrink-0"
+          className="inline-flex h-11 items-center justify-center gap-2 rounded-[3px] bg-blue-600 px-5 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors shrink-0"
         >
           <Plus className="h-4 w-4" />
           Thêm mã SKU mới
@@ -297,7 +297,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
       </div>
 
       {/* Filter Toolbar */}
-      <div className="bg-white border border-slate-100 rounded-[5px] p-5 shadow-sm mb-8 flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between">
+      <div className="bg-white border border-slate-100 rounded-[3px] p-5 shadow-sm mb-8 flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between">
         {/* Search Input */}
         <div className="relative flex-1">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
@@ -306,7 +306,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Tìm kiếm theo mã SKU, tên sản phẩm cha..."
-            className="w-full pl-10 pr-4 py-2.5 rounded-[5px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+            className="w-full pl-10 pr-4 py-2.5 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
           />
         </div>
 
@@ -318,7 +318,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
             <select
               value={selectedProduct}
               onChange={(e) => setSelectedProduct(e.target.value)}
-              className="px-3 py-2.5 rounded-[5px] border border-slate-200 text-xs font-bold text-slate-700 focus:outline-none max-w-[200px]"
+              className="px-3 py-2.5 rounded-[3px] border border-slate-200 text-xs font-bold text-slate-700 focus:outline-none max-w-[200px]"
             >
               <option value="all">Tất cả sản phẩm cha</option>
               {products.map((p) => (
@@ -335,7 +335,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
             <select
               value={selectedStockStatus}
               onChange={(e) => setSelectedStockStatus(e.target.value)}
-              className="px-3 py-2.5 rounded-[5px] border border-slate-200 text-xs font-bold text-slate-700 focus:outline-none"
+              className="px-3 py-2.5 rounded-[3px] border border-slate-200 text-xs font-bold text-slate-700 focus:outline-none"
             >
               <option value="all">Tất cả trạng thái kho</option>
               <option value="in_stock">Còn hàng</option>
@@ -349,7 +349,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
             <button
               type="button"
               onClick={() => setShowColSettings(!showColSettings)}
-              className="inline-flex h-[38px] items-center gap-1.5 px-3 rounded-[5px] border border-slate-200 text-xs font-bold text-slate-700 hover:bg-slate-50 transition-colors focus:outline-none"
+              className="inline-flex h-[38px] items-center gap-1.5 px-3 rounded-[3px] border border-slate-200 text-xs font-bold text-slate-700 hover:bg-slate-50 transition-colors focus:outline-none"
             >
               <Eye className="h-4 w-4 text-slate-400" />
               <span>Ẩn/Hiện cột</span>
@@ -357,7 +357,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
             </button>
 
             {showColSettings && (
-              <div className="absolute right-0 mt-2 w-56 rounded-[5px] border border-slate-150 bg-white p-3 shadow-xl z-20 space-y-2.5 animate-in fade-in duration-200">
+              <div className="absolute right-0 mt-2 w-56 rounded-[3px] border border-slate-150 bg-white p-3 shadow-xl z-20 space-y-2.5 animate-in fade-in duration-200">
                 <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block border-b border-slate-100 pb-1.5">
                   Cấu hình hiển thị cột
                 </span>
@@ -368,7 +368,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                       type="checkbox"
                       checked={visibleColumns.sku_code}
                       onChange={() => setVisibleColumns(prev => ({ ...prev, sku_code: !prev.sku_code }))}
-                      className="h-3.5 w-3.5 rounded-[5px] border-slate-350 text-blue-600 focus:ring-blue-500 cursor-pointer"
+                      className="h-3.5 w-3.5 rounded-[3px] border-slate-350 text-blue-600 focus:ring-blue-500 cursor-pointer"
                     />
                     <span className="text-xs font-semibold text-slate-650">Mã SKU</span>
                   </label>
@@ -377,7 +377,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                       type="checkbox"
                       checked={visibleColumns.product}
                       onChange={() => setVisibleColumns(prev => ({ ...prev, product: !prev.product }))}
-                      className="h-3.5 w-3.5 rounded-[5px] border-slate-350 text-blue-600 focus:ring-blue-500 cursor-pointer"
+                      className="h-3.5 w-3.5 rounded-[3px] border-slate-350 text-blue-600 focus:ring-blue-500 cursor-pointer"
                     />
                     <span className="text-xs font-semibold text-slate-650">Sản phẩm cha</span>
                   </label>
@@ -386,7 +386,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                       type="checkbox"
                       checked={visibleColumns.pack_size}
                       onChange={() => setVisibleColumns(prev => ({ ...prev, pack_size: !prev.pack_size }))}
-                      className="h-3.5 w-3.5 rounded-[5px] border-slate-350 text-blue-600 focus:ring-blue-500 cursor-pointer"
+                      className="h-3.5 w-3.5 rounded-[3px] border-slate-350 text-blue-600 focus:ring-blue-500 cursor-pointer"
                     />
                     <span className="text-xs font-semibold text-slate-650">Quy cách & ĐVT</span>
                   </label>
@@ -395,7 +395,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                       type="checkbox"
                       checked={visibleColumns.stock_status}
                       onChange={() => setVisibleColumns(prev => ({ ...prev, stock_status: !prev.stock_status }))}
-                      className="h-3.5 w-3.5 rounded-[5px] border-slate-350 text-blue-600 focus:ring-blue-500 cursor-pointer"
+                      className="h-3.5 w-3.5 rounded-[3px] border-slate-350 text-blue-600 focus:ring-blue-500 cursor-pointer"
                     />
                     <span className="text-xs font-semibold text-slate-650">Trạng thái kho</span>
                   </label>
@@ -404,7 +404,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                       type="checkbox"
                       checked={visibleColumns.status}
                       onChange={() => setVisibleColumns(prev => ({ ...prev, status: !prev.status }))}
-                      className="h-3.5 w-3.5 rounded-[5px] border-slate-350 text-blue-600 focus:ring-blue-500 cursor-pointer"
+                      className="h-3.5 w-3.5 rounded-[3px] border-slate-350 text-blue-600 focus:ring-blue-500 cursor-pointer"
                     />
                     <span className="text-xs font-semibold text-slate-650">Trạng thái</span>
                   </label>
@@ -425,7 +425,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                               type="checkbox"
                               checked={isChecked}
                               onChange={() => setVisibleAttrs(prev => ({ ...prev, [key]: !isChecked }))}
-                              className="h-3.5 w-3.5 rounded-[5px] border-slate-350 text-blue-600 focus:ring-blue-500 cursor-pointer"
+                              className="h-3.5 w-3.5 rounded-[3px] border-slate-350 text-blue-600 focus:ring-blue-500 cursor-pointer"
                             />
                             <span className="text-xs font-semibold text-slate-650 capitalize">{key}</span>
                           </label>
@@ -441,7 +441,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
       </div>
 
       {/* SKUs Flat Table */}
-      <div className="bg-white border border-slate-100 rounded-[5px] shadow-sm overflow-hidden">
+      <div className="bg-white border border-slate-100 rounded-[3px] shadow-sm overflow-hidden">
         {filteredSkus.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 text-center">
             <Layers className="h-12 w-12 text-slate-300 mb-3" />
@@ -537,7 +537,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                               )
                             }
                             className={cn(
-                              'px-2 py-0.5 rounded-[5px] text-[11px] font-bold border focus:outline-none cursor-pointer',
+                              'px-2 py-0.5 rounded-[3px] text-[11px] font-bold border focus:outline-none cursor-pointer',
                               sku.stock_status === 'in_stock' &&
                                 'bg-green-50 border-green-200 text-green-700',
                               sku.stock_status === 'low_stock' &&
@@ -558,7 +558,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                         <td className="px-4 py-2.5">
                           <span
                             className={cn(
-                              'inline-flex items-center px-2 py-0.5 rounded-[5px] text-[10px] font-bold uppercase',
+                              'inline-flex items-center px-2 py-0.5 rounded-[3px] text-[10px] font-bold uppercase',
                               sku.status === 'published' && 'bg-green-50 text-green-600',
                               sku.status === 'draft' && 'bg-slate-105 text-slate-600',
                               sku.status === 'archived' && 'bg-red-50 text-red-650'
@@ -620,7 +620,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                               setFormError('');
                             }}
                             title="Sửa mã SKU"
-                            className="p-1 text-slate-400 hover:text-blue-600 hover:bg-slate-100 rounded-[5px] transition-colors"
+                            className="p-1 text-slate-400 hover:text-blue-600 hover:bg-slate-100 rounded-[3px] transition-colors"
                           >
                             <Edit2 className="h-4.5 w-4.5" />
                           </button>
@@ -630,7 +630,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                             <button
                               onClick={() => handleArchiveSku(sku.id)}
                               title="Lưu trữ SKU"
-                              className="p-1 text-slate-400 hover:text-red-650 hover:bg-slate-100 rounded-[5px] transition-colors"
+                              className="p-1 text-slate-400 hover:text-red-650 hover:bg-slate-100 rounded-[3px] transition-colors"
                             >
                               <Archive className="h-4.5 w-4.5" />
                             </button>
@@ -649,7 +649,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
       {/* Add / Edit SKU Modal */}
       {skuModalOpen && activeSku && (
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm">
-          <div className="bg-white rounded-[5px] w-full max-w-lg shadow-xl border border-slate-100 overflow-hidden max-h-[90vh] overflow-y-auto">
+          <div className="bg-white rounded-[3px] w-full max-w-lg shadow-xl border border-slate-100 overflow-hidden max-h-[90vh] overflow-y-auto">
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 sticky top-0 bg-white z-10">
               <h3 className="text-base font-extrabold text-primary">
@@ -660,7 +660,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                   setSkuModalOpen(false);
                   setSelectedOptions({});
                 }}
-                className="p-1.5 rounded-[5px] hover:bg-slate-100 text-slate-400 transition-colors"
+                className="p-1.5 rounded-[3px] hover:bg-slate-100 text-slate-400 transition-colors"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -669,7 +669,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
             {/* Form */}
             <form onSubmit={handleSaveSkuSubmit} className="p-6 space-y-5">
               {formError && (
-                <div className="p-3 bg-rose-50 border border-rose-100 rounded-[5px] text-xs font-bold text-rose-600 flex items-center gap-2 animate-in fade-in duration-200">
+                <div className="p-3 bg-rose-50 border border-rose-100 rounded-[3px] text-xs font-bold text-rose-600 flex items-center gap-2 animate-in fade-in duration-200">
                   <AlertTriangle className="h-4 w-4 shrink-0" />
                   <span>{formError}</span>
                 </div>
@@ -682,7 +682,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                   value={activeSku.productId || ''}
                   onChange={(e) => handleProductChange(Number(e.target.value))}
                   disabled={!!activeSku.id}
-                  className="px-3.5 py-2 rounded-[5px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-700 focus:outline-none bg-slate-50 disabled:bg-slate-100"
+                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-700 focus:outline-none bg-slate-50 disabled:bg-slate-100"
                 >
                   <option value="">-- Chọn sản phẩm cha --</option>
                   {products.map((p) => (
@@ -695,7 +695,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
 
               {/* Attributes Section */}
               {activeSku.productId && (
-                <div className="space-y-3 p-4 bg-slate-50 rounded-[5px] border border-slate-100">
+                <div className="space-y-3 p-4 bg-slate-50 rounded-[3px] border border-slate-100">
                   <span className="text-[10px] uppercase text-slate-400 font-extrabold tracking-wider block">
                     Chọn thuộc tính phân loại
                   </span>
@@ -715,7 +715,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                               .find((p) => p.id === activeSku.productId)
                               ?.slug.toUpperCase() || ''
                           }
-                          className="px-3 py-1.5 rounded-[5px] bg-slate-100 border border-slate-200 text-xs font-bold font-mono text-slate-500 cursor-not-allowed select-none focus:outline-none"
+                          className="px-3 py-1.5 rounded-[3px] bg-slate-100 border border-slate-200 text-xs font-bold font-mono text-slate-500 cursor-not-allowed select-none focus:outline-none"
                         />
                       </div>
 
@@ -736,7 +736,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                                 onChange={(e) =>
                                   handleOptionChange(attr.id, Number(e.target.value))
                                 }
-                                className="px-3 py-2 rounded-[5px] border border-slate-200 text-xs sm:text-sm font-semibold focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600 bg-white"
+                                className="px-3 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-semibold focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600 bg-white"
                               >
                                 <option value="">-- Chọn --</option>
                                 {sortedOptions.map((opt) => (
@@ -752,7 +752,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                     </>
                   ) : (
                     /* Fallback: no attributes defined for this product */
-                    <div className="flex items-start gap-2 p-3 bg-amber-50 rounded-[5px] border border-amber-200">
+                    <div className="flex items-start gap-2 p-3 bg-amber-50 rounded-[3px] border border-amber-200">
                       <AlertTriangle className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
                       <div>
                         <span className="text-xs font-bold text-amber-700 block">
@@ -802,7 +802,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                       : 'Nhập mã SKU thủ công...'
                   }
                   className={cn(
-                    'px-3.5 py-2 rounded-[5px] border border-slate-200 text-xs sm:text-sm font-extrabold text-primary font-mono focus:outline-none',
+                    'px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-extrabold text-primary font-mono focus:outline-none',
                     activeProductAttrs.length > 0
                       ? 'bg-slate-100 cursor-not-allowed select-all'
                       : 'bg-white focus:ring-1 focus:ring-blue-600 focus:border-blue-600'
@@ -818,7 +818,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                   value={activeSku.unit || ''}
                   onChange={(e) => setActiveSku({ ...activeSku, unit: e.target.value })}
                   placeholder="Ví dụ: Hộp, Đôi, Cuộn..."
-                  className="px-3.5 py-2 rounded-[5px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
                 />
               </div>
 
@@ -832,7 +832,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                   value={activeSku.pack_size || ''}
                   onChange={(e) => setActiveSku({ ...activeSku, pack_size: e.target.value })}
                   placeholder="Ví dụ: 100 đôi/hộp, 10 cuộn/thùng"
-                  className="px-3.5 py-2 rounded-[5px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
                 />
               </div>
 
@@ -849,7 +849,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                       stock_status: e.target.value as 'in_stock' | 'low_stock' | 'out_of_stock'
                     })
                   }
-                  className="px-3.5 py-2 rounded-[5px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-750 focus:outline-none"
+                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-750 focus:outline-none"
                 >
                   <option value="in_stock">Còn hàng (In Stock)</option>
                   <option value="low_stock">Sắp hết (Low Stock)</option>
@@ -870,7 +870,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                       status: e.target.value as 'published' | 'draft' | 'archived'
                     })
                   }
-                  className="px-3.5 py-2 rounded-[5px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-750 focus:outline-none"
+                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-750 focus:outline-none"
                 >
                   <option value="published">Hoạt động (Published)</option>
                   <option value="draft">Bản nháp (Draft)</option>
@@ -886,14 +886,14 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                     setSkuModalOpen(false);
                     setSelectedOptions({});
                   }}
-                  className="px-4 py-2 rounded-[5px] border border-slate-200 text-xs font-bold text-slate-500 hover:bg-slate-50 transition-colors"
+                  className="px-4 py-2 rounded-[3px] border border-slate-200 text-xs font-bold text-slate-500 hover:bg-slate-50 transition-colors"
                 >
                   Hủy
                 </button>
                 <button
                   type="submit"
                   disabled={isPending}
-                  className="inline-flex h-10 items-center justify-center gap-2 rounded-[5px] bg-blue-600 px-5 text-xs font-bold text-white hover:bg-blue-700 transition-colors disabled:opacity-50"
+                  className="inline-flex h-10 items-center justify-center gap-2 rounded-[3px] bg-blue-600 px-5 text-xs font-bold text-white hover:bg-blue-700 transition-colors disabled:opacity-50"
                 >
                   {isPending && <Loader2 className="h-3.5 w-3.5 animate-spin" />}
                   Lưu SKU

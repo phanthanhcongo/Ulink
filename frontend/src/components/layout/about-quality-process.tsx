@@ -14,7 +14,7 @@ export async function AboutQualityProcess() {
   ];
 
   return (
-    <section className="rounded-2xl bg-background px-6 py-6">
+    <section className="rounded-[3px] bg-background px-6 py-6">
       {/* Header */}
       <div>
         <h2 className="text-[12px] font-bold text-primary">{t('title')}</h2>

@@ -114,9 +114,9 @@ export function JobDetailContent() {
             return (
               <div
                 key={idx}
-                className="flex flex-col rounded-[5px] bg-slate-50 p-4 border border-slate-100"
+                className="flex flex-col rounded-[3px] bg-slate-50 p-4 border border-slate-100"
               >
-                <div className="mb-2 flex h-9 w-9 items-center justify-center rounded-lg bg-blue-100 text-blue-600">
+                <div className="mb-2 flex h-9 w-9 items-center justify-center rounded-[3px] bg-blue-100 text-blue-600">
                   <Icon className="h-4 w-4" />
                 </div>
                 <h3 className="text-xs font-bold text-slate-900">{b.title}</h3>
@@ -132,7 +132,7 @@ export function JobDetailContent() {
         <h2 className="text-lg font-bold text-slate-900 mb-3 border-l-4 border-blue-600 pl-3">
           Địa điểm & Thời gian làm việc
         </h2>
-        <div className="rounded-[5px] bg-white p-5 border border-slate-100 shadow-sm flex flex-col gap-3">
+        <div className="rounded-[3px] bg-white p-5 border border-slate-100 shadow-sm flex flex-col gap-3">
           <div className="flex items-start gap-2.5 text-xs text-slate-700">
             <MapPin className="h-4 w-4 text-blue-600 shrink-0 mt-0.5" />
             <span>
@@ -148,7 +148,7 @@ export function JobDetailContent() {
           </div>
 
           {/* Embedded Google Map */}
-          <div className="relative aspect-[21/9] w-full overflow-hidden rounded-lg border border-slate-200 mt-2">
+          <div className="relative aspect-[21/9] w-full overflow-hidden rounded-[3px] border border-slate-200 mt-2">
             <iframe
               title="ULink Office Location"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.096814184964!2d105.78189631502444!3d21.02881188599839!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab868b5001e5%3A0x82f49d32d0f507b9!2zQ8CauIEdp4bqteSwgSMOgIE7hu5lp!5e0!3m2!1svi!2s!4v1700000000000!5m2!1svi!2s"

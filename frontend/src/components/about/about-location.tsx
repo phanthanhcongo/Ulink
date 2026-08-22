@@ -47,7 +47,7 @@ export function AboutLocation() {
           </ul>
         </div>
         <div className="lg:col-span-6">
-          <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[5px] shadow-lg border border-slate-100">
+          <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[3px] shadow-lg border border-slate-100">
             <Image
               src="/images/about/gallery/location-aerial-view.png"
               alt="Vị trí kết nối giao thông Hub Hà Nam"

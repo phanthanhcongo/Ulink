@@ -168,7 +168,7 @@ export function EventsClient() {
         <div className="absolute inset-0 bg-slate-900/40" />
         <div className="absolute inset-0 flex items-center">
           <div className="max-w-[1440px] mx-auto w-full px-4 sm:px-8 lg:px-12 xl:px-16 text-left">
-            <div className="bg-[#0000008C] p-8 sm:p-10 md:p-12 max-w-2xl rounded-[5px] shadow-2xl border border-white/20 backdrop-blur-xs">
+            <div className="bg-[#0000008C] p-8 sm:p-10 md:p-12 max-w-2xl rounded-[3px] shadow-2xl border border-white/20 backdrop-blur-xs">
               <h1 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold tracking-tight text-white leading-tight">
                 {t.heroTitle}
                 <span className="block mt-2 text-2xl sm:text-3xl lg:text-[38px] font-bold text-white">
@@ -180,7 +180,7 @@ export function EventsClient() {
               </p>
               <button
                 onClick={handleScrollToEvents}
-                className="inline-flex items-center justify-center px-8 py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm sm:text-base rounded-[5px] transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer transform hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center px-8 py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm sm:text-base rounded-[3px] transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer transform hover:-translate-y-0.5"
               >
                 {t.heroCta}
               </button>
@@ -206,7 +206,7 @@ export function EventsClient() {
             return (
               <div
                 key={event.id}
-                className="flex flex-col lg:flex-row bg-white border border-slate-100 rounded-[5px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 group"
+                className="flex flex-col lg:flex-row bg-white border border-slate-100 rounded-[3px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 group"
               >
                 {/* Event Image */}
                 <div className="relative w-full lg:w-[420px] aspect-[16/10] lg:aspect-auto overflow-hidden shrink-0">
@@ -218,7 +218,7 @@ export function EventsClient() {
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                   {/* Overlay Date Badge */}
-                  <div className="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold px-4 py-2 rounded-[5px] shadow-md z-10">
+                  <div className="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold px-4 py-2 rounded-[3px] shadow-md z-10">
                     {event.date}
                   </div>
                 </div>
@@ -280,7 +280,7 @@ export function EventsClient() {
                   <div className="mt-8">
                     <Link
                       href={detailHref}
-                      className="inline-flex items-center justify-center px-6 py-3 border border-blue-600 hover:bg-blue-50 text-blue-600 font-bold rounded-[5px] text-xs sm:text-sm transition-all duration-300 shadow-xs group-hover:bg-blue-600 group-hover:text-white"
+                      className="inline-flex items-center justify-center px-6 py-3 border border-blue-600 hover:bg-blue-50 text-blue-600 font-bold rounded-[3px] text-xs sm:text-sm transition-all duration-300 shadow-xs group-hover:bg-blue-600 group-hover:text-white"
                     >
                       {t.registerBtn}
                       <ArrowRight className="ml-2 h-4 w-4" />
@@ -298,7 +298,7 @@ export function EventsClient() {
             <button
               onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
               disabled={currentPage === 1}
-              className="h-10 px-4 rounded-[5px] border border-slate-200 text-xs font-semibold hover:bg-slate-50 disabled:opacity-40 transition-all cursor-pointer flex items-center gap-1 text-slate-700 bg-white"
+              className="h-10 px-4 rounded-[3px] border border-slate-200 text-xs font-semibold hover:bg-slate-50 disabled:opacity-40 transition-all cursor-pointer flex items-center gap-1 text-slate-700 bg-white"
             >
               <ArrowLeft className="h-3.5 w-3.5" />
               {t.prev}
@@ -308,7 +308,7 @@ export function EventsClient() {
                 key={index}
                 onClick={() => setCurrentPage(index + 1)}
                 className={cn(
-                  'h-10 w-10 rounded-[5px] text-xs font-bold transition-all cursor-pointer border',
+                  'h-10 w-10 rounded-[3px] text-xs font-bold transition-all cursor-pointer border',
                   currentPage === index + 1
                     ? 'bg-blue-600 border-blue-600 text-white shadow-md'
                     : 'border-slate-200 hover:bg-slate-50 text-slate-600 bg-white'
@@ -320,7 +320,7 @@ export function EventsClient() {
             <button
               onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
               disabled={currentPage === totalPages}
-              className="h-10 px-4 rounded-[5px] border border-slate-200 text-xs font-semibold hover:bg-slate-50 disabled:opacity-40 transition-all cursor-pointer flex items-center gap-1 text-slate-700 bg-white"
+              className="h-10 px-4 rounded-[3px] border border-slate-200 text-xs font-semibold hover:bg-slate-50 disabled:opacity-40 transition-all cursor-pointer flex items-center gap-1 text-slate-700 bg-white"
             >
               {t.next}
               <ArrowRight className="h-3.5 w-3.5" />

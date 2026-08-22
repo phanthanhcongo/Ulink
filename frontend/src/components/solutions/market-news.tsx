@@ -58,11 +58,11 @@ export default async function MarketNews({ locale }: MarketNewsProps) {
         {newsList.map((item, idx) => (
           <div
             key={idx}
-            className="group bg-white rounded-2xl border border-slate-100 p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between"
+            className="group bg-white rounded-[3px] border border-slate-100 p-6 shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between"
           >
             <div>
               {/* Top Image */}
-              <div className="relative aspect-[16/10] w-full rounded-[5px] overflow-hidden mb-6 bg-slate-50 border border-slate-100/60">
+              <div className="relative aspect-[16/10] w-full rounded-[3px] overflow-hidden mb-6 bg-slate-50 border border-slate-100/60">
                 <Image
                   src={item.image}
                   alt={item.title}

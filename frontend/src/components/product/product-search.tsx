@@ -112,7 +112,7 @@ export default function ProductSearch({
             value={value}
             onChange={(e) => setValue(e.target.value)}
             placeholder={placeholder}
-            className="w-full rounded-lg border border-gray-200 bg-white pl-10 pr-10 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="w-full rounded-[3px] border border-gray-200 bg-white pl-10 pr-10 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
             aria-label={placeholder}
           />
           {value && (
@@ -131,7 +131,7 @@ export default function ProductSearch({
       <div className="relative">
         <button
           onClick={() => setSortOpen(!sortOpen)}
-          className="flex items-center gap-2 rounded-lg border border-gray-200 bg-white px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors whitespace-nowrap"
+          className="flex items-center gap-2 rounded-[3px] border border-gray-200 bg-white px-4 py-2.5 text-sm text-gray-700 hover:bg-gray-50 transition-colors whitespace-nowrap"
         >
           <ArrowDownUp className="h-4 w-4 text-gray-500" />
           <span>
@@ -143,7 +143,7 @@ export default function ProductSearch({
         {sortOpen && (
           <>
             <div className="fixed inset-0 z-10" onClick={() => setSortOpen(false)} />
-            <div className="absolute right-0 top-full mt-1 z-20 w-48 rounded-lg border border-gray-200 bg-white shadow-lg py-1">
+            <div className="absolute right-0 top-full mt-1 z-20 w-48 rounded-[3px] border border-gray-200 bg-white shadow-lg py-1">
               {sortOptions.map((opt) => (
                 <button
                   key={opt.value}
@@ -163,7 +163,7 @@ export default function ProductSearch({
       </div>
 
       {/* View mode toggle */}
-      <div className="hidden sm:flex items-center rounded-lg border border-gray-200 bg-white overflow-hidden">
+      <div className="hidden sm:flex items-center rounded-[3px] border border-gray-200 bg-white overflow-hidden">
         <button
           onClick={() => handleViewMode('grid')}
           className={`p-2.5 transition-colors ${currentView === 'grid' ? 'bg-blue-50 text-blue-600' : 'text-gray-500 hover:bg-gray-50'}`}
@@ -181,7 +181,7 @@ export default function ProductSearch({
       </div>
 
       {/* Export button */}
-      <button className="hidden lg:flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-blue-700 transition-colors whitespace-nowrap">
+      <button className="hidden lg:flex items-center gap-2 rounded-[3px] bg-blue-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-blue-700 transition-colors whitespace-nowrap">
         <Download className="h-4 w-4" />
         {labels?.exportList ?? 'Xuất danh sách'}
         {totalCount != null && ` (${totalCount})`}

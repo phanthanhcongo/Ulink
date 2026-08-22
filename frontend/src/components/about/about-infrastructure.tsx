@@ -39,7 +39,7 @@ export function AboutInfrastructure() {
         {items.map((item, index) => (
           <div
             key={index}
-            className="group flex flex-col overflow-hidden rounded-[5px] bg-white border border-slate-100 shadow-sm transition-all hover:shadow-md hover:-translate-y-1"
+            className="group flex flex-col overflow-hidden rounded-[3px] bg-white border border-slate-100 shadow-sm transition-all hover:shadow-md hover:-translate-y-1"
           >
             <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-100">
               <Image

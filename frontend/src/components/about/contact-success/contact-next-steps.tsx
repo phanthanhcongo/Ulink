@@ -32,7 +32,7 @@ export function ContactNextSteps() {
         {steps.map((item, idx) => (
           <div
             key={idx}
-            className="flex flex-col rounded-2xl bg-white p-6 shadow-sm border border-slate-100 transition-all hover:shadow-md hover:-translate-y-0.5"
+            className="flex flex-col rounded-[3px] bg-white p-6 shadow-sm border border-slate-100 transition-all hover:shadow-md hover:-translate-y-0.5"
           >
             <span className="inline-flex w-fit items-center rounded-full bg-blue-600 px-2.5 py-1 text-[10px] font-extrabold text-white mb-4">
               {item.badge}

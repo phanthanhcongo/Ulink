@@ -2,7 +2,7 @@ export function ApplyHeader() {
   return (
     <section className="py-6 border-b border-slate-100">
       <div className="flex items-center gap-3 mb-2">
-        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[5px] bg-blue-600 text-white font-extrabold text-xs shadow-sm">
+        <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[3px] bg-blue-600 text-white font-extrabold text-xs shadow-sm">
           UL
         </div>
         <span className="inline-flex items-center rounded-full bg-blue-50 px-3.5 py-1 text-xs font-semibold text-blue-700 ring-1 ring-inset ring-blue-700/10">

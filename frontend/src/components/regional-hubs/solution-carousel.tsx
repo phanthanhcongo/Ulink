@@ -136,7 +136,7 @@ export default function SolutionCarousel({ slides, labels }: SolutionCarouselPro
         </div>
 
         {/* Carousel Container */}
-        <div className="rounded-[5px] border border-slate-100 bg-white p-8 lg:p-10 shadow-sm">
+        <div className="rounded-[3px] border border-slate-100 bg-white p-8 lg:p-10 shadow-sm">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             {/* Left Column: Text & Features */}
             <div
@@ -156,7 +156,7 @@ export default function SolutionCarousel({ slides, labels }: SolutionCarouselPro
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-10">
                 {/* Feature 1 */}
                 <div className="flex items-start gap-4">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-brand/8">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[3px] bg-brand/8">
                     {icon1}
                   </div>
                   <p className="text-[12px] leading-relaxed text-slate-500">{currentSlide.feat1}</p>
@@ -164,7 +164,7 @@ export default function SolutionCarousel({ slides, labels }: SolutionCarouselPro
 
                 {/* Feature 2 */}
                 <div className="flex items-start gap-4">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg bg-brand/8">
+                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[3px] bg-brand/8">
                     {icon2}
                   </div>
                   <p className="text-[12px] leading-relaxed text-slate-500">{currentSlide.feat2}</p>
@@ -197,7 +197,7 @@ export default function SolutionCarousel({ slides, labels }: SolutionCarouselPro
 
             {/* Right Column: Visual Image */}
             <div
-              className={`relative aspect-[4/3] rounded-lg overflow-hidden border border-slate-100 bg-slate-50 shadow-sm transition-all duration-300 ${isTransitioning ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`}
+              className={`relative aspect-[4/3] rounded-[3px] overflow-hidden border border-slate-100 bg-slate-50 shadow-sm transition-all duration-300 ${isTransitioning ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img

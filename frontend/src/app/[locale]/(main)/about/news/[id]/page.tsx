@@ -49,7 +49,7 @@ export default async function AboutNewsDetailPage({ params }: PageProps) {
           }}
         />
 
-        <header className="overflow-hidden rounded-[5px] border border-slate-200 bg-white shadow-sm">
+        <header className="overflow-hidden rounded-[3px] border border-slate-200 bg-white shadow-sm">
           <div className="grid gap-0 lg:grid-cols-[1.2fr_0.8fr]">
             <div className="p-6 sm:p-8 lg:p-10">
               <div className="mb-4 inline-flex items-center rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 ring-1 ring-inset ring-blue-700/10">
@@ -92,8 +92,8 @@ export default async function AboutNewsDetailPage({ params }: PageProps) {
         </header>
 
         <main className="mt-8 grid gap-8 lg:grid-cols-[1.4fr_0.6fr]">
-          <section className="rounded-[5px] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
-            <div className="mb-8 rounded-2xl bg-blue-50/70 p-5 ring-1 ring-inset ring-blue-100">
+          <section className="rounded-[3px] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+            <div className="mb-8 rounded-[3px] bg-blue-50/70 p-5 ring-1 ring-inset ring-blue-100">
               <h2 className="text-sm font-bold uppercase tracking-wide text-blue-800">
                 Tóm tắt nhanh
               </h2>
@@ -117,7 +117,7 @@ export default async function AboutNewsDetailPage({ params }: PageProps) {
                     ))}
                   </div>
                   {section.bullets && section.bullets.length > 0 && (
-                    <ul className="mt-4 space-y-3 rounded-2xl bg-slate-50 p-5 text-sm text-slate-700">
+                    <ul className="mt-4 space-y-3 rounded-[3px] bg-slate-50 p-5 text-sm text-slate-700">
                       {section.bullets.map((bullet) => (
                         <li key={bullet} className="flex items-start gap-2">
                           <span className="mt-2 h-1.5 w-1.5 rounded-full bg-brand" />
@@ -132,14 +132,14 @@ export default async function AboutNewsDetailPage({ params }: PageProps) {
           </section>
 
           <aside className="space-y-6">
-            <div className="rounded-[5px] border border-slate-200 bg-white p-6 shadow-sm">
+            <div className="rounded-[3px] border border-slate-200 bg-white p-6 shadow-sm">
               <h2 className="text-lg font-bold text-slate-900">Bài viết liên quan</h2>
               <div className="mt-5 space-y-4">
                 {relatedArticles.map((item) => (
                   <Link
                     key={item.id}
                     href={`/about/news/${item.id}`}
-                    className="group block rounded-2xl border border-slate-100 p-4 transition-colors hover:border-blue-200 hover:bg-blue-50/40"
+                    className="group block rounded-[3px] border border-slate-100 p-4 transition-colors hover:border-blue-200 hover:bg-blue-50/40"
                   >
                     <div className="text-xs font-semibold text-blue-700">{item.category}</div>
                     <h3 className="mt-2 text-sm font-bold text-slate-900 group-hover:text-brand">
@@ -154,7 +154,7 @@ export default async function AboutNewsDetailPage({ params }: PageProps) {
               </div>
             </div>
 
-            <div className="rounded-[5px] border border-slate-200 bg-slate-900 p-6 text-white shadow-sm">
+            <div className="rounded-[3px] border border-slate-200 bg-slate-900 p-6 text-white shadow-sm">
               <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-300">
                 Cập nhật liên tục
               </p>
@@ -165,7 +165,7 @@ export default async function AboutNewsDetailPage({ params }: PageProps) {
               </p>
               <Link
                 href="/about/news"
-                className="mt-5 inline-flex items-center gap-2 rounded-[5px] bg-white px-4 py-2 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-100"
+                className="mt-5 inline-flex items-center gap-2 rounded-[3px] bg-white px-4 py-2 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-100"
               >
                 Xem toàn bộ tin tức
                 <ArrowRight className="h-4 w-4" />

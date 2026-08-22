@@ -127,7 +127,7 @@ export default function DeliveryConfirmationClient({
       </nav>
 
       {/* 1. Green Alert Banner */}
-      <div className="bg-[#EAFDF3] border-2 border-[#10B981]/30 p-6 rounded-[5px] flex items-center gap-5 text-left">
+      <div className="bg-[#EAFDF3] border-2 border-[#10B981]/30 p-6 rounded-[3px] flex items-center gap-5 text-left">
         <div className="h-11 w-11 rounded-full bg-[#10B981] text-white flex items-center justify-center shrink-0 shadow-sm">
           <Check className="h-5.5 w-5.5 stroke-[3.5]" />
         </div>
@@ -158,7 +158,7 @@ export default function DeliveryConfirmationClient({
         {/* LEFT COLUMN: Shipment Info and Delivery Rating Form */}
         <div className="lg:col-span-8 space-y-6">
           {/* Shipment Info Card */}
-          <div className="bg-white border border-slate-200/80 p-5 rounded-[5px] shadow-sm space-y-4">
+          <div className="bg-white border border-slate-200/80 p-5 rounded-[3px] shadow-sm space-y-4">
             <h4 className="text-sm font-bold text-slate-900 border-b border-slate-100 pb-3 uppercase tracking-wider">
               {t('shipmentInfoTitle')}
             </h4>
@@ -180,7 +180,7 @@ export default function DeliveryConfirmationClient({
           </div>
 
           {/* Delivery Rating / Feedback Form Card */}
-          <div className="bg-white border border-slate-200/80 p-6 rounded-[5px] shadow-sm space-y-6">
+          <div className="bg-white border border-slate-200/80 p-6 rounded-[3px] shadow-sm space-y-6">
             <div className="space-y-1 border-b border-slate-100 pb-4">
               <h4 className="text-sm font-bold text-slate-900 uppercase tracking-wider">
                 {t('feedbackTitle')}
@@ -189,7 +189,7 @@ export default function DeliveryConfirmationClient({
             </div>
 
             {showFeedbackSuccess ? (
-              <div className="bg-[#E8F5E9] border border-green-100 p-6 rounded-[5px] text-center space-y-2">
+              <div className="bg-[#E8F5E9] border border-green-100 p-6 rounded-[3px] text-center space-y-2">
                 <CheckCircle2 className="h-10 w-10 text-emerald-600 mx-auto" />
                 <p className="text-sm font-bold text-emerald-800">{t('submitFeedbackSuccess')}</p>
               </div>
@@ -231,7 +231,7 @@ export default function DeliveryConfirmationClient({
                       <button
                         type="button"
                         onClick={() => handleThumbClick('time', 'up')}
-                        className={`p-1.5 rounded-[5px] transition-colors ${
+                        className={`p-1.5 rounded-[3px] transition-colors ${
                           criteria.time === 'up'
                             ? 'bg-blue-50 text-blue-600 border border-blue-100'
                             : 'bg-white text-slate-400 border border-slate-200 hover:text-slate-600'
@@ -242,7 +242,7 @@ export default function DeliveryConfirmationClient({
                       <button
                         type="button"
                         onClick={() => handleThumbClick('time', 'down')}
-                        className={`p-1.5 rounded-[5px] transition-colors ${
+                        className={`p-1.5 rounded-[3px] transition-colors ${
                           criteria.time === 'down'
                             ? 'bg-rose-50 text-rose-600 border border-rose-100'
                             : 'bg-white text-slate-400 border border-slate-200 hover:text-slate-600'
@@ -260,7 +260,7 @@ export default function DeliveryConfirmationClient({
                       <button
                         type="button"
                         onClick={() => handleThumbClick('condition', 'up')}
-                        className={`p-1.5 rounded-[5px] transition-colors ${
+                        className={`p-1.5 rounded-[3px] transition-colors ${
                           criteria.condition === 'up'
                             ? 'bg-blue-50 text-blue-600 border border-blue-100'
                             : 'bg-white text-slate-400 border border-slate-200 hover:text-slate-600'
@@ -271,7 +271,7 @@ export default function DeliveryConfirmationClient({
                       <button
                         type="button"
                         onClick={() => handleThumbClick('condition', 'down')}
-                        className={`p-1.5 rounded-[5px] transition-colors ${
+                        className={`p-1.5 rounded-[3px] transition-colors ${
                           criteria.condition === 'down'
                             ? 'bg-rose-50 text-rose-600 border border-rose-100'
                             : 'bg-white text-slate-400 border border-slate-200 hover:text-slate-600'
@@ -289,7 +289,7 @@ export default function DeliveryConfirmationClient({
                       <button
                         type="button"
                         onClick={() => handleThumbClick('attitude', 'up')}
-                        className={`p-1.5 rounded-[5px] transition-colors ${
+                        className={`p-1.5 rounded-[3px] transition-colors ${
                           criteria.attitude === 'up'
                             ? 'bg-blue-50 text-blue-600 border border-blue-100'
                             : 'bg-white text-slate-400 border border-slate-200 hover:text-slate-600'
@@ -300,7 +300,7 @@ export default function DeliveryConfirmationClient({
                       <button
                         type="button"
                         onClick={() => handleThumbClick('attitude', 'down')}
-                        className={`p-1.5 rounded-[5px] transition-colors ${
+                        className={`p-1.5 rounded-[3px] transition-colors ${
                           criteria.attitude === 'down'
                             ? 'bg-rose-50 text-rose-600 border border-rose-100'
                             : 'bg-white text-slate-400 border border-slate-200 hover:text-slate-600'
@@ -323,7 +323,7 @@ export default function DeliveryConfirmationClient({
                     placeholder={t('placeholderComments')}
                     value={comment}
                     onChange={(e) => setComment(e.target.value)}
-                    className="w-full rounded-[5px] border border-slate-200 bg-white p-3 outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand font-medium leading-relaxed"
+                    className="w-full rounded-[3px] border border-slate-200 bg-white p-3 outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand font-medium leading-relaxed"
                   />
                 </div>
 
@@ -331,13 +331,13 @@ export default function DeliveryConfirmationClient({
                 <div className="flex justify-end gap-3 pt-2">
                   <Link
                     href="/order-tracking"
-                    className="inline-flex items-center justify-center rounded-[5px] border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 py-2.5 px-6 text-xs font-bold transition-all shadow-sm"
+                    className="inline-flex items-center justify-center rounded-[3px] border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 py-2.5 px-6 text-xs font-bold transition-all shadow-sm"
                   >
                     {t('btnSkip')}
                   </Link>
                   <button
                     type="submit"
-                    className="inline-flex items-center justify-center rounded-[5px] bg-brand text-white hover:bg-brand/95 py-2.5 px-6 text-xs font-bold transition-all shadow"
+                    className="inline-flex items-center justify-center rounded-[3px] bg-brand text-white hover:bg-brand/95 py-2.5 px-6 text-xs font-bold transition-all shadow"
                   >
                     {t('btnSubmit')}
                   </button>
@@ -349,7 +349,7 @@ export default function DeliveryConfirmationClient({
 
         {/* RIGHT COLUMN: Dispute incident report form */}
         <div className="lg:col-span-4 space-y-6">
-          <div className="bg-white border border-slate-200/80 p-5 rounded-[5px] shadow-sm space-y-5 text-left">
+          <div className="bg-white border border-slate-200/80 p-5 rounded-[3px] shadow-sm space-y-5 text-left">
             <div className="space-y-1 border-b border-slate-100 pb-3">
               <h4 className="text-sm font-bold text-slate-900 uppercase tracking-wider">
                 {t('incidentTitle')}
@@ -360,7 +360,7 @@ export default function DeliveryConfirmationClient({
             </div>
 
             {showIncidentSuccess ? (
-              <div className="bg-[#E8F5E9] border border-green-100 p-4 rounded-[5px] text-center space-y-1 text-xs">
+              <div className="bg-[#E8F5E9] border border-green-100 p-4 rounded-[3px] text-center space-y-1 text-xs">
                 <CheckCircle2 className="h-8 w-8 text-emerald-600 mx-auto" />
                 <p className="font-bold text-emerald-800">{t('submitIncidentSuccess')}</p>
               </div>
@@ -418,7 +418,7 @@ export default function DeliveryConfirmationClient({
                   <span className="font-bold text-slate-500">{t('evidenceLabel')}</span>
                   <div
                     onClick={triggerSimulatedUpload}
-                    className="border-2 border-dashed border-slate-200 hover:border-brand/40 bg-slate-50/50 hover:bg-slate-50 p-5 rounded-[5px] text-center cursor-pointer transition-all flex flex-col items-center justify-center space-y-2"
+                    className="border-2 border-dashed border-slate-200 hover:border-brand/40 bg-slate-50/50 hover:bg-slate-50 p-5 rounded-[3px] text-center cursor-pointer transition-all flex flex-col items-center justify-center space-y-2"
                   >
                     {uploadedImage ? (
                       <div className="space-y-1">
@@ -441,13 +441,13 @@ export default function DeliveryConfirmationClient({
                 <div className="flex justify-end gap-3 pt-2.5 border-t border-slate-100">
                   <Link
                     href="/order-tracking"
-                    className="inline-flex items-center justify-center rounded-[5px] border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 py-2 px-4 text-xs font-bold transition-all shadow-sm"
+                    className="inline-flex items-center justify-center rounded-[3px] border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 py-2 px-4 text-xs font-bold transition-all shadow-sm"
                   >
                     {t('btnSkip')}
                   </Link>
                   <button
                     type="submit"
-                    className="inline-flex items-center justify-center rounded-[5px] bg-brand text-white hover:bg-brand/95 py-2 px-4 text-xs font-bold transition-all shadow"
+                    className="inline-flex items-center justify-center rounded-[3px] bg-brand text-white hover:bg-brand/95 py-2 px-4 text-xs font-bold transition-all shadow"
                   >
                     {t('btnSubmit')}
                   </button>

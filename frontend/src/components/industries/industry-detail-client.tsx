@@ -324,7 +324,7 @@ export default function IndustryDetailClient({
             <Link
               href={industryData.catalogue.url}
               onClick={handleCatalogueClick}
-              className="inline-flex h-11 items-center justify-center gap-2 border border-white bg-transparent hover:bg-white hover:text-slate-900 text-white font-extrabold text-sm px-6 py-2.5 transition-all duration-300 rounded-none shadow-sm"
+              className="inline-flex h-11 items-center justify-center gap-2 border border-white bg-transparent hover:bg-white hover:text-slate-900 text-white font-extrabold text-sm px-6 py-2.5 transition-all duration-300 rounded-[3px] shadow-sm"
             >
               <Download className="h-4 w-4" />
               {isVi ? 'Tải hồ sơ năng lực' : isJa ? '機能プロファイルをダウンロード' : 'Download Capability Profile'}
@@ -436,7 +436,7 @@ export default function IndustryDetailClient({
             <div className="pt-6">
               <Link
                 href="/contact"
-                className="w-full bg-brand hover:bg-brand/90 text-white font-extrabold text-sm h-11 inline-flex items-center justify-center transition-colors shadow-md rounded-none"
+                className="w-full bg-brand hover:bg-brand/90 text-white font-extrabold text-sm h-11 inline-flex items-center justify-center transition-colors shadow-md rounded-[3px]"
               >
                 {isVi ? 'Liên hệ ngay' : isJa ? '今すぐ連絡' : 'Contact Now'}
               </Link>
@@ -612,7 +612,7 @@ export default function IndustryDetailClient({
               return (
                 <div
                   key={idx}
-                  className="bg-white border border-slate-200/80 rounded-[5px] p-6 text-center space-y-4 flex flex-col items-center hover:shadow-lg transition-all duration-300"
+                  className="bg-white border border-slate-200/80 rounded-[3px] p-6 text-center space-y-4 flex flex-col items-center hover:shadow-lg transition-all duration-300"
                 >
                   <div className="flex h-14 w-14 items-center justify-center rounded-full bg-blue-100/70 text-blue-600 border border-blue-200/50">
                     <IconComp className="h-6 w-6 stroke-[2.2]" />
@@ -719,7 +719,7 @@ export default function IndustryDetailClient({
 
       {/* Toast Notification */}
       {showToast && (
-        <div className="fixed bottom-5 right-5 z-50 flex items-center gap-2.5 rounded-[5px] border border-amber-200 bg-amber-50 px-4 py-3 text-amber-800 shadow-lg animate-in fade-in slide-in-from-bottom-5 duration-300 dark:bg-amber-950/20 dark:text-amber-400 dark:border-amber-500/20">
+        <div className="fixed bottom-5 right-5 z-50 flex items-center gap-2.5 rounded-[3px] border border-amber-200 bg-amber-50 px-4 py-3 text-amber-800 shadow-lg animate-in fade-in slide-in-from-bottom-5 duration-300 dark:bg-amber-950/20 dark:text-amber-400 dark:border-amber-500/20">
           <Clock className="h-5 w-5 text-amber-500 shrink-0 animate-pulse" />
           <span className="text-sm font-semibold">
             {isVi ? 'Tài liệu đang chờ cập nhật' : isJa ? 'カタログドキュメントは準備中です' : 'The document is pending update'}

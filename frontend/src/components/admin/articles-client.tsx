@@ -224,7 +224,7 @@ export function ArticlesClient({
         <div className="flex items-center gap-3 shrink-0">
           <Link
             href="/"
-            className="inline-flex h-11 items-center justify-center gap-2 rounded-[5px] border border-slate-200 bg-white px-4 text-xs sm:text-sm font-bold text-slate-700 shadow-sm hover:bg-slate-50 hover:border-slate-300 transition-colors"
+            className="inline-flex h-11 items-center justify-center gap-2 rounded-[3px] border border-slate-200 bg-white px-4 text-xs sm:text-sm font-bold text-slate-700 shadow-sm hover:bg-slate-50 hover:border-slate-300 transition-colors"
           >
             <Home className="h-4 w-4 text-blue-600" />
             Về Trang chủ
@@ -245,7 +245,7 @@ export function ArticlesClient({
               setModalOpen(true);
               setFormError('');
             }}
-            className="inline-flex h-11 items-center justify-center gap-2 rounded-[5px] bg-blue-600 px-5 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors"
+            className="inline-flex h-11 items-center justify-center gap-2 rounded-[3px] bg-blue-600 px-5 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors"
           >
             <Plus className="h-4 w-4" />
             Viết bài mới
@@ -255,13 +255,13 @@ export function ArticlesClient({
 
       {/* Error Alert Banner */}
       {error && (
-        <div className="mb-6 p-4 bg-rose-50 border border-rose-200 rounded-[5px] text-rose-800 text-xs sm:text-sm font-semibold flex items-start gap-2.5 shadow-sm">
+        <div className="mb-6 p-4 bg-rose-50 border border-rose-200 rounded-[3px] text-rose-800 text-xs sm:text-sm font-semibold flex items-start gap-2.5 shadow-sm">
           <AlertTriangle className="h-5 w-5 text-rose-500 shrink-0 mt-0.5" />
           <div className="flex-1">
             <span className="font-extrabold text-rose-900 block mb-1">
               Đã xảy ra lỗi khi tải dữ liệu bài viết từ API
             </span>
-            <pre className="font-mono text-[11px] bg-white/60 p-2.5 rounded-[5px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all">
+            <pre className="font-mono text-[11px] bg-white/60 p-2.5 rounded-[3px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all">
               {error}
             </pre>
           </div>
@@ -269,7 +269,7 @@ export function ArticlesClient({
       )}
 
       {/* Search Filter */}
-      <div className="bg-white border border-slate-100 rounded-[5px] p-5 shadow-sm mb-8">
+      <div className="bg-white border border-slate-100 rounded-[3px] p-5 shadow-sm mb-8">
         <div className="relative">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
           <input
@@ -277,13 +277,13 @@ export function ArticlesClient({
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Tìm kiếm bài viết theo tiêu đề, slug, tác giả..."
-            className="w-full pl-10 pr-4 py-2.5 rounded-[5px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+            className="w-full pl-10 pr-4 py-2.5 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
           />
         </div>
       </div>
 
       {/* Articles List */}
-      <div className="bg-white border border-slate-100 rounded-[5px] shadow-sm overflow-hidden">
+      <div className="bg-white border border-slate-100 rounded-[3px] shadow-sm overflow-hidden">
         {filteredArticles.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 text-center">
             <FileText className="h-12 w-12 text-slate-300 mb-3" />
@@ -332,10 +332,10 @@ export function ArticlesClient({
                               <img
                                 src={coverUrl}
                                 alt={title}
-                                className="h-10 w-16 object-cover rounded-[5px] border border-slate-100 bg-slate-50 shrink-0"
+                                className="h-10 w-16 object-cover rounded-[3px] border border-slate-100 bg-slate-50 shrink-0"
                               />
                             ) : (
-                              <div className="h-10 w-16 rounded-[5px] bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 shrink-0">
+                              <div className="h-10 w-16 rounded-[3px] bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 shrink-0">
                                 <ImageIcon className="h-4 w-4" />
                               </div>
                             )}
@@ -362,7 +362,7 @@ export function ArticlesClient({
                         <td className="px-6 py-4">
                           <span
                             className={cn(
-                              'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[5px] text-[10px] font-bold border shadow-sm select-none',
+                              'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[3px] text-[10px] font-bold border shadow-sm select-none',
                               art.status === 'published'
                                 ? 'bg-emerald-50 text-emerald-700 border-emerald-100'
                                 : 'bg-amber-50 text-amber-700 border-amber-100'
@@ -370,7 +370,7 @@ export function ArticlesClient({
                           >
                             <span
                               className={cn(
-                                'h-1.5 w-1.5 rounded-[5px] shrink-0',
+                                'h-1.5 w-1.5 rounded-[3px] shrink-0',
                                 art.status === 'published' ? 'bg-emerald-500 animate-pulse' : 'bg-amber-500'
                               )}
                             />
@@ -413,14 +413,14 @@ export function ArticlesClient({
                                 setModalOpen(true);
                                 setFormError('');
                               }}
-                              className="p-1.5 rounded-[5px] hover:bg-slate-100 text-slate-400 hover:text-blue-600 transition-colors"
+                              className="p-1.5 rounded-[3px] hover:bg-slate-100 text-slate-400 hover:text-blue-600 transition-colors"
                               title="Sửa bài viết"
                             >
                               <Edit className="h-4 w-4" />
                             </button>
                             <button
                               onClick={() => handleArchiveArticle(art.id)}
-                              className="p-1.5 rounded-[5px] hover:bg-slate-100 text-slate-400 hover:text-rose-600 transition-colors"
+                              className="p-1.5 rounded-[3px] hover:bg-slate-100 text-slate-400 hover:text-rose-600 transition-colors"
                               title="Lưu trữ (Xóa)"
                             >
                               <Trash className="h-4 w-4" />
@@ -453,7 +453,7 @@ export function ArticlesClient({
                   : 'Chưa đặt';
 
                 return (
-                  <div key={art.id} className="border border-slate-100 rounded-[5px] overflow-hidden shadow-sm bg-white hover:border-slate-200 transition-colors flex flex-col">
+                  <div key={art.id} className="border border-slate-100 rounded-[3px] overflow-hidden shadow-sm bg-white hover:border-slate-200 transition-colors flex flex-col">
                     {coverUrl ? (
                       <img src={coverUrl} alt={title} className="w-full h-36 object-cover bg-slate-50 border-b border-slate-100" />
                     ) : (
@@ -464,12 +464,12 @@ export function ArticlesClient({
                     <div className="p-4 flex-1 flex flex-col gap-2">
                       <div className="flex items-center justify-between gap-2">
                         <span className={cn(
-                          'inline-flex items-center gap-1 px-2 py-0.5 rounded-[5px] text-[10px] font-bold border shadow-sm select-none',
+                          'inline-flex items-center gap-1 px-2 py-0.5 rounded-[3px] text-[10px] font-bold border shadow-sm select-none',
                           art.status === 'published'
                             ? 'bg-emerald-50 text-emerald-700 border-emerald-100'
                             : 'bg-amber-50 text-amber-700 border-amber-100'
                         )}>
-                          <span className={cn('h-1 w-1 rounded-[5px]', art.status === 'published' ? 'bg-emerald-500' : 'bg-amber-500')} />
+                          <span className={cn('h-1 w-1 rounded-[3px]', art.status === 'published' ? 'bg-emerald-500' : 'bg-amber-500')} />
                           {art.status === 'published' ? 'Công khai' : 'Nháp'}
                         </span>
                         <span className="text-[10px] text-slate-400 font-mono select-all">/{art.slug}</span>
@@ -512,14 +512,14 @@ export function ArticlesClient({
                             setModalOpen(true);
                             setFormError('');
                           }}
-                          className="flex items-center gap-1.5 px-3 py-1.5 rounded-[5px] hover:bg-slate-50 text-slate-655 text-xs font-bold transition-colors border border-slate-200"
+                          className="flex items-center gap-1.5 px-3 py-1.5 rounded-[3px] hover:bg-slate-50 text-slate-655 text-xs font-bold transition-colors border border-slate-200"
                         >
                           <Edit className="h-3.5 w-3.5" />
                           Sửa
                         </button>
                         <button
                           onClick={() => handleArchiveArticle(art.id)}
-                          className="flex items-center gap-1.5 px-3 py-1.5 rounded-[5px] hover:bg-rose-50 text-rose-600 text-xs font-bold transition-colors border border-rose-100/50"
+                          className="flex items-center gap-1.5 px-3 py-1.5 rounded-[3px] hover:bg-rose-50 text-rose-600 text-xs font-bold transition-colors border border-rose-100/50"
                         >
                           <Trash className="h-3.5 w-3.5" />
                           Lưu trữ
@@ -537,7 +537,7 @@ export function ArticlesClient({
       {/* Modal: Write or Edit Article */}
       {modalOpen && activeArticle && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4 backdrop-blur-sm overflow-y-auto animate-fade-in">
-          <div className="my-8 w-full max-w-4xl bg-white rounded-[5px] shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-250 border border-slate-100">
+          <div className="my-8 w-full max-w-4xl bg-white rounded-[3px] shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-250 border border-slate-100">
             {/* Modal Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
               <div>
@@ -555,7 +555,7 @@ export function ArticlesClient({
                   setActiveArticle(null);
                   setFormError('');
                 }}
-                className="p-1.5 rounded-[5px] hover:bg-slate-150 text-slate-400 hover:text-slate-650 transition-colors"
+                className="p-1.5 rounded-[3px] hover:bg-slate-150 text-slate-400 hover:text-slate-650 transition-colors"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -594,7 +594,7 @@ export function ArticlesClient({
             <form onSubmit={handleSubmit} className="flex flex-col max-h-[70vh] overflow-hidden">
               <div className="p-6 overflow-y-auto flex-1 bg-white">
                 {formError && (
-                  <div className="p-3 bg-rose-50 border border-rose-100 rounded-[5px] text-xs font-bold text-rose-600 flex items-center gap-2 animate-in fade-in duration-200 mb-5">
+                  <div className="p-3 bg-rose-50 border border-rose-100 rounded-[3px] text-xs font-bold text-rose-600 flex items-center gap-2 animate-in fade-in duration-200 mb-5">
                     <AlertTriangle className="h-4 w-4 shrink-0" />
                     <span>{formError}</span>
                   </div>
@@ -627,7 +627,7 @@ export function ArticlesClient({
                           setActiveArticle({ ...activeArticle, title, slug });
                         }}
                         placeholder="Nhập tiêu đề bài viết..."
-                        className="w-full px-4 py-2.5 rounded-[5px] border border-slate-200 text-sm font-extrabold text-primary focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand shadow-sm"
+                        className="w-full px-4 py-2.5 rounded-[3px] border border-slate-200 text-sm font-extrabold text-primary focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand shadow-sm"
                       />
                     </div>
 
@@ -644,7 +644,7 @@ export function ArticlesClient({
                           value={activeArticle.slug || ''}
                           readOnly
                           placeholder="Tự động tạo từ tiêu đề..."
-                          className="w-full px-4 py-2 rounded-[5px] border border-slate-200 text-xs font-mono text-slate-450 focus:outline-none bg-slate-50 cursor-not-allowed select-none"
+                          className="w-full px-4 py-2 rounded-[3px] border border-slate-200 text-xs font-mono text-slate-450 focus:outline-none bg-slate-50 cursor-not-allowed select-none"
                         />
                       </div>
 
@@ -661,7 +661,7 @@ export function ArticlesClient({
                             setActiveArticle({ ...activeArticle, author: e.target.value })
                           }
                           placeholder="ULink Team"
-                          className="w-full px-4 py-2 rounded-[5px] border border-slate-200 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand"
+                          className="w-full px-4 py-2 rounded-[3px] border border-slate-200 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand"
                         />
                       </div>
                     </div>
@@ -680,7 +680,7 @@ export function ArticlesClient({
                               status: e.target.value as 'draft' | 'published'
                             })
                           }
-                          className="w-full px-4 py-2 rounded-[5px] border border-slate-200 text-xs font-bold text-slate-700 focus:outline-none bg-white shadow-sm"
+                          className="w-full px-4 py-2 rounded-[3px] border border-slate-200 text-xs font-bold text-slate-700 focus:outline-none bg-white shadow-sm"
                         >
                           <option value="draft">Bản nháp (Draft)</option>
                           <option value="published">Công khai (Published)</option>
@@ -699,7 +699,7 @@ export function ArticlesClient({
                           onChange={(e) =>
                             setActiveArticle({ ...activeArticle, published_at: e.target.value })
                           }
-                          className="w-full px-4 py-2 rounded-[5px] border border-slate-200 text-xs font-semibold text-slate-650 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand bg-white"
+                          className="w-full px-4 py-2 rounded-[3px] border border-slate-200 text-xs font-semibold text-slate-650 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand bg-white"
                         />
                       </div>
                     </div>
@@ -711,11 +711,11 @@ export function ArticlesClient({
                       </label>
 
                       {/* Responsive formatting toolbar */}
-                      <div className="flex flex-wrap items-center gap-1 p-1.5 bg-slate-50 border border-slate-200 border-b-0 rounded-t-[5px] overflow-x-auto scrollbar-none select-none max-w-full">
+                      <div className="flex flex-wrap items-center gap-1 p-1.5 bg-slate-50 border border-slate-200 border-b-0 rounded-[3px] overflow-x-auto scrollbar-none select-none max-w-full">
                         <button
                           type="button"
                           onClick={() => insertTag('<h2>', '</h2>')}
-                          className="px-2 py-1 text-[11px] font-extrabold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[5px] transition-all"
+                          className="px-2 py-1 text-[11px] font-extrabold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
                           title="Tiêu đề lớn H2"
                         >
                           H2
@@ -723,7 +723,7 @@ export function ArticlesClient({
                         <button
                           type="button"
                           onClick={() => insertTag('<h3>', '</h3>')}
-                          className="px-2 py-1 text-[11px] font-extrabold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[5px] transition-all"
+                          className="px-2 py-1 text-[11px] font-extrabold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
                           title="Tiêu đề phụ H3"
                         >
                           H3
@@ -732,7 +732,7 @@ export function ArticlesClient({
                         <button
                           type="button"
                           onClick={() => insertTag('<strong>', '</strong>')}
-                          className="px-2 py-1 text-[11px] font-extrabold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[5px] transition-all"
+                          className="px-2 py-1 text-[11px] font-extrabold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
                           title="Chữ đậm"
                         >
                           B
@@ -740,7 +740,7 @@ export function ArticlesClient({
                         <button
                           type="button"
                           onClick={() => insertTag('<em>', '</em>')}
-                          className="px-2 py-1 text-[11px] italic font-extrabold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[5px] transition-all"
+                          className="px-2 py-1 text-[11px] italic font-extrabold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
                           title="Chữ nghiêng"
                         >
                           I
@@ -748,7 +748,7 @@ export function ArticlesClient({
                         <button
                           type="button"
                           onClick={() => insertTag('<u>', '</u>')}
-                          className="px-2 py-1 text-[11px] underline font-extrabold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[5px] transition-all"
+                          className="px-2 py-1 text-[11px] underline font-extrabold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
                           title="Gạch chân"
                         >
                           U
@@ -757,7 +757,7 @@ export function ArticlesClient({
                         <button
                           type="button"
                           onClick={() => insertTag('<p>', '</p>')}
-                          className="px-2 py-1 text-[11px] font-bold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[5px] transition-all"
+                          className="px-2 py-1 text-[11px] font-bold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
                           title="Thẻ đoạn văn P"
                         >
                           P
@@ -765,7 +765,7 @@ export function ArticlesClient({
                         <button
                           type="button"
                           onClick={() => insertTag('<a href="" target="_blank">', '</a>')}
-                          className="px-2 py-1 text-[11px] font-bold text-blue-600 hover:bg-blue-50 active:bg-blue-100 rounded-[5px] transition-all"
+                          className="px-2 py-1 text-[11px] font-bold text-blue-600 hover:bg-blue-50 active:bg-blue-100 rounded-[3px] transition-all"
                           title="Chèn liên kết"
                         >
                           Link
@@ -773,7 +773,7 @@ export function ArticlesClient({
                         <button
                           type="button"
                           onClick={() => insertTag('<ul>\n  <li>', '</li>\n</ul>')}
-                          className="px-2 py-1 text-[11px] font-bold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[5px] transition-all"
+                          className="px-2 py-1 text-[11px] font-bold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
                           title="Danh sách không thứ tự"
                         >
                           UL
@@ -781,7 +781,7 @@ export function ArticlesClient({
                         <button
                           type="button"
                           onClick={() => insertTag('<ol>\n  <li>', '</li>\n</ol>')}
-                          className="px-2 py-1 text-[11px] font-bold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[5px] transition-all"
+                          className="px-2 py-1 text-[11px] font-bold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
                           title="Danh sách có thứ tự"
                         >
                           OL
@@ -795,7 +795,7 @@ export function ArticlesClient({
                           setActiveArticle({ ...activeArticle, body: e.target.value })
                         }
                         placeholder="Soạn thảo nội dung bài viết. Bạn có thể sử dụng các thẻ HTML như <p>, <h2>, <strong> hoặc các nút trợ giúp định dạng nhanh trên thanh công cụ ở trên..."
-                        className="w-full px-4 py-3 rounded-b-[5px] border border-slate-200 text-xs sm:text-sm font-medium font-mono focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand bg-slate-50/10 leading-relaxed min-h-[220px]"
+                        className="w-full px-4 py-3 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-medium font-mono focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand bg-slate-50/10 leading-relaxed min-h-[220px]"
                       />
                     </div>
                   </div>
@@ -810,9 +810,9 @@ export function ArticlesClient({
                         Ảnh bìa bài viết (Cover Image)
                       </label>
 
-                      <div className="border-2 border-dashed border-slate-200 rounded-[5px] p-6 flex flex-col items-center justify-center text-center bg-slate-50/20 hover:bg-slate-50/50 transition-colors">
+                      <div className="border-2 border-dashed border-slate-200 rounded-[3px] p-6 flex flex-col items-center justify-center text-center bg-slate-50/20 hover:bg-slate-50/50 transition-colors">
                         {activeArticle.cover ? (
-                          <div className="relative w-full aspect-[16/10] rounded-[5px] overflow-hidden border border-slate-100 shadow-md bg-slate-100 mb-4 animate-fade-in">
+                          <div className="relative w-full aspect-[16/10] rounded-[3px] overflow-hidden border border-slate-100 shadow-md bg-slate-100 mb-4 animate-fade-in">
                             <img
                               src={`${directusUrl}/assets/${activeArticle.cover}`}
                               alt="Cover preview"
@@ -821,7 +821,7 @@ export function ArticlesClient({
                             <button
                               type="button"
                               onClick={() => setActiveArticle({ ...activeArticle, cover: null })}
-                              className="absolute top-3 right-3 p-1.5 rounded-[5px] bg-black/70 hover:bg-black/90 text-white transition-colors shadow"
+                              className="absolute top-3 right-3 p-1.5 rounded-[3px] bg-black/70 hover:bg-black/90 text-white transition-colors shadow"
                               title="Xóa ảnh"
                             >
                               <X className="h-4 w-4" />
@@ -829,7 +829,7 @@ export function ArticlesClient({
                           </div>
                         ) : (
                           <div className="py-8">
-                            <div className="h-12 w-12 rounded-[5px] bg-slate-100 flex items-center justify-center mx-auto mb-3">
+                            <div className="h-12 w-12 rounded-[3px] bg-slate-100 flex items-center justify-center mx-auto mb-3">
                               <ImageIcon className="h-6 w-6 text-slate-400" />
                             </div>
                             <span className="text-xs font-bold text-primary">
@@ -853,7 +853,7 @@ export function ArticlesClient({
                           type="button"
                           disabled={isUploading}
                           onClick={() => fileInputRef.current?.click()}
-                          className="inline-flex h-9 items-center justify-center gap-1.5 px-4 rounded-[5px] border border-slate-200 text-xs font-bold text-primary hover:bg-slate-50 transition-all shadow-sm bg-white hover:border-slate-350 active:scale-98 disabled:opacity-50 disabled:cursor-not-allowed"
+                          className="inline-flex h-9 items-center justify-center gap-1.5 px-4 rounded-[3px] border border-slate-200 text-xs font-bold text-primary hover:bg-slate-50 transition-all shadow-sm bg-white hover:border-slate-350 active:scale-98 disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                           <Upload className="h-3.5 w-3.5 text-slate-400" />
                           {isUploading
@@ -886,7 +886,7 @@ export function ArticlesClient({
                             setActiveArticle({ ...activeArticle, meta_title: e.target.value })
                           }
                           placeholder="Nhập Meta Title (Khoảng 50-60 ký tự)..."
-                          className="w-full px-4 py-2.5 rounded-[5px] border border-slate-200 text-xs font-semibold focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand"
+                          className="w-full px-4 py-2.5 rounded-[3px] border border-slate-200 text-xs font-semibold focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand"
                         />
                       </div>
 
@@ -902,7 +902,7 @@ export function ArticlesClient({
                             setActiveArticle({ ...activeArticle, meta_description: e.target.value })
                           }
                           placeholder="Mô tả bài viết một cách ngắn gọn, súc tích (Khoảng 150-160 ký tự)..."
-                          className="w-full px-4 py-2.5 rounded-[5px] border border-slate-200 text-xs font-semibold focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand leading-relaxed"
+                          className="w-full px-4 py-2.5 rounded-[3px] border border-slate-200 text-xs font-semibold focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand leading-relaxed"
                         />
                       </div>
                     </div>
@@ -919,14 +919,14 @@ export function ArticlesClient({
                     setFormError('');
                     setActiveArticle(null);
                   }}
-                  className="px-5 py-2.5 rounded-[5px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-550 hover:bg-slate-100 transition-colors"
+                  className="px-5 py-2.5 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-550 hover:bg-slate-100 transition-colors"
                 >
                   Hủy bỏ
                 </button>
                 <button
                   type="submit"
                   disabled={isPending || isUploading}
-                  className="inline-flex items-center justify-center px-5 py-2.5 rounded-[5px] bg-blue-600 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors disabled:opacity-50"
+                  className="inline-flex items-center justify-center px-5 py-2.5 rounded-[3px] bg-blue-600 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors disabled:opacity-50"
                 >
                   {isPending ? 'Đang lưu...' : 'Lưu bài viết'}
                 </button>

@@ -81,7 +81,7 @@ export function PaginationLink({
   return (
     <a
       href={href}
-      className={`inline-flex items-center justify-center min-w-[32px] h-8 px-2.5 rounded-lg text-sm font-medium transition-colors ${
+      className={`inline-flex items-center justify-center min-w-[32px] h-8 px-2.5 rounded-[3px] text-sm font-medium transition-colors ${
         active
           ? 'bg-blue-600 text-white'
           : 'border border-gray-200 text-gray-700 hover:bg-blue-50 hover:text-blue-600'
@@ -118,7 +118,7 @@ export function PerPageLink({
   return (
     <a
       href={href}
-      className={`px-2 py-0.5 rounded-lg text-sm ${
+      className={`px-2 py-0.5 rounded-[3px] text-sm ${
         current === value ? 'font-bold text-blue-600' : 'text-gray-500 hover:text-blue-600'
       }`}
     >

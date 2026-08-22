@@ -234,7 +234,7 @@ export function CommercialImportWorkbench() {
   }, [state.result]);
 
   return (
-    <section className="relative overflow-hidden rounded-[5px] border border-border/70 bg-card/90 shadow-[0_28px_80px_-48px_rgba(15,23,42,0.45)] backdrop-blur">
+    <section className="relative overflow-hidden rounded-[3px] border border-border/70 bg-card/90 shadow-[0_28px_80px_-48px_rgba(15,23,42,0.45)] backdrop-blur">
       {progress > 0 && progress < 100 && (
         <div className="absolute top-0 inset-x-0 h-1 bg-slate-100 z-50 overflow-hidden">
           <div
@@ -245,7 +245,7 @@ export function CommercialImportWorkbench() {
       )}
       <div className="grid gap-0 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="border-b border-border/70 bg-gradient-to-br from-brand/10 via-background to-background px-6 py-6 sm:px-8 sm:py-8 lg:border-b-0 lg:border-r">
-          <div className="inline-flex items-center gap-2 rounded-[5px] border border-brand/20 bg-brand/10 px-3 py-1 text-xs font-medium text-brand">
+          <div className="inline-flex items-center gap-2 rounded-[3px] border border-brand/20 bg-brand/10 px-3 py-1 text-xs font-medium text-brand">
             <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
             Sales Ops only
           </div>
@@ -268,7 +268,7 @@ export function CommercialImportWorkbench() {
                   type="button"
                   onClick={() => setCollection(item)}
                   className={cn(
-                    'rounded-[5px] border px-4 py-4 text-left transition-colors',
+                    'rounded-[3px] border px-4 py-4 text-left transition-colors',
                     active
                       ? 'border-brand/40 bg-brand/10 shadow-sm'
                       : 'border-border/70 bg-background/60 hover:border-brand/30 hover:bg-background'
@@ -290,7 +290,7 @@ export function CommercialImportWorkbench() {
             })}
           </div>
 
-          <div className="mt-6 rounded-[5px] border border-border/70 bg-background/80 p-4">
+          <div className="mt-6 rounded-[3px] border border-border/70 bg-background/80 p-4">
             <div className="flex items-center gap-2 text-sm font-medium text-foreground">
               <FileText className="h-4 w-4 text-brand" aria-hidden="true" />
               Required keys
@@ -300,7 +300,7 @@ export function CommercialImportWorkbench() {
               {meta.requiredColumns.map((column) => (
                 <span
                   key={column}
-                  className="rounded-[5px] border border-border bg-card px-3 py-1 text-xs text-muted-foreground"
+                  className="rounded-[3px] border border-border bg-card px-3 py-1 text-xs text-muted-foreground"
                 >
                   {column}
                 </span>
@@ -316,7 +316,7 @@ export function CommercialImportWorkbench() {
             ].map((item) => (
               <div
                 key={item.label}
-                className="rounded-[5px] border border-border/70 bg-background/75 px-4 py-4"
+                className="rounded-[3px] border border-border/70 bg-background/75 px-4 py-4"
               >
                 <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">
                   {item.label}
@@ -344,7 +344,7 @@ export function CommercialImportWorkbench() {
                 <label
                   htmlFor="commercial-import-file"
                   className={cn(
-                    'flex cursor-pointer flex-col items-center justify-center rounded-[5px] border-2 border-dashed px-6 py-10 text-center transition-all duration-200 select-none',
+                    'flex cursor-pointer flex-col items-center justify-center rounded-[3px] border-2 border-dashed px-6 py-10 text-center transition-all duration-200 select-none',
                     isDragging
                       ? 'border-blue-500 bg-blue-50/40 shadow-inner scale-[0.99] border-solid'
                       : 'border-slate-200 bg-slate-50/30 hover:border-blue-400 hover:bg-blue-50/10'
@@ -352,7 +352,7 @@ export function CommercialImportWorkbench() {
                 >
                   <div
                     className={cn(
-                      'p-3 rounded-[5px] mb-3 transition-colors',
+                      'p-3 rounded-[3px] mb-3 transition-colors',
                       isDragging ? 'bg-blue-100 text-blue-600 animate-bounce' : 'bg-slate-100 text-slate-400'
                     )}
                   >
@@ -406,17 +406,17 @@ export function CommercialImportWorkbench() {
                 onChange={(event) => setCsvText(event.target.value)}
                 spellCheck={false}
                 rows={12}
-                className="w-full rounded-[5px] border border-border/80 bg-background/80 px-4 py-3 font-mono text-xs leading-6 text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-brand focus:ring-1 focus:ring-brand"
+                className="w-full rounded-[3px] border border-border/80 bg-background/80 px-4 py-3 font-mono text-xs leading-6 text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-brand focus:ring-1 focus:ring-brand"
                 placeholder={meta.sampleCsv}
               />
             </div>
 
-            <label className="flex items-start gap-3 rounded-[5px] border border-border/70 bg-background/70 px-4 py-4">
+            <label className="flex items-start gap-3 rounded-[3px] border border-border/70 bg-background/70 px-4 py-4">
               <input
                 type="checkbox"
                 checked={allowPartial}
                 onChange={(event) => setAllowPartial(event.target.checked)}
-                className="mt-1 h-4 w-4 rounded-[5px] border-border text-brand focus:ring-brand"
+                className="mt-1 h-4 w-4 rounded-[3px] border-border text-brand focus:ring-brand"
               />
               <span>
                 <span className="block text-sm font-medium text-foreground">
@@ -429,14 +429,14 @@ export function CommercialImportWorkbench() {
             </label>
 
             {state.error && (
-              <div className="flex items-start gap-3 rounded-[5px] border border-rose-500/20 bg-rose-500/10 px-4 py-4 text-sm text-rose-700 dark:text-rose-300">
+              <div className="flex items-start gap-3 rounded-[3px] border border-rose-500/20 bg-rose-500/10 px-4 py-4 text-sm text-rose-700 dark:text-rose-300">
                 <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
                 <p>{state.error}</p>
               </div>
             )}
 
             {state.result?.aborted && (
-              <div className="rounded-[5px] border border-amber-500/20 bg-amber-500/10 px-4 py-4 text-sm text-amber-800 dark:text-amber-200">
+              <div className="rounded-[3px] border border-amber-500/20 bg-amber-500/10 px-4 py-4 text-sm text-amber-800 dark:text-amber-200">
                 The commit was aborted because validation failed and partial success was disabled.
               </div>
             )}
@@ -445,7 +445,7 @@ export function CommercialImportWorkbench() {
               <button
                 type="submit"
                 disabled={state.loading !== null || !canSubmit}
-                className="inline-flex items-center gap-2 rounded-[5px] border border-brand bg-brand px-5 py-3 text-sm font-medium text-brand-foreground transition-colors hover:bg-brand/90 disabled:cursor-not-allowed disabled:opacity-60"
+                className="inline-flex items-center gap-2 rounded-[3px] border border-brand bg-brand px-5 py-3 text-sm font-medium text-brand-foreground transition-colors hover:bg-brand/90 disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {state.loading === 'preview' ? (
                   <>
@@ -464,7 +464,7 @@ export function CommercialImportWorkbench() {
                 type="button"
                 onClick={() => void runImport('commit')}
                 disabled={state.loading !== null || !canSubmit}
-                className="inline-flex items-center gap-2 rounded-[5px] border border-border bg-background px-5 py-3 text-sm font-medium text-foreground transition-colors hover:border-brand hover:text-brand disabled:cursor-not-allowed disabled:opacity-60"
+                className="inline-flex items-center gap-2 rounded-[3px] border border-border bg-background px-5 py-3 text-sm font-medium text-foreground transition-colors hover:border-brand hover:text-brand disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {state.loading === 'commit' ? (
                   <>
@@ -483,7 +483,7 @@ export function CommercialImportWorkbench() {
 
           {state.result && (
             <div className="mt-6 space-y-6">
-              <div className="rounded-[5px] border border-border/70 bg-background/80 px-4 py-4">
+              <div className="rounded-[3px] border border-border/70 bg-background/80 px-4 py-4">
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <div>
                     <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">
@@ -498,7 +498,7 @@ export function CommercialImportWorkbench() {
                     type="button"
                     onClick={onDownloadErrors}
                     disabled={errorRows.length === 0}
-                    className="inline-flex items-center gap-2 rounded-[5px] border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-brand hover:text-brand disabled:cursor-not-allowed disabled:opacity-50"
+                    className="inline-flex items-center gap-2 rounded-[3px] border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-brand hover:text-brand disabled:cursor-not-allowed disabled:opacity-50"
                   >
                     <Download className="h-4 w-4" aria-hidden="true" />
                     Download errors
@@ -508,12 +508,12 @@ export function CommercialImportWorkbench() {
 
               <div className="flex items-center justify-between gap-3 mb-2">
                 <h3 className="text-sm font-extrabold text-slate-800">Kết quả xử lý chi tiết</h3>
-                <div className="flex gap-1 p-1 bg-slate-100 dark:bg-slate-800 rounded-[5px] text-xs font-bold shadow-inner">
+                <div className="flex gap-1 p-1 bg-slate-100 dark:bg-slate-800 rounded-[3px] text-xs font-bold shadow-inner">
                   <button
                     type="button"
                     onClick={() => setShowOnlyErrors(false)}
                     className={cn(
-                      'px-3 py-1.5 rounded-[5px] transition-all duration-200 select-none',
+                      'px-3 py-1.5 rounded-[3px] transition-all duration-200 select-none',
                       !showOnlyErrors
                         ? 'bg-white text-slate-850 shadow-sm'
                         : 'text-slate-550 hover:text-slate-800'
@@ -525,7 +525,7 @@ export function CommercialImportWorkbench() {
                     type="button"
                     onClick={() => setShowOnlyErrors(true)}
                     className={cn(
-                      'px-3 py-1.5 rounded-[5px] transition-all duration-200 select-none',
+                      'px-3 py-1.5 rounded-[3px] transition-all duration-200 select-none',
                       showOnlyErrors
                         ? 'bg-white text-slate-850 shadow-sm'
                         : 'text-slate-550 hover:text-slate-800'
@@ -536,7 +536,7 @@ export function CommercialImportWorkbench() {
                 </div>
               </div>
 
-              <div className="overflow-hidden rounded-[5px] border border-border/70 bg-white">
+              <div className="overflow-hidden rounded-[3px] border border-border/70 bg-white">
                 <table className="w-full border-collapse text-left text-sm min-w-[600px]">
                   <thead className="bg-slate-50 border-b border-slate-100 text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-wider">
                     <tr>
@@ -568,7 +568,7 @@ export function CommercialImportWorkbench() {
                         <td className="px-4 py-3">
                           <span
                             className={cn(
-                              'inline-flex rounded-[5px] border px-2.5 py-1 text-[10px] font-bold shadow-sm select-none',
+                              'inline-flex rounded-[3px] border px-2.5 py-1 text-[10px] font-bold shadow-sm select-none',
                               actionStyles(row.action)
                             )}
                           >
@@ -583,7 +583,7 @@ export function CommercialImportWorkbench() {
                               {row.errors.map((item, idx) => (
                                 <div
                                   key={idx}
-                                  className="inline-flex items-center gap-1.5 text-rose-600 bg-rose-50 border border-rose-100/50 px-2.5 py-1 rounded-[5px] font-bold text-[10px] sm:text-xs leading-normal"
+                                  className="inline-flex items-center gap-1.5 text-rose-600 bg-rose-50 border border-rose-100/50 px-2.5 py-1 rounded-[3px] font-bold text-[10px] sm:text-xs leading-normal"
                                 >
                                   <AlertTriangle className="h-3.5 w-3.5 shrink-0 text-rose-500" />
                                   <span>
@@ -606,7 +606,7 @@ export function CommercialImportWorkbench() {
               </div>
 
               {errorRows.length > 0 && (
-                <div className="rounded-[5px] border border-rose-500/20 bg-rose-500/10 px-4 py-4 text-sm text-rose-700 dark:text-rose-300">
+                <div className="rounded-[3px] border border-rose-500/20 bg-rose-500/10 px-4 py-4 text-sm text-rose-700 dark:text-rose-300">
                   <p className="font-medium">Validation errors</p>
                   <p className="mt-1 text-sm leading-6">
                     {errorRows.length} row-level error{errorRows.length === 1 ? '' : 's'} were

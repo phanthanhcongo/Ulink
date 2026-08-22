@@ -1,13 +1,13 @@
 export function ApplySuccessRecap() {
   return (
     <section className="py-6 max-w-4xl mx-auto">
-      <div className="rounded-[5px] bg-white p-6 sm:p-8 border border-slate-100 shadow-sm flex flex-col gap-6">
+      <div className="rounded-[3px] bg-white p-6 sm:p-8 border border-slate-100 shadow-sm flex flex-col gap-6">
         <div>
           <span className="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-3">
             THÔNG TIN HỒ SƠ ĐÃ NỘP
           </span>
           <div className="flex items-start gap-4">
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[5px] bg-blue-600 text-white font-extrabold text-sm shadow-sm">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[3px] bg-blue-600 text-white font-extrabold text-sm shadow-sm">
               UL
             </div>
             <div>

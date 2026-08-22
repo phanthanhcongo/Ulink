@@ -123,7 +123,7 @@ export default function SkuSelector({ skus, labels }: SkuSelectorProps) {
                     type="button"
                     onClick={() => handleSelect(attr.name, val)}
                     className={cn(
-                      'inline-flex items-center px-3.5 py-2 rounded-lg text-sm font-medium border transition-all',
+                      'inline-flex items-center px-3.5 py-2 rounded-[3px] text-sm font-medium border transition-all',
                       !isSelected &&
                         'bg-background hover:border-primary hover:text-primary border-border',
                       isSelected &&
@@ -150,7 +150,7 @@ export default function SkuSelector({ skus, labels }: SkuSelectorProps) {
                   type="button"
                   onClick={() => setSelections({})}
                   className={cn(
-                    'inline-flex items-center px-3.5 py-2 rounded-lg text-sm font-medium border transition-all',
+                    'inline-flex items-center px-3.5 py-2 rounded-[3px] text-sm font-medium border transition-all',
                     !isSelected &&
                       'bg-background hover:border-primary hover:text-primary border-border',
                     isSelected && 'border-primary bg-primary/10 text-primary ring-1 ring-primary/30'
@@ -179,7 +179,7 @@ export default function SkuSelector({ skus, labels }: SkuSelectorProps) {
         onClick={handleAddToCart}
         disabled={!selectedSku}
         className={cn(
-          'w-full inline-flex items-center justify-center gap-2 h-11 rounded-lg font-semibold text-sm transition-all',
+          'w-full inline-flex items-center justify-center gap-2 h-11 rounded-[3px] font-semibold text-sm transition-all',
           added
             ? 'bg-green-600 text-white'
             : 'bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20',

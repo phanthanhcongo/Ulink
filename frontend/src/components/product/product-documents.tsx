@@ -70,7 +70,7 @@ export default function ProductDocuments({ documents, labels }: ProductDocuments
   return (
     <section>
       <h2 className="text-xl font-semibold mb-4">{title}</h2>
-      <div className="divide-y border rounded-lg overflow-hidden">
+      <div className="divide-y border rounded-[3px] overflow-hidden">
         {documents.map((doc) => {
           // file can be a string UUID or an object {id, ...}
           const file = typeof doc.file === 'object' ? (doc.file as DirectusFile | null) : null;

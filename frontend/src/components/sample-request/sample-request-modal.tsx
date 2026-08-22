@@ -208,9 +208,9 @@ export default function SampleRequestModal({
       <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={handleClose} />
 
       {/* Modal */}
-      <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-2xl bg-white dark:bg-card shadow-2xl border">
+      <div className="relative w-full max-w-2xl max-h-[90vh] overflow-y-auto rounded-[3px] bg-white dark:bg-card shadow-2xl border">
         {/* Header */}
-        <div className="sticky top-0 z-10 border-b bg-white/95 dark:bg-card/95 backdrop-blur px-6 py-5 rounded-t-2xl">
+        <div className="sticky top-0 z-10 border-b bg-white/95 dark:bg-card/95 backdrop-blur px-6 py-5 rounded-[3px]">
           <div className="flex items-start justify-between gap-4">
             <div>
               <h2 className="text-xl font-bold tracking-tight">{labels.modalTitle}</h2>
@@ -250,7 +250,7 @@ export default function SampleRequestModal({
             <button
               type="button"
               onClick={handleClose}
-              className="mt-2 rounded-lg bg-primary px-8 py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
+              className="mt-2 rounded-[3px] bg-primary px-8 py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
             >
               Đóng
             </button>
@@ -275,7 +275,7 @@ export default function SampleRequestModal({
                     value={contactName}
                     onChange={(e) => setContactName(e.target.value)}
                     placeholder="Nguyễn Văn A"
-                    className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
+                    className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
                   />
                 </Field>
 
@@ -285,7 +285,7 @@ export default function SampleRequestModal({
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="email@congty.com"
-                    className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
+                    className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
                   />
                 </Field>
               </div>
@@ -298,7 +298,7 @@ export default function SampleRequestModal({
                     value={company}
                     onChange={(e) => setCompany(e.target.value)}
                     placeholder="Công ty TNHH ABC"
-                    className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
+                    className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
                   />
                 </Field>
 
@@ -310,7 +310,7 @@ export default function SampleRequestModal({
                     value={phone}
                     onChange={(e) => setPhone(e.target.value.replace(/\D/g, ''))}
                     placeholder="0901234567"
-                    className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
+                    className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
                   />
                 </Field>
               </div>
@@ -334,7 +334,7 @@ export default function SampleRequestModal({
                   <select
                     value={province}
                     onChange={(e) => setProvince(e.target.value)}
-                    className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
+                    className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
                   >
                     <option value="">{labels.selectProvince}</option>
                     {PROVINCES.map((p) => (
@@ -350,7 +350,7 @@ export default function SampleRequestModal({
                     <select
                       value={district}
                       onChange={(e) => setDistrict(e.target.value)}
-                      className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
+                      className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
                     >
                       <option value="">{labels.selectDistrict}</option>
                       {districts.map((d) => (
@@ -365,7 +365,7 @@ export default function SampleRequestModal({
                       value={district}
                       onChange={(e) => setDistrict(e.target.value)}
                       placeholder={province ? 'Nhập quận/huyện' : labels.selectDistrict}
-                      className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors disabled:bg-gray-100 disabled:cursor-not-allowed"
+                      className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors disabled:bg-gray-100 disabled:cursor-not-allowed"
                       disabled={!province}
                     />
                   )}
@@ -379,7 +379,7 @@ export default function SampleRequestModal({
                   value={addressDetail}
                   onChange={(e) => setAddressDetail(e.target.value)}
                   placeholder="Số nhà, tên đường, phường/xã..."
-                  className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
+                  className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
                 />
               </Field>
             </fieldset>
@@ -402,14 +402,14 @@ export default function SampleRequestModal({
                   onChange={(e) => setMessage(e.target.value)}
                   rows={3}
                   placeholder={labels.messagePlaceholder}
-                  className="w-full rounded-lg border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors resize-y"
+                  className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors resize-y"
                 />
               </Field>
             </fieldset>
 
             {/* Form-level error */}
             {errors._form && (
-              <div className="mt-4 rounded-lg bg-red-50 border border-red-200 px-4 py-3">
+              <div className="mt-4 rounded-[3px] bg-red-50 border border-red-200 px-4 py-3">
                 <p className="text-sm text-red-700">{errors._form}</p>
               </div>
             )}
@@ -419,7 +419,7 @@ export default function SampleRequestModal({
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full flex items-center justify-center gap-2 rounded-lg bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 disabled:opacity-50 transition-colors"
+                className="w-full flex items-center justify-center gap-2 rounded-[3px] bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 disabled:opacity-50 transition-colors"
               >
                 {submitting ? (
                   <>

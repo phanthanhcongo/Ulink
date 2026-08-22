@@ -260,7 +260,7 @@ export default async function IndustriesPage({ params: { locale } }: Props) {
             <div className="mt-8">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center rounded-lg border-2 border-white text-white hover:bg-white/10 px-5 py-2.5 text-xs sm:text-sm font-bold tracking-wide transition-colors"
+                className="inline-flex items-center justify-center rounded-[3px] border-2 border-white text-white hover:bg-white/10 px-5 py-2.5 text-xs sm:text-sm font-bold tracking-wide transition-colors"
               >
                 {isVi ? 'Liên hệ với Chúng tôi' : isJa ? 'お問い合わせ' : 'Contact Us'}
               </Link>

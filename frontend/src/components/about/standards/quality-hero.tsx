@@ -18,7 +18,7 @@ export function QualityHero() {
         </p>
       </div>
 
-      <div className="relative aspect-[21/9] w-full overflow-hidden rounded-[5px] shadow-xl ring-1 ring-slate-900/10">
+      <div className="relative aspect-[21/9] w-full overflow-hidden rounded-[3px] shadow-xl ring-1 ring-slate-900/10">
         <Image
           src="/images/about/kho.png"
           alt="Trung tâm kiểm định chất lượng vật tư ULink"
@@ -26,7 +26,7 @@ export function QualityHero() {
           className="object-cover"
           priority
         />
-        <div className="absolute bottom-4 right-4 flex h-10 w-10 items-center justify-center rounded-lg bg-white/90 p-2 shadow-md backdrop-blur">
+        <div className="absolute bottom-4 right-4 flex h-10 w-10 items-center justify-center rounded-[3px] bg-white/90 p-2 shadow-md backdrop-blur">
           <span className="text-xs font-extrabold text-blue-600">ULINK</span>
         </div>
       </div>

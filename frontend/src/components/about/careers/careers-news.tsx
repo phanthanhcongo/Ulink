@@ -56,7 +56,7 @@ export function CareersNews() {
       {/* Top Block: Featured News (2 columns) */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
         {/* Left: Image */}
-        <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl shadow-md bg-slate-100">
+        <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[3px] shadow-md bg-slate-100">
           <Image
             src={featuredNews.image}
             alt={featuredNews.title}
@@ -79,7 +79,7 @@ export function CareersNews() {
           </p>
           <Link
             href="/about/news"
-            className="inline-flex items-center gap-3 rounded-lg bg-blue-600 px-5 py-2.5 text-xs sm:text-sm font-semibold text-white transition-colors hover:bg-blue-700 w-fit mt-3 shadow-xs"
+            className="inline-flex items-center gap-3 rounded-[3px] bg-blue-600 px-5 py-2.5 text-xs sm:text-sm font-semibold text-white transition-colors hover:bg-blue-700 w-fit mt-3 shadow-xs"
           >
             <span>Đọc thêm</span>
             <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white text-blue-600">
@@ -97,7 +97,7 @@ export function CareersNews() {
         {newsList.map((item) => (
           <div key={item.id} className="flex flex-col gap-3 group">
             {/* Image */}
-            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-xl bg-slate-100 shadow-xs">
+            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[3px] bg-slate-100 shadow-xs">
               <Image
                 src={item.image}
                 alt={item.title}

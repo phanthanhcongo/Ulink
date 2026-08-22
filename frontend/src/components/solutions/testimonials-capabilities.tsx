@@ -112,7 +112,7 @@ export default function TestimonialsCapabilities({ locale }: TestimonialsCapabil
               {testimonials.slice(startIndex, startIndex + 2).map((test, index) => (
                 <div
                   key={index}
-                  className="bg-white rounded-2xl border border-gray-200/80 p-8 shadow-sm flex flex-col items-center text-center transition-all hover:shadow-md"
+                  className="bg-white rounded-[3px] border border-gray-200/80 p-8 shadow-sm flex flex-col items-center text-center transition-all hover:shadow-md"
                 >
                   {/* Company Logo text placeholder */}
                   <div className="text-slate-700 font-extrabold text-lg tracking-tight mb-6 select-none flex items-center gap-1.5">
@@ -166,7 +166,7 @@ export default function TestimonialsCapabilities({ locale }: TestimonialsCapabil
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {/* Capability 1 */}
             <div className="flex flex-col items-center">
-              <div className="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 shrink-0 mb-6">
+              <div className="w-12 h-12 rounded-[3px] bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 shrink-0 mb-6">
                 <Factory className="h-6 w-6" />
               </div>
               <h3 className="text-base font-bold text-slate-900 mb-3">
@@ -179,7 +179,7 @@ export default function TestimonialsCapabilities({ locale }: TestimonialsCapabil
 
             {/* Capability 2 */}
             <div className="flex flex-col items-center">
-              <div className="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 shrink-0 mb-6">
+              <div className="w-12 h-12 rounded-[3px] bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 shrink-0 mb-6">
                 <Package className="h-6 w-6" />
               </div>
               <h3 className="text-base font-bold text-slate-900 mb-3">
@@ -192,7 +192,7 @@ export default function TestimonialsCapabilities({ locale }: TestimonialsCapabil
 
             {/* Capability 3 */}
             <div className="flex flex-col items-center">
-              <div className="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 shrink-0 mb-6">
+              <div className="w-12 h-12 rounded-[3px] bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 shrink-0 mb-6">
                 <Activity className="h-6 w-6" />
               </div>
               <h3 className="text-base font-bold text-slate-900 mb-3">
@@ -205,7 +205,7 @@ export default function TestimonialsCapabilities({ locale }: TestimonialsCapabil
 
             {/* Capability 4 */}
             <div className="flex flex-col items-center">
-              <div className="w-12 h-12 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 shrink-0 mb-6">
+              <div className="w-12 h-12 rounded-[3px] bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 shrink-0 mb-6">
                 <Truck className="h-6 w-6" />
               </div>
               <h3 className="text-base font-bold text-slate-900 mb-3">

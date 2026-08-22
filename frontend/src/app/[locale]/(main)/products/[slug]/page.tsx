@@ -57,7 +57,7 @@ export async function generateMetadata({ params }: ProductDetailPageProps) {
   const product = await fetchProductBySlug(slug);
 
   if (!product) {
-    return { title: 'Sản phẩm không tồn tại | ULink Industries' };
+    return { title: 'Sáº£n pháº©m khÃ´ng tá»“n táº¡i | ULink Industries' };
   }
 
   const name = getTranslatedName(product, locale) || product.name;
@@ -65,7 +65,7 @@ export async function generateMetadata({ params }: ProductDetailPageProps) {
     getTranslatedField(product, 'short_description', locale) || product.short_description || '';
 
   return {
-    title: `${name} | Giải pháp Phòng sạch & Đóng gói ULink`,
+    title: `${name} | Giáº£i phÃ¡p PhÃ²ng sáº¡ch & ÄÃ³ng gÃ³i ULink`,
     description: desc
   };
 }
@@ -109,7 +109,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
   const formatPrice = (amount: number) => {
     if (locale === 'vi') {
-      return new Intl.NumberFormat('vi-VN').format(amount) + 'đ';
+      return new Intl.NumberFormat('vi-VN').format(amount) + 'Ä‘';
     }
     return (
       '$' +
@@ -133,8 +133,8 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
         : `${directusUrl}/assets/${heroId}`;
     productGalleryImages.push({
       src: heroSrc,
-      alt: `${productName} - Ảnh đại diện Database`,
-      label: 'Ảnh chính DB'
+      alt: `${productName} - áº¢nh Ä‘áº¡i diá»‡n Database`,
+      label: 'áº¢nh chÃ­nh DB'
     });
   }
 
@@ -147,8 +147,8 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
       if (!productGalleryImages.some((img) => img.src === fileSrc)) {
         productGalleryImages.push({
           src: fileSrc,
-          alt: `${productName} - Bộ sưu tập DB ${idx + 1}`,
-          label: `Bộ ảnh DB ${idx + 1}`
+          alt: `${productName} - Bá»™ sÆ°u táº­p DB ${idx + 1}`,
+          label: `Bá»™ áº£nh DB ${idx + 1}`
         });
       }
     }
@@ -170,7 +170,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
       if (!productGalleryImages.some((img) => img.src === skuSrc)) {
         productGalleryImages.push({
           src: skuSrc,
-          alt: `${productName} - Mã SKU ${sku.sku_code || idx + 1}`,
+          alt: `${productName} - MÃ£ SKU ${sku.sku_code || idx + 1}`,
           label: `SKU ${sku.sku_code || idx + 1}`
         });
       }
@@ -188,11 +188,11 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
           className="py-3"
           items={[
             {
-              label: locale === 'vi' ? 'Trang chủ' : 'Home',
+              label: locale === 'vi' ? 'Trang chá»§' : 'Home',
               href: '/'
             },
             {
-              label: locale === 'vi' ? 'Sản phẩm' : 'Products',
+              label: locale === 'vi' ? 'Sáº£n pháº©m' : 'Products',
               href: '/products'
             },
             ...(category ? [{
@@ -218,7 +218,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
           <div className="lg:col-span-4 space-y-6">
             {categoryName && (
               <div>
-                <span className="inline-block text-xs font-bold text-blue-600 bg-blue-50/80 border border-blue-100/80 px-3.5 py-1 rounded-[5px] shadow-2xs">
+                <span className="inline-block text-xs font-bold text-blue-600 bg-blue-50/80 border border-blue-100/80 px-3.5 py-1 rounded-[3px] shadow-2xs">
                   {categoryName}
                 </span>
               </div>
@@ -235,14 +235,14 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
               <div className="flex items-center gap-1.5">
                 <span className="font-extrabold text-slate-900">4.8</span>
                 <div className="flex text-amber-400">
-                  <span>★</span>
-                  <span>★</span>
-                  <span>★</span>
-                  <span>★</span>
-                  <span>★</span>
+                  <span>â˜…</span>
+                  <span>â˜…</span>
+                  <span>â˜…</span>
+                  <span>â˜…</span>
+                  <span>â˜…</span>
                 </div>
                 <span className="text-slate-500 font-medium">
-                  (48 {locale === 'vi' ? 'đánh giá' : 'reviews'})
+                  (48 {locale === 'vi' ? 'Ä‘Ã¡nh giÃ¡' : 'reviews'})
                 </span>
               </div>
             </div>
@@ -258,38 +258,38 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
             {/* 4 Feature Icon Circles */}
             <div className="grid grid-cols-4 gap-3 py-2">
               <div className="flex flex-col items-center text-center group">
-                <div className="w-12 h-12 rounded-[5px] bg-slate-50 border border-slate-200/70 flex items-center justify-center text-blue-600 mb-2 shrink-0 group-hover:bg-blue-50 transition-colors shadow-2xs">
+                <div className="w-12 h-12 rounded-[3px] bg-slate-50 border border-slate-200/70 flex items-center justify-center text-blue-600 mb-2 shrink-0 group-hover:bg-blue-50 transition-colors shadow-2xs">
                   <Maximize2 className="h-5 w-5" />
                 </div>
                 <span className="text-[11px] font-bold text-slate-700 leading-tight">
-                  {locale === 'vi' ? 'Co giãn 400%' : 'Stretch 400%'}
+                  {locale === 'vi' ? 'Co giÃ£n 400%' : 'Stretch 400%'}
                 </span>
               </div>
 
               <div className="flex flex-col items-center text-center group">
-                <div className="w-12 h-12 rounded-[5px] bg-slate-50 border border-slate-200/70 flex items-center justify-center text-blue-600 mb-2 shrink-0 group-hover:bg-blue-50 transition-colors shadow-2xs">
+                <div className="w-12 h-12 rounded-[3px] bg-slate-50 border border-slate-200/70 flex items-center justify-center text-blue-600 mb-2 shrink-0 group-hover:bg-blue-50 transition-colors shadow-2xs">
                   <ShieldCheck className="h-5 w-5" />
                 </div>
                 <span className="text-[11px] font-bold text-slate-700 leading-tight">
-                  {locale === 'vi' ? 'Dẻo & Khó rách' : 'Tear Resistant'}
+                  {locale === 'vi' ? 'Dáº»o & KhÃ³ rÃ¡ch' : 'Tear Resistant'}
                 </span>
               </div>
 
               <div className="flex flex-col items-center text-center group">
-                <div className="w-12 h-12 rounded-[5px] bg-slate-50 border border-slate-200/70 flex items-center justify-center text-blue-600 mb-2 shrink-0 group-hover:bg-blue-50 transition-colors shadow-2xs">
+                <div className="w-12 h-12 rounded-[3px] bg-slate-50 border border-slate-200/70 flex items-center justify-center text-blue-600 mb-2 shrink-0 group-hover:bg-blue-50 transition-colors shadow-2xs">
                   <Droplets className="h-5 w-5" />
                 </div>
                 <span className="text-[11px] font-bold text-slate-700 leading-tight">
-                  {locale === 'vi' ? 'Chống ẩm ướt' : 'Moisture Proof'}
+                  {locale === 'vi' ? 'Chá»‘ng áº©m Æ°á»›t' : 'Moisture Proof'}
                 </span>
               </div>
 
               <div className="flex flex-col items-center text-center group">
-                <div className="w-12 h-12 rounded-[5px] bg-slate-50 border border-slate-200/70 flex items-center justify-center text-blue-600 mb-2 shrink-0 group-hover:bg-blue-50 transition-colors shadow-2xs">
+                <div className="w-12 h-12 rounded-[3px] bg-slate-50 border border-slate-200/70 flex items-center justify-center text-blue-600 mb-2 shrink-0 group-hover:bg-blue-50 transition-colors shadow-2xs">
                   <RefreshCw className="h-5 w-5" />
                 </div>
                 <span className="text-[11px] font-bold text-slate-700 leading-tight">
-                  {locale === 'vi' ? 'PE Tái chế' : 'Recyclable PE'}
+                  {locale === 'vi' ? 'PE TÃ¡i cháº¿' : 'Recyclable PE'}
                 </span>
               </div>
             </div>
@@ -300,39 +300,39 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
             <div className="grid grid-cols-2 gap-y-5 gap-x-8 py-2">
               <div className="flex flex-col">
                 <span className="text-xs font-semibold text-slate-500">
-                  {locale === 'vi' ? 'Độ dày màng' : 'Thickness'}
+                  {locale === 'vi' ? 'Äá»™ dÃ y mÃ ng' : 'Thickness'}
                 </span>
                 <span className="text-xs sm:text-sm font-bold text-slate-900 mt-1">
-                  {specs?.['Độ dày'] || specs?.['Thickness'] || '17 mic / 20 mic / 23 mic'}
+                  {specs?.['Äá»™ dÃ y'] || specs?.['Thickness'] || '17 mic / 20 mic / 23 mic'}
                 </span>
               </div>
 
               <div className="flex flex-col">
                 <span className="text-xs font-semibold text-slate-500">
-                  {locale === 'vi' ? 'Chất liệu chính' : 'Material'}
+                  {locale === 'vi' ? 'Cháº¥t liá»‡u chÃ­nh' : 'Material'}
                 </span>
                 <span className="text-xs sm:text-sm font-bold text-slate-900 mt-1">
-                  {specs?.['Chất liệu'] || specs?.['Material'] || '100% LLDPE Nguyên Sinh'}
+                  {specs?.['Cháº¥t liá»‡u'] || specs?.['Material'] || '100% LLDPE NguyÃªn Sinh'}
                 </span>
               </div>
 
               <div className="flex flex-col">
                 <span className="text-xs font-semibold text-slate-500">
-                  {locale === 'vi' ? 'Quy cách cuộn' : 'Specification'}
+                  {locale === 'vi' ? 'Quy cÃ¡ch cuá»™n' : 'Specification'}
                 </span>
                 <span className="text-xs sm:text-sm font-bold text-slate-900 mt-1">
-                  {specs?.['Đóng gói'] ||
+                  {specs?.['ÄÃ³ng gÃ³i'] ||
                     specs?.['Specification'] ||
-                    'Khổ rộng 50cm, cân nặng theo yêu cầu'}
+                    'Khá»• rá»™ng 50cm, cÃ¢n náº·ng theo yÃªu cáº§u'}
                 </span>
               </div>
 
               <div className="flex flex-col">
                 <span className="text-xs font-semibold text-slate-500">
-                  {locale === 'vi' ? 'Màu sắc' : 'Color'}
+                  {locale === 'vi' ? 'MÃ u sáº¯c' : 'Color'}
                 </span>
                 <span className="text-xs sm:text-sm font-bold text-slate-900 mt-1">
-                  {specs?.['Màu sắc'] || specs?.['Color'] || 'Trắng trong'}
+                  {specs?.['MÃ u sáº¯c'] || specs?.['Color'] || 'Tráº¯ng trong'}
                 </span>
               </div>
             </div>
@@ -344,16 +344,16 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
               <div className="space-y-3 pt-2">
                 <p className="text-xs font-bold text-slate-700 uppercase tracking-wider">
                   {locale === 'vi'
-                    ? 'Tiêu chuẩn chất lượng đạt được:'
+                    ? 'TiÃªu chuáº©n cháº¥t lÆ°á»£ng Ä‘áº¡t Ä‘Æ°á»£c:'
                     : 'Quality Standards Achieved:'}
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {standards.map((std) => (
                     <div
                       key={std.id}
-                      className="flex items-center gap-3 p-4 bg-white border border-slate-200/80 rounded-[5px]"
+                      className="flex items-center gap-3 p-4 bg-white border border-slate-200/80 rounded-[3px]"
                     >
-                      <div className="w-10 h-10 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
+                      <div className="w-10 h-10 rounded-[3px] bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
                         <Award className="h-5 w-5" />
                       </div>
                       <div>
@@ -375,7 +375,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
           {/* RIGHT: Sidebar Card */}
           <div className="lg:col-span-3">
-            <div className="bg-[#F5F8FC] border border-slate-200/80 rounded-[5px] p-6 sticky top-6 space-y-6">
+            <div className="bg-[#F5F8FC] border border-slate-200/80 rounded-[3px] p-6 sticky top-6 space-y-6">
               {/* Product interactive config */}
               <ProductDetailClient
                 skus={skus.map((s: ProductSku) => ({
@@ -390,11 +390,11 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                 basePrice={pricing.price}
                 unitLabel={pricing.unit}
                 labels={{
-                  addToCart: locale === 'vi' ? 'Đặt hàng' : 'Add to RFQ',
-                  added: locale === 'vi' ? 'Đã thêm' : 'Added',
-                  selectVariant: locale === 'vi' ? 'Chọn quy cách' : 'Select Variant',
+                  addToCart: locale === 'vi' ? 'Äáº·t hÃ ng' : 'Add to RFQ',
+                  added: locale === 'vi' ? 'ÄÃ£ thÃªm' : 'Added',
+                  selectVariant: locale === 'vi' ? 'Chá»n quy cÃ¡ch' : 'Select Variant',
                   requestQuote:
-                    locale === 'vi' ? 'Yêu cầu báo giá sản lượng lớn' : 'Request Bulk Quote'
+                    locale === 'vi' ? 'YÃªu cáº§u bÃ¡o giÃ¡ sáº£n lÆ°á»£ng lá»›n' : 'Request Bulk Quote'
                 }}
               />
 
@@ -450,14 +450,14 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
           />
         </div>
 
-        {/* Related Products ("Sản phẩm liên quan") */}
+        {/* Related Products ("Sáº£n pháº©m liÃªn quan") */}
         {featured.length > 0 && (
           <div className="mt-16 space-y-6">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-2">
-                <span className="h-2.5 w-2.5 rounded-[5px] bg-blue-600 shrink-0" />
+                <span className="h-2.5 w-2.5 rounded-[3px] bg-blue-600 shrink-0" />
                 <h3 className="text-lg font-bold text-slate-800">
-                  {locale === 'vi' ? 'Sản phẩm liên quan' : 'Related Products'}
+                  {locale === 'vi' ? 'Sáº£n pháº©m liÃªn quan' : 'Related Products'}
                 </h3>
               </div>
               <Link
@@ -468,7 +468,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                 }
                 className="text-xs font-bold text-blue-600 hover:underline flex items-center gap-1"
               >
-                {locale === 'vi' ? 'Xem tất cả' : 'View All'} &rarr;
+                {locale === 'vi' ? 'Xem táº¥t cáº£' : 'View All'} &rarr;
               </Link>
             </div>
 
@@ -478,7 +478,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                   key={prod.id}
                   product={prod}
                   locale={locale}
-                  roundedClass="rounded-[5px]"
+                  roundedClass="rounded-[3px]"
                 />
               ))}
             </div>

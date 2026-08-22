@@ -424,7 +424,7 @@ function ChangePasswordFormInner() {
 
     return (
       <div className="text-center">
-        <span className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-[5px] bg-brand/10 text-brand">
+        <span className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-[3px] bg-brand/10 text-brand">
           <CheckCircle2 className="h-7 w-7" aria-hidden="true" />
         </span>
         <h2 className="text-2xl font-bold tracking-tight text-foreground">
@@ -436,7 +436,7 @@ function ChangePasswordFormInner() {
         <button
           type="button"
           onClick={handleBackToLogin}
-          className="mt-6 inline-flex items-center justify-center rounded-[5px] border border-brand bg-brand px-5 py-2.5 text-sm font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong"
+          className="mt-6 inline-flex items-center justify-center rounded-[3px] border border-brand bg-brand px-5 py-2.5 text-sm font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong"
         >
           {t('backToLogin')}
         </button>
@@ -445,7 +445,7 @@ function ChangePasswordFormInner() {
   }
 
   const inputBase =
-    'w-full rounded-[5px] border bg-card py-2.5 pl-10 pr-4 text-sm outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-brand focus:ring-1 focus:ring-brand';
+    'w-full rounded-[3px] border bg-card py-2.5 pl-10 pr-4 text-sm outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-brand focus:ring-1 focus:ring-brand';
 
   return (
     <div>
@@ -457,7 +457,7 @@ function ChangePasswordFormInner() {
       {viaEmail && (
         <p
           role="status"
-          className="mt-4 flex items-start gap-2 rounded-[5px] border border-brand/30 bg-brand/5 px-3 py-2 text-sm text-foreground"
+          className="mt-4 flex items-start gap-2 rounded-[3px] border border-brand/30 bg-brand/5 px-3 py-2 text-sm text-foreground"
         >
           <Mail className="mt-0.5 h-4 w-4 shrink-0 text-brand" aria-hidden="true" />
           <span>{t('changePasswordEmailHint')}</span>
@@ -467,7 +467,7 @@ function ChangePasswordFormInner() {
       {reason === 'expired' && (
         <p
           role="status"
-          className="mt-4 rounded-[5px] border border-amber-500/30 bg-amber-500/5 px-3 py-2 text-sm text-amber-700 dark:text-amber-400"
+          className="mt-4 rounded-[3px] border border-amber-500/30 bg-amber-500/5 px-3 py-2 text-sm text-amber-700 dark:text-amber-400"
         >
           {t('changePasswordExpiredPrompt')}
         </p>
@@ -476,7 +476,7 @@ function ChangePasswordFormInner() {
       {formError && !(lockedUntil != null && lockedUntil > now) && (
         <p
           role="alert"
-          className="mt-4 rounded-[5px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-sm text-destructive"
+          className="mt-4 rounded-[3px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-sm text-destructive"
         >
           {formError}
         </p>
@@ -488,7 +488,7 @@ function ChangePasswordFormInner() {
       {lockedUntil != null && lockedUntil > now && (
         <div
           role="alert"
-          className="mt-4 rounded-[5px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-sm text-destructive"
+          className="mt-4 rounded-[3px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-sm text-destructive"
         >
           <p className="font-medium">{t('currentPasswordLockedTitle')}</p>
           <p className="mt-1 text-xs">
@@ -626,7 +626,7 @@ function ChangePasswordFormInner() {
         <button
           type="submit"
           disabled={loading || (lockedUntil != null && Date.now() < lockedUntil)}
-          className="flex w-full items-center justify-center gap-2 rounded-[5px] border border-brand bg-brand py-3 text-sm font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong disabled:opacity-60"
+          className="flex w-full items-center justify-center gap-2 rounded-[3px] border border-brand bg-brand py-3 text-sm font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong disabled:opacity-60"
         >
           {loading ? (
             <>

@@ -84,9 +84,9 @@ export function LocaleSwitcher() {
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="listbox"
         aria-expanded={open}
-        className="flex items-center gap-2 border border-border bg-card px-3 py-1 text-xs font-semibold text-slate-600 transition-colors hover:text-slate-900 rounded-[5px]"
+        className="flex items-center gap-2 border border-border bg-card px-3 py-1 text-xs font-semibold text-slate-600 transition-colors hover:text-slate-900 rounded-[3px]"
       >
-        <ActiveFlag className="h-3 w-4 shrink-0 rounded-[1px] object-cover" aria-hidden="true" />
+        <ActiveFlag className="h-3 w-4 shrink-0 rounded-[3px] object-cover" aria-hidden="true" />
         <span>{LABELS[locale]}</span>
         <ChevronDown
           className={cn('h-3 w-3 text-slate-400 transition-transform', open && 'rotate-180')}
@@ -97,7 +97,7 @@ export function LocaleSwitcher() {
       {open && (
         <ul
           role="listbox"
-          className="absolute right-0 z-50 mt-1.5 w-36 overflow-hidden border border-border bg-card py-1 shadow-lg rounded-[5px]"
+          className="absolute right-0 z-50 mt-1.5 w-36 overflow-hidden border border-border bg-card py-1 shadow-lg rounded-[3px]"
         >
           {routing.locales.map((l) => {
             const OptionFlag = FLAGS[l];
@@ -111,7 +111,7 @@ export function LocaleSwitcher() {
                     l === locale ? 'font-medium text-brand' : 'text-foreground'
                   )}
                 >
-                  <OptionFlag className="h-3.5 w-5 shrink-0 rounded-[1px] object-cover" />
+                  <OptionFlag className="h-3.5 w-5 shrink-0 rounded-[3px] object-cover" />
                   <span>{LABELS[l]}</span>
                 </button>
               </li>

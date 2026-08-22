@@ -17,7 +17,7 @@ export default async function LoginPage({ params: { locale } }: Props) {
   if (user) redirect('/');
 
   return (
-    <div className="w-full max-w-xl rounded-[5px] bg-white p-6 sm:p-10 border border-slate-100 shadow-sm flex flex-col justify-between mx-auto lg:max-w-none">
+    <div className="w-full max-w-xl rounded-[3px] bg-white p-6 sm:p-10 border border-slate-100 shadow-sm flex flex-col justify-between mx-auto lg:max-w-none">
       <LoginForm />
     </div>
   );

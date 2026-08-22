@@ -51,7 +51,7 @@ export async function CaseStudies() {
       <div className="mt-10 flex justify-center sm:mt-12">
         <Link
           href="/resources"
-          className="inline-flex items-center justify-center rounded-lg bg-brand px-8 py-3 text-[14px] font-bold text-white shadow-sm transition-all hover:bg-brand-strong hover:shadow-md"
+          className="inline-flex items-center justify-center rounded-[3px] bg-brand px-8 py-3 text-[14px] font-bold text-white shadow-sm transition-all hover:bg-brand-strong hover:shadow-md"
         >
           {t('caseStudy.viewAll')}
         </Link>

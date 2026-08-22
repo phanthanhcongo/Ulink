@@ -134,7 +134,7 @@ export function EventRegisterForm({ slug, eventTitle, locale }: Props) {
 
   if (isSubmitted) {
     return (
-      <div className="rounded-[12px] bg-white p-5 text-center animate-fadeIn font-sans">
+      <div className="rounded-[3px] bg-white p-5 text-center animate-fadeIn font-sans">
         <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 mb-6">
           <CheckCircle2 className="h-10 w-10" />
         </div>
@@ -147,7 +147,7 @@ export function EventRegisterForm({ slug, eventTitle, locale }: Props) {
         <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             href="/"
-            className="inline-flex items-center justify-center rounded-[5px] bg-blue-600 hover:bg-blue-700 active:scale-[0.98] px-6 py-3 text-sm font-bold text-white transition-all shadow-sm"
+            className="inline-flex items-center justify-center rounded-[3px] bg-blue-600 hover:bg-blue-700 active:scale-[0.98] px-6 py-3 text-sm font-bold text-white transition-all shadow-sm"
           >
             {L.backHome[locale]}
           </Link>
@@ -157,7 +157,7 @@ export function EventRegisterForm({ slug, eventTitle, locale }: Props) {
   }
 
   return (
-    <div className="rounded-[12px] bg-white p-5 font-sans">
+    <div className="rounded-[3px] bg-white p-5 font-sans">
       <div className="mb-6">
         <h2 className="text-lg font-bold text-slate-900 font-sans tracking-tight text-left">
           {L.formTitle[locale]}
@@ -168,7 +168,7 @@ export function EventRegisterForm({ slug, eventTitle, locale }: Props) {
       </div>
 
       {errorMsg && (
-        <div className="mb-4 p-3 rounded-[5px] bg-rose-50 border border-rose-100 text-xs sm:text-sm text-rose-600 text-left font-sans">
+        <div className="mb-4 p-3 rounded-[3px] bg-rose-50 border border-rose-100 text-xs sm:text-sm text-rose-600 text-left font-sans">
           {errorMsg}
         </div>
       )}
@@ -187,7 +187,7 @@ export function EventRegisterForm({ slug, eventTitle, locale }: Props) {
               value={formData.name}
               onChange={handleInputChange}
               placeholder={locale === 'vi' ? 'Nguyễn Văn A' : 'John Doe'}
-              className="w-full rounded-[5px] border border-slate-200 py-2.5 px-3.5 text-sm text-slate-800 placeholder-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+              className="w-full rounded-[3px] border border-slate-200 py-2.5 px-3.5 text-sm text-slate-800 placeholder-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
             />
           </div>
 
@@ -203,7 +203,7 @@ export function EventRegisterForm({ slug, eventTitle, locale }: Props) {
               value={formData.email}
               onChange={handleInputChange}
               placeholder="nguyenvana@company.com"
-              className="w-full rounded-[5px] border border-slate-200 py-2.5 px-3.5 text-sm text-slate-800 placeholder-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+              className="w-full rounded-[3px] border border-slate-200 py-2.5 px-3.5 text-sm text-slate-800 placeholder-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
             />
           </div>
 
@@ -219,7 +219,7 @@ export function EventRegisterForm({ slug, eventTitle, locale }: Props) {
               value={formData.phone}
               onChange={handleInputChange}
               placeholder="0901 234 567"
-              className="w-full rounded-[5px] border border-slate-200 py-2.5 px-3.5 text-sm text-slate-800 placeholder-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+              className="w-full rounded-[3px] border border-slate-200 py-2.5 px-3.5 text-sm text-slate-800 placeholder-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
             />
           </div>
 
@@ -235,7 +235,7 @@ export function EventRegisterForm({ slug, eventTitle, locale }: Props) {
               value={formData.company}
               onChange={handleInputChange}
               placeholder="ULink Industries"
-              className="w-full rounded-[5px] border border-slate-200 py-2.5 px-3.5 text-sm text-slate-800 placeholder-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+              className="w-full rounded-[3px] border border-slate-200 py-2.5 px-3.5 text-sm text-slate-800 placeholder-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
             />
           </div>
 
@@ -250,7 +250,7 @@ export function EventRegisterForm({ slug, eventTitle, locale }: Props) {
               value={formData.role}
               onChange={handleInputChange}
               placeholder={L.rolePlaceholder[locale]}
-              className="w-full rounded-[5px] border border-slate-200 py-2.5 px-3.5 text-sm text-slate-800 placeholder-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+              className="w-full rounded-[3px] border border-slate-200 py-2.5 px-3.5 text-sm text-slate-800 placeholder-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
             />
           </div>
 
@@ -264,7 +264,7 @@ export function EventRegisterForm({ slug, eventTitle, locale }: Props) {
               required
               value={formData.source}
               onChange={handleInputChange}
-              className="w-full rounded-[5px] border border-slate-200 py-2.5 px-3.5 text-sm text-slate-800 placeholder-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all bg-white"
+              className="w-full rounded-[3px] border border-slate-200 py-2.5 px-3.5 text-sm text-slate-800 placeholder-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all bg-white"
             >
               <option value="">{L.sourceSelect[locale]}</option>
               {L.sourceOptions[locale].map((opt) => (
@@ -287,7 +287,7 @@ export function EventRegisterForm({ slug, eventTitle, locale }: Props) {
             value={formData.notes}
             onChange={handleInputChange}
             placeholder={L.notesPlaceholder[locale]}
-            className="w-full rounded-[5px] border border-slate-200 py-2.5 px-3.5 text-sm text-slate-800 placeholder-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all bg-white resize-none"
+            className="w-full rounded-[3px] border border-slate-200 py-2.5 px-3.5 text-sm text-slate-800 placeholder-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all bg-white resize-none"
           />
         </div>
 
@@ -299,7 +299,7 @@ export function EventRegisterForm({ slug, eventTitle, locale }: Props) {
             id="agree-checkbox"
             checked={formData.agreed}
             onChange={handleCheckboxChange}
-            className="mt-1 h-4 w-4 rounded-[5px] border-slate-200 text-blue-600 focus:ring-blue-500"
+            className="mt-1 h-4 w-4 rounded-[3px] border-slate-200 text-blue-600 focus:ring-blue-500"
           />
           <label htmlFor="agree-checkbox" className="text-xs text-slate-500 leading-relaxed text-left cursor-pointer">
             {L.agreeCheck[locale]}
@@ -310,7 +310,7 @@ export function EventRegisterForm({ slug, eventTitle, locale }: Props) {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="mt-6 flex w-full items-center justify-center rounded-[5px] bg-blue-600 hover:bg-blue-700 active:scale-[0.98] py-3.5 text-sm font-bold text-white transition-all shadow-md disabled:bg-slate-300 disabled:cursor-not-allowed"
+          className="mt-6 flex w-full items-center justify-center rounded-[3px] bg-blue-600 hover:bg-blue-700 active:scale-[0.98] py-3.5 text-sm font-bold text-white transition-all shadow-md disabled:bg-slate-300 disabled:cursor-not-allowed"
         >
           {isSubmitting ? L.submitting[locale] : L.submitBtn[locale]}
         </button>

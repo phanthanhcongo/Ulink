@@ -112,7 +112,7 @@ export default function OrderConfirmationClient({
         </h3>
 
         {/* Step Progress Bar - Checkout styled */}
-        <div className="flex w-full overflow-hidden text-xs sm:text-sm font-semibold rounded-[5px] border border-slate-100">
+        <div className="flex w-full overflow-hidden text-xs sm:text-sm font-semibold rounded-[3px] border border-slate-100">
           {/* Step 1: Giỏ hàng */}
           <div className="flex-1 flex items-center justify-center gap-2 py-3 bg-blue-50/75 text-brand">
             <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand text-[10px] font-extrabold text-white shrink-0">
@@ -155,7 +155,7 @@ export default function OrderConfirmationClient({
         {/* LEFT COLUMN: Shipping details, journey log, items list */}
         <div className="lg:col-span-8 space-y-6">
           {/* Carrier Info Card */}
-          <div className="bg-white border border-slate-200/80 p-5 rounded-lg shadow-sm space-y-4">
+          <div className="bg-white border border-slate-200/80 p-5 rounded-[3px] shadow-sm space-y-4">
             <div className="flex justify-between items-center border-b border-slate-100 pb-3">
               <div className="flex items-center gap-2 font-bold text-slate-900 text-sm">
                 <Truck className="h-5 w-5 text-brand" />
@@ -191,7 +191,7 @@ export default function OrderConfirmationClient({
           </div>
 
           {/* Journey Log Timeline Card */}
-          <div className="bg-white border border-slate-200/80 p-6 rounded-lg shadow-sm space-y-5">
+          <div className="bg-white border border-slate-200/80 p-6 rounded-[3px] shadow-sm space-y-5">
             <h4 className="text-sm font-bold text-slate-900 border-b border-slate-100 pb-3 uppercase tracking-wider">
               Lịch sử hành trình chi tiết
             </h4>
@@ -263,7 +263,7 @@ export default function OrderConfirmationClient({
           </div>
 
           {/* Ordered Products Card */}
-          <div className="bg-white border border-slate-200/80 p-5 rounded-lg shadow-sm space-y-4">
+          <div className="bg-white border border-slate-200/80 p-5 rounded-[3px] shadow-sm space-y-4">
             <div className="flex justify-between items-baseline border-b border-slate-100 pb-3">
               <h4 className="text-sm font-bold text-slate-900 uppercase tracking-wider">
                 Sản phẩm đã đặt (02)
@@ -279,7 +279,7 @@ export default function OrderConfirmationClient({
                 <div className="flex gap-3.5 items-start flex-1 min-w-0">
                   <Link
                     href="/solutions/mang-quan-pallet-stretch-film"
-                    className="relative h-14 w-14 shrink-0 rounded-[5px] border border-slate-200 bg-white flex items-center justify-center overflow-hidden hover:opacity-95 transition-opacity block"
+                    className="relative h-14 w-14 shrink-0 rounded-[3px] border border-slate-200 bg-white flex items-center justify-center overflow-hidden hover:opacity-95 transition-opacity block"
                   >
                     {dbProductMap['UL-PF-2002']?.hero ? (
                       <Image
@@ -315,7 +315,7 @@ export default function OrderConfirmationClient({
                 <div className="flex gap-3.5 items-start flex-1 min-w-0">
                   <Link
                     href="/solutions/tui-pe-trong-suot-dung-thuc-pham"
-                    className="relative h-14 w-14 shrink-0 rounded-[5px] border border-slate-200 bg-white flex items-center justify-center overflow-hidden hover:opacity-95 transition-opacity block"
+                    className="relative h-14 w-14 shrink-0 rounded-[3px] border border-slate-200 bg-white flex items-center justify-center overflow-hidden hover:opacity-95 transition-opacity block"
                   >
                     {dbProductMap['UL-PE-1008']?.hero ? (
                       <Image
@@ -352,7 +352,7 @@ export default function OrderConfirmationClient({
         {/* RIGHT COLUMN: Recipient Information & Totals Summary */}
         <div className="lg:col-span-4 space-y-6">
           {/* Business Recipient Info */}
-          <div className="bg-white border border-slate-200/80 p-5 rounded-lg shadow-sm space-y-4">
+          <div className="bg-white border border-slate-200/80 p-5 rounded-[3px] shadow-sm space-y-4">
             <h4 className="text-sm font-bold text-slate-900 border-b border-slate-100 pb-3 uppercase tracking-wider">
               Thông tin nhận hàng Doanh nghiệp
             </h4>
@@ -383,7 +383,7 @@ export default function OrderConfirmationClient({
           </div>
 
           {/* Totals Summary */}
-          <div className="bg-card border border-slate-200/80 p-5 rounded-lg shadow-sm space-y-4 text-left">
+          <div className="bg-card border border-slate-200/80 p-5 rounded-[3px] shadow-sm space-y-4 text-left">
             <h4 className="text-sm font-bold text-slate-900 border-b border-slate-200/60 pb-3 uppercase tracking-wider">
               Tổng cộng đơn hàng B2B
             </h4>

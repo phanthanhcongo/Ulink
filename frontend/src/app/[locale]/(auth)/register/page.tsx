@@ -18,7 +18,7 @@ export default async function RegisterPage({ params: { locale } }: Props) {
   const user = await getCurrentUser();
   if (user) redirect('/');
   return (
-    <div className="mx-auto w-full max-w-xl rounded-[5px] bg-white p-6 sm:p-10 border border-slate-100 shadow-sm">
+    <div className="mx-auto w-full max-w-xl rounded-[3px] bg-white p-6 sm:p-10 border border-slate-100 shadow-sm">
       <RegisterForm />
     </div>
   );

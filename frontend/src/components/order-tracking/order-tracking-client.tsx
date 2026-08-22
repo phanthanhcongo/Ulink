@@ -97,7 +97,7 @@ export default function OrderTrackingClient({
   if (!trackedOrder) {
     return (
       <div className="mx-auto max-w-md w-full px-4 text-slate-800 my-8">
-        <div className="bg-white border border-slate-200 p-6 sm:p-8 rounded-[5px] shadow-sm space-y-6 text-left">
+        <div className="bg-white border border-slate-200 p-6 sm:p-8 rounded-[3px] shadow-sm space-y-6 text-left">
           <div className="flex flex-col items-center text-center space-y-2">
             <div className="h-12 w-12 rounded-full bg-[#E0F2FE] text-[#0284C7] flex items-center justify-center">
               <Search className="h-6 w-6" />
@@ -109,19 +109,19 @@ export default function OrderTrackingClient({
           </div>
 
           {/* Test suggestion alert */}
-          <div className="bg-blue-50 border border-blue-100 p-3.5 rounded-[5px] text-[11px] leading-relaxed text-blue-800 flex gap-2">
+          <div className="bg-blue-50 border border-blue-100 p-3.5 rounded-[3px] text-[11px] leading-relaxed text-blue-800 flex gap-2">
             <AlertCircle className="h-4.5 w-4.5 text-blue-500 shrink-0 mt-0.5" />
             <div>
               <p className="font-bold">Gợi ý tài khoản tra cứu thử nghiệm:</p>
               <p className="mt-1">
                 Mã đơn hàng:{' '}
-                <strong className="font-mono bg-blue-100 px-1 py-0.5 rounded-[5px]">
+                <strong className="font-mono bg-blue-100 px-1 py-0.5 rounded-[3px]">
                   ULK-2026-98745
                 </strong>
               </p>
               <p className="mt-0.5">
                 Email doanh nghiệp:{' '}
-                <strong className="font-mono bg-blue-100 px-1 py-0.5 rounded-[5px]">
+                <strong className="font-mono bg-blue-100 px-1 py-0.5 rounded-[3px]">
                   purchasing@ulink-partner.vn
                 </strong>
               </p>
@@ -139,7 +139,7 @@ export default function OrderTrackingClient({
                 placeholder="ULK-2026-98745"
                 value={inputCode}
                 onChange={(e) => setInputCode(e.target.value)}
-                className="w-full rounded-[5px] border border-slate-200 bg-white px-3.5 py-2.5 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand font-semibold"
+                className="w-full rounded-[3px] border border-slate-200 bg-white px-3.5 py-2.5 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand font-semibold"
               />
             </div>
 
@@ -153,19 +153,19 @@ export default function OrderTrackingClient({
                 placeholder="purchasing@ulink-partner.vn"
                 value={inputEmail}
                 onChange={(e) => setInputEmail(e.target.value)}
-                className="w-full rounded-[5px] border border-slate-200 bg-white px-3.5 py-2.5 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand"
+                className="w-full rounded-[3px] border border-slate-200 bg-white px-3.5 py-2.5 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand"
               />
             </div>
 
             {errorMsg && (
-              <div className="bg-rose-50 border border-rose-100 p-3 rounded-[5px] text-xs text-rose-600 leading-relaxed font-medium">
+              <div className="bg-rose-50 border border-rose-100 p-3 rounded-[3px] text-xs text-rose-600 leading-relaxed font-medium">
                 {errorMsg}
               </div>
             )}
 
             <button
               type="submit"
-              className="w-full inline-flex items-center justify-center rounded-[5px] bg-brand text-white hover:bg-brand/95 py-3 text-sm font-bold shadow transition-all text-center"
+              className="w-full inline-flex items-center justify-center rounded-[3px] bg-brand text-white hover:bg-brand/95 py-3 text-sm font-bold shadow transition-all text-center"
             >
               {t('btnSubmit')}
             </button>
@@ -238,7 +238,7 @@ export default function OrderTrackingClient({
         </h3>
 
         {/* Step Progress Bar - Checkout styled */}
-        <div className="flex w-full overflow-hidden text-xs sm:text-sm font-semibold rounded-[5px] border border-slate-100">
+        <div className="flex w-full overflow-hidden text-xs sm:text-sm font-semibold rounded-[3px] border border-slate-100">
           {/* Step 1: Giỏ hàng */}
           <div className="flex-1 flex items-center justify-center gap-2 py-3 bg-blue-50/75 text-brand">
             <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand text-[10px] font-extrabold text-white shrink-0">
@@ -281,7 +281,7 @@ export default function OrderTrackingClient({
         {/* LEFT COLUMN: Shipping details, journey log, items list */}
         <div className="lg:col-span-8 space-y-6">
           {/* Carrier Info Card */}
-          <div className="bg-white border border-slate-200/80 p-5 rounded-[5px] shadow-sm space-y-4">
+          <div className="bg-white border border-slate-200/80 p-5 rounded-[3px] shadow-sm space-y-4">
             <div className="flex justify-between items-center border-b border-slate-100 pb-3">
               <div className="flex items-center gap-2 font-bold text-slate-900 text-sm">
                 <Truck className="h-5 w-5 text-brand" />
@@ -306,7 +306,7 @@ export default function OrderTrackingClient({
                   </span>
                   <button
                     onClick={handleCopyTracking}
-                    className="inline-flex items-center gap-1 bg-blue-50 text-blue-600 px-2 py-1 rounded-[5px] text-[10px] font-bold hover:bg-blue-100 transition-colors border border-blue-100"
+                    className="inline-flex items-center gap-1 bg-blue-50 text-blue-600 px-2 py-1 rounded-[3px] text-[10px] font-bold hover:bg-blue-100 transition-colors border border-blue-100"
                   >
                     {copiedTracking ? 'Đã sao chép!' : 'Sao chép'}
                     <Copy className="h-3 w-3" />
@@ -317,7 +317,7 @@ export default function OrderTrackingClient({
           </div>
 
           {/* Journey Log Timeline Card */}
-          <div className="bg-white border border-slate-200/80 p-6 rounded-[5px] shadow-sm space-y-5">
+          <div className="bg-white border border-slate-200/80 p-6 rounded-[3px] shadow-sm space-y-5">
             <h4 className="text-sm font-bold text-slate-900 border-b border-slate-100 pb-3 uppercase tracking-wider">
               Lịch sử hành trình chi tiết
             </h4>
@@ -385,7 +385,7 @@ export default function OrderTrackingClient({
           </div>
 
           {/* Ordered Products Card */}
-          <div className="bg-white border border-slate-200/80 p-5 rounded-[5px] shadow-sm space-y-4">
+          <div className="bg-white border border-slate-200/80 p-5 rounded-[3px] shadow-sm space-y-4">
             <div className="flex justify-between items-baseline border-b border-slate-100 pb-3">
               <h4 className="text-sm font-bold text-slate-900 uppercase tracking-wider">
                 Sản phẩm đã đặt (02)
@@ -401,7 +401,7 @@ export default function OrderTrackingClient({
                 <div className="flex gap-3.5 items-start flex-1 min-w-0">
                   <Link
                     href="/solutions/mang-quan-pallet-stretch-film"
-                    className="relative h-14 w-14 shrink-0 rounded-[5px] border border-slate-200 bg-white flex items-center justify-center overflow-hidden hover:opacity-95 transition-opacity block"
+                    className="relative h-14 w-14 shrink-0 rounded-[3px] border border-slate-200 bg-white flex items-center justify-center overflow-hidden hover:opacity-95 transition-opacity block"
                   >
                     {dbProductMap['UL-PF-2002']?.hero ? (
                       <Image
@@ -437,7 +437,7 @@ export default function OrderTrackingClient({
                 <div className="flex gap-3.5 items-start flex-1 min-w-0">
                   <Link
                     href="/solutions/tui-pe-trong-suot-dung-thuc-pham"
-                    className="relative h-14 w-14 shrink-0 rounded-[5px] border border-slate-200 bg-white flex items-center justify-center overflow-hidden hover:opacity-95 transition-opacity block"
+                    className="relative h-14 w-14 shrink-0 rounded-[3px] border border-slate-200 bg-white flex items-center justify-center overflow-hidden hover:opacity-95 transition-opacity block"
                   >
                     {dbProductMap['UL-PE-1008']?.hero ? (
                       <Image
@@ -474,7 +474,7 @@ export default function OrderTrackingClient({
         {/* RIGHT COLUMN: Recipient Information & Totals Summary */}
         <div className="lg:col-span-4 space-y-6">
           {/* Business Recipient Info */}
-          <div className="bg-white border border-slate-200/80 p-5 rounded-[5px] shadow-sm space-y-4">
+          <div className="bg-white border border-slate-200/80 p-5 rounded-[3px] shadow-sm space-y-4">
             <h4 className="text-sm font-bold text-slate-900 border-b border-slate-100 pb-3 uppercase tracking-wider">
               Thông tin nhận hàng Doanh nghiệp
             </h4>
@@ -505,7 +505,7 @@ export default function OrderTrackingClient({
           </div>
 
           {/* Totals Summary */}
-          <div className="bg-card border border-slate-200/80 p-5 rounded-[5px] shadow-sm space-y-4 text-left">
+          <div className="bg-card border border-slate-200/80 p-5 rounded-[3px] shadow-sm space-y-4 text-left">
             <h4 className="text-sm font-bold text-slate-900 border-b border-slate-200/60 pb-3 uppercase tracking-wider">
               Tổng cộng đơn hàng B2B
             </h4>

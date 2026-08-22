@@ -83,8 +83,8 @@ export default async function FeaturedProducts({ products, locale }: FeaturedPro
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           
           {/* Card 1: Glove */}
-          <article className="group relative flex flex-col bg-white border border-slate-200 shadow-sm rounded-none overflow-hidden h-full transition-all duration-[240ms] ease-out hover:-translate-y-1.5 hover:border-[#9fc2ef] hover:shadow-[0_18px_42px_rgba(16,61,111,0.13)]">
-            <Link href={gloveSlug} className="relative block h-[240px] m-2 overflow-hidden bg-[#eef2f6] rounded-none">
+          <article className="group relative flex flex-col bg-white border border-slate-200 shadow-sm rounded-[3px] overflow-hidden h-full transition-all duration-[240ms] ease-out hover:-translate-y-1.5 hover:border-[#9fc2ef] hover:shadow-[0_18px_42px_rgba(16,61,111,0.13)]">
+            <Link href={gloveSlug} className="relative block h-[240px] m-2 overflow-hidden bg-[#eef2f6] rounded-[3px]">
               <Image
                 src={gloveImgSrc}
                 alt={t('featuredProducts.glove.title')}
@@ -93,7 +93,7 @@ export default async function FeaturedProducts({ products, locale }: FeaturedPro
                 sizes="(max-width: 768px) 100vw, 33vw"
               />
               {/* Quality certified stamp */}
-              <div className="absolute bottom-3 right-3 flex items-center justify-center bg-white/95 border border-blue-500/20 shadow-sm p-1 rounded-none">
+              <div className="absolute bottom-3 right-3 flex items-center justify-center bg-white/95 border border-blue-500/20 shadow-sm p-1 rounded-[3px]">
                 <span className="text-[8px] font-extrabold text-blue-600 uppercase tracking-widest px-1">
                   CERTIFIED
                 </span>
@@ -114,7 +114,7 @@ export default async function FeaturedProducts({ products, locale }: FeaturedPro
               </p>
 
               {/* Key Attributes Box */}
-              <div className="bg-[#F4F7FC] p-3 grid grid-cols-4 gap-1.5 mb-5 rounded-none border border-slate-100">
+              <div className="bg-[#F4F7FC] p-3 grid grid-cols-4 gap-1.5 mb-5 rounded-[3px] border border-slate-100">
                 <div className="text-center">
                   <div className="flex h-7 items-center justify-center">
                     <ShieldCheck className="h-5 w-5 text-brand" />
@@ -155,7 +155,7 @@ export default async function FeaturedProducts({ products, locale }: FeaturedPro
               </p>
               <div className="flex items-center gap-1.5 flex-wrap mb-6">
                 {['Nitrile', 'PU', 'ESD', 'Latex'].map(tag => (
-                  <span key={tag} className="text-[11px] font-bold text-brand bg-[#B2EDFF]/25 border border-blue-200 px-2.5 py-0.5 rounded-none">
+                  <span key={tag} className="text-[11px] font-bold text-brand bg-[#B2EDFF]/25 border border-blue-200 px-2.5 py-0.5 rounded-[3px]">
                     {tag}
                   </span>
                 ))}
@@ -165,7 +165,7 @@ export default async function FeaturedProducts({ products, locale }: FeaturedPro
               <div className="flex items-center justify-between gap-4 mt-auto border-t border-slate-100 pt-4">
                 <Link
                   href={gloveSlug}
-                  className="flex-1 flex items-center justify-center gap-2 bg-brand hover:bg-brand-strong text-white font-bold text-[13px] py-2.5 rounded-none shadow-sm transition-all"
+                  className="flex-1 flex items-center justify-center gap-2 bg-brand hover:bg-brand-strong text-white font-bold text-[13px] py-2.5 rounded-[3px] shadow-sm transition-all"
                 >
                   {t('featuredProducts.rfqButton')}
                   <ArrowRight className="h-4 w-4" />
@@ -183,8 +183,8 @@ export default async function FeaturedProducts({ products, locale }: FeaturedPro
           </article>
 
           {/* Card 2: Shrink Film */}
-          <article className="group relative flex flex-col bg-white border border-slate-200 shadow-sm rounded-none overflow-hidden h-full transition-all duration-[240ms] ease-out hover:-translate-y-1.5 hover:border-[#9fc2ef] hover:shadow-[0_18px_42px_rgba(16,61,111,0.13)]">
-            <Link href={filmSlug} className="relative block h-[240px] m-2 overflow-hidden bg-[#eef2f6] rounded-none">
+          <article className="group relative flex flex-col bg-white border border-slate-200 shadow-sm rounded-[3px] overflow-hidden h-full transition-all duration-[240ms] ease-out hover:-translate-y-1.5 hover:border-[#9fc2ef] hover:shadow-[0_18px_42px_rgba(16,61,111,0.13)]">
+            <Link href={filmSlug} className="relative block h-[240px] m-2 overflow-hidden bg-[#eef2f6] rounded-[3px]">
               <Image
                 src={filmImgSrc}
                 alt={t('featuredProducts.film.title')}
@@ -192,7 +192,7 @@ export default async function FeaturedProducts({ products, locale }: FeaturedPro
                 className="object-cover transition-transform duration-[450ms] ease-out group-hover:scale-[1.035]"
                 sizes="(max-width: 768px) 100vw, 33vw"
               />
-              <div className="absolute bottom-3 right-3 flex items-center justify-center bg-white/95 border border-blue-500/20 shadow-sm p-1 rounded-none">
+              <div className="absolute bottom-3 right-3 flex items-center justify-center bg-white/95 border border-blue-500/20 shadow-sm p-1 rounded-[3px]">
                 <span className="text-[8px] font-extrabold text-blue-600 uppercase tracking-widest px-1">
                   CERTIFIED
                 </span>
@@ -213,7 +213,7 @@ export default async function FeaturedProducts({ products, locale }: FeaturedPro
               </p>
 
               {/* Key Attributes Box */}
-              <div className="bg-[#F4F7FC] p-3 grid grid-cols-4 gap-1.5 mb-5 rounded-none border border-slate-100">
+              <div className="bg-[#F4F7FC] p-3 grid grid-cols-4 gap-1.5 mb-5 rounded-[3px] border border-slate-100">
                 <div className="text-center">
                   <div className="flex h-7 items-center justify-center">
                     <Layers className="h-5 w-5 text-brand" />
@@ -254,7 +254,7 @@ export default async function FeaturedProducts({ products, locale }: FeaturedPro
               </p>
               <div className="flex items-center gap-1.5 flex-wrap mb-6">
                 {['LDPE', 'PVC', 'ESD', 'POF'].map(tag => (
-                  <span key={tag} className="text-[11px] font-bold text-brand bg-[#B2EDFF]/25 border border-blue-200 px-2.5 py-0.5 rounded-none">
+                  <span key={tag} className="text-[11px] font-bold text-brand bg-[#B2EDFF]/25 border border-blue-200 px-2.5 py-0.5 rounded-[3px]">
                     {tag}
                   </span>
                 ))}
@@ -264,7 +264,7 @@ export default async function FeaturedProducts({ products, locale }: FeaturedPro
               <div className="flex items-center justify-between gap-4 mt-auto border-t border-slate-100 pt-4">
                 <Link
                   href={filmSlug}
-                  className="flex-1 flex items-center justify-center gap-2 bg-brand hover:bg-brand-strong text-white font-bold text-[13px] py-2.5 rounded-none shadow-sm transition-all"
+                  className="flex-1 flex items-center justify-center gap-2 bg-brand hover:bg-brand-strong text-white font-bold text-[13px] py-2.5 rounded-[3px] shadow-sm transition-all"
                 >
                   {t('featuredProducts.rfqButton')}
                   <ArrowRight className="h-4 w-4" />
@@ -282,8 +282,8 @@ export default async function FeaturedProducts({ products, locale }: FeaturedPro
           </article>
 
           {/* Card 3: HVAC Tape */}
-          <article className="group relative flex flex-col bg-white border border-slate-200 shadow-sm rounded-none overflow-hidden h-full transition-all duration-[240ms] ease-out hover:-translate-y-1.5 hover:border-[#9fc2ef] hover:shadow-[0_18px_42px_rgba(16,61,111,0.13)]">
-            <Link href={tapeSlug} className="relative block h-[240px] m-2 overflow-hidden bg-[#eef2f6] rounded-none">
+          <article className="group relative flex flex-col bg-white border border-slate-200 shadow-sm rounded-[3px] overflow-hidden h-full transition-all duration-[240ms] ease-out hover:-translate-y-1.5 hover:border-[#9fc2ef] hover:shadow-[0_18px_42px_rgba(16,61,111,0.13)]">
+            <Link href={tapeSlug} className="relative block h-[240px] m-2 overflow-hidden bg-[#eef2f6] rounded-[3px]">
               <Image
                 src={tapeImgSrc}
                 alt={t('featuredProducts.tape.title')}
@@ -291,7 +291,7 @@ export default async function FeaturedProducts({ products, locale }: FeaturedPro
                 className="object-cover transition-transform duration-[450ms] ease-out group-hover:scale-[1.035]"
                 sizes="(max-width: 768px) 100vw, 33vw"
               />
-              <div className="absolute bottom-3 right-3 flex items-center justify-center bg-white/95 border border-blue-500/20 shadow-sm p-1 rounded-none">
+              <div className="absolute bottom-3 right-3 flex items-center justify-center bg-white/95 border border-blue-500/20 shadow-sm p-1 rounded-[3px]">
                 <span className="text-[8px] font-extrabold text-blue-600 uppercase tracking-widest px-1">
                   CERTIFIED
                 </span>
@@ -312,7 +312,7 @@ export default async function FeaturedProducts({ products, locale }: FeaturedPro
               </p>
 
               {/* Key Attributes Box */}
-              <div className="bg-[#F4F7FC] p-3 grid grid-cols-4 gap-1.5 mb-5 rounded-none border border-slate-100">
+              <div className="bg-[#F4F7FC] p-3 grid grid-cols-4 gap-1.5 mb-5 rounded-[3px] border border-slate-100">
                 <div className="text-center">
                   <div className="flex h-7 items-center justify-center">
                     <Layers className="h-5 w-5 text-brand" />
@@ -353,7 +353,7 @@ export default async function FeaturedProducts({ products, locale }: FeaturedPro
               </p>
               <div className="flex items-center gap-1.5 flex-wrap mb-6">
                 {['Alu Foil', 'FSK', 'Woven Fabric', 'Glass fiber cloth'].map(tag => (
-                  <span key={tag} className="text-[11px] font-bold text-brand bg-[#B2EDFF]/25 border border-blue-200 px-2.5 py-0.5 rounded-none">
+                  <span key={tag} className="text-[11px] font-bold text-brand bg-[#B2EDFF]/25 border border-blue-200 px-2.5 py-0.5 rounded-[3px]">
                     {tag}
                   </span>
                 ))}
@@ -363,7 +363,7 @@ export default async function FeaturedProducts({ products, locale }: FeaturedPro
               <div className="flex items-center justify-between gap-4 mt-auto border-t border-slate-100 pt-4">
                 <Link
                   href={tapeSlug}
-                  className="flex-1 flex items-center justify-center gap-2 bg-brand hover:bg-brand-strong text-white font-bold text-[13px] py-2.5 rounded-none shadow-sm transition-all"
+                  className="flex-1 flex items-center justify-center gap-2 bg-brand hover:bg-brand-strong text-white font-bold text-[13px] py-2.5 rounded-[3px] shadow-sm transition-all"
                 >
                   {t('featuredProducts.rfqButton')}
                   <ArrowRight className="h-4 w-4" />

@@ -208,7 +208,7 @@ export function RegisterForm() {
             onChange={(e) => set(name, e.target.value)}
             placeholder={opts.placeholder}
             invalid={!!err}
-            className="bg-slate-50/50 pl-11 hover:bg-white focus:bg-white rounded-[5px]"
+            className="bg-slate-50/50 pl-11 hover:bg-white focus:bg-white rounded-[3px]"
           />
         </div>
         {err && (
@@ -255,7 +255,7 @@ export function RegisterForm() {
           {formError && (
             <p
               role="alert"
-              className="rounded-[5px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-sm text-destructive"
+              className="rounded-[3px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-sm text-destructive"
             >
               {formError}
             </p>
@@ -307,7 +307,7 @@ export function RegisterForm() {
                 onChange={(e) => set('password', e.target.value)}
                 placeholder={t('passwordPlaceholder')}
                 invalid={!!errors.password}
-                className="bg-slate-50/50 pl-11 pr-11 hover:bg-white focus:bg-white rounded-[5px]"
+                className="bg-slate-50/50 pl-11 pr-11 hover:bg-white focus:bg-white rounded-[3px]"
               />
               <Button
                 type="button"
@@ -315,7 +315,7 @@ export function RegisterForm() {
                 aria-label={showPassword ? t('hidePassword') : t('showPassword')}
                 variant="ghost"
                 size="icon"
-                className="absolute right-2.5 top-1/2 -translate-y-1/2 rounded-[5px] text-slate-400 hover:bg-slate-100 hover:text-slate-600"
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 rounded-[3px] text-slate-400 hover:bg-slate-100 hover:text-slate-600"
               >
                 {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
               </Button>
@@ -343,7 +343,7 @@ export function RegisterForm() {
                 type="checkbox"
                 checked={agree}
                 onChange={(e) => setAgree(e.target.checked)}
-                className="mt-0.5 h-4 w-4 accent-brand rounded-[5px]"
+                className="mt-0.5 h-4 w-4 accent-brand rounded-[3px]"
                 aria-invalid={!!errors.agree}
               />
               <span>{t('agreeTerms')}</span>
@@ -356,7 +356,7 @@ export function RegisterForm() {
             disabled={loading}
             variant="primary"
             fullWidth
-            className="group py-3.5 text-sm font-bold shadow-brand/20 hover:shadow-lg hover:shadow-brand/30 active:scale-[0.99] rounded-[5px]"
+            className="group py-3.5 text-sm font-bold shadow-brand/20 hover:shadow-lg hover:shadow-brand/30 active:scale-[0.99] rounded-[3px]"
           >
             {loading ? (
               <>

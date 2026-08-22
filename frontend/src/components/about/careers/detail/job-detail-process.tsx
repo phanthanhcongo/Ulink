@@ -22,7 +22,7 @@ export function JobDetailProcess() {
         {processSteps.map((s, idx) => (
           <div
             key={idx}
-            className="flex flex-col rounded-[5px] bg-slate-50 p-4 border border-slate-100"
+            className="flex flex-col rounded-[3px] bg-slate-50 p-4 border border-slate-100"
           >
             <span className="text-xs font-extrabold text-blue-600 mb-1">{s.num}</span>
             <h3 className="text-xs font-bold text-slate-900">{s.title}</h3>
@@ -32,9 +32,9 @@ export function JobDetailProcess() {
       </div>
 
       {/* HR Support Note Box */}
-      <div className="mt-6 rounded-[5px] bg-blue-50 p-5 border border-blue-100 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div className="mt-6 rounded-[3px] bg-blue-50 p-5 border border-blue-100 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-600 text-white">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[3px] bg-blue-600 text-white">
             <Mail className="h-5 w-5" />
           </div>
           <div>
@@ -49,7 +49,7 @@ export function JobDetailProcess() {
 
         <a
           href="mailto:hr@ulink.vn"
-          className="inline-flex shrink-0 items-center justify-center rounded-lg bg-blue-600 px-5 py-2.5 text-xs font-semibold text-white shadow-sm hover:bg-blue-700 transition-all"
+          className="inline-flex shrink-0 items-center justify-center rounded-[3px] bg-blue-600 px-5 py-2.5 text-xs font-semibold text-white shadow-sm hover:bg-blue-700 transition-all"
         >
           Gửi CV qua Email
         </a>

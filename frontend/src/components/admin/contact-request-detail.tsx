@@ -43,14 +43,14 @@ export function ContactRequestDetail({ request, locale }: ContactRequestDetailPr
           </h1>
           <p className="text-xs sm:text-sm text-slate-500 font-medium mt-1">#{request.id}</p>
           <span
-            className={`mt-3 inline-flex items-center rounded-[5px] px-3 py-1 text-xs font-bold ${statusClasses}`}
+            className={`mt-3 inline-flex items-center rounded-[3px] px-3 py-1 text-xs font-bold ${statusClasses}`}
           >
             {statusLabel}
           </span>
         </div>
 
         <div className="flex flex-col items-start gap-2 sm:items-end">
-          <span className="inline-flex items-center gap-2 rounded-[5px] bg-cyan-50 px-3 py-1 text-xs font-bold text-cyan-700 w-fit">
+          <span className="inline-flex items-center gap-2 rounded-[3px] bg-cyan-50 px-3 py-1 text-xs font-bold text-cyan-700 w-fit">
             <CalendarClock className="h-3.5 w-3.5" />
             {createdAt}
           </span>
@@ -59,7 +59,7 @@ export function ContactRequestDetail({ request, locale }: ContactRequestDetailPr
       </div>
 
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
-        <section className="lg:col-span-7 rounded-[5px] border border-slate-100 bg-white p-6 shadow-sm">
+        <section className="lg:col-span-7 rounded-[3px] border border-slate-100 bg-white p-6 shadow-sm">
           <div className="flex items-center gap-2 border-b border-slate-100 pb-3">
             <MessageSquare className="h-4 w-4 text-blue-600" />
             <h2 className="text-sm font-bold text-slate-900">Nội dung liên hệ</h2>
@@ -77,14 +77,14 @@ export function ContactRequestDetail({ request, locale }: ContactRequestDetailPr
               <p className="text-[11px] font-bold uppercase tracking-wider text-slate-400">
                 Nội dung
               </p>
-              <div className="mt-1 rounded-[5px] border border-slate-100 bg-slate-50 p-4 text-sm leading-7 text-slate-700 whitespace-pre-wrap">
+              <div className="mt-1 rounded-[3px] border border-slate-100 bg-slate-50 p-4 text-sm leading-7 text-slate-700 whitespace-pre-wrap">
                 {request.message}
               </div>
             </div>
           </div>
         </section>
 
-        <section className="lg:col-span-5 rounded-[5px] border border-slate-100 bg-white p-6 shadow-sm">
+        <section className="lg:col-span-5 rounded-[3px] border border-slate-100 bg-white p-6 shadow-sm">
           <div className="flex items-center gap-2 border-b border-slate-100 pb-3">
             <User className="h-4 w-4 text-blue-600" />
             <h2 className="text-sm font-bold text-slate-900">Thông tin người gửi</h2>
@@ -117,7 +117,7 @@ export function ContactRequestDetail({ request, locale }: ContactRequestDetailPr
 
 function InfoRow({ label, value, icon }: { label: string; value: string; icon?: ReactNode }) {
   return (
-    <div className="flex items-start gap-3 rounded-[5px] border border-slate-100 bg-slate-50/50 px-4 py-3">
+    <div className="flex items-start gap-3 rounded-[3px] border border-slate-100 bg-slate-50/50 px-4 py-3">
       <div className="mt-0.5">{icon ?? <span className="inline-block h-3.5 w-3.5" />}</div>
       <div className="min-w-0 flex-1">
         <dt className="text-[11px] font-bold uppercase tracking-wider text-slate-400">{label}</dt>

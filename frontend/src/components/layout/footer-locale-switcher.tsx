@@ -81,9 +81,9 @@ export function FooterLocaleSwitcher() {
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="listbox"
         aria-expanded={open}
-        className="flex items-center gap-2.5 rounded-lg border border-slate-200 bg-white px-4 py-2.5 text-[14px] font-semibold text-slate-800 shadow-sm transition-all hover:border-slate-300 hover:bg-slate-50 sm:text-[15px]"
+        className="flex items-center gap-2.5 rounded-[3px] border border-slate-200 bg-white px-4 py-2.5 text-[14px] font-semibold text-slate-800 shadow-sm transition-all hover:border-slate-300 hover:bg-slate-50 sm:text-[15px]"
       >
-        <current.flag className="h-4 w-6 rounded-md object-cover shadow-xs" />
+        <current.flag className="h-4 w-6 rounded-[3px] object-cover shadow-xs" />
         <span>{current.label}</span>
         <ChevronDown
           className={`h-4 w-4 text-slate-600 transition-transform duration-200 ${open ? 'rotate-180' : ''}`}
@@ -94,7 +94,7 @@ export function FooterLocaleSwitcher() {
       {open && (
         <ul
           role="listbox"
-          className="absolute bottom-full left-0 sm:left-auto sm:right-0 z-50 mb-2 w-44 overflow-hidden rounded-[5px] border border-slate-200 bg-white py-1.5 shadow-xl transition-all"
+          className="absolute bottom-full left-0 sm:left-auto sm:right-0 z-50 mb-2 w-44 overflow-hidden rounded-[3px] border border-slate-200 bg-white py-1.5 shadow-xl transition-all"
         >
           {locales.map(({ code, flag: Flag, label }) => (
             <li key={code} role="option" aria-selected={code === locale}>
@@ -106,7 +106,7 @@ export function FooterLocaleSwitcher() {
                     : 'text-slate-700 hover:bg-slate-100'
                   }`}
               >
-                <Flag className="h-4 w-6 rounded-md object-cover shadow-xs" />
+                <Flag className="h-4 w-6 rounded-[3px] object-cover shadow-xs" />
                 <span>{label}</span>
               </button>
             </li>

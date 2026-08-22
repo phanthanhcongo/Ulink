@@ -46,10 +46,10 @@ export function AboutStandards() {
             return (
               <div
                 key={index}
-                className="flex flex-col rounded-[5px] bg-white p-6 shadow-sm border border-slate-100 hover:shadow-md transition-all"
+                className="flex flex-col rounded-[3px] bg-white p-6 shadow-sm border border-slate-100 hover:shadow-md transition-all"
               >
                 <div
-                  className={`mb-4 flex h-10 w-10 items-center justify-center rounded-[5px] border ${item.color}`}
+                  className={`mb-4 flex h-10 w-10 items-center justify-center rounded-[3px] border ${item.color}`}
                 >
                   <Icon className="h-5 w-5" />
                 </div>

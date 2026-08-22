@@ -106,7 +106,7 @@ export default function PaymentInvoiceClient({
         {/* LEFT COLUMN: VAT Invoice details, Bank details, Invoice items list */}
         <div className="lg:col-span-8 space-y-6">
           {/* VAT Invoice Details Card */}
-          <div className="bg-white border border-slate-200/80 p-5 rounded-[5px] shadow-sm space-y-4">
+          <div className="bg-white border border-slate-200/80 p-5 rounded-[3px] shadow-sm space-y-4">
             <h4 className="text-sm font-bold text-slate-900 border-b border-slate-100 pb-3 flex items-center gap-2">
               <FileText className="h-5 w-5 text-brand" />
               Thông tin hóa đơn giá trị gia tăng (B2B)
@@ -137,7 +137,7 @@ export default function PaymentInvoiceClient({
           </div>
 
           {/* B2B Bank Transfer Instructions Card */}
-          <div className="bg-white border border-slate-200/80 p-5 rounded-[5px] shadow-sm space-y-4">
+          <div className="bg-white border border-slate-200/80 p-5 rounded-[3px] shadow-sm space-y-4">
             <h4 className="text-sm font-bold text-slate-900 border-b border-slate-100 pb-3 flex items-center gap-2">
               <CreditCard className="h-5 w-5 text-brand" />
               Hướng dẫn chuyển khoản ngân hàng B2B
@@ -156,7 +156,7 @@ export default function PaymentInvoiceClient({
                   onClick={() =>
                     handleCopyText('NHTMCP Ngoại Thương Việt Nam (Vietcombank)', 'bank')
                   }
-                  className="inline-flex items-center gap-1 bg-blue-50 text-blue-600 px-2 py-1 rounded-[5px] text-[10px] font-bold hover:bg-blue-100 transition-colors border border-blue-100 shrink-0"
+                  className="inline-flex items-center gap-1 bg-blue-50 text-blue-600 px-2 py-1 rounded-[3px] text-[10px] font-bold hover:bg-blue-100 transition-colors border border-blue-100 shrink-0"
                 >
                   {copiedField === 'bank' ? 'Đã sao chép!' : 'Sao chép'}
                   <Copy className="h-3 w-3" />
@@ -171,7 +171,7 @@ export default function PaymentInvoiceClient({
                 </div>
                 <button
                   onClick={() => handleCopyText('1028 666 5999', 'account')}
-                  className="inline-flex items-center gap-1 bg-blue-50 text-blue-600 px-2 py-1 rounded-[5px] text-[10px] font-bold hover:bg-blue-100 transition-colors border border-blue-100 shrink-0"
+                  className="inline-flex items-center gap-1 bg-blue-50 text-blue-600 px-2 py-1 rounded-[3px] text-[10px] font-bold hover:bg-blue-100 transition-colors border border-blue-100 shrink-0"
                 >
                   {copiedField === 'account' ? 'Đã sao chép!' : 'Sao chép'}
                   <Copy className="h-3 w-3" />
@@ -187,7 +187,7 @@ export default function PaymentInvoiceClient({
               </div>
 
               {/* Required Memo Gray Block */}
-              <div className="bg-card border border-slate-100 p-4 rounded-[5px] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+              <div className="bg-card border border-slate-100 p-4 rounded-[3px] flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div className="space-y-1 text-left">
                   <span className="text-[10.5px] text-slate-400 font-bold uppercase tracking-wider">
                     Nội dung chuyển khoản (bắt buộc):
@@ -198,7 +198,7 @@ export default function PaymentInvoiceClient({
                 </div>
                 <button
                   onClick={() => handleCopyText('THANH TOAN HOA DON INV-2026-08974', 'memo')}
-                  className="inline-flex items-center justify-center gap-1 bg-blue-50 text-blue-600 px-3 py-2 rounded-[5px] text-[10px] font-bold hover:bg-blue-100 transition-colors border border-blue-100 shrink-0 w-full sm:w-auto"
+                  className="inline-flex items-center justify-center gap-1 bg-blue-50 text-blue-600 px-3 py-2 rounded-[3px] text-[10px] font-bold hover:bg-blue-100 transition-colors border border-blue-100 shrink-0 w-full sm:w-auto"
                 >
                   {copiedField === 'memo' ? 'Đã sao chép!' : 'Sao chép'}
                   <Copy className="h-3 w-3" />
@@ -208,7 +208,7 @@ export default function PaymentInvoiceClient({
           </div>
 
           {/* Line Items Card */}
-          <div className="bg-white border border-slate-200/80 p-5 rounded-[5px] shadow-sm space-y-4">
+          <div className="bg-white border border-slate-200/80 p-5 rounded-[3px] shadow-sm space-y-4">
             <div className="flex justify-between items-baseline border-b border-slate-100 pb-3">
               <h4 className="text-sm font-bold text-slate-900 uppercase tracking-wider">
                 Chi tiết mặt hàng trong hóa đơn (02)
@@ -224,7 +224,7 @@ export default function PaymentInvoiceClient({
                 <div className="flex gap-3.5 items-start flex-1 min-w-0">
                   <Link
                     href="/solutions/mang-quan-pallet-stretch-film"
-                    className="relative h-14 w-14 shrink-0 rounded-[5px] border border-slate-200 bg-white flex items-center justify-center overflow-hidden hover:opacity-95 transition-opacity block"
+                    className="relative h-14 w-14 shrink-0 rounded-[3px] border border-slate-200 bg-white flex items-center justify-center overflow-hidden hover:opacity-95 transition-opacity block"
                   >
                     {dbProductMap['UL-PF-2002']?.hero ? (
                       <Image
@@ -260,7 +260,7 @@ export default function PaymentInvoiceClient({
                 <div className="flex gap-3.5 items-start flex-1 min-w-0">
                   <Link
                     href="/solutions/tui-pe-trong-suot-dung-thuc-pham"
-                    className="relative h-14 w-14 shrink-0 rounded-[5px] border border-slate-200 bg-white flex items-center justify-center overflow-hidden hover:opacity-95 transition-opacity block"
+                    className="relative h-14 w-14 shrink-0 rounded-[3px] border border-slate-200 bg-white flex items-center justify-center overflow-hidden hover:opacity-95 transition-opacity block"
                   >
                     {dbProductMap['UL-PE-1008']?.hero ? (
                       <Image
@@ -297,7 +297,7 @@ export default function PaymentInvoiceClient({
         {/* RIGHT COLUMN: Summary and action triggers */}
         <div className="lg:col-span-4 space-y-5">
           {/* Invoice Summary */}
-          <div className="bg-white border border-slate-200/80 p-5 rounded-[5px] shadow-sm space-y-4">
+          <div className="bg-white border border-slate-200/80 p-5 rounded-[3px] shadow-sm space-y-4">
             <h4 className="text-sm font-bold text-slate-900 border-b border-slate-100 pb-3 uppercase tracking-wider">
               Tổng cộng hóa đơn B2B
             </h4>
@@ -333,7 +333,7 @@ export default function PaymentInvoiceClient({
               onClick={() =>
                 toast.success('Đang tạo và chuẩn bị tải xuống file PDF Hóa đơn tài chính B2B chính thức...', { duration: 4000 })
               }
-              className="w-full inline-flex items-center justify-center gap-2 rounded-[5px] border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 py-3 text-sm font-bold shadow-sm transition-all text-center"
+              className="w-full inline-flex items-center justify-center gap-2 rounded-[3px] border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 py-3 text-sm font-bold shadow-sm transition-all text-center"
             >
               <Download className="h-4 w-4" />
               Tải hóa đơn PDF

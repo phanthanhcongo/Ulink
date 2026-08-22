@@ -13,14 +13,14 @@ export function ApplySidebar() {
   return (
     <div className="flex flex-col gap-6 py-8">
       {/* Card 1: Tóm tắt công việc */}
-      <div className="rounded-[5px] bg-slate-50 p-6 border border-slate-100 shadow-sm flex flex-col gap-4">
+      <div className="rounded-[3px] bg-slate-50 p-6 border border-slate-100 shadow-sm flex flex-col gap-4">
         <h3 className="text-sm font-bold text-slate-900 border-b border-slate-200 pb-3">
           Tóm tắt công việc
         </h3>
 
         <div className="space-y-3.5 text-xs">
           <div className="flex items-center gap-3 text-slate-700">
-            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-blue-100 text-blue-600 shrink-0">
+            <div className="flex h-7 w-7 items-center justify-center rounded-[3px] bg-blue-100 text-blue-600 shrink-0">
               <Briefcase className="h-3.5 w-3.5" />
             </div>
             <div>
@@ -30,7 +30,7 @@ export function ApplySidebar() {
           </div>
 
           <div className="flex items-center gap-3 text-slate-700">
-            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-blue-100 text-blue-600 shrink-0">
+            <div className="flex h-7 w-7 items-center justify-center rounded-[3px] bg-blue-100 text-blue-600 shrink-0">
               <DollarSign className="h-3.5 w-3.5" />
             </div>
             <div>
@@ -40,7 +40,7 @@ export function ApplySidebar() {
           </div>
 
           <div className="flex items-center gap-3 text-slate-700">
-            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-blue-100 text-blue-600 shrink-0">
+            <div className="flex h-7 w-7 items-center justify-center rounded-[3px] bg-blue-100 text-blue-600 shrink-0">
               <Clock className="h-3.5 w-3.5" />
             </div>
             <div>
@@ -50,7 +50,7 @@ export function ApplySidebar() {
           </div>
 
           <div className="flex items-center gap-3 text-slate-700">
-            <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-blue-100 text-blue-600 shrink-0">
+            <div className="flex h-7 w-7 items-center justify-center rounded-[3px] bg-blue-100 text-blue-600 shrink-0">
               <Calendar className="h-3.5 w-3.5" />
             </div>
             <div>
@@ -62,7 +62,7 @@ export function ApplySidebar() {
       </div>
 
       {/* Card 2: Quy trình tuyển dụng */}
-      <div className="rounded-[5px] bg-white p-6 border border-slate-100 shadow-sm flex flex-col gap-4">
+      <div className="rounded-[3px] bg-white p-6 border border-slate-100 shadow-sm flex flex-col gap-4">
         <h3 className="text-sm font-bold text-slate-900 border-b border-slate-100 pb-3">
           Quy trình tuyển dụng
         </h3>

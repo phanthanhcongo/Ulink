@@ -34,7 +34,7 @@ export function ContactRequestStatusToggle({ id, currentStatus }: ContactRequest
       type="button"
       onClick={handleToggle}
       disabled={isPending}
-      className="inline-flex items-center gap-2 rounded-[5px] border border-slate-200 bg-white px-3 py-2 text-xs font-bold text-slate-700 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-60"
+      className="inline-flex items-center gap-2 rounded-[3px] border border-slate-200 bg-white px-3 py-2 text-xs font-bold text-slate-700 hover:bg-slate-50 disabled:cursor-not-allowed disabled:opacity-60"
     >
       {isPending && <Loader2 className="h-3.5 w-3.5 animate-spin" />}
       {label}

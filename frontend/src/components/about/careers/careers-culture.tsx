@@ -59,7 +59,7 @@ export function CareersCulture() {
       </div>
 
       {/* Grid container with 1px border lines */}
-      <div className="border border-slate-200 bg-slate-200 gap-[1px] grid grid-cols-1 md:grid-cols-3 rounded-xl overflow-hidden shadow-xs">
+      <div className="border border-slate-200 bg-slate-200 gap-[1px] grid grid-cols-1 md:grid-cols-3 rounded-[3px] overflow-hidden shadow-xs">
         {values.map((item, idx) => {
           const Icon = item.icon;
           return (

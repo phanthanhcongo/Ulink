@@ -292,8 +292,8 @@ export default function ProductDetailClient({
                   className={cn(
                     'px-4 py-2 text-xs transition-all flex items-center justify-center cursor-pointer',
                     isSelected
-                      ? 'border-2 border-[#1769e2] bg-white text-[#1769e2] rounded-[5px] font-bold'
-                      : 'border border-slate-200 bg-white text-slate-700 rounded-[5px] hover:border-slate-350 font-medium'
+                      ? 'border-2 border-[#1769e2] bg-white text-[#1769e2] rounded-[3px] font-bold'
+                      : 'border border-slate-200 bg-white text-slate-700 rounded-[3px] hover:border-slate-350 font-medium'
                   )}
                 >
                   {val}
@@ -313,7 +313,7 @@ export default function ProductDetailClient({
               : `Order Qty ${unitLabel} (MOQ: 500 ${unitLabel})`}
           </p>
         </div>
-        <div className="flex items-center w-full bg-white rounded-[5px] border border-slate-200 overflow-hidden shadow-2xs">
+        <div className="flex items-center w-full bg-white rounded-[3px] border border-slate-200 overflow-hidden shadow-2xs">
           <button
             type="button"
             onClick={() => handleQuantityChange(quantity - 50 < 1 ? 1 : quantity - 50)}
@@ -342,7 +342,7 @@ export default function ProductDetailClient({
         <p className="text-xs font-bold text-slate-800">
           {locale === 'vi' ? 'Chiết khấu B2B theo sản lượng' : 'B2B Volume Discount'}
         </p>
-        <div className="border border-slate-200 rounded-[5px] overflow-hidden bg-white divide-y divide-slate-100">
+        <div className="border border-slate-200 rounded-[3px] overflow-hidden bg-white divide-y divide-slate-100">
           {priceTiers.map((tier, idx) => {
             const isActive = activeTierIdx === idx;
             return (
@@ -392,7 +392,7 @@ export default function ProductDetailClient({
           onClick={handleAddToCart}
           disabled={!selectedSku}
           className={cn(
-            'w-full flex items-center justify-center gap-2 h-11 rounded-[5px] font-bold text-sm text-white bg-[#1769e2] hover:bg-[#155fcb] transition-colors cursor-pointer shadow-sm',
+            'w-full flex items-center justify-center gap-2 h-11 rounded-[3px] font-bold text-sm text-white bg-[#1769e2] hover:bg-[#155fcb] transition-colors cursor-pointer shadow-sm',
             !selectedSku && 'opacity-50 cursor-not-allowed'
           )}
         >
@@ -414,7 +414,7 @@ export default function ProductDetailClient({
           onClick={handleRequestQuote}
           disabled={!selectedSku}
           className={cn(
-            'w-full flex items-center justify-center h-11 rounded-[5px] font-bold text-sm text-[#1769e2] border border-[#1769e2] bg-white hover:bg-blue-50/50 transition-colors cursor-pointer',
+            'w-full flex items-center justify-center h-11 rounded-[3px] font-bold text-sm text-[#1769e2] border border-[#1769e2] bg-white hover:bg-blue-50/50 transition-colors cursor-pointer',
             !selectedSku && 'opacity-50 cursor-not-allowed'
           )}
         >

@@ -34,7 +34,7 @@ export default function FaqAccordion({ sectionTitle, sectionSubtitle, items }: F
         </div>
 
         {/* Accordion Container */}
-        <div className="max-w-4xl mx-auto border border-slate-100 rounded-[5px] overflow-hidden bg-[#FFFFFF] shadow-xs">
+        <div className="max-w-4xl mx-auto border border-slate-100 rounded-[3px] overflow-hidden bg-[#FFFFFF] shadow-xs">
           {items.map((item, index) => {
             const isOpen = openId === item.id;
             return (

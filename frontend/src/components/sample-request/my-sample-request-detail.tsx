@@ -150,7 +150,7 @@ export function MySampleRequestDetail({ id, locale }: Props) {
             {/* Status badge */}
             <div
               className={cn(
-                'inline-flex items-center gap-2 rounded-[5px] border px-5 py-2.5',
+                'inline-flex items-center gap-2 rounded-[3px] border px-5 py-2.5',
                 sc?.bgClasses
               )}
             >
@@ -168,7 +168,7 @@ export function MySampleRequestDetail({ id, locale }: Props) {
           {status === 'approved' && request.approval_note && (
             <div
               className={cn(
-                'rounded-[5px] border border-l-4 p-5 bg-emerald-50 border-emerald-200',
+                'rounded-[3px] border border-l-4 p-5 bg-emerald-50 border-emerald-200',
                 sc?.borderColor
               )}
             >
@@ -187,7 +187,7 @@ export function MySampleRequestDetail({ id, locale }: Props) {
           {status === 'rejected' && request.reject_reason && (
             <div
               className={cn(
-                'rounded-[5px] border border-l-4 p-5 bg-rose-50 border-rose-200',
+                'rounded-[3px] border border-l-4 p-5 bg-rose-50 border-rose-200',
                 sc?.borderColor
               )}
             >
@@ -208,7 +208,7 @@ export function MySampleRequestDetail({ id, locale }: Props) {
             {/* Left column: Product + Contact */}
             <div className="lg:col-span-2 space-y-5">
               {/* Product info card */}
-              <div className="rounded-[5px] border border-gray-200 bg-white shadow-sm overflow-hidden">
+              <div className="rounded-[3px] border border-gray-200 bg-white shadow-sm overflow-hidden">
                 <div className="flex items-center gap-2 px-5 py-3 border-b border-gray-100 bg-gray-50/50">
                   <Package className="h-4 w-4 text-indigo-600" />
                   <h2 className="text-sm font-semibold text-gray-900">{t('product')}</h2>
@@ -220,7 +220,7 @@ export function MySampleRequestDetail({ id, locale }: Props) {
                       {request.skus.map((sku) => (
                         <span
                           key={sku}
-                          className="inline-flex items-center gap-1 rounded-lg bg-indigo-50 border border-indigo-100 px-2.5 py-1 text-xs font-mono text-indigo-700"
+                          className="inline-flex items-center gap-1 rounded-[3px] bg-indigo-50 border border-indigo-100 px-2.5 py-1 text-xs font-mono text-indigo-700"
                         >
                           <Hash className="h-3 w-3 opacity-50" />
                           {sku}
@@ -232,7 +232,7 @@ export function MySampleRequestDetail({ id, locale }: Props) {
               </div>
 
               {/* Contact info card */}
-              <div className="rounded-[5px] border border-gray-200 bg-white shadow-sm overflow-hidden">
+              <div className="rounded-[3px] border border-gray-200 bg-white shadow-sm overflow-hidden">
                 <div className="flex items-center gap-2 px-5 py-3 border-b border-gray-100 bg-gray-50/50">
                   <User className="h-4 w-4 text-indigo-600" />
                   <h2 className="text-sm font-semibold text-gray-900">{t('contactInfo')}</h2>
@@ -249,7 +249,7 @@ export function MySampleRequestDetail({ id, locale }: Props) {
 
               {/* Message card (if present) */}
               {request.message && (
-                <div className="rounded-[5px] border border-gray-200 bg-white shadow-sm overflow-hidden">
+                <div className="rounded-[3px] border border-gray-200 bg-white shadow-sm overflow-hidden">
                   <div className="flex items-center gap-2 px-5 py-3 border-b border-gray-100 bg-gray-50/50">
                     <MessageSquare className="h-4 w-4 text-indigo-600" />
                     <h2 className="text-sm font-semibold text-gray-900">{t('message')}</h2>
@@ -266,7 +266,7 @@ export function MySampleRequestDetail({ id, locale }: Props) {
             {/* Right column: Address */}
             <div className="space-y-5">
               {/* Address card */}
-              <div className="rounded-[5px] border border-gray-200 bg-white shadow-sm overflow-hidden">
+              <div className="rounded-[3px] border border-gray-200 bg-white shadow-sm overflow-hidden">
                 <div className="flex items-center gap-2 px-5 py-3 border-b border-gray-100 bg-gray-50/50">
                   <MapPin className="h-4 w-4 text-indigo-600" />
                   <h2 className="text-sm font-semibold text-gray-900">{t('address')}</h2>
@@ -296,7 +296,7 @@ export function MySampleRequestDetail({ id, locale }: Props) {
               </div>
 
               {/* Quick status timeline (visual) */}
-              <div className="rounded-[5px] border border-gray-200 bg-white shadow-sm overflow-hidden">
+              <div className="rounded-[3px] border border-gray-200 bg-white shadow-sm overflow-hidden">
                 <div className="flex items-center gap-2 px-5 py-3 border-b border-gray-100 bg-gray-50/50">
                   <Clock className="h-4 w-4 text-indigo-600" />
                   <h2 className="text-sm font-semibold text-gray-900">{t('status')}</h2>
@@ -348,7 +348,7 @@ function InfoItem({
 }) {
   return (
     <div className="flex items-start gap-3">
-      <div className="shrink-0 w-8 h-8 rounded-lg bg-gray-100 flex items-center justify-center mt-0.5">
+      <div className="shrink-0 w-8 h-8 rounded-[3px] bg-gray-100 flex items-center justify-center mt-0.5">
         <Icon className="h-4 w-4 text-gray-500" />
       </div>
       <div className="min-w-0">

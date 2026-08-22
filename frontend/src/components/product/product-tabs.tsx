@@ -100,13 +100,13 @@ export default function ProductTabs({
 
           {/* Right: Actual Applications Box */}
           <div className="lg:col-span-4">
-            <div className="bg-card border border-slate-100 p-6 rounded-[5px] space-y-4">
+            <div className="bg-card border border-slate-100 p-6 rounded-[3px] space-y-4">
               <h4 className="text-sm font-extrabold text-slate-800">
                 {locale === 'vi' ? 'Ứng dụng thực tế' : 'Real-world Applications'}
               </h4>
               <div className="space-y-3.5">
                 <div className="flex items-center gap-3 text-xs text-slate-700 font-semibold">
-                  <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
+                  <div className="w-8 h-8 rounded-[3px] bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
                     <Wrench className="h-4 w-4" />
                   </div>
                   <span>
@@ -116,7 +116,7 @@ export default function ProductTabs({
                   </span>
                 </div>
                 <div className="flex items-center gap-3 text-xs text-slate-700 font-semibold">
-                  <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
+                  <div className="w-8 h-8 rounded-[3px] bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
                     <FileText className="h-4 w-4" />
                   </div>
                   <span>
@@ -126,7 +126,7 @@ export default function ProductTabs({
                   </span>
                 </div>
                 <div className="flex items-center gap-3 text-xs text-slate-700 font-semibold">
-                  <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
+                  <div className="w-8 h-8 rounded-[3px] bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
                     <Truck className="h-4 w-4" />
                   </div>
                   <span>
@@ -136,7 +136,7 @@ export default function ProductTabs({
                   </span>
                 </div>
                 <div className="flex items-center gap-3 text-xs text-slate-700 font-semibold">
-                  <div className="w-8 h-8 rounded-lg bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
+                  <div className="w-8 h-8 rounded-[3px] bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
                     <Shield className="h-4 w-4" />
                   </div>
                   <span>
@@ -152,7 +152,7 @@ export default function ProductTabs({
 
         {/* Technical specifications table */}
         <div className="space-y-4">
-          <div className="border border-slate-200/80 rounded-[5px] overflow-hidden shadow-sm bg-white">
+          <div className="border border-slate-200/80 rounded-[3px] overflow-hidden shadow-sm bg-white">
             <table className="w-full text-left border-collapse">
               <thead>
                 <tr className="bg-blue-600 text-white text-xs font-bold uppercase tracking-wider">
@@ -200,10 +200,10 @@ export default function ProductTabs({
         </div>
 
         {/* Packaging Info & Shipping Schedule Banner */}
-        <div className="border border-slate-200/80 rounded-[5px] p-6 sm:p-8 bg-white shadow-xs grid grid-cols-1 lg:grid-cols-12 gap-8 items-center text-left">
+        <div className="border border-slate-200/80 rounded-[3px] p-6 sm:p-8 bg-white shadow-xs grid grid-cols-1 lg:grid-cols-12 gap-8 items-center text-left">
           {/* Left image of Warehouse */}
           <div className="lg:col-span-4 flex flex-col items-center">
-            <div className="relative w-full aspect-[4/3] rounded-lg overflow-hidden border border-slate-200">
+            <div className="relative w-full aspect-[4/3] rounded-[3px] overflow-hidden border border-slate-200">
               <Image
                 src="/images/about/hero-warehouse.webp"
                 alt="Warehouse"
@@ -234,7 +234,7 @@ export default function ProductTabs({
             </div>
 
             {/* Shipping schedule table */}
-            <div className="border border-slate-200 rounded-[5px] overflow-hidden bg-white">
+            <div className="border border-slate-200 rounded-[3px] overflow-hidden bg-white">
               <table className="w-full text-left border-collapse">
                 <thead>
                   <tr className="bg-blue-600 text-white text-[11px] font-bold uppercase tracking-wider">
@@ -280,11 +280,11 @@ export default function ProductTabs({
 
             {/* Badges */}
             <div className="flex flex-wrap gap-3 pt-1">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#eaf3ff]/80 rounded-[5px] border border-blue-100 text-xs font-bold text-blue-600 shadow-2xs">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#eaf3ff]/80 rounded-[3px] border border-blue-100 text-xs font-bold text-blue-600 shadow-2xs">
                 <Truck className="h-3.5 w-3.5 text-blue-600" />
                 {locale === 'vi' ? 'Vận chuyển định kỳ' : 'Scheduled Shipping'}
               </span>
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#eaf3ff]/80 rounded-[5px] border border-blue-100 text-xs font-bold text-blue-600 shadow-2xs">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-[#eaf3ff]/80 rounded-[3px] border border-blue-100 text-xs font-bold text-blue-600 shadow-2xs">
                 <Clock className="h-3.5 w-3.5 text-blue-600" />
                 {locale === 'vi' ? 'T2 – T7 hàng tuần' : 'Mon – Sat Weekly'}
               </span>
@@ -305,8 +305,8 @@ export default function ProductTabs({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Card 1: ISO 9001:2015 */}
-            <div className="p-6 bg-white border border-slate-200/80 rounded-[5px] flex flex-col sm:flex-row gap-4 items-start shadow-2xs">
-              <div className="w-10 h-10 rounded-[5px] bg-[#eaf3ff] flex items-center justify-center text-blue-600 shrink-0">
+            <div className="p-6 bg-white border border-slate-200/80 rounded-[3px] flex flex-col sm:flex-row gap-4 items-start shadow-2xs">
+              <div className="w-10 h-10 rounded-[3px] bg-[#eaf3ff] flex items-center justify-center text-blue-600 shrink-0">
                 <FileText className="h-5 w-5" />
               </div>
               <div className="space-y-2">
@@ -320,8 +320,8 @@ export default function ProductTabs({
             </div>
 
             {/* Card 2: RoHS Compliant */}
-            <div className="p-6 bg-white border border-slate-200/80 rounded-[5px] flex flex-col sm:flex-row gap-4 items-start shadow-2xs">
-              <div className="w-10 h-10 rounded-[5px] bg-[#eaf3ff] flex items-center justify-center text-blue-600 shrink-0">
+            <div className="p-6 bg-white border border-slate-200/80 rounded-[3px] flex flex-col sm:flex-row gap-4 items-start shadow-2xs">
+              <div className="w-10 h-10 rounded-[3px] bg-[#eaf3ff] flex items-center justify-center text-blue-600 shrink-0">
                 <Award className="h-5 w-5" />
               </div>
               <div className="space-y-2">
@@ -336,7 +336,7 @@ export default function ProductTabs({
           </div>
 
           {/* Footer banner */}
-          <div className="p-4 bg-[#F5F8FC] rounded-[5px] flex items-center gap-3.5 text-xs text-slate-600 font-medium">
+          <div className="p-4 bg-[#F5F8FC] rounded-[3px] flex items-center gap-3.5 text-xs text-slate-600 font-medium">
             <ClipboardCheck className="h-5 w-5 text-blue-600 shrink-0" />
             <span>
               {locale === 'vi'
@@ -357,7 +357,7 @@ export default function ProductTabs({
           <Link
             key={ind.id}
             href={`/${locale}/solutions?industry=${ind.slug}`}
-            className="flex flex-col items-center justify-center p-6 rounded-[5px] border border-slate-200/80 bg-white hover:border-blue-500 hover:shadow-md transition-all text-center group"
+            className="flex flex-col items-center justify-center p-6 rounded-[3px] border border-slate-200/80 bg-white hover:border-blue-500 hover:shadow-md transition-all text-center group"
           >
             <div className="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-slate-500 group-hover:bg-blue-50 group-hover:text-blue-600 mb-4 shrink-0 transition-colors">
               <Cpu className="h-5 w-5" />
@@ -378,9 +378,9 @@ export default function ProductTabs({
         {standards.map((std) => (
           <div
             key={std.id}
-            className="flex items-start gap-4 p-5 bg-white border border-slate-200/80 rounded-[5px] shadow-sm"
+            className="flex items-start gap-4 p-5 bg-white border border-slate-200/80 rounded-[3px] shadow-sm"
           >
-            <div className="w-12 h-12 rounded-[5px] bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 shrink-0">
+            <div className="w-12 h-12 rounded-[3px] bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 shrink-0">
               <Award className="h-6 w-6" />
             </div>
             <div>
@@ -426,7 +426,7 @@ export default function ProductTabs({
     return (
       <div className="space-y-6 py-4">
         {/* Rating Summary Card */}
-        <div className="bg-card border border-slate-200/60 p-6 rounded-[5px] flex flex-col sm:flex-row gap-6 items-center justify-between">
+        <div className="bg-card border border-slate-200/60 p-6 rounded-[3px] flex flex-col sm:flex-row gap-6 items-center justify-between">
           <div className="text-center sm:text-left space-y-1">
             <p className="text-3xl font-black text-slate-900">4.7 / 5.0</p>
             <div className="flex text-amber-400 justify-center sm:justify-start">
@@ -438,7 +438,7 @@ export default function ProductTabs({
               12 đánh giá thực tế từ khách hàng doanh nghiệp
             </p>
           </div>
-          <div className="flex items-center gap-1.5 px-4 py-2.5 bg-white border border-slate-100 rounded-lg shadow-sm">
+          <div className="flex items-center gap-1.5 px-4 py-2.5 bg-white border border-slate-100 rounded-[3px] shadow-sm">
             <CheckCircle className="h-4.5 w-4.5 text-emerald-500" />
             <span className="text-xs font-bold text-slate-700">100% Khách hàng hài lòng</span>
           </div>

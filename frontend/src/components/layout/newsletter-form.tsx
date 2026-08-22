@@ -67,7 +67,7 @@ export function NewsletterForm() {
     <div className="mt-2">
       <form
         onSubmit={onSubmit}
-        className="flex items-stretch overflow-hidden rounded-lg bg-white"
+        className="flex items-stretch overflow-hidden rounded-[3px] bg-white"
         noValidate
       >
         <input

@@ -17,9 +17,9 @@ export function ContactCapabilities() {
           return (
             <div
               key={idx}
-              className="flex items-center gap-3 p-4 rounded-[5px] bg-slate-50 border border-slate-100"
+              className="flex items-center gap-3 p-4 rounded-[3px] bg-slate-50 border border-slate-100"
             >
-              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-100 text-blue-600">
+              <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[3px] bg-blue-100 text-blue-600">
                 <Icon className="h-5 w-5" />
               </div>
               <div>

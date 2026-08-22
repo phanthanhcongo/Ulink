@@ -14,7 +14,7 @@ export async function AboutHubSustainability() {
   ];
 
   return (
-    <section className="flex flex-col gap-6 rounded-2xl border border-border bg-background px-6 py-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+    <section className="flex flex-col gap-6 rounded-[3px] border border-border bg-background px-6 py-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
       {/* Left: leaf icon + title + desc */}
       <div className="flex items-start gap-4 lg:max-w-[420px]">
         <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-border text-brand">

@@ -188,7 +188,7 @@ function ResetPasswordFormInner() {
   if (done) {
     return (
       <div className="text-center">
-        <span className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-[5px] bg-brand/10 text-brand">
+        <span className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-[3px] bg-brand/10 text-brand">
           <CheckCircle2 className="h-7 w-7" aria-hidden="true" />
         </span>
         <h2 className="text-2xl font-bold tracking-tight text-foreground">
@@ -197,7 +197,7 @@ function ResetPasswordFormInner() {
         <button
           type="button"
           onClick={() => router.push('/login')}
-          className="mt-6 inline-flex items-center justify-center rounded-[5px] border border-brand bg-brand px-5 py-2.5 text-sm font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong"
+          className="mt-6 inline-flex items-center justify-center rounded-[3px] border border-brand bg-brand px-5 py-2.5 text-sm font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong"
         >
           {t('backToLogin')}
         </button>
@@ -350,7 +350,7 @@ function ResetPasswordFormInner() {
   }
 
   const inputBase =
-    'w-full rounded-[5px] border bg-card py-2.5 pl-10 pr-4 text-sm outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-brand focus:ring-1 focus:ring-brand';
+    'w-full rounded-[3px] border bg-card py-2.5 pl-10 pr-4 text-sm outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-brand focus:ring-1 focus:ring-brand';
 
   return (
     <div>
@@ -364,7 +364,7 @@ function ResetPasswordFormInner() {
       {formError && !(lockedUntil != null && lockedUntil > now) && (
         <p
           role="alert"
-          className="mt-4 rounded-[5px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-sm text-destructive"
+          className="mt-4 rounded-[3px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-sm text-destructive"
         >
           {formError}
         </p>
@@ -376,7 +376,7 @@ function ResetPasswordFormInner() {
       {lockedUntil != null && lockedUntil > now && (
         <div
           role="alert"
-          className="mt-4 rounded-[5px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-sm text-destructive"
+          className="mt-4 rounded-[3px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-sm text-destructive"
         >
           <p className="font-medium">{t('resetPasswordLockedTitle')}</p>
           <p className="mt-1 text-xs">
@@ -408,7 +408,7 @@ function ResetPasswordFormInner() {
         <button
           type="submit"
           disabled={loading || (lockedUntil != null && Date.now() < lockedUntil)}
-          className="flex w-full items-center justify-center gap-2 rounded-[5px] border border-brand bg-brand py-3 text-sm font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong disabled:opacity-60"
+          className="flex w-full items-center justify-center gap-2 rounded-[3px] border border-brand bg-brand py-3 text-sm font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong disabled:opacity-60"
         >
           {loading ? (
             <>

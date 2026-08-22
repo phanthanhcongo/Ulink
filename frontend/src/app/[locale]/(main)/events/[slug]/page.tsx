@@ -95,7 +95,7 @@ export default async function EventDetailPage({ params }: Props) {
           {/* Left Content Column */}
           <div>
             {/* Banner Cover Image */}
-            <div className="relative overflow-hidden rounded-[5px] border border-slate-100 aspect-[16/9] shadow-md bg-slate-50">
+            <div className="relative overflow-hidden rounded-[3px] border border-slate-100 aspect-[16/9] shadow-md bg-slate-50">
               <Image
                 src={event.image}
                 alt={event.title}
@@ -107,7 +107,7 @@ export default async function EventDetailPage({ params }: Props) {
 
             {/* Sponsor/Partner Logos Row */}
             {event.sponsors && event.sponsors.length > 0 && (
-              <div className="mt-6 flex flex-wrap items-center justify-around gap-6 border border-slate-200 bg-slate-50/50 h-[72px] px-8 rounded-[5px] shadow-sm select-none">
+              <div className="mt-6 flex flex-wrap items-center justify-around gap-6 border border-slate-200 bg-slate-50/50 h-[72px] px-8 rounded-[3px] shadow-sm select-none">
                 {event.sponsors.map((sponsor) => (
                   <div key={sponsor}>
                     {SPONSOR_LOGOS[sponsor] || (
@@ -164,7 +164,7 @@ export default async function EventDetailPage({ params }: Props) {
                   {event.agenda.map((item, index) => (
                     <div
                       key={`${item.time}-${index}`}
-                      className="flex gap-4 rounded-[5px] border border-slate-100 p-4 bg-slate-50/50"
+                      className="flex gap-4 rounded-[3px] border border-slate-100 p-4 bg-slate-50/50"
                     >
                       <div className="min-w-[92px] text-sm font-bold text-sky-700">{item.time}</div>
                       <div className="flex-1">
@@ -189,7 +189,7 @@ export default async function EventDetailPage({ params }: Props) {
                   {event.benefits.map((item) => (
                     <div
                       key={item}
-                      className="rounded-[5px] border border-slate-100 bg-slate-50/50 p-4 text-xs sm:text-sm leading-relaxed text-slate-600"
+                      className="rounded-[3px] border border-slate-100 bg-slate-50/50 p-4 text-xs sm:text-sm leading-relaxed text-slate-600"
                     >
                       {item}
                     </div>
@@ -206,7 +206,7 @@ export default async function EventDetailPage({ params }: Props) {
                   {event.speakers.map((speaker) => (
                     <div
                       key={speaker.name}
-                      className="flex flex-col items-center text-center p-6 bg-white border border-slate-100 rounded-[5px] shadow-sm hover:shadow-md transition-shadow"
+                      className="flex flex-col items-center text-center p-6 bg-white border border-slate-100 rounded-[3px] shadow-sm hover:shadow-md transition-shadow"
                     >
                       <div className="relative h-20 w-20 overflow-hidden rounded-full bg-slate-100 border border-slate-100">
                         {speaker.avatar ? (
@@ -240,7 +240,7 @@ export default async function EventDetailPage({ params }: Props) {
                   {event.hosts.map((host) => (
                     <div
                       key={host.name}
-                      className="flex flex-col items-center text-center p-6 bg-white border border-slate-100 rounded-[5px] shadow-sm hover:shadow-md transition-shadow"
+                      className="flex flex-col items-center text-center p-6 bg-white border border-slate-100 rounded-[3px] shadow-sm hover:shadow-md transition-shadow"
                     >
                       <div className="relative h-20 w-20 overflow-hidden rounded-full bg-slate-100 border border-slate-100">
                         {host.avatar ? (
@@ -269,7 +269,7 @@ export default async function EventDetailPage({ params }: Props) {
             {/* Organizer Section */}
             <div className="mt-10 border-t border-slate-100 pt-8">
               <h2 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight text-left">Organizer</h2>
-              <div className="mt-6 flex flex-col sm:flex-row gap-6 p-6 border border-slate-100 rounded-[5px] bg-white shadow-xs items-start font-sans">
+              <div className="mt-6 flex flex-col sm:flex-row gap-6 p-6 border border-slate-100 rounded-[3px] bg-white shadow-xs items-start font-sans">
                 <div className="relative h-24 w-24 overflow-hidden  flex items-center justify-center">
                   {event.organizer.logo ? (
                     <Image

@@ -42,9 +42,9 @@ export function ContactHero() {
               return (
                 <div
                   key={idx}
-                  className="flex items-start gap-3.5 p-2.5 rounded-[5px] bg-slate-50 border border-slate-100"
+                  className="flex items-start gap-3.5 p-2.5 rounded-[3px] bg-slate-50 border border-slate-100"
                 >
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-blue-600 text-white">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[3px] bg-blue-600 text-white">
                     <Icon className="h-5 w-5" />
                   </div>
                   <div>
@@ -59,7 +59,7 @@ export function ContactHero() {
 
         {/* Right Column: Photo */}
         <div className="lg:col-span-6">
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[5px] shadow-xl ring-1 ring-slate-900/10">
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[3px] shadow-xl ring-1 ring-slate-900/10">
             <Image
               src="/images/about/kho.png"
               alt="Trung tâm phân phối ULink Hub Hà Nam"

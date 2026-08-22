@@ -61,7 +61,7 @@ export default async function HubHeroSection({ locale, hubs }: HubHeroSectionPro
             {/* Stats Cards Stack */}
             <div className="mt-8 flex flex-col gap-4 w-full max-w-[340px]">
               {/* Stat 1: Distance */}
-              <div className="w-full bg-white rounded-none border border-slate-300 border-l-[4px] border-l-brand p-5 shadow-sm">
+              <div className="w-full bg-white rounded-[3px] border border-slate-300 border-l-[4px] border-l-brand p-5 shadow-sm">
                 <StatRow
                   icon={<Route className="h-[22px] w-[22px] text-brand" />}
                   label={t('stats.distanceLabel')}
@@ -72,7 +72,7 @@ export default async function HubHeroSection({ locale, hubs }: HubHeroSectionPro
               </div>
 
               {/* Stat 2: Time */}
-              <div className="w-full bg-white rounded-none border border-slate-300 border-l-[4px] border-l-brand p-5 shadow-sm">
+              <div className="w-full bg-white rounded-[3px] border border-slate-300 border-l-[4px] border-l-brand p-5 shadow-sm">
                 <StatRow
                   icon={<Clock className="h-[22px] w-[22px] text-brand" />}
                   label={t('stats.timeLabel')}
@@ -83,7 +83,7 @@ export default async function HubHeroSection({ locale, hubs }: HubHeroSectionPro
               </div>
 
               {/* Stat 3: Partners */}
-              <div className="w-full bg-white rounded-none border border-slate-300 border-l-[4px] border-l-brand p-5 shadow-sm">
+              <div className="w-full bg-white rounded-[3px] border border-slate-300 border-l-[4px] border-l-brand p-5 shadow-sm">
                 <StatRow
                   icon={<Users className="h-[22px] w-[22px] text-brand" />}
                   label={t('stats.partnersLabel')}
@@ -97,7 +97,7 @@ export default async function HubHeroSection({ locale, hubs }: HubHeroSectionPro
           {/* === CENTER-RIGHT COLUMN: Map & Hub List Side-by-Side (Seamless connections) === */}
           <div className="relative flex items-center justify-between gap-0">
             {/* Map container - left side of this section with cyber-tech borders */}
-            <div className="relative hidden h-[640px] w-[420px] shrink-0 rounded-none border border-blue-400/40 lg:block">
+            <div className="relative hidden h-[640px] w-[420px] shrink-0 rounded-[3px] border border-blue-400/40 lg:block">
               {/* L-shaped corner notches */}
               <div className="absolute -top-[2px] -left-[2px] h-4 w-4 border-t-2 border-l-2 border-blue-400" />
               <div className="absolute -top-[2px] -right-[2px] h-4 w-4 border-t-2 border-r-2 border-blue-400" />
@@ -122,7 +122,7 @@ export default async function HubHeroSection({ locale, hubs }: HubHeroSectionPro
                 <span className="text-[10px] text-blue-300/40 font-mono tracking-wider font-semibold">
                   NETWORK STATUS
                 </span>
-                <div className="inline-flex items-center gap-1.5 rounded-none border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 text-[9px] font-bold text-emerald-400 uppercase tracking-wider">
+                <div className="inline-flex items-center gap-1.5 rounded-[3px] border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 text-[9px] font-bold text-emerald-400 uppercase tracking-wider">
                   <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
                   Network Online
                 </div>
@@ -190,7 +190,7 @@ function StatRow({
 }) {
   return (
     <div className="flex items-start gap-4">
-      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-none border border-blue-300 bg-[#B2EDFF]/25">
+      <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[3px] border border-blue-300 bg-[#B2EDFF]/25">
         {icon}
       </div>
       <div className="flex flex-col gap-1.5">

@@ -67,7 +67,7 @@ export default function ProductCardCartButton({
       type="button"
       onClick={handleClick}
       className={cn(
-        'inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-[5px] text-xs font-extrabold transition-all shadow-2xs cursor-pointer',
+        'inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-[3px] text-xs font-extrabold transition-all shadow-2xs cursor-pointer',
         added
           ? 'bg-emerald-600 text-white hover:bg-emerald-700'
           : 'bg-blue-600 text-white hover:bg-blue-700 hover:scale-[1.02]'

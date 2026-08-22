@@ -29,7 +29,7 @@ export function ConfirmModal({
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center bg-slate-900/60 p-4 backdrop-blur-sm animate-fade-in select-none">
       <div
-        className="w-full max-w-md bg-white rounded-[5px] shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-200 border border-slate-100"
+        className="w-full max-w-md bg-white rounded-[3px] shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-200 border border-slate-100"
         role="dialog"
         aria-modal="true"
       >
@@ -48,7 +48,7 @@ export function ConfirmModal({
           </h3>
           <button
             onClick={onCancel}
-            className="p-1 rounded-[5px] hover:bg-slate-100 text-slate-400 hover:text-slate-600 transition-colors"
+            className="p-1 rounded-[3px] hover:bg-slate-100 text-slate-400 hover:text-slate-600 transition-colors"
           >
             <X className="h-4 w-4" />
           </button>
@@ -66,7 +66,7 @@ export function ConfirmModal({
           <button
             type="button"
             onClick={onCancel}
-            className="px-4 py-2 rounded-[5px] border border-slate-200 text-xs font-bold text-slate-550 hover:bg-slate-100 transition-colors"
+            className="px-4 py-2 rounded-[3px] border border-slate-200 text-xs font-bold text-slate-550 hover:bg-slate-100 transition-colors"
           >
             {cancelText}
           </button>
@@ -74,7 +74,7 @@ export function ConfirmModal({
             type="button"
             onClick={onConfirm}
             className={cn(
-              'inline-flex items-center justify-center px-4 py-2 rounded-[5px] text-xs font-bold text-white shadow-sm transition-colors',
+              'inline-flex items-center justify-center px-4 py-2 rounded-[3px] text-xs font-bold text-white shadow-sm transition-colors',
               type === 'danger' && 'bg-rose-600 hover:bg-rose-700',
               type === 'warning' && 'bg-amber-600 hover:bg-amber-700',
               type === 'info' && 'bg-blue-600 hover:bg-blue-700'

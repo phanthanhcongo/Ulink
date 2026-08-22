@@ -29,13 +29,13 @@ export default async function ContactCta({ locale }: ContactCtaProps) {
         <div className="flex items-center gap-4 shrink-0 w-full sm:w-auto">
           <Link
             href="/contact"
-            className="inline-flex h-11 items-center justify-center rounded-[5px] border border-blue-600 bg-white px-6 text-xs sm:text-sm font-bold text-blue-600 hover:bg-blue-50 transition-colors w-1/2 sm:w-auto text-center"
+            className="inline-flex h-11 items-center justify-center rounded-[3px] border border-blue-600 bg-white px-6 text-xs sm:text-sm font-bold text-blue-600 hover:bg-blue-50 transition-colors w-1/2 sm:w-auto text-center"
           >
             {t('contactCta.callNow')}
           </Link>
           <Link
             href="/contact"
-            className="inline-flex h-11 items-center justify-center rounded-[5px] bg-blue-600 px-6 text-xs sm:text-sm font-bold text-white hover:bg-blue-700 transition-colors w-1/2 sm:w-auto text-center"
+            className="inline-flex h-11 items-center justify-center rounded-[3px] bg-blue-600 px-6 text-xs sm:text-sm font-bold text-white hover:bg-blue-700 transition-colors w-1/2 sm:w-auto text-center"
           >
             {t('contactCta.sendRequest')}
           </Link>

@@ -144,11 +144,11 @@ export default async function AdminDashboardPage({ params: { locale } }: Props) 
           <Link
             key={idx}
             href={kpi.href}
-            className="block bg-white border border-slate-100 hover:border-slate-200 rounded-[5px] p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 ease-in-out group"
+            className="block bg-white border border-slate-100 hover:border-slate-200 rounded-[3px] p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 ease-in-out group"
           >
             <div className="flex items-center justify-between mb-4">
               <div
-                className={`w-10 h-10 rounded-[5px] flex items-center justify-center border transition-transform duration-300 group-hover:scale-110 ${kpi.color}`}
+                className={`w-10 h-10 rounded-[3px] flex items-center justify-center border transition-transform duration-300 group-hover:scale-110 ${kpi.color}`}
               >
                 <kpi.icon className="h-5 w-5" />
               </div>
@@ -168,12 +168,12 @@ export default async function AdminDashboardPage({ params: { locale } }: Props) 
       {/* Grid of Main Content Areas */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Left Column: Quick Actions */}
-        <div className="lg:col-span-1 bg-white border border-slate-100 rounded-[5px] p-6 shadow-sm">
+        <div className="lg:col-span-1 bg-white border border-slate-100 rounded-[3px] p-6 shadow-sm">
           <h3 className="text-base font-extrabold text-primary mb-4">Thao tác nhanh</h3>
           <div className="space-y-3">
             <Link
               href="/admin/products"
-              className="flex items-center justify-between p-3.5 rounded-[5px] border border-slate-50 hover:bg-slate-50 text-slate-700 hover:text-primary text-xs sm:text-sm font-bold transition-colors"
+              className="flex items-center justify-between p-3.5 rounded-[3px] border border-slate-50 hover:bg-slate-50 text-slate-700 hover:text-primary text-xs sm:text-sm font-bold transition-colors"
             >
               <div className="flex items-center gap-3">
                 <PlusCircle className="h-4.5 w-4.5 text-blue-600" />
@@ -183,7 +183,7 @@ export default async function AdminDashboardPage({ params: { locale } }: Props) 
             </Link>
             {/* <Link
               href="/admin/articles"
-              className="flex items-center justify-between p-3.5 rounded-[5px] border border-slate-50 hover:bg-slate-50 text-slate-700 hover:text-primary text-xs sm:text-sm font-bold transition-colors"
+              className="flex items-center justify-between p-3.5 rounded-[3px] border border-slate-50 hover:bg-slate-50 text-slate-700 hover:text-primary text-xs sm:text-sm font-bold transition-colors"
             >
               <div className="flex items-center gap-3">
                 <FileText className="h-4.5 w-4.5 text-blue-600" />
@@ -193,7 +193,7 @@ export default async function AdminDashboardPage({ params: { locale } }: Props) 
             </Link> */}
             <Link
               href="/admin/users"
-              className="flex items-center justify-between p-3.5 rounded-[5px] border border-slate-50 hover:bg-slate-50 text-slate-700 hover:text-primary text-xs sm:text-sm font-bold transition-colors"
+              className="flex items-center justify-between p-3.5 rounded-[3px] border border-slate-50 hover:bg-slate-50 text-slate-700 hover:text-primary text-xs sm:text-sm font-bold transition-colors"
             >
               <div className="flex items-center gap-3">
                 <Users className="h-4.5 w-4.5 text-blue-600" />
@@ -203,7 +203,7 @@ export default async function AdminDashboardPage({ params: { locale } }: Props) 
             </Link>
             <Link
               href="/admin/contact-requests"
-              className="flex items-center justify-between p-3.5 rounded-[5px] border border-slate-50 hover:bg-slate-50 text-slate-700 hover:text-primary text-xs sm:text-sm font-bold transition-colors"
+              className="flex items-center justify-between p-3.5 rounded-[3px] border border-slate-50 hover:bg-slate-50 text-slate-700 hover:text-primary text-xs sm:text-sm font-bold transition-colors"
             >
               <div className="flex items-center gap-3">
                 <Mail className="h-4.5 w-4.5 text-cyan-600" />
@@ -215,7 +215,7 @@ export default async function AdminDashboardPage({ params: { locale } }: Props) 
         </div>
 
         {/* Right Columns: System Info Summary */}
-        <div className="lg:col-span-2 bg-white border border-slate-100 rounded-[5px] p-6 shadow-sm flex flex-col justify-between">
+        <div className="lg:col-span-2 bg-white border border-slate-100 rounded-[3px] p-6 shadow-sm flex flex-col justify-between">
           <div>
             <h3 className="text-base font-extrabold text-primary mb-3">
               Hướng dẫn Vận hành Hệ thống B2B
@@ -226,20 +226,20 @@ export default async function AdminDashboardPage({ params: { locale } }: Props) 
             </p>
             <ul className="space-y-2.5 text-xs sm:text-sm text-slate-650 font-medium">
               <li className="flex items-start gap-2">
-                <span className="w-1.5 h-1.5 rounded-[5px] bg-blue-600 mt-1.5 shrink-0" />
+                <span className="w-1.5 h-1.5 rounded-[3px] bg-blue-600 mt-1.5 shrink-0" />
                 <span>
                   Cập nhật và chỉnh sửa thông số kỹ thuật của sản phẩm trong thẻ{' '}
                   <strong>Sản phẩm & SKUs</strong>.
                 </span>
               </li>
               {/* <li className="flex items-start gap-2">
-                <span className="w-1.5 h-1.5 rounded-[5px] bg-blue-600 mt-1.5 shrink-0" />
+                <span className="w-1.5 h-1.5 rounded-[3px] bg-blue-600 mt-1.5 shrink-0" />
                 <span>
                   Xuất bản cẩm nang, tin tức thị trường B2B trong thẻ <strong>Bài viết CMS</strong>.
                 </span>
               </li> */}
               <li className="flex items-start gap-2">
-                <span className="w-1.5 h-1.5 rounded-[5px] bg-blue-600 mt-1.5 shrink-0" />
+                <span className="w-1.5 h-1.5 rounded-[3px] bg-blue-600 mt-1.5 shrink-0" />
                 <span>
                   Phản hồi báo giá RFQ của khách hàng doanh nghiệp trong thẻ{' '}
                   <strong>Yêu cầu Báo giá</strong>.

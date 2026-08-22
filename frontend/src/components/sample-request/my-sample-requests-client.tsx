@@ -120,21 +120,21 @@ export function MySampleRequestsClient() {
 
             {/* Stats cards */}
             <div className="grid grid-cols-3 gap-3">
-              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-3 border border-white/20">
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-[3px] px-4 py-3 border border-white/20">
                 <Clock className="h-4 w-4 text-amber-300" />
                 <div>
                   <p className="text-lg font-bold text-white">{counts.pending}</p>
                   <p className="text-[10px] text-indigo-200">{t('pending')}</p>
                 </div>
               </div>
-              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-3 border border-white/20">
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-[3px] px-4 py-3 border border-white/20">
                 <CheckCircle2 className="h-4 w-4 text-emerald-300" />
                 <div>
                   <p className="text-lg font-bold text-white">{counts.approved}</p>
                   <p className="text-[10px] text-indigo-200">{t('approved')}</p>
                 </div>
               </div>
-              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-3 border border-white/20">
+              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-[3px] px-4 py-3 border border-white/20">
                 <XCircle className="h-4 w-4 text-rose-300" />
                 <div>
                   <p className="text-lg font-bold text-white">{counts.rejected}</p>
@@ -149,7 +149,7 @@ export function MySampleRequestsClient() {
       {/* Main content */}
       <div className="container mx-auto px-4 py-6">
         {/* Toolbar */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-6 bg-white rounded-[5px] border border-gray-200 shadow-sm px-4 py-3">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-6 bg-white rounded-[3px] border border-gray-200 shadow-sm px-4 py-3">
           {/* Search */}
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
@@ -158,18 +158,18 @@ export function MySampleRequestsClient() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={t('searchPlaceholder')}
-              className="w-full rounded-lg border border-gray-200 bg-gray-50 pl-9 pr-3 py-2 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:bg-white focus:outline-none transition-all"
+              className="w-full rounded-[3px] border border-gray-200 bg-gray-50 pl-9 pr-3 py-2 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:bg-white focus:outline-none transition-all"
             />
           </div>
 
           {/* Status filter tabs */}
-          <div className="flex items-center gap-1 bg-gray-100 rounded-lg p-1">
+          <div className="flex items-center gap-1 bg-gray-100 rounded-[3px] p-1">
             {(['all', 'pending', 'approved', 'rejected'] as const).map((s) => (
               <button
                 key={s}
                 onClick={() => setStatusFilter(s)}
                 className={cn(
-                  'px-3 py-1.5 rounded-md text-xs font-medium transition-all',
+                  'px-3 py-1.5 rounded-[3px] text-xs font-medium transition-all',
                   statusFilter === s
                     ? 'bg-white text-gray-900 shadow-sm'
                     : 'text-gray-500 hover:text-gray-700'
@@ -188,11 +188,11 @@ export function MySampleRequestsClient() {
             <Loader2 className="h-6 w-6 animate-spin text-gray-400" />
           </div>
         ) : error ? (
-          <div className="flex flex-col items-center justify-center py-20 bg-white rounded-[5px] border border-gray-200">
+          <div className="flex flex-col items-center justify-center py-20 bg-white rounded-[3px] border border-gray-200">
             <p className="text-red-600 text-sm">{error}</p>
           </div>
         ) : filtered.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-20 bg-white rounded-[5px] border border-gray-200">
+          <div className="flex flex-col items-center justify-center py-20 bg-white rounded-[3px] border border-gray-200">
             <FileBox className="h-14 w-14 text-gray-200 mb-4" />
             <p className="text-gray-600 font-medium">{t('noResults')}</p>
             <p className="text-gray-400 text-sm mt-1">{t('noResultsDesc')}</p>
@@ -207,11 +207,11 @@ export function MySampleRequestsClient() {
               return (
                 <div
                   key={req.id}
-                  className="group flex flex-col sm:flex-row sm:items-center gap-4 bg-white rounded-[5px] border border-gray-200 shadow-sm px-5 py-4 hover:shadow-md hover:border-blue-200 transition-all"
+                  className="group flex flex-col sm:flex-row sm:items-center gap-4 bg-white rounded-[3px] border border-gray-200 shadow-sm px-5 py-4 hover:shadow-md hover:border-blue-200 transition-all"
                 >
                   {/* Left: icon + info */}
                   <div className="flex items-start gap-4 flex-1 min-w-0">
-                    <div className="shrink-0 w-10 h-10 rounded-lg bg-indigo-50 flex items-center justify-center">
+                    <div className="shrink-0 w-10 h-10 rounded-[3px] bg-indigo-50 flex items-center justify-center">
                       <Package className="h-5 w-5 text-indigo-600" />
                     </div>
                     <div className="min-w-0 flex-1">
@@ -247,7 +247,7 @@ export function MySampleRequestsClient() {
                           {req.skus.slice(0, 3).map((sku) => (
                             <span
                               key={sku}
-                              className="inline-flex items-center rounded-md bg-gray-100 px-1.5 py-0.5 text-[10px] font-mono text-gray-600"
+                              className="inline-flex items-center rounded-[3px] bg-gray-100 px-1.5 py-0.5 text-[10px] font-mono text-gray-600"
                             >
                               {sku}
                             </span>
@@ -278,7 +278,7 @@ export function MySampleRequestsClient() {
                     {/* View detail button */}
                     <button
                       onClick={() => router.push(`/${locale}/sample-requests/${req.id}`)}
-                      className="inline-flex items-center gap-1.5 rounded-lg border border-gray-200 bg-white px-3 py-2 text-xs font-medium text-gray-700 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-200 transition-all shadow-sm"
+                      className="inline-flex items-center gap-1.5 rounded-[3px] border border-gray-200 bg-white px-3 py-2 text-xs font-medium text-gray-700 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-200 transition-all shadow-sm"
                     >
                       <Eye className="h-3.5 w-3.5" />
                       {t('viewDetail')}

@@ -27,7 +27,7 @@ export async function WorkingProcess() {
           {steps.map(({ step, icon: IconComponent }) => (
             <div
               key={step}
-              className="flex flex-col rounded-sm border border-slate-100 bg-white p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md sm:p-6 lg:p-5 xl:p-6"
+              className="flex flex-col rounded-[3px] border border-slate-100 bg-white p-5 shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-md sm:p-6 lg:p-5 xl:p-6"
             >
               {/* Tầng 1: Icon tròn & Tiêu đề nằm ngang */}
               <div className="flex items-center gap-3">

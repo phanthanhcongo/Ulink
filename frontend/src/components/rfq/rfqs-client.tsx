@@ -405,7 +405,7 @@ export function RfqsClient({ user }: { user: AuthUser | null }) {
         <h2 className="text-lg font-semibold text-foreground">Danh sách yêu cầu</h2>
         <Link
           href="/quick-order"
-          className="inline-flex items-center justify-center gap-2 rounded-[5px] bg-brand px-4 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-brand/90 hover:scale-[1.01] active:scale-[0.99] transition-all shrink-0"
+          className="inline-flex items-center justify-center gap-2 rounded-[3px] bg-brand px-4 py-2.5 text-sm font-semibold text-white shadow-md hover:bg-brand/90 hover:scale-[1.01] active:scale-[0.99] transition-all shrink-0"
         >
           <Plus className="h-4.5 w-4.5" />
           Tạo yêu cầu mới
@@ -414,14 +414,14 @@ export function RfqsClient({ user }: { user: AuthUser | null }) {
 
       {/* Success Toast */}
       {showSuccessToast && (
-        <div className="fixed bottom-5 right-5 z-50 flex items-center gap-2 rounded-[5px] border border-emerald-200/50 bg-emerald-50 px-4 py-3 text-emerald-800 shadow-lg animate-in fade-in slide-in-from-bottom-5 duration-300 dark:bg-emerald-950/20 dark:text-emerald-400 dark:border-emerald-500/20">
+        <div className="fixed bottom-5 right-5 z-50 flex items-center gap-2 rounded-[3px] border border-emerald-200/50 bg-emerald-50 px-4 py-3 text-emerald-800 shadow-lg animate-in fade-in slide-in-from-bottom-5 duration-300 dark:bg-emerald-950/20 dark:text-emerald-400 dark:border-emerald-500/20">
           <CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0" />
           <span className="text-sm font-medium">Gửi yêu cầu báo giá thành công!</span>
         </div>
       )}
 
       {/* Filters Area */}
-      <div className="grid gap-4 rounded-2xl border border-border/70 bg-card p-4 shadow-sm md:grid-cols-12 md:items-center">
+      <div className="grid gap-4 rounded-[3px] border border-border/70 bg-card p-4 shadow-sm md:grid-cols-12 md:items-center">
         {/* Search Bar */}
         <div className="relative md:col-span-5">
           <Search className="absolute left-3 top-2.5 h-4.5 w-4.5 text-muted-foreground" />
@@ -430,7 +430,7 @@ export function RfqsClient({ user }: { user: AuthUser | null }) {
             placeholder="Tìm kiếm theo mã RFQ, tên khách hàng..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="w-full rounded-[5px] border border-border/80 bg-background/50 py-2 pl-10 pr-4 text-sm outline-none transition-all placeholder:text-muted-foreground focus:border-brand focus:ring-1 focus:ring-brand"
+            className="w-full rounded-[3px] border border-border/80 bg-background/50 py-2 pl-10 pr-4 text-sm outline-none transition-all placeholder:text-muted-foreground focus:border-brand focus:ring-1 focus:ring-brand"
           />
           {searchQuery && (
             <button
@@ -447,7 +447,7 @@ export function RfqsClient({ user }: { user: AuthUser | null }) {
           <select
             value={statusFilter}
             onChange={(e) => setStatusFilter(e.target.value as any)}
-            className="w-full rounded-[5px] border border-border/80 bg-background/50 px-3 py-2 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand"
+            className="w-full rounded-[3px] border border-border/80 bg-background/50 px-3 py-2 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand"
           >
             <option value="all">Tất cả trạng thái</option>
             <option value="pending">Đang chờ</option>
@@ -461,7 +461,7 @@ export function RfqsClient({ user }: { user: AuthUser | null }) {
           <select
             value={timeFilter}
             onChange={(e) => setTimeFilter(e.target.value as any)}
-            className="w-full rounded-[5px] border border-border/80 bg-background/50 px-3 py-2 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand"
+            className="w-full rounded-[3px] border border-border/80 bg-background/50 px-3 py-2 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand"
           >
             <option value="all">Mọi thời gian</option>
             <option value="7days">7 ngày qua</option>
@@ -473,21 +473,21 @@ export function RfqsClient({ user }: { user: AuthUser | null }) {
 
       {/* Content Area */}
       {loading ? (
-        <div className="flex h-64 items-center justify-center rounded-2xl border border-border/70 bg-card/60 backdrop-blur">
+        <div className="flex h-64 items-center justify-center rounded-[3px] border border-border/70 bg-card/60 backdrop-blur">
           <div className="flex flex-col items-center gap-3">
             <Loader2 className="h-8 w-8 animate-spin text-brand" />
             <p className="text-sm text-muted-foreground">Đang tải danh sách yêu cầu báo giá...</p>
           </div>
         </div>
       ) : error ? (
-        <div className="flex h-64 items-center justify-center rounded-2xl border border-rose-100 bg-rose-50/50 p-6 text-center dark:bg-rose-950/10 dark:border-rose-900/30">
+        <div className="flex h-64 items-center justify-center rounded-[3px] border border-rose-100 bg-rose-50/50 p-6 text-center dark:bg-rose-950/10 dark:border-rose-900/30">
           <div className="flex flex-col items-center gap-3 max-w-md">
             <AlertCircle className="h-10 w-10 text-rose-500" />
             <p className="text-sm font-medium text-rose-900 dark:text-rose-400">{error}</p>
           </div>
         </div>
       ) : filteredRfqs.length === 0 ? (
-        <div className="flex h-64 flex-col items-center justify-center rounded-2xl border border-dashed border-border/80 bg-card p-6 text-center">
+        <div className="flex h-64 flex-col items-center justify-center rounded-[3px] border border-dashed border-border/80 bg-card p-6 text-center">
           <FileText className="h-10 w-10 text-muted-foreground/60" />
           <h3 className="mt-4 text-sm font-semibold text-foreground">Không tìm thấy RFQ nào</h3>
           <p className="mt-1 text-xs text-muted-foreground max-w-xs">
@@ -497,7 +497,7 @@ export function RfqsClient({ user }: { user: AuthUser | null }) {
           </p>
         </div>
       ) : (
-        <div className="overflow-hidden rounded-2xl border border-border/70 bg-card shadow-sm">
+        <div className="overflow-hidden rounded-[3px] border border-border/70 bg-card shadow-sm">
           <div className="overflow-x-auto">
             <table className="w-full border-collapse text-left text-sm">
               <thead className="bg-muted/40 text-xs uppercase tracking-wider text-muted-foreground border-b border-border/70">
@@ -541,7 +541,7 @@ export function RfqsClient({ user }: { user: AuthUser | null }) {
                         <button
                           type="button"
                           onClick={() => setSelectedRfq(rfq)}
-                          className="inline-flex items-center gap-1.5 rounded-lg border border-border px-3 py-1.5 text-xs font-medium text-foreground hover:border-brand hover:text-brand hover:bg-brand/5 transition-all"
+                          className="inline-flex items-center gap-1.5 rounded-[3px] border border-border px-3 py-1.5 text-xs font-medium text-foreground hover:border-brand hover:text-brand hover:bg-brand/5 transition-all"
                         >
                           <Eye className="h-3.5 w-3.5" />
                           Xem chi tiết
@@ -573,7 +573,7 @@ export function RfqsClient({ user }: { user: AuthUser | null }) {
           />
 
           {/* Dialog Container */}
-          <div className="relative w-full max-w-2xl overflow-hidden rounded-2xl border border-border/80 bg-card shadow-xl animate-in fade-in zoom-in-95 duration-200">
+          <div className="relative w-full max-w-2xl overflow-hidden rounded-[3px] border border-border/80 bg-card shadow-xl animate-in fade-in zoom-in-95 duration-200">
             {/* Modal Header */}
             <div className="flex items-center justify-between border-b border-border/80 px-6 py-4 bg-muted/30">
               <div>
@@ -587,7 +587,7 @@ export function RfqsClient({ user }: { user: AuthUser | null }) {
               <button
                 type="button"
                 onClick={() => setSelectedRfq(null)}
-                className="rounded-lg p-1 text-muted-foreground hover:bg-muted hover:text-foreground transition-all"
+                className="rounded-[3px] p-1 text-muted-foreground hover:bg-muted hover:text-foreground transition-all"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -596,7 +596,7 @@ export function RfqsClient({ user }: { user: AuthUser | null }) {
             {/* Modal Body */}
             <div className="max-h-[70vh] overflow-y-auto p-6 space-y-6">
               {/* Status Banner */}
-              <div className="flex items-center justify-between rounded-[5px] border border-border/60 bg-muted/25 px-4 py-3">
+              <div className="flex items-center justify-between rounded-[3px] border border-border/60 bg-muted/25 px-4 py-3">
                 <span className="text-sm text-muted-foreground">Trạng thái xử lý:</span>
                 <span
                   className={cn(
@@ -670,7 +670,7 @@ export function RfqsClient({ user }: { user: AuthUser | null }) {
                     <User className="h-4 w-4 text-brand" />
                     Sale phụ trách
                   </h3>
-                  <div className="flex items-center gap-3 rounded-[5px] border border-border/60 bg-muted/20 p-3">
+                  <div className="flex items-center gap-3 rounded-[3px] border border-border/60 bg-muted/20 p-3">
                     <div className="h-10 w-10 shrink-0 rounded-full bg-brand/10 flex items-center justify-center text-brand font-semibold border border-brand/20">
                       {(
                         selectedRfq.assigned_sales.first_name?.[0] ||
@@ -742,7 +742,7 @@ export function RfqsClient({ user }: { user: AuthUser | null }) {
                 {selectedRfq.line_items &&
                   Array.isArray(selectedRfq.line_items) &&
                   selectedRfq.line_items.length > 0 ? (
-                  <div className="overflow-hidden rounded-[5px] border border-border/60">
+                  <div className="overflow-hidden rounded-[3px] border border-border/60">
                     <table className="w-full border-collapse text-left text-xs sm:text-sm">
                       <thead className="bg-muted/40 text-muted-foreground border-b border-border/60">
                         <tr>
@@ -772,7 +772,7 @@ export function RfqsClient({ user }: { user: AuthUser | null }) {
                 <h3 className="text-sm font-semibold text-foreground border-b border-border/50 pb-1.5">
                   Ghi chú / Yêu cầu thêm
                 </h3>
-                <div className="rounded-[5px] border border-border/60 bg-muted/20 p-4 text-sm text-foreground/90 whitespace-pre-wrap leading-relaxed">
+                <div className="rounded-[3px] border border-border/60 bg-muted/20 p-4 text-sm text-foreground/90 whitespace-pre-wrap leading-relaxed">
                   {selectedRfq.message || 'Không có ghi chú thêm.'}
                 </div>
               </div>
@@ -782,7 +782,7 @@ export function RfqsClient({ user }: { user: AuthUser | null }) {
                   <h3 className="text-sm font-semibold text-emerald-600 border-b border-border/50 pb-1.5">
                     Ghi chú duyệt
                   </h3>
-                  <div className="rounded-[5px] border border-emerald-200/50 bg-emerald-50/50 p-4 text-sm text-emerald-800 whitespace-pre-wrap leading-relaxed dark:bg-emerald-900/10 dark:text-emerald-400">
+                  <div className="rounded-[3px] border border-emerald-200/50 bg-emerald-50/50 p-4 text-sm text-emerald-800 whitespace-pre-wrap leading-relaxed dark:bg-emerald-900/10 dark:text-emerald-400">
                     {selectedRfq.approval_note}
                   </div>
                 </div>
@@ -793,7 +793,7 @@ export function RfqsClient({ user }: { user: AuthUser | null }) {
                   <h3 className="text-sm font-semibold text-rose-600 border-b border-border/50 pb-1.5">
                     Lý do từ chối
                   </h3>
-                  <div className="rounded-[5px] border border-rose-200/50 bg-rose-50/50 p-4 text-sm text-rose-800 whitespace-pre-wrap leading-relaxed dark:bg-rose-900/10 dark:text-rose-400">
+                  <div className="rounded-[3px] border border-rose-200/50 bg-rose-50/50 p-4 text-sm text-rose-800 whitespace-pre-wrap leading-relaxed dark:bg-rose-900/10 dark:text-rose-400">
                     {selectedRfq.reject_reason}
                   </div>
                 </div>
@@ -812,7 +812,7 @@ export function RfqsClient({ user }: { user: AuthUser | null }) {
                         setActionNote('');
                         setActionError(null);
                       }}
-                      className="rounded-[5px] bg-emerald-600 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-700 transition-all shadow-sm"
+                      className="rounded-[3px] bg-emerald-600 px-4 py-2 text-sm font-medium text-white hover:bg-emerald-700 transition-all shadow-sm"
                     >
                       Duyệt
                     </button>
@@ -823,7 +823,7 @@ export function RfqsClient({ user }: { user: AuthUser | null }) {
                         setActionNote('');
                         setActionError(null);
                       }}
-                      className="rounded-[5px] bg-rose-600 px-4 py-2 text-sm font-medium text-white hover:bg-rose-700 transition-all shadow-sm"
+                      className="rounded-[3px] bg-rose-600 px-4 py-2 text-sm font-medium text-white hover:bg-rose-700 transition-all shadow-sm"
                     >
                       Từ chối
                     </button>
@@ -833,7 +833,7 @@ export function RfqsClient({ user }: { user: AuthUser | null }) {
               <button
                 type="button"
                 onClick={() => setSelectedRfq(null)}
-                className="rounded-[5px] border border-border bg-card px-4 py-2 text-sm font-medium text-foreground hover:bg-muted transition-all"
+                className="rounded-[3px] border border-border bg-card px-4 py-2 text-sm font-medium text-foreground hover:bg-muted transition-all"
               >
                 Đóng
               </button>
@@ -849,7 +849,7 @@ export function RfqsClient({ user }: { user: AuthUser | null }) {
             className="absolute inset-0 bg-background/80 backdrop-blur-sm"
             onClick={() => !actionSubmitting && setActionModalType(null)}
           />
-          <div className="relative w-full max-w-md overflow-hidden rounded-2xl border border-border/80 bg-card shadow-xl animate-in fade-in zoom-in-95 duration-200">
+          <div className="relative w-full max-w-md overflow-hidden rounded-[3px] border border-border/80 bg-card shadow-xl animate-in fade-in zoom-in-95 duration-200">
             <div className="flex items-center justify-between border-b border-border/80 px-6 py-4 bg-muted/30">
               <h2
                 className={cn(
@@ -862,14 +862,14 @@ export function RfqsClient({ user }: { user: AuthUser | null }) {
               <button
                 type="button"
                 onClick={() => !actionSubmitting && setActionModalType(null)}
-                className="rounded-lg p-1 text-muted-foreground hover:bg-muted transition-all"
+                className="rounded-[3px] p-1 text-muted-foreground hover:bg-muted transition-all"
               >
                 <X className="h-5 w-5" />
               </button>
             </div>
             <form onSubmit={handleActionSubmit} className="p-6 space-y-4">
               {actionError && (
-                <div className="rounded-[5px] border border-rose-100 bg-rose-50/50 p-3 text-xs text-rose-800 flex items-center gap-2">
+                <div className="rounded-[3px] border border-rose-100 bg-rose-50/50 p-3 text-xs text-rose-800 flex items-center gap-2">
                   <AlertCircle className="h-4 w-4 text-rose-500 shrink-0" />
                   <span>{actionError}</span>
                 </div>
@@ -890,7 +890,7 @@ export function RfqsClient({ user }: { user: AuthUser | null }) {
                       ? 'Nhập ghi chú cho bộ phận liên quan...'
                       : 'Nhập lý do chi tiết...'
                   }
-                  className="w-full rounded-[5px] border border-border/80 bg-background px-3 py-2 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand resize-none"
+                  className="w-full rounded-[3px] border border-border/80 bg-background px-3 py-2 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand resize-none"
                 />
               </div>
               <div className="flex justify-end gap-3 pt-4">
@@ -898,7 +898,7 @@ export function RfqsClient({ user }: { user: AuthUser | null }) {
                   type="button"
                   onClick={() => setActionModalType(null)}
                   disabled={actionSubmitting}
-                  className="rounded-[5px] border border-border bg-card px-4 py-2 text-sm font-medium text-foreground hover:bg-muted transition-all"
+                  className="rounded-[3px] border border-border bg-card px-4 py-2 text-sm font-medium text-foreground hover:bg-muted transition-all"
                 >
                   Hủy
                 </button>
@@ -906,7 +906,7 @@ export function RfqsClient({ user }: { user: AuthUser | null }) {
                   type="submit"
                   disabled={actionSubmitting}
                   className={cn(
-                    'inline-flex items-center gap-1.5 rounded-[5px] px-5 py-2 text-sm font-semibold text-white shadow transition-all',
+                    'inline-flex items-center gap-1.5 rounded-[3px] px-5 py-2 text-sm font-semibold text-white shadow transition-all',
                     actionModalType === 'approve'
                       ? 'bg-emerald-600 hover:bg-emerald-700'
                       : 'bg-rose-600 hover:bg-rose-700'
@@ -931,7 +931,7 @@ export function RfqsClient({ user }: { user: AuthUser | null }) {
           />
 
           {/* Dialog Container */}
-          <div className="relative w-full max-w-2xl overflow-hidden rounded-2xl border border-border/80 bg-card shadow-xl animate-in fade-in zoom-in-95 duration-200">
+          <div className="relative w-full max-w-2xl overflow-hidden rounded-[3px] border border-border/80 bg-card shadow-xl animate-in fade-in zoom-in-95 duration-200">
             {/* Modal Header */}
             <div className="flex items-center justify-between border-b border-border/80 px-6 py-4 bg-muted/30">
               <div>
@@ -947,7 +947,7 @@ export function RfqsClient({ user }: { user: AuthUser | null }) {
               <button
                 type="button"
                 onClick={() => setIsCreateOpen(false)}
-                className="rounded-lg p-1 text-muted-foreground hover:bg-muted hover:text-foreground transition-all"
+                className="rounded-[3px] p-1 text-muted-foreground hover:bg-muted hover:text-foreground transition-all"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -956,7 +956,7 @@ export function RfqsClient({ user }: { user: AuthUser | null }) {
             {/* Modal Body */}
             <form onSubmit={handleSubmit} className="max-h-[70vh] overflow-y-auto p-6 space-y-6">
               {formError && (
-                <div className="rounded-[5px] border border-rose-100 bg-rose-50/50 p-3 text-xs text-rose-800 flex items-center gap-2 dark:bg-rose-950/10 dark:text-rose-400 dark:border-rose-900/30">
+                <div className="rounded-[3px] border border-rose-100 bg-rose-50/50 p-3 text-xs text-rose-800 flex items-center gap-2 dark:bg-rose-950/10 dark:text-rose-400 dark:border-rose-900/30">
                   <AlertCircle className="h-4 w-4 text-rose-500 shrink-0" />
                   <span>{formError}</span>
                 </div>
@@ -982,7 +982,7 @@ export function RfqsClient({ user }: { user: AuthUser | null }) {
                         setFormFieldErrors((p) => ({ ...p, company: '' }));
                       }}
                       className={cn(
-                        'w-full rounded-[5px] border bg-background px-3 py-2 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand',
+                        'w-full rounded-[3px] border bg-background px-3 py-2 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand',
                         formFieldErrors.company ? 'border-rose-500' : 'border-border/80'
                       )}
                     />
@@ -1005,7 +1005,7 @@ export function RfqsClient({ user }: { user: AuthUser | null }) {
                         setFormFieldErrors((p) => ({ ...p, contact: '' }));
                       }}
                       className={cn(
-                        'w-full rounded-[5px] border bg-background px-3 py-2 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand',
+                        'w-full rounded-[3px] border bg-background px-3 py-2 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand',
                         formFieldErrors.contact ? 'border-rose-500' : 'border-border/80'
                       )}
                     />
@@ -1028,7 +1028,7 @@ export function RfqsClient({ user }: { user: AuthUser | null }) {
                         setFormFieldErrors((p) => ({ ...p, email: '' }));
                       }}
                       className={cn(
-                        'w-full rounded-[5px] border bg-background px-3 py-2 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand',
+                        'w-full rounded-[3px] border bg-background px-3 py-2 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand',
                         formFieldErrors.email ? 'border-rose-500' : 'border-border/80'
                       )}
                     />
@@ -1051,7 +1051,7 @@ export function RfqsClient({ user }: { user: AuthUser | null }) {
                         setFormFieldErrors((p) => ({ ...p, phone: '' }));
                       }}
                       className={cn(
-                        'w-full rounded-[5px] border bg-background px-3 py-2 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand',
+                        'w-full rounded-[3px] border bg-background px-3 py-2 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand',
                         formFieldErrors.phone ? 'border-rose-500' : 'border-border/80'
                       )}
                     />
@@ -1077,7 +1077,7 @@ export function RfqsClient({ user }: { user: AuthUser | null }) {
                       setFormFieldErrors((p) => ({ ...p, address: '' }));
                     }}
                     className={cn(
-                      'w-full rounded-[5px] border bg-background px-3 py-2 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand',
+                      'w-full rounded-[3px] border bg-background px-3 py-2 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand',
                       formFieldErrors.address ? 'border-rose-500' : 'border-border/80'
                     )}
                     placeholder="Số nhà, tên đường, khu công nghiệp..."
@@ -1109,7 +1109,7 @@ export function RfqsClient({ user }: { user: AuthUser | null }) {
                         setFormFieldErrors((p) => ({ ...p, hub: '' }));
                       }}
                       className={cn(
-                        'w-full rounded-[5px] border bg-background px-3 py-2 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand',
+                        'w-full rounded-[3px] border bg-background px-3 py-2 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand',
                         formFieldErrors.hub ? 'border-rose-500' : 'border-border/80'
                       )}
                     >
@@ -1138,7 +1138,7 @@ export function RfqsClient({ user }: { user: AuthUser | null }) {
                         setFormFieldErrors((p) => ({ ...p, industry: '' }));
                       }}
                       className={cn(
-                        'w-full rounded-[5px] border bg-background px-3 py-2 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand',
+                        'w-full rounded-[3px] border bg-background px-3 py-2 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand',
                         formFieldErrors.industry ? 'border-rose-500' : 'border-border/80'
                       )}
                     >
@@ -1210,7 +1210,7 @@ export function RfqsClient({ user }: { user: AuthUser | null }) {
                           });
                         }}
                         className={cn(
-                          'w-full rounded-[5px] border bg-background px-3 py-2 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand font-medium',
+                          'w-full rounded-[3px] border bg-background px-3 py-2 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand font-medium',
                           formFieldErrors.requested_delivery_date
                             ? 'border-rose-500'
                             : 'border-border/80'
@@ -1238,7 +1238,7 @@ export function RfqsClient({ user }: { user: AuthUser | null }) {
                   }}
                   placeholder="Mô tả chi tiết các yêu cầu đặc thù, quy cách đóng gói, tiến độ mong muốn..."
                   className={cn(
-                    'w-full rounded-[5px] border bg-background px-3 py-2 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand resize-none placeholder:text-muted-foreground',
+                    'w-full rounded-[3px] border bg-background px-3 py-2 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand resize-none placeholder:text-muted-foreground',
                     formFieldErrors.message ? 'border-rose-500' : 'border-border/80'
                   )}
                 />
@@ -1255,14 +1255,14 @@ export function RfqsClient({ user }: { user: AuthUser | null }) {
                   type="button"
                   onClick={() => setIsCreateOpen(false)}
                   disabled={submitting}
-                  className="rounded-[5px] border border-border bg-card px-4 py-2 text-sm font-medium text-foreground hover:bg-muted transition-all disabled:opacity-50"
+                  className="rounded-[3px] border border-border bg-card px-4 py-2 text-sm font-medium text-foreground hover:bg-muted transition-all disabled:opacity-50"
                 >
                   Hủy
                 </button>
                 <button
                   type="submit"
                   disabled={submitting}
-                  className="inline-flex items-center gap-1.5 rounded-[5px] bg-brand px-5 py-2 text-sm font-semibold text-white shadow hover:bg-brand/90 transition-all disabled:opacity-75"
+                  className="inline-flex items-center gap-1.5 rounded-[3px] bg-brand px-5 py-2 text-sm font-semibold text-white shadow hover:bg-brand/90 transition-all disabled:opacity-75"
                 >
                   {submitting && <Loader2 className="h-4 w-4 animate-spin" />}
                   {submitting ? 'Đang gửi...' : 'Gửi yêu cầu'}

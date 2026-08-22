@@ -416,13 +416,13 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
   /* ── shared input classes ── */
   const inputCls = (err?: string) =>
     cn(
-      'w-full rounded-[5px] border  px-3 py-2.5 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand',
+      'w-full rounded-[3px] border  px-3 py-2.5 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand',
       err ? 'border-rose-500' : 'border-border/80'
     );
 
   const selectCls = (err?: string) =>
     cn(
-      'w-full rounded-[5px] border  px-3 py-2.5 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand appearance-none',
+      'w-full rounded-[3px] border  px-3 py-2.5 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand appearance-none',
       err ? 'border-rose-500' : 'border-border/80'
     );
 
@@ -465,7 +465,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
         </div>
 
         {/* Card: Chi tiết yêu cầu */}
-        <div className="bg-white border border-slate-200/80 rounded-[5px] p-6 sm:p-8 w-full max-w-[540px] mx-auto text-left shadow-sm space-y-6">
+        <div className="bg-white border border-slate-200/80 rounded-[3px] p-6 sm:p-8 w-full max-w-[540px] mx-auto text-left shadow-sm space-y-6">
           <h3 className="text-sm font-extrabold text-primary border-b border-slate-100 pb-3 uppercase tracking-wider">
             Chi tiết yêu cầu của Quý khách
           </h3>
@@ -510,7 +510,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
           </div>
 
           {/* Info note */}
-          <div className="bg-blue-50/50 text-brand-strong p-3 rounded-[5px] text-[11px] font-semibold flex items-start gap-2 border border-blue-100/35">
+          <div className="bg-blue-50/50 text-brand-strong p-3 rounded-[3px] text-[11px] font-semibold flex items-start gap-2 border border-blue-100/35">
             <Info className="h-4 w-4 text-blue-600 shrink-0 mt-0.5" />
             <p className="leading-relaxed">
               Một bản sao chi tiết yêu cầu báo giá đã được gửi tự động tới email liên hệ của bạn.
@@ -527,7 +527,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
               setCreatedRfqId(null);
               setSubmittedRfq(null);
             }}
-            className="inline-flex items-center gap-1.5 rounded-[5px] bg-brand px-6 py-3 text-xs sm:text-sm font-bold text-white hover:bg-brand/95 transition-all shadow hover:scale-[1.01]"
+            className="inline-flex items-center gap-1.5 rounded-[3px] bg-brand px-6 py-3 text-xs sm:text-sm font-bold text-white hover:bg-brand/95 transition-all shadow hover:scale-[1.01]"
           >
             {t('createNew')}
             <ArrowRight className="h-4 w-4" />
@@ -555,10 +555,10 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                   <Link
                     key={product.id}
                     href={`/solutions/${product.slug}`}
-                    className="bg-white border border-slate-150 p-4 rounded-[5px] flex flex-col justify-between hover:shadow-md transition-all group"
+                    className="bg-white border border-slate-150 p-4 rounded-[3px] flex flex-col justify-between hover:shadow-md transition-all group"
                   >
                     <div className="space-y-2">
-                      <div className="aspect-square bg-slate-50/60 rounded-[5px] flex items-center justify-center relative overflow-hidden">
+                      <div className="aspect-square bg-slate-50/60 rounded-[3px] flex items-center justify-center relative overflow-hidden">
                         {imageUrl ? (
                           <Image
                             src={imageUrl}
@@ -624,14 +624,14 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
           <form onSubmit={handleSubmit} className="space-y-8">
             {/* Submit error */}
             {submitError && (
-              <div className="rounded-[5px] border border-rose-100 p-3 text-sm text-rose-800 flex items-center gap-2 dark:border-rose-900/30">
+              <div className="rounded-[3px] border border-rose-100 p-3 text-sm text-rose-800 flex items-center gap-2 dark:border-rose-900/30">
                 <AlertCircle className="h-4 w-4 text-rose-500 shrink-0" />
                 <span>{submitError}</span>
               </div>
             )}
 
             {/* ── Section 1: Business Info ── */}
-            <div className="rounded-[5px] border border-border p-6 shadow-sm space-y-5">
+            <div className="rounded-[3px] border border-border p-6 shadow-sm space-y-5">
               <h3 className={sectionHeadCls}>{t('sectionBusiness')}</h3>
 
               {/* Company */}
@@ -744,15 +744,15 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
             </div>
 
             {/* ── Section 2: Product Table ── */}
-            <div className="rounded-[5px] border border-border p-6 shadow-sm space-y-5">
+            <div className="rounded-[3px] border border-border p-6 shadow-sm space-y-5">
               <h3 className={sectionHeadCls}>{t('sectionProducts')}</h3>
 
               {cart.length === 0 ? (
-                <div className="flex flex-col items-center justify-center py-10 px-4 text-center border-2 border-dashed border-border/60 rounded-[5px] space-y-4">
+                <div className="flex flex-col items-center justify-center py-10 px-4 text-center border-2 border-dashed border-border/60 rounded-[3px] space-y-4">
                   <p className="text-sm text-muted-foreground max-w-md">{t('emptyCart')}</p>
                   <Link
                     href="/solutions/categories/cleanroom-consumables"
-                    className="inline-flex items-center gap-1.5 rounded-[5px] bg-brand px-4 py-2 text-xs font-semibold text-white hover:bg-brand/90 transition-all shadow"
+                    className="inline-flex items-center gap-1.5 rounded-[3px] bg-brand px-4 py-2 text-xs font-semibold text-white hover:bg-brand/90 transition-all shadow"
                   >
                     {t('viewProducts')}
                     <ArrowRight className="h-3.5 w-3.5" />
@@ -765,12 +765,12 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                     {cart.map((item, idx) => (
                       <div
                         key={idx}
-                        className="bg-slate-50 border border-slate-200/60 rounded-[5px] p-4 space-y-3 relative text-left"
+                        className="bg-slate-50 border border-slate-200/60 rounded-[3px] p-4 space-y-3 relative text-left"
                       >
                         <button
                           type="button"
                           onClick={() => handleRemoveItem(idx)}
-                          className="absolute top-3 right-3 rounded-[5px] p-1.5 text-muted-foreground hover:bg-rose-50 hover:text-rose-600 transition-all"
+                          className="absolute top-3 right-3 rounded-[3px] p-1.5 text-muted-foreground hover:bg-rose-50 hover:text-rose-600 transition-all"
                           aria-label="Remove item"
                         >
                           <Trash2 className="h-4 w-4" />
@@ -821,7 +821,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                                 Math.max(1, parseInt(e.target.value) || 1)
                               )
                             }
-                            className="w-24 rounded-[5px] border border-border/80 px-2.5 py-1 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand font-semibold text-center bg-white"
+                            className="w-24 rounded-[3px] border border-border/80 px-2.5 py-1 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand font-semibold text-center bg-white"
                             placeholder="1"
                           />
                         </div>
@@ -830,7 +830,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                   </div>
 
                   {/* Tablet/Desktop Table View */}
-                  <div className="hidden sm:block overflow-x-auto rounded-[5px] border border-border/60">
+                  <div className="hidden sm:block overflow-x-auto rounded-[3px] border border-border/60">
                     <table className="w-full border-collapse text-left text-sm min-w-[600px]">
                       <thead className="text-muted-foreground text-xs uppercase font-semibold border-b border-border/60">
                         <tr>
@@ -876,7 +876,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                                     Math.max(1, parseInt(e.target.value) || 1)
                                   )
                                 }
-                                className="w-24 rounded-[5px] border border-border/80  px-2.5 py-1 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand font-semibold text-center"
+                                className="w-24 rounded-[3px] border border-border/80  px-2.5 py-1 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand font-semibold text-center"
                                 placeholder="1"
                               />
                             </td>
@@ -884,7 +884,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                               <button
                                 type="button"
                                 onClick={() => handleRemoveItem(idx)}
-                                className="rounded-[5px] p-1.5 text-muted-foreground hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/20 transition-all"
+                                className="rounded-[3px] p-1.5 text-muted-foreground hover:bg-rose-50 hover:text-rose-600 dark:hover:bg-rose-950/20 transition-all"
                               >
                                 <Trash2 className="h-4 w-4" />
                               </button>
@@ -899,7 +899,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
             </div>
 
             {/* ── Section 3: Additional Requirements & Delivery ── */}
-            <div className="rounded-[5px] border border-border p-6 shadow-sm space-y-5">
+            <div className="rounded-[3px] border border-border p-6 shadow-sm space-y-5">
               <h3 className={sectionHeadCls}>{t('sectionShipping')}</h3>
 
               <div className="grid gap-4 sm:grid-cols-2">
@@ -1035,7 +1035,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                   value={formMessage}
                   onChange={(e) => setFormMessage(e.target.value)}
                   placeholder={t('specialRequestPlaceholder')}
-                  className="w-full rounded-[5px] border border-border/80  px-3 py-2.5 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand resize-none"
+                  className="w-full rounded-[3px] border border-border/80  px-3 py-2.5 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand resize-none"
                 />
               </div>
             </div>
@@ -1045,7 +1045,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
               <button
                 type="button"
                 onClick={handleSaveDraft}
-                className="inline-flex items-center justify-center gap-2 rounded-[5px] border border-border/80 px-5 py-3 text-sm font-semibold text-foreground hover:bg-muted/40 transition-all w-full sm:w-auto"
+                className="inline-flex items-center justify-center gap-2 rounded-[3px] border border-border/80 px-5 py-3 text-sm font-semibold text-foreground hover:bg-muted/40 transition-all w-full sm:w-auto"
               >
                 {draftSavedMsg ? (
                   <>
@@ -1060,7 +1060,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
               <button
                 type="submit"
                 disabled={submitting}
-                className="inline-flex items-center justify-center gap-2 rounded-[5px] bg-brand px-6 py-3 text-sm font-semibold text-white shadow hover:bg-brand/90 transition-all disabled:opacity-50 w-full sm:w-auto"
+                className="inline-flex items-center justify-center gap-2 rounded-[3px] bg-brand px-6 py-3 text-sm font-semibold text-white shadow hover:bg-brand/90 transition-all disabled:opacity-50 w-full sm:w-auto"
               >
                 {submitting && <Loader2 className="h-4 w-4 animate-spin" />}
                 {submitting ? t('submitting') : t('submitRfq')}
@@ -1073,7 +1073,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
         <div className="lg:col-span-4">
           <div className="sticky top-24 space-y-6">
             {/* Why ULink */}
-            <div className="rounded-[5px] border border-border p-6 shadow-sm space-y-5">
+            <div className="rounded-[3px] border border-border p-6 shadow-sm space-y-5">
               <h3 className="text-lg font-bold text-foreground">{t('sidebarWhyTitle')}</h3>
 
               {[
@@ -1117,7 +1117,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
             </div>
 
             {/* RFQ Process */}
-            <div className="rounded-[5px] border border-border p-6 shadow-sm space-y-4">
+            <div className="rounded-[3px] border border-border p-6 shadow-sm space-y-4">
               <h3 className="text-lg font-bold text-foreground">{t('sidebarProcessTitle')}</h3>
 
               <div className="space-y-3">
@@ -1143,7 +1143,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
             </div>
 
             {/* Urgent Support */}
-            <div className="rounded-[5px] border border-border p-6 shadow-sm space-y-4">
+            <div className="rounded-[3px] border border-border p-6 shadow-sm space-y-4">
               <h3 className="text-lg font-bold text-foreground">{t('sidebarUrgentTitle')}</h3>
               <p className="text-xs text-muted-foreground leading-relaxed">
                 {t('sidebarUrgentDesc')}
@@ -1172,7 +1172,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
 
               <a
                 href={`tel:${t('sidebarHotline').replace(/\s/g, '')}`}
-                className="flex items-center justify-center gap-2 w-full rounded-[5px] border-2 border-rose-500 px-4 py-2.5 text-sm font-semibold text-rose-600 hover:bg-rose-50 transition-all"
+                className="flex items-center justify-center gap-2 w-full rounded-[3px] border-2 border-rose-500 px-4 py-2.5 text-sm font-semibold text-rose-600 hover:bg-rose-50 transition-all"
               >
                 <Phone className="h-4 w-4" />
                 {t('sidebarCtaCall')}

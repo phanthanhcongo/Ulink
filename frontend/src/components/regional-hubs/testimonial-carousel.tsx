@@ -86,7 +86,7 @@ export default function TestimonialCarousel({ labels }: TestimonialCarouselProps
       company: labels.company3,
       logo: (
         <div className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center bg-orange-600 text-white font-extrabold text-[11px] rounded-none">
+          <div className="flex h-8 w-8 items-center justify-center bg-orange-600 text-white font-extrabold text-[11px] rounded-[3px]">
             HP
           </div>
           <span className="text-[18px] font-extrabold text-[#4A5568] tracking-tight">
@@ -103,7 +103,7 @@ export default function TestimonialCarousel({ labels }: TestimonialCarouselProps
       company: labels.company4,
       logo: (
         <div className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center bg-teal-600 text-white font-extrabold text-[11px] rounded-none">
+          <div className="flex h-8 w-8 items-center justify-center bg-teal-600 text-white font-extrabold text-[11px] rounded-[3px]">
             VA
           </div>
           <span className="text-[18px] font-extrabold text-[#4A5568] tracking-tight">
@@ -231,7 +231,7 @@ export default function TestimonialCarousel({ labels }: TestimonialCarouselProps
                   key={`${item.id}-${idx}`}
                   className="w-full md:w-1/2 shrink-0 px-4"
                 >
-                  <div className="bg-white rounded-none border border-slate-100 shadow-sm p-8 flex flex-col justify-between items-center text-center h-[340px] md:h-[360px] transition-all duration-300 hover:shadow-md">
+                  <div className="bg-white rounded-[3px] border border-slate-100 shadow-sm p-8 flex flex-col justify-between items-center text-center h-[340px] md:h-[360px] transition-all duration-300 hover:shadow-md">
                     {/* Company Logo & Name */}
                     <div className="mb-4 flex justify-center h-8 shrink-0">{item.logo}</div>
 

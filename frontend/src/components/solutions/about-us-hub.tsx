@@ -59,7 +59,7 @@ export default async function AboutUsHub({ locale }: AboutUsHubProps) {
       {/* Split Layout Container */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
         {/* Left Side: Modern Building Image */}
-        <div className="lg:col-span-5 relative aspect-[4/3] lg:aspect-auto lg:min-h-[450px] w-full rounded-[5px] overflow-hidden shadow-sm border border-slate-100 bg-slate-50">
+        <div className="lg:col-span-5 relative aspect-[4/3] lg:aspect-auto lg:min-h-[450px] w-full rounded-[3px] overflow-hidden shadow-sm border border-slate-100 bg-slate-50">
           <Image
             src="/images/industries/Ulink.png"
             alt={t('aboutHub.hubHeading')}
@@ -71,7 +71,7 @@ export default async function AboutUsHub({ locale }: AboutUsHubProps) {
         </div>
 
         {/* Right Side: Metrics & Highlights Panel */}
-        <div className="lg:col-span-7 bg-card/65 rounded-[5px] border border-slate-100 p-6 sm:p-8 flex flex-col justify-between">
+        <div className="lg:col-span-7 bg-card/65 rounded-[3px] border border-slate-100 p-6 sm:p-8 flex flex-col justify-between">
           <div>
             {/* Title & Description */}
             <h3 className="text-xl sm:text-2xl font-extrabold text-primary tracking-tight mb-4">
@@ -97,7 +97,7 @@ export default async function AboutUsHub({ locale }: AboutUsHubProps) {
           </div>
 
           {/* Lower Highlight Cards Bar */}
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 bg-[#F2F4F8] rounded-[5px] border border-slate-100/80 divide-y sm:divide-y-0 sm:divide-x divide-slate-200/60">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-4 bg-[#F2F4F8] rounded-[3px] border border-slate-100/80 divide-y sm:divide-y-0 sm:divide-x divide-slate-200/60">
             {/* Highlight 1: Pie Chart circle */}
             <div className="flex items-center gap-2.5 sm:px-2 pt-2 first:pt-0 sm:pt-0">
               <div className="w-7 h-7 rounded-full border-[4px] border-t-amber-500 border-r-emerald-500 border-b-blue-500 border-l-slate-200 shrink-0" />

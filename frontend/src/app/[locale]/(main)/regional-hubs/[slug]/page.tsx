@@ -143,7 +143,7 @@ export default async function RegionalHubDetailPage({ params: { locale, slug } }
         />
 
         {/* === HERO CONTAINER (Premium Glassmorphism & Navy) === */}
-        <section className="relative overflow-hidden rounded-[5px] border border-border bg-primary p-6 text-white shadow-lg sm:p-8">
+        <section className="relative overflow-hidden rounded-[3px] border border-border bg-primary p-6 text-white shadow-lg sm:p-8">
           {/* Subtle glowing backgrounds */}
           <div className="pointer-events-none absolute -right-24 -top-24 h-72 w-72 rounded-full bg-brand/10 blur-3xl" />
           <div className="pointer-events-none absolute -left-20 -bottom-20 h-64 w-64 rounded-full bg-emerald-500/10 blur-3xl" />
@@ -201,7 +201,7 @@ export default async function RegionalHubDetailPage({ params: { locale, slug } }
             </div>
 
             {/* Right Quick stats / Person in Charge */}
-            <div className="shrink-0 rounded-lg border border-slate-700/60 bg-slate-800/40 p-5 backdrop-blur-sm md:w-[320px]">
+            <div className="shrink-0 rounded-[3px] border border-slate-700/60 bg-slate-800/40 p-5 backdrop-blur-sm md:w-[320px]">
               <h3 className="text-[11px] font-bold uppercase tracking-wider text-brand">
                 {t.personInCharge}
               </h3>
@@ -247,7 +247,7 @@ export default async function RegionalHubDetailPage({ params: { locale, slug } }
         {/* === METRICS GRID: SLA & WAREHOUSE === */}
         <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-12">
           {/* SLA Performance Metrics - 5 Cols */}
-          <div className="flex flex-col rounded-lg border border-border bg-white p-5 shadow-sm lg:col-span-5">
+          <div className="flex flex-col rounded-[3px] border border-border bg-white p-5 shadow-sm lg:col-span-5">
             <h2 className="text-[14px] font-bold text-primary border-b border-slate-100 pb-3 flex items-center gap-2">
               <CheckCircle className="h-4.5 w-4.5 text-brand" />
               {t.slaTitle}
@@ -256,7 +256,7 @@ export default async function RegionalHubDetailPage({ params: { locale, slug } }
             <div className="flex flex-1 flex-col justify-between py-2 gap-5 mt-4">
               {/* Daily Orders */}
               <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-brand/8 text-brand">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[3px] bg-brand/8 text-brand">
                   <Package className="h-5 w-5" />
                 </div>
                 <div className="flex-1">
@@ -289,7 +289,7 @@ export default async function RegionalHubDetailPage({ params: { locale, slug } }
 
               {/* On-Time Rate */}
               <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-emerald-50 text-emerald-600">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[3px] bg-emerald-50 text-emerald-600">
                   <CheckCircle className="h-5 w-5" />
                 </div>
                 <div className="flex-1">
@@ -311,7 +311,7 @@ export default async function RegionalHubDetailPage({ params: { locale, slug } }
 
               {/* Delivery SLA */}
               <div className="flex items-start gap-4">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-blue-50 text-blue-600">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[3px] bg-blue-50 text-blue-600">
                   <Clock className="h-5 w-5" />
                 </div>
                 <div className="flex-1">
@@ -342,7 +342,7 @@ export default async function RegionalHubDetailPage({ params: { locale, slug } }
           </div>
 
           {/* Warehouse Capacity - 7 Cols */}
-          <div className="flex flex-col rounded-lg border border-border bg-white p-5 shadow-sm lg:col-span-7">
+          <div className="flex flex-col rounded-[3px] border border-border bg-white p-5 shadow-sm lg:col-span-7">
             <h2 className="text-[14px] font-bold text-primary border-b border-slate-100 pb-3 flex items-center gap-2">
               <Warehouse className="h-4.5 w-4.5 text-brand" />
               {t.warehouseTitle}
@@ -402,7 +402,7 @@ export default async function RegionalHubDetailPage({ params: { locale, slug } }
               {/* Other Storage Stats */}
               <div className="grid grid-cols-2 gap-4 border-t border-slate-100 pt-5">
                 <div className="flex items-start gap-3">
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-slate-50 border border-slate-200/60 text-slate-600">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[3px] bg-slate-50 border border-slate-200/60 text-slate-600">
                     <Layers className="h-4.5 w-4.5" />
                   </div>
                   <div>
@@ -416,7 +416,7 @@ export default async function RegionalHubDetailPage({ params: { locale, slug } }
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-lg bg-slate-50 border border-slate-200/60 text-slate-600">
+                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[3px] bg-slate-50 border border-slate-200/60 text-slate-600">
                     <Truck className="h-4.5 w-4.5" />
                   </div>
                   <div>
@@ -436,7 +436,7 @@ export default async function RegionalHubDetailPage({ params: { locale, slug } }
         </div>
 
         {/* === INDUSTRIAL ZONES SECTION === */}
-        <section className="mt-8 rounded-lg border border-border bg-white p-5 shadow-sm">
+        <section className="mt-8 rounded-[3px] border border-border bg-white p-5 shadow-sm">
           <h2 className="text-[15px] font-bold text-primary flex items-center gap-2">
             <Warehouse className="h-5 w-5 text-brand" />
             {t.industrialZonesTitle}
@@ -450,7 +450,7 @@ export default async function RegionalHubDetailPage({ params: { locale, slug } }
                 return (
                   <div
                     key={zone.id}
-                    className="group overflow-hidden rounded-lg border border-border/60 bg-slate-50/50 hover:bg-white hover:shadow-md hover:border-brand/40 transition-all flex flex-col"
+                    className="group overflow-hidden rounded-[3px] border border-border/60 bg-slate-50/50 hover:bg-white hover:shadow-md hover:border-brand/40 transition-all flex flex-col"
                   >
                     {/* Image/Placeholder container */}
                     <div className="relative aspect-[16/9] w-full bg-slate-200 border-b border-slate-200/60 overflow-hidden">
@@ -478,7 +478,7 @@ export default async function RegionalHubDetailPage({ params: { locale, slug } }
                 );
               })
             ) : (
-              <div className="col-span-full py-8 text-center text-xs text-muted-foreground border border-dashed border-slate-200 rounded-lg">
+              <div className="col-span-full py-8 text-center text-xs text-muted-foreground border border-dashed border-slate-200 rounded-[3px]">
                 No industrial zones linked to this hub.
               </div>
             )}
@@ -486,7 +486,7 @@ export default async function RegionalHubDetailPage({ params: { locale, slug } }
         </section>
 
         {/* === TECHNICAL TEAM SECTION === */}
-        <section className="mt-8 rounded-lg border border-border bg-white p-5 shadow-sm">
+        <section className="mt-8 rounded-[3px] border border-border bg-white p-5 shadow-sm">
           <h2 className="text-[15px] font-bold text-primary flex items-center gap-2">
             <Users className="h-5 w-5 text-brand" />
             {t.teamTitle}
@@ -498,7 +498,7 @@ export default async function RegionalHubDetailPage({ params: { locale, slug } }
               hub.team_members.map((member) => (
                 <div
                   key={member.id}
-                  className="rounded-lg border border-border/60 bg-slate-50/50 p-4 transition-all hover:bg-white hover:shadow-md hover:border-brand/40 flex items-center gap-3.5"
+                  className="rounded-[3px] border border-border/60 bg-slate-50/50 p-4 transition-all hover:bg-white hover:shadow-md hover:border-brand/40 flex items-center gap-3.5"
                 >
                   {/* Photo or initials */}
                   <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-full border border-slate-200 bg-brand/5 flex items-center justify-center text-brand font-bold text-sm">
@@ -531,7 +531,7 @@ export default async function RegionalHubDetailPage({ params: { locale, slug } }
                 </div>
               ))
             ) : (
-              <div className="col-span-full py-8 text-center text-xs text-muted-foreground border border-dashed border-slate-200 rounded-lg">
+              <div className="col-span-full py-8 text-center text-xs text-muted-foreground border border-dashed border-slate-200 rounded-[3px]">
                 No team member details available.
               </div>
             )}

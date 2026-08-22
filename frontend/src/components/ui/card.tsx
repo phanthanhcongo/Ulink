@@ -8,7 +8,7 @@ export interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
 export function Card({ className, strong = false, ...props }: CardProps) {
   return (
     <div
-      className={cn(strong ? 'ui-surface-strong' : 'ui-surface', 'rounded-2xl', className)}
+      className={cn(strong ? 'ui-surface-strong' : 'ui-surface', 'rounded-[3px]', className)}
       {...props}
     />
   );

@@ -63,7 +63,7 @@ export function CareersNewsletter() {
         {/* Right Column: Application Form */}
         <div className="md:col-span-6 flex flex-col justify-center pl-0 md:pl-8 border-t md:border-t-0 md:border-l border-slate-200/80 pt-6 md:pt-0">
           {submitted ? (
-            <div className="rounded-xl bg-blue-50/50 border border-blue-100 p-6 text-center text-slate-800">
+            <div className="rounded-[3px] bg-blue-50/50 border border-blue-100 p-6 text-center text-slate-800">
               <p className="font-bold text-base text-blue-600">Gửi đơn ứng tuyển thành công!</p>
               <p className="text-xs text-slate-500 mt-2">
                 Cảm ơn bạn đã quan tâm. Đội ngũ Tuyển dụng ULink sẽ liên hệ lại với bạn ngay khi có vị trí thích hợp.
@@ -95,7 +95,7 @@ export function CareersNewsletter() {
                     placeholder="Nguyễn Văn A"
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
-                    className="w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600/20 bg-white"
+                    className="w-full rounded-[3px] border border-slate-200 px-4 py-2.5 text-sm outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600/20 bg-white"
                   />
                 </div>
                 <div className="flex flex-col gap-1.5">
@@ -109,7 +109,7 @@ export function CareersNewsletter() {
                     placeholder="ban@example.com"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    className="w-full rounded-lg border border-slate-200 px-4 py-2.5 text-sm outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600/20 bg-white"
+                    className="w-full rounded-[3px] border border-slate-200 px-4 py-2.5 text-sm outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600/20 bg-white"
                   />
                 </div>
               </div>
@@ -119,7 +119,7 @@ export function CareersNewsletter() {
                 <label className="text-[10px] sm:text-xs font-bold text-slate-500 uppercase tracking-wider">
                   CV / HỒ SƠ
                 </label>
-                <div className="relative border border-slate-200 rounded-lg p-4 flex items-center gap-3 bg-white hover:border-blue-500 transition-colors cursor-pointer group">
+                <div className="relative border border-slate-200 rounded-[3px] p-4 flex items-center gap-3 bg-white hover:border-blue-500 transition-colors cursor-pointer group">
                   <input
                     type="file"
                     accept=".pdf,.doc,.docx"
@@ -152,7 +152,7 @@ export function CareersNewsletter() {
               </div>
 
               {error && (
-                <p className="text-xs text-red-500 font-bold bg-red-50 px-3 py-1.5 rounded-lg border border-red-100">
+                <p className="text-xs text-red-500 font-bold bg-red-50 px-3 py-1.5 rounded-[3px] border border-red-100">
                   {error}
                 </p>
               )}

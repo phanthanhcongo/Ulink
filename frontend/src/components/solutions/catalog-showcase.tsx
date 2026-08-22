@@ -25,7 +25,7 @@ export default async function CatalogShowcase({ locale }: CatalogShowcaseProps) 
         {/* Section Header */}
         <div className="flex flex-col items-start border-b border-gray-100 pb-8 mb-12">
           <div className="flex items-center gap-2">
-            <span className="h-4 w-1.5 bg-blue-600 rounded-none shrink-0" />
+            <span className="h-4 w-1.5 bg-blue-600 rounded-[3px] shrink-0" />
             <span className="text-xs font-bold uppercase tracking-wider text-slate-800">
               {t('catalogSection.eyebrow')}
             </span>
@@ -44,7 +44,7 @@ export default async function CatalogShowcase({ locale }: CatalogShowcaseProps) 
                 {/* Category Title bar */}
                 <div className="flex items-center justify-between border-b border-gray-200 pb-4 mb-6">
                   <div className="flex items-center gap-2">
-                    <span className="h-5 w-1 bg-blue-600 rounded-none shrink-0" />
+                    <span className="h-5 w-1 bg-blue-600 rounded-[3px] shrink-0" />
                     <h3 className="text-lg font-extrabold text-slate-900 leading-tight">
                       {categoryName}
                     </h3>

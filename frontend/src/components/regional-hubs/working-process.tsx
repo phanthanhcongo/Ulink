@@ -34,7 +34,7 @@ export default async function WorkingProcess() {
           {steps.map(({ step, icon: IconComponent }) => (
             <div
               key={step}
-              className="flex flex-col rounded-[5px] border border-slate-100 bg-white p-6 shadow-sm hover:shadow-md transition-all duration-300 min-h-[320px]"
+              className="flex flex-col rounded-[3px] border border-slate-100 bg-white p-6 shadow-sm hover:shadow-md transition-all duration-300 min-h-[320px]"
             >
               {/* Top Row: Icon & Dashed Connector Line */}
               <div className="flex items-center justify-between mb-4">

@@ -22,7 +22,7 @@ export default function CustomSolutions({ locale }: CustomSolutionsProps) {
             <div className="mt-8">
               <Link
                 href={`/${locale}/contact`}
-                className="inline-flex items-center justify-center rounded-none bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 transition-colors"
+                className="inline-flex items-center justify-center rounded-[3px] bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 transition-colors"
               >
                 Kết nối với Chuyên gia
               </Link>
@@ -30,7 +30,7 @@ export default function CustomSolutions({ locale }: CustomSolutionsProps) {
           </div>
 
           {/* Right Column: Image */}
-          <div className="lg:col-span-6 relative aspect-[4/3] w-full overflow-hidden bg-slate-50 border border-gray-100 rounded-none">
+          <div className="lg:col-span-6 relative aspect-[4/3] w-full overflow-hidden bg-slate-50 border border-gray-100 rounded-[3px]">
             <Image
               src="/images/solutions/Stretch-Hood-Packaging.png"
               alt="Giải pháp thiết kế riêng cho Doanh nghiệp"

@@ -206,7 +206,7 @@ export function ResourcesClient({
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
-              className="flex flex-col items-center justify-center py-20 text-center border-2 border-dashed border-slate-200 p-6 bg-card rounded-[5px]"
+              className="flex flex-col items-center justify-center py-20 text-center border-2 border-dashed border-slate-200 p-6 bg-card rounded-[3px]"
             >
               <FileText className="h-12 w-12 text-slate-400 mb-4 animate-pulse" />
               <h3 className="text-base font-bold text-slate-800">{L.noResults[locale]}</h3>
@@ -234,7 +234,7 @@ export function ResourcesClient({
             <button
               onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
               disabled={currentPage === 1}
-              className="h-9 px-4 rounded-lg border border-slate-200 text-xs font-semibold hover:bg-slate-50 disabled:opacity-50 transition-colors cursor-pointer"
+              className="h-9 px-4 rounded-[3px] border border-slate-200 text-xs font-semibold hover:bg-slate-50 disabled:opacity-50 transition-colors cursor-pointer"
             >
               {L.prev[locale]}
             </button>
@@ -243,7 +243,7 @@ export function ResourcesClient({
                 key={index}
                 onClick={() => setCurrentPage(index + 1)}
                 className={cn(
-                  'h-9 w-9 rounded-lg text-xs font-semibold transition-colors cursor-pointer',
+                  'h-9 w-9 rounded-[3px] text-xs font-semibold transition-colors cursor-pointer',
                   currentPage === index + 1
                     ? 'bg-slate-900 text-white'
                     : 'border border-slate-200 hover:bg-slate-50 text-slate-600'
@@ -255,7 +255,7 @@ export function ResourcesClient({
             <button
               onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
               disabled={currentPage === totalPages}
-              className="h-9 px-4 rounded-lg border border-slate-200 text-xs font-semibold hover:bg-slate-50 disabled:opacity-50 transition-colors cursor-pointer"
+              className="h-9 px-4 rounded-[3px] border border-slate-200 text-xs font-semibold hover:bg-slate-50 disabled:opacity-50 transition-colors cursor-pointer"
             >
               {L.next[locale]}
             </button>

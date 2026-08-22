@@ -123,7 +123,7 @@ export function IndustrySidebar({ industryData, locale }: IndustrySidebarProps) 
 
       {/* Toast Notification */}
       {showToast && (
-        <div className="fixed bottom-5 right-5 z-50 flex items-center gap-2.5 rounded-[5px] border border-amber-200 bg-amber-50 px-4 py-3 text-amber-800 shadow-lg animate-in fade-in slide-in-from-bottom-5 duration-300 dark:bg-amber-950/20 dark:text-amber-400 dark:border-amber-500/20">
+        <div className="fixed bottom-5 right-5 z-50 flex items-center gap-2.5 rounded-[3px] border border-amber-200 bg-amber-50 px-4 py-3 text-amber-800 shadow-lg animate-in fade-in slide-in-from-bottom-5 duration-300 dark:bg-amber-950/20 dark:text-amber-400 dark:border-amber-500/20">
           <Clock className="h-5 w-5 text-amber-500 shrink-0 animate-pulse" />
           <span className="text-sm font-semibold">
             {locale === 'vi' ? 'Tài liệu đang chờ cập nhật' : locale === 'ja' ? 'カタログドキュメントは準備中です' : 'The document is pending update'}

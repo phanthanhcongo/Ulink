@@ -33,7 +33,7 @@ export function QualityCommitments() {
         </h2>
       </div>
 
-      <div className="rounded-2xl bg-white p-8 shadow-sm border border-slate-100">
+      <div className="rounded-[3px] bg-white p-8 shadow-sm border border-slate-100">
         <h3 className="text-center text-base font-bold text-slate-800 mb-6">
           Cam kết với Doanh nghiệp
         </h3>

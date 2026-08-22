@@ -6,7 +6,7 @@ export async function AboutHubHero() {
   const t = await getTranslations('aboutHub.hero');
 
   return (
-    <section className="relative overflow-hidden rounded-2xl border border-border bg-background">
+    <section className="relative overflow-hidden rounded-[3px] border border-border bg-background">
       <div className="flex flex-col lg:flex-row">
         {/* Left: text */}
         <div className="relative z-10 flex flex-col justify-center px-6 py-8 sm:px-8 lg:w-[46%] lg:py-10">

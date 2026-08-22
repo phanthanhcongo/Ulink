@@ -19,7 +19,7 @@ export default async function LiveMetricsBar() {
         </div>
 
         {/* Metrics Row */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 rounded-none border border-slate-300 bg-white shadow-sm divide-y md:divide-y-0 lg:divide-x divide-slate-200">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 rounded-[3px] border border-slate-300 bg-white shadow-sm divide-y md:divide-y-0 lg:divide-x divide-slate-200">
           {/* Metric 1: Orders */}
           <div className="p-6 flex items-center gap-4">
             <div className="flex h-11 w-11 shrink-0 items-center justify-center">

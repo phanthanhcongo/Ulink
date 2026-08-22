@@ -12,7 +12,7 @@ export async function generateMetadata({ params: { locale } }: Props): Promise<M
 export default function VerifyOtpPage({ params: { locale } }: Props) {
   setRequestLocale(locale);
   return (
-    <div className="mx-auto w-full max-w-md rounded-[5px] bg-white p-6 sm:p-10 border border-slate-100 shadow-sm">
+    <div className="mx-auto w-full max-w-md rounded-[3px] bg-white p-6 sm:p-10 border border-slate-100 shadow-sm">
       <OtpForm />
     </div>
   );

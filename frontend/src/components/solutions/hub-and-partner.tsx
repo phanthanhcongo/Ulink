@@ -26,7 +26,7 @@ export default async function HubAndPartner({ locale }: HubAndPartnerProps) {
           </div>
 
           {/* Central Showcase Image */}
-          <div className="relative w-full max-w-4xl mx-auto aspect-[16/10] rounded-none overflow-hidden shadow-md bg-slate-50 border border-gray-100">
+          <div className="relative w-full max-w-4xl mx-auto aspect-[16/10] rounded-[3px] overflow-hidden shadow-md bg-slate-50 border border-gray-100">
             <Image
               src="/images/home/section2/solution-packaging.webp"
               alt={t('hubPartner.hubHeading')}
@@ -54,13 +54,13 @@ export default async function HubAndPartner({ locale }: HubAndPartnerProps) {
               <div className="mt-8 flex flex-wrap items-center gap-4 w-full sm:w-auto">
                 <Link
                   href={`/${locale}/about`}
-                  className="inline-flex items-center justify-center rounded-none bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 transition-colors w-full sm:w-auto text-center"
+                  className="inline-flex items-center justify-center rounded-[3px] bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 transition-colors w-full sm:w-auto text-center"
                 >
                   {t('hubPartner.learnMore')}
                 </Link>
                 <Link
                   href={`/${locale}/contact`}
-                  className="inline-flex items-center justify-center rounded-none border border-blue-600 text-blue-600 bg-white hover:bg-blue-50 px-6 py-3 text-sm font-semibold transition-colors w-full sm:w-auto text-center"
+                  className="inline-flex items-center justify-center rounded-[3px] border border-blue-600 text-blue-600 bg-white hover:bg-blue-50 px-6 py-3 text-sm font-semibold transition-colors w-full sm:w-auto text-center"
                 >
                   {t('hubPartner.connectUs')}
                 </Link>
@@ -68,7 +68,7 @@ export default async function HubAndPartner({ locale }: HubAndPartnerProps) {
             </div>
 
             {/* Right: Partner Image */}
-            <div className="lg:col-span-6 relative aspect-[4/3] rounded-none overflow-hidden shadow-sm bg-slate-50 border border-gray-100">
+            <div className="lg:col-span-6 relative aspect-[4/3] rounded-[3px] overflow-hidden shadow-sm bg-slate-50 border border-gray-100">
               <Image
                 src="/images/industries/case_supplier.webp"
                 alt={t('hubPartner.partnerHeading')}

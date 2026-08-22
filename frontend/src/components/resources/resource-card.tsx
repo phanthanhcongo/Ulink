@@ -38,7 +38,7 @@ export function ResourceCard({ resource, locale }: ResourceCardProps) {
   return (
     <Link
       href={getResourceHref(resource)}
-      className="flex flex-col bg-white border border-slate-100 rounded-[5px] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 group cursor-pointer"
+      className="flex flex-col bg-white border border-slate-100 rounded-[3px] overflow-hidden shadow-sm hover:shadow-md transition-all duration-300 group cursor-pointer"
     >
       {/* Top Image area with Badge */}
       <div className="relative aspect-[16/10] w-full bg-slate-50 overflow-hidden">
@@ -80,7 +80,7 @@ export function ResourceCard({ resource, locale }: ResourceCardProps) {
 
         {/* Read More visual button */}
         <div className="mt-5 pt-4 border-t border-slate-50">
-          <div className="inline-flex items-center justify-center px-5 py-2 bg-blue-600 group-hover:bg-blue-700 text-white font-semibold rounded-lg text-xs sm:text-sm transition-colors shadow-xs">
+          <div className="inline-flex items-center justify-center px-5 py-2 bg-blue-600 group-hover:bg-blue-700 text-white font-semibold rounded-[3px] text-xs sm:text-sm transition-colors shadow-xs">
             {L_CARD.readMore[locale]}
           </div>
         </div>

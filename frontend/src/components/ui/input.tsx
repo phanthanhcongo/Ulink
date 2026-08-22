@@ -11,7 +11,7 @@ export const Input = React.forwardRef<HTMLInputElement, InputProps>(
       <input
         ref={ref}
         aria-invalid={invalid || props['aria-invalid']}
-        className={cn('ui-input rounded-[5px]', invalid && 'border-rose-400 focus:border-rose-500 focus:ring-rose-500/10', className)}
+        className={cn('ui-input rounded-[3px]', invalid && 'border-rose-400 focus:border-rose-500 focus:ring-rose-500/10', className)}
         {...props}
       />
     );

@@ -18,7 +18,7 @@ export function CareersContact() {
                 <span>VĂN PHÒNG</span>
               </div>
               
-              <div className="border-l-[3px] border-l-blue-600 bg-white p-4 rounded-r-xl border border-slate-200/80 shadow-xs flex flex-col gap-1">
+              <div className="border-l-[3px] border-l-blue-600 bg-white p-4 rounded-[3px] border border-slate-200/80 shadow-xs flex flex-col gap-1">
                 <span className="text-sm font-bold text-slate-800">
                   ULink Industries - Trụ sở chính
                 </span>
@@ -27,7 +27,7 @@ export function CareersContact() {
                 </span>
               </div>
 
-              <div className="border-l-[3px] border-l-blue-600 bg-white p-4 rounded-r-xl border border-slate-200/80 shadow-xs flex flex-col gap-1">
+              <div className="border-l-[3px] border-l-blue-600 bg-white p-4 rounded-[3px] border border-slate-200/80 shadow-xs flex flex-col gap-1">
                 <span className="text-sm font-bold text-slate-800">
                   ULink Industries - Chi nhánh TP.HCM
                 </span>
@@ -44,7 +44,7 @@ export function CareersContact() {
                 <span>LIÊN HỆ HỢP TÁC</span>
               </div>
 
-              <div className="border-l-[3px] border-l-blue-600 bg-white p-4 rounded-r-xl border border-slate-200/80 shadow-xs flex flex-col gap-1">
+              <div className="border-l-[3px] border-l-blue-600 bg-white p-4 rounded-[3px] border border-slate-200/80 shadow-xs flex flex-col gap-1">
                 <span className="text-sm font-bold text-slate-800">Hotline</span>
                 <span className="text-xs text-slate-500 leading-relaxed">
                   1900 636 899 (trong nước)<br />
@@ -52,7 +52,7 @@ export function CareersContact() {
                 </span>
               </div>
 
-              <div className="border-l-[3px] border-l-blue-600 bg-white p-4 rounded-r-xl border border-slate-200/80 shadow-xs flex flex-col gap-1">
+              <div className="border-l-[3px] border-l-blue-600 bg-white p-4 rounded-[3px] border border-slate-200/80 shadow-xs flex flex-col gap-1">
                 <span className="text-sm font-bold text-slate-800">Hotline doanh nghiệp</span>
                 <span className="text-xs text-slate-500 leading-relaxed">
                   1900 636 900 (trong nước)<br />
@@ -60,7 +60,7 @@ export function CareersContact() {
                 </span>
               </div>
 
-              <div className="border-l-[3px] border-l-blue-600 bg-white p-4 rounded-r-xl border border-slate-200/80 shadow-xs flex flex-col gap-1">
+              <div className="border-l-[3px] border-l-blue-600 bg-white p-4 rounded-[3px] border border-slate-200/80 shadow-xs flex flex-col gap-1">
                 <span className="text-sm font-bold text-slate-800">Email</span>
                 <span className="text-xs text-slate-500 leading-relaxed">
                   contact@ulinkindustries.com
@@ -72,7 +72,7 @@ export function CareersContact() {
 
         {/* Right Column: Google Map */}
         <div className="lg:col-span-7 h-full">
-          <div className="relative w-full h-full min-h-[450px] lg:min-h-[580px] overflow-hidden rounded-2xl border border-slate-200/80 shadow-xs">
+          <div className="relative w-full h-full min-h-[450px] lg:min-h-[580px] overflow-hidden rounded-[3px] border border-slate-200/80 shadow-xs">
             <iframe
               title="ULink Office Location"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.7297059570197!2d105.79893927602077!3d21.00346768874697!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135acab23b8df29%3A0xe54eb89e6e1f0e4b!2sNguy%E1%BB%85n%20Tu%C3%A2n%2C%20Thanh%20Xu%C3%A2n%2C%20H%C3%A0%20N%E1%BB%99i!5e0!3m2!1svi!2s!4v1713500000000!5m2!1svi!2s"

@@ -65,7 +65,7 @@ export function CareersHero() {
 
         {/* Right Column: Hero Image */}
         <div className="lg:col-span-6">
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl shadow-lg ring-1 ring-slate-900/5">
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[3px] shadow-lg ring-1 ring-slate-900/5">
             <Image
               src="/images/Career/career (12).png"
               alt="Đội ngũ nhân sự ULink B2B Platform"

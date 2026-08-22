@@ -63,7 +63,7 @@ export async function IndustrySolutions() {
           <Link
             key={idx}
             href={card.href}
-            className="group flex flex-col justify-between rounded-[5px] border border-border p-5 shadow-sm transition-all hover:border-brand/50 hover:shadow-md sm:p-6 lg:p-6 xl:p-7"
+            className="group flex flex-col justify-between rounded-[3px] border border-border p-5 shadow-sm transition-all hover:border-brand/50 hover:shadow-md sm:p-6 lg:p-6 xl:p-7"
           >
             <div>
               <h3 className="text-[16px] font-bold text-primary transition-colors group-hover:text-brand sm:text-[18px] lg:text-[18px] xl:text-[20px]">

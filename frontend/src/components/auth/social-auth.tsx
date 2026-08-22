@@ -22,7 +22,7 @@ export function SocialAuth({ mode }: { mode: 'login' | 'register' }) {
       <div className="space-y-2.5">
         <button
           type="button"
-          className="flex w-full items-center justify-center gap-3 rounded-[5px] border border-border py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+          className="flex w-full items-center justify-center gap-3 rounded-[3px] border border-border py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-muted"
         >
           <svg className="h-5 w-5" viewBox="0 0 24 24" aria-hidden="true">
             <path
@@ -46,7 +46,7 @@ export function SocialAuth({ mode }: { mode: 'login' | 'register' }) {
         </button>
         <button
           type="button"
-          className="flex w-full items-center justify-center gap-3 rounded-[5px] border border-border py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-muted"
+          className="flex w-full items-center justify-center gap-3 rounded-[3px] border border-border py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-muted"
         >
           <Image src={ASSETS.logo.mark} alt="" width={20} height={20} aria-hidden="true" />
           {t(ssoKey)}

@@ -98,7 +98,7 @@ export async function ProductCategories() {
         {topTwoCards.map((card) => (
           <div
             key={card.id}
-            className={`group flex flex-col overflow-hidden rounded-md border border-slate-200 bg-white border-l-4 sm:border-l-[5px] ${card.accentBorder} shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg`}
+            className={`group flex flex-col overflow-hidden rounded-[3px] border border-slate-200 bg-white border-l-4 sm:border-l-[5px] ${card.accentBorder} shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg`}
           >
             {/* Top Image Banner */}
             <div className="relative h-[280px] w-full overflow-hidden bg-slate-50 sm:h-[340px]">
@@ -160,7 +160,7 @@ export async function ProductCategories() {
         {bottomThreeCards.map((card) => (
           <div
             key={card.id}
-            className={`group flex flex-col overflow-hidden rounded-md border border-slate-200 bg-white border-l-4 sm:border-l-[5px] ${card.accentBorder} shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg`}
+            className={`group flex flex-col overflow-hidden rounded-[3px] border border-slate-200 bg-white border-l-4 sm:border-l-[5px] ${card.accentBorder} shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg`}
           >
             {/* Top Image Banner */}
             <div className="relative h-[220px] w-full overflow-hidden bg-slate-50 sm:h-[260px]">
@@ -174,7 +174,7 @@ export async function ProductCategories() {
             </div>
 
             {/* Card Content Body */}
-            <div className="flex flex-1 flex-col p-5 sm:p-6 lg:p-6 xl:p-7 justify-between">
+            <div className="flex flex-1 flex-col p-5 sm:p-6 lg:p-6 xl:p-7">
               <div>
                 <h3 className="text-[15px] font-bold text-slate-900 leading-snug sm:text-[16px] lg:text-[16px] xl:text-[18px]">
                   {card.title}
@@ -183,6 +183,17 @@ export async function ProductCategories() {
                 <p className="text-[12px] leading-relaxed text-slate-600 sm:text-[13px] lg:text-[13px] xl:text-[14px]">
                   {card.description}
                 </p>
+              </div>
+
+              {/* Bottom Right Action Link */}
+              <div className="mt-auto flex justify-end pt-3">
+                <Link
+                  href={card.href}
+                  className="inline-flex items-center gap-1.5 text-[12px] font-bold text-brand transition-colors hover:underline sm:text-[13.5px]"
+                >
+                  <span>{t('categories.viewDetail')}</span>
+                  <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                </Link>
               </div>
             </div>
           </div>

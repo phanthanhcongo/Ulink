@@ -179,7 +179,7 @@ export function SubscribersClient({ initialSubscribers, error }: SubscribersClie
           <button
             type="button"
             onClick={handleExportCSV}
-            className="inline-flex h-10 items-center justify-center gap-1.5 px-4 rounded-[5px] border border-slate-200 bg-white text-xs sm:text-sm font-bold text-slate-700 hover:bg-slate-50 shadow-sm transition-colors"
+            className="inline-flex h-10 items-center justify-center gap-1.5 px-4 rounded-[3px] border border-slate-200 bg-white text-xs sm:text-sm font-bold text-slate-700 hover:bg-slate-50 shadow-sm transition-colors"
           >
             <Download className="h-4 w-4" />
             Xuất file CSV
@@ -188,7 +188,7 @@ export function SubscribersClient({ initialSubscribers, error }: SubscribersClie
           <button
             type="button"
             onClick={handleOpenCreateForm}
-            className="inline-flex h-10 items-center justify-center gap-1.5 px-4 rounded-[5px] bg-blue-600 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors shrink-0"
+            className="inline-flex h-10 items-center justify-center gap-1.5 px-4 rounded-[3px] bg-blue-600 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors shrink-0"
           >
             <Plus className="h-4 w-4" />
             Thêm email mới
@@ -198,13 +198,13 @@ export function SubscribersClient({ initialSubscribers, error }: SubscribersClie
 
       {/* Error Banner */}
       {error && (
-        <div className="mb-6 p-4 bg-rose-50 border border-rose-200 rounded-[5px] text-rose-800 text-xs sm:text-sm font-semibold flex items-start gap-2.5 shadow-sm">
+        <div className="mb-6 p-4 bg-rose-50 border border-rose-200 rounded-[3px] text-rose-800 text-xs sm:text-sm font-semibold flex items-start gap-2.5 shadow-sm">
           <AlertTriangle className="h-5 w-5 text-rose-500 shrink-0 mt-0.5" />
           <div className="flex-1">
             <span className="font-extrabold text-rose-900 block mb-1">
               Đã xảy ra lỗi khi tải danh sách email đăng ký nhận tin
             </span>
-            <pre className="font-mono text-[11px] bg-white/60 p-2.5 rounded-[5px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all">
+            <pre className="font-mono text-[11px] bg-white/60 p-2.5 rounded-[3px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all">
               {error}
             </pre>
           </div>
@@ -212,7 +212,7 @@ export function SubscribersClient({ initialSubscribers, error }: SubscribersClie
       )}
 
       {/* Filter and Table */}
-      <div className="bg-white rounded-[5px] border border-slate-100 shadow-sm overflow-hidden">
+      <div className="bg-white rounded-[3px] border border-slate-100 shadow-sm overflow-hidden">
         <div className="p-4 border-b border-slate-100 flex flex-col sm:flex-row gap-3 items-center justify-between">
           <div className="relative w-full sm:max-w-xs">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
@@ -221,14 +221,14 @@ export function SubscribersClient({ initialSubscribers, error }: SubscribersClie
               placeholder="Tìm kiếm email..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-4 py-2.5 rounded-[5px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand"
+              className="w-full pl-9 pr-4 py-2.5 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand"
             />
           </div>
           <div className="flex items-center gap-2 w-full sm:w-auto">
             <select
               value={statusFilter}
               onChange={(e) => setStatusFilter(e.target.value)}
-              className="w-full sm:w-auto px-4 py-2.5 rounded-[5px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-700 focus:outline-none bg-white"
+              className="w-full sm:w-auto px-4 py-2.5 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-700 focus:outline-none bg-white"
             >
               <option value="all">Tất cả trạng thái</option>
               <option value="active">Active</option>
@@ -268,7 +268,7 @@ export function SubscribersClient({ initialSubscribers, error }: SubscribersClie
                       <td className="px-4 py-3">
                         <span
                           className={cn(
-                            'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[5px] text-[10px] font-bold border shadow-sm select-none',
+                            'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[3px] text-[10px] font-bold border shadow-sm select-none',
                             sub.status === 'active'
                               ? 'bg-emerald-50 text-emerald-700 border-emerald-100'
                               : 'bg-slate-50 text-slate-550 border-slate-200'
@@ -276,7 +276,7 @@ export function SubscribersClient({ initialSubscribers, error }: SubscribersClie
                         >
                           <span
                             className={cn(
-                              'h-1.5 w-1.5 rounded-[5px] shrink-0',
+                              'h-1.5 w-1.5 rounded-[3px] shrink-0',
                               sub.status === 'active' ? 'bg-emerald-500 animate-pulse' : 'bg-slate-400'
                             )}
                           />
@@ -303,7 +303,7 @@ export function SubscribersClient({ initialSubscribers, error }: SubscribersClie
                           <button
                             type="button"
                             onClick={() => handleOpenEditForm(sub)}
-                            className="p-1 rounded-[5px] hover:bg-slate-100 text-slate-400 hover:text-blue-600 transition-colors"
+                            className="p-1 rounded-[3px] hover:bg-slate-100 text-slate-400 hover:text-blue-600 transition-colors"
                             title="Sửa email"
                           >
                             <Edit2 className="h-4 w-4" />
@@ -311,7 +311,7 @@ export function SubscribersClient({ initialSubscribers, error }: SubscribersClie
                           <button
                             type="button"
                             onClick={() => handleDeleteSub(sub.id)}
-                            className="p-1 rounded-[5px] hover:bg-slate-100 text-rose-500 hover:text-rose-700 transition-colors"
+                            className="p-1 rounded-[3px] hover:bg-slate-100 text-rose-500 hover:text-rose-700 transition-colors"
                             title="Xóa email"
                           >
                             <Trash2 className="h-4 w-4" />
@@ -330,7 +330,7 @@ export function SubscribersClient({ initialSubscribers, error }: SubscribersClie
       {/* Modal: Create or Edit Subscriber Form */}
       {formOpen && activeSub && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 p-4 backdrop-blur-sm overflow-y-auto">
-          <div className="my-8 w-full max-w-md bg-white rounded-[5px] shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-200 border border-slate-100">
+          <div className="my-8 w-full max-w-md bg-white rounded-[3px] shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-200 border border-slate-100">
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
               <div>
                 <h2 className="text-base sm:text-lg font-extrabold text-primary flex items-center gap-2">
@@ -347,7 +347,7 @@ export function SubscribersClient({ initialSubscribers, error }: SubscribersClie
                   setActiveSub(null);
                   setFormError('');
                 }}
-                className="p-1.5 rounded-[5px] hover:bg-slate-100 text-slate-400 hover:text-slate-655"
+                className="p-1.5 rounded-[3px] hover:bg-slate-100 text-slate-400 hover:text-slate-655"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -357,7 +357,7 @@ export function SubscribersClient({ initialSubscribers, error }: SubscribersClie
             <form onSubmit={handleFormSubmit} className="flex flex-col">
               <div className="p-6 flex flex-col gap-4 bg-white">
                 {formError && (
-                  <div className="p-3 bg-rose-50 border border-rose-100 rounded-[5px] text-xs font-bold text-rose-600 flex items-center gap-2 animate-in fade-in duration-200">
+                  <div className="p-3 bg-rose-50 border border-rose-100 rounded-[3px] text-xs font-bold text-rose-600 flex items-center gap-2 animate-in fade-in duration-200">
                     <AlertTriangle className="h-4 w-4 shrink-0" />
                     <span>{formError}</span>
                   </div>
@@ -373,7 +373,7 @@ export function SubscribersClient({ initialSubscribers, error }: SubscribersClie
                     value={activeSub.email || ''}
                     onChange={(e) => setActiveSub({ ...activeSub, email: e.target.value })}
                     placeholder="customer@company.com"
-                    className="px-3.5 py-2.5 rounded-[5px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand shadow-sm"
+                    className="px-3.5 py-2.5 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand shadow-sm"
                   />
                 </div>
 
@@ -390,7 +390,7 @@ export function SubscribersClient({ initialSubscribers, error }: SubscribersClie
                         status: e.target.value as SubscriberItem['status']
                       })
                     }
-                    className="px-3.5 py-2.5 rounded-[5px] border border-slate-200 text-xs font-bold text-slate-700 focus:outline-none bg-white shadow-sm"
+                    className="px-3.5 py-2.5 rounded-[3px] border border-slate-200 text-xs font-bold text-slate-700 focus:outline-none bg-white shadow-sm"
                   >
                     <option value="active">Đang nhận bản tin (Active)</option>
                     <option value="inactive">Đã ngừng nhận tin (Inactive)</option>
@@ -406,14 +406,14 @@ export function SubscribersClient({ initialSubscribers, error }: SubscribersClie
                     setFormOpen(false);
                     setActiveSub(null);
                   }}
-                  className="px-5 py-2.5 rounded-[5px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-550 hover:bg-slate-100 transition-colors"
+                  className="px-5 py-2.5 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-550 hover:bg-slate-100 transition-colors"
                 >
                   Hủy bỏ
                 </button>
                 <button
                   type="submit"
                   disabled={isPending}
-                  className="inline-flex items-center justify-center px-5 py-2.5 rounded-[5px] bg-blue-600 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors"
+                  className="inline-flex items-center justify-center px-5 py-2.5 rounded-[3px] bg-blue-600 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors"
                 >
                   {isPending ? 'Đang lưu...' : 'Lưu thông tin'}
                 </button>

@@ -34,7 +34,7 @@ export default function IndustryGrid({ industriesList, viewDetailsLabel }: Indus
         return (
           <div
             key={index}
-            className="group bg-white rounded-[5px] border border-slate-100 overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col"
+            className="group bg-white rounded-[3px] border border-slate-100 overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col"
           >
             {/* Top Image */}
             <Link
