@@ -537,7 +537,9 @@
     "newsletterConflict": "This email is already subscribed.",
     "newsletterError": "Subscription failed. Please try again later.",
     "newsletterInvalid": "Please enter a valid email address.",
-    "copyright": "Copyright ULink Industries. All rights reserved."
+    "copyright": "Copyright © ULink Industries. All rights reserved, 2026.",
+    "privacyPolicy": "Privacy Policy",
+    "termsOfUse": "Terms of Use"
   },
   "regionalHubs": {
     "eyebrow": "Industrial Clusters",

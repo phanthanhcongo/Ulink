@@ -543,7 +543,9 @@
     "newsletterConflict": "このメールアドレスは既に登録されています。",
     "newsletterError": "登録に失敗しました。しばらくしてからもう一度お試しください。",
     "newsletterInvalid": "有効なメールアドレスを入力してください。",
-    "copyright": "Copyright ULink Industries. 全著作権所有。"
+    "copyright": "Copyright © ULink Industries. 全著作権所有、2026年。",
+    "privacyPolicy": "プライバシーポリシー",
+    "termsOfUse": "利用規約"
   },
   "regionalHubs": {
     "eyebrow": "工業団地クラスター",

@@ -537,7 +537,9 @@
     "newsletterConflict": "Email này đã được đăng ký trước đó.",
     "newsletterError": "Đăng ký không thành công. Vui lòng thử lại sau.",
     "newsletterInvalid": "Vui lòng nhập địa chỉ email hợp lệ.",
-    "copyright": "Copyright ULink Industries. Tất cả các quyền được bảo vệ"
+    "copyright": "Copyright © ULink Industries. Tất cả các quyền được bảo vệ, 2026.",
+    "privacyPolicy": "Chính sách bảo mật",
+    "termsOfUse": "Điều khoản sử dụng"
   },
   "regionalHubs": {
     "eyebrow": "Cụm khu công nghiệp",
