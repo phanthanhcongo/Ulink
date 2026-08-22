@@ -15,9 +15,9 @@ export async function FeatureValueBar() {
   return (
     <section className="w-full bg-[#f0f4f8] py-8 sm:py-10 lg:py-12">
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
-        <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4 lg:gap-6 xl:gap-8">
+        <div className="grid grid-cols-1 gap-[1px] sm:grid-cols-2 sm:gap-[1px] lg:grid-cols-4 lg:gap-[1px]">
           {features.map((f) => (
-            <div key={f.alt} className="flex flex-col items-start gap-4 rounded-xl border border-slate-200/80 bg-white p-6 shadow-xs transition-all hover:shadow-md sm:p-7 lg:p-8">
+            <div key={f.alt} className="flex flex-row items-center gap-3 border border-border bg-white p-4 shadow-sm sm:flex-col sm:items-start sm:p-5 lg:p-6">
               <div className="relative flex h-[50px] w-[50px] shrink-0 items-center justify-center">
                 <Image
                   src={f.icon}
