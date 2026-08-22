@@ -23,9 +23,9 @@ export async function SiteFooter() {
               <Image
                 src={ASSETS.logo.main}
                 alt="ULink Industries"
-                width={226}
-                height={72}
-                className="h-14 w-auto object-contain sm:h-16"
+                width={360}
+                height={180}
+                className="h-24 w-auto object-contain sm:h-28 md:h-32"
               />
             </Link>
             
@@ -135,7 +135,6 @@ export async function SiteFooter() {
                 className="group inline-flex items-center gap-1 text-[14px] font-extrabold uppercase tracking-wider text-[#151b2a] transition-colors hover:text-[#1769e2] sm:text-[15px]"
               >
                 {t('aboutTitle')}
-                <ChevronRight className="h-4 w-4 text-slate-800 transition-transform group-hover:translate-x-1" />
               </Link>
               <div className="hidden h-[2px] w-8 bg-[#bfd3ec] lg:block" />
             </div>
@@ -215,7 +214,6 @@ export async function SiteFooter() {
                 className="group inline-flex items-center gap-1 text-[14px] font-extrabold uppercase tracking-wider text-[#151b2a] transition-colors hover:text-[#1769e2] sm:text-[15px]"
               >
                 {t('industriesTitle')}
-                <ChevronRight className="h-4 w-4 text-slate-800 transition-transform group-hover:translate-x-1" />
               </Link>
               <div className="hidden h-[2px] w-8 bg-[#bfd3ec] lg:block" />
             </div>
@@ -272,7 +270,6 @@ export async function SiteFooter() {
                 className="group inline-flex items-center gap-1 text-[14px] font-extrabold uppercase tracking-wider text-[#151b2a] transition-colors hover:text-[#1769e2] sm:text-[15px]"
               >
                 {t('productsTitle')}
-                <ChevronRight className="h-4 w-4 text-slate-800 transition-transform group-hover:translate-x-1" />
               </Link>
               <div className="hidden h-[2px] w-8 bg-[#bfd3ec] lg:block" />
             </div>

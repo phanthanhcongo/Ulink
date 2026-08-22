@@ -4,10 +4,10 @@
  */
 export const ASSETS = {
   logo: {
-    full: '/images/logo/UlinkLogoFinal.png',
+    full: '/images/logo/Main Logo-01.png',
     mark: '/images/logo/ulink-mark.svg',
-    white: '/images/logo/UlinkLogoFinal.png',
-    main: '/images/home/logo.webp'
+    white: '/images/logo/Main Logo-01.png',
+    main: '/images/logo/Main Logo-01.png'
   },
   banners: {
     /** Ảnh nền trang đăng nhập — KHÔNG kèm chữ. */
