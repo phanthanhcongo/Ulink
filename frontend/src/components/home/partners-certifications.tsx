@@ -124,7 +124,7 @@ export async function PartnersCertifications() {
                   src={partner.src}
                   alt={partner.name}
                   fill
-                  className="object-cover pointer-events-none opacity-50 transition-all duration-300 group-hover:opacity-100"
+                  className="object-cover pointer-events-none opacity-50 transition-all duration-300 group-hover:opacity-100 group-hover/item:scale-110"
                 />
               </div>
             </div>
@@ -142,7 +142,7 @@ export async function PartnersCertifications() {
                   src={partner.src}
                   alt={partner.name}
                   fill
-                  className="object-cover pointer-events-none opacity-50 transition-all duration-300 group-hover:opacity-100"
+                  className="object-cover pointer-events-none opacity-50 transition-all duration-300 group-hover:opacity-100 group-hover/item:scale-110"
                 />
               </div>
             </div>
