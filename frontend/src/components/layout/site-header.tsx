@@ -20,7 +20,17 @@ export async function SiteHeader() {
   const isAdmin = isAdminUser(user);
 
   const items: NavItem[] = [
-    { href: '/regional-hubs', label: t('hubs') },
+    {
+      href: '/regional-hubs',
+      label: t('hubs'),
+      children: [
+        { href: '/regional-hubs/ha-nam', label: 'KCN Đồng Văn I - Hà Nam', description: 'Trung tâm phân phối miền Bắc' },
+        { href: '/regional-hubs/dong-van-2', label: 'KCN Đồng Văn II', description: 'Cụm công nghiệp vật liệu' },
+        { href: '/regional-hubs/thang-long', label: 'KCN Thăng Long - Hà Nội', description: 'Cụm điện tử & cơ khí chính xác' },
+        { href: '/regional-hubs/vsip-bac-ninh', label: 'KCN VSIP - Bắc Ninh', description: 'Cụm công nghệ cao & bán dẫn' },
+        { href: '/regional-hubs', label: 'Tất cả Cụm / KCN →' }
+      ]
+    },
     { href: '/products', label: t('products') },
     { href: '/industries', label: t('industries') },
     { href: '/resources', label: t('resources') },

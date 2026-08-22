@@ -1,7 +1,6 @@
 import { ArrowRight, Check, Building2, Settings } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
-import { SectionHeader } from './section-header';
 
 export async function TargetSegments() {
   const t = await getTranslations('home');
@@ -9,12 +8,13 @@ export async function TargetSegments() {
   return (
     <section className="w-full py-12 lg:py-16 xl:py-20 bg-slate-50/50 border-t border-b border-slate-100 font-sans">
       {/* ── SECTION HEADER ── */}
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 mb-10 sm:mb-14">
-        <SectionHeader
-          title={t('targetSegments.sectionTitle')}
-          subtitle={t('targetSegments.sectionSubTitle')}
-          centered
-        />
+      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 text-center mb-10 sm:mb-14">
+        <span className="block text-[18px] sm:text-[20px] font-bold font-sans text-blue-600">
+          {t('targetSegments.sectionTitle')}
+        </span>
+        <h2 className="mt-2 text-[22px] font-extrabold tracking-tight text-primary sm:text-[26px] lg:text-[26px] xl:text-[30px] 2xl:text-[32px]">
+          {t('targetSegments.sectionSubTitle')}
+        </h2>
       </div>
 
       {/* ── 2 CARDS GRID ── */}
