@@ -1,0 +1,82 @@
+# ULink CI/CD Pipeline
+# Frontend -> Vercel
+# Backend  -> Railway
+
+stages:
+  - deploy
+  - seed
+
+# ── Deploy Frontend lên Vercel ───────────────────────────────────────────────
+deploy-vercel:
+  stage: deploy
+  image: node:20-alpine
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "dev"'
+  script:
+    - cd frontend
+    - sh scripts/deploy-vercel.sh
+
+# ── Deploy Backend lên Railway ──────────────────────────────────────────────
+# Railway auto-deploy khi detect commit mới (đã kết nối Git repo).
+# Hoặc dùng Deploy Hook: Railway → Service → Settings → Deploy → Generate Deploy Hook
+# Lưu URL vào GitLab CI/CD Variable: RAILWAY_DEPLOY_HOOK
+deploy-railway:
+  stage: deploy
+  image: alpine:latest
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "dev"'
+  before_script:
+    - apk add --no-cache curl
+  script:
+    - echo ">> Triggering Railway deploy..."
+    - |
+      if [ -n "$RAILWAY_DEPLOY_HOOK" ]; then
+        curl -sf -X POST "$RAILWAY_DEPLOY_HOOK"
+        echo ">> Railway deploy triggered successfully!"
+      else
+        echo ">> RAILWAY_DEPLOY_HOOK not set, skipping (Railway auto-deploys from Git)"
+      fi
+
+# ── Seed Directus Schema + Data lên Railway ─────────────────────────────────
+# Chạy SAU khi Railway đã deploy xong Directus.
+# Idempotent: chạy lại nhiều lần không gây lỗi (skip nếu đã tồn tại).
+#
+# Required GitLab CI/CD Variables:
+#   DIRECTUS_REMOTE_URL      = https://directus-production-XXXX.up.railway.app
+#   DIRECTUS_ADMIN_EMAIL     = admin@ulink.com
+#   DIRECTUS_ADMIN_PASSWORD  = <password>
+#   RAILWAY_DB_URL           = postgresql://postgres:<pw>@<host>:<port>/railway
+seed-directus:
+  stage: seed
+  image: node:20-alpine
+  rules:
+    - if: '$CI_COMMIT_BRANCH == "dev"'
+      when: manual
+      allow_failure: true
+  needs:
+    - job: deploy-railway
+      optional: true
+  before_script:
+    - cd directus
+    - npm ci --omit=dev --no-audit --no-fund
+  script:
+    # Đợi Directus healthy (tối đa 3 phút)
+    - |
+      echo ">> Waiting for Directus to be healthy..."
+      for i in $(seq 1 36); do
+        STATUS=$(wget -qO- "$DIRECTUS_REMOTE_URL/server/health" 2>/dev/null || echo "down")
+        if echo "$STATUS" | grep -q '"status":"ok"'; then
+          echo ">> Directus is healthy!"
+          break
+        fi
+        echo ">> Attempt $i/36: Directus not ready yet, waiting 5s..."
+        sleep 5
+      done
+    # Bước 1: Tạo schema (collections + relations + roles)
+    - echo ">> Running bootstrap..."
+    - node scripts/remote-bootstrap.mjs "$DIRECTUS_REMOTE_URL" "$DIRECTUS_ADMIN_EMAIL" "$DIRECTUS_ADMIN_PASSWORD" || true
+    # Bước 2: Seed data
+    - echo ">> Running seed..."
+    - export DB_CONNECTION_STRING="$RAILWAY_DB_URL"
+    - node scripts/remote-seed.mjs "$DIRECTUS_REMOTE_URL" "$DIRECTUS_ADMIN_EMAIL" "$DIRECTUS_ADMIN_PASSWORD"
+    - echo ">> Seed completed successfully!"

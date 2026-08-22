@@ -1,0 +1,80 @@
+# ULink — production overlay for the shared PUBLIC host (gitlab.pathtech.net / 103.164.35.132).
+#
+# The base docker-compose.yml publishes Postgres/Redis/Mailpit/Swagger to 0.0.0.0 and
+# bind-mounts extension source over the image — fine on a laptop, wrong on a public
+# server. This overlay uses Compose's `!override` tag (Compose v2.24+) to REPLACE — not
+# append — ports and volumes so that:
+#   - infrastructure stays on loopback; only Directus :8055 is internet-reachable;
+#   - Directus runs extensions straight from the self-contained image (no src mounts
+#     shadowing the baked dist/ + node_modules).
+#
+# Deploy:
+#   docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
+services:
+  postgres:
+    ports: !override
+      - '127.0.0.1:5432:5432' # loopback only (Directus reaches it via the compose network)
+
+  redis:
+    ports: !override
+      - '127.0.0.1:6379:6379' # loopback only
+
+  mailpit:
+    ports: !override
+      - '127.0.0.1:1025:1025' # SMTP — loopback only (Directus + frontend send here)
+      - '8025:8025' # web UI — PUBLIC for testing, protected by basic auth (MP_UI_AUTH)
+    environment:
+      MP_UI_AUTH: ${MP_UI_AUTH} # "user:password" — gates the public web UI / API
+
+  swagger-ui:
+    ports: !override
+      - '127.0.0.1:8056:8080' # API docs — reach via SSH tunnel
+
+  directus:
+    ports: !override
+      - '8055:8055' # PUBLIC — the chosen direct-port exposure
+    # Drop the dev src/ bind-mounts (they shadow the image's baked extensions on a
+    # fresh clone). Keep only uploads (named volume, container-owned uid 1000, no host
+    # chown needed) and the shared lib/ that extensions import via ../../../lib.
+    volumes: !override
+      - ulink_uploads:/directus/uploads
+      - ./directus/lib:/directus/lib
+
+  # Frontend (Next.js) — production container build overlay.
+  # Compiles and runs Next.js in production mode (disabling Hot Reload/dev features).
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: ulink/frontend:local
+    restart: unless-stopped
+    environment:
+      # Public backend URL: works for server-side BFF calls AND for asset/image
+      # URLs rendered to the browser. (Container reaches the host's published port.)
+      DIRECTUS_URL: http://103.164.35.132:8055
+      DIRECTUS_FRONTEND_TOKEN: ${DIRECTUS_FRONTEND_TOKEN} # must match the backend token
+      # Server-side write token (RFQ + newsletter). Defaults to the frontend-api
+      # token, which the Frontend Service policy (rbac) scopes to exactly those
+      # creates. Override DIRECTUS_TOKEN in .env to use a different token.
+      DIRECTUS_TOKEN: ${DIRECTUS_TOKEN:-${DIRECTUS_FRONTEND_TOKEN}}
+      REVALIDATE_SECRET: ${REVALIDATE_SECRET}
+      INTERNAL_API_TOKEN: ${INTERNAL_API_TOKEN}
+      REDIS_URL: redis://redis:6379 # internal network
+      NEXT_PUBLIC_SITE_URL: http://103.164.35.132:3002
+      SMTP_HOST: mailpit # internal network — RFQ-notify emails land in Mailpit
+      SMTP_PORT: '1025'
+      SMTP_FROM: ULink <no-reply@ulink.local>
+      ERP_SYNC_ENABLED: 'false'
+      NODE_ENV: production
+    ports:
+      - '3002:3000'
+    depends_on:
+      directus:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      mailpit:
+        condition: service_started
+
+volumes:
+  ulink_uploads: # Directus uploads — container-owned (uid 1000), survives recreates

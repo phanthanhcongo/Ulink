@@ -1,0 +1,149 @@
+import Image from 'next/image';
+import { getTranslations } from 'next-intl/server';
+import { Check, Cpu, Users } from 'lucide-react';
+import { Link } from '@/i18n/navigation';
+import { ASSETS } from '@/lib/assets';
+import { SectionHeader } from './section-header';
+
+export async function AboutSection() {
+  const t = await getTranslations('home');
+
+  return (
+    <section className="mx-auto w-full max-w-[1440px] px-4 py-8 sm:px-8 lg:px-12 xl:px-16 lg:py-10 xl:py-12">
+      {/* ── SECTION HEADER BAR ── */}
+      <SectionHeader
+        title={t('about.sectionTitle')}
+        subtitle={t('about.sectionSubTitle')}
+        viewAllHref="/about"
+        viewAllLabel={t('about.viewDetail')}
+      />
+
+      {/* ── 2 COLUMNS CONTENT GRID ── */}
+      <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-stretch lg:gap-12">
+        {/* Left Column: Factory Building Photo with Floating Caption Card */}
+        <div className="relative w-full aspect-[16/11] lg:aspect-auto lg:h-full lg:col-span-6 overflow-hidden rounded-[5px] border border-[#E5E7EB]">
+          <Image
+            src={ASSETS.home.companyFactory}
+            alt="ULINK Industries Ha Nam Factory Hub"
+            fill
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="object-cover transition-transform"
+          />
+          {/* Floating Photo Caption Card (535x73px style) */}
+          <div className="absolute bottom-4 left-4 right-4 flex flex-col items-start gap-1 bg-white/80 p-3 rounded-[5px] opacity-[0.8] ">
+            <span className="text-[12px] sm:text-[13px] font-bold text-slate-700 leading-normal">
+              {t('about.captionHub')}
+            </span>
+            <span className="px-2.5 py-0.5 rounded-full text-[10px] sm:text-[11px] font-bold bg-blue-50 text-blue-600 border border-blue-100/50">
+              {t('about.captionStatus')}
+            </span>
+          </div>
+        </div>
+
+        {/* Right Column: Text Content & 4 Key Metric Items */}
+        <div className="flex flex-col lg:col-span-6 justify-between bg-white border border-[#E5E7EB] p-6 rounded-[5px] gap-10">
+          <div>
+            <h3 className="text-[18px] font-bold leading-tight text-primary sm:text-[20px] lg:text-[20px] xl:text-[24px]">
+              {t('about.mainTitle')}
+            </h3>
+
+            <p className="mt-4 text-[13px] leading-relaxed text-muted-foreground sm:text-[14px] lg:text-[13.5px] xl:text-[15px]">
+              {t('about.mainDesc')}
+            </p>
+
+            <div className="my-6 border-b border-border" />
+
+            {/* Bullet Points */}
+            <ul className="space-y-4 text-[13px] text-foreground sm:text-[14px] lg:text-[13.5px] xl:text-[15px]">
+              <li className="flex items-center gap-3.5">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-50 text-brand dark:bg-blue-950/50 dark:text-blue-400">
+                  <Check className="h-4.5 w-4.5" />
+                </div>
+                <span className="font-semibold text-slate-700">{t('about.bullet1')}</span>
+              </li>
+              <li className="flex items-center gap-3.5">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-50 text-brand dark:bg-blue-950/50 dark:text-blue-400">
+                  <Cpu className="h-4.5 w-4.5" />
+                </div>
+                <span className="font-semibold text-slate-700">{t('about.bullet2')}</span>
+              </li>
+              <li className="flex items-center gap-3.5">
+                <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-50 text-brand dark:bg-blue-950/50 dark:text-blue-400">
+                  <Users className="h-4.5 w-4.5" />
+                </div>
+                <span className="font-semibold text-slate-700">{t('about.bullet3')}</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* 4 Metric Items Grid with radius/xs (rounded-[5px]) cards */}
+          <div className="mt-8 grid grid-cols-2 gap-3 lg:mt-6 sm:grid-cols-4">
+            {/* Metric 1 */}
+            <div className="flex flex-col items-start bg-slate-50 border border-slate-100 p-3 rounded-[5px] transition-all duration-300 hover:shadow-sm hover:border-slate-200 gap-2 justify-between w-full min-h-[76px]">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[8px] bg-blue-50/80">
+                <Image
+                  src={ASSETS.home.iconSlack}
+                  alt="Experience"
+                  width={20}
+                  height={20}
+                  className="h-4.5 w-4.5 object-contain"
+                />
+              </div>
+              <span className="text-[11px] font-bold text-slate-800 xl:text-[12px] whitespace-nowrap leading-none">
+                {t('about.metric1')}
+              </span>
+            </div>
+
+            {/* Metric 2 */}
+            <div className="flex flex-col items-start bg-slate-50 border border-slate-100 p-3 rounded-[5px] transition-all duration-300 hover:shadow-sm hover:border-slate-200 gap-2 justify-between w-full min-h-[76px]">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[8px] bg-blue-50/80">
+                <Image
+                  src={ASSETS.home.iconShield}
+                  alt="Quality"
+                  width={20}
+                  height={20}
+                  className="h-4.5 w-4.5 object-contain"
+                />
+              </div>
+              <span className="text-[11px] font-bold text-slate-800 xl:text-[12px] whitespace-nowrap leading-none">
+                {t('about.metric2')}
+              </span>
+            </div>
+
+            {/* Metric 3 */}
+            <div className="flex flex-col items-start bg-slate-50 border border-slate-100 p-3 rounded-[5px] transition-all duration-300 hover:shadow-sm hover:border-slate-200 gap-2 justify-between w-full min-h-[76px]">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[8px] bg-blue-50/80">
+                <Image
+                  src={ASSETS.home.iconTag}
+                  alt="SKU Count"
+                  width={20}
+                  height={20}
+                  className="h-4.5 w-4.5 object-contain"
+                />
+              </div>
+              <span className="text-[11px] font-bold text-slate-800 xl:text-[12px] whitespace-nowrap leading-none">
+                {t('about.metric3')}
+              </span>
+            </div>
+
+            {/* Metric 4 */}
+            <div className="flex flex-col items-start bg-slate-50 border border-slate-100 p-3 rounded-[5px] transition-all duration-300 hover:shadow-sm hover:border-slate-200 gap-2 justify-between w-full min-h-[76px]">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[8px] bg-blue-50/80">
+                <Image
+                  src={ASSETS.home.iconTruck}
+                  alt="Fast Delivery"
+                  width={20}
+                  height={20}
+                  className="h-4.5 w-4.5 object-contain"
+                />
+              </div>
+              <span className="text-[11px] font-bold text-slate-800 xl:text-[12px] whitespace-nowrap leading-none">
+                {t('about.metric4')}
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}

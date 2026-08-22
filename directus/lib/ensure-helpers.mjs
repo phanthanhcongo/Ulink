@@ -1,0 +1,363 @@
+import {
+  createCollection,
+  createRelation,
+  createRoles,
+  createPermissions,
+  updatePermission,
+  createUser,
+  readUsers,
+  updateUser,
+  createItem,
+  readItems,
+  readPermissions,
+  deletePermissions,
+  createPolicy,
+  customEndpoint,
+  readSingleton,
+  updateSingleton
+} from '@directus/sdk';
+import { translationCollectionName, translationSourceField } from './i18n.mjs';
+
+export function createEnsureHelpers(client) {
+  async function ensureCollection(def) {
+    try {
+      await client.request(createCollection(def));
+      console.log(`+  Collection: ${def.collection} (created)`);
+    } catch {
+      console.log(`=  Collection: ${def.collection} (already exists / checking fields)`);
+      try {
+        const fields = await client.request(
+          customEndpoint({
+            path: `/fields/${def.collection}`,
+            method: 'GET'
+          })
+        );
+        const existingFields = fields.map((f) => f.field);
+        for (const fieldDef of def.fields || []) {
+          if (!existingFields.includes(fieldDef.field)) {
+            try {
+              await client.request(
+                customEndpoint({
+                  path: `/fields/${def.collection}`,
+                  method: 'POST',
+                  body: JSON.stringify(fieldDef),
+                  headers: {
+                    'Content-Type': 'application/json'
+                  }
+                })
+              );
+              console.log(`+  Field: ${def.collection}.${fieldDef.field} (created dynamically)`);
+            } catch (fieldErr) {
+              const msg = fieldErr?.message || String(fieldErr);
+              if (msg.includes('already exists')) {
+                console.log(`=  Field: ${def.collection}.${fieldDef.field} (already exists / skipped)`);
+              } else {
+                console.error(`!  Field: ${def.collection}.${fieldDef.field} creation failed:`, msg);
+              }
+            }
+          } else {
+            // Dynamically update field meta/options if they already exist
+            try {
+              if (fieldDef.meta) {
+                await client.request(
+                  customEndpoint({
+                    path: `/fields/${def.collection}/${fieldDef.field}`,
+                    method: 'PATCH',
+                    body: JSON.stringify({
+                      meta: fieldDef.meta
+                    }),
+                    headers: {
+                      'Content-Type': 'application/json'
+                    }
+                  })
+                );
+                console.log(`~  Field: ${def.collection}.${fieldDef.field} (metadata updated)`);
+              }
+            } catch (updateErr) {
+              console.error(`!  Field: ${def.collection}.${fieldDef.field} update failed:`, updateErr?.message || updateErr);
+            }
+          }
+        }
+      } catch (err) {
+        console.error(`Failed to ensure fields for collection ${def.collection}:`, err?.message || err);
+      }
+    }
+  }
+
+  async function ensureRelation(def) {
+    try {
+      await client.request(createRelation(def));
+      console.log(`+  Relation: ${def.collection}.${def.field} (created)`);
+    } catch {
+      // If relation already exists, update its schema (on_delete behaviour) dynamically
+      try {
+        await client.request(
+          customEndpoint({
+            path: `/relations/${def.collection}/${def.field}`,
+            method: 'PATCH',
+            body: JSON.stringify({
+              schema: def.schema || {}
+            }),
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          })
+        );
+        console.log(`~  Relation: ${def.collection}.${def.field} (schema updated)`);
+      } catch (err) {
+        console.error(`!  Relation: ${def.collection}.${def.field} update failed:`, err?.message || err);
+      }
+    }
+  }
+
+  async function ensureRole(def) {
+    try {
+      const result = await client.request(createRoles([def]));
+      console.log(`+  Role: ${def.name} (created)`);
+      return result[0].id;
+    } catch {
+      console.log(`=  Role: ${def.name} (already exists / skipped)`);
+      return def.id;
+    }
+  }
+
+  async function ensurePolicy(def) {
+    try {
+      const result = await client.request(createPolicy(def));
+      console.log(`+  Policy: ${def.name} (created)`);
+      return result.id;
+    } catch {
+      console.log(`=  Policy: ${def.name} (already exists / skipped)`);
+      return def.id;
+    }
+  }
+
+  async function ensureAccess(def) {
+    try {
+      const accesses = await client.request(
+        customEndpoint({
+          path: '/access',
+          method: 'GET'
+        })
+      );
+      const existing = accesses.find((access) => access.role === def.role && access.policy === def.policy);
+
+      if (existing) {
+        console.log(`=  Access Mapping: policy ${def.policy} to role ${def.role} (already exists)`);
+        return;
+      }
+
+      await client.request(
+        customEndpoint({
+          path: '/access',
+          method: 'POST',
+          body: JSON.stringify(def),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        })
+      );
+
+      const refreshedAccesses = await client.request(
+        customEndpoint({
+          path: '/access',
+          method: 'GET'
+        })
+      );
+      const created = refreshedAccesses.find((access) => access.role === def.role && access.policy === def.policy);
+      if (!created) {
+        throw new Error(`Failed to attach policy ${def.policy} to role ${def.role}`);
+      }
+
+      console.log(`+  Access Mapping: policy ${def.policy} to role ${def.role} (attached)`);
+    } catch (err) {
+      // Directus 10.x does not expose the /access endpoint (introduced in v11).
+      // Log a warning and continue so the rest of bootstrap can complete.
+      const msg = err?.errors?.[0]?.message ?? err?.message ?? String(err);
+      if (msg.includes("/access doesn't exist") || msg.includes('Route /access')) {
+        console.warn(`⚠  Access Mapping: skipped (Directus version does not support /access endpoint)`);
+        return;
+      }
+      throw err;
+    }
+  }
+
+  async function ensurePermission(def) {
+    const permissions = await listPermissions();
+    const matches = permissions.filter(
+      (p) => p.policy === def.policy && p.collection === def.collection && p.action === def.action
+    );
+
+    if (matches.length > 0) {
+      const [primary, ...duplicates] = matches;
+
+      if (duplicates.length > 0) {
+        const duplicateIds = duplicates.map((d) => d.id).filter(Boolean);
+        await deletePermissionIds(duplicateIds);
+        console.log(`-  Deleted ${duplicates.length} duplicate permission(s) for ${def.collection}:${def.action} under policy ${def.policy}`);
+      }
+
+      const isFieldsMatch = JSON.stringify(primary.fields) === JSON.stringify(def.fields ?? ['*']);
+      const isPermsMatch = JSON.stringify(primary.permissions ?? {}) === JSON.stringify(def.permissions ?? {});
+      const isValidationMatch = JSON.stringify(primary.validation ?? null) === JSON.stringify(def.validation ?? null);
+      const isPresetsMatch = JSON.stringify(primary.presets ?? null) === JSON.stringify(def.presets ?? null);
+
+      if (isFieldsMatch && isPermsMatch && isValidationMatch && isPresetsMatch) {
+        console.log(`=  Permission: ${def.collection}:${def.action} for policy ID ${def.policy} (already up-to-date)`);
+        return;
+      }
+
+      await client.request(updatePermission(primary.id, def));
+      console.log(`~  Permission: ${def.collection}:${def.action} for policy ID ${def.policy} (updated fields/rules)`);
+    } else {
+      await client.request(createPermissions([def]));
+      console.log(`+  Permission: ${def.collection}:${def.action} for policy ID ${def.policy} (created)`);
+    }
+  }
+
+  async function listPermissions() {
+    return client.request(readPermissions());
+  }
+
+  async function deletePermissionIds(ids) {
+    if (!ids.length) {
+      return;
+    }
+
+    await client.request(deletePermissions(ids));
+  }
+
+  async function ensureUser(data) {
+    const existing = await client.request(readUsers({ filter: { email: { _eq: data.email } }, fields: ['id', 'email', 'role', 'status'] }));
+    if (existing.length > 0) {
+      const user = existing[0];
+      // Resolve role checking (handling both raw UUID string and object relation formats)
+      const currentRoleId = typeof user.role === 'string' ? user.role : user.role?.id ?? null;
+      const needsUpdate = currentRoleId !== data.role || user.status !== data.status;
+      if (needsUpdate) {
+        await client.request(updateUser(user.id, data));
+        console.log(`~  User: ${data.email} (role/status updated)`);
+      } else {
+        console.log(`=  User: ${data.email} (exists, skipped)`);
+      }
+      return user.id;
+    }
+    try {
+      const created = await client.request(createUser(data));
+      console.log(`+  User: ${data.email} (created)`);
+      return created.id;
+    } catch (err) {
+      const msg = err?.errors?.[0]?.message ?? err?.message ?? '';
+      if (msg.includes('unique') || msg.includes('already')) {
+        const all = await client.request(readUsers({ limit: -1 }));
+        const match = all.find(u => u.email === data.email);
+        if (match) {
+          console.log(`=  User: ${data.email} (exists, skipped)`);
+          return match.id;
+        }
+      }
+      throw err;
+    }
+  }
+
+  async function ensureItem(collection, uniqueField, data) {
+    const filter = {
+      [uniqueField]: { _eq: data[uniqueField] }
+    };
+    const existing = await client.request(readItems(collection, { filter, fields: ['id', uniqueField], limit: 1 }));
+    if (existing.length > 0) {
+      console.log(`=  Seed Item in ${collection} [${data[uniqueField]}] (exists, skipped)`);
+      return existing[0].id;
+    }
+    try {
+      const created = await client.request(createItem(collection, data, { fields: ['id'] }));
+      console.log(`+  Seed Item in ${collection} [${data[uniqueField]}] (created)`);
+      return created.id;
+    } catch (err) {
+      const msg = err?.errors?.[0]?.message ?? err?.message ?? '';
+      if (msg.includes('unique')) {
+        const all = await client.request(readItems(collection, { fields: ['id', uniqueField], limit: -1 }));
+        const match = all.find(item => item[uniqueField] === data[uniqueField]);
+        if (match) {
+          console.log(`=  Seed Item in ${collection} [${data[uniqueField]}] (exists, skipped)`);
+          return match.id;
+        }
+      }
+      throw err;
+    }
+  }
+
+  async function ensureTranslation(collection, sourceId, languageCode, data) {
+    const translationCollection = translationCollectionName(collection);
+    const sourceField = translationSourceField(collection);
+    const filter = {
+      [sourceField]: { _eq: sourceId },
+      languages_code: { _eq: languageCode }
+    };
+    const existing = await client.request(readItems(translationCollection, { filter }));
+    const payload = {
+      [sourceField]: sourceId,
+      languages_code: languageCode,
+      ...data
+    };
+
+    if (existing.length > 0) {
+      console.log(`=  Translation in ${translationCollection} [${sourceId}:${languageCode}] (exists, skipped)`);
+      return existing[0].id;
+    }
+
+    const created = await client.request(createItem(translationCollection, payload));
+    console.log(`+  Translation in ${translationCollection} [${sourceId}:${languageCode}] (created)`);
+    return created.id;
+  }
+
+  async function ensureSingleton(collection, data) {
+    try {
+      const existing = await client.request(readSingleton(collection));
+      if (existing && existing.id) {
+        console.log(`=  Singleton in ${collection} (exists, skipped)`);
+        return existing.id;
+      }
+    } catch {
+      // fall through to upsert
+    }
+
+    const updated = await client.request(updateSingleton(collection, data));
+    console.log(`+  Singleton in ${collection} (created/upserted)`);
+    return updated.id;
+  }
+
+  async function getPublicPolicyId() {
+    try {
+      const policies = await client.request(customEndpoint({ path: '/policies', method: 'GET' }));
+      const publicPolicy = policies.find((p) => p.name === '$t:public_label');
+      if (!publicPolicy) {
+        throw new Error('Could not find system public policy in Directus.');
+      }
+      return publicPolicy.id;
+    } catch (err) {
+      const msg = err?.errors?.[0]?.message ?? err?.message ?? String(err);
+      if (msg.includes("/policies doesn't exist") || msg.includes('Route /policies')) {
+        console.warn(`⚠  getPublicPolicyId: /policies not available (Directus 10.x), skipping policy-based permissions`);
+        return null;
+      }
+      throw err;
+    }
+  }
+
+  return {
+    ensureCollection,
+    ensureRelation,
+    ensureRole,
+    ensurePolicy,
+    ensureAccess,
+    ensurePermission,
+    listPermissions,
+    deletePermissionIds,
+    ensureUser,
+    ensureItem,
+    ensureTranslation,
+    ensureSingleton,
+    getPublicPolicyId
+  };
+}

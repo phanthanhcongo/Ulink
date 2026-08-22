@@ -1,0 +1,16 @@
+{
+  "name": "ulink-password-policy-hook",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "directus:extension": {
+    "type": "hook",
+    "path": "dist/index.js",
+    "source": "src/index.js",
+    "host": "^11.0.0"
+  },
+  "dependencies": {
+    "argon2": "^0.41.1"
+  },
+  "description": "Blocks password reuse and invalidates all user sessions when a password is changed or reset."
+}

@@ -1,0 +1,154 @@
+'use client';
+
+import React, { useState } from 'react';
+import {
+  ArrowRight,
+  CheckSquare,
+  Shield,
+  TrendingUp,
+  Zap
+} from 'lucide-react';
+import { useTranslations } from 'next-intl';
+import { Link } from '@/i18n/navigation';
+import { ASSETS } from '@/lib/assets';
+import { NewsCard } from './news-card';
+import { DocSection } from './doc-section';
+import { SupportSection } from './support-section';
+import { ComingSoonModal } from './coming-soon-modal';
+
+export function ResourcesNews() {
+  const t = useTranslations('home.resourcesSection');
+  const [showComingSoon, setShowComingSoon] = useState(false);
+  const [selectedDocTitle, setSelectedDocTitle] = useState('');
+
+  const handleDocClick = (e: React.MouseEvent, title: string) => {
+    e.preventDefault();
+    setSelectedDocTitle(title);
+    setShowComingSoon(true);
+  };
+
+  const docsData = [
+    {
+      num: 1,
+      icon: ASSETS.home.docIcon1,
+      category: t('doc1Category'),
+      title: t('doc1Title'),
+      meta: t('doc1Meta')
+    },
+    {
+      num: 2,
+      icon: ASSETS.home.docIcon2,
+      category: t('doc2Category'),
+      title: t('doc2Title'),
+      meta: t('doc2Meta')
+    },
+    {
+      num: 3,
+      icon: ASSETS.home.docIcon3,
+      category: t('doc3Category'),
+      title: t('doc3Title'),
+      meta: t('doc3Meta')
+    },
+    {
+      num: 4,
+      icon: ASSETS.home.docIcon4,
+      category: t('doc4Category'),
+      title: t('doc4Title'),
+      meta: t('doc4Meta')
+    }
+  ];
+
+  const newsData = [
+    {
+      num: 1,
+      date: t('card1Date'),
+      title: t('card1Title'),
+      image: ASSETS.home.news1,
+      category: t('doc1Category') || 'Catalogue',
+      author: {
+        name: 'Nguyễn Minh Tuấn',
+        role: 'Trưởng phòng Đóng gói',
+        avatar: ASSETS.home.avatar2
+      }
+    },
+    {
+      num: 2,
+      date: t('card2Date'),
+      title: t('card2Title'),
+      image: ASSETS.home.news2,
+      category: t('doc2Category') || 'Tài liệu kỹ thuật',
+      author: {
+        name: 'Lê Quốc Hưng',
+        role: 'Quản lý Kho vận',
+        avatar: ASSETS.home.avatar4
+      }
+    },
+    {
+      num: 3,
+      date: t('card3Date'),
+      title: t('card3Title'),
+      image: ASSETS.home.news3,
+      category: t('doc1Category') || 'Catalogue',
+      author: {
+        name: 'Trần Thị Hồng Nhung',
+        role: 'Giám đốc Sản xuất',
+        avatar: ASSETS.home.avatar1
+      }
+    }
+  ];
+
+  const supportData = [
+    { num: 1, icon: CheckSquare, title: t('supp1Title'), desc: t('supp1Desc') },
+    { num: 2, icon: Shield, title: t('supp2Title'), desc: t('supp2Desc') },
+    { num: 3, icon: TrendingUp, title: t('supp3Title'), desc: t('supp3Desc') },
+    { num: 4, icon: Zap, title: t('supp4Title'), desc: t('supp4Desc') }
+  ];
+
+  return (
+    <section className="relative mx-auto w-full max-w-[1440px] px-4 pt-4 pb-12 sm:px-8 lg:px-12 xl:px-16 sm:pt-6 sm:pb-16 lg:pt-8 lg:pb-20 xl:pt-10 xl:pb-24 overflow-hidden">
+      {/* ── BACKGROUND GLOWS ── */}
+      <div className="absolute top-1/4 -left-32 w-96 h-96 bg-gradient-to-tr from-blue-400/5 to-cyan-400/5 blur-3xl rounded-full pointer-events-none -z-10" />
+      <div className="absolute bottom-10 -right-32 w-96 h-96 bg-gradient-to-tr from-indigo-400/5 to-blue-400/5 blur-3xl rounded-full pointer-events-none -z-10" />
+
+
+      {/* ── 2. SUB-SECTION HEADER (TIN TỨC THỊ TRƯỜNG - CENTERED) ── */}
+      <div className="text-center flex flex-col items-center justify-center">
+        <span className="text-[13px] sm:text-sm font-bold uppercase tracking-wider text-blue-600">
+          {t('newsSectionTitle')}
+        </span>
+        <h3 className="mt-1 text-lg sm:text-xl md:text-2xl font-extrabold tracking-tight text-slate-900 leading-snug">
+          {t('newsSectionSubTitle')}
+        </h3>
+      </div>
+
+      {/* ── 3. 3 NEWS CARDS GRID ── */}
+      <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8">
+        {newsData.map((news) => (
+          <NewsCard
+            key={news.num}
+            num={news.num}
+            date={news.date}
+            title={news.title}
+            image={news.image}
+            category={news.category}
+            author={news.author}
+            readMoreText={t('readMore') || 'Đọc thêm'}
+          />
+        ))}
+      </div>
+
+      {/* ── Centered View All News Button ── */}
+      <div className="mt-10 flex justify-center">
+        <Link
+          href="/resources"
+          className="group inline-flex h-11 items-center justify-center gap-2.5 rounded-[5px] border border-blue-600 bg-white px-6 text-sm font-bold text-blue-600 transition-all hover:bg-blue-50/50 hover:shadow-xs active:scale-98"
+        >
+          {t('viewMore') || 'Xem thêm'}
+          <ArrowRight className="h-4.5 w-4.5 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
+        </Link>
+      </div>
+
+
+    </section>
+  );
+}

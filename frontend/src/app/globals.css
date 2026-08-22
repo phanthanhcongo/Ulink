@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    /* White #FFFFFF */
+    --foreground: 0 0% 8%;
+    /* Deep Onyx #141414 — body text */
+
+    --card: 0 0% 100%;
+    /* White #FFFFFF */
+    --card-foreground: 0 0% 8%;
+    /* Deep Onyx */
+
+    --primary: 210 49% 19%;
+    /* Dark Navy #1A2D49 — headings, nav */
+    --primary-foreground: 0 0% 100%;
+
+    --accent: 214 78% 49%;
+    /* ULink Blue #1769E2 — key accent */
+    --accent-foreground: 0 0% 100%;
+
+    --brand: 214 78% 49%;
+    /* ULink Blue #1769E2 — CTA, links */
+    --brand-strong: 214 78% 42%;
+    /* Darker blue — hover/press */
+    --brand-foreground: 0 0% 100%;
+
+    --muted: 0 0% 96%;
+    /* Off-White #F5F5F5 */
+    --muted-foreground: 210 10% 40%;
+    /* Secondary text */
+
+    --border: 216 16% 76%;
+    /* Industrial Silver #B8C0CC */
+    --input: 216 16% 76%;
+    --ring: 214 78% 49%;
+    /* ULink Blue */
+
+    --destructive: 0 84% 60%;
+    /* Red #EF4444 — errors, validation */
+    --destructive-foreground: 0 0% 100%;
+
+    --silver: 216 16% 76%;
+    /* Industrial Silver #B8C0CC */
+    --onyx: 0 0% 8%;
+    /* Deep Onyx #141414 */
+
+    --radius: 0.25rem;
+
+    --font-sans: 'Inter', system-ui, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings:
+      'rlig' 1,
+      'calt' 1;
+  }
+}
+
+@layer components {
+  .ui-page {
+    @apply mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16;
+  }
+
+  .ui-surface {
+    @apply rounded-[5px] border border-border bg-card shadow-sm;
+  }
+
+  .ui-surface-strong {
+    @apply rounded-2xl border border-border bg-card shadow-md;
+  }
+
+  .ui-heading {
+    @apply text-primary font-extrabold tracking-tight;
+  }
+
+  .ui-subheading {
+    @apply text-sm font-medium text-muted-foreground;
+  }
+
+  .ui-label {
+    @apply block text-xs font-semibold uppercase tracking-wider text-muted-foreground;
+  }
+
+  .ui-input {
+    @apply w-full rounded-lg border border-border bg-card px-3.5 py-2.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-brand focus:ring-1 focus:ring-brand;
+  }
+
+  .ui-select {
+    @apply w-full rounded-lg border border-border bg-card px-3.5 py-2.5 text-sm text-foreground outline-none transition-colors focus:border-brand focus:ring-1 focus:ring-brand;
+  }
+
+  .ui-textarea {
+    @apply w-full rounded-lg border border-border bg-card px-3.5 py-2.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-brand focus:ring-1 focus:ring-brand;
+  }
+
+  .ui-btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition-colors disabled:pointer-events-none disabled:opacity-60;
+  }
+
+  .ui-btn-primary {
+    @apply bg-brand text-brand-foreground hover:bg-brand-strong;
+  }
+
+  .ui-btn-secondary {
+    @apply border border-border bg-card text-foreground hover:border-brand hover:text-brand;
+  }
+
+  .ui-btn-ghost {
+    @apply text-foreground hover:bg-muted;
+  }
+
+  .ui-badge {
+    @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold;
+  }
+
+  .admin-page {
+    @apply mx-auto w-full max-w-[1440px] px-4 py-8 sm:px-8 sm:py-10 lg:px-16 lg:py-12;
+  }
+
+  .admin-panel {
+    @apply rounded-2xl border border-slate-100 bg-white shadow-sm;
+  }
+
+  .admin-panel-pad {
+    @apply p-5 sm:p-6;
+  }
+
+  .admin-page-eyebrow {
+    @apply text-xs uppercase font-extrabold tracking-wider text-slate-400;
+  }
+
+  .admin-page-title {
+    @apply mt-1 text-2xl font-extrabold tracking-tight text-primary sm:text-3xl;
+  }
+
+  .admin-page-lead {
+    @apply mt-1 text-xs font-medium leading-relaxed text-slate-500 sm:text-sm;
+  }
+}
+
+button,
+[role="button"],
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+.ui-btn {
+  border-radius: 3px !important;
+}

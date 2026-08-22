@@ -1,0 +1,48 @@
+import { ADMIN_ROLE_ID, VISITOR_ROLE_ID, EDITOR_ROLE_ID, SALES_ROLE_ID, CUSTOMER_ROLE_ID, FRONTEND_SERVICE_ROLE_ID } from '../lib/constants.mjs';
+
+export const ROLE_DEFS = [
+  {
+    id: ADMIN_ROLE_ID,
+    name: 'Administrator',
+    icon: 'verified',
+    description: 'System Administrator with full access'
+  },
+  {
+    id: VISITOR_ROLE_ID,
+    name: 'Visitor',
+    icon: 'public',
+    description: 'Public/Visitor anonymous access'
+  },
+  {
+    id: EDITOR_ROLE_ID,
+    name: 'Editor',
+    icon: 'edit',
+    description: 'Can CRUD content collections',
+    app_access: true
+  },
+  {
+    id: SALES_ROLE_ID,
+    name: 'Sales',
+    icon: 'business_center',
+    description: 'Can CRUD commerce data and read content',
+    app_access: true
+  },
+  {
+    id: CUSTOMER_ROLE_ID,
+    name: 'Customer',
+    icon: 'person',
+    description: 'Authenticated B2B Customer Portal user'
+  },
+  {
+    id: FRONTEND_SERVICE_ROLE_ID,
+    name: 'Frontend Service',
+    icon: 'api',
+    description: 'Role for Next.js API server to proxy requests with least privilege'
+  }
+];
+
+export async function ensureRoles(helpers) {
+  for (const role of ROLE_DEFS) {
+    await helpers.ensureRole(role);
+  }
+}

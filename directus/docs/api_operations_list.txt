@@ -1,0 +1,26 @@
+Directus API Operations List
+============================
+
+Source of truth for the live API:
+- Swagger UI: http://localhost:8055/docs
+- Live spec: http://localhost:8055/docs/spec
+
+Custom endpoints currently defined by this repo:
+
+Public / onboarding
+- POST /otp/issue
+- POST /otp/verify
+- POST /customer-onboarding/register
+
+Password flows
+- POST /password-reset-request/send
+- POST /password-reset-request/reset
+- POST /password-change/change
+
+Business workflows
+- POST /commercial-import/preview
+- POST /commercial-import/commit
+- POST /media-policy/soft-delete
+- POST /media-policy/hard-delete
+
+Core Directus APIs are provided by Directus itself and shown in Swagger.

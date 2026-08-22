@@ -1,0 +1,38 @@
+{
+  "name": "stripe_api_search",
+  "description": "Search for Stripe API operations by providing an intent and a resource to operate on.\n\nReturns matching operations with their HTTP method, path, summary, and top-level parameter names with types. Does not include parameter descriptions, enum values, or nested object fields — use stripe_api_details to get those before calling the relevant Stripe API execution tool.\n",
+  "inputSchema": {
+    "type": "object",
+    "properties": {
+      "intent": {
+        "type": "string",
+        "description": "The intent of the operation",
+        "examples": [
+          "create",
+          "list",
+          "refund"
+        ]
+      },
+      "resource": {
+        "type": "string",
+        "description": "Target resource the operation is looking to manipulate",
+        "examples": [
+          "customer",
+          "payments",
+          "charge"
+        ]
+      },
+      "limit": {
+        "description": "Maximum number of results to return",
+        "type": "integer",
+        "minimum": 1,
+        "maximum": 20,
+        "default": 5
+      }
+    },
+    "required": [
+      "intent",
+      "resource"
+    ]
+  }
+}
