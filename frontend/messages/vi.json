@@ -719,6 +719,37 @@
       "role4": "Production Manager",
       "contact": "Liên hệ"
     },
+    "hubBenefits": {
+      "eyebrow": "LỢI ÍCH",
+      "title": "Chúng tôi cung cấp các sản phẩm vật tư công nghiệp chất lượng ổn định và kiểm soát thiếu hụt vật tư khi nhu cầu sản xuất tăng nhanh.",
+      "feat1": "MOQ linh hoạt",
+      "feat2": "Đa dạng sản phẩm",
+      "feat3": "Giá cả cạnh tranh",
+      "feat4": "Ổn định Chất lượng",
+      "feat5": "Giảm rủi ro và Tăng độ an toàn"
+    },
+    "hubOffer": {
+      "eyebrow": "NHẬN GIÁ ƯU ĐÃI",
+      "title": "Liên hệ với Chúng tôi để nhận các ưu đãi và tư vấn kỹ thuật chuyên sâu.",
+      "subtitle": "Nhóm Khách hàng của Chúng tôi - Các giải pháp được thiết kế riêng.",
+      "fdiTitle": "Doanh nghiệp FDI",
+      "fdiDesc": "Đáp ứng các yêu cầu về tiêu chuẩn chất lượng và chứng nhận kỹ thuật.",
+      "smeTitle": "Doanh nghiệp SME",
+      "smeDesc": "Tối ưu chi phí và linh hoạt MOQ.",
+      "learnMore": "Tìm hiểu thêm",
+      "contact": "Liên hệ"
+    },
+    "hubPartner": {
+      "title": "Trở thành Đối tác phân phối của ULink Industries",
+      "desc": "Hợp tác cùng ULink Industries để mở rộng mạng lưới phân phối các sản phẩm chất lượng. Chúng tôi cung cấp nền tảng công nghệ, hỗ trợ kỹ thuật toàn diện và chương trình đào tạo chuyên sâu giúp đối tác phát triển bền vững trong thị trường công nghiệp.",
+      "playVideo": "Play video",
+      "detailText": "Trở thành đối tác ULink Industries là bước đầu tạo giá trị bền vững. Chúng tôi đồng hành cùng bạn qua giải pháp công nghệ, đào tạo chuyên sâu, chia sẻ marketing và mạng lưới khách hàng. Với hợp tác minh bạch, ưu đãi hấp dẫn và đội ngũ chuyên gia hỗ trợ, ULink giúp tối ưu lợi nhuận và mở rộng thị trường hiệu quả.",
+      "ctaEyebrow": "LIÊN HỆ TRỰC TIẾP",
+      "ctaTitle": "Đăng ký Đối tác phân phối.",
+      "ctaDesc": "Chính sách Đối tác phân phối hỗ trợ mở rộng mạng lưới, tối ưu vận hành và tăng lợi nhuận bền vững. Chúng tôi cung cấp ưu đãi, đào tạo chuyên sâu và hỗ trợ kỹ thuật để đảm bảo hợp tác hiệu quả và cùng phát triển.",
+      "ctaBtnConsult": "Nhận tư vấn chuyên gia",
+      "ctaBtnSchedule": "Đặt lịch ngay"
+    },
     "testimonials": {
       "eyebrow": "ĐÁNH GIÁ CỦA KHÁCH HÀNG",
       "title": "Khách hàng tin tưởng lựa chọn ULink Industries.",

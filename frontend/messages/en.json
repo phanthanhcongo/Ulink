@@ -719,6 +719,37 @@
       "role4": "Production Manager",
       "contact": "Contact"
     },
+    "hubBenefits": {
+      "eyebrow": "BENEFITS",
+      "title": "We provide stable quality industrial supplies and prevent material shortages when manufacturing demand spikes.",
+      "feat1": "Flexible MOQ",
+      "feat2": "Product Diversity",
+      "feat3": "Competitive Pricing",
+      "feat4": "Stable Quality",
+      "feat5": "Risk Mitigation & Safety Enhancement"
+    },
+    "hubOffer": {
+      "eyebrow": "GET SPECIAL OFFER",
+      "title": "Contact us to receive special offers and in-depth technical consultation.",
+      "subtitle": "Our Customer Groups - Tailored Solutions.",
+      "fdiTitle": "FDI Enterprise",
+      "fdiDesc": "Meet requirements for quality standards and technical certifications.",
+      "smeTitle": "SME Enterprise",
+      "smeDesc": "Optimize costs and flexible MOQ.",
+      "learnMore": "Learn more",
+      "contact": "Contact"
+    },
+    "hubPartner": {
+      "title": "Become a Distribution Partner of ULink Industries",
+      "desc": "Partner with ULink Industries to expand your distribution network for quality products. We provide a technology platform, comprehensive technical support, and intensive training programs to help partners grow sustainably in the industrial market.",
+      "playVideo": "Play video",
+      "detailText": "Becoming a ULink Industries partner is the first step to creating sustainable value. We accompany you through technological solutions, intensive training, marketing sharing, and customer networks. With transparent cooperation, attractive incentives, and an expert support team, ULink helps optimize profits and expand markets effectively.",
+      "ctaEyebrow": "CONTACT DIRECTLY",
+      "ctaTitle": "Register as a Distribution Partner.",
+      "ctaDesc": "The Distribution Partner policy supports expanding networks, optimizing operations, and growing sustainable profits. We provide incentives, intensive training, and technical support to ensure effective collaboration and mutual growth.",
+      "ctaBtnConsult": "Get Expert Advice",
+      "ctaBtnSchedule": "Schedule Now"
+    },
     "testimonials": {
       "eyebrow": "CUSTOMER TESTIMONIALS",
       "title": "Customers trust and choose ULink Industries.",
