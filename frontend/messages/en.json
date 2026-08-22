@@ -481,7 +481,6 @@
       "card3Date": "July 22, 2026",
       "card3Title": "Optimal industrial packaging solution - securing bottle bundles and beverage cartons into solid blocks for easy warehousing and distribution.",
       "readMore": "Read more",
-
       "docsTitle": "Documents & Catalogue",
       "doc1Category": "Catalogue",
       "doc1Title": "2026 Product Catalog",
@@ -495,7 +494,6 @@
       "doc4Category": "Company Profile",
       "doc4Title": "ULink Industries Capability Profile",
       "doc4Meta": "PDF - 18MB/20 Pages",
-
       "supportTitle": "Consulting & Support",
       "supp1Title": "Serving Enterprise",
       "supp1Desc": "Deep understanding of manufacturing plant standards & requirements",
@@ -698,6 +696,28 @@
       "desc": "Ha Nam Distribution Center, with a scale of 10,000 m², is the strategic logistics hub of ULink Industries, directly connecting key industrial parks in the Northern region. With a management system of over 2,000 SKUs, it is ready to respond to quick delivery demands. Applying smart traceability and warehouse management technology, ULink optimizes the entire supply chain — helping businesses save time, reduce costs, and improve operational efficiency.",
       "contactSales": "Contact Sales",
       "learnMore": "Learn more"
+    },
+    "hanamHub": {
+      "eyebrow": "HA NAM FULFILLMENT HUB",
+      "title": "Ha Nam Distribution Center lies on the North-South axis, connecting key Industrial Zones, ensuring fast shipping and optimizing logistics costs.",
+      "feat1Title": "ISO 9001 Manufacturing & Quality Control",
+      "feat1Desc": "ULink Industries specializes in custom manufacturing and processing with a strict quality control process, ensuring products meet standards before reaching customers.",
+      "feat2Title": "Order & Inventory Management",
+      "feat2Desc": "Automate order processing, track inventory in real-time, and trigger alerts when stock reaches minimum thresholds, optimizing turnover.",
+      "feat3Title": "Warehouse & Logistics Automation",
+      "feat3Desc": "ULink Industries integrates SAP Business One into automation and supply chain management, optimizing production, controlling inventory, and enhancing operational efficiency.",
+      "feat4Title": "Data Integration & Fast Reporting",
+      "feat4Desc": "Integrate data from multiple sources and generate instant reports, helping managers grasp the overall business situation and make quick, accurate decisions.",
+      "learnMore": "Learn more"
+    },
+    "hubTeam": {
+      "title": "EXPERT TEAM",
+      "desc": "ULink Industries' team of experts brings together experienced engineers and consultants in industrial automation, control systems, and smart factory solutions. We are committed to accompanying your business, providing optimal solutions and quality-standard products.",
+      "role1": "Founder & CEO",
+      "role2": "Warehouse & Logistics Manager",
+      "role3": "Sales Manager",
+      "role4": "Production Manager",
+      "contact": "Contact"
     },
     "testimonials": {
       "eyebrow": "CUSTOMER TESTIMONIALS",
@@ -1321,7 +1341,6 @@
     "subtitle": "B2B ENTERPRISE PROCUREMENT",
     "title": "Request for Quotation for Bulk Orders",
     "description": "Submit a request for quotation to receive the most optimal pricing for large-scale production orders. ULink's technical experts and supply chain team will analyze and respond with a detailed quote within 24 hours.",
-
     "sectionBusiness": "Business Information",
     "companyLabel": "Company / Enterprise Name",
     "companyPlaceholder": "e.g. An Phat Manufacturing & Trading JSC",
@@ -1335,7 +1354,6 @@
     "emailPlaceholder": "name@company.com",
     "addressLabel": "Delivery Address",
     "addressPlaceholder": "Building number, street, industrial zone, city/province...",
-
     "sectionProducts": "Product Details",
     "colIndex": "#",
     "colProductSku": "Product Name / SKU",
@@ -1349,7 +1367,6 @@
     "quantityPlaceholder": "0",
     "emptyCart": "No products added to the request yet. Products can only be added from their respective product pages.",
     "viewProducts": "View product list",
-
     "sectionShipping": "Additional Requirements & Delivery",
     "industryLabel": "Industry / Application",
     "industryPlaceholder": "Select industry",
@@ -1375,12 +1392,10 @@
     "hubPlaceholder": "Select Regional Hub...",
     "specialRequestLabel": "Special Requirements (Design, Packaging, Certifications...)",
     "specialRequestPlaceholder": "e.g. Print brand logo on stretch film, custom wooden pallet packaging, provide SGS international certification...",
-
     "sectionAttachments": "Technical Documents",
     "uploadDragDrop": "Drag & drop or click to upload files",
     "uploadFormats": "Supports PDF, DOCX, XLSX, PNG, JPG (Max: 10MB)",
     "uploadComplete": "Upload complete",
-
     "saveDraft": "Save Draft",
     "draftSaved": "Draft saved",
     "submitRfq": "Submit Quotation Request",
@@ -1390,7 +1405,6 @@
     "createNew": "Create new request",
     "cartEmpty": "RFQ cart is empty. Please add at least one product.",
     "required": "This field is required.",
-
     "sidebarWhyTitle": "Why choose ULink for bulk orders?",
     "sidebarBenefit1Title": "Competitive Pricing & High Discounts",
     "sidebarBenefit1Desc": "Best factory-direct pricing for orders of 500+ or 200+ cartons.",
@@ -1400,13 +1414,11 @@
     "sidebarBenefit3Desc": "Fast distribution from Ha Nam center, 2-3 day delivery with unloading support.",
     "sidebarBenefit4Title": "International Standard Certifications",
     "sidebarBenefit4Desc": "All cleanroom supplies and packaging meet ISO 9001:2015, FDA, CE with full CO/CQ certificates.",
-
     "sidebarProcessTitle": "ULink RFQ Process",
     "sidebarStep1": "Submit your detailed requirements via this form",
     "sidebarStep2": "Information verification & survey (within 24h)",
     "sidebarStep3": "Receive detailed quotation and technical proposal",
     "sidebarStep4": "Confirm contract & proceed with delivery",
-
     "sidebarUrgentTitle": "Need urgent support?",
     "sidebarUrgentDesc": "For immediate quotations or complex technical questions, please contact our hotline directly.",
     "sidebarHotline": "0247 309 9899",

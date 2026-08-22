@@ -24,11 +24,8 @@ export async function SiteHeader() {
       href: '/regional-hubs',
       label: t('hubs'),
       children: [
-        { href: '/regional-hubs/ha-nam', label: 'KCN Đồng Văn I - Hà Nam', description: 'Trung tâm phân phối miền Bắc' },
-        { href: '/regional-hubs/dong-van-2', label: 'KCN Đồng Văn II', description: 'Cụm công nghiệp vật liệu' },
-        { href: '/regional-hubs/thang-long', label: 'KCN Thăng Long - Hà Nội', description: 'Cụm điện tử & cơ khí chính xác' },
-        { href: '/regional-hubs/vsip-bac-ninh', label: 'KCN VSIP - Bắc Ninh', description: 'Cụm công nghệ cao & bán dẫn' },
-        { href: '/regional-hubs', label: 'Tất cả Cụm / KCN →' }
+        { href: '/regional-hubs/cum-1', label: 'Cụm/KCN 1' },
+        { href: '/regional-hubs/cum-2', label: 'Cụm/KCN 2' },
       ]
     },
     { href: '/products', label: t('products') },

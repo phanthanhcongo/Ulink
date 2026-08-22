@@ -4,10 +4,16 @@ import React, { useState, useRef } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 
+export interface NavSubChildItem {
+  href: string;
+  label: string;
+}
+
 export interface NavChildItem {
   href: string;
   label: string;
   description?: string;
+  subChildren?: NavSubChildItem[];
 }
 
 export interface NavItem {
@@ -75,23 +81,52 @@ export function HeaderNav({ items }: HeaderNavProps) {
               >
                 <div className="w-[260px] rounded-[3px] border border-slate-200/80 bg-white/95 p-2 shadow-lg backdrop-blur-md">
                   <div className="flex flex-col gap-0.5">
-                    {item.children!.map((child) => (
-                      <Link
-                        key={child.href}
-                        href={child.href}
-                        onClick={() => setActiveMenu(null)}
-                        className="group flex flex-col rounded-[3px] px-3 py-2 transition-colors hover:bg-slate-50"
-                      >
-                        <span className="text-[13px] font-semibold text-slate-800 transition-colors group-hover:text-brand">
-                          {child.label}
-                        </span>
-                        {child.description && (
-                          <span className="mt-0.5 text-[11px] text-slate-500">
-                            {child.description}
+                    {item.children!.map((child) => {
+                      const hasSub = child.subChildren && child.subChildren.length > 0;
+                      if (hasSub) {
+                        return (
+                          <div key={child.href} className="flex flex-col rounded-[3px] px-3 py-2">
+                            <span className="text-[13px] font-semibold text-slate-800">
+                              {child.label}
+                            </span>
+                            {child.description && (
+                              <span className="mt-0.5 text-[11px] text-slate-500">
+                                {child.description}
+                              </span>
+                            )}
+                            <div className="mt-1 flex flex-col gap-0.5 pl-3 border-l border-slate-200">
+                              {child.subChildren!.map((sub) => (
+                                <Link
+                                  key={sub.href}
+                                  href={sub.href}
+                                  onClick={() => setActiveMenu(null)}
+                                  className="rounded-[3px] px-2 py-1.5 text-[12px] text-slate-600 transition-colors hover:bg-slate-50 hover:text-brand"
+                                >
+                                  {sub.label}
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        );
+                      }
+                      return (
+                        <Link
+                          key={child.href}
+                          href={child.href}
+                          onClick={() => setActiveMenu(null)}
+                          className="group flex flex-col rounded-[3px] px-3 py-2 transition-colors hover:bg-slate-50"
+                        >
+                          <span className="text-[13px] font-semibold text-slate-800 transition-colors group-hover:text-brand">
+                            {child.label}
                           </span>
-                        )}
-                      </Link>
-                    ))}
+                          {child.description && (
+                            <span className="mt-0.5 text-[11px] text-slate-500">
+                              {child.description}
+                            </span>
+                          )}
+                        </Link>
+                      );
+                    })}
                   </div>
                 </div>
               </div>

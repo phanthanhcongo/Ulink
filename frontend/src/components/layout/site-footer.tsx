@@ -142,7 +142,7 @@ export async function SiteFooter() {
             <ul className="space-y-2 text-[13px] sm:text-[14px]">
               <li>
                 <Link
-                  href="/regional-hubs"
+                  href="/regional-hubs/cum-1"
                   className="text-[#4d5969] transition-colors hover:text-[#1769e2]"
                 >
                   {t('aboutHub')}

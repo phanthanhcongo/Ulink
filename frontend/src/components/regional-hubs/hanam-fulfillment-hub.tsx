@@ -1,0 +1,102 @@
+import { getTranslations } from 'next-intl/server';
+import { Link } from '@/i18n/navigation';
+import Image from 'next/image';
+
+export default async function HanamFulfillmentHub() {
+  const t = await getTranslations('regionalHubs');
+
+  return (
+    <section className="w-full bg-white py-16 lg:py-24 border-t border-slate-100">
+      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 flex flex-col gap-12 lg:gap-16">
+        
+        {/* Title Area */}
+        <div className="text-center max-w-[900px] mx-auto w-full">
+          <span className="text-[13px] font-bold text-brand tracking-widest uppercase block mb-3">
+            {t('hanamHub.eyebrow')}
+          </span>
+          <h2 className="text-[22px] sm:text-[28px] lg:text-[32px] font-extrabold text-slate-900 leading-normal max-w-[850px] mx-auto">
+            {t('hanamHub.title')}
+          </h2>
+        </div>
+
+        {/* Content Area */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center max-w-[1120px] mx-auto w-full">
+          
+          {/* Left Side: 4 Features & CTA */}
+          <div className="lg:col-span-7 flex flex-col gap-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-10">
+              
+              {/* Feature 1 */}
+              <div className="flex flex-col text-left">
+                <h3 className="font-bold text-slate-900 text-[15px] sm:text-[16px] leading-snug mb-2">
+                  {t('hanamHub.feat1Title')}
+                </h3>
+                <p className="text-[13px] sm:text-[14px] text-slate-500 leading-relaxed">
+                  {t('hanamHub.feat1Desc')}
+                </p>
+              </div>
+
+              {/* Feature 2 */}
+              <div className="flex flex-col text-left">
+                <h3 className="font-bold text-slate-900 text-[15px] sm:text-[16px] leading-snug mb-2">
+                  {t('hanamHub.feat2Title')}
+                </h3>
+                <p className="text-[13px] sm:text-[14px] text-slate-500 leading-relaxed">
+                  {t('hanamHub.feat2Desc')}
+                </p>
+              </div>
+
+              {/* Feature 3 */}
+              <div className="flex flex-col text-left">
+                <h3 className="font-bold text-slate-900 text-[15px] sm:text-[16px] leading-snug mb-2">
+                  {t('hanamHub.feat3Title')}
+                </h3>
+                <p className="text-[13px] sm:text-[14px] text-slate-500 leading-relaxed">
+                  {t('hanamHub.feat3Desc')}
+                </p>
+              </div>
+
+              {/* Feature 4 */}
+              <div className="flex flex-col text-left">
+                <h3 className="font-bold text-slate-900 text-[15px] sm:text-[16px] leading-snug mb-2">
+                  {t('hanamHub.feat4Title')}
+                </h3>
+                <p className="text-[13px] sm:text-[14px] text-slate-500 leading-relaxed">
+                  {t('hanamHub.feat4Desc')}
+                </p>
+              </div>
+
+            </div>
+
+            {/* CTA Button */}
+            <div className="flex justify-start mt-2">
+              <Link
+                href="/about"
+                className="bg-brand text-white text-[13px] font-semibold py-2.5 px-6 rounded-[3px] hover:bg-brand-strong transition-all inline-flex items-center gap-1"
+              >
+                {t('hanamHub.learnMore')}
+                <span className="ml-1 text-[14px]">→</span>
+              </Link>
+            </div>
+          </div>
+
+          {/* Right Side: Image Showcase */}
+          <div className="lg:col-span-5 w-full flex justify-center">
+            <div className="relative w-full max-w-[420px] lg:max-w-none aspect-[4/5] rounded-[8px] overflow-hidden shadow-sm border border-slate-100 bg-slate-50">
+              <Image
+                src="/images/regional_hubs/hub-2/hanam-warehouse-shelves.jpg"
+                alt="Ha Nam Fulfillment Hub Warehouse"
+                fill
+                sizes="(max-width: 1024px) 100vw, 400px"
+                className="object-cover hover:scale-[1.02] transition-transform duration-500"
+                priority
+              />
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  );
+}

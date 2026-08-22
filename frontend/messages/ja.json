@@ -705,6 +705,28 @@
       "contactSales": "営業に連絡",
       "learnMore": "詳細を見る"
     },
+    "hanamHub": {
+      "eyebrow": "HA NAM FULFILLMENT HUB",
+      "title": "ハナム配送センターは南北軸上に位置し、主要な工業団地を接続、迅速な配送 và 物流コストの最適化を保証します。",
+      "feat1Title": "ISO 9001製造および品質管理",
+      "feat1Desc": "ULink Industriesは、厳格な品質管理プロセスによるカスタム製造と加工を専門とし、製品が顧客に届く前に基準を満たしていることを保証します。",
+      "feat2Title": "注文および在庫管理",
+      "feat2Desc": "注文処理を自動化し、リアルタイムで在庫を追跡し、在庫が最小しきい値に達したときにアラートをトリガーして、回転率を最適化します。",
+      "feat3Title": "倉庫・物流オートメーション",
+      "feat3Desc": "ULink Industriesは、SAP Business Oneを自動化およびサプライチェーン管理に統合し、生産を最適化し、在庫を管理し、業務効率を向上させます。",
+      "feat4Title": "データ統合と迅速なレポート",
+      "feat4Desc": "複数のソースからデータを統合し、即座にレポートを生成して、管理者がビジネス状況全体を把握し、迅速かつ正確な決定を下せるようにします。",
+      "learnMore": "詳細を見る"
+    },
+    "hubTeam": {
+      "title": "専門家チーム",
+      "desc": "ULink Industriesの専門家チームは、産業用オートメーション、制御システム、スマートファクトリーソリューションの分野で経験豊富なエンジニアやコンサルタントを擁しています。私たちは企業と協力し、最適なソリューションと高品質基準の製品を提供することをお約束します。",
+      "role1": "Founder & CEO",
+      "role2": "倉庫・物流マネージャー",
+      "role3": "Sales Manager",
+      "role4": "Production Manager",
+      "contact": "連絡する"
+    },
     "testimonials": {
       "eyebrow": "お客様の声",
       "title": "多くのお客様がULink Industriesを信頼し、選択しています。",
@@ -1324,7 +1346,6 @@
     "subtitle": "B2B 企業間調達",
     "title": "大口注文向け見積依頼",
     "description": "大量生産の注文に対して最適な価格設定を得るために見積依頼を送信します。ULinkの技術専門家およびサプライチェーンチームが分析し、24時間以内に詳細な見積もりを回答します。",
-
     "sectionBusiness": "企業情報",
     "companyLabel": "会社名 / 企業名",
     "companyPlaceholder": "例: アンファット製造貿易株式会社",
@@ -1338,7 +1359,6 @@
     "emailPlaceholder": "name@company.com",
     "addressLabel": "納品先住所",
     "addressPlaceholder": "番地、通り名、工業団地、都道府県...",
-
     "sectionProducts": "製品詳細",
     "colIndex": "番号",
     "colProductSku": "製品名 / SKU",
@@ -1352,7 +1372,6 @@
     "quantityPlaceholder": "0",
     "emptyCart": "リクエストに製品がまだ追加されていません。製品は各製品詳細ページからのみ追加できます。",
     "viewProducts": "製品リストを表示",
-
     "sectionShipping": "追加要件と配送",
     "industryLabel": "業種 / 用途",
     "industryPlaceholder": "業種を選択",
@@ -1378,12 +1397,10 @@
     "hubPlaceholder": "リージョナルハブを選択...",
     "specialRequestLabel": "特別要件（デザイン、梱包、認証...）",
     "specialRequestPlaceholder": "例: ストレッチフィルムにブランドロゴ印刷、特注木製パレット梱包、SGS国際認証の提供...",
-
     "sectionAttachments": "技術資料の添付",
     "uploadDragDrop": "ドラッグ＆ドロップまたはクリックでファイルをアップロード",
     "uploadFormats": "対応形式: PDF, DOCX, XLSX, PNG, JPG（最大10MB）",
     "uploadComplete": "アップロード完了",
-
     "saveDraft": "下書き保存",
     "draftSaved": "下書きを保存しました",
     "submitRfq": "見積依頼を送信",
@@ -1393,7 +1410,6 @@
     "createNew": "新しい依頼を作成",
     "cartEmpty": "RFQカートが空です。製品を追加してください。",
     "required": "この項目は必須です。",
-
     "sidebarWhyTitle": "大口注文にULinkを選ぶ理由",
     "sidebarBenefit1Title": "競争力のある価格と高い割引",
     "sidebarBenefit1Desc": "500個以上または200箱以上の注文に対して最適な工場直送価格を提供。",
@@ -1403,13 +1419,11 @@
     "sidebarBenefit3Desc": "ハナムセンターからの迅速な配送、2〜3日で到着、荷下ろしサポート付き。",
     "sidebarBenefit4Title": "国際標準認証",
     "sidebarBenefit4Desc": "すべてのクリーンルーム用品と包装はISO 9001:2015、FDA、CE認証取得済み。",
-
     "sidebarProcessTitle": "ULink RFQ処理プロセス",
     "sidebarStep1": "このフォームから詳細な要件を送信",
     "sidebarStep2": "情報確認と調査（24時間以内）",
     "sidebarStep3": "詳細な見積もりと技術提案を受領",
     "sidebarStep4": "契約確認と配送開始",
-
     "sidebarUrgentTitle": "緊急サポートが必要ですか？",
     "sidebarUrgentDesc": "即座の見積もりや複雑な技術的質問がある場合は、ホットラインに直接お問い合わせください。",
     "sidebarHotline": "0247 309 9899",

@@ -481,7 +481,6 @@
       "card3Date": "Ngày 22/7/2026",
       "card3Title": "Giải pháp đóng gói công nghiệp tối ưu - để cố định cụm nhiều chai nước ngọt, bia, hoặc lốc sữa hộp thành các khối chắc chắn, tiện lợi cho việc lưu kho và phân phối.",
       "readMore": "Đọc thêm",
-
       "docsTitle": "Tài liệu & Catalogue",
       "doc1Category": "Catalogue",
       "doc1Title": "Danh mục sản phẩm 2026",
@@ -495,7 +494,6 @@
       "doc4Category": "Profile - Doanh nghiệp",
       "doc4Title": "Hồ sơ năng lực ULink Industries",
       "doc4Meta": "PDF - 18MB/20 Trang",
-
       "supportTitle": "Tư vấn & Hỗ trợ",
       "supp1Title": "Phục vụ Doanh nghiệp",
       "supp1Desc": "Am hiểu nhu cầu và Tiêu chuẩn của Nhà máy sản xuất",
@@ -698,6 +696,28 @@
       "desc": "Trung tâm phân phối Hà Nam với quy mô 10.000 m² là đầu mối logistics chiến lược của ULink Industries, kết nối trực tiếp các KCN trọng điểm khu vực phía Bắc. Hệ thống quản lý hơn 2.000 SKU, sẵn sàng đáp ứng giao hàng nhanh chóng. Ứng dụng công nghệ truy xuất và quản lý kho thông minh, ULink tối ưu hóa toàn bộ chuỗi cung ứng — giúp doanh nghiệp tiết kiệm thời gian, giảm chi phí và nâng cao hiệu quả vận hành.",
       "contactSales": "Liên hệ Sales",
       "learnMore": "Tìm hiểu thêm"
+    },
+    "hanamHub": {
+      "eyebrow": "HÀ NAM FULFILLMENT HUB",
+      "title": "Trung tâm phân phối Hà Nam nằm trên trục Bắc – Nam, kết nối các Khu công nghiệp trọng điểm, đảm bảo vận chuyển nhanh và tối ưu chi phí logistics.",
+      "feat1Title": "Sản xuất và Kiểm soát chất lượng theo ISO 9001",
+      "feat1Desc": "ULink Industries chuyên sản xuất và gia công theo yêu cầu với quy trình kiểm soát chất lượng nghiêm ngặt, đảm bảo sản phẩm đạt tiêu chuẩn trước khi đến tay khách hàng.",
+      "feat2Title": "Quản lý Đơn hàng & Tồn kho hàng hóa",
+      "feat2Desc": "Xử lý đơn hàng tự động, theo dõi tồn kho thực tế và cảnh báo khi hàng hóa đạt ngưỡng tối thiểu, giúp tối ưu luân chuyển.",
+      "feat3Title": "Tự động hóa quy trình Kho & Logistics",
+      "feat3Desc": "ULink Industries tích hợp SAP Business One vào quản lý tự động hóa và chuỗi cung ứng, tối ưu sản xuất, kiểm soát tồn kho và nâng cao hiệu quả vận hành.",
+      "feat4Title": "Tích hợp Dữ liệu & Báo cáo nhanh",
+      "feat4Desc": "Tích hợp dữ liệu từ nhiều nguồn và tạo báo cáo tức thì, giúp nhà quản lý nắm bắt toàn diện tình hình kinh doanh, đưa ra quyết định nhanh chóng và chính xác hơn.",
+      "learnMore": "Tìm hiểu thêm"
+    },
+    "hubTeam": {
+      "title": "ĐỘI NGŨ CHUYÊN GIA",
+      "desc": "Đội ngũ chuyên gia của ULink Industries quy tụ những kỹ sư và nhà tư vấn giàu kinh nghiệm trong lĩnh vực tự động hóa công nghiệp, hệ thống điều khiển và giải pháp nhà máy thông minh. Chúng tôi cam kết đồng hành cùng doanh nghiệp, mang đến các giải pháp tối ưu và sản phẩm đạt chuẩn chất lượng.",
+      "role1": "Founder & CEO",
+      "role2": "Quản lý Kho & Logistics",
+      "role3": "Sales Manager",
+      "role4": "Production Manager",
+      "contact": "Liên hệ"
     },
     "testimonials": {
       "eyebrow": "ĐÁNH GIÁ CỦA KHÁCH HÀNG",
@@ -1321,7 +1341,6 @@
     "subtitle": "MUA SẮM DOANH NGHIỆP B2B",
     "title": "Yêu cầu Báo giá cho Đơn hàng Số lượng lớn",
     "description": "Gửi yêu cầu báo giá để nhận mức giá tối ưu nhất cho đơn hàng sản xuất số lượng lớn. Đội ngũ chuyên gia kỹ thuật và chuỗi cung ứng của ULink sẽ phân tích và phản hồi báo giá chi tiết trong vòng 24h.",
-
     "sectionBusiness": "Thông tin Doanh nghiệp",
     "companyLabel": "Tên công ty / Doanh nghiệp",
     "companyPlaceholder": "Ví dụ: Công ty Cổ phần Sản xuất & Thương mại An Phát",
@@ -1335,7 +1354,6 @@
     "emailPlaceholder": "Viết dạng name@company.com",
     "addressLabel": "Địa chỉ bàn giao hàng hóa",
     "addressPlaceholder": "Ghi cụ thể số nhà, tên đường, khu công nghiệp, tỉnh/thành...",
-
     "sectionProducts": "Chi tiết Sản phẩm yêu cầu",
     "colIndex": "STT",
     "colProductSku": "Tên sản phẩm / Mã SKU",
@@ -1349,7 +1367,6 @@
     "quantityPlaceholder": "0",
     "emptyCart": "Chưa có sản phẩm nào trong yêu cầu. Bạn chỉ có thể chọn thêm sản phẩm từ trang thông tin sản phẩm.",
     "viewProducts": "Xem danh sách sản phẩm",
-
     "sectionShipping": "Yêu cầu bổ sung & Giao vận",
     "industryLabel": "Ngành nghề / Lĩnh vực sử dụng",
     "industryPlaceholder": "Chọn ngành nghề",
@@ -1375,12 +1392,10 @@
     "hubPlaceholder": "Chọn Regional Hub...",
     "specialRequestLabel": "Yêu cầu đặc biệt (Thiết kế, đóng gói, chứng chỉ...)",
     "specialRequestPlaceholder": "Ví dụ: In ấn logo thương hiệu lên màng bọc, yêu cầu đóng thùng pallet gỗ đặc biệt, cung cấp chứng nhận SGS quốc tế...",
-
     "sectionAttachments": "Tài liệu kỹ thuật đính kèm",
     "uploadDragDrop": "Kéo thả hoặc click để tải lên tệp tin của bạn",
     "uploadFormats": "Hỗ trợ định dạng PDF, DOCX, XLSX, PNG, JPG (Dung lượng tối đa: 10MB)",
     "uploadComplete": "Tải lên hoàn tất",
-
     "saveDraft": "Lưu Bản nháp",
     "draftSaved": "Đã lưu bản nháp",
     "submitRfq": "Gửi yêu cầu báo giá",
@@ -1390,7 +1405,6 @@
     "createNew": "Tạo yêu cầu mới",
     "cartEmpty": "Giỏ hàng RFQ trống. Vui lòng thêm ít nhất một sản phẩm.",
     "required": "Trường này là bắt buộc.",
-
     "sidebarWhyTitle": "Tại sao chọn ULink cho đơn hàng lớn?",
     "sidebarBenefit1Title": "Giá cạnh tranh & Chiết khấu cao",
     "sidebarBenefit1Desc": "Hỗ trợ mức giá xuất xưởng tối ưu nhất cho các đơn đặt hàng từ 500 hoặc 200 hộp sản phẩm trở lên.",
@@ -1400,13 +1414,11 @@
     "sidebarBenefit3Desc": "Mạng lưới phân phối nhanh chóng từ trung tâm phân phối Hà Nam, giao hàng 2-3 ngày, hỗ trợ bốc dỡ tận xưởng.",
     "sidebarBenefit4Title": "Chứng nhận tiêu chuẩn quốc tế",
     "sidebarBenefit4Desc": "Toàn bộ vật tư phòng sạch và bao bì đạt tiêu chuẩn ISO 9001:2015, FDA, CE đầy đủ chứng chỉ CO/CQ.",
-
     "sidebarProcessTitle": "Quy trình xử lý RFQ tại ULink",
     "sidebarStep1": "Gửi yêu cầu chi tiết của bạn qua biểu mẫu",
     "sidebarStep2": "Xác nhận thông tin & Khảo sát (trong 24h)",
     "sidebarStep3": "Nhận báo giá chi tiết và phương án kỹ thuật",
     "sidebarStep4": "Xác nhận kỹ hợp đồng & Tiến hành giao hàng",
-
     "sidebarUrgentTitle": "Bạn cần hỗ trợ khẩn cấp?",
     "sidebarUrgentDesc": "Nếu bạn cần liên hệ báo giá ngay lập tức hoặc có các thắc mắc về kỹ thuật phức tạp, vui lòng liên hệ hotline trực tiếp.",
     "sidebarHotline": "0247 309 9899",

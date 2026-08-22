@@ -141,7 +141,7 @@ export function resolveRevalidationTargets(payload: PublishWebhookPayload): Reva
 
   if (payload.collection === 'regional_hubs') {
     for (const loc of locales) {
-      paths.add(`/${loc}/regional-hubs`);
+      paths.add(`/${loc}/regional-hubs/cum-1`);
       paths.add(`/${loc}`); // Homepage also displays hub data
     }
   }
