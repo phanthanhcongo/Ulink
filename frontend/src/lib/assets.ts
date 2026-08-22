@@ -16,7 +16,7 @@ export const ASSETS = {
   /** Ảnh trang chủ — chỉ giữ lại những ảnh đang được sử dụng. */
   home: {
     /** Section 1: Hero & Feature Bar */
-    hero: '/images/home/section1/HomeBanner.webp',
+    hero: '/images/home/section1/Herobannerhome.png',
     iconNation: '/images/home/section1/nation.webp',
     iconAdapter: '/images/home/section1/adapter.webp',
     iconFile: '/images/home/section1/file.webp',
