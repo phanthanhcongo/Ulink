@@ -48,23 +48,23 @@ export const ASSETS = {
     iconTag: '/images/home/section4/tag.webp',
     iconTruck: '/images/home/section4/truck.webp',
     /** Section 5: Đối tác tiêu biểu & Chứng nhận ISO */
-    partnerSamsung: '/images/home/section5/Samsung-Logo-Blue.webp',
-    partnerCanon: '/images/home/section5/logo canon.webp',
-    partnerPanasonic: '/images/home/section5/panasonic-logo-.webp',
-    partnerIbm: '/images/home/section5/logo-ibm-vector-06.webp',
-    partnerTraphaco: '/images/home/section5/9383_Traphaco.webp',
-    partnerCocaCola: '/images/home/section5/coca-cola-logo.webp',
-    partnerVinfast: '/images/home/section5/logo-vinfast-vector-thumbnail.webp',
-    partnerLg: '/images/home/section5/logo-lg-vector-inkythuatso-01-30-13-53-58.webp',
-    partnerAmkor: '/images/home/section5/Amkor.webp',
-    partnerVinamilk: '/images/home/section5/logo-vinamilk-vector-01.webp',
-    partner3m: '/images/home/section5/3m-logo-png_seeklogo-806.webp',
-    partnerByd: '/images/home/section5/BYD.webp',
+    partnerSamsung: '/images/partners-certifications/samsung.webp',
+    partnerCanon: '/images/partners-certifications/canon.webp',
+    partnerPanasonic: '/images/partners-certifications/panasonic.webp',
+    partnerIbm: '/images/partners-certifications/ibm.webp',
+    partnerTraphaco: '/images/partners-certifications/traphaco.webp',
+    partnerCocaCola: '/images/partners-certifications/coca-cola.webp',
+    partnerVinfast: '/images/partners-certifications/vinfast.webp',
+    partnerLg: '/images/partners-certifications/lg.webp',
+    partnerAmkor: '/images/partners-certifications/amkor.webp',
+    partnerVinamilk: '/images/partners-certifications/vinamilk.webp',
+    partner3m: '/images/partners-certifications/3m.webp',
+    partnerByd: '/images/partners-certifications/byd.webp',
     /** Chứng nhận ISO & Tiêu chuẩn */
-    certIso9001: '/images/home/section5/mc-iso-9001-2015.webp',
-    certSgs: '/images/home/section5/sgs.webp',
-    certRohs: '/images/home/section5/RoHS-Logo.webp',
-    certMsds: '/images/home/section5/mdsss.webp',
+    certIso9001: '/images/partners-certifications/iso-9001-2015.webp',
+    certSgs: '/images/partners-certifications/sgs.webp',
+    certRohs: '/images/partners-certifications/rohs.webp',
+    certMsds: '/images/partners-certifications/msds.webp',
     /** Placeholder */
     factory: '/images/banners/login-hero.webp',
     /** Case Studies banners & Avatars */
@@ -98,14 +98,12 @@ export const ASSETS = {
     tiktok: '/images/home/section6/tik.webp',
     youtube: '/images/home/section6/youtube.webp'
   },
-  /** Logo đối tác (SVG) */
+  /** Logo đối tác (WebP) */
   partners: {
-    samsung: '/images/partners/samsung.svg',
-    lg: '/images/partners/lg.svg',
-    canon: '/images/partners/canon.svg',
-    mider: '/images/partners/mider.svg',
-    fujifilm: '/images/partners/fujifilm.svg',
-    mkor: '/images/partners/mkor.svg'
+    samsung: '/images/partners-certifications/samsung.webp',
+    lg: '/images/partners-certifications/lg.webp',
+    canon: '/images/partners-certifications/canon.webp',
+    amkor: '/images/partners-certifications/amkor.webp'
   },
   /** Illustrations */
   illustrations: {
