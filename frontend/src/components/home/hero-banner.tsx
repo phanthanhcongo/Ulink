@@ -28,7 +28,8 @@ export function HeroBanner() {
           alt="ULINK Industrial Consumable Materials"
           fill
           priority
-          sizes="100vw"
+          quality={100}
+          unoptimized
           className="object-cover object-center"
         />
       </div>
