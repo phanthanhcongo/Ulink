@@ -95,7 +95,7 @@ export async function PartnersCertifications() {
             alt="VinFast"
             width={260}
             height={120}
-            className="h-11 sm:h-16 lg:h-18 xl:h-22 w-auto max-w-full object-contain"
+            className="h-9 sm:h-14 lg:h-16 xl:h-20 w-auto max-w-full object-contain"
           />
         </div>
         {/* 8. LG */}
@@ -145,7 +145,7 @@ export async function PartnersCertifications() {
             alt="BYD"
             width={240}
             height={120}
-            className="h-7 sm:h-10 lg:h-12 xl:h-16 w-auto max-w-full object-contain"
+            className="h-9 sm:h-14 lg:h-16 xl:h-20 w-auto max-w-full object-contain"
           />
         </div>
       </div>
@@ -181,7 +181,7 @@ export async function PartnersCertifications() {
               alt="SGS Certification"
               width={300}
               height={140}
-              className="h-10 sm:h-16 lg:h-18 xl:h-22 w-auto max-w-full object-contain"
+              className="h-12 sm:h-18 lg:h-20 xl:h-24 w-auto max-w-full object-contain"
             />
           </div>
 
@@ -203,7 +203,7 @@ export async function PartnersCertifications() {
               alt="MSDS Material Safety Data Sheet"
               width={340}
               height={160}
-              className="h-14 sm:h-20 lg:h-22 xl:h-26 w-auto max-w-full object-contain"
+              className="h-12 sm:h-18 lg:h-20 xl:h-24 w-auto max-w-full object-contain"
             />
           </div>
         </div>
