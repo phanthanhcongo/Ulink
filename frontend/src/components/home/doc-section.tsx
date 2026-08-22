@@ -49,27 +49,29 @@ export function DocSection() {
   ];
 
   return (
-    <section className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
-      {/* ── 4. SUB-SECTION HEADER BAR (TÀI LIỆU & CATALOGUE) ── */}
-      <div className="mt-16 flex items-center gap-3 border-t border-slate-100 pt-8">
-        <div className="h-5 w-1 rounded-full bg-blue-600" />
-        <h3 className="text-base font-bold text-slate-900 sm:text-lg">
-          {t('docsTitle')}
-        </h3>
-      </div>
+    <section className="w-full bg-[#f0f4f8] py-8 sm:py-10 lg:py-12">
+      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
+        {/* ── 4. SUB-SECTION HEADER BAR (TÀI LIỆU & CATALOGUE) ── */}
+        <div className="flex items-center gap-3">
+          <div className="h-5 w-1 rounded-full bg-blue-600" />
+          <h3 className="text-base font-bold text-slate-900 sm:text-lg">
+            {t('docsTitle')}
+          </h3>
+        </div>
 
-      {/* ── 4 DOCUMENT CARDS GRID ── */}
-      <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border border-slate-200/60 overflow-hidden">
-        {docsData.map((doc) => (
-          <DocCard
-            key={doc.num}
-            category={doc.category}
-            title={doc.title}
-            meta={doc.meta}
-            icon={doc.icon}
-            onClick={(e) => handleDocClick(e, doc.title)}
-          />
-        ))}
+        {/* ── 4 DOCUMENT CARDS GRID ── */}
+        <div className="mt-8 grid grid-cols-1 gap-[1px] sm:grid-cols-2 sm:gap-[1px] lg:grid-cols-4 lg:gap-[1px]">
+          {docsData.map((doc) => (
+            <DocCard
+              key={doc.num}
+              category={doc.category}
+              title={doc.title}
+              meta={doc.meta}
+              icon={doc.icon}
+              onClick={(e) => handleDocClick(e, doc.title)}
+            />
+          ))}
+        </div>
       </div>
 
       {/* ── COMING SOON MODAL DIALOG ── */}

@@ -16,10 +16,10 @@ export function DocCard({ category, title, meta, icon, onClick }: DocCardProps) 
   return (
     <div
       onClick={onClick}
-      className="group flex flex-col bg-white border border-slate-200 -ml-px -mt-px cursor-pointer transition-all duration-300 hover:bg-slate-50/20 hover:z-10 relative"
+      className="group flex flex-col border border-border bg-white p-4 shadow-sm sm:p-5 lg:p-6 cursor-pointer transition-all duration-300 hover:bg-slate-50/20 hover:z-10 relative"
     >
       {/* Row 1: Icon & Top Right Arrow */}
-      <div className="p-6 flex items-center justify-between border-b border-slate-200">
+      <div className="flex items-center justify-between">
         <div className="relative h-12 w-12">
           <Image
             src={icon}
@@ -33,7 +33,7 @@ export function DocCard({ category, title, meta, icon, onClick }: DocCardProps) 
       </div>
 
       {/* Row 2: Content (Category & Title) */}
-      <div className="p-6 flex-1 flex flex-col justify-start min-h-[120px] border-b border-slate-200">
+      <div className="mt-4 flex-1 flex flex-col justify-start">
         <p className="text-[11px] sm:text-xs font-bold text-slate-400 uppercase tracking-wider">
           {category}
         </p>
@@ -43,7 +43,7 @@ export function DocCard({ category, title, meta, icon, onClick }: DocCardProps) 
       </div>
 
       {/* Row 3: Footer Metadata */}
-      <div className="p-6 bg-slate-50/25">
+      <div className="mt-4">
         <p className="text-xs font-semibold text-slate-500">
           {meta}
         </p>
