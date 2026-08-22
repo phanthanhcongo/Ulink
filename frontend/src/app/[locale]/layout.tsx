@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, IBM_Plex_Mono } from 'next/font/google';
+import { Archivo } from 'next/font/google';
 import { notFound } from 'next/navigation';
 import { NextIntlClientProvider } from 'next-intl';
 import { getMessages, setRequestLocale } from 'next-intl/server';
@@ -9,18 +9,10 @@ import { AuthProvider, type AuthUser } from '@/lib/auth-context';
 import { Toaster } from 'react-hot-toast';
 import '../globals.css';
 
-// Brand typography: Inter (UI/body) + IBM Plex Mono (nhãn, eyebrow, mã SKU)
-const inter = Inter({
+const archivo = Archivo({
   subsets: ['latin', 'vietnamese'],
   display: 'swap',
   variable: '--font-sans'
-});
-
-const ibmPlexMono = IBM_Plex_Mono({
-  subsets: ['latin', 'vietnamese'],
-  weight: ['400', '500'],
-  display: 'swap',
-  variable: '--font-mono'
 });
 
 export const metadata: Metadata = {
@@ -56,7 +48,7 @@ export default async function LocaleLayout({
   ]);
 
   return (
-    <html lang={locale} className={`${inter.variable} ${ibmPlexMono.variable}`}>
+    <html lang={locale} className={archivo.variable}>
       <body className="min-h-screen bg-background font-sans antialiased">
         <NextIntlClientProvider messages={messages}>
           <AuthProvider initialUser={initialUser}>

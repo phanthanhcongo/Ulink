@@ -1,6 +1,6 @@
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
-import { Check, Cpu, Users } from 'lucide-react';
+import { ArrowRight, Check, Cpu, Users } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { ASSETS } from '@/lib/assets';
 import { SectionHeader } from './section-header';
@@ -14,8 +14,6 @@ export async function AboutSection() {
       <SectionHeader
         title={t('about.sectionTitle')}
         subtitle={t('about.sectionSubTitle')}
-        viewAllHref="/about"
-        viewAllLabel={t('about.viewDetail')}
       />
 
       {/* ── 2 COLUMNS CONTENT GRID ── */}
@@ -142,8 +140,19 @@ export async function AboutSection() {
               </span>
             </div>
           </div>
+           {/* ── BOTTOM LEFT ACTION BUTTON ── */}
+      <div className="mt-6 flex justify-start">
+        <Link
+          href="/about"
+          className="inline-flex items-center gap-2 rounded-[3px] bg-brand px-5 py-2.5 text-sm font-semibold text-white transition-all hover:bg-brand-strong"
+        >
+          Tìm hiểu thêm
+        </Link>
+      </div>
         </div>
       </div>
+
+     
     </section>
   );
 }

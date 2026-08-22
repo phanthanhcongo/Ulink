@@ -89,8 +89,7 @@ export async function ProductCategories() {
       <SectionHeader
         title={t('categories.sectionTitle')}
         subtitle={t('categories.sectionSubTitle')}
-        viewAllHref="/solutions"
-        viewAllLabel={t('categories.viewAll')}
+
       />
 
       {/* TOP ROW: 2 BIG SOLUTION CARDS */}

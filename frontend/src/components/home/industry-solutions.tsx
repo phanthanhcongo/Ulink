@@ -53,8 +53,7 @@ export async function IndustrySolutions() {
       <SectionHeader
         title={t('industries.sectionTitle')}
         subtitle={t('industries.sectionSubTitle')}
-        viewAllHref="/industries"
-        viewAllLabel={t('industries.viewDetail')}
+
       />
 
       {/* ── LƯỚI 6 THẺ NGÀNH NGHỀ (GRID 6 CARDS: 3 COLUMNS x 2 ROWS) ── */}
@@ -63,7 +62,7 @@ export async function IndustrySolutions() {
           <Link
             key={idx}
             href={card.href}
-            className="group flex flex-col justify-between rounded-[3px] border border-border p-5 shadow-sm transition-all hover:border-brand/50 hover:shadow-md sm:p-6 lg:p-6 xl:p-7"
+            className="group flex flex-col justify-between rounded-[3px] border border-border p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand/50 hover:shadow-lg sm:p-6 lg:p-6 xl:p-7 relative overflow-hidden before:pointer-events-none before:absolute before:inset-0 before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-100 before:bg-gradient-to-br before:from-brand/10 before:to-transparent"
           >
             <div>
               <h3 className="text-[16px] font-bold text-primary transition-colors group-hover:text-brand sm:text-[18px] lg:text-[18px] xl:text-[20px]">
