@@ -9,9 +9,8 @@ export async function SiteFooter() {
   const t = await getTranslations('footer');
 
   return (
-    <footer className="relative w-full overflow-hidden border-t-4 border-[#112842] bg-[#f3f7fc] text-slate-800">
+    <footer className="relative w-full overflow-hidden  bg-[#f3f7fc] text-slate-800">
       {/* ── TOP ACCENT LINE ── */}
-      <div className="absolute inset-x-0 top-0 h-1 w-[38%] bg-[#1769e2]" />
 
       {/* ── MAIN FOOTER CONTAINER ── */}
       <div className="mx-auto w-full max-w-[1280px] px-4 py-12 sm:px-8 lg:py-16">

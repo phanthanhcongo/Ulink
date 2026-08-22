@@ -30,7 +30,7 @@ export async function SiteHeader() {
   ];
 
   return (
-    <header className="border-b border-border bg-white">
+    <header className="bg-white">
       <div className="mx-auto flex h-16 w-full max-w-[1440px] items-center justify-between gap-3 px-4 sm:h-[72px] sm:px-8 md:h-[88px] lg:px-16">
         {/* Logo */}
         <Link href="/" aria-label="ULink Industries" className="flex shrink-0 items-center">
