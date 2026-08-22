@@ -17,6 +17,7 @@ import type { Product } from '@/lib/directus';
 import { getTranslations } from 'next-intl/server';
 import { ASSETS } from '@/lib/assets';
 import { getDirectusUrl } from '@/lib/directus-runtime.mjs';
+import { SectionHeader } from '@/components/home/section-header';
 
 interface FeaturedProductsProps {
   products: Product[];
@@ -54,29 +55,13 @@ export default async function FeaturedProducts({ products, locale }: FeaturedPro
     <section className="w-full bg-white py-14">
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
         {/* Header */}
-        <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-10">
-          <div className="flex items-start gap-3">
-            <div className="flex flex-col gap-1.5 mt-1.5">
-              <span className="h-1.5 w-1.5 bg-brand" />
-              <span className="h-1.5 w-1.5 bg-brand" />
-              <span className="h-1.5 w-1.5 bg-brand" />
-            </div>
-            <div>
-              <h2 className="text-[22px] font-bold text-slate-900 leading-tight">
-                {t('featuredProducts.title')}
-              </h2>
-              <p className="mt-2 text-[12px] text-slate-500 max-w-[600px]">
-                {t('featuredProducts.subtitle')}
-              </p>
-            </div>
-          </div>
-          <Link
-            href="/solutions"
-            className="group text-[13px] font-semibold text-brand flex items-center gap-1 transition-colors hover:text-brand-strong shrink-0"
-          >
-            {t('featuredProducts.viewAll')}
-            <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
-          </Link>
+        <div className="mb-10">
+          <SectionHeader
+            title={t('featuredProducts.title')}
+            subtitle={t('featuredProducts.subtitle')}
+            viewAllHref="/solutions"
+            viewAllLabel={t('featuredProducts.viewAll')}
+          />
         </div>
 
         {/* Cards Grid */}

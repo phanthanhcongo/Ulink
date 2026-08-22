@@ -1,6 +1,7 @@
 import React from 'react';
 import { FileCheck, Users, Settings, Truck } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
+import { SectionHeader } from '@/components/home/section-header';
 
 export default async function WorkingProcess() {
   const t = await getTranslations('regionalHubs.workingProcess');
@@ -16,17 +17,11 @@ export default async function WorkingProcess() {
     <section className="w-full bg-white py-16 sm:py-20 border-t border-slate-100">
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16">
         {/* === Section Header === */}
-        <div className="flex items-start gap-3 mb-10">
-          {/* Vertical Dotted Line / Colons */}
-          <div className="flex flex-col gap-1.5 mt-1 shrink-0">
-            <span className="h-1.5 w-1.5 rounded-full bg-brand" />
-            <span className="h-1.5 w-1.5 rounded-full bg-brand" />
-            <span className="h-1.5 w-1.5 rounded-full bg-brand" />
-          </div>
-          <div>
-            <h2 className="text-[22px] font-bold text-slate-900 leading-tight">{t('title')}</h2>
-            <p className="mt-2 text-[12px] text-slate-500 max-w-[600px]">{t('subtitle')}</p>
-          </div>
+        <div className="mb-10">
+          <SectionHeader
+            title={t('title')}
+            subtitle={t('subtitle')}
+          />
         </div>
 
         {/* === 4 Step Cards Grid === */}

@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { getTranslations } from 'next-intl/server';
 import { ASSETS } from '@/lib/assets';
+import { SectionHeader } from './section-header';
 
 export async function PartnersCertifications() {
   const t = await getTranslations('home');
@@ -8,22 +9,10 @@ export async function PartnersCertifications() {
   return (
     <section className="mx-auto w-full max-w-[1440px] px-4 py-10 sm:px-8 lg:px-12 xl:px-16 lg:py-12 xl:py-16">
       {/* ── SECTION HEADER BAR ── */}
-      <div className="flex items-start gap-3">
-        {/* 3 dots cyan accent indicator */}
-        <div className="mt-1.5 flex flex-col gap-1.5">
-          <span className="h-2 w-2 rounded-full bg-brand" />
-          <span className="h-2 w-2 rounded-full bg-brand/60" />
-          <span className="h-2 w-2 rounded-full bg-brand/30" />
-        </div>
-        <div>
-          <h2 className="text-[22px] font-extrabold tracking-tight text-primary sm:text-[26px] lg:text-[26px] xl:text-[30px] 2xl:text-[32px]">
-            {t('partners.sectionTitle')}
-          </h2>
-          <p className="mt-1 text-[12.5px] text-muted-foreground sm:text-[13px] lg:text-[13px] xl:text-[14px]">
-            {t('partners.sectionSubTitle')}
-          </p>
-        </div>
-      </div>
+      <SectionHeader
+        title={t('partners.sectionTitle')}
+        subtitle={t('partners.sectionSubTitle')}
+      />
 
       {/* ── PARTNERS LOGO GRID (6 COLS x 2 ROWS) ── */}
       <div className="mt-10 grid grid-cols-3 gap-4 sm:grid-cols-4 lg:grid-cols-6 lg:gap-6 xl:gap-10">
