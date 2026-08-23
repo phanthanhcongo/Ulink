@@ -1,4 +1,5 @@
 import { createDirectus, rest, staticToken } from '@directus/sdk';
+import { cookies } from 'next/headers';
 import { getDirectusUrl, requireDirectusToken } from './directus-runtime.mjs';
 
 // Minimal schema typing - extend as collections are added (see directus/SCHEMA.md).
@@ -327,8 +328,6 @@ export function createWriteDirectusClient(token?: string) {
   if (!token) {
     // Try to read the logged-in user's JWT from Next.js cookies
     try {
-      // Dynamic import to avoid errors outside request scope
-      const { cookies } = require('next/headers');
       const store = cookies();
       const jwt = store.get('directus_session_token')?.value;
       if (jwt) token = jwt;
