@@ -31,7 +31,7 @@ export function CaseStudyCard({
   return (
     <Link
       href={`/resources/case-study-${num}`}
-      className="group flex flex-col overflow-hidden rounded-[3px] border border-border bg-white shadow-sm transition-all hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:scale-[1.02]"
+      className="group relative flex h-full w-full flex-col overflow-hidden rounded-[3px] border border-border bg-white shadow-sm transition-all hover:z-10 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:scale-[1.02]"
     >
       {/* Top Banner Image */}
       <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100">
@@ -63,7 +63,7 @@ export function CaseStudyCard({
         </p>
 
         {/* Author Section */}
-        <div className="mt-5 flex items-center gap-3">
+        <div className="mt-auto pt-5 flex items-center gap-3">
           <div className="relative h-11 w-11 shrink-0 overflow-hidden rounded-full border border-slate-100 bg-slate-50">
             <Image
               src={avatar}
@@ -83,7 +83,7 @@ export function CaseStudyCard({
         </div>
 
         {/* Read More Link */}
-        <div className="mt-auto pt-6">
+        <div className="pt-6">
           <span className="inline-flex items-center gap-2 text-[14px] font-bold text-brand group-hover:text-brand-strong transition-colors">
             {readMoreText}
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
