@@ -405,5 +405,5 @@ export function getEventDetailBySlug(slug: string) {
 }
 
 export function getEventRegisterLink(slug: string) {
-  return `/events/${slug.toLowerCase()}/register`;
+  return `/resources/events/${slug.toLowerCase()}/register`;
 }

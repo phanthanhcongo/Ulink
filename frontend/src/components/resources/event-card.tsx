@@ -45,7 +45,7 @@ export function EventCard({ event, locale }: EventCardProps) {
 
   const href = isResource
     ? getResourceHref(event as ResourceItem)
-    : (event as EventItem).link || `/resources/events/${event.id.toLowerCase()}`;
+    : `/resources/events/${event.id.toLowerCase()}`;
 
   const titleText = typeof event.title === 'string'
     ? event.title
