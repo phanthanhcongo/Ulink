@@ -51,10 +51,10 @@ export default async function CatalogShowcase({ locale }: CatalogShowcaseProps) 
                   </div>
                   <Link
                     href={`/solutions/products/categories/${catData.category.slug}`}
-                    className="inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors"
+                    className="group inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors"
                   >
                     {t('catalogSection.viewAll')}
-                    <ArrowRight className="h-4 w-4" />
+                    <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
                   </Link>
                 </div>
 

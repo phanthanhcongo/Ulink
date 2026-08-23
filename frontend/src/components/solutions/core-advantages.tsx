@@ -157,12 +157,12 @@ export default async function CoreAdvantages({ locale }: CoreAdvantagesProps) {
               return (
                 <div
                   key={idx}
-                  className="group bg-white rounded-[3px] border border-slate-100 p-6 sm:p-8 flex flex-col items-start"
+                  className="group bg-white rounded-[3px] border border-slate-100 p-6 sm:p-8 flex flex-col items-start transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]"
                 >
-                  <div className="w-9 h-9 rounded-[3px] bg-slate-50 flex items-center justify-center text-slate-700 shrink-0 mb-5">
+                  <div className="w-9 h-9 rounded-[3px] bg-slate-50 flex items-center justify-center text-slate-700 shrink-0 mb-5 transition-colors duration-200 group-hover:shadow-sm">
                     <IconComp className="h-5 w-5" />
                   </div>
-                  <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 mb-2.5 leading-snug">
+                  <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 mb-2.5 leading-snug transition-colors duration-200 group-hover:text-[#1769E2]">
                     {adv.title}
                   </h3>
                   <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-500 font-medium">

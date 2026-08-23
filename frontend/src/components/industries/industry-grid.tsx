@@ -34,7 +34,7 @@ export default function IndustryGrid({ industriesList, viewDetailsLabel }: Indus
         return (
           <div
             key={index}
-            className="group bg-white rounded-[3px] border border-slate-100 overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col"
+            className="group bg-white rounded-[3px] border border-slate-100 overflow-hidden shadow-sm transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] flex flex-col"
           >
             {/* Top Image */}
             <Link
@@ -45,9 +45,10 @@ export default function IndustryGrid({ industriesList, viewDetailsLabel }: Indus
                 src={ind.image}
                 alt={ind.name}
                 fill
-                className="object-cover transition-transform group-hover:scale-105 duration-300"
+                className="object-cover transition-transform group-hover:scale-105 duration-500"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1769E2]/40 to-[#1769E2]/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             </Link>
 
             {/* Card Body */}
@@ -85,10 +86,10 @@ export default function IndustryGrid({ industriesList, viewDetailsLabel }: Indus
               <div className="pt-4 border-t border-slate-100 mt-auto">
                 <Link
                   href={`/industries/${ind.slug}`}
-                  className="inline-flex items-center gap-1.5 text-[12px] sm:text-[13px] font-bold text-blue-600 hover:text-blue-700 transition-colors"
+                  className="group/link inline-flex items-center gap-1.5 text-[12px] sm:text-[13px] font-bold text-blue-600 hover:text-blue-700 transition-colors"
                 >
                   {viewDetailsLabel}
-                  <ArrowRight className="h-3.5 w-3.5" />
+                  <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover/link:translate-x-0.5" />
                 </Link>
               </div>
             </div>

@@ -131,7 +131,7 @@ export function AboutContact() {
                   <button
                     type="submit"
                     disabled={submitting}
-                    className="inline-flex items-center justify-center rounded-[3px] bg-blue-600 px-8 py-3 text-[13px] sm:text-[14px] font-bold text-white shadow-sm transition-all hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-70"
+                    className="inline-flex items-center justify-center rounded-[3px] bg-[#1769E2] px-8 py-3 text-[13px] sm:text-[14px] font-bold text-white shadow-sm transition-all hover:bg-[#1257BD] disabled:cursor-not-allowed disabled:opacity-70"
                   >
                     {submitting ? 'Đang gửi...' : 'Gửi đi'}
                   </button>

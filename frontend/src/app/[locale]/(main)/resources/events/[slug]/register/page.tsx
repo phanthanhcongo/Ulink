@@ -81,7 +81,7 @@ export default async function EventRegisterPage({ params }: Props) {
           items={[
             { label: L.home[locale as 'vi' | 'en' | 'ja'], href: '/' },
             { label: L.resources[locale as 'vi' | 'en' | 'ja'], href: '/resources' },
-            { label: event.title, href: `/events/${event.slug}` },
+            { label: event.title, href: `/resources/events/${event.slug}` },
             { label: L.register[locale as 'vi' | 'en' | 'ja'] }
           ]}
         />

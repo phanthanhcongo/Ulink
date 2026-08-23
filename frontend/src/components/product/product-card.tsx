@@ -201,6 +201,8 @@ export default function ProductCard({ product, locale, roundedClass }: ProductCa
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
         />
 
+        <div className="absolute inset-0 bg-gradient-to-t from-[#1769E2]/40 to-[#1769E2]/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
         {/* Product Badge */}
         <span className="absolute top-3 left-3 px-[9px] py-[7px] bg-[rgba(255,255,255,0.94)] border border-[rgba(23,105,226,0.16)] text-[#1769e2] text-[9px] font-[900] tracking-[0.06em] uppercase shadow-[0_4px_12px_rgba(0,0,0,0.06)] rounded-[3px] z-10">
           {moqInfo.status}

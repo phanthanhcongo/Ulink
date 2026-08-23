@@ -118,7 +118,7 @@ export function EventSidebar({
         {/* Action Button */}
         <div className="mt-6">
           <Link
-            href={`/events/${slug}/register`}
+              href={`/resources/events/${slug}/register`}
             className="flex w-full items-center justify-center rounded-[3px] bg-emerald-500 hover:bg-emerald-600 active:scale-[0.98] py-3 text-sm font-bold text-white transition-all shadow-md shadow-emerald-950/20 font-sans"
           >
             Đăng ký ngay

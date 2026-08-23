@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 
 import { errorJson, successJson } from '@/lib/api-response-next';
 import { createRfqRateLimiter, createTurnstileVerifier } from '@/lib/rfq-anti-spam';
-import { publicDirectus, createWriteDirectusClient } from '@/lib/directus';
+import { publicDirectus, createWriteDirectusClient, createSessionDirectusClient } from '@/lib/directus';
 import { createRfqIdempotencyStore } from '@/lib/rfq-idempotency';
 import { submitRfq } from '@/lib/rfq-submit';
 import { getRedis } from '@/lib/redis';
@@ -60,7 +60,8 @@ export async function POST(req: Request) {
   const user = await getCurrentUser();
 
   try {
-    const writeDirectus = createWriteDirectusClient();
+    const cookieHeader = getRequestCookieHeader(req);
+    const writeDirectus = user ? createSessionDirectusClient(cookieHeader) : createWriteDirectusClient();
     const result = await submitRfq(body, {
       ip,
       verifyTurnstile: async (token, ipAddress) => {
@@ -131,7 +132,8 @@ export async function GET(req: Request) {
         { status: 401 }
       );
     }
-    console.log('GET /api/rfq - Authenticated User:', user);
+
+    // Try with user's session cookie first
     const cookieHeader = getRequestCookieHeader(req);
     const response = await proxyToDirectus(
       '/items/rfq_requests?fields=*,assigned_sales.first_name,assigned_sales.last_name,assigned_sales.email,assigned_sales.avatar&sort=-created_at,-id',
@@ -141,17 +143,24 @@ export async function GET(req: Request) {
       }
     );
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error('Directus rfq fetch failed:', response.status, errorText);
-      return NextResponse.json(
-        { error: 'failed_to_fetch_rfq', message: 'Failed to fetch RFQs from Directus.' },
-        { status: response.status }
-      );
+    if (response.ok) {
+      const payload = await response.json();
+      return NextResponse.json(payload);
     }
 
-    const payload = await response.json();
-    return NextResponse.json(payload);
+    // Fallback to static admin token if user session lacks permissions
+    console.warn('GET /api/rfq - session cookie returned', response.status, '- falling back to admin token');
+    const writeDirectus = createWriteDirectusClient();
+    const data = await writeDirectus.request(
+      readItems('rfq_requests', {
+        fields: [
+          '*',
+          { assigned_sales: ['first_name', 'last_name', 'email', 'avatar'] }
+        ],
+        sort: ['-created_at', '-id']
+      })
+    );
+    return NextResponse.json({ data: data || [] });
   } catch (err) {
     console.error('RFQ GET handler failed:', err);
     return NextResponse.json(

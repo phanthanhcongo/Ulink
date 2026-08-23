@@ -65,15 +65,15 @@ export function CareersCulture() {
           return (
             <div
               key={idx}
-              className="flex flex-col bg-white p-8 sm:p-10 transition-all hover:bg-slate-50/50"
+              className="group flex flex-col bg-white p-8 sm:p-10 transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:bg-white"
             >
-              <div className="text-blue-600 mb-6">
+              <div className="text-blue-600 mb-6 transition-colors duration-200 group-hover:text-[#1769E2]">
                 <Icon className="h-8 w-8" />
               </div>
               <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-slate-400">
                 {item.number}
               </span>
-              <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-800 mt-2">
+              <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-800 mt-2 transition-colors duration-200 group-hover:text-[#1769E2]">
                 {item.title}
               </h3>
               <p className="mt-3 text-[13px] sm:text-[14px] leading-relaxed text-slate-500">

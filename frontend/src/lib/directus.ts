@@ -321,7 +321,36 @@ export const freshDirectus = createDirectus<Schema>(url, { globals: { fetch: noS
   rest()
 );
 
-// Server-side client for mutations that must not rely on anonymous Directus access.
-export function createWriteDirectusClient(token = requireDirectusToken()) {
+// Server-side client for authenticated Directus access.
+// Priority: explicit token > user's JWT session cookie > DIRECTUS_TOKEN env.
+export function createWriteDirectusClient(token?: string) {
+  if (!token) {
+    // Try to read the logged-in user's JWT from Next.js cookies
+    try {
+      // Dynamic import to avoid errors outside request scope
+      const { cookies } = require('next/headers');
+      const store = cookies();
+      const jwt = store.get('directus_session_token')?.value;
+      if (jwt) token = jwt;
+    } catch {
+      // Outside request scope (e.g. internal/cron routes) — fall through
+    }
+  }
+  // Final fallback: static DIRECTUS_TOKEN from env
+  if (!token) {
+    token = requireDirectusToken();
+  }
   return createDirectus<Schema>(url).with(staticToken(token)).with(rest());
+}
+
+// Server-side client that forwards the user's session cookie to Directus.
+// Use this when the logged-in user's own permissions should apply.
+export function createSessionDirectusClient(cookieHeader: string) {
+  const cookieFetch: typeof globalThis.fetch = (input, init) =>
+    globalThis.fetch(input, {
+      ...init,
+      headers: { ...Object.fromEntries(new Headers(init?.headers).entries()), cookie: cookieHeader },
+      cache: 'no-store'
+    });
+  return createDirectus<Schema>(url, { globals: { fetch: cookieFetch } }).with(rest());
 }

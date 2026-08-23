@@ -2,6 +2,7 @@
 
 import React from 'react';
 import type { Metadata } from 'next';
+import { cookies } from 'next/headers';
 import { setRequestLocale } from 'next-intl/server';
 import { redirect } from '@/i18n/navigation';
 import { getCurrentUser } from '@/lib/auth-helpers';
@@ -25,13 +26,20 @@ export default async function AdminProductsPage({ params: { locale } }: Props) {
     redirect({ href: '/login', locale });
   }
 
-  // Fetch products and categories directly using write client (bypasses cache for real-time CRUD accuracy)
+  // Use the logged-in user's JWT as Directus access token
+  const store = await cookies();
+  const jwt = store.get('directus_session_token')?.value;
+  if (!jwt) {
+    redirect({ href: '/login', locale });
+  }
+
   let products: any[] = [];
   let categories: any[] = [];
   let globalAttributes: any[] = [];
 
   try {
-    const client = createWriteDirectusClient();
+    console.log('[Admin Products] JWT present:', !!jwt, '| JWT length:', jwt.length);
+    const client = createWriteDirectusClient(jwt);
     const [productsRes, categoriesRes, attrsRes] = await Promise.all([
       client.request(
         readItems('products', {
@@ -86,8 +94,10 @@ export default async function AdminProductsPage({ params: { locale } }: Props) {
     products = productsRes || [];
     categories = categoriesRes || [];
     globalAttributes = attrsRes || [];
-  } catch (err) {
-    console.error('Failed to load products/categories in admin dashboard:', err);
+    console.log('[Admin Products] Loaded:', products.length, 'products,', categories.length, 'categories,', globalAttributes.length, 'attrs');
+  } catch (err: any) {
+    console.error('[Admin Products] FAILED:', err?.message || err);
+    console.error('[Admin Products] Full error:', JSON.stringify(err?.errors || err?.response?.status || err, null, 2));
   }
 
   return (

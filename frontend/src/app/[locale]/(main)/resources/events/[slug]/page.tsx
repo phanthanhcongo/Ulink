@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
 import { setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
+import { Breadcrumb } from '@/components/ui/breadcrumb';
 import { getEventDetailBySlug } from '@/components/events/event-detail-data';
 import { EventSidebar } from '@/components/events/event-sidebar';
 
@@ -86,7 +87,18 @@ export default async function EventDetailPage({ params }: Props) {
 
   return (
     <main className="min-h-screen bg-white">
-
+      {/* Breadcrumb */}
+      <div className="mx-auto max-w-[1200px] px-4 sm:px-8 pt-6">
+        <Breadcrumb
+          className="px-0 py-0 mx-0 max-w-none"
+          items={[
+            { label: 'Home', href: '/' },
+            { label: 'Resources', href: '/resources' },
+            { label: 'Events', href: '/resources/events' },
+            { label: event.title }
+          ]}
+        />
+      </div>
 
       {/* Main Grid Section */}
       <section className="mx-auto max-w-[1200px] px-4 sm:px-8 pt-8 pb-16">

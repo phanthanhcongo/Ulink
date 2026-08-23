@@ -135,7 +135,7 @@ export function CareersJobList() {
             {filteredJobs.map((job) => (
               <div
                 key={job.id}
-                className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 rounded-[3px] bg-white p-5 border border-slate-200/80 transition-all hover:border-blue-300 hover:shadow-md"
+                className="group flex flex-col sm:flex-row sm:items-center justify-between gap-4 rounded-[3px] bg-white p-5 border border-slate-200/80 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]"
               >
                 <div className="flex flex-col gap-2">
                   <div className="flex flex-wrap items-center gap-2">
@@ -173,7 +173,7 @@ export function CareersJobList() {
                   </span>
                   <Link
                     href={`/about/careers/${job.slug}`}
-                    className="inline-flex shrink-0 items-center justify-center rounded-[3px] bg-orange-600 px-5 py-2 text-[13px] sm:text-[14px] font-semibold text-white shadow-xs hover:bg-orange-700 transition-colors"
+                    className="inline-flex shrink-0 items-center justify-center rounded-[3px] bg-[#1769E2] px-5 py-2 text-[13px] sm:text-[14px] font-semibold text-white shadow-xs hover:bg-[#1257BD] transition-colors"
                   >
                     Ứng tuyển
                   </Link>
@@ -210,7 +210,7 @@ export function CareersJobList() {
               return (
                 <div
                   key={idx}
-                  className="flex items-start gap-4 p-4 rounded-[3px] bg-slate-50/50 border border-slate-100/80 transition-all hover:bg-white hover:border-slate-200 hover:shadow-xs"
+                  className="group flex items-start gap-4 p-4 rounded-[3px] bg-slate-50/50 border border-slate-100/80 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.15)]"
                 >
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[3px] bg-blue-50 text-blue-600">
                     <Icon className="h-5 w-5" />

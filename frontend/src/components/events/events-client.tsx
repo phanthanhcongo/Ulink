@@ -180,7 +180,7 @@ export function EventsClient() {
               </p>
               <button
                 onClick={handleScrollToEvents}
-                className="inline-flex items-center justify-center px-8 py-3.5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm sm:text-base rounded-[3px] transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer transform hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center px-8 py-3.5 bg-[#1769E2] hover:bg-[#1257BD] text-white font-bold text-sm sm:text-base rounded-[3px] transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer transform hover:-translate-y-0.5"
               >
                 {t.heroCta}
               </button>
@@ -201,12 +201,12 @@ export function EventsClient() {
 
             // Extract detail URL slug: extract 'ev-001' from link '/events/ev-001/register'
             const detailSlug = event.id.toLowerCase();
-            const detailHref = `/events/${detailSlug}`;
+            const detailHref = `/resources/events/${detailSlug}`;
 
             return (
               <div
                 key={event.id}
-                className="flex flex-col lg:flex-row bg-white border border-slate-100 rounded-[3px] overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500 group"
+                className="flex flex-col lg:flex-row bg-white border border-slate-100 rounded-[3px] overflow-hidden shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] group"
               >
                 {/* Event Image */}
                 <div className="relative w-full lg:w-[420px] aspect-[16/10] lg:aspect-auto overflow-hidden shrink-0">
@@ -217,6 +217,7 @@ export function EventsClient() {
                     sizes="(max-width: 1024px) 100vw, 420px"
                     className="object-cover group-hover:scale-105 transition-transform duration-700"
                   />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1769E2]/40 to-[#1769E2]/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   {/* Overlay Date Badge */}
                   <div className="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold px-4 py-2 rounded-[3px] shadow-md z-10">
                     {event.date}
@@ -280,7 +281,7 @@ export function EventsClient() {
                   <div className="mt-8">
                     <Link
                       href={detailHref}
-                      className="inline-flex items-center justify-center px-6 py-3 border border-blue-600 hover:bg-blue-50 text-blue-600 font-bold rounded-[3px] text-xs sm:text-sm transition-all duration-300 shadow-xs group-hover:bg-blue-600 group-hover:text-white"
+                      className="inline-flex items-center justify-center px-6 py-3 border border-[#1769E2] hover:bg-[#EBF3FE] text-[#1769E2] font-bold rounded-[3px] text-xs sm:text-sm transition-all duration-300 shadow-xs group-hover:bg-[#1769E2] group-hover:text-white"
                     >
                       {t.registerBtn}
                       <ArrowRight className="ml-2 h-4 w-4" />
@@ -310,7 +311,7 @@ export function EventsClient() {
                 className={cn(
                   'h-10 w-10 rounded-[3px] text-xs font-bold transition-all cursor-pointer border',
                   currentPage === index + 1
-                    ? 'bg-blue-600 border-blue-600 text-white shadow-md'
+                    ? 'bg-[#1769E2] border-[#1769E2] text-white shadow-md'
                     : 'border-slate-200 hover:bg-slate-50 text-slate-600 bg-white'
                 )}
               >

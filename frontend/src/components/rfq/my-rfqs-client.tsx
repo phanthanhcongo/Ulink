@@ -146,21 +146,21 @@ export function MyRfqsClient() {
 
             {/* Stats cards */}
             <div className="grid grid-cols-3 gap-3">
-              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-[3px] px-4 py-3 border border-white/20">
+              <div className="group flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-[3px] px-4 py-3 border border-white/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/20 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.5)]">
                 <Clock className="h-4 w-4 text-amber-300" />
                 <div>
                   <p className="text-lg font-bold text-white">{counts.pending}</p>
                   <p className="text-[10px] text-indigo-200">{t('pending')}</p>
                 </div>
               </div>
-              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-[3px] px-4 py-3 border border-white/20">
+              <div className="group flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-[3px] px-4 py-3 border border-white/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/20 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.5)]">
                 <CheckCircle2 className="h-4 w-4 text-emerald-300" />
                 <div>
                   <p className="text-lg font-bold text-white">{counts.quoted}</p>
                   <p className="text-[10px] text-indigo-200">{t('quoted')}</p>
                 </div>
               </div>
-              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-[3px] px-4 py-3 border border-white/20">
+              <div className="group flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-[3px] px-4 py-3 border border-white/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/20 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.5)]">
                 <XCircle className="h-4 w-4 text-rose-300" />
                 <div>
                   <p className="text-lg font-bold text-white">{counts.rejected}</p>
@@ -231,7 +231,7 @@ export function MyRfqsClient() {
               return (
                 <div
                   key={req.id}
-                  className="group flex flex-col sm:flex-row sm:items-center gap-4 bg-white rounded-[3px] border border-gray-200 shadow-sm px-5 py-4 hover:shadow-md hover:border-blue-200 transition-all"
+                  className="group flex flex-col sm:flex-row sm:items-center gap-4 bg-white rounded-[3px] border border-gray-200 shadow-sm px-5 py-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]"
                 >
                   {/* Left: icon + info */}
                   <div className="flex items-start gap-4 flex-1 min-w-0">
@@ -312,7 +312,7 @@ export function MyRfqsClient() {
 
                     <button
                       onClick={() => setSelectedRfq(req)}
-                      className="inline-flex items-center gap-1.5 rounded-[3px] border border-gray-200 bg-white px-3 py-2 text-xs font-medium text-gray-700 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-200 transition-all shadow-sm"
+                      className="inline-flex items-center gap-1.5 rounded-[3px] border border-gray-200 bg-white px-3 py-2 text-xs font-medium text-gray-700 hover:bg-[#EBF3FE] hover:text-[#1769E2] hover:border-[#1769E2] transition-all shadow-sm"
                     >
                       <Eye className="h-3.5 w-3.5" />
                       {t('viewDetail')}

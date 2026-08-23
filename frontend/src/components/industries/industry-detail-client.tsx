@@ -467,7 +467,7 @@ export default function IndustryDetailClient({
               return (
                 <div
                   key={idx}
-                  className="group bg-white border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between h-full"
+                  className="group bg-white border border-slate-200/50 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] flex flex-col justify-between h-full"
                 >
                   <div>
                     {/* Square Image container */}
@@ -478,6 +478,7 @@ export default function IndustryDetailClient({
                         fill
                         className="object-cover p-1 group-hover:scale-105 transition-transform duration-500"
                       />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#1769E2]/40 to-[#1769E2]/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                     </Link>
                     {/* Content */}
                     <div className="p-5 space-y-3">
@@ -536,7 +537,7 @@ export default function IndustryDetailClient({
               return (
                 <div
                   key={idx}
-                  className="group bg-white border border-slate-200/50 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between h-full"
+                  className="group bg-white border border-slate-200/50 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] flex flex-col justify-between h-full"
                 >
                   <div>
                     {/* Square Image container */}
@@ -547,6 +548,7 @@ export default function IndustryDetailClient({
                         fill
                         className="object-cover p-1 group-hover:scale-105 transition-transform duration-500"
                       />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#1769E2]/40 to-[#1769E2]/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                     </Link>
                     {/* Content */}
                     <div className="p-5 space-y-3">
@@ -612,7 +614,7 @@ export default function IndustryDetailClient({
               return (
                 <div
                   key={idx}
-                  className="bg-white border border-slate-200/80 rounded-[3px] p-6 text-center space-y-4 flex flex-col items-center hover:shadow-lg transition-all duration-300"
+                  className="group bg-white border border-slate-200/80 rounded-[3px] p-6 text-center space-y-4 flex flex-col items-center transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]"
                 >
                   <div className="flex h-14 w-14 items-center justify-center rounded-full bg-blue-100/70 text-blue-600 border border-blue-200/50">
                     <IconComp className="h-6 w-6 stroke-[2.2]" />
@@ -649,7 +651,7 @@ export default function IndustryDetailClient({
             {industryData.cases.map((cs, idx) => (
               <div
                 key={idx}
-                className="group bg-white border border-slate-200/50 overflow-hidden shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between"
+                className="group bg-white border border-slate-200/50 overflow-hidden shadow-sm transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] flex flex-col justify-between"
               >
                 <div>
                   {/* Image wrapper */}
@@ -658,8 +660,9 @@ export default function IndustryDetailClient({
                       src={cs.image}
                       alt={cs.title}
                       fill
-                      className="object-cover group-hover:scale-103 transition-transform duration-500"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1769E2]/40 to-[#1769E2]/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                     {/* Badge */}
                     <div className="absolute bottom-3 left-3 bg-blue-600 text-white text-[10px] font-extrabold px-3 py-1 uppercase tracking-wider">
                       {cs.badge}
@@ -699,7 +702,7 @@ export default function IndustryDetailClient({
             {partnerLogos.map((logo, idx) => (
               <div
                 key={idx}
-                className="flex h-16 items-center justify-center p-2 bg-white border border-slate-200/50 shadow-sm transition-all duration-300 hover:shadow-md"
+                className="flex h-16 items-center justify-center p-2 bg-white border border-slate-200/50 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:scale-[1.05] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]"
               >
                 <Image
                   src={logo.src}

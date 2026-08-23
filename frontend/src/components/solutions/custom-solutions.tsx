@@ -30,15 +30,16 @@ export default function CustomSolutions({ locale }: CustomSolutionsProps) {
           </div>
 
           {/* Right Column: Image */}
-          <div className="lg:col-span-6 relative aspect-[4/3] w-full overflow-hidden bg-slate-50 border border-gray-100 rounded-[3px]">
+          <div className="lg:col-span-6 relative aspect-[4/3] w-full overflow-hidden bg-slate-50 border border-gray-100 rounded-[3px] group">
             <Image
               src="/images/solutions/Stretch-Hood-Packaging.png"
               alt="Giải pháp thiết kế riêng cho Doanh nghiệp"
               fill
               priority
-              className="object-cover"
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#1769E2]/40 to-[#1769E2]/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           </div>
         </div>
       </div>

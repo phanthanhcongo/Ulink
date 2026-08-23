@@ -8,13 +8,14 @@ export function AboutSustainability() {
       <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-10 xl:gap-12">
         {/* Left Column: Image */}
         <div className="lg:col-span-6">
-          <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[3px] shadow-lg border border-slate-100">
+          <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[3px] shadow-lg border border-slate-100 group">
             <Image
               src="/images/about/gallery/sustainability-solar-warehouse.png"
               alt="Phát triển bền vững Hub Hà Nam"
               fill
-              className="object-cover"
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#1769E2]/40 to-[#1769E2]/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           </div>
         </div>
 

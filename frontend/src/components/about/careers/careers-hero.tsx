@@ -65,14 +65,15 @@ export function CareersHero() {
 
         {/* Right Column: Hero Image */}
         <div className="lg:col-span-6">
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[3px] shadow-lg ring-1 ring-slate-900/5">
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[3px] shadow-lg ring-1 ring-slate-900/5 group">
             <Image
               src="/images/Career/career (12).png"
               alt="Đội ngũ nhân sự ULink B2B Platform"
               fill
-              className="object-cover"
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
               priority
             />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#1769E2]/40 to-[#1769E2]/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           </div>
         </div>
       </div>
@@ -82,12 +83,12 @@ export function CareersHero() {
         {stats.map((s, idx) => {
           const Icon = s.icon;
           return (
-            <div key={idx} className="flex items-center gap-4 justify-start sm:justify-center">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-600">
+            <div key={idx} className="group flex items-center gap-4 justify-start sm:justify-center py-2 px-2 rounded-[3px] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-600 transition-colors duration-200 group-hover:bg-[#1769E2] group-hover:text-white">
                 <Icon className="h-6 w-6" />
               </div>
               <div className="flex flex-col">
-                <span className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-slate-900 leading-tight">
+                <span className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-slate-900 leading-tight transition-colors duration-200 group-hover:text-[#1769E2]">
                   {s.value}
                 </span>
                 <span className="text-[13px] sm:text-[14px] text-slate-400 font-medium mt-0.5 leading-tight">

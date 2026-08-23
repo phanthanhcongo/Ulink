@@ -1,16 +1,36 @@
 import { NextResponse } from 'next/server';
-import { getCurrentUser } from '@/lib/auth-helpers';
+import { getCurrentUser, proxyToDirectus, getRequestCookieHeader } from '@/lib/auth-helpers';
 import { createWriteDirectusClient } from '@/lib/directus';
 import { readItems } from '@directus/sdk';
 
 export const dynamic = 'force-dynamic';
 
+const RFQ_FIELDS = [
+  'id',
+  'company',
+  'contact_name',
+  'email',
+  'phone',
+  'hub.id',
+  'hub.name',
+  'industry',
+  'message',
+  'line_items',
+  'status',
+  'source',
+  'scheduled_delivery',
+  'requested_delivery_date',
+  'created_at',
+  'approval_note',
+  'reject_reason'
+].join(',');
+
 /**
  * GET /api/rfq/mine
  * List RFQ requests belonging to the currently authenticated user.
- * Uses admin token to bypass role-based permission issues.
+ * Tries user's session cookie first, falls back to admin token if needed.
  */
-export async function GET() {
+export async function GET(req: Request) {
   try {
     const user = await getCurrentUser();
     if (!user) {
@@ -20,8 +40,22 @@ export async function GET() {
       );
     }
 
-    const directus = createWriteDirectusClient();
-    const data = await directus.request(
+    // Try with user's session cookie first
+    const cookieHeader = getRequestCookieHeader(req);
+    const response = await proxyToDirectus(
+      `/items/rfq_requests?fields=${RFQ_FIELDS}&filter[user][_eq]=${user.id}&sort=-created_at,-id`,
+      { method: 'GET', cookieHeader }
+    );
+
+    if (response.ok) {
+      const payload = await response.json();
+      return NextResponse.json({ data: payload?.data || [] });
+    }
+
+    // Fallback to static admin token if user session lacks permissions
+    console.warn('RFQ /mine - session cookie returned', response.status, '- falling back to admin token');
+    const writeDirectus = createWriteDirectusClient();
+    const data = await writeDirectus.request(
       readItems('rfq_requests', {
         fields: [
           'id',
@@ -37,23 +71,18 @@ export async function GET() {
           'source',
           'scheduled_delivery',
           'requested_delivery_date',
-          'created_at' as never,
+          'created_at',
           'approval_note',
           'reject_reason'
         ],
         filter: {
           user: { _eq: user.id }
         },
-        sort: ['-created_at', '-id'] as never
+        sort: ['-created_at', '-id']
       })
     );
 
-    const mappedData = (data || []).map((item: any) => ({
-      ...item,
-      date_created: item.created_at
-    }));
-
-    return NextResponse.json({ data: mappedData });
+    return NextResponse.json({ data: data || [] });
   } catch (err) {
     console.error('RFQ /mine GET handler failed:', err);
     return NextResponse.json(

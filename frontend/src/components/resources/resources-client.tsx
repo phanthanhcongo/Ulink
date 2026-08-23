@@ -293,7 +293,7 @@ export function ResourcesClient({
               {L.upcomingEvents[locale]}
             </h2>
             <Link
-              href="/contact"
+              href="/resources/events"
               className="text-xs sm:text-sm font-semibold text-blue-600 hover:text-blue-700 flex items-center gap-1.5 transition-colors"
             >
               {L.seeAll[locale]}

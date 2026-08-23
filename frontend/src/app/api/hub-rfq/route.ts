@@ -1,5 +1,5 @@
-import { getCurrentUser } from '@/lib/auth-helpers';
-import { createWriteDirectusClient } from '@/lib/directus';
+import { getCurrentUser, getRequestCookieHeader } from '@/lib/auth-helpers';
+import { createWriteDirectusClient, createSessionDirectusClient } from '@/lib/directus';
 import { createItem } from '@directus/sdk';
 import { handleRoute, jsonCreated, jsonErrorRaw } from '@/lib/route-helpers';
 import { hubRfqSchema, type HubRfqInput } from '@/lib/validators';
@@ -15,7 +15,8 @@ export async function POST(req: Request) {
     const user = await getCurrentUser();
 
     try {
-      const writeDirectus = createWriteDirectusClient();
+      const cookieHeader = getRequestCookieHeader(req);
+      const writeDirectus = user ? createSessionDirectusClient(cookieHeader) : createWriteDirectusClient();
       const created = await writeDirectus.request(
         createItem('rfq_requests', {
           hub: data.hub_id,
