@@ -156,7 +156,7 @@ export async function GET(req: Request) {
         fields: [
           '*',
           { assigned_sales: ['first_name', 'last_name', 'email', 'avatar'] }
-        ],
+        ] as any,
         sort: ['-created_at', '-id']
       })
     );

@@ -38,7 +38,7 @@ export default async function AdminProductsPage({ params: { locale } }: Props) {
   let globalAttributes: any[] = [];
 
   try {
-    console.log('[Admin Products] JWT present:', !!jwt, '| JWT length:', jwt.length);
+    console.log('[Admin Products] JWT present:', !!jwt, '| JWT length:', jwt?.length);
     const client = createWriteDirectusClient(jwt);
     const [productsRes, categoriesRes, attrsRes] = await Promise.all([
       client.request(
