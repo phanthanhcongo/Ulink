@@ -10,7 +10,6 @@ import { getTranslatedName, getTranslatedField } from '@/lib/i18n-content';
 import { getDirectusUrl } from '@/lib/directus-runtime.mjs';
 import { ASSETS } from '@/lib/assets';
 
-// Categories Master Metadata
 const CATEGORIES_MASTER: Record<string, CategoryInfo> = {
   'cleanroom-consumables': {
     id: 1,
@@ -143,40 +142,25 @@ export default async function CategoryProductsPage({ params }: PageProps) {
   const { locale, slug } = await params;
   setRequestLocale(locale);
 
-  // 1. Fetch real DB products & categories directly from Directus / PostgreSQL DB
   const { products: dbProducts } = await fetchProducts({ limit: 100 });
   const dbCategories = await fetchProductCategories();
 
-  // 2. Find matching DB category if available
   const currentDbCat = dbCategories.find((c) => c.slug === slug);
 
-  // 3. Resolve Category Info
-  const isAll = slug === 'all';
-  const categoryInfo: CategoryInfo = isAll
-    ? {
-        id: 0,
-        name: locale === 'vi' ? 'Tất cả sản phẩm' : 'All Products',
-        slug: 'all',
-        description:
-          locale === 'vi'
-            ? 'Toàn bộ danh mục vật tư công nghiệp, phòng sạch & ESD của ULink Industries.'
-            : 'Complete catalog of industrial supplies, cleanroom & ESD products by ULink Industries.'
-      }
-    : {
-        id: currentDbCat?.id ?? CATEGORIES_MASTER[slug]?.id ?? 99,
-        name:
-          (currentDbCat ? getTranslatedName(currentDbCat, locale) : null) ||
-          currentDbCat?.name ||
-          CATEGORIES_MASTER[slug]?.name ||
-          'Danh mục Sản phẩm',
-        slug,
-        description:
-          CATEGORIES_MASTER[slug]?.description ||
-          'Danh mục các sản phẩm vật tư công nghiệp tiêu chuẩn phòng sạch & ESD ULink.',
-        subCategories: CATEGORIES_MASTER[slug]?.subCategories
-      };
+  const categoryInfo: CategoryInfo = {
+    id: currentDbCat?.id ?? CATEGORIES_MASTER[slug]?.id ?? 99,
+    name:
+      (currentDbCat ? getTranslatedName(currentDbCat, locale) : null) ||
+      currentDbCat?.name ||
+      CATEGORIES_MASTER[slug]?.name ||
+      'Danh mục Sản phẩm',
+    slug,
+    description:
+      CATEGORIES_MASTER[slug]?.description ||
+      'Danh mục các sản phẩm vật tư công nghiệp tiêu chuẩn phòng sạch & ESD ULink.',
+    subCategories: CATEGORIES_MASTER[slug]?.subCategories
+  };
 
-  // 4. Map Products ONLY from Database
   const products: ProductItem[] = dbProducts.map((p) => {
     const firstSku = p.skus?.find((s) => s.status === 'published') || p.skus?.[0];
     const catObj =
@@ -188,6 +172,10 @@ export default async function CategoryProductsPage({ params }: PageProps) {
     const resolvedImage = p.hero
       ? `${getDirectusUrl()}/assets/${p.hero}`
       : PRODUCT_IMAGE_MAP[p.slug] || CATEGORY_IMAGE_MAP[slug] || ASSETS.home.solutionCleanroom;
+
+    const productStandards = Array.isArray(p.standards)
+      ? p.standards.map((s: any) => s.standards_id).filter(Boolean)
+      : [];
 
     return {
       id: p.id,
@@ -202,17 +190,12 @@ export default async function CategoryProductsPage({ params }: PageProps) {
       image: resolvedImage,
       unit: firstSku?.unit ?? '',
       packSize: firstSku?.pack_size ?? '',
-      specs: ['Tiêu chuẩn ISO / ESD', 'Chính hãng 100%']
+      specs: ['Tiêu chuẩn ISO / ESD', 'Chính hãng 100%'],
+      standards: productStandards
     };
   });
 
-  // 5. Dynamic Categories list from DB — prepend "All" entry
-  const allEntry = {
-    id: 0,
-    name: locale === 'vi' ? 'Tất cả sản phẩm' : 'All Products',
-    slug: 'all'
-  };
-  const dbCatList =
+  const categoriesList =
     dbCategories.length > 0
       ? dbCategories.map((c) => ({
           id: c.id,
@@ -220,7 +203,6 @@ export default async function CategoryProductsPage({ params }: PageProps) {
           slug: c.slug
         }))
       : ALL_CATEGORIES_LIST;
-  const categoriesList = [allEntry, ...dbCatList];
 
   return (
     <CategoryProductsClient

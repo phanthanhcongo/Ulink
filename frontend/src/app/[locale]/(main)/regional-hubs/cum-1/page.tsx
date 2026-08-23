@@ -1,6 +1,6 @@
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { fetchRegionalHubs } from '@/lib/regional-hub-data';
-import HubHeroSection from '@/components/regional-hubs/hub-hero-section';
+import { VietnamMap } from '@/components/vietnam-map';
 import LiveMetricsBar from '@/components/regional-hubs/live-metrics-bar';
 import FeaturedProducts from '@/components/regional-hubs/featured-products';
 import SolutionCarousel from '@/components/regional-hubs/solution-carousel';
@@ -105,7 +105,7 @@ export default async function RegionalHubsPage({
 
   return (
     <>
-      <HubHeroSection locale={locale} hubs={hubs} />
+      <VietnamMap hubs={hubs} locale={locale} />
 
       {/* === SECTION 2: Real-time Live Data Bar === */}
       <LiveMetricsBar />
@@ -130,11 +130,11 @@ export default async function RegionalHubsPage({
 
       {/* === SECTION 9: Resources & News === */}
       <ResourcesNews />
-      
+
       <DocSection />
       <SupportSection />
       <AboutContact />
-      
+
     </>
   );
 }

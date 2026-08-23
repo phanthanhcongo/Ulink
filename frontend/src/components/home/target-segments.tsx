@@ -74,7 +74,7 @@ export async function TargetSegments() {
 
             <div className="pt-2">
               <Link
-                href="/solutions/categories/cleanroom-consumables"
+                href="/regional-hubs/cum-1"
                 className="inline-flex items-center gap-1.5 text-[14px] sm:text-[15px] font-bold text-blue-600 hover:text-blue-800 transition-colors"
               >
                 {t('targetSegments.viewDetail')}
@@ -139,7 +139,7 @@ export async function TargetSegments() {
 
             <div className="pt-2">
               <Link
-                href="/solutions/categories/cleanroom-consumables"
+                href="/regional-hubs/cum-2"
                 className="inline-flex items-center gap-1.5 text-[14px] sm:text-[15px] font-bold text-blue-600 hover:text-blue-800 transition-colors"
               >
                 {t('targetSegments.viewDetail')}

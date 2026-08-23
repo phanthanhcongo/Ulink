@@ -35,7 +35,7 @@ export default async function Cum2Page({ params }: PageProps) {
       <HubOffers />
       <ResourcesNews />
       <HubPartner />
-      
+
 
     </>
   );

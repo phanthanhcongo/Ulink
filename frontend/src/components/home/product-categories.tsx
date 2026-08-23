@@ -14,20 +14,20 @@ export async function ProductCategories() {
       title: 'Giải pháp - Sản phẩm Phòng sạch',
       description:
         'Sản phẩm bảo vệ và kiểm soát bụi, ô nhiễm cho phòng sạch tại các nhà sản xuất: Điện tử, Thực phẩm, Dược phẩm, Y tế.',
-      href: '/solutions/categories/cleanroom-consumables',
+      href: '/solutions/products/categories/cleanroom-consumables',
       image: ASSETS.home.cateCleanroom,
       accentBorder: 'border-l-brand',
       diamondColor: 'text-brand',
       items: [
-        { label: 'Găng tay Nitrile/Latex', href: '/solutions/categories/cleanroom-gloves' },
-        { label: 'Trang phục phòng sạch', href: '/solutions/categories/cleanroom-apparel' },
-        { label: 'Khăn lau / Cleanroom Wiper', href: '/solutions/categories/cleanroom-wipers' },
-        { label: 'Khẩu trang Y tế', href: '/solutions/categories/cleanroom-masks' },
+        { label: 'Găng tay Nitrile/Latex', href: '/solutions/products/categories/cleanroom-gloves' },
+        { label: 'Trang phục phòng sạch', href: '/solutions/products/categories/cleanroom-apparel' },
+        { label: 'Khăn lau / Cleanroom Wiper', href: '/solutions/products/categories/cleanroom-wipers' },
+        { label: 'Khẩu trang Y tế', href: '/solutions/products/categories/cleanroom-masks' },
         {
           label: 'Sticky Mat/Thảm phòng sạch',
-          href: '/solutions/categories/cleanroom-consumables'
+          href: '/solutions/products/categories/cleanroom-consumables'
         },
-        { label: 'Thiết bị đo lường', href: '/solutions/categories/esd-supplies' }
+        { label: 'Thiết bị đo lường', href: '/solutions/products/categories/esd-supplies' }
       ]
     },
     {
@@ -35,17 +35,17 @@ export async function ProductCategories() {
       title: 'Giải pháp - Sản phẩm Bao bì',
       description:
         'Sản phẩm sản xuất theo yêu cầu và đơn đặt hàng của khách hàng — phục vụ các nhà sản xuất trong ngành Điện tử, Thực phẩm, Dược phẩm và Y tế.',
-      href: '/solutions/categories/industrial-packaging',
+      href: '/solutions/products/categories/industrial-packaging',
       image: ASSETS.home.catePackaging,
       accentBorder: 'border-l-amber-600',
       diamondColor: 'text-amber-600',
       items: [
-        { label: 'Màng co PE/Shrink film', href: '/solutions/categories/industrial-packaging' },
-        { label: 'Màng bọc thực phẩm', href: '/solutions/categories/industrial-packaging' },
-        { label: 'Màng quấn PE Pallet', href: '/solutions/categories/industrial-packaging' },
-        { label: 'Màng/Túi nhôm', href: '/solutions/categories/industrial-packaging' },
-        { label: 'Túi PE/PP/Shield Bag', href: '/solutions/categories/industrial-packaging' },
-        { label: 'Băng Keo', href: '/solutions/categories/industrial-packaging' }
+        { label: 'Màng co PE/Shrink film', href: '/solutions/products/categories/industrial-packaging' },
+        { label: 'Màng bọc thực phẩm', href: '/solutions/products/categories/industrial-packaging' },
+        { label: 'Màng quấn PE Pallet', href: '/solutions/products/categories/industrial-packaging' },
+        { label: 'Màng/Túi nhôm', href: '/solutions/products/categories/industrial-packaging' },
+        { label: 'Túi PE/PP/Shield Bag', href: '/solutions/products/categories/industrial-packaging' },
+        { label: 'Băng Keo', href: '/solutions/products/categories/industrial-packaging' }
       ]
     }
   ];
@@ -56,7 +56,7 @@ export async function ProductCategories() {
       title: 'Chống cắt - Chống cắt chuyên dụng',
       description:
         'Được thiết kế chuyên dụng để bảo vệ đôi tay khỏi các vật liệu sắc cạnh trong môi trường công nghiệp như: tấm kim loại, kính nhôm, linh kiện cơ khí và các công việc bảo trì. Phù hợp cho thao tác trong sản xuất kho vận, lắp đặt và bảo trì công nghiệp',
-      href: '/solutions/categories/cleanroom-gloves',
+      href: '/solutions/products/categories/cleanroom-gloves',
       image: ASSETS.home.cateCutProtection,
       accentBorder: 'border-l-brand',
       diamondColor: 'text-brand'
@@ -66,7 +66,7 @@ export async function ProductCategories() {
       title: 'Băng Keo Nhôm - Ứng dụng trong HVAC',
       description:
         'Băng keo nhôm - Vật tư chuyên dụng dùng để dán kín mối nối, bề mặt bảo ôn và hệ thống gió HVAC. Với cấu trúc bề mặt nhôm, keo acrylic chất lượng cao, sản phẩm giúp tăng hiệu quả làm kín, chống thoát nhiệt và hỗ trợ giải pháp tổng thể tùy chỉnh theo yêu cầu kỹ thuật.',
-      href: '/solutions/categories/esd-supplies',
+      href: '/solutions/products/categories/esd-supplies',
       image: ASSETS.home.cateHvacTape,
       accentBorder: 'border-l-brand',
       diamondColor: 'text-brand'
@@ -76,7 +76,7 @@ export async function ProductCategories() {
       title: 'Bao bì - sản xuất theo yêu cầu',
       description:
         'ULink Industries chuyên sản xuất các sản phẩm bao bì chất lượng cao bao gồm: màng co PE bảo vệ hàng hóa, màng quấn pallet giúp cố định và bảo vệ hàng trong vận chuyển, túi PE theo yêu cầu phù hợp với mọi nhu cầu đóng gói của khách hàng.',
-      href: '/solutions/categories/industrial-packaging',
+      href: '/solutions/products/categories/industrial-packaging',
       image: ASSETS.home.cateCustomPackaging,
       accentBorder: 'border-l-amber-600',
       diamondColor: 'text-amber-600'

@@ -8,6 +8,6 @@ interface PageProps {
 
 export default async function ProductsRedirectPage({ params }: PageProps) {
   const { locale } = await params;
-  redirect({ href: '/products/list', locale });
+  redirect({ href: '/solutions/products/list', locale });
   return null;
 }

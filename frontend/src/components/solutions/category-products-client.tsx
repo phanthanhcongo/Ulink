@@ -14,7 +14,16 @@ import {
   Boxes,
   Plus,
   Check,
-  CheckCircle2
+  CheckCircle2,
+  Grid,
+  List,
+  Phone,
+  Award,
+  MapPin,
+  Truck,
+  Factory,
+  Briefcase,
+  Activity
 } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { ASSETS } from '@/lib/assets';
@@ -45,6 +54,12 @@ export interface ProductItem {
   specs?: string[];
   unit?: string;
   packSize?: string;
+  standards?: Array<{
+    id: number;
+    name: string;
+    slug: string;
+    translations?: any[];
+  }>;
 }
 
 interface CategoryProductsClientProps {
@@ -54,6 +69,17 @@ interface CategoryProductsClientProps {
   locale: string;
 }
 
+const CATEGORY_IMAGE_MAP: Record<string, string> = {
+  'cleanroom-consumables': '/images/about/gallery/cleanroom-materials-warehouse.png',
+  'cleanroom-gloves': ASSETS.home.productCutGloves,
+  'cleanroom-wipers': ASSETS.home.solutionPackaging,
+  'cleanroom-apparel': ASSETS.about.heroWarehouse,
+  'cleanroom-masks': ASSETS.about.qualityLab,
+  'industrial-packaging': ASSETS.home.productCustomPkg,
+  'esd-supplies': ASSETS.home.productHvacTape,
+  'cleanroom-chemicals': ASSETS.home.solutionCleanroom
+};
+
 export function CategoryProductsClient({
   category,
   products: initialProducts,
@@ -61,19 +87,22 @@ export function CategoryProductsClient({
   locale
 }: CategoryProductsClientProps) {
   const [selectedCategory, setSelectedCategory] = useState<string>(category.slug || 'all');
+  const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
+  const [selectedStandards, setSelectedStandards] = useState<string[]>([]);
   const [sortBy, setSortBy] = useState<string>('popular');
   const [mobileFilterOpen, setMobileFilterOpen] = useState<boolean>(false);
+  const [viewType, setViewType] = useState<'grid' | 'list'>('grid');
   const [addedToast, setAddedToast] = useState<string | null>(null);
   const [addedProductIds, setAddedProductIds] = useState<Set<number>>(new Set());
 
   // Pagination states
-  const ITEMS_PER_PAGE = 9;
+  const ITEMS_PER_PAGE = 12;
   const [currentPage, setCurrentPage] = useState<number>(1);
 
-  // Reset page when category or sorting changes
+  // Reset page when category, sorting, or filters change
   useEffect(() => {
     setCurrentPage(1);
-  }, [selectedCategory, sortBy]);
+  }, [selectedCategory, sortBy, selectedBrands, selectedStandards]);
 
   // Compute category counts
   const categoryCounts = useMemo(() => {
@@ -86,24 +115,67 @@ export function CategoryProductsClient({
     return counts;
   }, [initialProducts]);
 
-  // Filter products by Category & Subcategories
+  // Dynamic brand list with count of products
+  const brandCounts = useMemo(() => {
+    const counts: Record<string, number> = {};
+    initialProducts.forEach((p) => {
+      if (p.brand) {
+        counts[p.brand] = (counts[p.brand] || 0) + 1;
+      }
+    });
+    return counts;
+  }, [initialProducts]);
+
+  // Dynamic ISO standard list with count of products
+  const standardCounts = useMemo(() => {
+    const counts: Record<string, { name: string; count: number }> = {};
+    initialProducts.forEach((p) => {
+      p.standards?.forEach((std) => {
+        if (std.slug) {
+          const prev = counts[std.slug];
+          counts[std.slug] = {
+            name: std.name || std.slug,
+            count: (prev?.count || 0) + 1
+          };
+        }
+      });
+    });
+    return counts;
+  }, [initialProducts]);
+
+  // Filter products by Category, Subcategories, Brands, and ISO Standards
   const filteredProducts = useMemo(() => {
     const subSlugs = category.subCategories?.map((s) => s.slug) || [];
     let result = initialProducts.filter((product) => {
-      if (selectedCategory === 'all') return true;
-      if (product.categorySlug === selectedCategory) return true;
-      if (
-        selectedCategory === category.slug &&
-        (subSlugs.includes(product.categorySlug) || !product.categorySlug)
-      ) {
-        return true;
+      // 1. Category Filter
+      if (selectedCategory !== 'all') {
+        const isDirectMatch = product.categorySlug === selectedCategory;
+        const isParentMatch = selectedCategory === category.slug &&
+          (subSlugs.includes(product.categorySlug) || !product.categorySlug);
+        
+        if (!isDirectMatch && !isParentMatch) {
+          return false;
+        }
       }
-      return false;
-    });
 
-    if (result.length === 0 && initialProducts.length > 0) {
-      result = [...initialProducts];
-    }
+      // 2. Brand Filter
+      if (selectedBrands.length > 0) {
+        if (!selectedBrands.includes(product.brand)) {
+          return false;
+        }
+      }
+
+      // 3. Standards Filter
+      if (selectedStandards.length > 0) {
+        const productStdSlugs = product.standards?.map((s) => s.slug).filter(Boolean) || [];
+        const hasMatchingStandard = selectedStandards.some((stdSlug) => productStdSlugs.includes(stdSlug));
+        if (!hasMatchingStandard) {
+          return false;
+        }
+      }
+
+      return true;
+    });
 
     // Sorting logic
     if (sortBy === 'name_asc') {
@@ -115,7 +187,7 @@ export function CategoryProductsClient({
     }
 
     return result;
-  }, [initialProducts, selectedCategory, category, sortBy]);
+  }, [initialProducts, selectedCategory, category, sortBy, selectedBrands, selectedStandards]);
 
   // Compute total pages & displayed products
   const totalPages = Math.ceil(filteredProducts.length / ITEMS_PER_PAGE);
@@ -164,36 +236,119 @@ export function CategoryProductsClient({
     }, 4000);
   };
 
-  return (
-    <div className="min-h-screen bg-slate-50/70  relative">
-      {/* ── CATEGORY HERO BANNER ── */}
-      <header className="w-full bg-gradient-to-r from-primary via-brand to-brand-strong shadow-md">
-        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 py-8 sm:py-10 lg:py-12 text-white relative overflow-hidden">
-          {/* Background Decorative Accent */}
-          <div className="absolute right-0 top-0 -mt-10 -mr-10 h-72 w-72 rounded-full bg-blue-400/10 blur-3xl pointer-events-none" />
+  const handleToggleBrand = (brand: string) => {
+    setSelectedBrands((prev) =>
+      prev.includes(brand) ? prev.filter((b) => b !== brand) : [...prev, brand]
+    );
+  };
 
-          <div className="relative z-10 max-w-3xl">
-            <div className="flex flex-wrap items-center gap-3 mb-3">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 text-blue-100 text-xs font-extrabold uppercase tracking-wider backdrop-blur-md border border-white/20">
-                <ShieldCheck className="h-3.5 w-3.5 text-blue-300" />
-                Vật tư Công nghiệp & Phòng sạch ISO / ESD
-              </span>
-              <span className="text-xs text-blue-200 font-semibold bg-blue-900/40 px-2.5 py-0.5 rounded-full border border-blue-400/20">
-                {filteredProducts.length} Sản phẩm
-              </span>
+  const handleToggleStandard = (standardSlug: string) => {
+    setSelectedStandards((prev) =>
+      prev.includes(standardSlug)
+        ? prev.filter((s) => s !== standardSlug)
+        : [...prev, standardSlug]
+    );
+  };
+
+  const handleResetFilters = () => {
+    setSelectedCategory('all');
+    setSelectedBrands([]);
+    setSelectedStandards([]);
+  };
+
+  return (
+    <div className="min-h-screen bg-slate-50/70 relative">
+      {/* ── CATEGORY HERO BANNER (Including Breadcrumb) ── */}
+      <header className="w-full bg-[#F4F6F9] border-b border-slate-200/50">
+        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 pb-10 pt-6 text-slate-800 relative overflow-hidden">
+          {/* Breadcrumb inside the Hero Banner container */}
+          <div className="mb-2">
+            <Breadcrumb
+              className="px-0 sm:px-0 lg:px-0 xl:px-0 mx-0 max-w-none"
+              items={[
+                {
+                  label: locale === 'vi' ? 'Trang chủ' : 'Home',
+                  href: '/'
+                },
+                {
+                  label: locale === 'vi' ? 'Sản phẩm' : 'Products',
+                  href: '/solutions/products'
+                },
+                {
+                  label: category.parentName || (locale === 'vi' ? 'Giải pháp phòng sạch' : 'Cleanroom Solutions'),
+                  href: '#'
+                },
+                {
+                  label: category.name || ''
+                }
+              ]}
+            />
+          </div>
+          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            {/* Left side text */}
+            <div className="lg:col-span-7 space-y-4">
+              <h1 className="text-3xl sm:text-4xl lg:text-[38px] xl:text-[42px] font-extrabold text-slate-900 tracking-tight leading-tight">
+                {currentCategoryName}
+              </h1>
+
+              <p className="text-sm sm:text-base text-slate-500 leading-relaxed font-medium max-w-2xl">
+                {category.description ||
+                  `Tổng hợp các loại ${currentCategoryName.toLowerCase()} đạt tiêu chuẩn kiểm định phòng sạch ISO 14644-1, điện trở tĩnh điện ANSI/ESD S20.20 và chứng nhận CO/CQ chính hãng.`}
+              </p>
             </div>
 
-            <h1 className="text-2xl sm:text-3xl lg:text-[32px] xl:text-[36px] font-extrabold text-white tracking-tight leading-snug">
-              {currentCategoryName}
-            </h1>
-
-            <p className="mt-3 text-xs sm:text-sm text-blue-100/90 leading-relaxed font-medium">
-              {category.description ||
-                `Tổng hợp các loại ${currentCategoryName.toLowerCase()} đạt tiêu chuẩn kiểm định phòng sạch ISO 14644-1, điện trở tĩnh điện ANSI/ESD S20.20 và chứng nhận CO/CQ chính hãng.`}
-            </p>
+            {/* Right side image */}
+            <div className="lg:col-span-5 hidden lg:block">
+              <div className="relative aspect-[16/9] w-full rounded-[3px] overflow-hidden border border-slate-200 shadow-sm">
+                <Image
+                  src={CATEGORY_IMAGE_MAP[category.slug] || ASSETS.home.solutionCleanroom}
+                  alt={currentCategoryName}
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  className="object-cover"
+                  priority
+                />
+              </div>
+            </div>
           </div>
         </div>
       </header>
+
+      {/* ── QUICK TABS ── */}
+      <div className="w-full bg-white border-b border-slate-200">
+        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 py-4">
+          <div className="flex flex-wrap items-center gap-2.5 overflow-x-auto no-scrollbar scroll-smooth">
+            <button
+              onClick={() => setSelectedCategory('all')}
+              className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${
+                selectedCategory === 'all'
+                  ? 'bg-blue-600 text-white shadow-md shadow-blue-200'
+                  : 'bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-200/65'
+              }`}
+            >
+              {selectedCategory === 'all' && <Check className="h-3.5 w-3.5" />}
+              {locale === 'vi' ? 'Tất cả' : 'All'}
+            </button>
+            {category.subCategories?.map((sub) => {
+              const isActive = selectedCategory === sub.slug;
+              return (
+                <button
+                  key={sub.id}
+                  onClick={() => setSelectedCategory(sub.slug)}
+                  className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${
+                    isActive
+                      ? 'bg-blue-600 text-white shadow-md shadow-blue-200'
+                      : 'bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-200/65'
+                  }`}
+                >
+                  {isActive && <Check className="h-3.5 w-3.5" />}
+                  {sub.name}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </div>
 
       {/* ── MAIN CONTENT CONTAINER WITH LEFT SIDEBAR FILTER ── */}
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 mt-8">
@@ -201,69 +356,135 @@ export function CategoryProductsClient({
           {/* ════════════════════════════════════════════════════════════
               LEFT SIDEBAR FILTER COLUMN (Only Product Categories)
              ════════════════════════════════════════════════════════════ */}
-          <aside className="hidden lg:block lg:col-span-1 sticky top-24">
-            <div className="rounded-[3px] bg-white p-5 border border-slate-200/90 shadow-sm space-y-4">
-              {/* Sidebar Header */}
+          <aside className="hidden lg:block lg:col-span-1 sticky top-24 space-y-4">
+            {/* Header: Bộ lọc tìm kiếm & Xoá bộ lọc */}
+            <div className="rounded-[3px] bg-white p-5 border border-slate-200/90 shadow-sm space-y-5">
               <div className="flex items-center justify-between border-b border-slate-100 pb-3">
                 <div className="flex items-center gap-2">
-                  <Boxes className="h-4 w-4 text-blue-600 stroke-[2.5]" />
+                  <SlidersHorizontal className="h-4 w-4 text-blue-600 stroke-[2.5]" />
                   <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider">
-                    Danh mục sản phẩm
+                    {locale === 'vi' ? 'Bộ lọc tìm kiếm' : 'Search Filters'}
                   </h3>
+                </div>
+                {(selectedCategory !== 'all' || selectedBrands.length > 0 || selectedStandards.length > 0) && (
+                  <button
+                    onClick={handleResetFilters}
+                    className="text-xs font-bold text-blue-600 hover:text-blue-700 hover:underline cursor-pointer flex items-center gap-1"
+                  >
+                    <RotateCcw className="h-3 w-3" />
+                    {locale === 'vi' ? 'Xoá bộ lọc' : 'Clear filters'}
+                  </button>
+                )}
+              </div>
+
+              {/* Group 1: DANH MỤC SẢN PHẨM */}
+              <div className="space-y-3">
+                <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider">
+                  {locale === 'vi' ? 'Danh mục sản phẩm' : 'Categories'}
+                </h4>
+                <div className="space-y-1 text-xs max-h-48 overflow-y-auto pr-1">
+                  {/* All Categories Option */}
+                  <button
+                    onClick={() => setSelectedCategory('all')}
+                    className={`w-full flex items-center justify-between px-2.5 py-2 rounded-[3px] text-left transition-all cursor-pointer ${
+                      selectedCategory === 'all'
+                        ? 'bg-blue-50 text-blue-700 font-extrabold border-l-2 border-blue-600'
+                        : 'text-slate-600 hover:bg-slate-50 font-semibold'
+                    }`}
+                  >
+                    <span>{locale === 'vi' ? 'Tất cả danh mục' : 'All Categories'}</span>
+                    <span className="text-[10px] px-1.5 py-0.5 rounded-full font-bold bg-slate-100 text-slate-500">
+                      {categoryCounts['all'] || 0}
+                    </span>
+                  </button>
+
+                  {/* Individual Categories */}
+                  {allCategories.map((cat) => {
+                    const isSelected = selectedCategory === cat.slug;
+                    const count = categoryCounts[cat.slug] || 0;
+                    return (
+                      <button
+                        key={cat.id}
+                        onClick={() => setSelectedCategory(cat.slug)}
+                        className={`w-full flex items-center justify-between px-2.5 py-2 rounded-[3px] text-left transition-all cursor-pointer ${
+                          isSelected
+                            ? 'bg-blue-50 text-blue-700 font-extrabold border-l-2 border-blue-600'
+                            : 'text-slate-600 hover:bg-slate-50 font-semibold'
+                        }`}
+                      >
+                        <span className="truncate pr-2">{cat.name}</span>
+                        {count > 0 && (
+                          <span className="text-[10px] px-1.5 py-0.5 rounded-full font-bold bg-slate-100 text-slate-500 shrink-0">
+                            {count}
+                          </span>
+                        )}
+                      </button>
+                    );
+                  })}
                 </div>
               </div>
 
-              {/* PRODUCT CATEGORIES LIST */}
-              <div className="space-y-1 text-xs">
-                {/* All Categories Option */}
-                <button
-                  onClick={() => setSelectedCategory('all')}
-                  className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-[3px] text-left font-semibold transition-all cursor-pointer ${
-                    selectedCategory === 'all'
-                      ? 'bg-blue-600 text-white font-extrabold shadow-sm'
-                      : 'text-slate-700 hover:bg-slate-100 font-semibold'
-                  }`}
-                >
-                  <span>Tất cả danh mục</span>
-                  <span
-                    className={`text-[10px] px-2 py-0.5 rounded-full font-bold ${
-                      selectedCategory === 'all'
-                        ? 'bg-white/20 text-white'
-                        : 'bg-slate-100 text-slate-500'
-                    }`}
-                  >
-                    {categoryCounts['all'] || 0}
-                  </span>
-                </button>
-
-                {/* Individual Categories */}
-                {allCategories.map((cat) => {
-                  const isSelected = selectedCategory === cat.slug;
-                  const count = categoryCounts[cat.slug] || 0;
-                  return (
-                    <button
-                      key={cat.id}
-                      onClick={() => setSelectedCategory(cat.slug)}
-                      className={`w-full flex items-center justify-between px-3.5 py-2.5 rounded-[3px] text-left transition-all cursor-pointer ${
-                        isSelected
-                          ? 'bg-blue-600 text-white font-extrabold shadow-sm'
-                          : 'text-slate-700 hover:bg-slate-100 font-semibold'
-                      }`}
-                    >
-                      <span className="truncate pr-2">{cat.name}</span>
-                      {count > 0 && (
-                        <span
-                          className={`text-[10px] px-2 py-0.5 rounded-full font-bold shrink-0 ${
-                            isSelected ? 'bg-white/20 text-white' : 'bg-slate-100 text-slate-500'
-                          }`}
+              {/* Group 2: TIÊU CHUẨN SẠCH (ISO) */}
+              {Object.keys(standardCounts).length > 0 && (
+                <div className="space-y-3 border-t border-slate-100 pt-4">
+                  <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider">
+                    {locale === 'vi' ? 'Tiêu chuẩn sạch (ISO)' : 'Quality Standards (ISO)'}
+                  </h4>
+                  <div className="space-y-2 text-xs">
+                    {Object.entries(standardCounts).map(([slug, info]) => {
+                      const isChecked = selectedStandards.includes(slug);
+                      return (
+                        <label
+                          key={slug}
+                          className="flex items-center justify-between group cursor-pointer text-slate-600 hover:text-slate-900"
                         >
-                          {count}
-                        </span>
-                      )}
-                    </button>
-                  );
-                })}
-              </div>
+                          <div className="flex items-center gap-2">
+                            <input
+                              type="checkbox"
+                              checked={isChecked}
+                              onChange={() => handleToggleStandard(slug)}
+                              className="rounded border-slate-300 text-blue-600 focus:ring-blue-500 h-3.5 w-3.5 cursor-pointer"
+                            />
+                            <span className="font-semibold text-slate-700">{info.name}</span>
+                          </div>
+                          <span className="text-[10px] text-slate-400 font-bold">({info.count})</span>
+                        </label>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
+
+              {/* Group 3: THƯƠNG HIỆU */}
+              {Object.keys(brandCounts).length > 0 && (
+                <div className="space-y-3 border-t border-slate-100 pt-4">
+                  <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider">
+                    {locale === 'vi' ? 'Thương hiệu' : 'Brands'}
+                  </h4>
+                  <div className="space-y-2 text-xs">
+                    {Object.entries(brandCounts).map(([brandName, count]) => {
+                      const isChecked = selectedBrands.includes(brandName);
+                      return (
+                        <label
+                          key={brandName}
+                          className="flex items-center justify-between group cursor-pointer text-slate-600 hover:text-slate-900"
+                        >
+                          <div className="flex items-center gap-2">
+                            <input
+                              type="checkbox"
+                              checked={isChecked}
+                              onChange={() => handleToggleBrand(brandName)}
+                              className="rounded border-slate-300 text-blue-600 focus:ring-blue-500 h-3.5 w-3.5 cursor-pointer"
+                            />
+                            <span className="font-semibold text-slate-700">{brandName}</span>
+                          </div>
+                          <span className="text-[10px] text-slate-400 font-bold">({count})</span>
+                        </label>
+                      );
+                    })}
+                  </div>
+                </div>
+              )}
             </div>
           </aside>
 
@@ -292,19 +513,44 @@ export function CategoryProductsClient({
                 </p>
               </div>
 
-              {/* Right: Sort Order Selector */}
-              <div className="flex items-center gap-2 shrink-0">
-                <span className="text-xs text-slate-400 font-bold hidden sm:inline">Sắp xếp:</span>
-                <select
-                  value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value)}
-                  className="px-3 py-2 rounded-[3px] border border-slate-200 text-xs font-bold text-slate-700 bg-white focus:outline-none focus:ring-1 focus:ring-blue-600 shadow-xs cursor-pointer"
-                >
-                  <option value="popular">Nổi bật nhất</option>
-                  <option value="newest">Sản phẩm mới nhất</option>
-                  <option value="name_asc">Tên A → Z</option>
-                  <option value="name_desc">Tên Z → A</option>
-                </select>
+              {/* Right: Sort Order Selector & View Switcher */}
+              <div className="flex items-center gap-4 shrink-0">
+                <div className="flex items-center gap-2">
+                  <span className="text-xs text-slate-400 font-bold hidden sm:inline">{locale === 'vi' ? 'Sắp xếp:' : 'Sort:'}</span>
+                  <select
+                    value={sortBy}
+                    onChange={(e) => setSortBy(e.target.value)}
+                    className="px-3 py-2 rounded-[3px] border border-slate-200 text-xs font-bold text-slate-700 bg-white focus:outline-none focus:ring-1 focus:ring-blue-600 shadow-xs cursor-pointer"
+                  >
+                    <option value="popular">{locale === 'vi' ? 'Nổi bật nhất' : 'Most Popular'}</option>
+                    <option value="newest">{locale === 'vi' ? 'Sản phẩm mới nhất' : 'Newest'}</option>
+                    <option value="name_asc">{locale === 'vi' ? 'Tên A → Z' : 'Name A → Z'}</option>
+                    <option value="name_desc">{locale === 'vi' ? 'Tên Z → A' : 'Name Z → A'}</option>
+                  </select>
+                </div>
+
+                <div className="hidden sm:flex items-center border border-slate-200 rounded-[3px] overflow-hidden p-0.5 bg-slate-50 gap-0.5">
+                  <button
+                    onClick={() => setViewType('grid')}
+                    className={`p-1.5 rounded-[2px] transition-colors cursor-pointer ${
+                      viewType === 'grid'
+                        ? 'bg-white text-blue-600 shadow-xs'
+                        : 'text-slate-400 hover:text-slate-600'
+                    }`}
+                  >
+                    <Grid className="h-4 w-4" />
+                  </button>
+                  <button
+                    onClick={() => setViewType('list')}
+                    className={`p-1.5 rounded-[2px] transition-colors cursor-pointer ${
+                      viewType === 'list'
+                        ? 'bg-white text-blue-600 shadow-xs'
+                        : 'text-slate-400 hover:text-slate-600'
+                    }`}
+                  >
+                    <List className="h-4 w-4" />
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -328,7 +574,7 @@ export function CategoryProductsClient({
               </div>
             ) : (
               <div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div className={viewType === 'grid' ? "grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6" : "flex flex-col gap-4"}>
                   {displayedProducts.map((product) => {
                     const mappedProduct = {
                       id: product.id,
@@ -351,8 +597,70 @@ export function CategoryProductsClient({
                         }
                       ]
                     } as any;
-                    return (
+                    
+                    return viewType === 'grid' ? (
                       <ProductCard key={product.id} product={mappedProduct} locale={locale} roundedClass="rounded-[3px]" />
+                    ) : (
+                      <div key={product.id} className="bg-white border border-slate-200/80 rounded-[3px] p-4 flex flex-col md:flex-row gap-5 hover:shadow-md transition-shadow">
+                        {/* Product Image */}
+                        <div className="relative w-full md:w-44 h-32 shrink-0 rounded-[3px] overflow-hidden bg-slate-50 border border-slate-100">
+                          <Link href={`/solutions/products/${product.slug}`} className="block w-full h-full">
+                            <Image
+                              src={product.image || ASSETS.home.solutionCleanroom}
+                              alt={product.name}
+                              fill
+                              sizes="(max-width: 768px) 100vw, 176px"
+                              className="object-cover hover:scale-105 transition-transform duration-300"
+                            />
+                          </Link>
+                        </div>
+                        
+                        {/* Product Details */}
+                        <div className="flex-1 flex flex-col justify-between">
+                          <div>
+                            <div className="flex items-center gap-2 mb-1">
+                              <span className="text-[9px] font-extrabold uppercase bg-blue-50 text-blue-600 px-2 py-0.5 rounded-[2px] border border-blue-100">
+                                {product.brand}
+                              </span>
+                              <span className="text-[10px] font-bold text-slate-400">
+                                {product.categoryName}
+                              </span>
+                            </div>
+                            <Link href={`/solutions/products/${product.slug}`} className="block">
+                              <h4 className="text-base font-extrabold text-slate-900 hover:text-blue-600 transition-colors line-clamp-1">
+                                {product.name}
+                              </h4>
+                            </Link>
+                            <p className="text-xs text-slate-500 font-medium line-clamp-2 mt-1.5 leading-relaxed">
+                              {product.shortDescription || 'Mô tả chi tiết sản phẩm phòng sạch chất lượng cao từ ULink Industries.'}
+                            </p>
+                          </div>
+                          
+                          {/* Price, MOQ, and Location footer */}
+                          <div className="flex flex-wrap items-center justify-between gap-4 mt-3 pt-2.5 border-t border-slate-50">
+                            <div className="flex items-center gap-3.5 text-xs font-semibold text-slate-500">
+                              <div>
+                                <span className="text-slate-400 font-medium">{locale === 'vi' ? 'Kho hàng:' : 'Warehouse:'}</span>{' '}
+                                <span className="text-slate-700 font-bold">Hà Nam, Việt Nam</span>
+                              </div>
+                              <span className="text-slate-200">|</span>
+                              <div>
+                                <span className="text-slate-400 font-medium">MOQ:</span>{' '}
+                                <span className="text-slate-700 font-bold">100 {product.unit || 'cái'}</span>
+                              </div>
+                            </div>
+                            
+                            <div className="flex items-center gap-2">
+                              <button
+                                onClick={(e) => handleAddToCart(e, product)}
+                                className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-[3px] transition-colors shadow-xs cursor-pointer"
+                              >
+                                {locale === 'vi' ? 'Đặt hàng' : 'Add to RFQ'}
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                     );
                   })}
                 </div>
@@ -403,6 +711,123 @@ export function CategoryProductsClient({
           </main>
         </div>
       </div>
+
+      {/* ── CALL TO ACTION BANNER ── */}
+      <section className="w-full bg-[#0F62FE] text-white py-14 mt-16 shadow-inner">
+        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 text-center space-y-4">
+          <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
+            {locale === 'vi' ? 'Bạn cần tư vấn giải pháp công nghiệp?' : 'Do You Need Industrial Solutions Consulting?'}
+          </h2>
+          <p className="text-sm sm:text-base text-blue-100/90 font-semibold max-w-2xl mx-auto">
+            {locale === 'vi' 
+              ? 'Đội ngũ chuyên gia của chúng tôi sẵn sàng hỗ trợ bạn 24/7' 
+              : 'Our team of experts is ready to support you 24/7'}
+          </p>
+          <div className="pt-2">
+            <span className="text-xs text-blue-200 uppercase tracking-widest block mb-1 font-bold">
+              {locale === 'vi' ? 'Hoặc gọi ngay:' : 'Or call us now:'}
+            </span>
+            <a 
+              href="tel:02473689999" 
+              className="text-2xl sm:text-3xl font-extrabold hover:text-blue-100 transition-colors inline-flex items-center gap-2"
+            >
+              <Phone className="h-6 w-6 sm:h-7 sm:w-7" />
+              (0247) 368 9999
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* ── CORE CAPABILITIES SECTION ── */}
+      <section className="w-full bg-white py-16">
+        <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 lg:px-8 space-y-12">
+          {/* Header */}
+          <div className="text-center space-y-3">
+            <span className="text-xs sm:text-sm font-bold text-[#0F62FE] uppercase tracking-widest block">
+              {locale === 'vi' ? 'NĂNG LỰC CỐT LÕI' : 'CORE CAPABILITIES'}
+            </span>
+            <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#111827] max-w-3xl mx-auto leading-snug tracking-tight">
+              {locale === 'vi' 
+                ? 'Tích hợp công nghệ tự động hóa và giải pháp kết nối công nghiệp' 
+                : 'Integrating Automation Technology & Industrial Connection Solutions'}
+            </h2>
+          </div>
+
+          {/* Grid of 4 columns - Clean & Borderless */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 lg:gap-12">
+            {/* Col 1 */}
+            <div className="flex flex-col items-center text-center space-y-3">
+              <div className="text-[#0F62FE] mb-1.5 shrink-0 flex items-center justify-center">
+                <Factory className="h-10 w-10 stroke-[1.5]" />
+              </div>
+              <h3 className="text-[15px] font-extrabold text-[#111827]">
+                {locale === 'vi' ? 'Vật tư Phòng sạch' : 'Cleanroom Consumables'}
+              </h3>
+              <p className="text-xs text-slate-500 font-medium leading-relaxed max-w-xs">
+                {locale === 'vi' 
+                  ? 'Cung cấp đầy đủ vật tư phòng sạch đạt chuẩn ISO, từ găng tay, khẩu trang đến giấy lau chuyên dụng cho mọi cấp độ sạch.' 
+                  : 'Providing full ISO-compliant cleanroom consumables, from gloves and masks to specialized wipers for all cleanliness levels.'}
+              </p>
+            </div>
+
+            {/* Col 2 */}
+            <div className="flex flex-col items-center text-center space-y-3">
+              <div className="text-[#0F62FE] mb-1.5 shrink-0 flex items-center justify-center">
+                <Briefcase className="h-10 w-10 stroke-[1.5]" />
+              </div>
+              <h3 className="text-[15px] font-extrabold text-[#111827]">
+                {locale === 'vi' ? 'Giải pháp Kiểm soát' : 'Contamination Control'}
+              </h3>
+              <p className="text-xs text-slate-500 font-medium leading-relaxed max-w-xs">
+                {locale === 'vi' 
+                  ? 'Thiết kế và triển khai giải pháp kiểm soát ô nhiễm toàn diện, đảm bảo môi trường sản xuất đạt tiêu chuẩn nghiêm ngặt.' 
+                  : 'Designing and deploying comprehensive contamination control solutions, ensuring production environments meet strict standards.'}
+              </p>
+            </div>
+
+            {/* Col 3 */}
+            <div className="flex flex-col items-center text-center space-y-3">
+              <div className="text-[#0F62FE] mb-1.5 shrink-0 flex items-center justify-center">
+                <Activity className="h-10 w-10 stroke-[1.5]" />
+              </div>
+              <h3 className="text-[15px] font-extrabold text-[#111827]">
+                {locale === 'vi' ? 'Thiết bị Chuyên dụng' : 'Specialized Equipment'}
+              </h3>
+              <p className="text-xs text-slate-500 font-medium leading-relaxed max-w-xs">
+                {locale === 'vi' 
+                  ? 'Phân phối thiết bị phòng sạch chính hãng: buồng thổi khí, tủ an toàn sinh học, hệ thống lọc HEPA hiệu suất cao.' 
+                  : 'Distributing authentic cleanroom equipment: air showers, biosafety cabinets, and high-efficiency HEPA filter systems.'}
+              </p>
+            </div>
+
+            {/* Col 4 */}
+            <div className="flex flex-col items-center text-center space-y-3">
+              <div className="text-[#0F62FE] mb-1.5 shrink-0 flex items-center justify-center">
+                <Truck className="h-10 w-10 stroke-[1.5]" />
+              </div>
+              <h3 className="text-[15px] font-extrabold text-[#111827]">
+                {locale === 'vi' ? 'Đồng hành Doanh nghiệp' : 'Enterprise Partnership'}
+              </h3>
+              <p className="text-xs text-slate-500 font-medium leading-relaxed max-w-xs">
+                {locale === 'vi' 
+                  ? 'Tư vấn thiết kế phòng sạch, đào tạo quy trình vận hành và hỗ trợ kỹ thuật liên tục cho doanh nghiệp sản xuất.' 
+                  : 'Advising on cleanroom design, training on operation procedures, and providing continuous technical support for manufacturers.'}
+              </p>
+            </div>
+          </div>
+
+          {/* Action button - Centered & Premium Blue */}
+          <div className="text-center pt-4">
+            <Link 
+              href="/cart"
+              className="inline-flex items-center gap-2.5 px-6 py-3 bg-[#0F62FE] hover:bg-[#0050E6] text-white font-extrabold text-xs rounded-[3px] transition-all shadow-md shadow-blue-200/50 cursor-pointer group uppercase tracking-wider"
+            >
+              {locale === 'vi' ? 'Đặt hàng' : 'Order Now'}
+              <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* ════════════════════════════════════════════════════════════
           FLOATING TOAST NOTIFICATION ON ADD TO RFQ

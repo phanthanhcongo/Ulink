@@ -28,7 +28,7 @@ export async function SiteHeader() {
         { href: '/regional-hubs/cum-2', label: 'Cụm/KCN 2' },
       ]
     },
-    { href: '/products', label: t('products') },
+    { href: '/solutions', label: t('products') },
     { href: '/industries', label: t('industries') },
     { href: '/resources', label: t('resources') },
     { href: '/about', label: t('about') },
@@ -57,7 +57,7 @@ export async function SiteHeader() {
         <div className="flex items-center gap-1.5 sm:gap-2 md:gap-3">
           {/* Tìm kiếm */}
           <Link
-            href="/products"
+            href="/solutions/products"
             aria-label={t('search')}
             className="flex h-9 w-9 items-center justify-center rounded-[3px] text-foreground hover:bg-muted hover:text-brand transition-colors"
           >

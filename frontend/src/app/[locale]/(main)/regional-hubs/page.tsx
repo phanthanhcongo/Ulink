@@ -1,5 +1,10 @@
 import { redirect } from 'next/navigation';
 
-export default function RegionalHubsRedirect() {
-  redirect('/regional-hubs/cum-1');
+type Props = {
+  params: Promise<{ locale: string }>;
+};
+
+export default async function RegionalHubsRedirect({ params }: Props) {
+  const { locale } = await params;
+  redirect(`/${locale}/regional-hubs/cum-1`);
 }

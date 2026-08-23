@@ -189,7 +189,7 @@ export default function ProductCard({ product, locale, roundedClass }: ProductCa
     >
       {/* Product Image Area */}
       <Link
-        href={`/${locale}/products/${product.slug}`}
+        href={`/${locale}/solutions/products/${product.slug}`}
         aria-label={locale === 'vi' ? `Xem ${productName}` : `View ${productName}`}
         className="relative block h-[250px] m-2 overflow-hidden bg-[#eef2f6] rounded-[3px]"
       >
@@ -222,7 +222,7 @@ export default function ProductCard({ product, locale, roundedClass }: ProductCa
         {/* Title */}
         <h3 className="min-h-[44px] mb-[13px] text-[15px] font-bold leading-[1.45] text-[#202630]">
           <Link
-            href={`/${locale}/products/${product.slug}`}
+            href={`/${locale}/solutions/products/${product.slug}`}
             className="hover:text-[#1769e2] transition-colors line-clamp-2"
           >
             {productName}

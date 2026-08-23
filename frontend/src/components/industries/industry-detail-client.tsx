@@ -184,14 +184,14 @@ export default function IndustryDetailClient({
       return {
         name: pName,
         image: imageSrc,
-        href: `/solutions/categories/${catSlug}`,
+        href: `/solutions/products/categories/${catSlug}`,
         bullets: getCategoryBullets(pName, locale)
       };
     })
     : industryData.cleanroomCategories.map((cat) => ({
       name: cat.name,
       image: cat.image,
-      href: `/solutions/categories/${cat.slug || 'cleanroom-consumables'}`,
+      href: `/solutions/products/categories/${cat.slug || 'cleanroom-consumables'}`,
       bullets: getCategoryBullets(cat.name, locale)
     }));
 
@@ -209,14 +209,14 @@ export default function IndustryDetailClient({
       return {
         name: pName,
         image: imageSrc,
-        href: `/solutions/categories/${catSlug}`,
+        href: `/solutions/products/categories/${catSlug}`,
         bullets: getCategoryBullets(pName, locale)
       };
     })
     : industryData.packagingCategories.map((cat) => ({
       name: cat.name,
       image: cat.image,
-      href: `/solutions/categories/${cat.slug || 'industrial-packaging'}`,
+      href: `/solutions/products/categories/${cat.slug || 'industrial-packaging'}`,
       bullets: getCategoryBullets(cat.name, locale)
     }));
 
