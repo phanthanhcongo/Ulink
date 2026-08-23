@@ -78,7 +78,7 @@ export function IndustrySolutions() {
           <Link
             key={idx}
             href={card.href}
-            className={`group flex flex-col justify-between rounded-[3px] border border-border p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand/50 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:scale-[1.02] sm:p-6 lg:p-6 xl:p-7 ${
+            className={`group relative flex flex-col justify-between rounded-[3px] border border-border p-5 shadow-sm transition-all duration-300 hover:z-10 hover:-translate-y-1 hover:border-brand/50 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:scale-[1.02] sm:p-6 lg:p-6 xl:p-7 ${
               visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
             }`}
             style={{ transitionDelay: `${idx * 80}ms` }}
