@@ -146,7 +146,7 @@ export function CategoryProductsClient({
   // Filter products by Category, Subcategories, Brands, and ISO Standards
   const filteredProducts = useMemo(() => {
     const subSlugs = category.subCategories?.map((s) => s.slug) || [];
-    let result = initialProducts.filter((product) => {
+    const result = initialProducts.filter((product) => {
       // 1. Category Filter
       if (selectedCategory !== 'all') {
         const isDirectMatch = product.categorySlug === selectedCategory;

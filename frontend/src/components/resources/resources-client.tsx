@@ -146,11 +146,11 @@ export function ResourcesClient({
         />
         <div className="absolute inset-0 flex items-center">
           <div className="max-w-[1440px] mx-auto w-full px-4 sm:px-8 lg:px-12 xl:px-16 text-left text-white">
-            <div className="inline-block bg-[#5C514940]  p-6 sm:p-8 border border-white/10 max-w-2xl">
-              <h1 className="text-3xl sm:text-4xl lg:text-[38px] xl:text-[44px] font-bold tracking-tight drop-shadow-sm">
+            <div className="inline-block bg-slate-950/30 backdrop-blur-xs p-6 sm:p-8 border border-white/10 max-w-2xl rounded-[3px] shadow-2xl">
+              <h1 className="text-3xl sm:text-4xl lg:text-[38px] xl:text-[44px] font-extrabold tracking-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]">
                 {L.resources[locale]}
               </h1>
-              <p className="mt-4 text-base sm:text-lg text-white/90 leading-relaxed font-medium drop-shadow-sm">
+              <p className="mt-4 text-sm sm:text-base md:text-lg text-slate-100 leading-relaxed font-semibold drop-shadow-[0_1.5px_4px_rgba(0,0,0,0.4)]">
                 {L.bannerDesc[locale]}
               </p>
             </div>
