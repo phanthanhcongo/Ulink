@@ -189,7 +189,7 @@ export default function ProductCard({ product, locale, roundedClass }: ProductCa
     >
       {/* Product Image Area */}
       <Link
-        href={`/${locale}/solutions/products/${product.slug}`}
+        href={`/${locale}/solutions/listProduct/${product.slug}`}
         aria-label={locale === 'vi' ? `Xem ${productName}` : `View ${productName}`}
         className="relative block h-[250px] m-2 overflow-hidden bg-[#eef2f6] rounded-[3px]"
       >
@@ -224,7 +224,7 @@ export default function ProductCard({ product, locale, roundedClass }: ProductCa
         {/* Title */}
         <h3 className="min-h-[44px] mb-[13px] text-[15px] font-bold leading-[1.45] text-[#202630]">
           <Link
-            href={`/${locale}/solutions/products/${product.slug}`}
+            href={`/${locale}/solutions/listProduct/${product.slug}`}
             className="hover:text-[#1769e2] transition-colors line-clamp-2"
           >
             {productName}
@@ -238,9 +238,9 @@ export default function ProductCard({ product, locale, roundedClass }: ProductCa
         </p>
 
         {/* Meta Row: MOQ & specs status */}
-        <div className="flex items-center gap-2 flex-wrap mb-4 text-[#5d6979] text-[11px] font-medium">
-          <strong className="text-[#202630] text-[13px] font-bold">{moqInfo.moq}</strong>
-          <span className="pl-[9px] border-l border-[#d7e0ea]">{moqInfo.status}</span>
+        <div className="flex items-center gap-2 flex-nowrap whitespace-nowrap mb-4 text-[#5d6979] text-[11px] font-medium">
+          <strong className="text-[#202630] text-[11px] font-bold">{moqInfo.moq}</strong>
+          <span className="pl-[9px] border-l border-[#d7e0ea] text-[10px]">{moqInfo.status}</span>
         </div>
 
         {/* Location / Hub */}

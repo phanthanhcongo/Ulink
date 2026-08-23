@@ -44,7 +44,7 @@ export default function SavedProductsSection({ allProducts, currentSlug, locale 
           </h3>
         </div>
         <Link
-          href={`/${locale}/solutions/products`}
+          href={`/${locale}/solutions/listProduct`}
           className="text-xs font-bold text-blue-600 hover:underline flex items-center gap-1"
         >
           {locale === 'vi' ? 'Xem tất cả' : 'View All'} &rarr;

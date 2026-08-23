@@ -56,7 +56,7 @@ export default function FavoritesClient({ products, locale }: FavoritesClientPro
           },
           {
             label: isVi ? 'Sản phẩm' : locale === 'ja' ? '製品' : 'Products',
-            href: '/solutions/products'
+            href: '/solutions/listProduct'
           },
           {
             label: titleText
@@ -68,7 +68,7 @@ export default function FavoritesClient({ products, locale }: FavoritesClientPro
             : locale === 'ja'
               ? '製品ページに戻る'
               : 'Back to Products',
-          href: '/solutions/products'
+          href: '/solutions/listProduct'
         }}
       />
 
@@ -134,7 +134,7 @@ export default function FavoritesClient({ products, locale }: FavoritesClientPro
                   : 'Browse through our product catalog and click the Bookmark icon to save items you are interested in.'}
             </p>
             <Link
-              href="/solutions/products"
+              href="/solutions/listProduct"
               className="inline-flex items-center justify-center px-6 py-3 rounded-[3px] bg-blue-600 text-white font-extrabold text-sm shadow-md hover:bg-blue-700 hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer"
             >
               {isVi ? 'Khám phá sản phẩm ngay' : locale === 'ja' ? '製品を探索する' : 'Explore products now'}

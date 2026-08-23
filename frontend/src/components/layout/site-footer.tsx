@@ -277,7 +277,7 @@ export async function SiteFooter() {
             <ul className="space-y-2 text-[13px] sm:text-[14px]">
               <li>
                 <Link
-                  href="/solutions/products/categories/cleanroom-consumables"
+                  href="/solutions/listProduct/categories/cleanroom-consumables"
                   className="text-[#4d5969] transition-colors hover:text-[#1769e2]"
                 >
                   {t('prodCleanroom')}
@@ -285,7 +285,7 @@ export async function SiteFooter() {
               </li>
               <li>
                 <Link
-                  href="/solutions/products/categories/industrial-packaging"
+                  href="/solutions/listProduct/categories/industrial-packaging"
                   className="text-[#4d5969] transition-colors hover:text-[#1769e2]"
                 >
                   {t('prodPackaging')}
@@ -293,7 +293,7 @@ export async function SiteFooter() {
               </li>
               <li>
                 <Link
-                  href="/solutions/products/categories/esd-supplies"
+                  href="/solutions/listProduct/categories/esd-supplies"
                   className="text-[#4d5969] transition-colors hover:text-[#1769e2]"
                 >
                   {t('prodHvac')}

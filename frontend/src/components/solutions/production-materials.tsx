@@ -14,7 +14,7 @@ export default async function ProductionMaterials({ locale }: ProductionMaterial
     {
       title: t('skuSection.card1Title'),
       image: '/images/home/section2/product-hvac-tape.webp',
-      href: '/solutions/products/categories/cleanroom-wipers',
+      href: '/solutions/listProduct/categories/cleanroom-wipers',
       items: [
         t('skuSection.card1Item1'),
         t('skuSection.card1Item2'),
@@ -24,7 +24,7 @@ export default async function ProductionMaterials({ locale }: ProductionMaterial
     {
       title: t('skuSection.card2Title'),
       image: '/images/about/quality-lab.webp',
-      href: '/solutions/products/categories/cleanroom-consumables',
+      href: '/solutions/listProduct/categories/cleanroom-consumables',
       items: [
         t('skuSection.card2Item1'),
         t('skuSection.card2Item2'),
@@ -34,7 +34,7 @@ export default async function ProductionMaterials({ locale }: ProductionMaterial
     {
       title: t('skuSection.card3Title'),
       image: '/images/home/section2/product-custom-pkg.webp',
-      href: '/solutions/products/categories/industrial-packaging',
+      href: '/solutions/listProduct/categories/industrial-packaging',
       items: [
         t('skuSection.card3Item1'),
         t('skuSection.card3Item2'),

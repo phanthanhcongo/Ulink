@@ -193,11 +193,11 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
             },
             {
               label: locale === 'vi' ? 'Sản phẩm' : 'Products',
-              href: '/solutions/products'
+              href: '/solutions/listProduct'
             },
             ...(category ? [{
               label: categoryName || '',
-                href: `/solutions/products/categories/${category.slug}`
+                href: `/solutions/listProduct/categories/${category.slug}`
             }] : []),
             {
               label: productName || ''

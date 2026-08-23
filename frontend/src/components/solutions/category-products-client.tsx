@@ -96,7 +96,7 @@ export function CategoryProductsClient({
   const [addedProductIds, setAddedProductIds] = useState<Set<number>>(new Set());
 
   // Pagination states
-  const ITEMS_PER_PAGE = 12;
+  const ITEMS_PER_PAGE = 6;
   const [currentPage, setCurrentPage] = useState<number>(1);
 
   // Reset page when category, sorting, or filters change
@@ -272,7 +272,7 @@ export function CategoryProductsClient({
                 },
                 {
                   label: locale === 'vi' ? 'Sản phẩm' : 'Products',
-                  href: '/solutions/products'
+                  href: '/solutions/listProduct'
                 },
                 {
                   label: category.parentName || (locale === 'vi' ? 'Giải pháp phòng sạch' : 'Cleanroom Solutions'),
@@ -352,11 +352,11 @@ export function CategoryProductsClient({
 
       {/* ── MAIN CONTENT CONTAINER WITH LEFT SIDEBAR FILTER ── */}
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 mt-8">
-        <div className="grid grid-cols-1 lg:grid-cols-4 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* ════════════════════════════════════════════════════════════
               LEFT SIDEBAR FILTER COLUMN (Only Product Categories)
              ════════════════════════════════════════════════════════════ */}
-          <aside className="hidden lg:block lg:col-span-1 sticky top-24 space-y-4">
+          <aside className="hidden lg:block lg:col-span-4 xl:col-span-3 sticky top-24 space-y-4">
             {/* Header: Bộ lọc tìm kiếm & Xoá bộ lọc */}
             <div className="rounded-[3px] bg-white p-5 border border-slate-200/90 shadow-sm space-y-5">
               <div className="flex items-center justify-between border-b border-slate-100 pb-3">
@@ -491,7 +491,7 @@ export function CategoryProductsClient({
           {/* ════════════════════════════════════════════════════════════
               RIGHT COLUMN: TOOLBAR & PRODUCT CARDS GRID
              ════════════════════════════════════════════════════════════ */}
-          <main className="lg:col-span-3 space-y-6">
+          <main className="lg:col-span-8 xl:col-span-9 space-y-6">
             {/* Top Toolbar */}
             <div className="rounded-[3px] bg-white p-4 border border-slate-200/80 shadow-sm flex flex-wrap items-center justify-between gap-4">
               {/* Left: Result Count & Mobile Filter Toggle */}
@@ -574,7 +574,7 @@ export function CategoryProductsClient({
               </div>
             ) : (
               <div>
-                <div className={viewType === 'grid' ? "grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 gap-6" : "flex flex-col gap-4"}>
+                <div className={viewType === 'grid' ? "grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6" : "flex flex-col gap-4"}>
                   {displayedProducts.map((product) => {
                     const mappedProduct = {
                       id: product.id,
@@ -604,7 +604,7 @@ export function CategoryProductsClient({
                       <div key={product.id} className="bg-white border border-slate-200/80 rounded-[3px] p-4 flex flex-col md:flex-row gap-5 hover:shadow-md transition-shadow">
                         {/* Product Image */}
                         <div className="relative w-full md:w-44 h-32 shrink-0 rounded-[3px] overflow-hidden bg-slate-50 border border-slate-100">
-                          <Link href={`/solutions/products/${product.slug}`} className="block w-full h-full">
+                          <Link href={`/solutions/listProduct/${product.slug}`} className="block w-full h-full">
                             <Image
                               src={product.image || ASSETS.home.solutionCleanroom}
                               alt={product.name}
@@ -626,7 +626,7 @@ export function CategoryProductsClient({
                                 {product.categoryName}
                               </span>
                             </div>
-                            <Link href={`/solutions/products/${product.slug}`} className="block">
+                            <Link href={`/solutions/listProduct/${product.slug}`} className="block">
                               <h4 className="text-base font-extrabold text-slate-900 hover:text-blue-600 transition-colors line-clamp-1">
                                 {product.name}
                               </h4>

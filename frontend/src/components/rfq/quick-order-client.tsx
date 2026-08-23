@@ -751,7 +751,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                 <div className="flex flex-col items-center justify-center py-10 px-4 text-center border-2 border-dashed border-border/60 rounded-[3px] space-y-4">
                   <p className="text-sm text-muted-foreground max-w-md">{t('emptyCart')}</p>
                   <Link
-                    href="/solutions/products/categories/cleanroom-consumables"
+                    href="/solutions/listProduct/categories/cleanroom-consumables"
                     className="inline-flex items-center gap-1.5 rounded-[3px] bg-brand px-4 py-2 text-xs font-semibold text-white hover:bg-brand/90 transition-all shadow"
                   >
                     {t('viewProducts')}
