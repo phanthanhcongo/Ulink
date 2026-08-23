@@ -11,6 +11,8 @@ import WorkingProcess from '@/components/regional-hubs/working-process';
 import { ResourcesNews, CtaBanner, DocSection, SupportSection } from '@/components/home';
 import { fetchProducts } from '@/lib/product-data';
 import { AboutContact } from '@/components/about/about-contact';
+import { ScrollReveal } from '@/components/scroll-reveal';
+import { SectionDivider } from '@/components/section-divider';
 
 export default async function RegionalHubsPage({
   params: { locale }
@@ -109,31 +111,41 @@ export default async function RegionalHubsPage({
 
       {/* === SECTION 2: Real-time Live Data Bar === */}
       <LiveMetricsBar />
+      <SectionDivider />
 
       {/* === SECTION 3: Featured Products === */}
-      <FeaturedProducts products={randomProducts} locale={locale} />
+      <ScrollReveal><FeaturedProducts products={randomProducts} locale={locale} /></ScrollReveal>
+      <SectionDivider />
 
       {/* === SECTION 4: Interactive Solution Carousel === */}
-      <SolutionCarousel slides={carouselSlides} labels={carouselLabels} />
+      <ScrollReveal><SolutionCarousel slides={carouselSlides} labels={carouselLabels} /></ScrollReveal>
+      <SectionDivider />
 
       {/* === SECTION 5: Core Capabilities === */}
-      <CoreCapabilities />
+      <ScrollReveal><CoreCapabilities /></ScrollReveal>
+      <SectionDivider />
 
       {/* === SECTION 3.5: Ha Nam Distribution Center Overview === */}
-      <HanamOverview />
+      <ScrollReveal><HanamOverview /></ScrollReveal>
+      <SectionDivider />
 
       {/* === SECTION 7: Customer Testimonials === */}
-      <TestimonialCarousel labels={testimonialLabels} />
+      <ScrollReveal><TestimonialCarousel labels={testimonialLabels} /></ScrollReveal>
+      <SectionDivider />
 
       {/* === SECTION 8: Working Process === */}
-      <WorkingProcess />
+      <ScrollReveal><WorkingProcess /></ScrollReveal>
+      <SectionDivider />
 
       {/* === SECTION 9: Resources & News === */}
-      <ResourcesNews />
+      <ScrollReveal><ResourcesNews /></ScrollReveal>
+      <SectionDivider />
 
       <DocSection />
+      <SectionDivider />
       <SupportSection />
-      <AboutContact />
+      <SectionDivider />
+      <ScrollReveal><AboutContact /></ScrollReveal>
 
     </>
   );

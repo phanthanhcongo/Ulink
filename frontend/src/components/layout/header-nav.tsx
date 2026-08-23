@@ -56,9 +56,9 @@ export function HeaderNav({ items }: HeaderNavProps) {
           >
             <Link
               href={item.href}
-              className={`inline-flex items-center gap-1.5 text-[13px] font-semibold transition-colors ${
-                isOpen ? 'text-brand' : 'text-foreground hover:text-brand'
-              }`}
+className={`inline-flex items-center gap-1.5 text-[15px] font-semibold transition-all duration-200 ${
+                 isOpen ? 'text-brand' : 'text-foreground hover:text-brand hover:scale-[1.02]'
+               }`}
             >
               {item.label}
               {hasChildren && (

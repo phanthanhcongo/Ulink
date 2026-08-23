@@ -149,6 +149,10 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 button,
 [role="button"],
 input[type="button"],

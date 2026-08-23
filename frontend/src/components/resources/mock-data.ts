@@ -40,6 +40,182 @@ export interface EventItem {
 // 12 Mock Resources to display on the main grid (matching the screenshot layout)
 export const MOCK_RESOURCES: ResourceItem[] = [
   {
+    id: 'case-study-1',
+    category: 'case-study',
+    badge: { vi: 'Nghiên cứu điển hình', en: 'Case Study', ja: 'ケーススタディ' },
+    title: { vi: 'DN Điện tử × ULink Nitrile', en: 'Electronics Enterprise × ULink Nitrile', ja: '電子部品企業 × ULink Nitrile' },
+    description: { vi: 'Doanh nghiệp sản xuất linh kiện điện tử tại Bắc Ninh đã áp dụng tiêu chuẩn găng tay Nitrile của ULink, giảm 28% chi phí vật tư bảo hộ nhờ tối ưu độ dày, độ bền và quy trình kiểm định chất lượng.', en: 'Electronics factory in Bac Ninh saved 28% PPE cost by adopting ULink Nitrile glove standard, optimizing thickness and durability.', ja: 'バクニンの電子部品工場は、厚みと耐久性を最適化したULink Nitrile手袋規格を採用し、PPEコストを28%削減しました。' },
+    date: '23/08/2026',
+    image: '/images/home/section2/product-cut-gloves.webp',
+    author: {
+      name: { vi: 'Trần Thị Hồng Nhung', en: 'Tran Thi Hong Nhung', ja: 'Tran Thi Hong Nhung' },
+      role: { vi: 'Giám đốc Sản xuất', en: 'Production Director', ja: '製造ディレクター' },
+      avatar: '/images/regional_hubs/hub-2/QuangTran.png'
+    },
+    readTime: { vi: '6 phút đọc', en: '6 min read', ja: '6分' },
+    sections: [
+      {
+        id: 'cs1-sec1',
+        num: '1.',
+        title: { vi: 'Thử thách & Bối cảnh', en: 'Challenges & Context', ja: '課題と背景' },
+        content: { vi: 'Một nhà máy sản xuất bán dẫn và vi mạch lớn tại Bắc Ninh gặp khó khăn trong việc kiểm soát tỷ lệ lỗi sản phẩm do tĩnh điện (ESD) và bụi xơ từ găng tay cao su thông thường. Ngoài ra, hao phí găng tay quá lớn do găng dễ bị rách khi thao tác tiếp xúc với góc sắc cạnh của linh kiện.', en: 'A semiconductor factory in Bac Ninh faced issues with product defects from ESD and lint of standard gloves, plus high tear rates.', ja: 'バクニンの半導体工場は、標準手袋のESDと糸くずによる製品不良、および高い破れ率に直ement。' }
+      },
+      {
+        id: 'cs1-sec2',
+        num: '2.',
+        title: { vi: 'Giải pháp từ ULink Industries', en: 'ULink Industries Solution', ja: 'ULink Industriesの解決策' },
+        content: { vi: 'ULink cung cấp dòng găng tay Nitrile phòng sạch đạt chuẩn ISO Class 5, chống tĩnh điện bề mặt 10^6 - 10^9 Ohms, hoàn toàn không chứa bột và silicone. Chúng tôi hỗ trợ tư vấn độ dày tối ưu cho từng công đoạn lắp ráp.', en: 'ULink provided cleanroom Nitrile gloves with ISO Class 5 certification, surface resistivity of 10^6 - 10^9 Ohms, powder-free, and silicone-free.', ja: 'ULinkは、ISOクラス5認証、表面抵抗10^6-10^9Ω、パウダーフリー、シリコンフリーのクリーンルーム用ニトリル手袋を提供しました。' }
+      },
+      {
+        id: 'cs1-sec3',
+        num: '3.',
+        title: { vi: 'Kết quả đạt được', en: 'Key Results', ja: '主な成果' },
+        content: { vi: 'Tỷ lệ lỗi do ESD giảm 45%. Chi phí mua sắm vật tư bảo hộ giảm 28% hàng tháng nhờ tuổi thọ găng tay cao gấp 1.8 lần so với nhà cung cấp cũ.', en: 'ESD defects dropped by 45%. Monthly PPE costs decreased by 28% due to 1.8x longer lifespan than previous supplier.', ja: 'ESDによる不良が45%減少。前サプライヤーと比較して寿命が1.8倍に延びたため、月間PPEコストが28%削減されました。' }
+      }
+    ],
+    aiSummary: {
+      intro: { vi: 'Tóm tắt câu chuyện thành công lắp đặt quy chuẩn găng tay Nitrile phòng sạch tại nhà máy FDI Bắc Ninh.', en: 'Success story summary of installing cleanroom Nitrile gloves standard at a Bac Ninh FDI factory.', ja: 'バクニンのFDI工場におけるクリーンルーム用ニトリル手袋規格導入の成功事例の要約。' },
+      bullets: [
+        { vi: 'Giảm 28% chi phí mua sắm găng tay bảo hộ.', en: '28% reduction in protective glove purchasing costs.', ja: '保護手袋の購入コストを28%削減。' },
+        { vi: 'Tỷ lệ lỗi sản xuất do phóng tĩnh điện giảm 45%.', en: '45% reduction in production defect rate caused by ESD.', ja: 'ESDによる製造不良率を45%削減。' }
+      ]
+    },
+    audioDuration: '0',
+    audioSecs: 0
+  },
+  {
+    id: 'case-study-2',
+    category: 'case-study',
+    badge: { vi: 'Nghiên cứu điển hình', en: 'Case Study', ja: 'ケーススタディ' },
+    title: { vi: 'Ứng dụng màng co PE', en: 'PE Shrink Film Application', ja: 'PEシュリンクフィルムの応用' },
+    description: { vi: 'Màng co PE dùng đóng chai nước ngọt, bó chặt chai thành lốc hoặc thùng, đảm bảo ổn định vận chuyển và lưu kho. Co nhiệt đều, bền kéo cao, chống thủng vượt trội cho nhà máy đồ uống.', en: 'PE shrink film applied for bundling soft drink bottles into packs, ensuring transport stability and high puncture resistance.', ja: 'ソフトドリンクボトルのパック結束用PEシュリンクフィルム、輸送安定性と高い穿刺抵抗性を確保。' },
+    date: '23/08/2026',
+    image: '/images/home/section2/product-custom-pkg.webp',
+    author: {
+      name: { vi: 'Nguyễn Minh Tuấn', en: 'Nguyen Minh Tuan', ja: 'Nguyen Minh Tuan' },
+      role: { vi: 'Trưởng phòng Đóng gói', en: 'Packaging Head', ja: '包装責任者' },
+      avatar: '/images/regional_hubs/hub-2/KennyTran.png'
+    },
+    readTime: { vi: '5 phút đọc', en: '5 min read', ja: '5分' },
+    sections: [
+      {
+        id: 'cs2-sec1',
+        num: '1.',
+        title: { vi: 'Yêu cầu từ Nhà máy Đồ uống', en: 'Beverage Factory Requirements', ja: '飲料工場の要件' },
+        content: { vi: 'Khách hàng là nhà máy sản xuất nước ngọt lớn yêu cầu giải pháp đóng lốc màng co nhiệt tự động tốc độ cao. Màng co phải có tỷ lệ co rút đồng đều, không bị rách mép hay nhăn góc khi đi qua buồng co nhiệt.', en: 'A major beverage factory required high-speed automatic bundling shrink film solutions with even shrinkage and no tearing.', ja: '主要な飲料工場は、均一な収縮と破れのない高速自動結束シュリンクフィルムソリューションを必要としていました。' }
+      },
+      {
+        id: 'cs2-sec2',
+        num: '2.',
+        title: { vi: 'Giải pháp Màng co PE nguyên sinh', en: 'Virgin PE Shrink Film Solution', ja: 'バージンPEシュリンクフィルム溶液' },
+        content: { vi: 'ULink cung cấp màng co PE sản xuất từ hạt nhựa LDPE nguyên sinh nhập khẩu, tối ưu hóa độ dày 50-60 mic giúp màng có độ dai chịu lực kéo tốt và độ trong suốt cao.', en: 'ULink supplied virgin LDPE shrink film, optimizing thickness between 50-60 microns for high tensile strength and clarity.', ja: 'ULinkはバージンLDPEシュリンクフィルムを供給し、高い引張強度と透明度のために厚さを50-60ミクロンに最適化しました。' }
+      },
+      {
+        id: 'cs2-sec3',
+        num: '3.',
+        title: { vi: 'Hiệu quả vận hành', en: 'Operational Performance', ja: '運用パフォーマンス' },
+        content: { vi: 'Quy trình đóng gói tự động chạy liên tục không bị gián đoạn do đứt màng. Ngoại quan kiện lốc chai căng phẳng đẹp mắt, bảo vệ hoàn hảo trong suốt quá trình phân phối xe tải.', en: 'Automatic packaging ran smoothly without film breakages, presenting a tight and clean pack appearance.', ja: 'フィルム切れによる停止がなく自動包装がスムーズに行われ、引き締まった清潔なパック外観を提供しました。' }
+      }
+    ],
+    aiSummary: {
+      intro: { vi: 'Phân tích ứng dụng thành công màng co PE nguyên sinh tại dây chuyền đóng chai nước ngọt.', en: 'Case analysis of successfully utilizing virgin PE shrink film in soft drink bottling lines.', ja: 'ソフトドリンクボトル詰めラインにおけるバージンPEシュリンクフィルムの導入成功事例の分析。' },
+      bullets: [
+        { vi: 'Độ dày tối ưu giúp tiết kiệm 12% nguyên liệu.', en: 'Optimized thickness saved 12% raw material.', ja: '最適化された厚みにより、原材料を12%削減。' },
+        { vi: 'Tỷ lệ lỗi đóng lốc tại buồng nhiệt giảm xuống dưới 0.1%.', en: 'Shrink tunnel error rate dropped below 0.1%.', ja: 'シュリンクトンネルの不良率が0.1%未満に低下。' }
+      ]
+    },
+    audioDuration: '0',
+    audioSecs: 0
+  },
+  {
+    id: 'case-study-3',
+    category: 'case-study',
+    badge: { vi: 'Nghiên cứu điển hình', en: 'Case Study', ja: 'ケーススタディ' },
+    title: { vi: 'Giải pháp cho HVAC', en: 'Solutions for HVAC System', ja: 'HVACシステム向けソリューション' },
+    description: { vi: 'Băng keo nhôm ULink Industries dùng để bọc kín mối nối ống HVAC tại Nhà máy In Hải Quân, đảm bảo kín khít, chống thất thoát nhiệt và rò rỉ khí, nâng cao hiệu suất làm lạnh.', en: 'ULink aluminum foil tape applied to seal HVAC pipe joints at Navy Printing Factory, preventing heat loss and air leaks.', ja: '海軍印刷工場のHVAC配管継手シールにULinkアルミホイルテープを適用し、熱損失と空気漏れを防止。' },
+    date: '23/08/2026',
+    image: '/images/home/section2/product-hvac-tape.webp',
+    author: {
+      name: { vi: 'Phạm Thị Mai Lan', en: 'Pham Thi Mai Lan', ja: 'Pham Thi Mai Lan' },
+      role: { vi: 'Biên tập viên Kỹ thuật', en: 'Technical Editor', ja: '技術編集者' },
+      avatar: '/images/regional_hubs/hub-2/MinhHung.png'
+    },
+    readTime: { vi: '4 phút đọc', en: '4 min read', ja: '4分' },
+    sections: [
+      {
+        id: 'cs3-sec1',
+        num: '1.',
+        title: { vi: 'Bảo ôn hệ thống ống gió công nghiệp', en: 'Industrial Duct System Insulation', ja: '産業用ダクトシステムの断熱' },
+        content: { vi: 'Nhà máy In Hải Quân vận hành hệ thống máy điều hòa không khí và thông gió trung tâm công suất lớn. Việc rò rỉ nhiệt tại các mối nối khớp ống gió kim loại gây lãng phí điện năng nghiêm trọng và đọng nước bề mặt ống.', en: 'Navy Printing Factory operated a large HVAC system where joints leaked thermal energy and caused water condensation.', ja: '海軍印刷工場は大型HVACシステムを運用していましたが、ダクト継手での熱漏れ và 結露が発生していました。' }
+      },
+      {
+        id: 'cs3-sec2',
+        num: '2.',
+        title: { vi: 'Băng keo nhôm ULink chịu lực & nhiệt', en: 'ULink High-Temp Aluminum Tape', ja: 'ULink耐熱アルミテープ' },
+        content: { vi: 'ULink cung cấp giải pháp băng keo nhôm có lớp keo Acrylic bám dính siêu mạnh, lớp nhôm dày dặn cản nhiệt tốt, chống cháy và hoạt động bền bỉ trong dải nhiệt độ rộng.', en: 'ULink provided high-grade aluminum tape with strong acrylic adhesive, thick foil for thermal barrier, and fire resistance.', ja: 'ULinkは、強力なアクリル粘着剤、遮熱用の厚いホイル、耐火性を備えた高品質のアルミテープを提供しました。' }
+      },
+      {
+        id: 'cs3-sec3',
+        num: '3.',
+        title: { vi: 'Kết quả bọc bảo ôn', en: 'Insulation Results', ja: '断熱効果' },
+        content: { vi: 'Loại bỏ hoàn toàn đọng sương bề mặt. Hệ thống HVAC đạt hiệu quả làm lạnh sâu nhanh hơn, tiết kiệm điện năng tiêu thụ thực tế hàng tháng của nhà máy lên tới 8.5%.', en: 'Completely eliminated condensation. HVAC reached temperature faster, saving 8.5% of monthly electricity bills.', ja: '結露を完全に解消。HVACの冷却効率が向上し、月間電気代を8.5%削減しました。' }
+      }
+    ],
+    aiSummary: {
+      intro: { vi: 'Đánh giá giải pháp bọc mối nối ống HVAC bằng băng keo nhôm chuyên dụng tại công trình công nghiệp.', en: 'Evaluation of sealing HVAC joints with specialized aluminum tape at an industrial site.', ja: '産業現場における専用アルミテープによるHVAC継手シールの評価。' },
+      bullets: [
+        { vi: 'Tiết kiệm 8.5% lượng điện tiêu thụ của hệ thống thông gió.', en: 'Saved 8.5% electricity consumption of the ventilation system.', ja: '換気システムの電気消費量を8.5%削減。' },
+        { vi: 'Khắc phục triệt để đọng nước gây ẩm mốc nhà xưởng.', en: 'Completely fixed water dripping causing warehouse mold.', ja: '倉庫のカビの原因となる水滴を完全に修復。' }
+      ]
+    },
+    audioDuration: '0',
+    audioSecs: 0
+  },
+  {
+    id: 'case-study-4',
+    category: 'case-study',
+    badge: { vi: 'Nghiên cứu điển hình', en: 'Case Study', ja: 'ケーススタディ' },
+    title: { vi: 'Máy quấn màng Pallet', en: 'Pallet Wrapping Machine System', ja: 'パレットストレッチ包装機' },
+    description: { vi: 'Ứng dụng giám sát và tối ưu hóa hiệu suất máy quấn màng pallet theo thời gian thực, giúp giảm lãng phí vật liệu, tăng năng suất vận hành và đảm bảo an toàn kiện hàng.', en: 'Monitoring and optimizing pallet wrapping machine efficiency in real-time, reducing material waste and securing loads.', ja: 'パレット包装機の効率をリアルタイムで監視・最適化し、資材の廃棄を削減し荷崩れを防止。' },
+    date: '23/08/2026',
+    image: '/images/home/section2/solution-packaging.webp',
+    author: {
+      name: { vi: 'Lê Quốc Hưng', en: 'Le Quoc Hung', ja: 'Le Quoc Hung' },
+      role: { vi: 'Quản lý Kho vận', en: 'Warehouse Manager', ja: '倉庫マネージャー' },
+      avatar: '/images/regional_hubs/hub-2/HaiNguyen.png'
+    },
+    readTime: { vi: '6 phút đọc', en: '6 min read', ja: '6分' },
+    sections: [
+      {
+        id: 'cs4-sec1',
+        num: '1.',
+        title: { vi: 'Tối ưu hóa khâu quấn màng xuất khẩu', en: 'Optimizing Export Pallet Wrapping', ja: '輸出パレット包装の最適化' },
+        content: { vi: 'Doanh nghiệp kho vận thường quấn màng thủ công dẫn đến độ căng không đồng đều, tốn thời gian và lãng phí màng PE. Hàng hóa khi xuất khẩu đường biển xa dễ bị xô lệch, đổ ngã làm hư hại sản phẩm.', en: 'Manual wrapping caused uneven tension, wasted time, and poor stability, risking load collapses during sea transit.', ja: '手動包装では張力が不均一になり、時間がかかり安定性が低いため、海上輸送中に荷崩れするリスクがありました。' }
+      },
+      {
+        id: 'cs4-sec2',
+        num: '2.',
+        title: { vi: 'Hệ thống Máy quấn màng tự động ULink', en: 'ULink Auto Wrapping Machine Solution', ja: 'ULink自動ストレッチ包装機' },
+        content: { vi: 'ULink cung cấp giải pháp máy quấn màng pallet tự động trang bị bộ căng màng điện từ (pre-stretch) tỷ lệ lên tới 250%, giúp kéo dãn màng tối đa và lực quấn giữ đồng đều.', en: 'ULink provided automatic wrappers with electromagnetic pre-stretch up to 250%, maximizing stretch and holding force.', ja: 'ULinkは、最大250%の電磁プレストレッチを備えた自動包装機を提供し, ストレッチと保持力を最大化しました。' }
+      },
+      {
+        id: 'cs4-sec3',
+        num: '3.',
+        title: { vi: 'Tiết giảm chi phí vật liệu', en: 'Material Cost Reduction', ja: '資材コストの削減' },
+        content: { vi: 'Lượng màng PE sử dụng giảm 40% cho mỗi pallet hàng. Tốc độ quấn nhanh gấp 3 lần so với nhân viên quấn thủ công, loại bỏ hoàn toàn rủi ro hư hỏng xô lệch kiện hàng khi xuất khẩu.', en: 'PE film consumption per pallet reduced by 40%. Wrapping speed increased by 3x, completely eliminating load damage.', ja: 'パレットあたりのフィルム消費量を40%削減。包装速度が3倍に向上し、荷崩れによる破損リスクを解消。' }
+      }
+    ],
+    aiSummary: {
+      intro: { vi: 'Khảo sát hiệu quả của máy quấn màng pallet tự động tích hợp công nghệ căng trước trong khâu đóng gói logistics.', en: 'Performance review of automatic pallet wrapping machines with pre-stretch technology in logistics packaging.', ja: '物流包装におけるプレストレッチ技術を搭載した自動パレット包装機の性能レビュー。' },
+      bullets: [
+        { vi: 'Tiết kiệm 40% chi phí màng co PE đóng gói.', en: 'Saved 40% of packaging PE shrink film costs.', ja: '梱包用PEシュリンクフィルムのコストを40%削減。' },
+        { vi: 'Tốc độ đóng gói xuất khẩu tăng 300%.', en: 'Export packaging speed increased by 300%.', ja: '輸出梱包スピードが300%向上。' }
+      ]
+    },
+    audioDuration: '0',
+    audioSecs: 0
+  },
+  {
     id: 'RES-001',
     category: 'guide',
     badge: {

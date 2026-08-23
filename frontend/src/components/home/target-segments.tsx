@@ -1,9 +1,25 @@
+'use client';
+
+import { useState, useEffect, useRef } from 'react';
 import { ArrowRight, Check, Building2, Settings } from 'lucide-react';
-import { getTranslations } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 
-export async function TargetSegments() {
-  const t = await getTranslations('home');
+export function TargetSegments() {
+  const t = useTranslations('home');
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.unobserve(el); } },
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section className="w-full py-12 lg:py-16 xl:py-20 bg-slate-50/50 border-t border-b border-slate-100 font-sans">
@@ -18,9 +34,11 @@ export async function TargetSegments() {
       </div>
 
       {/* ── 2 CARDS GRID ── */}
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10">
+      <div ref={ref} className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-10">
         {/* CARD 1: DOANH NGHIỆP FDI */}
-        <div className="group flex flex-col overflow-hidden rounded-[3px] border border-slate-200 bg-white shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+        <div className={`group overflow-hidden flex flex-col rounded-[3px] border border-slate-200 bg-white shadow-sm hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:-translate-y-1 hover:scale-[1.02] transition-all duration-300 ${
+          visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+        }`} style={{ transitionDelay: '0ms' }}>
           {/* Card Top: Header Area (Light Background) */}
           <div className="bg-[#f4f7fc] p-6 sm:p-8 lg:p-10 border-b border-slate-200">
             {/* Icon box outline */}
@@ -85,7 +103,9 @@ export async function TargetSegments() {
         </div>
 
         {/* CARD 2: DOANH NGHIỆP SẢN XUẤT */}
-        <div className="group flex flex-col overflow-hidden rounded-[3px] border border-slate-200 bg-white shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300">
+        <div className={`group overflow-hidden flex flex-col rounded-[3px] border border-slate-200 bg-white shadow-sm hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:-translate-y-1 hover:scale-[1.02] transition-all duration-300 ${
+          visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+        }`} style={{ transitionDelay: '150ms' }}>
           {/* Card Top: Header Area (Light Background) */}
           <div className="bg-[#f4f7fc] p-6 sm:p-8 lg:p-10 border-b border-slate-200">
             {/* Icon box outline */}

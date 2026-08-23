@@ -41,7 +41,7 @@ export function CtaBanner({
             <div className="mt-8 flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
               <Link
                 href="/quick-order"
-                className="inline-flex items-center justify-center gap-3 rounded-[3px] bg-white px-6 py-2.5 text-[14px] font-bold text-brand shadow-lg transition-transform hover:scale-102 hover:bg-slate-50 w-full sm:w-auto h-11 sm:h-12 lg:h-11.5 xl:h-12 xl:px-8 xl:text-[15px]"
+                className="inline-flex items-center justify-center gap-3 rounded-[3px] bg-white px-6 py-2.5 text-[14px] font-bold text-brand shadow-lg transition-all hover:scale-[1.02] hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:bg-slate-50 w-full sm:w-auto h-11 sm:h-12 lg:h-11.5 xl:h-12 xl:px-8 xl:text-[15px]"
               >
                 {tCta('ctaRfq')}
                 <ArrowRight className="h-5 w-5" aria-hidden="true" />

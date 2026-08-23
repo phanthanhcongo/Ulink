@@ -152,37 +152,37 @@ export function VietnamMap({ className, locale = 'vi', hubs = [] }: VietnamMapPr
             {/* White Stats Cards */}
             <div className="space-y-4 max-w-sm w-full">
               {/* Stat 1 */}
-              <div className="bg-white rounded-[4px] p-4 flex items-start gap-4 shadow-lg border border-white/10 hover:scale-[1.01] transition-transform">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-600">
+              <div className="group bg-white rounded-[4px] p-4 flex items-start gap-4 shadow-lg border border-white/10 transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-600 transition-colors duration-200 group-hover:bg-[#1769E2] group-hover:text-white">
                   <MapPin className="h-5 w-5" />
                 </div>
                 <div className="flex flex-col text-left">
-                  <span className="text-xs font-semibold text-slate-500">{t.distanceTitle}</span>
-                  <span className="text-xl font-extrabold text-slate-900 mt-0.5">{t.distanceVal}</span>
+                  <span className="text-xs font-semibold text-slate-500 transition-colors duration-200 group-hover:text-[#1769E2]">{t.distanceTitle}</span>
+                  <span className="text-xl font-extrabold text-slate-900 mt-0.5 transition-colors duration-200 group-hover:text-[#1769E2]">{t.distanceVal}</span>
                   <span className="text-[11px] text-slate-400 font-medium mt-0.5">{t.distanceSub}</span>
                 </div>
               </div>
 
               {/* Stat 2 */}
-              <div className="bg-white rounded-[4px] p-4 flex items-start gap-4 shadow-lg border border-white/10 hover:scale-[1.01] transition-transform">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-600">
+              <div className="group bg-white rounded-[4px] p-4 flex items-start gap-4 shadow-lg border border-white/10 transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-600 transition-colors duration-200 group-hover:bg-[#1769E2] group-hover:text-white">
                   <Truck className="h-5 w-5" />
                 </div>
                 <div className="flex flex-col text-left">
-                  <span className="text-xs font-semibold text-slate-500">{t.slaTitle}</span>
-                  <span className="text-xl font-extrabold text-slate-900 mt-0.5">{t.slaVal}</span>
+                  <span className="text-xs font-semibold text-slate-500 transition-colors duration-200 group-hover:text-[#1769E2]">{t.slaTitle}</span>
+                  <span className="text-xl font-extrabold text-slate-900 mt-0.5 transition-colors duration-200 group-hover:text-[#1769E2]">{t.slaVal}</span>
                   <span className="text-[11px] text-slate-400 font-medium mt-0.5">{t.slaSub}</span>
                 </div>
               </div>
 
               {/* Stat 3 */}
-              <div className="bg-white rounded-[4px] p-4 flex items-start gap-4 shadow-lg border border-white/10 hover:scale-[1.01] transition-transform">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-600">
+              <div className="group bg-white rounded-[4px] p-4 flex items-start gap-4 shadow-lg border border-white/10 transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-600 transition-colors duration-200 group-hover:bg-[#1769E2] group-hover:text-white">
                   <Users className="h-5 w-5" />
                 </div>
                 <div className="flex flex-col text-left">
-                  <span className="text-xs font-semibold text-slate-500">{t.partnerTitle}</span>
-                  <span className="text-xl font-extrabold text-slate-900 mt-0.5">{t.partnerVal}</span>
+                  <span className="text-xs font-semibold text-slate-500 transition-colors duration-200 group-hover:text-[#1769E2]">{t.partnerTitle}</span>
+                  <span className="text-xl font-extrabold text-slate-900 mt-0.5 transition-colors duration-200 group-hover:text-[#1769E2]">{t.partnerVal}</span>
                   <span className="text-[11px] text-slate-400 font-medium mt-0.5">{t.partnerSub}</span>
                 </div>
               </div>

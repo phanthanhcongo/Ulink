@@ -1,12 +1,28 @@
+'use client';
+
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { ArrowUpRight } from 'lucide-react';
-import { getTranslations } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { ASSETS } from '@/lib/assets';
 import { SectionHeader } from './section-header';
 
-export async function IndustrySolutions() {
-  const t = await getTranslations('home');
+export function IndustrySolutions() {
+  const t = useTranslations('home');
+  const ref = useRef<HTMLDivElement>(null);
+  const [visible, setVisible] = useState(false);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.unobserve(el); } },
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const cards = [
     {
@@ -57,12 +73,15 @@ export async function IndustrySolutions() {
       />
 
       {/* ── LƯỚI 6 THẺ NGÀNH NGHỀ (GRID 6 CARDS: 3 COLUMNS x 2 ROWS) ── */}
-      <div className="mt-8 grid grid-cols-1 gap-1 sm:grid-cols-2 lg:grid-cols-3">
+      <div ref={ref} className="mt-8 grid grid-cols-1 gap-1 sm:grid-cols-2 lg:grid-cols-3">
         {cards.map((card, idx) => (
           <Link
             key={idx}
             href={card.href}
-            className="group flex flex-col justify-between rounded-[3px] border border-border p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand/50 hover:shadow-lg sm:p-6 lg:p-6 xl:p-7 relative overflow-hidden before:pointer-events-none before:absolute before:inset-0 before:opacity-0 before:transition-opacity before:duration-300 hover:before:opacity-100 before:bg-gradient-to-br before:from-brand/10 before:to-transparent"
+            className={`group flex flex-col justify-between rounded-[3px] border border-border p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-brand/50 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:scale-[1.02] sm:p-6 lg:p-6 xl:p-7 ${
+              visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+            }`}
+            style={{ transitionDelay: `${idx * 80}ms` }}
           >
             <div>
               <h3 className="text-[16px] font-bold text-primary transition-colors group-hover:text-brand sm:text-[18px] lg:text-[18px] xl:text-[20px]">

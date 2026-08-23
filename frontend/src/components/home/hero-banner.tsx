@@ -42,7 +42,7 @@ export function HeroBanner() {
 
       <div className="relative flex w-full items-center justify-center sm:justify-start px-4 sm:px-8 lg:px-[80px] py-[28px] sm:py-[40px] lg:py-[58px] sm:absolute sm:inset-0 sm:h-full">
         {/* Content Container Frame */}
-        <div className="relative flex w-full max-w-full lg:w-[672px] lg:max-w-[672px] lg:min-h-[568px] flex-col justify-between p-6 sm:p-8 lg:p-[48px] gap-[32px]">
+        <div className="group relative flex w-full max-w-full lg:w-[672px] lg:max-w-[672px] lg:min-h-[568px] flex-col justify-between p-6 sm:p-8 lg:p-[48px] gap-[32px] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
           {/* Frosted Glass Card */}
           <div className="absolute inset-0 z-10 rounded-[3px] border border-white/50 bg-white/[0.92] backdrop-blur-[24px] shadow-[0px_20px_40px_-10px_rgba(0,0,0,0.102)]" />
 
@@ -66,10 +66,10 @@ export function HeroBanner() {
           </div>
 
           {/* CTA Buttons */}
-          <div className="relative z-30 flex flex-col sm:flex-row items-center gap-3.5 pt-2">
+          <div className="group relative z-30 flex flex-col sm:flex-row items-center gap-3.5 pt-2">
             <Link
               href="/quick-order"
-              className="group inline-flex h-[48px] lg:h-[52px] w-full sm:w-auto items-center justify-center gap-2.5 rounded-[3px] bg-brand px-7 text-[16px] lg:text-[17px] font-bold text-white shadow-sm transition-all hover:bg-brand-strong active:bg-[#0E4497]"
+              className="group inline-flex h-[48px] lg:h-[52px] w-full sm:w-auto items-center justify-center gap-2.5 rounded-[3px] bg-brand px-7 text-[16px] lg:text-[17px] font-bold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:bg-brand-strong active:bg-[#0E4497]"
             >
               {t('hero.ctaRfq')}
               <ArrowRight className="h-4.5 w-4.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
@@ -77,7 +77,7 @@ export function HeroBanner() {
             <Link
               href="/resources"
               onClick={handleCatalogueClick}
-              className="inline-flex h-[48px] lg:h-[52px] w-full sm:w-auto items-center justify-center gap-2.5 border border-brand bg-white/70 rounded-[3px] text-[16px] lg:text-[17px] font-bold text-brand transition-colors hover:bg-brand/10 hover:border-brand-strong px-7 shadow-xs"
+              className="group inline-flex h-[48px] lg:h-[52px] w-full sm:w-auto items-center justify-center gap-2.5 border border-brand bg-white/70 rounded-[3px] text-[16px] lg:text-[17px] font-bold text-brand transition-all hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:bg-brand/10 hover:border-brand-strong px-7 shadow-xs"
             >
               {t('hero.ctaCatalogue')}
               <Image

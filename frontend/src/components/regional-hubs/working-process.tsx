@@ -29,11 +29,11 @@ export default async function WorkingProcess() {
           {steps.map(({ step, icon: IconComponent }) => (
             <div
               key={step}
-              className="flex flex-col rounded-[3px] border border-slate-100 bg-white p-6 shadow-sm hover:shadow-md transition-all duration-300 min-h-[320px]"
+              className="group relative flex flex-col rounded-[3px] border border-slate-100 bg-white p-6 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] min-h-[320px] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]"
             >
               {/* Top Row: Icon & Dashed Connector Line */}
               <div className="flex items-center justify-between mb-4">
-                <div className="flex items-center justify-center text-brand">
+                <div className="flex items-center justify-center text-brand transition-colors duration-200 group-hover:text-[#1769E2]/80">
                   <IconComponent className="h-9 w-9 stroke-[1.5]" aria-hidden="true" />
                 </div>
                 {/* Dashed connector line */}
@@ -45,7 +45,7 @@ export default async function WorkingProcess() {
                 <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">
                   {t(`step${step}Number`)}
                 </span>
-                <h3 className="mt-1 text-[16px] font-bold text-slate-800 leading-tight">
+                <h3 className="mt-1 text-[16px] font-bold text-slate-800 leading-tight transition-colors duration-200 group-hover:text-[#1769E2]">
                   {t(`step${step}Title`)}
                 </h3>
                 <p className="mt-3 text-[13px] leading-relaxed text-slate-500 flex-1">

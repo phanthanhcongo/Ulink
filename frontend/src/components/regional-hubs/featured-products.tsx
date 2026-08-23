@@ -68,7 +68,7 @@ export default async function FeaturedProducts({ products, locale }: FeaturedPro
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           
           {/* Card 1: Glove */}
-          <article className="group relative flex flex-col bg-white border border-slate-200 shadow-sm rounded-[3px] overflow-hidden h-full transition-all duration-[240ms] ease-out hover:-translate-y-1.5 hover:border-[#9fc2ef] hover:shadow-[0_18px_42px_rgba(16,61,111,0.13)]">
+          <article className="group relative flex flex-col bg-white border border-slate-200 shadow-sm rounded-[3px] overflow-hidden h-full transition-all duration-[240ms] ease-out hover:-translate-y-1 hover:border-[#9fc2ef] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
             <Link href={gloveSlug} className="relative block h-[240px] m-2 overflow-hidden bg-[#eef2f6] rounded-[3px]">
               <Image
                 src={gloveImgSrc}
@@ -168,7 +168,7 @@ export default async function FeaturedProducts({ products, locale }: FeaturedPro
           </article>
 
           {/* Card 2: Shrink Film */}
-          <article className="group relative flex flex-col bg-white border border-slate-200 shadow-sm rounded-[3px] overflow-hidden h-full transition-all duration-[240ms] ease-out hover:-translate-y-1.5 hover:border-[#9fc2ef] hover:shadow-[0_18px_42px_rgba(16,61,111,0.13)]">
+          <article className="group relative flex flex-col bg-white border border-slate-200 shadow-sm rounded-[3px] overflow-hidden h-full transition-all duration-[240ms] ease-out hover:-translate-y-1 hover:border-[#9fc2ef] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
             <Link href={filmSlug} className="relative block h-[240px] m-2 overflow-hidden bg-[#eef2f6] rounded-[3px]">
               <Image
                 src={filmImgSrc}
@@ -267,7 +267,7 @@ export default async function FeaturedProducts({ products, locale }: FeaturedPro
           </article>
 
           {/* Card 3: HVAC Tape */}
-          <article className="group relative flex flex-col bg-white border border-slate-200 shadow-sm rounded-[3px] overflow-hidden h-full transition-all duration-[240ms] ease-out hover:-translate-y-1.5 hover:border-[#9fc2ef] hover:shadow-[0_18px_42px_rgba(16,61,111,0.13)]">
+          <article className="group relative flex flex-col bg-white border border-slate-200 shadow-sm rounded-[3px] overflow-hidden h-full transition-all duration-[240ms] ease-out hover:-translate-y-1 hover:border-[#9fc2ef] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
             <Link href={tapeSlug} className="relative block h-[240px] m-2 overflow-hidden bg-[#eef2f6] rounded-[3px]">
               <Image
                 src={tapeImgSrc}

@@ -39,7 +39,7 @@ export async function SiteHeader() {
     <header className="bg-white border-b border-slate-100">
       <div className="mx-auto flex h-16 w-full max-w-[1440px] items-center justify-between gap-3 px-4 sm:h-[72px] sm:px-8 md:h-[88px] lg:px-16">
         {/* Logo */}
-        <Link href="/" aria-label="ULink Industries" className="flex shrink-0 items-center">
+        <Link href="/" aria-label="ULink Industries" className="flex shrink-0 items-center transition-transform duration-200 hover:scale-[1.02]">
           <Image
             src={ASSETS.logo.full}
             alt="ULink Industries"
@@ -59,7 +59,7 @@ export async function SiteHeader() {
           <Link
             href="/solutions/products"
             aria-label={t('search')}
-            className="flex h-9 w-9 items-center justify-center rounded-[3px] text-foreground hover:bg-muted hover:text-brand transition-colors"
+            className="flex h-9 w-9 items-center justify-center rounded-[3px] text-foreground hover:bg-muted hover:text-brand transition-all duration-200 hover:scale-110 sm:h-10 sm:w-10"
           >
             <Search className="h-5 w-5" />
           </Link>
@@ -68,7 +68,7 @@ export async function SiteHeader() {
           <Link
             href="/cart"
             aria-label={t('cart')}
-            className="relative flex h-9 w-9 items-center justify-center rounded-[3px] text-foreground hover:bg-muted hover:text-brand transition-colors"
+            className="relative flex h-9 w-9 items-center justify-center rounded-[3px] text-foreground hover:bg-muted hover:text-brand transition-all duration-200 hover:scale-110 sm:h-10 sm:w-10"
           >
             <ShoppingCart className="h-5 w-5" />
             <CartBadge />

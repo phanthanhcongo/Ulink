@@ -197,14 +197,15 @@ export default function SolutionCarousel({ slides, labels }: SolutionCarouselPro
 
             {/* Right Column: Visual Image */}
             <div
-              className={`relative aspect-[4/3] rounded-[3px] overflow-hidden border border-slate-100 bg-slate-50 shadow-sm transition-all duration-300 ${isTransitioning ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`}
+              className={`relative aspect-[4/3] rounded-[3px] overflow-hidden border border-slate-100 bg-slate-50 shadow-sm transition-all duration-300 group hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:-translate-y-1 hover:scale-[1.02] ${isTransitioning ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`}
             >
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src={currentSlide.image}
                 alt={currentSlide.alt}
-                className="h-full w-full object-cover"
+                className="h-full w-full object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-110"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#1769E2]/0 to-[#1769E2]/0 transition-all duration-300 group-hover:from-[#1769E2]/30 group-hover:to-[#1769E2]/5" />
             </div>
           </div>
         </div>

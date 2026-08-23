@@ -55,22 +55,37 @@
 ## 2. Typography Guidelines
 
 ### 2.1. Font Families
-- **Primary UI Font (Headings & Body)**: `Archivo` (paired with `system-ui`, `sans-serif`).
-- **Monospace Font (Code, SKU, Pricing, Data Tables)**: `IBM Plex Mono` (paired with `ui-monospace`, `monospace`).
+- **Primary UI Font (Headings & Body)**: `Archivo` — applied globally via `--font-sans` CSS variable. Use `font-sans` class.
+- **Monospace Font (Code, SKU, Pricing, Data Tables)**: `Archivo` (same font — use `font-mono` for semantic distinction only, renders as Archivo).
 
 ### 2.2. Typography Hierarchy
 
-| Level | Size / Line Height | Font Weight | Primary Usage |
-| :--- | :--- | :--- | :--- |
-| **Display / H1** | `36px` (`2.25rem`) / `1.2` | `Bold (700)` | Main Page Title, Hero section title |
-| **H2** | `28px` (`1.75rem`) / `1.3` | `Bold (700)` | Category title, Major Section title |
-| **H3** | `22px` (`1.375rem`) / `1.4` | `Bold (700)` | Product card title, Dialog modal title |
-| **H4** | `18px` (`1.125rem`) / `1.4` | `Semibold (600)` | Sub-section title, Widget header |
-| **Body Large / Lead** | `16px` (`1rem`) / `1.5` | `Regular (400)` / `Medium (500)` | Intro paragraph, lead text |
-| **Body Base** | `14px` (`0.875rem`) / `1.5` | `Regular (400)` | Standard body content across pages |
-| **Body Small** | `12px` (`0.75rem`) / `1.4` | `Regular (400)` / `Medium (500)` | Secondary description, footnote, timestamp |
-| **Eyebrow / Label** | `11px-12px` / `1.2` | `Bold (700)` + `UPPERCASE` | Category label, tracking-wider |
-| **Mono Code / SKU** | `13px-14px` | `Medium (500)` (IBM Plex Mono) | Industrial material SKU, Order ID, Price table |
+| Level | Mobile (<640px) | Tablet (640-1024px) | Desktop (>1024px) | Font Weight | Primary Usage |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| **Display / H1** | `28px` / `1.2` | `36px` / `1.2` | `48-52px` / `1.12` | `Extrabold (800)` | Hero title, Main Page Title |
+| **H2** | `20-22px` / `1.3` | `24-26px` / `1.3` | `28-32px` / `1.3` | `Extrabold (800)` | Section title, Category title |
+| **H3** | `16-18px` / `1.4` | `18-20px` / `1.4` | `22-24px` / `1.4` | `Bold (700)` | Card title, Modal title |
+| **H4** | `15-16px` / `1.4` | `16-18px` / `1.4` | `18-20px` / `1.4` | `Semibold (600)` | Sub-section title, Widget header |
+| **Body Large / Lead** | `14-15px` / `1.5` | `15-16px` / `1.5` | `16-18px` / `1.5` | `Medium (500)` | Intro paragraph, lead text, Hero description |
+| **Body Base** | `13-14px` / `1.5` | `14px` / `1.5` | `14-15px` / `1.5` | `Regular (400)` | Standard body content |
+| **Body Small** | `12px` / `1.4` | `12-13px` / `1.4` | `13-14px` / `1.4` | `Regular (400)` / `Medium (500)` | Description, footnote, timestamp |
+| **Eyebrow / Label** | `11-12px` / `1.2` | `12-13px` / `1.2` | `13px` / `1.2` | `Bold (700)` + `UPPERCASE` | Category label, section tag |
+| **Mono Code / SKU** | `12-13px` | `13-14px` | `14px` | `Medium (500)` (IBM Plex Mono) | SKU, Order ID, Price table |
+
+### 2.3. Responsive Font Size Pattern
+Apply responsive font sizes using Tailwind breakpoints in this order:
+
+```
+text-{mobile} sm:text-{tablet} lg:text-{desktop}
+```
+
+Examples:
+- **H1 Hero**: `text-[28px] sm:text-[36px] md:text-[44px] lg:text-[50px] xl:text-[52px]`
+- **H2 Section**: `text-[22px] sm:text-[26px] lg:text-[30px]`
+- **H3 Card**: `text-[16px] sm:text-[18px] lg:text-[22px]`
+- **Body Large**: `text-[14px] sm:text-[15px] lg:text-[16px]`
+- **Body Base**: `text-[13px] sm:text-[14px]`
+- **Eyebrow**: `text-[11px] sm:text-[12px] lg:text-[13px]`
 
 ---
 
@@ -150,3 +165,84 @@ Based on an **8-point / 4-point grid system**:
 - **Touch Target**: All button variants strictly adhere to height $\ge 44px$.
 - **Action Arrow Icon**: Arrow `→` smoothly translates right upon `Hover` (`group-hover:translate-x-0.5`).
 - **Labeling**: Button labels must explicitly describe the action (e.g., `"View Details →"`, `"Request Quote"`).
+
+---
+
+## 7. Card Hover Effects (Standard)
+
+> **Standard hover effect for ALL cards, metrics, testimonial cards, and interactive surfaces across the platform.**
+
+### 7.1. Core Card Hover Pattern (No Image — Border Glow Only)
+Cards **without images** use this exact Tailwind class combination:
+
+```
+group transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]
+```
+
+- **`group`** — Enables child element hover styling via `group-hover:*`
+- **`transition-all duration-200`** — Smooth 200ms transition on all properties
+- **`hover:-translate-y-1`** — Card lifts 4px upward on hover
+- **`hover:scale-[1.02]`** — Card scales up 2% for subtle pop effect
+- **`hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]`** — Brand blue (#1769E2) border glow
+
+### 7.2. Card Hover Pattern (With Image — Border Glow + Image Overlay)
+Cards **with images** use core pattern + image overlay:
+
+**Card wrapper:**
+```
+group transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]
+```
+
+**Image overlay (inside image container, sibling of `<Image>`):**
+```html
+<div className="absolute inset-0 bg-gradient-to-t from-[#1769E2]/40 to-[#1769E2]/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+```
+
+**Image zoom:**
+```
+group-hover:scale-105
+```
+
+### 7.3. Icon Container Enhancement
+Icon wrapper inside card MUST add:
+
+```
+group-hover:shadow-sm
+```
+
+### 7.4. Child Color Transitions
+Text & icon elements inside the card use:
+
+```
+transition-colors duration-200 group-hover:text-{color}-{shade}
+```
+
+### 7.5. Example — No Image (Tailwind)
+```html
+<div className="group transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] p-6 flex items-center gap-4 hover:bg-blue-50/80 cursor-default rounded-[3px]">
+  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg transition-colors duration-200 group-hover:bg-blue-100 group-hover:shadow-sm">
+    <FileText className="h-[28px] w-[28px] text-brand transition-colors duration-200 group-hover:text-blue-700" />
+  </div>
+  <div>
+    <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider transition-colors duration-200 group-hover:text-blue-600">
+      Label
+    </p>
+    <span className="text-[20px] font-bold text-brand transition-colors duration-200 group-hover:text-blue-700">
+      Value
+    </span>
+  </div>
+</div>
+```
+
+### 7.6. Example — With Image (Tailwind)
+```html
+<Link className="group flex flex-col overflow-hidden rounded-[3px] border border-border bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
+  <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100">
+    <Image src={image} alt="" fill className="object-cover transition-transform duration-500 group-hover:scale-105" />
+    <div className="absolute inset-0 bg-gradient-to-t from-[#1769E2]/40 to-[#1769E2]/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+  </div>
+  <div className="p-5">
+    <h3 className="font-bold text-slate-900 group-hover:text-brand transition-colors">Title</h3>
+  </div>
+</Link>
+```

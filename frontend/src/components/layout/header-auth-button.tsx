@@ -109,7 +109,7 @@ export function HeaderAuthButton() {
       href="/login"
       className={cn(
         buttonVariants({ variant: 'secondary', size: 'sm' }),
-        'h-9 w-9 border-brand text-brand hover:bg-brand/10 sm:h-[38px] sm:w-auto sm:px-4'
+        'h-9 w-9 border-brand text-brand hover:bg-brand/10 sm:h-[42px] sm:w-auto sm:px-5 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]'
       )}
     >
       <UserRound className="h-4 w-4" aria-hidden="true" />

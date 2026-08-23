@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   ArrowRight,
   CheckSquare,
@@ -20,6 +20,19 @@ export function ResourcesNews() {
   const t = useTranslations('home.resourcesSection');
   const [showComingSoon, setShowComingSoon] = useState(false);
   const [selectedDocTitle, setSelectedDocTitle] = useState('');
+  const newsRef = useRef<HTMLDivElement>(null);
+  const [newsVisible, setNewsVisible] = useState(false);
+
+  useEffect(() => {
+    const el = newsRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setNewsVisible(true); observer.unobserve(el); } },
+      { threshold: 0.1 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   const handleDocClick = (e: React.MouseEvent, title: string) => {
     e.preventDefault();
@@ -122,18 +135,25 @@ export function ResourcesNews() {
       </div>
 
       {/* ── 3. 3 NEWS CARDS GRID ── */}
-      <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8">
-        {newsData.map((news) => (
-          <NewsCard
+      <div ref={newsRef} className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8">
+        {newsData.map((news, idx) => (
+          <div
             key={news.num}
-            num={news.num}
-            date={news.date}
-            title={news.title}
-            image={news.image}
-            category={news.category}
-            author={news.author}
-            readMoreText={t('readMore') || 'Đọc thêm'}
-          />
+            className={`transition-all duration-500 ${
+              newsVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+            }`}
+            style={{ transitionDelay: `${idx * 100}ms` }}
+          >
+            <NewsCard
+              num={news.num}
+              date={news.date}
+              title={news.title}
+              image={news.image}
+              category={news.category}
+              author={news.author}
+              readMoreText={t('readMore') || 'Đọc thêm'}
+            />
+          </div>
         ))}
       </div>
 
@@ -141,7 +161,7 @@ export function ResourcesNews() {
       <div className="mt-10 flex justify-center">
         <Link
           href="/resources"
-          className="group inline-flex h-11 items-center justify-center gap-2.5 rounded-[3px] border border-blue-600 bg-white px-6 text-sm font-bold text-blue-600 transition-all hover:bg-blue-50/50 hover:shadow-xs active:scale-98"
+          className="group inline-flex h-11 items-center justify-center gap-2.5 rounded-[3px] border border-blue-600 bg-white px-6 text-sm font-bold text-blue-600 transition-all hover:bg-blue-50/50 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:-translate-y-1 hover:scale-[1.02]"
         >
           {t('viewMore') || 'Xem thêm'}
           <ArrowRight className="h-4.5 w-4.5 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
