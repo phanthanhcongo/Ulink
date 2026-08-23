@@ -72,7 +72,7 @@ export default function HubOverview({ locale }: HubOverviewProps) {
   const t = translations[locale] || translations.en;
 
   return (
-    <section className="w-full bg-white pt-24 pb-16 border-b border-slate-100">
+    <section className="w-full bg-white pt-32 pb-16 sm:pt-40 sm:pb-20 lg:pt-48 lg:pb-24 border-b border-slate-100">
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 flex flex-col gap-10">
         
         {/* === Part 1: Heading & Description === */}
@@ -80,7 +80,7 @@ export default function HubOverview({ locale }: HubOverviewProps) {
           <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-brand block mb-3">
             {t.eyebrow}
           </span>
-          <h2 className="text-[30px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold text-slate-900 leading-tight">
+          <h2 className="text-[26px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold text-slate-900 leading-tight">
             {t.title}
           </h2>
           <p className="mt-4 text-[13px] sm:text-[14px] leading-relaxed text-slate-500 max-w-[1100px]">
@@ -95,8 +95,8 @@ export default function HubOverview({ locale }: HubOverviewProps) {
         </div>
 
         {/* === Part 2: Metrics Bar === */}
-        <div className="w-full max-w-[1120px] mx-auto bg-[#E8F0FE]/40 rounded-[3px] border border-blue-100/80 sm:p-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-0 lg:divide-x lg:divide-blue-200/50">
+        <div className="w-full max-w-[1120px] mx-auto bg-[#E8F0FE]/40 rounded-[3px] border border-blue-100/80 p-5 sm:p-8">
+          <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-0 lg:divide-x lg:divide-blue-200/50">
             {/* Stat 1 */}
             <div className="flex items-center gap-4 lg:px-6 first:pl-0">
               <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-brand/10 text-brand">
@@ -160,8 +160,8 @@ export default function HubOverview({ locale }: HubOverviewProps) {
         </div>
 
         {/* === Part 3: Partner Brand Logos === */}
-        <div className="w-full max-w-[1120px] mx-auto px-8 flex justify-center items-center">
-          <div className="relative w-full max-w-full h-[128px] sm:h-[144px] lg:h-[160px]">
+        <div className="w-full max-w-[1120px] mx-auto px-4 sm:px-8 flex justify-center items-center">
+          <div className="relative w-full max-w-full h-[32px] xs:h-[40px] sm:h-[56px] md:h-[72px] lg:h-[80px]">
             <Image
               src="/images/regional_hubs/hub-2/icon/section.png"
               alt="Partner Brand Logos"

@@ -210,18 +210,17 @@ export function VietnamMap({ className, locale = 'vi', hubs = [] }: VietnamMapPr
                 draggable={false}
               />
 
-              {/* Overlay SVG for connectors & glowing dots */}
+              {/* Connector lines (hidden on mobile) */}
               <svg
                 viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                className="absolute inset-0 h-full w-full overflow-visible pointer-events-none"
+                className="absolute inset-0 h-full w-full overflow-visible pointer-events-none hidden lg:block"
               >
-                {/* S-curve connector lines to the right hub cards */}
                 {activeMarkers.map((cluster, i) => {
                   const { x, y } = geoToSvg(cluster.lat, cluster.lon);
                   const targetY = listTargets[i];
-                  const targetX = VIEW_W + 100; // extend lines slightly past map border
+                  const targetX = VIEW_W + 100;
                   const isHovered = hoveredHub === cluster.id;
                   
                   const d = `M ${x} ${y} C ${(x + targetX) / 2} ${y}, ${(x + targetX) / 2} ${targetY}, ${targetX} ${targetY}`;
@@ -238,14 +237,20 @@ export function VietnamMap({ className, locale = 'vi', hubs = [] }: VietnamMapPr
                     />
                   );
                 })}
+              </svg>
 
-                {/* Glowing pulsating hub dots */}
+              {/* Glowing pulsating hub dots (always visible) */}
+              <svg
+                viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="absolute inset-0 h-full w-full overflow-visible pointer-events-none"
+              >
                 {activeMarkers.map((cluster) => {
                   const { x, y } = geoToSvg(cluster.lat, cluster.lon);
                   const isHovered = hoveredHub === cluster.id;
                   return (
                     <g key={`dot-${cluster.id}`}>
-                      {/* Pulsating ripple ring */}
                       <circle
                         cx={x}
                         cy={y}
@@ -255,7 +260,6 @@ export function VietnamMap({ className, locale = 'vi', hubs = [] }: VietnamMapPr
                         className="animate-ping"
                         style={{ transformOrigin: `${x}px ${y}px` }}
                       />
-                      {/* Glow border ring */}
                       <circle
                         cx={x}
                         cy={y}
@@ -265,7 +269,6 @@ export function VietnamMap({ className, locale = 'vi', hubs = [] }: VietnamMapPr
                         strokeWidth="1.5"
                         opacity="0.8"
                       />
-                      {/* Solid center dot */}
                       <circle cx={x} cy={y} r="3.5" fill="#ffffff" />
                     </g>
                   );

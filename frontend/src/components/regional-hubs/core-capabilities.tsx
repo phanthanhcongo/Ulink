@@ -8,9 +8,9 @@ export default async function CoreCapabilities() {
   return (
     <section className="w-full bg-white py-16 sm:py-20 border-t border-slate-100">
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center lg:items-start">
           {/* Left: Main info */}
-          <div className="lg:col-span-4 max-w-md">
+          <div className="lg:col-span-4 max-w-md flex flex-col items-center lg:items-start text-center lg:text-left mx-auto lg:mx-0">
             <h2 className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-slate-900 leading-tight">
               {t('capabilities.title')}
             </h2>
@@ -23,7 +23,7 @@ export default async function CoreCapabilities() {
           <div className="lg:col-span-8">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
               {/* Card 1: Manufacturing */}
-              <div className="flex flex-col items-start">
+              <div className="flex flex-col items-center text-center">
                 <Images className="h-8 w-8 text-brand mb-4" strokeWidth={1.5} />
                 <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 leading-snug mb-2">
                   {t('capabilities.manufacturing.title')}
@@ -41,7 +41,7 @@ export default async function CoreCapabilities() {
               </div>
 
               {/* Card 2: Supply Chain */}
-              <div className="flex flex-col items-start">
+              <div className="flex flex-col items-center text-center">
                 <Clock className="h-8 w-8 text-brand mb-4" strokeWidth={1.5} />
                 <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 leading-snug mb-2">
                   {t('capabilities.supplyChain.title')}
@@ -59,7 +59,7 @@ export default async function CoreCapabilities() {
               </div>
 
               {/* Card 3: Quality Control */}
-              <div className="flex flex-col items-start">
+              <div className="flex flex-col items-center text-center">
                 <Award className="h-8 w-8 text-brand mb-4" strokeWidth={1.5} />
                 <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 leading-snug mb-2">
                   {t('capabilities.quality.title')}

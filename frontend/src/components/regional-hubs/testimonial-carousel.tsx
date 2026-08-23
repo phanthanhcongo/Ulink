@@ -231,12 +231,12 @@ export default function TestimonialCarousel({ labels }: TestimonialCarouselProps
                   key={`${item.id}-${idx}`}
                   className="w-full md:w-1/2 shrink-0 px-4"
                 >
-                  <div className="group bg-white rounded-[3px] border border-slate-100 shadow-sm p-8 flex flex-col justify-between items-center text-center h-[340px] md:h-[360px] transition-all duration-300 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:-translate-y-1 hover:scale-[1.02]">
+                  <div className="group bg-white rounded-[3px] border border-slate-100 shadow-sm p-5 sm:p-8 flex flex-col justify-between items-center text-center min-h-[360px] md:min-h-[380px] h-auto transition-all duration-300 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:-translate-y-1 hover:scale-[1.02]">
                     {/* Company Logo & Name */}
                     <div className="mb-4 flex justify-center h-8 shrink-0">{item.logo}</div>
 
                     {/* Testimonial Quote */}
-                    <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-600 font-medium italic px-4 flex-1 flex items-center justify-center overflow-hidden line-clamp-5 transition-colors duration-200 group-hover:text-slate-800">
+                    <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-600 font-medium italic px-2 sm:px-4 flex-1 flex items-center justify-center overflow-hidden transition-colors duration-200 group-hover:text-slate-800">
                       {"\""}{item.quote}{"\""}
                     </p>
 
