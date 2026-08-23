@@ -113,7 +113,7 @@ export function HeaderAuthButton() {
       )}
     >
       <UserRound className="h-4 w-4" aria-hidden="true" />
-      <span className="hidden sm:inline text-[13px] font-medium">{t('login')}</span>
+      <span className="hidden sm:inline text-[13px] sm:text-[14px] font-medium">{t('login')}</span>
     </Link>
   );
 }

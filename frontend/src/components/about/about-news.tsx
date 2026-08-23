@@ -10,7 +10,7 @@ export function AboutNews() {
         <span className="mb-2 inline-flex items-center rounded-full bg-blue-50 px-3.5 py-1 text-xs font-semibold text-blue-700 ring-1 ring-inset ring-blue-700/10">
           Tin tức thị trường
         </span>
-        <h2 className="text-[20px] sm:text-[24px] lg:text-[24px] xl:text-[28px] font-bold tracking-tight text-slate-900">
+        <h2 className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-bold tracking-tight text-slate-900">
           Cập nhật xu hướng và diễn biến mới nhất
         </h2>
       </div>
@@ -21,7 +21,7 @@ export function AboutNews() {
             key={item.id}
             href={`/about/news/${item.id}`}
             aria-label={`Xem chi tiết bài viết: ${item.title}`}
-            className="group flex h-full flex-col overflow-hidden rounded-[3px] border border-slate-100 bg-white shadow-sm transition-all hover:shadow-md"
+            className="group flex h-full flex-col overflow-hidden rounded-[3px] border border-slate-100 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]"
           >
             <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100">
               <Image src={item.coverImage} alt={item.title} fill className="object-cover" />
@@ -35,10 +35,10 @@ export function AboutNews() {
                   {item.date}
                 </span>
               </div>
-              <h3 className="text-[13px] sm:text-[14px] lg:text-[14px] xl:text-[15px] font-bold text-slate-900 line-clamp-2 hover:text-blue-600">
+              <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 line-clamp-2 hover:text-blue-600">
                 {item.title}
               </h3>
-              <p className="mt-2 flex-1 text-[11.5px] sm:text-[12px] lg:text-[12px] xl:text-[13px] leading-relaxed text-slate-600 line-clamp-2">{item.summary}</p>
+              <p className="mt-2 flex-1 text-[12px] sm:text-[13px] leading-relaxed text-slate-600 line-clamp-2">{item.summary}</p>
               <div className="mt-4 flex items-center justify-between border-t border-slate-100 pt-3">
                 <span className="flex items-center gap-1 text-[11px] sm:text-xs text-slate-500">
                   <User className="h-3 w-3" />

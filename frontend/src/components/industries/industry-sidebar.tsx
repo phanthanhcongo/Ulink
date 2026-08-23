@@ -49,13 +49,13 @@ export function IndustrySidebar({ industryData, locale }: IndustrySidebarProps) 
 
         {/* Sidebar Card: Vì sao chọn ULINK */}
         <div className="bg-card/60 border border-slate-100 p-6 sm:p-8 shadow-sm space-y-5">
-          <h3 className="text-base sm:text-lg font-extrabold text-primary border-b pb-3 flex items-center gap-2">
+          <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-primary border-b pb-3 flex items-center gap-2">
             <ShieldCheck className="h-5 w-5 text-brand" />
             {industryData.whyUsTitle}
           </h3>
           <ul className="space-y-3.5">
             {industryData.whyUsList.map((item, idx) => (
-              <li key={idx} className="flex gap-2.5 items-start text-xs sm:text-sm text-slate-600 font-medium">
+              <li key={idx} className="flex gap-2.5 items-start text-[13px] sm:text-[14px] leading-relaxed text-slate-600 font-medium">
                 <CheckCircle2 className="h-4.5 w-4.5 text-emerald-500 shrink-0 mt-0.5" />
                 <span className="leading-snug">{item}</span>
               </li>
@@ -65,7 +65,7 @@ export function IndustrySidebar({ industryData, locale }: IndustrySidebarProps) 
 
         {/* Sidebar Card: Chứng nhận & tiêu chuẩn */}
         <div className="bg-card/60 border border-slate-100 p-6 sm:p-8 shadow-sm space-y-5">
-          <h3 className="text-base sm:text-lg font-extrabold text-primary border-b pb-3 flex items-center gap-2">
+          <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-primary border-b pb-3 flex items-center gap-2">
             <Factory className="h-5 w-5 text-emerald-600" />
             {industryData.standardsTitle}
           </h3>
@@ -96,7 +96,7 @@ export function IndustrySidebar({ industryData, locale }: IndustrySidebarProps) 
 
         {/* Sidebar Card: Tài liệu liên quan (Duplicate for high vis) */}
         <div className="bg-card/60 border border-slate-100 p-6 sm:p-8 shadow-sm space-y-5">
-          <h3 className="text-base sm:text-lg font-extrabold text-primary border-b pb-3 flex items-center gap-2">
+          <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-primary border-b pb-3 flex items-center gap-2">
             <FileDown className="h-5 w-5 text-brand" />
             {locale === 'vi' ? 'Tài liệu liên quan' : locale === 'ja' ? '関連資料' : 'Related Resources'}
           </h3>
@@ -109,10 +109,10 @@ export function IndustrySidebar({ industryData, locale }: IndustrySidebarProps) 
               <Download className="h-5.5 w-5.5" />
             </div>
             <div className="space-y-0.5">
-              <h4 className="text-xs sm:text-sm font-bold text-primary leading-snug">
+              <h4 className="text-[13px] sm:text-[14px] leading-relaxed font-bold text-primary leading-snug">
                 {industryData.catalogue.title}
               </h4>
-              <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">
+              <p className="text-[12px] sm:text-[13px] text-slate-400 font-bold uppercase tracking-wider">
                 {industryData.catalogue.info}
               </p>
             </div>

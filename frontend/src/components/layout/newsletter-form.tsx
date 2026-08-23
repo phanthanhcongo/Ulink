@@ -76,7 +76,7 @@ export function NewsletterForm() {
           onChange={(e) => setEmail(e.target.value)}
           disabled={status === 'loading'}
           placeholder={t('newsletterPlaceholder')}
-          className="h-9 min-w-0 flex-1 bg-transparent px-2.5 text-[11px] text-foreground placeholder:text-muted-foreground focus:outline-none disabled:opacity-60"
+          className="h-9 min-w-0 flex-1 bg-transparent px-2.5 text-[13px] sm:text-[14px] leading-relaxed text-foreground placeholder:text-muted-foreground focus:outline-none disabled:opacity-60"
         />
         <button
           type="submit"
@@ -94,7 +94,7 @@ export function NewsletterForm() {
 
       {message && (
         <p
-          className={`mt-1.5 text-[11px] leading-normal ${
+          className={`mt-1.5 text-[13px] sm:text-[14px] leading-relaxed ${
             status === 'success'
               ? 'text-green-400'
               : status === 'invalid' || status === 'conflict' || status === 'error'

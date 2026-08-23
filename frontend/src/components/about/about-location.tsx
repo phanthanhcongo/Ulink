@@ -28,7 +28,7 @@ export function AboutLocation() {
           <span className="text-sm font-bold text-blue-600">
             Vị trí chiến lược
           </span>
-          <h2 className="text-[24px] sm:text-[32px] font-extrabold tracking-tight text-slate-900 leading-tight">
+          <h2 className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold tracking-tight text-slate-900 leading-tight">
             Trung tâm kết nối thuận tiện
           </h2>
           <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-500 max-w-xl">

@@ -73,7 +73,7 @@ export function ResourcesNews() {
 
   const newsData = [
     {
-      num: 1,
+      slug: 'news-1',
       date: t('card1Date'),
       title: t('card1Title'),
       image: ASSETS.home.news1,
@@ -85,7 +85,7 @@ export function ResourcesNews() {
       }
     },
     {
-      num: 2,
+      slug: 'news-2',
       date: t('card2Date'),
       title: t('card2Title'),
       image: ASSETS.home.news2,
@@ -97,7 +97,7 @@ export function ResourcesNews() {
       }
     },
     {
-      num: 3,
+      slug: 'news-3',
       date: t('card3Date'),
       title: t('card3Title'),
       image: ASSETS.home.news3,
@@ -126,10 +126,10 @@ export function ResourcesNews() {
 
       {/* ── 2. SUB-SECTION HEADER (TIN TỨC THỊ TRƯỜNG - CENTERED) ── */}
       <div className="text-center flex flex-col items-center justify-center">
-        <span className="text-[13px] sm:text-sm font-bold uppercase tracking-wider text-blue-600">
+        <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-blue-600">
           {t('newsSectionTitle')}
         </span>
-        <h3 className="mt-1 text-lg sm:text-xl md:text-2xl font-extrabold tracking-tight text-slate-900 leading-snug">
+        <h3 className="mt-1 text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-extrabold tracking-tight text-slate-900 leading-snug">
           {t('newsSectionSubTitle')}
         </h3>
       </div>
@@ -138,14 +138,14 @@ export function ResourcesNews() {
       <div ref={newsRef} className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8">
         {newsData.map((news, idx) => (
           <div
-            key={news.num}
+            key={news.slug}
             className={`transition-all duration-500 ${
               newsVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
             }`}
             style={{ transitionDelay: `${idx * 100}ms` }}
           >
             <NewsCard
-              num={news.num}
+              slug={news.slug}
               date={news.date}
               title={news.title}
               image={news.image}

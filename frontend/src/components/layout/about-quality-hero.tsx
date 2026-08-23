@@ -61,19 +61,19 @@ export function AboutQualityHero() {
           {/* Left: Text content */}
           <div className="flex flex-col lg:max-w-[480px]">
             {/* Eyebrow */}
-            <p className="text-[12px] font-normal tracking-wide text-brand">{t('eyebrow')}</p>
+            <p className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-brand">{t('eyebrow')}</p>
 
             {/* Heading */}
-            <h1 className="mt-4 text-[28px] font-bold leading-[1.35] text-primary">
+            <h1 className="mt-4 text-[30px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold leading-[1.35] text-primary">
               <span className="block">{t('titleLine1')}</span>
               <span className="block">{t('titleLine2')}</span>
             </h1>
 
             {/* Description */}
-            <p className="mt-5 max-w-[420px] text-[11px] leading-[1.7] text-foreground/60">
+            <p className="mt-5 max-w-[420px] text-[13px] sm:text-[14px] leading-relaxed text-foreground/60">
               {t('desc1')}
             </p>
-            <p className="mt-2 max-w-[420px] text-[11px] leading-[1.7] text-foreground/50">
+            <p className="mt-2 max-w-[420px] text-[13px] sm:text-[14px] leading-relaxed text-foreground/50">
               {t('desc2')}
             </p>
 
@@ -81,7 +81,7 @@ export function AboutQualityHero() {
             <a
               href="#"
               onClick={handleDownloadClick}
-              className="mt-6 inline-flex w-fit items-center gap-2.5 rounded-[3px] border border-border bg-white px-5 py-2.5 text-[11px] font-normal text-brand transition-colors hover:bg-background"
+              className="mt-6 inline-flex w-fit items-center gap-2.5 rounded-[3px] border border-border bg-white px-5 py-2.5 text-[13px] sm:text-[14px] font-medium text-brand transition-colors hover:bg-background"
             >
               <Download className="h-3.5 w-3.5" strokeWidth={1.6} />
               {t('downloadBtn')}
@@ -98,10 +98,10 @@ export function AboutQualityHero() {
                     {pillar.icon}
                   </div>
                   <div>
-                    <p className="text-[11px] font-bold text-primary">
+                    <p className="text-[15px] sm:text-[16px] lg:text-[18px] font-bold text-primary">
                       {t(`pillars.${pillar.key}.title`)}
                     </p>
-                    <p className="mt-1.5 text-[10px] leading-[1.6] text-foreground/50">
+                    <p className="mt-1.5 text-[13px] sm:text-[14px] leading-relaxed text-foreground/50">
                       {t(`pillars.${pillar.key}.desc`)}
                     </p>
                   </div>

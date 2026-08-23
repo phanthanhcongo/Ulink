@@ -325,7 +325,7 @@ export function RegisterForm() {
                 {errors.password}
               </p>
             )}
-            <p className="mt-1 text-[11px] text-slate-500">{t('passwordPolicyHint')}</p>
+            <p className="mt-1 text-[12px] sm:text-[13px] text-slate-500">{t('passwordPolicyHint')}</p>
           </div>
 
           {field('confirm_password', {

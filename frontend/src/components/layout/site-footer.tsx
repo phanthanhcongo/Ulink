@@ -132,7 +132,7 @@ export async function SiteFooter() {
             <div className="mb-4 flex items-center justify-between border-b border-slate-300 pb-2 lg:border-b-0 lg:pb-0">
               <Link
                 href="/about"
-                className="group inline-flex items-center gap-1 text-[14px] font-extrabold uppercase tracking-wider text-[#151b2a] transition-colors hover:text-[#1769e2] sm:text-[15px]"
+                className="group inline-flex items-center gap-1 text-[13px] font-extrabold uppercase tracking-wider text-[#151b2a] transition-colors hover:text-[#1769e2] sm:text-[14px]"
               >
                 {t('aboutTitle')}
               </Link>
@@ -189,7 +189,7 @@ export async function SiteFooter() {
               </strong>
               <a
                 href="tel:02473099899"
-                className="mt-2 inline-flex items-center gap-2 text-[17px] font-black tracking-tight text-[#1769e2] hover:underline sm:text-[18px]"
+                className="mt-2 inline-flex items-center gap-2 text-[15px] font-black tracking-tight text-[#1769e2] hover:underline sm:text-[16px]"
               >
                 <Phone className="h-5 w-5 shrink-0" />
                 0247 309 9899
@@ -211,7 +211,7 @@ export async function SiteFooter() {
             <div className="mb-4 flex items-center justify-between border-b border-slate-300 pb-2 lg:border-b-0 lg:pb-0">
               <Link
                 href="/industries"
-                className="group inline-flex items-center gap-1 text-[14px] font-extrabold uppercase tracking-wider text-[#151b2a] transition-colors hover:text-[#1769e2] sm:text-[15px]"
+                className="group inline-flex items-center gap-1 text-[13px] font-extrabold uppercase tracking-wider text-[#151b2a] transition-colors hover:text-[#1769e2] sm:text-[14px]"
               >
                 {t('industriesTitle')}
               </Link>
@@ -267,7 +267,7 @@ export async function SiteFooter() {
             <div className="mb-4 flex items-center justify-between border-b border-slate-300 pb-2 lg:border-b-0 lg:pb-0">
               <Link
                 href="/solutions"
-                className="group inline-flex items-center gap-1 text-[14px] font-extrabold uppercase tracking-wider text-[#151b2a] transition-colors hover:text-[#1769e2] sm:text-[15px]"
+                className="group inline-flex items-center gap-1 text-[13px] font-extrabold uppercase tracking-wider text-[#151b2a] transition-colors hover:text-[#1769e2] sm:text-[14px]"
               >
                 {t('productsTitle')}
               </Link>

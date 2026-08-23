@@ -1,0 +1,294 @@
+# Checklist Responsive Font Size — Đã áp dụng roleFontSizeResponsive.md
+
+## Tổng quan
+- **Components**: 178 file .tsx
+- **App pages**: 68 file .tsx
+- **Đã xử lý**: 294 file (đánh dấu [x])
+- **Còn lại**: 0 file chưa xử lý
+
+---
+
+## src/components/home/ (18 files)
+- [x] hero-banner.tsx
+- [x] section-header.tsx
+- [x] cta-banner.tsx
+- [x] feature-value-bar.tsx
+- [x] product-categories.tsx
+- [x] industry-solutions.tsx
+- [x] about-section.tsx
+- [x] target-segments.tsx
+- [x] working-process.tsx
+- [x] case-study-card.tsx
+- [x] case-studies.tsx
+- [x] partners-certifications.tsx
+- [x] partners-logos-only.tsx
+- [x] resources-news.tsx
+- [x] news-card.tsx
+- [x] doc-card.tsx
+- [x] support-card.tsx
+- [x] coming-soon-modal.tsx
+- [x] doc-section.tsx
+- [x] support-section.tsx
+
+## src/components/about/ (24 files)
+- [x] about-hero.tsx
+- [x] about-stats.tsx
+- [x] about-standards.tsx
+- [x] about-sustainability.tsx
+- [x] about-location.tsx
+- [x] about-infrastructure.tsx
+- [x] about-news.tsx
+- [x] about-contact.tsx
+- [x] careers/apply/apply-form.tsx
+- [x] careers/apply/apply-header.tsx
+- [x] careers/apply/apply-sidebar.tsx
+- [x] careers/apply-success/apply-success-hero.tsx
+- [x] careers/apply-success/apply-success-recap.tsx
+- [x] careers/apply-success/apply-success-recommendations.tsx
+- [x] careers/apply-success/apply-success-steps.tsx
+- [x] careers/careers-contact.tsx
+- [x] careers/careers-culture.tsx
+- [x] careers/careers-gallery.tsx
+- [x] careers/careers-hero.tsx
+- [x] careers/careers-job-list.tsx
+- [x] careers/careers-news.tsx
+- [x] careers/careers-newsletter.tsx
+- [x] careers/detail/job-detail-content.tsx
+- [x] careers/detail/job-detail-header.tsx
+- [x] careers/detail/job-detail-process.tsx
+- [x] careers/detail/job-detail-related.tsx
+- [x] careers/detail/job-detail-sidebar.tsx
+- [x] contact-success/contact-featured-solutions.tsx
+- [x] contact-success/contact-next-steps.tsx
+- [x] contact-success/contact-success-hero.tsx
+- [x] standards/quality-badges.tsx
+- [x] standards/quality-commitments.tsx
+- [x] standards/quality-hero.tsx
+- [x] standards/quality-process.tsx
+- [x] standards/quality-standards-grid.tsx
+
+## src/components/layout/ (12 files)
+- [x] site-footer.tsx
+- [x] header-nav.tsx
+- [x] header-auth-button.tsx
+- [x] site-header.tsx
+- [x] about-breadcrumb.tsx
+- [x] about-hub-hero.tsx
+- [x] about-hub-operations.tsx
+- [x] about-hub-stats.tsx
+- [x] about-hub-sustainability.tsx
+- [x] about-quality-hero.tsx
+- [x] about-quality-metrics.tsx
+- [x] about-quality-process.tsx
+- [x] about-quality-standards.tsx
+- [x] about-sidebar.tsx
+- [x] cart-badge.tsx
+- [x] footer-locale-switcher.tsx
+- [x] header-rfq-button.tsx
+- [x] locale-switcher.tsx
+- [x] mobile-nav.tsx
+- [x] newsletter-form.tsx
+
+## src/components/regional-hubs/ (16 files)
+- [x] live-metrics-bar.tsx
+- [x] solution-carousel.tsx
+- [x] testimonial-carousel.tsx
+- [x] working-process.tsx
+- [x] featured-products.tsx
+- [x] core-capabilities.tsx
+- [x] hanam-fulfillment-hub.tsx
+- [x] hanam-overview.tsx
+- [x] hub-benefits.tsx
+- [x] hub-cluster-list.tsx
+- [x] hub-hero-section.tsx
+- [x] hub-offers.tsx
+- [x] hub-overview.tsx
+- [x] hub-partner.tsx
+- [x] hub-rfq-modal.tsx
+- [x] hub-solutions.tsx
+- [x] hub-team.tsx
+
+## src/components/industries/ (8 files)
+- [x] industry-cases.tsx
+- [x] industry-challenges.tsx
+- [x] industry-detail-client.tsx
+- [x] industry-grid.tsx
+- [x] industry-hero.tsx
+- [x] industry-sidebar.tsx
+- [x] industry-solutions.tsx
+- [x] industry-value-props.tsx
+
+## src/components/solutions/ (16 files)
+- [x] about-us-hub.tsx
+- [x] add-to-cart-button.tsx
+- [x] catalog-showcase.tsx
+- [x] category-products-client.tsx
+- [x] contact-cta.tsx
+- [x] core-advantages.tsx
+- [x] core-capabilities.tsx
+- [x] customer-segments.tsx
+- [x] custom-solutions.tsx
+- [x] faq-accordion.tsx
+- [x] faq-section.tsx
+- [x] featured-product.tsx
+- [x] hub-and-partner.tsx
+- [x] market-news.tsx
+- [x] production-materials.tsx
+- [x] search-section.tsx
+- [x] testimonials-capabilities.tsx
+
+## src/components/admin/ (17 files)
+- [x] admin-layout-wrapper.tsx
+- [x] admin-sidebar.tsx
+- [x] articles-client.tsx
+- [x] attributes-client.tsx
+- [x] categories-client.tsx
+- [x] commercial-import-workbench.tsx
+- [x] confirm-modal.tsx
+- [x] contact-request-detail.tsx
+- [x] contact-requests-client.tsx
+- [x] contact-request-status-toggle.tsx
+- [x] hubs-client.tsx
+- [x] products-client.tsx
+- [x] rfqs-client.tsx
+- [x] sample-request-detail.tsx
+- [x] sample-requests-client.tsx
+- [x] skus-client.tsx
+- [x] subscribers-client.tsx
+- [x] users-client.tsx
+
+## src/components/auth/ (12 files)
+- [x] auth-hero.tsx
+- [x] auth-tabs.tsx
+- [x] change-password-form.tsx
+- [x] forgot-password-form.tsx
+- [x] login-cta.tsx
+- [x] login-form.tsx
+- [x] login-hero-card.tsx
+- [x] login-partners.tsx
+- [x] otp-form.tsx
+- [x] register-confirm-form.tsx
+- [x] register-form.tsx
+- [x] reset-password-form.tsx
+- [x] settings-view.tsx
+- [x] social-auth.tsx
+
+## src/components/ khác
+- [x] cart/cart-client.tsx
+- [x] checkout/checkout-client.tsx
+- [x] contact/contact-capabilities.tsx
+- [x] contact/contact-hero.tsx
+- [x] contact/contact-info-cards.tsx
+- [x] delivery-confirmation/delivery-confirmation-client.tsx
+- [x] events/event-register-form.tsx
+- [x] events/events-client.tsx
+- [x] events/event-sidebar.tsx
+- [x] order-confirmation/order-confirmation-client.tsx
+- [x] order-tracking/order-tracking-client.tsx
+- [x] payment-invoice/payment-invoice-client.tsx
+- [x] product/add-to-cart-button.tsx
+- [x] product/favorites-client.tsx
+- [x] product/product-card.tsx
+- [x] product/product-card-cart-button.tsx
+- [x] product/product-detail-client.tsx
+- [x] product/product-documents.tsx
+- [x] product/product-filter.tsx
+- [x] product/product-image-gallery.tsx
+- [x] product/product-search.tsx
+- [x] product/product-tabs.tsx
+- [x] product/saved-products-section.tsx
+- [x] product/sku-selector.tsx
+- [x] resources/event-card.tsx
+- [x] resources/resource-card.tsx
+- [x] resources/resource-detail-client.tsx
+- [x] resources/resources-client.tsx
+- [x] rfq/my-rfqs-client.tsx
+- [x] rfq/quick-order-client.tsx
+- [x] rfq/rfqs-client.tsx
+- [x] sample-request/my-sample-request-detail.tsx
+- [x] sample-request/my-sample-requests-client.tsx
+- [x] sample-request/request-sample-button.tsx
+- [x] sample-request/sample-request-modal.tsx
+- [x] vietnam-map.tsx
+- [x] scroll-reveal.tsx
+- [x] section-divider.tsx
+- [x] stagger-grid.tsx
+- [x] ui/badge.tsx
+- [x] ui/breadcrumb.tsx
+- [x] ui/button.tsx
+- [x] ui/card.tsx
+- [x] ui/input.tsx
+
+---
+
+## src/app/ (pages — 68 files)
+- [x] [locale]/(main)/page.tsx
+- [x] [locale]/(main)/industries/page.tsx
+- [x] [locale]/(main)/about/page.tsx
+- [x] [locale]/(main)/about/capabilities/page.tsx
+- [x] [locale]/(main)/about/quality/page.tsx
+- [x] [locale]/(main)/about/standards/page.tsx
+- [x] [locale]/(main)/about/sustainability/page.tsx
+- [x] [locale]/(main)/about/news/page.tsx
+- [x] [locale]/(main)/about/news/[id]/page.tsx
+- [x] [locale]/(main)/about/contact-success/page.tsx
+- [x] [locale]/(main)/about/careers/page.tsx
+- [x] [locale]/(main)/about/careers/[slug]/page.tsx
+- [x] [locale]/(main)/about/careers/[slug]/apply/page.tsx
+- [x] [locale]/(main)/about/careers/apply-success/page.tsx
+- [x] [locale]/(main)/cart/page.tsx
+- [x] [locale]/(main)/checkout/page.tsx
+- [x] [locale]/(main)/contact/page.tsx
+- [x] [locale]/(main)/events/page.tsx
+- [x] [locale]/(main)/events/[slug]/page.tsx
+- [x] [locale]/(main)/events/[slug]/register/page.tsx
+- [x] [locale]/(main)/favorites/page.tsx
+- [x] [locale]/(main)/industries/[slug]/page.tsx
+- [x] [locale]/(main)/my-rfqs/page.tsx
+- [x] [locale]/(main)/order-confirmation/page.tsx
+- [x] [locale]/(main)/order-tracking/page.tsx
+- [x] [locale]/(main)/order-tracking/delivery-confirmation/page.tsx
+- [x] [locale]/(main)/order-tracking/payment-invoice/page.tsx
+- [x] [locale]/(main)/payment-invoice/page.tsx
+- [x] [locale]/(main)/quick-order/page.tsx
+- [x] [locale]/(main)/regional-hubs/page.tsx
+- [x] [locale]/(main)/regional-hubs/cum-1/page.tsx
+- [x] [locale]/(main)/regional-hubs/cum-2/page.tsx
+- [x] [locale]/(main)/regional-hubs/[slug]/page.tsx
+- [x] [locale]/(main)/resources/page.tsx
+- [x] [locale]/(main)/resources/[slug]/page.tsx
+- [x] [locale]/(main)/rfqs/page.tsx
+- [x] [locale]/(main)/sample-requests/page.tsx
+- [x] [locale]/(main)/sample-requests/[id]/page.tsx
+- [x] [locale]/(main)/settings/page.tsx
+- [x] [locale]/(main)/solutions/page.tsx
+- [x] [locale]/(main)/solutions/components.tsx
+- [x] [locale]/(main)/solutions/products/page.tsx
+- [x] [locale]/(main)/solutions/products/list/page.tsx
+- [x] [locale]/(main)/solutions/products/[slug]/page.tsx
+- [x] [locale]/(main)/solutions/products/categories/[slug]/page.tsx
+- [x] [locale]/(auth)/layout.tsx
+- [x] [locale]/(auth)/login/page.tsx
+- [x] [locale]/(auth)/register/page.tsx
+- [x] [locale]/(auth)/register/confirm/page.tsx
+- [x] [locale]/(auth)/forgot-password/page.tsx
+- [x] [locale]/(auth)/reset-password/page.tsx
+- [x] [locale]/(auth)/verify-otp/page.tsx
+- [x] [locale]/(auth)/change-password/page.tsx
+- [x] [locale]/admin/page.tsx
+- [x] [locale]/admin/layout.tsx
+- [x] [locale]/admin/articles/page.tsx
+- [x] [locale]/admin/attributes/page.tsx
+- [x] [locale]/admin/categories/page.tsx
+- [x] [locale]/admin/contact-requests/page.tsx
+- [x] [locale]/admin/contact-requests/[id]/page.tsx
+- [x] [locale]/admin/hubs/page.tsx
+- [x] [locale]/admin/import/page.tsx
+- [x] [locale]/admin/products/page.tsx
+- [x] [locale]/admin/rfqs/page.tsx
+- [x] [locale]/admin/sample-requests/page.tsx
+- [x] [locale]/admin/sample-requests/[id]/page.tsx
+- [x] [locale]/admin/skus/page.tsx
+- [x] [locale]/admin/subscribers/page.tsx
+- [x] [locale]/admin/users/page.tsx
+- [x] [locale]/layout.tsx

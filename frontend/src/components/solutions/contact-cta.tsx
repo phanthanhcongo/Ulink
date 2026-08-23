@@ -14,13 +14,13 @@ export default async function ContactCta({ locale }: ContactCtaProps) {
       <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         {/* Left Content Side */}
         <div className="flex flex-col">
-          <span className="text-sm sm:text-base font-bold text-slate-800">
+          <span className="text-[13px] sm:text-[14px] leading-relaxed font-bold text-slate-800">
             {t('contactCta.label')}
           </span>
-          <h2 className="text-xl sm:text-2.5xl font-extrabold text-slate-900 mt-1.5 leading-tight tracking-tight">
+          <h2 className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-slate-900 mt-1.5 leading-tight tracking-tight">
             {t('contactCta.heading')}
           </h2>
-          <p className="text-xs sm:text-sm text-slate-500 font-medium mt-2 leading-relaxed">
+          <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-500 font-medium mt-2">
             {t('contactCta.desc')}
           </p>
         </div>
@@ -29,13 +29,13 @@ export default async function ContactCta({ locale }: ContactCtaProps) {
         <div className="flex items-center gap-4 shrink-0 w-full sm:w-auto">
           <Link
             href="/contact"
-            className="inline-flex h-11 items-center justify-center rounded-[3px] border border-blue-600 bg-white px-6 text-xs sm:text-sm font-bold text-blue-600 hover:bg-blue-50 transition-colors w-1/2 sm:w-auto text-center"
+            className="inline-flex h-11 items-center justify-center rounded-[3px] border border-blue-600 bg-white px-6 text-[13px] sm:text-[14px] leading-relaxed font-bold text-blue-600 hover:bg-blue-50 transition-colors w-1/2 sm:w-auto text-center"
           >
             {t('contactCta.callNow')}
           </Link>
           <Link
             href="/contact"
-            className="inline-flex h-11 items-center justify-center rounded-[3px] bg-blue-600 px-6 text-xs sm:text-sm font-bold text-white hover:bg-blue-700 transition-colors w-1/2 sm:w-auto text-center"
+            className="inline-flex h-11 items-center justify-center rounded-[3px] bg-blue-600 px-6 text-[13px] sm:text-[14px] leading-relaxed font-bold text-white hover:bg-blue-700 transition-colors w-1/2 sm:w-auto text-center"
           >
             {t('contactCta.sendRequest')}
           </Link>

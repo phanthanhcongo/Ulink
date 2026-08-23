@@ -77,10 +77,10 @@ export default function HubOverview({ locale }: HubOverviewProps) {
         
         {/* === Part 1: Heading & Description === */}
         <div className="flex flex-col items-start text-left max-w-[1120px] mx-auto w-full">
-          <span className="text-[13px] font-bold text-brand tracking-wider uppercase block mb-3">
+          <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-brand block mb-3">
             {t.eyebrow}
           </span>
-          <h2 className="text-[24px] sm:text-[30px] font-extrabold text-slate-900 leading-tight">
+          <h2 className="text-[30px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold text-slate-900 leading-tight">
             {t.title}
           </h2>
           <p className="mt-4 text-[13px] sm:text-[14px] leading-relaxed text-slate-500 max-w-[1100px]">
@@ -88,7 +88,7 @@ export default function HubOverview({ locale }: HubOverviewProps) {
           </p>
           <Link
             href="/about"
-            className="mt-4 text-[13px] font-semibold text-brand hover:underline inline-flex items-center"
+            className="mt-4 text-[13px] sm:text-[14px] leading-relaxed font-semibold text-brand hover:underline inline-flex items-center"
           >
             {t.learnMore}
           </Link>
@@ -103,7 +103,7 @@ export default function HubOverview({ locale }: HubOverviewProps) {
                 <Smile className="h-5.5 w-5.5 stroke-[2]" />
               </div>
               <div className="flex flex-col text-left">
-                <span className="text-[20px] sm:text-[22px] font-extrabold text-slate-900 leading-none">
+                <span className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-slate-900 leading-none">
                   {t.stat1Val}
                 </span>
                 <span className="mt-1.5 text-[12px] sm:text-[13px] font-medium text-slate-500 leading-tight">
@@ -118,7 +118,7 @@ export default function HubOverview({ locale }: HubOverviewProps) {
                 <Copy className="h-5.5 w-5.5 stroke-[2]" />
               </div>
               <div className="flex flex-col text-left">
-                <span className="text-[20px] sm:text-[22px] font-extrabold text-slate-900 leading-none">
+                <span className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-slate-900 leading-none">
                   {t.stat2Val}
                 </span>
                 <span className="mt-1.5 text-[12px] sm:text-[13px] font-medium text-slate-500 leading-tight">
@@ -133,7 +133,7 @@ export default function HubOverview({ locale }: HubOverviewProps) {
                 <Package className="h-5.5 w-5.5 stroke-[2]" />
               </div>
               <div className="flex flex-col text-left">
-                <span className="text-[20px] sm:text-[22px] font-extrabold text-slate-900 leading-none">
+                <span className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-slate-900 leading-none">
                   {t.stat3Val}
                 </span>
                 <span className="mt-1.5 text-[12px] sm:text-[13px] font-medium text-slate-500 leading-tight">
@@ -148,7 +148,7 @@ export default function HubOverview({ locale }: HubOverviewProps) {
                 <Warehouse className="h-5.5 w-5.5 stroke-[2]" />
               </div>
               <div className="flex flex-col text-left">
-                <span className="text-[20px] sm:text-[22px] font-extrabold text-slate-900 leading-none">
+                <span className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-slate-900 leading-none">
                   {t.stat4Val}
                 </span>
                 <span className="mt-1.5 text-[12px] sm:text-[13px] font-medium text-slate-500 leading-tight">

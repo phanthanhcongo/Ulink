@@ -86,15 +86,15 @@ export default async function FeaturedProducts({ products, locale }: FeaturedPro
             </Link>
 
             <div className="flex flex-col flex-1 p-6">
-              <p className="text-[13px] font-bold text-brand uppercase tracking-wider mb-2">
+              <p className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold text-brand uppercase tracking-wider mb-2">
                 {t('featuredProducts.glove.category')}
               </p>
-              <h3 className="text-[16px] font-bold text-slate-900 leading-snug mb-2 line-clamp-1">
+              <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 leading-snug mb-2 line-clamp-1">
                 <Link href={gloveSlug} className="hover:text-brand transition-colors">
                   {t('featuredProducts.glove.title')}
                 </Link>
               </h3>
-              <p className="text-[12px] text-slate-500 mb-5 leading-relaxed line-clamp-2">
+              <p className="text-[12px] sm:text-[13px] text-slate-500 mb-5 leading-relaxed line-clamp-2">
                 {t('featuredProducts.glove.desc')}
               </p>
 
@@ -150,7 +150,7 @@ export default async function FeaturedProducts({ products, locale }: FeaturedPro
               <div className="flex items-center justify-between gap-4 mt-auto border-t border-slate-100 pt-4">
                 <Link
                   href={gloveSlug}
-                  className="flex-1 flex items-center justify-center gap-2 bg-brand hover:bg-brand-strong text-white font-bold text-[13px] py-2.5 rounded-[3px] shadow-sm transition-all"
+                  className="flex-1 flex items-center justify-center gap-2 bg-brand hover:bg-brand-strong text-white font-bold text-[13px] sm:text-[14px] py-2.5 rounded-[3px] shadow-sm transition-all min-h-[44px]"
                 >
                   {t('featuredProducts.rfqButton')}
                   <ArrowRight className="h-4 w-4" />
@@ -158,7 +158,7 @@ export default async function FeaturedProducts({ products, locale }: FeaturedPro
                 <a
                   href="/documents/lien-he-nha-phat-trien.pdf"
                   download="lien-he-nha-phat-trien.pdf"
-                  className="flex items-center gap-1.5 text-brand hover:text-brand-strong font-bold text-[13px] transition-colors whitespace-nowrap"
+                  className="flex items-center gap-1.5 text-brand hover:text-brand-strong font-bold text-[13px] sm:text-[14px] transition-colors whitespace-nowrap"
                 >
                   <Download className="h-4 w-4" />
                   {t('featuredProducts.catalogue')}
@@ -185,15 +185,15 @@ export default async function FeaturedProducts({ products, locale }: FeaturedPro
             </Link>
 
             <div className="flex flex-col flex-1 p-6">
-              <p className="text-[13px] font-bold text-brand uppercase tracking-wider mb-2">
+              <p className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold text-brand uppercase tracking-wider mb-2">
                 {t('featuredProducts.film.category')}
               </p>
-              <h3 className="text-[16px] font-bold text-slate-900 leading-snug mb-2 line-clamp-1">
+              <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 leading-snug mb-2 line-clamp-1">
                 <Link href={filmSlug} className="hover:text-brand transition-colors">
                   {t('featuredProducts.film.title')}
                 </Link>
               </h3>
-              <p className="text-[12px] text-slate-500 mb-5 leading-relaxed line-clamp-2">
+              <p className="text-[12px] sm:text-[13px] text-slate-500 mb-5 leading-relaxed line-clamp-2">
                 {t('featuredProducts.film.desc')}
               </p>
 
@@ -249,7 +249,7 @@ export default async function FeaturedProducts({ products, locale }: FeaturedPro
               <div className="flex items-center justify-between gap-4 mt-auto border-t border-slate-100 pt-4">
                 <Link
                   href={filmSlug}
-                  className="flex-1 flex items-center justify-center gap-2 bg-brand hover:bg-brand-strong text-white font-bold text-[13px] py-2.5 rounded-[3px] shadow-sm transition-all"
+                  className="flex-1 flex items-center justify-center gap-2 bg-brand hover:bg-brand-strong text-white font-bold text-[13px] sm:text-[14px] py-2.5 rounded-[3px] shadow-sm transition-all min-h-[44px]"
                 >
                   {t('featuredProducts.rfqButton')}
                   <ArrowRight className="h-4 w-4" />
@@ -257,7 +257,7 @@ export default async function FeaturedProducts({ products, locale }: FeaturedPro
                 <a
                   href="/documents/lien-he-nha-phat-trien.pdf"
                   download="lien-he-nha-phat-trien.pdf"
-                  className="flex items-center gap-1.5 text-brand hover:text-brand-strong font-bold text-[13px] transition-colors whitespace-nowrap"
+                  className="flex items-center gap-1.5 text-brand hover:text-brand-strong font-bold text-[13px] sm:text-[14px] transition-colors whitespace-nowrap"
                 >
                   <Download className="h-4 w-4" />
                   {t('featuredProducts.catalogue')}
@@ -284,15 +284,15 @@ export default async function FeaturedProducts({ products, locale }: FeaturedPro
             </Link>
 
             <div className="flex flex-col flex-1 p-6">
-              <p className="text-[13px] font-bold text-brand uppercase tracking-wider mb-2">
+              <p className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold text-brand uppercase tracking-wider mb-2">
                 {t('featuredProducts.tape.category')}
               </p>
-              <h3 className="text-[16px] font-bold text-slate-900 leading-snug mb-2 line-clamp-1">
+              <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 leading-snug mb-2 line-clamp-1">
                 <Link href={tapeSlug} className="hover:text-brand transition-colors">
                   {t('featuredProducts.tape.title')}
                 </Link>
               </h3>
-              <p className="text-[12px] text-slate-500 mb-5 leading-relaxed line-clamp-2">
+              <p className="text-[12px] sm:text-[13px] text-slate-500 mb-5 leading-relaxed line-clamp-2">
                 {t('featuredProducts.tape.desc')}
               </p>
 
@@ -348,7 +348,7 @@ export default async function FeaturedProducts({ products, locale }: FeaturedPro
               <div className="flex items-center justify-between gap-4 mt-auto border-t border-slate-100 pt-4">
                 <Link
                   href={tapeSlug}
-                  className="flex-1 flex items-center justify-center gap-2 bg-brand hover:bg-brand-strong text-white font-bold text-[13px] py-2.5 rounded-[3px] shadow-sm transition-all"
+                  className="flex-1 flex items-center justify-center gap-2 bg-brand hover:bg-brand-strong text-white font-bold text-[13px] sm:text-[14px] py-2.5 rounded-[3px] shadow-sm transition-all min-h-[44px]"
                 >
                   {t('featuredProducts.rfqButton')}
                   <ArrowRight className="h-4 w-4" />
@@ -356,7 +356,7 @@ export default async function FeaturedProducts({ products, locale }: FeaturedPro
                 <a
                   href="/documents/lien-he-nha-phat-trien.pdf"
                   download="lien-he-nha-phat-trien.pdf"
-                  className="flex items-center gap-1.5 text-brand hover:text-brand-strong font-bold text-[13px] transition-colors whitespace-nowrap"
+                  className="flex items-center gap-1.5 text-brand hover:text-brand-strong font-bold text-[13px] sm:text-[14px] transition-colors whitespace-nowrap"
                 >
                   <Download className="h-4 w-4" />
                   {t('featuredProducts.catalogue')}

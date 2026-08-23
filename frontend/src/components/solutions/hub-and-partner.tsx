@@ -17,10 +17,10 @@ export default async function HubAndPartner({ locale }: HubAndPartnerProps) {
         <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16 text-center">
           {/* Section Header */}
           <div className="max-w-3xl mx-auto mb-12">
-            <h2 className="text-3xl lg:text-4xl font-extrabold text-blue-600 tracking-tight uppercase">
+            <h2 className="text-[30px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold text-blue-600 tracking-tight uppercase">
               {t('hubPartner.hubHeading')}
             </h2>
-            <p className="mt-6 text-sm sm:text-base text-slate-600 leading-relaxed font-medium">
+            <p className="mt-6 text-[13px] sm:text-[14px] leading-relaxed text-slate-600 font-medium">
               {t('hubPartner.hubDesc')}
             </p>
           </div>
@@ -44,23 +44,23 @@ export default async function HubAndPartner({ locale }: HubAndPartnerProps) {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left: Text Content and Buttons */}
             <div className="lg:col-span-6 flex flex-col items-start">
-              <h2 className="text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
+              <h2 className="text-[30px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold text-slate-900 tracking-tight leading-tight">
                 {t('hubPartner.partnerHeading')}
               </h2>
-              <p className="mt-6 text-sm sm:text-base text-slate-600 leading-relaxed font-medium">
+            <p className="mt-6 text-[13px] sm:text-[14px] leading-relaxed text-slate-600 font-medium">
                 {t('hubPartner.partnerDesc')}
               </p>
 
               <div className="mt-8 flex flex-wrap items-center gap-4 w-full sm:w-auto">
                 <Link
                   href={`/${locale}/about`}
-                  className="inline-flex items-center justify-center rounded-[3px] bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 transition-colors w-full sm:w-auto text-center"
+                className="inline-flex items-center justify-center rounded-[3px] bg-blue-600 px-6 py-3 text-[13px] sm:text-[14px] leading-relaxed font-semibold text-white shadow-sm hover:bg-blue-700 transition-colors w-full sm:w-auto text-center"
                 >
                   {t('hubPartner.learnMore')}
                 </Link>
                 <Link
                   href={`/${locale}/contact`}
-                  className="inline-flex items-center justify-center rounded-[3px] border border-blue-600 text-blue-600 bg-white hover:bg-blue-50 px-6 py-3 text-sm font-semibold transition-colors w-full sm:w-auto text-center"
+                  className="inline-flex items-center justify-center rounded-[3px] border border-blue-600 text-blue-600 bg-white hover:bg-blue-50 px-6 py-3 text-[13px] sm:text-[14px] leading-relaxed font-semibold transition-colors w-full sm:w-auto text-center"
                 >
                   {t('hubPartner.connectUs')}
                 </Link>

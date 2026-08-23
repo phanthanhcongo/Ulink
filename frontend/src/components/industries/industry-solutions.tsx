@@ -22,10 +22,10 @@ export function IndustrySolutions({
       {/* Section: Cleanroom Solutions */}
       <section id="cleanroom" className="scroll-mt-36 space-y-4">
         <div className="space-y-1">
-          <span className="inline-block bg-[#E8F1FF] text-brand text-[11px] font-extrabold px-3 py-1">
+          <span className="inline-block bg-[#E8F1FF] text-brand text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider px-3 py-1">
             {translations.cleanroomSol}
           </span>
-          <p className="text-xs text-slate-400 font-semibold leading-relaxed">
+          <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-400 font-semibold">
             {industryData.cleanroomIntro}
           </p>
         </div>
@@ -41,7 +41,7 @@ export function IndustrySolutions({
               <div className="relative aspect-square w-full bg-card overflow-hidden border border-slate-100 flex items-center justify-center p-1 group-hover:shadow-md transition-shadow">
                 <Image src={cat.image} alt={cat.name} fill className="object-contain p-1" />
               </div>
-              <span className="text-[9px] sm:text-[10px] text-slate-500 font-bold mt-2 text-center line-clamp-2 leading-tight min-h-[26px] flex items-center justify-center px-0.5">
+              <span className="text-[12px] sm:text-[13px] text-slate-500 font-bold mt-2 text-center line-clamp-2 leading-tight min-h-[26px] flex items-center justify-center px-0.5">
                 {cat.name}
               </span>
             </Link>
@@ -51,7 +51,7 @@ export function IndustrySolutions({
         <div className="pt-2">
           <Link
             href={`/solutions?industry=${currentSlug}&category=cleanroom-consumables`}
-            className="w-full border border-slate-200 bg-white hover:bg-slate-50 px-4 py-2 text-[11px] font-extrabold inline-flex items-center gap-1.5 text-slate-700 transition-colors justify-center"
+            className="w-full border border-slate-200 bg-white hover:bg-slate-50 px-4 py-2 text-[13px] sm:text-[14px] leading-relaxed font-extrabold inline-flex items-center gap-1.5 text-slate-700 transition-colors justify-center"
           >
             {industryData.cleanroomViewAll}
             <ArrowRight className="h-3.5 w-3.5 text-slate-400" />
@@ -62,10 +62,10 @@ export function IndustrySolutions({
       {/* Section: Packaging Solutions */}
       <section id="packaging" className="scroll-mt-36 space-y-4">
         <div className="space-y-1">
-          <span className="inline-block bg-[#E8F1FF] text-brand text-[11px] font-extrabold px-3 py-1">
+          <span className="inline-block bg-[#E8F1FF] text-brand text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider px-3 py-1">
             {translations.packagingSol}
           </span>
-          <p className="text-xs text-slate-400 font-semibold leading-relaxed">
+          <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-400 font-semibold">
             {industryData.packagingIntro}
           </p>
         </div>
@@ -81,7 +81,7 @@ export function IndustrySolutions({
               <div className="relative aspect-square w-full bg-card overflow-hidden border border-slate-100 flex items-center justify-center p-1 group-hover:shadow-md transition-shadow">
                 <Image src={cat.image} alt={cat.name} fill className="object-contain p-1" />
               </div>
-              <span className="text-[9px] sm:text-[10px] text-slate-500 font-bold mt-2 text-center line-clamp-2 leading-tight min-h-[26px] flex items-center justify-center px-0.5">
+              <span className="text-[12px] sm:text-[13px] text-slate-500 font-bold mt-2 text-center line-clamp-2 leading-tight min-h-[26px] flex items-center justify-center px-0.5">
                 {cat.name}
               </span>
             </Link>
@@ -91,7 +91,7 @@ export function IndustrySolutions({
         <div className="pt-2">
           <Link
             href={`/solutions?industry=${currentSlug}&category=industrial-packaging`}
-            className="w-full border border-slate-200 bg-white hover:bg-slate-50 px-4 py-2 text-[11px] font-extrabold inline-flex items-center gap-1.5 text-slate-700 transition-colors justify-center"
+            className="w-full border border-slate-200 bg-white hover:bg-slate-50 px-4 py-2 text-[13px] sm:text-[14px] leading-relaxed font-extrabold inline-flex items-center gap-1.5 text-slate-700 transition-colors justify-center"
           >
             {industryData.packagingViewAll}
             <ArrowRight className="h-3.5 w-3.5 text-slate-400" />

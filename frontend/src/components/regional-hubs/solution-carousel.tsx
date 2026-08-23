@@ -143,12 +143,12 @@ export default function SolutionCarousel({ slides, labels }: SolutionCarouselPro
               className={`transition-all duration-300 ${isTransitioning ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'}`}
             >
               {/* Eyebrow */}
-              <span className="text-[12px] font-bold text-brand tracking-wider uppercase block mb-3">
+              <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold text-brand tracking-wider uppercase block mb-3">
                 {currentSlide.eyebrow}
               </span>
 
               {/* Title */}
-              <h2 className="text-[24px] lg:text-[28px] font-bold text-slate-900 leading-snug mb-8">
+              <h2 className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-slate-900 leading-tight mb-8">
                 {currentSlide.title}
               </h2>
 
@@ -159,7 +159,7 @@ export default function SolutionCarousel({ slides, labels }: SolutionCarouselPro
                   <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[3px] bg-brand/8">
                     {icon1}
                   </div>
-                  <p className="text-[12px] leading-relaxed text-slate-500">{currentSlide.feat1}</p>
+                  <p className="text-[12px] sm:text-[13px] leading-relaxed text-slate-500">{currentSlide.feat1}</p>
                 </div>
 
                 {/* Feature 2 */}
@@ -167,7 +167,7 @@ export default function SolutionCarousel({ slides, labels }: SolutionCarouselPro
                   <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[3px] bg-brand/8">
                     {icon2}
                   </div>
-                  <p className="text-[12px] leading-relaxed text-slate-500">{currentSlide.feat2}</p>
+                  <p className="text-[12px] sm:text-[13px] leading-relaxed text-slate-500">{currentSlide.feat2}</p>
                 </div>
               </div>
 
@@ -177,7 +177,7 @@ export default function SolutionCarousel({ slides, labels }: SolutionCarouselPro
                   href="/quick-order"
                   className={cn(
                     buttonVariants({ variant: 'primary', size: 'md' }),
-                    'px-6 text-[13px] font-semibold'
+                    'px-6 text-[13px] sm:text-[14px] font-semibold'
                   )}
                 >
                   {labels.rfqButton}
@@ -187,7 +187,7 @@ export default function SolutionCarousel({ slides, labels }: SolutionCarouselPro
                   href="/solutions"
                   className={cn(
                     buttonVariants({ variant: 'secondary', size: 'md' }),
-                    'border-brand px-6 text-[13px] font-semibold text-brand hover:bg-blue-50'
+                    'border-brand px-6 text-[13px] sm:text-[14px] font-semibold text-brand hover:bg-blue-50'
                   )}
                 >
                   {labels.learnMore}

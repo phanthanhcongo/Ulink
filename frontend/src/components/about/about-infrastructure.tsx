@@ -30,7 +30,7 @@ export function AboutInfrastructure() {
         <span className="text-sm font-bold text-blue-600 mb-2">
           Vận hành hiện đại – Thông minh
         </span>
-        <h2 className="text-[20px] sm:text-[24px] lg:text-[24px] xl:text-[28px] font-bold tracking-tight text-slate-900">
+        <h2 className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-bold tracking-tight text-slate-900">
           Hạ tầng kỹ thuật & Hệ thống tối ưu
         </h2>
       </div>
@@ -39,7 +39,7 @@ export function AboutInfrastructure() {
         {items.map((item, index) => (
           <div
             key={index}
-            className="group flex flex-col overflow-hidden rounded-[3px] bg-white border border-slate-100 shadow-sm transition-all hover:shadow-md hover:-translate-y-1"
+            className="group flex flex-col overflow-hidden rounded-[3px] bg-white border border-slate-100 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]"
           >
             <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-100">
               <Image
@@ -50,10 +50,10 @@ export function AboutInfrastructure() {
               />
             </div>
             <div className="flex flex-col p-4 sm:p-5 lg:p-4 xl:p-5">
-              <h3 className="text-[14px] sm:text-[15px] lg:text-[15px] xl:text-[16px] font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+              <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                 {item.title}
               </h3>
-              <p className="mt-2 text-[11.5px] sm:text-[12px] lg:text-[12px] xl:text-[13px] leading-relaxed text-slate-600">{item.desc}</p>
+              <p className="mt-2 text-[12px] sm:text-[13px] leading-relaxed text-slate-600">{item.desc}</p>
             </div>
           </div>
         ))}

@@ -19,11 +19,11 @@ export function SectionHeader({ title, subtitle, viewAllHref, viewAllLabel, cent
             <span className="h-1 w-1 rounded-full bg-brand" />
             <span className="h-1 w-1 rounded-full bg-brand" />
           </div>
-          <h2 className="text-[22px] font-extrabold tracking-tight text-primary sm:text-[26px] lg:text-[26px] xl:text-[30px] 2xl:text-[32px]">
+          <h2 className="text-[22px] font-extrabold tracking-tight text-primary sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px]">
             {title}
           </h2>
         </div>
-        <p className="mt-2 text-[12.5px] text-muted-foreground sm:text-[13px] lg:text-[13px] xl:text-[14px] max-w-[700px] leading-relaxed">
+        <p className="mt-2 text-[12.5px] text-muted-foreground sm:text-[13px] lg:text-[14px] max-w-[700px] leading-relaxed">
           {subtitle}
         </p>
       </div>
@@ -39,11 +39,11 @@ export function SectionHeader({ title, subtitle, viewAllHref, viewAllLabel, cent
             <span className="h-1 w-1 rounded-full bg-brand" />
             <span className="h-1 w-1 rounded-full bg-brand" />
           </div>
-          <h2 className="text-[22px] font-extrabold tracking-tight text-primary sm:text-[26px] lg:text-[26px] xl:text-[30px] 2xl:text-[32px]">
+          <h2 className="text-[22px] font-extrabold tracking-tight text-primary sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px]">
             {title}
           </h2>
         </div>
-        <p className="mt-1 text-[12.5px] text-muted-foreground sm:text-[13px] lg:text-[13px] xl:text-[14px]">{subtitle}</p>
+        <p className="mt-1 text-[12.5px] text-muted-foreground sm:text-[13px] lg:text-[14px]">{subtitle}</p>
       </div>
       {viewAllHref && viewAllLabel && (
         <Link

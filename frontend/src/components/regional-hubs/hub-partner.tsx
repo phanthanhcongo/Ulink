@@ -13,15 +13,15 @@ export default async function HubPartner() {
           
           {/* Header & Play Button */}
           <div className="flex flex-col items-start w-full max-w-[1000px]">
-            <h2 className="text-[26px] sm:text-[34px] lg:text-[38px] font-extrabold text-slate-900 leading-tight tracking-tight mb-4">
+            <h2 className="text-[30px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold text-slate-900 leading-tight tracking-tight mb-4">
               {t('hubPartner.title')}
             </h2>
-            <p className="text-[14px] sm:text-[15px] text-slate-600 leading-relaxed mb-6 max-w-[900px]">
+            <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-600 mb-6 max-w-[900px]">
               {t('hubPartner.desc')}
             </p>
             
             {/* Play Video Button */}
-            <button className="border-2 border-[#0066FF] text-[#0066FF] font-bold py-2.5 px-6 rounded-none hover:bg-blue-50/50 transition-all inline-flex items-center justify-center gap-2.5 text-[13px] sm:text-[14px] w-[140px]">
+            <button className="border-2 border-[#0066FF] text-[#0066FF] font-bold py-2.5 px-6 rounded-none hover:bg-blue-50/50 transition-all inline-flex items-center justify-center gap-2.5 text-[13px] sm:text-[14px] leading-relaxed w-[140px] min-h-[44px]">
               <svg className="h-4 w-4 fill-current" viewBox="0 0 24 24">
                 <path d="M8 5v14l11-7z" />
               </svg>
@@ -44,7 +44,7 @@ export default async function HubPartner() {
             
             {/* Right Column: Text Details */}
             <div className="flex flex-col justify-center">
-              <p className="text-[14px] sm:text-[15px] leading-relaxed text-slate-700 font-normal">
+              <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-700 font-normal">
                 {t('hubPartner.detailText')}
               </p>
             </div>
@@ -58,13 +58,13 @@ export default async function HubPartner() {
         <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           {/* Left Text */}
           <div className="flex flex-col items-start text-left max-w-[700px]">
-            <span className="text-[13px] font-bold text-blue-900 tracking-wider mb-2 block uppercase">
+            <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-blue-900 mb-2 block">
               {t('hubPartner.ctaEyebrow')}
             </span>
-            <h3 className="text-[22px] sm:text-[26px] font-extrabold text-slate-900 mb-3">
+            <h3 className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-slate-900 leading-tight mb-3">
               {t('hubPartner.ctaTitle')}
             </h3>
-            <p className="text-[13px] sm:text-[14px] text-slate-800 leading-relaxed font-normal">
+            <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-800 font-normal">
               {t('hubPartner.ctaDesc')}
             </p>
           </div>
@@ -73,13 +73,13 @@ export default async function HubPartner() {
           <div className="flex flex-col sm:flex-row items-center gap-3.5 w-full md:w-auto justify-end shrink-0">
             <Link
               href="/contact"
-              className="border border-blue-900 text-blue-900 font-semibold py-2.5 px-6 rounded-none hover:bg-blue-900/5 transition-all text-[13px] sm:text-[14px] text-center w-full sm:w-auto inline-flex justify-center items-center h-11"
+              className="border border-blue-900 text-blue-900 font-semibold py-2.5 px-6 rounded-none hover:bg-blue-900/5 transition-all text-[13px] sm:text-[14px] leading-relaxed text-center w-full sm:w-auto inline-flex justify-center items-center min-h-[44px]"
             >
               {t('hubPartner.ctaBtnConsult')}
             </Link>
             <Link
               href="/contact"
-              className="bg-[#0066FF] hover:bg-blue-700 text-white font-semibold py-2.5 px-6 rounded-none transition-all text-[13px] sm:text-[14px] text-center w-full sm:w-auto inline-flex justify-center items-center shadow-sm h-11"
+              className="bg-[#0066FF] hover:bg-blue-700 text-white font-semibold py-2.5 px-6 rounded-none transition-all text-[13px] sm:text-[14px] leading-relaxed text-center w-full sm:w-auto inline-flex justify-center items-center shadow-sm min-h-[44px]"
             >
               {t('hubPartner.ctaBtnSchedule')}
             </Link>

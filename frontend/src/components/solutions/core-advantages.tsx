@@ -124,10 +124,10 @@ export default async function CoreAdvantages({ locale }: CoreAdvantagesProps) {
 
                 <IconComp className="h-6 w-6 text-slate-700 shrink-0 mt-0.5" />
                 <div className="flex flex-col gap-1">
-                  <h4 className="text-sm sm:text-base font-bold text-slate-900 leading-tight">
+                  <h4 className="text-[15px] sm:text-[16px] lg:text-[18px] font-bold text-slate-900 leading-tight">
                     {feat.title}
                   </h4>
-                  <p className="text-[11px] sm:text-xs text-slate-500 leading-relaxed font-medium">
+                  <p className="text-[12px] sm:text-[13px] text-slate-500 leading-relaxed font-medium">
                     {feat.desc}
                   </p>
                 </div>
@@ -142,10 +142,10 @@ export default async function CoreAdvantages({ locale }: CoreAdvantagesProps) {
         <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
           {/* Core Advantages Heading */}
           <div className="flex flex-col items-start max-w-3xl">
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-primary tracking-tight leading-tight">
+            <h2 className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-primary tracking-tight leading-tight">
               {t('coreAdvantages.heading')}
             </h2>
-            <p className="mt-3.5 text-sm text-slate-500 leading-relaxed font-medium">
+            <p className="mt-3.5 text-[13px] sm:text-[14px] leading-relaxed text-slate-500 font-medium">
               {t('coreAdvantages.subtitle')}
             </p>
           </div>
@@ -162,10 +162,10 @@ export default async function CoreAdvantages({ locale }: CoreAdvantagesProps) {
                   <div className="w-9 h-9 rounded-[3px] bg-slate-50 flex items-center justify-center text-slate-700 shrink-0 mb-5">
                     <IconComp className="h-5 w-5" />
                   </div>
-                  <h3 className="text-base font-bold text-slate-900 mb-2.5 leading-snug">
+                  <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 mb-2.5 leading-snug">
                     {adv.title}
                   </h3>
-                  <p className="text-xs sm:text-sm text-slate-500 leading-relaxed font-medium">
+                  <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-500 font-medium">
                     {adv.desc}
                   </p>
                 </div>

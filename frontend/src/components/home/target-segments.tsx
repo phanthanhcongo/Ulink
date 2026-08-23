@@ -28,7 +28,7 @@ export function TargetSegments() {
         <span className="block text-[18px] sm:text-[20px] font-bold font-sans text-blue-600">
           {t('targetSegments.sectionTitle')}
         </span>
-        <h2 className="mt-2 text-[22px] font-extrabold tracking-tight text-primary sm:text-[26px] lg:text-[26px] xl:text-[30px] 2xl:text-[32px]">
+        <h2 className="mt-2 text-[22px] font-extrabold tracking-tight text-primary sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px]">
           {t('targetSegments.sectionSubTitle')}
         </h2>
       </div>

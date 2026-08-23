@@ -6,7 +6,7 @@ import { ArrowRight } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 
 export interface NewsCardProps {
-  num: number;
+  slug: string;
   date: string;
   title: string;
   image: string;
@@ -19,14 +19,14 @@ export interface NewsCardProps {
   };
 }
 
-export function NewsCard({ num, date, title, image, readMoreText, category, author }: NewsCardProps) {
+export function NewsCard({ slug, date, title, image, readMoreText, category, author }: NewsCardProps) {
   const [displayTitle, displayDesc] = title.includes(' - ')
     ? title.split(' - ')
     : [title, ''];
 
   return (
     <Link
-      href={`/resources/news-${num}`}
+      href={`/news/${slug}`}
       className="group flex flex-col bg-white  border border-slate-100/80 overflow-hidden shadow-sm transition-all duration-300 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:-translate-y-1 hover:scale-[1.02]"
     >
       {/* Top Article Image */}
@@ -44,20 +44,20 @@ export function NewsCard({ num, date, title, image, readMoreText, category, auth
       {/* Content Container */}
       <div className="flex flex-col flex-1 p-5 sm:p-6 text-left">
         {/* Category & Date */}
-        <div className="flex items-center gap-2 text-[11px] sm:text-xs font-semibold text-slate-500 mb-2">
+        <div className="flex items-center gap-2 text-[12px] sm:text-[13px] font-semibold text-slate-500 mb-2">
           <span className="text-blue-600 font-bold uppercase tracking-wider">{category}</span>
           <span>•</span>
           <span>{date}</span>
         </div>
 
         {/* News Article Title */}
-        <h4 className="text-base sm:text-lg font-extrabold leading-snug text-slate-900 transition-colors group-hover:text-blue-600 line-clamp-2 min-h-[48px]">
+        <h4 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-extrabold leading-snug text-slate-900 transition-colors group-hover:text-blue-600 line-clamp-2 min-h-[48px]">
           {displayTitle}
         </h4>
 
         {/* Short Description */}
         {displayDesc && (
-          <p className="mt-3 text-xs sm:text-sm leading-relaxed text-slate-500 font-medium line-clamp-3 flex-1">
+          <p className="mt-3 text-[13px] sm:text-[14px] leading-relaxed text-slate-500 font-medium line-clamp-3 flex-1">
             {displayDesc}
           </p>
         )}

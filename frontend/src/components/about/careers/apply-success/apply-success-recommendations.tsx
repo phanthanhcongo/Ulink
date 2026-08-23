@@ -23,10 +23,10 @@ export function ApplySuccessRecommendations() {
   return (
     <section className="py-10 max-w-5xl mx-auto border-t border-slate-100">
       <div className="flex flex-col items-center text-center mb-8">
-        <h2 className="text-xl sm:text-2xl font-bold tracking-tight text-slate-900">
+        <h2 className="text-[30px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold tracking-tight text-slate-900">
           Cơ hội nghề nghiệp tương tự dành cho bạn
         </h2>
-        <p className="mt-1 text-xs text-slate-500">
+        <p className="mt-1 text-[13px] sm:text-[14px] text-slate-500">
           Các vị trí đang tuyển có yêu cầu kỹ năng tương tự với hồ sơ của bạn
         </p>
       </div>
@@ -39,15 +39,15 @@ export function ApplySuccessRecommendations() {
             className="flex flex-col justify-between rounded-[3px] bg-white p-6 border border-slate-100 shadow-sm transition-all hover:shadow-md hover:border-blue-200 group"
           >
             <div>
-              <span className="text-[11px] font-bold text-blue-600 uppercase tracking-wider block mb-1">
+              <span className="text-[12px] sm:text-[13px] font-bold text-blue-600 uppercase tracking-wider block mb-1">
                 {item.category}
               </span>
-              <h3 className="text-sm font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-3">
+              <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 group-hover:text-blue-600 transition-colors mb-3">
                 {item.title}
               </h3>
             </div>
 
-            <div className="flex items-center justify-between pt-3 border-t border-slate-100 text-xs">
+            <div className="flex items-center justify-between pt-3 border-t border-slate-100 text-[13px] sm:text-[14px]">
               <span className="font-bold text-blue-600">{item.salary}</span>
               <span className="text-slate-500 font-medium">{item.location}</span>
             </div>

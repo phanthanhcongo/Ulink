@@ -27,7 +27,7 @@ export function AboutSidebar() {
     <aside className="w-full shrink-0 border-r border-border lg:w-[228px]">
       <nav className="flex flex-col py-6 pr-3">
         {/* Heading */}
-        <h2 className="mb-4 px-4 text-[12px] font-bold tracking-wide text-primary">
+        <h2 className="mb-4 px-4 text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-primary">
           {t('heading')}
         </h2>
 
@@ -40,7 +40,7 @@ export function AboutSidebar() {
                 <Link
                   href={item.href}
                   aria-current={active ? 'page' : undefined}
-                  className={`relative block overflow-hidden rounded-[3px] px-4 py-2.5 text-[11px] font-bold transition-all duration-200 ${active
+                  className={`relative block overflow-hidden rounded-[3px] px-4 py-2.5 text-[15px] sm:text-[16px] lg:text-[18px] font-bold transition-all duration-200 ${active
                       ? 'bg-[#ECF3FD] text-brand'
                       : 'text-primary/65 hover:bg-muted hover:text-primary'
                     }`}
@@ -63,7 +63,7 @@ export function AboutSidebar() {
         <Link
           href="/about/careers"
           aria-current={isActive('/about/careers') ? 'page' : undefined}
-          className={`relative flex items-center gap-2 overflow-hidden rounded-[3px] px-4 py-2.5 text-[11px] font-bold transition-all duration-200 ${isActive('/about/careers')
+          className={`relative flex items-center gap-2 overflow-hidden rounded-[3px] px-4 py-2.5 text-[15px] sm:text-[16px] lg:text-[18px] font-bold transition-all duration-200 ${isActive('/about/careers')
               ? 'bg-[#ECF3FD] text-brand'
               : 'text-primary/65 hover:bg-muted hover:text-primary'
             }`}

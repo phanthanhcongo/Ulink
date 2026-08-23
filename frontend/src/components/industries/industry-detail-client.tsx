@@ -311,10 +311,10 @@ export default function IndustryDetailClient({
 
           {/* Heading and Description */}
           <div className="max-w-4xl space-y-4">
-            <h1 className="text-2xl sm:text-3.5xl lg:text-[32px] xl:text-[38px] font-extrabold tracking-tight text-white leading-tight">
+            <h1 className="text-[30px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold tracking-tight text-white leading-tight">
               {industryData.title}
             </h1>
-            <p className="text-sm sm:text-base text-white/95 max-w-3xl leading-relaxed font-normal">
+            <p className="text-[15px] sm:text-[16px] lg:text-[18px] font-medium leading-relaxed text-white/95 max-w-3xl">
               {industryData.description}
             </p>
           </div>
@@ -324,7 +324,7 @@ export default function IndustryDetailClient({
             <Link
               href={industryData.catalogue.url}
               onClick={handleCatalogueClick}
-              className="inline-flex h-11 items-center justify-center gap-2 border border-white bg-transparent hover:bg-white hover:text-slate-900 text-white font-extrabold text-sm px-6 py-2.5 transition-all duration-300 rounded-[3px] shadow-sm"
+              className="inline-flex h-11 items-center justify-center gap-2 border border-white bg-transparent hover:bg-white hover:text-slate-900 text-white font-extrabold text-[13px] sm:text-[14px] leading-relaxed px-6 py-2.5 transition-all duration-300 rounded-[3px] shadow-sm"
             >
               <Download className="h-4 w-4" />
               {isVi ? 'Tải hồ sơ năng lực' : isJa ? '機能プロファイルをダウンロード' : 'Download Capability Profile'}
@@ -344,7 +344,7 @@ export default function IndustryDetailClient({
                 key={tab.id}
                 href={`#${tab.id}`}
                 onClick={(e) => handleTabClick(e, tab.id)}
-                className={`py-4.5 text-xs sm:text-sm font-bold transition-all relative border-b-2 whitespace-nowrap leading-none ${activeTab === tab.id
+                className={`py-4.5 text-[13px] sm:text-[14px] leading-relaxed font-bold transition-all relative border-b-2 whitespace-nowrap leading-none ${activeTab === tab.id
                   ? 'border-brand text-brand'
                   : 'border-transparent text-slate-400 hover:text-slate-600'
                   }`}
@@ -362,10 +362,10 @@ export default function IndustryDetailClient({
           {/* Left Column (2/3) - Text & Large Image */}
           <div className="lg:col-span-2 space-y-6">
             <div className="space-y-2">
-              <span className="text-xs font-extrabold text-blue-600 uppercase tracking-widest block">
+              <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-blue-600 block">
                 {isVi ? 'Tổng quan giải pháp' : isJa ? 'ソリューション概要' : 'Solution Overview'}
               </span>
-              <h2 className="text-2xl sm:text-3xl font-extrabold text-primary">
+              <h2 className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-primary">
                 {industryData.slug === 'pharmaceutical-cosmetics'
                   ? (isVi ? 'Đảm bảo tiêu chuẩn vô trùng khắt khe nhất' : isJa ? '最も厳格な無菌基準を保証' : 'Ensure the strictest sterility standards')
                   : industryData.slug === 'electronics'
@@ -374,7 +374,7 @@ export default function IndustryDetailClient({
               </h2>
             </div>
 
-            <div className="text-sm text-slate-600 font-medium leading-relaxed space-y-4 max-w-4xl">
+            <div className="text-[13px] sm:text-[14px] leading-relaxed text-slate-600 font-medium space-y-4 max-w-4xl">
               {industryData.slug === 'pharmaceutical-cosmetics' ? (
                 <>
                   <p>
@@ -419,13 +419,13 @@ export default function IndustryDetailClient({
           {/* Right Column (1/3) - Why Choose ULINK Card */}
           <div className="bg-card border border-slate-200/80 p-8 shadow-sm space-y-6 flex flex-col justify-between h-full">
             <div className="space-y-5">
-              <h3 className="text-lg font-extrabold text-primary border-b pb-4 flex items-center gap-2">
+              <h3 className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-primary border-b pb-4 flex items-center gap-2">
                 <ShieldCheck className="h-5.5 w-5.5 text-blue-600" />
                 {industryData.whyUsTitle}
               </h3>
               <ul className="space-y-4">
                 {industryData.whyUsList.map((item, idx) => (
-                  <li key={idx} className="flex gap-3 items-start text-xs sm:text-sm text-slate-600 font-medium">
+                  <li key={idx} className="flex gap-3 items-start text-[13px] sm:text-[14px] leading-relaxed text-slate-600 font-medium">
                     <CheckCircle2 className="h-5 w-5 text-emerald-500 shrink-0 mt-0.5" />
                     <span className="leading-snug">{item}</span>
                   </li>
@@ -436,7 +436,7 @@ export default function IndustryDetailClient({
             <div className="pt-6">
               <Link
                 href="/contact"
-                className="w-full bg-brand hover:bg-brand/90 text-white font-extrabold text-sm h-11 inline-flex items-center justify-center transition-colors shadow-md rounded-[3px]"
+                className="w-full bg-brand hover:bg-brand/90 text-white font-extrabold text-[13px] sm:text-[14px] leading-relaxed h-11 inline-flex items-center justify-center transition-colors shadow-md rounded-[3px]"
               >
                 {isVi ? 'Liên hệ ngay' : isJa ? '今すぐ連絡' : 'Contact Now'}
               </Link>
@@ -450,13 +450,13 @@ export default function IndustryDetailClient({
       <section id="cleanroom" className="scroll-mt-36 py-16 lg:py-20 w-full bg-slate-50 border-t border-b border-slate-100">
         <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 space-y-10">
           <div className="space-y-2 max-w-3xl">
-            <span className="text-xs font-extrabold text-blue-600 uppercase tracking-widest block">
+            <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-blue-600 block">
               {translations.cleanroomSol}
             </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-primary">
+            <h2 className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-primary">
               {isVi ? 'Nhóm sản phẩm chuyên dụng phòng sạch' : isJa ? 'クリーンルーム専用製品グループ' : 'Cleanroom Specialized Products'}
             </h2>
-            <p className="text-sm text-slate-400 font-semibold leading-relaxed">
+            <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-400 font-semibold">
               {industryData.cleanroomIntro}
             </p>
           </div>
@@ -482,14 +482,14 @@ export default function IndustryDetailClient({
                     {/* Content */}
                     <div className="p-5 space-y-3">
                       <Link href={item.href} className="block">
-                        <h4 className="text-sm sm:text-base font-extrabold text-primary line-clamp-1 leading-snug hover:text-blue-600 transition-colors" title={item.name}>
+                        <h4 className="text-[15px] sm:text-[16px] lg:text-[18px] font-extrabold text-primary line-clamp-1 leading-snug hover:text-blue-600 transition-colors" title={item.name}>
                           {item.name}
                         </h4>
                       </Link>
                       {/* Features bullets */}
                       <ul className="space-y-1.5">
                         {item.bullets.map((bullet, bIdx) => (
-                          <li key={bIdx} className="flex gap-2 items-start text-xs text-slate-500 font-semibold leading-snug">
+                          <li key={bIdx} className="flex gap-2 items-start text-[12px] sm:text-[13px] text-slate-500 font-semibold leading-snug">
                             <span className="h-1.5 w-1.5 rounded-full bg-blue-600 shrink-0 mt-1.5" />
                             <span>{bullet}</span>
                           </li>
@@ -502,7 +502,7 @@ export default function IndustryDetailClient({
                   <div className="px-5 pb-5 pt-2">
                     <Link
                       href={item.href}
-                      className="text-xs font-bold text-blue-600 hover:text-blue-700 inline-flex items-center gap-1 transition-colors"
+                      className="text-[12px] sm:text-[13px] font-bold text-blue-600 hover:text-blue-700 inline-flex items-center gap-1 transition-colors"
                     >
                       {isVi ? 'Xem danh sách sản phẩm' : isJa ? '製品リストを見る' : 'View product list'}
                       <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
@@ -519,13 +519,13 @@ export default function IndustryDetailClient({
       <section id="packaging" className="scroll-mt-36 py-16 lg:py-20 w-full bg-white">
         <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 space-y-10">
           <div className="space-y-2 max-w-3xl">
-            <span className="text-xs font-extrabold text-blue-600 uppercase tracking-widest block">
+            <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-blue-600 block">
               {translations.packagingSol}
             </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-primary">
+            <h2 className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-primary">
               {isVi ? 'Bao bì & Đóng gói công nghiệp' : isJa ? '工業用包装＆パッケージング' : 'Industrial Packaging & Wrapping'}
             </h2>
-            <p className="text-sm text-slate-400 font-semibold leading-relaxed">
+            <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-400 font-semibold">
               {industryData.packagingIntro}
             </p>
           </div>
@@ -551,14 +551,14 @@ export default function IndustryDetailClient({
                     {/* Content */}
                     <div className="p-5 space-y-3">
                       <Link href={item.href} className="block">
-                        <h4 className="text-sm sm:text-base font-extrabold text-primary line-clamp-1 leading-snug hover:text-blue-600 transition-colors" title={item.name}>
+                        <h4 className="text-[15px] sm:text-[16px] lg:text-[18px] font-extrabold text-primary line-clamp-1 leading-snug hover:text-blue-600 transition-colors" title={item.name}>
                           {item.name}
                         </h4>
                       </Link>
                       {/* Features bullets */}
                       <ul className="space-y-1.5">
                         {item.bullets.map((bullet, bIdx) => (
-                          <li key={bIdx} className="flex gap-2 items-start text-xs text-slate-500 font-semibold leading-snug">
+                          <li key={bIdx} className="flex gap-2 items-start text-[12px] sm:text-[13px] text-slate-500 font-semibold leading-snug">
                             <span className="h-1.5 w-1.5 rounded-full bg-blue-600 shrink-0 mt-1.5" />
                             <span>{bullet}</span>
                           </li>
@@ -571,7 +571,7 @@ export default function IndustryDetailClient({
                   <div className="px-5 pb-5 pt-2">
                     <Link
                       href={item.href}
-                      className="text-xs font-bold text-blue-600 hover:text-blue-700 inline-flex items-center gap-1 transition-colors"
+                      className="text-[12px] sm:text-[13px] font-bold text-blue-600 hover:text-blue-700 inline-flex items-center gap-1 transition-colors"
                     >
                       {isVi ? 'Xem danh sách sản phẩm' : isJa ? '製品リストを見る' : 'View product list'}
                       <ArrowRight className="h-3.5 w-3.5 group-hover:translate-x-1 transition-transform" />
@@ -588,13 +588,13 @@ export default function IndustryDetailClient({
       <section id="standards" className="scroll-mt-36 py-16 lg:py-20 w-full bg-[#F4F8FE]/60 border-t border-b border-blue-100/70">
         <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 space-y-10">
           <div className="space-y-2 text-center max-w-3xl mx-auto">
-            <span className="text-xs font-extrabold text-blue-600 uppercase tracking-widest block">
+            <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-blue-600 block">
               {industryData.standardsTitle}
             </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-primary">
+            <h2 className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-primary">
               {isVi ? 'Tiêu chuẩn chất lượng khắt khe nhất' : isJa ? '最も厳格な品質管理基準' : 'Strict Quality Standards'}
             </h2>
-            <p className="text-xs sm:text-sm text-slate-500 font-semibold leading-relaxed">
+            <p className="text-[12px] sm:text-[13px] text-slate-500 font-semibold leading-relaxed">
               {isVi
                 ? `Tất cả sản phẩm dành cho ngành ${industryData.name} của ULink đều được kiểm định và đạt các tiêu chuẩn quốc tế uy tín nhất.`
                 : isJa
@@ -618,10 +618,10 @@ export default function IndustryDetailClient({
                     <IconComp className="h-6 w-6 stroke-[2.2]" />
                   </div>
                   <div className="space-y-2">
-                    <h4 className="text-base font-extrabold text-primary leading-snug">
-                      {std.name}
-                    </h4>
-                    <p className="text-xs text-slate-500 font-medium leading-relaxed">
+              <h4 className="text-base font-extrabold text-primary leading-snug">
+                {std.name}
+              </h4>
+              <p className="text-[12px] sm:text-[13px] text-slate-500 font-medium leading-relaxed">
                       {std.detail}
                     </p>
                   </div>
@@ -636,10 +636,10 @@ export default function IndustryDetailClient({
       <section id="cases" className="scroll-mt-36 py-16 lg:py-20 w-full bg-white">
         <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 space-y-10">
           <div className="space-y-2 max-w-3xl">
-            <span className="text-xs font-extrabold text-blue-600 uppercase tracking-widest block">
+            <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-blue-600 block">
               {translations.cases}
             </span>
-            <h2 className="text-2xl sm:text-3xl font-extrabold text-primary">
+            <h2 className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-primary">
               {industryData.casesTitle}
             </h2>
           </div>
@@ -667,10 +667,10 @@ export default function IndustryDetailClient({
                   </div>
                   {/* Content */}
                   <div className="p-6 space-y-2">
-                    <h4 className="text-sm sm:text-base font-extrabold text-primary line-clamp-2 leading-snug">
+                    <h4 className="text-[15px] sm:text-[16px] lg:text-[18px] font-extrabold text-primary line-clamp-2 leading-snug">
                       {cs.title}
                     </h4>
-                    <p className="text-xs text-slate-500 font-medium leading-relaxed">
+                    <p className="text-[12px] sm:text-[13px] text-slate-500 font-medium leading-relaxed">
                       {cs.description}
                     </p>
                   </div>
@@ -685,7 +685,7 @@ export default function IndustryDetailClient({
       <section className="py-16 w-full bg-slate-50 border-t border-b border-slate-100">
         <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 space-y-10">
           <div className="text-center max-w-xl mx-auto space-y-2">
-            <h3 className="text-sm font-extrabold text-primary uppercase tracking-widest">
+            <h3 className="text-[13px] sm:text-[14px] leading-relaxed font-extrabold text-primary uppercase tracking-widest">
               {isVi
                 ? 'Được tin cậy bởi các tập đoàn và nhà máy sản xuất quy mô'
                 : isJa

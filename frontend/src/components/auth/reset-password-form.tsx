@@ -505,7 +505,7 @@ function PasswordFields({
             {t('resetPasswordAttemptsLeft', { count: attemptsLeft })}
           </p>
         )}
-        <p className="mt-1 text-[11px] text-muted-foreground">{t('passwordPolicyHint')}</p>
+        <p className="mt-1 text-[12px] sm:text-[13px] text-muted-foreground">{t('passwordPolicyHint')}</p>
       </div>
 
       <div>

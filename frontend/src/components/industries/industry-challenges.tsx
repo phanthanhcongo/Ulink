@@ -45,12 +45,12 @@ export function IndustryChallenges({ industryData, locale }: IndustryChallengesP
       <div className="flex flex-col lg:flex-row gap-8 lg:items-center justify-between">
         {/* Left Content */}
         <div className="lg:w-[45%] space-y-3">
-          <h2 className="text-lg sm:text-xl font-extrabold text-primary">
+          <h2 className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-primary">
             {industryData.challengesIntro
               ? industryData.challengesIntro
               : `Thách thức trong ngành ${industryData.name}`}
           </h2>
-          <p className="text-xs sm:text-sm text-slate-400 leading-relaxed font-semibold">
+          <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-400 font-semibold">
             {industryData.challengesIntro
               ? locale === 'vi'
                 ? 'Các linh kiện điện tử có kích thước nhỏ, độ nhạy cao với tĩnh điện, hạt bụi và độ ẩm. Bất kỳ sai sót nhỏ nào trong sản xuất hoặc đóng gói cũng có thể dẫn đến lỗi sản phẩm hoặc giảm độ tin cậy.'
@@ -73,7 +73,7 @@ export function IndustryChallenges({ industryData, locale }: IndustryChallengesP
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center bg-blue-50 text-brand">
                   <ChIcon className="h-5 w-5" />
                 </span>
-                <span className="text-[10px] sm:text-[11px] font-bold text-primary leading-tight">
+                <span className="text-[12px] sm:text-[13px] font-bold text-primary leading-tight">
                   {ch.title}
                 </span>
               </div>

@@ -18,13 +18,13 @@ export function CareersGallery() {
     <section className="py-12 lg:py-16">
       {/* Section Header */}
       <div className="flex flex-col items-center text-center mb-10">
-        <span className="text-xs sm:text-sm font-bold tracking-wider text-blue-600 uppercase">
+        <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-blue-600">
           Không gian làm việc
         </span>
-        <h2 className="text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl mt-1">
+        <h2 className="text-[30px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold tracking-tight text-slate-900 mt-1">
           Môi trường làm việc
         </h2>
-        <p className="mt-2 text-xs sm:text-sm text-slate-500 max-w-xl">
+        <p className="mt-2 text-[13px] sm:text-[14px] text-slate-500 max-w-xl">
           Môi trường được thiết kế để truyền cảm hứng sáng tạo và kết nối con người
         </p>
       </div>
@@ -43,7 +43,7 @@ export function CareersGallery() {
               className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 flex items-end p-4">
-              <span className="text-xs font-semibold text-white">{p.alt}</span>
+              <span className="text-[12px] sm:text-[13px] font-semibold text-white">{p.alt}</span>
             </div>
           </div>
         ))}
@@ -63,7 +63,7 @@ export function CareersGallery() {
               className="object-cover transition-transform duration-500 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 flex items-end p-4">
-              <span className="text-xs font-semibold text-white">{p.alt}</span>
+              <span className="text-[12px] sm:text-[13px] font-semibold text-white">{p.alt}</span>
             </div>
           </div>
         ))}

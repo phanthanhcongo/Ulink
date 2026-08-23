@@ -42,23 +42,23 @@ export default async function WorkingProcess() {
 
               {/* Middle Row: Content */}
               <div className="flex-1 border-t border-slate-100 pt-4 flex flex-col justify-start">
-                <span className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider block">
+                <span className="text-[12px] sm:text-[13px] font-semibold text-slate-400 uppercase tracking-wider block">
                   {t(`step${step}Number`)}
                 </span>
-                <h3 className="mt-1 text-[16px] font-bold text-slate-800 leading-tight transition-colors duration-200 group-hover:text-[#1769E2]">
+                <h3 className="mt-1 text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-800 leading-snug transition-colors duration-200 group-hover:text-[#1769E2]">
                   {t(`step${step}Title`)}
                 </h3>
-                <p className="mt-3 text-[13px] leading-relaxed text-slate-500 flex-1">
+                <p className="mt-3 text-[13px] sm:text-[14px] leading-relaxed text-slate-500 flex-1">
                   {t(`step${step}Desc`)}
                 </p>
               </div>
 
               {/* Bottom Row: Footer KPI */}
               <div className="border-t border-slate-100 pt-4 mt-6 flex items-center justify-between">
-                <span className="text-[12px] font-medium text-slate-400">
+                <span className="text-[12px] sm:text-[13px] font-medium text-slate-400">
                   {t(`step${step}KpiLabel`)}
                 </span>
-                <span className="text-[14px] font-extrabold text-brand uppercase tracking-wide">
+                <span className="text-[13px] sm:text-[14px] font-extrabold text-brand uppercase tracking-wide">
                   {t(`step${step}KpiValue`)}
                 </span>
               </div>

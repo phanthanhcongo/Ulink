@@ -30,10 +30,10 @@ export function CtaBanner({
             <p className="text-[13px] font-medium text-white/80 sm:text-[14px]">
               {tCta('eyebrow')}
             </p>
-            <h2 className="mt-4 text-[24px] font-extrabold tracking-tight text-white sm:text-[34px] lg:text-[34px] xl:text-[42px] 2xl:text-[48px] leading-tight">
+            <h2 className="mt-4 text-[22px] font-extrabold tracking-tight text-white sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] leading-tight">
               {tCta('title')}
             </h2>
-            <p className="mt-5 text-[13.5px] leading-relaxed text-white/90 sm:text-[14.5px] lg:text-[14.5px] xl:text-[15px] 2xl:text-[16px] max-w-[720px]">
+            <p className="mt-5 text-[15px] leading-relaxed text-white/90 sm:text-[16px] lg:text-[18px] max-w-[720px]">
               {tCta('description')}
             </p>
 
@@ -59,7 +59,7 @@ export function CtaBanner({
 
           {/* ── CỘT BÊN PHẢI: LIÊN HỆ TRỰC TIẾP (5/12 COLS WITH VERTICAL BORDER) ── */}
           <div className="flex flex-col justify-center border-t border-white/20 pt-10 lg:border-t-0 lg:border-l lg:border-white/30 lg:pt-0 lg:pl-12 xl:pl-16 lg:col-span-5">
-            <h3 className="text-[16px] font-bold text-white sm:text-[18px] lg:text-[18px] xl:text-[20px]">
+            <h3 className="text-[16px] font-bold text-white sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px]">
               {tCta('directContactTitle')}
             </h3>
 
@@ -69,10 +69,10 @@ export function CtaBanner({
               <div className="flex items-start gap-4 border-b border-white/20 pb-5">
                 <PhoneCall className="h-6 w-6 shrink-0 text-white mt-1" aria-hidden="true" />
                 <div>
-                  <p className="text-[16px] font-extrabold text-white sm:text-[18px] lg:text-[18px] xl:text-[20px]">
+                  <p className="text-[16px] font-extrabold text-white sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px]">
                     {tCta('phone')}
                   </p>
-                  <p className="mt-1 text-[12px] text-white/75 sm:text-[13px] lg:text-[13px] xl:text-[14px]">
+                  <p className="mt-1 text-[12px] text-white/75 sm:text-[13px]">
                     {tCta('phoneHours')}
                   </p>
                 </div>
@@ -82,10 +82,10 @@ export function CtaBanner({
               <div className="flex items-start gap-4 border-b border-white/20 pb-5">
                 <Mail className="h-6 w-6 shrink-0 text-white mt-1" aria-hidden="true" />
                 <div>
-                  <p className="text-[16px] font-extrabold text-white sm:text-[18px] lg:text-[18px] xl:text-[20px]">
+                  <p className="text-[16px] font-extrabold text-white sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px]">
                     {tCta('email')}
                   </p>
-                  <p className="mt-1 text-[12px] text-white/75 sm:text-[13px] lg:text-[13px] xl:text-[14px]">
+                  <p className="mt-1 text-[12px] text-white/75 sm:text-[13px]">
                     {tCta('emailSla')}
                   </p>
                 </div>
@@ -95,10 +95,10 @@ export function CtaBanner({
               <div className="flex items-start gap-4">
                 <Send className="h-6 w-6 shrink-0 text-white mt-1" aria-hidden="true" />
                 <div>
-                  <p className="text-[16px] font-extrabold text-white sm:text-[18px] lg:text-[18px] xl:text-[20px]">
+                  <p className="text-[16px] font-extrabold text-white sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px]">
                     {tCta('izConnect')}
                   </p>
-                  <p className="mt-1 text-[12px] text-white/75 sm:text-[13px] lg:text-[13px] xl:text-[14px]">{tCta('izList')}</p>
+                  <p className="mt-1 text-[12px] text-white/75 sm:text-[13px]">{tCta('izList')}</p>
                 </div>
               </div>
             </div>

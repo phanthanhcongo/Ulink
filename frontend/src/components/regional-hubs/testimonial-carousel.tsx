@@ -196,13 +196,13 @@ export default function TestimonialCarousel({ labels }: TestimonialCarouselProps
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16">
         {/* === Header Section === */}
         <div className="text-center mb-12">
-          <span className="text-[13px] font-bold text-brand tracking-wider uppercase block">
+          <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold text-brand tracking-wider uppercase block">
             {labels.eyebrow}
           </span>
-          <h2 className="mt-3 text-[22px] sm:text-[26px] font-extrabold text-[#0B192C] leading-tight">
+          <h2 className="mt-3 text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-[#0B192C] leading-tight">
             {labels.title}
           </h2>
-          <p className="mt-1 text-[20px] sm:text-[24px] font-extrabold text-[#0B192C] leading-tight">
+          <p className="mt-1 text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-[#0B192C] leading-tight">
             {labels.subtitle}
           </p>
         </div>
@@ -245,8 +245,8 @@ export default function TestimonialCarousel({ labels }: TestimonialCarouselProps
                       <div className="h-10 w-10 rounded-full flex items-center justify-center bg-[#F1F5F9] text-slate-400 mb-2 border border-slate-100 transition-colors duration-200 group-hover:bg-brand/10 group-hover:text-brand group-hover:border-brand/20">
                         <User className="h-5.5 w-5.5 stroke-[1.5]" />
                       </div>
-                      <span className="text-[14px] font-bold text-[#0B192C] leading-none transition-colors duration-200 group-hover:text-brand">{item.name}</span>
-                      <span className="text-[11px] text-slate-500 font-medium mt-1 leading-none">{item.role}</span>
+                      <span className="text-[15px] sm:text-[16px] lg:text-[18px] font-semibold text-[#0B192C] leading-none transition-colors duration-200 group-hover:text-brand">{item.name}</span>
+                      <span className="text-[12px] sm:text-[13px] text-slate-500 font-medium mt-1 leading-none">{item.role}</span>
                     </div>
                   </div>
                 </div>

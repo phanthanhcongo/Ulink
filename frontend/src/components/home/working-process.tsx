@@ -62,7 +62,7 @@ export function WorkingProcess() {
                   <p className="text-[11px] font-semibold text-slate-500 sm:text-[12px]">
                     {t(`workingProcess.step${step}Number` as any)}
                   </p>
-                  <h3 className="mt-0.5 text-[15px] font-bold text-slate-900 leading-tight transition-colors duration-300 group-hover:text-brand sm:text-[16px]">
+                  <h3 className="mt-0.5 text-[15px] font-bold text-slate-900 leading-tight transition-colors duration-300 group-hover:text-brand sm:text-[16px] md:text-[18px] lg:text-[22px] xl:text-[24px]">
                     {t(`workingProcess.step${step}Title` as any)}
                   </h3>
                 </div>

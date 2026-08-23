@@ -5,10 +5,10 @@ export function QualityBadges() {
   return (
     <section className="py-8">
       <div className="rounded-[3px] bg-slate-50 p-6 sm:p-10 border border-slate-100 flex flex-col items-center text-center">
-        <h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl mb-2">
+        <h2 className="text-[30px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold tracking-tight text-slate-900 mb-2">
           Chứng nhận ISO
         </h2>
-        <p className="text-sm text-slate-600 max-w-xl mb-8">
+        <p className="text-[15px] sm:text-[16px] lg:text-[18px] font-medium leading-relaxed text-slate-600 max-w-xl mb-8">
           Đáp ứng các tiêu chuẩn quốc tế và chất lượng của mỗi mắt xích trong chuỗi cung ứng.
         </p>
 

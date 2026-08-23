@@ -21,7 +21,7 @@ export function SupportSection() {
         {/* ── 5. SUB-SECTION HEADER BAR (TƯ VẤN & HỖ TRỢ) ── */}
         <div className="flex items-center gap-3">
           <div className="h-5 w-1 rounded-full bg-cyan-500" />
-          <h3 className="text-base font-bold text-slate-900 sm:text-lg">
+          <h3 className="text-[13px] sm:text-[15px] md:text-[16px] lg:text-[18px] xl:text-[20px] font-bold text-slate-900">
             {t('supportTitle')}
           </h3>
         </div>

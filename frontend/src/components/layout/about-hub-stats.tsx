@@ -57,8 +57,8 @@ export async function AboutHubStats() {
           {stats.map((s, i) => (
             <div key={i} className="flex flex-col items-center px-3 text-center">
               <div className="text-brand">{s.icon}</div>
-              <p className="mt-4 text-[19px] font-bold text-primary">{s.value}</p>
-              <p className="mt-2 max-w-[140px] text-[10px] leading-snug text-foreground/60">
+              <p className="mt-4 text-[30px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold text-primary">{s.value}</p>
+              <p className="mt-2 max-w-[140px] text-[13px] sm:text-[14px] leading-relaxed text-foreground/60">
                 {s.label}
               </p>
             </div>
@@ -69,16 +69,16 @@ export async function AboutHubStats() {
       {/* Location block */}
       <div className="flex flex-col gap-5 px-6 py-6 lg:w-[460px] lg:flex-row lg:items-stretch lg:px-0 lg:py-0">
         <div className="flex-1">
-          <h3 className="text-[11px] font-bold tracking-wide text-primary">
+          <h3 className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-primary">
             {t('location.title')}
           </h3>
-          <p className="mt-3 text-[10px] leading-relaxed text-foreground/65">{t('location.desc')}</p>
+          <p className="mt-3 text-[13px] sm:text-[14px] leading-relaxed text-foreground/65">{t('location.desc')}</p>
 
           <ul className="mt-4 flex flex-col gap-2.5">
             {specs.map((spec, i) => (
               <li
                 key={i}
-                className="flex items-center gap-2 text-[10px] font-bold text-foreground/75"
+                className="flex items-center gap-2 text-[13px] sm:text-[14px] font-bold text-foreground/75"
               >
                 <span className="text-brand">{spec.icon}</span>
                 {spec.text}

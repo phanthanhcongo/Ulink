@@ -58,13 +58,13 @@ export default function IndustryGrid({ industriesList, viewDetailsLabel }: Indus
                 className="flex items-center gap-2.5 mb-4 group/title"
               >
                 <IconComponent className="h-5.5 w-5.5 text-blue-600 shrink-0" />
-                <h3 className="text-base sm:text-lg font-bold text-primary group-hover/title:text-blue-600 leading-tight transition-colors">
+                <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-primary group-hover/title:text-blue-600 leading-tight transition-colors">
                   {ind.name}
                 </h3>
               </Link>
 
               {/* Description */}
-              <p className="text-xs sm:text-sm text-slate-500 mb-6 leading-relaxed flex-1 font-medium">
+              <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-500 mb-6 flex-1 font-medium">
                 {ind.description}
               </p>
 
@@ -73,7 +73,7 @@ export default function IndustryGrid({ industriesList, viewDetailsLabel }: Indus
                 {ind.bullets.map((bullet, bIdx) => (
                   <li
                     key={bIdx}
-                    className="flex items-start gap-2 text-[11px] sm:text-xs text-slate-600 font-medium leading-normal"
+                    className="flex items-start gap-2 text-[12px] sm:text-[13px] text-slate-600 font-medium leading-normal"
                   >
                     <Check className="h-4 w-4 text-blue-500 shrink-0 mt-0.5" />
                     <span>{bullet}</span>
@@ -85,7 +85,7 @@ export default function IndustryGrid({ industriesList, viewDetailsLabel }: Indus
               <div className="pt-4 border-t border-slate-100 mt-auto">
                 <Link
                   href={`/industries/${ind.slug}`}
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 hover:text-blue-700 transition-colors"
+                  className="inline-flex items-center gap-1.5 text-[12px] sm:text-[13px] font-bold text-blue-600 hover:text-blue-700 transition-colors"
                 >
                   {viewDetailsLabel}
                   <ArrowRight className="h-3.5 w-3.5" />

@@ -154,7 +154,7 @@ export async function PartnersCertifications() {
       <div className="hidden sm:flex flex-row items-center justify-between gap-3 mt-8 sm:mt-10 lg:mt-12">
         {/* Col 1+2: Title & Desc - chiem 2 o */}
         <div className="flex w-[calc(160px*2+theme(gap.3))] sm:w-[calc(190px*2+theme(gap.3))] lg:w-[calc(212px*2+theme(gap.3))] h-[105px] sm:h-[120px] lg:h-[138px] shrink-0 flex-col justify-center bg-white px-4 text-left">
-          <h3 className="text-[15px] sm:text-[18px] lg:text-[22px] font-bold text-primary leading-tight">
+          <h3 className="text-[15px] sm:text-[18px] md:text-[20px] lg:text-[22px] font-bold text-primary leading-tight">
             {t('partners.isoTitle')}
           </h3>
           <p className="mt-2 text-[12px] sm:text-[14px] lg:text-[16px] leading-relaxed text-muted-foreground">

@@ -84,10 +84,10 @@ export function IndustryHero({ industryData, locale, translations }: IndustryHer
               <HeroIcon className="h-8 w-8 sm:h-10 sm:w-10 text-brand" />
             </div>
             <div className="space-y-2">
-              <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-extrabold tracking-tight leading-tight text-primary">
+              <h1 className="text-[30px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold tracking-tight leading-tight text-primary">
                 {industryData.title}
               </h1>
-              <p className="text-xs sm:text-sm text-slate-400 max-w-2xl leading-relaxed font-semibold">
+              <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-400 max-w-2xl font-semibold">
                 {industryData.description}
               </p>
             </div>
@@ -104,10 +104,10 @@ export function IndustryHero({ industryData, locale, translations }: IndustryHer
                 >
                   <PropIcon className="h-6 w-6 text-brand shrink-0 mt-0.5" />
                   <div className="space-y-0.5">
-                    <h4 className="text-xs sm:text-sm font-bold text-primary leading-snug">
+                    <h4 className="text-[13px] sm:text-[14px] font-bold text-primary leading-snug">
                       {prop.title}
                     </h4>
-                    <p className="text-[10px] sm:text-xs text-slate-400 leading-relaxed font-semibold">
+                    <p className="text-[12px] sm:text-[13px] text-slate-400 leading-relaxed font-semibold">
                       {prop.desc}
                     </p>
                   </div>

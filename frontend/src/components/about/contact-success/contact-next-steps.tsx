@@ -20,10 +20,10 @@ export function ContactNextSteps() {
   return (
     <section className="py-12 px-4 sm:px-8">
       <div className="flex flex-col items-center text-center mb-10">
-        <span className="inline-flex items-center rounded-full bg-blue-50 px-3.5 py-1 text-xs font-semibold text-blue-700 ring-1 ring-inset ring-blue-700/10 mb-2">
+        <span className="inline-flex items-center rounded-full bg-blue-50 px-3.5 py-1 text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-blue-700 ring-1 ring-inset ring-blue-700/10 mb-2">
           QUY TRÌNH TIẾP THEO
         </span>
-        <h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+        <h2 className="text-[30px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold tracking-tight text-slate-900">
           Các bước xử lý yêu cầu của ULink
         </h2>
       </div>
@@ -32,13 +32,13 @@ export function ContactNextSteps() {
         {steps.map((item, idx) => (
           <div
             key={idx}
-            className="flex flex-col rounded-[3px] bg-white p-6 shadow-sm border border-slate-100 transition-all hover:shadow-md hover:-translate-y-0.5"
+            className="flex flex-col rounded-[3px] bg-white p-6 shadow-sm border border-slate-100 group transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]"
           >
-            <span className="inline-flex w-fit items-center rounded-full bg-blue-600 px-2.5 py-1 text-[10px] font-extrabold text-white mb-4">
+            <span className="inline-flex w-fit items-center rounded-full bg-blue-600 px-2.5 py-1 text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-white mb-4">
               {item.badge}
             </span>
-            <h3 className="text-base font-bold text-slate-900 mb-2">{item.title}</h3>
-            <p className="text-xs leading-relaxed text-slate-600">{item.desc}</p>
+            <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 mb-2">{item.title}</h3>
+            <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-600">{item.desc}</p>
           </div>
         ))}
       </div>

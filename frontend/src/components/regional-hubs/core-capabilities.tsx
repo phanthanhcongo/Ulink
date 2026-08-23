@@ -11,10 +11,10 @@ export default async function CoreCapabilities() {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
           {/* Left: Main info */}
           <div className="lg:col-span-4 max-w-md">
-            <h2 className="text-[22px] sm:text-[24px] font-bold text-slate-900 leading-tight">
+            <h2 className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-slate-900 leading-tight">
               {t('capabilities.title')}
             </h2>
-            <p className="mt-4 text-[13px] text-slate-500 leading-relaxed">
+            <p className="mt-4 text-[13px] sm:text-[14px] leading-relaxed text-slate-500">
               {t('capabilities.desc')}
             </p>
           </div>
@@ -25,15 +25,15 @@ export default async function CoreCapabilities() {
               {/* Card 1: Manufacturing */}
               <div className="flex flex-col items-start">
                 <Images className="h-8 w-8 text-brand mb-4" strokeWidth={1.5} />
-                <h3 className="text-[15px] font-bold text-slate-900 mb-2">
+                <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 leading-snug mb-2">
                   {t('capabilities.manufacturing.title')}
                 </h3>
-                <p className="text-[12px] text-slate-500 leading-relaxed mb-4">
+                <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-500 mb-4">
                   {t('capabilities.manufacturing.desc')}
                 </p>
                 <Link
                   href="/solutions"
-                  className="group text-[12px] font-semibold text-brand inline-flex items-center gap-1 hover:text-brand-strong transition-colors mt-auto"
+                  className="group text-[13px] sm:text-[14px] leading-relaxed font-semibold text-brand inline-flex items-center gap-1 hover:text-brand-strong transition-colors mt-auto"
                 >
                   {t('capabilities.learnMore')}
                   <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
@@ -43,15 +43,15 @@ export default async function CoreCapabilities() {
               {/* Card 2: Supply Chain */}
               <div className="flex flex-col items-start">
                 <Clock className="h-8 w-8 text-brand mb-4" strokeWidth={1.5} />
-                <h3 className="text-[15px] font-bold text-slate-900 mb-2">
+                <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 leading-snug mb-2">
                   {t('capabilities.supplyChain.title')}
                 </h3>
-                <p className="text-[12px] text-slate-500 leading-relaxed mb-4">
+                <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-500 mb-4">
                   {t('capabilities.supplyChain.desc')}
                 </p>
                 <Link
                   href="/about"
-                  className="group text-[12px] font-semibold text-brand inline-flex items-center gap-1 hover:text-brand-strong transition-colors mt-auto"
+                  className="group text-[13px] sm:text-[14px] leading-relaxed font-semibold text-brand inline-flex items-center gap-1 hover:text-brand-strong transition-colors mt-auto"
                 >
                   {t('capabilities.learnMore')}
                   <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
@@ -61,15 +61,15 @@ export default async function CoreCapabilities() {
               {/* Card 3: Quality Control */}
               <div className="flex flex-col items-start">
                 <Award className="h-8 w-8 text-brand mb-4" strokeWidth={1.5} />
-                <h3 className="text-[15px] font-bold text-slate-900 mb-2">
+                <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 leading-snug mb-2">
                   {t('capabilities.quality.title')}
                 </h3>
-                <p className="text-[12px] text-slate-500 leading-relaxed mb-4">
+                <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-500 mb-4">
                   {t('capabilities.quality.desc')}
                 </p>
                 <Link
                   href="/about/quality"
-                  className="group text-[12px] font-semibold text-brand inline-flex items-center gap-1 hover:text-brand-strong transition-colors mt-auto"
+                  className="group text-[13px] sm:text-[14px] leading-relaxed font-semibold text-brand inline-flex items-center gap-1 hover:text-brand-strong transition-colors mt-auto"
                 >
                   {t('capabilities.learnMore')}
                   <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />

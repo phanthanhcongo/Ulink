@@ -42,7 +42,7 @@ export function AboutStats() {
                 <Icon className="h-5 w-5" />
               </div>
               <span className="text-[22px] sm:text-[26px] font-extrabold text-slate-900 tracking-tight">{item.value}</span>
-              <p className="mt-2 text-[12.5px] sm:text-[13px] leading-relaxed text-slate-500 font-medium">
+              <p className="mt-2 text-[12px] sm:text-[13px] leading-relaxed text-slate-500 font-medium">
                 {item.label}
                 <span className="block">{item.sub}</span>
               </p>

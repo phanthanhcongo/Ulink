@@ -10,18 +10,18 @@ export async function AboutHubHero() {
       <div className="flex flex-col lg:flex-row">
         {/* Left: text */}
         <div className="relative z-10 flex flex-col justify-center px-6 py-8 sm:px-8 lg:w-[46%] lg:py-10">
-          <p className="text-[11px] font-bold tracking-wide text-primary">{t('eyebrow')}</p>
+          <p className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-primary">{t('eyebrow')}</p>
 
-          <h1 className="mt-3 text-[28px] font-bold leading-[1.25] sm:text-[31px]">
+          <h1 className="mt-3 text-[30px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold leading-[1.25]">
             <span className="block text-primary">{t('titleLine1')}</span>
             <span className="block text-primary">{t('titleLine2')}</span>
           </h1>
 
-          <p className="mt-5 max-w-[420px] text-[12px] leading-[1.85] text-foreground/70">
+          <p className="mt-5 max-w-[420px] text-[13px] sm:text-[14px] leading-relaxed text-foreground/70">
             {t('intro')}
           </p>
 
-          <p className="mt-4 max-w-[420px] text-[12px] font-bold leading-[1.7] text-foreground/80">
+          <p className="mt-4 max-w-[420px] text-[13px] sm:text-[14px] leading-relaxed font-bold text-foreground/80">
             {t('commitment')}
           </p>
         </div>

@@ -115,7 +115,7 @@ export async function ProductCategories() {
 
             {/* Card Content Body */}
             <div className="flex flex-1 flex-col p-5 sm:p-6 lg:p-6 xl:p-8">
-              <h3 className="flex items-center gap-2 text-[16px] font-bold text-slate-900 sm:text-[18px] lg:text-[18px] xl:text-[20px] group-hover:text-brand transition-colors">
+              <h3 className="flex items-center gap-2 text-[16px] font-bold text-slate-900 sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] group-hover:text-brand transition-colors">
                 <span className={card.diamondColor}>◇</span> {card.title}
               </h3>
               <p className="mt-2 text-[12px] leading-relaxed text-slate-600 sm:text-[13px] lg:text-[13px] xl:text-[14px]">
@@ -176,7 +176,7 @@ export async function ProductCategories() {
             {/* Card Content Body */}
             <div className="flex flex-1 flex-col p-5 sm:p-6 lg:p-6 xl:p-7">
               <div>
-                <h3 className="text-[15px] font-bold text-slate-900 leading-snug sm:text-[16px] lg:text-[16px] xl:text-[18px] group-hover:text-brand transition-colors">
+                <h3 className="text-[15px] font-bold text-slate-900 leading-snug sm:text-[16px] md:text-[18px] lg:text-[22px] xl:text-[24px] group-hover:text-brand transition-colors">
                   {card.title}
                 </h3>
                 <div className="my-3 border-b border-dashed border-slate-300" />

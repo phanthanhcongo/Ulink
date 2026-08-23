@@ -9,10 +9,10 @@ export default async function LiveMetricsBar() {
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
         {/* Header */}
         <div className="flex items-center justify-between gap-4 mb-6">
-          <h2 className="text-[15px] font-bold text-slate-800">
+          <h2 className="text-[15px] sm:text-[16px] lg:text-[18px] font-semibold text-slate-800">
             {t('dashboard.headerTitle')}
           </h2>
-          <div className="flex items-center gap-1.5 text-[13px] text-slate-500 font-medium">
+          <div className="flex items-center gap-1.5 text-[13px] sm:text-[14px] text-slate-500 font-medium">
             <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
             <span>{t('dashboard.headerTime')}</span>
           </div>
@@ -26,18 +26,18 @@ export default async function LiveMetricsBar() {
               <FileText className="h-[28px] w-[28px] text-brand transition-colors duration-200 group-hover:text-blue-700" />
             </div>
             <div>
-              <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider transition-colors duration-200 group-hover:text-blue-600">
+              <p className="text-[12px] sm:text-[13px] font-semibold text-slate-500 uppercase tracking-wider transition-colors duration-200 group-hover:text-blue-600">
                 {t('dashboard.ordersLabel')}
               </p>
               <div className="mt-1 flex items-baseline gap-1">
-                <span className="text-[20px] font-bold text-brand transition-colors duration-200 group-hover:text-blue-700">
+                <span className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-brand transition-colors duration-200 group-hover:text-blue-700">
                   {t('dashboard.ordersValue')}
                 </span>
-                <span className="text-[13px] font-bold text-brand transition-colors duration-200 group-hover:text-blue-600">
+                <span className="text-[13px] sm:text-[14px] font-bold text-brand transition-colors duration-200 group-hover:text-blue-600">
                   {t('dashboard.ordersUnit')}
                 </span>
               </div>
-              <div className="mt-1.5 flex items-center gap-1 text-[11px] font-bold text-emerald-500">
+              <div className="mt-1.5 flex items-center gap-1 text-[12px] sm:text-[13px] font-bold text-emerald-500">
                 <span>▲</span>
                 <span>{t('dashboard.ordersChange').replace('+', '')}</span>
                 <span className="text-slate-400 font-normal ml-0.5">
@@ -53,11 +53,11 @@ export default async function LiveMetricsBar() {
               <Clock className="h-[28px] w-[28px] text-brand transition-colors duration-200 group-hover:text-amber-700" />
             </div>
             <div>
-              <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider transition-colors duration-200 group-hover:text-amber-600">
+              <p className="text-[12px] sm:text-[13px] font-semibold text-slate-500 uppercase tracking-wider transition-colors duration-200 group-hover:text-amber-600">
                 {t('dashboard.deliveryLabel')}
               </p>
               <div className="mt-1 flex items-baseline gap-1">
-                <span className="text-[20px] font-bold text-brand transition-colors duration-200 group-hover:text-amber-700">
+                <span className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-brand transition-colors duration-200 group-hover:text-amber-700">
                   {t('dashboard.deliveryValue')}
                 </span>
               </div>
@@ -77,18 +77,18 @@ export default async function LiveMetricsBar() {
               <Truck className="h-[28px] w-[28px] text-brand transition-colors duration-200 group-hover:text-emerald-700" />
             </div>
             <div>
-              <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider transition-colors duration-200 group-hover:text-emerald-600">
+              <p className="text-[12px] sm:text-[13px] font-semibold text-slate-500 uppercase tracking-wider transition-colors duration-200 group-hover:text-emerald-600">
                 {t('dashboard.vehiclesLabel')}
               </p>
               <div className="mt-1 flex items-baseline gap-1">
-                <span className="text-[20px] font-bold text-brand transition-colors duration-200 group-hover:text-emerald-700">
+                <span className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-brand transition-colors duration-200 group-hover:text-emerald-700">
                   {t('dashboard.vehiclesValue')}
                 </span>
-                <span className="text-[13px] font-bold text-brand transition-colors duration-200 group-hover:text-emerald-600">
+                <span className="text-[13px] sm:text-[14px] font-bold text-brand transition-colors duration-200 group-hover:text-emerald-600">
                   {t('dashboard.vehiclesUnit')}
                 </span>
               </div>
-              <p className="mt-1.5 text-[11px] text-slate-400 font-medium transition-colors duration-200 group-hover:text-emerald-600">
+              <p className="mt-1.5 text-[12px] sm:text-[13px] text-slate-400 font-medium transition-colors duration-200 group-hover:text-emerald-600">
                 {t('dashboard.vehiclesNote')}
               </p>
             </div>
@@ -100,18 +100,18 @@ export default async function LiveMetricsBar() {
               <Warehouse className="h-[28px] w-[28px] text-brand transition-colors duration-200 group-hover:text-purple-700" />
             </div>
             <div>
-              <p className="text-[11px] font-semibold text-slate-500 uppercase tracking-wider transition-colors duration-200 group-hover:text-purple-600">
+              <p className="text-[12px] sm:text-[13px] font-semibold text-slate-500 uppercase tracking-wider transition-colors duration-200 group-hover:text-purple-600">
                 {t('dashboard.warehouseLabel')}
               </p>
               <div className="mt-1 flex items-baseline gap-1">
-                <span className="text-[20px] font-bold text-brand transition-colors duration-200 group-hover:text-purple-700">
+                <span className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-brand transition-colors duration-200 group-hover:text-purple-700">
                   {t('dashboard.warehouseValue')}
                 </span>
-                <span className="text-[13px] font-bold text-brand transition-colors duration-200 group-hover:text-purple-600">
+                <span className="text-[13px] sm:text-[14px] font-bold text-brand transition-colors duration-200 group-hover:text-purple-600">
                   {t('dashboard.warehouseUnit')}
                 </span>
               </div>
-              <p className="mt-1.5 text-[11px] text-slate-400 font-medium transition-colors duration-200 group-hover:text-purple-600">
+              <p className="mt-1.5 text-[12px] sm:text-[13px] text-slate-400 font-medium transition-colors duration-200 group-hover:text-purple-600">
                 {t('dashboard.warehouseNote')}
               </p>
             </div>

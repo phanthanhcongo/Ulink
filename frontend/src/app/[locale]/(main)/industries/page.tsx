@@ -242,14 +242,14 @@ export default async function IndustriesPage({ params: { locale } }: Props) {
 
           {/* Text area */}
           <div className="max-w-3xl my-auto">
-            <h1 className="text-2xl sm:text-3.5xl lg:text-[32px] xl:text-[38px] font-extrabold text-white leading-[1.2] tracking-tight">
+            <h1 className="text-[30px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold text-white leading-[1.2] tracking-tight">
               {isVi
                 ? 'Tối ưu chuỗi cung ứng nguyên liệu và vật tư với giải pháp Phòng sạch & Đóng gói.'
                 : isJa
                   ? 'クリーンルーム＆包装ソリューションによる原材料と資材のサプライチェーン最適化。'
                   : 'Optimizing material & supply chain with Cleanroom & Packaging solutions.'}
             </h1>
-            <p className="mt-5 text-xs sm:text-sm lg:text-base leading-relaxed text-blue-100/90 max-w-2xl font-medium">
+            <p className="mt-5 text-[15px] sm:text-[16px] lg:text-[18px] leading-relaxed text-blue-100/90 max-w-2xl font-medium">
               {isVi
                 ? 'ULink Industries thấu hiểu các tiêu chuẩn khắt khe & thách thức vận hành trong từng ngành. Chúng tôi cung cấp giải pháp toàn diện, giúp nâng cao chất lượng, đảm bảo an toàn & tối ưu hiệu suất sản xuất.'
                 : isJa
@@ -273,7 +273,7 @@ export default async function IndustriesPage({ params: { locale } }: Props) {
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 py-12 lg:py-16 flex flex-col gap-12">
         {/* Section Header */}
         <div className="flex flex-col items-start max-w-3xl">
-          <h2 className="text-2xl sm:text-3xl lg:text-[28px] xl:text-[34px] font-extrabold text-primary leading-tight tracking-tight">
+          <h2 className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-primary leading-tight tracking-tight">
             {isVi
               ? 'Giải pháp theo ngành nghề'
               : isJa

@@ -17,8 +17,8 @@ export async function AboutQualityProcess() {
     <section className="rounded-[3px] bg-background px-6 py-6">
       {/* Header */}
       <div>
-        <h2 className="text-[12px] font-bold text-primary">{t('title')}</h2>
-        <p className="mt-1.5 text-[9px] font-normal text-foreground/50">{t('subtitle')}</p>
+        <h2 className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-primary">{t('title')}</h2>
+        <p className="mt-1.5 text-[13px] sm:text-[14px] leading-relaxed text-foreground/50">{t('subtitle')}</p>
       </div>
 
       {/* Steps flow */}
@@ -32,15 +32,15 @@ export async function AboutQualityProcess() {
                 {step.icon}
               </div>
               {/* Number */}
-              <span className="mt-1.5 text-[11px] font-normal text-foreground/60">
+              <span className="mt-1.5 text-[13px] sm:text-[14px] leading-relaxed text-foreground/60">
                 {t(`steps.${step.key}.number`)}
               </span>
               {/* Title */}
-              <p className="mt-2 text-[10px] font-bold text-primary">
+              <p className="mt-2 text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-primary">
                 {t(`steps.${step.key}.title`)}
               </p>
               {/* Description */}
-              <p className="mt-1 text-[9px] leading-[1.7] text-foreground/40">
+              <p className="mt-1 text-[13px] sm:text-[14px] leading-relaxed text-foreground/40">
                 {t(`steps.${step.key}.desc`)}
               </p>
             </div>

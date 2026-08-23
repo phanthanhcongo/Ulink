@@ -14,10 +14,10 @@ export function SupportCard({ title, desc, icon: IconComp }: SupportCardProps) {
       <div className="flex h-10 w-10 items-center justify-start text-blue-600">
         <IconComp className="h-9 w-9 stroke-[1.5]" aria-hidden="true" />
       </div>
-      <h4 className="mt-4 text-sm sm:text-base font-extrabold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug">
+      <h4 className="mt-4 text-[13px] sm:text-[15px] md:text-[16px] lg:text-[18px] xl:text-[20px] font-extrabold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug">
         {title}
       </h4>
-      <p className="mt-2 text-xs leading-relaxed text-slate-500 font-medium">
+      <p className="mt-2 text-[11px] sm:text-[12px] leading-relaxed text-slate-500 font-medium">
         {desc}
       </p>
     </div>

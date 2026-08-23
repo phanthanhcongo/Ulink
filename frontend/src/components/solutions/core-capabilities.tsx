@@ -15,10 +15,10 @@ export default async function CoreCapabilities({ locale }: CoreCapabilitiesProps
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16 text-center">
         {/* Section Header */}
         <div className="max-w-3xl mx-auto mb-16">
-          <span className="text-xs font-bold uppercase tracking-widest text-blue-600">
+          <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-blue-600">
             {t('testimonialsCapabilities.capabilitiesEyebrow')}
           </span>
-          <h2 className="mt-4 text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900 leading-tight">
+          <h2 className="mt-4 text-[30px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold tracking-tight text-slate-900 leading-tight">
             {t('testimonialsCapabilities.capabilitiesTitle')}
           </h2>
         </div>
@@ -30,10 +30,10 @@ export default async function CoreCapabilities({ locale }: CoreCapabilitiesProps
             <div className="w-12 h-12 flex items-center justify-center text-blue-600 shrink-0 mb-6">
               <Factory className="h-8 w-8" strokeWidth={1.5} />
             </div>
-            <h3 className="text-base font-bold text-slate-900 mb-3">
+            <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 mb-3">
               {t('testimonialsCapabilities.cap1Heading')}
             </h3>
-            <p className="text-sm text-slate-500 leading-relaxed max-w-xs">
+            <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-500 max-w-xs">
               {t('testimonialsCapabilities.cap1Desc')}
             </p>
           </div>
@@ -43,10 +43,10 @@ export default async function CoreCapabilities({ locale }: CoreCapabilitiesProps
             <div className="w-12 h-12 flex items-center justify-center text-blue-600 shrink-0 mb-6">
               <Package className="h-8 w-8" strokeWidth={1.5} />
             </div>
-            <h3 className="text-base font-bold text-slate-900 mb-3">
+            <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 mb-3">
               {t('testimonialsCapabilities.cap2Heading')}
             </h3>
-            <p className="text-sm text-slate-500 leading-relaxed max-w-xs">
+            <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-500 max-w-xs">
               {t('testimonialsCapabilities.cap2Desc')}
             </p>
           </div>
@@ -56,10 +56,10 @@ export default async function CoreCapabilities({ locale }: CoreCapabilitiesProps
             <div className="w-12 h-12 flex items-center justify-center text-blue-600 shrink-0 mb-6">
               <Activity className="h-8 w-8" strokeWidth={1.5} />
             </div>
-            <h3 className="text-base font-bold text-slate-900 mb-3">
+            <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 mb-3">
               {t('testimonialsCapabilities.cap3Heading')}
             </h3>
-            <p className="text-sm text-slate-500 leading-relaxed max-w-xs">
+            <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-500 max-w-xs">
               {t('testimonialsCapabilities.cap3Desc')}
             </p>
           </div>
@@ -69,10 +69,10 @@ export default async function CoreCapabilities({ locale }: CoreCapabilitiesProps
             <div className="w-12 h-12 flex items-center justify-center text-blue-600 shrink-0 mb-6">
               <Truck className="h-8 w-8" strokeWidth={1.5} />
             </div>
-            <h3 className="text-base font-bold text-slate-900 mb-3">
+            <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 mb-3">
               {t('testimonialsCapabilities.cap4Heading')}
             </h3>
-            <p className="text-sm text-slate-500 leading-relaxed max-w-xs">
+            <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-500 max-w-xs">
               {t('testimonialsCapabilities.cap4Desc')}
             </p>
           </div>
@@ -82,7 +82,7 @@ export default async function CoreCapabilities({ locale }: CoreCapabilitiesProps
         <div className="mt-16 flex justify-center">
           <Link
             href={`/${locale}/quick-order`}
-            className="inline-flex items-center justify-center gap-2 rounded-[3px] bg-blue-600 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 transition-colors"
+            className="inline-flex items-center justify-center gap-2 rounded-[3px] bg-blue-600 px-6 py-3 text-[13px] sm:text-[14px] font-semibold text-white shadow-sm hover:bg-blue-700 transition-colors"
           >
             {t('testimonialsCapabilities.order')}
             <ArrowRight className="h-4 w-4" />

@@ -47,7 +47,7 @@ export function LoginHeroCard() {
           </div>
           <div>
             <span className="block text-xs font-bold text-white">An toàn</span>
-            <span className="block text-[10px] text-blue-200">Tiêu chuẩn kỹ thuật cao</span>
+            <span className="block text-[10px] sm:text-[11px] text-blue-200">Tiêu chuẩn kỹ thuật cao</span>
           </div>
         </div>
 
@@ -57,7 +57,7 @@ export function LoginHeroCard() {
           </div>
           <div>
             <span className="block text-xs font-bold text-white">Hiệu quả</span>
-            <span className="block text-[10px] text-blue-200">Tối ưu chi phí sản xuất</span>
+            <span className="block text-[10px] sm:text-[11px] text-blue-200">Tối ưu chi phí sản xuất</span>
           </div>
         </div>
 
@@ -67,7 +67,7 @@ export function LoginHeroCard() {
           </div>
           <div>
             <span className="block text-xs font-bold text-white">Đồng hành</span>
-            <span className="block text-[10px] text-blue-200">Hỗ trợ doanh nghiệp 24/7</span>
+            <span className="block text-[10px] sm:text-[11px] text-blue-200">Hỗ trợ doanh nghiệp 24/7</span>
           </div>
         </div>
       </div>

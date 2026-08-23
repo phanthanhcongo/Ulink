@@ -261,7 +261,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                 <div className="w-12 h-12 rounded-[3px] bg-slate-50 border border-slate-200/70 flex items-center justify-center text-blue-600 mb-2 shrink-0 group-hover:bg-blue-50 transition-colors shadow-2xs">
                   <Maximize2 className="h-5 w-5" />
                 </div>
-                <span className="text-[11px] font-bold text-slate-700 leading-tight">
+                <span className="text-[12px] sm:text-[13px] font-bold text-slate-700 leading-tight">
                   {locale === 'vi' ? 'Co giãn 400%' : 'Stretch 400%'}
                 </span>
               </div>
@@ -270,7 +270,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                 <div className="w-12 h-12 rounded-[3px] bg-slate-50 border border-slate-200/70 flex items-center justify-center text-blue-600 mb-2 shrink-0 group-hover:bg-blue-50 transition-colors shadow-2xs">
                   <ShieldCheck className="h-5 w-5" />
                 </div>
-                <span className="text-[11px] font-bold text-slate-700 leading-tight">
+                <span className="text-[12px] sm:text-[13px] font-bold text-slate-700 leading-tight">
                   {locale === 'vi' ? 'Dẻo & Khó rách' : 'Tear Resistant'}
                 </span>
               </div>
@@ -279,7 +279,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                 <div className="w-12 h-12 rounded-[3px] bg-slate-50 border border-slate-200/70 flex items-center justify-center text-blue-600 mb-2 shrink-0 group-hover:bg-blue-50 transition-colors shadow-2xs">
                   <Droplets className="h-5 w-5" />
                 </div>
-                <span className="text-[11px] font-bold text-slate-700 leading-tight">
+                <span className="text-[12px] sm:text-[13px] font-bold text-slate-700 leading-tight">
                   {locale === 'vi' ? 'Chống ẩm ướt' : 'Moisture Proof'}
                 </span>
               </div>
@@ -288,7 +288,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                 <div className="w-12 h-12 rounded-[3px] bg-slate-50 border border-slate-200/70 flex items-center justify-center text-blue-600 mb-2 shrink-0 group-hover:bg-blue-50 transition-colors shadow-2xs">
                   <RefreshCw className="h-5 w-5" />
                 </div>
-                <span className="text-[11px] font-bold text-slate-700 leading-tight">
+                <span className="text-[12px] sm:text-[13px] font-bold text-slate-700 leading-tight">
                   {locale === 'vi' ? 'PE Tái chế' : 'Recyclable PE'}
                 </span>
               </div>

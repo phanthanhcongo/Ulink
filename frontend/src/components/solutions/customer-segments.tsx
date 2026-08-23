@@ -25,10 +25,10 @@ export default async function CustomerSegments({ locale }: CustomerSegmentsProps
           {/* Blue decorative bar */}
           <div className="w-1.5 h-7 bg-blue-600 rounded-full shrink-0 mt-1" />
           <div className="space-y-1">
-            <h2 className="text-xl sm:text-2xl font-extrabold text-primary tracking-tight">
+            <h2 className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-primary tracking-tight">
               {t('customerSegments.sectionTitle')}
             </h2>
-            <p className="text-xs sm:text-sm text-slate-500 font-medium leading-relaxed">
+            <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-500 font-medium">
               {t('customerSegments.sectionSubtitle')}
             </p>
           </div>
@@ -46,7 +46,7 @@ export default async function CustomerSegments({ locale }: CustomerSegmentsProps
                 <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center text-[#4F70B5] shrink-0 shadow-sm">
                   <Building2 className="h-6 w-6" />
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold tracking-tight">
+                <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold tracking-tight">
                   {t('customerSegments.fdiTitle')}
                 </h3>
               </div>
@@ -56,7 +56,7 @@ export default async function CustomerSegments({ locale }: CustomerSegmentsProps
                 {bullets.map((bullet, idx) => (
                   <li
                     key={idx}
-                    className="flex items-start gap-3 text-xs sm:text-sm font-medium leading-relaxed"
+                    className="flex items-start gap-3 text-[13px] sm:text-[14px] leading-relaxed font-medium"
                   >
                     <Check className="h-5 w-5 text-white/95 shrink-0 mt-0.5" />
                     <span>{bullet}</span>
@@ -69,7 +69,7 @@ export default async function CustomerSegments({ locale }: CustomerSegmentsProps
             <div className="flex justify-center pt-2">
               <Link
                 href="/quick-order"
-                className="inline-flex items-center justify-center gap-2 w-full max-w-[200px] bg-white text-[#4F70B5] hover:bg-slate-50 px-6 py-2.5 rounded-[3px] text-xs sm:text-sm font-bold shadow-sm transition-all hover:scale-[1.01]"
+                className="inline-flex items-center justify-center gap-2 w-full max-w-[200px] bg-white text-[#4F70B5] hover:bg-slate-50 px-6 py-2.5 rounded-[3px] text-[13px] sm:text-[14px] leading-relaxed font-bold shadow-sm transition-all hover:scale-[1.01]"
               >
                 {t('customerSegments.viewDetails')}
                 <ArrowRight className="h-4 w-4" />
@@ -87,7 +87,7 @@ export default async function CustomerSegments({ locale }: CustomerSegmentsProps
                 <div className="w-12 h-12 rounded-full bg-blue-100/50 flex items-center justify-center text-blue-750 shrink-0">
                   <Factory className="h-6 w-6" />
                 </div>
-                <h3 className="text-lg sm:text-xl font-bold text-primary tracking-tight">
+                <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-primary tracking-tight">
                   {t('customerSegments.smeTitle')}
                 </h3>
               </div>
@@ -97,7 +97,7 @@ export default async function CustomerSegments({ locale }: CustomerSegmentsProps
                 {bullets.map((bullet, idx) => (
                   <li
                     key={idx}
-                    className="flex items-start gap-3 text-xs sm:text-sm text-slate-650 font-medium leading-relaxed"
+                    className="flex items-start gap-3 text-[13px] sm:text-[14px] leading-relaxed font-medium text-slate-650"
                   >
                     <Check className="h-5 w-5 text-blue-600 shrink-0 mt-0.5" />
                     <span>{bullet}</span>
@@ -110,7 +110,7 @@ export default async function CustomerSegments({ locale }: CustomerSegmentsProps
             <div className="flex justify-center pt-2">
               <Link
                 href="/quick-order"
-                className="inline-flex items-center justify-center gap-2 w-full max-w-[200px] bg-brand hover:bg-brand-strong text-white px-6 py-2.5 rounded-[3px] text-xs sm:text-sm font-bold shadow-sm transition-all hover:scale-[1.01]"
+                className="inline-flex items-center justify-center gap-2 w-full max-w-[200px] bg-brand hover:bg-brand-strong text-white px-6 py-2.5 rounded-[3px] text-[13px] sm:text-[14px] leading-relaxed font-bold shadow-sm transition-all hover:scale-[1.01]"
               >
                 {t('customerSegments.viewDetails')}
                 <ArrowRight className="h-4 w-4" />

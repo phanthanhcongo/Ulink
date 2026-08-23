@@ -38,10 +38,10 @@ export function JobDetailContent() {
     <div className="flex flex-col gap-8 py-8">
       {/* 1. Mô tả công việc */}
       <div>
-        <h2 className="text-lg font-bold text-slate-900 mb-3 border-l-4 border-blue-600 pl-3">
+        <h2 className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-slate-900 mb-3 border-l-4 border-blue-600 pl-3">
           Mô tả công việc
         </h2>
-        <ul className="space-y-2 text-xs sm:text-sm leading-relaxed text-slate-700 list-disc list-inside">
+        <ul className="space-y-2 text-[13px] sm:text-[14px] leading-relaxed text-slate-700 list-disc list-inside">
           <li>
             Tìm kiếm, tiếp cận và phát triển quan hệ hợp tác với các doanh nghiệp sản xuất trong các
             Khu công nghiệp.
@@ -67,10 +67,10 @@ export function JobDetailContent() {
 
       {/* 2. Yêu cầu ứng viên */}
       <div>
-        <h2 className="text-lg font-bold text-slate-900 mb-3 border-l-4 border-blue-600 pl-3">
+        <h2 className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-slate-900 mb-3 border-l-4 border-blue-600 pl-3">
           Yêu cầu ứng viên
         </h2>
-        <ul className="space-y-2 text-xs sm:text-sm leading-relaxed text-slate-700 list-disc list-inside mb-4">
+        <ul className="space-y-2 text-[13px] sm:text-[14px] leading-relaxed text-slate-700 list-disc list-inside mb-4">
           <li>
             Tốt nghiệp Đại học chuyên ngành Kinh tế, Quản trị kinh doanh, Thương mại hoặc các ngành
             Kỹ thuật liên quan.
@@ -88,16 +88,16 @@ export function JobDetailContent() {
 
         {/* Skill tags */}
         <div className="flex flex-wrap gap-2 pt-2">
-          <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600">
+          <span className="rounded-full bg-slate-100 px-3 py-1 text-[12px] sm:text-[13px] font-semibold text-slate-600">
             #B2BSales
           </span>
-          <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600">
+          <span className="rounded-full bg-slate-100 px-3 py-1 text-[12px] sm:text-[13px] font-semibold text-slate-600">
             #KhuCongNghiep
           </span>
-          <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600">
+          <span className="rounded-full bg-slate-100 px-3 py-1 text-[12px] sm:text-[13px] font-semibold text-slate-600">
             #CungUngVatTu
           </span>
-          <span className="rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600">
+          <span className="rounded-full bg-slate-100 px-3 py-1 text-[12px] sm:text-[13px] font-semibold text-slate-600">
             #NhaMaySanXuat
           </span>
         </div>
@@ -105,7 +105,7 @@ export function JobDetailContent() {
 
       {/* 3. Quyền lợi được hưởng */}
       <div>
-        <h2 className="text-lg font-bold text-slate-900 mb-4 border-l-4 border-blue-600 pl-3">
+        <h2 className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-slate-900 mb-4 border-l-4 border-blue-600 pl-3">
           Quyền lợi được hưởng
         </h2>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -119,8 +119,8 @@ export function JobDetailContent() {
                 <div className="mb-2 flex h-9 w-9 items-center justify-center rounded-[3px] bg-blue-100 text-blue-600">
                   <Icon className="h-4 w-4" />
                 </div>
-                <h3 className="text-xs font-bold text-slate-900">{b.title}</h3>
-                <p className="mt-1 text-[11px] leading-relaxed text-slate-600">{b.desc}</p>
+                <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900">{b.title}</h3>
+                <p className="mt-1 text-[13px] sm:text-[14px] leading-relaxed text-slate-600">{b.desc}</p>
               </div>
             );
           })}
@@ -133,14 +133,14 @@ export function JobDetailContent() {
           Địa điểm & Thời gian làm việc
         </h2>
         <div className="rounded-[3px] bg-white p-5 border border-slate-100 shadow-sm flex flex-col gap-3">
-          <div className="flex items-start gap-2.5 text-xs text-slate-700">
+          <div className="flex items-start gap-2.5 text-[13px] sm:text-[14px] text-slate-700">
             <MapPin className="h-4 w-4 text-blue-600 shrink-0 mt-0.5" />
             <span>
               <strong>Địa chỉ:</strong> Tầng 8, Tòa nhà HL Building, Ngõ 82 Duy Tân, Cầu Giấy, Hà
               Nội
             </span>
           </div>
-          <div className="flex items-start gap-2.5 text-xs text-slate-700">
+          <div className="flex items-start gap-2.5 text-[13px] sm:text-[14px] text-slate-700">
             <Clock className="h-4 w-4 text-blue-600 shrink-0 mt-0.5" />
             <span>
               <strong>Thời gian:</strong> Thứ 2 - Thứ 6 (8h00 - 17h00), Thứ 7 (8h00 - 12h00)

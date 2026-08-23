@@ -11,13 +11,13 @@ export default async function HubOffers() {
         
         {/* Header */}
         <div className="max-w-[900px] w-full text-left">
-          <span className="text-[13px] font-bold text-brand tracking-widest uppercase block mb-2">
+          <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-brand block mb-2">
             {t('hubOffer.eyebrow')}
           </span>
-          <h2 className="text-[22px] sm:text-[28px] lg:text-[32px] font-bold text-[#0F2942] leading-tight mb-3">
+          <h2 className="text-[30px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold text-[#0F2942] leading-tight mb-3">
             {t('hubOffer.title')}
           </h2>
-          <p className="text-slate-500 text-[14px] sm:text-[15px] font-normal">
+          <p className="text-slate-500 text-[13px] sm:text-[14px] leading-relaxed font-normal">
             {t('hubOffer.subtitle')}
           </p>
         </div>
@@ -41,7 +41,7 @@ export default async function HubOffers() {
             <div className="relative z-10 w-[90%] sm:w-[85%] mb-4 ml-4 sm:mb-6 sm:ml-6">
               <div className="absolute inset-0 bg-white opacity-70 backdrop-blur-md shadow-lg rounded-none" />
               <div className="relative z-10 p-6 sm:p-7 flex flex-col items-start">
-                <h3 className="font-bold text-slate-800 text-[17px] sm:text-[19px] mb-1.5">
+                <h3 className="font-bold text-slate-800 text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] leading-snug mb-1.5">
                   {t('hubOffer.fdiTitle')}
                 </h3>
                 <p className="text-slate-600 text-[13px] sm:text-[14px] leading-relaxed mb-5">
@@ -86,8 +86,8 @@ export default async function HubOffers() {
             <div className="relative z-10 w-[90%] sm:w-[85%] mb-4 ml-4 sm:mb-6 sm:ml-6">
               <div className="absolute inset-0 bg-white opacity-70 backdrop-blur-md shadow-lg rounded-none" />
               <div className="relative z-10 p-6 sm:p-7 flex flex-col items-start">
-                <h3 className="font-bold text-slate-800 text-[17px] sm:text-[19px] mb-1.5">
-                  {t('hubOffer.smeTitle')}
+                <h3 className="font-bold text-slate-800 text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] leading-snug mb-1.5">
+                    {t('hubOffer.smeTitle')}
                 </h3>
                 <p className="text-slate-600 text-[13px] sm:text-[14px] leading-relaxed mb-5">
                   {t('hubOffer.smeDesc')}
@@ -97,7 +97,7 @@ export default async function HubOffers() {
                 <div className="flex items-center gap-3 w-full sm:w-auto">
                   <Link
                     href="/contact"
-                    className="bg-[#0066FF] hover:bg-blue-700 text-white font-semibold text-[13px] sm:text-[14px] py-2.5 px-5 rounded-none flex items-center justify-center gap-2 transition-all shadow-sm"
+                    className="bg-[#0066FF] hover:bg-blue-700 text-white font-semibold text-[13px] sm:text-[14px] py-2.5 px-5 rounded-none flex items-center justify-center gap-2 transition-all shadow-sm min-h-[44px]"
                   >
                     {t('hubOffer.learnMore')}
                     <svg className="h-4 w-4 fill-none stroke-current" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -106,7 +106,7 @@ export default async function HubOffers() {
                   </Link>
                   <Link
                     href="/contact"
-                    className="bg-white hover:bg-slate-50 text-[#0066FF] border border-slate-200 font-semibold text-[13px] sm:text-[14px] py-2.5 px-6 rounded-none transition-all flex items-center justify-center shadow-sm"
+                    className="bg-white hover:bg-slate-50 text-[#0066FF] border border-slate-200 font-semibold text-[13px] sm:text-[14px] py-2.5 px-6 rounded-none transition-all flex items-center justify-center shadow-sm min-h-[44px]"
                   >
                     {t('hubOffer.contact')}
                   </Link>

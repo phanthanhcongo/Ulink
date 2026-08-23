@@ -46,13 +46,13 @@ export function AboutContact() {
       <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="mb-12 flex flex-col items-center text-center">
-          <span className="text-xs font-bold uppercase tracking-wider text-blue-600">
+          <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-blue-600">
             LIÊN HỆ VỚI CHÚNG TÔI
           </span>
-          <h2 className="mt-2 text-2xl font-extrabold tracking-tight text-slate-900 sm:text-3xl lg:text-4xl">
+          <h2 className="mt-2 text-[30px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold tracking-tight text-slate-900">
             Kết nối với ULink Industries ngay hôm nay
           </h2>
-          <p className="mt-4 max-w-3xl text-sm leading-relaxed text-slate-500">
+          <p className="mt-4 max-w-3xl text-[13px] sm:text-[14px] leading-relaxed text-slate-500">
             Đội ngũ chuyên viên kỹ thuật và chuỗi cung ứng của chúng tôi luôn sẵn sàng hỗ trợ giải đáp mọi thắc mắc và cung cấp báo giá tối ưu nhất cho doanh nghiệp của bạn.
           </p>
         </div>
@@ -60,7 +60,7 @@ export function AboutContact() {
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
           {/* Cột trái: Form trực tuyến */}
           <div className="lg:col-span-7 rounded-[3px] border border-slate-200 bg-white p-6 sm:p-8 shadow-sm">
-            <h3 className="mb-6 text-lg font-bold text-slate-900">
+            <h3 className="mb-6 text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900">
               Gửi yêu cầu trực tuyến
             </h3>
 
@@ -69,7 +69,7 @@ export function AboutContact() {
 
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div>
-                  <label className="mb-1.5 block text-xs font-semibold text-slate-700">
+                    <label className="mb-1.5 block text-[12px] sm:text-[13px] font-semibold text-slate-700">
                     Họ và tên
                   </label>
                   <input
@@ -77,11 +77,11 @@ export function AboutContact() {
                     type="text"
                     required
                     placeholder="Ví dụ: Nguyễn Văn A"
-                    className="w-full rounded-[3px] border border-slate-300 bg-white px-4 py-3 text-sm outline-none transition focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
+                    className="w-full rounded-[3px] border border-slate-300 bg-white px-4 py-3 text-[13px] sm:text-[14px] outline-none transition focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
                   />
                 </div>
                 <div>
-                  <label className="mb-1.5 block text-xs font-semibold text-slate-700">
+                  <label className="mb-1.5 block text-[12px] sm:text-[13px] font-semibold text-slate-700">
                     Số điện thoại
                   </label>
                   <input
@@ -95,7 +95,7 @@ export function AboutContact() {
               </div>
 
               <div>
-                <label className="mb-1.5 block text-xs font-semibold text-slate-700">
+                <label className="mb-1.5 block text-[12px] sm:text-[13px] font-semibold text-slate-700">
                   Địa chỉ Email
                 </label>
                 <input
@@ -103,12 +103,12 @@ export function AboutContact() {
                   type="email"
                   required
                   placeholder="Ví dụ: NguyenVana@ulink.com"
-                  className="w-full rounded-[3px] border border-slate-300 bg-white px-4 py-3 text-sm outline-none transition focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
+                  className="w-full rounded-[3px] border border-slate-300 bg-white px-4 py-3 text-[13px] sm:text-[14px] outline-none transition focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
                 />
               </div>
 
               <div>
-                <label className="mb-1.5 block text-xs font-semibold text-slate-700">
+                <label className="mb-1.5 block text-[12px] sm:text-[13px] font-semibold text-slate-700">
                   Nội dung tin nhắn
                 </label>
                 <textarea
@@ -116,12 +116,12 @@ export function AboutContact() {
                   rows={5}
                   required
                   placeholder="Nhập yêu cầu chi tiết về vật tư, quy cách kỹ thuật hoặc câu hỏi của bạn tại đây..."
-                  className="w-full resize-none rounded-[3px] border border-slate-300 bg-white px-4 py-3 text-sm outline-none transition focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
+                  className="w-full resize-none rounded-[3px] border border-slate-300 bg-white px-4 py-3 text-[13px] sm:text-[14px] outline-none transition focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
                 />
               </div>
 
               {error && (
-                <p className="rounded-[3px] bg-rose-50 px-3 py-2 text-sm font-medium text-rose-700">
+                <p className="rounded-[3px] bg-rose-50 px-3 py-2 text-[13px] sm:text-[14px] font-medium text-rose-700">
                   {error}
                 </p>
               )}
@@ -131,12 +131,12 @@ export function AboutContact() {
                   <button
                     type="submit"
                     disabled={submitting}
-                    className="inline-flex items-center justify-center rounded-[3px] bg-blue-600 px-8 py-3 text-sm font-bold text-white shadow-sm transition-all hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-70"
+                    className="inline-flex items-center justify-center rounded-[3px] bg-blue-600 px-8 py-3 text-[13px] sm:text-[14px] font-bold text-white shadow-sm transition-all hover:bg-blue-700 disabled:cursor-not-allowed disabled:opacity-70"
                   >
                     {submitting ? 'Đang gửi...' : 'Gửi đi'}
                   </button>
                 </div>
-                <p className="text-xs text-slate-500">
+                <p className="text-[12px] sm:text-[13px] text-slate-500">
                   Chúng tôi cam kết bảo mật thông tin và phản hồi trong 24h làm việc.
                 </p>
               </div>
@@ -147,9 +147,9 @@ export function AboutContact() {
           <div className="lg:col-span-5 flex flex-col gap-6">
             {/* Box 1: Thông tin liên hệ */}
             <div className="rounded-[3px] border border-slate-200 bg-white p-6 sm:p-8 shadow-sm">
-              <h3 className="mb-6 text-lg font-bold text-slate-900">
-                Thông tin liên hệ
-              </h3>
+            <h3 className="mb-6 text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900">
+              Thông tin liên hệ
+            </h3>
 
               <div className="space-y-6">
                 {/* Item 1 */}
@@ -158,8 +158,8 @@ export function AboutContact() {
                     <MapPin className="h-5 w-5" />
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-slate-900">Văn phòng & Nhà xưởng Hà Nam</h4>
-                    <p className="mt-1 text-xs leading-relaxed text-slate-600">
+                    <h4 className="text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] xl:text-[20px] font-semibold text-slate-900">Văn phòng & Nhà xưởng Hà Nam</h4>
+                    <p className="mt-1 text-[12px] sm:text-[13px] leading-relaxed text-slate-600">
                       Khu Công nghiệp Đồng Văn IV, Huyện Kim Bảng, Tỉnh Hà Nam, Việt Nam
                     </p>
                   </div>
@@ -171,8 +171,8 @@ export function AboutContact() {
                     <Phone className="h-5 w-5" />
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-slate-900">Hotline hỗ trợ 24/7</h4>
-                    <p className="mt-1 text-xs leading-relaxed text-slate-600 font-semibold">
+                    <h4 className="text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] xl:text-[20px] font-semibold text-slate-900">Hotline hỗ trợ 24/7</h4>
+                    <p className="mt-1 text-[12px] sm:text-[13px] leading-relaxed text-slate-600 font-semibold">
                       0247.309.9899 <span className="font-normal text-slate-500">(Hỗ trợ kỹ thuật & báo giá nhanh)</span>
                     </p>
                   </div>
@@ -184,8 +184,8 @@ export function AboutContact() {
                     <Mail className="h-5 w-5" />
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-slate-900">Email</h4>
-                    <p className="mt-1 text-xs leading-relaxed text-slate-600">
+                    <h4 className="text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] xl:text-[20px] font-semibold text-slate-900">Email</h4>
+                    <p className="mt-1 text-[12px] sm:text-[13px] leading-relaxed text-slate-600">
                       contact@ulinkindustries.com
                     </p>
                   </div>
@@ -197,8 +197,8 @@ export function AboutContact() {
                     <Clock className="h-5 w-5" />
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-slate-900">Giờ làm việc hành chính</h4>
-                    <p className="mt-1 text-xs leading-relaxed text-slate-600">
+                    <h4 className="text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] xl:text-[20px] font-semibold text-slate-900">Giờ làm việc hành chính</h4>
+                    <p className="mt-1 text-[12px] sm:text-[13px] leading-relaxed text-slate-600">
                       Thứ Hai - Thứ Bảy: 8:00 - 17:30 (Trừ các ngày lễ Tết)
                     </p>
                   </div>
@@ -212,7 +212,7 @@ export function AboutContact() {
                 href="https://maps.google.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-sm font-bold text-blue-600 hover:text-blue-700 hover:underline transition-colors"
+                className="inline-flex items-center gap-2 text-[13px] sm:text-[14px] font-bold text-blue-600 hover:text-blue-700 hover:underline transition-colors"
               >
                 <MapPin className="h-4 w-4" />
                 Đường đến Hub Hà Nam

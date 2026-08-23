@@ -84,7 +84,7 @@ export function IndustrySolutions() {
             style={{ transitionDelay: `${idx * 80}ms` }}
           >
             <div>
-              <h3 className="text-[16px] font-bold text-primary transition-colors group-hover:text-brand sm:text-[18px] lg:text-[18px] xl:text-[20px]">
+              <h3 className="text-[16px] font-bold text-primary transition-colors group-hover:text-brand sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px]">
                 {card.title}
               </h3>
               <p className="mt-2 text-[13px] leading-relaxed text-muted-foreground sm:text-[14px] lg:text-[13.5px] xl:text-[14.5px]">

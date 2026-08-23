@@ -11,11 +11,11 @@ export function JobDetailSidebar() {
     <div className="flex flex-col gap-6 py-8">
       {/* 1. Job Summary Card */}
       <div className="rounded-[3px] bg-slate-50 p-6 border border-slate-100 flex flex-col gap-4 shadow-sm">
-        <h3 className="text-sm font-bold text-slate-900 border-b border-slate-200 pb-3">
+        <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 border-b border-slate-200 pb-3">
           Tổng quan vị trí
         </h3>
 
-        <div className="space-y-3 text-xs">
+        <div className="space-y-3 text-[13px] sm:text-[14px] leading-relaxed">
           <div className="flex justify-between text-slate-600">
             <span>Số lượng tuyển:</span>
             <span className="font-semibold text-slate-900">03 người</span>
@@ -40,7 +40,7 @@ export function JobDetailSidebar() {
 
         <Link
           href="/about/careers/b2b-sales/apply"
-          className="mt-2 inline-flex items-center justify-center rounded-[3px] bg-blue-600 py-2.5 text-xs font-semibold text-white shadow-md hover:bg-blue-700 transition-all"
+          className="mt-2 inline-flex items-center justify-center rounded-[3px] bg-blue-600 py-2.5 text-[13px] sm:text-[14px] font-semibold text-white shadow-md hover:bg-blue-700 transition-all"
         >
           Ứng tuyển ngay
         </Link>
@@ -48,7 +48,7 @@ export function JobDetailSidebar() {
 
       {/* 2. Same Department Jobs */}
       <div className="rounded-[3px] bg-white p-6 border border-slate-100 shadow-sm flex flex-col gap-4">
-        <h3 className="text-sm font-bold text-slate-900 border-b border-slate-100 pb-3">
+        <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 border-b border-slate-100 pb-3">
           Vị trí cùng phòng ban
         </h3>
 
@@ -59,10 +59,10 @@ export function JobDetailSidebar() {
               href="/about/careers/b2b-sales"
               className="flex flex-col p-3 rounded-[3px] bg-slate-50 border border-slate-100 hover:border-blue-200 hover:bg-blue-50/50 transition-all group"
             >
-              <span className="text-xs font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+              <span className="text-[13px] sm:text-[14px] font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                 {item.title}
               </span>
-              <span className="text-[11px] text-slate-500 mt-1">{item.location}</span>
+              <span className="text-[12px] sm:text-[13px] text-slate-500 mt-1">{item.location}</span>
             </Link>
           ))}
         </div>

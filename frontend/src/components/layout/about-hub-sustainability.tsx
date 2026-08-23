@@ -21,15 +21,15 @@ export async function AboutHubSustainability() {
           <Leaf className="h-5 w-5" strokeWidth={1.5} />
         </div>
         <div>
-          <p className="text-[12px] font-bold text-primary">{t('title')}</p>
-          <p className="mt-1.5 text-[10px] leading-relaxed text-foreground/60">{t('desc')}</p>
+          <p className="text-[15px] sm:text-[16px] lg:text-[18px] font-bold text-primary">{t('title')}</p>
+          <p className="mt-1.5 text-[13px] sm:text-[14px] leading-relaxed text-foreground/60">{t('desc')}</p>
         </div>
       </div>
 
       {/* Middle: feature list — 3 equal columns */}
       <ul className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-x-6">
         {features.map((f, i) => (
-          <li key={i} className="flex items-start gap-2 text-[10px] font-bold text-foreground/75">
+          <li key={i} className="flex items-start gap-2 text-[13px] sm:text-[14px] font-bold text-foreground/75">
             <span className="mt-0.5 shrink-0 text-brand">{f.icon}</span>
             {f.text}
           </li>
@@ -39,7 +39,7 @@ export async function AboutHubSustainability() {
       {/* Right: CTA */}
       <Link
         href="/about/sustainability"
-        className={`${buttonVariants({ variant: 'primary', size: 'md' })} group shrink-0 px-6 text-[13px] font-semibold`}
+        className={`${buttonVariants({ variant: 'primary', size: 'md' })} group shrink-0 px-6 text-[15px] sm:text-[16px] lg:text-[18px] font-semibold`}
       >
         {tCta('button')}
         <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />

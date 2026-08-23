@@ -45,7 +45,7 @@ export default async function MarketNews({ locale }: MarketNewsProps) {
     <section className="w-full mt-16 lg:mt-24 border-t border-slate-100 pt-16">
       {/* Section Header */}
       <div className="max-w-3xl mx-auto text-center mb-12">
-        <span className="text-xs uppercase text-slate-400 font-extrabold tracking-wider">
+        <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-slate-400">
           {t('marketNews.sectionTitle')}
         </span>
         <h2 className="text-2xl sm:text-3xl font-extrabold text-primary tracking-tight mt-2.5">

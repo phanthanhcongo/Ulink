@@ -42,7 +42,7 @@ export async function AboutSection() {
         {/* Right Column: Text Content & 4 Key Metric Items */}
         <div className="flex flex-col lg:col-span-6 justify-between bg-white border border-[#E5E7EB] p-6 rounded-[3px] gap-10">
           <div>
-            <h3 className="text-[18px] font-bold leading-tight text-primary transition-colors duration-300 group-hover:text-brand sm:text-[20px] lg:text-[20px] xl:text-[24px]">
+            <h3 className="text-[18px] font-bold leading-tight text-primary transition-colors duration-300 group-hover:text-brand sm:text-[20px] md:text-[22px] lg:text-[24px]">
               {t('about.mainTitle')}
             </h3>
 

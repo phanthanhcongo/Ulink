@@ -44,7 +44,7 @@ export async function AboutHubOperations() {
     <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_auto_320px]">
       {/* Operations grid */}
       <div>
-        <h2 className="mb-5 text-[12px] font-bold tracking-wide text-primary">
+        <h2 className="mb-5 text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-primary">
           {t('operations.title')}
         </h2>
         <div className="grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2 xl:grid-cols-4">
@@ -53,8 +53,8 @@ export async function AboutHubOperations() {
               <div className="flex flex-1 items-start gap-2.5">
                 <span className="mt-0.5 text-brand">{card.icon}</span>
                 <div>
-                  <p className="text-[11px] font-bold leading-tight text-primary">{card.title}</p>
-                  <p className="mt-1.5 text-[10px] leading-relaxed text-foreground/60">
+                  <p className="text-[15px] sm:text-[16px] lg:text-[18px] font-bold leading-tight text-primary">{card.title}</p>
+                  <p className="mt-1.5 text-[13px] sm:text-[14px] leading-relaxed text-foreground/60">
                     {card.desc}
                   </p>
                 </div>
@@ -78,10 +78,10 @@ export async function AboutHubOperations() {
 
       {/* ISO standards */}
       <div>
-        <h2 className="mb-3 text-[12px] font-bold tracking-wide text-primary">
+        <h2 className="mb-3 text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-primary">
           {t('iso.title')}
         </h2>
-        <p className="text-[10px] leading-relaxed text-foreground/65">{t('iso.desc')}</p>
+        <p className="text-[13px] sm:text-[14px] leading-relaxed text-foreground/65">{t('iso.desc')}</p>
 
         <div className="mt-6 grid grid-cols-3 gap-3">
           {isoBadges.map((badge, i) => (
@@ -95,10 +95,10 @@ export async function AboutHubOperations() {
                   className="object-contain"
                 />
               </div>
-              <Badge variant="outline" className="mt-2 text-[9px] font-bold">
+              <Badge variant="outline" className="mt-2 text-[12px] sm:text-[13px] font-bold">
                 {badge.code}
               </Badge>
-              <p className="mt-1 text-[9px] leading-snug text-foreground/60">{badge.label}</p>
+              <p className="mt-1 text-[12px] sm:text-[13px] leading-snug text-foreground/60">{badge.label}</p>
             </div>
           ))}
         </div>

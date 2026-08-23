@@ -81,7 +81,7 @@ export function FooterLocaleSwitcher() {
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="listbox"
         aria-expanded={open}
-        className="flex items-center gap-2.5 rounded-[3px] border border-slate-200 bg-white px-4 py-2.5 text-[14px] font-semibold text-slate-800 shadow-sm transition-all hover:border-slate-300 hover:bg-slate-50 sm:text-[15px]"
+        className="flex items-center gap-2.5 rounded-[3px] border border-slate-200 bg-white px-4 py-2.5 text-[15px] sm:text-[16px] lg:text-[18px] font-semibold text-slate-800 shadow-sm transition-all hover:border-slate-300 hover:bg-slate-50"
       >
         <current.flag className="h-4 w-6 rounded-[3px] object-cover shadow-xs" />
         <span>{current.label}</span>
@@ -101,7 +101,7 @@ export function FooterLocaleSwitcher() {
               <button
                 type="button"
                 onClick={() => switchLocale(code)}
-                className={`flex w-full items-center gap-3 px-4 py-2 text-left text-[14px] transition-colors ${code === locale
+                className={`flex w-full items-center gap-3 px-4 py-2 text-left text-[15px] sm:text-[16px] lg:text-[18px] transition-colors ${code === locale
                     ? 'bg-brand/10 font-bold text-brand'
                     : 'text-slate-700 hover:bg-slate-100'
                   }`}

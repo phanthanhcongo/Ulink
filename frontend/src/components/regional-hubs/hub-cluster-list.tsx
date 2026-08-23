@@ -52,17 +52,17 @@ export default function HubClusterList({ hubs, labels }: HubClusterListProps) {
             >
               {/* Rectangular number badge */}
               <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[3px] bg-brand shadow-sm transition-colors group-hover:bg-brand-strong">
-                <span className="text-[16px] font-bold text-background">
+                <span className="text-[15px] sm:text-[16px] lg:text-[18px] font-bold text-background">
                   {String(index + 1).padStart(2, '0')}
                 </span>
               </div>
               {/* Text info */}
               <div className="flex-1 min-w-0">
-                <p className="text-[16px] font-bold leading-tight text-white group-hover:text-[#00e5ff] transition-colors truncate">
+                <p className="text-[15px] sm:text-[16px] lg:text-[18px] font-bold leading-tight text-white group-hover:text-[#00e5ff] transition-colors truncate">
                   {hub.localizedName}
                 </p>
                 {hub.zonesStr && (
-                  <p className="mt-1.5 max-w-[240px] text-[12px] leading-snug text-blue-200/50 group-hover:text-blue-200/70 transition-colors truncate">
+                  <p className="mt-1.5 max-w-[240px] text-[12px] sm:text-[13px] leading-snug text-blue-200/50 group-hover:text-blue-200/70 transition-colors truncate">
                     {hub.zonesStr}
                   </p>
                 )}
@@ -81,7 +81,7 @@ export default function HubClusterList({ hubs, labels }: HubClusterListProps) {
           </div>
         ))}
         {hubs.length === 0 && (
-          <p className="text-[13px] text-blue-200/40 text-center py-8 font-mono">
+          <p className="text-[13px] sm:text-[14px] leading-relaxed text-blue-200/40 text-center py-8 font-mono">
             No regional hubs available
           </p>
         )}

@@ -30,13 +30,13 @@ export function QualityProcess() {
   return (
     <section className="py-12 px-6 sm:px-10 rounded-[3px] bg-brand text-white my-8 shadow-xl">
       <div className="flex flex-col items-center text-center mb-10">
-        <span className="inline-flex items-center rounded-full bg-white/15 px-3.5 py-1 text-xs font-semibold text-white border border-white/20 mb-2">
+        <span className="inline-flex items-center rounded-full bg-white/15 px-3.5 py-1 text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-white border border-white/20 mb-2">
           QUY TRÌNH VẬN HÀNH
         </span>
-        <h2 className="text-2xl font-bold tracking-tight text-white sm:text-3xl">
+        <h2 className="text-[30px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold tracking-tight text-white">
           Quy trình Quản lý Chất lượng
         </h2>
-        <p className="mt-2 text-sm text-blue-100 max-w-xl">
+        <p className="mt-2 text-[15px] sm:text-[16px] lg:text-[18px] font-medium leading-relaxed text-blue-100 max-w-xl">
           Quy trình 5 bước khép kín đảm bảo mỗi vật tư công nghiệp cung cấp đến doanh nghiệp đều đạt
           tiêu chuẩn kỹ thuật tối cao.
         </p>
@@ -48,11 +48,11 @@ export function QualityProcess() {
             key={idx}
             className="flex flex-col rounded-[3px] bg-white/10 p-5 border border-white/15 backdrop-blur transition-all hover:bg-white/15"
           >
-            <div className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-[3px] bg-white text-xs font-extrabold text-brand shadow">
+            <div className="mb-3 inline-flex h-8 w-8 items-center justify-center rounded-[3px] bg-white text-[13px] sm:text-[14px] font-extrabold text-brand shadow">
               {step.num}
             </div>
-            <h3 className="text-sm font-bold text-white mb-1.5">{step.title}</h3>
-            <p className="text-xs leading-relaxed text-blue-100 flex-1">{step.desc}</p>
+            <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-white mb-1.5">{step.title}</h3>
+            <p className="text-[13px] sm:text-[14px] leading-relaxed text-blue-100 flex-1">{step.desc}</p>
           </div>
         ))}
       </div>

@@ -100,7 +100,7 @@ function Field({ icon: Icon, label, value }: { icon: LucideIcon; label: string; 
         <Icon className="h-4 w-4" aria-hidden={true} />
       </span>
       <div className="min-w-0">
-        <dt className="text-[11px] font-medium uppercase tracking-wide text-muted-foreground">
+        <dt className="text-[12px] sm:text-[13px] font-medium uppercase tracking-wide text-muted-foreground">
           {label}
         </dt>
         <dd className="mt-0.5 truncate text-sm text-foreground">{value}</dd>

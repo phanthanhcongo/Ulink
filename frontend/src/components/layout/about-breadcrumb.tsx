@@ -28,7 +28,7 @@ export function AboutBreadcrumb() {
   return (
     <nav
       aria-label="Breadcrumb"
-      className="flex items-center gap-2 py-4 text-[12px] text-muted-foreground"
+      className="flex items-center gap-2 py-4 text-[12px] sm:text-[13px] text-muted-foreground"
     >
       <Link href="/" className="transition-colors hover:text-brand">
         {tNav('home')}

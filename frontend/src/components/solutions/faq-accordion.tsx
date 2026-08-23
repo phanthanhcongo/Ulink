@@ -27,10 +27,10 @@ export default function FaqAccordion({ sectionTitle, sectionSubtitle, items }: F
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center mb-12">
-          <h2 className="text-xl sm:text-2xl font-extrabold text-primary tracking-tight">
+          <h2 className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-primary tracking-tight">
             {sectionTitle}
           </h2>
-          <p className="text-xs sm:text-sm text-slate-500 font-medium mt-2">{sectionSubtitle}</p>
+          <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-500 font-medium mt-2">{sectionSubtitle}</p>
         </div>
 
         {/* Accordion Container */}
@@ -47,7 +47,7 @@ export default function FaqAccordion({ sectionTitle, sectionSubtitle, items }: F
                   onClick={() => toggle(item.id)}
                   className="w-full flex items-center justify-between text-left px-6 sm:px-8 py-5 hover:bg-slate-50/50 transition-colors focus:outline-none"
                 >
-                  <span className="text-xs sm:text-sm md:text-base font-bold text-primary pr-4 leading-snug">
+                  <span className="text-[15px] sm:text-[16px] lg:text-[18px] font-bold text-primary pr-4 leading-snug">
                     {index + 1}. {item.question}
                   </span>
                   <ChevronDown
@@ -64,7 +64,7 @@ export default function FaqAccordion({ sectionTitle, sectionSubtitle, items }: F
                   }`}
                 >
                   <div className="overflow-hidden">
-                    <div className="px-6 sm:px-8 pb-6 text-xs sm:text-sm text-slate-500 font-medium leading-relaxed">
+                    <div className="px-6 sm:px-8 pb-6 text-[13px] sm:text-[14px] leading-relaxed text-slate-500 font-medium">
                       {item.answer}
                     </div>
                   </div>

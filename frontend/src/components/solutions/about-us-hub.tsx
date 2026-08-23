@@ -38,10 +38,10 @@ export default async function AboutUsHub({ locale }: AboutUsHubProps) {
           {/* Blue decorative bar */}
           <div className="w-1.5 h-7 bg-blue-600 rounded-full shrink-0 mt-1" />
           <div className="space-y-1">
-            <h2 className="text-xl sm:text-2xl font-extrabold text-primary tracking-tight">
+            <h2 className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-primary tracking-tight">
               {t('aboutHub.sectionTitle')}
             </h2>
-            <p className="text-xs sm:text-sm text-slate-500 font-medium leading-relaxed">
+            <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-500 font-medium">
               {t('aboutHub.sectionSubtitle')}
             </p>
           </div>
@@ -49,7 +49,7 @@ export default async function AboutUsHub({ locale }: AboutUsHubProps) {
 
         <Link
           href="/about"
-          className="inline-flex items-center gap-1.5 text-xs font-bold text-blue-600 hover:text-blue-700 transition-colors shrink-0 md:mb-1"
+          className="inline-flex items-center gap-1.5 text-[12px] sm:text-[13px] font-bold text-blue-600 hover:text-blue-700 transition-colors shrink-0 md:mb-1"
         >
           {t('aboutHub.viewDetails')}
           <ArrowRight className="h-3.5 w-3.5" />
@@ -74,10 +74,10 @@ export default async function AboutUsHub({ locale }: AboutUsHubProps) {
         <div className="lg:col-span-7 bg-card/65 rounded-[3px] border border-slate-100 p-6 sm:p-8 flex flex-col justify-between">
           <div>
             {/* Title & Description */}
-            <h3 className="text-xl sm:text-2xl font-extrabold text-primary tracking-tight mb-4">
+            <h3 className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-primary tracking-tight mb-4">
               {t('aboutHub.hubHeading')}
             </h3>
-            <p className="text-xs sm:text-sm text-slate-500 leading-relaxed font-medium mb-8">
+            <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-500 font-medium mb-8">
               {t('aboutHub.hubDesc')}
             </p>
 
@@ -85,10 +85,10 @@ export default async function AboutUsHub({ locale }: AboutUsHubProps) {
             <div className="grid grid-cols-2 gap-6 sm:gap-8 mb-8">
               {metrics.map((metric, idx) => (
                 <div key={idx} className="flex flex-col">
-                  <span className="text-xl sm:text-2.5xl font-extrabold text-blue-600 leading-tight">
+                  <span className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-blue-600 leading-tight">
                     {metric.value}
                   </span>
-                  <span className="text-xs text-slate-500 font-medium mt-1.5 leading-snug">
+                  <span className="text-[12px] sm:text-[13px] text-slate-500 font-medium mt-1.5 leading-snug">
                     {metric.label}
                   </span>
                 </div>
@@ -101,7 +101,7 @@ export default async function AboutUsHub({ locale }: AboutUsHubProps) {
             {/* Highlight 1: Pie Chart circle */}
             <div className="flex items-center gap-2.5 sm:px-2 pt-2 first:pt-0 sm:pt-0">
               <div className="w-7 h-7 rounded-full border-[4px] border-t-amber-500 border-r-emerald-500 border-b-blue-500 border-l-slate-200 shrink-0" />
-              <span className="text-[10px] sm:text-xs text-slate-600 font-bold leading-tight">
+              <span className="text-[12px] sm:text-[13px] text-slate-600 font-bold leading-tight">
                 {t('aboutHub.highlight1')}
               </span>
             </div>
@@ -111,7 +111,7 @@ export default async function AboutUsHub({ locale }: AboutUsHubProps) {
               <div className="w-7 h-7 rounded-full bg-white flex items-center justify-center shrink-0">
                 <span className="text-blue-600 font-black text-sm">$</span>
               </div>
-              <span className="text-[10px] sm:text-xs text-slate-600 font-bold leading-tight">
+              <span className="text-[12px] sm:text-[13px] text-slate-600 font-bold leading-tight">
                 {t('aboutHub.highlight2')}
               </span>
             </div>
@@ -127,7 +127,7 @@ export default async function AboutUsHub({ locale }: AboutUsHubProps) {
                   <span className="text-slate-300">★</span>
                 </div>
               </div>
-              <span className="text-[10px] sm:text-xs text-slate-600 font-bold leading-tight">
+              <span className="text-[12px] sm:text-[13px] text-slate-600 font-bold leading-tight">
                 {t('aboutHub.highlight3')}
               </span>
             </div>
@@ -135,7 +135,7 @@ export default async function AboutUsHub({ locale }: AboutUsHubProps) {
             {/* Highlight 4: Thumbs up count */}
             <div className="flex items-center gap-2.5 sm:pl-4 pt-2 sm:pt-0">
               <ThumbsUp className="h-5 w-5 text-blue-500 fill-white shrink-0" />
-              <span className="text-[10px] sm:text-xs text-slate-600 font-bold leading-tight">
+              <span className="text-[12px] sm:text-[13px] text-slate-600 font-bold leading-tight">
                 {t('aboutHub.highlight4')}
               </span>
             </div>

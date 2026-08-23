@@ -53,7 +53,7 @@ export function CaseStudyCard({
         </p>
 
         {/* Title */}
-        <h3 className="mt-2 text-[15px] font-bold leading-snug text-slate-900 sm:text-[16px] lg:text-[16px] xl:text-[18px] group-hover:text-brand transition-colors">
+        <h3 className="mt-2 text-[15px] font-bold leading-snug text-slate-900 sm:text-[16px] md:text-[18px] lg:text-[22px] xl:text-[24px] group-hover:text-brand transition-colors">
           {title}
         </h3>
 

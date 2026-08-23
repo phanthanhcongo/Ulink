@@ -14,7 +14,7 @@ const processSteps = [
 export function JobDetailProcess() {
   return (
     <section className="py-6 border-t border-slate-100" id="apply">
-      <h2 className="text-lg font-bold text-slate-900 mb-4 border-l-4 border-blue-600 pl-3">
+      <h2 className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-slate-900 mb-4 border-l-4 border-blue-600 pl-3">
         Quy trình ứng tuyển
       </h2>
 
@@ -24,9 +24,9 @@ export function JobDetailProcess() {
             key={idx}
             className="flex flex-col rounded-[3px] bg-slate-50 p-4 border border-slate-100"
           >
-            <span className="text-xs font-extrabold text-blue-600 mb-1">{s.num}</span>
-            <h3 className="text-xs font-bold text-slate-900">{s.title}</h3>
-            <p className="mt-1 text-[11px] leading-relaxed text-slate-600">{s.desc}</p>
+            <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-blue-600 mb-1">{s.num}</span>
+            <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900">{s.title}</h3>
+            <p className="mt-1 text-[13px] sm:text-[14px] leading-relaxed text-slate-600">{s.desc}</p>
           </div>
         ))}
       </div>
@@ -38,10 +38,10 @@ export function JobDetailProcess() {
             <Mail className="h-5 w-5" />
           </div>
           <div>
-            <span className="block text-xs font-bold text-slate-900">
+            <span className="block text-[13px] sm:text-[14px] font-bold text-slate-900">
               Liên hệ trực tiếp Phòng Nhân sự ULink
             </span>
-            <span className="text-xs text-slate-600">
+            <span className="text-[13px] sm:text-[14px] leading-relaxed text-slate-600">
               Email: hr@ulink.vn | Hotline: 024 7300 9899
             </span>
           </div>
@@ -49,7 +49,7 @@ export function JobDetailProcess() {
 
         <a
           href="mailto:hr@ulink.vn"
-          className="inline-flex shrink-0 items-center justify-center rounded-[3px] bg-blue-600 px-5 py-2.5 text-xs font-semibold text-white shadow-sm hover:bg-blue-700 transition-all"
+          className="inline-flex shrink-0 items-center justify-center rounded-[3px] bg-blue-600 px-5 py-2.5 text-[13px] sm:text-[14px] font-semibold text-white shadow-sm hover:bg-blue-700 transition-all"
         >
           Gửi CV qua Email
         </a>

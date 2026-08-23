@@ -64,10 +64,10 @@ export default function HubSolutions({ locale }: HubSolutionsProps) {
         
         {/* Title Area */}
         <div className="text-center max-w-[600px] w-full">
-          <span className="text-[16px] font-extrabold tracking-widest text-[#0F2942] uppercase mb-2 block">
+          <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-[#0F2942] mb-2 block">
             {t.eyebrow}
           </span>
-          <h2 className="text-[34px] sm:text-[40px] font-extrabold text-slate-900 leading-tight">
+          <h2 className="text-[30px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold text-slate-900 leading-tight">
             {t.title}
           </h2>
         </div>
@@ -87,10 +87,10 @@ export default function HubSolutions({ locale }: HubSolutionsProps) {
                 />
               </div>
             </div>
-            <h3 className="mt-5 text-[20px] sm:text-[21px] font-extrabold text-slate-900 tracking-tight">
+            <h3 className="mt-5 text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 leading-snug">
               {t.col1Title}
             </h3>
-            <p className="mt-3 text-[17px] sm:text-[18px] leading-relaxed text-slate-500 max-w-[260px]">
+            <p className="mt-3 text-[13px] sm:text-[14px] leading-relaxed text-slate-500 max-w-[260px]">
               {t.col1Desc}
             </p>
           </div>
@@ -107,10 +107,10 @@ export default function HubSolutions({ locale }: HubSolutionsProps) {
                 />
               </div>
             </div>
-            <h3 className="mt-5 text-[20px] sm:text-[21px] font-extrabold text-slate-900 tracking-tight">
+            <h3 className="mt-5 text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 leading-snug">
               {t.col2Title}
             </h3>
-            <p className="mt-3 text-[17px] sm:text-[18px] leading-relaxed text-slate-500 max-w-[260px]">
+            <p className="mt-3 text-[13px] sm:text-[14px] leading-relaxed text-slate-500 max-w-[260px]">
               {t.col2Desc}
             </p>
           </div>
@@ -127,10 +127,10 @@ export default function HubSolutions({ locale }: HubSolutionsProps) {
                 />
               </div>
             </div>
-            <h3 className="mt-5 text-[20px] sm:text-[21px] font-extrabold text-slate-900 tracking-tight">
+            <h3 className="mt-5 text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 leading-snug">
               {t.col3Title}
             </h3>
-            <p className="mt-3 text-[17px] sm:text-[18px] leading-relaxed text-slate-500 max-w-[260px]">
+            <p className="mt-3 text-[13px] sm:text-[14px] leading-relaxed text-slate-500 max-w-[260px]">
               {t.col3Desc}
             </p>
           </div>
@@ -147,10 +147,10 @@ export default function HubSolutions({ locale }: HubSolutionsProps) {
                 />
               </div>
             </div>
-            <h3 className="mt-5 text-[20px] sm:text-[21px] font-extrabold text-slate-900 tracking-tight">
+            <h3 className="mt-5 text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 leading-snug">
               {t.col4Title}
             </h3>
-            <p className="mt-3 text-[17px] sm:text-[18px] leading-relaxed text-slate-500 max-w-[260px]">
+            <p className="mt-3 text-[13px] sm:text-[14px] leading-relaxed text-slate-500 max-w-[260px]">
               {t.col4Desc}
             </p>
           </div>

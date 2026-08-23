@@ -11,10 +11,10 @@ export default async function HanamFulfillmentHub() {
         
         {/* Title Area */}
         <div className="text-center max-w-[900px] mx-auto w-full">
-          <span className="text-[13px] font-bold text-brand tracking-widest uppercase block mb-3">
+          <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-brand block mb-3">
             {t('hanamHub.eyebrow')}
           </span>
-          <h2 className="text-[22px] sm:text-[28px] lg:text-[32px] font-extrabold text-slate-900 leading-normal max-w-[850px] mx-auto">
+          <h2 className="text-[30px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold text-slate-900 leading-tight max-w-[850px] mx-auto">
             {t('hanamHub.title')}
           </h2>
         </div>
@@ -28,40 +28,40 @@ export default async function HanamFulfillmentHub() {
               
               {/* Feature 1 */}
               <div className="flex flex-col text-left">
-                <h3 className="font-bold text-slate-900 text-[15px] sm:text-[16px] leading-snug mb-2">
+                <h3 className="font-bold text-slate-900 text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] leading-snug mb-2">
                   {t('hanamHub.feat1Title')}
                 </h3>
-                <p className="text-[13px] sm:text-[14px] text-slate-500 leading-relaxed">
+                <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-500">
                   {t('hanamHub.feat1Desc')}
                 </p>
               </div>
 
               {/* Feature 2 */}
               <div className="flex flex-col text-left">
-                <h3 className="font-bold text-slate-900 text-[15px] sm:text-[16px] leading-snug mb-2">
+                <h3 className="font-bold text-slate-900 text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] leading-snug mb-2">
                   {t('hanamHub.feat2Title')}
                 </h3>
-                <p className="text-[13px] sm:text-[14px] text-slate-500 leading-relaxed">
+                <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-500">
                   {t('hanamHub.feat2Desc')}
                 </p>
               </div>
 
               {/* Feature 3 */}
               <div className="flex flex-col text-left">
-                <h3 className="font-bold text-slate-900 text-[15px] sm:text-[16px] leading-snug mb-2">
+                <h3 className="font-bold text-slate-900 text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] leading-snug mb-2">
                   {t('hanamHub.feat3Title')}
                 </h3>
-                <p className="text-[13px] sm:text-[14px] text-slate-500 leading-relaxed">
+                <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-500">
                   {t('hanamHub.feat3Desc')}
                 </p>
               </div>
 
               {/* Feature 4 */}
               <div className="flex flex-col text-left">
-                <h3 className="font-bold text-slate-900 text-[15px] sm:text-[16px] leading-snug mb-2">
+                <h3 className="font-bold text-slate-900 text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] leading-snug mb-2">
                   {t('hanamHub.feat4Title')}
                 </h3>
-                <p className="text-[13px] sm:text-[14px] text-slate-500 leading-relaxed">
+                <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-500">
                   {t('hanamHub.feat4Desc')}
                 </p>
               </div>
@@ -72,7 +72,7 @@ export default async function HanamFulfillmentHub() {
             <div className="flex justify-start mt-2">
               <Link
                 href="/about"
-                className="bg-brand text-white text-[13px] font-semibold py-2.5 px-6 rounded-[3px] hover:bg-brand-strong transition-all inline-flex items-center gap-1"
+                className="bg-brand text-white text-[13px] sm:text-[14px] leading-relaxed font-semibold py-2.5 px-6 rounded-[3px] hover:bg-brand-strong transition-all inline-flex items-center gap-1 min-h-[44px]"
               >
                 {t('hanamHub.learnMore')}
                 <span className="ml-1 text-[14px]">→</span>

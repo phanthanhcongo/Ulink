@@ -50,7 +50,7 @@ export function MobileNav({ items }: MobileNavProps) {
           {/* Sheet from bottom */}
           <div className="absolute inset-x-0 bottom-0 max-h-[80vh] overflow-y-auto bg-background pb-safe animate-in slide-in-from-bottom">
             <div className="flex items-center justify-between border-b border-border px-5 py-4">
-              <span className="text-sm font-semibold text-primary">Menu</span>
+              <span className="text-[15px] sm:text-[16px] lg:text-[18px] font-semibold text-primary">Menu</span>
               <button
                 type="button"
                 aria-label="Close"
@@ -71,7 +71,7 @@ export function MobileNav({ items }: MobileNavProps) {
                       <Link
                         href={it.href}
                         onClick={() => setOpen(false)}
-                        className="py-1 text-sm font-semibold text-primary transition-colors hover:text-brand"
+                        className="py-1 text-[15px] sm:text-[16px] lg:text-[18px] font-semibold text-primary transition-colors hover:text-brand"
                       >
                         {it.label}
                       </Link>
@@ -97,7 +97,7 @@ export function MobileNav({ items }: MobileNavProps) {
                             key={child.href}
                             href={child.href}
                             onClick={() => setOpen(false)}
-                            className="py-1 text-xs font-medium text-slate-600 transition-colors hover:text-brand"
+                            className="py-1 text-[13px] sm:text-[14px] font-medium text-slate-600 transition-colors hover:text-brand"
                           >
                             {child.label}
                           </Link>
@@ -111,14 +111,14 @@ export function MobileNav({ items }: MobileNavProps) {
               {/* Authentication links for Mobile */}
               {status === 'authenticated' && user ? (
                 <>
-                  <div className="py-3 text-xs font-semibold text-muted-foreground uppercase tracking-wider mt-4">
+                  <div className="py-3 text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-muted-foreground mt-4">
                     {t('account')}
                   </div>
                   {isAdmin && (
                     <Link
                       href="/admin"
                       onClick={() => setOpen(false)}
-                      className="flex items-center gap-2 border-b border-border py-3 text-sm font-bold text-brand transition-colors hover:text-brand"
+                      className="flex items-center gap-2 border-b border-border py-3 text-[15px] sm:text-[16px] lg:text-[18px] font-bold text-brand transition-colors hover:text-brand"
                     >
                       <ShieldCheck className="h-4 w-4 text-brand" aria-hidden="true" />
                       {t('adminDashboard')}
@@ -127,7 +127,7 @@ export function MobileNav({ items }: MobileNavProps) {
                   <Link
                     href="/rfqs"
                     onClick={() => setOpen(false)}
-                    className="flex items-center gap-2 border-b border-border py-3 text-sm text-primary transition-colors hover:text-brand"
+                    className="flex items-center gap-2 border-b border-border py-3 text-[15px] sm:text-[16px] lg:text-[18px] text-primary transition-colors hover:text-brand"
                   >
                     <FileText className="h-4 w-4" aria-hidden="true" />
                     {t('rfqs')}
@@ -135,7 +135,7 @@ export function MobileNav({ items }: MobileNavProps) {
                   <Link
                     href="/my-rfqs"
                     onClick={() => setOpen(false)}
-                    className="flex items-center gap-2 border-b border-border py-3 text-sm text-primary transition-colors hover:text-brand"
+                    className="flex items-center gap-2 border-b border-border py-3 text-[15px] sm:text-[16px] lg:text-[18px] text-primary transition-colors hover:text-brand"
                   >
                     <ClipboardList className="h-4 w-4" aria-hidden="true" />
                     {t('myRfqs')}
@@ -143,7 +143,7 @@ export function MobileNav({ items }: MobileNavProps) {
                   <Link
                     href="/sample-requests"
                     onClick={() => setOpen(false)}
-                    className="flex items-center gap-2 border-b border-border py-3 text-sm text-primary transition-colors hover:text-brand"
+                    className="flex items-center gap-2 border-b border-border py-3 text-[15px] sm:text-[16px] lg:text-[18px] text-primary transition-colors hover:text-brand"
                   >
                     <Package className="h-4 w-4" aria-hidden="true" />
                     {t('sampleRequests')}
@@ -151,7 +151,7 @@ export function MobileNav({ items }: MobileNavProps) {
                   <Link
                     href="/settings"
                     onClick={() => setOpen(false)}
-                    className="flex items-center gap-2 border-b border-border py-3 text-sm text-primary transition-colors hover:text-brand"
+                    className="flex items-center gap-2 border-b border-border py-3 text-[15px] sm:text-[16px] lg:text-[18px] text-primary transition-colors hover:text-brand"
                   >
                     <UserRound className="h-4 w-4" aria-hidden="true" />
                     {t('settings')}
@@ -162,7 +162,7 @@ export function MobileNav({ items }: MobileNavProps) {
                       setOpen(false);
                       logout();
                     }}
-                    className="flex w-full items-center gap-2 py-3 text-left text-sm text-destructive transition-colors hover:text-destructive/80"
+                    className="flex w-full items-center gap-2 py-3 text-left text-[15px] sm:text-[16px] lg:text-[18px] text-destructive transition-colors hover:text-destructive/80"
                   >
                     <LogOut className="h-4 w-4" aria-hidden="true" />
                     {t('logout')}

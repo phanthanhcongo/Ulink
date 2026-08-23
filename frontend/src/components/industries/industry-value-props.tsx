@@ -50,8 +50,8 @@ export function IndustryValueProps({ valueProps }: IndustryValuePropsProps) {
                 <PropIcon className="h-6 w-6" />
               </div>
               <div className="space-y-1">
-                <h3 className="text-sm font-extrabold text-primary leading-snug">{prop.title}</h3>
-                <p className="text-xs text-slate-500 font-medium leading-relaxed">{prop.desc}</p>
+                <h3 className="text-[15px] sm:text-[16px] lg:text-[18px] font-extrabold text-primary leading-snug">{prop.title}</h3>
+                <p className="text-[12px] sm:text-[13px] text-slate-500 font-medium leading-relaxed">{prop.desc}</p>
               </div>
             </div>
           );
