@@ -23,6 +23,17 @@ export function HeroBanner() {
     <section className="relative flex w-full flex-col overflow-hidden bg-slate-50 sm:aspect-[16/9] md:aspect-[16/8] lg:aspect-[1440/500] xl:aspect-[1440/540] sm:min-h-[420px] md:min-h-[450px] lg:min-h-[460px] xl:min-h-[500px]">
       {/* Image section — full viewport on mobile */}
       <div className="relative w-full h-screen sm:h-full sm:absolute sm:inset-0 select-none">
+        {/* Mobile image (< sm) */}
+        <Image
+          src={ASSETS.home.heroMobile}
+          alt="ULINK Industrial Consumable Materials"
+          fill
+          priority
+          quality={100}
+          sizes="100vw"
+          className="object-cover object-center block sm:hidden"
+        />
+        {/* Desktop image (>= sm) */}
         <Image
           src={ASSETS.home.hero}
           alt="ULINK Industrial Consumable Materials"
@@ -30,7 +41,7 @@ export function HeroBanner() {
           priority
           quality={100}
           sizes="100vw"
-          className="object-cover object-center sm:object-center"
+          className="object-cover object-center hidden sm:block"
         />
       </div>
 
