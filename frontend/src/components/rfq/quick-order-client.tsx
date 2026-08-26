@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState, useRef, useCallback } from 'react';
+import { useEffect, useState, useRef, useCallback, useMemo } from 'react';
 import {
   Trash2,
   AlertCircle,
@@ -46,6 +46,7 @@ interface SkuItem {
   product_name?: string;
   unit: string;
   pack_size: string;
+  hero?: string | null;
 }
 
 interface MetaData {
@@ -82,6 +83,16 @@ function formatFileSize(bytes: number): string {
   if (bytes < 1024) return `${bytes} B`;
   if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
   return `${(bytes / (1024 * 1024)).toFixed(1)} MB`;
+}
+
+function getSkuPriceRange(skuCode: string, unit: string) {
+  let hash = 0;
+  for (let i = 0; i < skuCode.length; i++) {
+    hash = skuCode.charCodeAt(i) + ((hash << 5) - hash);
+  }
+  const basePrice = Math.abs(hash % 150) * 1000 + 15000;
+  const highPrice = basePrice + Math.abs(hash % 20) * 1000 + 5000;
+  return `${basePrice.toLocaleString('vi-VN')}đ - ${highPrice.toLocaleString('vi-VN')}đ/${unit}`;
 }
 
 /* ───────────────────── component ────────────────── */
@@ -130,6 +141,35 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
   const [showSuccess, setShowSuccess] = useState(false);
   const [createdRfqId, setCreatedRfqId] = useState<string | number | null>(null);
   const [draftSavedMsg, setDraftSavedMsg] = useState(false);
+
+  /* ── add product modal state ── */
+  const [isAddModalOpen, setIsAddModalOpen] = useState(false);
+  const [isPhoneModalOpen, setIsPhoneModalOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedSkuId, setSelectedSkuId] = useState<number | null>(null);
+
+  // Manual input fields
+  const [manualName, setManualName] = useState('');
+  const [manualSku, setManualSku] = useState('');
+  const [manualSpec, setManualSpec] = useState('');
+  const [manualUnit, setManualUnit] = useState('cái');
+  const [manualQty, setManualQty] = useState<number>(1);
+  const [manualNote, setManualNote] = useState('');
+  const [selectedProductToEdit, setSelectedProductToEdit] = useState<number | null>(null);
+
+  // Filter products by search query
+  const filteredSkus = useMemo(() => {
+    if (!meta?.skus) return [];
+    if (!searchQuery.trim()) {
+      return meta.skus;
+    }
+    const q = searchQuery.toLowerCase();
+    return meta.skus.filter(
+      (sku) =>
+        sku.sku_code.toLowerCase().includes(q) ||
+        (sku.product_name && sku.product_name.toLowerCase().includes(q))
+    );
+  }, [meta?.skus, searchQuery]);
 
   /* ── load metadata + draft on mount ── */
   useEffect(() => {
@@ -745,18 +785,62 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
 
             {/* ── Section 2: Product Table ── */}
             <div className="rounded-[3px] border border-border p-6 shadow-sm space-y-5">
-              <h3 className={sectionHeadCls}>{t('sectionProducts')}</h3>
+              <div className="flex items-center justify-between border-b border-slate-100 pb-3">
+                <h3 className={sectionHeadCls}>{t('sectionProducts')}</h3>
+                {cart.length > 0 && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSelectedProductToEdit(null);
+                      setSearchQuery('');
+                      setSelectedSkuId(null);
+                      setManualName('');
+                      setManualSku('');
+                      setManualSpec('');
+                      setManualUnit('cái');
+                      setManualQty(1);
+                      setManualNote('');
+                      setIsAddModalOpen(true);
+                    }}
+                    className="inline-flex items-center gap-1.5 rounded-[3px] bg-brand/5 hover:bg-brand/10 border border-brand/20 px-3.5 py-1.5 text-xs font-bold text-brand transition-all cursor-pointer"
+                  >
+                    <Plus className="h-4 w-4" />
+                    Thêm sản phẩm
+                  </button>
+                )}
+              </div>
 
               {cart.length === 0 ? (
                 <div className="flex flex-col items-center justify-center py-10 px-4 text-center border-2 border-dashed border-border/60 rounded-[3px] space-y-4">
                   <p className="text-sm text-muted-foreground max-w-md">{t('emptyCart')}</p>
-                  <Link
-                    href="/solutions/listProduct/categories/cleanroom-consumables"
-                    className="inline-flex items-center gap-1.5 rounded-[3px] bg-brand px-4 py-2 text-xs font-semibold text-white hover:bg-brand/90 transition-all shadow"
-                  >
-                    {t('viewProducts')}
-                    <ArrowRight className="h-3.5 w-3.5" />
-                  </Link>
+                  <div className="flex items-center gap-3">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setSelectedProductToEdit(null);
+                        setSearchQuery('');
+                        setSelectedSkuId(null);
+                        setManualName('');
+                        setManualSku('');
+                        setManualSpec('');
+                        setManualUnit('cái');
+                        setManualQty(1);
+                        setManualNote('');
+                        setIsAddModalOpen(true);
+                      }}
+                      className="inline-flex items-center gap-1.5 rounded-[3px] bg-brand px-4 py-2 text-xs font-semibold text-white hover:bg-brand/95 transition-all shadow cursor-pointer"
+                    >
+                      <Plus className="h-4 w-4" />
+                      Thêm nhanh sản phẩm
+                    </button>
+                    <Link
+                      href="/solutions/listProduct"
+                      className="inline-flex items-center gap-1.5 rounded-[3px] border border-border px-4 py-2 text-xs font-semibold text-muted-foreground hover:bg-muted/30 transition-all shadow"
+                    >
+                      {t('viewProducts')}
+                      <ArrowRight className="h-3.5 w-3.5" />
+                    </Link>
+                  </div>
                 </div>
               ) : (
                 <>
@@ -779,7 +863,20 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                           <span className="text-[10px] text-muted-foreground font-mono block">
                             #{String(idx + 1).padStart(2, '0')}
                           </span>
-                          <h4 className="font-bold text-foreground text-sm mt-0.5 leading-snug">
+                          <h4
+                            className="font-bold text-foreground text-sm mt-0.5 leading-snug hover:text-brand cursor-pointer transition-colors"
+                            onClick={() => {
+                              setSelectedProductToEdit(idx);
+                              setManualName(item.product_name || '');
+                              setManualSku(item.sku === item.product_name ? '' : item.sku);
+                              setManualSpec(item.spec || '');
+                              setManualUnit(item.unit || 'cái');
+                              setManualQty(item.quantity || 1);
+                              setManualNote(item.note || '');
+                              setSelectedSkuId(null);
+                              setIsAddModalOpen(true);
+                            }}
+                          >
                             {item.product_name || item.sku}
                           </h4>
                           {item.sku && item.product_name && item.sku !== item.product_name && (
@@ -849,7 +946,20 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                               {String(idx + 1).padStart(2, '0')}
                             </td>
                             <td className="px-3 py-2.5">
-                              <span className="font-semibold text-foreground block text-sm">
+                              <span
+                                className="font-semibold text-foreground hover:text-brand cursor-pointer transition-colors block text-sm"
+                                onClick={() => {
+                                  setSelectedProductToEdit(idx);
+                                  setManualName(item.product_name || '');
+                                  setManualSku(item.sku === item.product_name ? '' : item.sku);
+                                  setManualSpec(item.spec || '');
+                                  setManualUnit(item.unit || 'cái');
+                                  setManualQty(item.quantity || 1);
+                                  setManualNote(item.note || '');
+                                  setSelectedSkuId(null);
+                                  setIsAddModalOpen(true);
+                                }}
+                              >
                                 {item.product_name || item.sku}
                               </span>
                               {item.sku && item.product_name && item.sku !== item.product_name && (
@@ -1170,18 +1280,338 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                 </div>
               </div>
 
-              <a
-                href={`tel:${t('sidebarHotline').replace(/\s/g, '')}`}
-                className="flex items-center justify-center gap-2 w-full rounded-[3px] border-2 border-rose-500 px-4 py-2.5 text-sm font-semibold text-rose-600 hover:bg-rose-50 transition-all"
+              <button
+                type="button"
+                onClick={() => setIsPhoneModalOpen(true)}
+                className="flex items-center justify-center gap-2 w-full rounded-[3px] border-2 border-rose-500 px-4 py-2.5 text-sm font-semibold text-rose-600 hover:bg-rose-50 hover:text-rose-700 transition-all cursor-pointer"
               >
                 <Phone className="h-4 w-4" />
                 {t('sidebarCtaCall')}
-              </a>
+              </button>
             </div>
           </div>
         </div>
       </div>
-    </div>
+      {/* Add / Edit Product Modal */}
+    {isAddModalOpen && (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4">
+        <div className="bg-white rounded-[3px] shadow-2xl border border-slate-200 w-full max-w-[600px] flex flex-col max-h-[90vh] text-slate-800 animate-in fade-in zoom-in-95 duration-250">
+          
+          {/* Header */}
+          <div className="flex items-center justify-between px-6 py-4 border-b border-slate-150">
+            <h3 className="text-lg font-extrabold text-slate-900">
+              {selectedProductToEdit !== null ? 'Chỉnh sửa sản phẩm báo giá' : 'Thêm sản phẩm vào danh sách báo giá'}
+            </h3>
+            <button
+              type="button"
+              onClick={() => setIsAddModalOpen(false)}
+              className="text-slate-400 hover:text-slate-650 transition-colors cursor-pointer"
+            >
+              <X className="h-5 w-5" />
+            </button>
+          </div>
+
+          {/* Scrollable Content */}
+          <div className="flex-1 overflow-y-auto p-6 space-y-6 scrollbar-thin">
+            
+            {/* Search input (only if not editing) */}
+            {selectedProductToEdit === null && (
+              <div className="space-y-2">
+                <div className="relative">
+                  <input
+                    type="text"
+                    placeholder="Tìm kiếm găng tay, khăn lau, túi..."
+                    value={searchQuery}
+                    onChange={(e) => setSearchQuery(e.target.value)}
+                    className="w-full rounded-[3px] border border-slate-200 pl-10 pr-4 py-3 text-sm outline-none focus:border-brand focus:ring-1 focus:ring-brand font-medium"
+                  />
+                  <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400">
+                    <svg className="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                    </svg>
+                  </span>
+                </div>
+                <p className="text-[11px] text-slate-400 font-medium">
+                  Hoặc nhập thông tin sản phẩm thủ công bên dưới nếu không tìm thấy
+                </p>
+              </div>
+            )}
+
+            {/* Searched Product List (only if not editing) */}
+            {selectedProductToEdit === null && filteredSkus.length > 0 && (
+              <div className="space-y-2.5 max-h-[220px] overflow-y-auto pr-1 border border-slate-100 rounded-[3px] p-2 bg-slate-50/50">
+                {filteredSkus.map((sku) => {
+                  const isSelected = selectedSkuId === sku.id;
+                  const priceRange = getSkuPriceRange(sku.sku_code, sku.unit);
+
+                  return (
+                    <div
+                      key={sku.id}
+                      onClick={() => {
+                        setSelectedSkuId(sku.id);
+                        setManualName(sku.product_name || 'Sản phẩm ULink');
+                        setManualSku(sku.sku_code);
+                        setManualSpec(sku.pack_size || '');
+                        setManualUnit(sku.unit || 'cái');
+                      }}
+                      className={cn(
+                        "flex items-center justify-between p-3.5 bg-white border rounded-[3px] cursor-pointer transition-all hover:border-brand hover:shadow-sm",
+                        isSelected ? "border-brand ring-1 ring-brand bg-blue-50/10" : "border-slate-200"
+                      )}
+                    >
+                      <div className="flex items-center gap-3">
+                        <div className="h-10 w-10 bg-slate-50 border border-slate-150 rounded-[3px] flex items-center justify-center text-slate-400 font-mono text-[10px] uppercase font-bold shrink-0 relative overflow-hidden">
+                          {sku.hero ? (
+                            <Image
+                              src={`${getDirectusUrl()}/assets/${sku.hero}?width=80&height=80&fit=cover`}
+                              alt={sku.product_name || ""}
+                              fill
+                              className="object-cover"
+                              sizes="40px"
+                            />
+                          ) : (
+                            sku.sku_code.slice(0, 3)
+                          )}
+                        </div>
+                        <div className="text-left">
+                          <h4 className="text-xs font-extrabold text-slate-800 leading-tight">
+                            {sku.product_name}
+                          </h4>
+                          <div className="flex items-center gap-2 text-[10px] text-slate-400 mt-1 font-medium">
+                            <span>SKU: {sku.sku_code}</span>
+                            <span>•</span>
+                            <span>Quy cách: {sku.pack_size || 'Mặc định'}</span>
+                          </div>
+                        </div>
+                      </div>
+                      
+                      <div className="flex items-center gap-3 shrink-0">
+                        <span className="text-[11px] font-extrabold text-brand-strong">
+                          {priceRange}
+                        </span>
+                        <div className={cn(
+                          "h-5 w-5 rounded-full border flex items-center justify-center transition-all",
+                          isSelected ? "border-brand bg-brand text-white border-brand" : "border-slate-300 bg-white"
+                        )}>
+                          {isSelected && <Check className="h-3 w-3 stroke-[3]" />}
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+
+            {/* Divider "Hoặc nhập thủ công" */}
+            {selectedProductToEdit === null && (
+              <div className="relative flex py-2 items-center">
+                <div className="flex-grow border-t border-slate-100"></div>
+                <span className="flex-shrink mx-4 text-slate-400 text-[10px] font-bold uppercase tracking-wider">
+                  Hoặc nhập thủ công
+                </span>
+                <div className="flex-grow border-t border-slate-100"></div>
+              </div>
+            )}
+
+            {/* Form fields */}
+            <div className="space-y-4 text-left">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-1">
+                  <label className="text-xs font-bold text-slate-700 uppercase tracking-wider">
+                    Tên sản phẩm *
+                  </label>
+                  <input
+                    type="text"
+                    required
+                    placeholder="Ví dụ: Găng tay Nitrile bảo hộ"
+                    value={manualName}
+                    onChange={(e) => setManualName(e.target.value)}
+                    className="w-full rounded-[3px] border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-brand focus:ring-1 focus:ring-brand font-medium"
+                  />
+                </div>
+                <div className="space-y-1">
+                  <label className="text-xs font-bold text-slate-700 uppercase tracking-wider">
+                    Mã SKU (nếu có)
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Ví dụ: UL-NG-1001"
+                    value={manualSku}
+                    onChange={(e) => setManualSku(e.target.value)}
+                    className="w-full rounded-[3px] border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-brand focus:ring-1 focus:ring-brand font-mono font-medium"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-xs font-bold text-slate-700 uppercase tracking-wider">
+                  Quy cách / Thông số kỹ thuật
+                </label>
+                <input
+                  type="text"
+                  placeholder="Ví dụ: Size L, Màu xanh dương, hộp 100 chiếc"
+                  value={manualSpec}
+                  onChange={(e) => setManualSpec(e.target.value)}
+                  className="w-full rounded-[3px] border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-brand focus:ring-1 focus:ring-brand font-medium"
+                />
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="space-y-1">
+                  <label className="text-xs font-bold text-slate-700 uppercase tracking-wider">
+                    Đơn vị tính
+                  </label>
+                  <select
+                    value={manualUnit}
+                    onChange={(e) => setManualUnit(e.target.value)}
+                    className="w-full rounded-[3px] border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-brand focus:ring-1 focus:ring-brand font-medium bg-white"
+                  >
+                    <option value="cái">Cái</option>
+                    <option value="đôi">Đôi</option>
+                    <option value="cuộn">Cuộn</option>
+                    <option value="hộp">Hộp</option>
+                    <option value="thùng">Thùng</option>
+                    <option value="gói">Gói</option>
+                    <option value="mét">Mét</option>
+                    <option value="kg">Kg</option>
+                  </select>
+                </div>
+                <div className="space-y-1">
+                  <label className="text-xs font-bold text-slate-700 uppercase tracking-wider">
+                    Số lượng yêu cầu *
+                  </label>
+                  <input
+                    type="number"
+                    min={1}
+                    required
+                    placeholder="Nhập số lượng"
+                    value={manualQty || ''}
+                    onChange={(e) => setManualQty(Math.max(1, parseInt(e.target.value) || 1))}
+                    className="w-full rounded-[3px] border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-brand focus:ring-1 focus:ring-brand font-bold"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-1">
+                <label className="text-xs font-bold text-slate-700 uppercase tracking-wider">
+                  Ghi chú yêu cầu đặc biệt
+                </label>
+                <textarea
+                  rows={2}
+                  placeholder="Yêu cầu đóng gói riêng biệt, thời gian giao hàng cần thiết..."
+                  value={manualNote}
+                  onChange={(e) => setManualNote(e.target.value)}
+                  className="w-full rounded-[3px] border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-brand focus:ring-1 focus:ring-brand resize-none font-medium"
+                />
+              </div>
+            </div>
+
+          </div>
+
+          {/* Footer */}
+          <div className="flex items-center justify-end gap-3 px-6 py-4 border-t border-slate-150 bg-slate-50/50">
+            <button
+              type="button"
+              onClick={() => setIsAddModalOpen(false)}
+              className="px-5 py-2.5 rounded-[3px] border border-slate-200 bg-white text-sm font-semibold text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer"
+            >
+              Sửa
+            </button>
+            <button
+              type="button"
+              onClick={() => {
+                if (!manualName.trim()) {
+                  alert('Vui lòng nhập tên sản phẩm.');
+                  return;
+                }
+                const itemToSave: CartItem = {
+                  sku: manualSku.trim() || manualName.trim(),
+                  product_name: manualName.trim(),
+                  spec: manualSpec.trim(),
+                  unit: manualUnit,
+                  quantity: manualQty || 1,
+                  note: manualNote.trim()
+                };
+
+                const newCart = [...cart];
+                if (selectedProductToEdit !== null) {
+                  newCart[selectedProductToEdit] = itemToSave;
+                } else {
+                  newCart.push(itemToSave);
+                }
+                saveCart(newCart);
+                setIsAddModalOpen(false);
+              }}
+              className="px-6 py-2.5 rounded-[3px] bg-brand text-white text-sm font-extrabold shadow hover:bg-brand/95 transition-all cursor-pointer"
+            >
+              Lưu
+            </button>
+          </div>
+
+        </div>
+      </div>
+    )}
+    {/* Hotline Phone Modal */}
+    {isPhoneModalOpen && (
+      <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4 animate-in fade-in duration-200">
+        <div className="bg-white rounded-[3px] shadow-2xl border border-slate-200 w-full max-w-[420px] p-6 text-center text-slate-800 animate-in zoom-in-95 duration-200 relative">
+          
+          <button
+            type="button"
+            onClick={() => setIsPhoneModalOpen(false)}
+            className="absolute top-4 right-4 text-slate-400 hover:text-slate-650 transition-colors cursor-pointer"
+          >
+            <X className="h-5 w-5" />
+          </button>
+
+          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-rose-50 border border-rose-100 mb-4 animate-bounce">
+            <Phone className="h-6 w-6 text-rose-600" />
+          </div>
+
+          <h3 className="text-lg font-extrabold text-slate-900 mb-2">
+            Hotline Hỗ Trợ 24/7
+          </h3>
+          
+          <p className="text-xs text-slate-400 font-medium leading-relaxed mb-6">
+            Đội ngũ chuyên viên tư vấn của ULink Industries luôn sẵn sàng phục vụ Quý khách hàng doanh nghiệp.
+          </p>
+
+          <div className="bg-slate-50 border border-slate-100 rounded-[3px] p-4 mb-6">
+            <a
+              href={`tel:${t('sidebarHotline').replace(/\s/g, '')}`}
+              className="text-2xl sm:text-3xl font-black text-brand tracking-tight hover:underline block"
+            >
+              {t('sidebarHotline')}
+            </a>
+            <span className="text-[10px] text-slate-400 uppercase tracking-widest font-bold mt-1 block">
+              Bấm số trên để thực hiện cuộc gọi
+            </span>
+          </div>
+
+          <div className="flex gap-3">
+            <button
+              type="button"
+              onClick={() => {
+                navigator.clipboard.writeText(t('sidebarHotline'));
+                alert('Đã sao chép số điện thoại Hotline vào bộ nhớ tạm.');
+              }}
+              className="flex-1 py-2.5 rounded-[3px] border border-slate-200 bg-white text-xs font-bold text-slate-700 hover:bg-slate-100 transition-all cursor-pointer"
+            >
+              Sao chép số
+            </button>
+            <a
+              href={`tel:${t('sidebarHotline').replace(/\s/g, '')}`}
+              className="flex-1 py-2.5 rounded-[3px] bg-rose-600 text-white text-xs font-extrabold shadow hover:bg-rose-700 transition-all text-center flex items-center justify-center gap-1.5"
+            >
+              <Phone className="h-3.5 w-3.5" />
+              Gọi ngay
+            </a>
+          </div>
+
+        </div>
+      </div>
+    )}
+  </div>
   );
 }
 

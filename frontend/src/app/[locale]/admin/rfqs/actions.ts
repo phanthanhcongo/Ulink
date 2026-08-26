@@ -104,9 +104,8 @@ export async function updateRfqStatus(data: {
     }
 
     await client.request(updateItem('rfq_requests' as any, data.id, payload));
-
     revalidatePath('/[locale]/admin/rfqs', 'layout');
-    revalidatePath('/[locale]/rfqs', 'layout');
+    revalidatePath('/[locale]/my-rfqs', 'layout');
     return { success: true };
   } catch (err) {
     console.error('Failed to update RFQ request:', err);
@@ -117,6 +116,7 @@ export async function updateRfqStatus(data: {
 /**
  * Action: Chỉ gán lại nhân viên Sales chăm sóc cho RFQ.
  */
+
 export async function assignRfqSales(rfqId: number, salesId: string | null) {
   await checkAuth();
 
@@ -185,7 +185,7 @@ export async function saveRfq(data: {
     }
 
     revalidatePath('/[locale]/admin/rfqs', 'layout');
-    revalidatePath('/[locale]/rfqs', 'layout');
+    revalidatePath('/[locale]/my-rfqs', 'layout');
     return { success: true };
   } catch (err) {
     console.error('Failed to save RFQ:', err);
@@ -206,7 +206,7 @@ export async function deleteRfq(id: number) {
     await client.request(deleteItem('rfq_requests' as any, id));
 
     revalidatePath('/[locale]/admin/rfqs', 'layout');
-    revalidatePath('/[locale]/rfqs', 'layout');
+    revalidatePath('/[locale]/my-rfqs', 'layout');
     return { success: true };
   } catch (err) {
     console.error('Failed to delete RFQ:', err);

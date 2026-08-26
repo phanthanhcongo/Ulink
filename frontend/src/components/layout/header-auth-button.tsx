@@ -63,13 +63,6 @@ export function HeaderAuthButton() {
             </Link>
           )}
           <Link
-            href="/rfqs"
-            className="flex items-center gap-2 px-4 py-2 text-sm text-foreground transition-colors hover:bg-muted"
-          >
-            <FileText className="h-4 w-4" aria-hidden="true" />
-            {t('rfqs')}
-          </Link>
-          <Link
             href="/my-rfqs"
             className="flex items-center gap-2 px-4 py-2 text-sm text-foreground transition-colors hover:bg-muted"
           >

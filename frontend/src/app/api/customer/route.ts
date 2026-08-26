@@ -44,14 +44,32 @@ export async function GET(req: Request) {
 
     // 4. Fetch product SKUs
     const skusRes = await proxyToDirectus(
-      '/items/product_skus?fields=id,sku_code,unit,pack_size&filter[status][_eq]=published',
+      '/items/product_skus?fields=id,sku_code,unit,pack_size,product.name,product.hero,product.translations.languages_code,product.translations.name&filter[status][_eq]=published&limit=-1',
       {
         method: 'GET',
         cookieHeader
       }
     );
     const skusPayload = skusRes.ok ? await skusRes.json() : null;
-    const skusData = skusPayload?.data || [];
+    const skusRaw = skusPayload?.data || [];
+    const skusData = skusRaw.map((sku: any) => {
+      const p = sku.product;
+      let name = 'Sản phẩm ULink';
+      if (p) {
+        const trans = p.translations?.find(
+          (t: any) => t.languages_code === 'vi' || t.languages_code.startsWith('vi')
+        );
+        name = trans?.name || p.name || 'Sản phẩm ULink';
+      }
+      return {
+        id: sku.id,
+        sku_code: sku.sku_code,
+        product_name: name,
+        unit: sku.unit || 'cái',
+        pack_size: sku.pack_size || 'Hộp',
+        hero: p?.hero || null
+      };
+    });
 
     // 5. Fetch published products for suggestion cards
     const productsRes = await proxyToDirectus(
