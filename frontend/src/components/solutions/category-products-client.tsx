@@ -80,6 +80,24 @@ const CATEGORY_IMAGE_MAP: Record<string, string> = {
   'cleanroom-chemicals': ASSETS.home.solutionCleanroom
 };
 
+const PARENT_SUBCATEGORY_MAP: Record<string, string[]> = {
+  'cleanroom-consumables': [
+    'cleanroom-gloves',
+    'cleanroom-wipers',
+    'cleanroom-apparel',
+    'cleanroom-masks',
+    'cleanroom-chemicals'
+  ],
+  'industrial-packaging': [
+    'esd-shielding-bag',
+    'pe-stretch-wrap'
+  ],
+  'esd-supplies': [
+    'esd-table-mat',
+    'ionizer-fan'
+  ]
+};
+
 export function CategoryProductsClient({
   category,
   products: initialProducts,
@@ -103,6 +121,16 @@ export function CategoryProductsClient({
   useEffect(() => {
     setCurrentPage(1);
   }, [selectedCategory, sortBy, selectedBrands, selectedStandards]);
+
+  const tabsList = useMemo(() => {
+    if (category.subCategories && category.subCategories.length > 0) {
+      return category.subCategories;
+    }
+    if (category.slug === 'all') {
+      return allCategories;
+    }
+    return [];
+  }, [category, allCategories]);
 
   // Compute category counts
   const categoryCounts = useMemo(() => {
@@ -150,10 +178,12 @@ export function CategoryProductsClient({
       // 1. Category Filter
       if (selectedCategory !== 'all') {
         const isDirectMatch = product.categorySlug === selectedCategory;
+        const subcategoriesOfSelected = PARENT_SUBCATEGORY_MAP[selectedCategory] || [];
+        const isSubMatch = subcategoriesOfSelected.includes(product.categorySlug);
         const isParentMatch = selectedCategory === category.slug &&
           (subSlugs.includes(product.categorySlug) || !product.categorySlug);
         
-        if (!isDirectMatch && !isParentMatch) {
+        if (!isDirectMatch && !isSubMatch && !isParentMatch) {
           return false;
         }
       }
@@ -329,7 +359,7 @@ export function CategoryProductsClient({
               {selectedCategory === 'all' && <Check className="h-3.5 w-3.5" />}
               {locale === 'vi' ? 'Tất cả' : 'All'}
             </button>
-            {category.subCategories?.map((sub) => {
+            {tabsList.map((sub) => {
               const isActive = selectedCategory === sub.slug;
               return (
                 <button
