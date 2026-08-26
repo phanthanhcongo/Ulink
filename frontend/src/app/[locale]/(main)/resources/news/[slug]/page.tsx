@@ -1,4 +1,4 @@
-import type { Metadata } from 'next';
+﻿import type { Metadata } from 'next';
 import { notFound, redirect } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 import { getNewsArticleBySlug } from '@/components/news/news-detail-data';
@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const article = getNewsArticleBySlug(slug);
 
   if (!article) {
-    return { title: locale === 'vi' ? 'Bài viết không tồn tại' : 'Article not found' };
+    return { title: locale === 'vi' ? 'B├ái viß║┐t kh├┤ng tß╗ôn tß║íi' : 'Article not found' };
   }
 
   return {

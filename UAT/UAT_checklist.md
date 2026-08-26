@@ -46,8 +46,8 @@
 
 | STT | Trang | URL | Desktop | Tablet | Mobile | Tiêu chí nghiệm thu | KQ |
 |:---:|:---|:---|:---:|:---:|:---:|:---|---:|
-| 9 | **Tin Tức** | `/news` | [ ] | [ ] | [ ] | 1. Thiết kế giao diện giống Figma<br>2. Data tĩnh (hardcode)<br>3. Đã responsive Desktop, Tablet, Mobile | |
-| 10 | **CT Tin Tức** | `/news/[slug]` | [ ] | [ ] | [ ] | 1. Thiết kế giao diện giống Figma<br>2. Data tĩnh (hardcode)<br>3. Đã responsive Desktop, Tablet, Mobile | |
+| 9 | **Tin Tức** | `/resources/news` | [ ] | [ ] | [ ] | 1. Thiết kế giao diện giống Figma<br>2. Data tĩnh (hardcode)<br>3. Đã responsive Desktop, Tablet, Mobile | |
+| 10 | **CT Tin Tức** | `/resources/news/[slug]` | [ ] | [ ] | [ ] | 1. Thiết kế giao diện giống Figma<br>2. Data tĩnh (hardcode)<br>3. Đã responsive Desktop, Tablet, Mobile | |
 | 11 | **Tin Tức (About)** | `/about/news` | [ ] | [ ] | [ ] | 1. Thiết kế giao diện giống Figma<br>2. Data tĩnh (hardcode)<br>3. Đã responsive Desktop, Tablet, Mobile | |
 | 12 | **CT Tin Tức (About)** | `/about/news/[id]` | [ ] | [ ] | [ ] | 1. Thiết kế giao diện giống Figma<br>2. Data tĩnh (hardcode)<br>3. Đã responsive Desktop, Tablet, Mobile | |
 | 13 | **Tuyển Dụng** | `/about/careers` | [ ] | [ ] | [ ] | 1. Thiết kế giao diện giống Figma<br>2. Data tĩnh (hardcode)<br>3. Đã responsive Desktop, Tablet, Mobile | |

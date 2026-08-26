@@ -26,7 +26,7 @@ export function NewsCard({ slug, date, title, image, readMoreText, category, aut
 
   return (
     <Link
-      href={`/news/${slug}`}
+      href={`/resources/news/${slug}`}
       className="group flex flex-col bg-white  border border-slate-100/80 overflow-hidden shadow-sm transition-all duration-300 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:-translate-y-1 hover:scale-[1.02]"
     >
       {/* Top Article Image */}
