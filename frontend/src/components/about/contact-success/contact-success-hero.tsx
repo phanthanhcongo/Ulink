@@ -21,15 +21,6 @@ export function ContactSuccessHero() {
         gian sớm nhất.
       </p>
 
-      {/* Reference Code Box */}
-      <div className="mt-8 rounded-[3px] border border-blue-200 bg-white py-4 px-8 shadow-sm text-center w-full max-w-md">
-        <span className="block text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-slate-500 mb-1">
-          MÃ TIẾP NHẬN YÊU CẦU
-        </span>
-        <span className="text-[30px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold text-blue-600 tracking-wide">
-          #UL-2026-0847
-        </span>
-      </div>
 
       {/* Back to Home Button */}
       <div className="mt-8">
