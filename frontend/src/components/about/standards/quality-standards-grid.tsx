@@ -45,7 +45,7 @@ export function QualityStandardsGrid() {
         {standardsList.map((item, idx) => (
           <div
             key={idx}
-            className="flex flex-col rounded-[3px] bg-white p-6 shadow-sm border border-slate-100 group transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]"
+            className="flex flex-col rounded-[3px]  p-6 shadow-sm border border-slate-100 group transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]"
           >
             <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-[3px] bg-slate-900 text-white font-extrabold text-[13px] sm:text-[14px]">
               {item.code}

@@ -38,9 +38,8 @@
 | 1 | **Trang Chủ** | `/` | [ ] | [ ] | [ ] | 1. Thiết kế giao diện giống Figma<br>2. Data tĩnh (hardcode)<br>3. Đã responsive Desktop, Tablet, Mobile | |
 | 2 | **Giới Thiệu** | `/about` | [ ] | [ ] | [ ] | 1. Thiết kế giao diện giống Figma<br>2. Data tĩnh (hardcode)<br>3. Đã responsive Desktop, Tablet, Mobile | |
 | 3 | **Phát Triển Bền Vững** | `/about/sustainability` | [ ] | [ ] | [ ] | 1. Thiết kế giao diện giống Figma<br>2. Data tĩnh (hardcode)<br>3. Đã responsive Desktop, Tablet, Mobile | |
-| 5 | **Tiêu Chuẩn & CN** | `/about/standards` | [ ] | [ ] | [ ] | 1. Thiết kế giao diện giống Figma<br>2. Data tĩnh (hardcode)<br>3. Đã responsive Desktop, Tablet, Mobile | |
-| 6 | **Năng Lực SX** | `/about/capabilities` | [ ] | [ ] | [ ] | 1. Thiết kế giao diện giống Figma<br>2. Data tĩnh (hardcode)<br>3. Đã responsive Desktop, Tablet, Mobile | |
-| 7 | **Liên Hệ** | `/contact` | [ ] | [ ] | [ ] | 1. Thiết kế giao diện giống Figma<br>2. Đã gửi được form liên hệ lên hệ thống<br>3. Đã responsive Desktop, Tablet, Mobile | |
+| 4 | **Tiêu Chuẩn & CN** | `/about/standards` | [ ] | [ ] | [ ] | 1. Thiết kế giao diện giống Figma<br>2. Data tĩnh (hardcode)<br>3. Đã responsive Desktop, Tablet, Mobile | |
+| 5 | **Liên Hệ** | `/contact` | [ ] | [ ] | [ ] | 1. Thiết kế giao diện giống Figma<br>2. Đã gửi được form liên hệ lên hệ thống<br>3. Đã responsive Desktop, Tablet, Mobile | |
 | 8 | **LH Thành Công** | `/about/contact-success` | [ ] | [ ] | [ ] | 1. Thiết kế giao diện giống Figma<br>2. Data tĩnh (hardcode)<br>3. Đã responsive Desktop, Tablet, Mobile | |
 
 ### 1.2 Tin tức & Tuyển dụng
