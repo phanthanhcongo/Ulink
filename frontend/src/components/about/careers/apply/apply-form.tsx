@@ -1,12 +1,15 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useRouter, useParams } from 'next/navigation';
 import { UploadCloud, FileText, X, ArrowRight } from 'lucide-react';
 
 export function ApplyForm() {
   const router = useRouter();
+  const params = useParams();
   const [cvFile, setCvFile] = useState<File | null>(null);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
@@ -14,13 +17,94 @@ export function ApplyForm() {
     }
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    router.push('/about/careers/apply-success');
+    if (submitting) return;
+
+    setError(null);
+    setSubmitting(true);
+
+    const form = e.currentTarget;
+    const formData = new FormData(form);
+
+    const name = String(formData.get('name') ?? '');
+    const email = String(formData.get('email') ?? '');
+    const phone = String(formData.get('phone') ?? '');
+    const birthday = String(formData.get('birthday') ?? '');
+    const gender = String(formData.get('gender') ?? '');
+    const educationLevel = String(formData.get('education_level') ?? '');
+    const school = String(formData.get('school') ?? '');
+    const major = String(formData.get('major') ?? '');
+    const graduationYear = String(formData.get('graduation_year') ?? '');
+    const lastCompany = String(formData.get('last_company') ?? '');
+    const lastPosition = String(formData.get('last_position') ?? '');
+    const workPeriod = String(formData.get('work_period') ?? '');
+    const workDesc = String(formData.get('work_desc') ?? '');
+    const coverLetter = String(formData.get('cover_letter') ?? '');
+    const cvName = cvFile ? cvFile.name : 'Chưa đính kèm CV';
+
+    const message = `
+[THÔNG TIN ỨNG VIÊN]
+- Họ tên: ${name}
+- Email: ${email}
+- Số điện thoại: ${phone}
+- Ngày sinh: ${birthday}
+- Giới tính: ${gender}
+
+[TRÌNH ĐỘ HỌC VẤN]
+- Bậc học: ${educationLevel}
+- Trường: ${school}
+- Chuyên ngành: ${major}
+- Năm tốt nghiệp: ${graduationYear}
+
+[KINH NGHIỆM LÀM VIỆC]
+- Công ty gần nhất: ${lastCompany}
+- Vị trí: ${lastPosition}
+- Thời gian: ${workPeriod}
+- Mô tả: ${workDesc}
+
+[HỒ SƠ ĐÍNH KÈM]
+- Tên tệp CV: ${cvName}
+
+[THƯ GIỚI THIỆU]
+${coverLetter || 'Không có thư giới thiệu.'}
+`.trim();
+
+    const slug = params?.slug as string;
+    const jobTitle = slug ? `Vị trí: ${slug.toUpperCase()}` : 'Vị trí Tuyển Dụng';
+    const subject = `ỨNG TUYỂN - ${jobTitle}`;
+
+    try {
+      const { submitContactRequest } = await import('@/lib/contact-submit');
+      const result = await submitContactRequest({
+        name,
+        email,
+        phone,
+        subject,
+        message
+      });
+
+      if (result.ok) {
+        form.reset();
+        setCvFile(null);
+        router.push('/about/careers/apply-success');
+        return;
+      }
+      setError(result.message || 'Không thể gửi đơn ứng tuyển. Vui lòng thử lại.');
+    } catch (err) {
+      setError('Đã xảy ra lỗi kết nối, vui lòng thử lại sau.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-8 py-8">
+      {error && (
+        <div className="p-4 bg-red-50 border border-red-200 text-red-600 rounded-[3px] text-sm font-semibold">
+          {error}
+        </div>
+      )}
       {/* Section 01: Thông tin cá nhân */}
       <div className="rounded-[3px] bg-white p-6 border border-slate-100 shadow-sm flex flex-col gap-4">
         <div className="flex items-center gap-2 border-b border-slate-100 pb-3">
@@ -35,6 +119,7 @@ export function ApplyForm() {
             <label className="block text-[12px] sm:text-[13px] font-semibold text-slate-700 mb-1">Họ và tên *</label>
             <input
               type="text"
+              name="name"
               required
               placeholder="Nhập đầy đủ họ và tên của bạn"
               className="w-full rounded-[3px] border border-slate-200 px-3.5 py-2.5 text-[13px] sm:text-[14px] outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
@@ -48,6 +133,7 @@ export function ApplyForm() {
               </label>
               <input
                 type="email"
+                name="email"
                 required
                 placeholder="nhapname@example.com"
                 className="w-full rounded-[3px] border border-slate-200 px-3.5 py-2.5 text-[13px] sm:text-[14px] outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
@@ -59,6 +145,7 @@ export function ApplyForm() {
               </label>
               <input
                 type="tel"
+                name="phone"
                 required
                 placeholder="Nhập số điện thoại liên hệ"
                 className="w-full rounded-[3px] border border-slate-200 px-3.5 py-2.5 text-[13px] sm:text-[14px] outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
@@ -73,6 +160,7 @@ export function ApplyForm() {
               </label>
               <input
                 type="date"
+                name="birthday"
                 required
                 className="w-full rounded-[3px] border border-slate-200 px-3.5 py-2.5 text-[13px] sm:text-[14px] outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
               />
@@ -80,6 +168,7 @@ export function ApplyForm() {
             <div>
               <label className="block text-[12px] sm:text-[13px] font-semibold text-slate-700 mb-1">Giới tính *</label>
               <select
+                name="gender"
                 required
                 className="w-full rounded-[3px] border border-slate-200 px-3.5 py-2.5 text-[13px] sm:text-[14px] text-slate-700 outline-none focus:border-blue-600"
               >
@@ -109,6 +198,7 @@ export function ApplyForm() {
                 Bậc học cao nhất *
               </label>
               <select
+                name="education_level"
                 required
                 className="w-full rounded-[3px] border border-slate-200 px-3.5 py-2.5 text-[13px] sm:text-[14px] text-slate-700 outline-none focus:border-blue-600"
               >
@@ -124,6 +214,7 @@ export function ApplyForm() {
               </label>
               <input
                 type="text"
+                name="school"
                 required
                 placeholder="Tên trường học của bạn"
                 className="w-full rounded-[3px] border border-slate-200 px-3.5 py-2.5 text-[13px] sm:text-[14px] outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
@@ -138,6 +229,7 @@ export function ApplyForm() {
               </label>
               <input
                 type="text"
+                name="major"
                 required
                 placeholder="Chuyên ngành đào tạo"
                 className="w-full rounded-[3px] border border-slate-200 px-3.5 py-2.5 text-[13px] sm:text-[14px] outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
@@ -149,6 +241,7 @@ export function ApplyForm() {
               </label>
               <input
                 type="text"
+                name="graduation_year"
                 required
                 placeholder="Ví dụ: 2021"
                 className="w-full rounded-[3px] border border-slate-200 px-3.5 py-2.5 text-[13px] sm:text-[14px] outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
@@ -175,6 +268,7 @@ export function ApplyForm() {
               </label>
               <input
                 type="text"
+                name="last_company"
                 placeholder="Nhập tên công ty bạn đã/đang làm việc"
                 className="w-full rounded-[3px] border border-slate-200 px-3.5 py-2.5 text-[13px] sm:text-[14px] outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
               />
@@ -185,28 +279,31 @@ export function ApplyForm() {
               </label>
               <input
                 type="text"
+                name="last_position"
                 placeholder="Ví dụ: Nhân viên kinh doanh, Trưởng nhóm..."
                 className="w-full rounded-[3px] border border-slate-200 px-3.5 py-2.5 text-[13px] sm:text-[14px] outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
               />
             </div>
           </div>
-
+ 
           <div>
             <label className="block text-[12px] sm:text-[13px] font-semibold text-slate-700 mb-1">
               Thời gian làm việc
             </label>
             <input
               type="text"
+              name="work_period"
               placeholder="Ví dụ: 03/2022 - Hiện tại hoặc 2 năm"
               className="w-full rounded-[3px] border border-slate-200 px-3.5 py-2.5 text-[13px] sm:text-[14px] outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
             />
           </div>
-
+ 
           <div>
             <label className="block text-[12px] sm:text-[13px] font-semibold text-slate-700 mb-1">
               Mô tả ngắn về công việc và thành tựu nổi bật
             </label>
             <textarea
+              name="work_desc"
               rows={4}
               placeholder="Nêu ngắn gọn nhiệm vụ chính và KPI hoặc kết quả nổi bật bạn đã đạt được..."
               className="w-full rounded-[3px] border border-slate-200 px-3.5 py-2.5 text-[13px] sm:text-[14px] outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 resize-none"
@@ -279,6 +376,7 @@ export function ApplyForm() {
             Thư giới thiệu (Không bắt buộc)
           </label>
           <textarea
+            name="cover_letter"
             rows={4}
             placeholder="Chia sẻ lý do bạn mong muốn đồng hành cùng ULink, mục tiêu phát triển bản thân hoặc kỳ vọng..."
             className="w-full rounded-[3px] border border-slate-200 px-3.5 py-2.5 text-[13px] sm:text-[14px] outline-none focus:border-blue-600 focus:ring-1 focus:ring-blue-600 resize-none"
@@ -305,9 +403,10 @@ export function ApplyForm() {
           </span>
           <button
             type="submit"
-            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-[3px] bg-blue-600 px-7 py-3 text-[13px] sm:text-[14px] font-bold text-white shadow-md hover:bg-blue-700 transition-all"
+            disabled={submitting}
+            className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-[3px] bg-blue-600 px-7 py-3 text-[13px] sm:text-[14px] font-bold text-white shadow-md hover:bg-blue-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            Gửi đơn <ArrowRight className="h-4 w-4" />
+            {submitting ? 'Đang gửi...' : 'Gửi đơn'} <ArrowRight className="h-4 w-4" />
           </button>
         </div>
       </div>
