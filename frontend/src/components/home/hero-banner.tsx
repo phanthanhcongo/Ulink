@@ -51,9 +51,10 @@ export function HeroBanner() {
         aria-hidden="true"
       />
 
-      <div className="relative flex w-full items-center justify-center sm:justify-start px-4 sm:px-8 lg:px-[80px] py-[28px] sm:py-[40px] lg:py-[58px] sm:absolute sm:inset-0 sm:h-full">
-        {/* Content Container Frame */}
-        <div className="group relative flex w-full max-w-full lg:w-[672px] lg:max-w-[672px] flex-col justify-between p-6 sm:p-8 lg:p-[48px] gap-[32px] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
+      <div className="relative flex w-full items-center justify-center sm:justify-start sm:absolute sm:inset-0 sm:h-full">
+        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 py-[28px] sm:py-[40px] lg:py-[58px] flex items-center justify-center sm:justify-start h-full">
+          {/* Content Container Frame */}
+          <div className="group relative flex w-full max-w-full lg:w-[672px] lg:max-w-[672px] flex-col justify-between p-6 sm:p-8 lg:p-[48px] gap-[32px] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
           {/* Frosted Glass Card */}
           <div className="absolute inset-0 z-10 rounded-[3px] border border-white/50 bg-white/[0.92] backdrop-blur-[24px] shadow-[0px_20px_40px_-10px_rgba(0,0,0,0.102)]" />
 
@@ -101,6 +102,7 @@ export function HeroBanner() {
             </Link>
           </div>
         </div>
+      </div>
       </div>
 
       {/* Toast Notification */}

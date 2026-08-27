@@ -43,7 +43,7 @@ export function AboutContact() {
 
   return (
     <section className="py-12 lg:py-16 bg-white">
-      <div className="mx-auto max-w-[1280px] px-4 sm:px-6 lg:px-8">
+      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
         {/* Section Header */}
         <div className="mb-12 flex flex-col items-center text-center">
           <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-blue-600">
