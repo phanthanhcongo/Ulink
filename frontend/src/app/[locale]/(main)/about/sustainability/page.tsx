@@ -248,7 +248,7 @@ export default async function AboutSustainabilityPage({
       
       {/* 1. HERO SECTION & BREADCRUMB */}
       <section className="bg-white py-6 md:py-10 lg:py-14 border-b border-slate-100">
-        <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-[80px]">
+        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
           <AboutBreadcrumb />
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center mt-4">
@@ -289,7 +289,7 @@ export default async function AboutSustainabilityPage({
 
       {/* 2. ESG PERFORMANCE INDICATORS */}
       <section className="bg-slate-50 py-12 md:py-16 border-b border-slate-100">
-        <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-[80px]">
+        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
           {/* Header Row */}
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
             <div>
@@ -351,7 +351,7 @@ export default async function AboutSustainabilityPage({
 
       {/* 3. ESG STANDARD FRAMEWORK */}
       <section className="bg-white py-12 md:py-16 border-b border-slate-100">
-        <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-[80px]">
+        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
           <div>
             <span className="text-[12px] font-bold text-emerald-600 tracking-wider uppercase">
               {t.framework.eyebrow}
@@ -430,7 +430,7 @@ export default async function AboutSustainabilityPage({
 
       {/* 4. UN SDGs PARTNERSHIP */}
       <section className="bg-slate-50 py-12 md:py-16 border-b border-slate-100">
-        <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-[80px]">
+        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
             {/* Left Content */}
             <div className="lg:col-span-5 flex flex-col items-start">

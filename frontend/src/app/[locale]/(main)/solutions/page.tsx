@@ -66,7 +66,7 @@ export default async function SolutionsPage({ params: { locale } }: SolutionsPag
         {/* Dark overlay to ensure text contrast */}
         <div className="absolute inset-0 bg-black/25 z-0" />
 
-        <div className="relative container mx-auto px-4 z-10 py-10 lg:py-16">
+        <div className="relative mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 z-10 py-10 lg:py-16">
          
 
           {/* Text and Button block */}

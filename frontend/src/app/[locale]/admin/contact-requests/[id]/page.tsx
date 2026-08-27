@@ -93,7 +93,7 @@ export default async function AdminContactRequestDetailPage({ params }: Props) {
 
   return (
     <section className="relative overflow-hidden bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-background via-background to-muted/30 min-h-screen">
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-6 px-4 py-8 sm:px-8 sm:gap-8 lg:px-16 lg:py-12">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-6 px-4 py-8 sm:px-8 sm:gap-8 lg:px-12 xl:px-16 lg:py-12">
         <ContactRequestDetail request={request} locale={locale} />
       </div>
     </section>

@@ -121,6 +121,24 @@ Based on an **8-point / 4-point grid system**:
   - Margin Padding: `64px` (`lg:px-16`)
   - Gap: `24px - 32px` (`gap-6 lg:gap-8`)
 
+### 4.1. Standard Page Container Padding (Khung lề tiêu chuẩn cho các Section)
+Toàn bộ các Section nội dung trên trang chủ và trang con (trừ các phần đặc biệt có banner nền tràn màn hình như Hero Banner) bắt buộc phải bọc nội dung trong một Container tiêu chuẩn sau để đảm bảo căn thẳng hàng lề 2 bên một cách chính xác tuyệt đối trên mọi loại thiết bị:
+
+```html
+<section className="w-full ...">
+  <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
+    <!-- Nội dung của Section -->
+  </div>
+</section>
+```
+
+**Quy chuẩn lề tương ứng:**
+* **Mobile (< 640px):** Lề `16px` (`px-4`)
+* **Tablet (>= 640px):** Lề `32px` (`sm:px-8`)
+* **Laptop (>= 1024px):** Lề `48px` (`lg:px-12`)
+* **Desktop (>= 1280px):** Lề `64px` (`xl:px-16`)
+* **Màn hình cực rộng (> 1440px):** Nội dung dừng giãn ở chiều rộng tối đa `1440px` (`max-w-[1440px]`) và tự động căn giữa (`mx-auto`).
+
 ---
 
 ## 5. Visual Effects & Interactive States
