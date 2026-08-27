@@ -60,7 +60,7 @@
 | STT | Trang | URL | Desktop | Tablet | Mobile | Tiêu chí nghiệm thu | KQ |
 |:---:|:---|:---|:---:|:---:|:---:|:---|---:|
 | 17 | **DM Ngành Hàng** | `/industries` | [ ] | [ ] | [ ] | 1. Thiết kế giao diện giống Figma<br>2. Data tĩnh (hardcode)<br>3. Đã responsive Desktop, Tablet, Mobile | |
-| 18 | **CT Ngành Hàng** | `/industries/[slug]` | [ ] | [ ] | [ ] | 1. Thiết kế giao diện giống Figma<br>2. Data tĩnh (hardcode)<br>3. Đã responsive Desktop, Tablet, Mobile | |
+| 18 | **CT Ngành Hàng** | `/industries/[slug]` | [ ] | [ ] | [ ] | 1. Ko có Figma| |
 | 19 | **Giải Pháp B2B** | `/solutions` | [ ] | [ ] | [ ] | 1. Thiết kế giao diện giống Figma<br>2. Data tĩnh (hardcode)<br>3. Đã responsive Desktop, Tablet, Mobile | |
 | 20 | **DS SP Theo GP** | `/solutions/listProduct` | [ ] | [ ] | [ ] | 1. Thiết kế giao diện giống Figma<br>2. Đã hiển thị danh sách sản phẩm từ dữ liệu hệ thống<br>3. Đã responsive Desktop, Tablet, Mobile | |
 | 21 | **CT SP Theo GP** | `/solutions/listProduct/[slug]` | [ ] | [ ] | [ ] | 1. Thiết kế giao diện giống Figma<br>2. Đã hiển thị chi tiết sản phẩm từ dữ liệu hệ thống<br>3. Đã responsive Desktop, Tablet, Mobile | |
@@ -92,10 +92,10 @@
 | 32 | **Đặt Hàng Nhanh** | `/quick-order` | [ ] | [ ] | [ ] | 1. Thiết kế giao diện giống Figma<br>2. Data tĩnh (hardcode)<br>3. Đã responsive Desktop, Tablet, Mobile | |
 | 33 | **Giỏ Hàng** | `/cart` | [ ] | [ ] | [ ] | 1. Thiết kế giao diện giống Figma<br>2. Data tĩnh (hardcode)<br>3. Đã responsive Desktop, Tablet, Mobile | |
 | 34 | **Thanh Toán** | `/checkout` | [ ] | [ ] | [ ] | 1. Thiết kế giao diện giống Figma<br>2. Data tĩnh (hardcode)<br>3. Đã responsive Desktop, Tablet, Mobile | |
-| 35 | **Tạo RFQ** | `/rfqs` | [ ] | [ ] | [ ] | 1. Thiết kế giao diện giống Figma<br>2. Đã gửi được RFQ lên hệ thống<br>3. Đã responsive Desktop, Tablet, Mobile | |
+| 35 | **Tạo RFQ (Quick Order)** | `/quick-order` | [ ] | [ ] | [ ] | 1. Thiết kế giao diện giống Figma<br>2. Đã gửi được RFQ lên hệ thống<br>3. Đã responsive Desktop, Tablet, Mobile | |
 | 36 | **RFQ Của Tôi** | `/my-rfqs` | [ ] | [ ] | [ ] | 1. Thiết kế giao diện giống Figma<br>2. Đã hiển thị danh sách RFQ của user từ dữ liệu hệ thống<br>3. Đã responsive Desktop, Tablet, Mobile | |
-| 37 | **YC Hàng Mẫu** | `/sample-requests` | [ ] | [ ] | [ ] | 1. Thiết kế giao diện giống Figma<br>2. Đã gửi được yêu cầu hàng mẫu lên hệ thống<br>3. Đã responsive Desktop, Tablet, Mobile | |
-| 38 | **CT YC HM** | `/sample-requests/[id]` | [ ] | [ ] | [ ] | 1. Thiết kế giao diện giống Figma<br>2. Đã hiển thị chi tiết yêu cầu từ dữ liệu hệ thống<br>3. Đã responsive Desktop, Tablet, Mobile | |
+| 37 | **YC Hàng Mẫu** | `/sample-requests` | [ ] | [ ] | [ ] | 1.Ko có figma<br>2. Đã gửi được yêu cầu hàng mẫu lên hệ thống<br>3. Đã responsive Desktop, Tablet, Mobile | |
+| 38 | **CT YC HM** | `/sample-requests/[id]` | [ ] | [ ] | [ ] | 1. ko có Figma<br>2. Đã hiển thị chi tiết yêu cầu từ dữ liệu hệ thống<br>3. Đã responsive Desktop, Tablet, Mobile | |
 
 ### 1.7 Theo dõi & Thanh toán
 
@@ -111,8 +111,8 @@
 
 | STT | Trang | URL | Desktop | Tablet | Mobile | Tiêu chí nghiệm thu | KQ |
 |:---:|:---|:---|:---:|:---:|:---:|:---|---:|
-| 44 | **SP Yêu Thích** | `/favorites` | [ ] | [ ] | [ ] | 1. Thiết kế giao diện giống Figma<br>2. Data tĩnh (hardcode)<br>3. Đã responsive Desktop, Tablet, Mobile | |
-| 45 | **Cài Đặt TK** | `/settings` | [ ] | [ ] | [ ] | 1. Thiết kế giao diện giống Figma<br>2. Data tĩnh (hardcode)<br>3. Đã responsive Desktop, Tablet, Mobile | |
+| 44 | **SP Yêu Thích** | `/favorites` | [ ] | [ ] | [ ] | 1. ko có figma<br>2. Data tĩnh (hardcode)<br>3. Đã responsive Desktop, Tablet, Mobile | |
+| 45 | **Cài Đặt TK** | `/settings` | [ ] | [ ] | [ ] | 1. ko có figma<br>2. Data tĩnh (hardcode)<br>3. Đã responsive Desktop, Tablet, Mobile | |
 
 ---
 
