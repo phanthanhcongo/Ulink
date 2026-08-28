@@ -13,10 +13,10 @@ export async function SiteFooter() {
       {/* ── TOP ACCENT LINE ── */}
 
       {/* ── MAIN FOOTER CONTAINER ── */}
-      <div className="mx-auto w-full max-w-[1280px] px-4 py-12 sm:px-8 lg:py-16">
+      <div className="mx-auto w-full max-w-[1280px] px-4 pt-8 pb-12 sm:px-8 sm:pt-10 lg:pt-12 lg:pb-16">
         {/* ── 4-COLUMN GRID LAYOUT (1.5fr 1fr .86fr 1.05fr -> 4-3-2-3 COLS) ── */}
         <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-12 lg:gap-10">
-          
+
           {/* ── COL 1: BRAND, REGISTRATION, CONTACT & SOCIALS (4 COLS) ── */}
           <section className="lg:col-span-4 lg:pr-3" aria-label="Thông tin ULink Industries">
             <Link href="/" className="inline-block">
@@ -28,7 +28,7 @@ export async function SiteFooter() {
                 className="h-24 w-auto object-contain sm:h-28 md:h-32"
               />
             </Link>
-            
+
             <p className="mt-4 text-[13px] leading-relaxed text-[#485669] sm:text-[14px]">
               {t('descLine1')}
             </p>
@@ -129,7 +129,7 @@ export async function SiteFooter() {
 
           {/* ── COL 2: VỀ CHÚNG TÔI & DISTRIBUTOR & BADGE (3 COLS) ── */}
           <nav className="lg:col-span-3 lg:pl-4" aria-label="Về chúng tôi">
-            <div className="mb-4 flex items-center justify-between border-b border-slate-300 pb-2 lg:border-b-0 lg:pb-0">
+            <div className="mb-4 flex items-center justify-between border-b border-slate-300 pb-2 lg:border-b-0 lg:pb-0 lg:h-32 lg:mb-0">
               <Link
                 href="/about"
                 className="group inline-flex items-center gap-1 text-[13px] font-extrabold uppercase tracking-wider text-[#151b2a] transition-colors hover:text-[#1769e2] sm:text-[14px]"
@@ -208,7 +208,7 @@ export async function SiteFooter() {
 
           {/* ── COL 3: NGÀNH NGHỀ (2 COLS) ── */}
           <nav className="lg:col-span-2" aria-label="Ngành nghề">
-            <div className="mb-4 flex items-center justify-between border-b border-slate-300 pb-2 lg:border-b-0 lg:pb-0">
+            <div className="mb-4 flex items-center justify-between border-b border-slate-300 pb-2 lg:border-b-0 lg:pb-0 lg:h-32 lg:mb-0">
               <Link
                 href="/industries"
                 className="group inline-flex items-center gap-1 text-[13px] font-extrabold uppercase tracking-wider text-[#151b2a] transition-colors hover:text-[#1769e2] sm:text-[14px]"
@@ -264,7 +264,7 @@ export async function SiteFooter() {
 
           {/* ── COL 4: SẢN PHẨM, LANGUAGE SWITCHER & QR CARD (3 COLS) ── */}
           <nav className="lg:col-span-3" aria-label="Sản phẩm">
-            <div className="mb-4 flex items-center justify-between border-b border-slate-300 pb-2 lg:border-b-0 lg:pb-0">
+            <div className="mb-4 flex items-center justify-between border-b border-slate-300 pb-2 lg:border-b-0 lg:pb-0 lg:h-32 lg:mb-0">
               <Link
                 href="/solutions"
                 className="group inline-flex items-center gap-1 text-[13px] font-extrabold uppercase tracking-wider text-[#151b2a] transition-colors hover:text-[#1769e2] sm:text-[14px]"
