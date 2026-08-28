@@ -107,7 +107,7 @@ export function IndustrySolutions() {
   ];
 
   return (
-    <>
+    <div ref={ref}>
       {/* ── 1. MOBILE VIEW (Visible below lg: < 1024px) ── */}
       <section className="mx-auto w-full max-w-[1440px] px-4 py-8 sm:px-8 lg:px-12 xl:px-16 lg:py-10 xl:py-12 overflow-hidden lg:hidden">
         {/* ── SECTION HEADER BAR ── */}
@@ -117,7 +117,6 @@ export function IndustrySolutions() {
         />
 
         <div
-          ref={ref}
           className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-2 lg:grid-cols-3 md:gap-4 lg:gap-6"
         >
           {cards.map((card, idx) => (
@@ -210,6 +209,6 @@ export function IndustrySolutions() {
           ))}
         </div>
       </section>
-    </>
+    </div>
   );
 }
