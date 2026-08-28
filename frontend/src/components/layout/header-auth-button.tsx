@@ -43,7 +43,6 @@ export function HeaderAuthButton() {
             'h-9 w-9 sm:h-[38px] sm:w-auto sm:px-3'
           )}
         >
-          <UserRound className="h-4 w-4" aria-hidden="true" />
           <span className="hidden max-w-[120px] truncate sm:inline">{displayName}</span>
           <ChevronDown
             className="hidden h-3.5 w-3.5 text-muted-foreground sm:inline"
@@ -75,13 +74,6 @@ export function HeaderAuthButton() {
           >
             <Package className="h-4 w-4" aria-hidden="true" />
             {t('sampleRequests')}
-          </Link>
-          <Link
-            href="/settings"
-            className="flex items-center gap-2 px-4 py-2 text-sm text-foreground transition-colors hover:bg-muted"
-          >
-            <UserRound className="h-4 w-4" aria-hidden="true" />
-            {t('settings')}
           </Link>
           <button
             type="button"

@@ -73,7 +73,7 @@
 | 23 | **Bản Đồ Cụm Kho** | `/regional-hubs` | [ ] | [ ] | [ ] | 1. Thiết kế giao diện giống Figma<br>2. Data tĩnh (hardcode)<br>3. Đã responsive Desktop, Tablet, Mobile | |
 | 24 | **CT Cụm 1** | `/regional-hubs/cum-1` | [ ] | [ ] | [ ] | 1. Thiết kế giao diện giống Figma<br>2. Data tĩnh (hardcode)<br>3. Đã responsive Desktop, Tablet, Mobile | |
 | 25 | **CT Cụm 2** | `/regional-hubs/cum-2` | [ ] | [ ] | [ ] | 1. Thiết kế giao diện giống Figma<br>2. Data tĩnh (hardcode)<br>3. Đã responsive Desktop, Tablet, Mobile | |
-| 26 | **CT Hub Slug** | `/regional-hubs/[slug]` | [ ] | [ ] | [ ] | 1. Thiết kế giao diện giống Figma<br>2. Data tĩnh (hardcode)<br>3. Đã responsive Desktop, Tablet, Mobile | |
+| 26 | ~~**CT Hub Slug**~~ | `/regional-hubs/[slug]` | [x] | [x] | [x] | 1. Thiết kế giao diện giống Figma<br>2. Data tĩnh (hardcode)<br>3. Đã responsive Desktop, Tablet, Mobile | **Đã xoá** |
 
 ### 1.5 Tài nguyên & Sự kiện
 
@@ -111,8 +111,8 @@
 
 | STT | Trang | URL | Desktop | Tablet | Mobile | Tiêu chí nghiệm thu | KQ |
 |:---:|:---|:---|:---:|:---:|:---:|:---|---:|
-| 44 | **SP Yêu Thích** | `/favorites` | [ ] | [ ] | [ ] | 1. ko có figma<br>2. Data tĩnh (hardcode)<br>3. Đã responsive Desktop, Tablet, Mobile | |
-| 45 | **Cài Đặt TK** | `/settings` | [ ] | [ ] | [ ] | 1. ko có figma<br>2. Data tĩnh (hardcode)<br>3. Đã responsive Desktop, Tablet, Mobile | |
+| 44 | ~~**SP Yêu Thích**~~ | `/favorites` | [x] | [x] | [x] | 1. ko có figma<br>2. Data tĩnh (hardcode)<br>3. Đã responsive Desktop, Tablet, Mobile | **Đã xoá** |
+| 45 | ~~**Cài Đặt TK**~~ | `/settings` | [x] | [x] | [x] | 1. ko có figma<br>2. Data tĩnh (hardcode)<br>3. Đã responsive Desktop, Tablet, Mobile | **Đã xoá** |
 
 ---
 

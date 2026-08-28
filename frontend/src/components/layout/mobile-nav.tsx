@@ -140,14 +140,6 @@ export function MobileNav({ items }: MobileNavProps) {
                     <Package className="h-4 w-4" aria-hidden="true" />
                     {t('sampleRequests')}
                   </Link>
-                  <Link
-                    href="/settings"
-                    onClick={() => setOpen(false)}
-                    className="flex items-center gap-2 border-b border-border py-3 text-[15px] sm:text-[16px] lg:text-[18px] text-primary transition-colors hover:text-brand"
-                  >
-                    <UserRound className="h-4 w-4" aria-hidden="true" />
-                    {t('settings')}
-                  </Link>
                   <button
                     type="button"
                     onClick={() => {

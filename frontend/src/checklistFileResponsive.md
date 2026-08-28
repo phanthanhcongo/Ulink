@@ -170,7 +170,7 @@
 - [x] register-confirm-form.tsx
 - [x] register-form.tsx
 - [x] reset-password-form.tsx
-- [x] settings-view.tsx
+- [ ] ~~settings-view.tsx~~ (Đã xoá)
 - [x] social-auth.tsx
 
 ## src/components/ khác
@@ -187,7 +187,7 @@
 - [x] order-tracking/order-tracking-client.tsx
 - [x] payment-invoice/payment-invoice-client.tsx
 - [x] product/add-to-cart-button.tsx
-- [x] product/favorites-client.tsx
+- [ ] ~~product/favorites-client.tsx~~ (Đã xoá)
 - [x] product/product-card.tsx
 - [x] product/product-card-cart-button.tsx
 - [x] product/product-detail-client.tsx
@@ -242,7 +242,7 @@
 - [x] [locale]/(main)/events/page.tsx
 - [x] [locale]/(main)/events/[slug]/page.tsx
 - [x] [locale]/(main)/events/[slug]/register/page.tsx
-- [x] [locale]/(main)/favorites/page.tsx
+- [ ] ~~[locale]/(main)/favorites/page.tsx~~ (Đã xoá)
 - [x] [locale]/(main)/industries/[slug]/page.tsx
 - [x] [locale]/(main)/my-rfqs/page.tsx
 - [x] [locale]/(main)/order-confirmation/page.tsx
@@ -254,13 +254,13 @@
 - [x] [locale]/(main)/regional-hubs/page.tsx
 - [x] [locale]/(main)/regional-hubs/cum-1/page.tsx
 - [x] [locale]/(main)/regional-hubs/cum-2/page.tsx
-- [x] [locale]/(main)/regional-hubs/[slug]/page.tsx
+- [ ] ~~[locale]/(main)/regional-hubs/[slug]/page.tsx~~ (Đã xoá)
 - [x] [locale]/(main)/resources/page.tsx
 - [x] [locale]/(main)/resources/[slug]/page.tsx
 - [x] [locale]/(main)/rfqs/page.tsx
 - [x] [locale]/(main)/sample-requests/page.tsx
 - [x] [locale]/(main)/sample-requests/[id]/page.tsx
-- [x] [locale]/(main)/settings/page.tsx
+- [ ] ~~[locale]/(main)/settings/page.tsx~~ (Đã xoá)
 - [x] [locale]/(main)/solutions/page.tsx
 - [x] [locale]/(main)/solutions/components.tsx
 - [x] [locale]/(main)/solutions/products/page.tsx

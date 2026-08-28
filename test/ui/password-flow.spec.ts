@@ -274,7 +274,7 @@ test.describe('Kiểm thử luồng Quên/Đổi mật khẩu và Khóa chéo (F
     await uiLoginUserExpectingFailure(page, email, initialPassword);
   });
 
-  test('UI-TC-02: Đổi mật khẩu thành công', async ({ page, context }) => {
+  test.skip('UI-TC-02: Đổi mật khẩu thành công', async ({ page, context }) => {
     const email = uniqueEmail('ui-change');
     const initialPassword = 'SecureP@ss123!';
     const newPassword = 'NewSecureP@ss123!';
@@ -324,7 +324,7 @@ test.describe('Kiểm thử luồng Quên/Đổi mật khẩu và Khóa chéo (F
     await uiLoginUserExpectingFailure(page, email, initialPassword);
   });
 
-  test('UI-TC-03: Khóa chéo: Khóa Reset Password -> Khóa Change Password', async ({ page, context }) => {
+  test.skip('UI-TC-03: Khóa chéo: Khóa Reset Password -> Khóa Change Password', async ({ page, context }) => {
     const email = uniqueEmail('ui-lock-forgot');
     const password = 'SecureP@ss123!';
 
@@ -397,7 +397,7 @@ test.describe('Kiểm thử luồng Quên/Đổi mật khẩu và Khóa chéo (F
     await expect(dialog.getByText('Tạm khóa do nhập sai quá nhiều lần.')).not.toBeVisible();
   });
 
-  test('UI-TC-04: Khóa chéo: Khóa Change Password -> Khóa Reset Password', async ({ page, context }) => {
+  test.skip('UI-TC-04: Khóa chéo: Khóa Change Password -> Khóa Reset Password', async ({ page, context }) => {
     const email = uniqueEmail('ui-lock-change');
     const password = 'SecureP@ss123!';
 
@@ -537,7 +537,7 @@ test.describe('Kiểm thử luồng Quên/Đổi mật khẩu và Khóa chéo (F
     await clearLockoutViaApi(email);
   });
 
-  test('UI-TC-06: Validation dữ liệu cho luồng Đổi mật khẩu (Change Password)', async ({ page, context }) => {
+  test.skip('UI-TC-06: Validation dữ liệu cho luồng Đổi mật khẩu (Change Password)', async ({ page, context }) => {
     const email = uniqueEmail('ui-val-change');
     const password = 'SecureP@ss123!';
 
