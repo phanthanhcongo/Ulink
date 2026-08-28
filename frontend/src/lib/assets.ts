@@ -28,7 +28,7 @@ export const ASSETS = {
     productCutGloves: '/images/home/section2/product-cut-gloves.svg',
     productHvacTape: '/images/home/section2/product-hvac-tape.svg',
     productCustomPkg: '/images/home/section2/product-custom-pkg.svg',
-    cateCleanroom: '/images/home/section2/cate_01.svg',
+    cateCleanroom: '/images/home/section2/cate_01_expanded.jpg',
     catePackaging: '/images/home/section2/cate_02.svg',
     cateCutProtection: '/images/home/section2/cate_03.svg',
     cateHvacTape: '/images/home/section2/cate_04.svg',

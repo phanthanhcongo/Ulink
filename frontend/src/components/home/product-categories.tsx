@@ -101,13 +101,13 @@ export async function ProductCategories() {
             className={`ui-card-hover flex flex-col overflow-hidden rounded-[3px] border border-slate-200 bg-white border-l-4 sm:border-l-[5px] ${card.accentBorder} shadow-sm`}
           >
             {/* Top Image Banner */}
-            <div className="relative h-[280px] w-full overflow-hidden bg-slate-50 sm:h-[340px]">
+            <div className="relative aspect-[16/9] h-[240px] sm:h-[310px] lg:h-[340px] xl:h-[370px] w-full overflow-hidden bg-slate-50">
               <Image
                 src={card.image}
                 alt={card.title}
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover"
+                className="object-cover object-center"
               />
             </div>
 
@@ -160,13 +160,13 @@ export async function ProductCategories() {
             className={`ui-card-hover flex flex-col overflow-hidden rounded-[3px] border border-slate-200 bg-white border-l-4 sm:border-l-[5px] ${card.accentBorder} shadow-sm`}
           >
             {/* Top Image Banner */}
-            <div className="relative h-[280px] w-full overflow-hidden bg-slate-50 sm:h-[340px]">
+            <div className="relative aspect-[4/3] h-[200px] sm:h-[240px] lg:h-[240px] xl:h-[250px] w-full overflow-hidden bg-slate-50">
               <Image
                 src={card.image}
                 alt={card.title}
                 fill
                 sizes="(max-width: 1024px) 100vw, 33vw"
-                className="object-cover"
+                className="object-cover object-center"
               />
             </div>
 
