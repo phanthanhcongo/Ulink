@@ -19,7 +19,7 @@ export async function PartnersCertifications() {
           {[1, 2].map((_, index) => (
             <div
               key={`row1-m-${index}`}
-              className="relative shrink-0 w-[640px] h-[69px] sm:w-[1280px] sm:h-[138px] transition-transform duration-300 hover:scale-[1.01] cursor-pointer"
+              className="relative shrink-0 w-[640px] h-[69px] sm:w-[1280px] sm:h-[138px] cursor-pointer"
             >
               <Image
                 src={ASSETS.home.partnerRow1}
@@ -38,7 +38,7 @@ export async function PartnersCertifications() {
           {[1, 2].map((_, index) => (
             <div
               key={`row2-m-${index}`}
-              className="relative shrink-0 w-[640px] h-[69px] sm:w-[1280px] sm:h-[138px] transition-transform duration-300 hover:scale-[1.01] cursor-pointer"
+              className="relative shrink-0 w-[640px] h-[69px] sm:w-[1280px] sm:h-[138px] cursor-pointer"
             >
               <Image
                 src={ASSETS.home.partnerRow2}
@@ -68,7 +68,7 @@ export async function PartnersCertifications() {
         </div>
 
         {/* Col 3: ISO 9001 */}
-        <div className="flex w-[212px] h-[138px] shrink-0 items-center justify-center bg-white transition-all duration-300 hover:scale-[1.15] hover:z-10">
+        <div className="flex w-[212px] h-[138px] shrink-0 items-center justify-center bg-white hover:z-10">
           <Image
             src={ASSETS.home.certIso9001}
             alt="ISO 9001:2015 QUACERT JAS-ANZ"
@@ -79,7 +79,7 @@ export async function PartnersCertifications() {
         </div>
 
         {/* Col 4: SGS */}
-        <div className="flex w-[212px] h-[138px] shrink-0 items-center justify-center bg-white transition-all duration-300 hover:scale-[1.15] hover:z-10">
+        <div className="flex w-[212px] h-[138px] shrink-0 items-center justify-center bg-white hover:z-10">
           <Image
             src={ASSETS.home.certSgs}
             alt="SGS Certification"
@@ -90,7 +90,7 @@ export async function PartnersCertifications() {
         </div>
 
         {/* Col 5: RoHS */}
-        <div className="flex w-[212px] h-[138px] shrink-0 items-center justify-center bg-white transition-all duration-300 hover:scale-[1.15] hover:z-10">
+        <div className="flex w-[212px] h-[138px] shrink-0 items-center justify-center bg-white hover:z-10">
           <Image
             src={ASSETS.home.certRohs}
             alt="RoHS Compliant"
@@ -101,7 +101,7 @@ export async function PartnersCertifications() {
         </div>
 
         {/* Col 6: MSDS */}
-        <div className="flex w-[212px] h-[138px] shrink-0 items-center justify-center bg-white transition-all duration-300 hover:scale-[1.15] hover:z-10">
+        <div className="flex w-[212px] h-[138px] shrink-0 items-center justify-center bg-white hover:z-10">
           <Image
             src={ASSETS.home.certMsds}
             alt="MSDS Material Safety Data Sheet"
@@ -129,7 +129,7 @@ export async function PartnersCertifications() {
         {/* Responsive Grid of Certificates (4 columns on iPad/Tablet md, 2 columns on Mobile) */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5">
           {/* Card 1: ISO 9001 */}
-          <div className="flex flex-col bg-[#2D60C3] rounded-[4px] p-5 text-left shadow-sm min-h-[170px] transition-all duration-300 hover:scale-[1.05] hover:shadow-md">
+          <div className="flex flex-col bg-[#2D60C3] rounded-[4px] p-5 text-left shadow-sm min-h-[170px] hover:shadow-md">
             <div className="h-12 w-12 rounded-full bg-white/15 flex items-center justify-center mb-4">
               <svg className="h-6 w-6 text-white stroke-[2]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -143,7 +143,7 @@ export async function PartnersCertifications() {
           </div>
 
           {/* Card 2: ISO 14001 */}
-          <div className="flex flex-col bg-[#2D60C3] rounded-[4px] p-5 text-left shadow-sm min-h-[170px] transition-all duration-300 hover:scale-[1.05] hover:shadow-md">
+          <div className="flex flex-col bg-[#2D60C3] rounded-[4px] p-5 text-left shadow-sm min-h-[170px] hover:shadow-md">
             <div className="h-12 w-12 rounded-full bg-white/15 flex items-center justify-center mb-4">
               <svg className="h-6 w-6 text-white stroke-[2]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
@@ -157,7 +157,7 @@ export async function PartnersCertifications() {
           </div>
 
           {/* Card 3: ISO 45001 */}
-          <div className="flex flex-col bg-[#2D60C3] rounded-[4px] p-5 text-left shadow-sm min-h-[170px] transition-all duration-300 hover:scale-[1.05] hover:shadow-md">
+          <div className="flex flex-col bg-[#2D60C3] rounded-[4px] p-5 text-left shadow-sm min-h-[170px] hover:shadow-md">
             <div className="h-12 w-12 rounded-full bg-white/15 flex items-center justify-center mb-4">
               <svg className="h-6 w-6 text-white stroke-[2]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
@@ -170,7 +170,7 @@ export async function PartnersCertifications() {
           </div>
 
           {/* Card 4: MSDS */}
-          <div className="flex flex-col bg-[#2D60C3] rounded-[4px] p-5 text-left shadow-sm min-h-[170px] transition-all duration-300 hover:scale-[1.05] hover:shadow-md">
+          <div className="flex flex-col bg-[#2D60C3] rounded-[4px] p-5 text-left shadow-sm min-h-[170px] hover:shadow-md">
             <div className="h-12 w-12 rounded-full bg-white/15 flex items-center justify-center mb-4">
               <svg className="h-6 w-6 text-white stroke-[2]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />

@@ -143,13 +143,13 @@ export function ResourcesNews() {
       </div>
 
       {/* ── 3. 4 NEWS CARDS GRID ── */}
-      <div ref={newsRef} className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
+      <div ref={newsRef} className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
         {newsData.map((news, idx) => (
           <div
             key={news.slug}
             className={`transition-all duration-500 ${
               newsVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
-            }`}
+            } ${idx >= 3 ? 'lg:hidden' : ''}`}
             style={{ transitionDelay: `${idx * 100}ms` }}
           >
             <NewsCard
