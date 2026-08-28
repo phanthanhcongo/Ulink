@@ -41,28 +41,28 @@ export function WorkingProcess() {
         </div>
 
         {/* ── 4 STEP CARDS GRID ── */}
-        <div ref={ref} className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+        <div ref={ref} className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4 lg:gap-3 xl:gap-4">
           {steps.map(({ step, icon: IconComponent }, idx) => (
             <div
               key={step}
-              className={`group relative flex flex-col rounded-[3px] border border-slate-100 bg-white p-5 shadow-sm transition-all hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:scale-[1.02] sm:p-6 lg:p-5 xl:p-6 ${
+              className={`group relative flex flex-col rounded-[3px] border border-slate-100 bg-white p-4 shadow-sm transition-all hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:scale-[1.02] sm:p-5 lg:p-4 xl:p-5 ${
                 visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
               }`}
               style={{ transitionDelay: `${idx * 100}ms` }}
             >
               {/* Tầng 1: Icon tròn & Tiêu đề nằm ngang */}
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-2.5 sm:gap-3">
                 {/* Vòng tròn bọc icon */}
-                <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-blue-50 text-brand transition-all duration-300 group-hover:bg-brand group-hover:text-white">
-                  <IconComponent className="h-5 w-5 transition-transform duration-300 group-hover:scale-110" aria-hidden="true" />
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-50 text-brand transition-all duration-300 group-hover:bg-brand group-hover:text-white">
+                  <IconComponent className="h-4.5 w-4.5 transition-transform duration-300 group-hover:scale-110" aria-hidden="true" />
                 </div>
                 
                 {/* Khối Text (Số bước & Tên bước) */}
-                <div className="flex flex-col">
-                  <p className="text-[11px] font-semibold text-slate-500 sm:text-[12px]">
+                <div className="flex flex-col min-w-0 flex-1">
+                  <p className="text-[11px] font-semibold text-slate-500 sm:text-[12px] whitespace-nowrap truncate">
                     {t(`workingProcess.step${step}Number` as any)}
                   </p>
-                  <h3 className="mt-0.5 text-[15px] font-bold text-slate-900 leading-tight transition-colors duration-300 group-hover:text-brand sm:text-[16px] md:text-[18px] lg:text-[22px] xl:text-[24px]">
+                  <h3 className="mt-0.5 text-[13px] font-bold text-slate-900 leading-tight transition-colors duration-300 group-hover:text-brand sm:text-[14px] lg:text-[13.5px] xl:text-[15.5px] whitespace-nowrap truncate" title={t(`workingProcess.step${step}Title` as any)}>
                     {t(`workingProcess.step${step}Title` as any)}
                   </h3>
                 </div>
