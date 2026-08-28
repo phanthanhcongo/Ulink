@@ -21,15 +21,14 @@ export function AboutHero() {
           </p>
         </div>
         <div className="lg:col-span-6">
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[3px] shadow-xl ring-1 ring-slate-900/10 group">
+          <div className="ui-card-hover relative aspect-[4/3] w-full overflow-hidden rounded-[3px] shadow-xl ring-1 ring-slate-900/10">
             <Image
               src="/images/about/gallery/image.png"
               alt="Hub Hà Nam - Trung tâm vật tư ULink"
               fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1769E2]/40 to-[#1769E2]/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           </div>
         </div>
       </div>

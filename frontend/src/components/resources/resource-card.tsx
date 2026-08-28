@@ -38,7 +38,7 @@ export function ResourceCard({ resource, locale }: ResourceCardProps) {
   return (
     <Link
       href={getResourceHref(resource)}
-      className="flex flex-col bg-white border border-slate-100 rounded-[3px] overflow-hidden shadow-sm transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] group cursor-pointer"
+      className="ui-card-hover flex flex-col bg-white border border-slate-100 rounded-[3px] overflow-hidden shadow-sm cursor-pointer"
     >
       {/* Top Image area with Badge */}
       <div className="relative aspect-[16/10] w-full bg-slate-50 overflow-hidden">
@@ -47,9 +47,8 @@ export function ResourceCard({ resource, locale }: ResourceCardProps) {
           alt={resource.title[locale]}
           fill
           sizes="(max-width: 768px) 100vw, 33vw"
-          className="object-cover group-hover:scale-105 transition-transform duration-500"
+          className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#1769E2]/40 to-[#1769E2]/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
         <div
           className={cn(
             'absolute top-4 left-4 z-10 text-[10px] font-bold uppercase tracking-wider px-3.5 py-1 rounded-full shadow-sm',

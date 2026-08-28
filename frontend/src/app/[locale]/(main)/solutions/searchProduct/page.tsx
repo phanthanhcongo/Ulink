@@ -16,6 +16,9 @@ interface PageProps {
   params: Promise<{
     locale: string;
   }>;
+  searchParams: Promise<{
+    q?: string;
+  }>;
 }
 
 const ALL_CATEGORIES_LIST = [
@@ -29,8 +32,9 @@ const ALL_CATEGORIES_LIST = [
   { id: 8, name: 'Hóa chất phòng sạch', slug: 'cleanroom-chemicals' }
 ];
 
-export default async function ProductsCatalogPage({ params }: PageProps) {
+export default async function ProductsSearchPage({ params, searchParams }: PageProps) {
   const { locale } = await params;
+  const { q = '' } = await searchParams;
   setRequestLocale(locale);
 
   const { products: dbProducts } = await fetchProducts({ limit: 100 });
@@ -102,6 +106,8 @@ export default async function ProductsCatalogPage({ params }: PageProps) {
       products={products}
       allCategories={categoriesList}
       locale={locale}
+      isSearchPage={true}
+      initialSearchQuery={q}
     />
   );
 }

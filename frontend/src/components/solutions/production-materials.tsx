@@ -67,16 +67,15 @@ export default async function ProductionMaterials({ locale }: ProductionMaterial
           {cards.map((card, idx) => (
             <div
               key={idx}
-              className="group flex flex-col bg-white rounded-[3px] border border-gray-100 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] overflow-hidden"
+              className="group ui-card-hover flex flex-col bg-white rounded-[3px] border border-gray-100 shadow-sm overflow-hidden"
             >
               <div className="h-[240px] relative overflow-hidden bg-gray-50">
                 <Image
                   src={card.image}
                   alt={card.title}
                   fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1769E2]/40 to-[#1769E2]/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
               </div>
               <div className="p-6 sm:p-8 flex flex-col flex-1">
                 <h3 className="text-xl font-bold text-slate-900 transition-colors duration-200 group-hover:text-[#1769E2]">{card.title}</h3>

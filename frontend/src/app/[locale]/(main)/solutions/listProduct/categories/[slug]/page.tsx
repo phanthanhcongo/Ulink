@@ -177,6 +177,10 @@ export default async function CategoryProductsPage({ params }: PageProps) {
       ? p.standards.map((s: any) => s.standards_id).filter(Boolean)
       : [];
 
+    const productIndustries = Array.isArray(p.industries)
+      ? p.industries.map((ind: any) => ind.industries_id).filter(Boolean)
+      : [];
+
     return {
       id: p.id,
       name: getTranslatedName(p, locale) || p.name,
@@ -191,7 +195,10 @@ export default async function CategoryProductsPage({ params }: PageProps) {
       unit: firstSku?.unit ?? '',
       packSize: firstSku?.pack_size ?? '',
       specs: ['Tiêu chuẩn ISO / ESD', 'Chính hãng 100%'],
-      standards: productStandards
+      standards: productStandards,
+      industries: productIndustries,
+      specifications: p.specifications || null,
+      price: firstSku?.price || null
     };
   });
 

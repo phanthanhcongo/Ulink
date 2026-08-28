@@ -206,7 +206,7 @@ export function EventsClient() {
             return (
               <div
                 key={event.id}
-                className="flex flex-col lg:flex-row bg-white border border-slate-100 rounded-[3px] overflow-hidden shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] group"
+                className="group ui-card-hover flex flex-col lg:flex-row bg-white border border-slate-100 rounded-[3px] overflow-hidden shadow-sm"
               >
                 {/* Event Image */}
                 <div className="relative w-full lg:w-[420px] aspect-[16/10] lg:aspect-auto overflow-hidden shrink-0">
@@ -215,9 +215,8 @@ export function EventsClient() {
                     alt={titleText}
                     fill
                     sizes="(max-width: 1024px) 100vw, 420px"
-                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                    className="object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1769E2]/40 to-[#1769E2]/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
                   {/* Overlay Date Badge */}
                   <div className="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold px-4 py-2 rounded-[3px] shadow-md z-10">
                     {event.date}

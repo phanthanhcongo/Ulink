@@ -65,15 +65,14 @@ export function CareersHero() {
 
         {/* Right Column: Hero Image */}
         <div className="lg:col-span-6">
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[3px] shadow-lg ring-1 ring-slate-900/5 group">
+          <div className="ui-card-hover relative aspect-[4/3] w-full overflow-hidden rounded-[3px] shadow-lg ring-1 ring-slate-900/5">
             <Image
               src="/images/Career/career (12).png"
               alt="Đội ngũ nhân sự ULink B2B Platform"
               fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              className="object-cover"
               priority
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1769E2]/40 to-[#1769E2]/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           </div>
         </div>
       </div>
@@ -83,7 +82,7 @@ export function CareersHero() {
         {stats.map((s, idx) => {
           const Icon = s.icon;
           return (
-            <div key={idx} className="group flex items-center gap-4 justify-start sm:justify-center py-2 px-2 rounded-[3px] transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
+            <div key={idx} className="group ui-card-hover flex items-center gap-4 justify-start sm:justify-center py-2 px-2 rounded-[3px]">
               <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-600 transition-colors duration-200 group-hover:bg-[#1769E2] group-hover:text-white">
                 <Icon className="h-6 w-6" />
               </div>

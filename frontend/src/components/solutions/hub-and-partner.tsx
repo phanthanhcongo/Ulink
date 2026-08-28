@@ -26,15 +26,14 @@ export default async function HubAndPartner({ locale }: HubAndPartnerProps) {
           </div>
 
           {/* Central Showcase Image */}
-          <div className="relative w-full max-w-4xl mx-auto aspect-[16/10] rounded-[3px] overflow-hidden shadow-md bg-slate-50 border border-gray-100 group">
+          <div className="ui-card-hover relative w-full max-w-4xl mx-auto aspect-[16/10] rounded-[3px] overflow-hidden shadow-md bg-slate-50 border border-gray-100">
             <Image
               src="/images/home/section2/solution-packaging.webp"
               alt={t('hubPartner.hubHeading')}
               fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              className="object-cover"
               sizes="(max-width: 1024px) 100vw, 80vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1769E2]/40 to-[#1769E2]/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           </div>
         </div>
       </section>
@@ -69,15 +68,14 @@ export default async function HubAndPartner({ locale }: HubAndPartnerProps) {
             </div>
 
             {/* Right: Partner Image */}
-            <div className="lg:col-span-6 relative aspect-[4/3] rounded-[3px] overflow-hidden shadow-sm bg-slate-50 border border-gray-100 group">
+            <div className="lg:col-span-6 ui-card-hover relative aspect-[4/3] rounded-[3px] overflow-hidden shadow-sm bg-slate-50 border border-gray-100">
               <Image
                 src="/images/industries/case_supplier.webp"
                 alt={t('hubPartner.partnerHeading')}
                 fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                className="object-cover"
                 sizes="(max-width: 1024px) 100vw, 50vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1769E2]/40 to-[#1769E2]/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             </div>
           </div>
         </div>

@@ -27,7 +27,7 @@ export function NewsCard({ slug, date, title, image, readMoreText, category, aut
   return (
     <Link
       href={`/resources/news/${slug}`}
-      className="group flex flex-col bg-white  border border-slate-100/80 overflow-hidden shadow-sm transition-all duration-300 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:-translate-y-1 hover:scale-[1.02]"
+      className="ui-card-hover flex flex-col bg-white border border-slate-100/80 overflow-hidden shadow-sm"
     >
       {/* Top Article Image */}
       <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-50">
@@ -36,9 +36,8 @@ export function NewsCard({ slug, date, title, image, readMoreText, category, aut
           alt="News Article Image"
           fill
           sizes="(max-width: 768px) 100vw, 33vw"
-          className="object-cover transition-transform duration-500 group-hover:scale-102"
+          className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#1769E2]/40 to-[#1769E2]/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
       </div>
 
       {/* Content Container */}

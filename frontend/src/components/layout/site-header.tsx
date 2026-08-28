@@ -57,7 +57,7 @@ export async function SiteHeader() {
         <div className="flex items-center gap-1.5 sm:gap-2 md:gap-3">
           {/* Tìm kiếm */}
           <Link
-            href="/solutions/listProduct"
+            href="/solutions/searchProduct"
             aria-label={t('search')}
             className="flex h-9 w-9 items-center justify-center rounded-[3px] text-foreground hover:bg-muted hover:text-brand transition-all duration-200 hover:scale-110 sm:h-10 sm:w-10"
           >

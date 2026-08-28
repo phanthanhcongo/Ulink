@@ -67,6 +67,7 @@ export interface ProductSku {
   attributes: Record<string, unknown> | null;
   image?: string | null;
   stock_status: 'in_stock' | 'low_stock' | 'out_of_stock';
+  price?: number | null;
   status: 'published' | 'draft' | 'archived';
 }
 

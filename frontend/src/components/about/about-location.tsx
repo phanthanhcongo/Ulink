@@ -47,14 +47,13 @@ export function AboutLocation() {
           </ul>
         </div>
         <div className="lg:col-span-6">
-          <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[3px] shadow-lg border border-slate-100 group">
+          <div className="ui-card-hover relative aspect-[16/10] w-full overflow-hidden rounded-[3px] shadow-lg border border-slate-100">
             <Image
               src="/images/about/gallery/location-aerial-view.png"
               alt="Vị trí kết nối giao thông Hub Hà Nam"
               fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1769E2]/40 to-[#1769E2]/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
           </div>
         </div>
       </div>

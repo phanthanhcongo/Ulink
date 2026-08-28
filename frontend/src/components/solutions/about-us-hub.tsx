@@ -59,16 +59,15 @@ export default async function AboutUsHub({ locale }: AboutUsHubProps) {
       {/* Split Layout Container */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
         {/* Left Side: Modern Building Image */}
-        <div className="lg:col-span-5 relative aspect-[4/3] lg:aspect-auto lg:min-h-[450px] w-full rounded-[3px] overflow-hidden shadow-sm border border-slate-100 bg-slate-50 group">
+        <div className="lg:col-span-5 ui-card-hover relative aspect-[4/3] lg:aspect-auto lg:min-h-[450px] w-full rounded-[3px] overflow-hidden shadow-sm border border-slate-100 bg-slate-50">
           <Image
             src="/images/industries/Ulink.png"
             alt={t('aboutHub.hubHeading')}
             fill
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            className="object-cover"
             sizes="(max-width: 1024px) 100vw, 40vw"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#1769E2]/40 to-[#1769E2]/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
         </div>
 
         {/* Right Side: Metrics & Highlights Panel */}

@@ -98,7 +98,7 @@ export async function ProductCategories() {
           <Link
             key={card.id}
             href={card.href}
-            className={`group flex flex-col overflow-hidden rounded-[3px] border border-slate-200 bg-white border-l-4 sm:border-l-[5px] ${card.accentBorder} shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:scale-[1.02]`}
+            className={`ui-card-hover flex flex-col overflow-hidden rounded-[3px] border border-slate-200 bg-white border-l-4 sm:border-l-[5px] ${card.accentBorder} shadow-sm`}
           >
             {/* Top Image Banner */}
             <div className="relative h-[280px] w-full overflow-hidden bg-slate-50 sm:h-[340px]">
@@ -107,10 +107,8 @@ export async function ProductCategories() {
                 alt={card.title}
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                className="object-cover"
               />
-              {/* Overlay gradient on hover */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1769E2]/40 to-[#1769E2]/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             </div>
 
             {/* Card Content Body */}
@@ -159,7 +157,7 @@ export async function ProductCategories() {
           <Link
             key={card.id}
             href={card.href}
-            className={`group flex flex-col overflow-hidden rounded-[3px] border border-slate-200 bg-white border-l-4 sm:border-l-[5px] ${card.accentBorder} shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:scale-[1.02]`}
+            className={`ui-card-hover flex flex-col overflow-hidden rounded-[3px] border border-slate-200 bg-white border-l-4 sm:border-l-[5px] ${card.accentBorder} shadow-sm`}
           >
             {/* Top Image Banner */}
             <div className="relative h-[220px] w-full overflow-hidden bg-slate-50 sm:h-[260px]">
@@ -168,9 +166,8 @@ export async function ProductCategories() {
                 alt={card.title}
                 fill
                 sizes="(max-width: 768px) 100vw, 33vw"
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#1769E2]/40 to-[#1769E2]/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
             </div>
 
             {/* Card Content Body */}

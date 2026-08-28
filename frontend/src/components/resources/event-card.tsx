@@ -81,7 +81,7 @@ export function EventCard({ event, locale }: EventCardProps) {
 
   return (
     <div
-      className="flex flex-col bg-white border border-slate-100 rounded-[3px] overflow-hidden shadow-sm transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] group"
+      className="ui-card-hover flex flex-col bg-white border border-slate-100 rounded-[3px] overflow-hidden shadow-sm"
     >
       {/* Top Image Area */}
       <div className="relative aspect-[16/10] w-full bg-slate-50 overflow-hidden">
@@ -108,10 +108,9 @@ export function EventCard({ event, locale }: EventCardProps) {
             alt={titleText}
             fill
             sizes="(max-width: 768px) 100vw, 33vw"
-            className="object-cover group-hover:scale-105 transition-transform duration-500"
+            className="object-cover"
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#1769E2]/40 to-[#1769E2]/10 opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
 
         {/* Top Left Date Badge */}
         <div className="absolute top-4 left-4 z-10 bg-blue-600/90 backdrop-blur-xs text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-sm">

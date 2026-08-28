@@ -147,6 +147,10 @@
   .admin-page-lead {
     @apply mt-1 text-xs font-medium leading-relaxed text-slate-500 sm:text-sm;
   }
+
+  .ui-card-hover {
+    @apply transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)];
+  }
 }
 
 html {
@@ -192,5 +196,13 @@ input[type="reset"],
     100% {
       transform: translateX(0%);
     }
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }
