@@ -39,6 +39,38 @@ import {
 } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 
+export interface NavProductItem {
+  title: string;
+  description: string;
+  icon: string;
+  bgColor: string;
+  slug?: string;
+}
+
+export interface NavCategoryItem {
+  id: string;
+  name: string;
+  link: string;
+  products: NavProductItem[];
+}
+
+export interface NavHubItem {
+  title: string;
+  description: string;
+  icon: string;
+  bgColor: string;
+}
+
+export interface NavRegionItem {
+  id: string;
+  name: string;
+  link: string;
+  hubName: string;
+  hubLink: string;
+  hubImage: string;
+  hubs: NavHubItem[];
+}
+
 const IconMap: Record<string, React.ComponentType<any>> = {
   package: Package,
   wrench: Wrench,
@@ -73,7 +105,7 @@ const IconMap: Record<string, React.ComponentType<any>> = {
   factory: Factory
 };
 
-const categoriesData = [
+const categoriesData: NavCategoryItem[] = [
   {
     id: 'packaging',
     name: 'Bao bì & Đóng gói',
@@ -247,7 +279,7 @@ const viewAllLabels: Record<string, string> = {
   aluminum: 'Băng keo Nhôm'
 };
 
-const regionsData = [
+const regionsData: NavRegionItem[] = [
   {
     id: 'north',
     name: 'Miền Bắc',
@@ -444,15 +476,38 @@ export interface NavItem {
 
 interface HeaderNavProps {
   items: NavItem[];
+  categoriesData?: NavCategoryItem[];
+  regionsData?: NavRegionItem[];
 }
 
-export function HeaderNav({ items }: HeaderNavProps) {
+export function HeaderNav({ items, categoriesData: dynamicCategoriesData, regionsData: dynamicRegionsData }: HeaderNavProps) {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>('packaging');
   const [activeRegion, setActiveRegion] = useState<string>('south');
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-  const currentCategoryData = categoriesData.find((cat) => cat.id === activeCategory);
-  const currentRegionData = regionsData.find((reg) => reg.id === activeRegion);
+
+  const activeCategories = dynamicCategoriesData && dynamicCategoriesData.length > 0
+    ? dynamicCategoriesData
+    : categoriesData;
+
+  const activeRegions = dynamicRegionsData && dynamicRegionsData.length > 0
+    ? dynamicRegionsData
+    : regionsData;
+
+  React.useEffect(() => {
+    if (dynamicCategoriesData && dynamicCategoriesData.length > 0) {
+      setActiveCategory(dynamicCategoriesData[0].id);
+    }
+  }, [dynamicCategoriesData]);
+
+  React.useEffect(() => {
+    if (dynamicRegionsData && dynamicRegionsData.length > 0) {
+      setActiveRegion(dynamicRegionsData[0].id);
+    }
+  }, [dynamicRegionsData]);
+
+  const currentCategoryData = activeCategories.find((cat) => cat.id === activeCategory);
+  const currentRegionData = activeRegions.find((reg) => reg.id === activeRegion);
 
   const handleMouseEnter = (href: string) => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
@@ -564,7 +619,7 @@ export function HeaderNav({ items }: HeaderNavProps) {
                   {/* Left Column: Categories List */}
                   <div className="border-r border-slate-100 bg-white pt-8 pb-8 pl-20 pr-8">
                     <div className="flex flex-col gap-1.5">
-                      {categoriesData.map((cat) => {
+                      {activeCategories.map((cat) => {
                         const isCatActive = activeCategory === cat.id;
                         return (
                           <div
@@ -604,10 +659,11 @@ export function HeaderNav({ items }: HeaderNavProps) {
                       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6">
                         {currentCategoryData?.products.map((prod, idx) => {
                           const IconComp = IconMap[prod.icon] || Package;
+                          const productHref = prod.slug ? `/solutions/listProduct/${prod.slug}` : (currentCategoryData?.link || '#');
                           return (
                             <Link
                               key={idx}
-                              href={currentCategoryData.link}
+                              href={productHref}
                               onClick={() => setActiveMenu(null)}
                               className="flex items-start gap-4 group p-2 -m-2 rounded-lg hover:bg-slate-50 transition-all duration-200"
                             >
@@ -677,7 +733,7 @@ export function HeaderNav({ items }: HeaderNavProps) {
                   {/* Left Column: Regions List */}
                   <div className="border-r border-slate-100 bg-white pt-8 pb-8 pl-20 pr-8 flex flex-col gap-4">
                     <div className="flex flex-col gap-1.5">
-                      {regionsData.map((reg) => {
+                      {activeRegions.map((reg) => {
                         const isRegActive = activeRegion === reg.id;
                         return (
                           <div

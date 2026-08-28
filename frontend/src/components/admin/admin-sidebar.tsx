@@ -20,7 +20,8 @@ import {
   MapPin,
   Home,
   ChevronLeft,
-  ChevronRight
+  ChevronRight,
+  Factory
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -85,6 +86,11 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
       href: '/admin/hubs',
       label: 'Chi nhánh / Hubs',
       icon: MapPin
+    },
+    {
+      href: '/admin/industrial-zones',
+      label: 'Khu công nghiệp (KCN)',
+      icon: Factory
     },
     {
       href: '/admin/subscribers',
