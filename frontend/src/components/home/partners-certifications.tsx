@@ -27,6 +27,7 @@ export async function PartnersCertifications() {
                 fill
                 className="object-contain"
                 priority
+                unoptimized
               />
             </div>
           ))}
@@ -45,26 +46,88 @@ export async function PartnersCertifications() {
                 fill
                 className="object-contain"
                 priority
+                unoptimized
               />
             </div>
           ))}
         </div>
       </div>
 
-      {/* CERTIFICATIONS & ISO STANDARDS SECTION (Unified) */}
-      <div className="flex flex-col gap-6 mt-12 sm:mt-14 lg:mt-16 select-none">
-        {/* Header Title & Subtitle */}
-        <div className="text-left">
-          <h3 className="text-[20px] sm:text-[24px] lg:text-[28px] font-bold text-primary leading-tight">
+      {/* ──────────────────────────────────────────────────────── */}
+      {/* 1. DESKTOP VIEW (Visible on lg and up: >= 1024px)        */}
+      {/* ──────────────────────────────────────────────────────── */}
+      <div className="hidden lg:flex flex-row items-center justify-between gap-3 mt-12 sm:mt-14 lg:mt-16 select-none">
+        {/* Col 1+2: Title & Desc */}
+        <div className="flex w-[calc(212px*2+theme(gap.3))] h-[138px] shrink-0 flex-col justify-center bg-white px-4 text-left">
+          <h3 className="text-[20px] lg:text-[22px] font-bold text-primary leading-tight">
             {t('partners.isoTitle')}
           </h3>
-          <p className="mt-2 text-[13px] sm:text-[14px] lg:text-[16px] leading-relaxed text-muted-foreground font-medium max-w-3xl">
+          <p className="mt-2 text-[13px] lg:text-[14px] leading-relaxed text-muted-foreground font-medium">
             {t('partners.isoDesc')}
           </p>
         </div>
 
-        {/* Responsive Grid of Certificates */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
+        {/* Col 3: ISO 9001 */}
+        <div className="flex w-[212px] h-[138px] shrink-0 items-center justify-center bg-white transition-all duration-300 hover:scale-[1.15] hover:z-10">
+          <Image
+            src={ASSETS.home.certIso9001}
+            alt="ISO 9001:2015 QUACERT JAS-ANZ"
+            width={500}
+            height={250}
+            className="h-24 w-auto max-w-[80%] object-contain"
+          />
+        </div>
+
+        {/* Col 4: SGS */}
+        <div className="flex w-[212px] h-[138px] shrink-0 items-center justify-center bg-white transition-all duration-300 hover:scale-[1.15] hover:z-10">
+          <Image
+            src={ASSETS.home.certSgs}
+            alt="SGS Certification"
+            width={500}
+            height={250}
+            className="w-[120%] h-[120%] max-w-none object-cover"
+          />
+        </div>
+
+        {/* Col 5: RoHS */}
+        <div className="flex w-[212px] h-[138px] shrink-0 items-center justify-center bg-white transition-all duration-300 hover:scale-[1.15] hover:z-10">
+          <Image
+            src={ASSETS.home.certRohs}
+            alt="RoHS Compliant"
+            width={500}
+            height={250}
+            className="h-24 w-auto max-w-[80%] object-contain"
+          />
+        </div>
+
+        {/* Col 6: MSDS */}
+        <div className="flex w-[212px] h-[138px] shrink-0 items-center justify-center bg-white transition-all duration-300 hover:scale-[1.15] hover:z-10">
+          <Image
+            src={ASSETS.home.certMsds}
+            alt="MSDS Material Safety Data Sheet"
+            width={500}
+            height={250}
+            className="h-24 w-auto max-w-[80%] object-contain"
+          />
+        </div>
+      </div>
+
+      {/* ──────────────────────────────────────────────────────── */}
+      {/* 2. MOBILE & TABLET VIEW (Visible below lg: < 1024px)      */}
+      {/* ──────────────────────────────────────────────────────── */}
+      <div className="flex lg:hidden flex-col gap-6 mt-10 select-none">
+        {/* Header Title & Subtitle */}
+        <div className="text-left">
+          <h3 className="text-[20px] sm:text-[22px] font-bold text-primary leading-tight">
+            {t('partners.isoTitle')}
+          </h3>
+          <p className="mt-2 text-[13px] sm:text-[14px] leading-relaxed text-muted-foreground font-medium">
+            {t('partners.isoDesc')}
+          </p>
+        </div>
+
+        {/* Responsive Grid of Certificates (4 columns on iPad/Tablet md, 2 columns on Mobile) */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5">
           {/* Card 1: ISO 9001 */}
           <div className="flex flex-col bg-[#2D60C3] rounded-[4px] p-5 text-left shadow-sm min-h-[170px] transition-all duration-300 hover:scale-[1.05] hover:shadow-md">
             <div className="h-12 w-12 rounded-full bg-white/15 flex items-center justify-center mb-4">
