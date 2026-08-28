@@ -6,6 +6,24 @@ import { SectionHeader } from './section-header';
 export async function PartnersCertifications() {
   const t = await getTranslations('home');
 
+  const row1Logos = [
+    { src: ASSETS.home.partnerSamsung, alt: 'Samsung', width: 'max-w-[70%]' },
+    { src: ASSETS.home.partnerCanon, alt: 'Canon', width: 'max-w-[60%]' },
+    { src: ASSETS.home.partnerPanasonic, alt: 'Panasonic', width: 'max-w-[75%]' },
+    { src: ASSETS.home.partnerIbm, alt: 'IBM', width: 'max-w-[55%]' },
+    { src: ASSETS.home.partnerTraphaco, alt: 'Traphaco', width: 'max-w-[70%]' },
+    { src: ASSETS.home.partnerCocaCola, alt: 'Coca Cola', width: 'max-w-[65%]' },
+  ];
+
+  const row2Logos = [
+    { src: ASSETS.home.partnerVinfast, alt: 'Vinfast', width: 'max-w-[40%]' },
+    { src: ASSETS.home.partnerLg, alt: 'LG', width: 'max-w-[60%]' },
+    { src: ASSETS.home.partnerAmkor, alt: 'Amkor', width: 'max-w-[75%]' },
+    { src: ASSETS.home.partnerVinamilk, alt: 'Vinamilk', width: 'max-w-[65%]' },
+    { src: ASSETS.home.partner3m, alt: '3M', width: 'max-w-[40%]' },
+    { src: ASSETS.home.partnerByd, alt: 'BYD', width: 'max-w-[70%]' },
+  ];
+
   return (
     <section className="mx-auto w-full max-w-[1440px] px-4 py-10 sm:px-8 lg:px-12 xl:px-16 lg:py-12 xl:py-16 overflow-hidden">
       <SectionHeader
@@ -16,38 +34,43 @@ export async function PartnersCertifications() {
       <div className="mt-8 flex flex-col gap-5 overflow-hidden mask-gradient-x py-2 select-none">
         {/* Row 1 Marquee: Left scrolling */}
         <div className="flex w-max animate-marquee-left">
-          {[1, 2].map((_, index) => (
+          {/* Double array to handle smooth keyframe translate-x-[50%] */}
+          {[...row1Logos, ...row1Logos].map((logo, index) => (
             <div
-              key={`row1-m-${index}`}
-              className="relative shrink-0 w-[640px] h-[69px] sm:w-[1280px] sm:h-[138px] cursor-pointer"
+              key={`row1-logo-${index}`}
+              className="flex shrink-0 w-[106px] h-[69px] sm:w-[213.3px] sm:h-[138px] items-center justify-center bg-white"
             >
-              <Image
-                src={ASSETS.home.partnerRow1}
-                alt="Partners Row 1"
-                fill
-                className="object-contain"
-                priority
-                unoptimized
-              />
+              <div className={`relative w-full h-[60%] flex items-center justify-center ${logo.width}`}>
+                <Image
+                  src={logo.src}
+                  alt={logo.alt}
+                  fill
+                  className="object-contain"
+                  priority
+                  unoptimized
+                />
+              </div>
             </div>
           ))}
         </div>
 
         {/* Row 2 Marquee: Right scrolling */}
         <div className="flex w-max animate-marquee-right">
-          {[1, 2].map((_, index) => (
+          {[...row2Logos, ...row2Logos].map((logo, index) => (
             <div
-              key={`row2-m-${index}`}
-              className="relative shrink-0 w-[640px] h-[69px] sm:w-[1280px] sm:h-[138px] cursor-pointer"
+              key={`row2-logo-${index}`}
+              className="flex shrink-0 w-[106px] h-[69px] sm:w-[213.3px] sm:h-[138px] items-center justify-center bg-white"
             >
-              <Image
-                src={ASSETS.home.partnerRow2}
-                alt="Partners Row 2"
-                fill
-                className="object-contain"
-                priority
-                unoptimized
-              />
+              <div className={`relative w-full h-[60%] flex items-center justify-center ${logo.width}`}>
+                <Image
+                  src={logo.src}
+                  alt={logo.alt}
+                  fill
+                  className="object-contain"
+                  priority
+                  unoptimized
+                />
+              </div>
             </div>
           ))}
         </div>
