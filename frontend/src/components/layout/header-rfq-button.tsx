@@ -46,7 +46,7 @@ export function HeaderRfqButton({ label }: HeaderRfqButtonProps) {
       href="/quick-order"
       className={cn(
         buttonVariants({ variant: 'primary', size: 'sm' }),
-        'hidden h-[42px] items-center px-5 text-[13px] sm:text-[14px] font-semibold shadow-xs sm:inline-flex transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]'
+        'hidden h-[42px] items-center px-5 text-[13px] sm:text-[14px] font-semibold shadow-xs lg:inline-flex transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]'
       )}
     >
       <span>{label}</span>

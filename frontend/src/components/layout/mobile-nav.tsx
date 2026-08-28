@@ -44,7 +44,7 @@ export function MobileNav({ items }: MobileNavProps) {
   };
 
   const menuContent = open && (
-        <div className="fixed inset-0 z-[9999] md:hidden">
+        <div className="fixed inset-0 z-[9999] lg:hidden">
           {/* Backdrop */}
           <div className="absolute inset-0 bg-black/40" onClick={() => setOpen(false)} />
           {/* Sheet from bottom */}
@@ -171,11 +171,11 @@ export function MobileNav({ items }: MobileNavProps) {
 
   return (
     <>
-      {/* Hamburger button — visible below md */}
+      {/* Hamburger button — visible below lg */}
       <button
         type="button"
         aria-label="Menu"
-        className="flex h-10 w-10 items-center justify-center text-primary md:hidden"
+        className="flex h-10 w-10 items-center justify-center text-primary lg:hidden"
         onClick={() => setOpen(true)}
       >
         <Menu className="h-6 w-6" />

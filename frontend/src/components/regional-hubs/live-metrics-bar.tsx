@@ -18,10 +18,10 @@ export default async function LiveMetricsBar() {
           </div>
         </div>
 
-        {/* Metrics Row */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 rounded-[3px] border border-slate-300 bg-white shadow-sm divide-y md:divide-y-0 lg:divide-x divide-slate-200">
+        {/* Metrics Row - Split into individual separate cards with gap */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
           {/* Metric 1: Orders */}
-          <div className="group relative p-6 flex items-center gap-4 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:scale-[1.02] hover:bg-blue-50/80 cursor-default rounded-[3px]">
+          <div className="group relative p-6 flex items-center gap-4 bg-white border border-slate-300 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:scale-[1.02] hover:bg-blue-50/80 cursor-default rounded-[3px]">
             <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg transition-colors duration-200 group-hover:bg-blue-100 group-hover:shadow-sm">
               <FileText className="h-[28px] w-[28px] text-brand transition-colors duration-200 group-hover:text-blue-700" />
             </div>
@@ -48,7 +48,7 @@ export default async function LiveMetricsBar() {
           </div>
 
           {/* Metric 2: Delivery */}
-          <div className="group p-6 flex items-center gap-4 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:scale-[1.02] hover:bg-amber-50/80 cursor-default rounded-[3px]">
+          <div className="group p-6 flex items-center gap-4 bg-white border border-slate-300 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:scale-[1.02] hover:bg-amber-50/80 cursor-default rounded-[3px]">
             <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg transition-colors duration-200 group-hover:bg-amber-100 group-hover:shadow-sm">
               <Clock className="h-[28px] w-[28px] text-brand transition-colors duration-200 group-hover:text-amber-700" />
             </div>
@@ -72,7 +72,7 @@ export default async function LiveMetricsBar() {
           </div>
 
           {/* Metric 3: Vehicles */}
-          <div className="group p-6 flex items-center gap-4 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:scale-[1.02] hover:bg-emerald-50/80 cursor-default rounded-[3px]">
+          <div className="group p-6 flex items-center gap-4 bg-white border border-slate-300 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:scale-[1.02] hover:bg-emerald-50/80 cursor-default rounded-[3px]">
             <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg transition-colors duration-200 group-hover:bg-emerald-100 group-hover:shadow-sm">
               <Truck className="h-[28px] w-[28px] text-brand transition-colors duration-200 group-hover:text-emerald-700" />
             </div>
@@ -95,7 +95,7 @@ export default async function LiveMetricsBar() {
           </div>
 
           {/* Metric 4: Warehouse */}
-          <div className="group p-6 flex items-center gap-4 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:scale-[1.02] hover:bg-purple-50/80 cursor-default rounded-[3px]">
+          <div className="group p-6 flex items-center gap-4 bg-white border border-slate-300 shadow-sm transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:scale-[1.02] hover:bg-purple-50/80 cursor-default rounded-[3px]">
             <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-lg transition-colors duration-200 group-hover:bg-purple-100 group-hover:shadow-sm">
               <Warehouse className="h-[28px] w-[28px] text-brand transition-colors duration-200 group-hover:text-purple-700" />
             </div>

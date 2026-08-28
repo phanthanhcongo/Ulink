@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ChevronLeft, ChevronRight, User } from 'lucide-react';
 import Image from 'next/image';
 
@@ -118,28 +118,21 @@ export default function TestimonialCarousel({ labels }: TestimonialCarouselProps
   ];
 
   // Extended array for infinite looping
-  // Original array indices mapping in extended list:
-  // [S3, S4, S1, S2, S3, S4, S1, S2]
-  // Index 0: S3 (Clone)
-  // Index 1: S4 (Clone)
-  // Index 2: S1 (Original Start)
-  // Index 3: S2 (Original)
-  // Index 4: S3 (Original)
-  // Index 5: S4 (Original End)
-  // Index 6: S1 (Clone)
-  // Index 7: S2 (Clone)
+  // [T3, T4, T1, T2, T3, T4, T1, T2]
   const extendedTestimonials = [
-    testimonials[2], // S3
-    testimonials[3], // S4
+    testimonials[2], // T3
+    testimonials[3], // T4
     ...testimonials,
-    testimonials[0], // S1
-    testimonials[1]  // S2
+    testimonials[0], // T1
+    testimonials[1]  // T2
   ];
 
-  const [activeIndex, setActiveIndex] = useState(2); // Start at original S1
-  const [isTransitioning, setIsTransitioning] = useState(true);
-  const [isJumping, setIsJumping] = useState(false);
+  const [activeIndex, setActiveIndex] = useState(2); // Starts at real T1 (index 2)
   const [isMobile, setIsMobile] = useState(false);
+  const [isDragging, setIsDragging] = useState(false);
+  const [disableTransition, setDisableTransition] = useState(false);
+  const [dragOffset, setDragOffset] = useState(0);
+  const dragStart = useRef(0);
 
   useEffect(() => {
     const handleResize = () => {
@@ -150,46 +143,119 @@ export default function TestimonialCarousel({ labels }: TestimonialCarouselProps
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Handle endless loop resets after sliding animation concludes
+  // Reset coordinates instantly after transitioning into clones
+  const handleTransitionEnd = () => {
+    if (activeIndex >= 6) {
+      setDisableTransition(true);
+      setActiveIndex(activeIndex - 4); // Loops back to 2 (T1) or 3 (T2)
+    } else if (activeIndex <= 1) {
+      setDisableTransition(true);
+      setActiveIndex(activeIndex + 4); // Loops back to 5 (T4) or 4 (T3)
+    }
+  };
+
+  // Re-enable CSS transition after coordinates jump
   useEffect(() => {
-    if (activeIndex === 6) {
-      setIsJumping(true);
+    if (disableTransition) {
       const timer = setTimeout(() => {
-        setIsTransitioning(false);
-        setActiveIndex(2); // Reset to real S1
-        setTimeout(() => {
-          setIsTransitioning(true);
-          setIsJumping(false);
-        }, 20);
-      }, 500);
+        setDisableTransition(false);
+      }, 20);
       return () => clearTimeout(timer);
+    }
+  }, [disableTransition]);
+
+  // Autoplay every 3s
+  useEffect(() => {
+    if (isDragging || disableTransition) return;
+    const interval = setInterval(() => {
+      setActiveIndex((prev) => prev + 1);
+    }, 3000);
+    return () => clearInterval(interval);
+  }, [isDragging, disableTransition]);
+
+  // Real-time Drag & Touch swiping logic
+  const handleDragStart = (clientX: number) => {
+    if (disableTransition) return;
+    setIsDragging(true);
+    dragStart.current = clientX;
+  };
+
+  const handleDragMove = (clientX: number) => {
+    if (!isDragging) return;
+    const diff = clientX - dragStart.current;
+    setDragOffset(diff);
+  };
+
+  const handleDragEnd = () => {
+    if (!isDragging) return;
+    setIsDragging(false);
+
+    const threshold = 75; // px threshold
+    if (sliderRef.current) {
+      const width = sliderRef.current.clientWidth;
+      const itemWidth = isMobile ? width : (width / 2);
+      const dragSlides = Math.round(dragOffset / itemWidth);
+
+      if (dragSlides !== 0) {
+        setActiveIndex((prev) => prev - dragSlides);
+      } else if (dragOffset < -threshold) {
+        setActiveIndex((prev) => prev + 1);
+      } else if (dragOffset > threshold) {
+        setActiveIndex((prev) => prev - 1);
+      }
     }
 
-    if (activeIndex === 1) {
-      setIsJumping(true);
-      const timer = setTimeout(() => {
-        setIsTransitioning(false);
-        setActiveIndex(5); // Reset to real S4
-        setTimeout(() => {
-          setIsTransitioning(true);
-          setIsJumping(false);
-        }, 20);
-      }, 500);
-      return () => clearTimeout(timer);
+    setDragOffset(0);
+  };
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    handleDragStart(e.clientX);
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (isDragging) {
+      e.preventDefault();
+      handleDragMove(e.clientX);
     }
-  }, [activeIndex]);
+  };
+
+  const handleMouseUp = () => {
+    handleDragEnd();
+  };
+
+  const handleMouseLeave = () => {
+    if (isDragging) handleDragEnd();
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    handleDragStart(e.touches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    handleDragMove(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    handleDragEnd();
+  };
 
   const nextSlide = () => {
-    if (isJumping) return;
+    if (disableTransition) return;
     setActiveIndex((prev) => prev + 1);
   };
 
   const prevSlide = () => {
-    if (isJumping) return;
+    if (disableTransition) return;
     setActiveIndex((prev) => prev - 1);
   };
 
+  const goToSlide = (index: number) => {
+    if (disableTransition) return;
+    setActiveIndex(index + 2);
+  };
+
   const activeDotIndex = (activeIndex - 2 + testimonials.length) % testimonials.length;
+  const sliderRef = useRef<HTMLDivElement | null>(null);
 
   return (
     <section className="w-full bg-[#F4F6F9] py-16 sm:py-20 border-t border-slate-200/60 overflow-hidden">
@@ -212,26 +278,38 @@ export default function TestimonialCarousel({ labels }: TestimonialCarouselProps
           {/* Left Arrow */}
           <button
             onClick={prevSlide}
-            className="absolute left-0 lg:-left-6 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-white/80 hover:bg-white text-slate-600 transition-colors shadow-sm border border-slate-100 focus:outline-none"
+            className="absolute left-0 lg:-left-6 z-20 hidden md:flex h-10 w-10 items-center justify-center rounded-full bg-white/80 hover:bg-white text-slate-600 transition-colors shadow-sm border border-slate-100 focus:outline-none"
             aria-label="Previous slide"
           >
             <ChevronLeft className="h-6 w-6 stroke-[2.5]" />
           </button>
 
           {/* Slider Content Wrapper */}
-          <div className="w-full overflow-hidden max-w-[1100px] px-6">
+          <div 
+            ref={sliderRef}
+            className="w-full overflow-hidden max-w-[1100px] px-6 py-6 -my-6 select-none cursor-grab active:cursor-grabbing"
+          >
             <div
-              className={`flex ${isTransitioning ? 'transition-transform duration-500 ease-out' : ''} -mx-4`}
+              onMouseDown={handleMouseDown}
+              onMouseMove={handleMouseMove}
+              onMouseUp={handleMouseUp}
+              onMouseLeave={handleMouseLeave}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+              onTransitionEnd={handleTransitionEnd}
+              className={`flex -mx-4 ${isDragging || disableTransition ? 'transition-none' : 'transition-transform duration-500'}`}
               style={{
-                transform: `translateX(-${activeIndex * (isMobile ? 100 : 50)}%)`
+                transform: `translateX(calc(-${activeIndex * (isMobile ? 100 : 50)}% + ${dragOffset}px))`,
+                transitionTimingFunction: isDragging || disableTransition ? 'none' : 'cubic-bezier(0.25, 1, 0.5, 1)'
               }}
             >
               {extendedTestimonials.map((item, idx) => (
                 <div
                   key={`${item.id}-${idx}`}
-                  className="w-full md:w-1/2 shrink-0 px-4"
+                  className="w-full md:w-1/2 shrink-0 px-4 flex flex-col"
                 >
-                  <div className="group bg-white rounded-[3px] border border-slate-100 shadow-sm p-5 sm:p-8 flex flex-col justify-between items-center text-center min-h-[360px] md:min-h-[380px] h-auto transition-all duration-300 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:-translate-y-1 hover:scale-[1.02]">
+                  <div className="group bg-white rounded-[3px] border border-slate-100 shadow-sm p-5 sm:p-8 flex flex-col justify-between items-center text-center min-h-[360px] md:min-h-[380px] h-full transition-all duration-300 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:-translate-y-1 hover:scale-[1.02]">
                     {/* Company Logo & Name */}
                     <div className="mb-4 flex justify-center h-8 shrink-0">{item.logo}</div>
 
@@ -257,7 +335,7 @@ export default function TestimonialCarousel({ labels }: TestimonialCarouselProps
           {/* Right Arrow */}
           <button
             onClick={nextSlide}
-            className="absolute right-0 lg:-right-6 z-20 flex h-10 w-10 items-center justify-center rounded-full bg-white/80 hover:bg-white text-slate-600 transition-colors shadow-sm border border-slate-100 focus:outline-none"
+            className="absolute right-0 lg:-right-6 z-20 hidden md:flex h-10 w-10 items-center justify-center rounded-full bg-white/80 hover:bg-white text-slate-600 transition-colors shadow-sm border border-slate-100 focus:outline-none"
             aria-label="Next slide"
           >
             <ChevronRight className="h-6 w-6 stroke-[2.5]" />
@@ -269,7 +347,7 @@ export default function TestimonialCarousel({ labels }: TestimonialCarouselProps
           {testimonials.map((_, index) => (
             <button
               key={index}
-              onClick={() => setActiveIndex(index + 2)}
+              onClick={() => goToSlide(index)}
               className={`h-2 w-2 rounded-full transition-all duration-300 ${
                 activeDotIndex === index ? 'bg-brand w-4' : 'bg-slate-300'
               }`}

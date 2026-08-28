@@ -21,6 +21,7 @@ const DEFAULT_CLUSTERS: ClusterMarker[] = [
   { id: '04', name: 'Bình Dương', subName: 'VSIP I, II, III', lat: 10.95, lon: 106.83, num: '04' }
 ];
 
+// Projection settings for the SVG map
 const PAD = 15;
 const VIEW_W = 380;
 const VIEW_H = 580;
@@ -36,6 +37,19 @@ function geoToSvg(lat: number, lon: number): { x: number; y: number } {
   return { x, y };
 }
 
+function computeListTargets(count: number): number[] {
+  if (count <= 0) return [];
+  if (count === 1) return [VIEW_H / 2];
+
+  const containerHeight = 580;
+  const paddingY = 80;
+  const usable = containerHeight - 2 * paddingY;
+  const step = usable / (count - 1);
+  const scale = VIEW_H / containerHeight;
+
+  return Array.from({ length: count }, (_, i) => Math.round((paddingY + i * step) * scale));
+}
+
 interface VietnamMapProps {
   className?: string;
   locale?: string;
@@ -47,6 +61,7 @@ export function VietnamMap({ className, locale = 'vi', hubs = [] }: VietnamMapPr
     if (!hubs || hubs.length === 0) return DEFAULT_CLUSTERS;
     
     return hubs.map((hub, idx) => {
+      // Parse coordinates
       let lat = 21.0;
       let lon = 105.8;
       if (hub.coordinates) {
@@ -61,11 +76,13 @@ export function VietnamMap({ className, locale = 'vi', hubs = [] }: VietnamMapPr
         }
       }
       
+      // Get translated name of hub
       const nameTranslation = hub.translations?.find(
         (t: any) => t.languages_code === locale || t.languages_code.startsWith(locale)
       );
       const hubName = nameTranslation?.name || hub.name;
       
+      // Get list of industrial zone names
       const zoneNames = hub.industrial_zones?.map((z: any) => {
         const zTrans = z.translations?.find(
           (t: any) => t.languages_code === locale || t.languages_code.startsWith(locale)
@@ -87,6 +104,7 @@ export function VietnamMap({ className, locale = 'vi', hubs = [] }: VietnamMapPr
     });
   }, [hubs, locale]);
 
+  const listTargets = computeListTargets(activeMarkers.length);
   const [hoveredHub, setHoveredHub] = useState<string | null>(null);
 
   const t = {
@@ -112,49 +130,77 @@ export function VietnamMap({ className, locale = 'vi', hubs = [] }: VietnamMapPr
       {/* Subtle Grid Background */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.05)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
 
-      {/* Outermost status badge positioned at the absolute top-center of the entire section */}
-      <div className="absolute top-4 left-1/2 -translate-x-1/2 z-20">
-        <span className="inline-flex items-center gap-2 bg-white/10 text-white border border-white/20 text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider backdrop-blur-xs">
-          <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-          {t.networkOnline}
-        </span>
-      </div>
-
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 relative z-10">
-        
-        {/* Main 2-Column Grid on Tablet/Desktop to align metric cards and hub list horizontally */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 lg:gap-x-12 gap-y-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           {/* ════════════════════════════════════════════════════════════
-              1. HEADER (Title & Description)
-              - Mobile: Order 1, Tablet/Desktop: Col 1, Row 1
+              LEFT COLUMN: HEADER & STATS CARDS
              ════════════════════════════════════════════════════════════ */}
-          <div className="order-1 space-y-4 w-full">
-            <span className="text-xs font-bold text-blue-200 uppercase tracking-widest block">
-              {t.eyebrow}
-            </span>
-            <h2 className="text-2xl sm:text-3xl xl:text-4xl font-extrabold leading-tight tracking-tight">
-              {t.title}
-            </h2>
-            <p className="text-sm text-blue-100/80 leading-relaxed">
-              {t.desc}
-            </p>
+          <div className="lg:col-span-4 flex flex-col justify-between space-y-8">
+            <div className="space-y-4">
+              <span className="text-xs font-bold text-blue-200 uppercase tracking-widest block">
+                {t.eyebrow}
+              </span>
+              <h2 className="text-2xl sm:text-3xl xl:text-4xl font-extrabold leading-tight tracking-tight">
+                {t.title}
+              </h2>
+              <p className="text-sm text-blue-100/80 leading-relaxed max-w-md">
+                {t.desc}
+              </p>
+            </div>
+
+            {/* White Stats Cards */}
+            <div className="space-y-4 max-w-sm w-full">
+              {/* Stat 1 */}
+              <div className="group bg-white rounded-[4px] p-4 flex items-start gap-4 shadow-lg border border-white/10 transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-600 transition-colors duration-200 group-hover:bg-[#1769E2] group-hover:text-white">
+                  <MapPin className="h-5 w-5" />
+                </div>
+                <div className="flex flex-col text-left">
+                  <span className="text-xs font-semibold text-slate-500 transition-colors duration-200 group-hover:text-[#1769E2]">{t.distanceTitle}</span>
+                  <span className="text-xl font-extrabold text-slate-900 mt-0.5 transition-colors duration-200 group-hover:text-[#1769E2]">{t.distanceVal}</span>
+                  <span className="text-[11px] text-slate-400 font-medium mt-0.5">{t.distanceSub}</span>
+                </div>
+              </div>
+
+              {/* Stat 2 */}
+              <div className="group bg-white rounded-[4px] p-4 flex items-start gap-4 shadow-lg border border-white/10 transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-600 transition-colors duration-200 group-hover:bg-[#1769E2] group-hover:text-white">
+                  <Truck className="h-5 w-5" />
+                </div>
+                <div className="flex flex-col text-left">
+                  <span className="text-xs font-semibold text-slate-500 transition-colors duration-200 group-hover:text-[#1769E2]">{t.slaTitle}</span>
+                  <span className="text-xl font-extrabold text-slate-900 mt-0.5 transition-colors duration-200 group-hover:text-[#1769E2]">{t.slaVal}</span>
+                  <span className="text-[11px] text-slate-400 font-medium mt-0.5">{t.slaSub}</span>
+                </div>
+              </div>
+
+              {/* Stat 3 */}
+              <div className="group bg-white rounded-[4px] p-4 flex items-start gap-4 shadow-lg border border-white/10 transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-600 transition-colors duration-200 group-hover:bg-[#1769E2] group-hover:text-white">
+                  <Users className="h-5 w-5" />
+                </div>
+                <div className="flex flex-col text-left">
+                  <span className="text-xs font-semibold text-slate-500 transition-colors duration-200 group-hover:text-[#1769E2]">{t.partnerTitle}</span>
+                  <span className="text-xl font-extrabold text-slate-900 mt-0.5 transition-colors duration-200 group-hover:text-[#1769E2]">{t.partnerVal}</span>
+                  <span className="text-[11px] text-slate-400 font-medium mt-0.5">{t.partnerSub}</span>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* ════════════════════════════════════════════════════════════
-              2. MAP CONTAINER
-              - Mobile: Order 3 (Below Stats), Tablet/Desktop: Order 2 (Col 2, Row 1)
+              MIDDLE COLUMN: MAP WITH TECHNICAL FRAME CORNERS
              ════════════════════════════════════════════════════════════ */}
-          <div className="order-3 md:order-2 relative flex items-center justify-center min-h-[480px] xl:min-h-[520px] w-full">
+          <div className="lg:col-span-4 relative flex items-center justify-center min-h-[500px] xl:min-h-[580px]">
             {/* Tech frame corners */}
             <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-white/40 rounded-tl-[2px] pointer-events-none" />
             <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-white/40 rounded-tr-[2px] pointer-events-none" />
-            
             <div className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-white/40 rounded-bl-[2px] pointer-events-none" />
             <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-white/40 rounded-br-[2px] pointer-events-none" />
 
             {/* Map Silhouette */}
-            <div className="relative w-[320px] h-[480px] shrink-0">
+            <div className="relative w-[340px] h-[520px] shrink-0">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/illustrations/vietnam-provinces.svg"
@@ -164,7 +210,36 @@ export function VietnamMap({ className, locale = 'vi', hubs = [] }: VietnamMapPr
                 draggable={false}
               />
 
-              {/* Glowing pulsating hub dots */}
+              {/* Connector lines (hidden on mobile) */}
+              <svg
+                viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                className="absolute inset-0 h-full w-full overflow-visible pointer-events-none hidden lg:block"
+              >
+                {activeMarkers.map((cluster, i) => {
+                  const { x, y } = geoToSvg(cluster.lat, cluster.lon);
+                  const targetY = listTargets[i];
+                  const targetX = VIEW_W + 100;
+                  const isHovered = hoveredHub === cluster.id;
+                  
+                  const d = `M ${x} ${y} C ${(x + targetX) / 2} ${y}, ${(x + targetX) / 2} ${targetY}, ${targetX} ${targetY}`;
+                  return (
+                    <path
+                      key={`line-${cluster.id}`}
+                      d={d}
+                      fill="none"
+                      stroke={isHovered ? '#00FFFF' : '#ffffff'}
+                      strokeWidth={isHovered ? '2' : '1.2'}
+                      strokeDasharray={isHovered ? 'none' : '4 3'}
+                      opacity={isHovered ? '0.9' : '0.5'}
+                      className="transition-all duration-300"
+                    />
+                  );
+                })}
+              </svg>
+
+              {/* Glowing pulsating hub dots (always visible) */}
               <svg
                 viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
                 fill="none"
@@ -203,52 +278,17 @@ export function VietnamMap({ className, locale = 'vi', hubs = [] }: VietnamMapPr
           </div>
 
           {/* ════════════════════════════════════════════════════════════
-              3. STATS CARDS (White)
-              - Mobile: Order 2, Tablet/Desktop: Order 3 (Col 1, Row 2 - aligned with Hubs)
+              RIGHT COLUMN: NETWORK STATUS & HUB CARDS
              ════════════════════════════════════════════════════════════ */}
-          <div className="order-2 md:order-3 space-y-4 w-full">
-            {/* Stat 1 */}
-            <div className="group bg-white rounded-[4px] p-5 flex items-start gap-4 shadow-lg border border-white/10 transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-600 transition-colors duration-200 group-hover:bg-[#1769E2] group-hover:text-white">
-                <MapPin className="h-5 w-5" />
-              </div>
-              <div className="flex flex-col text-left">
-                <span className="text-xs font-semibold text-slate-500 transition-colors duration-200 group-hover:text-[#1769E2]">{t.distanceTitle}</span>
-                <span className="text-xl font-extrabold text-slate-900 mt-0.5 transition-colors duration-200 group-hover:text-[#1769E2]">{t.distanceVal}</span>
-                <span className="text-[11px] text-slate-400 font-medium mt-0.5">{t.distanceSub}</span>
-              </div>
+          <div className="lg:col-span-4 flex flex-col justify-between h-full space-y-6">
+            
+            {/* Status Badge */}
+            <div className="flex justify-start lg:justify-end">
+              <span className="inline-flex items-center gap-2 bg-white/10 text-white border border-white/20 text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider backdrop-blur-xs">
+                <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+                {t.networkOnline}
+              </span>
             </div>
-
-            {/* Stat 2 */}
-            <div className="group bg-white rounded-[4px] p-5 flex items-start gap-4 shadow-lg border border-white/10 transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-600 transition-colors duration-200 group-hover:bg-[#1769E2] group-hover:text-white">
-                <Truck className="h-5 w-5" />
-              </div>
-              <div className="flex flex-col text-left">
-                <span className="text-xs font-semibold text-slate-500 transition-colors duration-200 group-hover:text-[#1769E2]">{t.slaTitle}</span>
-                <span className="text-xl font-extrabold text-slate-900 mt-0.5 transition-colors duration-200 group-hover:text-[#1769E2]">{t.slaVal}</span>
-                <span className="text-[11px] text-slate-400 font-medium mt-0.5">{t.slaSub}</span>
-              </div>
-            </div>
-
-            {/* Stat 3 */}
-            <div className="group bg-white rounded-[4px] p-5 flex items-start gap-4 shadow-lg border border-white/10 transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-50 text-blue-600 transition-colors duration-200 group-hover:bg-[#1769E2] group-hover:text-white">
-                <Users className="h-5 w-5" />
-              </div>
-              <div className="flex flex-col text-left">
-                <span className="text-xs font-semibold text-slate-500 transition-colors duration-200 group-hover:text-[#1769E2]">{t.partnerTitle}</span>
-                <span className="text-xl font-extrabold text-slate-900 mt-0.5 transition-colors duration-200 group-hover:text-[#1769E2]">{t.partnerVal}</span>
-                <span className="text-[11px] text-slate-400 font-medium mt-0.5">{t.partnerSub}</span>
-              </div>
-            </div>
-          </div>
-
-          {/* ════════════════════════════════════════════════════════════
-              4. HUB CARDS LIST (Blue)
-              - Mobile: Order 4, Tablet/Desktop: Order 4 (Col 2, Row 2 - aligned with Stats)
-             ════════════════════════════════════════════════════════════ */}
-          <div className="order-4 flex flex-col justify-between h-full space-y-4 w-full">
 
             {/* Hub Cards List */}
             <div className="space-y-4 w-full">
@@ -281,16 +321,16 @@ export function VietnamMap({ className, locale = 'vi', hubs = [] }: VietnamMapPr
                     </div>
 
                     {/* Arrow Icon */}
-                    <ArrowRight className="h-4 w-4 shrink-0 transition-transform duration-300 text-white/50 group-hover:text-white group-hover:translate-x-0.5" />
+                    <ArrowRight className={`h-4 w-4 shrink-0 transition-transform duration-300 text-white/50 group-hover:text-white group-hover:translate-x-0.5`} />
                   </div>
                 );
               })}
             </div>
 
             {/* Footer Text */}
-            <div className="text-left pt-4">
+            <div className="text-left lg:text-right pt-4">
               <span className="text-[10px] font-extrabold text-blue-200/60 uppercase tracking-widest block">
-                ULINK INDUSTRIAL NETWORK // LIVE DATA • {String(activeMarkers.length).padStart(2, '0')} HUBS
+                ULINK INDUSTRIAL NETWORK // LIVE DATA • 04 HUBS
               </span>
             </div>
           </div>

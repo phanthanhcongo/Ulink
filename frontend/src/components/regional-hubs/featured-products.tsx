@@ -156,10 +156,10 @@ export default async function FeaturedProducts({ products, locale }: FeaturedPro
               <div className="flex items-center gap-6 mt-auto border-t border-slate-100 pt-4">
                 <Link
                   href={gloveSlug}
-                  className="flex items-center justify-center gap-2 bg-brand hover:bg-brand-strong text-white font-bold text-[13px] sm:text-[14px] px-6 py-2.5 rounded-[3px] shadow-sm transition-all min-h-[40px]"
+                  className="flex items-center justify-center gap-1.5 bg-brand hover:bg-brand-strong text-white font-bold text-[12px] sm:text-[13px] px-4 py-2 rounded-[3px] shadow-sm transition-all whitespace-nowrap"
                 >
                   {t('featuredProducts.rfqButton')}
-                  <ArrowRight className="h-4.5 w-4.5" />
+                  <ArrowRight className="h-4 w-4" />
                 </Link>
                 <a
                   href="/documents/lien-he-nha-phat-trien.pdf"
@@ -255,10 +255,10 @@ export default async function FeaturedProducts({ products, locale }: FeaturedPro
               <div className="flex items-center gap-6 mt-auto border-t border-slate-100 pt-4">
                 <Link
                   href={filmSlug}
-                  className="flex items-center justify-center gap-2 bg-brand hover:bg-brand-strong text-white font-bold text-[13px] sm:text-[14px] px-6 py-2.5 rounded-[3px] shadow-sm transition-all min-h-[40px]"
+                  className="flex items-center justify-center gap-1.5 bg-brand hover:bg-brand-strong text-white font-bold text-[12px] sm:text-[13px] px-4 py-2 rounded-[3px] shadow-sm transition-all whitespace-nowrap"
                 >
                   {t('featuredProducts.rfqButton')}
-                  <ArrowRight className="h-4.5 w-4.5" />
+                  <ArrowRight className="h-4 w-4" />
                 </Link>
                 <a
                   href="/documents/lien-he-nha-phat-trien.pdf"
@@ -354,10 +354,10 @@ export default async function FeaturedProducts({ products, locale }: FeaturedPro
               <div className="flex items-center gap-6 mt-auto border-t border-slate-100 pt-4">
                 <Link
                   href={tapeSlug}
-                  className="flex items-center justify-center gap-2 bg-brand hover:bg-brand-strong text-white font-bold text-[13px] sm:text-[14px] px-6 py-2.5 rounded-[3px] shadow-sm transition-all min-h-[40px]"
+                  className="flex items-center justify-center gap-1.5 bg-brand hover:bg-brand-strong text-white font-bold text-[12px] sm:text-[13px] px-4 py-2 rounded-[3px] shadow-sm transition-all whitespace-nowrap"
                 >
                   {t('featuredProducts.rfqButton')}
-                  <ArrowRight className="h-4.5 w-4.5" />
+                  <ArrowRight className="h-4 w-4" />
                 </Link>
                 <a
                   href="/documents/lien-he-nha-phat-trien.pdf"
@@ -454,10 +454,10 @@ export default async function FeaturedProducts({ products, locale }: FeaturedPro
                 <div className="flex items-center gap-6 mt-auto border-t border-slate-100 pt-4">
                   <Link
                     href={fourthSlug}
-                    className="flex items-center justify-center gap-2 bg-brand hover:bg-brand-strong text-white font-bold text-[13px] sm:text-[14px] px-6 py-2.5 rounded-[3px] shadow-sm transition-all min-h-[40px]"
+                    className="flex items-center justify-center gap-1.5 bg-brand hover:bg-brand-strong text-white font-bold text-[12px] sm:text-[13px] px-4 py-2 rounded-[3px] shadow-sm transition-all whitespace-nowrap"
                   >
                     {t('featuredProducts.rfqButton')}
-                    <ArrowRight className="h-4.5 w-4.5" />
+                    <ArrowRight className="h-4 w-4" />
                   </Link>
                   <a
                     href="/documents/lien-he-nha-phat-trien.pdf"
