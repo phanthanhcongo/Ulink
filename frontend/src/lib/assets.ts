@@ -83,6 +83,7 @@ export const ASSETS = {
     news2: '/images/home/news/image (10).png',
     news3: '/images/home/news/image (11).png',
     news4: '/images/home/news/image (12).png',
+    news4Eco: '/images/home/news/news4_eco.jpg',
     news5: '/images/home/news/image (13).png',
     news6: '/images/home/news/image (14).png',
     /** Resource section images (Document icons) */

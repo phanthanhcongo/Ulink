@@ -152,7 +152,7 @@ export async function ProductCategories() {
       </div>
 
       {/* BOTTOM ROW: 3 FEATURE CARDS */}
-      <div className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-6 xl:gap-8">
+      <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-6 xl:gap-8">
         {bottomThreeCards.map((card) => (
           <Link
             key={card.id}
@@ -160,20 +160,20 @@ export async function ProductCategories() {
             className={`ui-card-hover flex flex-col overflow-hidden rounded-[3px] border border-slate-200 bg-white border-l-4 sm:border-l-[5px] ${card.accentBorder} shadow-sm`}
           >
             {/* Top Image Banner */}
-            <div className="relative h-[220px] w-full overflow-hidden bg-slate-50 sm:h-[260px]">
+            <div className="relative h-[280px] w-full overflow-hidden bg-slate-50 sm:h-[340px]">
               <Image
                 src={card.image}
                 alt={card.title}
                 fill
-                sizes="(max-width: 768px) 100vw, 33vw"
+                sizes="(max-width: 1024px) 100vw, 33vw"
                 className="object-cover"
               />
             </div>
 
             {/* Card Content Body */}
-            <div className="flex flex-1 flex-col p-5 sm:p-6 lg:p-6 xl:p-7">
+            <div className="flex flex-1 flex-col p-5 sm:p-6 lg:p-6 xl:p-8">
               <div>
-                <h3 className="text-[15px] font-bold text-slate-900 leading-snug sm:text-[16px] md:text-[18px] lg:text-[22px] xl:text-[24px] group-hover:text-brand transition-colors">
+                <h3 className="text-[16px] font-bold text-slate-900 sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] group-hover:text-brand transition-colors">
                   {card.title}
                 </h3>
                 <div className="my-3 border-b border-dashed border-slate-300" />

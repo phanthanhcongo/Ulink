@@ -107,6 +107,18 @@ export function ResourcesNews() {
         role: 'Giám đốc Sản xuất',
         avatar: ASSETS.home.avatar1
       }
+    },
+    {
+      slug: 'news-4',
+      date: t('card4Date'),
+      title: t('card4Title'),
+      image: ASSETS.home.news4Eco,
+      category: t('doc2Category') || 'Tài liệu kỹ thuật',
+      author: {
+        name: 'Phạm Thanh Sơn',
+        role: 'Chuyên viên kỹ thuật',
+        avatar: ASSETS.home.avatar3
+      }
     }
   ];
 
@@ -130,8 +142,8 @@ export function ResourcesNews() {
         </h3>
       </div>
 
-      {/* ── 3. 3 NEWS CARDS GRID ── */}
-      <div ref={newsRef} className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3 lg:gap-8">
+      {/* ── 3. 4 NEWS CARDS GRID ── */}
+      <div ref={newsRef} className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4 lg:gap-8">
         {newsData.map((news, idx) => (
           <div
             key={news.slug}
