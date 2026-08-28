@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { setRequestLocale } from 'next-intl/server';
 import {
   CategoryProductsClient,
@@ -16,6 +16,10 @@ interface PageProps {
   params: Promise<{
     locale: string;
   }>;
+  searchParams?: Promise<{
+    category?: string;
+    q?: string;
+  }>;
 }
 
 const ALL_CATEGORIES_LIST = [
@@ -29,17 +33,25 @@ const ALL_CATEGORIES_LIST = [
   { id: 8, name: 'Hóa chất phòng sạch', slug: 'cleanroom-chemicals' }
 ];
 
-export default async function ProductsCatalogPage({ params }: PageProps) {
+export default async function ProductsCatalogPage({ params, searchParams }: PageProps) {
   const { locale } = await params;
+  const resolvedSearchParams = await searchParams;
+  const categoryParam = resolvedSearchParams?.category || '';
+  const queryParam = resolvedSearchParams?.q || '';
   setRequestLocale(locale);
 
   const { products: dbProducts } = await fetchProducts({ limit: 100 });
   const dbCategories = await fetchProductCategories();
 
+  const selectedCat = dbCategories.find((c) => c.slug === categoryParam) ||
+    ALL_CATEGORIES_LIST.find((c) => c.slug === categoryParam);
+
   const categoryInfo: CategoryInfo = {
-    id: 0,
-    name: locale === 'vi' ? 'Danh mục Sản phẩm B2B' : 'B2B Product Catalog',
-    slug: 'all',
+    id: selectedCat?.id || 0,
+    name: selectedCat
+      ? (getTranslatedName(selectedCat, locale) || selectedCat.name)
+      : locale === 'vi' ? 'Danh mục Sản phẩm B2B' : 'B2B Product Catalog',
+    slug: categoryParam || 'all',
     description:
       locale === 'vi'
         ? 'Tổng hợp toàn bộ hệ thống vật tư tiêu hao phòng sạch, bao bì đóng gói công nghiệp và thiết bị chống tĩnh điện ESD chính hãng ULink Industries.'
@@ -90,18 +102,20 @@ export default async function ProductsCatalogPage({ params }: PageProps) {
   const categoriesList =
     dbCategories.length > 0
       ? dbCategories.map((c) => ({
-          id: c.id,
-          name: getTranslatedName(c, locale) || c.name,
-          slug: c.slug
-        }))
+        id: c.id,
+        name: getTranslatedName(c, locale) || c.name,
+        slug: c.slug
+      }))
       : ALL_CATEGORIES_LIST;
 
   return (
-    <CategoryProductsClient
-      category={categoryInfo}
-      products={products}
-      allCategories={categoriesList}
-      locale={locale}
-    />
+    <Suspense fallback={<div className="min-h-screen bg-slate-50 p-8 flex items-center justify-center text-slate-500 font-medium">Đang tải danh mục sản phẩm...</div>}>
+      <CategoryProductsClient
+        category={categoryInfo}
+        products={products}
+        allCategories={categoriesList}
+        locale={locale}
+      />
+    </Suspense>
   );
 }

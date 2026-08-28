@@ -60,20 +60,20 @@ export default function HubSolutions({ locale }: HubSolutionsProps) {
 
   return (
     <section className="w-full bg-white py-10 lg:py-14 border-b border-slate-100">
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 flex flex-col items-center">
+      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16 flex flex-col items-center">
         
         {/* Title Area */}
         <div className="text-center max-w-[600px] w-full">
           <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-[#0F2942] mb-2 block">
             {t.eyebrow}
           </span>
-          <h2 className="text-[30px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold text-slate-900 leading-tight">
+          <h2 className="text-[22px] sm:text-[26px] md:text-[30px] lg:text-[36px] font-extrabold text-slate-900 leading-tight">
             {t.title}
           </h2>
         </div>
 
         {/* 4 Feature Columns Row */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 mt-16 max-w-[1120px] w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 mt-16 w-full">
           
           {/* Column 1: Supply Chain */}
           <div className="flex flex-col items-center text-center">

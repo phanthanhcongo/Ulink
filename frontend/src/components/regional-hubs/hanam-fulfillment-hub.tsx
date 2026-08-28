@@ -7,20 +7,20 @@ export default async function HanamFulfillmentHub() {
 
   return (
     <section className="w-full bg-white py-16 lg:py-24 border-t border-slate-100">
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 flex flex-col gap-12 lg:gap-16">
+      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16 flex flex-col gap-12 lg:gap-16">
         
         {/* Title Area */}
         <div className="text-center max-w-[900px] mx-auto w-full">
           <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-brand block mb-3">
             {t('hanamHub.eyebrow')}
           </span>
-          <h2 className="text-[26px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold text-slate-900 leading-tight max-w-[850px] mx-auto">
+          <h2 className="text-[22px] sm:text-[26px] md:text-[30px] lg:text-[36px] font-extrabold text-slate-900 leading-tight max-w-[850px] mx-auto">
             {t('hanamHub.title')}
           </h2>
         </div>
 
         {/* Content Area */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center max-w-[1120px] mx-auto w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center w-full">
           
           {/* Left Side: 4 Features & CTA */}
           <div className="lg:col-span-7 flex flex-col gap-8">

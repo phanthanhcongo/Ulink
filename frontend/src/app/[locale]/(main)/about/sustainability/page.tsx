@@ -248,7 +248,7 @@ export default async function AboutSustainabilityPage({
       
       {/* 1. HERO SECTION & BREADCRUMB */}
       <section className="bg-white py-6 md:py-10 lg:py-14 border-b border-slate-100">
-        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
+        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16">
           <AboutBreadcrumb />
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center mt-4">
@@ -257,7 +257,7 @@ export default async function AboutSustainabilityPage({
               <span className="text-[13px] font-bold text-emerald-600 tracking-wider uppercase">
                 {t.hero.eyebrow}
               </span>
-              <h1 className="text-[28px] sm:text-[38px] lg:text-[44px] xl:text-[48px] font-extrabold text-slate-900 tracking-tight leading-[1.15] mt-2 mb-4">
+              <h1 className="text-[28px] sm:text-[34px] md:text-[38px] lg:text-[42px] xl:text-[44px] font-extrabold text-slate-900 tracking-tight leading-[1.15] mt-2 mb-4">
                 {t.hero.title}
               </h1>
               <p className="text-[14px] sm:text-[16px] leading-relaxed text-slate-500 max-w-2xl font-medium">
@@ -289,14 +289,14 @@ export default async function AboutSustainabilityPage({
 
       {/* 2. ESG PERFORMANCE INDICATORS */}
       <section className="bg-slate-50 py-12 md:py-16 border-b border-slate-100">
-        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
+        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16">
           {/* Header Row */}
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
             <div>
               <span className="text-[12px] font-bold text-emerald-600 tracking-wider uppercase">
                 {t.esgStats.eyebrow}
               </span>
-              <h2 className="text-[22px] sm:text-[28px] lg:text-[32px] font-extrabold text-slate-900 mt-1">
+              <h2 className="text-[22px] sm:text-[26px] md:text-[30px] lg:text-[36px] font-extrabold text-slate-900 mt-1 leading-tight">
                 {t.esgStats.title}
               </h2>
             </div>
@@ -351,12 +351,12 @@ export default async function AboutSustainabilityPage({
 
       {/* 3. ESG STANDARD FRAMEWORK */}
       <section className="bg-white py-12 md:py-16 border-b border-slate-100">
-        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
+        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16">
           <div>
             <span className="text-[12px] font-bold text-emerald-600 tracking-wider uppercase">
               {t.framework.eyebrow}
             </span>
-            <h2 className="text-[22px] sm:text-[28px] lg:text-[32px] font-extrabold text-slate-900 mt-1 mb-8">
+            <h2 className="text-[22px] sm:text-[26px] md:text-[30px] lg:text-[36px] font-extrabold text-slate-900 mt-1 mb-8 leading-tight">
               {t.framework.title}
             </h2>
           </div>
@@ -430,14 +430,14 @@ export default async function AboutSustainabilityPage({
 
       {/* 4. UN SDGs PARTNERSHIP */}
       <section className="bg-slate-50 py-12 md:py-16 border-b border-slate-100">
-        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
+        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
             {/* Left Content */}
             <div className="lg:col-span-5 flex flex-col items-start">
               <span className="text-[12px] font-bold text-emerald-600 tracking-wider uppercase">
                 {t.sdgs.eyebrow}
               </span>
-              <h2 className="text-[22px] sm:text-[28px] lg:text-[32px] font-extrabold text-slate-900 tracking-tight leading-tight mt-1 mb-4">
+              <h2 className="text-[22px] sm:text-[26px] md:text-[30px] lg:text-[36px] font-extrabold text-slate-900 tracking-tight leading-tight mt-1 mb-4">
                 {t.sdgs.title}
               </h2>
               <p className="text-[14px] sm:text-[15px] leading-relaxed text-slate-500 font-medium">

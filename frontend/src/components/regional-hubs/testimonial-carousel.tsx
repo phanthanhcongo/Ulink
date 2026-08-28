@@ -285,7 +285,7 @@ export default function TestimonialCarousel({ labels }: TestimonialCarouselProps
           </button>
 
           {/* Slider Content Wrapper */}
-          <div 
+          <div
             ref={sliderRef}
             className="w-full overflow-hidden max-w-[1100px] px-6 py-6 -my-6 select-none cursor-grab active:cursor-grabbing"
           >
@@ -348,9 +348,8 @@ export default function TestimonialCarousel({ labels }: TestimonialCarouselProps
             <button
               key={index}
               onClick={() => goToSlide(index)}
-              className={`h-2 w-2 rounded-full transition-all duration-300 ${
-                activeDotIndex === index ? 'bg-brand w-4' : 'bg-slate-300'
-              }`}
+              className={`h-2 w-2 rounded-full transition-all duration-300 ${activeDotIndex === index ? 'bg-brand w-4' : 'bg-slate-300'
+                }`}
               aria-label={`Go to slide ${index + 1}`}
             />
           ))}

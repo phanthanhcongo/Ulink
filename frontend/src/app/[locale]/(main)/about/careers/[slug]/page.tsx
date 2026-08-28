@@ -16,7 +16,7 @@ export default async function JobDetailPage({
 
   return (
     <div className="w-full bg-white">
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 py-4">
+      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16 py-4">
         {/* Breadcrumbs */}
         {/* Breadcrumbs */}
         <Breadcrumb

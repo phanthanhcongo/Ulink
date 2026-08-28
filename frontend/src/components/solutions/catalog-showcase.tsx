@@ -1,11 +1,11 @@
 import React from 'react';
-import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 import { fetchTopCategoriesWithProducts } from '@/lib/product-data';
 import { getTranslatedName } from '@/lib/i18n-content';
 import type { Product } from '@/lib/directus';
 import ProductCard from '@/components/product/product-card';
+import { CategoryNavLink } from './category-nav-link';
 
 interface CatalogShowcaseProps {
   locale: string;
@@ -49,13 +49,14 @@ export default async function CatalogShowcase({ locale }: CatalogShowcaseProps) 
                       {categoryName}
                     </h3>
                   </div>
-                  <Link
-                    href={`/solutions/listProduct/categories/${catData.category.slug}`}
+                  <CategoryNavLink
+                    categorySlug={catData.category.slug}
+                    href="/solutions/listProduct"
                     className="group inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors"
                   >
                     {t('catalogSection.viewAll')}
                     <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
-                  </Link>
+                  </CategoryNavLink>
                 </div>
 
                 {/* Product Grid */}

@@ -30,8 +30,8 @@ max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16
 
 | Level | Mobile | `sm:` | `md:` | `lg:` / `xl:` | Weight | Usage |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| **H1 / Display** | `30px` | `38px` | `44px` | `50-52px` | `Extrabold (800)` | Hero title |
-| **H2** | `22px` | `24px` | `26px` | `28-30px` | `Extrabold (800)` | Section title |
+| **H1 / Display** | `28px` | `34px` | `38px` | `42-44px` | `Extrabold (800)` | Hero title |
+| **H2** | `22px` | `26px` | `30px` | `36px` | `Extrabold (800)` | Section title |
 | **H3** | `16px` | `18px` | `20px` | `22-24px` | `Bold (700)` | Card title |
 | **H4** | `15px` | `16px` | `17px` | `18-20px` | `Semibold (600)` | Sub-section title |
 | **Body Large** | `15px` | `16px` | — | `18px` | `Medium (500)` | Lead, Hero desc |
@@ -45,12 +45,12 @@ max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16
 
 #### H1 — Hero
 ```
-text-[30px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold leading-[1.12] tracking-tight
+text-[28px] sm:text-[34px] md:text-[38px] lg:text-[42px] xl:text-[44px] font-extrabold leading-[1.15] tracking-tight
 ```
 
 #### H2 — Section title
 ```
-text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold leading-tight
+text-[22px] sm:text-[26px] md:text-[30px] lg:text-[36px] font-extrabold leading-tight
 ```
 
 #### H3 — Card title

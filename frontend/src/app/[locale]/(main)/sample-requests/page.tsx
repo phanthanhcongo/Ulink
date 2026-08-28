@@ -35,10 +35,10 @@ export default async function SampleRequestsPage({ params: { locale } }: Props) 
     <section className="relative overflow-hidden bg-[radial-gradient(circle_at_top_left,_rgba(0,106,167,0.1),_transparent_40%),linear-gradient(180deg,_rgba(255,255,255,0.9),_rgba(248,250,252,1))] min-h-screen">
       <div className="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand/30 to-transparent" />
 
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-6 px-4 py-8 sm:px-8 sm:gap-8 lg:px-12 xl:px-16 lg:py-12">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-6 px-4 py-8 sm:px-8 sm:gap-8 lg:px-16 lg:py-12">
         <div className="max-w-3xl">
           <p className="text-[11px] font-mono uppercase tracking-[0.2em] text-brand">Portal</p>
-          <h1 className="mt-2 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+          <h1 className="mt-2 text-[28px] sm:text-[34px] md:text-[38px] lg:text-[42px] xl:text-[44px] font-bold tracking-tight text-foreground">
             {locale === 'vi'
               ? 'Yêu cầu hàng mẫu'
               : locale === 'ja'

@@ -41,11 +41,11 @@ export default async function HubTeam() {
 
   return (
     <section className="w-full bg-white py-16 sm:py-20 lg:py-24 border-t border-slate-100">
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 flex flex-col items-center gap-12 lg:gap-16">
+      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16 flex flex-col items-center gap-12 lg:gap-16">
         
         {/* Header */}
         <div className="text-center max-w-[800px] w-full">
-          <h2 className="text-[30px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold text-slate-900 leading-tight uppercase tracking-tight">
+          <h2 className="text-[22px] sm:text-[26px] md:text-[30px] lg:text-[36px] font-extrabold text-slate-900 leading-tight uppercase tracking-tight">
             {t('hubTeam.title')}
           </h2>
           <p className="mt-4 text-[13px] sm:text-[14px] leading-relaxed text-slate-500 max-w-[720px] mx-auto">
@@ -54,7 +54,7 @@ export default async function HubTeam() {
         </div>
 
         {/* Member Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 max-w-[1120px] w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 w-full">
           {members.map((member) => (
             <div key={member.id} className="flex flex-col items-center text-center group">
               

@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { ShoppingBag, ShieldCheck, Activity, Truck } from 'lucide-react';
 import { getTranslations } from 'next-intl/server';
 
+import { CategoryNavLink } from './category-nav-link';
+
 interface FeaturedProductProps {
   locale: string;
 }
@@ -109,12 +111,13 @@ export default async function FeaturedProduct({ locale }: FeaturedProductProps) 
               {t('featuredProduct.row2Desc')}
             </p>
             <div className="mt-8">
-              <Link
-                href={`/${locale}/solutions/listProduct/categories/industrial-packaging`}
+              <CategoryNavLink
+                categorySlug="industrial-packaging"
+                href="/solutions/listProduct"
                 className="inline-flex items-center justify-center rounded-[3px] bg-blue-600 px-6 py-3 text-[13px] sm:text-[14px] leading-relaxed font-semibold text-white shadow-sm hover:bg-blue-700 transition-colors"
               >
                 {t('featuredProduct.learnMore')}
-              </Link>
+              </CategoryNavLink>
             </div>
           </div>
         </div>

@@ -66,12 +66,12 @@ export default async function SolutionsPage({ params: { locale } }: SolutionsPag
         {/* Dark overlay to ensure text contrast */}
         <div className="absolute inset-0 bg-black/25 z-0" />
 
-        <div className="relative mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 z-10 py-10 lg:py-16">
+        <div className="relative mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16 z-10 py-10 lg:py-16">
          
 
           {/* Text and Button block */}
           <div className="max-w-2xl mt-4">
-            <h1 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold text-white leading-tight tracking-tight whitespace-pre-line">
+            <h1 className="text-[28px] sm:text-[34px] md:text-[38px] lg:text-[42px] xl:text-[44px] font-extrabold text-white leading-tight tracking-tight whitespace-pre-line">
               {t('heroTitle')}
             </h1>
             <p className="mt-5 text-white text-sm lg:text-base leading-relaxed max-w-xl">

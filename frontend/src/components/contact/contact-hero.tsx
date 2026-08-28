@@ -28,7 +28,7 @@ export function ContactHero() {
           <span className="inline-flex w-fit items-center rounded-full bg-blue-50 px-3.5 py-1 text-xs font-semibold text-blue-700 ring-1 ring-inset ring-blue-700/10">
             LIÊN HỆ
           </span>
-          <h1 className="text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl leading-tight">
+          <h1 className="text-[30px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold tracking-tight text-slate-900 leading-tight">
             Hub Hà Nam - Trung tâm phân phối
           </h1>
           <p className="text-sm leading-relaxed text-slate-600 sm:text-base">

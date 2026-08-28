@@ -7,14 +7,14 @@ export default async function HubOffers() {
 
   return (
     <section className="w-full bg-white py-16 sm:py-20 border-t border-slate-100">
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 flex flex-col items-start">
+      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16 flex flex-col items-start">
         
         {/* Header */}
         <div className="max-w-[900px] w-full text-left">
           <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-brand block mb-2">
             {t('hubOffer.eyebrow')}
           </span>
-          <h2 className="text-[30px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold text-[#0F2942] leading-tight mb-3">
+          <h2 className="text-[22px] sm:text-[26px] md:text-[30px] lg:text-[36px] font-extrabold text-[#0F2942] leading-tight mb-3">
             {t('hubOffer.title')}
           </h2>
           <p className="text-slate-500 text-[13px] sm:text-[14px] leading-relaxed font-normal">

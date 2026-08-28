@@ -1,7 +1,7 @@
 import { getTranslations } from 'next-intl/server';
-import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
+import { CategoryNavLink } from './category-nav-link';
 
 interface ProductionMaterialsProps {
   locale: string;
@@ -14,31 +14,31 @@ export default async function ProductionMaterials({ locale }: ProductionMaterial
     {
       title: t('skuSection.card1Title'),
       image: '/images/home/section2/product-hvac-tape.webp',
-      href: '/solutions/listProduct/categories/cleanroom-wipers',
+      categorySlug: 'esd-supplies',
       items: [
-        t('skuSection.card1Item1'),
-        t('skuSection.card1Item2'),
-        t('skuSection.card1Item3')
+        { label: t('skuSection.card1Item1'), slug: 'esd-supplies' },
+        { label: t('skuSection.card1Item2'), slug: 'esd-supplies' },
+        { label: t('skuSection.card1Item3'), slug: 'esd-supplies' }
       ]
     },
     {
       title: t('skuSection.card2Title'),
       image: '/images/about/quality-lab.webp',
-      href: '/solutions/listProduct/categories/cleanroom-consumables',
+      categorySlug: 'cleanroom-consumables',
       items: [
-        t('skuSection.card2Item1'),
-        t('skuSection.card2Item2'),
-        t('skuSection.card2Item3')
+        { label: t('skuSection.card2Item1'), slug: 'cleanroom-gloves' },
+        { label: t('skuSection.card2Item2'), slug: 'cleanroom-wipers' },
+        { label: t('skuSection.card2Item3'), slug: 'cleanroom-apparel' }
       ]
     },
     {
       title: t('skuSection.card3Title'),
       image: '/images/home/section2/product-custom-pkg.webp',
-      href: '/solutions/listProduct/categories/industrial-packaging',
+      categorySlug: 'industrial-packaging',
       items: [
-        t('skuSection.card3Item1'),
-        t('skuSection.card3Item2'),
-        t('skuSection.card3Item3')
+        { label: t('skuSection.card3Item1'), slug: 'industrial-packaging' },
+        { label: t('skuSection.card3Item2'), slug: 'industrial-packaging' },
+        { label: t('skuSection.card3Item3'), slug: 'industrial-packaging' }
       ]
     }
   ];
@@ -83,22 +83,29 @@ export default async function ProductionMaterials({ locale }: ProductionMaterial
                 {/* List items */}
                 <ul className="mt-6 space-y-3 flex-1">
                   {card.items.map((item, itemIdx) => (
-                    <li key={itemIdx} className="flex items-center gap-2 text-sm text-slate-600">
-                      <span className="w-1.5 h-1.5 bg-blue-500 shrink-0 rounded-[3px]" />
-                      {item}
+                    <li key={itemIdx}>
+                      <CategoryNavLink
+                        categorySlug={item.slug}
+                        href="/solutions/listProduct"
+                        className="flex items-center gap-2 text-sm text-slate-600 hover:text-blue-600 transition-colors"
+                      >
+                        <span className="w-1.5 h-1.5 bg-blue-500 shrink-0 rounded-[3px]" />
+                        {item.label}
+                      </CategoryNavLink>
                     </li>
                   ))}
                 </ul>
 
                 {/* Blue Button */}
                 <div className="mt-8">
-                  <Link
-                    href={card.href}
+                  <CategoryNavLink
+                    categorySlug={card.categorySlug}
+                    href="/solutions/listProduct"
                     className="inline-flex items-center justify-center gap-2 rounded-[3px] bg-[#1769E2] px-5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-[#1257BD] transition-colors w-full sm:w-auto"
                   >
                     {t('skuSection.cta')}
                     <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
-                  </Link>
+                  </CategoryNavLink>
                 </div>
               </div>
             </div>

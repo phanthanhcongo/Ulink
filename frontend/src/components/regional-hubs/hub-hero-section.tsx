@@ -70,7 +70,7 @@ export default function HubHeroSection({ locale }: HubHeroSectionProps) {
       {/* Background Image with Dark Overlay */}
       <div className="absolute inset-0 z-0">
         <Image
-          src="/images/regional_hubs/hub-2/warehouse-forklift.jpg"
+          src="/images/regional_hubs/hub-2/warehouse-forklift.svg"
           alt="ULink Warehouse Corridor"
           fill
           priority
@@ -80,11 +80,11 @@ export default function HubHeroSection({ locale }: HubHeroSectionProps) {
       </div>
 
       {/* Main Content Area */}
-      <div className="relative z-10 mx-auto w-full max-w-[1440px] px-4 pt-20 pb-20 sm:px-8 sm:pt-24 lg:px-12 xl:px-16 lg:pt-32 lg:pb-28 flex flex-col justify-between min-h-[520px] sm:min-h-[580px] lg:min-h-[640px]">
+      <div className="relative z-10 mx-auto w-full max-w-[1440px] px-4 pt-20 pb-20 sm:px-8 sm:pt-24 lg:px-16 lg:pt-32 lg:pb-28 flex flex-col justify-between min-h-[520px] sm:min-h-[580px] lg:min-h-[640px]">
         {/* Left-aligned Info Card */}
         <div className="max-w-[720px] text-left mt-auto mb-auto">
           {/* Title */}
-          <h1 className="text-[30px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold text-white leading-[1.25] tracking-tight">
+          <h1 className="text-[24px] sm:text-[32px] md:text-[38px] lg:text-[42px] xl:text-[44px] font-extrabold text-white leading-[1.25] tracking-tight">
             {t.title}
           </h1>
 

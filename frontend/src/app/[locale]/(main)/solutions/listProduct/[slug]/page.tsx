@@ -197,7 +197,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
             },
             ...(category ? [{
               label: categoryName || '',
-                href: `/solutions/listProduct/categories/${category.slug}`
+              href: `/solutions/listProduct/categories/${category.slug}`
             }] : []),
             {
               label: productName || ''
@@ -207,7 +207,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
       </div>
 
       {/* Main Content Area */}
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 py-8">
+      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
           {/* LEFT: Image Gallery Slider */}
           <div className="lg:col-span-5">
@@ -224,7 +224,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
               </div>
             )}
 
-            <h1 className="text-2xl sm:text-3xl lg:text-[28px] xl:text-[34px] font-extrabold text-slate-900 leading-tight tracking-tight">
+            <h1 className="text-[28px] sm:text-[34px] md:text-[38px] lg:text-[42px] xl:text-[44px] font-extrabold text-slate-900 leading-tight tracking-tight">
               {productName}
             </h1>
 

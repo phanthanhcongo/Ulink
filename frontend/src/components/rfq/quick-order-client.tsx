@@ -650,7 +650,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
         <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-brand">
           {t('subtitle')}
         </p>
-        <h1 className="mt-2 text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+        <h1 className="mt-2 text-[28px] sm:text-[34px] md:text-[38px] lg:text-[42px] xl:text-[44px] font-extrabold tracking-tight text-foreground">
           {t('title')}
         </h1>
         <p className="mt-3 text-sm leading-relaxed text-muted-foreground max-w-3xl">

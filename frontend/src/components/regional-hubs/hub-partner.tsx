@@ -9,11 +9,11 @@ export default async function HubPartner() {
     <div className="w-full flex flex-col">
       {/* ── PART 1: BECOME PARTNER ── */}
       <section className="w-full bg-gradient-to-br from-[#EBF4FF] to-[#E5EEFF] py-16 sm:py-20 lg:py-24 border-t border-slate-100">
-        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 flex flex-col gap-10 sm:gap-14">
+        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16 flex flex-col gap-10 sm:gap-14">
           
           {/* Header & Play Button */}
-          <div className="flex flex-col items-start w-full max-w-[1000px]">
-            <h2 className="text-[30px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold text-slate-900 leading-tight tracking-tight mb-4">
+          <div className="flex flex-col items-start w-full">
+            <h2 className="text-[22px] sm:text-[26px] md:text-[30px] lg:text-[36px] font-extrabold text-slate-900 leading-tight tracking-tight mb-4">
               {t('hubPartner.title')}
             </h2>
             <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-600 mb-6 max-w-[900px]">
@@ -30,7 +30,7 @@ export default async function HubPartner() {
           </div>
 
           {/* Details & Image Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center w-full max-w-[1120px]">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
             {/* Left Column: Image */}
             <div className="relative w-full aspect-[3/2] overflow-hidden border border-slate-200/50 shadow-md rounded-none">
               <Image
@@ -55,7 +55,7 @@ export default async function HubPartner() {
 
       {/* ── PART 2: CTA REGISTER BANNER ── */}
       <section className="w-full bg-[#A5C7F9] py-12 sm:py-16 border-t border-blue-200/30">
-        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           {/* Left Text */}
           <div className="flex flex-col items-start text-left max-w-[700px]">
             <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-blue-900 mb-2 block">

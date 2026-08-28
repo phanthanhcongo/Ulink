@@ -122,8 +122,8 @@ export default function SolutionCarousel({ slides, labels }: SolutionCarouselPro
               key={i}
               onClick={() => changeSlide(i)}
               className={`h-4.5 w-4.5 rounded-full flex items-center justify-center border transition-all duration-300 ${activeSlide === i
-                  ? 'border-brand w-5 h-5 bg-brand/5'
-                  : 'border-slate-300 hover:border-brand/60'
+                ? 'border-brand w-5 h-5 bg-brand/5'
+                : 'border-slate-300 hover:border-brand/60'
                 }`}
               aria-label={`Slide ${i + 1}`}
             >

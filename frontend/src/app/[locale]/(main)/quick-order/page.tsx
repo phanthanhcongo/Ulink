@@ -23,7 +23,7 @@ export default async function QuickOrderPage({ params: { locale } }: Props) {
 
   return (
     <section className="relative overflow-hidden bg-white min-h-screen">
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-6 px-4 py-8 sm:px-8 sm:gap-8 lg:px-12 xl:px-16 lg:py-12">
+      <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-6 px-4 py-8 sm:px-8 sm:gap-8 lg:px-16 lg:py-12">
         <QuickOrderClient user={user} />
       </div>
     </section>

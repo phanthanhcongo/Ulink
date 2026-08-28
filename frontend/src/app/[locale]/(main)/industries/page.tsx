@@ -229,7 +229,7 @@ export default async function IndustriesPage({ params: { locale } }: Props) {
         <div className="absolute inset-0 bg-slate-950/45 z-0" />
 
         {/* Content - Contrained inside max-width container for content alignment */}
-        <div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 p-8 sm:p-12 lg:p-16 flex flex-col justify-between">
+        <div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-16 p-8 sm:p-12 lg:p-16 flex flex-col justify-between">
           {/* Breadcrumb */}
           <Breadcrumb
             theme="dark"
@@ -242,7 +242,7 @@ export default async function IndustriesPage({ params: { locale } }: Props) {
 
           {/* Text area */}
           <div className="max-w-3xl my-auto">
-            <h1 className="text-[30px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold text-white leading-[1.2] tracking-tight">
+            <h1 className="text-[28px] sm:text-[34px] md:text-[38px] lg:text-[42px] xl:text-[44px] font-extrabold text-white leading-[1.15] tracking-tight">
               {isVi
                 ? 'Tối ưu chuỗi cung ứng nguyên liệu và vật tư với giải pháp Phòng sạch & Đóng gói.'
                 : isJa
@@ -270,10 +270,10 @@ export default async function IndustriesPage({ params: { locale } }: Props) {
       </div>
 
       {/* Main Grid Content */}
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 py-12 lg:py-16 flex flex-col gap-12">
+      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16 py-12 lg:py-16 flex flex-col gap-12">
         {/* Section Header */}
         <div className="flex flex-col items-start max-w-3xl">
-          <h2 className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-primary leading-tight tracking-tight">
+          <h2 className="text-[22px] sm:text-[26px] md:text-[30px] lg:text-[36px] font-extrabold text-primary leading-tight tracking-tight">
             {isVi
               ? 'Giải pháp theo ngành nghề'
               : isJa
@@ -297,7 +297,7 @@ export default async function IndustriesPage({ params: { locale } }: Props) {
       <CoreAdvantages locale={locale} />
 
       {/* About Us & Hub Ha Nam Section */}
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 py-12 lg:py-16">
+      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16 py-12 lg:py-16">
         <AboutUsHub locale={locale} />
       </div>
       {/* Customer Segments Section */}
