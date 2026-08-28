@@ -119,11 +119,7 @@ export function ResourcesNews() {
 
   return (
     <section className="relative mx-auto w-full max-w-[1440px] px-4 pt-4 pb-12 sm:px-8 lg:px-12 xl:px-16 sm:pt-6 sm:pb-16 lg:pt-8 lg:pb-20 xl:pt-10 xl:pb-24 overflow-hidden">
-      {/* ── BACKGROUND GLOWS ── */}
-      <div className="absolute top-1/4 -left-32 w-96 h-96 bg-gradient-to-tr from-blue-400/5 to-cyan-400/5 blur-3xl rounded-full pointer-events-none -z-10" />
-      <div className="absolute bottom-10 -right-32 w-96 h-96 bg-gradient-to-tr from-indigo-400/5 to-blue-400/5 blur-3xl rounded-full pointer-events-none -z-10" />
-
-
+    
       {/* ── 2. SUB-SECTION HEADER (TIN TỨC THỊ TRƯỜNG - CENTERED) ── */}
       <div className="text-center flex flex-col items-center justify-center">
         <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-blue-600">

@@ -27,7 +27,7 @@ export function SupportSection() {
         </div>
 
         {/* ── 4 SUPPORT CARDS GRID ── */}
-        <div className="mt-8 grid grid-cols-1 gap-[1px] sm:grid-cols-2 sm:gap-[1px] lg:grid-cols-4 lg:gap-[1px]">
+        <div className="mt-8 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4">
           {supportData.map((supp) => (
             <SupportCard
               key={supp.num}
