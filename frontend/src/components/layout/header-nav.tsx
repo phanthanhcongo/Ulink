@@ -1121,7 +1121,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
   };
 
   return (
-    <nav className="hidden flex-1 items-center justify-evenly lg:flex">
+    <nav className="hidden flex-1 items-center justify-evenly xl:flex">
       {items.map((item) => {
         const isProductsMenu = item.href === '/solutions';
         const isHubsMenu = item.href === '/regional-hubs';
