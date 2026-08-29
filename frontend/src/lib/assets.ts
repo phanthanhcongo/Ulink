@@ -95,10 +95,10 @@ export const ASSETS = {
   footer: {
     boCongThuong: '/images/home/section6/Logo - Đã Thông Báo.webp',
     qrCode: '/images/footer/qr-code.svg',
-    facebook: '/images/home/section6/fb.webp',
-    linkedin: '/images/home/section6/linked.webp',
-    tiktok: '/images/home/section6/tik.webp',
-    youtube: '/images/home/section6/youtube.webp'
+    facebook: '/images/footer/facebook.svg',
+    linkedin: '/images/footer/linkedin.svg',
+    tiktok: '/images/footer/tiktok.svg',
+    youtube: '/images/footer/youtube.svg'
   },
   /** Logo đối tác (WebP) */
   partners: {
