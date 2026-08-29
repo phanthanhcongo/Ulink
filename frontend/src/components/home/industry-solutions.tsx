@@ -123,9 +123,8 @@ export function IndustrySolutions() {
             <Link
               key={idx}
               href={card.href}
-              className={`group relative flex items-center gap-2.5 sm:gap-3.5 rounded-[3px] border border-slate-200 bg-white p-3 sm:p-4 shadow-xs transition-all duration-300 hover:z-10 hover:-translate-y-0.5 hover:border-blue-500/50 hover:shadow-md hover:scale-[1.01] ${
-                visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
-              }`}
+              className={`group relative flex items-center gap-2.5 sm:gap-3.5 rounded-[3px] border border-slate-200 bg-white p-3 sm:p-4 shadow-xs transition-all duration-300 hover:z-10 hover:-translate-y-0.5 hover:border-blue-500/50 hover:shadow-md hover:scale-[1.01] ${visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+                }`}
               style={{ transitionDelay: `${idx * 80}ms` }}
             >
               {/* Left Icon (No background) */}
@@ -144,10 +143,10 @@ export function IndustrySolutions() {
 
               {/* Right Text Content */}
               <div className="flex-1 min-w-0">
-                <h4 className="text-[12px] sm:text-[14px] font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-tight">
+                <h4 className="text-[11px] sm:text-[13px] font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-tight tracking-tight">
                   {card.title}
                 </h4>
-                <p className="text-[10px] sm:text-[11.5px] text-slate-500 font-medium leading-snug mt-1 line-clamp-2">
+                <p className="text-[9.5px] sm:text-[11px] text-slate-500 font-medium leading-snug mt-1">
                   {card.desc}
                 </p>
               </div>
@@ -169,9 +168,8 @@ export function IndustrySolutions() {
             <Link
               key={idx}
               href={card.href}
-              className={`group flex flex-col justify-between min-h-[190px] md:min-h-[200px] lg:min-h-[220px] bg-white border border-slate-200 lg:border-slate-100 rounded-[4px] p-5 md:p-6 lg:p-8 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-1 hover:border-blue-500/30 ${
-                visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
-              }`}
+              className={`group flex flex-col justify-between min-h-[190px] md:min-h-[200px] lg:min-h-[220px] bg-white border border-slate-200 lg:border-slate-100 rounded-[4px] p-5 md:p-6 lg:p-8 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-1 hover:border-blue-500/30 ${visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+                }`}
               style={{ transitionDelay: `${idx * 80}ms` }}
             >
               {/* Top Text Content */}
