@@ -123,7 +123,7 @@ export function IndustrySolutions() {
             <Link
               key={idx}
               href={card.href}
-              className={`group relative flex items-center gap-2.5 sm:gap-3.5 rounded-[3px] border border-slate-200 bg-white p-3 sm:p-4 shadow-xs transition-all duration-300 hover:z-10 hover:-translate-y-0.5 hover:border-blue-500/50 hover:shadow-md hover:scale-[1.01] ${visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+              className={`group relative flex items-center gap-2.5 sm:gap-3.5 rounded-[2px] border border-slate-200 bg-white p-3 sm:p-4 shadow-xs transition-all duration-300 hover:z-10 hover:-translate-y-0.5 hover:border-blue-500/50 hover:shadow-md hover:scale-[1.01] ${visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
                 }`}
               style={{ transitionDelay: `${idx * 80}ms` }}
             >
@@ -168,7 +168,7 @@ export function IndustrySolutions() {
             <Link
               key={idx}
               href={card.href}
-              className={`group flex flex-col justify-between min-h-[190px] md:min-h-[200px] lg:min-h-[220px] bg-white border border-slate-200 lg:border-slate-100 rounded-[4px] p-5 md:p-6 lg:p-8 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-1 hover:border-blue-500/30 ${visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+              className={`group flex flex-col justify-between min-h-[190px] md:min-h-[200px] lg:min-h-[220px] bg-white border border-slate-200 lg:border-slate-100 rounded-[2px] p-5 md:p-6 lg:p-8 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-1 hover:border-blue-500/30 ${visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
                 }`}
               style={{ transitionDelay: `${idx * 80}ms` }}
             >
