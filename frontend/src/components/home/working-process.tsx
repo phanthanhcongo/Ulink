@@ -13,7 +13,12 @@ export function WorkingProcess() {
     const el = ref.current;
     if (!el) return;
     const observer = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { setVisible(true); observer.unobserve(el); } },
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setVisible(true);
+          observer.unobserve(el);
+        }
+      },
       { threshold: 0.1 }
     );
     observer.observe(el);
@@ -28,57 +33,59 @@ export function WorkingProcess() {
   ];
 
   return (
-    <section className="w-full bg-[#F8FAFC] py-10 lg:py-12 xl:py-16">
+    <section className="w-full bg-white py-12 sm:py-16 lg:py-20 border-t border-slate-100">
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
-        {/* ── SECTION HEADER BAR (CĂN GIỮA) ── */}
-        <div className="text-center mb-8 max-w-3xl mx-auto space-y-2">
-          <span className="text-xs sm:text-sm font-bold text-[#0F62FE] uppercase tracking-widest block">
+        {/* ── SECTION HEADER (ĐỒNG BỘ 2 HÀNG BẰNG CỠ CHỮ) ── */}
+        <div className="text-center max-w-3xl mx-auto space-y-1 sm:space-y-2">
+          <span className="text-[20px] sm:text-[24px] lg:text-[28px] font-extrabold tracking-tight text-blue-600 leading-tight block">
             {t('workingProcess.sectionTitle')}
           </span>
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-slate-900 tracking-tight leading-tight">
+          <h2 className="text-[20px] sm:text-[24px] lg:text-[28px] font-extrabold tracking-tight text-slate-900 leading-tight">
             {t('workingProcess.sectionSubTitle')}
           </h2>
         </div>
 
         {/* ── 4 STEP CARDS GRID ── */}
-        <div ref={ref} className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4 lg:gap-3 xl:gap-4">
+        <div
+          ref={ref}
+          className="mt-10 sm:mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4 lg:gap-5"
+        >
           {steps.map(({ step, icon: IconComponent }, idx) => (
             <div
               key={step}
-              className={`group relative flex flex-col rounded-[3px] border border-slate-100 bg-white p-4 shadow-sm transition-all hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:scale-[1.02] sm:p-5 lg:p-4 xl:p-5 ${
-                visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
-              }`}
+              className={`group flex flex-col justify-between rounded-[2px] border border-slate-200/90 bg-white p-4 sm:p-5 lg:p-6 shadow-2xs transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/40 hover:shadow-md ${visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+                }`}
               style={{ transitionDelay: `${idx * 100}ms` }}
             >
-              {/* Tầng 1: Icon tròn & Tiêu đề nằm ngang */}
-              <div className="flex items-center gap-2.5 sm:gap-3">
-                {/* Vòng tròn bọc icon */}
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-blue-50 text-brand transition-all duration-300 group-hover:bg-brand group-hover:text-white">
-                  <IconComponent className="h-4.5 w-4.5 transition-transform duration-300 group-hover:scale-110" aria-hidden="true" />
+              <div>
+                {/* Top Row: Left Icon + Right Text (Step Number & Step Title) */}
+                <div className="flex items-center gap-3.5 sm:gap-4 mb-4">
+                  <div className="flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-blue-50/80 text-blue-600 shrink-0 transition-colors duration-300 group-hover:bg-blue-600 group-hover:text-white">
+                    <IconComponent className="h-5 w-5 sm:h-5.5 sm:w-5.5 transition-transform duration-300 group-hover:scale-110" aria-hidden="true" />
+                  </div>
+
+                  <div className="flex flex-col min-w-0">
+                    <span className="text-[12px] sm:text-[13px] font-medium text-slate-500">
+                      {t(`workingProcess.step${step}Number` as any)}
+                    </span>
+                    <h3 className="mt-0.5 text-[15px] sm:text-[16.5px] font-bold text-slate-900 leading-snug group-hover:text-blue-600 transition-colors">
+                      {t(`workingProcess.step${step}Title` as any)}
+                    </h3>
+                  </div>
                 </div>
-                
-                {/* Khối Text (Số bước & Tên bước) */}
-                <div className="flex flex-col min-w-0 flex-1">
-                  <p className="text-[11px] font-semibold text-slate-500 sm:text-[12px] whitespace-nowrap truncate">
-                    {t(`workingProcess.step${step}Number` as any)}
-                  </p>
-                  <h3 className="mt-0.5 text-[13px] font-bold text-slate-900 leading-tight transition-colors duration-300 group-hover:text-brand sm:text-[14px] lg:text-[13.5px] xl:text-[15.5px] whitespace-nowrap truncate" title={t(`workingProcess.step${step}Title` as any)}>
-                    {t(`workingProcess.step${step}Title` as any)}
-                  </h3>
-                </div>
+
+                {/* Description Text */}
+                <p className="text-[13px] sm:text-[13.5px] leading-relaxed text-slate-600 font-normal">
+                  {t(`workingProcess.step${step}Desc` as any)}
+                </p>
               </div>
 
-              {/* Tầng 2: Mô tả chi tiết */}
-              <p className="mt-5 text-[13px] leading-relaxed text-slate-600 sm:text-[14px]">
-                {t(`workingProcess.step${step}Desc` as any)}
-              </p>
-
-              {/* Tầng 3: Footer KPI */}
-              <div className="mt-6 mt-auto flex items-center justify-between border-t border-slate-100 pt-4">
-                <span className="text-[12px] font-semibold text-slate-500 sm:text-[13px]">
+              {/* KPI Footer */}
+              <div className="mt-5 sm:mt-6 pt-3.5 sm:pt-4 border-t border-slate-100 flex items-center justify-between">
+                <span className="text-[12.5px] sm:text-[13px] font-normal text-slate-500">
                   {t(`workingProcess.step${step}KpiLabel` as any)}
                 </span>
-                <span className="text-[14px] font-bold text-brand sm:text-[15px]">
+                <span className="text-[13.5px] sm:text-[14px] font-bold text-blue-600">
                   {t(`workingProcess.step${step}KpiValue` as any)}
                 </span>
               </div>

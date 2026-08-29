@@ -131,15 +131,15 @@ export function ResourcesNews() {
 
   return (
     <section className="relative mx-auto w-full max-w-[1440px] px-4 pt-4 pb-12 sm:px-8 lg:px-16 sm:pt-6 sm:pb-16 lg:pt-8 lg:pb-20 xl:pt-10 xl:pb-24 overflow-hidden">
-    
-      {/* ── 2. SUB-SECTION HEADER (TIN TỨC THỊ TRƯỜNG - CENTERED) ── */}
-      <div className="text-center flex flex-col items-center justify-center">
-        <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-blue-600">
+
+      {/* ── 2. SUB-SECTION HEADER (TIN TỨC THỊ TRƯỜNG - 2 HÀNG BẰNG CỠ CHỮ) ── */}
+      <div className="text-center max-w-3xl mx-auto space-y-1 sm:space-y-2">
+        <span className="text-[20px] sm:text-[24px] lg:text-[28px] font-extrabold tracking-tight text-blue-600 leading-tight block">
           {t('newsSectionTitle')}
         </span>
-        <h3 className="mt-1 text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-extrabold tracking-tight text-slate-900 leading-snug">
+        <h2 className="text-[20px] sm:text-[24px] lg:text-[28px] font-extrabold tracking-tight text-slate-900 leading-tight">
           {t('newsSectionSubTitle')}
-        </h3>
+        </h2>
       </div>
 
       {/* ── 3. 4 NEWS CARDS GRID ── */}
@@ -147,9 +147,8 @@ export function ResourcesNews() {
         {newsData.map((news, idx) => (
           <div
             key={news.slug}
-            className={`transition-all duration-500 ${
-              newsVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
-            } ${idx >= 3 ? 'lg:hidden' : ''}`}
+            className={`transition-all duration-500 ${newsVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+              } ${idx >= 3 ? 'lg:hidden' : ''}`}
             style={{ transitionDelay: `${idx * 100}ms` }}
           >
             <NewsCard

@@ -12,20 +12,13 @@ interface SectionHeaderProps {
 export function SectionHeader({ title, subtitle, viewAllHref, viewAllLabel, centered }: SectionHeaderProps) {
   if (centered) {
     return (
-      <div className="flex flex-col items-center text-center">
-        <div className="flex items-center justify-center gap-2.5">
-          <div className="flex flex-col gap-0.5 shrink-0 justify-center">
-            <span className="h-1 w-1 rounded-full bg-brand" />
-            <span className="h-1 w-1 rounded-full bg-brand" />
-            <span className="h-1 w-1 rounded-full bg-brand" />
-          </div>
-          <h2 className="text-[22px] font-extrabold tracking-tight text-primary sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px]">
-            {title}
-          </h2>
-        </div>
-        <p className="mt-2 text-[12.5px] text-muted-foreground sm:text-[13px] lg:text-[14px] max-w-[700px] leading-relaxed">
+      <div className="text-center max-w-3xl mx-auto space-y-1 sm:space-y-2">
+        <span className="text-[20px] sm:text-[24px] lg:text-[28px] font-extrabold tracking-tight text-blue-600 leading-tight block">
+          {title}
+        </span>
+        <h2 className="text-[20px] sm:text-[24px] lg:text-[28px] font-extrabold tracking-tight text-slate-900 leading-tight">
           {subtitle}
-        </p>
+        </h2>
       </div>
     );
   }
@@ -39,7 +32,7 @@ export function SectionHeader({ title, subtitle, viewAllHref, viewAllLabel, cent
             <span className="h-1 w-1 rounded-full bg-brand" />
             <span className="h-1 w-1 rounded-full bg-brand" />
           </div>
-          <h2 className="text-[22px] font-extrabold tracking-tight text-primary sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px]">
+          <h2 className="text-[20px] font-extrabold tracking-tight text-primary sm:text-[24px] lg:text-[28px]">
             {title}
           </h2>
         </div>

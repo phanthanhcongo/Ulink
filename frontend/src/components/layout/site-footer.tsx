@@ -94,21 +94,6 @@ export async function SiteFooter() {
                   />
                 </a>
                 <a
-                  href="https://tiktok.com"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="transition-transform hover:-translate-y-0.5"
-                  aria-label="TikTok"
-                >
-                  <Image
-                    src={ASSETS.footer.tiktok}
-                    alt="TikTok"
-                    width={40}
-                    height={40}
-                    className="h-10 w-10 object-contain"
-                  />
-                </a>
-                <a
                   href="https://youtube.com"
                   target="_blank"
                   rel="noreferrer"

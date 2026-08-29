@@ -28,17 +28,17 @@ export function TargetSegments() {
 
   return (
     <section className="w-full bg-slate-50/50 border-t border-b border-slate-100 font-sans select-none">
-      
+
       {/* ──────────────────────────────────────────────────────── */}
       {/* 1. MOBILE VIEW (Screens < 768px: md breakpoint)          */}
       {/* ──────────────────────────────────────────────────────── */}
       <div className="block md:hidden px-4 py-10">
-        {/* Mobile Header: Left-Aligned */}
-        <div className="text-left mb-8">
-          <span className="block text-[13px] font-bold uppercase tracking-wider text-blue-600">
-            {t('targetSegments.sectionTitleMobile')}
+        {/* Mobile Header: Centered 2-line equal size */}
+        <div className="text-center max-w-xl mx-auto mb-8 space-y-1">
+          <span className="text-[20px] font-extrabold tracking-tight text-blue-600 leading-tight block">
+            {t('targetSegments.sectionTitle')}
           </span>
-          <h2 className="mt-2 text-[20px] font-extrabold tracking-tight text-slate-900 leading-snug">
+          <h2 className="text-[20px] font-extrabold tracking-tight text-slate-900 leading-tight">
             {t('targetSegments.sectionSubTitle')}
           </h2>
         </div>
@@ -99,12 +99,12 @@ export function TargetSegments() {
       {/* 2. DESKTOP VIEW (Screens >= 768px: md breakpoint)        */}
       {/* ──────────────────────────────────────────────────────── */}
       <div className="hidden md:block mx-auto w-full max-w-[1440px] px-8 py-14 lg:px-12 xl:px-16 lg:py-16 xl:py-20">
-        {/* Desktop Header: Centered */}
-        <div className="text-center mb-12 sm:mb-14">
-          <span className="block text-[15px] lg:text-[16px] font-bold tracking-wider text-blue-600">
+        {/* Desktop Header: Centered 2-line equal size */}
+        <div className="text-center max-w-3xl mx-auto space-y-1 sm:space-y-2 mb-10 sm:mb-12">
+          <span className="text-[20px] sm:text-[24px] lg:text-[28px] font-extrabold tracking-tight text-blue-600 leading-tight block">
             {t('targetSegments.sectionTitle')}
           </span>
-          <h2 className="mt-2 text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold tracking-tight text-slate-900 leading-snug">
+          <h2 className="text-[20px] sm:text-[24px] lg:text-[28px] font-extrabold tracking-tight text-slate-900 leading-tight">
             {t('targetSegments.sectionSubTitle')}
           </h2>
         </div>
@@ -116,9 +116,8 @@ export function TargetSegments() {
         >
           {/* CARD 1: DOANH NGHIỆP FDI */}
           <div
-            className={`group overflow-hidden flex flex-col rounded-[3px] border border-slate-200 bg-white shadow-xs hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:-translate-y-0.5 hover:scale-[1.01] transition-all duration-300 ${
-              visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
-            }`}
+            className={`group overflow-hidden flex flex-col rounded-[3px] border border-slate-200 bg-white shadow-xs hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:-translate-y-0.5 hover:scale-[1.01] transition-all duration-300 ${visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+              }`}
             style={{ transitionDelay: '0ms' }}
           >
             {/* Top Header Area: Light Background */}
@@ -186,9 +185,8 @@ export function TargetSegments() {
 
           {/* CARD 2: DOANH NGHIỆP SẢN XUẤT */}
           <div
-            className={`group overflow-hidden flex flex-col rounded-[3px] border border-slate-200 bg-white shadow-xs hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:-translate-y-0.5 hover:scale-[1.01] transition-all duration-300 ${
-              visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
-            }`}
+            className={`group overflow-hidden flex flex-col rounded-[3px] border border-slate-200 bg-white shadow-xs hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:-translate-y-0.5 hover:scale-[1.01] transition-all duration-300 ${visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+              }`}
             style={{ transitionDelay: '150ms' }}
           >
             {/* Top Header Area: Light Background */}
