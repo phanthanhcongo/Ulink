@@ -20,10 +20,10 @@ export function SupportSection() {
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
         {/* ── 5. SUB-SECTION HEADER BAR (TƯ VẤN & HỖ TRỢ) ── */}
         <div className="flex items-center gap-3">
-          <div className="h-5 w-1 rounded-full bg-cyan-500" />
-          <h3 className="text-[13px] sm:text-[15px] md:text-[16px] lg:text-[18px] xl:text-[20px] font-bold text-slate-900">
+          <div className="h-6 w-1 rounded-full bg-cyan-500 shrink-0" />
+          <h2 className="text-[20px] sm:text-[24px] lg:text-[28px] font-bold text-slate-900 tracking-tight">
             {t('supportTitle')}
-          </h3>
+          </h2>
         </div>
 
         {/* ── 4 SUPPORT CARDS GRID ── */}

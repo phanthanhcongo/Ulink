@@ -53,10 +53,10 @@ export function DocSection() {
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
         {/* ── 4. SUB-SECTION HEADER BAR (TÀI LIỆU & CATALOGUE) ── */}
         <div className="flex items-center gap-3">
-          <div className="h-5 w-1 rounded-full bg-blue-600" />
-          <h3 className="text-[13px] sm:text-[15px] md:text-[16px] lg:text-[18px] xl:text-[20px] font-bold text-slate-900">
+          <div className="h-6 w-1 rounded-full bg-blue-600 shrink-0" />
+          <h2 className="text-[20px] sm:text-[24px] lg:text-[28px] font-bold text-slate-900 tracking-tight">
             {t('docsTitle')}
-          </h3>
+          </h2>
         </div>
 
         {/* ── 4 DOCUMENT CARDS GRID ── */}
