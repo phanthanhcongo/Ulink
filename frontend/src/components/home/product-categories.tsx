@@ -101,7 +101,7 @@ export async function ProductCategories() {
             className={`ui-card-hover flex flex-col overflow-hidden rounded-[3px] border border-slate-200 bg-white border-l-4 sm:border-l-[5px] ${card.accentBorder} shadow-sm`}
           >
             {/* Top Image Banner */}
-            <div className="relative aspect-[16/9] h-[240px] sm:h-[310px] lg:h-[340px] xl:h-[370px] w-full overflow-hidden bg-slate-50">
+            <div className="relative aspect-[16/9] h-[240px] sm:h-[310px] md:h-[460px] lg:h-[340px] xl:h-[370px] w-full overflow-hidden bg-slate-50">
               <Image
                 src={card.image}
                 alt={card.title}
@@ -160,7 +160,7 @@ export async function ProductCategories() {
             className={`ui-card-hover flex flex-col overflow-hidden rounded-[3px] border border-slate-200 bg-white border-l-4 sm:border-l-[5px] ${card.accentBorder} shadow-sm`}
           >
             {/* Top Image Banner */}
-            <div className="relative aspect-[4/3] h-[200px] sm:h-[240px] lg:h-[240px] xl:h-[250px] w-full overflow-hidden bg-slate-50">
+            <div className="relative aspect-[4/3] h-[200px] sm:h-[240px] md:h-[420px] lg:h-[240px] xl:h-[250px] w-full overflow-hidden bg-slate-50">
               <Image
                 src={card.image}
                 alt={card.title}
