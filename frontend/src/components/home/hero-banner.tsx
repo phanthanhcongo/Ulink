@@ -19,6 +19,13 @@ export function HeroBanner() {
     }, 3000);
   };
 
+  const mobileStats = [
+    { value: '>10 năm', label: 'Kinh nghiệm Sản xuất' },
+    { value: '2,000+', label: 'Doanh nghiệp tin dùng' },
+    { value: '50,000+', label: 'Đơn hàng đã giao' },
+    { value: '99.8%', label: 'Tỷ lệ hài lòng với Chất lượng' }
+  ];
+
   return (
     <section className="relative flex w-full flex-col overflow-hidden bg-slate-50 sm:aspect-[16/9] md:aspect-[16/8] lg:aspect-[1440/500] xl:aspect-[1440/540] sm:min-h-[420px] md:min-h-[450px] lg:min-h-[460px] xl:min-h-[500px]">
       {/* Decorative Translucent Blue Glow */}
@@ -83,7 +90,7 @@ export function HeroBanner() {
       </div>
 
       {/* 2. Image section — Displays SECOND below buttons on mobile */}
-      <div className="relative order-2 w-full px-4 pb-6 pt-4 sm:px-0 sm:pb-0 sm:pt-0 h-[360px] sm:h-full sm:absolute sm:inset-0 select-none">
+      <div className="relative order-2 w-full px-4 pb-2 pt-4 sm:px-0 sm:pb-0 sm:pt-0 h-[360px] sm:h-full sm:absolute sm:inset-0 select-none">
         <div className="relative h-full w-full overflow-hidden rounded-[2px] sm:rounded-none">
           <Image
             src={ASSETS.home.hero}
@@ -94,6 +101,25 @@ export function HeroBanner() {
             sizes="100vw"
             className="object-cover object-center"
           />
+        </div>
+      </div>
+
+      {/* 3. Mobile Stats Section — 2x2 Grid (Visible on mobile below image) */}
+      <div className="relative order-3 w-full px-4 pt-6 pb-5 sm:hidden z-30">
+        <div className="grid grid-cols-2 gap-3">
+          {mobileStats.map((stat, index) => (
+            <div
+              key={index}
+              className="flex flex-col items-center justify-center rounded-[3px] border border-slate-200/80 bg-white p-4 text-center shadow-xs transition-all hover:border-brand/40"
+            >
+              <span className="text-[20px] font-extrabold text-brand tracking-tight">
+                {stat.value}
+              </span>
+              <span className="mt-1 text-[12px] font-medium text-slate-500 leading-snug">
+                {stat.label}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
 

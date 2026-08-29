@@ -37,7 +37,7 @@ export async function FeatureValueBar() {
   const t = await getTranslations('home');
 
   return (
-    <section className="w-full bg-[#f0f4f8] py-8 sm:py-10 lg:py-12">
+    <section className="hidden sm:block w-full bg-[#f0f4f8] py-8 sm:py-10 lg:py-12">
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4 lg:gap-4">
           {features.map((f) => (
