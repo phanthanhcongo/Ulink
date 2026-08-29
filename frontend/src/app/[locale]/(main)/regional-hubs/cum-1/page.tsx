@@ -32,8 +32,8 @@ export default async function RegionalHubsPage({
     (p) => p.skus && p.skus.some((s) => s.status === 'published')
   );
 
-  // Select the first 3 products to display in the Featured Products section
-  const randomProducts = productsWithSkus.slice(0, 3);
+  // Select up to 4 products to display in the Featured Products section
+  const randomProducts = productsWithSkus.slice(0, 4);
 
   const carouselSlides = [
     {

@@ -52,9 +52,15 @@ export default async function FeaturedProducts({ products, locale }: FeaturedPro
 
   // 4. Fourth Product (Any product left that is not glove, film, or tape)
   const usedIds = new Set([gloveProduct?.id, filmProduct?.id, tapeProduct?.id].filter(Boolean));
-  const fourthProduct = products.find(p => !usedIds.has(p.id)) || products.find(p => p.id !== gloveProduct?.id) || products[0];
-  const fourthSlug = fourthProduct ? `/${locale}/products/${fourthProduct.slug}` : `/${locale}/solutions`;
-  const fourthImgSrc = fourthProduct?.hero
+  const fourthProduct = products.find(p => !usedIds.has(p.id)) || products.find(p => p.id !== gloveProduct?.id) || products[0] || {
+    id: 'fallback-4',
+    name: 'Vật tư Công nghiệp ULink',
+    slug: 'solutions',
+    short_description: 'Giải pháp cung ứng tổng thể cho nhà máy sản xuất.',
+    hero: ASSETS.home.factory
+  };
+  const fourthSlug = fourthProduct.slug.startsWith('http') || fourthProduct.slug === 'solutions' ? `/${locale}/solutions` : `/${locale}/products/${fourthProduct.slug}`;
+  const fourthImgSrc = fourthProduct.hero
     ? (fourthProduct.hero.startsWith('http') || fourthProduct.hero.startsWith('/') ? fourthProduct.hero : `${DIRECTUS_URL}/assets/${fourthProduct.hero}`)
     : ASSETS.home.factory; // default fallback
 
