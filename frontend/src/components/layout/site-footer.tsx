@@ -198,9 +198,10 @@ export async function SiteFooter() {
                 <Image
                   src={ASSETS.footer.boCongThuong}
                   alt="Đã thông báo Bộ Công Thương"
-                  width={200}
-                  height={65}
+                  width={290}
+                  height={75}
                   className="h-14 w-auto object-contain sm:h-16"
+                  unoptimized
                 />
               </div>
             </div>

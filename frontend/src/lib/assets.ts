@@ -93,7 +93,7 @@ export const ASSETS = {
   },
   /** Footer assets */
   footer: {
-    boCongThuong: '/images/home/section6/Logo - Đã Thông Báo.webp',
+    boCongThuong: '/images/footer/Logo-Da-Thong-Bao-Bo-Cong-Thuong.svg',
     qrCode: '/images/footer/qr-code.svg',
     facebook: '/images/footer/facebook.svg',
     linkedin: '/images/footer/linkedin.svg',

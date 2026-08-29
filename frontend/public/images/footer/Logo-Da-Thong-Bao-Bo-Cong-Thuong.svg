@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 150" width="580" height="150">
+  <!-- 1. Right Blue Badge Body (Generous top, bottom, left and right text padding) -->
+  <path fill="#0080CD" d="M 115 22 L 555 22 C 566 22 574 30 574 41 L 574 109 C 574 120 566 128 555 128 L 115 128 Z" />
+
+  <!-- 2. Outer White Ring Circle -->
+  <circle cx="95" cy="75" r="74" fill="#FFFFFF" />
+
+  <!-- 3. Inner Blue Circle Seal -->
+  <circle cx="95" cy="75" r="67" fill="#0080CD" />
+
+  <!-- 4. Arc Text: ONLINE.GOV.VN -->
+  <path id="arc-online" d="M 44 75 A 51 51 0 0 1 146 75" fill="none" />
+  <text fill="#FFFFFF" font-family="Arial, sans-serif" font-size="11.8" font-weight="900" letter-spacing="1">
+    <textPath href="#arc-online" startOffset="50%" text-anchor="middle">ONLINE.GOV.VN</textPath>
+  </text>
+
+  <!-- 5. Thick White Checkmark -->
+  <path d="M 46 72 L 85 110 L 140 45" fill="none" stroke="#FFFFFF" stroke-width="24" stroke-linecap="round" stroke-linejoin="round" />
+
+  <!-- 6. Badge Text: ĐÃ THÔNG BÁO (Increased left and top padding) -->
+  <text x="190" y="73" fill="#FFFFFF" font-family="'Arial Black', 'Arial Bold', Arial, sans-serif" font-size="33" font-weight="900" letter-spacing="-0.3">ĐÃ THÔNG BÁO</text>
+
+  <!-- 7. Underline Separator -->
+  <line x1="190" y1="86" x2="540" y2="86" stroke="#FFFFFF" stroke-width="3" />
+
+  <!-- 8. Badge Text: BỘ CÔNG THƯƠNG -->
+  <text x="190" y="116" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="23" font-weight="700" letter-spacing="1.2">BỘ CÔNG THƯƠNG</text>
+</svg>
