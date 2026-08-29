@@ -44,17 +44,14 @@ export function AboutContact() {
   return (
     <section className="py-12 lg:py-16 bg-white">
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
-        {/* Section Header */}
-        <div className="mb-12 flex flex-col items-center text-center">
-          <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-blue-600">
+        {/* Section Header (ĐỒNG BỘ NGUYÊN BẢN HỆ THỐNG) */}
+        <div className="text-center max-w-3xl mx-auto space-y-1 sm:space-y-2 mb-10 sm:mb-12">
+          <span className="text-[20px] sm:text-[24px] lg:text-[28px] font-extrabold tracking-tight text-blue-600 leading-tight block">
             LIÊN HỆ VỚI CHÚNG TÔI
           </span>
-          <h2 className="mt-2 text-[30px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold tracking-tight text-slate-900">
+          <h2 className="text-[20px] sm:text-[24px] lg:text-[28px] font-extrabold tracking-tight text-slate-900 leading-tight">
             Kết nối với ULink Industries ngay hôm nay
           </h2>
-          <p className="mt-4 max-w-3xl text-[13px] sm:text-[14px] leading-relaxed text-slate-500">
-            Đội ngũ chuyên viên kỹ thuật và chuỗi cung ứng của chúng tôi luôn sẵn sàng hỗ trợ giải đáp mọi thắc mắc và cung cấp báo giá tối ưu nhất cho doanh nghiệp của bạn.
-          </p>
         </div>
 
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
