@@ -27,13 +27,14 @@ export default async function RegionalHubsPage({
   // Fetch up to 12 products from Directus to filter
   const { products: dbProducts } = await fetchProducts({ limit: 12 });
 
-  // Filter products that have at least one published SKU
+  // Filter products that have at least one published SKU (fallback to dbProducts if fewer than 4)
   const productsWithSkus = dbProducts.filter(
     (p) => p.skus && p.skus.some((s) => s.status === 'published')
   );
+  const availableProducts = productsWithSkus.length >= 4 ? productsWithSkus : (dbProducts.length > 0 ? dbProducts : []);
 
-  // Select up to 4 products to display in the Featured Products section
-  const randomProducts = productsWithSkus.slice(0, 4);
+  // Select 4 products to display in the Featured Products section
+  const randomProducts = availableProducts.slice(0, 4);
 
   const carouselSlides = [
     {
@@ -113,8 +114,8 @@ export default async function RegionalHubsPage({
       <LiveMetricsBar />
       <SectionDivider />
 
-      {/* === SECTION 3: Featured Products === */}
-      <ScrollReveal><FeaturedProducts products={randomProducts} locale={locale} /></ScrollReveal>
+      {/* === SECTION 3: Featured Products (100% Static Standard Data) === */}
+      <ScrollReveal><FeaturedProducts locale={locale} /></ScrollReveal>
       <SectionDivider />
 
       {/* === SECTION 4: Interactive Solution Carousel === */}

@@ -647,6 +647,15 @@
         "feat2": "Nhiều kích cỡ",
         "feat3": "Chịu nhiệt cao",
         "feat4": "Bám dính tốt"
+      },
+      "cleanroom": {
+        "category": "VẬT TƯ PHÒNG SẠCH",
+        "title": "Hóa chất & Vật tư tiêu hao phòng sạch",
+        "desc": "Dung dịch tẩy rửa, khăn lau và vật tư chống tĩnh điện cho nhà máy điện tử, dược phẩm",
+        "feat1": "Chất lượng cao",
+        "feat2": "B2B Standard",
+        "feat3": "Kháng hóa chất",
+        "feat4": "Industrial"
       }
     },
     "carousel": {
