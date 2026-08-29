@@ -108,8 +108,8 @@ export function IndustrySolutions() {
 
   return (
     <div ref={ref}>
-      {/* ── 1. MOBILE VIEW (Visible below lg: < 1024px) ── */}
-      <section className="mx-auto w-full max-w-[1440px] px-4 py-8 sm:px-8 lg:px-12 xl:px-16 lg:py-10 xl:py-12 overflow-hidden lg:hidden">
+      {/* ── 1. MOBILE VIEW (Visible below md: < 768px) ── */}
+      <section className="mx-auto w-full max-w-[1440px] px-4 py-8 sm:px-8 md:hidden overflow-hidden">
         {/* ── SECTION HEADER BAR ── */}
         <SectionHeader
           title={t('industries.sectionTitle')}
@@ -117,7 +117,7 @@ export function IndustrySolutions() {
         />
 
         <div
-          className="mt-8 grid grid-cols-2 gap-3 md:grid-cols-2 lg:grid-cols-3 md:gap-4 lg:gap-6"
+          className="mt-8 grid grid-cols-2 gap-3"
         >
           {cards.map((card, idx) => (
             <Link
@@ -144,7 +144,7 @@ export function IndustrySolutions() {
 
               {/* Right Text Content */}
               <div className="flex-1 min-w-0">
-                <h4 className="text-[12px] sm:text-[14px] md:text-[15px] font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-tight">
+                <h4 className="text-[12px] sm:text-[14px] font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-tight">
                   {card.title}
                 </h4>
                 <p className="text-[10px] sm:text-[11.5px] text-slate-500 font-medium leading-snug mt-1 line-clamp-2">
@@ -156,37 +156,37 @@ export function IndustrySolutions() {
         </div>
       </section>
 
-      {/* ── 2. DESKTOP VIEW (Visible on lg and up: >= 1024px) ── */}
-      <section className="hidden lg:block mx-auto w-full max-w-[1440px] px-8 py-12 lg:px-12 xl:px-16 lg:py-16 xl:py-20 overflow-hidden">
+      {/* ── 2. DESKTOP & IPAD VIEW (Visible on md and up: >= 768px) ── */}
+      <section className="hidden md:block mx-auto w-full max-w-[1440px] px-6 py-10 md:px-8 md:py-12 lg:px-12 xl:px-16 lg:py-16 xl:py-20 overflow-hidden">
         {/* ── SECTION HEADER BAR ── */}
         <SectionHeader
           title={t('industries.sectionTitle')}
           subtitle={t('industries.sectionSubTitle')}
         />
 
-        <div className="mt-10 grid grid-cols-3 gap-6">
+        <div className="mt-8 md:mt-10 grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 lg:gap-6">
           {desktopCards.map((card, idx) => (
             <Link
               key={idx}
               href={card.href}
-              className={`group flex flex-col justify-between min-h-[220px] bg-white border border-slate-100 rounded-[4px] p-8 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-1 hover:border-blue-500/30 ${
+              className={`group flex flex-col justify-between min-h-[190px] md:min-h-[200px] lg:min-h-[220px] bg-white border border-slate-200 lg:border-slate-100 rounded-[4px] p-5 md:p-6 lg:p-8 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-1 hover:border-blue-500/30 ${
                 visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
               }`}
               style={{ transitionDelay: `${idx * 80}ms` }}
             >
               {/* Top Text Content */}
               <div>
-                <h4 className="text-[17px] font-extrabold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug">
+                <h4 className="text-[15px] md:text-[16px] lg:text-[17px] font-extrabold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug">
                   {card.title}
                 </h4>
-                <p className="text-[12.5px] text-slate-500 font-medium leading-relaxed mt-2">
+                <p className="text-[11.5px] md:text-[12px] lg:text-[12.5px] text-slate-500 font-medium leading-relaxed mt-2">
                   {card.desc}
                 </p>
               </div>
 
               {/* Bottom Icon & Arrow */}
-              <div className="flex items-end justify-between mt-6">
-                <div className="relative h-14 w-14 flex items-center justify-center shrink-0">
+              <div className="flex items-end justify-between mt-4 md:mt-6">
+                <div className="relative h-10 w-10 md:h-12 md:w-12 lg:h-14 lg:w-14 flex items-center justify-center shrink-0">
                   <Image
                     src={card.iconSrc}
                     alt={card.title}
@@ -196,7 +196,7 @@ export function IndustrySolutions() {
                 </div>
                 <div className="text-blue-600/80 group-hover:text-blue-600 transition-colors">
                   <svg
-                    className="h-6.5 w-6.5 stroke-[2] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+                    className="h-5 w-5 md:h-6 md:w-6 lg:h-6.5 lg:w-6.5 stroke-[2] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
