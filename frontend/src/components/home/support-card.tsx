@@ -23,10 +23,10 @@ export function SupportCard({ title, desc, iconSrc, icon: IconComp }: SupportCar
           <IconComp className="h-9 w-9 stroke-[1.5]" aria-hidden="true" />
         ) : null}
       </div>
-      <h4 className="mt-4 text-[15px] sm:text-[16px] lg:text-[20px] font-semibold sm:font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug sm:leading-[22px] lg:leading-[28px]">
+      <h4 className="mt-4 text-[14px] font-semibold sm:text-[16px] lg:text-[20px] sm:font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug sm:leading-[22px] lg:leading-[28px]">
         {title}
       </h4>
-      <p className="mt-1.5 text-[12px] sm:text-[13px] lg:text-[14px] leading-relaxed sm:leading-[18px] lg:leading-[20px] text-slate-500 font-normal">
+      <p className="mt-1.5 text-[13px] leading-relaxed sm:text-[13px] lg:text-[14px] sm:leading-[18px] lg:leading-[20px] text-slate-500 font-normal">
         {desc}
       </p>
     </div>

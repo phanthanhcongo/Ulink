@@ -44,7 +44,7 @@ export function HeroBanner() {
 
             {/* Text content */}
             <div className="relative z-30 flex flex-col">
-              <p className="text-[13px] sm:text-[18px] lg:text-[14px] font-semibold sm:font-normal uppercase tracking-wider text-brand">
+              <p className="text-[13px] sm:text-[18px] lg:text-[14px] font-bold sm:font-normal uppercase tracking-wider text-brand">
                 {t('hero.eyebrowTop')}
               </p>
 
@@ -52,11 +52,11 @@ export function HeroBanner() {
                 {t('hero.eyebrowSub')}
               </p>
 
-              <h1 className="mt-2 sm:mt-3 text-[26px] sm:text-[40px] md:text-[40px] lg:text-[56px] xl:text-[56px] font-extrabold leading-[1.15] sm:leading-[48px] lg:leading-[64px] tracking-tight text-slate-900">
+              <h1 className="mt-2 sm:mt-3 text-[28px] leading-[36px] font-semibold sm:text-[40px] md:text-[40px] lg:text-[56px] xl:text-[56px] sm:leading-[48px] lg:leading-[64px] tracking-tight text-slate-900">
                 {t('hero.title')}
               </h1>
 
-              <p className="mt-2.5 sm:mt-3 text-[14px] sm:text-[16px] lg:text-[18px] leading-relaxed lg:leading-[28px] text-slate-600 font-normal">
+              <p className="mt-2.5 sm:mt-3 text-[15px] leading-[22px] sm:text-[16px] lg:text-[18px] sm:leading-relaxed lg:leading-[28px] text-slate-600 font-normal">
                 {t('hero.description')}
               </p>
             </div>
@@ -65,7 +65,7 @@ export function HeroBanner() {
             <div className="group relative z-30 flex flex-row items-center gap-3 pt-1 sm:pt-2">
               <Link
                 href="/quick-order"
-                className="group inline-flex h-[44px] sm:h-[48px] lg:h-[52px] flex-1 sm:flex-none sm:w-auto items-center justify-center gap-2 rounded-[3px] bg-brand px-4 sm:px-7 text-[14px] sm:text-[18px] lg:text-[18px] font-bold sm:font-semibold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:bg-brand-strong active:bg-[#0E4497]"
+                className="group inline-flex h-[44px] sm:h-[48px] lg:h-[52px] flex-1 sm:flex-none sm:w-auto items-center justify-center gap-2 rounded-[3px] bg-brand px-4 sm:px-7 text-[14px] font-bold sm:text-[18px] lg:text-[18px] sm:font-semibold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:bg-brand-strong active:bg-[#0E4497]"
               >
                 <span>{t('hero.ctaRfq')}</span>
                 <ArrowRight className="hidden sm:inline-block h-4.5 w-4.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
@@ -73,7 +73,7 @@ export function HeroBanner() {
               <Link
                 href="/resources"
                 onClick={handleCatalogueClick}
-                className="group inline-flex h-[44px] sm:h-[48px] lg:h-[52px] flex-1 sm:flex-none sm:w-auto items-center justify-center gap-2 border border-brand bg-white/70 rounded-[3px] text-[14px] sm:text-[18px] lg:text-[18px] font-bold sm:font-semibold text-brand transition-all hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:bg-brand/10 hover:border-brand-strong px-4 sm:px-7 shadow-xs"
+                className="group inline-flex h-[44px] sm:h-[48px] lg:h-[52px] flex-1 sm:flex-none sm:w-auto items-center justify-center gap-2 border border-brand bg-white/70 rounded-[3px] text-[14px] font-bold sm:text-[18px] lg:text-[18px] sm:font-semibold text-brand transition-all hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:bg-brand/10 hover:border-brand-strong px-4 sm:px-7 shadow-xs"
               >
                 <span>{t('hero.ctaCatalogue')}</span>
                 <Image
@@ -112,10 +112,10 @@ export function HeroBanner() {
               key={index}
               className="flex flex-col items-center justify-center rounded-[3px] border border-slate-200/80 bg-white p-4 text-center shadow-xs transition-all hover:border-brand/40"
             >
-              <span className="text-[20px] font-extrabold text-brand tracking-tight">
+              <span className="text-[16px] font-extrabold text-brand tracking-tight">
                 {stat.value}
               </span>
-              <span className="mt-1 text-[12px] font-medium text-slate-500 leading-snug">
+              <span className="mt-1 text-[11px] font-normal text-slate-500 leading-snug">
                 {stat.label}
               </span>
             </div>

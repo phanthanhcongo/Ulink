@@ -41,18 +41,18 @@ export async function AboutSection() {
         {/* Right Column: Text Content & 4 Key Metric Items */}
         <div className="flex flex-col lg:col-span-6 justify-between bg-white border border-[#E5E7EB] p-6 rounded-[3px] gap-10">
           <div>
-            <h3 className="text-[18px] font-bold leading-tight text-primary transition-colors duration-300 group-hover:text-brand sm:text-[24px] md:text-[24px] sm:leading-[32px] lg:text-[24px]">
+            <h3 className="text-[20px] font-semibold leading-[28px] text-primary transition-colors duration-300 group-hover:text-brand sm:text-[24px] md:text-[24px] sm:leading-[32px] lg:text-[24px]">
               {t('about.mainTitle')}
             </h3>
 
-            <p className="mt-4 text-[13px] leading-relaxed text-muted-foreground sm:text-[16px] sm:font-normal sm:leading-[26px] lg:text-[16px] xl:text-[16px] lg:leading-[26px]">
+            <p className="mt-4 text-[14px] leading-[20px] text-muted-foreground sm:text-[16px] sm:font-normal sm:leading-[26px] lg:text-[16px] xl:text-[16px] lg:leading-[26px]">
               {t('about.mainDesc')}
             </p>
 
             <div className="my-6 border-b border-border" />
 
             {/* Bullet Points */}
-            <ul className="space-y-4 text-[13px] text-foreground sm:text-[13px] lg:text-[13px] xl:text-[14px] lg:leading-[22px]">
+            <ul className="space-y-4 text-[13px] font-medium leading-[18px] text-foreground sm:text-[13px] lg:text-[13px] xl:text-[14px] lg:leading-[22px]">
               <li className="flex items-center gap-3.5">
                 <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-50 text-brand dark:bg-blue-950/50 dark:text-blue-400">
                   <Check className="h-4.5 w-4.5" />

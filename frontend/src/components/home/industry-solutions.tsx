@@ -143,10 +143,10 @@ export function IndustrySolutions() {
 
               {/* Right Text Content */}
               <div className="flex-1 min-w-0">
-                <h4 className="text-[11px] sm:text-[13px] font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-tight tracking-tight">
+                <h4 className="text-[14px] font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-tight tracking-tight">
                   {card.title}
                 </h4>
-                <p className="text-[9.5px] sm:text-[11px] text-slate-500 font-medium leading-snug mt-1">
+                <p className="text-[11px] text-slate-500 font-normal leading-snug mt-1">
                   {card.desc}
                 </p>
               </div>

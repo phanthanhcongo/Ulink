@@ -36,10 +36,10 @@ export function TargetSegments() {
       <div className="block md:hidden px-4 py-10">
         {/* Mobile Header: Centered 2-line equal size */}
         <div className="text-center max-w-xl mx-auto mb-8 space-y-1">
-          <span className="text-[20px] font-extrabold tracking-tight text-blue-600 leading-tight block">
+          <span className="text-[12px] font-bold uppercase tracking-wider text-blue-600 leading-tight block">
             {t('targetSegments.sectionTitle')}
           </span>
-          <h2 className="text-[20px] font-extrabold tracking-tight text-slate-900 leading-tight">
+          <h2 className="text-[22px] font-extrabold tracking-tight text-slate-900 leading-tight">
             {t('targetSegments.sectionSubTitle')}
           </h2>
         </div>
@@ -48,22 +48,22 @@ export function TargetSegments() {
         <div className="flex flex-col gap-5">
           {/* Card 1: Doanh nghiệp FDI */}
           <div className="rounded-[4px] border border-slate-200 bg-white p-5 shadow-xs">
-            <h3 className="text-[17px] font-bold text-slate-900 leading-tight">
+            <h3 className="text-[16px] font-bold text-slate-900 leading-tight">
               {t('targetSegments.fdiTitle')}
             </h3>
-            <p className="mt-2.5 text-[12.5px] text-slate-500 font-medium leading-relaxed">
+            <p className="mt-2.5 text-[13px] text-slate-500 font-normal leading-relaxed">
               {t('targetSegments.fdiDescMobile')}
             </p>
             <ul className="mt-5 space-y-2.5">
               <li className="flex items-start gap-2">
-                <span className="text-slate-900 font-extrabold text-[14px] leading-none select-none">✓</span>
-                <span className="text-[13px] font-medium text-slate-700 leading-snug">
+                <span className="text-slate-900 font-bold text-[13px] leading-none select-none">✓</span>
+                <span className="text-[12px] font-normal text-slate-700 leading-snug">
                   {t('targetSegments.fdiCheck1Mobile')}
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-slate-900 font-extrabold text-[14px] leading-none select-none">✓</span>
-                <span className="text-[13px] font-medium text-slate-700 leading-snug">
+                <span className="text-slate-900 font-bold text-[13px] leading-none select-none">✓</span>
+                <span className="text-[12px] font-normal text-slate-700 leading-snug">
                   {t('targetSegments.fdiCheck2Mobile')}
                 </span>
               </li>
@@ -72,22 +72,22 @@ export function TargetSegments() {
 
           {/* Card 2: Doanh nghiệp Sản xuất Trong nước */}
           <div className="rounded-[4px] border border-slate-200 bg-white p-5 shadow-xs">
-            <h3 className="text-[17px] font-bold text-slate-900 leading-tight">
+            <h3 className="text-[16px] font-bold text-slate-900 leading-tight">
               {t('targetSegments.smeTitleMobile')}
             </h3>
-            <p className="mt-2.5 text-[12.5px] text-slate-500 font-medium leading-relaxed">
+            <p className="mt-2.5 text-[13px] text-slate-500 font-normal leading-relaxed">
               {t('targetSegments.smeDescMobile')}
             </p>
             <ul className="mt-5 space-y-2.5">
               <li className="flex items-start gap-2">
-                <span className="text-slate-900 font-extrabold text-[14px] leading-none select-none">✓</span>
-                <span className="text-[13px] font-medium text-slate-700 leading-snug">
+                <span className="text-slate-900 font-bold text-[13px] leading-none select-none">✓</span>
+                <span className="text-[12px] font-normal text-slate-700 leading-snug">
                   {t('targetSegments.smeCheck1Mobile')}
                 </span>
               </li>
               <li className="flex items-start gap-2">
-                <span className="text-slate-900 font-extrabold text-[14px] leading-none select-none">✓</span>
-                <span className="text-[13px] font-medium text-slate-700 leading-snug">
+                <span className="text-slate-900 font-bold text-[13px] leading-none select-none">✓</span>
+                <span className="text-[12px] font-normal text-slate-700 leading-snug">
                   {t('targetSegments.smeCheck2Mobile')}
                 </span>
               </li>
