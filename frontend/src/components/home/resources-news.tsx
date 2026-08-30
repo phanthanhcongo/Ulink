@@ -134,10 +134,10 @@ export function ResourcesNews() {
 
       {/* ── 2. SUB-SECTION HEADER (TIN TỨC THỊ TRƯỜNG - 2 HÀNG BẰNG CỠ CHỮ) ── */}
       <div className="text-center max-w-3xl mx-auto space-y-1 sm:space-y-2">
-        <span className="text-[20px] sm:text-[24px] lg:text-[28px] font-extrabold tracking-tight text-blue-600 leading-tight block">
+        <span className="text-[20px] sm:text-[24px] lg:text-[28px] font-semibold tracking-tight text-blue-600 leading-tight lg:leading-[36px] block">
           {t('newsSectionTitle')}
         </span>
-        <h2 className="text-[20px] sm:text-[24px] lg:text-[28px] font-extrabold tracking-tight text-slate-900 leading-tight">
+        <h2 className="text-[20px] sm:text-[24px] lg:text-[28px] font-semibold tracking-tight text-slate-900 leading-tight lg:leading-[36px]">
           {t('newsSectionSubTitle')}
         </h2>
       </div>
@@ -168,7 +168,7 @@ export function ResourcesNews() {
       <div className="mt-10 flex justify-center">
         <Link
           href="/resources"
-          className="group inline-flex h-11 items-center justify-center gap-2.5 rounded-[3px] border border-blue-600 bg-white px-6 text-sm font-bold text-blue-600 transition-all hover:bg-blue-50/50 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:-translate-y-1 hover:scale-[1.02]"
+          className="group inline-flex h-11 items-center justify-center gap-2.5 rounded-[3px] border border-blue-600 bg-white px-6 text-sm lg:text-[16px] font-normal text-blue-600 transition-all hover:bg-blue-50/50 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:-translate-y-1 hover:scale-[1.02]"
         >
           {t('viewMore') || 'Xem thêm'}
           <ArrowRight className="h-4.5 w-4.5 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />

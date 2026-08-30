@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import { ArrowRight, Check, Building2, Settings } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
@@ -123,13 +124,19 @@ export function TargetSegments() {
             {/* Top Header Area: Light Background */}
             <div className="bg-[#F8FAFC] p-6 lg:p-8 border-b border-slate-200">
               {/* White Square Icon Box */}
-              <div className="flex h-12 w-12 items-center justify-center rounded-[4px] bg-white border border-slate-200 text-blue-600 shadow-xs transition-transform duration-300 group-hover:scale-105">
-                <Building2 className="h-6 w-6 text-blue-600" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-[4px] bg-white border border-slate-200 shadow-xs transition-transform duration-300 group-hover:scale-105">
+                <Image
+                  src="/images/icons/figma/_32-industry0.svg"
+                  alt="Doanh nghiệp FDI Icon"
+                  width={32}
+                  height={32}
+                  className="h-8 w-8 object-contain"
+                />
               </div>
               <h3 className="mt-4 text-[20px] lg:text-[22px] font-bold text-slate-900 leading-tight">
                 {t('targetSegments.fdiTitle')}
               </h3>
-              <p className="mt-2 text-[13.5px] lg:text-[14px] text-slate-500 font-medium leading-relaxed">
+              <p className="mt-2 text-[13.5px] lg:text-[14px] text-slate-500 font-normal leading-relaxed lg:leading-[20px]">
                 {t('targetSegments.fdiDesc')}
               </p>
             </div>
@@ -138,34 +145,50 @@ export function TargetSegments() {
             <div className="flex-1 bg-white p-6 lg:p-8 flex flex-col justify-between gap-6 lg:gap-8">
               <ul className="space-y-3.5">
                 <li className="flex items-start gap-3">
-                  <div className="flex h-[20px] w-[20px] shrink-0 items-center justify-center rounded-full bg-blue-600 text-white mt-0.5 shadow-xs">
-                    <Check className="h-3.5 w-3.5 stroke-[3]" />
-                  </div>
-                  <span className="text-[13.5px] lg:text-[14.5px] font-medium text-slate-700 leading-relaxed">
+                  <Image
+                    src="/images/icons/figma/_20-checkmark-filled0.svg"
+                    alt="Checkmark"
+                    width={20}
+                    height={20}
+                    className="h-5 w-5 shrink-0 object-contain mt-0.5"
+                  />
+                  <span className="text-[13.5px] lg:text-[15px] font-normal text-slate-700 leading-relaxed">
                     {t('targetSegments.fdiCheck1')}
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <div className="flex h-[20px] w-[20px] shrink-0 items-center justify-center rounded-full bg-blue-600 text-white mt-0.5 shadow-xs">
-                    <Check className="h-3.5 w-3.5 stroke-[3]" />
-                  </div>
-                  <span className="text-[13.5px] lg:text-[14.5px] font-medium text-slate-700 leading-relaxed">
+                  <Image
+                    src="/images/icons/figma/_20-checkmark-filled0.svg"
+                    alt="Checkmark"
+                    width={20}
+                    height={20}
+                    className="h-5 w-5 shrink-0 object-contain mt-0.5"
+                  />
+                  <span className="text-[13.5px] lg:text-[15px] font-normal text-slate-700 leading-relaxed">
                     {t('targetSegments.fdiCheck2')}
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <div className="flex h-[20px] w-[20px] shrink-0 items-center justify-center rounded-full bg-blue-600 text-white mt-0.5 shadow-xs">
-                    <Check className="h-3.5 w-3.5 stroke-[3]" />
-                  </div>
-                  <span className="text-[13.5px] lg:text-[14.5px] font-medium text-slate-700 leading-relaxed">
+                  <Image
+                    src="/images/icons/figma/_20-checkmark-filled0.svg"
+                    alt="Checkmark"
+                    width={20}
+                    height={20}
+                    className="h-5 w-5 shrink-0 object-contain mt-0.5"
+                  />
+                  <span className="text-[13.5px] lg:text-[15px] font-normal text-slate-700 leading-relaxed">
                     {t('targetSegments.fdiCheck3')}
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <div className="flex h-[20px] w-[20px] shrink-0 items-center justify-center rounded-full bg-blue-600 text-white mt-0.5 shadow-xs">
-                    <Check className="h-3.5 w-3.5 stroke-[3]" />
-                  </div>
-                  <span className="text-[13.5px] lg:text-[14.5px] font-medium text-slate-700 leading-relaxed">
+                  <Image
+                    src="/images/icons/figma/_20-checkmark-filled0.svg"
+                    alt="Checkmark"
+                    width={20}
+                    height={20}
+                    className="h-5 w-5 shrink-0 object-contain mt-0.5"
+                  />
+                  <span className="text-[13.5px] lg:text-[15px] font-normal text-slate-700 leading-relaxed">
                     {t('targetSegments.fdiCheck4')}
                   </span>
                 </li>
@@ -174,7 +197,7 @@ export function TargetSegments() {
               <div className="pt-2">
                 <Link
                   href="/regional-hubs/cum-1"
-                  className="inline-flex items-center gap-1.5 text-[13px] lg:text-[14px] font-bold text-blue-600 hover:text-blue-800 transition-colors"
+                  className="inline-flex items-center gap-1.5 text-[13px] lg:text-[14px] font-semibold text-blue-600 hover:text-blue-800 transition-colors"
                 >
                   {t('targetSegments.viewDetail')}
                   <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -192,13 +215,19 @@ export function TargetSegments() {
             {/* Top Header Area: Light Background */}
             <div className="bg-[#F8FAFC] p-6 lg:p-8 border-b border-slate-200">
               {/* White Square Icon Box */}
-              <div className="flex h-12 w-12 items-center justify-center rounded-[4px] bg-white border border-slate-200 text-blue-600 shadow-xs transition-transform duration-300 group-hover:scale-105">
-                <Settings className="h-6 w-6 text-blue-600" />
+              <div className="flex h-12 w-12 items-center justify-center rounded-[4px] bg-white border border-slate-200 shadow-xs transition-transform duration-300 group-hover:scale-105">
+                <Image
+                  src="/images/icons/figma/_32-gears0.svg"
+                  alt="Doanh nghiệp SME Icon"
+                  width={32}
+                  height={32}
+                  className="h-8 w-8 object-contain"
+                />
               </div>
               <h3 className="mt-4 text-[20px] lg:text-[22px] font-bold text-slate-900 leading-tight">
                 {t('targetSegments.smeTitle')}
               </h3>
-              <p className="mt-2 text-[13.5px] lg:text-[14px] text-slate-500 font-medium leading-relaxed">
+              <p className="mt-2 text-[13.5px] lg:text-[14px] text-slate-500 font-normal leading-relaxed lg:leading-[20px]">
                 {t('targetSegments.smeDesc')}
               </p>
             </div>
@@ -207,34 +236,50 @@ export function TargetSegments() {
             <div className="flex-1 bg-white p-6 lg:p-8 flex flex-col justify-between gap-6 lg:gap-8">
               <ul className="space-y-3.5">
                 <li className="flex items-start gap-3">
-                  <div className="flex h-[20px] w-[20px] shrink-0 items-center justify-center rounded-full bg-blue-600 text-white mt-0.5 shadow-xs">
-                    <Check className="h-3.5 w-3.5 stroke-[3]" />
-                  </div>
-                  <span className="text-[13.5px] lg:text-[14.5px] font-medium text-slate-700 leading-relaxed">
+                  <Image
+                    src="/images/icons/figma/_20-checkmark-filled0.svg"
+                    alt="Checkmark"
+                    width={20}
+                    height={20}
+                    className="h-5 w-5 shrink-0 object-contain mt-0.5"
+                  />
+                  <span className="text-[13.5px] lg:text-[15px] font-normal text-slate-700 leading-relaxed">
                     {t('targetSegments.smeCheck1')}
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <div className="flex h-[20px] w-[20px] shrink-0 items-center justify-center rounded-full bg-blue-600 text-white mt-0.5 shadow-xs">
-                    <Check className="h-3.5 w-3.5 stroke-[3]" />
-                  </div>
-                  <span className="text-[13.5px] lg:text-[14.5px] font-medium text-slate-700 leading-relaxed">
+                  <Image
+                    src="/images/icons/figma/_20-checkmark-filled0.svg"
+                    alt="Checkmark"
+                    width={20}
+                    height={20}
+                    className="h-5 w-5 shrink-0 object-contain mt-0.5"
+                  />
+                  <span className="text-[13.5px] lg:text-[15px] font-normal text-slate-700 leading-relaxed">
                     {t('targetSegments.smeCheck2')}
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <div className="flex h-[20px] w-[20px] shrink-0 items-center justify-center rounded-full bg-blue-600 text-white mt-0.5 shadow-xs">
-                    <Check className="h-3.5 w-3.5 stroke-[3]" />
-                  </div>
-                  <span className="text-[13.5px] lg:text-[14.5px] font-medium text-slate-700 leading-relaxed">
+                  <Image
+                    src="/images/icons/figma/_20-checkmark-filled0.svg"
+                    alt="Checkmark"
+                    width={20}
+                    height={20}
+                    className="h-5 w-5 shrink-0 object-contain mt-0.5"
+                  />
+                  <span className="text-[13.5px] lg:text-[15px] font-normal text-slate-700 leading-relaxed">
                     {t('targetSegments.smeCheck3')}
                   </span>
                 </li>
                 <li className="flex items-start gap-3">
-                  <div className="flex h-[20px] w-[20px] shrink-0 items-center justify-center rounded-full bg-blue-600 text-white mt-0.5 shadow-xs">
-                    <Check className="h-3.5 w-3.5 stroke-[3]" />
-                  </div>
-                  <span className="text-[13.5px] lg:text-[14.5px] font-medium text-slate-700 leading-relaxed">
+                  <Image
+                    src="/images/icons/figma/_20-checkmark-filled0.svg"
+                    alt="Checkmark"
+                    width={20}
+                    height={20}
+                    className="h-5 w-5 shrink-0 object-contain mt-0.5"
+                  />
+                  <span className="text-[13.5px] lg:text-[15px] font-normal text-slate-700 leading-relaxed">
                     {t('targetSegments.smeCheck4')}
                   </span>
                 </li>
@@ -243,7 +288,7 @@ export function TargetSegments() {
               <div className="pt-2">
                 <Link
                   href="/regional-hubs/cum-2"
-                  className="inline-flex items-center gap-1.5 text-[13px] lg:text-[14px] font-bold text-blue-600 hover:text-blue-800 transition-colors"
+                  className="inline-flex items-center gap-1.5 text-[13px] lg:text-[14px] font-semibold text-blue-600 hover:text-blue-800 transition-colors"
                 >
                   {t('targetSegments.viewDetail')}
                   <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />

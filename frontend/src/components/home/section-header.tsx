@@ -32,11 +32,11 @@ export function SectionHeader({ title, subtitle, viewAllHref, viewAllLabel, cent
             <span className="h-1 w-1 rounded-full bg-brand" />
             <span className="h-1 w-1 rounded-full bg-brand" />
           </div>
-          <h2 className="text-[20px] font-extrabold tracking-tight text-primary sm:text-[24px] lg:text-[28px]">
+          <h2 className="text-[20px] font-extrabold tracking-tight text-primary sm:text-[24px] lg:text-[28px] lg:font-semibold lg:leading-[36px]">
             {title}
           </h2>
         </div>
-        <p className="mt-1 text-[12.5px] text-muted-foreground sm:text-[13px] lg:text-[14px]">{subtitle}</p>
+        <p className="mt-1 text-[12.5px] text-muted-foreground sm:text-[13px] lg:text-[18px] lg:font-normal lg:leading-[28px]">{subtitle}</p>
       </div>
       {viewAllHref && viewAllLabel && (
         <Link

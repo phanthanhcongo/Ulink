@@ -124,7 +124,7 @@ export async function SiteFooter() {
               <div className="hidden h-[2px] w-8 bg-[#bfd3ec] lg:block" />
             </div>
 
-            <ul className="space-y-2 text-[13px] sm:text-[14px]">
+            <ul className="space-y-2 text-[13px] sm:text-[14px] lg:text-[16px]">
               <li>
                 <Link
                   href="/regional-hubs/cum-1"
@@ -169,12 +169,12 @@ export async function SiteFooter() {
 
             {/* Partner Block */}
             <div className="mt-6 border-t border-[#d7e1ed] pt-5">
-              <strong className="block text-[12px] font-bold text-[#4a5667]">
+              <strong className="block text-[12px] sm:text-[14px] font-semibold text-[#4a5667]">
                 {t('becomeDistributor')}
               </strong>
               <a
                 href="tel:02473099899"
-                className="mt-2 inline-flex items-center gap-2 text-[15px] font-black tracking-tight text-[#1769e2] hover:underline sm:text-[16px]"
+                className="mt-2 inline-flex items-center gap-2 text-[16px] sm:text-[18px] lg:text-[20px] font-semibold tracking-tight text-[#1769e2] hover:underline"
               >
                 <Phone className="h-5 w-5 shrink-0" />
                 0247 309 9899
@@ -197,14 +197,14 @@ export async function SiteFooter() {
             <div className="mb-4 flex items-center justify-between border-b border-slate-300 pb-2 lg:border-b-0 lg:pb-0 lg:h-32 lg:mb-0">
               <Link
                 href="/industries"
-                className="group inline-flex items-center gap-1 text-[13px] font-extrabold uppercase tracking-wider text-[#151b2a] transition-colors hover:text-[#1769e2] sm:text-[14px]"
+                className="group inline-flex items-center gap-1 text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-[#151b2a] transition-colors hover:text-[#1769e2]"
               >
                 {t('industriesTitle')}
               </Link>
               <div className="hidden h-[2px] w-8 bg-[#bfd3ec] lg:block" />
             </div>
 
-            <ul className="space-y-2 text-[13px] sm:text-[14px]">
+            <ul className="space-y-2 text-[13px] sm:text-[14px] lg:text-[16px]">
               <li>
                 <Link
                   href="/industries/electronics"
@@ -253,14 +253,14 @@ export async function SiteFooter() {
             <div className="mb-4 flex items-center justify-between border-b border-slate-300 pb-2 lg:border-b-0 lg:pb-0 lg:h-32 lg:mb-0">
               <Link
                 href="/solutions"
-                className="group inline-flex items-center gap-1 text-[13px] font-extrabold uppercase tracking-wider text-[#151b2a] transition-colors hover:text-[#1769e2] sm:text-[14px]"
+                className="group inline-flex items-center gap-1 text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-[#151b2a] transition-colors hover:text-[#1769e2]"
               >
                 {t('productsTitle')}
               </Link>
               <div className="hidden h-[2px] w-8 bg-[#bfd3ec] lg:block" />
             </div>
 
-            <ul className="space-y-2 text-[13px] sm:text-[14px]">
+            <ul className="space-y-2 text-[13px] sm:text-[14px] lg:text-[16px]">
               <li>
                 <Link
                   href="/solutions/listProduct/categories/cleanroom-consumables"
@@ -294,7 +294,7 @@ export async function SiteFooter() {
 
             {/* QR Card */}
             <div className="mt-5 rounded-[3px] border border-[#dfe8f3] bg-[#eaf1fa] p-4 text-center">
-              <strong className="block text-[15px] font-bold text-[#172033]">
+              <strong className="block text-[15px] sm:text-[18px] lg:text-[20px] font-semibold text-[#172033]">
                 {t('downloadApp')}
               </strong>
               <div className="relative mx-auto mt-2.5 h-32 w-32 rounded bg-white p-1">
@@ -312,7 +312,7 @@ export async function SiteFooter() {
 
       {/* ── BOTTOM BAR: COPYRIGHT & LEGAL LINKS ── */}
       <div className="border-t border-[#d7e1ed] bg-[#eaf1fa] py-4">
-        <div className="mx-auto flex w-full max-w-[1280px] flex-col items-center justify-between gap-3 px-4 text-[11px] text-[#748196] sm:flex-row sm:px-8 sm:text-[12px]">
+        <div className="mx-auto flex w-full max-w-[1280px] flex-col items-center justify-between gap-3 px-4 text-[11px] sm:text-[12px] lg:text-[14px] text-[#748196] sm:flex-row sm:px-8">
           <span>{t('copyright')}</span>
           <div className="flex items-center gap-5">
             <Link href="/privacy" className="transition-colors hover:text-[#1769e2]">

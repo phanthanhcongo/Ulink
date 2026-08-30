@@ -9,10 +9,10 @@ export function SupportSection() {
   const t = useTranslations('home.resourcesSection');
 
   const supportData = [
-    { num: 1, icon: CheckSquare, title: t('supp1Title'), desc: t('supp1Desc') },
-    { num: 2, icon: Shield, title: t('supp2Title'), desc: t('supp2Desc') },
-    { num: 3, icon: TrendingUp, title: t('supp3Title'), desc: t('supp3Desc') },
-    { num: 4, icon: Zap, title: t('supp4Title'), desc: t('supp4Desc') }
+    { num: 1, iconSrc: '/images/icons/figma/check-square0.svg', icon: CheckSquare, title: t('supp1Title'), desc: t('supp1Desc') },
+    { num: 2, iconSrc: '/images/icons/figma/shield1.svg', icon: Shield, title: t('supp2Title'), desc: t('supp2Desc') },
+    { num: 3, iconSrc: '/images/icons/figma/_32-chart-combo-vectorized0.svg', icon: TrendingUp, title: t('supp3Title'), desc: t('supp3Desc') },
+    { num: 4, iconSrc: '/images/icons/figma/zap0.svg', icon: Zap, title: t('supp4Title'), desc: t('supp4Desc') }
   ];
 
   return (
@@ -21,7 +21,7 @@ export function SupportSection() {
         {/* ── 5. SUB-SECTION HEADER BAR (TƯ VẤN & HỖ TRỢ) ── */}
         <div className="flex items-center gap-3">
           <div className="h-6 w-1 rounded-full bg-cyan-500 shrink-0" />
-          <h2 className="text-[20px] sm:text-[24px] lg:text-[28px] font-bold text-slate-900 tracking-tight">
+          <h2 className="text-[18px] sm:text-[20px] lg:text-[20px] font-semibold text-slate-900 tracking-tight lg:leading-[28px]">
             {t('supportTitle')}
           </h2>
         </div>
@@ -33,6 +33,7 @@ export function SupportSection() {
               key={supp.num}
               title={supp.title}
               desc={supp.desc}
+              iconSrc={supp.iconSrc}
               icon={supp.icon}
             />
           ))}

@@ -20,28 +20,28 @@ export function DocSection() {
   const docsData = [
     {
       num: 1,
-      icon: ASSETS.home.docIcon1,
+      icon: '/images/icons/figma/_32-download0.svg',
       category: t('doc1Category'),
       title: t('doc1Title'),
       meta: t('doc1Meta')
     },
     {
       num: 2,
-      icon: ASSETS.home.docIcon2,
+      icon: '/images/icons/figma/watson-health-32-save-series0.svg',
       category: t('doc2Category'),
       title: t('doc2Title'),
       meta: t('doc2Meta')
     },
     {
       num: 3,
-      icon: ASSETS.home.docIcon3,
+      icon: '/images/icons/figma/_32-document-configuration0.svg',
       category: t('doc3Category'),
       title: t('doc3Title'),
       meta: t('doc3Meta')
     },
     {
       num: 4,
-      icon: ASSETS.home.docIcon4,
+      icon: '/images/icons/figma/_32-document-pdf0.svg',
       category: t('doc4Category'),
       title: t('doc4Title'),
       meta: t('doc4Meta')
@@ -54,7 +54,7 @@ export function DocSection() {
         {/* ── 4. SUB-SECTION HEADER BAR (TÀI LIỆU & CATALOGUE) ── */}
         <div className="flex items-center gap-3">
           <div className="h-6 w-1 rounded-full bg-blue-600 shrink-0" />
-          <h2 className="text-[20px] sm:text-[24px] lg:text-[28px] font-bold text-slate-900 tracking-tight">
+          <h2 className="text-[18px] sm:text-[20px] lg:text-[20px] font-semibold text-slate-900 tracking-tight lg:leading-[28px]">
             {t('docsTitle')}
           </h2>
         </div>

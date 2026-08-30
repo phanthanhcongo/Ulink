@@ -74,7 +74,7 @@ export function CaseStudies() {
       <div className="mt-10 flex justify-center sm:mt-12">
         <Link
           href="/resources"
-          className="inline-flex items-center justify-center rounded-[3px] bg-brand px-8 py-3 text-[14px] font-bold text-white shadow-sm transition-all hover:bg-brand-strong hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] active:scale-95"
+          className="inline-flex items-center justify-center rounded-[3px] bg-brand px-8 py-3 text-[14px] lg:text-[20px] font-semibold text-white shadow-sm transition-all hover:bg-brand-strong hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] active:scale-95"
         >
           {t('caseStudy.viewAll')}
         </Link>

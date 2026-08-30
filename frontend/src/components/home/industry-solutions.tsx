@@ -33,37 +33,37 @@ export function IndustrySolutions() {
       title: t('industries.card1Title'),
       desc: t('industries.card1Desc'),
       href: '/industries/electronics',
-      iconSrc: ASSETS.home.indElectronics
+      iconSrc: '/images/icons/figma/icon-i-n-t-2-vectorized0.svg'
     },
     {
       title: t('industries.card2Title'),
       desc: t('industries.card2Desc'),
       href: '/industries/food-beverage',
-      iconSrc: ASSETS.home.indFood
+      iconSrc: '/images/icons/figma/icon-th-c-ph-m-1-vectorized0.svg'
     },
     {
       title: t('industries.card3Title'),
       desc: t('industries.card3Desc'),
       href: '/industries/logistics',
-      iconSrc: ASSETS.home.indLogistics
+      iconSrc: '/images/icons/figma/iocn-logistics-2-vectorized0.svg'
     },
     {
       title: t('industries.card4Title'),
       desc: t('industries.card4Desc'),
       href: '/industries/pharma-medical',
-      iconSrc: ASSETS.home.indPharma
+      iconSrc: '/images/icons/figma/iocn-pharmacity-1-vectorized0.svg'
     },
     {
       title: t('industries.card5Title'),
       desc: t('industries.card5Desc'),
       href: '/industries/furniture-wood',
-      iconSrc: ASSETS.home.indFurniture
+      iconSrc: '/images/icons/figma/icon-n-i-th-t-2-vectorized0.svg'
     },
     {
       title: t('industries.card6Title'),
       desc: t('industries.card6Desc'),
       href: '/industries/construction-hvac',
-      iconSrc: ASSETS.home.indConstruction
+      iconSrc: '/images/icons/figma/iocn-x-y-d-ng-1-vectorized0.svg'
     }
   ];
 
@@ -72,37 +72,37 @@ export function IndustrySolutions() {
       title: t('industries.card1Title'),
       desc: t('industries.card1Desc'),
       href: '/industries/electronics',
-      iconSrc: ASSETS.home.indElectronics
+      iconSrc: '/images/icons/figma/icon-i-n-t-2-vectorized0.svg'
     },
     {
       title: t('industries.card2Title'),
       desc: t('industries.card2Desc'),
       href: '/industries/food-beverage',
-      iconSrc: ASSETS.home.indFood
+      iconSrc: '/images/icons/figma/icon-th-c-ph-m-1-vectorized0.svg'
     },
     {
-      title: t('industries.card4Title'), // Keep the original 3rd column mapping to match the order in layout: logistics
+      title: t('industries.card3Title'),
       desc: t('industries.card3Desc'),
       href: '/industries/logistics',
-      iconSrc: ASSETS.home.indLogistics
+      iconSrc: '/images/icons/figma/iocn-logistics-2-vectorized0.svg'
     },
     {
-      title: t('industries.card3Title'), // mapping: pharma
+      title: t('industries.card4Title'),
       desc: t('industries.card4Desc'),
       href: '/industries/pharma-medical',
-      iconSrc: ASSETS.home.indPharma
+      iconSrc: '/images/icons/figma/iocn-pharmacity-1-vectorized0.svg'
     },
     {
       title: t('industries.card5Title'),
       desc: t('industries.card5Desc'),
       href: '/industries/furniture-wood',
-      iconSrc: ASSETS.home.indFurniture
+      iconSrc: '/images/icons/figma/icon-n-i-th-t-2-vectorized0.svg'
     },
     {
       title: t('industries.card6Title'),
       desc: t('industries.card6Desc'),
       href: '/industries/construction-hvac',
-      iconSrc: ASSETS.home.indConstruction
+      iconSrc: '/images/icons/figma/iocn-x-y-d-ng-1-vectorized0.svg'
     }
   ];
 
@@ -174,10 +174,10 @@ export function IndustrySolutions() {
             >
               {/* Top Text Content */}
               <div>
-                <h4 className="text-[15px] md:text-[16px] lg:text-[17px] font-extrabold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug">
+                <h4 className="text-[15px] md:text-[16px] lg:text-[18px] font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug lg:leading-[28px]">
                   {card.title}
                 </h4>
-                <p className="text-[11.5px] md:text-[12px] lg:text-[12.5px] text-slate-500 font-medium leading-relaxed mt-2">
+                <p className="text-[11.5px] md:text-[12px] lg:text-[14px] text-slate-500 font-normal leading-relaxed lg:leading-[20px] mt-2">
                   {card.desc}
                 </p>
               </div>
