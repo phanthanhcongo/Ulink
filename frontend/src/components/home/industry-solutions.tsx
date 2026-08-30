@@ -174,10 +174,10 @@ export function IndustrySolutions() {
             >
               {/* Top Text Content */}
               <div>
-                <h4 className="text-[15px] md:text-[16px] lg:text-[18px] font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug lg:leading-[28px]">
+                <h4 className="text-[15px] md:text-[18px] lg:text-[18px] font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug md:leading-[28px] lg:leading-[28px]">
                   {card.title}
                 </h4>
-                <p className="text-[11.5px] md:text-[12px] lg:text-[14px] text-slate-500 font-normal leading-relaxed lg:leading-[20px] mt-2">
+                <p className="text-[11.5px] md:text-[14px] lg:text-[14px] text-slate-500 font-normal leading-relaxed md:leading-[20px] lg:leading-[20px] mt-2">
                   {card.desc}
                 </p>
               </div>

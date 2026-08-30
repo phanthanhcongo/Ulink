@@ -57,10 +57,10 @@ export async function FeatureValueBar() {
                 />
               </div>
               <div>
-                <p className="text-[14px] font-bold leading-snug text-slate-900 transition-colors duration-300 group-hover:text-brand whitespace-nowrap sm:text-[15px] lg:text-[20px] lg:font-semibold">
+                <p className="text-[14px] font-bold leading-snug text-slate-900 transition-colors duration-300 group-hover:text-brand whitespace-nowrap sm:text-[16px] sm:font-bold lg:text-[20px] lg:font-semibold">
                   {t(`features.${f.titleKey}`)}
                 </p>
-                <p className="mt-1 text-[12px] text-slate-500 whitespace-nowrap sm:text-[13px] lg:text-[16px] lg:font-normal">
+                <p className="mt-1 text-[12px] text-slate-500 whitespace-nowrap sm:text-[14px] sm:font-normal sm:leading-[20px] lg:text-[16px]">
                   {t(`features.${f.descKey}`)}
                 </p>
               </div>

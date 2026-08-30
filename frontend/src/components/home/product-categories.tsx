@@ -113,10 +113,10 @@ export async function ProductCategories() {
 
             {/* Card Content Body */}
             <div className="flex flex-1 flex-col p-5 sm:p-6 lg:p-6 xl:p-8">
-              <h3 className="flex items-center gap-2 text-[16px] font-bold text-slate-900 sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[22px] group-hover:text-brand transition-colors">
+              <h3 className="flex items-center gap-2 text-[16px] font-bold text-slate-900 sm:text-[22px] md:text-[22px] lg:text-[22px] xl:text-[22px] sm:leading-[28px] group-hover:text-brand transition-colors">
                 <span className={card.diamondColor}>◇</span> {card.title}
               </h3>
-              <p className="mt-2 text-[12px] leading-relaxed text-slate-600 sm:text-[13px] lg:text-[16px] xl:text-[16px] lg:font-normal lg:leading-[24px]">
+              <p className="mt-2 text-[12px] leading-relaxed text-slate-600 sm:text-[16px] sm:font-normal sm:leading-[24px] lg:text-[16px] xl:text-[16px] lg:font-normal lg:leading-[24px]">
                 {card.description}
               </p>
 
@@ -125,7 +125,7 @@ export async function ProductCategories() {
                 {card.items.map((item, idx) => (
                   <div
                     key={idx}
-                    className="flex items-center gap-2 text-[11.5px] text-slate-700 transition-colors sm:text-[13px] lg:text-[14px] xl:text-[14px] font-normal"
+                    className="flex items-center gap-2 text-[11.5px] text-slate-700 transition-colors sm:text-[14px] sm:leading-[20px] lg:text-[14px] xl:text-[14px] font-normal"
                   >
                     <Image
                       src="/images/icons/iconBox.png"
@@ -141,7 +141,7 @@ export async function ProductCategories() {
 
               {/* Bottom Right Action Link */}
               <div className="mt-8 flex justify-end pt-3 border-t border-slate-100">
-                <span className="inline-flex items-center gap-1.5 text-[12px] font-bold text-brand transition-all sm:text-[13.5px] lg:text-[16px] group-hover:gap-2.5">
+                <span className="inline-flex items-center gap-1.5 text-[12px] font-bold text-brand transition-all sm:text-[16px] lg:text-[16px] group-hover:gap-2.5">
                   <span>{t('categories.viewDetail')}</span>
                   <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
                 </span>
@@ -173,11 +173,11 @@ export async function ProductCategories() {
             {/* Card Content Body */}
             <div className="flex flex-1 flex-col p-5 sm:p-6 lg:p-6 xl:p-8">
               <div>
-                <h3 className="text-[16px] font-bold text-slate-900 sm:text-[18px] md:text-[20px] lg:text-[18px] xl:text-[18px] lg:leading-[28px] group-hover:text-brand transition-colors">
+                <h3 className="text-[16px] font-bold text-slate-900 sm:text-[18px] md:text-[18px] lg:text-[18px] xl:text-[18px] sm:leading-[28px] lg:leading-[28px] group-hover:text-brand transition-colors">
                   {card.title}
                 </h3>
                 <div className="my-3 border-b border-dashed border-slate-300" />
-                <p className="text-[12px] leading-relaxed text-slate-600 sm:text-[13px] lg:text-[16px] xl:text-[16px] lg:font-normal lg:leading-[24px]">
+                <p className="text-[12px] leading-relaxed text-slate-600 sm:text-[16px] sm:font-normal sm:leading-[24px] lg:text-[16px] xl:text-[16px] lg:font-normal lg:leading-[24px]">
                   {card.description}
                 </p>
               </div>

@@ -44,15 +44,15 @@ export function HeroBanner() {
 
             {/* Text content */}
             <div className="relative z-30 flex flex-col">
-              <p className="text-[13px] sm:text-[14px] lg:text-[14px] font-semibold uppercase tracking-wider text-brand">
+              <p className="text-[13px] sm:text-[18px] lg:text-[14px] font-semibold sm:font-normal uppercase tracking-wider text-brand">
                 {t('hero.eyebrowTop')}
               </p>
 
-              <p className="hidden sm:block mt-1 text-[14px] sm:text-[15px] lg:text-[16px] font-bold uppercase tracking-wider text-primary">
+              <p className="hidden sm:block mt-1 text-[14px] sm:text-[18px] lg:text-[16px] font-bold sm:font-semibold uppercase tracking-wider text-primary">
                 {t('hero.eyebrowSub')}
               </p>
 
-              <h1 className="mt-2 sm:mt-3 text-[26px] sm:text-[38px] md:text-[44px] lg:text-[56px] xl:text-[56px] font-extrabold leading-[1.15] lg:leading-[64px] tracking-tight text-slate-900">
+              <h1 className="mt-2 sm:mt-3 text-[26px] sm:text-[40px] md:text-[40px] lg:text-[56px] xl:text-[56px] font-extrabold leading-[1.15] sm:leading-[48px] lg:leading-[64px] tracking-tight text-slate-900">
                 {t('hero.title')}
               </h1>
 
@@ -65,7 +65,7 @@ export function HeroBanner() {
             <div className="group relative z-30 flex flex-row items-center gap-3 pt-1 sm:pt-2">
               <Link
                 href="/quick-order"
-                className="group inline-flex h-[44px] sm:h-[48px] lg:h-[52px] flex-1 sm:flex-none sm:w-auto items-center justify-center gap-2 rounded-[3px] bg-brand px-4 sm:px-7 text-[14px] sm:text-[16px] lg:text-[18px] font-bold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:bg-brand-strong active:bg-[#0E4497]"
+                className="group inline-flex h-[44px] sm:h-[48px] lg:h-[52px] flex-1 sm:flex-none sm:w-auto items-center justify-center gap-2 rounded-[3px] bg-brand px-4 sm:px-7 text-[14px] sm:text-[18px] lg:text-[18px] font-bold sm:font-semibold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:bg-brand-strong active:bg-[#0E4497]"
               >
                 <span>{t('hero.ctaRfq')}</span>
                 <ArrowRight className="hidden sm:inline-block h-4.5 w-4.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
@@ -73,7 +73,7 @@ export function HeroBanner() {
               <Link
                 href="/resources"
                 onClick={handleCatalogueClick}
-                className="group inline-flex h-[44px] sm:h-[48px] lg:h-[52px] flex-1 sm:flex-none sm:w-auto items-center justify-center gap-2 border border-brand bg-white/70 rounded-[3px] text-[14px] sm:text-[16px] lg:text-[18px] font-bold text-brand transition-all hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:bg-brand/10 hover:border-brand-strong px-4 sm:px-7 shadow-xs"
+                className="group inline-flex h-[44px] sm:h-[48px] lg:h-[52px] flex-1 sm:flex-none sm:w-auto items-center justify-center gap-2 border border-brand bg-white/70 rounded-[3px] text-[14px] sm:text-[18px] lg:text-[18px] font-bold sm:font-semibold text-brand transition-all hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:bg-brand/10 hover:border-brand-strong px-4 sm:px-7 shadow-xs"
               >
                 <span>{t('hero.ctaCatalogue')}</span>
                 <Image

@@ -37,10 +37,10 @@ export function WorkingProcess() {
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
         {/* ── SECTION HEADER ── */}
         <div className="text-center max-w-3xl mx-auto space-y-2">
-          <span className="text-[20px] sm:text-[24px] lg:text-[28px] font-semibold tracking-tight text-blue-600 leading-tight lg:leading-[36px] block">
+          <span className="text-[20px] sm:text-[28px] lg:text-[28px] font-bold tracking-tight text-blue-600 leading-tight sm:leading-[36px] lg:leading-[36px] block">
             {t('workingProcess.sectionTitle')}
           </span>
-          <p className="text-[13px] sm:text-[15px] lg:text-[18px] font-normal text-slate-600 leading-relaxed lg:leading-[28px]">
+          <p className="text-[13px] sm:text-[18px] lg:text-[18px] font-normal text-slate-600 leading-relaxed sm:leading-[28px] lg:leading-[28px]">
             {t('workingProcess.sectionSubTitle')}
           </p>
         </div>
@@ -74,14 +74,14 @@ export function WorkingProcess() {
                     <span className="text-[12px] sm:text-[13px] lg:text-[14px] font-semibold text-slate-500">
                       {t(`workingProcess.step${step}Number` as any)}
                     </span>
-                    <h3 className="mt-0.5 text-[15px] sm:text-[16.5px] lg:text-[20px] font-semibold text-slate-900 leading-snug group-hover:text-blue-600 transition-colors">
+                    <h3 className="mt-0.5 text-[15px] sm:text-[18px] lg:text-[20px] font-bold text-slate-900 leading-snug sm:leading-[24px] group-hover:text-blue-600 transition-colors">
                       {t(`workingProcess.step${step}Title` as any)}
                     </h3>
                   </div>
                 </div>
 
                 {/* Description Text */}
-                <p className="text-[13px] sm:text-[13.5px] lg:text-[15px] leading-relaxed lg:leading-[24px] text-slate-600 font-normal">
+                <p className="text-[13px] sm:text-[14px] lg:text-[15px] leading-relaxed sm:leading-[20px] lg:leading-[24px] text-slate-600 font-normal">
                   {t(`workingProcess.step${step}Desc` as any)}
                 </p>
               </div>
@@ -91,7 +91,7 @@ export function WorkingProcess() {
                 <span className="text-[12.5px] sm:text-[13px] font-normal text-slate-500">
                   {t(`workingProcess.step${step}KpiLabel` as any)}
                 </span>
-                <span className="text-[13.5px] sm:text-[14px] lg:text-[14px] font-semibold text-blue-600">
+                <span className="text-[13.5px] sm:text-[14px] lg:text-[14px] font-bold text-blue-600">
                   {t(`workingProcess.step${step}KpiValue` as any)}
                 </span>
               </div>

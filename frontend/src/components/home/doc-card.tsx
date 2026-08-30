@@ -37,7 +37,7 @@ export function DocCard({ category, title, meta, icon, onClick }: DocCardProps) 
         <p className="text-[12px] sm:text-[13px] lg:text-[16px] font-normal text-slate-500">
           {category}
         </p>
-        <h4 className="mt-1.5 text-[14px] sm:text-[15px] lg:text-[16px] font-normal text-slate-800 leading-snug lg:leading-[24px] group-hover:text-blue-600 transition-colors line-clamp-2">
+        <h4 className="mt-1.5 text-[14px] sm:text-[15px] lg:text-[16px] font-normal sm:font-bold text-slate-800 leading-snug sm:leading-[20px] lg:leading-[24px] group-hover:text-blue-600 transition-colors line-clamp-2">
           {title}
         </h4>
       </div>
