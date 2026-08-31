@@ -10,8 +10,8 @@ export function FooterDesktop() {
 
   return (
     <div className="hidden lg:grid grid-cols-12 gap-6 items-start">
-      {/* ── COL 1: BRAND, CONTACT & SOCIALS (3 COLS ON DESKTOP) ── */}
-      <section className="lg:col-span-3 lg:pr-2" aria-label="Thông tin ULink Industries">
+      {/* ── COL 1: BRAND, CONTACT & SOCIALS (4 COLS ON DESKTOP) ── */}
+      <section className="lg:col-span-4" aria-label="Thông tin ULink Industries">
         <div className="h-20 flex items-center mb-4">
           <Link href="/" className="inline-block">
             <Image
@@ -107,8 +107,8 @@ export function FooterDesktop() {
         </div>
       </section>
 
-      {/* ── COL 2: VỀ CHÚNG TÔI, DISTRIBUTOR & BỘ CÔNG THƯƠNG (3 COLS ON DESKTOP) ── */}
-      <nav className="lg:col-span-3 flex flex-col justify-between" aria-label="Về chúng tôi">
+      {/* ── COL 2: VỀ CHÚNG TÔI, DISTRIBUTOR & BỘ CÔNG THƯƠNG (2 COLS ON DESKTOP) ── */}
+      <nav className="lg:col-span-2 flex flex-col justify-between" aria-label="Về chúng tôi">
         <div>
           <div className="h-20 flex items-center mb-4">
             <Link
@@ -253,13 +253,13 @@ export function FooterDesktop() {
 
       {/* ── COL 5: APP DOWNLOAD CARD (2 COLS ON DESKTOP) ── */}
       <section className="lg:col-span-2" aria-label="Tải ứng dụng">
-        <div className="h-20 flex items-center justify-center mb-4">
+        <div className="h-20 flex items-center justify-start mb-4">
           <strong className="block text-[16px] font-bold uppercase tracking-wider text-[#151b2a]">
             {t('downloadApp')}
           </strong>
         </div>
-        <div className="rounded-[3px] bg-[#eaf1fa] p-4 text-center">
-          <div className="relative mx-auto h-32 w-32 rounded bg-white p-1 shadow-xs">
+        <div className="rounded-[3px] bg-[#eaf1fa] p-4 text-left">
+          <div className="relative h-32 w-32 rounded bg-white p-1 shadow-xs">
             <Image
               src={ASSETS.footer.qrCode}
               alt="Mã QR tải ứng dụng ULink"
