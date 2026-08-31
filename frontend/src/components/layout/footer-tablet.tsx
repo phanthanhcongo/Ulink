@@ -62,7 +62,7 @@ export function FooterTablet() {
               href="https://linkedin.com"
               target="_blank"
               rel="noreferrer"
-              className="transition-transform hover:-translate-y-0.5"
+              className="rounded-full overflow-hidden transition-transform hover:-translate-y-0.5"
               aria-label="LinkedIn"
             >
               <Image
@@ -70,14 +70,14 @@ export function FooterTablet() {
                 alt="LinkedIn"
                 width={40}
                 height={40}
-                className="h-10 w-10 object-contain"
+                className="h-10 w-10 rounded-full object-cover"
               />
             </a>
             <a
               href="https://facebook.com"
               target="_blank"
               rel="noreferrer"
-              className="transition-transform hover:-translate-y-0.5"
+              className="rounded-full overflow-hidden transition-transform hover:-translate-y-0.5"
               aria-label="Facebook"
             >
               <Image
@@ -85,14 +85,14 @@ export function FooterTablet() {
                 alt="Facebook"
                 width={40}
                 height={40}
-                className="h-10 w-10 object-contain"
+                className="h-10 w-10 rounded-full object-cover"
               />
             </a>
             <a
               href="https://youtube.com"
               target="_blank"
               rel="noreferrer"
-              className="transition-transform hover:-translate-y-0.5"
+              className="rounded-full overflow-hidden transition-transform hover:-translate-y-0.5"
               aria-label="YouTube"
             >
               <Image
@@ -100,7 +100,7 @@ export function FooterTablet() {
                 alt="YouTube"
                 width={40}
                 height={40}
-                className="h-10 w-10 object-contain"
+                className="h-10 w-10 rounded-full object-cover"
               />
             </a>
           </div>

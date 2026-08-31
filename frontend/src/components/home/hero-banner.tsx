@@ -44,11 +44,11 @@ export function HeroBanner() {
 
             {/* Text content */}
             <div className="relative z-30 flex flex-col">
-              <p className="text-[12px] sm:text-[13px] lg:text-[14px] xl:text-[15px] font-bold sm:font-normal uppercase tracking-wider text-brand">
+              <p className="text-[12px] sm:text-[13px] lg:text-[14px] xl:text-[15px] font-semibold uppercase tracking-wider text-brand">
                 {t('hero.eyebrowTop')}
               </p>
 
-              <p className="hidden sm:block mt-1 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-bold sm:font-semibold uppercase tracking-wider text-primary">
+              <p className="hidden sm:block mt-1 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-bold uppercase tracking-wider text-primary">
                 {t('hero.eyebrowSub')}
               </p>
 

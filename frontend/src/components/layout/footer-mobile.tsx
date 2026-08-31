@@ -193,14 +193,14 @@ export function FooterMobile() {
           {t('connectSocials')}
         </p>
         <div className="flex items-center gap-3">
-          <a href="https://linkedin.com" target="_blank" rel="noreferrer" aria-label="LinkedIn">
-            <Image src={ASSETS.footer.linkedin} alt="LinkedIn" width={40} height={40} className="h-10 w-10 object-contain" />
+          <a href="https://linkedin.com" target="_blank" rel="noreferrer" className="rounded-full overflow-hidden transition-transform hover:-translate-y-0.5" aria-label="LinkedIn">
+            <Image src={ASSETS.footer.linkedin} alt="LinkedIn" width={40} height={40} className="h-10 w-10 rounded-full object-cover" />
           </a>
-          <a href="https://facebook.com" target="_blank" rel="noreferrer" aria-label="Facebook">
-            <Image src={ASSETS.footer.facebook} alt="Facebook" width={40} height={40} className="h-10 w-10 object-contain" />
+          <a href="https://facebook.com" target="_blank" rel="noreferrer" className="rounded-full overflow-hidden transition-transform hover:-translate-y-0.5" aria-label="Facebook">
+            <Image src={ASSETS.footer.facebook} alt="Facebook" width={40} height={40} className="h-10 w-10 rounded-full object-cover" />
           </a>
-          <a href="https://youtube.com" target="_blank" rel="noreferrer" aria-label="YouTube">
-            <Image src={ASSETS.footer.youtube} alt="YouTube" width={40} height={40} className="h-10 w-10 object-contain" />
+          <a href="https://youtube.com" target="_blank" rel="noreferrer" className="rounded-full overflow-hidden transition-transform hover:-translate-y-0.5" aria-label="YouTube">
+            <Image src={ASSETS.footer.youtube} alt="YouTube" width={40} height={40} className="h-10 w-10 rounded-full object-cover" />
           </a>
         </div>
         <div>
