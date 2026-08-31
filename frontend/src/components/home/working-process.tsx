@@ -33,11 +33,11 @@ export function WorkingProcess() {
   ];
 
   return (
-    <section className="w-full bg-white py-12 sm:py-16 lg:py-20 border-t border-slate-100">
+    <section className="w-full bg-[#f3f7fc] py-12 sm:py-16 lg:py-20 border-t border-slate-200/60">
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
         {/* ── SECTION HEADER ── */}
         <div className="text-center max-w-3xl mx-auto space-y-2">
-          <span className="text-[20px] sm:text-[24px] lg:text-[28px] xl:text-[32px] font-bold tracking-tight text-blue-600 leading-tight sm:leading-[32px] lg:leading-[36px] xl:leading-[40px] block">
+          <span className="text-[20px] sm:text-[24px] lg:text-[28px] xl:text-[32px] font-bold tracking-tight text-brand leading-tight sm:leading-[32px] lg:leading-[36px] xl:leading-[40px] block">
             {t('workingProcess.sectionTitle')}
           </span>
           <p className="text-[14px] sm:text-[15px] lg:text-[16px] xl:text-[18px] font-normal text-slate-600 leading-relaxed sm:leading-[22px] lg:leading-[24px] xl:leading-[28px]">
@@ -53,14 +53,14 @@ export function WorkingProcess() {
           {steps.map(({ step, iconSrc }, idx) => (
             <div
               key={step}
-              className={`group flex flex-col justify-between rounded-[3px] border border-slate-200 bg-white p-4 sm:p-5 lg:p-6 shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] ${visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+              className={`group flex flex-col justify-between rounded-[2px] border border-slate-200/90 bg-white p-5 sm:p-6 lg:p-6 xl:p-7 shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_8px_25px_-5px_rgba(23,105,226,0.2)] ${visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
                 }`}
               style={{ transitionDelay: `${idx * 100}ms` }}
             >
               <div>
                 {/* Top Row: Left Icon + Right Text (Step Number & Step Title) */}
                 <div className="flex items-center gap-3.5 sm:gap-4 mb-4">
-                  <div className="flex h-11 w-11 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-blue-50/80 text-blue-600 shrink-0 transition-colors duration-300 group-hover:bg-blue-600 group-hover:text-white">
+                  <div className="flex h-12 w-12 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-[#eff5fe] text-brand shrink-0 border border-[#d0e2fb] transition-colors duration-300 group-hover:bg-brand group-hover:border-brand group-hover:text-white">
                     <Image
                       src={iconSrc}
                       alt={`Step ${step} Icon`}
@@ -71,10 +71,10 @@ export function WorkingProcess() {
                   </div>
 
                   <div className="flex flex-col min-w-0">
-                    <span className="text-[11px] sm:text-[11px] lg:text-[12px] xl:text-[13px] font-semibold text-slate-500">
+                    <span className="text-[11px] sm:text-[11px] lg:text-[12px] xl:text-[13px] font-semibold text-brand">
                       {t(`workingProcess.step${step}Number` as any)}
                     </span>
-                    <h3 className="mt-0.5 text-[15px] sm:text-[16px] lg:text-[18px] xl:text-[20px] font-bold text-slate-900 leading-snug sm:leading-[24px] lg:leading-[26px] xl:leading-[28px] group-hover:text-blue-600 transition-colors">
+                    <h3 className="mt-0.5 text-[15px] sm:text-[16px] lg:text-[18px] xl:text-[20px] font-bold text-slate-900 leading-snug sm:leading-[24px] lg:leading-[26px] xl:leading-[28px] group-hover:text-brand transition-colors">
                       {t(`workingProcess.step${step}Title` as any)}
                     </h3>
                   </div>
@@ -91,7 +91,7 @@ export function WorkingProcess() {
                 <span className="text-[11px] sm:text-[11px] lg:text-[12px] xl:text-[13px] font-normal text-slate-500">
                   {t(`workingProcess.step${step}KpiLabel` as any)}
                 </span>
-                <span className="text-[11px] sm:text-[12px] lg:text-[13px] xl:text-[14px] font-bold text-blue-600">
+                <span className="text-[11px] sm:text-[12px] lg:text-[13px] xl:text-[14px] font-bold text-brand bg-[#eff5fe] px-2.5 py-0.5 rounded-[2px] border border-[#d0e2fb]">
                   {t(`workingProcess.step${step}KpiValue` as any)}
                 </span>
               </div>
