@@ -47,17 +47,17 @@ export function CaseStudyCard({
       {/* Content Area */}
       <div className="flex flex-1 flex-col p-5 sm:p-6 lg:p-5 xl:p-6">
         {/* Category */}
-        <p className="text-[12px] font-medium text-slate-500 sm:text-[13px] lg:text-[16px] xl:text-[16px]">
+        <p className="text-[11px] font-medium text-slate-500 sm:text-[12px] lg:text-[13px] xl:text-[14px]">
           {category}
         </p>
 
         {/* Title */}
-        <h3 className="mt-2 text-[15px] font-bold leading-snug text-slate-900 sm:text-[16px] md:text-[18px] lg:text-[20px] xl:text-[20px] lg:leading-[28px] group-hover:text-brand transition-colors">
+        <h3 className="mt-2 text-[15px] font-bold leading-snug text-slate-900 sm:text-[16px] lg:text-[18px] xl:text-[20px] lg:leading-[26px] xl:leading-[28px] group-hover:text-brand transition-colors">
           {title}
         </h3>
 
         {/* Description */}
-        <p className="mt-3 text-[13px] text-slate-600 font-normal leading-relaxed line-clamp-4 sm:text-[14px] lg:text-[16px] xl:text-[16px] lg:leading-[24px]">
+        <p className="mt-3 text-[13px] text-slate-600 font-normal leading-relaxed line-clamp-4 sm:text-[14px] lg:text-[15px] xl:text-[16px] lg:leading-[22px] xl:leading-[24px]">
           {description}
         </p>
 
@@ -72,10 +72,10 @@ export function CaseStudyCard({
             />
           </div>
           <div>
-            <p className="text-[13px] font-medium text-slate-800 leading-tight sm:text-[14px] lg:text-[16px]">
+            <p className="text-[13px] font-medium text-slate-800 leading-tight sm:text-[14px] lg:text-[15px] xl:text-[16px]">
               {authorName}
             </p>
-            <p className="text-[11px] font-normal text-slate-500 mt-0.5 sm:text-[12px] lg:text-[16px]">
+            <p className="text-[11px] font-normal text-slate-500 mt-0.5 sm:text-[12px] lg:text-[13px] xl:text-[14px]">
               {authorRole}
             </p>
           </div>
@@ -83,7 +83,7 @@ export function CaseStudyCard({
 
         {/* Read More Link */}
         <div className="pt-6">
-          <span className="inline-flex items-center gap-2 text-[14px] font-semibold text-brand lg:text-[20px] group-hover:text-brand-strong transition-colors">
+          <span className="inline-flex items-center gap-2 text-[13px] font-semibold text-brand sm:text-[14px] lg:text-[15px] xl:text-[16px] group-hover:text-brand-strong transition-colors">
             {readMoreText}
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
           </span>

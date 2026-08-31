@@ -44,11 +44,11 @@ export function HeroBanner() {
 
             {/* Text content */}
             <div className="relative z-30 flex flex-col">
-              <p className="text-[13px] sm:text-[14px] lg:text-[14px] xl:text-[15px] font-bold sm:font-normal uppercase tracking-wider text-brand">
+              <p className="text-[12px] sm:text-[13px] lg:text-[14px] xl:text-[15px] font-bold sm:font-normal uppercase tracking-wider text-brand">
                 {t('hero.eyebrowTop')}
               </p>
 
-              <p className="hidden sm:block mt-1 text-[14px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-bold sm:font-semibold uppercase tracking-wider text-primary">
+              <p className="hidden sm:block mt-1 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-bold sm:font-semibold uppercase tracking-wider text-primary">
                 {t('hero.eyebrowSub')}
               </p>
 
@@ -56,7 +56,7 @@ export function HeroBanner() {
                 {t('hero.title')}
               </h1>
 
-              <p className="mt-2 sm:mt-2.5 lg:mt-2.5 xl:mt-3 text-[15px] leading-[22px] sm:text-[15px] lg:text-[16px] xl:text-[18px] sm:leading-relaxed lg:leading-[25px] xl:leading-[28px] text-slate-600 font-normal">
+              <p className="mt-2 sm:mt-2.5 lg:mt-2.5 xl:mt-3 text-[14px] leading-[20px] sm:text-[15px] lg:text-[16px] xl:text-[18px] sm:leading-[22px] lg:leading-[24px] xl:leading-[28px] text-slate-600 font-normal">
                 {t('hero.description')}
               </p>
             </div>
@@ -65,7 +65,7 @@ export function HeroBanner() {
             <div className="group relative z-30 flex flex-row items-center gap-3 pt-1 sm:pt-2">
               <Link
                 href="/quick-order"
-                className="group inline-flex h-[44px] sm:h-[46px] lg:h-[48px] xl:h-[52px] flex-1 sm:flex-none sm:w-auto items-center justify-center gap-2 rounded-[3px] bg-brand px-4 sm:px-6 lg:px-6 xl:px-7 text-[14px] font-bold sm:text-[16px] lg:text-[16px] xl:text-[18px] sm:font-semibold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:bg-brand-strong active:bg-[#0E4497]"
+                className="group inline-flex h-[44px] sm:h-[46px] lg:h-[48px] xl:h-[52px] flex-1 sm:flex-none sm:w-auto items-center justify-center gap-2 rounded-[3px] bg-brand px-4 sm:px-6 lg:px-6 xl:px-7 text-[14px] font-bold sm:text-[15px] lg:text-[16px] xl:text-[18px] sm:font-semibold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:bg-brand-strong active:bg-[#0E4497]"
               >
                 <span>{t('hero.ctaRfq')}</span>
                 <ArrowRight className="hidden sm:inline-block h-4.5 w-4.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
@@ -73,7 +73,7 @@ export function HeroBanner() {
               <Link
                 href="/resources"
                 onClick={handleCatalogueClick}
-                className="group inline-flex h-[44px] sm:h-[46px] lg:h-[48px] xl:h-[52px] flex-1 sm:flex-none sm:w-auto items-center justify-center gap-2 border border-brand bg-white/70 rounded-[3px] text-[14px] font-bold sm:text-[16px] lg:text-[16px] xl:text-[18px] sm:font-semibold text-brand transition-all hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:bg-brand/10 hover:border-brand-strong px-4 sm:px-6 lg:px-6 xl:px-7 shadow-xs"
+                className="group inline-flex h-[44px] sm:h-[46px] lg:h-[48px] xl:h-[52px] flex-1 sm:flex-none sm:w-auto items-center justify-center gap-2 border border-brand bg-white/70 rounded-[3px] text-[14px] font-bold sm:text-[15px] lg:text-[16px] xl:text-[18px] sm:font-semibold text-brand transition-all hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:bg-brand/10 hover:border-brand-strong px-4 sm:px-6 lg:px-6 xl:px-7 shadow-xs"
               >
                 <span>{t('hero.ctaCatalogue')}</span>
                 <Image

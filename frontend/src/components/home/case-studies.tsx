@@ -50,9 +50,8 @@ export function CaseStudies() {
         {[1, 2, 3, 4].map((num) => (
           <div
             key={num}
-            className={`flex flex-col transition-all duration-500 ${
-              visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
-            }`}
+            className={`flex flex-col transition-all duration-500 ${visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+              }`}
             style={{ transitionDelay: `${(num - 1) * 100}ms` }}
           >
             <CaseStudyCard
@@ -74,7 +73,7 @@ export function CaseStudies() {
       <div className="mt-10 flex justify-center sm:mt-12">
         <Link
           href="/resources"
-          className="inline-flex items-center justify-center rounded-[3px] bg-brand px-8 py-3 text-[14px] lg:text-[20px] font-semibold text-white shadow-sm transition-all hover:bg-brand-strong hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] active:scale-95"
+          className="inline-flex items-center justify-center rounded-[3px] bg-brand px-8 py-3 text-[14px] sm:text-[15px] lg:text-[16px] xl:text-[18px] font-semibold text-white shadow-sm transition-all hover:bg-brand-strong hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] active:scale-95"
         >
           {t('caseStudy.viewAll')}
         </Link>

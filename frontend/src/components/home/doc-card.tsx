@@ -34,17 +34,17 @@ export function DocCard({ category, title, meta, icon, onClick }: DocCardProps) 
 
       {/* Row 2: Content (Category & Title) */}
       <div className="mt-4 flex-1 flex flex-col justify-start">
-        <p className="text-[12px] font-normal text-slate-500 sm:text-[13px] lg:text-[16px]">
+        <p className="text-[11px] font-normal text-slate-500 sm:text-[12px] lg:text-[13px] xl:text-[14px]">
           {category}
         </p>
-        <h4 className="mt-1.5 text-[14px] font-semibold text-slate-800 leading-snug sm:text-[15px] sm:font-bold sm:leading-[20px] lg:text-[16px] lg:leading-[24px] group-hover:text-blue-600 transition-colors line-clamp-2">
+        <h4 className="mt-1.5 text-[14px] font-semibold text-slate-800 leading-snug sm:text-[15px] sm:font-bold sm:leading-[22px] lg:text-[16px] lg:leading-[24px] xl:text-[18px] xl:leading-[26px] group-hover:text-blue-600 transition-colors line-clamp-2">
           {title}
         </h4>
       </div>
 
       {/* Row 3: Footer Metadata */}
       <div className="mt-4">
-        <p className="text-[12px] font-normal text-slate-400 sm:text-[13px] lg:text-[14px] lg:leading-[20px]">
+        <p className="text-[11px] font-normal text-slate-400 sm:text-[12px] lg:text-[13px] xl:text-[14px] lg:leading-[18px] xl:leading-[20px]">
           {meta}
         </p>
       </div>

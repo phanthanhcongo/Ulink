@@ -13,10 +13,10 @@ export function SectionHeader({ title, subtitle, viewAllHref, viewAllLabel, cent
   if (centered) {
     return (
       <div className="text-center max-w-3xl mx-auto space-y-1 sm:space-y-2">
-        <span className="text-[20px] leading-[28px] font-semibold sm:text-[28px] lg:text-[28px] sm:font-bold tracking-tight text-blue-600 sm:leading-[36px] block">
+        <span className="text-[20px] leading-[28px] font-semibold sm:text-[24px] lg:text-[28px] xl:text-[32px] sm:font-bold tracking-tight text-blue-600 sm:leading-[32px] lg:leading-[36px] xl:leading-[40px] block">
           {title}
         </span>
-        <h2 className="text-[20px] leading-[28px] font-semibold sm:text-[28px] lg:text-[28px] sm:font-bold tracking-tight text-slate-900 sm:leading-[36px]">
+        <h2 className="text-[20px] leading-[28px] font-semibold sm:text-[24px] lg:text-[28px] xl:text-[32px] sm:font-bold tracking-tight text-slate-900 sm:leading-[32px] lg:leading-[36px] xl:leading-[40px]">
           {subtitle}
         </h2>
       </div>
@@ -32,16 +32,16 @@ export function SectionHeader({ title, subtitle, viewAllHref, viewAllLabel, cent
             <span className="h-1 w-1 rounded-full bg-brand" />
             <span className="h-1 w-1 rounded-full bg-brand" />
           </div>
-          <h2 className="text-[20px] leading-[28px] font-semibold tracking-tight text-primary sm:text-[28px] sm:font-bold sm:leading-[36px] lg:text-[28px] lg:font-semibold lg:leading-[36px]">
+          <h2 className="text-[18px] leading-[26px] font-semibold tracking-tight text-primary sm:text-[20px] sm:leading-[28px] lg:text-[24px] lg:leading-[32px] xl:text-[28px] xl:font-bold xl:leading-[36px]">
             {title}
           </h2>
         </div>
-        <p className="mt-1 text-[14px] leading-[20px] text-muted-foreground sm:text-[14px] sm:font-normal sm:leading-[20px] lg:text-[18px] lg:font-normal lg:leading-[28px]">{subtitle}</p>
+        <p className="mt-1 text-[14px] leading-[20px] text-muted-foreground sm:text-[15px] sm:font-normal sm:leading-[22px] lg:text-[16px] lg:leading-[24px] xl:text-[18px] xl:font-normal xl:leading-[28px]">{subtitle}</p>
       </div>
       {viewAllHref && viewAllLabel && (
         <Link
           href={viewAllHref}
-          className="inline-flex items-center gap-2 text-[14px] font-semibold sm:text-[18px] sm:font-normal text-brand transition-colors hover:text-brand-strong"
+          className="inline-flex items-center gap-2 text-[13px] font-semibold sm:text-[14px] lg:text-[15px] xl:text-[16px] sm:font-normal text-brand transition-colors hover:text-brand-strong"
         >
           {viewAllLabel}
           <ArrowRight className="h-4 w-4" aria-hidden="true" />

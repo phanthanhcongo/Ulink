@@ -102,10 +102,10 @@ export function TargetSegments() {
       <div className="hidden md:block mx-auto w-full max-w-[1440px] px-8 py-14 lg:px-12 xl:px-16 lg:py-16 xl:py-20">
         {/* Desktop Header: Centered 2-line equal size */}
         <div className="text-center max-w-3xl mx-auto space-y-1 sm:space-y-2 mb-10 sm:mb-12">
-          <span className="text-[20px] sm:text-[24px] lg:text-[28px] font-extrabold tracking-tight text-blue-600 leading-tight block">
+          <span className="text-[20px] sm:text-[24px] lg:text-[28px] xl:text-[32px] font-extrabold tracking-tight text-blue-600 leading-tight block">
             {t('targetSegments.sectionTitle')}
           </span>
-          <h2 className="text-[20px] sm:text-[24px] lg:text-[28px] font-extrabold tracking-tight text-slate-900 leading-tight">
+          <h2 className="text-[20px] sm:text-[24px] lg:text-[28px] xl:text-[32px] font-extrabold tracking-tight text-slate-900 leading-tight">
             {t('targetSegments.sectionSubTitle')}
           </h2>
         </div>
@@ -133,10 +133,10 @@ export function TargetSegments() {
                   className="h-8 w-8 object-contain"
                 />
               </div>
-              <h3 className="mt-4 text-[20px] sm:text-[22px] lg:text-[22px] font-bold text-slate-900 leading-tight sm:leading-[28px]">
+              <h3 className="mt-4 text-[16px] sm:text-[18px] lg:text-[20px] xl:text-[24px] font-bold text-slate-900 leading-tight sm:leading-[26px] lg:leading-[28px] xl:leading-[32px]">
                 {t('targetSegments.fdiTitle')}
               </h3>
-              <p className="mt-2 text-[13.5px] sm:text-[14px] lg:text-[14px] text-slate-500 font-normal leading-relaxed sm:leading-[20px] lg:leading-[20px]">
+              <p className="mt-2 text-[11px] sm:text-[12px] lg:text-[13px] xl:text-[14px] text-slate-500 font-normal leading-relaxed sm:leading-[18px] lg:leading-[20px]">
                 {t('targetSegments.fdiDesc')}
               </p>
             </div>
@@ -152,7 +152,7 @@ export function TargetSegments() {
                     height={20}
                     className="h-5 w-5 shrink-0 object-contain mt-0.5"
                   />
-                  <span className="text-[13.5px] sm:text-[15px] lg:text-[15px] font-normal text-slate-700 leading-relaxed sm:leading-[22px]">
+                  <span className="text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-normal text-slate-700 leading-relaxed sm:leading-[22px] lg:leading-[24px]">
                     {t('targetSegments.fdiCheck1')}
                   </span>
                 </li>
@@ -164,7 +164,7 @@ export function TargetSegments() {
                     height={20}
                     className="h-5 w-5 shrink-0 object-contain mt-0.5"
                   />
-                  <span className="text-[13.5px] sm:text-[15px] lg:text-[15px] font-normal text-slate-700 leading-relaxed sm:leading-[22px]">
+                  <span className="text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-normal text-slate-700 leading-relaxed sm:leading-[22px] lg:leading-[24px]">
                     {t('targetSegments.fdiCheck2')}
                   </span>
                 </li>
@@ -176,7 +176,7 @@ export function TargetSegments() {
                     height={20}
                     className="h-5 w-5 shrink-0 object-contain mt-0.5"
                   />
-                  <span className="text-[13.5px] sm:text-[15px] lg:text-[15px] font-normal text-slate-700 leading-relaxed sm:leading-[22px]">
+                  <span className="text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-normal text-slate-700 leading-relaxed sm:leading-[22px] lg:leading-[24px]">
                     {t('targetSegments.fdiCheck3')}
                   </span>
                 </li>
@@ -188,7 +188,7 @@ export function TargetSegments() {
                     height={20}
                     className="h-5 w-5 shrink-0 object-contain mt-0.5"
                   />
-                  <span className="text-[13.5px] sm:text-[15px] lg:text-[15px] font-normal text-slate-700 leading-relaxed sm:leading-[22px]">
+                  <span className="text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-normal text-slate-700 leading-relaxed sm:leading-[22px] lg:leading-[24px]">
                     {t('targetSegments.fdiCheck4')}
                   </span>
                 </li>
@@ -197,7 +197,7 @@ export function TargetSegments() {
               <div className="pt-2">
                 <Link
                   href="/regional-hubs/cum-1"
-                  className="inline-flex items-center gap-1.5 text-[13px] sm:text-[14px] lg:text-[14px] font-semibold text-blue-600 hover:text-blue-800 transition-colors"
+                  className="inline-flex items-center gap-1.5 text-[11px] sm:text-[12px] lg:text-[13px] xl:text-[14px] font-semibold text-blue-600 hover:text-blue-800 transition-colors"
                 >
                   {t('targetSegments.viewDetail')}
                   <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
@@ -224,10 +224,10 @@ export function TargetSegments() {
                   className="h-8 w-8 object-contain"
                 />
               </div>
-              <h3 className="mt-4 text-[20px] sm:text-[22px] lg:text-[22px] font-bold text-slate-900 leading-tight sm:leading-[28px]">
+              <h3 className="mt-4 text-[16px] sm:text-[18px] lg:text-[20px] xl:text-[24px] font-bold text-slate-900 leading-tight sm:leading-[26px] lg:leading-[28px] xl:leading-[32px]">
                 {t('targetSegments.smeTitle')}
               </h3>
-              <p className="mt-2 text-[13.5px] sm:text-[14px] lg:text-[14px] text-slate-500 font-normal leading-relaxed sm:leading-[20px] lg:leading-[20px]">
+              <p className="mt-2 text-[11px] sm:text-[12px] lg:text-[13px] xl:text-[14px] text-slate-500 font-normal leading-relaxed sm:leading-[18px] lg:leading-[20px]">
                 {t('targetSegments.smeDesc')}
               </p>
             </div>
@@ -243,7 +243,7 @@ export function TargetSegments() {
                     height={20}
                     className="h-5 w-5 shrink-0 object-contain mt-0.5"
                   />
-                  <span className="text-[13.5px] sm:text-[15px] lg:text-[15px] font-normal text-slate-700 leading-relaxed sm:leading-[22px]">
+                  <span className="text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-normal text-slate-700 leading-relaxed sm:leading-[22px] lg:leading-[24px]">
                     {t('targetSegments.smeCheck1')}
                   </span>
                 </li>
@@ -255,7 +255,7 @@ export function TargetSegments() {
                     height={20}
                     className="h-5 w-5 shrink-0 object-contain mt-0.5"
                   />
-                  <span className="text-[13.5px] sm:text-[15px] lg:text-[15px] font-normal text-slate-700 leading-relaxed sm:leading-[22px]">
+                  <span className="text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-normal text-slate-700 leading-relaxed sm:leading-[22px] lg:leading-[24px]">
                     {t('targetSegments.smeCheck2')}
                   </span>
                 </li>
@@ -267,7 +267,7 @@ export function TargetSegments() {
                     height={20}
                     className="h-5 w-5 shrink-0 object-contain mt-0.5"
                   />
-                  <span className="text-[13.5px] sm:text-[15px] lg:text-[15px] font-normal text-slate-700 leading-relaxed sm:leading-[22px]">
+                  <span className="text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-normal text-slate-700 leading-relaxed sm:leading-[22px] lg:leading-[24px]">
                     {t('targetSegments.smeCheck3')}
                   </span>
                 </li>
@@ -279,7 +279,7 @@ export function TargetSegments() {
                     height={20}
                     className="h-5 w-5 shrink-0 object-contain mt-0.5"
                   />
-                  <span className="text-[13.5px] sm:text-[15px] lg:text-[15px] font-normal text-slate-700 leading-relaxed sm:leading-[22px]">
+                  <span className="text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-normal text-slate-700 leading-relaxed sm:leading-[22px] lg:leading-[24px]">
                     {t('targetSegments.smeCheck4')}
                   </span>
                 </li>
@@ -288,7 +288,7 @@ export function TargetSegments() {
               <div className="pt-2">
                 <Link
                   href="/regional-hubs/cum-2"
-                  className="inline-flex items-center gap-1.5 text-[13px] sm:text-[14px] lg:text-[14px] font-semibold text-blue-600 hover:text-blue-800 transition-colors"
+                  className="inline-flex items-center gap-1.5 text-[11px] sm:text-[12px] lg:text-[13px] xl:text-[14px] font-semibold text-blue-600 hover:text-blue-800 transition-colors"
                 >
                   {t('targetSegments.viewDetail')}
                   <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />

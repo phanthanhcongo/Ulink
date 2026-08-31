@@ -54,7 +54,7 @@ export function DocSection() {
         {/* ── 4. SUB-SECTION HEADER BAR (TÀI LIỆU & CATALOGUE) ── */}
         <div className="flex items-center gap-3">
           <div className="h-6 w-1 rounded-full bg-blue-600 shrink-0" />
-          <h2 className="text-[18px] sm:text-[20px] lg:text-[20px] font-semibold text-slate-900 tracking-tight lg:leading-[28px]">
+          <h2 className="text-[15px] sm:text-[16px] lg:text-[18px] xl:text-[20px] font-semibold text-slate-900 tracking-tight lg:leading-[26px] xl:leading-[28px]">
             {t('docsTitle')}
           </h2>
         </div>
