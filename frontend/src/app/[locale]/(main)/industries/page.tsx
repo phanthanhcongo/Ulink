@@ -18,7 +18,7 @@ export async function generateMetadata({ params: { locale } }: Props): Promise<M
   const isJa = locale === 'ja';
   return {
     title: isVi
-      ? 'Giải pháp theo ngành nghề | ULink B2B'
+      ? 'Ứng dụng theo ngành nghề | ULink B2B'
       : isJa
         ? '業界別ソリューション | ULink B2B'
         : 'Industry Solutions | ULink B2B',
