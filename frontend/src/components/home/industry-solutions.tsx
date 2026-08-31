@@ -123,7 +123,7 @@ export function IndustrySolutions() {
             <Link
               key={idx}
               href={card.href}
-              className={`group relative flex items-center gap-2.5 sm:gap-3.5 rounded-[4px] p-3.5 sm:p-4 shadow-[0_4px_16px_-2px_rgba(15,23,42,0.08)] transition-all duration-300 hover:z-10 hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] ${visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+              className={`group relative flex flex-col gap-2 rounded-[4px] p-3.5 sm:p-4 shadow-[0_4px_16px_-2px_rgba(15,23,42,0.08)] transition-all duration-300 hover:z-10 hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] ${visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
                 }`}
               style={{
                 border: '1px solid #CBD5E1',
@@ -131,9 +131,9 @@ export function IndustrySolutions() {
                 transitionDelay: `${idx * 80}ms`
               }}
             >
-              {/* Left Icon (No background) */}
+              {/* Icon Row (w-full) */}
               <div
-                className="h-10 w-10 sm:h-11 sm:w-11 flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105"
+                className="w-full flex items-start"
               >
                 <div className="relative h-7 w-7">
                   <Image
@@ -145,8 +145,8 @@ export function IndustrySolutions() {
                 </div>
               </div>
 
-              {/* Right Text Content */}
-              <div className="flex-1 min-w-0">
+              {/* Text Row (w-full) */}
+              <div className="w-full">
                 <h4 className="text-[14px] font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-tight tracking-tight">
                   {card.title}
                 </h4>

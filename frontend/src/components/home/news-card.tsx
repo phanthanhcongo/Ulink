@@ -61,8 +61,8 @@ export function NewsCard({ slug, date, title, image, readMoreText, category, aut
           </p>
         )}
         {/* Author Info Block */}
-        <div className="mt-6 pt-5 border-t border-slate-50 flex items-center gap-3">
-          <div className="relative w-10 h-10 overflow-hidden shrink-0 bg-slate-100 border border-slate-100 rounded-full">
+        <div className="mt-6 pt-5  flex items-center gap-3">
+          <div className="relative w-10 h-10 overflow-hidden shrink-0 bg-slate-100 rounded-full">
             <Image
               src={author.avatar}
               alt={author.name}
@@ -78,7 +78,7 @@ export function NewsCard({ slug, date, title, image, readMoreText, category, aut
         </div>
 
         {/* Card Footer "Read More" */}
-        <div className="mt-6 pt-4 border-t border-slate-100 flex items-center justify-between mt-auto">
+        <div className="mt-6 pt-4 flex items-center justify-between mt-auto">
           <span className="text-[13px] font-semibold sm:text-[14px] lg:text-[15px] xl:text-[16px] sm:font-bold text-blue-600 transition-colors group-hover:text-blue-700 inline-flex items-center gap-1.5">
             {readMoreText}
             <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />

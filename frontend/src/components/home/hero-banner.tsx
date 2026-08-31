@@ -92,6 +92,17 @@ export function HeroBanner() {
       {/* 2. Image section — Displays SECOND below buttons on mobile */}
       <div className="relative order-2 w-full px-4 pb-2 pt-4 sm:px-0 sm:pb-0 sm:pt-0 h-[360px] sm:h-full sm:absolute sm:inset-0 select-none">
         <div className="relative h-full w-full overflow-hidden rounded-[2px] sm:rounded-none">
+          {/* Mobile Image */}
+          <Image
+            src={ASSETS.home.heroMobile}
+            alt="ULINK Industrial Consumable Materials"
+            fill
+            priority
+            quality={100}
+            sizes="100vw"
+            className="block sm:hidden object-cover object-center"
+          />
+          {/* Desktop Image */}
           <Image
             src={ASSETS.home.hero}
             alt="ULINK Industrial Consumable Materials"
@@ -99,7 +110,7 @@ export function HeroBanner() {
             priority
             quality={100}
             sizes="100vw"
-            className="object-cover object-center"
+            className="hidden sm:block object-cover object-center"
           />
         </div>
       </div>
