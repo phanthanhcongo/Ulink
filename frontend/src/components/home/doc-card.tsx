@@ -2,7 +2,7 @@
 
 import React from 'react';
 import Image from 'next/image';
-import { ArrowRight, ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
 export interface DocCardProps {
   num?: number;
@@ -13,76 +13,44 @@ export interface DocCardProps {
   onClick: (e: React.MouseEvent) => void;
 }
 
-const MOBILE_THEMES = [
-  {
-    cardBg: 'bg-[#F0F5FF] sm:bg-white',
-    border: 'border border-blue-100/80 border-l-[4px] border-l-blue-600 sm:border-border sm:border-l-border',
-    iconBg: 'bg-blue-100/80 sm:bg-transparent',
-    arrowColor: 'text-blue-600',
-  },
-  {
-    cardBg: 'bg-[#F0FDF4] sm:bg-white',
-    border: 'border border-emerald-100/80 border-l-[4px] border-l-emerald-500 sm:border-border sm:border-l-border',
-    iconBg: 'bg-emerald-100/80 sm:bg-transparent',
-    arrowColor: 'text-emerald-600',
-  },
-  {
-    cardBg: 'bg-[#FFFBEB] sm:bg-white',
-    border: 'border border-amber-100/80 border-l-[4px] border-l-amber-500 sm:border-border sm:border-l-border',
-    iconBg: 'bg-amber-100/80 sm:bg-transparent',
-    arrowColor: 'text-amber-600',
-  },
-  {
-    cardBg: 'bg-[#F5F3FF] sm:bg-white',
-    border: 'border border-purple-100/80 border-l-[4px] border-l-purple-500 sm:border-border sm:border-l-border',
-    iconBg: 'bg-purple-100/80 sm:bg-transparent',
-    arrowColor: 'text-purple-600',
-  },
-];
-
-export function DocCard({ num = 1, category, title, meta, icon, onClick }: DocCardProps) {
-  const themeIndex = (num - 1) % MOBILE_THEMES.length;
-  const theme = MOBILE_THEMES[themeIndex];
-
+export function DocCard({ category, title, meta, icon, onClick }: DocCardProps) {
   return (
     <div
       onClick={onClick}
-      className={`group relative flex flex-col ${theme.border} ${theme.cardBg} rounded-[2px] p-4 shadow-sm sm:p-5 lg:p-6 cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:scale-[1.02] hover:bg-slate-50/20 hover:z-10`}
+      className="group relative flex flex-col bg-white border border-slate-200 rounded-[3px] shadow-sm cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:scale-[1.01] hover:z-10"
     >
-      {/* Row 1: Icon & Top Right Arrow */}
-      <div className="flex items-center justify-between">
-        <div className={`flex h-10 w-10 items-center justify-center rounded-full ${theme.iconBg} sm:h-12 sm:w-12 sm:rounded-none sm:bg-transparent`}>
-          <div className="relative h-5 w-5 sm:h-12 sm:w-12">
-            <Image
-              src={icon}
-              alt="document icon"
-              fill
-              sizes="48px"
-              className="object-contain"
-            />
-          </div>
+      {/* ── ROW 1: ICON & TOP-RIGHT ARROW ── */}
+      <div className="flex items-center justify-between p-4 sm:p-5 border-b border-slate-200">
+        <div className="relative h-8 w-8 sm:h-9 sm:w-9 shrink-0">
+          <Image
+            src={icon}
+            alt={title}
+            fill
+            sizes="36px"
+            className="object-contain"
+          />
         </div>
-        <div className="flex items-center">
-          <ArrowRight className={`h-5 w-5 ${theme.arrowColor} sm:hidden`} aria-hidden="true" />
-          <ArrowUpRight className="hidden h-5 w-5 text-blue-600 opacity-60 transition-all duration-300 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:opacity-100 sm:block" aria-hidden="true" />
-        </div>
+        <ArrowUpRight
+          className="h-6 w-6 text-[#1769E2] transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+          aria-hidden="true"
+        />
       </div>
 
-      {/* Row 2: Content (Category & Title) */}
-      <div className="mt-3 flex-1 flex flex-col justify-start sm:mt-4">
-        <p className="text-[12px] font-normal text-slate-500 sm:text-[12px] lg:text-[13px] xl:text-[14px]">
+      {/* ── ROW 2: CATEGORY & TITLE ── */}
+      <div className="flex flex-col justify-start p-4 sm:p-5 border-b border-slate-200 flex-1 min-h-[110px] sm:min-h-[120px]">
+        <span className="text-[13px] sm:text-[14px] text-slate-500 font-normal">
           {category}
-        </p>
-        <h4 className="mt-1 text-[14px] font-bold text-slate-900 leading-snug sm:mt-1.5 sm:text-[15px] sm:leading-[22px] lg:text-[16px] lg:leading-[24px] xl:text-[18px] xl:leading-[26px] group-hover:text-blue-600 transition-colors line-clamp-2">
+        </span>
+        <h4 className="mt-3 text-[15px] sm:text-[16px] lg:text-[17px] font-semibold text-slate-900 leading-snug sm:leading-[24px] group-hover:text-[#1769E2] transition-colors line-clamp-2">
           {title}
         </h4>
       </div>
 
-      {/* Row 3: Footer Metadata */}
-      <div className="mt-3 sm:mt-4">
-        <p className="text-[12px] font-normal text-slate-500 sm:text-[12px] lg:text-[13px] xl:text-[14px] lg:leading-[18px] xl:leading-[20px]">
+      {/* ── ROW 3: FOOTER METADATA ── */}
+      <div className="p-4 sm:p-5">
+        <span className="text-[13px] sm:text-[14px] text-slate-500 font-normal">
           {meta}
-        </p>
+        </span>
       </div>
     </div>
   );
