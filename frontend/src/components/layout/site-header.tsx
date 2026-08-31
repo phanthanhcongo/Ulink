@@ -24,8 +24,7 @@ export async function SiteHeader() {
       href: '/regional-hubs',
       label: t('hubs'),
       children: [
-        { href: '/regional-hubs/cum-1', label: 'Cụm/KCN 1' },
-        { href: '/regional-hubs/cum-2', label: 'Cụm/KCN 2' },
+        { href: '/regional-hubs/cum-2', label: 'Hub Hà Nam' },
       ]
     },
     { href: '/solutions', label: t('products') },

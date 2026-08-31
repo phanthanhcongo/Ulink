@@ -322,9 +322,9 @@ const regionsData: NavRegionItem[] = [
   {
     id: 'north',
     name: 'Miền Bắc',
-    link: '/regional-hubs',
+    link: '/quick-order',
     hubName: 'HUB Hà Nam',
-    hubLink: '/regional-hubs/cum-1',
+    hubLink: '/regional-hubs/cum-2',
     hubImage: '/images/regional_hubs/hub-2/hanam-warehouse-shelves.jpg',
     hubs: [
       {
@@ -380,10 +380,10 @@ const regionsData: NavRegionItem[] = [
   {
     id: 'center',
     name: 'Miền Trung',
-    link: '/regional-hubs',
-    hubName: 'HUB Đà Nẵng',
+    link: '/quick-order',
+    hubName: 'HUB Hà Nam',
     hubLink: '/regional-hubs/cum-2',
-    hubImage: '/images/regional_hubs/business-packing.png',
+    hubImage: '/images/regional_hubs/hub-2/hanam-warehouse-shelves.jpg',
     hubs: [
       {
         title: 'KCN Phú Bài',
@@ -438,9 +438,9 @@ const regionsData: NavRegionItem[] = [
   {
     id: 'south',
     name: 'Miền Nam',
-    link: '/regional-hubs',
+    link: '/quick-order',
     hubName: 'HUB Hà Nam',
-    hubLink: '/regional-hubs/cum-1',
+    hubLink: '/regional-hubs/cum-2',
     hubImage: '/images/regional_hubs/hub-2/hanam-warehouse-shelves.jpg',
     hubs: [
       {
@@ -498,6 +498,7 @@ const regionsData: NavRegionItem[] = [
 const industriesData = [
   {
     id: 'food',
+    slug: 'food-beverage',
     name: 'Thực phẩm',
     hubs: [
       {
@@ -552,6 +553,7 @@ const industriesData = [
   },
   {
     id: 'medical',
+    slug: 'pharmaceutical-cosmetics',
     name: 'Dược phẩm & Y tế',
     hubs: [
       {
@@ -582,6 +584,7 @@ const industriesData = [
   },
   {
     id: 'electronics',
+    slug: 'electronics',
     name: 'Điện tử & Linh kiện',
     hubs: [
       {
@@ -612,6 +615,7 @@ const industriesData = [
   },
   {
     id: 'logistics',
+    slug: 'logistics',
     name: 'Logistics & Vận tải',
     hubs: [
       {
@@ -642,6 +646,7 @@ const industriesData = [
   },
   {
     id: 'furniture',
+    slug: 'furniture',
     name: 'Nội thất',
     hubs: [
       {
@@ -672,6 +677,7 @@ const industriesData = [
   },
   {
     id: 'hvac',
+    slug: 'construction',
     name: 'Xây dựng & HVAC',
     hubs: [
       {
@@ -1364,7 +1370,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
 
                     {/* Orange Button: Dynamic HUB */}
                     <Link
-                      href={currentRegionData?.hubLink || '/regional-hubs/cum-1'}
+                      href="/regional-hubs/cum-2"
                       onClick={() => setActiveMenu(null)}
                       onMouseEnter={() => setActiveRegion('hub')}
                       className="flex items-center justify-between border border-[#F2994A] bg-[#FFF9F3] text-[#F2994A] pl-8 pr-4 py-3 rounded-lg cursor-pointer transition-all duration-200 hover:bg-[#FFEEDB]"
@@ -1404,7 +1410,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                               return (
                                 <Link
                                   key={idx}
-                                  href="/register"
+                                  href="/regional-hubs/cum-2"
                                   onClick={() => setActiveMenu(null)}
                                   className="flex items-start gap-4 group p-2 -m-2 rounded-lg hover:bg-slate-50 transition-all duration-200"
                                 >
@@ -1427,7 +1433,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                             {/* 7th Grid Item: Join Partner Link */}
                             <div className="flex items-center">
                               <Link
-                                href="/register"
+                                href="/regional-hubs/cum-2"
                                 onClick={() => setActiveMenu(null)}
                                 className="group inline-flex items-center gap-1.5 text-[14px] font-bold text-blue-600 hover:text-blue-700 transition-colors"
                               >
@@ -1561,10 +1567,11 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6">
                         {currentIndustryData?.hubs.map((hub, idx) => {
                           const IconComp = IconMap[hub.icon] || Package;
+                          const industrySlug = (currentIndustryData as any)?.slug || currentIndustryData?.id || 'food-beverage';
                           return (
                             <Link
                               key={idx}
-                              href="/solutions/listProduct"
+                              href={`/industries/${industrySlug}`}
                               onClick={() => setActiveMenu(null)}
                               className="flex items-start gap-4 group p-2 -m-2 rounded-lg hover:bg-slate-50 transition-all duration-200"
                             >
@@ -1587,11 +1594,11 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                         {/* 9th Grid Item: View All Link */}
                         <div className="flex items-center">
                           <Link
-                            href="/solutions/listProduct"
+                            href={`/industries/${(currentIndustryData as any)?.slug || currentIndustryData?.id || 'food-beverage'}`}
                             onClick={() => setActiveMenu(null)}
                             className="group inline-flex items-center gap-1.5 text-[14px] font-bold text-blue-600 hover:text-blue-700 transition-colors"
                           >
-                            <span>Xem tất cả giải pháp ngành</span>
+                            <span>Xem tất cả {currentIndustryData?.name || 'giải pháp ngành'}</span>
                             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                           </Link>
                         </div>
@@ -1671,10 +1678,11 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6">
                         {currentResourceData?.hubs.map((hub, idx) => {
                           const IconComp = IconMap[hub.icon] || Package;
+                          const resourceHref = currentResourceData?.id === 'events' ? '/resources/events' : '/resources';
                           return (
                             <Link
                               key={idx}
-                              href="/resources"
+                              href={resourceHref}
                               onClick={() => setActiveMenu(null)}
                               className="flex items-start gap-4 group p-2 -m-2 rounded-lg hover:bg-slate-50 transition-all duration-200"
                             >
@@ -1697,11 +1705,11 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                         {/* 9th Grid Item: View All Link */}
                         <div className="flex items-center">
                           <Link
-                            href="/resources"
+                            href={currentResourceData?.id === 'events' ? '/resources/events' : '/resources'}
                             onClick={() => setActiveMenu(null)}
                             className="group inline-flex items-center gap-1.5 text-[14px] font-bold text-blue-600 hover:text-blue-700 transition-colors"
                           >
-                            <span>Xem tất cả tài nguyên</span>
+                            <span>Xem tất cả {currentResourceData?.name || 'tài nguyên'}</span>
                             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                           </Link>
                         </div>

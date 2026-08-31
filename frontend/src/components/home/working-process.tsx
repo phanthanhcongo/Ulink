@@ -53,7 +53,7 @@ export function WorkingProcess() {
           {steps.map(({ step, iconSrc }, idx) => (
             <div
               key={step}
-              className={`group flex flex-col justify-between rounded-[2px] border border-slate-200/90 bg-white p-4 sm:p-5 lg:p-6 shadow-2xs transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/40 hover:shadow-md ${visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+              className={`group flex flex-col justify-between rounded-[3px] border border-slate-200 bg-white p-4 sm:p-5 lg:p-6 shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] ${visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
                 }`}
               style={{ transitionDelay: `${idx * 100}ms` }}
             >

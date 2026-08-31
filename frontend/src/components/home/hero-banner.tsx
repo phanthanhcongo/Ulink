@@ -27,7 +27,7 @@ export function HeroBanner() {
   ];
 
   return (
-    <section className="relative flex w-full flex-col overflow-hidden bg-slate-50 sm:aspect-[16/9] md:aspect-[16/8] lg:aspect-[1440/500] xl:aspect-[1440/540] sm:min-h-[420px] md:min-h-[450px] lg:min-h-[460px] xl:min-h-[500px]">
+    <section className="relative flex w-full flex-col overflow-hidden bg-slate-50 sm:aspect-[16/8.5] md:aspect-[16/8] lg:aspect-[1440/460] xl:aspect-[1440/500] sm:min-h-[400px] md:min-h-[420px] lg:min-h-[440px] xl:min-h-[500px]">
       {/* Decorative Translucent Blue Glow */}
       <div
         className="pointer-events-none absolute -top-[140px] -left-[160px] sm:-left-[100px] lg:-left-[60px] z-20 h-[650px] w-[650px] rotate-[-15deg] rounded-[3px] bg-gradient-to-br from-[#1769E2]/25 via-[#1769E2]/12 to-transparent blur-[60px] sm:blur-[80px] opacity-90"
@@ -36,27 +36,27 @@ export function HeroBanner() {
 
       {/* 1. Content Container Frame — Displays FIRST on mobile */}
       <div className="relative z-30 order-1 flex w-full items-center justify-center sm:justify-start sm:absolute sm:inset-0 sm:h-full">
-        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 py-6 sm:py-[40px] lg:py-[58px] flex items-center justify-center sm:justify-start h-full">
+        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 py-3 sm:py-4 lg:py-5 xl:py-8 flex items-center justify-center sm:justify-start h-full">
           {/* Content Container Frame */}
-          <div className="group relative flex w-full max-w-full lg:w-[672px] lg:max-w-[672px] flex-col justify-between p-0 sm:p-8 lg:p-[48px] gap-5 sm:gap-[32px] transition-all duration-300 sm:hover:-translate-y-1 sm:hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
+          <div className="group relative flex w-full max-w-full lg:w-[600px] lg:max-w-[600px] xl:w-[672px] xl:max-w-[672px] flex-col p-0 sm:px-6 sm:py-4.5 md:px-7 md:py-5 lg:px-7 lg:py-5 xl:px-9 xl:py-8 gap-3 sm:gap-4 lg:gap-4 xl:gap-6 transition-all duration-300 sm:hover:-translate-y-1 sm:hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
             {/* Frosted Glass Card (Desktop only) */}
             <div className="hidden sm:block absolute inset-0 z-10 rounded-[3px] border border-white/50 bg-white/[0.92] backdrop-blur-[24px] shadow-[0px_20px_40px_-10px_rgba(0,0,0,0.102)]" />
 
             {/* Text content */}
             <div className="relative z-30 flex flex-col">
-              <p className="text-[13px] sm:text-[18px] lg:text-[14px] font-bold sm:font-normal uppercase tracking-wider text-brand">
+              <p className="text-[13px] sm:text-[14px] lg:text-[14px] xl:text-[15px] font-bold sm:font-normal uppercase tracking-wider text-brand">
                 {t('hero.eyebrowTop')}
               </p>
 
-              <p className="hidden sm:block mt-1 text-[14px] sm:text-[18px] lg:text-[16px] font-bold sm:font-semibold uppercase tracking-wider text-primary">
+              <p className="hidden sm:block mt-1 text-[14px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-bold sm:font-semibold uppercase tracking-wider text-primary">
                 {t('hero.eyebrowSub')}
               </p>
 
-              <h1 className="mt-2 sm:mt-3 text-[28px] leading-[36px] font-semibold sm:text-[40px] md:text-[40px] lg:text-[56px] xl:text-[56px] sm:leading-[48px] lg:leading-[64px] tracking-tight text-slate-900">
+              <h1 className="mt-2 sm:mt-2.5 lg:mt-2.5 xl:mt-3 text-[28px] leading-[36px] font-semibold sm:text-[36px] md:text-[38px] lg:text-[44px] xl:text-[56px] sm:leading-[44px] md:leading-[46px] lg:leading-[52px] xl:leading-[64px] tracking-tight text-slate-900">
                 {t('hero.title')}
               </h1>
 
-              <p className="mt-2.5 sm:mt-3 text-[15px] leading-[22px] sm:text-[16px] lg:text-[18px] sm:leading-relaxed lg:leading-[28px] text-slate-600 font-normal">
+              <p className="mt-2 sm:mt-2.5 lg:mt-2.5 xl:mt-3 text-[15px] leading-[22px] sm:text-[15px] lg:text-[16px] xl:text-[18px] sm:leading-relaxed lg:leading-[25px] xl:leading-[28px] text-slate-600 font-normal">
                 {t('hero.description')}
               </p>
             </div>
@@ -65,7 +65,7 @@ export function HeroBanner() {
             <div className="group relative z-30 flex flex-row items-center gap-3 pt-1 sm:pt-2">
               <Link
                 href="/quick-order"
-                className="group inline-flex h-[44px] sm:h-[48px] lg:h-[52px] flex-1 sm:flex-none sm:w-auto items-center justify-center gap-2 rounded-[3px] bg-brand px-4 sm:px-7 text-[14px] font-bold sm:text-[18px] lg:text-[18px] sm:font-semibold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:bg-brand-strong active:bg-[#0E4497]"
+                className="group inline-flex h-[44px] sm:h-[46px] lg:h-[48px] xl:h-[52px] flex-1 sm:flex-none sm:w-auto items-center justify-center gap-2 rounded-[3px] bg-brand px-4 sm:px-6 lg:px-6 xl:px-7 text-[14px] font-bold sm:text-[16px] lg:text-[16px] xl:text-[18px] sm:font-semibold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:bg-brand-strong active:bg-[#0E4497]"
               >
                 <span>{t('hero.ctaRfq')}</span>
                 <ArrowRight className="hidden sm:inline-block h-4.5 w-4.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
@@ -73,7 +73,7 @@ export function HeroBanner() {
               <Link
                 href="/resources"
                 onClick={handleCatalogueClick}
-                className="group inline-flex h-[44px] sm:h-[48px] lg:h-[52px] flex-1 sm:flex-none sm:w-auto items-center justify-center gap-2 border border-brand bg-white/70 rounded-[3px] text-[14px] font-bold sm:text-[18px] lg:text-[18px] sm:font-semibold text-brand transition-all hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:bg-brand/10 hover:border-brand-strong px-4 sm:px-7 shadow-xs"
+                className="group inline-flex h-[44px] sm:h-[46px] lg:h-[48px] xl:h-[52px] flex-1 sm:flex-none sm:w-auto items-center justify-center gap-2 border border-brand bg-white/70 rounded-[3px] text-[14px] font-bold sm:text-[16px] lg:text-[16px] xl:text-[18px] sm:font-semibold text-brand transition-all hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:bg-brand/10 hover:border-brand-strong px-4 sm:px-6 lg:px-6 xl:px-7 shadow-xs"
               >
                 <span>{t('hero.ctaCatalogue')}</span>
                 <Image

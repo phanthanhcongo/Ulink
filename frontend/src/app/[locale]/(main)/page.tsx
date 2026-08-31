@@ -24,7 +24,7 @@ export default async function HomePage({ params: { locale } }: { params: { local
   setRequestLocale(locale);
 
   return (
-    <div className="w-full bg-white">
+    <div className="w-full ">
       <HeroBanner />
       <ScrollReveal><FeatureValueBar /></ScrollReveal>
       <SectionDivider />

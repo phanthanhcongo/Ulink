@@ -17,7 +17,7 @@ export const ASSETS = {
   home: {
     /** Section 1: Hero & Feature Bar */
     hero: '/images/home/section1/homeBanner.svg',
-    heroMobile: '/images/home/section1/HomeBanner-mobile.png',
+    heroMobile: '/images/home/section1/homeMobileBanner.jpg',
     iconNation: '/images/home/section1/nation.webp',
     iconAdapter: '/images/home/section1/adapter.webp',
     iconFile: '/images/home/section1/file.webp',
@@ -31,7 +31,7 @@ export const ASSETS = {
     cateCleanroom: '/images/home/section2/cate_01_expanded.jpg',
     catePackaging: '/images/home/section2/cate_02.svg',
     cateCutProtection: '/images/home/section2/cate_03.svg',
-    cateHvacTape: '/images/home/section2/cate_04.svg',
+    cateHvacTape: '/images/home/section2/hvac 1.svg',
     cateCustomPackaging: '/images/home/section2/cate_05.svg',
     /** Section 3: Industry Solutions */
     indElectronics: '/images/home/section3/chip.svg',

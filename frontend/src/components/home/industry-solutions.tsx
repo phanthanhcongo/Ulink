@@ -123,13 +123,17 @@ export function IndustrySolutions() {
             <Link
               key={idx}
               href={card.href}
-              className={`group relative flex items-center gap-2.5 sm:gap-3.5 rounded-[2px] border border-slate-200 bg-white p-3 sm:p-4 shadow-xs transition-all duration-300 hover:z-10 hover:-translate-y-0.5 hover:border-blue-500/50 hover:shadow-md hover:scale-[1.01] ${visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+              className={`group relative flex items-center gap-2.5 sm:gap-3.5 rounded-[4px] p-3.5 sm:p-4 shadow-[0_4px_16px_-2px_rgba(15,23,42,0.08)] transition-all duration-300 hover:z-10 hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] ${visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
                 }`}
-              style={{ transitionDelay: `${idx * 80}ms` }}
+              style={{
+                border: '1px solid #CBD5E1',
+                background: 'linear-gradient(0deg, #FFF 0%, #FFF 100%), #FFF',
+                transitionDelay: `${idx * 80}ms`
+              }}
             >
               {/* Left Icon (No background) */}
               <div
-                className="h-10 w-10 sm:h-11 sm:w-11 flex items-center justify-center shrink-0"
+                className="h-10 w-10 sm:h-11 sm:w-11 flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105"
               >
                 <div className="relative h-7 w-7">
                   <Image
@@ -146,7 +150,7 @@ export function IndustrySolutions() {
                 <h4 className="text-[14px] font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-tight tracking-tight">
                   {card.title}
                 </h4>
-                <p className="text-[11px] text-slate-500 font-normal leading-snug mt-1">
+                <p className="text-[11px] text-slate-600 font-normal leading-snug mt-1">
                   {card.desc}
                 </p>
               </div>
@@ -168,23 +172,27 @@ export function IndustrySolutions() {
             <Link
               key={idx}
               href={card.href}
-              className={`group flex flex-col justify-between min-h-[190px] md:min-h-[200px] lg:min-h-[220px] bg-white border border-slate-200 lg:border-slate-100 rounded-[2px] p-5 md:p-6 lg:p-8 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.06)] hover:-translate-y-1 hover:border-blue-500/30 ${visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+              className={`group flex flex-col justify-between min-h-[190px] md:min-h-[200px] lg:min-h-[220px] rounded-[4px] p-5 md:p-6 lg:p-8 shadow-[0_4px_16px_-2px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] ${visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
                 }`}
-              style={{ transitionDelay: `${idx * 80}ms` }}
+              style={{
+                border: '1px solid #CBD5E1',
+                background: 'linear-gradient(0deg, #FFF 0%, #FFF 100%), #FFF',
+                transitionDelay: `${idx * 80}ms`
+              }}
             >
               {/* Top Text Content */}
               <div>
                 <h4 className="text-[15px] md:text-[18px] lg:text-[18px] font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug md:leading-[28px] lg:leading-[28px]">
                   {card.title}
                 </h4>
-                <p className="text-[11.5px] md:text-[14px] lg:text-[14px] text-slate-500 font-normal leading-relaxed md:leading-[20px] lg:leading-[20px] mt-2">
+                <p className="text-[11.5px] md:text-[14px] lg:text-[14px] text-slate-600 font-normal leading-relaxed md:leading-[20px] lg:leading-[20px] mt-2">
                   {card.desc}
                 </p>
               </div>
 
               {/* Bottom Icon & Arrow */}
               <div className="flex items-end justify-between mt-4 md:mt-6">
-                <div className="relative h-10 w-10 md:h-12 md:w-12 lg:h-14 lg:w-14 flex items-center justify-center shrink-0">
+                <div className="relative h-10 w-10 md:h-12 md:w-12 lg:h-14 lg:w-14 flex items-center justify-center shrink-0 transition-transform duration-300 group-hover:scale-105">
                   <Image
                     src={card.iconSrc}
                     alt={card.title}
