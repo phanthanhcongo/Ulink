@@ -13,10 +13,10 @@ export function SectionHeader({ title, subtitle, viewAllHref, viewAllLabel, cent
   if (centered) {
     return (
       <div className="text-center max-w-3xl mx-auto space-y-1 sm:space-y-2">
-        <span className="text-[20px] leading-[28px] font-semibold sm:text-[24px] lg:text-[28px] xl:text-[32px] sm:font-bold tracking-tight text-blue-600 sm:leading-[32px] lg:leading-[36px] xl:leading-[40px] block">
+        <span className="text-[16px] min-[375px]:text-[18px] sm:text-[24px] lg:text-[28px] xl:text-[32px] leading-[22px] sm:leading-[32px] lg:leading-[36px] xl:leading-[40px] font-semibold sm:font-bold tracking-tight text-blue-600 block">
           {title}
         </span>
-        <h2 className="text-[20px] leading-[28px] font-semibold sm:text-[24px] lg:text-[28px] xl:text-[32px] sm:font-bold tracking-tight text-slate-900 sm:leading-[32px] lg:leading-[36px] xl:leading-[40px]">
+        <h2 className="text-[16px] min-[375px]:text-[18px] sm:text-[24px] lg:text-[28px] xl:text-[32px] leading-[22px] sm:leading-[32px] lg:leading-[36px] xl:leading-[40px] font-semibold sm:font-bold tracking-tight text-slate-900">
           {subtitle}
         </h2>
       </div>
