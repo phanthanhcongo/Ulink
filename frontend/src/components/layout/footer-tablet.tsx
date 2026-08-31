@@ -12,17 +12,19 @@ export function FooterTablet() {
     <div className="hidden md:grid lg:hidden grid-cols-2 gap-8 items-start">
       {/* ── LEFT COLUMN: BRAND, CONTACT, DISTRIBUTOR & BỘ CÔNG THƯƠNG ── */}
       <section className="col-span-1" aria-label="Thông tin ULink Industries">
-        <Link href="/" className="inline-block">
-          <Image
-            src={ASSETS.logo.main}
-            alt="ULink Industries"
-            width={360}
-            height={180}
-            className="h-20 w-auto object-contain sm:h-24 md:h-24"
-          />
-        </Link>
+        <div className="h-20 flex items-center mb-4">
+          <Link href="/" className="inline-block">
+            <Image
+              src={ASSETS.logo.main}
+              alt="ULink Industries"
+              width={360}
+              height={180}
+              className="h-16 sm:h-20 w-auto object-contain"
+            />
+          </Link>
+        </div>
 
-        <p className="mt-4 text-[13px] leading-relaxed text-[#485669]">
+        <p className="text-[13px] leading-relaxed text-[#485669]">
           {t('descLine1')}
         </p>
         <p className="mt-3 text-[12px] leading-relaxed text-[#647084]">
@@ -133,7 +135,7 @@ export function FooterTablet() {
       <div className="col-span-1 flex flex-col gap-6">
         {/* ── VỀ CHÚNG TÔI ── */}
         <nav aria-label="Về chúng tôi">
-          <div className="mb-3 flex items-center justify-between pb-1">
+          <div className="h-20 flex items-center mb-3">
             <Link
               href="/about"
               className="group inline-flex items-center gap-1.5 text-[15px] font-bold uppercase tracking-wider text-[#151b2a] transition-colors hover:text-[#1769e2]"

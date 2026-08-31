@@ -4,6 +4,7 @@ import { SiteFooter } from '@/components/layout/site-footer';
 import { LoginHeroCard } from '@/components/auth/login-hero-card';
 import { LoginCta } from '@/components/auth/login-cta';
 import { PartnersLogosOnly } from '@/components/home';
+import { ScrollToTop } from '@/components/layout/scroll-to-top';
 
 export default function AuthLayout({
   children,
@@ -15,7 +16,7 @@ export default function AuthLayout({
   setRequestLocale(locale);
 
   return (
-    <div className="flex min-h-screen w-full flex-col ">
+    <div className="flex min-h-screen w-full flex-col relative">
       <SiteHeader />
       <main className="flex-1 py-8 bg-slate-50/50">
         <div className="mx-auto max-w-[1440px]  px-4 sm:px-8 lg:px-16 flex flex-col gap-6">
@@ -43,6 +44,7 @@ export default function AuthLayout({
        {/* Direct Contact CTA Banner */}
           <LoginCta />
       <SiteFooter />
+      <ScrollToTop />
     </div>
   );
 }

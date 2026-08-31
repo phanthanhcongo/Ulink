@@ -12,17 +12,19 @@ export function FooterDesktop() {
     <div className="hidden lg:grid grid-cols-12 gap-6 items-start">
       {/* ── COL 1: BRAND, CONTACT & SOCIALS (3 COLS ON DESKTOP) ── */}
       <section className="lg:col-span-3 lg:pr-2" aria-label="Thông tin ULink Industries">
-        <Link href="/" className="inline-block">
-          <Image
-            src={ASSETS.logo.main}
-            alt="ULink Industries"
-            width={360}
-            height={180}
-            className="h-24 w-auto object-contain"
-          />
-        </Link>
+        <div className="h-20 flex items-center mb-4">
+          <Link href="/" className="inline-block">
+            <Image
+              src={ASSETS.logo.main}
+              alt="ULink Industries"
+              width={360}
+              height={180}
+              className="h-16 sm:h-20 w-auto object-contain"
+            />
+          </Link>
+        </div>
 
-        <p className="mt-4 text-[13px] leading-relaxed text-[#485669]">
+        <p className="text-[13px] leading-relaxed text-[#485669]">
           {t('descLine1')}
         </p>
         <p className="mt-3 text-[12px] leading-relaxed text-[#647084]">
@@ -108,7 +110,7 @@ export function FooterDesktop() {
       {/* ── COL 2: VỀ CHÚNG TÔI, DISTRIBUTOR & BỘ CÔNG THƯƠNG (3 COLS ON DESKTOP) ── */}
       <nav className="lg:col-span-3 flex flex-col justify-between" aria-label="Về chúng tôi">
         <div>
-          <div className="mb-4 flex items-center justify-between pb-2">
+          <div className="h-20 flex items-center mb-4">
             <Link
               href="/about"
               className="group inline-flex items-center gap-1.5 text-[16px] font-bold uppercase tracking-wider text-[#151b2a] transition-colors hover:text-[#1769e2]"
@@ -174,7 +176,7 @@ export function FooterDesktop() {
 
       {/* ── COL 3: NGÀNH NGHỀ (2 COLS ON DESKTOP) ── */}
       <nav className="lg:col-span-2" aria-label="Ngành nghề">
-        <div className="mb-4 flex items-center justify-between pb-2">
+        <div className="h-20 flex items-center mb-4">
           <Link
             href="/industries"
             className="group inline-flex items-center gap-1.5 text-[16px] font-bold uppercase tracking-wider text-[#151b2a] transition-colors hover:text-[#1769e2]"
@@ -215,7 +217,7 @@ export function FooterDesktop() {
 
       {/* ── COL 4: SẢN PHẨM & LANGUAGE SWITCHER (2 COLS ON DESKTOP) ── */}
       <nav className="lg:col-span-2" aria-label="Sản phẩm">
-        <div className="mb-4 flex items-center justify-between pb-2">
+        <div className="h-20 flex items-center mb-4">
           <Link
             href="/solutions"
             className="group inline-flex items-center gap-1.5 text-[16px] font-bold uppercase tracking-wider text-[#151b2a] transition-colors hover:text-[#1769e2]"
@@ -251,11 +253,13 @@ export function FooterDesktop() {
 
       {/* ── COL 5: APP DOWNLOAD CARD (2 COLS ON DESKTOP) ── */}
       <section className="lg:col-span-2" aria-label="Tải ứng dụng">
-        <div className="rounded-[3px] bg-[#eaf1fa] p-4 text-center">
-          <strong className="block text-[18px] font-semibold text-[#172033]">
+        <div className="h-20 flex items-center justify-center mb-4">
+          <strong className="block text-[16px] font-bold uppercase tracking-wider text-[#151b2a]">
             {t('downloadApp')}
           </strong>
-          <div className="relative mx-auto mt-3 h-36 w-36 rounded bg-white p-1 shadow-xs">
+        </div>
+        <div className="rounded-[3px] bg-[#eaf1fa] p-4 text-center">
+          <div className="relative mx-auto h-32 w-32 rounded bg-white p-1 shadow-xs">
             <Image
               src={ASSETS.footer.qrCode}
               alt="Mã QR tải ứng dụng ULink"
