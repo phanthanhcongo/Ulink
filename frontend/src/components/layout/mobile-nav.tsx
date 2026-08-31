@@ -582,10 +582,10 @@ export function MobileNav({ items }: MobileNavProps) {
       <button
         type="button"
         aria-label="Menu"
-        className="flex h-10 w-10 items-center justify-center text-slate-700 hover:text-brand transition-colors focus:outline-none xl:hidden"
+        className="flex h-10 w-10 items-center justify-center rounded-[10px] bg-[#f4f7fb] text-brand transition-all hover:bg-blue-100 focus:outline-none xl:hidden"
         onClick={() => setOpen(true)}
       >
-        <Menu className="h-6 w-6" />
+        <Menu className="h-5 w-5" />
       </button>
 
       {mounted && typeof document !== 'undefined'

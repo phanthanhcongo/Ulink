@@ -27,7 +27,7 @@ export function NewsCard({ slug, date, title, image, readMoreText, category, aut
   return (
     <Link
       href={`/resources/news/${slug}`}
-      className="ui-card-hover flex flex-col bg-white border border-slate-100/80 overflow-hidden shadow-sm"
+      className="ui-card-hover flex flex-col bg-white border border-slate-200 rounded-[4px] overflow-hidden shadow-xs transition-all duration-300 hover:shadow-md"
     >
       {/* Top Article Image */}
       <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-50">
@@ -43,7 +43,7 @@ export function NewsCard({ slug, date, title, image, readMoreText, category, aut
       {/* Content Container */}
       <div className="flex flex-col flex-1 p-5 sm:p-6 text-left">
         {/* Category & Date */}
-        <div className="flex items-center gap-2 text-[11px] sm:text-[11px] lg:text-[12px] xl:text-[13px] font-semibold text-slate-500 mb-2">
+        <div className="flex items-center gap-2 text-[11px] sm:text-[11px] lg:text-[12px] xl:text-[13px] font-semibold text-slate-600 mb-2">
           <span className="text-blue-600 font-bold uppercase tracking-wider">{category}</span>
           <span>•</span>
           <span>{date}</span>
@@ -56,13 +56,13 @@ export function NewsCard({ slug, date, title, image, readMoreText, category, aut
 
         {/* Short Description */}
         {displayDesc && (
-          <p className="mt-3 text-[13px] leading-relaxed sm:text-[14px] lg:text-[15px] xl:text-[16px] sm:leading-[20px] lg:leading-[22px] xl:leading-[24px] text-slate-500 font-normal line-clamp-3 flex-1">
+          <p className="mt-3 text-[13px] leading-relaxed sm:text-[14px] lg:text-[15px] xl:text-[16px] sm:leading-[20px] lg:leading-[22px] xl:leading-[24px] text-slate-600 font-normal line-clamp-3 flex-1">
             {displayDesc}
           </p>
         )}
         {/* Author Info Block */}
-        <div className="mt-6 pt-5  flex items-center gap-3">
-          <div className="relative w-10 h-10 overflow-hidden shrink-0 bg-slate-100 rounded-full">
+        <div className="mt-6 pt-5 flex items-center gap-3">
+          <div className="relative w-10 h-10 overflow-hidden shrink-0 bg-slate-100 rounded-full border border-slate-200">
             <Image
               src={author.avatar}
               alt={author.name}
@@ -73,7 +73,7 @@ export function NewsCard({ slug, date, title, image, readMoreText, category, aut
           </div>
           <div className="flex flex-col min-w-0">
             <span className="text-[13px] font-semibold sm:text-[14px] lg:text-[15px] xl:text-[16px] text-slate-800 truncate">{author.name}</span>
-            <span className="text-[11px] font-normal sm:text-[12px] lg:text-[13px] xl:text-[14px] text-slate-400 truncate mt-0.5">{author.role}</span>
+            <span className="text-[11px] font-medium sm:text-[12px] lg:text-[13px] xl:text-[14px] text-slate-500 truncate mt-0.5">{author.role}</span>
           </div>
         </div>
 

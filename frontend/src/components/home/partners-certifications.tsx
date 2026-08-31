@@ -144,7 +144,7 @@ export async function PartnersCertifications() {
           <h3 className="text-[16px] sm:text-[18px] font-bold text-primary leading-tight">
             {t('partners.isoTitle')}
           </h3>
-          <p className="mt-2 text-[11px] sm:text-[12px] leading-relaxed text-muted-foreground font-medium">
+          <p className="mt-2 text-[11px] sm:text-[12px] leading-relaxed text-slate-600 font-medium">
             {t('partners.isoDesc')}
           </p>
         </div>

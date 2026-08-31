@@ -39,24 +39,12 @@ export async function SiteHeader() {
       <div className="mx-auto flex h-16 sm:h-20 md:h-[88px] w-full max-w-[1440px] items-center justify-between px-3 sm:px-6 lg:px-16">
         
         {/* ── MOBILE HEADER LAYOUT (< xl) ── */}
-        <div className="flex w-full items-center justify-between xl:hidden relative">
-          {/* Left: Hamburger Menu + Search */}
-          <div className="flex items-center gap-1">
-            <MobileNav items={items} />
-            <Link
-              href="/solutions/searchProduct"
-              aria-label={t('search')}
-              className="flex h-10 w-10 items-center justify-center text-slate-700 hover:text-brand transition-colors"
-            >
-              <Search className="h-6 w-6" />
-            </Link>
-          </div>
-
-          {/* Center: Logo */}
+        <div className="flex w-full items-center justify-between xl:hidden">
+          {/* Left: Logo */}
           <Link
             href="/"
             aria-label="ULink Industries"
-            className="absolute left-1/2 -translate-x-1/2 flex items-center justify-center"
+            className="flex items-center"
           >
             <Image
               src={ASSETS.logo.full}
@@ -64,21 +52,30 @@ export async function SiteHeader() {
               width={280}
               height={76}
               priority
-              className="h-14 sm:h-16 w-auto object-contain max-h-[56px] sm:max-h-[64px]"
+              className="h-13 sm:h-16 w-auto object-contain max-h-[52px] sm:max-h-[64px]"
             />
           </Link>
 
-          {/* Right: User Icon + Cart */}
-          <div className="flex items-center gap-1">
-            <HeaderAuthButton />
+          {/* Right: Search -> Cart -> Hamburger Menu */}
+          <div className="flex items-center gap-2">
+            <Link
+              href="/solutions/searchProduct"
+              aria-label={t('search')}
+              className="flex h-10 w-10 items-center justify-center rounded-[10px] bg-[#f4f7fb] text-brand transition-all hover:bg-blue-100"
+            >
+              <Search className="h-5 w-5" />
+            </Link>
+
             <Link
               href="/cart"
               aria-label={t('cart')}
-              className="relative flex h-10 w-10 items-center justify-center text-slate-700 hover:text-brand transition-colors"
+              className="relative flex h-10 w-10 items-center justify-center rounded-[10px] bg-[#f4f7fb] text-brand transition-all hover:bg-blue-100"
             >
-              <ShoppingCart className="h-6 w-6" />
+              <ShoppingCart className="h-5 w-5" />
               <CartBadge />
             </Link>
+
+            <MobileNav items={items} />
           </div>
         </div>
 

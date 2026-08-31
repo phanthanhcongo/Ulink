@@ -28,28 +28,28 @@ export async function AboutSection() {
             className="object-cover"
           />
           {/* Floating Photo Caption Card (535x73px style) */}
-          <div className="absolute bottom-4 left-4 right-4 flex flex-col items-start gap-1 bg-white/90 p-3 rounded-[3px] opacity-[0.8] backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100">
-            <span className="text-[11px] sm:text-[12px] lg:text-[13px] xl:text-[14px] font-bold text-slate-700 leading-normal">
+          <div className="absolute bottom-4 left-4 right-4 flex flex-col items-start gap-1 bg-white/95 border border-slate-200/90 p-3 rounded-[3px] opacity-95 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100 shadow-sm">
+            <span className="text-[11px] sm:text-[12px] lg:text-[13px] xl:text-[14px] font-bold text-slate-900 leading-normal">
               {t('about.captionHub')}
             </span>
-            <span className="px-2.5 py-0.5 rounded-full text-[11px] sm:text-[11px] lg:text-[11px] xl:text-[12px] font-bold bg-blue-50 text-blue-600 border border-blue-100/50">
+            <span className="px-2.5 py-0.5 rounded-full text-[11px] sm:text-[11px] lg:text-[11px] xl:text-[12px] font-bold bg-blue-50 text-blue-600 border border-blue-200">
               {t('about.captionStatus')}
             </span>
           </div>
         </div>
 
         {/* Right Column: Text Content & 4 Key Metric Items */}
-        <div className="group ui-card-hover flex flex-col lg:col-span-6 justify-between bg-white border border-slate-200 shadow-sm p-4 sm:p-6 lg:p-6 xl:p-7 rounded-[3px] gap-8">
+        <div className="group ui-card-hover flex flex-col lg:col-span-6 justify-between bg-white border border-slate-200 shadow-[0_4px_16px_rgba(15,23,42,0.06)] p-4 sm:p-6 lg:p-6 xl:p-7 rounded-[3px] gap-8">
           <div>
             <h3 className="text-[16px] font-bold leading-[24px] text-primary transition-colors duration-300 group-hover:text-brand sm:text-[18px] sm:leading-[26px] lg:text-[20px] lg:leading-[28px] xl:text-[24px] xl:leading-[32px]">
               {t('about.mainTitle')}
             </h3>
 
-            <p className="mt-4 text-[13px] leading-[20px] text-muted-foreground sm:text-[14px] sm:font-normal sm:leading-[22px] lg:text-[15px] lg:leading-[24px] xl:text-[16px] xl:leading-[26px]">
+            <p className="mt-4 text-[13px] leading-[20px] text-slate-600 font-medium sm:text-[14px] sm:leading-[22px] lg:text-[15px] lg:leading-[24px] xl:text-[16px] xl:leading-[26px]">
               {t('about.mainDesc')}
             </p>
 
-            <div className="my-6 border-b border-border" />
+            <div className="my-6 border-b border-slate-200" />
 
             {/* Bullet Points */}
             <ul className="space-y-4 text-[11px] font-medium leading-[16px] text-foreground sm:text-[12px] sm:leading-[18px] lg:text-[13px] lg:leading-[20px] xl:text-[14px] xl:leading-[22px]">

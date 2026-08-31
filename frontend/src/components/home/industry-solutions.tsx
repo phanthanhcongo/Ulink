@@ -107,7 +107,7 @@ export function IndustrySolutions() {
   ];
 
   return (
-    <div ref={ref}>
+    <div ref={ref} className="bg-[#f4f7fb] w-full">
       {/* ── 1. MOBILE VIEW (Visible below md: < 768px) ── */}
       <section className="mx-auto w-full max-w-[1440px] px-4 py-8 sm:px-8 md:hidden overflow-hidden">
         {/* ── SECTION HEADER BAR ── */}

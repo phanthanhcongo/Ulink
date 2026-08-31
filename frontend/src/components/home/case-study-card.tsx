@@ -31,7 +31,7 @@ export function CaseStudyCard({
   return (
     <Link
       href={`/resources/case-study-${num}`}
-      className="ui-card-hover relative flex h-full w-full flex-col overflow-hidden rounded-[3px] border border-border bg-white shadow-sm"
+      className="ui-card-hover relative flex h-full w-full flex-col overflow-hidden rounded-[3px] border border-slate-200 bg-white shadow-xs transition-all duration-300 hover:shadow-md"
     >
       {/* Top Banner Image */}
       <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100">
@@ -47,7 +47,7 @@ export function CaseStudyCard({
       {/* Content Area */}
       <div className="flex flex-1 flex-col p-5 sm:p-6 lg:p-5 xl:p-6">
         {/* Category */}
-        <p className="text-[11px] font-medium text-slate-500 sm:text-[12px] lg:text-[13px] xl:text-[14px]">
+        <p className="text-[11px] font-medium text-slate-600 sm:text-[12px] lg:text-[13px] xl:text-[14px]">
           {category}
         </p>
 

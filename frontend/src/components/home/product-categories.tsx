@@ -55,27 +55,24 @@ export async function ProductCategories() {
   const bottomThreeCards = [
     {
       id: 'cut-protection',
-      title: 'Chống cắt - Chống cắt chuyên dụng',
-      description:
-        'Được thiết kế chuyên dụng để bảo vệ đôi tay khỏi các vật liệu sắc cạnh trong môi trường công nghiệp như: tấm kim loại, kính nhôm, linh kiện cơ khí và các công việc bảo trì. Phù hợp cho thao tác trong sản xuất kho vận, lắp đặt và bảo trì công nghiệp',
+      title: t('categories.cutResistantTitle'),
+      description: t('categories.cutResistantDesc'),
       href: '/solutions/listProduct?category=cleanroom-gloves',
       image: ASSETS.home.cateCutProtection,
       accentBorder: 'border-l-brand'
     },
     {
       id: 'hvac-tape',
-      title: 'Băng Keo Nhôm - Ứng dụng trong HVAC',
-      description:
-        'Băng keo nhôm - Vật tư chuyên dụng dùng để dán kín mối nối, bề mặt bảo ôn và hệ thống gió HVAC. Với cấu trúc bề mặt nhôm, keo acrylic chất lượng cao, sản phẩm giúp tăng hiệu quả làm kín, chống thoát nhiệt và hỗ trợ giải pháp tổng thể tùy chỉnh theo yêu cầu kỹ thuật.',
+      title: t('categories.hvacTapeTitle'),
+      description: t('categories.hvacTapeDesc'),
       href: '/solutions/listProduct?category=industrial-packaging',
       image: ASSETS.home.cateHvacTape,
       accentBorder: 'border-l-brand'
     },
     {
       id: 'custom-packaging',
-      title: 'Bao bì - sản xuất theo yêu cầu',
-      description:
-        'ULink Industries chuyên sản xuất các sản phẩm bao bì chất lượng cao bao gồm: màng co PE bảo vệ hàng hóa, màng quấn pallet giúp cố định và bảo vệ hàng trong vận chuyển, túi PE theo yêu cầu phù hợp với mọi nhu cầu đóng gói của khách hàng.',
+      title: t('categories.customPkgTitle'),
+      description: t('categories.customPkgDesc'),
       href: '/solutions/listProduct?category=industrial-packaging',
       image: ASSETS.home.cateCustomPackaging,
       accentBorder: 'border-l-[#dec5b4]'
@@ -123,7 +120,7 @@ export async function ProductCategories() {
               {/* 2-Column List of Sub-Items (Mobile: mỗi dòng border riêng | Desktop: bọc 2 cột border xám) */}
               <div className="mt-6 grid grid-cols-1 gap-2.5 sm:grid-cols-2 sm:gap-3">
                 {/* Cột 1 */}
-                <div className="flex flex-col gap-2.5 p-0 sm:p-3.5 sm:p-4 sm:rounded-[4px] sm:bg-[#F9FAFB] sm:border sm:border-[#CAD5E2]">
+                <div className="flex flex-col gap-2.5 p-0 sm:p-3.5 sm:p-4 sm:rounded-[4px] sm:bg-[#F9FAFB] sm:border sm:border-[#CBD5E1]">
                   {card.items.slice(0, 3).map((item, idx) => (
                     <Link
                       key={idx}
@@ -143,7 +140,7 @@ export async function ProductCategories() {
                 </div>
 
                 {/* Cột 2 */}
-                <div className="flex flex-col gap-2.5 p-0 sm:p-3.5 sm:p-4 sm:rounded-[4px] sm:bg-[#F9FAFB] sm:border sm:border-[#CAD5E2]">
+                <div className="flex flex-col gap-2.5 p-0 sm:p-3.5 sm:p-4 sm:rounded-[4px] sm:bg-[#F9FAFB] sm:border sm:border-[#CBD5E1]">
                   {card.items.slice(3, 6).map((item, idx) => (
                     <Link
                       key={idx}
@@ -176,7 +173,7 @@ export async function ProductCategories() {
       </div>
 
       {/* BOTTOM ROW: 3 FEATURE CARDS */}
-      <div className="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-3 lg:gap-6 xl:gap-8">
+      <div className="mt-6 sm:mt-8 grid grid-cols-1 gap-4 sm:gap-4 lg:grid-cols-3 lg:gap-4 xl:gap-5">
         {bottomThreeCards.map((card) => (
           <Link
             key={card.id}

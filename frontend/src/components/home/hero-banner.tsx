@@ -40,7 +40,7 @@ export function HeroBanner() {
           {/* Content Container Frame */}
           <div className="group relative flex w-full max-w-full lg:w-[600px] lg:max-w-[600px] xl:w-[672px] xl:max-w-[672px] flex-col p-0 sm:px-6 sm:py-4.5 md:px-7 md:py-5 lg:px-7 lg:py-5 xl:px-9 xl:py-8 gap-3 sm:gap-4 lg:gap-4 xl:gap-6 transition-all duration-300 sm:hover:-translate-y-1 sm:hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
             {/* Frosted Glass Card (Desktop only) */}
-            <div className="hidden sm:block absolute inset-0 z-10 rounded-[3px] border border-white/50 bg-white/[0.92] backdrop-blur-[24px] shadow-[0px_20px_40px_-10px_rgba(0,0,0,0.102)]" />
+            <div className="hidden sm:block absolute inset-0 z-10 rounded-[3px] border border-slate-200/90 bg-white/95 backdrop-blur-[24px] shadow-[0px_20px_40px_-10px_rgba(15,23,42,0.12)]" />
 
             {/* Text content */}
             <div className="relative z-30 flex flex-col">

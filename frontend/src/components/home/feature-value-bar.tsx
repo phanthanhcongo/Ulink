@@ -43,7 +43,7 @@ export async function FeatureValueBar() {
           {features.map((f) => (
             <div
               key={f.alt}
-              className="group relative flex h-full flex-row items-center gap-3.5 rounded-[3px] border border-border bg-white p-4 shadow-sm transition-all duration-300 hover:z-10 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:scale-[1.02] sm:flex-col sm:items-start sm:p-4.5 sm:min-h-[135px] lg:px-4.5 lg:py-4 lg:min-h-[140px] xl:px-5 xl:py-5 xl:min-h-[155px] 2xl:px-6 2xl:py-5.5 2xl:min-h-[165px]"
+              className="group relative flex h-full flex-row items-center gap-3.5 rounded-[3px] border border-slate-200 bg-white p-4 shadow-xs transition-all duration-300 hover:z-10 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:scale-[1.02] sm:flex-col sm:items-start sm:p-4.5 sm:min-h-[135px] lg:px-4.5 lg:py-4 lg:min-h-[140px] xl:px-5 xl:py-5 xl:min-h-[155px] 2xl:px-6 2xl:py-5.5 2xl:min-h-[165px]"
             >
               <div
                 className={`relative flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-full text-white transition-transform duration-300 group-hover:scale-110 ${f.bgClass}`}
@@ -60,7 +60,7 @@ export async function FeatureValueBar() {
                 <p className="text-[15px] font-bold leading-snug text-slate-900 transition-colors duration-300 group-hover:text-brand whitespace-nowrap sm:text-[16px] lg:text-[18px] xl:text-[20px] lg:font-semibold">
                   {t(`features.${f.titleKey}`)}
                 </p>
-                <p className="mt-1 text-[11px] text-slate-500 sm:text-[12px] sm:leading-[17px] lg:text-[13px] lg:leading-[18px] xl:text-[14px]">
+                <p className="mt-1 text-[11px] text-slate-600 font-medium sm:text-[12px] sm:leading-[17px] lg:text-[13px] lg:leading-[18px] xl:text-[14px]">
                   {t(`features.${f.descKey}`)}
                 </p>
               </div>

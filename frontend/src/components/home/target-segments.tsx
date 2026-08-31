@@ -28,7 +28,7 @@ export function TargetSegments() {
   }, []);
 
   return (
-    <section className="w-full bg-slate-50/50 border-t border-b border-slate-100 font-sans select-none">
+    <section className="w-full bg-[#f4f7fb] font-sans select-none">
 
       {/* ──────────────────────────────────────────────────────── */}
       {/* 1. MOBILE VIEW (Screens < 768px: md breakpoint)          */}

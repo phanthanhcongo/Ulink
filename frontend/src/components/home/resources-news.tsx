@@ -130,7 +130,7 @@ export function ResourcesNews() {
   ];
 
   return (
-    <section className="relative mx-auto w-full max-w-[1440px] px-4 pt-4 pb-12 sm:px-8 lg:px-16 sm:pt-6 sm:pb-16 lg:pt-8 lg:pb-20 xl:pt-10 xl:pb-24 overflow-hidden">
+    <section className="relative bg-[#f4f7fb] w-full px-4 pt-4 pb-12 sm:px-8 lg:px-16 sm:pt-6 sm:pb-16 lg:pt-8 lg:pb-20 xl:pt-10 xl:pb-24 overflow-hidden">
 
       {/* ── 2. SUB-SECTION HEADER (TIN TỨC THỊ TRƯỜNG - 2 HÀNG BẰNG CỠ CHỮ) ── */}
       <div className="text-center max-w-3xl mx-auto space-y-1 sm:space-y-2">
