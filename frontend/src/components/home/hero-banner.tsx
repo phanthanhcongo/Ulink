@@ -52,7 +52,7 @@ export function HeroBanner() {
                 {t('hero.eyebrowSub')}
               </p>
 
-              <h1 className="mt-2 sm:mt-2.5 lg:mt-2.5 xl:mt-3 text-[28px] leading-[36px] font-semibold sm:text-[36px] md:text-[38px] lg:text-[44px] xl:text-[56px] sm:leading-[44px] md:leading-[46px] lg:leading-[52px] xl:leading-[64px] tracking-tight text-slate-900">
+              <h1 className="mt-2 sm:mt-2.5 lg:mt-2.5 xl:mt-3 text-[28px] leading-[36px] font-semibold sm:font-extrabold sm:text-[36px] md:text-[38px] lg:text-[44px] xl:text-[56px] sm:leading-[44px] md:leading-[46px] lg:leading-[52px] xl:leading-[64px] tracking-tight text-slate-900">
                 {t('hero.title')}
               </h1>
 
