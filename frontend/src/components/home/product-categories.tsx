@@ -16,6 +16,7 @@ export async function ProductCategories() {
         'Sản phẩm bảo vệ và kiểm soát bụi, ô nhiễm cho phòng sạch tại các nhà sản xuất: Điện tử, Thực phẩm, Dược phẩm, Y tế.',
       href: '/solutions/listProduct?category=cleanroom-consumables',
       image: ASSETS.home.cateCleanroom,
+      icon: ASSETS.home.solutionCleanroom,
       accentBorder: 'border-l-brand',
       indicatorBg: 'bg-brand',
       items: [
@@ -37,6 +38,7 @@ export async function ProductCategories() {
         'Sản phẩm sản xuất theo yêu cầu và đơn đặt hàng của khách hàng — phục vụ các nhà sản xuất trong ngành Điện tử, Thực phẩm, Dược phẩm và Y tế.',
       href: '/solutions/listProduct?category=industrial-packaging',
       image: ASSETS.home.catePackaging,
+      icon: ASSETS.home.solutionPackaging,
       accentBorder: 'border-l-[#dec5b4]',
       indicatorBg: 'bg-[#dec5b4]',
       items: [
@@ -110,7 +112,7 @@ export async function ProductCategories() {
             <div className="flex flex-1 flex-col p-5 sm:p-6 lg:p-6 xl:p-8">
               <Link href={card.href} className="block">
                 <h3 className="flex items-center gap-2.5 text-[16px] sm:text-[18px] lg:text-[20px] xl:text-[24px] font-bold text-slate-900 leading-[24px] sm:leading-[26px] lg:leading-[28px] xl:leading-[32px] group-hover:text-brand transition-colors">
-                  <span className={`inline-block h-3 w-3 rounded-full shrink-0 ${card.indicatorBg}`} />
+                  <span className={`inline-block h-2.5 w-2.5 rotate-45 shrink-0 ${card.indicatorBg}`} />
                   <span>{card.title}</span>
                 </h3>
               </Link>
