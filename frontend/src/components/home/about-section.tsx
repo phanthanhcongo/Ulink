@@ -41,7 +41,7 @@ export async function AboutSection() {
         {/* Right Column: Text Content & 4 Key Metric Items */}
         <div className="group ui-card-hover flex flex-col lg:col-span-6 justify-between bg-white border border-slate-200 shadow-sm p-4 sm:p-6 lg:p-6 xl:p-7 rounded-[3px] gap-8">
           <div>
-            <h3 className="text-[16px] font-semibold leading-[24px] text-primary transition-colors duration-300 group-hover:text-brand sm:text-[18px] sm:leading-[26px] lg:text-[20px] lg:leading-[28px] xl:text-[24px] xl:leading-[32px]">
+            <h3 className="text-[16px] font-bold leading-[24px] text-primary transition-colors duration-300 group-hover:text-brand sm:text-[18px] sm:leading-[26px] lg:text-[20px] lg:leading-[28px] xl:text-[24px] xl:leading-[32px]">
               {t('about.mainTitle')}
             </h3>
 
