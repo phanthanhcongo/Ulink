@@ -19,7 +19,7 @@ export async function AboutSection() {
       {/* ── 2 COLUMNS CONTENT GRID ── */}
       <div className="mt-8 grid grid-cols-1 gap-8 lg:grid-cols-12 lg:items-stretch lg:gap-12">
         {/* Left Column: Factory Building Photo with Floating Caption Card */}
-        <div className="ui-card-hover relative w-full aspect-[16/11] lg:aspect-auto lg:h-full lg:col-span-6 overflow-hidden rounded-[3px] border border-[#E5E7EB]">
+        <div className="ui-card-hover relative w-full aspect-[1.18/1] lg:aspect-auto lg:h-full lg:col-span-6 overflow-hidden rounded-[3px] border border-[#E5E7EB]">
           <Image
             src={ASSETS.home.companyFactory}
             alt="ULINK Industries Ha Nam Factory Hub"
@@ -39,7 +39,7 @@ export async function AboutSection() {
         </div>
 
         {/* Right Column: Text Content & 4 Key Metric Items */}
-        <div className="flex flex-col lg:col-span-6 justify-between bg-white border border-[#E5E7EB] p-6 rounded-[3px] gap-10">
+        <div className="flex flex-col lg:col-span-6 justify-between bg-white border border-slate-200 shadow-sm p-6 sm:p-8 rounded-[3px] gap-10">
           <div>
             <h3 className="text-[16px] font-semibold leading-[24px] text-primary transition-colors duration-300 group-hover:text-brand sm:text-[18px] sm:leading-[26px] lg:text-[20px] lg:leading-[28px] xl:text-[24px] xl:leading-[32px]">
               {t('about.mainTitle')}
@@ -77,8 +77,8 @@ export async function AboutSection() {
           {/* 4 Metric Items Grid with radius/xs (rounded-[3px]) cards */}
           <div className="mt-8 grid grid-cols-2 gap-3 lg:mt-6 sm:grid-cols-4">
             {/* Metric 1 */}
-            <div className="ui-card-hover flex flex-col items-start bg-slate-50 border border-slate-100 p-3 rounded-[3px] hover:border-slate-200 gap-2 justify-between w-full min-h-[76px]">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[3px] bg-blue-50/80">
+            <div className="ui-card-hover flex flex-col items-start bg-slate-50/80 border border-slate-200 p-3 rounded-[3px] hover:border-brand/60 gap-2 justify-between w-full min-h-[76px]">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[3px] bg-blue-50">
                 <Image
                   src={ASSETS.home.iconSlack}
                   alt="Experience"
@@ -93,8 +93,8 @@ export async function AboutSection() {
             </div>
 
             {/* Metric 2 */}
-            <div className="ui-card-hover flex flex-col items-start bg-slate-50 border border-slate-100 p-3 rounded-[3px] hover:border-slate-200 gap-2 justify-between w-full min-h-[76px]">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[3px] bg-blue-50/80">
+            <div className="ui-card-hover flex flex-col items-start bg-slate-50/80 border border-slate-200 p-3 rounded-[3px] hover:border-brand/60 gap-2 justify-between w-full min-h-[76px]">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[3px] bg-blue-50">
                 <Image
                   src={ASSETS.home.iconShield}
                   alt="Quality"
@@ -109,8 +109,8 @@ export async function AboutSection() {
             </div>
 
             {/* Metric 3 */}
-            <div className="ui-card-hover flex flex-col items-start bg-slate-50 border border-slate-100 p-3 rounded-[3px] hover:border-slate-200 gap-2 justify-between w-full min-h-[76px]">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[3px] bg-blue-50/80">
+            <div className="ui-card-hover flex flex-col items-start bg-slate-50/80 border border-slate-200 p-3 rounded-[3px] hover:border-brand/60 gap-2 justify-between w-full min-h-[76px]">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[3px] bg-blue-50">
                 <Image
                   src={ASSETS.home.iconTag}
                   alt="SKU Count"
@@ -125,8 +125,8 @@ export async function AboutSection() {
             </div>
 
             {/* Metric 4 */}
-            <div className="ui-card-hover flex flex-col items-start bg-slate-50 border border-slate-100 p-3 rounded-[3px] hover:border-slate-200 gap-2 justify-between w-full min-h-[76px]">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[3px] bg-blue-50/80">
+            <div className="ui-card-hover flex flex-col items-start bg-slate-50/80 border border-slate-200 p-3 rounded-[3px] hover:border-brand/60 gap-2 justify-between w-full min-h-[76px]">
+              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[3px] bg-blue-50">
                 <Image
                   src={ASSETS.home.iconTruck}
                   alt="Fast Delivery"

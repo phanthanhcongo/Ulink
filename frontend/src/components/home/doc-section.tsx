@@ -60,10 +60,11 @@ export function DocSection() {
         </div>
 
         {/* ── 4 DOCUMENT CARDS GRID ── */}
-        <div className="mt-8 grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="mt-8 grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-2 lg:grid-cols-4 lg:gap-4">
           {docsData.map((doc) => (
             <DocCard
               key={doc.num}
+              num={doc.num}
               category={doc.category}
               title={doc.title}
               meta={doc.meta}
