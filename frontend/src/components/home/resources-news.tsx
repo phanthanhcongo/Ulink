@@ -130,52 +130,51 @@ export function ResourcesNews() {
   ];
 
   return (
-    <section className="relative bg-[#f4f7fb] w-full px-4 pt-4 pb-12 sm:px-8 lg:px-16 sm:pt-6 sm:pb-16 lg:pt-8 lg:pb-20 xl:pt-10 xl:pb-24 overflow-hidden">
+    <section className="w-full bg-[#f4f7fb] py-8 sm:py-10 lg:py-12">
+      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
+        {/* ── 2. SUB-SECTION HEADER (TIN TỨC THỊ TRƯỜNG - 2 HÀNG BẰNG CỠ CHỮ) ── */}
+        <div className="text-center max-w-3xl mx-auto space-y-1 sm:space-y-2">
+          <span className="text-[16px] min-[375px]:text-[18px] sm:text-[24px] lg:text-[28px] xl:text-[32px] font-semibold tracking-tight text-blue-600 leading-tight lg:leading-[36px] xl:leading-[40px] block">
+            {t('newsSectionTitle')}
+          </span>
+          <h2 className="text-[16px] min-[375px]:text-[18px] sm:text-[24px] lg:text-[28px] xl:text-[32px] font-semibold tracking-tight text-slate-900 leading-tight lg:leading-[36px] xl:leading-[40px]">
+            {t('newsSectionSubTitle')}
+          </h2>
+        </div>
 
-      {/* ── 2. SUB-SECTION HEADER (TIN TỨC THỊ TRƯỜNG - 2 HÀNG BẰNG CỠ CHỮ) ── */}
-      <div className="text-center max-w-3xl mx-auto space-y-1 sm:space-y-2">
-        <span className="text-[16px] min-[375px]:text-[18px] sm:text-[24px] lg:text-[28px] xl:text-[32px] font-semibold tracking-tight text-blue-600 leading-tight lg:leading-[36px] xl:leading-[40px] block">
-          {t('newsSectionTitle')}
-        </span>
-        <h2 className="text-[16px] min-[375px]:text-[18px] sm:text-[24px] lg:text-[28px] xl:text-[32px] font-semibold tracking-tight text-slate-900 leading-tight lg:leading-[36px] xl:leading-[40px]">
-          {t('newsSectionSubTitle')}
-        </h2>
-      </div>
+        {/* ── 3. 4 NEWS CARDS GRID ── */}
+        <div ref={newsRef} className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
+          {newsData.map((news, idx) => (
+            <div
+              key={news.slug}
+              className={`transition-all duration-500 ${newsVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+                } ${idx >= 3 ? 'lg:hidden' : ''}`}
+              style={{ transitionDelay: `${idx * 100}ms` }}
+            >
+              <NewsCard
+                slug={news.slug}
+                date={news.date}
+                title={news.title}
+                image={news.image}
+                category={news.category}
+                author={news.author}
+                readMoreText={t('readMore') || 'Đọc thêm'}
+              />
+            </div>
+          ))}
+        </div>
 
-      {/* ── 3. 4 NEWS CARDS GRID ── */}
-      <div ref={newsRef} className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-        {newsData.map((news, idx) => (
-          <div
-            key={news.slug}
-            className={`transition-all duration-500 ${newsVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
-              } ${idx >= 3 ? 'lg:hidden' : ''}`}
-            style={{ transitionDelay: `${idx * 100}ms` }}
+        {/* ── Centered View All News Button ── */}
+        <div className="mt-10 flex justify-center">
+          <Link
+            href="/resources"
+            className="group inline-flex h-11 items-center justify-center gap-2.5 rounded-[3px] border border-blue-600 bg-white px-6 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-normal text-blue-600 transition-all hover:bg-blue-50/50 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:-translate-y-1 hover:scale-[1.02]"
           >
-            <NewsCard
-              slug={news.slug}
-              date={news.date}
-              title={news.title}
-              image={news.image}
-              category={news.category}
-              author={news.author}
-              readMoreText={t('readMore') || 'Đọc thêm'}
-            />
-          </div>
-        ))}
+            {t('viewMore') || 'Xem thêm'}
+            <ArrowRight className="h-4.5 w-4.5 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
+          </Link>
+        </div>
       </div>
-
-      {/* ── Centered View All News Button ── */}
-      <div className="mt-10 flex justify-center">
-        <Link
-          href="/resources"
-          className="group inline-flex h-11 items-center justify-center gap-2.5 rounded-[3px] border border-blue-600 bg-white px-6 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-normal text-blue-600 transition-all hover:bg-blue-50/50 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:-translate-y-1 hover:scale-[1.02]"
-        >
-          {t('viewMore') || 'Xem thêm'}
-          <ArrowRight className="h-4.5 w-4.5 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />
-        </Link>
-      </div>
-
-
     </section>
   );
 }
