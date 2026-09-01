@@ -253,13 +253,13 @@ export function FooterDesktop() {
 
       {/* ── COL 5: APP DOWNLOAD CARD (2 COLS ON DESKTOP) ── */}
       <section className="lg:col-span-2" aria-label="Tải ứng dụng">
-        <div className="h-20 flex items-center justify-start mb-4">
-          <strong className="block text-[16px] font-bold uppercase tracking-wider text-[#151b2a]">
+        <div className="h-20 flex items-center justify-center text-center mb-4">
+          <strong className="block text-[16px] font-bold uppercase tracking-wider text-[#151b2a] text-center">
             {t('downloadApp')}
           </strong>
         </div>
-        <div className="rounded-[3px] bg-[#eaf1fa] p-4 text-left">
-          <div className="relative h-32 w-32 rounded bg-white p-1 shadow-xs">
+        <div className="rounded-[3px] bg-[#eaf1fa] p-4 text-center flex justify-center items-center">
+          <div className="relative mx-auto h-32 w-32 rounded bg-white p-1 shadow-xs">
             <Image
               src={ASSETS.footer.qrCode}
               alt="Mã QR tải ứng dụng ULink"
