@@ -123,8 +123,8 @@ export function FooterTablet() {
               src={ASSETS.footer.boCongThuong}
               alt="Đã thông báo Bộ Công Thương"
               width={260}
-              height={68}
-              className="h-14 w-auto object-contain"
+              height={88}
+              className="h-16 w-auto object-contain"
               unoptimized
             />
           </div>

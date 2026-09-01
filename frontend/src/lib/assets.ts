@@ -93,7 +93,7 @@ export const ASSETS = {
   },
   /** Footer assets */
   footer: {
-    boCongThuong: '/images/footer/Logo-Da-Thong-Bao-Bo-Cong-Thuong.svg',
+    boCongThuong: '/images/home/Da_Thong_Bao_Bo_Cong_Thuong.svg',
     qrCode: '/images/footer/qr-code.svg',
     facebook: '/images/footer/facebook.svg',
     linkedin: '/images/footer/linkedin.svg',
