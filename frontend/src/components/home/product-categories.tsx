@@ -11,43 +11,41 @@ export async function ProductCategories() {
   const topTwoCards = [
     {
       id: 'cleanroom',
-      title: 'Giải pháp - Sản phẩm Phòng sạch',
-      description:
-        'Sản phẩm bảo vệ và kiểm soát bụi, ô nhiễm cho phòng sạch tại các nhà sản xuất: Điện tử, Thực phẩm, Dược phẩm, Y tế.',
+      title: t('categories.cleanroomTitle'),
+      description: t('categories.cleanroomDesc'),
       href: '/solutions/listProduct?category=cleanroom-consumables',
       image: ASSETS.home.cateCleanroom,
       icon: ASSETS.home.solutionCleanroom,
       accentBorder: 'border-l-brand',
       indicatorBg: 'bg-brand',
       items: [
-        { label: 'Găng tay Nitrile/Latex', href: '/solutions/listProduct?category=cleanroom-gloves' },
-        { label: 'Trang phục phòng sạch', href: '/solutions/listProduct?category=cleanroom-apparel' },
-        { label: 'Khăn lau / Cleanroom Wiper', href: '/solutions/listProduct?category=cleanroom-wipers' },
-        { label: 'Khẩu trang Y tế', href: '/solutions/listProduct?category=cleanroom-masks' },
+        { label: t('categories.cleanroomItem1'), href: '/solutions/listProduct?category=cleanroom-gloves' },
+        { label: t('categories.cleanroomItem2'), href: '/solutions/listProduct?category=cleanroom-apparel' },
+        { label: t('categories.cleanroomItem3'), href: '/solutions/listProduct?category=cleanroom-wipers' },
+        { label: t('categories.cleanroomItem4'), href: '/solutions/listProduct?category=cleanroom-masks' },
         {
-          label: 'Sticky Mat/Thảm phòng sạch',
+          label: t('categories.cleanroomItem5'),
           href: '/solutions/listProduct?category=cleanroom-consumables'
         },
-        { label: 'Thiết bị đo lường', href: '/solutions/listProduct?category=esd-supplies' }
+        { label: t('categories.cleanroomItem6'), href: '/solutions/listProduct?category=esd-supplies' }
       ]
     },
     {
       id: 'packaging',
-      title: 'Giải pháp - Sản phẩm Bao bì',
-      description:
-        'Sản phẩm sản xuất theo yêu cầu và đơn đặt hàng của khách hàng — phục vụ các nhà sản xuất trong ngành Điện tử, Thực phẩm, Dược phẩm và Y tế.',
+      title: t('categories.packagingTitle'),
+      description: t('categories.packagingDesc'),
       href: '/solutions/listProduct?category=industrial-packaging',
       image: ASSETS.home.catePackaging,
       icon: ASSETS.home.solutionPackaging,
       accentBorder: 'border-l-[#dec5b4]',
       indicatorBg: 'bg-[#dec5b4]',
       items: [
-        { label: 'Màng co PE/Shrink film', href: '/solutions/listProduct?category=industrial-packaging' },
-        { label: 'Màng bọc thực phẩm', href: '/solutions/listProduct?category=industrial-packaging' },
-        { label: 'Màng quấn PE Pallet', href: '/solutions/listProduct?category=industrial-packaging' },
-        { label: 'Màng/Túi nhôm', href: '/solutions/listProduct?category=industrial-packaging' },
-        { label: 'Túi PE/PP/Shield Bag', href: '/solutions/listProduct?category=industrial-packaging' },
-        { label: 'Băng Keo', href: '/solutions/listProduct?category=industrial-packaging' }
+        { label: t('categories.packagingItem1'), href: '/solutions/listProduct?category=industrial-packaging' },
+        { label: t('categories.packagingItem2'), href: '/solutions/listProduct?category=industrial-packaging' },
+        { label: t('categories.packagingItem3'), href: '/solutions/listProduct?category=industrial-packaging' },
+        { label: t('categories.packagingItem4'), href: '/solutions/listProduct?category=industrial-packaging' },
+        { label: t('categories.packagingItem5'), href: '/solutions/listProduct?category=industrial-packaging' },
+        { label: t('categories.packagingItem6'), href: '/solutions/listProduct?category=industrial-packaging' }
       ]
     }
   ];
