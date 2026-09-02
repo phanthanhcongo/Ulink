@@ -130,7 +130,7 @@ export function ResourcesNews() {
   ];
 
   return (
-    <section className="w-full bg-[#f4f7fb] py-8 sm:py-10 lg:py-12">
+    <section className="w-full bg-white py-8 sm:py-10 lg:py-12">
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
         {/* ── 2. SUB-SECTION HEADER (TIN TỨC THỊ TRƯỜNG - 2 HÀNG BẰNG CỠ CHỮ) ── */}
         <div className="text-center max-w-3xl mx-auto space-y-1 sm:space-y-2">
