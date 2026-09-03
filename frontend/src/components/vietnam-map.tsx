@@ -136,7 +136,7 @@ export function VietnamMap({ className, locale = 'vi', hubs = [] }: VietnamMapPr
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
 
           {/* ════════════════════════════════════════════════════════════
-              QUADRANT 1 (TOP LEFT - Ô TRÊN TRÁI): HEADER COPY
+              QUADRANT 1 (TOP LEFT - Ô TRÊN TRÁI): HEADER COPY & MOBILE LOCATION CARDS
              ════════════════════════════════════════════════════════════ */}
           <div className="md:col-span-1 lg:col-span-4 lg:col-start-1 lg:row-start-1 space-y-4">
             <span className="text-[14px] font-normal text-[#ccf2ff] uppercase tracking-[1px] block">
@@ -148,12 +148,38 @@ export function VietnamMap({ className, locale = 'vi', hubs = [] }: VietnamMapPr
             <p className="text-[15px] sm:text-[16px] font-normal text-[#e8f7ff]/90 leading-[24px] max-w-md">
               {t.desc}
             </p>
+
+            {/* Mobile Location Cards: Displayed only on Mobile (< lg), replaces map silhouette */}
+            <div className="block lg:hidden w-full space-y-3 pt-4 pb-2">
+              {[
+                { num: '01', title: 'Khu vực Bắc Bộ', href: '/quick-order' },
+                { num: '02', title: 'Khu vực Bắc Bộ', href: '/quick-order' },
+                { num: '03', title: 'Khu vực Duyên Hải', href: '/quick-order' },
+                { num: '04', title: 'Khu vực Nam Bộ', href: '/quick-order' },
+              ].map((card, idx) => (
+                <Link
+                  key={idx}
+                  href={card.href}
+                  className="flex items-center justify-between bg-[#f4f8fc] hover:bg-white text-[#212529] px-4 py-3.5 rounded-[2px] border border-blue-100 shadow-sm transition-all duration-200 group"
+                >
+                  <div className="flex items-center gap-3.5">
+                    <div className="w-10 h-10 rounded-full border border-[#9ed0ff] bg-[#e6f2ff] text-[#1769e2] font-bold text-[15px] flex items-center justify-center shrink-0">
+                      {card.num}
+                    </div>
+                    <span className="text-[15px] font-medium text-[#212529] leading-snug">
+                      {card.title}
+                    </span>
+                  </div>
+                  <ArrowRight className="h-4 w-4 text-[#a0b3d1] group-hover:text-[#1769e2] group-hover:translate-x-1 transition-all" />
+                </Link>
+              ))}
+            </div>
           </div>
 
           {/* ════════════════════════════════════════════════════════════
-              QUADRANT 2 (TOP RIGHT - Ô TRÊN PHẢI): MAP SILHOUETTE
+              QUADRANT 2 (TOP RIGHT - Ô TRÊN PHẢI): MAP SILHOUETTE (DESKTOP ONLY)
              ════════════════════════════════════════════════════════════ */}
-          <div className="md:col-span-1 lg:col-span-4 lg:col-start-5 lg:row-start-1 lg:row-span-2 relative flex items-center justify-center min-h-[460px] xl:min-h-[580px]">
+          <div className="hidden lg:flex md:col-span-1 lg:col-span-4 lg:col-start-5 lg:row-start-1 lg:row-span-2 relative items-center justify-center min-h-[460px] xl:min-h-[580px]">
             {/* Status Badge - Top Left between Quadrant 1 & 2 */}
             <div className="absolute top-2 left-2 sm:left-4 z-20 flex items-center gap-2">
               <span className="inline-flex items-center gap-2 bg-[#0940a8]/90 text-white border border-[#a1edff]/60 text-[11px] font-semibold px-3 py-1 rounded-full uppercase tracking-wider backdrop-blur-md shadow-md">
@@ -297,9 +323,9 @@ export function VietnamMap({ className, locale = 'vi', hubs = [] }: VietnamMapPr
           </div>
 
           {/* ════════════════════════════════════════════════════════════
-              QUADRANT 4 (BOTTOM RIGHT - Ô DƯỚI PHẢI): HUB CARDS LIST
+              QUADRANT 4 (BOTTOM RIGHT - Ô DƯỚI PHẢI): HUB CARDS LIST (DESKTOP ONLY)
              ════════════════════════════════════════════════════════════ */}
-          <div className="md:col-span-1 lg:col-span-4 lg:col-start-9 lg:row-start-1 lg:row-span-2 flex flex-col justify-between h-full space-y-6 pt-2 lg:pt-0">
+          <div className="hidden lg:flex md:col-span-1 lg:col-span-4 lg:col-start-9 lg:row-start-1 lg:row-span-2 flex-col justify-between h-full space-y-6 pt-2 lg:pt-0">
 
             {/* Hub Cards List */}
             <div className="space-y-4 w-full">

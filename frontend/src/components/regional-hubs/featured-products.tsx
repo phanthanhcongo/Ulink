@@ -59,17 +59,17 @@ export default async function FeaturedProducts({ locale }: FeaturedProductsProps
 
           {/* Card 1: Glove */}
           <article className="group relative flex flex-col bg-white border border-slate-200 shadow-sm rounded-[3px] overflow-hidden h-full transition-all duration-[240ms] ease-out hover:-translate-y-1 hover:border-[#9fc2ef] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
-            <Link href={gloveSlug} className="relative block w-full max-w-[357px] h-[204px] mx-auto lg:max-w-[588px] lg:h-[323px] mt-4 mb-2 overflow-hidden bg-transparent rounded-[3px]">
+            <Link href={gloveSlug} className="relative block m-4 mb-2 h-[180px] sm:h-[204px] lg:h-[323px] overflow-hidden bg-transparent rounded-[3px]">
               <Image
                 src={gloveImgSrc}
                 alt={t('featuredProducts.glove.title')}
                 fill
                 className="object-contain object-center lg:object-cover lg:object-center transition-transform duration-[450ms] ease-out group-hover:scale-[1.035]"
-                sizes="(max-width: 1024px) 357px, 588px"
+                sizes="(max-width: 1024px) 100vw, 588px"
               />
             </Link>
 
-            <div className="flex flex-col flex-1 p-6 pt-2">
+            <div className="flex flex-col flex-1 p-4 sm:p-6 pt-2">
               <p className="text-[14px] font-semibold text-brand uppercase tracking-[0.5px] mb-2">
                 {t('featuredProducts.glove.category')}
               </p>
@@ -153,17 +153,17 @@ export default async function FeaturedProducts({ locale }: FeaturedProductsProps
 
           {/* Card 2: Shrink Film */}
           <article className="group relative flex flex-col bg-white border border-slate-200 shadow-sm rounded-[3px] overflow-hidden h-full transition-all duration-[240ms] ease-out hover:-translate-y-1 hover:border-[#9fc2ef] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
-            <Link href={filmSlug} className="relative block w-full max-w-[357px] h-[204px] mx-auto lg:max-w-[588px] lg:h-[323px] mt-4 mb-2 overflow-hidden bg-transparent rounded-[3px]">
+            <Link href={filmSlug} className="relative block m-4 mb-2 h-[180px] sm:h-[204px] lg:h-[323px] overflow-hidden bg-transparent rounded-[3px]">
               <Image
                 src={filmImgSrc}
                 alt={t('featuredProducts.film.title')}
                 fill
                 className="object-contain object-center lg:object-cover lg:object-center transition-transform duration-[450ms] ease-out group-hover:scale-[1.035]"
-                sizes="(max-width: 1024px) 357px, 588px"
+                sizes="(max-width: 1024px) 100vw, 588px"
               />
             </Link>
 
-            <div className="flex flex-col flex-1 p-6 pt-2">
+            <div className="flex flex-col flex-1 p-4 sm:p-6 pt-2">
               <p className="text-[14px] font-semibold text-brand uppercase tracking-[0.5px] mb-2">
                 {t('featuredProducts.film.category')}
               </p>
@@ -247,17 +247,17 @@ export default async function FeaturedProducts({ locale }: FeaturedProductsProps
 
           {/* Card 3: HVAC Tape */}
           <article className="group relative flex flex-col bg-white border border-slate-200 shadow-sm rounded-[3px] overflow-hidden h-full transition-all duration-[240ms] ease-out hover:-translate-y-1 hover:border-[#9fc2ef] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
-            <Link href={tapeSlug} className="relative block w-full max-w-[357px] h-[204px] mx-auto lg:max-w-[588px] lg:h-[323px] mt-4 mb-2 overflow-hidden bg-transparent rounded-[3px]">
+            <Link href={tapeSlug} className="relative block m-4 mb-2 h-[180px] sm:h-[204px] lg:h-[323px] overflow-hidden bg-transparent rounded-[3px]">
               <Image
                 src={tapeImgSrc}
                 alt={t('featuredProducts.tape.title')}
                 fill
                 className="object-contain object-center lg:object-cover lg:object-center transition-transform duration-[450ms] ease-out group-hover:scale-[1.035]"
-                sizes="(max-width: 1024px) 357px, 588px"
+                sizes="(max-width: 1024px) 100vw, 588px"
               />
             </Link>
 
-            <div className="flex flex-col flex-1 p-6 pt-2">
+            <div className="flex flex-col flex-1 p-4 sm:p-6 pt-2">
               <p className="text-[14px] font-semibold text-brand uppercase tracking-[0.5px] mb-2">
                 {t('featuredProducts.tape.category')}
               </p>
@@ -341,17 +341,17 @@ export default async function FeaturedProducts({ locale }: FeaturedProductsProps
 
           {/* Card 4: Pallet Wrap */}
           <article className="group relative flex flex-col bg-white border border-slate-200 shadow-sm rounded-[3px] overflow-hidden h-full transition-all duration-[240ms] ease-out hover:-translate-y-1 hover:border-[#9fc2ef] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
-            <Link href={palletSlug} className="relative block w-full max-w-[357px] h-[204px] mx-auto lg:max-w-[588px] lg:h-[323px] mt-4 mb-2 overflow-hidden bg-transparent rounded-[3px]">
+            <Link href={palletSlug} className="relative block m-4 mb-2 h-[180px] sm:h-[204px] lg:h-[323px] overflow-hidden bg-transparent rounded-[3px]">
               <Image
                 src={palletImgSrc}
                 alt={t('featuredProducts.pallet.title')}
                 fill
                 className="object-contain object-center lg:object-cover lg:object-center transition-transform duration-[450ms] ease-out group-hover:scale-[1.035]"
-                sizes="(max-width: 1024px) 357px, 588px"
+                sizes="(max-width: 1024px) 100vw, 588px"
               />
             </Link>
 
-            <div className="flex flex-col flex-1 p-6 pt-2">
+            <div className="flex flex-col flex-1 p-4 sm:p-6 pt-2">
               <p className="text-[14px] font-semibold text-brand uppercase tracking-[0.5px] mb-2">
                 {t('featuredProducts.pallet.category')}
               </p>
