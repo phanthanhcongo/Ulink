@@ -39,7 +39,7 @@ export default async function FeaturedProducts({ locale }: FeaturedProductsProps
   const tapeImgSrc = '/images/home/section2/frame-4273183072.png';
 
   const palletSlug = '/solutions/listProduct/categories/industrial-packaging';
-  const palletImgSrc = '/images/home/section2/frame-4273183073.png';
+  const palletImgSrc = '/images/regional_hubs/Frame 427318307.png';
 
   return (
     <section className="w-full bg-white py-14">
@@ -59,7 +59,7 @@ export default async function FeaturedProducts({ locale }: FeaturedProductsProps
 
           {/* Card 1: Glove */}
           <article className="group relative flex flex-col bg-white border border-slate-200 shadow-sm rounded-[3px] overflow-hidden h-full transition-all duration-[240ms] ease-out hover:-translate-y-1 hover:border-[#9fc2ef] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
-            <Link href={gloveSlug} className="relative block m-4 mb-2 h-[180px] sm:h-[204px] lg:h-[323px] overflow-hidden bg-transparent rounded-[3px]">
+            <Link href={gloveSlug} className="relative block mx-4 sm:mx-5 lg:mx-6 mt-4 sm:mt-5 lg:mt-6 mb-2 h-[180px] sm:h-[204px] lg:h-[323px] overflow-hidden bg-transparent rounded-[3px]">
               <Image
                 src={gloveImgSrc}
                 alt={t('featuredProducts.glove.title')}
@@ -69,7 +69,7 @@ export default async function FeaturedProducts({ locale }: FeaturedProductsProps
               />
             </Link>
 
-            <div className="flex flex-col flex-1 p-4 sm:p-6 pt-2">
+            <div className="flex flex-col flex-1 px-4 sm:px-5 lg:px-6 pb-4 sm:pb-5 lg:pb-6 pt-2">
               <p className="text-[14px] font-semibold text-brand uppercase tracking-[0.5px] mb-2">
                 {t('featuredProducts.glove.category')}
               </p>
@@ -153,7 +153,7 @@ export default async function FeaturedProducts({ locale }: FeaturedProductsProps
 
           {/* Card 2: Shrink Film */}
           <article className="group relative flex flex-col bg-white border border-slate-200 shadow-sm rounded-[3px] overflow-hidden h-full transition-all duration-[240ms] ease-out hover:-translate-y-1 hover:border-[#9fc2ef] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
-            <Link href={filmSlug} className="relative block m-4 mb-2 h-[180px] sm:h-[204px] lg:h-[323px] overflow-hidden bg-transparent rounded-[3px]">
+            <Link href={filmSlug} className="relative block mx-4 sm:mx-5 lg:mx-6 mt-4 sm:mt-5 lg:mt-6 mb-2 h-[180px] sm:h-[204px] lg:h-[323px] overflow-hidden bg-transparent rounded-[3px]">
               <Image
                 src={filmImgSrc}
                 alt={t('featuredProducts.film.title')}
@@ -163,7 +163,7 @@ export default async function FeaturedProducts({ locale }: FeaturedProductsProps
               />
             </Link>
 
-            <div className="flex flex-col flex-1 p-4 sm:p-6 pt-2">
+            <div className="flex flex-col flex-1 px-4 sm:px-5 lg:px-6 pb-4 sm:pb-5 lg:pb-6 pt-2">
               <p className="text-[14px] font-semibold text-brand uppercase tracking-[0.5px] mb-2">
                 {t('featuredProducts.film.category')}
               </p>
@@ -247,7 +247,7 @@ export default async function FeaturedProducts({ locale }: FeaturedProductsProps
 
           {/* Card 3: HVAC Tape */}
           <article className="group relative flex flex-col bg-white border border-slate-200 shadow-sm rounded-[3px] overflow-hidden h-full transition-all duration-[240ms] ease-out hover:-translate-y-1 hover:border-[#9fc2ef] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
-            <Link href={tapeSlug} className="relative block m-4 mb-2 h-[180px] sm:h-[204px] lg:h-[323px] overflow-hidden bg-transparent rounded-[3px]">
+            <Link href={tapeSlug} className="relative block mx-4 sm:mx-5 lg:mx-6 mt-4 sm:mt-5 lg:mt-6 mb-2 h-[180px] sm:h-[204px] lg:h-[323px] overflow-hidden bg-transparent rounded-[3px]">
               <Image
                 src={tapeImgSrc}
                 alt={t('featuredProducts.tape.title')}
@@ -257,7 +257,7 @@ export default async function FeaturedProducts({ locale }: FeaturedProductsProps
               />
             </Link>
 
-            <div className="flex flex-col flex-1 p-4 sm:p-6 pt-2">
+            <div className="flex flex-col flex-1 px-4 sm:px-5 lg:px-6 pb-4 sm:pb-5 lg:pb-6 pt-2">
               <p className="text-[14px] font-semibold text-brand uppercase tracking-[0.5px] mb-2">
                 {t('featuredProducts.tape.category')}
               </p>
@@ -341,7 +341,7 @@ export default async function FeaturedProducts({ locale }: FeaturedProductsProps
 
           {/* Card 4: Pallet Wrap */}
           <article className="group relative flex flex-col bg-white border border-slate-200 shadow-sm rounded-[3px] overflow-hidden h-full transition-all duration-[240ms] ease-out hover:-translate-y-1 hover:border-[#9fc2ef] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
-            <Link href={palletSlug} className="relative block m-4 mb-2 h-[180px] sm:h-[204px] lg:h-[323px] overflow-hidden bg-transparent rounded-[3px]">
+            <Link href={palletSlug} className="relative block mx-4 sm:mx-5 lg:mx-6 mt-4 sm:mt-5 lg:mt-6 mb-2 h-[180px] sm:h-[204px] lg:h-[323px] overflow-hidden bg-transparent rounded-[3px]">
               <Image
                 src={palletImgSrc}
                 alt={t('featuredProducts.pallet.title')}
@@ -351,7 +351,7 @@ export default async function FeaturedProducts({ locale }: FeaturedProductsProps
               />
             </Link>
 
-            <div className="flex flex-col flex-1 p-4 sm:p-6 pt-2">
+            <div className="flex flex-col flex-1 px-4 sm:px-5 lg:px-6 pb-4 sm:pb-5 lg:pb-6 pt-2">
               <p className="text-[14px] font-semibold text-brand uppercase tracking-[0.5px] mb-2">
                 {t('featuredProducts.pallet.category')}
               </p>

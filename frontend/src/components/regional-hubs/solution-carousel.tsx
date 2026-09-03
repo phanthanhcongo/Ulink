@@ -133,8 +133,8 @@ export default function SolutionCarousel({ slides, labels }: SolutionCarouselPro
     >
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16">
         {/* Carousel Container */}
-        <div className="rounded-[3px] border border-slate-200/90 bg-white p-8 lg:p-10 shadow-sm">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+        <div className="rounded-[3px] border border-slate-200/90 bg-white p-6 sm:p-10 lg:py-[60px] lg:px-[80px] shadow-sm">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-[80px] items-center">
             {/* Left Column: Text & Features */}
             <div
               className={`transition-all duration-300 ${isTransitioning ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'}`}
@@ -145,23 +145,23 @@ export default function SolutionCarousel({ slides, labels }: SolutionCarouselPro
               </h2>
 
               {/* Secondary Subtitle / Description (28px) */}
-              <p className="text-[24px] sm:text-[28px] font-semibold text-[#212529] leading-[34px] sm:leading-[38px] tracking-[-0.3px] mb-10 max-w-[580px]">
+              <p className="text-[24px] sm:text-[28px] font-semibold text-[#212529] leading-[34px] sm:leading-[38px] tracking-[-0.3px] mb-8 lg:mb-[64px] max-w-[580px]">
                 {currentSlide.title}
               </p>
 
               {/* Features Grid (Stacked: Icon on Top of Text) */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-8 lg:mb-[64px]">
                 {/* Feature 1 */}
-                <div className="flex flex-col items-start gap-4">
-                  <div className="shrink-0 text-brand">
+                <div className="flex flex-col items-center sm:items-start text-center sm:text-left gap-4">
+                  <div className="shrink-0 text-brand flex items-center justify-center w-full sm:w-auto">
                     {icon1}
                   </div>
                   <p className="text-[14px] sm:text-[15px] font-normal leading-[22px] text-[#495057]">{currentSlide.feat1}</p>
                 </div>
 
                 {/* Feature 2 */}
-                <div className="flex flex-col items-start gap-4">
-                  <div className="shrink-0 text-brand">
+                <div className="flex flex-col items-center sm:items-start text-center sm:text-left gap-4">
+                  <div className="shrink-0 text-brand flex items-center justify-center w-full sm:w-auto">
                     {icon2}
                   </div>
                   <p className="text-[14px] sm:text-[15px] font-normal leading-[22px] text-[#495057]">{currentSlide.feat2}</p>
@@ -169,12 +169,12 @@ export default function SolutionCarousel({ slides, labels }: SolutionCarouselPro
               </div>
 
               {/* Action Buttons */}
-              <div className="flex flex-wrap items-center gap-4">
+              <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
                 <Link
                   href="/quick-order"
                   className={cn(
                     buttonVariants({ variant: 'primary', size: 'md' }),
-                    'px-7 py-3 rounded-[3px] bg-brand text-white font-medium text-[15px] sm:text-[16px] flex items-center gap-2.5 shadow-sm hover:bg-brand/90'
+                    'w-full sm:w-auto px-7 py-3 rounded-[3px] bg-brand text-white font-medium text-[15px] sm:text-[16px] flex items-center justify-center gap-2.5 shadow-sm hover:bg-brand/90 text-center'
                   )}
                 >
                   {labels.rfqButton}
@@ -190,7 +190,7 @@ export default function SolutionCarousel({ slides, labels }: SolutionCarouselPro
                   href="/solutions"
                   className={cn(
                     buttonVariants({ variant: 'secondary', size: 'md' }),
-                    'px-7 py-3 rounded-[3px] bg-white border border-brand text-brand font-medium text-[15px] sm:text-[16px] hover:bg-blue-50'
+                    'w-full sm:w-auto px-7 py-3 rounded-[3px] bg-white border border-brand text-brand font-medium text-[15px] sm:text-[16px] flex items-center justify-center gap-2.5 hover:bg-blue-50 text-center'
                   )}
                 >
                   {labels.learnMore}
@@ -198,7 +198,7 @@ export default function SolutionCarousel({ slides, labels }: SolutionCarouselPro
               </div>
             </div>
 
-            {/* Right Column: Visual Image & Pagination Dots */}
+            {/* Right Column: Visual Image */}
             <div className="flex flex-col items-center w-full">
               <div
                 className={`relative w-full aspect-[4/3] rounded-[3px] overflow-hidden border border-slate-200/80 bg-slate-50 shadow-md transition-all duration-300 ${isTransitioning ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`}
@@ -210,30 +210,30 @@ export default function SolutionCarousel({ slides, labels }: SolutionCarouselPro
                   className="h-full w-full object-cover"
                 />
               </div>
-
-              {/* Pagination Dots (Both Outer and Inner are 100% Perfect Circles) */}
-              <div className="flex justify-center items-center gap-3 mt-6">
-                {slides.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => changeSlide(i)}
-                    className={`h-5 w-5 rounded-full flex items-center justify-center border-2 transition-all duration-300 ${activeSlide === i
-                      ? 'border-brand bg-white shadow-sm scale-110'
-                      : 'border-slate-300 hover:border-brand/60 bg-white'
-                      }`}
-                    aria-label={`Slide ${i + 1}`}
-                  >
-                    <span
-                      className={`rounded-full transition-all duration-300 ${activeSlide === i
-                        ? 'h-2 w-2 bg-brand'
-                        : 'h-2 w-2 border border-slate-300 bg-transparent'
-                        }`}
-                    />
-                  </button>
-                ))}
-              </div>
             </div>
           </div>
+        </div>
+
+        {/* Pagination Dots (Centered on its own row below the card container) */}
+        <div className="flex justify-center items-center gap-3 mt-6 sm:mt-8">
+          {slides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => changeSlide(i)}
+              className={`h-5 w-5 rounded-full flex items-center justify-center border-2 transition-all duration-300 ${activeSlide === i
+                ? 'border-brand bg-white shadow-sm scale-110'
+                : 'border-slate-300 hover:border-brand/60 bg-white'
+                }`}
+              aria-label={`Slide ${i + 1}`}
+            >
+              <span
+                className={`rounded-full transition-all duration-300 ${activeSlide === i
+                  ? 'h-2 w-2 bg-brand'
+                  : 'h-2 w-2 border border-slate-300 bg-transparent'
+                  }`}
+              />
+            </button>
+          ))}
         </div>
       </div>
     </section>

@@ -266,10 +266,10 @@ export default function TestimonialCarousel({ labels }: TestimonialCarouselProps
   const sliderRef = useRef<HTMLDivElement | null>(null);
 
   return (
-    <section className="w-full bg-[#F4F6F9] py-16 sm:py-20 border-t border-slate-200/60 overflow-hidden">
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16">
+    <section className="w-full bg-[#f3f7fc] py-12 lg:py-[80px] border-t border-slate-200/60 overflow-hidden">
+      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-[80px]">
         {/* === Header Section === */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-10 lg:mb-[60px]">
           <span className="text-[20px] sm:text-[24px] lg:text-[28px] font-bold text-brand tracking-[0.5px] uppercase block leading-tight">
             {labels.eyebrow}
           </span>

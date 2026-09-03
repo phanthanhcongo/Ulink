@@ -49,7 +49,7 @@ export function DocSection() {
   ];
 
   return (
-    <section className="w-full  py-8 sm:py-10 lg:py-12">
+    <section className="w-full bg-[#f3f7fc] py-10 sm:py-12 lg:py-14 border-y border-slate-200/60">
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
         {/* ── 4. SUB-SECTION HEADER BAR (TÀI LIỆU & CATALOGUE) ── */}
         <div className="flex items-center gap-2.5">

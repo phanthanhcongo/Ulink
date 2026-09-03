@@ -61,7 +61,7 @@ export async function SiteHeader() {
             <Link
               href="/solutions/searchProduct"
               aria-label={t('search')}
-              className="flex h-10 w-10 items-center justify-center rounded-[10px] bg-[#f4f7fb] text-brand transition-all hover:bg-blue-100"
+              className="flex h-10 w-10 items-center justify-center rounded-[3px] bg-[#f4f7fb] text-brand transition-all hover:bg-blue-100"
             >
               <Search className="h-5 w-5" />
             </Link>
@@ -69,7 +69,7 @@ export async function SiteHeader() {
             <Link
               href="/cart"
               aria-label={t('cart')}
-              className="relative flex h-10 w-10 items-center justify-center rounded-[10px] bg-[#f4f7fb] text-brand transition-all hover:bg-blue-100"
+              className="relative flex h-10 w-10 items-center justify-center rounded-[3px] bg-[#f4f7fb] text-brand transition-all hover:bg-blue-100"
             >
               <ShoppingCart className="h-5 w-5" />
               <CartBadge />

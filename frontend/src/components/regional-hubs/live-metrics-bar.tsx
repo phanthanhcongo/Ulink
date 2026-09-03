@@ -8,6 +8,23 @@ export default function LiveMetricsBar() {
   const t = useTranslations('regionalHubs');
   const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
+  const [currentTime, setCurrentTime] = useState<string>('');
+
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      const timeStr = now.toLocaleTimeString('vi-VN', {
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+      });
+      setCurrentTime(timeStr);
+    };
+
+    updateTime();
+    const timer = setInterval(updateTime, 1000);
+    return () => clearInterval(timer);
+  }, []);
 
   useEffect(() => {
     const el = ref.current;
@@ -78,7 +95,7 @@ export default function LiveMetricsBar() {
           </h2>
           <div className="flex items-center gap-2 text-[14px] sm:text-[15px] font-semibold text-[#94a3b8]">
             <span className="h-2.5 w-2.5 rounded-full bg-[#10b981] animate-pulse" />
-            <span>{t('dashboard.headerTime')}</span>
+            <span>{currentTime ? `Cập nhật lúc: ${currentTime}` : t('dashboard.headerTime')}</span>
           </div>
         </div>
 
