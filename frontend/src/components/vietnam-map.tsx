@@ -103,8 +103,8 @@ export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
               {t.desc}
             </p>
 
-            {/* Mobile Location Cards: Displayed only on Mobile (< lg), replaces map silhouette */}
-            <div className="block lg:hidden w-full space-y-3 pt-4 pb-2">
+            {/* Mobile Location Cards: Displayed only on Mobile (< md), replaces map silhouette */}
+            <div className="block md:hidden w-full space-y-3 pt-4 pb-2">
               {[
                 { num: '01', title: 'Khu vực Bắc Bộ', href: '/quick-order' },
                 { num: '02', title: 'Khu vực Bắc Bộ', href: '/quick-order' },
@@ -131,9 +131,9 @@ export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
           </div>
 
           {/* ════════════════════════════════════════════════════════════
-              QUADRANT 2 (TOP RIGHT - Ô TRÊN PHẢI): MAP SILHOUETTE (DESKTOP ONLY)
+              QUADRANT 2 (TOP RIGHT - Ô TRÊN PHẢI): MAP SILHOUETTE (TABLET & DESKTOP)
              ════════════════════════════════════════════════════════════ */}
-          <div className="hidden lg:flex md:col-span-1 lg:col-span-4 lg:col-start-5 lg:row-start-1 lg:row-span-2 relative items-center justify-center min-h-[460px] xl:min-h-[580px]">
+          <div className="hidden md:flex md:col-span-1 lg:col-span-4 lg:col-start-5 lg:row-start-1 lg:row-span-2 relative items-center justify-center min-h-[380px] lg:min-h-[460px] xl:min-h-[580px]">
             {/* Status Badge - Top Left between Quadrant 1 & 2 */}
             <div className="absolute top-2 left-2 sm:left-4 z-20 flex items-center gap-2">
               <span className="inline-flex items-center gap-2 bg-[#0940a8]/90 text-white border border-[#a1edff]/60 text-[11px] font-semibold px-3 py-1 rounded-full uppercase tracking-wider backdrop-blur-md shadow-md">
@@ -150,7 +150,7 @@ export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
             <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-white/40 rounded-br-[2px] pointer-events-none" />
 
             {/* Map Silhouette */}
-            <div className="relative w-[340px] h-[520px] shrink-0">
+            <div className="relative w-[300px] sm:w-[340px] h-[440px] sm:h-[520px] shrink-0">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/illustrations/vietnam-provinces.svg"
@@ -277,9 +277,9 @@ export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
           </div>
 
           {/* ════════════════════════════════════════════════════════════
-              QUADRANT 4 (BOTTOM RIGHT - Ô DƯỚI PHẢI): HUB CARDS LIST (DESKTOP ONLY)
+              QUADRANT 4 (BOTTOM RIGHT - Ô DƯỚI PHẢI): HUB CARDS LIST (TABLET & DESKTOP)
              ════════════════════════════════════════════════════════════ */}
-          <div className="hidden lg:flex md:col-span-1 lg:col-span-4 lg:col-start-9 lg:row-start-1 lg:row-span-2 flex-col justify-center h-full my-auto">
+          <div className="hidden md:flex md:col-span-1 lg:col-span-4 lg:col-start-9 lg:row-start-1 lg:row-span-2 flex-col justify-center h-full my-auto">
 
             {/* Hub Cards List */}
             <div className="space-y-4 w-full">
