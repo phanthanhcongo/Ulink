@@ -44,7 +44,7 @@ export default async function HanamOverview() {
         {/* Large Video Showcase */}
         <div className="mt-12 max-w-[960px] mx-auto aspect-[16/9] rounded-[4px] overflow-hidden shadow-md border border-slate-200/80 bg-slate-50">
           <video
-            src="/images/regional_hubs/Hub.mp4"
+            src="/images/regional_hubs/hub-hanam.mp4"
             autoPlay
             loop
             muted
