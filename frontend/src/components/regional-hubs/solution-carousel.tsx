@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect, useRef } from 'react';
+import Image from 'next/image';
 import {
   ArrowRight,
   Truck,
@@ -79,29 +80,45 @@ export default function SolutionCarousel({ slides, labels }: SolutionCarouselPro
     switch (index) {
       case 0: // Pallet Wrap
         return {
-          icon1: <Activity className="h-6 w-6 text-brand shrink-0" />,
-          icon2: <Truck className="h-6 w-6 text-brand shrink-0" />
+          icon1: (
+            <Image
+              src="/images/home/section2/icon-activity.svg"
+              alt="Activity Icon"
+              width={40}
+              height={40}
+              className="h-10 w-10 object-contain"
+            />
+          ),
+          icon2: (
+            <Image
+              src="/images/home/section2/icon-car.svg"
+              alt="Delivery Car Icon"
+              width={40}
+              height={40}
+              className="h-10 w-10 object-contain"
+            />
+          )
         };
       case 1: // Industrial Gloves
         return {
-          icon1: <ShieldCheck className="h-6 w-6 text-brand shrink-0" />,
-          icon2: <Truck className="h-6 w-6 text-brand shrink-0" />
+          icon1: <ShieldCheck className="h-7 w-7 text-brand shrink-0" />,
+          icon2: <Truck className="h-7 w-7 text-brand shrink-0" />
         };
       case 2: // Aluminum Tape
         return {
-          icon1: <Thermometer className="h-6 w-6 text-brand shrink-0" />,
-          icon2: <Truck className="h-6 w-6 text-brand shrink-0" />
+          icon1: <Thermometer className="h-7 w-7 text-brand shrink-0" />,
+          icon2: <Truck className="h-7 w-7 text-brand shrink-0" />
         };
       case 3: // Cleanroom Wiper
         return {
-          icon1: <Layers className="h-6 w-6 text-brand shrink-0" />,
-          icon2: <Package className="h-6 w-6 text-brand shrink-0" />
+          icon1: <Layers className="h-7 w-7 text-brand shrink-0" />,
+          icon2: <Package className="h-7 w-7 text-brand shrink-0" />
         };
       case 4: // PE Shrink Film
       default:
         return {
-          icon1: <Settings className="h-6 w-6 text-brand shrink-0" />,
-          icon2: <ShieldCheck className="h-6 w-6 text-brand shrink-0" />
+          icon1: <Settings className="h-7 w-7 text-brand shrink-0" />,
+          icon2: <ShieldCheck className="h-7 w-7 text-brand shrink-0" />
         };
     }
   };
@@ -115,59 +132,39 @@ export default function SolutionCarousel({ slides, labels }: SolutionCarouselPro
       onMouseLeave={startAutoplay}
     >
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16">
-        {/* Pagination Dots (Above Carousel Box) */}
-        <div className="flex justify-center items-center gap-3 mb-8">
-          {slides.map((_, i) => (
-            <button
-              key={i}
-              onClick={() => changeSlide(i)}
-              className={`h-4.5 w-4.5 rounded-full flex items-center justify-center border transition-all duration-300 ${activeSlide === i
-                ? 'border-brand w-5 h-5 bg-brand/5'
-                : 'border-slate-300 hover:border-brand/60'
-                }`}
-              aria-label={`Slide ${i + 1}`}
-            >
-              <span
-                className={`h-1.5 w-1.5 rounded-full transition-all duration-300 ${activeSlide === i ? 'bg-brand scale-125' : 'bg-transparent'
-                  }`}
-              />
-            </button>
-          ))}
-        </div>
-
         {/* Carousel Container */}
-        <div className="rounded-[3px] border border-slate-100 bg-white p-8 lg:p-10 shadow-sm">
+        <div className="rounded-[3px] border border-slate-200/90 bg-white p-8 lg:p-10 shadow-sm">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             {/* Left Column: Text & Features */}
             <div
               className={`transition-all duration-300 ${isTransitioning ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'}`}
             >
-              {/* Eyebrow */}
-              <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold text-brand tracking-wider uppercase block mb-3">
+              {/* Main Headline (28px) */}
+              <h2 className="text-[24px] sm:text-[28px] font-semibold text-brand tracking-[-0.3px] uppercase block mb-2">
                 {currentSlide.eyebrow}
-              </span>
-
-              {/* Title */}
-              <h2 className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-slate-900 leading-tight mb-8">
-                {currentSlide.title}
               </h2>
 
-              {/* Features Grid */}
+              {/* Secondary Subtitle / Description (28px) */}
+              <p className="text-[24px] sm:text-[28px] font-semibold text-[#212529] leading-[34px] sm:leading-[38px] tracking-[-0.3px] mb-10 max-w-[580px]">
+                {currentSlide.title}
+              </p>
+
+              {/* Features Grid (Stacked: Icon on Top of Text) */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-10">
                 {/* Feature 1 */}
-                <div className="flex items-start gap-4">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[3px] bg-brand/8">
+                <div className="flex flex-col items-start gap-4">
+                  <div className="shrink-0 text-brand">
                     {icon1}
                   </div>
-                  <p className="text-[12px] sm:text-[13px] leading-relaxed text-slate-500">{currentSlide.feat1}</p>
+                  <p className="text-[14px] sm:text-[15px] font-normal leading-[22px] text-[#495057]">{currentSlide.feat1}</p>
                 </div>
 
                 {/* Feature 2 */}
-                <div className="flex items-start gap-4">
-                  <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[3px] bg-brand/8">
+                <div className="flex flex-col items-start gap-4">
+                  <div className="shrink-0 text-brand">
                     {icon2}
                   </div>
-                  <p className="text-[12px] sm:text-[13px] leading-relaxed text-slate-500">{currentSlide.feat2}</p>
+                  <p className="text-[14px] sm:text-[15px] font-normal leading-[22px] text-[#495057]">{currentSlide.feat2}</p>
                 </div>
               </div>
 
@@ -177,17 +174,23 @@ export default function SolutionCarousel({ slides, labels }: SolutionCarouselPro
                   href="/quick-order"
                   className={cn(
                     buttonVariants({ variant: 'primary', size: 'md' }),
-                    'px-6 text-[13px] sm:text-[14px] font-semibold'
+                    'px-7 py-3 rounded-[3px] bg-brand text-white font-medium text-[15px] sm:text-[16px] flex items-center gap-2.5 shadow-sm hover:bg-brand/90'
                   )}
                 >
                   {labels.rfqButton}
-                  <ArrowRight className="h-4 w-4" />
+                  <Image
+                    src="/images/home/section2/icon-arrow-right.svg"
+                    alt="Arrow Icon"
+                    width={20}
+                    height={20}
+                    className="h-5 w-5 object-contain brightness-0 invert"
+                  />
                 </Link>
                 <Link
                   href="/solutions"
                   className={cn(
                     buttonVariants({ variant: 'secondary', size: 'md' }),
-                    'border-brand px-6 text-[13px] sm:text-[14px] font-semibold text-brand hover:bg-blue-50'
+                    'px-7 py-3 rounded-[3px] bg-white border border-brand text-brand font-medium text-[15px] sm:text-[16px] hover:bg-blue-50'
                   )}
                 >
                   {labels.learnMore}
@@ -195,16 +198,40 @@ export default function SolutionCarousel({ slides, labels }: SolutionCarouselPro
               </div>
             </div>
 
-            {/* Right Column: Visual Image */}
-            <div
-              className={`ui-card-hover relative aspect-[4/3] rounded-[3px] overflow-hidden border border-slate-100 bg-slate-50 shadow-sm ${isTransitioning ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`}
-            >
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img
-                src={currentSlide.image}
-                alt={currentSlide.alt}
-                className="h-full w-full object-cover"
-              />
+            {/* Right Column: Visual Image & Pagination Dots */}
+            <div className="flex flex-col items-center w-full">
+              <div
+                className={`relative w-full aspect-[4/3] rounded-[3px] overflow-hidden border border-slate-200/80 bg-slate-50 shadow-md transition-all duration-300 ${isTransitioning ? 'opacity-0 scale-95' : 'opacity-100 scale-100'}`}
+              >
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={currentSlide.image}
+                  alt={currentSlide.alt}
+                  className="h-full w-full object-cover"
+                />
+              </div>
+
+              {/* Pagination Dots (Both Outer and Inner are 100% Perfect Circles) */}
+              <div className="flex justify-center items-center gap-3 mt-6">
+                {slides.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => changeSlide(i)}
+                    className={`h-5 w-5 rounded-full flex items-center justify-center border-2 transition-all duration-300 ${activeSlide === i
+                      ? 'border-brand bg-white shadow-sm scale-110'
+                      : 'border-slate-300 hover:border-brand/60 bg-white'
+                      }`}
+                    aria-label={`Slide ${i + 1}`}
+                  >
+                    <span
+                      className={`rounded-full transition-all duration-300 ${activeSlide === i
+                        ? 'h-2 w-2 bg-brand'
+                        : 'h-2 w-2 border border-slate-300 bg-transparent'
+                        }`}
+                    />
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </div>

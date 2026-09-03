@@ -117,17 +117,15 @@ export default function TestimonialCarousel({ labels }: TestimonialCarouselProps
     }
   ];
 
-  // Extended array for infinite looping
-  // [T3, T4, T1, T2, T3, T4, T1, T2]
+  // Extended array with 4 full sets (16 cards) for 100% smooth infinite 1-2-3-4-1-2-3-4 looping
   const extendedTestimonials = [
-    testimonials[2], // T3
-    testimonials[3], // T4
-    ...testimonials,
-    testimonials[0], // T1
-    testimonials[1]  // T2
+    ...testimonials, // Set 1: idx 0..3 (T1, T2, T3, T4)
+    ...testimonials, // Set 2: idx 4..7 (T1, T2, T3, T4) <-- Main active set
+    ...testimonials, // Set 3: idx 8..11 (T1, T2, T3, T4)
+    ...testimonials  // Set 4: idx 12..15 (T1, T2, T3, T4)
   ];
 
-  const [activeIndex, setActiveIndex] = useState(2); // Starts at real T1 (index 2)
+  const [activeIndex, setActiveIndex] = useState(4); // Starts at Set 2, T1 (index 4)
   const [isMobile, setIsMobile] = useState(false);
   const [isDragging, setIsDragging] = useState(false);
   const [disableTransition, setDisableTransition] = useState(false);
@@ -143,33 +141,43 @@ export default function TestimonialCarousel({ labels }: TestimonialCarouselProps
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  // Reset coordinates instantly after transitioning into clones
-  const handleTransitionEnd = () => {
-    if (activeIndex >= 6) {
-      setDisableTransition(true);
-      setActiveIndex(activeIndex - 4); // Loops back to 2 (T1) or 3 (T2)
-    } else if (activeIndex <= 1) {
-      setDisableTransition(true);
-      setActiveIndex(activeIndex + 4); // Loops back to 5 (T4) or 4 (T3)
+  // Guarantee continuous 1->2->3->4->1->2->3->4 wrap-around after transition finishes
+  useEffect(() => {
+    if (activeIndex >= 8) {
+      // Slid past T4 (idx 7) to T1 (idx 8) -> wait 500ms for slide to finish, then reset to Set 2 T1 (idx 4)
+      const timer = setTimeout(() => {
+        setDisableTransition(true);
+        setActiveIndex(4);
+      }, 500); // 500ms matches CSS transition duration 500ms
+      return () => clearTimeout(timer);
+    } else if (activeIndex <= 0) {
+      // Slid left past T1 (idx 4) -> wait 500ms for slide to finish, then reset to Set 2 T1 (idx 4)
+      const timer = setTimeout(() => {
+        setDisableTransition(true);
+        setActiveIndex(4);
+      }, 500);
+      return () => clearTimeout(timer);
     }
-  };
+  }, [activeIndex]);
 
-  // Re-enable CSS transition after coordinates jump
+  // Re-enable CSS transition safely after DOM repaint
   useEffect(() => {
     if (disableTransition) {
-      const timer = setTimeout(() => {
-        setDisableTransition(false);
-      }, 20);
-      return () => clearTimeout(timer);
+      const raf = requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setDisableTransition(false);
+        });
+      });
+      return () => cancelAnimationFrame(raf);
     }
   }, [disableTransition]);
 
-  // Autoplay every 3s
+  // Autoplay with 2.0s static delay between slides (2500ms total)
   useEffect(() => {
     if (isDragging || disableTransition) return;
     const interval = setInterval(() => {
       setActiveIndex((prev) => prev + 1);
-    }, 3000);
+    }, 4400);
     return () => clearInterval(interval);
   }, [isDragging, disableTransition]);
 
@@ -251,10 +259,10 @@ export default function TestimonialCarousel({ labels }: TestimonialCarouselProps
 
   const goToSlide = (index: number) => {
     if (disableTransition) return;
-    setActiveIndex(index + 2);
+    setActiveIndex(index + 4);
   };
 
-  const activeDotIndex = (activeIndex - 2 + testimonials.length) % testimonials.length;
+  const activeDotIndex = (activeIndex % testimonials.length);
   const sliderRef = useRef<HTMLDivElement | null>(null);
 
   return (
@@ -262,13 +270,13 @@ export default function TestimonialCarousel({ labels }: TestimonialCarouselProps
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16">
         {/* === Header Section === */}
         <div className="text-center mb-12">
-          <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold text-brand tracking-wider uppercase block">
+          <span className="text-[14px] sm:text-[16px] font-bold text-brand tracking-[0.5px] uppercase block">
             {labels.eyebrow}
           </span>
-          <h2 className="mt-3 text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-[#0B192C] leading-tight">
+          <h2 className="mt-3 text-[24px] sm:text-[28px] font-semibold text-[#212529] leading-[34px] sm:leading-[38px] tracking-[-0.3px]">
             {labels.title}
           </h2>
-          <p className="mt-1 text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-[#0B192C] leading-tight">
+          <p className="mt-1 text-[24px] sm:text-[28px] font-semibold text-[#212529] leading-[34px] sm:leading-[38px] tracking-[-0.3px]">
             {labels.subtitle}
           </p>
         </div>
@@ -297,11 +305,10 @@ export default function TestimonialCarousel({ labels }: TestimonialCarouselProps
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
-              onTransitionEnd={handleTransitionEnd}
-              className={`flex -mx-4 ${isDragging || disableTransition ? 'transition-none' : 'transition-transform duration-500'}`}
+              className="flex -mx-4"
               style={{
                 transform: `translateX(calc(-${activeIndex * (isMobile ? 100 : 50)}% + ${dragOffset}px))`,
-                transitionTimingFunction: isDragging || disableTransition ? 'none' : 'cubic-bezier(0.25, 1, 0.5, 1)'
+                transition: isDragging || disableTransition ? 'none' : 'transform 500ms cubic-bezier(0.2, 0.8, 0.2, 1)'
               }}
             >
               {extendedTestimonials.map((item, idx) => (
@@ -309,22 +316,22 @@ export default function TestimonialCarousel({ labels }: TestimonialCarouselProps
                   key={`${item.id}-${idx}`}
                   className="w-full md:w-1/2 shrink-0 px-4 flex flex-col"
                 >
-                  <div className="group bg-white rounded-[3px] border border-slate-100 shadow-sm p-5 sm:p-8 flex flex-col justify-between items-center text-center min-h-[360px] md:min-h-[380px] h-full transition-all duration-300 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:-translate-y-1 hover:scale-[1.02]">
+                  <div className="group bg-white rounded-[2px] border border-[#ced4da] shadow-sm p-6 sm:p-8 flex flex-col justify-between items-center text-center min-h-[350px] md:min-h-[370px] h-full transition-[transform,box-shadow,border-color] duration-150 ease-out hover:shadow-md hover:border-brand hover:-translate-y-1 hover:scale-[1.015] cursor-pointer">
                     {/* Company Logo & Name */}
                     <div className="mb-4 flex justify-center h-8 shrink-0">{item.logo}</div>
 
                     {/* Testimonial Quote */}
-                    <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-600 font-medium italic px-2 sm:px-4 flex-1 flex items-center justify-center overflow-hidden transition-colors duration-200 group-hover:text-slate-800">
+                    <p className="text-[14px] sm:text-[15px] leading-[24px] text-[#495057] font-normal italic px-2 sm:px-4 flex-1 flex items-center justify-center overflow-hidden transition-colors duration-150 group-hover:text-[#212529]">
                       {"\""}{item.quote}{"\""}
                     </p>
 
                     {/* User Profile */}
                     <div className="mt-6 flex flex-col items-center shrink-0">
-                      <div className="h-10 w-10 rounded-full flex items-center justify-center bg-[#F1F5F9] text-slate-400 mb-2 border border-slate-100 transition-colors duration-200 group-hover:bg-brand/10 group-hover:text-brand group-hover:border-brand/20">
+                      <div className="h-10 w-10 rounded-full flex items-center justify-center bg-[#f5f8fc] text-[#1769e2] mb-2 transition-colors duration-150 group-hover:bg-brand group-hover:text-white">
                         <User className="h-5.5 w-5.5 stroke-[1.5]" />
                       </div>
-                      <span className="text-[15px] sm:text-[16px] lg:text-[18px] font-semibold text-[#0B192C] leading-none transition-colors duration-200 group-hover:text-brand">{item.name}</span>
-                      <span className="text-[12px] sm:text-[13px] text-slate-500 font-medium mt-1 leading-none">{item.role}</span>
+                      <span className="text-[16px] sm:text-[18px] font-semibold text-[#212529] leading-tight transition-colors duration-150 group-hover:text-brand">{item.name}</span>
+                      <span className="text-[13px] text-[#6c757d] font-normal mt-1 leading-tight">{item.role}</span>
                     </div>
                   </div>
                 </div>

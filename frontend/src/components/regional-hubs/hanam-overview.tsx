@@ -9,17 +9,17 @@ export default async function HanamOverview() {
     <section className="w-full bg-white py-16 sm:py-20 border-t border-slate-100">
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 text-center">
         {/* Eyebrow */}
-        <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-brand block">
+        <span className="text-[16px] font-bold uppercase tracking-[0.5px] text-brand block">
           {t('hanamIntro.eyebrow')}
         </span>
 
         {/* Title */}
-        <h2 className="mt-3 text-[30px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold text-slate-900 leading-tight">
+        <h2 className="mt-3 text-[26px] sm:text-[28px] lg:text-[32px] font-semibold text-[#212529] leading-[36px] sm:leading-[40px] tracking-[-0.3px]">
           {t('hanamIntro.title')}
         </h2>
 
         {/* Description */}
-        <p className="mt-4 max-w-[800px] mx-auto text-[13px] sm:text-[14px] leading-relaxed text-slate-500">
+        <p className="mt-4 max-w-[840px] mx-auto text-[15px] sm:text-[16px] leading-[24px] text-[#495057]">
           {t('hanamIntro.desc')}
         </p>
 
@@ -27,14 +27,14 @@ export default async function HanamOverview() {
         <div className="mt-8 flex flex-wrap justify-center items-center gap-4">
           <Link
             href="/contact"
-            className="bg-brand text-white text-[13px] sm:text-[14px] leading-relaxed font-semibold py-3 px-6 rounded-[3px] flex items-center gap-2 hover:bg-brand-strong transition-colors min-h-[44px]"
+            className="bg-brand text-white text-[15px] sm:text-[16px] font-medium py-3 px-6 rounded-[3px] flex items-center gap-2 hover:bg-brand/90 transition-colors shadow-sm"
           >
             {t('hanamIntro.contactSales')}
             <ArrowRight className="h-4 w-4" />
           </Link>
           <Link
             href="/about"
-            className="border border-brand text-brand text-[13px] sm:text-[14px] leading-relaxed font-semibold py-3 px-6 rounded-[3px] hover:bg-blue-50 transition-colors flex items-center gap-2 min-h-[44px]"
+            className="bg-white border border-brand text-brand text-[15px] sm:text-[16px] font-medium py-3 px-6 rounded-[3px] hover:bg-blue-50 transition-colors flex items-center gap-2"
           >
             {t('hanamIntro.learnMore')}
             <ArrowRight className="h-4 w-4" />
@@ -42,7 +42,7 @@ export default async function HanamOverview() {
         </div>
 
         {/* Large Video Showcase */}
-        <div className="mt-12 max-w-[900px] mx-auto aspect-[16/9] rounded-[3px] overflow-hidden shadow-md border border-slate-100 bg-slate-50">
+        <div className="mt-12 max-w-[960px] mx-auto aspect-[16/9] rounded-[4px] overflow-hidden shadow-md border border-slate-200/80 bg-slate-50">
           <video
             src="/images/regional_hubs/Hub.mp4"
             autoPlay

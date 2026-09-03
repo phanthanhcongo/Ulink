@@ -579,7 +579,7 @@
     },
     "dashboard": {
       "headerTitle": "Thông tin cập nhật theo thời gian thực",
-      "headerTime": "Cập nhật 10:30 AM",
+      "headerTime": "Cập nhật: 10:30AM",
       "ordersLabel": "Đơn hàng hôm nay",
       "ordersValue": "1,286",
       "ordersUnit": "đơn",
@@ -589,7 +589,7 @@
       "deliveryValue": "98.7%",
       "deliveryChange": "+2.1%",
       "deliveryNote": "Trong phạm vi cụm",
-      "vehiclesLabel": "Phương tiện đang hoạt động",
+      "vehiclesLabel": "Đang hoạt động",
       "vehiclesValue": "352",
       "vehiclesUnit": "xe",
       "vehiclesNote": "Theo dõi hành trình thực tế",
@@ -624,8 +624,8 @@
       "mainProducts": "Loại sản phẩm chính",
       "glove": {
         "category": "GĂNG TAY CÔNG NGHIỆP",
-        "title": "Găng tay bảo hộ cho môi trường công nghiệp",
-        "desc": "Nitrile, PU, Latex, Vinyl - lựa chọn theo tiêu chuẩn và môi trường sử dụng",
+        "title": "Găng tay bảo hộ công nghiệp",
+        "desc": "Nitrile, PU, Latex, Vinyl - chọn theo tiêu chuẩn và môi trường",
         "feat1": "Chất lượng cao",
         "feat2": "Nhiều kích cỡ",
         "feat3": "Kháng hóa chất",
@@ -642,21 +642,21 @@
       },
       "tape": {
         "category": "BĂNG KEO NHÔM - HVAC",
-        "title": "Băng keo nhôm - ứng dụng HVAC",
-        "desc": "Chuyên dùng dán kín mối nối bề mặt bảo ôn - lựa chọn theo tiêu chuẩn và môi trường sử dụng",
+        "title": "Băng keo nhôm - ứng dụng trong HVAC",
+        "desc": "Dán kín mối nối bảo ôn đúng tiêu chuẩn",
         "feat1": "Aluminum foil",
         "feat2": "Nhiều kích cỡ",
         "feat3": "Chịu nhiệt cao",
         "feat4": "Bám dính tốt"
       },
-      "cleanroom": {
-        "category": "VẬT TƯ PHÒNG SẠCH",
-        "title": "Hóa chất & Vật tư tiêu hao phòng sạch",
-        "desc": "Dung dịch tẩy rửa, khăn lau và vật tư chống tĩnh điện cho nhà máy điện tử, dược phẩm",
-        "feat1": "Chất lượng cao",
-        "feat2": "B2B Standard",
-        "feat3": "Kháng hóa chất",
-        "feat4": "Industrial"
+      "pallet": {
+        "category": "MÀNG QUẤN PALLET",
+        "title": "Tối ưu chi phí đóng gói",
+        "desc": "Đóng gói · Bảo vệ · Vận chuyển an toàn",
+        "feat1": "PE nguyên sinh",
+        "feat2": "Độ bám dính cao",
+        "feat3": "Chống thấm nước",
+        "feat4": "Siêu bền dai"
       }
     },
     "carousel": {

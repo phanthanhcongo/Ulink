@@ -37,44 +37,44 @@ export default async function RegionalHubsPage({
 
   const carouselSlides = [
     {
-      eyebrow: t('carousel.slide1.eyebrow'),
-      title: t('carousel.slide1.title'),
-      feat1: t('carousel.slide1.feat1'),
-      feat2: t('carousel.slide1.feat2'),
-      image: '/images/home/section2/solution-packaging.webp',
-      alt: 'Pallet Wrap'
+      eyebrow: 'MÀNG CUỐN PALLET',
+      title: 'Bảo vệ hàng hóa tối ưu, tiết kiệm chi phí vận chuyển. Giao nhanh từ Hub Hà Nam.',
+      feat1: 'Độ bám dính cao, chống ẩm và bụi hiệu quả. Giảm đến 30% chi phí đóng gói so với phương pháp truyền thống.',
+      feat2: 'Giao hàng nhanh trong 24h từ Hub Hà Nam. Đáp ứng mọi quy mô đơn hàng cho nhà máy và kho vận.',
+      image: '/images/home/section2/placeholder-picture0.png',
+      alt: 'Màng cuốn Pallet'
     },
     {
-      eyebrow: t('carousel.slide2.eyebrow'),
-      title: t('carousel.slide2.title'),
-      feat1: t('carousel.slide2.feat1'),
-      feat2: t('carousel.slide2.feat2'),
+      eyebrow: 'GĂNG TAY CHỐNG CẮT',
+      title: 'Bảo vệ đôi tay vượt trội, thiết kế chuyên dụng cho sản xuất công nghiệp.',
+      feat1: 'Đạt tiêu chuẩn chống cắt cao cấp, bám dính tốt, chống trượt và tạo cảm giác thoải mái khi thao tác.',
+      feat2: 'Cung cấp số lượng lớn cho các xưởng cơ khí, lắp ráp điện tử và nhà máy sản xuất.',
       image: '/images/home/section2/product-cut-gloves.webp',
-      alt: 'Industrial Gloves'
+      alt: 'Găng tay công nghiệp'
     },
     {
-      eyebrow: t('carousel.slide3.eyebrow'),
-      title: t('carousel.slide3.title'),
-      feat1: t('carousel.slide3.feat1'),
-      feat2: t('carousel.slide3.feat2'),
+      eyebrow: 'BĂNG KEO NHÔM HVAC',
+      title: 'Giải pháp làm kín và cách nhiệt hệ thống thông gió công nghiệp.',
+      feat1: 'Khả năng chịu nhiệt vượt trội, chống ẩm, làm kín tuyệt đối các mối nối bảo ôn.',
+      feat2: 'Sản xuất chuẩn kích thước kỹ thuật, độ bám dính cực cao trên bề mặt kim loại.',
       image: '/images/home/section2/product-hvac-tape.webp',
-      alt: 'Aluminum Foil Tape'
+      alt: 'Băng keo nhôm HVAC'
     },
     {
-      eyebrow: t('carousel.slide4.eyebrow'),
-      title: t('carousel.slide4.title'),
-      feat1: t('carousel.slide4.feat1'),
-      feat2: t('carousel.slide4.feat2'),
+      eyebrow: 'KHĂN LAU PHÒNG SẠCH',
+      title: 'Kiểm soát ô nhiễm hạt bụi và vi khuẩn tối đa trong môi trường phòng sạch.',
+      feat1: 'Chất liệu Microfiber siêu mịn, không xơ vải, độ thấm hút dung môi cực cao.',
+      feat2: 'Đóng gói tiệt trùng đạt chuẩn ISO, sẵn sàng giao ngay cho nhà máy bán dẫn.',
       image: '/images/home/section2/solution-cleanroom.webp',
-      alt: 'Cleanroom Wiper'
+      alt: 'Khăn lau phòng sạch'
     },
     {
-      eyebrow: t('carousel.slide5.eyebrow'),
-      title: t('carousel.slide5.title'),
-      feat1: t('carousel.slide5.feat1'),
-      feat2: t('carousel.slide5.feat2'),
+      eyebrow: 'MÀNG CO PE ĐÓNG GÓI',
+      title: 'Bao bọc thành phẩm chắc chắn, chống móp méo và trầy xước.',
+      feat1: 'Độ dẻo dai cao, chống đâm thủng, co ôm sát bề mặt mọi loại kiện hàng.',
+      feat2: 'Sản xuất theo kích thước và độ dày yêu cầu của doanh nghiệp.',
       image: '/images/home/section2/product-custom-pkg.webp',
-      alt: 'PE Shrink Film'
+      alt: 'Màng co PE'
     }
   ];
 
