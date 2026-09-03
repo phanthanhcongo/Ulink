@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { MapPin, Truck, Users, ArrowRight, ShieldCheck } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
@@ -37,19 +37,6 @@ function geoToSvg(lat: number, lon: number): { x: number; y: number } {
   return { x, y };
 }
 
-function computeListTargets(count: number): number[] {
-  if (count <= 0) return [];
-  if (count === 1) return [VIEW_H / 2];
-
-  if (count === 4) {
-    return [125, 242, 356, 470];
-  }
-
-  const startY = 125;
-  const step = 115;
-  return Array.from({ length: count }, (_, i) => startY + i * step);
-}
-
 interface VietnamMapProps {
   className?: string;
   locale?: string;
@@ -57,9 +44,63 @@ interface VietnamMapProps {
 
 export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
   const activeMarkers = DEFAULT_CLUSTERS;
-
-  const listTargets = computeListTargets(activeMarkers.length);
   const [hoveredHub, setHoveredHub] = useState<string | null>(null);
+
+  // Refs for dynamic line target calculation
+  const mapContainerRef = useRef<HTMLDivElement | null>(null);
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const [cardTargets, setCardTargets] = useState<number[]>([]);
+
+  // Measure card centers relative to map container and convert to SVG viewBox coordinates
+  const measureCards = useCallback(() => {
+    const mapEl = mapContainerRef.current;
+    if (!mapEl) return;
+
+    const mapRect = mapEl.getBoundingClientRect();
+    const mapHeight = mapRect.height;
+    if (mapHeight <= 0) return;
+
+    const targets = cardRefs.current.map((cardEl) => {
+      if (!cardEl) return VIEW_H / 2;
+      const cardRect = cardEl.getBoundingClientRect();
+      // Card center Y in pixel relative to map container top
+      const cardCenterPx = (cardRect.top + cardRect.height / 2) - mapRect.top;
+      // Convert pixel → SVG viewBox Y coordinate
+      return (cardCenterPx / mapHeight) * VIEW_H;
+    });
+
+    setCardTargets(targets);
+  }, []);
+
+  useEffect(() => {
+    // Initial measure after a short delay to ensure layout is ready
+    const timer = setTimeout(measureCards, 100);
+
+    // Re-measure on resize
+    const observer = new ResizeObserver(() => {
+      measureCards();
+    });
+
+    const mapEl = mapContainerRef.current;
+    if (mapEl) observer.observe(mapEl);
+
+    cardRefs.current.forEach((el) => {
+      if (el) observer.observe(el);
+    });
+
+    window.addEventListener('resize', measureCards);
+
+    return () => {
+      clearTimeout(timer);
+      observer.disconnect();
+      window.removeEventListener('resize', measureCards);
+    };
+  }, [measureCards]);
+
+  // Use measured targets, or fallback to evenly spaced if not yet measured
+  const listTargets = cardTargets.length === activeMarkers.length
+    ? cardTargets
+    : activeMarkers.map((_, i) => 125 + i * 115);
 
   const t = {
     eyebrow: locale === 'vi' ? 'MẠNG LƯỚI CÔNG NGHIỆP' : 'INDUSTRIAL NETWORK',
@@ -88,7 +129,7 @@ export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
 
           {/* ════════════════════════════════════════════════════════════
-              QUADRANT 1 (TOP LEFT - Ô TRÊN TRÁI): HEADER COPY & MOBILE LOCATION CARDS
+              QUADRANT 1 (TOP LEFT): HEADER COPY & MOBILE LOCATION CARDS
              ════════════════════════════════════════════════════════════ */}
           <div className="md:col-span-1 lg:col-span-4 lg:col-start-1 lg:row-start-1 space-y-4 text-center md:text-left">
             <span className="text-[14px] font-normal text-[#ccf2ff] uppercase tracking-[1px] block">
@@ -101,7 +142,7 @@ export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
               {t.desc}
             </p>
 
-            {/* Mobile Location Cards: Displayed only on Mobile (< md), replaces map silhouette */}
+            {/* Mobile Location Cards: Displayed only on Mobile (< md) */}
             <div className="block md:hidden w-full space-y-3 pt-4 pb-2">
               {[
                 { num: '01', title: 'Khu vực Bắc Bộ', href: '/quick-order' },
@@ -129,7 +170,7 @@ export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
           </div>
 
           {/* ════════════════════════════════════════════════════════════
-              QUADRANT 2 (TOP RIGHT - Ô TRÊN PHẢI): MAP SILHOUETTE (TABLET & DESKTOP)
+              QUADRANT 2 (TOP RIGHT): MAP SILHOUETTE (TABLET & DESKTOP)
              ════════════════════════════════════════════════════════════ */}
           <div className="hidden md:flex md:col-span-1 lg:col-span-4 lg:col-start-5 lg:row-start-1 lg:row-span-2 relative items-center justify-center min-h-[380px] lg:min-h-[460px] xl:min-h-[580px]">
             {/* Status Badge - Shifted UP & Luminous Bright Glow */}
@@ -148,7 +189,7 @@ export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
             <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-white/40 rounded-br-[2px] pointer-events-none" />
 
             {/* Map Silhouette */}
-            <div className="relative w-[300px] sm:w-[340px] h-[440px] sm:h-[520px] shrink-0">
+            <div ref={mapContainerRef} className="relative w-[300px] sm:w-[340px] h-[440px] sm:h-[520px] shrink-0">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/illustrations/vietnam-provinces.svg"
@@ -234,7 +275,7 @@ export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
           </div>
 
           {/* ════════════════════════════════════════════════════════════
-              QUADRANT 3 (BOTTOM LEFT - Ô DƯỚI TRÁI): 3 WHITE STAT CARDS
+              QUADRANT 3 (BOTTOM LEFT): 3 WHITE STAT CARDS
              ════════════════════════════════════════════════════════════ */}
           <div className="md:col-span-1 lg:col-span-4 lg:col-start-1 lg:row-start-2 flex flex-col justify-between h-full space-y-4 w-full">
             {/* Stat 1 */}
@@ -275,17 +316,18 @@ export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
           </div>
 
           {/* ════════════════════════════════════════════════════════════
-              QUADRANT 4 (BOTTOM RIGHT - Ô DƯỚI PHẢI): HUB CARDS LIST (TABLET & DESKTOP)
+              QUADRANT 4 (BOTTOM RIGHT): HUB CARDS LIST (TABLET & DESKTOP)
              ════════════════════════════════════════════════════════════ */}
           <div className="hidden md:flex md:col-span-1 lg:col-span-4 lg:col-start-9 lg:row-start-1 lg:row-span-2 flex-col justify-center h-full my-auto">
 
             {/* Hub Cards List */}
             <div className="space-y-4 w-full">
-              {activeMarkers.map((cluster) => {
+              {activeMarkers.map((cluster, i) => {
                 const isHovered = hoveredHub === cluster.id;
                 return (
                   <div
                     key={cluster.id}
+                    ref={(el) => { cardRefs.current[i] = el; }}
                     onMouseEnter={() => setHoveredHub(cluster.id)}
                     onMouseLeave={() => setHoveredHub(null)}
                     className={`group rounded-[2px] p-4 sm:p-5 min-h-[96px] flex items-center justify-between gap-4 cursor-pointer transition-all duration-300 border ${isHovered
@@ -318,7 +360,7 @@ export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
 
         </div>
 
-        {/* Section Footer Signature (Outside the 4 quadrants) */}
+        {/* Section Footer Signature */}
         <div className="text-left md:text-right pt-6 mt-2 border-t border-white/10">
           <span className="text-[11px] font-semibold text-[#8ce8ff]/80 uppercase tracking-[1.5px] block">
             ULINK INDUSTRIAL NETWORK // LIVE DATA • 04 HUBS
