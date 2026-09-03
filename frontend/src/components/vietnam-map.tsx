@@ -41,14 +41,12 @@ function computeListTargets(count: number): number[] {
   if (count <= 0) return [];
   if (count === 1) return [VIEW_H / 2];
 
-  // Line 1 & Line 2 moved DOWN a bit more:
-  // Line 1: 104px, Line 2: 222px, Line 3: 330px, Line 4: 440px
   if (count === 4) {
-    return [104, 222, 330, 440];
+    return [125, 242, 356, 470];
   }
 
-  const startY = 104;
-  const step = 112;
+  const startY = 125;
+  const step = 115;
   return Array.from({ length: count }, (_, i) => startY + i * step);
 }
 
@@ -92,14 +90,14 @@ export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
           {/* ════════════════════════════════════════════════════════════
               QUADRANT 1 (TOP LEFT - Ô TRÊN TRÁI): HEADER COPY & MOBILE LOCATION CARDS
              ════════════════════════════════════════════════════════════ */}
-          <div className="md:col-span-1 lg:col-span-4 lg:col-start-1 lg:row-start-1 space-y-4">
+          <div className="md:col-span-1 lg:col-span-4 lg:col-start-1 lg:row-start-1 space-y-4 text-center md:text-left">
             <span className="text-[14px] font-normal text-[#ccf2ff] uppercase tracking-[1px] block">
               {t.eyebrow}
             </span>
             <h2 className="text-[32px] sm:text-[36px] xl:text-[38px] font-bold text-white leading-[46px] tracking-[-0.6px]">
               {t.title}
             </h2>
-            <p className="text-[15px] sm:text-[16px] font-normal text-[#e8f7ff]/90 leading-[24px] max-w-md">
+            <p className="text-[15px] sm:text-[16px] font-normal text-[#e8f7ff]/90 leading-[24px] max-w-md mx-auto md:mx-0">
               {t.desc}
             </p>
 
@@ -134,13 +132,13 @@ export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
               QUADRANT 2 (TOP RIGHT - Ô TRÊN PHẢI): MAP SILHOUETTE (TABLET & DESKTOP)
              ════════════════════════════════════════════════════════════ */}
           <div className="hidden md:flex md:col-span-1 lg:col-span-4 lg:col-start-5 lg:row-start-1 lg:row-span-2 relative items-center justify-center min-h-[380px] lg:min-h-[460px] xl:min-h-[580px]">
-            {/* Status Badge - Top Left between Quadrant 1 & 2 */}
-            <div className="absolute top-2 left-2 sm:left-4 z-20 flex items-center gap-2">
-              <span className="inline-flex items-center gap-2 bg-[#0940a8]/90 text-white border border-[#a1edff]/60 text-[11px] font-semibold px-3 py-1 rounded-full uppercase tracking-wider backdrop-blur-md shadow-md">
-                <span className="h-2 w-2 rounded-full bg-[#10b981] animate-pulse" />
-                {t.networkOnline}
+            {/* Status Badge - Shifted UP & Luminous Bright Glow */}
+            <div className="absolute -top-5 left-0 sm:-top-7 sm:left-0 z-20 flex items-center gap-2">
+              <span className="inline-flex items-center gap-2 bg-[#0a5cff] text-white border border-[#a1edff] text-[11px] font-bold px-3.5 py-1 rounded-full uppercase tracking-wider shadow-[0_0_18px_rgba(10,92,255,0.7)] backdrop-blur-md">
+                <span className="h-2.5 w-2.5 rounded-full bg-[#00ff88] shadow-[0_0_10px_#00ff88] animate-pulse" />
+                <span className="drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">{t.networkOnline}</span>
               </span>
-              <div className="hidden sm:block h-[1px] w-16 bg-gradient-to-r from-[#a1edff]/60 to-transparent" />
+              <div className="hidden sm:block h-[1px] w-20 bg-gradient-to-r from-[#a1edff] to-transparent shadow-[0_0_8px_#a1edff]" />
             </div>
 
             {/* Tech frame corners */}
