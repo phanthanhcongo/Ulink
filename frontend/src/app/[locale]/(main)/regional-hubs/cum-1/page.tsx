@@ -107,7 +107,7 @@ export default async function RegionalHubsPage({
 
   return (
     <>
-      <VietnamMap hubs={hubs} locale={locale} />
+      <VietnamMap locale={locale} />
 
       {/* === SECTION 2: Real-time Live Data Bar === */}
       <LiveMetricsBar />

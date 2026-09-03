@@ -9,12 +9,12 @@ export default async function HanamOverview() {
     <section className="w-full bg-white py-16 sm:py-20 border-t border-slate-100">
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 text-center">
         {/* Eyebrow */}
-        <span className="text-[16px] font-bold uppercase tracking-[0.5px] text-brand block">
+        <span className="text-[20px] sm:text-[24px] lg:text-[28px] font-bold uppercase tracking-[0.5px] text-brand block leading-tight">
           {t('hanamIntro.eyebrow')}
         </span>
 
         {/* Title */}
-        <h2 className="mt-3 text-[26px] sm:text-[28px] lg:text-[32px] font-semibold text-[#212529] leading-[36px] sm:leading-[40px] tracking-[-0.3px]">
+        <h2 className="mt-3 text-[24px] sm:text-[28px] lg:text-[32px] font-semibold text-[#212529] leading-tight tracking-[-0.3px]">
           {t('hanamIntro.title')}
         </h2>
 

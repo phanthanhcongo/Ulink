@@ -270,13 +270,13 @@ export default function TestimonialCarousel({ labels }: TestimonialCarouselProps
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16">
         {/* === Header Section === */}
         <div className="text-center mb-12">
-          <span className="text-[14px] sm:text-[16px] font-bold text-brand tracking-[0.5px] uppercase block">
+          <span className="text-[20px] sm:text-[24px] lg:text-[28px] font-bold text-brand tracking-[0.5px] uppercase block leading-tight">
             {labels.eyebrow}
           </span>
-          <h2 className="mt-3 text-[24px] sm:text-[28px] font-semibold text-[#212529] leading-[34px] sm:leading-[38px] tracking-[-0.3px]">
+          <h2 className="mt-3 text-[24px] sm:text-[28px] font-semibold text-[#212529] leading-tight sm:leading-[38px] tracking-[-0.3px]">
             {labels.title}
           </h2>
-          <p className="mt-1 text-[24px] sm:text-[28px] font-semibold text-[#212529] leading-[34px] sm:leading-[38px] tracking-[-0.3px]">
+          <p className="mt-1 text-[24px] sm:text-[28px] font-semibold text-[#212529] leading-tight sm:leading-[38px] tracking-[-0.3px]">
             {labels.subtitle}
           </p>
         </div>

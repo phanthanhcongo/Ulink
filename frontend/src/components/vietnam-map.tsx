@@ -55,56 +55,10 @@ function computeListTargets(count: number): number[] {
 interface VietnamMapProps {
   className?: string;
   locale?: string;
-  hubs?: any[];
 }
 
-export function VietnamMap({ className, locale = 'vi', hubs = [] }: VietnamMapProps) {
-  const activeMarkers = React.useMemo(() => {
-    if (!hubs || hubs.length === 0) return DEFAULT_CLUSTERS;
-
-    return hubs.map((hub, idx) => {
-      // Parse coordinates
-      let lat = 21.0;
-      let lon = 105.8;
-      if (hub.coordinates) {
-        const parts = hub.coordinates.split(',').map((s: string) => s.trim());
-        if (parts.length >= 2) {
-          const parsedLat = parseFloat(parts[0]);
-          const parsedLon = parseFloat(parts[1]);
-          if (!isNaN(parsedLat) && !isNaN(parsedLon)) {
-            lat = parsedLat;
-            lon = parsedLon;
-          }
-        }
-      }
-
-      // Get translated name of hub
-      const nameTranslation = hub.translations?.find(
-        (t: any) => t.languages_code === locale || t.languages_code.startsWith(locale)
-      );
-      const hubName = nameTranslation?.name || hub.name;
-
-      // Get list of industrial zone names
-      const zoneNames = hub.industrial_zones?.map((z: any) => {
-        const zTrans = z.translations?.find(
-          (t: any) => t.languages_code === locale || t.languages_code.startsWith(locale)
-        );
-        return zTrans?.name || z.name;
-      }).join(', ') || '';
-
-      const numStr = String(idx + 1).padStart(2, '0');
-
-      return {
-        id: String(hub.id),
-        name: hubName,
-        subName: zoneNames || hub.hub_code || '',
-        lat,
-        lon,
-        num: numStr,
-        slug: hub.slug
-      };
-    });
-  }, [hubs, locale]);
+export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
+  const activeMarkers = DEFAULT_CLUSTERS;
 
   const listTargets = computeListTargets(activeMarkers.length);
   const [hoveredHub, setHoveredHub] = useState<string | null>(null);
@@ -325,7 +279,7 @@ export function VietnamMap({ className, locale = 'vi', hubs = [] }: VietnamMapPr
           {/* ════════════════════════════════════════════════════════════
               QUADRANT 4 (BOTTOM RIGHT - Ô DƯỚI PHẢI): HUB CARDS LIST (DESKTOP ONLY)
              ════════════════════════════════════════════════════════════ */}
-          <div className="hidden lg:flex md:col-span-1 lg:col-span-4 lg:col-start-9 lg:row-start-1 lg:row-span-2 flex-col justify-between h-full space-y-6 pt-2 lg:pt-0">
+          <div className="hidden lg:flex md:col-span-1 lg:col-span-4 lg:col-start-9 lg:row-start-1 lg:row-span-2 flex-col justify-center h-full my-auto">
 
             {/* Hub Cards List */}
             <div className="space-y-4 w-full">
