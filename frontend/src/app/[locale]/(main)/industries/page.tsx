@@ -229,7 +229,7 @@ export default async function IndustriesPage({ params: { locale } }: Props) {
         <div className="absolute inset-0 bg-slate-950/45 z-0" />
 
         {/* Content - Contrained inside max-width container for content alignment */}
-        <div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-16 p-8 sm:p-12 lg:p-16 flex flex-col justify-between">
+        <div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 p-8 sm:p-12 lg:p-16 flex flex-col justify-between">
           {/* Breadcrumb */}
           <Breadcrumb
             theme="dark"
@@ -260,7 +260,7 @@ export default async function IndustriesPage({ params: { locale } }: Props) {
             <div className="mt-8">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center rounded-[3px] border-2 border-white text-white hover:bg-white/10 px-5 py-2.5 text-xs sm:text-sm font-bold tracking-wide transition-colors"
+                className="inline-flex items-center justify-center rounded-[3px] border-2 border-white text-white hover:bg-white/10 px-5 py-2.5 text-caption-responsive font-bold tracking-wide transition-colors"
               >
                 {isVi ? 'Liên hệ với Chúng tôi' : isJa ? 'お問い合わせ' : 'Contact Us'}
               </Link>
@@ -270,7 +270,7 @@ export default async function IndustriesPage({ params: { locale } }: Props) {
       </div>
 
       {/* Main Grid Content */}
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16 py-12 lg:py-16 flex flex-col gap-12">
+      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 section-padding flex flex-col gap-12">
         {/* Section Header */}
         <div className="flex flex-col items-start max-w-3xl">
           <h2 className="text-[22px] sm:text-[26px] md:text-[30px] lg:text-[36px] font-extrabold text-primary leading-tight tracking-tight">
@@ -280,7 +280,7 @@ export default async function IndustriesPage({ params: { locale } }: Props) {
                 ? '業界別ソリューション'
                 : 'Solutions by Industry'}
           </h2>
-          <p className="mt-3 text-sm text-slate-500 leading-relaxed font-medium">
+          <p className="mt-3 text-body-regular text-slate-500 leading-relaxed font-medium">
             {isVi
               ? 'Các giải pháp phòng sạch & đóng gói được thiết kế phù hợp với đặc thù & yêu cầu riêng của từng ngành nghề sản xuất.'
               : isJa
@@ -297,7 +297,7 @@ export default async function IndustriesPage({ params: { locale } }: Props) {
       <CoreAdvantages locale={locale} />
 
       {/* About Us & Hub Ha Nam Section */}
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16 py-12 lg:py-16">
+      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 section-padding">
         <AboutUsHub locale={locale} />
       </div>
       {/* Customer Segments Section */}

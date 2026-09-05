@@ -52,17 +52,17 @@ export default async function AboutNewsDetailPage({ params }: PageProps) {
         <header className="overflow-hidden rounded-[3px] border border-slate-200 bg-white shadow-sm">
           <div className="grid gap-0 lg:grid-cols-[1.2fr_0.8fr]">
             <div className="p-6 sm:p-8 lg:p-10">
-              <div className="mb-4 inline-flex items-center rounded-full bg-blue-50 px-3 py-1 text-xs font-semibold text-blue-700 ring-1 ring-inset ring-blue-700/10">
+              <div className="mb-4 inline-flex items-center rounded-full bg-blue-50 px-3 py-1 text-caption-responsive font-semibold text-blue-700 ring-1 ring-inset ring-blue-700/10">
                 {currentArticle.category}
               </div>
-              <h1 className="max-w-3xl text-3xl font-bold tracking-tight text-slate-900 sm:text-4xl">
+              <h1 className="max-w-3xl text-hero-title font-bold tracking-tight text-slate-900 sm:text-hero-title">
                 {currentArticle.title}
               </h1>
-              <p className="mt-4 max-w-3xl text-base leading-7 text-slate-600">
+              <p className="mt-4 max-w-3xl text-body-regular leading-7 text-slate-600">
                 {currentArticle.summary}
               </p>
 
-              <div className="mt-6 flex flex-wrap gap-5 border-t border-slate-100 pt-6 text-sm text-slate-500">
+              <div className="mt-6 flex flex-wrap gap-5 border-t border-slate-100 pt-6 text-body-regular text-slate-500">
                 <span className="inline-flex items-center gap-2">
                   <User className="h-4 w-4 text-brand" />
                   {currentArticle.author}
@@ -94,12 +94,12 @@ export default async function AboutNewsDetailPage({ params }: PageProps) {
         <main className="mt-8 grid gap-8 lg:grid-cols-[1.4fr_0.6fr]">
           <section className="rounded-[3px] border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
             <div className="mb-8 rounded-[3px] bg-blue-50/70 p-5 ring-1 ring-inset ring-blue-100">
-              <h2 className="text-sm font-bold uppercase tracking-wide text-blue-800">
+              <h2 className="text-body-regular font-bold uppercase tracking-wide text-blue-800">
                 Tóm tắt nhanh
               </h2>
               <ul className="mt-4 grid gap-3">
                 {currentArticle.highlights.map((item) => (
-                  <li key={item} className="flex items-start gap-2 text-sm text-slate-700">
+                  <li key={item} className="flex items-start gap-2 text-body-regular text-slate-700">
                     <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" />
                     <span>{item}</span>
                   </li>
@@ -110,14 +110,14 @@ export default async function AboutNewsDetailPage({ params }: PageProps) {
             <div className="space-y-8">
               {currentArticle.sections.map((section) => (
                 <section key={section.title}>
-                  <h3 className="text-xl font-bold text-slate-900">{section.title}</h3>
+                  <h3 className="text-section-title font-bold text-slate-900">{section.title}</h3>
                   <div className="mt-4 space-y-4 text-[15px] leading-7 text-slate-600">
                     {section.paragraphs.map((paragraph) => (
                       <p key={paragraph}>{paragraph}</p>
                     ))}
                   </div>
                   {section.bullets && section.bullets.length > 0 && (
-                    <ul className="mt-4 space-y-3 rounded-[3px] bg-slate-50 p-5 text-sm text-slate-700">
+                    <ul className="mt-4 space-y-3 rounded-[3px] bg-slate-50 p-5 text-body-regular text-slate-700">
                       {section.bullets.map((bullet) => (
                         <li key={bullet} className="flex items-start gap-2">
                           <span className="mt-2 h-1.5 w-1.5 rounded-full bg-brand" />
@@ -133,7 +133,7 @@ export default async function AboutNewsDetailPage({ params }: PageProps) {
 
           <aside className="space-y-6">
             <div className="rounded-[3px] border border-slate-200 bg-white p-6 shadow-sm">
-              <h2 className="text-lg font-bold text-slate-900">Bài viết liên quan</h2>
+              <h2 className="text-card-title font-bold text-slate-900">Bài viết liên quan</h2>
               <div className="mt-5 space-y-4">
                 {relatedArticles.map((item) => (
                   <Link
@@ -141,12 +141,12 @@ export default async function AboutNewsDetailPage({ params }: PageProps) {
                     href={`/about/news/${item.id}`}
                     className="group block rounded-[3px] border border-slate-100 p-4 transition-colors hover:border-blue-200 hover:bg-blue-50/40"
                   >
-                    <div className="text-xs font-semibold text-blue-700">{item.category}</div>
-                    <h3 className="mt-2 text-sm font-bold text-slate-900 group-hover:text-brand">
+                    <div className="text-caption-responsive font-semibold text-blue-700">{item.category}</div>
+                    <h3 className="mt-2 text-body-regular font-bold text-slate-900 group-hover:text-brand">
                       {item.title}
                     </h3>
-                    <p className="mt-2 text-sm text-slate-500 line-clamp-2">{item.summary}</p>
-                    <span className="mt-3 inline-flex items-center gap-1 text-xs font-semibold text-brand">
+                    <p className="mt-2 text-body-regular text-slate-500 line-clamp-2">{item.summary}</p>
+                    <span className="mt-3 inline-flex items-center gap-1 text-caption-responsive font-semibold text-brand">
                       Đọc chi tiết
                     </span>
                   </Link>
@@ -155,17 +155,17 @@ export default async function AboutNewsDetailPage({ params }: PageProps) {
             </div>
 
             <div className="rounded-[3px] border border-slate-200 bg-slate-900 p-6 text-white shadow-sm">
-              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-blue-300">
+              <p className="text-caption-responsive font-semibold uppercase tracking-[0.2em] text-blue-300">
                 Cập nhật liên tục
               </p>
-              <h2 className="mt-3 text-xl font-bold">Theo dõi thêm tin tức thị trường</h2>
-              <p className="mt-3 text-sm leading-7 text-slate-300">
+              <h2 className="mt-3 text-section-title font-bold">Theo dõi thêm tin tức thị trường</h2>
+              <p className="mt-3 text-body-regular leading-7 text-slate-300">
                 Chúng tôi sẽ tiếp tục cập nhật các bài viết phân tích, xu hướng và diễn biến mới
                 nhất để hỗ trợ đội ngũ mua hàng, vận hành và chiến lược.
               </p>
               <Link
                 href="/about/news"
-                className="mt-5 inline-flex items-center gap-2 rounded-[3px] bg-white px-4 py-2 text-sm font-semibold text-slate-900 transition-colors hover:bg-slate-100"
+                className="mt-5 inline-flex items-center gap-2 rounded-[3px] bg-white px-4 py-2 text-body-regular font-semibold text-slate-900 transition-colors hover:bg-slate-100"
               >
                 Xem toàn bộ tin tức
                 <ArrowRight className="h-4 w-4" />

@@ -14,7 +14,7 @@ export default async function CareersPage({ params: { locale } }: { params: { lo
 
   return (
     <div className="w-full bg-[#FFFFFF]">
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16 py-4">
+      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 py-4">
         {/* 7 Section chính */}
         <CareersHero />
         <CareersCulture />

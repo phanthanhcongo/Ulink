@@ -207,7 +207,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
       </div>
 
       {/* Main Content Area */}
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16 py-8">
+      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 py-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
           {/* LEFT: Image Gallery Slider */}
           <div className="lg:col-span-5">
@@ -218,7 +218,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
           <div className="lg:col-span-4 space-y-6">
             {categoryName && (
               <div>
-                <span className="inline-block text-xs font-bold text-blue-600 bg-blue-50/80 border border-blue-100/80 px-3.5 py-1 rounded-[3px] shadow-2xs">
+                <span className="inline-block text-caption-responsive font-bold text-blue-600 bg-blue-50/80 border border-blue-100/80 px-3.5 py-1 rounded-[3px] shadow-2xs">
                   {categoryName}
                 </span>
               </div>
@@ -229,12 +229,12 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
             </h1>
 
             {/* SKU and Rating row */}
-            <div className="flex items-center gap-3 text-xs text-slate-500 font-semibold">
+            <div className="flex items-center gap-3 text-caption-responsive text-slate-500 font-semibold">
               {skuCode && <span>SKU: {skuCode}</span>}
               {skuCode && <span className="text-slate-300">|</span>}
               <div className="flex items-center gap-1.5">
                 <span className="font-extrabold text-slate-900">4.8</span>
-                <div className="flex text-amber-500 text-lg sm:text-xl gap-0.5 leading-none">
+                <div className="flex text-amber-500 text-card-title gap-0.5 leading-none">
                   <span>★</span>
                   <span>★</span>
                   <span>★</span>
@@ -250,7 +250,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
             <hr className="border-slate-200/80" />
 
             {productDescription && (
-              <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+              <p className="text-caption-responsive text-slate-600 leading-relaxed font-medium">
                 {productDescription}
               </p>
             )}
@@ -299,28 +299,28 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
             {/* 2x2 Key Specifications Grid */}
             <div className="grid grid-cols-2 gap-y-5 gap-x-8 py-2">
               <div className="flex flex-col">
-                <span className="text-xs font-semibold text-slate-500">
+                <span className="text-caption-responsive font-semibold text-slate-500">
                   {locale === 'vi' ? 'Độ dày màng' : 'Thickness'}
                 </span>
-                <span className="text-xs sm:text-sm font-bold text-slate-900 mt-1">
+                <span className="text-caption-responsive font-bold text-slate-900 mt-1">
                   {specs?.['Độ dày'] || specs?.['Thickness'] || '17 mic / 20 mic / 23 mic'}
                 </span>
               </div>
 
               <div className="flex flex-col">
-                <span className="text-xs font-semibold text-slate-500">
+                <span className="text-caption-responsive font-semibold text-slate-500">
                   {locale === 'vi' ? 'Chất liệu chính' : 'Material'}
                 </span>
-                <span className="text-xs sm:text-sm font-bold text-slate-900 mt-1">
+                <span className="text-caption-responsive font-bold text-slate-900 mt-1">
                   {specs?.['Chất liệu'] || specs?.['Material'] || '100% LLDPE Nguyên sinh'}
                 </span>
               </div>
 
               <div className="flex flex-col">
-                <span className="text-xs font-semibold text-slate-500">
+                <span className="text-caption-responsive font-semibold text-slate-500">
                   {locale === 'vi' ? 'Quy cách cuộn' : 'Specification'}
                 </span>
-                <span className="text-xs sm:text-sm font-bold text-slate-900 mt-1">
+                <span className="text-caption-responsive font-bold text-slate-900 mt-1">
                   {specs?.['Đóng gói'] ||
                     specs?.['Specification'] ||
                     'Khổ rộng 50cm, cân nặng theo yêu cầu'}
@@ -328,10 +328,10 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
               </div>
 
               <div className="flex flex-col">
-                <span className="text-xs font-semibold text-slate-500">
+                <span className="text-caption-responsive font-semibold text-slate-500">
                   {locale === 'vi' ? 'Màu sắc' : 'Color'}
                 </span>
-                <span className="text-xs sm:text-sm font-bold text-slate-900 mt-1">
+                <span className="text-caption-responsive font-bold text-slate-900 mt-1">
                   {specs?.['Màu sắc'] || specs?.['Color'] || 'Trắng trong'}
                 </span>
               </div>
@@ -342,7 +342,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
             {/* Quality Standards Achieved */}
             {standards.length > 0 && (
               <div className="space-y-3 pt-2">
-                <p className="text-xs font-bold text-slate-700 uppercase tracking-wider">
+                <p className="text-caption-responsive font-bold text-slate-700 uppercase tracking-tight">
                   {locale === 'vi'
                     ? 'Tiêu chuẩn chất lượng đạt được:'
                     : 'Quality Standards Achieved:'}
@@ -357,11 +357,11 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                         <Award className="h-5 w-5" />
                       </div>
                       <div>
-                        <p className="text-xs font-bold text-slate-800 leading-tight">
+                        <p className="text-caption-responsive font-bold text-slate-800 leading-tight">
                           {getTranslatedName(std, locale)}
                         </p>
                         {getTranslatedDescription(std, locale) && (
-                          <p className="text-[10px] font-semibold text-slate-400 mt-0.5">
+                          <p className="text-caption-responsive font-semibold text-slate-400 mt-0.5">
                             {getTranslatedDescription(std, locale)}
                           </p>
                         )}
