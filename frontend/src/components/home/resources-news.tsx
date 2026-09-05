@@ -130,7 +130,7 @@ export function ResourcesNews() {
   ];
 
   return (
-    <section className="w-full bg-white py-8 sm:py-10 lg:py-12">
+    <section className="w-full bg-white py-8 sm:py-8 lg:py-8">
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
         {/* ── 2. SUB-SECTION HEADER (TIN TỨC THỊ TRƯỜNG - 2 HÀNG BẰNG CỠ CHỮ) ── */}
         <div className="text-center max-w-3xl mx-auto space-y-1 sm:space-y-2">
@@ -168,7 +168,7 @@ export function ResourcesNews() {
         <div className="mt-10 flex justify-center">
           <Link
             href="/resources"
-            className="group inline-flex h-11 items-center justify-center gap-2.5 rounded-[3px] border border-blue-600 bg-white px-6 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-normal text-blue-600 transition-all hover:bg-blue-50/50 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:-translate-y-1 hover:scale-[1.02]"
+            className="group inline-flex h-11 items-center justify-center gap-2.5 rounded-[3px] border border-blue-600 bg-white px-6 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-normal text-blue-600 transition-all hover:bg-blue-50/50 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:-translate-y-0.5 hover:scale-[1.01]"
           >
             {t('viewMore') || 'Xem thêm'}
             <ArrowRight className="h-4.5 w-4.5 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />

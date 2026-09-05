@@ -38,17 +38,17 @@ export function HeroBanner() {
       <div className="relative z-30 order-1 flex w-full items-center justify-center sm:justify-start sm:absolute sm:inset-0 sm:h-full">
         <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 py-3 sm:py-4 lg:py-5 xl:py-8 flex items-center justify-center sm:justify-start h-full">
           {/* Content Container Frame */}
-          <div className="group relative flex w-full max-w-full lg:w-[600px] lg:max-w-[600px] xl:w-[672px] xl:max-w-[672px] flex-col p-0 sm:px-6 sm:py-4.5 md:px-7 md:py-5 lg:px-7 lg:py-5 xl:px-9 xl:py-8 gap-3 sm:gap-4 lg:gap-4 xl:gap-6 transition-all duration-300 sm:hover:-translate-y-1 sm:hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
+          <div className="group relative flex w-full max-w-full lg:w-[600px] lg:max-w-[600px] xl:w-[672px] xl:max-w-[672px] flex-col p-0 sm:px-6 sm:py-4.5 md:px-7 md:py-5 lg:px-7 lg:py-5 xl:px-9 xl:py-8 gap-3 sm:gap-4 lg:gap-4 xl:gap-6 transition-all duration-300 sm:hover:-translate-y-0.5 sm:hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
             {/* Frosted Glass Card (Desktop only) */}
             <div className="hidden sm:block absolute inset-0 z-10 rounded-[3px] border border-slate-200/90 bg-white/95 backdrop-blur-[24px] shadow-[0px_20px_40px_-10px_rgba(15,23,42,0.12)]" />
 
             {/* Text content */}
             <div className="relative z-30 flex flex-col">
-              <p className="text-[12px] sm:text-[13px] lg:text-[14px] xl:text-[15px] font-semibold uppercase tracking-wider text-brand">
+              <p className="text-[12px] sm:text-[13px] lg:text-[14px] xl:text-[15px] font-semibold uppercase tracking-tight text-brand">
                 {t('hero.eyebrowTop')}
               </p>
 
-              <p className="hidden sm:block mt-1 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-bold uppercase tracking-wider text-primary">
+              <p className="hidden sm:block mt-1 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-bold uppercase tracking-tight text-primary">
                 {t('hero.eyebrowSub')}
               </p>
 
@@ -138,7 +138,7 @@ export function HeroBanner() {
       {showToast && (
         <div className="fixed bottom-5 right-5 z-50 flex items-center gap-2.5 rounded-[3px] border border-amber-200 bg-amber-50 px-4 py-3 text-amber-800 shadow-lg animate-in fade-in slide-in-from-bottom-5 duration-300 dark:bg-amber-950/20 dark:text-amber-400 dark:border-amber-500/20">
           <Clock className="h-5 w-5 text-amber-500 shrink-0 animate-pulse" />
-          <span className="text-sm font-semibold">{t('hero.cataloguePending')}</span>
+          <span className="text-body-regular font-semibold">{t('hero.cataloguePending')}</span>
         </div>
       )}
     </section>

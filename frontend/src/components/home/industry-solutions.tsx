@@ -160,7 +160,7 @@ export function IndustrySolutions() {
       </section>
 
       {/* ── 2. DESKTOP & IPAD VIEW (Visible on md and up: >= 768px) ── */}
-      <section className="hidden md:block mx-auto w-full max-w-[1440px] px-6 py-10 md:px-8 md:py-12 lg:px-12 xl:px-16 lg:py-16 xl:py-20 overflow-hidden">
+      <section className="hidden md:block mx-auto w-full max-w-[1440px] px-6 py-8 md:px-8 md:py-8 lg:px-12 xl:px-16 lg:py-8 xl:py-8 overflow-hidden">
         {/* ── SECTION HEADER BAR ── */}
         <SectionHeader
           title={t('industries.sectionTitle')}

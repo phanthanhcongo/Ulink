@@ -38,7 +38,7 @@ export function CaseStudies() {
   };
 
   return (
-    <section className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 py-10 lg:py-12 xl:py-16">
+    <section className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 py-8 lg:py-8 xl:py-8">
       {/* ── SECTION HEADER BAR ── */}
       <SectionHeader
         title={t('caseStudy.sectionTitle')}
@@ -73,7 +73,7 @@ export function CaseStudies() {
       <div className="mt-10 flex justify-center sm:mt-12">
         <Link
           href="/resources"
-          className="inline-flex items-center justify-center rounded-[3px] bg-brand px-8 py-3 text-[14px] sm:text-[15px] lg:text-[16px] xl:text-[18px] font-semibold text-white shadow-sm transition-all hover:bg-brand-strong hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] active:scale-95"
+          className="inline-flex items-center justify-center rounded-[3px] bg-brand px-8 py-3 text-[14px] sm:text-[15px] lg:text-[16px] xl:text-[18px] font-semibold text-white shadow-sm transition-all hover:bg-brand-strong hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] active:scale-95"
         >
           {t('caseStudy.viewAll')}
         </Link>

@@ -247,14 +247,14 @@ export default async function AboutSustainabilityPage({
     <div className="w-full bg-white font-sans antialiased text-slate-800">
       
       {/* 1. HERO SECTION & BREADCRUMB */}
-      <section className="bg-white py-6 md:py-10 lg:py-14 border-b border-slate-100">
-        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16">
+      <section className="bg-white py-8 sm:py-10 lg:py-12 border-b border-slate-100">
+        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
           <AboutBreadcrumb />
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center mt-4">
             {/* Left Content */}
             <div className="lg:col-span-7 flex flex-col items-start">
-              <span className="text-[13px] font-bold text-emerald-600 tracking-wider uppercase">
+              <span className="text-[13px] font-bold text-emerald-600 tracking-tight uppercase">
                 {t.hero.eyebrow}
               </span>
               <h1 className="text-[28px] sm:text-[34px] md:text-[38px] lg:text-[42px] xl:text-[44px] font-extrabold text-slate-900 tracking-tight leading-[1.15] mt-2 mb-4">
@@ -288,12 +288,12 @@ export default async function AboutSustainabilityPage({
       </section>
 
       {/* 2. ESG PERFORMANCE INDICATORS */}
-      <section className="bg-slate-50 py-12 md:py-16 border-b border-slate-100">
-        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16">
+      <section className="bg-slate-50 section-padding border-b border-slate-100">
+        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
           {/* Header Row */}
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
             <div>
-              <span className="text-[12px] font-bold text-emerald-600 tracking-wider uppercase">
+              <span className="text-[12px] font-bold text-emerald-600 tracking-tight uppercase">
                 {t.esgStats.eyebrow}
               </span>
               <h2 className="text-[22px] sm:text-[26px] md:text-[30px] lg:text-[36px] font-extrabold text-slate-900 mt-1 leading-tight">
@@ -327,7 +327,7 @@ export default async function AboutSustainabilityPage({
               }
 
               return (
-                <div key={idx} className="bg-white p-6 rounded-[3px] border border-slate-100 shadow-sm flex flex-col justify-between group hover:shadow-md transition-shadow">
+                <div key={idx} className="bg-white p-6 rounded-[3px] border border-slate-100 shadow-sm flex flex-col justify-between group card-hover-standard">
                   <div>
                     <div className="flex items-baseline">
                       <span className="text-[32px] sm:text-[36px] font-extrabold text-slate-900 tracking-tight">
@@ -350,10 +350,10 @@ export default async function AboutSustainabilityPage({
       </section>
 
       {/* 3. ESG STANDARD FRAMEWORK */}
-      <section className="bg-white py-12 md:py-16 border-b border-slate-100">
-        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16">
+      <section className="bg-white section-padding border-b border-slate-100">
+        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
           <div>
-            <span className="text-[12px] font-bold text-emerald-600 tracking-wider uppercase">
+            <span className="text-[12px] font-bold text-emerald-600 tracking-tight uppercase">
               {t.framework.eyebrow}
             </span>
             <h2 className="text-[22px] sm:text-[26px] md:text-[30px] lg:text-[36px] font-extrabold text-slate-900 mt-1 mb-8 leading-tight">
@@ -374,11 +374,11 @@ export default async function AboutSustainabilityPage({
               }
 
               return (
-                <div key={idx} className="bg-white p-6 rounded-[3px] border border-slate-200/80 shadow-sm flex flex-col justify-between group hover:border-brand/30 hover:shadow-md transition-all duration-300">
+                <div key={idx} className="bg-white p-6 rounded-[3px] border border-slate-200/80 shadow-sm flex flex-col justify-between group hover:border-brand/30 card-hover-standard">
                   <div>
                     <div className="flex items-center gap-2.5 mb-4">
                       <Icon className={`h-6 w-6 shrink-0 ${iconColor}`} />
-                      <span className="text-[14px] font-bold text-slate-950 tracking-wider">
+                      <span className="text-[14px] font-bold text-slate-950 tracking-tight">
                         {card.title}
                       </span>
                     </div>
@@ -429,12 +429,12 @@ export default async function AboutSustainabilityPage({
       </section>
 
       {/* 4. UN SDGs PARTNERSHIP */}
-      <section className="bg-slate-50 py-12 md:py-16 border-b border-slate-100">
-        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16">
+      <section className="bg-slate-50 section-padding border-b border-slate-100">
+        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 items-center">
             {/* Left Content */}
             <div className="lg:col-span-5 flex flex-col items-start">
-              <span className="text-[12px] font-bold text-emerald-600 tracking-wider uppercase">
+              <span className="text-[12px] font-bold text-emerald-600 tracking-tight uppercase">
                 {t.sdgs.eyebrow}
               </span>
               <h2 className="text-[22px] sm:text-[26px] md:text-[30px] lg:text-[36px] font-extrabold text-slate-900 tracking-tight leading-tight mt-1 mb-4">
@@ -452,7 +452,7 @@ export default async function AboutSustainabilityPage({
                 return (
                   <div 
                     key={idx} 
-                    className="bg-white p-4 rounded-[3px] border border-slate-100 shadow-xs flex flex-col gap-2 group hover:shadow-md hover:-translate-y-0.5 transition-all duration-300"
+                    className="bg-white p-4 rounded-[3px] border border-slate-100 shadow-xs flex flex-col gap-2 group card-hover-standard"
                   >
                     <Icon className={`h-7 w-7 shrink-0 ${sdg.color}`} />
                     <div>

@@ -33,10 +33,10 @@ export function TargetSegments() {
       {/* ──────────────────────────────────────────────────────── */}
       {/* 1. MOBILE VIEW (Screens < 768px: md breakpoint)          */}
       {/* ──────────────────────────────────────────────────────── */}
-      <div className="block md:hidden px-4 py-10">
+      <div className="block md:hidden px-4 py-8">
         {/* Mobile Header: Centered 2-line equal size */}
         <div className="text-center max-w-xl mx-auto mb-8 space-y-1">
-          <span className="text-[12px] font-bold uppercase tracking-wider text-blue-600 leading-tight block">
+          <span className="text-[12px] font-bold uppercase tracking-tight text-blue-600 leading-tight block">
             {t('targetSegments.sectionTitle')}
           </span>
           <h2 className="text-[22px] font-extrabold tracking-tight text-slate-900 leading-tight">
@@ -99,7 +99,7 @@ export function TargetSegments() {
       {/* ──────────────────────────────────────────────────────── */}
       {/* 2. DESKTOP VIEW (Screens >= 768px: md breakpoint)        */}
       {/* ──────────────────────────────────────────────────────── */}
-      <div className="hidden md:block mx-auto w-full max-w-[1440px] px-8 py-14 lg:px-12 xl:px-16 lg:py-16 xl:py-20">
+      <div className="hidden md:block mx-auto w-full max-w-[1440px] px-8 py-8 lg:px-12 xl:px-16 lg:py-8 xl:py-8">
         {/* Desktop Header: Centered 2-line equal size */}
         <div className="text-center max-w-3xl mx-auto space-y-1 sm:space-y-2 mb-10 sm:mb-12">
           <span className="text-[20px] sm:text-[24px] lg:text-[28px] xl:text-[32px] font-extrabold tracking-tight text-blue-600 leading-tight block">

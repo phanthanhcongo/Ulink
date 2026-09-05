@@ -70,7 +70,19 @@
 
 @layer components {
   .ui-page {
-    @apply mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16;
+    @apply mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16;
+  }
+
+  .page-container {
+    @apply mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16;
+  }
+
+  .section-padding {
+    @apply py-8 sm:py-10 lg:py-12;
+  }
+
+  .section-header {
+    @apply mx-auto max-w-3xl space-y-1 text-center sm:space-y-2;
   }
 
   .ui-surface {
@@ -86,27 +98,27 @@
   }
 
   .ui-subheading {
-    @apply text-sm font-medium text-muted-foreground;
+    @apply text-body-regular font-medium text-muted-foreground;
   }
 
   .ui-label {
-    @apply block text-xs font-semibold uppercase tracking-wider text-muted-foreground;
+    @apply text-caption-responsive block font-semibold uppercase text-muted-foreground;
   }
 
   .ui-input {
-    @apply w-full rounded-lg border border-border bg-card px-3.5 py-2.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-brand focus:ring-1 focus:ring-brand;
+    @apply text-body-regular w-full rounded-lg border border-border bg-card px-3.5 py-2.5 text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-brand focus:ring-1 focus:ring-brand;
   }
 
   .ui-select {
-    @apply w-full rounded-lg border border-border bg-card px-3.5 py-2.5 text-sm text-foreground outline-none transition-colors focus:border-brand focus:ring-1 focus:ring-brand;
+    @apply text-body-regular w-full rounded-lg border border-border bg-card px-3.5 py-2.5 text-foreground outline-none transition-colors focus:border-brand focus:ring-1 focus:ring-brand;
   }
 
   .ui-textarea {
-    @apply w-full rounded-lg border border-border bg-card px-3.5 py-2.5 text-sm text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-brand focus:ring-1 focus:ring-brand;
+    @apply text-body-regular w-full rounded-lg border border-border bg-card px-3.5 py-2.5 text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-brand focus:ring-1 focus:ring-brand;
   }
 
   .ui-btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition-colors disabled:pointer-events-none disabled:opacity-60;
+    @apply text-button-responsive inline-flex min-h-11 items-center justify-center gap-2 rounded-lg px-4 py-2.5 transition-colors disabled:pointer-events-none disabled:opacity-60;
   }
 
   .ui-btn-primary {
@@ -122,11 +134,11 @@
   }
 
   .ui-badge {
-    @apply inline-flex items-center rounded-full px-3 py-1 text-xs font-semibold;
+    @apply text-caption-responsive inline-flex items-center rounded-full px-3 py-1 font-semibold;
   }
 
   .admin-page {
-    @apply mx-auto w-full max-w-[1440px] px-4 py-8 sm:px-8 sm:py-10 lg:px-16 lg:py-12;
+    @apply mx-auto w-full max-w-[1440px] px-4 py-8 sm:px-8 sm:py-10 lg:px-12 lg:py-12 xl:px-16;
   }
 
   .admin-panel {
@@ -138,19 +150,55 @@
   }
 
   .admin-page-eyebrow {
-    @apply text-xs uppercase font-extrabold tracking-wider text-slate-400;
+    @apply text-caption-responsive uppercase font-extrabold text-slate-400;
   }
 
   .admin-page-title {
-    @apply mt-1 text-2xl font-extrabold tracking-tight text-primary sm:text-3xl;
+    @apply text-section-title mt-1 font-extrabold text-primary;
   }
 
   .admin-page-lead {
-    @apply mt-1 text-xs font-medium leading-relaxed text-slate-500 sm:text-sm;
+    @apply text-body-regular mt-1 font-medium text-slate-500;
   }
 
   .ui-card-hover {
-    @apply transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)];
+    @apply transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)];
+  }
+
+  .text-hero-title {
+    @apply text-[28px] font-extrabold leading-tight tracking-tight sm:text-[36px] lg:text-[44px] lg:leading-[52px] xl:text-[56px] xl:leading-[64px];
+  }
+
+  .text-section-title {
+    @apply text-[16px] font-semibold leading-tight tracking-tight min-[375px]:text-[18px] sm:text-[24px] sm:leading-[32px] lg:text-[28px] lg:leading-[36px] xl:text-[32px] xl:leading-[40px];
+  }
+
+  .text-eyebrow {
+    @apply text-[12px] font-semibold tracking-tight sm:text-[14px] lg:text-[15px] xl:text-[16px];
+  }
+
+  .text-card-title {
+    @apply text-[16px] font-bold leading-snug sm:text-[18px] lg:text-[20px] xl:text-[24px];
+  }
+
+  .text-body-large {
+    @apply text-[14px] leading-[20px] sm:text-[15px] sm:leading-[22px] lg:text-[16px] lg:leading-[24px] xl:text-[18px] xl:leading-[28px];
+  }
+
+  .text-body-regular {
+    @apply text-[13px] font-normal leading-[20px] sm:text-[14px] sm:leading-[22px] lg:text-[15px] lg:leading-[24px] xl:text-[16px];
+  }
+
+  .text-button-responsive {
+    @apply text-[13px] font-semibold sm:text-[14px] lg:text-[15px] xl:text-[16px];
+  }
+
+  .text-caption-responsive {
+    @apply text-[11px] font-medium sm:text-[12px] lg:text-[13px] xl:text-[14px];
+  }
+
+  .card-hover-standard {
+    @apply transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)];
   }
 }
 

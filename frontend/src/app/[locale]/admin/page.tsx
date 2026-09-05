@@ -126,13 +126,13 @@ export default async function AdminDashboardPage({ params: { locale } }: Props) 
       {/* Header Welcome Section */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-100 pb-6 mb-8">
         <div>
-          <span className="text-xs uppercase text-slate-400 font-extrabold tracking-wider">
+          <span className="text-caption-responsive uppercase text-slate-400 font-extrabold tracking-tight">
             Trang chủ Quản trị
           </span>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-primary tracking-tight mt-1">
+          <h1 className="text-section-title font-extrabold text-primary tracking-tight mt-1">
             Chào mừng quay trở lại, {user?.first_name || 'Admin'}
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 font-medium mt-1 leading-relaxed">
+          <p className="text-caption-responsive text-slate-500 font-medium mt-1 leading-relaxed">
             Hệ thống quản lý thông tin B2B ULink Industries.
           </p>
         </div>
@@ -144,7 +144,7 @@ export default async function AdminDashboardPage({ params: { locale } }: Props) 
           <Link
             key={idx}
             href={kpi.href}
-            className="block bg-white border border-slate-100 hover:border-slate-200 rounded-[3px] p-6 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300 ease-in-out group"
+            className="block bg-white border border-slate-100 hover:border-slate-200 rounded-[3px] p-6 shadow-sm card-hover-standard group"
           >
             <div className="flex items-center justify-between mb-4">
               <div
@@ -154,13 +154,13 @@ export default async function AdminDashboardPage({ params: { locale } }: Props) 
               </div>
               <TrendingUp className="h-4 w-4 text-slate-350 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             </div>
-            <span className="text-xs text-slate-400 font-bold tracking-tight block">
+            <span className="text-caption-responsive text-slate-400 font-bold tracking-tight block">
               {kpi.label}
             </span>
-            <span className="text-2xl sm:text-3xl font-extrabold text-primary tracking-tight block mt-1">
+            <span className="text-section-title font-extrabold text-primary tracking-tight block mt-1">
               {kpi.value}
             </span>
-            <span className="text-[10px] text-slate-500 font-medium block mt-2">{kpi.desc}</span>
+            <span className="text-caption-responsive text-slate-500 font-medium block mt-2">{kpi.desc}</span>
           </Link>
         ))}
       </div>
@@ -169,11 +169,11 @@ export default async function AdminDashboardPage({ params: { locale } }: Props) 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Left Column: Quick Actions */}
         <div className="lg:col-span-1 bg-white border border-slate-100 rounded-[3px] p-6 shadow-sm">
-          <h3 className="text-base font-extrabold text-primary mb-4">Thao tác nhanh</h3>
+          <h3 className="text-body-regular font-extrabold text-primary mb-4">Thao tác nhanh</h3>
           <div className="space-y-3">
             <Link
               href="/admin/products"
-              className="flex items-center justify-between p-3.5 rounded-[3px] border border-slate-50 hover:bg-slate-50 text-slate-700 hover:text-primary text-xs sm:text-sm font-bold transition-colors"
+              className="flex items-center justify-between p-3.5 rounded-[3px] border border-slate-50 hover:bg-slate-50 text-slate-700 hover:text-primary text-caption-responsive font-bold transition-colors"
             >
               <div className="flex items-center gap-3">
                 <PlusCircle className="h-4.5 w-4.5 text-blue-600" />
@@ -183,7 +183,7 @@ export default async function AdminDashboardPage({ params: { locale } }: Props) 
             </Link>
             {/* <Link
               href="/admin/articles"
-              className="flex items-center justify-between p-3.5 rounded-[3px] border border-slate-50 hover:bg-slate-50 text-slate-700 hover:text-primary text-xs sm:text-sm font-bold transition-colors"
+              className="flex items-center justify-between p-3.5 rounded-[3px] border border-slate-50 hover:bg-slate-50 text-slate-700 hover:text-primary text-caption-responsive font-bold transition-colors"
             >
               <div className="flex items-center gap-3">
                 <FileText className="h-4.5 w-4.5 text-blue-600" />
@@ -193,7 +193,7 @@ export default async function AdminDashboardPage({ params: { locale } }: Props) 
             </Link> */}
             <Link
               href="/admin/users"
-              className="flex items-center justify-between p-3.5 rounded-[3px] border border-slate-50 hover:bg-slate-50 text-slate-700 hover:text-primary text-xs sm:text-sm font-bold transition-colors"
+              className="flex items-center justify-between p-3.5 rounded-[3px] border border-slate-50 hover:bg-slate-50 text-slate-700 hover:text-primary text-caption-responsive font-bold transition-colors"
             >
               <div className="flex items-center gap-3">
                 <Users className="h-4.5 w-4.5 text-blue-600" />
@@ -203,7 +203,7 @@ export default async function AdminDashboardPage({ params: { locale } }: Props) 
             </Link>
             <Link
               href="/admin/contact-requests"
-              className="flex items-center justify-between p-3.5 rounded-[3px] border border-slate-50 hover:bg-slate-50 text-slate-700 hover:text-primary text-xs sm:text-sm font-bold transition-colors"
+              className="flex items-center justify-between p-3.5 rounded-[3px] border border-slate-50 hover:bg-slate-50 text-slate-700 hover:text-primary text-caption-responsive font-bold transition-colors"
             >
               <div className="flex items-center gap-3">
                 <Mail className="h-4.5 w-4.5 text-cyan-600" />
@@ -217,14 +217,14 @@ export default async function AdminDashboardPage({ params: { locale } }: Props) 
         {/* Right Columns: System Info Summary */}
         <div className="lg:col-span-2 bg-white border border-slate-100 rounded-[3px] p-6 shadow-sm flex flex-col justify-between">
           <div>
-            <h3 className="text-base font-extrabold text-primary mb-3">
+            <h3 className="text-body-regular font-extrabold text-primary mb-3">
               Hướng dẫn Vận hành Hệ thống B2B
             </h3>
-            <p className="text-xs sm:text-sm text-slate-500 font-medium leading-relaxed mb-4">
+            <p className="text-caption-responsive text-slate-500 font-medium leading-relaxed mb-4">
               Đây là trang tổng quan vận hành hệ thống bán hàng và truyền thông B2B của ULink. Bạn
               có thể sử dụng menu bên trái để điều hướng nhanh đến các khu vực quản lý:
             </p>
-            <ul className="space-y-2.5 text-xs sm:text-sm text-slate-650 font-medium">
+            <ul className="space-y-2.5 text-caption-responsive text-slate-650 font-medium">
               <li className="flex items-start gap-2">
                 <span className="w-1.5 h-1.5 rounded-[3px] bg-blue-600 mt-1.5 shrink-0" />
                 <span>
@@ -248,7 +248,7 @@ export default async function AdminDashboardPage({ params: { locale } }: Props) 
             </ul>
           </div>
 
-          <div className="border-t border-slate-100 pt-5 mt-6 flex items-center justify-between text-xs font-semibold text-slate-400">
+          <div className="border-t border-slate-100 pt-5 mt-6 flex items-center justify-between text-caption-responsive font-semibold text-slate-400">
             <span>Phiên bản Admin Panel v1.0.0</span>
             <span>ULink B2B Platform</span>
           </div>

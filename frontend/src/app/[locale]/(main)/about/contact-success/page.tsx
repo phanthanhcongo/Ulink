@@ -12,7 +12,7 @@ export default async function ContactSuccessPage({
 
   return (
     <div className="w-full bg-slate-50/50 min-h-screen py-6">
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16">
+      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
         <ContactSuccessHero />
         <div className="my-6 h-px w-full bg-slate-200/80 max-w-6xl mx-auto" />
         <ContactNextSteps />

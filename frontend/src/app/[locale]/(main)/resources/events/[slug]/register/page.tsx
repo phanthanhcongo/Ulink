@@ -88,20 +88,20 @@ export default async function EventRegisterPage({ params }: Props) {
 
         {/* Headings */}
         <div className="mt-6">
-          <h1 className="text-3xl font-black text-slate-900 tracking-tight font-sans">
+          <h1 className="text-hero-title font-black text-slate-900 tracking-tight font-sans">
             Đăng ký tham gia sự kiện
           </h1>
-          <p className="mt-2 text-sm font-bold text-blue-600 font-sans">
+          <p className="mt-2 text-body-regular font-bold text-blue-600 font-sans">
             {event.title}
           </p>
         </div>
 
         {/* Khối 1: Thông tin vé & Thanh toán */}
         <div className="mt-10  rounded-[3px] bg-white p-5">
-          <h2 className="text-lg font-bold text-slate-900 font-sans">
+          <h2 className="text-card-title font-bold text-slate-900 font-sans">
             {L.paymentTitle[locale as 'vi' | 'en' | 'ja']}
           </h2>
-          <p className="text-xs sm:text-sm text-slate-500 mt-1 font-sans">
+          <p className="text-caption-responsive text-slate-500 mt-1 font-sans">
             {L.paymentDesc[locale as 'vi' | 'en' | 'ja']}
           </p>
 
@@ -110,11 +110,11 @@ export default async function EventRegisterPage({ params }: Props) {
             <div className="space-y-6 flex flex-col justify-between">
               {/* Thẻ Vé tham dự */}
               <div className="rounded-[3px] border border-slate-200 bg-[#F5F8FC] p-5 shadow-xs flex-1">
-                <span className="inline-flex items-center gap-1 rounded-[3px] bg-yellow-50 px-2.5 py-1 text-[10px] font-bold text-yellow-700 border border-yellow-100 font-sans">
+                <span className="inline-flex items-center gap-1 rounded-[3px] bg-yellow-50 px-2.5 py-1 text-caption-responsive font-bold text-yellow-700 border border-yellow-100 font-sans">
                   🎫 {L.ticketInfo[locale as 'vi' | 'en' | 'ja']}
                 </span>
 
-                <div className="mt-4 grid grid-cols-[90px_1fr] gap-y-2.5 text-xs sm:text-sm font-sans">
+                <div className="mt-4 grid grid-cols-[90px_1fr] gap-y-2.5 text-caption-responsive font-sans">
                   <span className="text-slate-400">{L.eventName[locale as 'vi' | 'en' | 'ja']}</span>
                   <span className="font-bold text-slate-800">{event.title}</span>
 
@@ -131,16 +131,16 @@ export default async function EventRegisterPage({ params }: Props) {
 
               {/* Thẻ Thông tin chuyển khoản */}
               <div className="rounded-[3px] border border-slate-200 bg-white p-5 shadow-xs">
-                <h4 className="text-sm font-bold text-slate-800 border-b border-slate-100 pb-2.5 font-sans">
+                <h4 className="text-body-regular font-bold text-slate-800 border-b border-slate-100 pb-2.5 font-sans">
                   {L.bankTitle[locale as 'vi' | 'en' | 'ja']}
                 </h4>
 
-                <div className="mt-4 grid grid-cols-[90px_1fr] gap-y-2.5 text-xs sm:text-sm font-sans">
+                <div className="mt-4 grid grid-cols-[90px_1fr] gap-y-2.5 text-caption-responsive font-sans">
                   <span className="text-slate-400">{L.bankName[locale as 'vi' | 'en' | 'ja']}</span>
                   <span className="font-bold text-slate-800">Vietcombank (VCB)</span>
 
                   <span className="text-slate-400">{L.bankAccount[locale as 'vi' | 'en' | 'ja']}</span>
-                  <span className="font-bold text-blue-600 tracking-wider">1234 5678 9012</span>
+                  <span className="font-bold text-blue-600 tracking-tight">1234 5678 9012</span>
 
                   <span className="text-slate-400">{L.bankHolder[locale as 'vi' | 'en' | 'ja']}</span>
                   <span className="font-bold text-slate-800">CÔNG TY TNHH ULINK INDUSTRIES</span>
@@ -157,7 +157,7 @@ export default async function EventRegisterPage({ params }: Props) {
             {/* Cột phải: QR Code */}
             <div className="rounded-[3px] border border-slate-200 bg-[#F5F8FC] p-6 flex flex-col items-center justify-between text-center shadow-xs h-fit">
               <div>
-                <p className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                <p className="text-caption-responsive font-bold uppercase tracking-tight text-slate-400">
                   {L.qrTitle[locale as 'vi' | 'en' | 'ja']}
                 </p>
 
@@ -195,8 +195,8 @@ export default async function EventRegisterPage({ params }: Props) {
               </div>
 
               <div className="mt-4">
-                <p className="text-xs sm:text-sm font-bold text-emerald-600">Số tiền: {event.price || 'Miễn phí'}</p>
-                <p className="text-[10px] text-slate-400 mt-2 max-w-[180px] mx-auto">
+                <p className="text-caption-responsive font-bold text-emerald-600">Số tiền: {event.price || 'Miễn phí'}</p>
+                <p className="text-caption-responsive text-slate-400 mt-2 max-w-[180px] mx-auto">
                   {L.qrFooter[locale as 'vi' | 'en' | 'ja']}
                 </p>
               </div>

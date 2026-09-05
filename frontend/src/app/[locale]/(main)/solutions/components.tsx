@@ -3,10 +3,10 @@ import React from 'react';
 export function StatCard({ value, label, icon }: { value: string; label: string; icon: string }) {
   return (
     <div className="flex items-center gap-3 px-4 py-3">
-      <span className="text-2xl">{icon}</span>
+      <span className="text-section-title">{icon}</span>
       <div>
-        <p className="text-lg font-bold text-white">{value}</p>
-        <p className="text-xs text-blue-200">{label}</p>
+        <p className="text-card-title font-bold text-white">{value}</p>
+        <p className="text-caption-responsive text-blue-200">{label}</p>
       </div>
     </div>
   );
@@ -45,7 +45,7 @@ export function FilterChip({
   return (
     <a
       href={href}
-      className="inline-flex items-center gap-1.5 rounded-full border border-blue-200 bg-blue-50 px-3 py-1.5 text-xs font-medium text-blue-700 hover:bg-blue-100 transition-colors"
+      className="inline-flex items-center gap-1.5 rounded-full border border-blue-200 bg-blue-50 px-3 py-1.5 text-caption-responsive font-medium text-blue-700 hover:bg-blue-100 transition-colors"
     >
       {label}
       <span className="text-blue-400 hover:text-blue-600">✕</span>
@@ -81,7 +81,7 @@ export function PaginationLink({
   return (
     <a
       href={href}
-      className={`inline-flex items-center justify-center min-w-[32px] h-8 px-2.5 rounded-[3px] text-sm font-medium transition-colors ${
+      className={`inline-flex items-center justify-center min-w-[32px] h-8 px-2.5 rounded-[3px] text-body-regular font-medium transition-colors ${
         active
           ? 'bg-blue-600 text-white'
           : 'border border-gray-200 text-gray-700 hover:bg-blue-50 hover:text-blue-600'
@@ -118,7 +118,7 @@ export function PerPageLink({
   return (
     <a
       href={href}
-      className={`px-2 py-0.5 rounded-[3px] text-sm ${
+      className={`px-2 py-0.5 rounded-[3px] text-body-regular ${
         current === value ? 'font-bold text-blue-600' : 'text-gray-500 hover:text-blue-600'
       }`}
     >

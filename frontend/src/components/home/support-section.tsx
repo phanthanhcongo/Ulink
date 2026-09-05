@@ -16,7 +16,7 @@ export function SupportSection() {
   ];
 
   return (
-    <section className="w-full bg-white py-8 sm:py-10 lg:py-12">
+    <section className="w-full bg-white py-8 sm:py-8 lg:py-8">
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
         {/* ── 5. SUB-SECTION HEADER BAR (TƯ VẤN & HỖ TRỢ) ── */}
         <div className="flex items-center gap-3">

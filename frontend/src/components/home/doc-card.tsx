@@ -51,7 +51,7 @@ export function DocCard({ num = 1, category, title, meta, icon, onClick }: DocCa
   return (
     <div
       onClick={onClick}
-      className={`group relative flex flex-col justify-between cursor-pointer transition-all duration-300 hover:-translate-y-1 hover:shadow-md 
+      className={`group relative flex flex-col justify-between cursor-pointer transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] 
         /* Mobile styling (< sm) */
         p-5 ${theme.mobileBg} ${theme.mobileBorder} rounded-[6px] shadow-xs min-h-[190px]
         /* Desktop & Tablet styling (>= sm) */

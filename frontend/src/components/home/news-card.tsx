@@ -27,7 +27,7 @@ export function NewsCard({ slug, date, title, image, readMoreText, category, aut
   return (
     <Link
       href={`/resources/news/${slug}`}
-      className="ui-card-hover flex flex-col bg-white border border-slate-200 rounded-[4px] overflow-hidden shadow-xs transition-all duration-300 hover:shadow-md"
+      className="ui-card-hover flex flex-col bg-white border border-slate-200 rounded-[4px] overflow-hidden shadow-xs transition-all duration-300 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]"
     >
       {/* Top Article Image */}
       <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-50">
@@ -44,7 +44,7 @@ export function NewsCard({ slug, date, title, image, readMoreText, category, aut
       <div className="flex flex-col flex-1 p-5 sm:p-6 text-left">
         {/* Category & Date */}
         <div className="flex items-center gap-2 text-[11px] sm:text-[11px] lg:text-[12px] xl:text-[13px] font-semibold text-slate-600 mb-2">
-          <span className="text-blue-600 font-bold uppercase tracking-wider">{category}</span>
+          <span className="text-blue-600 font-bold uppercase tracking-tight">{category}</span>
           <span>•</span>
           <span>{date}</span>
         </div>

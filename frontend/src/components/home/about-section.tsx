@@ -9,7 +9,7 @@ export async function AboutSection() {
   const t = await getTranslations('home');
 
   return (
-    <section className="mx-auto w-full max-w-[1440px] px-4 py-8 sm:px-8 lg:px-12 xl:px-16 lg:py-10 xl:py-12">
+    <section className="mx-auto w-full max-w-[1440px] px-4 py-8 sm:px-8 lg:px-12 xl:px-16 lg:py-8 xl:py-8">
       {/* ── SECTION HEADER BAR ── */}
       <SectionHeader
         title={t('about.sectionTitle')}

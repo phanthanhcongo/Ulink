@@ -16,7 +16,7 @@ export default async function AboutPage({ params: { locale } }: { params: { loca
 
   return (
     <div className="w-full bg-white">
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16 py-4">
+      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 py-4">
         {/* 8 Section chính */}
         <AboutHero />
         <AboutStats />
@@ -26,7 +26,7 @@ export default async function AboutPage({ params: { locale } }: { params: { loca
 
       <AboutStandards />
 
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16 py-4">
+      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 py-4">
         <AboutSustainability />
         <ResourcesNews />
          <DocSection />

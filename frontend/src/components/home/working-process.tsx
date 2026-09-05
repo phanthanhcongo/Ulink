@@ -33,7 +33,7 @@ export function WorkingProcess() {
   ];
 
   return (
-    <section className="w-full bg-[#f3f7fc] py-12 sm:py-16 lg:py-20 border-t border-slate-200/60">
+    <section className="w-full bg-[#f3f7fc] py-8 sm:py-8 lg:py-8 border-t border-slate-200/60">
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
         {/* ── SECTION HEADER ── */}
         <div className="text-center max-w-3xl mx-auto space-y-2">
@@ -53,7 +53,7 @@ export function WorkingProcess() {
           {steps.map(({ step, iconSrc }, idx) => (
             <div
               key={step}
-              className={`group flex flex-col justify-between rounded-[2px] border border-slate-200/90 bg-white p-5 sm:p-6 lg:p-6 xl:p-7 shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_8px_25px_-5px_rgba(23,105,226,0.2)] ${visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+              className={`group flex flex-col justify-between rounded-[2px] border border-slate-200/90 bg-white p-5 sm:p-6 lg:p-6 xl:p-7 shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_8px_25px_-5px_rgba(23,105,226,0.2)] ${visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
                 }`}
               style={{ transitionDelay: `${idx * 100}ms` }}
             >

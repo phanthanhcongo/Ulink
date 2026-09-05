@@ -25,7 +25,7 @@ export async function PartnersCertifications() {
   ];
 
   return (
-    <section className="mx-auto w-full max-w-[1440px] px-4 py-10 sm:px-8 lg:px-12 xl:px-16 lg:py-12 xl:py-16 overflow-hidden">
+    <section className="mx-auto w-full max-w-[1440px] px-4 py-8 sm:px-8 lg:px-12 xl:px-16 lg:py-8 xl:py-8 overflow-hidden">
       <SectionHeader
         title={t('partners.sectionTitle')}
         subtitle={t('partners.sectionSubTitle')}
@@ -152,7 +152,7 @@ export async function PartnersCertifications() {
         {/* Responsive Grid of Certificates (4 columns on iPad/Tablet md, 2 columns on Mobile) */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5">
           {/* Card 1: ISO 9001 */}
-          <div className="flex flex-col bg-[#2D60C3] rounded-[4px] p-5 text-left shadow-sm min-h-[170px] hover:shadow-md">
+          <div className="flex flex-col bg-[#2D60C3] rounded-[4px] p-5 text-left shadow-sm min-h-[170px] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
             <div className="h-12 w-12 rounded-full bg-white/15 flex items-center justify-center mb-4">
               <svg className="h-6 w-6 text-white stroke-[2]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
@@ -166,7 +166,7 @@ export async function PartnersCertifications() {
           </div>
 
           {/* Card 2: ISO 14001 */}
-          <div className="flex flex-col bg-[#2D60C3] rounded-[4px] p-5 text-left shadow-sm min-h-[170px] hover:shadow-md">
+          <div className="flex flex-col bg-[#2D60C3] rounded-[4px] p-5 text-left shadow-sm min-h-[170px] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
             <div className="h-12 w-12 rounded-full bg-white/15 flex items-center justify-center mb-4">
               <svg className="h-6 w-6 text-white stroke-[2]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
@@ -180,7 +180,7 @@ export async function PartnersCertifications() {
           </div>
 
           {/* Card 3: ISO 45001 */}
-          <div className="flex flex-col bg-[#2D60C3] rounded-[4px] p-5 text-left shadow-sm min-h-[170px] hover:shadow-md">
+          <div className="flex flex-col bg-[#2D60C3] rounded-[4px] p-5 text-left shadow-sm min-h-[170px] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
             <div className="h-12 w-12 rounded-full bg-white/15 flex items-center justify-center mb-4">
               <svg className="h-6 w-6 text-white stroke-[2]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
@@ -193,7 +193,7 @@ export async function PartnersCertifications() {
           </div>
 
           {/* Card 4: MSDS */}
-          <div className="flex flex-col bg-[#2D60C3] rounded-[4px] p-5 text-left shadow-sm min-h-[170px] hover:shadow-md">
+          <div className="flex flex-col bg-[#2D60C3] rounded-[4px] p-5 text-left shadow-sm min-h-[170px] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
             <div className="h-12 w-12 rounded-full bg-white/15 flex items-center justify-center mb-4">
               <svg className="h-6 w-6 text-white stroke-[2]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
