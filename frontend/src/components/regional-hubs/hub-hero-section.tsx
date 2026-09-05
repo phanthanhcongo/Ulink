@@ -80,16 +80,16 @@ export default function HubHeroSection({ locale }: HubHeroSectionProps) {
       </div>
 
       {/* Main Content Area */}
-      <div className="relative z-10 mx-auto w-full max-w-[1440px] px-4 pt-20 pb-20 sm:px-8 sm:pt-24 lg:px-16 lg:pt-32 lg:pb-28 flex flex-col justify-between min-h-[520px] sm:min-h-[580px] lg:min-h-[640px]">
+      <div className="relative z-10 mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 pt-20 pb-20 sm:pt-24 lg:pt-32 lg:pb-28 flex flex-col justify-between min-h-[520px] sm:min-h-[580px] lg:min-h-[640px]">
         {/* Left-aligned Info Card */}
-        <div className="max-w-[720px] text-left mt-auto mb-auto">
+        <div className="max-w-[760px] text-left mt-auto mb-auto">
           {/* Title */}
-          <h1 className="text-[24px] sm:text-[32px] md:text-[38px] lg:text-[42px] xl:text-[44px] font-extrabold text-white leading-[1.25] tracking-tight">
+          <h1 className="text-[28px] sm:text-[36px] md:text-[40px] lg:text-[48px] xl:text-[56px] font-extrabold text-white leading-[1.2] tracking-tight">
             {t.title}
           </h1>
 
           {/* Subtitle */}
-          <p className="mt-5 text-[15px] sm:text-[16px] lg:text-[18px] font-medium leading-relaxed text-slate-200/90">
+          <p className="mt-5 text-[14px] sm:text-[15px] lg:text-[16px] xl:text-[18px] font-medium leading-relaxed text-slate-200/90">
             {t.subtitle}
           </p>
 
@@ -97,14 +97,14 @@ export default function HubHeroSection({ locale }: HubHeroSectionProps) {
           <div className="mt-8 flex flex-wrap gap-4">
             <Link
               href="/quick-order"
-              className="bg-brand hover:bg-brand-strong text-white px-6 py-3.5 rounded-[3px] font-semibold text-[13px] sm:text-[14px] leading-relaxed flex items-center gap-2 transition-all group"
+              className="bg-brand hover:bg-brand-strong text-white px-6 py-3.5 rounded-[3px] font-semibold text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] leading-relaxed flex items-center gap-2 transition-all group"
             >
               {t.orderNow}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </Link>
             <Link
               href="/contact"
-              className="bg-white hover:bg-slate-50 text-slate-900 px-6 py-3.5 rounded-[3px] font-semibold text-[13px] sm:text-[14px] leading-relaxed flex items-center gap-2 border border-slate-200 transition-all group"
+              className="bg-white hover:bg-slate-50 text-slate-900 px-6 py-3.5 rounded-[3px] font-semibold text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] leading-relaxed flex items-center gap-2 border border-slate-200 transition-all group"
             >
               {t.contact}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -114,27 +114,31 @@ export default function HubHeroSection({ locale }: HubHeroSectionProps) {
       </div>
 
       {/* Order Tracking Card (Overlapping bottom edge) */}
-      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 translate-y-1/2 w-[calc(100%-2rem)] max-w-[1120px] bg-white rounded-[3px] p-6 shadow-2xl border border-slate-100/60 z-20">
-        <div className="flex flex-col gap-4">
-          <span className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 leading-snug text-center md:text-left">
-            {t.trackOrder}
-          </span>
-          <form onSubmit={handleSearchTracking} className="flex flex-col sm:flex-row items-center gap-3 w-full">
-            <input
-              type="text"
-              value={trackingCode}
-              onChange={(e) => setTrackingCode(e.target.value)}
-              placeholder={t.placeholder}
-              className="w-full border border-slate-300 rounded-[3px] px-4 py-3 text-[13px] sm:text-[14px] leading-relaxed text-slate-800 bg-white placeholder-slate-400 focus:outline-none focus:border-brand transition-colors min-h-[44px]"
-            />
-            <button
-              type="submit"
-              className="w-full sm:w-auto bg-brand hover:bg-brand-strong text-white font-bold text-[13px] sm:text-[14px] leading-relaxed px-8 py-3 rounded-[3px] flex items-center justify-center gap-2 transition-colors shrink-0"
-            >
-              <Search className="h-4 w-4 stroke-[2.5]" />
-              {t.search}
-            </button>
-          </form>
+      <div className="absolute bottom-0 left-0 right-0 z-20 translate-y-1/2">
+        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
+          <div className="w-full bg-white rounded-[3px] p-6 sm:p-8 shadow-2xl border border-slate-100/60">
+            <div className="flex flex-col gap-4">
+              <span className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 leading-snug text-center md:text-left">
+                {t.trackOrder}
+              </span>
+              <form onSubmit={handleSearchTracking} className="flex flex-col sm:flex-row items-center gap-3 w-full">
+                <input
+                  type="text"
+                  value={trackingCode}
+                  onChange={(e) => setTrackingCode(e.target.value)}
+                  placeholder={t.placeholder}
+                  className="w-full border border-slate-300 rounded-[3px] px-4 py-3 text-[13px] sm:text-[14px] leading-relaxed text-slate-800 bg-white placeholder-slate-400 focus:outline-none focus:border-brand transition-colors min-h-[44px]"
+                />
+                <button
+                  type="submit"
+                  className="w-full sm:w-auto bg-brand hover:bg-brand-strong text-white font-bold text-[13px] sm:text-[14px] leading-relaxed px-8 py-3 rounded-[3px] flex items-center justify-center gap-2 transition-colors shrink-0"
+                >
+                  <Search className="h-4 w-4 stroke-[2.5]" />
+                  {t.search}
+                </button>
+              </form>
+            </div>
+          </div>
         </div>
       </div>
     </section>

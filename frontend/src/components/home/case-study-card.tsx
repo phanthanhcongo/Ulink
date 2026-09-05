@@ -31,7 +31,7 @@ export function CaseStudyCard({
   return (
     <Link
       href={`/resources/case-study-${num}`}
-      className="ui-card-hover relative flex h-full w-full flex-col overflow-hidden rounded-[3px] border border-slate-200 bg-white shadow-xs transition-all duration-300 hover:shadow-md"
+      className="group relative flex h-full w-full flex-col overflow-hidden rounded-[3px] border border-slate-200 bg-white shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]"
     >
       {/* Top Banner Image */}
       <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100">

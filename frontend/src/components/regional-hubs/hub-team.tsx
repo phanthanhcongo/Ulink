@@ -41,22 +41,22 @@ export default async function HubTeam() {
 
   return (
     <section className="w-full bg-white py-16 sm:py-20 lg:py-24 border-t border-slate-100">
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16 flex flex-col items-center gap-12 lg:gap-16">
+      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 flex flex-col items-center gap-12 lg:gap-16">
         
         {/* Header */}
         <div className="text-center max-w-[800px] w-full">
-          <h2 className="text-[22px] sm:text-[26px] md:text-[30px] lg:text-[36px] font-extrabold text-slate-900 leading-tight uppercase tracking-tight">
+          <h2 className="text-[16px] min-[375px]:text-[18px] sm:text-[24px] lg:text-[28px] xl:text-[32px] font-semibold sm:font-bold tracking-tight text-slate-900 leading-tight lg:leading-[36px] xl:leading-[40px] uppercase">
             {t('hubTeam.title')}
           </h2>
-          <p className="mt-4 text-[13px] sm:text-[14px] leading-relaxed text-slate-500 max-w-[720px] mx-auto">
+          <p className="mt-4 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] leading-relaxed text-slate-500 max-w-[720px] mx-auto">
             {t('hubTeam.desc')}
           </p>
         </div>
 
         {/* Member Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 w-full">
           {members.map((member) => (
-            <div key={member.id} className="flex flex-col items-center text-center group">
+            <div key={member.id} className="group flex flex-col items-center text-center p-6 rounded-[3px] border border-slate-200/80 bg-white shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
               
               {/* Photo */}
               <div className="relative w-full aspect-square overflow-hidden mb-5 bg-slate-50 border border-slate-100/50">
@@ -73,7 +73,7 @@ export default async function HubTeam() {
               <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-[#1A1A1A] leading-snug mb-1">
                 {member.name}
               </h3>
-              <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-700 font-normal mb-4">
+              <p className="text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] leading-relaxed text-slate-700 font-normal mb-4">
                 {t(member.roleKey)}
               </p>
 
@@ -113,7 +113,7 @@ export default async function HubTeam() {
               {/* Contact Button */}
               <Link
                 href="/contact"
-                className="border border-[#0066FF] text-[#0066FF] text-[13px] sm:text-[14px] leading-relaxed font-bold py-2.5 px-8 rounded-none hover:bg-[#0066FF]/5 transition-colors w-[150px] inline-flex justify-center items-center mt-2 min-h-[44px]"
+                className="border border-[#0066FF] text-[#0066FF] text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] leading-relaxed font-bold py-2.5 px-8 rounded-none hover:bg-[#0066FF]/5 transition-colors w-[150px] inline-flex justify-center items-center mt-2 min-h-[44px]"
               >
                 {t('hubTeam.contact')}
               </Link>

@@ -38,7 +38,7 @@ export function CaseStudies() {
   };
 
   return (
-    <section className="mx-auto w-full max-w-[1440px] px-4 py-10 sm:px-8 lg:px-16 lg:py-12 xl:py-16">
+    <section className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 py-10 lg:py-12 xl:py-16">
       {/* ── SECTION HEADER BAR ── */}
       <SectionHeader
         title={t('caseStudy.sectionTitle')}

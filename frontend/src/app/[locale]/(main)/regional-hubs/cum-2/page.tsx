@@ -8,7 +8,7 @@ import HubBenefits from '@/components/regional-hubs/hub-benefits';
 import HubOffers from '@/components/regional-hubs/hub-offers';
 import HubPartner from '@/components/regional-hubs/hub-partner';
 import HubTeam from '@/components/regional-hubs/hub-team';
-import { CaseStudies, ResourcesNews } from '@/components/home';
+import { CaseStudies,ResourcesNews } from '@/components/home';
 
 interface PageProps {
   params: {

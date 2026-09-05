@@ -75,28 +75,28 @@ export default async function HubBenefits() {
 
   return (
     <section className="w-full bg-white pt-20 pb-20 border-t border-slate-100">
-      <div className="mx-auto w-full max-w-[1440px] px-6 sm:px-12 md:px-16 lg:px-20 flex flex-col items-center gap-16">
+      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 flex flex-col items-center gap-16">
         
         {/* Header */}
         <div className="text-center max-w-[900px] w-full">
-          <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-brand block mb-3">
+          <span className="text-[12px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-bold uppercase tracking-wider text-brand block mb-3">
             {t('hubBenefits.eyebrow')}
           </span>
-          <h2 className="text-[22px] sm:text-[26px] md:text-[30px] lg:text-[36px] font-extrabold text-[#0F2942] leading-tight max-w-[850px] mx-auto">
+          <h2 className="text-[16px] min-[375px]:text-[18px] sm:text-[24px] lg:text-[28px] xl:text-[32px] font-semibold sm:font-bold tracking-tight text-[#0F2942] leading-tight lg:leading-[36px] xl:leading-[40px] max-w-[850px] mx-auto">
             {t('hubBenefits.title')}
           </h2>
         </div>
 
         {/* Benefits Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-y-10 gap-x-6 xl:gap-x-8 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-5 w-full">
           {items.map((item) => (
-            <div key={item.id} className="flex flex-col items-center text-center px-2 group">
+            <div key={item.id} className="group flex flex-col items-center text-center p-5 rounded-[3px] border border-slate-200/80 bg-white shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
               {/* Icon */}
               <div className="flex items-center justify-center mb-4 h-12 w-12 group-hover:scale-110 transition-transform duration-300">
                 {item.icon}
               </div>
               {/* Title */}
-              <h3 className="font-medium text-slate-800 text-[13px] sm:text-[14px] leading-snug max-w-[180px]">
+              <h3 className="font-medium text-slate-800 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] leading-snug max-w-[180px]">
                 {t(item.titleKey as any)}
               </h3>
             </div>
