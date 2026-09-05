@@ -14,13 +14,13 @@ export function CareersHero() {
       <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
         {/* Left Column: Headline & Quick Props */}
         <div className="lg:col-span-6 flex flex-col gap-4">
-          <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-blue-600">
+          <span className="text-body-regular font-bold uppercase tracking-wider text-blue-600">
             GIA NHẬP ULINK INDUSTRIES
           </span>
-          <h1 className="text-[30px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold tracking-tight text-slate-900 leading-tight">
+          <h1 className="text-[30px] font-extrabold tracking-tight text-slate-900 leading-tight">
             Kiến tạo giá trị khác biệt.<br />Phát triển bền vững.
           </h1>
-          <p className="text-[15px] sm:text-[16px] leading-relaxed text-slate-500 max-w-[540px]">
+          <p className="text-body-large leading-relaxed text-slate-500 max-w-[540px]">
             Tại ULINK, chúng tôi tin rằng con người là nền tảng của mọi thành công. Chúng tôi không
             ngừng tìm kiếm các tài năng đầy nhiệt huyết, tận tâm để cùng nhau xây dựng môi trường
             làm việc thông minh và bền vững cho tương lai.
@@ -30,33 +30,33 @@ export function CareersHero() {
           <div className="mt-6 grid grid-cols-1 gap-y-6 sm:grid-cols-3 sm:gap-x-6 sm:gap-y-0">
             {/* Col 1 */}
             <div className="flex flex-col gap-1.5">
-              <div className="flex items-center gap-2 text-[15px] sm:text-[16px] font-bold text-slate-800">
+              <div className="flex items-center gap-2 text-body-large font-bold text-slate-800">
                 <ShieldCheck className="h-5 w-5 text-blue-600 shrink-0" />
                 <span>Phát triển toàn diện</span>
               </div>
-              <p className="text-[13px] sm:text-[14px] text-slate-500 leading-relaxed">
+              <p className="text-body-regular text-slate-500 leading-relaxed">
                 Học tập không giới hạn thông qua dự án thực tế.
               </p>
             </div>
 
             {/* Col 2 */}
             <div className="flex flex-col gap-1.5">
-              <div className="flex items-center gap-2 text-[15px] sm:text-[16px] font-bold text-slate-800">
+              <div className="flex items-center gap-2 text-body-large font-bold text-slate-800">
                 <Zap className="h-5 w-5 text-blue-600 shrink-0" />
                 <span>Phát triển không ngừng</span>
               </div>
-              <p className="text-[13px] sm:text-[14px] text-slate-500 leading-relaxed">
+              <p className="text-body-regular text-slate-500 leading-relaxed">
                 Lộ trình thăng tiến rõ ràng, ghi nhận xứng đáng.
               </p>
             </div>
 
             {/* Col 3 */}
             <div className="flex flex-col gap-1.5">
-              <div className="flex items-center gap-2 text-[15px] sm:text-[16px] font-bold text-slate-800">
+              <div className="flex items-center gap-2 text-body-large font-bold text-slate-800">
                 <UserCheck className="h-5 w-5 text-blue-600 shrink-0" />
                 <span>Phúc lợi hấp dẫn</span>
               </div>
-              <p className="text-[13px] sm:text-[14px] text-slate-500 leading-relaxed">
+              <p className="text-body-regular text-slate-500 leading-relaxed">
                 Chăm sóc sức khỏe & Cân bằng cuộc sống tối ưu.
               </p>
             </div>
@@ -87,10 +87,10 @@ export function CareersHero() {
                 <Icon className="h-6 w-6" />
               </div>
               <div className="flex flex-col">
-                <span className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-slate-900 leading-tight transition-colors duration-200 group-hover:text-[#1769E2]">
+                <span className="text-[22px] font-extrabold text-slate-900 leading-tight transition-colors duration-200 group-hover:text-[#1769E2]">
                   {s.value}
                 </span>
-                <span className="text-[13px] sm:text-[14px] text-slate-400 font-medium mt-0.5 leading-tight">
+                <span className="text-body-regular text-slate-400 font-medium mt-0.5 leading-tight">
                   {s.label}
                 </span>
               </div>

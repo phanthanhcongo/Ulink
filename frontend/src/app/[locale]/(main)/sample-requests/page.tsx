@@ -37,15 +37,15 @@ export default async function SampleRequestsPage({ params: { locale } }: Props) 
 
       <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-6 px-4 py-8 sm:px-8 sm:gap-8 lg:px-12 xl:px-16 lg:py-12">
         <div className="max-w-3xl">
-          <p className="text-[11px] font-mono uppercase tracking-[0.2em] text-brand">Portal</p>
-          <h1 className="mt-2 text-[28px] sm:text-[34px] md:text-[38px] lg:text-[42px] xl:text-[44px] font-bold tracking-tight text-foreground">
+          <p className="text-caption-responsive font-mono uppercase tracking-[0.2em] text-brand">Portal</p>
+          <h1 className="mt-2 text-hero-title font-bold text-foreground">
             {locale === 'vi'
               ? 'Yêu cầu hàng mẫu'
               : locale === 'ja'
                 ? 'サンプル依頼'
                 : 'Sample Requests'}
           </h1>
-          <p className="mt-2 text-caption-responsive leading-6 text-muted-foreground sm:text-body-regular">
+          <p className="mt-2 text-caption-responsive leading-6 text-muted-foreground">
             {locale === 'vi'
               ? 'Theo dõi trạng thái các yêu cầu nhận hàng mẫu thử của bạn.'
               : locale === 'ja'

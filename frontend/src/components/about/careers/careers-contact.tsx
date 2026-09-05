@@ -7,31 +7,31 @@ export function CareersContact() {
         {/* Left Column: HR Contacts */}
         <div className="lg:col-span-5 flex flex-col justify-between gap-6">
           <div className="flex flex-col gap-6">
-            <h2 className="text-[30px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold text-slate-900">
+            <h2 className="text-[30px] font-extrabold text-slate-900">
               Liên hệ & Địa chỉ
             </h2>
 
             {/* VĂN PHÒNG */}
             <div className="flex flex-col gap-3">
-              <div className="flex items-center gap-2 text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-slate-400">
+              <div className="flex items-center gap-2 text-body-regular font-bold uppercase tracking-wider text-slate-400">
                 <Building className="h-4.5 w-4.5 text-blue-600 shrink-0" />
                 <span>VĂN PHÒNG</span>
               </div>
               
               <div className="border-l-[3px] border-l-blue-600 bg-white p-4 rounded-[3px] border border-slate-200/80 shadow-xs flex flex-col gap-1">
-                <span className="text-[15px] sm:text-[16px] lg:text-[18px] font-bold text-slate-800">
+                <span className="text-body-large font-bold text-slate-800">
                   ULink Industries - Trụ sở chính
                 </span>
-                <span className="text-[13px] sm:text-[14px] text-slate-500 leading-relaxed">
+                <span className="text-body-regular text-slate-500 leading-relaxed">
                   Tầng 12, Tòa nhà Charm Suite, số 36 Trần Phú, phường Mỹ Đình 1, quận Nam Từ Liêm, TP. Hà Nội
                 </span>
               </div>
 
               <div className="border-l-[3px] border-l-blue-600 bg-white p-4 rounded-[3px] border border-slate-200/80 shadow-xs flex flex-col gap-1">
-                <span className="text-[15px] sm:text-[16px] lg:text-[18px] font-bold text-slate-800">
+                <span className="text-body-large font-bold text-slate-800">
                   ULink Industries - Chi nhánh TP.HCM
                 </span>
-                <span className="text-[13px] sm:text-[14px] text-slate-500 leading-relaxed">
+                <span className="text-body-regular text-slate-500 leading-relaxed">
                   Lầu 8, Tòa nhà Pearl Plaza, số 561A Điện Biên Phủ, phường 25, quận Bình Thạnh, TP. Hồ Chí Minh
                 </span>
               </div>
@@ -39,30 +39,30 @@ export function CareersContact() {
 
             {/* LIÊN HỆ HỢP TÁC */}
             <div className="flex flex-col gap-3">
-              <div className="flex items-center gap-2 text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-slate-400">
+              <div className="flex items-center gap-2 text-body-regular font-bold uppercase tracking-wider text-slate-400">
                 <Mail className="h-4.5 w-4.5 text-blue-600 shrink-0" />
                 <span>LIÊN HỆ HỢP TÁC</span>
               </div>
 
               <div className="border-l-[3px] border-l-blue-600 bg-white p-4 rounded-[3px] border border-slate-200/80 shadow-xs flex flex-col gap-1">
-                <span className="text-[15px] sm:text-[16px] lg:text-[18px] font-bold text-slate-800">Hotline</span>
-                <span className="text-[13px] sm:text-[14px] text-slate-500 leading-relaxed">
+                <span className="text-body-large font-bold text-slate-800">Hotline</span>
+                <span className="text-body-regular text-slate-500 leading-relaxed">
                   1900 636 899 (trong nước)<br />
                   84 28 3820 9988 (nước ngoài)
                 </span>
               </div>
 
               <div className="border-l-[3px] border-l-blue-600 bg-white p-4 rounded-[3px] border border-slate-200/80 shadow-xs flex flex-col gap-1">
-                <span className="text-[15px] sm:text-[16px] lg:text-[18px] font-bold text-slate-800">Hotline doanh nghiệp</span>
-                <span className="text-[13px] sm:text-[14px] text-slate-500 leading-relaxed">
+                <span className="text-body-large font-bold text-slate-800">Hotline doanh nghiệp</span>
+                <span className="text-body-regular text-slate-500 leading-relaxed">
                   1900 636 900 (trong nước)<br />
                   84 28 3820 9900 (nước ngoài)
                 </span>
               </div>
 
               <div className="border-l-[3px] border-l-blue-600 bg-white p-4 rounded-[3px] border border-slate-200/80 shadow-xs flex flex-col gap-1">
-                <span className="text-[15px] sm:text-[16px] lg:text-[18px] font-bold text-slate-800">Email</span>
-                <span className="text-[13px] sm:text-[14px] text-slate-500 leading-relaxed">
+                <span className="text-body-large font-bold text-slate-800">Email</span>
+                <span className="text-body-regular text-slate-500 leading-relaxed">
                   contact@ulinkindustries.com
                 </span>
               </div>

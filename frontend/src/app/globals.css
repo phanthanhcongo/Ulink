@@ -197,6 +197,18 @@
     @apply text-[11px] font-medium sm:text-[12px] lg:text-[13px] xl:text-[14px];
   }
 
+  .text-stat-value {
+    @apply text-[22px] font-extrabold tracking-tight sm:text-[26px] lg:text-[28px] xl:text-[32px];
+  }
+
+  .form-label-responsive {
+    @apply text-caption-responsive block font-semibold text-slate-700;
+  }
+
+  .form-control-responsive {
+    @apply text-body-regular w-full rounded-[3px] border border-slate-300 bg-white px-4 py-3 outline-none transition focus:border-blue-600 focus:ring-1 focus:ring-blue-600;
+  }
+
   .card-hover-standard {
     @apply transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)];
   }

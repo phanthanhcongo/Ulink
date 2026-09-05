@@ -29,10 +29,10 @@ export async function AboutSection() {
           />
           {/* Floating Photo Caption Card (535x73px style) */}
           <div className="absolute bottom-4 left-4 right-4 flex flex-col items-start gap-1 bg-white/95 border border-slate-200/90 p-3 rounded-[3px] opacity-95 backdrop-blur-sm transition-opacity duration-300 group-hover:opacity-100 shadow-sm">
-            <span className="text-[11px] sm:text-[12px] lg:text-[13px] xl:text-[14px] font-bold text-slate-900 leading-normal">
+            <span className="text-caption-responsive font-bold text-slate-900 leading-normal">
               {t('about.captionHub')}
             </span>
-            <span className="px-2.5 py-0.5 rounded-full text-[11px] sm:text-[11px] lg:text-[11px] xl:text-[12px] font-bold bg-blue-50 text-blue-600 border border-blue-200">
+            <span className="px-2.5 py-0.5 rounded-full text-caption-responsive font-bold bg-blue-50 text-blue-600 border border-blue-200">
               {t('about.captionStatus')}
             </span>
           </div>
@@ -41,18 +41,18 @@ export async function AboutSection() {
         {/* Right Column: Text Content & 4 Key Metric Items */}
         <div className="group ui-card-hover flex flex-col lg:col-span-6 justify-between bg-white border border-slate-200 shadow-[0_4px_16px_rgba(15,23,42,0.06)] p-4 sm:p-6 lg:p-6 xl:p-7 rounded-[3px] gap-8">
           <div>
-            <h3 className="text-[16px] font-bold leading-[24px] text-primary transition-colors duration-300 group-hover:text-brand sm:text-[18px] sm:leading-[26px] lg:text-[20px] lg:leading-[28px] xl:text-[24px] xl:leading-[32px]">
+            <h3 className="text-card-title text-primary transition-colors duration-300 group-hover:text-brand">
               {t('about.mainTitle')}
             </h3>
 
-            <p className="mt-4 text-[13px] leading-[20px] text-slate-600 font-medium sm:text-[14px] sm:leading-[22px] lg:text-[15px] lg:leading-[24px] xl:text-[16px] xl:leading-[26px]">
+            <p className="mt-4 text-body-regular text-slate-600 font-medium">
               {t('about.mainDesc')}
             </p>
 
             <div className="my-6 border-b border-slate-200" />
 
             {/* Bullet Points */}
-            <ul className="space-y-4 text-[11px] font-medium leading-[16px] text-foreground sm:text-[12px] sm:leading-[18px] lg:text-[13px] lg:leading-[20px] xl:text-[14px] xl:leading-[22px]">
+            <ul className="space-y-4 text-caption-responsive font-medium text-foreground">
               <li className="flex items-center gap-3.5">
                 <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-blue-50 text-brand dark:bg-blue-950/50 dark:text-blue-400">
                   <Check className="h-4.5 w-4.5" />
@@ -87,7 +87,7 @@ export async function AboutSection() {
                   className="h-4.5 w-4.5 object-contain"
                 />
               </div>
-              <span className="text-[11px] sm:text-[11px] font-semibold text-slate-800 lg:text-[12px] xl:text-[13px] whitespace-nowrap leading-none sm:leading-[15px]">
+              <span className="text-caption-responsive font-semibold text-slate-800 whitespace-nowrap leading-none">
                 {t('about.metric1')}
               </span>
             </div>
@@ -103,7 +103,7 @@ export async function AboutSection() {
                   className="h-4.5 w-4.5 object-contain"
                 />
               </div>
-              <span className="text-[11px] sm:text-[11px] font-semibold text-slate-800 lg:text-[12px] xl:text-[13px] whitespace-nowrap leading-none sm:leading-[15px]">
+              <span className="text-caption-responsive font-semibold text-slate-800 whitespace-nowrap leading-none">
                 {t('about.metric2')}
               </span>
             </div>
@@ -119,7 +119,7 @@ export async function AboutSection() {
                   className="h-4.5 w-4.5 object-contain"
                 />
               </div>
-              <span className="text-[11px] sm:text-[11px] font-semibold text-slate-800 lg:text-[12px] xl:text-[13px] whitespace-nowrap leading-none sm:leading-[15px]">
+              <span className="text-caption-responsive font-semibold text-slate-800 whitespace-nowrap leading-none">
                 {t('about.metric3')}
               </span>
             </div>
@@ -135,7 +135,7 @@ export async function AboutSection() {
                   className="h-4.5 w-4.5 object-contain"
                 />
               </div>
-              <span className="text-[11px] sm:text-[11px] font-semibold text-slate-800 lg:text-[12px] xl:text-[13px] whitespace-nowrap leading-none sm:leading-[15px]">
+              <span className="text-caption-responsive font-semibold text-slate-800 whitespace-nowrap leading-none">
                 {t('about.metric4')}
               </span>
             </div>
@@ -144,7 +144,7 @@ export async function AboutSection() {
           <div className="mt-6 flex justify-start">
             <Link
               href="/about"
-              className="inline-flex items-center gap-2 rounded-[3px] bg-brand px-5 py-2.5 text-[11px] sm:text-[12px] lg:text-[13px] xl:text-[14px] font-semibold text-white transition-all hover:bg-brand-strong"
+              className="inline-flex items-center gap-2 rounded-[3px] bg-brand px-5 py-2.5 text-caption-responsive font-semibold text-white transition-all hover:bg-brand-strong"
             >
               Tìm hiểu thêm
             </Link>

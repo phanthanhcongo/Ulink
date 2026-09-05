@@ -55,7 +55,7 @@ export default async function AboutNewsDetailPage({ params }: PageProps) {
               <div className="mb-4 inline-flex items-center rounded-full bg-blue-50 px-3 py-1 text-caption-responsive font-semibold text-blue-700 ring-1 ring-inset ring-blue-700/10">
                 {currentArticle.category}
               </div>
-              <h1 className="max-w-3xl text-hero-title font-bold tracking-tight text-slate-900 sm:text-hero-title">
+              <h1 className="max-w-3xl text-hero-title font-bold tracking-tight text-slate-900">
                 {currentArticle.title}
               </h1>
               <p className="mt-4 max-w-3xl text-body-regular leading-7 text-slate-600">
@@ -111,7 +111,7 @@ export default async function AboutNewsDetailPage({ params }: PageProps) {
               {currentArticle.sections.map((section) => (
                 <section key={section.title}>
                   <h3 className="text-section-title font-bold text-slate-900">{section.title}</h3>
-                  <div className="mt-4 space-y-4 text-[15px] leading-7 text-slate-600">
+                  <div className="mt-4 space-y-4 text-body-large leading-7 text-slate-600">
                     {section.paragraphs.map((paragraph) => (
                       <p key={paragraph}>{paragraph}</p>
                     ))}

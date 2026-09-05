@@ -661,7 +661,7 @@ export default async function IndustryDetailPage({ params: { locale, slug } }: I
       currentSlug={slug}
       translations={translations}
     >
-      <CtaBanner containerClassName="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16" />
+      <CtaBanner containerClassName="page-container" />
     </IndustryDetailClient>
   );
 }

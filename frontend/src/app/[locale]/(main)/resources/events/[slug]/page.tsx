@@ -88,7 +88,7 @@ export default async function EventDetailPage({ params }: Props) {
   return (
     <main className="min-h-screen bg-white">
       {/* Breadcrumb */}
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 pt-6">
+      <div className="page-container pt-6">
         <Breadcrumb
           className="px-0 py-0 mx-0 max-w-none"
           items={[
@@ -101,7 +101,7 @@ export default async function EventDetailPage({ params }: Props) {
       </div>
 
       {/* Main Grid Section */}
-      <section className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 pt-8 pb-16">
+      <section className="page-container pt-8 pb-16">
         <div className="grid grid-cols-1 lg:grid-cols-[1.8fr_1fr] gap-10 items-start">
 
           {/* Left Content Column */}

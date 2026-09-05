@@ -34,13 +34,13 @@ export function WorkingProcess() {
 
   return (
     <section className="w-full bg-[#f3f7fc] py-8 sm:py-8 lg:py-8 border-t border-slate-200/60">
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
+      <div className="page-container">
         {/* ── SECTION HEADER ── */}
         <div className="text-center max-w-3xl mx-auto space-y-2">
-          <span className="text-[20px] sm:text-[24px] lg:text-[28px] xl:text-[32px] font-bold tracking-tight text-brand leading-tight sm:leading-[32px] lg:leading-[36px] xl:leading-[40px] block">
+          <span className="text-section-title font-bold text-brand leading-tight block">
             {t('workingProcess.sectionTitle')}
           </span>
-          <p className="text-[14px] sm:text-[15px] lg:text-[16px] xl:text-[18px] font-normal text-slate-600 leading-relaxed sm:leading-[22px] lg:leading-[24px] xl:leading-[28px]">
+          <p className="text-body-large font-normal text-slate-600 leading-relaxed">
             {t('workingProcess.sectionSubTitle')}
           </p>
         </div>
@@ -71,27 +71,27 @@ export function WorkingProcess() {
                   </div>
 
                   <div className="flex flex-col min-w-0">
-                    <span className="text-[11px] sm:text-[11px] lg:text-[12px] xl:text-[13px] font-semibold text-brand">
+                    <span className="text-caption-responsive font-semibold text-brand">
                       {t(`workingProcess.step${step}Number` as any)}
                     </span>
-                    <h3 className="mt-0.5 text-[15px] sm:text-[16px] lg:text-[18px] xl:text-[20px] font-bold text-slate-900 leading-snug sm:leading-[24px] lg:leading-[26px] xl:leading-[28px] group-hover:text-brand transition-colors">
+                    <h3 className="mt-0.5 text-card-title font-bold text-slate-900 leading-snug group-hover:text-brand transition-colors">
                       {t(`workingProcess.step${step}Title` as any)}
                     </h3>
                   </div>
                 </div>
 
                 {/* Description Text */}
-                <p className="text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] leading-relaxed sm:leading-[20px] lg:leading-[22px] xl:leading-[24px] text-slate-600 font-normal">
+                <p className="text-body-regular leading-relaxed text-slate-600 font-normal">
                   {t(`workingProcess.step${step}Desc` as any)}
                 </p>
               </div>
 
               {/* KPI Footer */}
               <div className="mt-5 sm:mt-6 pt-3.5 sm:pt-4 border-t border-slate-100 flex items-center justify-between">
-                <span className="text-[11px] sm:text-[11px] lg:text-[12px] xl:text-[13px] font-normal text-slate-500">
+                <span className="text-caption-responsive font-normal text-slate-500">
                   {t(`workingProcess.step${step}KpiLabel` as any)}
                 </span>
-                <span className="text-[11px] sm:text-[12px] lg:text-[13px] xl:text-[14px] font-bold text-brand bg-[#eff5fe] px-2.5 py-0.5 rounded-[2px] border border-[#d0e2fb]">
+                <span className="text-caption-responsive font-bold text-brand bg-[#eff5fe] px-2.5 py-0.5 rounded-[2px] border border-[#d0e2fb]">
                   {t(`workingProcess.step${step}KpiValue` as any)}
                 </span>
               </div>

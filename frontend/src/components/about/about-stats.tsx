@@ -36,13 +36,13 @@ export function AboutStats() {
           return (
             <div
               key={index}
-              className="group flex flex-col items-center text-center px-4 sm:px-6 py-4 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] rounded-[3px]"
+              className="group flex flex-col items-center text-center px-4 sm:px-6 py-4 card-hover-standard rounded-[3px]"
             >
               <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-full bg-blue-50 text-blue-600 transition-colors duration-200 group-hover:bg-[#1769E2] group-hover:text-white">
                 <Icon className="h-5 w-5" />
               </div>
-              <span className="text-[22px] sm:text-[26px] font-extrabold text-slate-900 tracking-tight group-hover:text-[#1769E2] transition-colors duration-200">{item.value}</span>
-              <p className="mt-2 text-[12px] sm:text-[13px] leading-relaxed text-slate-500 font-medium">
+              <span className="text-stat-value text-slate-900 group-hover:text-[#1769E2] transition-colors duration-200">{item.value}</span>
+              <p className="text-caption-responsive mt-2 text-slate-500">
                 {item.label}
                 <span className="block">{item.sub}</span>
               </p>

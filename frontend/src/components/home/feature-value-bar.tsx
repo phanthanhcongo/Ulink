@@ -38,7 +38,7 @@ export async function FeatureValueBar() {
 
   return (
     <section className="hidden sm:block w-full bg-[#f0f4f8] py-6 sm:py-7 lg:py-8">
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
+      <div className="page-container">
         <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4 lg:gap-4">
           {features.map((f) => (
             <div
@@ -57,10 +57,10 @@ export async function FeatureValueBar() {
                 />
               </div>
               <div className="w-full min-w-0">
-                <p className="text-[15px] font-bold leading-snug text-slate-900 transition-colors duration-300 group-hover:text-brand whitespace-nowrap sm:text-[16px] lg:text-[18px] xl:text-[20px] lg:font-semibold">
+                <p className="text-body-large font-bold leading-snug text-slate-900 transition-colors duration-300 group-hover:text-brand whitespace-nowrap lg:font-semibold">
                   {t(`features.${f.titleKey}`)}
                 </p>
-                <p className="mt-1 text-[11px] text-slate-600 font-medium sm:text-[12px] sm:leading-[17px] lg:text-[13px] lg:leading-[18px] xl:text-[14px]">
+                <p className="mt-1 text-caption-responsive text-slate-600 font-medium">
                   {t(`features.${f.descKey}`)}
                 </p>
               </div>

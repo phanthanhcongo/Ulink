@@ -8,5 +8,5 @@ export default async function AboutNewsPage({
   setRequestLocale(locale);
   const t = await getTranslations('aboutSidebar');
 
-  return <h1 className="mt-2 text-[24px] font-bold text-primary">{t('news')}</h1>;
+  return <h1 className="mt-2 text-section-title font-bold text-primary">{t('news')}</h1>;
 }

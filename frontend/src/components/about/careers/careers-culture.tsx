@@ -44,14 +44,14 @@ export function CareersCulture() {
     <section className="py-12 lg:py-16">
       {/* Header section with grid/flex alignment */}
       <div className="flex flex-col gap-2 mb-10">
-        <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-blue-600">
+        <span className="text-body-regular font-bold uppercase tracking-wider text-blue-600">
           • VĂN HÓA & GIÁ TRỊ CỐT LÕI
         </span>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-end">
-          <h2 className="text-[30px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold tracking-tight text-slate-900 leading-tight">
+          <h2 className="text-[30px] font-extrabold tracking-tight text-slate-900 leading-tight">
             Sáu giá trị<br />cốt lõi của chúng tôi.
           </h2>
-          <p className="text-[15px] sm:text-[16px] leading-relaxed text-slate-500 max-w-lg">
+          <p className="text-body-large leading-relaxed text-slate-500 max-w-lg">
             Các giá trị ULink Industries cam kết thực hiện trong mọi hành động để hướng đến thành
             công vượt trội, bao gồm:
           </p>
@@ -70,13 +70,13 @@ export function CareersCulture() {
               <div className="text-blue-600 mb-6 transition-colors duration-200 group-hover:text-[#1769E2]">
                 <Icon className="h-8 w-8" />
               </div>
-              <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-slate-400">
+              <span className="text-body-regular font-bold uppercase tracking-wider text-slate-400">
                 {item.number}
               </span>
-              <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-800 mt-2 transition-colors duration-200 group-hover:text-[#1769E2]">
+              <h3 className="text-card-title text-slate-800 mt-2 transition-colors duration-200 group-hover:text-[#1769E2]">
                 {item.title}
               </h3>
-              <p className="mt-3 text-[13px] sm:text-[14px] leading-relaxed text-slate-500">
+              <p className="mt-3 text-body-regular leading-relaxed text-slate-500">
                 {item.desc}
               </p>
             </div>

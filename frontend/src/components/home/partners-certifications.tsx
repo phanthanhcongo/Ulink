@@ -82,10 +82,10 @@ export async function PartnersCertifications() {
       <div className="hidden lg:flex flex-row items-center justify-between gap-3 mt-12 sm:mt-14 lg:mt-16 select-none">
         {/* Col 1+2: Title & Desc */}
         <div className="flex w-[calc(212px*2+theme(gap.3))] h-[138px] shrink-0 flex-col justify-center bg-white px-4 text-left">
-          <h3 className="text-[16px] lg:text-[20px] xl:text-[24px] font-bold text-primary leading-tight">
+          <h3 className="text-card-title text-primary leading-tight">
             {t('partners.isoTitle')}
           </h3>
-          <p className="mt-2 text-[11px] lg:text-[13px] xl:text-[14px] leading-relaxed text-muted-foreground font-medium">
+          <p className="mt-2 text-caption-responsive leading-relaxed text-muted-foreground font-medium">
             {t('partners.isoDesc')}
           </p>
         </div>
@@ -141,10 +141,10 @@ export async function PartnersCertifications() {
       <div className="flex lg:hidden flex-col gap-6 mt-10 select-none">
         {/* Header Title & Subtitle */}
         <div className="text-left">
-          <h3 className="text-[16px] sm:text-[18px] font-bold text-primary leading-tight">
+          <h3 className="text-card-title text-primary leading-tight">
             {t('partners.isoTitle')}
           </h3>
-          <p className="mt-2 text-[11px] sm:text-[12px] leading-relaxed text-slate-600 font-medium">
+          <p className="mt-2 text-caption-responsive leading-relaxed text-slate-600 font-medium">
             {t('partners.isoDesc')}
           </p>
         </div>
@@ -159,8 +159,8 @@ export async function PartnersCertifications() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 11l2 2 4-4" />
               </svg>
             </div>
-            <span className="text-white font-extrabold text-[14px] sm:text-[15px]">ISO 9001</span>
-            <span className="text-blue-100/90 text-[11px] sm:text-[11px] font-medium mt-1.5 leading-snug">
+            <span className="text-white font-extrabold text-body-large">ISO 9001</span>
+            <span className="text-blue-100/90 text-caption-responsive font-medium mt-1.5 leading-snug">
               Hệ thống quản lý chất lượng
             </span>
           </div>
@@ -173,8 +173,8 @@ export async function PartnersCertifications() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v11" />
               </svg>
             </div>
-            <span className="text-white font-extrabold text-[14px] sm:text-[15px]">ISO 14001</span>
-            <span className="text-blue-100/90 text-[11px] sm:text-[11px] font-medium mt-1.5 leading-snug">
+            <span className="text-white font-extrabold text-body-large">ISO 14001</span>
+            <span className="text-blue-100/90 text-caption-responsive font-medium mt-1.5 leading-snug">
               Quản lý môi trường
             </span>
           </div>
@@ -186,8 +186,8 @@ export async function PartnersCertifications() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
               </svg>
             </div>
-            <span className="text-white font-extrabold text-[14px] sm:text-[15px]">ISO 45001</span>
-            <span className="text-blue-100/90 text-[11px] sm:text-[11px] font-medium mt-1.5 leading-snug">
+            <span className="text-white font-extrabold text-body-large">ISO 45001</span>
+            <span className="text-blue-100/90 text-caption-responsive font-medium mt-1.5 leading-snug">
               An toàn & sức khỏe nghề nghiệp
             </span>
           </div>
@@ -200,8 +200,8 @@ export async function PartnersCertifications() {
                 <circle cx="15" cy="15" r="3" />
               </svg>
             </div>
-            <span className="text-white font-extrabold text-[14px] sm:text-[15px]">MSDS</span>
-            <span className="text-blue-100/90 text-[11px] sm:text-[11px] font-medium mt-1.5 leading-snug">
+            <span className="text-white font-extrabold text-body-large">MSDS</span>
+            <span className="text-blue-100/90 text-caption-responsive font-medium mt-1.5 leading-snug">
               Bảng dữ liệu an toàn vật liệu
             </span>
           </div>

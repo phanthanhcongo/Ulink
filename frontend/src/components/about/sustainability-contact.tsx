@@ -78,10 +78,10 @@ export function SustainabilityContact({ tContact }: SustainabilityContactProps) 
       <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-[80px]">
         {/* Header */}
         <div className="mb-10 text-left">
-          <h2 className="text-[24px] sm:text-[32px] font-extrabold text-slate-900 tracking-tight">
+          <h2 className="text-[24px] font-extrabold text-slate-900 tracking-tight">
             {tContact.title}
           </h2>
-          <p className="text-[14px] sm:text-[15px] text-slate-500 font-medium mt-2">
+          <p className="text-body-large text-slate-500 font-medium mt-2">
             {tContact.desc}
           </p>
         </div>
@@ -97,10 +97,10 @@ export function SustainabilityContact({ tContact }: SustainabilityContactProps) 
                 <MapPin className="h-5 w-5" />
               </div>
               <div>
-                <h4 className="text-[13px] font-extrabold text-slate-400 uppercase tracking-wider">
+                <h4 className="text-body-regular font-extrabold text-slate-400 uppercase tracking-wider">
                   {tContact.info.addressLabel}
                 </h4>
-                <p className="text-[14px] sm:text-[15px] font-bold text-slate-800 mt-1 leading-snug">
+                <p className="text-body-large font-bold text-slate-800 mt-1 leading-snug">
                   {tContact.info.address}
                 </p>
               </div>
@@ -112,10 +112,10 @@ export function SustainabilityContact({ tContact }: SustainabilityContactProps) 
                 <Mail className="h-5 w-5" />
               </div>
               <div>
-                <h4 className="text-[13px] font-extrabold text-slate-400 uppercase tracking-wider">
+                <h4 className="text-body-regular font-extrabold text-slate-400 uppercase tracking-wider">
                   {tContact.info.emailLabel}
                 </h4>
-                <a href={`mailto:${tContact.info.email}`} className="text-[14px] sm:text-[15px] font-bold text-brand hover:underline mt-1 block leading-snug">
+                <a href={`mailto:${tContact.info.email}`} className="text-body-large font-bold text-brand hover:underline mt-1 block leading-snug">
                   {tContact.info.email}
                 </a>
               </div>
@@ -127,10 +127,10 @@ export function SustainabilityContact({ tContact }: SustainabilityContactProps) 
                 <Phone className="h-5 w-5" />
               </div>
               <div>
-                <h4 className="text-[13px] font-extrabold text-slate-400 uppercase tracking-wider">
+                <h4 className="text-body-regular font-extrabold text-slate-400 uppercase tracking-wider">
                   {tContact.info.phoneLabel}
                 </h4>
-                <a href={`tel:${tContact.info.phone}`} className="text-[14px] sm:text-[15px] font-bold text-slate-800 hover:text-brand mt-1 block leading-snug">
+                <a href={`tel:${tContact.info.phone}`} className="text-body-large font-bold text-slate-800 hover:text-brand mt-1 block leading-snug">
                   {tContact.info.phone}
                 </a>
               </div>
@@ -142,10 +142,10 @@ export function SustainabilityContact({ tContact }: SustainabilityContactProps) 
                 <Clock className="h-5 w-5" />
               </div>
               <div>
-                <h4 className="text-[13px] font-extrabold text-slate-400 uppercase tracking-wider">
+                <h4 className="text-body-regular font-extrabold text-slate-400 uppercase tracking-wider">
                   {tContact.info.hoursLabel}
                 </h4>
-                <p className="text-[14px] sm:text-[15px] font-bold text-slate-800 mt-1 leading-snug">
+                <p className="text-body-large font-bold text-slate-800 mt-1 leading-snug">
                   {tContact.info.hours}
                 </p>
               </div>
@@ -156,15 +156,15 @@ export function SustainabilityContact({ tContact }: SustainabilityContactProps) 
           {/* Right Contact Form Card */}
           <div className="lg:col-span-7">
             <div className="bg-slate-50/50 p-6 sm:p-8 rounded-[3px] border border-slate-100 shadow-sm">
-              <h3 className="text-[16px] sm:text-[18px] font-bold text-slate-900">
+              <h3 className="text-card-title text-slate-900">
                 {tContact.form.title}
               </h3>
-              <p className="text-[12px] text-slate-400 mt-1 mb-6">
+              <p className="text-caption-responsive text-slate-400 mt-1 mb-6">
                 {tContact.form.desc}
               </p>
 
               {error && (
-                <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-600 rounded-[3px] text-[13px] font-medium">
+                <div className="mb-4 p-3 bg-red-50 border border-red-200 text-red-600 rounded-[3px] text-body-regular font-medium">
                   {error}
                 </div>
               )}
@@ -175,7 +175,7 @@ export function SustainabilityContact({ tContact }: SustainabilityContactProps) 
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {/* Fullname */}
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-[12px] font-bold text-slate-700">
+                    <label className="text-caption-responsive font-bold text-slate-700">
                       {tContact.form.name}
                     </label>
                     <input 
@@ -183,12 +183,12 @@ export function SustainabilityContact({ tContact }: SustainabilityContactProps) 
                       name="name"
                       required
                       placeholder={tContact.form.placeholderName}
-                      className="h-[46px] px-4 rounded-[3px] border border-slate-200 bg-white text-[14px] focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand font-medium placeholder-slate-400"
+                      className="h-[46px] px-4 rounded-[3px] border border-slate-200 bg-white text-body-large focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand font-medium placeholder-slate-400"
                     />
                   </div>
                   {/* Email */}
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-[12px] font-bold text-slate-700">
+                    <label className="text-caption-responsive font-bold text-slate-700">
                       {tContact.form.email}
                     </label>
                     <input 
@@ -196,14 +196,14 @@ export function SustainabilityContact({ tContact }: SustainabilityContactProps) 
                       name="email"
                       required
                       placeholder={tContact.form.placeholderEmail}
-                      className="h-[46px] px-4 rounded-[3px] border border-slate-200 bg-white text-[14px] focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand font-medium placeholder-slate-400"
+                      className="h-[46px] px-4 rounded-[3px] border border-slate-200 bg-white text-body-large focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand font-medium placeholder-slate-400"
                     />
                   </div>
                 </div>
 
                 {/* Phone */}
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-[12px] font-bold text-slate-700">
+                  <label className="text-caption-responsive font-bold text-slate-700">
                     {tContact.form.phone}
                   </label>
                   <input 
@@ -211,13 +211,13 @@ export function SustainabilityContact({ tContact }: SustainabilityContactProps) 
                     name="phone"
                     required
                     placeholder={tContact.form.placeholderPhone}
-                    className="h-[46px] px-4 rounded-[3px] border border-slate-200 bg-white text-[14px] focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand font-medium placeholder-slate-400"
+                    className="h-[46px] px-4 rounded-[3px] border border-slate-200 bg-white text-body-large focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand font-medium placeholder-slate-400"
                   />
                 </div>
 
                 {/* Message */}
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-[12px] font-bold text-slate-700">
+                  <label className="text-caption-responsive font-bold text-slate-700">
                     {tContact.form.message}
                   </label>
                   <textarea 
@@ -225,14 +225,14 @@ export function SustainabilityContact({ tContact }: SustainabilityContactProps) 
                     rows={4}
                     required
                     placeholder={tContact.form.placeholderMsg}
-                    className="px-4 py-3 rounded-[3px] border border-slate-200 bg-white text-[14px] focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand font-medium placeholder-slate-400 resize-none"
+                    className="px-4 py-3 rounded-[3px] border border-slate-200 bg-white text-body-large focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand font-medium placeholder-slate-400 resize-none"
                   />
                 </div>
 
                 <button 
                   type="submit"
                   disabled={submitting}
-                  className="h-[46px] w-full bg-[#0B2347] text-white text-[14px] font-bold rounded-[3px] hover:bg-[#0E2F5E] transition-colors shadow-sm flex items-center justify-center gap-2 mt-4 disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="h-[46px] w-full bg-[#0B2347] text-white text-body-large font-bold rounded-[3px] hover:bg-[#0E2F5E] transition-colors shadow-sm flex items-center justify-center gap-2 mt-4 disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {submitting ? 'Đang gửi...' : tContact.form.submit}
                 </button>

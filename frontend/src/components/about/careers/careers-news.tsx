@@ -42,13 +42,13 @@ export function CareersNews() {
     <section className="py-12 lg:py-16">
       {/* Section Header */}
       <div className="flex flex-col items-center text-center mb-10">
-        <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-blue-600">
+        <span className="text-body-regular font-bold uppercase tracking-wider text-blue-600">
           Cập nhật mới nhất
         </span>
-        <h2 className="text-[30px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold tracking-tight text-slate-900 mt-1">
+        <h2 className="text-[30px] font-extrabold tracking-tight text-slate-900 mt-1">
           Tin tức & Sự kiện
         </h2>
-        <p className="mt-2 text-[13px] sm:text-[14px] text-slate-500 max-w-xl">
+        <p className="mt-2 text-body-regular text-slate-500 max-w-xl">
           Cập nhật các hoạt động sản xuất, kinh doanh và hợp tác quốc tế của ULink Industries
         </p>
       </div>
@@ -68,18 +68,18 @@ export function CareersNews() {
 
         {/* Right: Details */}
         <div className="flex flex-col gap-3">
-          <span className="text-[13px] sm:text-[14px] text-slate-400 font-medium">
+          <span className="text-body-regular text-slate-400 font-medium">
             {featuredNews.date}
           </span>
-          <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 leading-snug">
+          <h3 className="text-card-title text-slate-900 leading-snug">
             {featuredNews.title}
           </h3>
-          <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-500">
+          <p className="text-body-regular leading-relaxed text-slate-500">
             {featuredNews.excerpt}
           </p>
           <Link
             href="/about/news"
-            className="inline-flex items-center gap-3 rounded-[3px] bg-blue-600 px-5 py-2.5 text-[13px] sm:text-[14px] font-semibold text-white transition-colors hover:bg-blue-700 w-fit mt-3 shadow-xs"
+            className="inline-flex items-center gap-3 rounded-[3px] bg-blue-600 px-5 py-2.5 text-body-regular font-semibold text-white transition-colors hover:bg-blue-700 w-fit mt-3 shadow-xs"
           >
             <span>Đọc thêm</span>
             <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white text-blue-600">
@@ -107,18 +107,18 @@ export function CareersNews() {
             </div>
             {/* Details */}
             <div className="flex flex-col flex-1 gap-2">
-              <span className="text-[13px] sm:text-[14px] text-slate-400 font-medium mt-1">
+              <span className="text-body-regular text-slate-400 font-medium mt-1">
                 {item.date}
               </span>
-              <h4 className="text-[15px] sm:text-[16px] md:text-[17px] lg:text-[18px] xl:text-[20px] font-semibold text-slate-800 leading-snug line-clamp-2 group-hover:text-blue-600 transition-colors">
+              <h4 className="text-body-large font-semibold text-slate-800 leading-snug line-clamp-2 group-hover:text-blue-600 transition-colors">
                 {item.title}
               </h4>
-              <p className="text-[13px] sm:text-[14px] text-slate-500 leading-relaxed line-clamp-3">
+              <p className="text-body-regular text-slate-500 leading-relaxed line-clamp-3">
                 {item.excerpt}
               </p>
               <Link
                 href={`/about/news/${item.id}`}
-                className="text-[13px] sm:text-[14px] font-bold text-blue-600 hover:text-blue-700 inline-flex items-center mt-auto pt-2"
+                className="text-body-regular font-bold text-blue-600 hover:text-blue-700 inline-flex items-center mt-auto pt-2"
               >
                 Đọc thêm
               </Link>

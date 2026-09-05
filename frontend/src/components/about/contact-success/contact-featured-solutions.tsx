@@ -30,10 +30,10 @@ export function ContactFeaturedSolutions() {
   return (
     <section className="py-12 px-4 sm:px-8">
       <div className="flex flex-col items-center text-center mb-10">
-        <span className="inline-flex items-center rounded-full bg-blue-50 px-3.5 py-1 text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-blue-700 ring-1 ring-inset ring-blue-700/10 mb-2">
+        <span className="inline-flex items-center rounded-full bg-blue-50 px-3.5 py-1 text-body-regular font-bold uppercase tracking-wider text-blue-700 ring-1 ring-inset ring-blue-700/10 mb-2">
           DANH MỤC TIÊU BIỂU
         </span>
-        <h2 className="text-[30px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold tracking-tight text-slate-900">
+        <h2 className="text-[30px] font-extrabold tracking-tight text-slate-900">
           Khám phá thêm giải pháp từ ULink
         </h2>
       </div>
@@ -53,14 +53,14 @@ export function ContactFeaturedSolutions() {
               />
             </div>
             <div className="flex flex-1 flex-col p-6">
-              <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+              <h3 className="text-card-title text-slate-900 group-hover:text-blue-600 transition-colors">
                 {item.title}
               </h3>
-              <p className="mt-2 text-[13px] sm:text-[14px] leading-relaxed text-slate-600 flex-1">{item.desc}</p>
+              <p className="mt-2 text-body-regular leading-relaxed text-slate-600 flex-1">{item.desc}</p>
               <div className="mt-4 pt-3 border-t border-slate-100 flex justify-end">
                 <Link
                   href={item.href}
-                  className="text-[13px] sm:text-[14px] font-semibold text-blue-600 hover:text-blue-700 inline-flex items-center gap-1"
+                  className="text-body-regular font-semibold text-blue-600 hover:text-blue-700 inline-flex items-center gap-1"
                 >
                   Xem thêm <ArrowRight className="h-3.5 w-3.5" />
                 </Link>

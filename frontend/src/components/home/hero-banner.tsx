@@ -36,7 +36,7 @@ export function HeroBanner() {
 
       {/* 1. Content Container Frame — Displays FIRST on mobile */}
       <div className="relative z-30 order-1 flex w-full items-center justify-center sm:justify-start sm:absolute sm:inset-0 sm:h-full">
-        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 py-3 sm:py-4 lg:py-5 xl:py-8 flex items-center justify-center sm:justify-start h-full">
+        <div className="page-container py-3 sm:py-4 lg:py-5 xl:py-8 flex items-center justify-center sm:justify-start h-full">
           {/* Content Container Frame */}
           <div className="group relative flex w-full max-w-full lg:w-[600px] lg:max-w-[600px] xl:w-[672px] xl:max-w-[672px] flex-col p-0 sm:px-6 sm:py-4.5 md:px-7 md:py-5 lg:px-7 lg:py-5 xl:px-9 xl:py-8 gap-3 sm:gap-4 lg:gap-4 xl:gap-6 transition-all duration-300 sm:hover:-translate-y-0.5 sm:hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
             {/* Frosted Glass Card (Desktop only) */}
@@ -44,19 +44,19 @@ export function HeroBanner() {
 
             {/* Text content */}
             <div className="relative z-30 flex flex-col">
-              <p className="text-[12px] sm:text-[13px] lg:text-[14px] xl:text-[15px] font-semibold uppercase tracking-tight text-brand">
+              <p className="text-caption-responsive font-semibold uppercase tracking-tight text-brand">
                 {t('hero.eyebrowTop')}
               </p>
 
-              <p className="hidden sm:block mt-1 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-bold uppercase tracking-tight text-primary">
+              <p className="hidden sm:block mt-1 text-body-regular font-bold uppercase tracking-tight text-primary">
                 {t('hero.eyebrowSub')}
               </p>
 
-              <h1 className="mt-2 sm:mt-2.5 lg:mt-2.5 xl:mt-3 text-[28px] leading-[36px] font-semibold sm:font-extrabold sm:text-[36px] md:text-[38px] lg:text-[44px] xl:text-[56px] sm:leading-[44px] md:leading-[46px] lg:leading-[52px] xl:leading-[64px] tracking-tight text-slate-900">
+              <h1 className="mt-2 sm:mt-2.5 lg:mt-2.5 xl:mt-3 text-hero-title font-semibold sm:font-extrabold text-slate-900">
                 {t('hero.title')}
               </h1>
 
-              <p className="mt-2 sm:mt-2.5 lg:mt-2.5 xl:mt-3 text-[14px] leading-[20px] sm:text-[15px] lg:text-[16px] xl:text-[18px] sm:leading-[22px] lg:leading-[24px] xl:leading-[28px] text-slate-600 font-normal">
+              <p className="mt-2 sm:mt-2.5 lg:mt-2.5 xl:mt-3 text-body-large text-slate-600 font-normal">
                 {t('hero.description')}
               </p>
             </div>
@@ -65,7 +65,7 @@ export function HeroBanner() {
             <div className="group relative z-30 flex flex-row items-center gap-3 pt-1 sm:pt-2">
               <Link
                 href="/quick-order"
-                className="group inline-flex h-[44px] sm:h-[46px] lg:h-[48px] xl:h-[52px] flex-1 sm:flex-none sm:w-auto items-center justify-center gap-2 rounded-[3px] bg-brand px-4 sm:px-6 lg:px-6 xl:px-7 text-[14px] font-bold sm:text-[15px] lg:text-[16px] xl:text-[18px] sm:font-semibold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:bg-brand-strong active:bg-[#0E4497]"
+                className="group inline-flex h-[44px] sm:h-[46px] lg:h-[48px] xl:h-[52px] flex-1 sm:flex-none sm:w-auto items-center justify-center gap-2 rounded-[3px] bg-brand px-4 sm:px-6 lg:px-6 xl:px-7 text-body-large font-bold sm:font-semibold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:bg-brand-strong active:bg-[#0E4497]"
               >
                 <span>{t('hero.ctaRfq')}</span>
                 <ArrowRight className="hidden sm:inline-block h-4.5 w-4.5 transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
@@ -73,7 +73,7 @@ export function HeroBanner() {
               <Link
                 href="/resources"
                 onClick={handleCatalogueClick}
-                className="group inline-flex h-[44px] sm:h-[46px] lg:h-[48px] xl:h-[52px] flex-1 sm:flex-none sm:w-auto items-center justify-center gap-2 border border-brand bg-white/70 rounded-[3px] text-[14px] font-bold sm:text-[15px] lg:text-[16px] xl:text-[18px] sm:font-semibold text-brand transition-all hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:bg-brand/10 hover:border-brand-strong px-4 sm:px-6 lg:px-6 xl:px-7 shadow-xs"
+                className="group inline-flex h-[44px] sm:h-[46px] lg:h-[48px] xl:h-[52px] flex-1 sm:flex-none sm:w-auto items-center justify-center gap-2 border border-brand bg-white/70 rounded-[3px] text-body-large font-bold sm:font-semibold text-brand transition-all hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:bg-brand/10 hover:border-brand-strong px-4 sm:px-6 lg:px-6 xl:px-7 shadow-xs"
               >
                 <span>{t('hero.ctaCatalogue')}</span>
                 <Image
@@ -123,10 +123,10 @@ export function HeroBanner() {
               key={index}
               className="flex flex-col items-center justify-center rounded-[3px] border border-slate-200/80 bg-white p-4 text-center shadow-xs transition-all hover:border-brand/40"
             >
-              <span className="text-[16px] font-extrabold text-brand tracking-tight">
+              <span className="text-card-title font-extrabold text-brand">
                 {stat.value}
               </span>
-              <span className="mt-1 text-[11px] font-normal text-slate-500 leading-snug">
+              <span className="mt-1 text-caption-responsive font-normal text-slate-500 leading-snug">
                 {stat.label}
               </span>
             </div>

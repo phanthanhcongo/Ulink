@@ -18,10 +18,10 @@ export default function CommercialImportPage({
           <p className="text-caption-responsive font-semibold uppercase tracking-[0.22em] text-brand">
             Internal tools
           </p>
-          <h1 className="mt-3 text-hero-title font-semibold tracking-tight text-foreground sm:text-hero-title">
+          <h1 className="mt-3 text-hero-title font-semibold tracking-tight text-foreground">
             Commercial data import, staged and traceable.
           </h1>
-          <p className="mt-4 text-body-regular leading-7 text-muted-foreground sm:text-body-regular">
+          <p className="mt-4 text-body-regular leading-7 text-muted-foreground">
             Preview or commit customers, orders, invoices, and deliveries through the
             Directus-backed import engine. The workbench keeps nested order lines atomic and
             surfaces row-level failure details for quick cleanup.

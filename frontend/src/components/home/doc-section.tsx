@@ -50,11 +50,11 @@ export function DocSection() {
 
   return (
     <section className="w-full bg-[#f3f7fc] py-8 sm:py-8 lg:py-8 border-y border-slate-200/60">
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
+      <div className="page-container">
         {/* ── 4. SUB-SECTION HEADER BAR (TÀI LIỆU & CATALOGUE) ── */}
         <div className="flex items-center gap-2.5">
           <div className="h-5 sm:h-6 w-1 rounded-full bg-[#1769E2] shrink-0" />
-          <h2 className="text-[18px] sm:text-[20px] lg:text-[22px] font-bold text-slate-900 tracking-tight">
+          <h2 className="text-card-title font-bold text-slate-900 tracking-tight">
             {t('docsTitle')}
           </h2>
         </div>

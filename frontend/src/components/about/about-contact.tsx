@@ -44,14 +44,14 @@ export function AboutContact() {
   };
 
   return (
-    <section className="py-12 lg:py-16 bg-white">
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
+    <section className="section-padding bg-white">
+      <div className="page-container">
         {/* Section Header (ĐỒNG BỘ NGUYÊN BẢN HỆ THỐNG) */}
-        <div className="text-center max-w-3xl mx-auto space-y-1 sm:space-y-2 mb-10 sm:mb-12">
-          <span className="text-[20px] sm:text-[24px] lg:text-[28px] xl:text-[32px] font-semibold tracking-tight text-blue-600 leading-tight lg:leading-[36px] xl:leading-[40px] block">
+        <div className="section-header mb-10 sm:mb-12">
+          <span className="text-section-title text-blue-600 block">
             {t('eyebrow')}
           </span>
-          <h2 className="text-[20px] sm:text-[24px] lg:text-[28px] xl:text-[32px] font-semibold tracking-tight text-slate-900 leading-tight lg:leading-[36px] xl:leading-[40px]">
+          <h2 className="text-section-title text-slate-900">
             {t('title')}
           </h2>
         </div>
@@ -59,7 +59,7 @@ export function AboutContact() {
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
           {/* Cột trái: Form trực tuyến */}
           <div className="lg:col-span-7 rounded-[3px] border border-slate-200 bg-white p-6 sm:p-8 shadow-sm">
-            <h3 className="mb-6 text-[18px] sm:text-[20px] lg:text-[24px] xl:text-[28px] font-semibold text-slate-900 lg:leading-[32px] xl:leading-[36px]">
+            <h3 className="mb-6 text-card-title font-semibold text-slate-900">
               {t('formTitle')}
             </h3>
 
@@ -68,7 +68,7 @@ export function AboutContact() {
 
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div>
-                  <label className="mb-1.5 block text-[11px] sm:text-[12px] lg:text-[13px] xl:text-[14px] font-semibold text-slate-700">
+                  <label className="mb-1.5 block form-label-responsive">
                     {t('nameLabel')}
                   </label>
                   <input
@@ -76,11 +76,11 @@ export function AboutContact() {
                     type="text"
                     required
                     placeholder={t('namePlaceholder')}
-                    className="w-full rounded-[3px] border border-slate-300 bg-white px-4 py-3 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-normal outline-none transition focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
+                    className="form-control-responsive"
                   />
                 </div>
                 <div>
-                  <label className="mb-1.5 block text-[11px] sm:text-[12px] lg:text-[13px] xl:text-[14px] font-semibold text-slate-700">
+                  <label className="mb-1.5 block form-label-responsive">
                     {t('phoneLabel')}
                   </label>
                   <input
@@ -88,13 +88,13 @@ export function AboutContact() {
                     type="tel"
                     required
                     placeholder={t('phonePlaceholder')}
-                    className="w-full rounded-[3px] border border-slate-300 bg-white px-4 py-3 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-normal outline-none transition focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
+                    className="form-control-responsive"
                   />
                 </div>
               </div>
 
               <div>
-                <label className="mb-1.5 block text-[12px] sm:text-[13px] lg:text-[14px] font-semibold text-slate-700">
+                <label className="mb-1.5 block form-label-responsive">
                   {t('emailLabel')}
                 </label>
                 <input
@@ -102,12 +102,12 @@ export function AboutContact() {
                   type="email"
                   required
                   placeholder={t('emailPlaceholder')}
-                  className="w-full rounded-[3px] border border-slate-300 bg-white px-4 py-3 text-[13px] sm:text-[14px] lg:text-[16px] font-normal outline-none transition focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
+                  className="form-control-responsive"
                 />
               </div>
 
               <div>
-                <label className="mb-1.5 block text-[12px] sm:text-[13px] lg:text-[14px] font-semibold text-slate-700">
+                <label className="mb-1.5 block form-label-responsive">
                   {t('messageLabel')}
                 </label>
                 <textarea
@@ -115,12 +115,12 @@ export function AboutContact() {
                   rows={5}
                   required
                   placeholder={t('messagePlaceholder')}
-                  className="w-full resize-none rounded-[3px] border border-slate-300 bg-white px-4 py-3 text-[13px] sm:text-[14px] lg:text-[16px] font-normal outline-none transition focus:border-blue-600 focus:ring-1 focus:ring-blue-600"
+                  className="form-control-responsive resize-none"
                 />
               </div>
 
               {error && (
-                <p className="rounded-[3px] bg-rose-50 px-3 py-2 text-[13px] sm:text-[14px] font-medium text-rose-700">
+                <p className="rounded-[3px] bg-rose-50 px-3 py-2 text-body-regular font-medium text-rose-700">
                   {error}
                 </p>
               )}
@@ -130,12 +130,12 @@ export function AboutContact() {
                   <button
                     type="submit"
                     disabled={submitting}
-                    className="inline-flex items-center justify-center rounded-[3px] bg-[#1769E2] px-8 py-3 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-semibold text-white shadow-sm transition-all hover:bg-[#1257BD] disabled:cursor-not-allowed disabled:opacity-70"
+                    className="inline-flex items-center justify-center rounded-[3px] bg-[#1769E2] px-8 py-3 text-button-responsive text-white shadow-sm transition-all hover:bg-[#1257BD] disabled:cursor-not-allowed disabled:opacity-70"
                   >
                     {submitting ? t('submitting') : t('submit')}
                   </button>
                 </div>
-                <p className="text-[11px] sm:text-[12px] lg:text-[13px] xl:text-[14px] font-normal text-slate-500">
+                <p className="text-caption-responsive font-normal text-slate-500">
                   {t('privacyNote')}
                 </p>
               </div>
@@ -146,7 +146,7 @@ export function AboutContact() {
           <div className="lg:col-span-5 flex flex-col gap-6">
             {/* Box 1: Thông tin liên hệ */}
             <div className="rounded-[3px] border border-slate-200 bg-white p-6 sm:p-8 shadow-sm">
-              <h3 className="mb-6 text-[15px] sm:text-[16px] lg:text-[18px] xl:text-[20px] font-semibold text-slate-900 lg:leading-[26px] xl:leading-[28px]">
+              <h3 className="mb-6 text-card-title font-semibold text-slate-900">
                 {t('infoTitle')}
               </h3>
 
@@ -157,8 +157,8 @@ export function AboutContact() {
                     <MapPin className="h-5 w-5" />
                   </div>
                   <div>
-                    <h4 className="text-[11px] sm:text-[12px] lg:text-[13px] xl:text-[14px] font-semibold text-slate-900">{t('officeTitle')}</h4>
-                    <p className="mt-1 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-normal leading-relaxed lg:leading-[22px] xl:leading-[24px] text-slate-600">
+                    <h4 className="text-caption-responsive font-semibold text-slate-900">{t('officeTitle')}</h4>
+                    <p className="mt-1 text-body-regular text-slate-600">
                       {t('officeAddress')}
                     </p>
                   </div>
@@ -170,8 +170,8 @@ export function AboutContact() {
                     <Phone className="h-5 w-5" />
                   </div>
                   <div>
-                    <h4 className="text-[11px] sm:text-[12px] lg:text-[13px] xl:text-[14px] font-semibold text-slate-900">{t('hotlineTitle')}</h4>
-                    <p className="mt-1 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] leading-relaxed lg:leading-[22px] xl:leading-[24px] text-slate-600 font-semibold">
+                    <h4 className="text-caption-responsive font-semibold text-slate-900">{t('hotlineTitle')}</h4>
+                    <p className="mt-1 text-body-regular text-slate-600 font-semibold">
                       0247.309.9899 <span className="font-normal text-slate-500">{t('hotlineNote')}</span>
                     </p>
                   </div>
@@ -183,8 +183,8 @@ export function AboutContact() {
                     <Mail className="h-5 w-5" />
                   </div>
                   <div>
-                    <h4 className="text-[11px] sm:text-[12px] lg:text-[13px] xl:text-[14px] font-semibold text-slate-900">{t('emailTitle')}</h4>
-                    <p className="mt-1 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-normal leading-relaxed lg:leading-[22px] xl:leading-[24px] text-slate-600">
+                    <h4 className="text-caption-responsive font-semibold text-slate-900">{t('emailTitle')}</h4>
+                    <p className="mt-1 text-body-regular text-slate-600">
                       contact@ulinkindustries.com
                     </p>
                   </div>
@@ -196,8 +196,8 @@ export function AboutContact() {
                     <Clock className="h-5 w-5" />
                   </div>
                   <div>
-                    <h4 className="text-[11px] sm:text-[12px] lg:text-[13px] xl:text-[14px] font-semibold text-slate-900">{t('workingHoursTitle')}</h4>
-                    <p className="mt-1 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-normal leading-relaxed lg:leading-[22px] xl:leading-[24px] text-slate-600">
+                    <h4 className="text-caption-responsive font-semibold text-slate-900">{t('workingHoursTitle')}</h4>
+                    <p className="mt-1 text-body-regular text-slate-600">
                       {t('workingHoursValue')}
                     </p>
                   </div>
@@ -211,7 +211,7 @@ export function AboutContact() {
                 href="https://maps.google.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-[11px] sm:text-[12px] lg:text-[13px] xl:text-[14px] font-semibold text-blue-600 hover:text-blue-700 hover:underline transition-colors"
+                className="inline-flex items-center gap-2 text-caption-responsive font-semibold text-blue-600 hover:text-blue-700 hover:underline transition-colors"
               >
                 <MapPin className="h-4 w-4" />
                 {t('mapLinkText')}
@@ -234,4 +234,3 @@ export function AboutContact() {
     </section>
   );
 }
-

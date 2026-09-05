@@ -27,10 +27,10 @@ export function AboutInfrastructure() {
   return (
     <section className="py-6 lg:py-8 xl:py-10">
       <div className="flex flex-col items-center text-center mb-8">
-        <span className="text-sm font-bold text-blue-600 mb-2">
+        <span className="text-eyebrow font-bold text-blue-600 mb-2">
           Vận hành hiện đại – Thông minh
         </span>
-        <h2 className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-bold tracking-tight text-slate-900">
+        <h2 className="text-section-title font-bold text-slate-900">
           Hạ tầng kỹ thuật & Hệ thống tối ưu
         </h2>
       </div>
@@ -39,7 +39,7 @@ export function AboutInfrastructure() {
         {items.map((item, index) => (
           <div
             key={index}
-            className="group flex flex-col overflow-hidden rounded-[3px] bg-white border border-slate-100 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]"
+            className="group flex flex-col overflow-hidden rounded-[3px] bg-white border border-slate-100 shadow-sm card-hover-standard"
           >
             <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-100">
               <Image
@@ -50,10 +50,10 @@ export function AboutInfrastructure() {
               />
             </div>
             <div className="flex flex-col p-4 sm:p-5 lg:p-4 xl:p-5">
-              <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+              <h3 className="text-card-title text-slate-900 group-hover:text-blue-600 transition-colors">
                 {item.title}
               </h3>
-              <p className="mt-2 text-[12px] sm:text-[13px] leading-relaxed text-slate-600">{item.desc}</p>
+              <p className="text-body-regular mt-2 text-slate-600">{item.desc}</p>
             </div>
           </div>
         ))}

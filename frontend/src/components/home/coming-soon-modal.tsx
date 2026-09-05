@@ -27,13 +27,13 @@ export function ComingSoonModal({ isOpen, onClose, title }: ComingSoonModalProps
         </div>
 
         <div className="space-y-2">
-          <span className="inline-block text-[12px] sm:text-[13px] font-bold uppercase tracking-tight text-blue-600 bg-blue-50 px-3 py-1 rounded-full border border-blue-100">
+          <span className="inline-block text-caption-responsive font-bold uppercase tracking-tight text-blue-600 bg-blue-50 px-3 py-1 rounded-full border border-blue-100">
             Coming Soon
           </span>
-          <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 pt-1">
+          <h3 className="text-card-title text-slate-900 pt-1">
             Tính năng Tải Tài liệu đang cập nhật
           </h3>
-          <p className="text-[12px] sm:text-[13px] text-slate-500 font-semibold leading-relaxed px-2">
+          <p className="text-caption-responsive text-slate-500 font-semibold leading-relaxed px-2">
             Tài liệu <strong className="text-slate-800 font-bold">&quot;{title}&quot;</strong> đang trong quá trình chuẩn bị bản PDF chính thức. Vui lòng liên hệ hotline hỗ trợ kinh doanh B2B để nhận tệp trực tiếp!
           </p>
         </div>
@@ -41,7 +41,7 @@ export function ComingSoonModal({ isOpen, onClose, title }: ComingSoonModalProps
         <div className="pt-2">
           <button
             onClick={onClose}
-            className="w-full py-3 rounded-[3px] bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-[12px] sm:text-[13px] font-bold shadow-md hover:shadow-lg transition-all duration-300 transform active:scale-98 min-h-[44px]"
+            className="w-full py-3 rounded-[3px] bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white text-caption-responsive font-bold shadow-md hover:shadow-lg transition-all duration-300 transform active:scale-98 min-h-[44px]"
           >
             Đã hiểu & Đóng lại
           </button>

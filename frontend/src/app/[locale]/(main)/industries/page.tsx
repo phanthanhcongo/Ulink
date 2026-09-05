@@ -242,14 +242,14 @@ export default async function IndustriesPage({ params: { locale } }: Props) {
 
           {/* Text area */}
           <div className="max-w-3xl my-auto">
-            <h1 className="text-[28px] sm:text-[34px] md:text-[38px] lg:text-[42px] xl:text-[44px] font-extrabold text-white leading-[1.15] tracking-tight">
+            <h1 className="text-hero-title font-extrabold text-white ">
               {isVi
                 ? 'Tối ưu chuỗi cung ứng nguyên liệu và vật tư với giải pháp Phòng sạch & Đóng gói.'
                 : isJa
                   ? 'クリーンルーム＆包装ソリューションによる原材料と資材のサプライチェーン最適化。'
                   : 'Optimizing material & supply chain with Cleanroom & Packaging solutions.'}
             </h1>
-            <p className="mt-5 text-[15px] sm:text-[16px] lg:text-[18px] leading-relaxed text-blue-100/90 max-w-2xl font-medium">
+            <p className="mt-5 text-body-large leading-relaxed text-blue-100/90 max-w-2xl font-medium">
               {isVi
                 ? 'ULink Industries thấu hiểu các tiêu chuẩn khắt khe & thách thức vận hành trong từng ngành. Chúng tôi cung cấp giải pháp toàn diện, giúp nâng cao chất lượng, đảm bảo an toàn & tối ưu hiệu suất sản xuất.'
                 : isJa
@@ -270,10 +270,10 @@ export default async function IndustriesPage({ params: { locale } }: Props) {
       </div>
 
       {/* Main Grid Content */}
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 section-padding flex flex-col gap-12">
+      <div className="page-container section-padding flex flex-col gap-12">
         {/* Section Header */}
         <div className="flex flex-col items-start max-w-3xl">
-          <h2 className="text-[22px] sm:text-[26px] md:text-[30px] lg:text-[36px] font-extrabold text-primary leading-tight tracking-tight">
+          <h2 className="text-section-title font-extrabold text-primary ">
             {isVi
               ? 'Giải pháp theo ngành nghề'
               : isJa
@@ -297,7 +297,7 @@ export default async function IndustriesPage({ params: { locale } }: Props) {
       <CoreAdvantages locale={locale} />
 
       {/* About Us & Hub Ha Nam Section */}
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 section-padding">
+      <div className="page-container section-padding">
         <AboutUsHub locale={locale} />
       </div>
       {/* Customer Segments Section */}

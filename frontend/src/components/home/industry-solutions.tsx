@@ -123,7 +123,7 @@ export function IndustrySolutions() {
             <Link
               key={idx}
               href={card.href}
-              className={`group relative flex flex-col gap-2 rounded-[4px] p-3.5 sm:p-4 shadow-[0_4px_16px_-2px_rgba(15,23,42,0.08)] transition-all duration-300 hover:z-10 hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] ${visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+              className={`group relative flex flex-col gap-2 rounded-[4px] p-3.5 sm:p-4 shadow-[0_4px_16px_-2px_rgba(15,23,42,0.08)] transition-all duration-300 hover:z-10 card-hover-standard ${visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
                 }`}
               style={{
                 border: '1px solid #CBD5E1',
@@ -147,10 +147,10 @@ export function IndustrySolutions() {
 
               {/* Text Row (w-full) */}
               <div className="w-full">
-                <h4 className="text-[14px] font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-tight tracking-tight">
+                <h4 className="text-body-large font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-tight tracking-tight">
                   {card.title}
                 </h4>
-                <p className="text-[11px] text-slate-600 font-normal leading-snug mt-1">
+                <p className="text-caption-responsive text-slate-600 font-normal leading-snug mt-1">
                   {card.desc}
                 </p>
               </div>
@@ -172,7 +172,7 @@ export function IndustrySolutions() {
             <Link
               key={idx}
               href={card.href}
-              className={`group flex flex-col justify-between min-h-[190px] md:min-h-[200px] lg:min-h-[220px] rounded-[4px] p-5 md:p-6 lg:p-8 shadow-[0_4px_16px_-2px_rgba(15,23,42,0.08)] transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] ${visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+              className={`group flex flex-col justify-between min-h-[190px] md:min-h-[200px] lg:min-h-[220px] rounded-[4px] p-5 md:p-6 lg:p-8 shadow-[0_4px_16px_-2px_rgba(15,23,42,0.08)] transition-all duration-300 card-hover-standard ${visible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
                 }`}
               style={{
                 border: '1px solid #CBD5E1',
@@ -182,10 +182,10 @@ export function IndustrySolutions() {
             >
               {/* Top Text Content */}
               <div>
-                <h4 className="text-[15px] md:text-[16px] lg:text-[18px] xl:text-[20px] font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug md:leading-[24px] lg:leading-[26px] xl:leading-[28px]">
+                <h4 className="text-body-large font-bold text-slate-900 group-hover:text-blue-600 transition-colors leading-snug">
                   {card.title}
                 </h4>
-                <p className="text-[11px] md:text-[14px] lg:text-[15px] xl:text-[16px] text-slate-600 font-normal leading-relaxed md:leading-[20px] lg:leading-[22px] xl:leading-[24px] mt-2">
+                <p className="text-caption-responsive text-slate-600 font-normal leading-relaxed mt-2">
                   {card.desc}
                 </p>
               </div>

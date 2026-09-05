@@ -80,10 +80,10 @@ export function DocCard({ num = 1, category, title, meta, icon, onClick }: DocCa
 
           {/* ROW 2: CATEGORY & TITLE */}
           <div className="mt-4 flex flex-col">
-            <span className="text-[12px] font-medium text-slate-500">
+            <span className="text-caption-responsive font-medium text-slate-500">
               {category}
             </span>
-            <h4 className="mt-1 text-[15px] font-bold text-slate-900 leading-snug group-hover:text-brand transition-colors line-clamp-2">
+            <h4 className="mt-1 text-body-large font-bold text-slate-900 leading-snug group-hover:text-brand transition-colors line-clamp-2">
               {title}
             </h4>
           </div>
@@ -91,7 +91,7 @@ export function DocCard({ num = 1, category, title, meta, icon, onClick }: DocCa
 
         {/* ROW 3: FOOTER META */}
         <div className="mt-4 pt-2">
-          <span className="text-[12px] font-normal text-slate-500">
+          <span className="text-caption-responsive font-normal text-slate-500">
             {meta}
           </span>
         </div>
@@ -119,10 +119,10 @@ export function DocCard({ num = 1, category, title, meta, icon, onClick }: DocCa
 
           {/* ROW 2: CATEGORY & TITLE */}
           <div className="flex flex-col justify-start p-4 sm:p-5 border-b border-slate-200 min-h-[110px] sm:min-h-[120px]">
-            <span className="text-[13px] sm:text-[14px] text-slate-500 font-normal">
+            <span className="text-body-regular text-slate-500 font-normal">
               {category}
             </span>
-            <h4 className="mt-3 text-[15px] sm:text-[16px] lg:text-[17px] font-semibold text-slate-900 leading-snug sm:leading-[24px] group-hover:text-[#1769E2] transition-colors line-clamp-2">
+            <h4 className="mt-3 text-body-large font-semibold text-slate-900 leading-snug group-hover:text-[#1769E2] transition-colors line-clamp-2">
               {title}
             </h4>
           </div>
@@ -130,7 +130,7 @@ export function DocCard({ num = 1, category, title, meta, icon, onClick }: DocCa
 
         {/* ROW 3: FOOTER METADATA */}
         <div className="p-4 sm:p-5">
-          <span className="text-[13px] sm:text-[14px] text-slate-500 font-normal">
+          <span className="text-body-regular text-slate-500 font-normal">
             {meta}
           </span>
         </div>

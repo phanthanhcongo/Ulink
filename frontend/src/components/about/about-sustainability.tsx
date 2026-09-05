@@ -22,14 +22,14 @@ export function AboutSustainability() {
         <div className="lg:col-span-6 flex flex-col gap-4">
           <div className="flex items-center gap-2 text-emerald-600">
             <Leaf className="h-4 w-4 shrink-0" />
-            <span className="text-sm font-bold">Phát triển bền vững</span>
+            <span className="text-eyebrow font-bold">Phát triển bền vững</span>
           </div>
 
-          <h2 className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold tracking-tight text-slate-900 leading-tight">
+          <h2 className="text-section-title font-extrabold text-slate-900">
             Kiến tạo tương lai xanh
           </h2>
 
-          <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-500 max-w-xl">
+          <p className="text-body-regular text-slate-500 max-w-xl">
             Chúng tôi tự hào áp dụng các giải pháp giảm thiểu khí thải carbon, sử dụng năng lượng
             tái tạo và quản lý thông minh tài nguyên để bảo vệ môi trường sống bền vững cho các thế
             hệ tương lai.
@@ -38,7 +38,7 @@ export function AboutSustainability() {
           <div className="mt-2">
             <Link
               href="/about/sustainability"
-              className="inline-flex items-center gap-1 text-[13px] sm:text-[14px] font-bold text-emerald-600 hover:text-emerald-500 transition-colors"
+              className="text-button-responsive inline-flex items-center gap-1 font-bold text-emerald-600 hover:text-emerald-500 transition-colors"
             >
               Tìm hiểu thêm &rarr;
             </Link>

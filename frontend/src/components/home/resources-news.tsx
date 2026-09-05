@@ -131,13 +131,13 @@ export function ResourcesNews() {
 
   return (
     <section className="w-full bg-white py-8 sm:py-8 lg:py-8">
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
+      <div className="page-container">
         {/* ── 2. SUB-SECTION HEADER (TIN TỨC THỊ TRƯỜNG - 2 HÀNG BẰNG CỠ CHỮ) ── */}
-        <div className="text-center max-w-3xl mx-auto space-y-1 sm:space-y-2">
-          <span className="text-[16px] min-[375px]:text-[18px] sm:text-[24px] lg:text-[28px] xl:text-[32px] font-semibold tracking-tight text-blue-600 leading-tight lg:leading-[36px] xl:leading-[40px] block">
+        <div className="section-header">
+          <span className="text-section-title text-blue-600 leading-tight block">
             {t('newsSectionTitle')}
           </span>
-          <h2 className="text-[16px] min-[375px]:text-[18px] sm:text-[24px] lg:text-[28px] xl:text-[32px] font-semibold tracking-tight text-slate-900 leading-tight lg:leading-[36px] xl:leading-[40px]">
+          <h2 className="text-section-title text-slate-900 leading-tight">
             {t('newsSectionSubTitle')}
           </h2>
         </div>
@@ -168,7 +168,7 @@ export function ResourcesNews() {
         <div className="mt-10 flex justify-center">
           <Link
             href="/resources"
-            className="group inline-flex h-11 items-center justify-center gap-2.5 rounded-[3px] border border-blue-600 bg-white px-6 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-normal text-blue-600 transition-all hover:bg-blue-50/50 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:-translate-y-0.5 hover:scale-[1.01]"
+            className="group inline-flex h-11 items-center justify-center gap-2.5 rounded-[3px] border border-blue-600 bg-white px-6 text-body-regular text-blue-600 transition-all hover:bg-blue-50/50 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:-translate-y-0.5 hover:scale-[1.01]"
           >
             {t('viewMore') || 'Xem thêm'}
             <ArrowRight className="h-4.5 w-4.5 transition-transform duration-300 group-hover:translate-x-1" aria-hidden="true" />

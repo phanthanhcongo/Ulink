@@ -31,7 +31,7 @@ export function CaseStudyCard({
   return (
     <Link
       href={`/resources/case-study-${num}`}
-      className="group relative flex h-full w-full flex-col overflow-hidden rounded-[3px] border border-slate-200 bg-white shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]"
+      className="group relative flex h-full w-full flex-col overflow-hidden rounded-[3px] border border-slate-200 bg-white shadow-xs transition-all duration-300 card-hover-standard"
     >
       {/* Top Banner Image */}
       <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100">
@@ -47,17 +47,17 @@ export function CaseStudyCard({
       {/* Content Area */}
       <div className="flex flex-1 flex-col p-5 sm:p-6 lg:p-5 xl:p-6">
         {/* Category */}
-        <p className="text-[11px] font-medium text-slate-600 sm:text-[12px] lg:text-[13px] xl:text-[14px]">
+        <p className="text-caption-responsive font-medium text-slate-600">
           {category}
         </p>
 
         {/* Title */}
-        <h3 className="mt-2 text-[15px] font-bold leading-snug text-slate-900 sm:text-[16px] lg:text-[18px] xl:text-[20px] lg:leading-[26px] xl:leading-[28px] group-hover:text-brand transition-colors">
+        <h3 className="mt-2 text-body-large font-bold leading-snug text-slate-900 group-hover:text-brand transition-colors">
           {title}
         </h3>
 
         {/* Description */}
-        <p className="mt-3 text-[13px] text-slate-600 font-normal leading-relaxed line-clamp-4 sm:text-[14px] lg:text-[15px] xl:text-[16px] lg:leading-[22px] xl:leading-[24px]">
+        <p className="mt-3 text-body-regular text-slate-600 font-normal leading-relaxed line-clamp-4">
           {description}
         </p>
 
@@ -72,10 +72,10 @@ export function CaseStudyCard({
             />
           </div>
           <div>
-            <p className="text-[13px] font-medium text-slate-800 leading-tight sm:text-[14px] lg:text-[15px] xl:text-[16px]">
+            <p className="text-body-regular font-medium text-slate-800 leading-tight">
               {authorName}
             </p>
-            <p className="text-[11px] font-normal text-slate-500 mt-0.5 sm:text-[12px] lg:text-[13px] xl:text-[14px]">
+            <p className="text-caption-responsive font-normal text-slate-500 mt-0.5">
               {authorRole}
             </p>
           </div>
@@ -83,7 +83,7 @@ export function CaseStudyCard({
 
         {/* Read More Link */}
         <div className="pt-6">
-          <span className="inline-flex items-center gap-2 text-[13px] font-semibold text-brand sm:text-[14px] lg:text-[15px] xl:text-[16px] group-hover:text-brand-strong transition-colors">
+          <span className="inline-flex items-center gap-2 text-body-regular font-semibold text-brand group-hover:text-brand-strong transition-colors">
             {readMoreText}
             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden="true" />
           </span>

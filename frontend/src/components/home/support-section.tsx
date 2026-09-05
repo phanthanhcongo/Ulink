@@ -17,11 +17,11 @@ export function SupportSection() {
 
   return (
     <section className="w-full bg-white py-8 sm:py-8 lg:py-8">
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
+      <div className="page-container">
         {/* ── 5. SUB-SECTION HEADER BAR (TƯ VẤN & HỖ TRỢ) ── */}
         <div className="flex items-center gap-3">
           <div className="h-6 w-1 rounded-full bg-cyan-500 shrink-0" />
-          <h2 className="text-[15px] sm:text-[16px] lg:text-[18px] xl:text-[20px] font-semibold text-slate-900 tracking-tight lg:leading-[26px] xl:leading-[28px]">
+          <h2 className="text-body-large font-semibold text-slate-900 tracking-tight">
             {t('supportTitle')}
           </h2>
         </div>
