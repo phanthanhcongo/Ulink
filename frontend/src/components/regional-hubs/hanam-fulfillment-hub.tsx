@@ -10,13 +10,14 @@ export default async function HanamFulfillmentHub() {
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 flex flex-col gap-12 lg:gap-16">
         
         {/* Title Area */}
-        <div className="text-center max-w-[900px] mx-auto w-full">
-          <span className="text-[12px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-bold uppercase tracking-wider text-brand block mb-3">
+        <div className="text-center w-full mx-auto">
+          <h2 className="text-[18px] sm:text-[22px] lg:text-[25px] xl:text-[27px] font-bold tracking-tight text-blue-600 leading-snug sm:leading-normal uppercase block mb-6">
             {t('hanamHub.eyebrow')}
-          </span>
-          <h2 className="text-[16px] min-[375px]:text-[18px] sm:text-[24px] lg:text-[28px] xl:text-[32px] font-semibold sm:font-bold tracking-tight text-slate-900 leading-tight lg:leading-[36px] xl:leading-[40px] max-w-[850px] mx-auto">
-            {t('hanamHub.title')}
           </h2>
+          <div className="text-[18px] sm:text-[22px] lg:text-[25px] xl:text-[27px] font-bold tracking-tight text-slate-900 leading-snug sm:leading-normal w-full">
+            <span className="block">{t('hanamHub.title').split(',')[0]},</span>
+            <span className="block mt-1 w-full">{t('hanamHub.title').split(',').slice(1).join(',').trim()}</span>
+          </div>
         </div>
 
         {/* Content Area */}

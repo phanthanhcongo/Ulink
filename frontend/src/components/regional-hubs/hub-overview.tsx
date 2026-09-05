@@ -82,19 +82,19 @@ export default function HubOverview({ locale }: HubOverviewProps) {
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 flex flex-col gap-10">
         
         {/* === Part 1: Heading & Description === */}
-        <div className="flex flex-col items-start text-left w-full">
-          <span className="text-[12px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-bold uppercase tracking-wider text-brand block mb-3">
+        <div className="flex flex-col items-start text-left w-full space-y-1 sm:space-y-2">
+          <span className="text-[16px] min-[375px]:text-[18px] sm:text-[24px] lg:text-[28px] xl:text-[32px] font-semibold tracking-tight text-blue-600 leading-tight lg:leading-[36px] xl:leading-[40px] block">
             {t.eyebrow}
           </span>
-          <h2 className="text-[16px] min-[375px]:text-[18px] sm:text-[24px] lg:text-[28px] xl:text-[32px] font-semibold sm:font-bold tracking-tight text-slate-900 leading-tight lg:leading-[36px] xl:leading-[40px]">
+          <h2 className="text-[16px] min-[375px]:text-[18px] sm:text-[24px] lg:text-[28px] xl:text-[32px] font-semibold tracking-tight text-slate-900 leading-tight lg:leading-[36px] xl:leading-[40px]">
             {t.title}
           </h2>
-          <p className="mt-4 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] leading-relaxed text-slate-500 max-w-[1100px]">
+          <p className="pt-2 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] leading-relaxed text-slate-500 max-w-[1100px]">
             {t.desc}
           </p>
           <Link
             href="/about"
-            className="mt-4 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] leading-relaxed font-semibold text-brand hover:underline inline-flex items-center"
+            className="pt-2 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] leading-relaxed font-semibold text-blue-600 hover:underline inline-flex items-center"
           >
             {t.learnMore}
           </Link>

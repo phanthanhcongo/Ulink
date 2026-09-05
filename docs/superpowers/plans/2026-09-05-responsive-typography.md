@@ -654,7 +654,7 @@ No text overlaps.
 H1 scales from 28px mobile to 56px XL.
 Section titles do not exceed 32px XL.
 Body text stays readable at 13-16px.
-Container padding is 16px mobile, 32px tablet, 48px desktop, 64px XL.
+Container padding is 4px mobile, 8px tablet, 16px desktop, 24px XL.
 Cards use blue glow hover, 2px lift, 1.01 scale.
 ```
 
@@ -673,4 +673,3 @@ Only run this commit if documentation files changed after Task 1-6.
 - Placeholder scan: no `TBD`, no `TODO`, no unspecified implementation step.
 - Type consistency: CSS class names are defined once in Task 1 and reused unchanged in later tasks.
 - Known risk: `check-responsive-typography.mjs` is strict and may flag intentional dense admin table text. Resolve by converting to semantic compact classes first; only add script allowlist for a reviewed false positive.
-

@@ -10,14 +10,14 @@ export default async function HubOffers() {
       <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 flex flex-col items-start">
         
         {/* Header */}
-        <div className="max-w-[900px] w-full text-left">
-          <span className="text-[12px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-bold uppercase tracking-wider text-brand block mb-2">
+        <div className="max-w-3xl w-full text-left space-y-1 sm:space-y-2">
+          <span className="text-[16px] min-[375px]:text-[18px] sm:text-[24px] lg:text-[28px] xl:text-[32px] font-semibold tracking-tight text-blue-600 leading-tight lg:leading-[36px] xl:leading-[40px] block">
             {t('hubOffer.eyebrow')}
           </span>
-          <h2 className="text-[16px] min-[375px]:text-[18px] sm:text-[24px] lg:text-[28px] xl:text-[32px] font-semibold sm:font-bold tracking-tight text-[#0F2942] leading-tight lg:leading-[36px] xl:leading-[40px] mb-3">
+          <h2 className="text-[16px] min-[375px]:text-[18px] sm:text-[24px] lg:text-[28px] xl:text-[32px] font-semibold tracking-tight text-slate-900 leading-tight lg:leading-[36px] xl:leading-[40px]">
             {t('hubOffer.title')}
           </h2>
-          <p className="text-slate-500 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] leading-relaxed font-normal">
+          <p className="text-slate-500 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] leading-relaxed font-normal pt-1">
             {t('hubOffer.subtitle')}
           </p>
         </div>
