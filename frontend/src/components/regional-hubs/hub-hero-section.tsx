@@ -80,7 +80,7 @@ export default function HubHeroSection({ locale }: HubHeroSectionProps) {
       </div>
 
       {/* Main Content Area */}
-      <div className="relative z-10 mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 pt-20 pb-20 sm:pt-24 lg:pt-32 lg:pb-28 flex flex-col justify-between min-h-[520px] sm:min-h-[580px] lg:min-h-[640px]">
+      <div className="relative z-10 page-container pt-20 pb-20 sm:pt-24 lg:pt-32 lg:pb-28 flex flex-col justify-between min-h-[520px] sm:min-h-[580px] lg:min-h-[640px]">
         {/* Left-aligned Info Card */}
         <div className="max-w-[760px] text-left mt-auto mb-auto">
           {/* Title */}
@@ -115,7 +115,7 @@ export default function HubHeroSection({ locale }: HubHeroSectionProps) {
 
       {/* Order Tracking Card (Overlapping bottom edge) */}
       <div className="absolute bottom-0 left-0 right-0 z-20 translate-y-1/2">
-        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
+        <div className="page-container">
           <div className="w-full bg-white rounded-[3px] p-6 sm:p-8 shadow-2xl border border-slate-100/60">
             <div className="flex flex-col gap-4">
               <span className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 leading-snug text-center md:text-left">
@@ -144,3 +144,4 @@ export default function HubHeroSection({ locale }: HubHeroSectionProps) {
     </section>
   );
 }
+

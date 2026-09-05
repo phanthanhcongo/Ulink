@@ -25,7 +25,7 @@ export async function PartnersCertifications() {
   ];
 
   return (
-    <section className="mx-auto w-full max-w-[1440px] px-4 py-8 sm:px-8 lg:px-12 xl:px-16 lg:py-8 xl:py-8 overflow-hidden">
+    <section className="page-container overflow-hidden py-8">
       <SectionHeader
         title={t('partners.sectionTitle')}
         subtitle={t('partners.sectionSubTitle')}

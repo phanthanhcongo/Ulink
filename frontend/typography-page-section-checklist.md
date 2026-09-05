@@ -21,7 +21,7 @@ Check each section for:
 - Card title uses card scale: `16px`, `sm:18px`, `lg:20px`, `xl:24px`.
 - Body uses `13px`, `sm:14px`, `lg:15px`, `xl:16px`.
 - Caption/meta uses `11px`, `sm:12px`, `lg:13px`, `xl:14px`.
-- Container padding uses `px-4 sm:px-8 lg:px-12 xl:px-16`.
+- Container padding uses `px-3 sm:px-6 lg:px-8 xl:px-10`.
 - Section padding uses `py-8 sm:py-10 lg:py-12` unless page has intentional asymmetric hero spacing.
 - Card hover uses blue glow, `hover:-translate-y-0.5`, `hover:scale-[1.01]`.
 - No text overlap or clipped text in Vietnamese, English, Japanese.

@@ -131,9 +131,9 @@ export default function SolutionCarousel({ slides, labels }: SolutionCarouselPro
       onMouseEnter={stopAutoplay}
       onMouseLeave={startAutoplay}
     >
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16">
+      <div className="page-container">
         {/* Carousel Container */}
-        <div className="rounded-[3px] border border-slate-200/90 bg-white p-6 sm:p-10 lg:py-[60px] lg:px-[80px] shadow-sm">
+        <div className="rounded-[3px] border border-slate-200/90 bg-white p-6 shadow-sm sm:p-10 lg:px-12 lg:py-14 xl:px-16">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-[80px] items-center">
             {/* Left Column: Text & Features */}
             <div
@@ -239,4 +239,5 @@ export default function SolutionCarousel({ slides, labels }: SolutionCarouselPro
     </section>
   );
 }
+
 

@@ -60,7 +60,7 @@ export default function HubSolutions({ locale }: HubSolutionsProps) {
 
   return (
     <section className="w-full bg-white py-10 lg:py-14 border-b border-slate-100">
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 flex flex-col items-center">
+      <div className="page-container flex flex-col items-center">
         
         {/* Title Area */}
         <div className="text-center max-w-[600px] w-full flex flex-col items-center gap-[28px]">
@@ -162,3 +162,4 @@ export default function HubSolutions({ locale }: HubSolutionsProps) {
     </section>
   );
 }
+

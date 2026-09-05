@@ -43,7 +43,7 @@ export default async function FeaturedProducts({ locale }: FeaturedProductsProps
 
   return (
     <section className="w-full bg-white py-14">
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
+      <div className="page-container">
         {/* Header */}
         <div className="mb-10">
           <SectionHeader
@@ -438,3 +438,4 @@ export default async function FeaturedProducts({ locale }: FeaturedProductsProps
     </section>
   );
 }
+

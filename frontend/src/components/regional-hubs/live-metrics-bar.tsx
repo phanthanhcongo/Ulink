@@ -87,7 +87,7 @@ export default function LiveMetricsBar() {
 
   return (
     <section className="w-full bg-[#f8fafc] py-8 sm:py-10 border-b border-slate-200/60">
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
+      <div className="page-container">
         {/* Header */}
         <div className="flex items-center justify-between gap-4 mb-6">
           <h2 className="text-[18px] sm:text-[20px] font-bold text-[#1e293b] leading-[28px] tracking-tight">
@@ -153,3 +153,4 @@ export default function LiveMetricsBar() {
     </section>
   );
 }
+

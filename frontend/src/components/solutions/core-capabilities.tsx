@@ -12,7 +12,7 @@ export default async function CoreCapabilities({ locale }: CoreCapabilitiesProps
 
   return (
     <section className="w-full bg-white border-t border-gray-150 py-16 lg:py-24">
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16 text-center">
+      <div className="page-container text-center">
         {/* Section Header */}
         <div className="max-w-3xl mx-auto mb-16">
           <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-blue-600">
@@ -92,3 +92,4 @@ export default async function CoreCapabilities({ locale }: CoreCapabilitiesProps
     </section>
   );
 }
+

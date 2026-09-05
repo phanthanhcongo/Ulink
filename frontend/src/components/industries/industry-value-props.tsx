@@ -37,7 +37,7 @@ interface IndustryValuePropsProps {
 
 export function IndustryValueProps({ valueProps }: IndustryValuePropsProps) {
   return (
-    <div className="w-full relative z-25 -mt-10 sm:-mt-12 max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-16">
+    <div className="w-full relative z-25 -mt-10 sm:-mt-12 page-container">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {valueProps.map((prop, idx) => {
           const PropIcon = iconMap[prop.iconName] || ShieldCheck;
@@ -60,4 +60,5 @@ export function IndustryValueProps({ valueProps }: IndustryValuePropsProps) {
     </div>
   );
 }
+
 

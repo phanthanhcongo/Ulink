@@ -272,7 +272,7 @@ export default function CheckoutClient({
 
   return (
     <div className="space-y-10 w-full">
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-6 px-4 sm:px-8 lg:px-12 xl:px-16">
+      <div className="page-container flex flex-col gap-6">
         <nav
           aria-label="Breadcrumb"
           className="flex items-center gap-2 text-[12px] text-muted-foreground pb-2"
@@ -1016,4 +1016,5 @@ function ChevronRightIcon({ className }: { className?: string }) {
     </svg>
   );
 }
+
 

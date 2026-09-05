@@ -6,7 +6,7 @@ import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 
 export function CtaBanner({
-  containerClassName = 'max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16'
+  containerClassName = 'page-container'
 }: {
   containerClassName?: string;
 }) {
@@ -23,7 +23,7 @@ export function CtaBanner({
 
   return (
     <section className="w-full bg-[#3B82F6] text-white">
-      <div className={`mx-auto w-full py-8 sm:py-8 lg:py-8 xl:py-8 ${containerClassName}`}>
+      <div className={`w-full py-8 sm:py-8 lg:py-8 xl:py-8 ${containerClassName}`}>
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-10 xl:gap-16">
           {/* ── CỘT BÊN TRÁI: BÁO GIÁ NHANH 24H (7/12 COLS) ── */}
           <div className="flex flex-col justify-center lg:col-span-7">

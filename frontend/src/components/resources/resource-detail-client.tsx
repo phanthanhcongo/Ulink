@@ -205,7 +205,7 @@ export function ResourceDetailClient({ data, locale }: ResourceDetailClientProps
       />
 
       {/* ── ARTICLE HERO SECTION ── */}
-      <header className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
+      <header className="page-container">
         <div className="rounded-[3px] bg-white p-6 sm:p-10 border border-slate-200/80 shadow-sm relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl -z-10" />
 
@@ -300,7 +300,7 @@ export function ResourceDetailClient({ data, locale }: ResourceDetailClientProps
       </header>
 
       {/* ── ARTICLE MAIN CONTENT BODY ── */}
-      <main className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 mt-8">
+      <main className="page-container mt-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
 
           {/* Cột trái: Table of Contents */}
@@ -641,3 +641,4 @@ export function ResourceDetailClient({ data, locale }: ResourceDetailClientProps
     </article>
   );
 }
+

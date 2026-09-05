@@ -41,7 +41,7 @@ export default async function HubTeam() {
 
   return (
     <section className="w-full bg-white py-16 sm:py-20 lg:py-24 border-t border-slate-100">
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 flex flex-col items-center gap-12 lg:gap-16">
+      <div className="page-container flex flex-col items-center gap-12 lg:gap-16">
         
         {/* Header */}
         <div className="text-center max-w-[800px] w-full">
@@ -126,3 +126,4 @@ export default async function HubTeam() {
     </section>
   );
 }
+

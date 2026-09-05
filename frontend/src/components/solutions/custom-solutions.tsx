@@ -9,7 +9,7 @@ interface CustomSolutionsProps {
 export default function CustomSolutions({ locale }: CustomSolutionsProps) {
   return (
     <section className="w-full bg-white py-16 lg:py-24 border-t border-gray-150">
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16">
+      <div className="page-container">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Column: Text Content */}
           <div className="lg:col-span-6 flex flex-col justify-center">
@@ -45,3 +45,4 @@ export default function CustomSolutions({ locale }: CustomSolutionsProps) {
     </section>
   );
 }
+

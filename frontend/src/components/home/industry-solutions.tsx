@@ -109,7 +109,7 @@ export function IndustrySolutions() {
   return (
     <div ref={ref} className="bg-[#f4f7fb] w-full">
       {/* ── 1. MOBILE VIEW (Visible below md: < 768px) ── */}
-      <section className="mx-auto w-full max-w-[1440px] px-4 py-8 sm:px-8 md:hidden overflow-hidden">
+      <section className="page-container overflow-hidden py-8 md:hidden">
         {/* ── SECTION HEADER BAR ── */}
         <SectionHeader
           title={t('industries.sectionTitle')}
@@ -160,7 +160,7 @@ export function IndustrySolutions() {
       </section>
 
       {/* ── 2. DESKTOP & IPAD VIEW (Visible on md and up: >= 768px) ── */}
-      <section className="hidden md:block mx-auto w-full max-w-[1440px] px-6 py-8 md:px-8 md:py-8 lg:px-12 xl:px-16 lg:py-8 xl:py-8 overflow-hidden">
+      <section className="page-container hidden overflow-hidden py-8 md:block">
         {/* ── SECTION HEADER BAR ── */}
         <SectionHeader
           title={t('industries.sectionTitle')}

@@ -64,7 +64,7 @@ export function IndustryHero({ industryData, locale, translations }: IndustryHer
       </div>
 
       {/* Inner Grid Alignment Wrapper */}
-      <div className="mx-auto w-full px-4 sm:px-8 lg:px-16 h-full flex flex-col md:flex-row items-stretch relative">
+      <div className="page-container h-full flex flex-col md:flex-row items-stretch relative">
         {/* Left Content Side */}
         <div className="w-full md:w-[50%] lg:w-[45%] py-8 sm:py-10 lg:py-12 z-20 flex flex-col justify-between relative bg-white md:bg-transparent">
           {/* Breadcrumb Inside Hero Banner */}

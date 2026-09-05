@@ -14,7 +14,7 @@ export default async function HubAndPartner({ locale }: HubAndPartnerProps) {
     <>
       {/* === SECTION: HUB HÀ NAM === */}
       <section className="w-full bg-white border-t border-gray-150 py-16 lg:py-24">
-        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16 text-center">
+        <div className="page-container text-center">
           {/* Section Header */}
           <div className="max-w-3xl mx-auto mb-12">
             <h2 className="text-[30px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold text-blue-600 tracking-tight uppercase">
@@ -40,7 +40,7 @@ export default async function HubAndPartner({ locale }: HubAndPartnerProps) {
 
       {/* === SECTION: TRỞ THÀNH ĐỐI TÁC === */}
       <section className="w-full bg-card border-t border-gray-150 py-16 lg:py-24">
-        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16">
+        <div className="page-container">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left: Text Content and Buttons */}
             <div className="lg:col-span-6 flex flex-col items-start">
@@ -83,4 +83,5 @@ export default async function HubAndPartner({ locale }: HubAndPartnerProps) {
     </>
   );
 }
+
 

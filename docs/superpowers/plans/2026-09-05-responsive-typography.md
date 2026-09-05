@@ -14,7 +14,7 @@
 - Tablet breakpoint: `sm:` at `>=640px`; `md:` at `>=768px`.
 - Desktop breakpoint: `lg:` at `>=1024px`.
 - Desktop XL breakpoint: `xl:` at `>=1280px`.
-- Main section container: `mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16`.
+- Main section container: `mx-auto w-full max-w-[1440px] px-3 sm:px-6 lg:px-8 xl:px-10`.
 - Section vertical padding: `py-8 sm:py-10 lg:py-12`.
 - Section header wrapper: `text-center max-w-3xl mx-auto space-y-1 sm:space-y-2`.
 - Card grid default: `grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8`.
@@ -38,7 +38,7 @@ Add these classes to `frontend/src/app/globals.css` inside existing `@layer comp
 
 ```css
 .page-container {
-  @apply mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16;
+  @apply mx-auto w-full max-w-[1440px] px-3 sm:px-6 lg:px-8 xl:px-10;
 }
 
 .section-padding {
@@ -111,11 +111,11 @@ In `frontend/src/app/globals.css`, set these existing classes to rule-compatible
 
 ```css
 .container-page {
-  @apply mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16;
+  @apply mx-auto w-full max-w-[1440px] px-3 sm:px-6 lg:px-8 xl:px-10;
 }
 
 .admin-page {
-  @apply mx-auto w-full max-w-[1440px] px-4 py-8 sm:px-8 sm:py-10 lg:px-12 lg:py-12 xl:px-16;
+  @apply mx-auto w-full max-w-[1440px] px-3 py-8 sm:px-6 sm:py-10 lg:px-8 lg:py-12 xl:px-10;
 }
 
 .card-hover {
@@ -307,7 +307,7 @@ className="... px-4 sm:px-8 lg:px-16 ..."
 to:
 
 ```tsx
-className="... px-4 sm:px-8 lg:px-12 xl:px-16 ..."
+className="... px-3 sm:px-6 lg:px-8 xl:px-10 ..."
 ```
 
 - [ ] **Step 4: Normalize section padding**

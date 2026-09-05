@@ -18,7 +18,7 @@ const steps = [
 
 export function ContactNextSteps() {
   return (
-    <section className="py-12 px-4 sm:px-8">
+    <section className="py-12 px-3 sm:px-6">
       <div className="flex flex-col items-center text-center mb-10">
         <span className="inline-flex items-center rounded-full bg-blue-50 px-3.5 py-1 text-body-regular font-bold uppercase tracking-wider text-blue-700 ring-1 ring-inset ring-blue-700/10 mb-2">
           QUY TRÌNH TIẾP THEO

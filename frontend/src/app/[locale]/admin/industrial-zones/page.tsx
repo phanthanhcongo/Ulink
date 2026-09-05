@@ -93,8 +93,9 @@ export default async function AdminIndustrialZonesPage({ params }: PageProps) {
   }
 
   return (
-    <div className="mx-auto w-full max-w-[1440px] px-4 py-8 sm:px-8 lg:px-12 xl:px-16">
+    <div className="admin-page">
       <IndustrialZonesClient initialZones={zones} hubs={hubs} error={error} />
     </div>
   );
 }
+

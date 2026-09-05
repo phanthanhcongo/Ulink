@@ -70,11 +70,11 @@
 
 @layer components {
   .ui-page {
-    @apply mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16;
+    @apply mx-auto w-full max-w-[1440px] px-3 sm:px-6 lg:px-8 xl:px-10;
   }
 
   .page-container {
-    @apply mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16;
+    @apply mx-auto w-full max-w-[1440px] px-3 sm:px-6 lg:px-8 xl:px-10;
   }
 
   .section-padding {
@@ -138,7 +138,7 @@
   }
 
   .admin-page {
-    @apply mx-auto w-full max-w-[1440px] px-4 py-8 sm:px-8 sm:py-10 lg:px-12 lg:py-12 xl:px-16;
+    @apply mx-auto w-full max-w-[1440px] px-3 py-8 sm:px-6 sm:py-10 lg:px-8 lg:py-12 xl:px-10;
   }
 
   .admin-panel {

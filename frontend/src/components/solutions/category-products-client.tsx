@@ -540,7 +540,7 @@ export function CategoryProductsClient({
     <div className="min-h-screen bg-slate-50/70 relative">
       {/* ── HERO BANNER (Category or Search) ── */}
       <header className="w-full ">
-        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 pb-10 pt-6 text-slate-800 relative overflow-hidden">
+        <div className="page-container pb-10 pt-6 text-slate-800 relative overflow-hidden">
           {/* Breadcrumb inside the Hero Banner container */}
           <div className="mb-2">
             <Breadcrumb
@@ -682,7 +682,7 @@ export function CategoryProductsClient({
 
       {/* ── QUICK TABS ── */}
       <div className="w-full bg-slate-50/70">
-        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
+        <div className="page-container">
           <div className="bg-white py-4 px-6 border-b border-slate-200">
             <div className="flex flex-wrap items-center gap-2.5 overflow-x-auto no-scrollbar scroll-smooth">
               <button
@@ -719,7 +719,7 @@ export function CategoryProductsClient({
 
       {/* ── MAIN CONTENT CONTAINER WITH LEFT SIDEBAR FILTER ── */}
       <div className="w-full bg-slate-50/70 py-8">
-        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
+        <div className="page-container">
           <div className="bg-white py-8 px-6 rounded-[3px] shadow-xs border border-slate-200/50">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
               {/* ════════════════════════════════════════════════════════════
@@ -1224,7 +1224,7 @@ export function CategoryProductsClient({
 
       {/* ── CALL TO ACTION BANNER ── */}
       <section className="w-full bg-[#0F62FE] text-white py-14 mt-16 shadow-inner">
-        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 text-center space-y-4">
+        <div className="page-container text-center space-y-4">
           <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
             {locale === 'vi' ? 'Bạn cần tư vấn giải pháp công nghiệp?' : 'Do You Need Industrial Solutions Consulting?'}
           </h2>
@@ -1433,5 +1433,6 @@ export function CategoryProductsClient({
     </div>
   );
 }
+
 
 

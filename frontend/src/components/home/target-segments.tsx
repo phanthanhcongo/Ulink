@@ -99,7 +99,7 @@ export function TargetSegments() {
       {/* ──────────────────────────────────────────────────────── */}
       {/* 2. DESKTOP VIEW (Screens >= 768px: md breakpoint)        */}
       {/* ──────────────────────────────────────────────────────── */}
-      <div className="hidden md:block mx-auto w-full max-w-[1440px] px-8 py-8 lg:px-12 xl:px-16 lg:py-8 xl:py-8">
+      <div className="page-container hidden py-8 md:block">
         {/* Desktop Header: Centered 2-line equal size */}
         <div className="text-center max-w-3xl mx-auto space-y-1 sm:space-y-2 mb-10 sm:mb-12">
           <span className="text-section-title font-extrabold text-blue-600  block">

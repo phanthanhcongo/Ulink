@@ -11,7 +11,7 @@ export default async function ContactCta({ locale }: ContactCtaProps) {
 
   return (
     <section className="w-full bg-white border-t border-b border-slate-100 py-10 mt-16 lg:mt-24">
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+      <div className="page-container flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
         {/* Left Content Side */}
         <div className="flex flex-col">
           <span className="text-[13px] sm:text-[14px] leading-relaxed font-bold text-slate-800">
@@ -44,4 +44,5 @@ export default async function ContactCta({ locale }: ContactCtaProps) {
     </section>
   );
 }
+
 

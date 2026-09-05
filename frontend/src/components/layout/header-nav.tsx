@@ -1224,7 +1224,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                 onMouseEnter={() => handleMouseEnter(item.href)}
                 onMouseLeave={handleMouseLeave}
               >
-                <div className="mx-auto w-full max-w-[1440px] grid grid-cols-[340px_1fr]">
+                <div className="page-container grid grid-cols-[340px_1fr]">
                   {/* Left Column: Categories List */}
                   <div className="border-r border-slate-100 bg-white pt-8 pb-8 pl-20 pr-8">
                     <div className="flex flex-col gap-1.5">
@@ -1313,7 +1313,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
 
                 {/* Bottom Bar: spans edge-to-edge */}
                 <div className="border-t border-slate-100 bg-[#F8FAFC] w-full">
-                  <div className="mx-auto w-full max-w-[1440px] py-3.5 pl-20 pr-8 flex items-center">
+                  <div className="page-container flex items-center py-3.5">
                     <span className="inline-flex items-center justify-center bg-blue-600 text-white text-[11px] font-extrabold px-2 py-0.5 rounded-[2px] tracking-wider">
                       MỚI
                     </span>
@@ -1338,7 +1338,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                 onMouseEnter={() => handleMouseEnter(item.href)}
                 onMouseLeave={handleMouseLeave}
               >
-                <div className="mx-auto w-full max-w-[1440px] grid grid-cols-[340px_1fr]">
+                <div className="page-container grid grid-cols-[340px_1fr]">
                   {/* Left Column: Regions List */}
                   <div className="border-r border-slate-100 bg-white pt-8 pb-8 pl-20 pr-8 flex flex-col gap-4">
                     <div className="flex flex-col gap-1.5">
@@ -1498,7 +1498,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
 
                 {/* Bottom Bar: spans edge-to-edge */}
                 <div className="border-t border-slate-100 bg-[#F8FAFC] w-full">
-                  <div className="mx-auto w-full max-w-[1440px] py-3.5 pl-20 pr-8 flex items-center">
+                  <div className="page-container flex items-center py-3.5">
                     <span className="inline-flex items-center justify-center bg-blue-600 text-white text-[11px] font-extrabold px-2 py-0.5 rounded-[2px] tracking-wider">
                       MỚI
                     </span>
@@ -1523,7 +1523,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                 onMouseEnter={() => handleMouseEnter(item.href)}
                 onMouseLeave={handleMouseLeave}
               >
-                <div className="mx-auto w-full max-w-[1440px] grid grid-cols-[340px_1fr]">
+                <div className="page-container grid grid-cols-[340px_1fr]">
                   {/* Left Column: Industries List */}
                   <div className="border-r border-slate-100 bg-white pt-8 pb-8 pl-20 pr-8">
                     <div className="flex flex-col gap-1.5">
@@ -1609,7 +1609,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
 
                 {/* Bottom Bar: spans edge-to-edge */}
                 <div className="border-t border-slate-100 bg-[#F8FAFC] w-full">
-                  <div className="mx-auto w-full max-w-[1440px] py-3.5 pl-20 pr-8 flex items-center">
+                  <div className="page-container flex items-center py-3.5">
                     <span className="inline-flex items-center justify-center bg-blue-600 text-white text-[11px] font-extrabold px-2 py-0.5 rounded-[2px] tracking-wider">
                       MỚI
                     </span>
@@ -1634,7 +1634,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                 onMouseEnter={() => handleMouseEnter(item.href)}
                 onMouseLeave={handleMouseLeave}
               >
-                <div className="mx-auto w-full max-w-[1440px] grid grid-cols-[340px_1fr]">
+                <div className="page-container grid grid-cols-[340px_1fr]">
                   {/* Left Column: Resources List */}
                   <div className="border-r border-slate-100 bg-white pt-8 pb-8 pl-20 pr-8">
                     <div className="flex flex-col gap-1.5">
@@ -1720,7 +1720,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
 
                 {/* Bottom Bar: spans edge-to-edge */}
                 <div className="border-t border-slate-100 bg-[#F8FAFC] w-full">
-                  <div className="mx-auto w-full max-w-[1440px] py-3.5 pl-20 pr-8 flex items-center">
+                  <div className="page-container flex items-center py-3.5">
                     <span className="inline-flex items-center justify-center bg-blue-600 text-white text-[11px] font-extrabold px-2 py-0.5 rounded-[2px] tracking-wider">
                       MỚI
                     </span>
@@ -1745,7 +1745,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                 onMouseEnter={() => handleMouseEnter(item.href)}
                 onMouseLeave={handleMouseLeave}
               >
-                <div className="mx-auto w-full max-w-[1440px] grid grid-cols-[340px_1fr]">
+                <div className="page-container grid grid-cols-[340px_1fr]">
                   {/* Left Column: About Categories List */}
                   <div className="border-r border-slate-100 bg-white pt-8 pb-8 pl-20 pr-8">
                     <div className="flex flex-col gap-1.5">
@@ -1830,7 +1830,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
 
                 {/* Bottom Bar: spans edge-to-edge */}
                 <div className="border-t border-slate-100 bg-[#F8FAFC] w-full">
-                  <div className="mx-auto w-full max-w-[1440px] py-3.5 pl-20 pr-8 flex items-center">
+                  <div className="page-container flex items-center py-3.5">
                     <span className="inline-flex items-center justify-center bg-blue-600 text-white text-[11px] font-extrabold px-2 py-0.5 rounded-[2px] tracking-wider">
                       MỚI
                     </span>

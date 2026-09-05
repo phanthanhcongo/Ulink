@@ -125,7 +125,7 @@ export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
       {/* Subtle Grid Background */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,0.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,0.08)_1px,transparent_1px)] bg-[size:24px_24px] pointer-events-none" />
 
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 relative z-10">
+      <div className="page-container relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
 
           {/* ════════════════════════════════════════════════════════════
@@ -370,3 +370,4 @@ export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
     </section>
   );
 }
+

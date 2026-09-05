@@ -75,7 +75,7 @@ export function SustainabilityContact({ tContact }: SustainabilityContactProps) 
 
   return (
     <section className="bg-white py-12 md:py-16">
-      <div className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-[80px]">
+      <div className="page-container">
         {/* Header */}
         <div className="mb-10 text-left">
           <h2 className="text-[24px] font-extrabold text-slate-900 tracking-tight">

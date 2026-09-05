@@ -112,8 +112,9 @@ export default async function AdminHubsPage({ params }: PageProps) {
   }
 
   return (
-    <div className="mx-auto w-full max-w-[1440px] px-4 py-8 sm:px-8 lg:px-12 xl:px-16">
+    <div className="admin-page">
       <HubsClient initialHubs={hubs} provinces={provinces} error={error} />
     </div>
   );
 }
+

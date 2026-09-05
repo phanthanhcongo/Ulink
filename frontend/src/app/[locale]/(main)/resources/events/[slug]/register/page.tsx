@@ -75,7 +75,7 @@ export default async function EventRegisterPage({ params }: Props) {
   return (
     <main className="min-h-screen bg-[#F4F6F8] pb-16">
       {/* Top Breadcrumb */}
-      <div className="mx-auto max-w-[900px] px-4 sm:px-8 py-6">
+      <div className="mx-auto max-w-[900px] px-3 py-6 sm:px-6">
         <Breadcrumb
           className="px-0 py-0 mx-0 max-w-none"
           items={[

@@ -45,7 +45,7 @@ export default async function ProductionMaterials({ locale }: ProductionMaterial
 
   return (
     <section className="w-full bg-white border-t border-gray-150 py-16 lg:py-24">
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16">
+      <div className="page-container">
         {/* Section Header */}
         <div className="flex flex-col items-start">
           <div className="flex items-center gap-2">
@@ -115,3 +115,4 @@ export default async function ProductionMaterials({ locale }: ProductionMaterial
     </section>
   );
 }
+

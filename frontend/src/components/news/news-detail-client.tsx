@@ -47,7 +47,7 @@ export function NewsDetailClient({ article, locale }: NewsDetailClientProps) {
         }}
       />
 
-      <header className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
+      <header className="page-container">
         <div className="rounded-[3px] bg-white p-6 sm:p-10 border border-slate-200/80 shadow-sm relative overflow-hidden">
           <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl -z-10" />
 
@@ -92,7 +92,7 @@ export function NewsDetailClient({ article, locale }: NewsDetailClientProps) {
         </div>
       </header>
 
-      <main className="mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 mt-8">
+      <main className="page-container mt-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           <aside className="hidden lg:block lg:col-span-3 sticky top-28 self-start bg-slate-50 p-5 rounded-[3px] border border-slate-200/50">
             <h3 className="text-base font-extrabold text-slate-900 tracking-tight mb-5 px-1">
@@ -196,3 +196,4 @@ export function NewsDetailClient({ article, locale }: NewsDetailClientProps) {
     </article>
   );
 }
+

@@ -104,7 +104,7 @@ export default async function CoreAdvantages({ locale }: CoreAdvantagesProps) {
   return (
     <div className="w-full flex flex-col">
       {/* 4-Column Summary Bar */}
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
+      <div className="page-container">
         <div className="bg-white border border-slate-100 rounded-[3px] p-6 sm:p-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-8 gap-x-6 lg:gap-x-2 xl:gap-x-4">
           {summaryFeatures.map((feat, idx) => {
             const IconComp = feat.icon;
@@ -139,7 +139,7 @@ export default async function CoreAdvantages({ locale }: CoreAdvantagesProps) {
 
       {/* Core Advantages Section (Wrapper with bg - Full Width) */}
       <div className="bg-[#F2F4F8] py-16 lg:py-24 mt-16 lg:mt-24 w-full">
-        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
+        <div className="page-container">
           {/* Core Advantages Heading */}
           <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
             <h2 className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-primary tracking-tight leading-tight">
@@ -177,4 +177,5 @@ export default async function CoreAdvantages({ locale }: CoreAdvantagesProps) {
     </div>
   );
 }
+
 

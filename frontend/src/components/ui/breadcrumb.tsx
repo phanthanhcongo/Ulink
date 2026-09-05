@@ -23,7 +23,7 @@ interface BreadcrumbProps {
 export function Breadcrumb({ items, backLink, className, theme = 'light' }: BreadcrumbProps) {
   const isDark = theme === 'dark';
   return (
-    <div className={cn("mx-auto max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16", className)}>
+    <div className={cn("page-container", className)}>
       {/* Breadcrumb Trail */}
       <nav
         aria-label="Breadcrumb"

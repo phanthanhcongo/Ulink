@@ -78,7 +78,7 @@ export async function ProductCategories() {
   ];
 
   return (
-    <section className="mx-auto w-full max-w-[1440px] px-4 py-8 sm:px-8 lg:px-12 xl:px-16 lg:py-8 xl:py-8">
+    <section className="page-container py-8">
       {/* SECTION HEADER BAR */}
       <SectionHeader
         title={t('categories.sectionTitle')}
@@ -215,5 +215,4 @@ export async function ProductCategories() {
     </section>
   );
 }
-
 

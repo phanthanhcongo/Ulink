@@ -295,7 +295,7 @@ export default function IndustryDetailClient({
         </div>
 
         {/* Content Container */}
-        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16 z-20 pt-28 pb-20 relative flex flex-col items-start justify-center h-full">
+        <div className="page-container z-20 pt-28 pb-20 relative flex flex-col items-start justify-center h-full">
           {/* Breadcrumbs inside Hero Banner */}
           <nav className="flex items-center gap-1.5 text-xs text-white/70 font-semibold mb-6">
             <Link href="/" className="hover:text-white transition-colors">
@@ -337,7 +337,7 @@ export default function IndustryDetailClient({
       <IndustryValueProps valueProps={industryData.valueProps} />
 
       <div className="relative bg-white border-b border-slate-200/80 transition-all duration-300 mt-12">
-        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16">
+        <div className="page-container">
           <div className="flex overflow-x-auto no-scrollbar py-0.5 gap-8 scroll-smooth">
             {tabs.map((tab) => (
               <a
@@ -357,7 +357,7 @@ export default function IndustryDetailClient({
       </div>
 
       <section id="overview" className="scroll-mt-36 py-16 lg:py-20 w-full bg-white">
-        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16 grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+        <div className="page-container grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
 
           {/* Left Column (2/3) - Text & Large Image */}
           <div className="lg:col-span-2 space-y-6">
@@ -448,7 +448,7 @@ export default function IndustryDetailClient({
 
       {/* ── SECTION 3: GIẢI PHÁP PHÒNG SẠCH (Cleanroom Solutions) ── */}
       <section id="cleanroom" className="scroll-mt-36 py-16 lg:py-20 w-full bg-slate-50 border-t border-b border-slate-100">
-        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16 space-y-10">
+        <div className="page-container space-y-10">
           <div className="space-y-2 max-w-3xl">
             <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-blue-600 block">
               {translations.cleanroomSol}
@@ -517,7 +517,7 @@ export default function IndustryDetailClient({
 
       {/* ── SECTION 4: BAO BÌ & ĐÓNG GÓI (Packaging Solutions) ── */}
       <section id="packaging" className="scroll-mt-36 py-16 lg:py-20 w-full bg-white">
-        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16 space-y-10">
+        <div className="page-container space-y-10">
           <div className="space-y-2 max-w-3xl">
             <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-blue-600 block">
               {translations.packagingSol}
@@ -586,7 +586,7 @@ export default function IndustryDetailClient({
 
       {/* ── SECTION 5: CHỨNG NHẬN & TIÊU CHUẨN (Standards & Certs) ── */}
       <section id="standards" className="scroll-mt-36 py-16 lg:py-20 w-full bg-[#F4F8FE]/60 border-t border-b border-blue-100/70">
-        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16 space-y-10">
+        <div className="page-container space-y-10">
           <div className="space-y-2 text-center max-w-3xl mx-auto">
             <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-blue-600 block">
               {industryData.standardsTitle}
@@ -634,7 +634,7 @@ export default function IndustryDetailClient({
 
       {/* ── SECTION 6: TRƯỜNG HỢP ÁP DỤNG (Case Studies) ── */}
       <section id="cases" className="scroll-mt-36 py-16 lg:py-20 w-full bg-white">
-        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16 space-y-10">
+        <div className="page-container space-y-10">
           <div className="space-y-2 max-w-3xl">
             <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-blue-600 block">
               {translations.cases}
@@ -683,7 +683,7 @@ export default function IndustryDetailClient({
 
       {/* ── BRAND PARTNERS LOGOS GRID ── */}
       <section className="py-16 w-full bg-slate-50 border-t border-b border-slate-100">
-        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16 space-y-10">
+        <div className="page-container space-y-10">
           <div className="text-center max-w-xl mx-auto space-y-2">
             <h3 className="text-[13px] sm:text-[14px] leading-relaxed font-extrabold text-primary uppercase tracking-widest">
               {isVi
@@ -729,4 +729,5 @@ export default function IndustryDetailClient({
     </div>
   );
 }
+
 

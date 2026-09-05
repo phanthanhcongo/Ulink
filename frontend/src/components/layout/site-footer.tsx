@@ -10,7 +10,7 @@ export async function SiteFooter() {
   return (
     <footer className="relative w-full overflow-hidden bg-[#f3f7fc] text-slate-800">
       {/* ── MAIN FOOTER CONTAINER ── */}
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 pt-8 pb-12 sm:pt-10 lg:pt-12 lg:pb-16">
+      <div className="page-container pt-8 pb-12 sm:pt-10 lg:pt-12 lg:pb-16">
         {/* 1. MOBILE VIEW (< md) */}
         <FooterMobile />
 
@@ -23,7 +23,7 @@ export async function SiteFooter() {
 
       {/* ── BOTTOM BAR: COPYRIGHT & LEGAL LINKS (COMMON TO ALL VIEWPORTS) ── */}
       <div className="bg-[#eaf1fa] py-4">
-        <div className="mx-auto flex w-full max-w-[1440px] flex-col items-center justify-between gap-3 px-4 sm:px-8 lg:px-12 xl:px-16 text-[11px] sm:text-[12px] lg:text-[14px] text-[#748196] sm:flex-row">
+        <div className="page-container flex flex-col items-center justify-between gap-3 text-[11px] sm:text-[12px] lg:text-[14px] text-[#748196] sm:flex-row">
           <span>{t('copyright')}</span>
           <div className="flex items-center gap-5">
             <Link href="/privacy" className="transition-colors hover:text-[#1769e2]">
@@ -38,3 +38,4 @@ export async function SiteFooter() {
     </footer>
   );
 }
+

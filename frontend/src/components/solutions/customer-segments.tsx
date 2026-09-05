@@ -20,7 +20,7 @@ export default async function CustomerSegments({ locale }: CustomerSegmentsProps
   return (
     <section className="w-full mt-16 lg:mt-24 border-t border-slate-100 pt-16">
       {/* Section Header */}
-      <div className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-16 mb-10">
+      <div className="page-container mb-10">
         <div className="flex items-start gap-3">
           {/* Blue decorative bar */}
           <div className="w-1.5 h-7 bg-blue-600 rounded-full shrink-0 mt-1" />
@@ -122,5 +122,6 @@ export default async function CustomerSegments({ locale }: CustomerSegmentsProps
     </section>
   );
 }
+
 
 

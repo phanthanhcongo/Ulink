@@ -9,7 +9,7 @@ export default async function HubPartner() {
     <div className="w-full flex flex-col">
       {/* ── PART 1: BECOME PARTNER ── */}
       <section className="w-full bg-gradient-to-br from-[#EBF4FF] to-[#E5EEFF] py-16 sm:py-20 lg:py-24">
-        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 flex flex-col gap-10 sm:gap-14">
+        <div className="page-container flex flex-col gap-10 sm:gap-14">
           
           {/* Header & Play Button */}
           <div className="flex flex-col items-start w-full">
@@ -52,7 +52,7 @@ export default async function HubPartner() {
 
       {/* ── PART 2: CTA REGISTER BANNER ── */}
       <section className="w-full bg-[#A5C7F9] py-12 sm:py-16 border-t border-blue-200/30">
-        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+        <div className="page-container flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           {/* Left Text */}
           <div className="flex flex-col items-start text-left max-w-[750px]">
             <span className="text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-bold uppercase tracking-wider text-blue-900 mb-2 block">
@@ -86,3 +86,4 @@ export default async function HubPartner() {
     </div>
   );
 }
+

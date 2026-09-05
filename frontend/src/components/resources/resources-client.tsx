@@ -145,7 +145,7 @@ export function ResourcesClient({
           className="object-cover"
         />
         <div className="absolute inset-0 flex items-center">
-          <div className="max-w-[1440px] mx-auto w-full px-4 sm:px-8 lg:px-12 xl:px-16 text-left text-white">
+          <div className="page-container text-left text-white">
             <div className="inline-block bg-slate-950/30 backdrop-blur-xs p-6 sm:p-8 border border-white/10 max-w-2xl rounded-[3px] shadow-2xl">
               <h1 className="text-3xl sm:text-4xl lg:text-[38px] xl:text-[44px] font-extrabold tracking-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]">
                 {L.resources[locale]}
@@ -158,7 +158,7 @@ export function ResourcesClient({
         </div>
       </div>
 
-      <div id="resources-list-section" className="max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16">
+      <div id="resources-list-section" className="page-container">
         <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-slate-200 pb-4 mb-8">
           <div className="flex items-center gap-2 overflow-x-auto scrollbar-none py-1">
             {TABS.map((tab) => {
@@ -311,4 +311,5 @@ export function ResourcesClient({
     </div>
   );
 }
+
 

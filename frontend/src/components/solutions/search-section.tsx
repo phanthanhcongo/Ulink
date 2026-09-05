@@ -77,7 +77,7 @@ export default function SearchSection({ locale, labels }: SearchSectionProps) {
 
   return (
     <section className="w-full bg-card py-12 lg:py-16 border-b border-gray-100">
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16 text-center">
+      <div className="page-container text-center">
         {/* Header */}
         <p className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-blue-600">
           {labels.eyebrow}
@@ -144,4 +144,5 @@ export default function SearchSection({ locale, labels }: SearchSectionProps) {
     </section>
   );
 }
+
 

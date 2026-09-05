@@ -36,7 +36,7 @@ export async function SiteHeader() {
 
   return (
     <header className="relative bg-white border-b border-slate-100">
-      <div className="mx-auto flex h-16 sm:h-20 md:h-[88px] w-full max-w-[1440px] items-center justify-between px-3 sm:px-6 lg:px-16">
+      <div className="page-container flex h-16 items-center justify-between sm:h-20 md:h-[88px]">
         
         {/* ── MOBILE HEADER LAYOUT (< xl) ── */}
         <div className="flex w-full items-center justify-between xl:hidden">

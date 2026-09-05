@@ -299,7 +299,7 @@ export default function CartClient({
   return (
     <div className="space-y-10 w-full">
       {/* SECTION 1: Breadcrumbs, Progress, Grid */}
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-6 px-4 sm:px-8 lg:px-12 xl:px-16">
+      <div className="page-container flex flex-col gap-6">
         {/* Breadcrumbs */}
         <nav
           aria-label="Breadcrumb"
@@ -698,7 +698,7 @@ export default function CartClient({
 
       {/* SECTION 2: Quick Quote Promo Banner - Full Width of Viewport */}
       <div className="w-full bg-card border-y border-slate-200/80 py-10 my-4">
-        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16 flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
+        <div className="page-container flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <div className="space-y-2 max-w-3xl">
             <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
               {t('rfqSectionSubtitle')}
@@ -717,7 +717,7 @@ export default function CartClient({
       </div>
 
       {/* SECTION 3: Suggested Products & Engineer Support Banners */}
-      <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-10 px-4 sm:px-8 lg:px-16 pb-8">
+      <div className="page-container flex flex-col gap-10 pb-8">
         {/* Suggested Products Grid */}
         <div className="space-y-6">
           <div className="flex items-center justify-between">
@@ -799,7 +799,7 @@ export default function CartClient({
         <div className="absolute left-0 bottom-0 -mb-10 -ml-10 h-72 w-72 rounded-full bg-sky-400/10 blur-3xl pointer-events-none" />
         <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(255,255,255,0.04)_40%,transparent_40%)] pointer-events-none" />
 
-        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 flex flex-col md:flex-row justify-between items-start md:items-center gap-6 relative z-10">
+        <div className="page-container flex flex-col md:flex-row justify-between items-start md:items-center gap-6 relative z-10">
           <div className="space-y-2 max-w-2xl text-left">
             <span className="text-xs sm:text-sm font-extrabold text-blue-200 uppercase tracking-wider block">
               {t('bannerTitle')}
@@ -829,4 +829,5 @@ export default function CartClient({
     </div>
   );
 }
+
 

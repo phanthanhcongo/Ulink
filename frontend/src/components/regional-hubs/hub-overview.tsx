@@ -79,7 +79,7 @@ export default function HubOverview({ locale }: HubOverviewProps) {
 
   return (
     <section className="w-full bg-white pt-32 pb-16 sm:pt-40 sm:pb-20 lg:pt-48 lg:pb-24 border-b border-slate-100">
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 flex flex-col gap-10">
+      <div className="page-container flex flex-col gap-10">
         
         {/* === Part 1: Heading & Description === */}
         <div className="flex flex-col items-start text-left w-full space-y-1 sm:space-y-2">
@@ -233,3 +233,4 @@ export default function HubOverview({ locale }: HubOverviewProps) {
     </section>
   );
 }
+

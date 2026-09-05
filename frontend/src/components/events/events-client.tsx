@@ -167,7 +167,7 @@ export function EventsClient() {
         />
         <div className="absolute inset-0 bg-slate-900/40" />
         <div className="absolute inset-0 flex items-center">
-          <div className="max-w-[1440px] mx-auto w-full px-4 sm:px-8 lg:px-12 xl:px-16 text-left">
+          <div className="page-container text-left">
             <div className="bg-[#0000008C] p-8 sm:p-10 md:p-12 max-w-2xl rounded-[3px] shadow-2xl border border-white/20 backdrop-blur-xs">
               <h1 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold tracking-tight text-white leading-tight">
                 {t.heroTitle}
@@ -190,7 +190,7 @@ export function EventsClient() {
       </div>
 
       {/* Events List Section */}
-      <div id="events-list-section" className="max-w-[1200px] mx-auto px-4 sm:px-8 py-20">
+      <div id="events-list-section" className="mx-auto max-w-[1200px] px-3 sm:px-6 py-20">
         <div className="space-y-10">
           {paginatedEvents.map((event) => {
             const titleText = event.title[locale] || event.title.en;
@@ -332,3 +332,4 @@ export function EventsClient() {
     </div>
   );
 }
+

@@ -90,7 +90,7 @@ export default function TestimonialsCapabilities({ locale }: TestimonialsCapabil
     <>
       {/* === SECTION: TESTIMONIALS === */}
       <section className="w-full bg-card border-t border-gray-150 py-16 lg:py-24">
-        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16">
+        <div className="page-container">
           {/* Section Header */}
           <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight text-center mb-12">
             {t('testimonialsCapabilities.testimonialHeading')}
@@ -151,7 +151,7 @@ export default function TestimonialsCapabilities({ locale }: TestimonialsCapabil
 
       {/* === SECTION: CORE CAPABILITIES === */}
       <section className="w-full bg-white border-t border-gray-150 py-16 lg:py-24">
-        <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16 text-center">
+        <div className="page-container text-center">
           {/* Section Header */}
           <div className="max-w-3xl mx-auto mb-16">
             <span className="text-xs font-bold uppercase tracking-widest text-blue-600">
@@ -235,4 +235,5 @@ export default function TestimonialsCapabilities({ locale }: TestimonialsCapabil
     </>
   );
 }
+
 

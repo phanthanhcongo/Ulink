@@ -21,7 +21,7 @@ export default async function CatalogShowcase({ locale }: CatalogShowcaseProps) 
 
   return (
     <section className="w-full bg-[#FAFAFA] border-t border-gray-150 py-16 lg:py-24">
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-16">
+      <div className="page-container">
         {/* Section Header */}
         <div className="flex flex-col items-start border-b border-gray-100 pb-8 mb-12">
           <div className="flex items-center gap-2">
@@ -73,3 +73,4 @@ export default async function CatalogShowcase({ locale }: CatalogShowcaseProps) 
     </section>
   );
 }
+

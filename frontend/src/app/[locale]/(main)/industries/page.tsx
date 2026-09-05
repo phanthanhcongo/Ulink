@@ -229,7 +229,7 @@ export default async function IndustriesPage({ params: { locale } }: Props) {
         <div className="absolute inset-0 bg-slate-950/45 z-0" />
 
         {/* Content - Contrained inside max-width container for content alignment */}
-        <div className="relative z-10 w-full max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 xl:px-16 p-8 sm:p-12 lg:p-16 flex flex-col justify-between">
+        <div className="relative z-10 w-full page-container p-8 sm:p-12 lg:p-16 flex flex-col justify-between">
           {/* Breadcrumb */}
           <Breadcrumb
             theme="dark"
@@ -316,4 +316,5 @@ export default async function IndustriesPage({ params: { locale } }: Props) {
     </div>
   );
 }
+
 

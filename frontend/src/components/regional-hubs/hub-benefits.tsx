@@ -75,7 +75,7 @@ export default async function HubBenefits() {
 
   return (
     <section className="w-full bg-white py-12 sm:py-16 lg:py-20">
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 flex flex-col items-center gap-12 lg:gap-16">
+      <div className="page-container flex flex-col items-center gap-12 lg:gap-16">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-1 sm:space-y-2">
@@ -107,3 +107,4 @@ export default async function HubBenefits() {
     </section>
   );
 }
+

@@ -56,7 +56,7 @@ export default function PaymentInvoiceClient({
   };
 
   return (
-    <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-6 px-4 sm:px-8 lg:px-16 text-slate-800 text-left">
+    <div className="page-container flex flex-col gap-6 text-left text-slate-800">
       {/* Breadcrumbs */}
       <nav
         aria-label="Breadcrumb"
@@ -352,4 +352,5 @@ export default function PaymentInvoiceClient({
     </div>
   );
 }
+
 

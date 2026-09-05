@@ -7,7 +7,7 @@ export default async function HanamFulfillmentHub() {
 
   return (
     <section className="w-full bg-white py-16 lg:py-24 border-t border-slate-100">
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 flex flex-col gap-12 lg:gap-16">
+      <div className="page-container flex flex-col gap-12 lg:gap-16">
         
         {/* Title Area */}
         <div className="text-center w-full mx-auto">
@@ -101,3 +101,4 @@ export default async function HanamFulfillmentHub() {
     </section>
   );
 }
+

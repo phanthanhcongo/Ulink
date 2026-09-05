@@ -8,7 +8,7 @@ export default async function CoreCapabilities() {
 
   return (
     <section className="w-full bg-white py-12 sm:py-16 border-t border-slate-200">
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16">
+      <div className="page-container">
         {/* Top Header & Description (Stacked Layout matching Tablet Figma) */}
         <div className="mb-10 sm:mb-12 max-w-[840px] flex flex-col items-start text-left">
           <h2 className="text-[24px] sm:text-[28px] font-semibold text-[#212529] leading-[32px] sm:leading-[36px] tracking-[-0.3px]">
@@ -103,3 +103,4 @@ export default async function CoreCapabilities() {
     </section>
   );
 }
+

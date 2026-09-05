@@ -7,7 +7,7 @@ export default async function HubOffers() {
 
   return (
     <section className="w-full bg-white py-16 sm:py-20 border-t border-slate-100">
-      <div className="mx-auto w-full max-w-[1440px] px-4 sm:px-8 lg:px-12 xl:px-16 flex flex-col items-start">
+      <div className="page-container flex flex-col items-start">
         
         {/* Header */}
         <div className="max-w-3xl w-full text-left space-y-1 sm:space-y-2">
@@ -121,3 +121,4 @@ export default async function HubOffers() {
     </section>
   );
 }
+
