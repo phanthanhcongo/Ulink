@@ -1,10 +1,10 @@
 import Image from 'next/image';
-import { getTranslations } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
 import { ASSETS } from '@/lib/assets';
 import { SectionHeader } from './section-header';
 
-export async function PartnersCertifications() {
-  const t = await getTranslations('home');
+export function PartnersCertifications() {
+  const t = useTranslations('home');
 
   const row1Logos = [
     { src: ASSETS.home.partnerSamsung, alt: 'Samsung', width: 'max-w-[70%]' },

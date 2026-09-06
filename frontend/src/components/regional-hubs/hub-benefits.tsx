@@ -14,9 +14,9 @@ export default async function HubBenefits() {
       id: 1,
       titleKey: 'hubBenefits.feat1',
       icon: (
-        <svg className="h-9 w-9 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <circle cx="12" cy="12" r="3" />
-          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z" />
+        <svg className="h-12 w-12 sm:h-14 sm:w-14" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M40.4999 25.1391C40.4999 24.7641 40.4999 24.3891 40.4999 23.9991C40.4999 23.6091 40.4999 23.2341 40.4999 22.8441L43.3799 20.3241C43.9108 19.8562 44.2592 19.2157 44.3635 18.5157C44.4678 17.8158 44.3213 17.1015 43.9499 16.4991L40.4099 10.4991C40.1468 10.0435 39.7686 9.66512 39.3131 9.40184C38.8577 9.13856 38.341 8.99968 37.8149 8.99915C37.4889 8.99665 37.1646 9.04731 36.8549 9.14915L33.2099 10.3791C32.5806 9.96096 31.9241 9.58513 31.2449 9.25415L30.4799 5.47415C30.3427 4.78355 29.967 4.16321 29.4186 3.7217C28.8701 3.28019 28.1838 3.04565 27.4799 3.05914H20.4599C19.7559 3.04565 19.0697 3.28019 18.5212 3.7217C17.9728 4.16321 17.5971 4.78355 17.4599 5.47415L16.6949 9.25415C16.0108 9.58505 15.3493 9.96087 14.7149 10.3791L11.1449 9.08915C10.8318 9.00758 10.5077 8.97719 10.1849 8.99915C9.6588 8.99968 9.14211 9.13856 8.68663 9.40184C8.23116 9.66512 7.85293 10.0435 7.58989 10.4991L4.04989 16.4991C3.69977 17.1006 3.56967 17.8051 3.68186 18.492C3.79406 19.1789 4.14158 19.8053 4.66489 20.2641L7.49989 22.8591C7.49989 23.2341 7.49989 23.6091 7.49989 23.9991C7.49989 24.3891 7.49989 24.7641 7.49989 25.1541L4.66489 27.6741C4.12679 28.1361 3.76977 28.7738 3.65719 29.4741C3.5446 30.1743 3.68373 30.8918 4.04989 31.4991L7.58989 37.4991C7.85293 37.9548 8.23116 38.3332 8.68663 38.5965C9.14211 38.8597 9.6588 38.9986 10.1849 38.9991C10.5109 39.0016 10.8352 38.951 11.1449 38.8491L14.7899 37.6191C15.4192 38.0373 16.0757 38.4132 16.7549 38.7441L17.5199 42.5241C17.6571 43.2147 18.0328 43.8351 18.5812 44.2766C19.1297 44.7181 19.8159 44.9526 20.5199 44.9391H27.5999C28.3038 44.9526 28.9901 44.7181 29.5386 44.2766C30.087 43.8351 30.4627 43.2147 30.5999 42.5241L31.3649 38.7441C32.049 38.4132 32.7104 38.0374 33.3449 37.6191L36.9749 38.8491C37.2846 38.951 37.6089 39.0016 37.9349 38.9991C38.461 38.9986 38.9777 38.8597 39.4331 38.5965C39.8886 38.3332 40.2668 37.9548 40.5299 37.4991L43.9499 31.4991C44.3 30.8977 44.4301 30.1932 44.3179 29.5063C44.2057 28.8194 43.8582 28.193 43.3349 27.7341L40.4999 25.1391ZM37.8149 35.9991L32.6699 34.2591C31.4655 35.2793 30.089 36.0768 28.6049 36.6141L27.5399 41.9991H20.4599L19.3949 36.6741C17.9225 36.1215 16.5535 35.3254 15.3449 34.3191L10.1849 35.9991L6.64489 29.9991L10.7249 26.3991C10.4475 24.8464 10.4475 23.2569 10.7249 21.7041L6.64489 17.9991L10.1849 11.9991L15.3299 13.7391C16.5343 12.719 17.9108 11.9215 19.3949 11.3841L20.4599 5.99915H27.5399L28.6049 11.3241C30.0773 11.8768 31.4463 12.6729 32.6549 13.6791L37.8149 11.9991L41.3549 17.9991L37.2749 21.5991C37.5522 23.1519 37.5522 24.7414 37.2749 26.2941L41.3549 29.9991L37.8149 35.9991Z" fill="#1769E2"/>
+          <path d="M24 33C22.22 33 20.4799 32.4722 18.9999 31.4832C17.5198 30.4943 16.3663 29.0887 15.6851 27.4442C15.0039 25.7996 14.8257 23.99 15.1729 22.2442C15.5202 20.4984 16.3774 18.8947 17.636 17.636C18.8947 16.3774 20.4984 15.5202 22.2442 15.1729C23.99 14.8257 25.7996 15.0039 27.4442 15.6851C29.0887 16.3663 30.4943 17.5198 31.4832 18.9999C32.4722 20.4799 33 22.22 33 24C33.012 25.1852 32.7875 26.361 32.3394 27.4583C31.8914 28.5557 31.2289 29.5526 30.3908 30.3908C29.5526 31.2289 28.5557 31.8914 27.4583 32.3394C26.361 32.7875 25.1852 33.012 24 33ZM24 18C23.207 17.9815 22.4185 18.1241 21.6822 18.4191C20.9459 18.7141 20.2771 19.1554 19.7162 19.7162C19.1554 20.2771 18.7141 20.9459 18.4191 21.6822C18.1241 22.4185 17.9815 23.207 18 24C17.9815 24.793 18.1241 25.5815 18.4191 26.3178C18.7141 27.0541 19.1554 27.7229 19.7162 28.2838C20.2771 28.8447 20.9459 29.2859 21.6822 29.5809C22.4185 29.8759 23.207 30.0185 24 30C24.793 30.0185 25.5815 29.8759 26.3178 29.5809C27.0541 29.2859 27.7229 28.8447 28.2838 28.2838C28.8447 27.7229 29.2859 27.0541 29.5809 26.3178C29.8759 25.5815 30.0185 24.793 30 24C30.0185 23.207 29.8759 22.4185 29.5809 21.6822C29.2859 20.9459 28.8447 20.2771 28.2838 19.7162C27.7229 19.1554 27.0541 18.7141 26.3178 18.4191C25.5815 18.1241 24.793 17.9815 24 18Z" fill="#1769E2"/>
         </svg>
       )
     },
@@ -24,16 +24,8 @@ export default async function HubBenefits() {
       id: 2,
       titleKey: 'hubBenefits.feat2',
       icon: (
-        <svg className="h-9 w-9 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-          <rect x="3" y="3" width="4" height="4" />
-          <rect x="10" y="3" width="4" height="4" />
-          <rect x="17" y="3" width="4" height="4" />
-          <rect x="3" y="10" width="4" height="4" />
-          <rect x="10" y="10" width="4" height="4" />
-          <rect x="17" y="10" width="4" height="4" />
-          <rect x="3" y="17" width="4" height="4" />
-          <rect x="10" y="17" width="4" height="4" />
-          <rect x="17" y="17" width="4" height="4" />
+        <svg className="h-12 w-12 sm:h-14 sm:w-14" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 6V12H6V6H12ZM15 3H3V15H15V3ZM27 6V12H21V6H27ZM30 3H18V15H30V3ZM42 6V12H36V6H42ZM45 3H33V15H45V3ZM12 21V27H6V21H12ZM15 18H3V30H15V18ZM27 21V27H21V21H27ZM30 18H18V30H30V18ZM42 21V27H36V21H42ZM45 18H33V30H45V18ZM12 36V42H6V36H12ZM15 33H3V45H15V33ZM27 36V42H21V36H27ZM30 33H18V45H30V33ZM42 36V42H36V36H42ZM45 33H33V45H45V33Z" fill="#1769E2"/>
         </svg>
       )
     },
@@ -41,11 +33,8 @@ export default async function HubBenefits() {
       id: 3,
       titleKey: 'hubBenefits.feat3',
       icon: (
-        <svg className="h-9 w-9 text-brand" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-          <line x1="4" y1="9" x2="11" y2="9" />
-          <line x1="4" y1="13" x2="11" y2="13" />
-          <path d="M18.5 5.5H15.5A2.5 2.5 0 0 0 13 8v0a2.5 2.5 0 0 0 2.5 2.5h3A2.5 2.5 0 0 1 21 13v0a2.5 2.5 0 0 1-2.5 2.5h-3" />
-          <line x1="17" y1="3" x2="17" y2="18" />
+        <svg className="h-12 w-12 sm:h-14 sm:w-14" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M43.5 30.78C43.5 23.85 37.83 23.07 33.27 22.44C28.305 21.75 25.5 21.15 25.5 16.875C25.5 13.29 29.265 12.015 32.475 12.015C35.955 12.015 38.685 13.305 40.83 15.96L43.17 14.07C40.89 11.25 37.98 9.615 34.5 9.15V4.5H31.5V9.03C26.07 9.36 22.5 12.42 22.5 16.86C22.5 23.955 28.245 24.75 32.865 25.395C37.74 26.07 40.5 26.655 40.5 30.765C40.5 35.31 35.805 35.985 33 35.985C27.855 35.985 25.68 34.545 23.67 32.04L21.33 33.93C23.985 37.215 26.925 38.685 31.5 38.94V43.5H34.5V38.94C40.095 38.49 43.5 35.445 43.5 30.78ZM4.5 16.5H16.5V19.5H4.5V16.5ZM4.5 28.5H16.5V31.5H4.5V28.5ZM7.5 22.5H19.5V25.5H7.5V22.5Z" fill="#1769E2"/>
         </svg>
       )
     },
@@ -53,10 +42,9 @@ export default async function HubBenefits() {
       id: 4,
       titleKey: 'hubBenefits.feat4',
       icon: (
-        <svg className="h-9 w-9" viewBox="0 0 24 24" fill="none">
-          <path d="M12 15a5 5 0 1 0 0-10 5 5 0 0 0 0 10z" stroke="#0066FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M8.21 13.89L7 21l5-2.5 5 2.5-1.21-7.12" stroke="#0066FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M17.5 5.5l.6 1.2 1.3.2-1 1 .2 1.3-1.1-.7-1.1.7.2-1.3-1-1 1.3-.2z" fill="#facc15" stroke="#facc15" strokeWidth="1" />
+        <svg className="h-12 w-12 sm:h-14 sm:w-14" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M34.5 3L36.8895 7.5L42 8.121L38.25 11.5005L39 16.5L34.5 13.6875L30 16.5L30.75 11.5005L27 8.121L32.25 7.5L34.5 3Z" fill="#FFCC00"/>
+          <path d="M34.0753 19.8735L31.1691 19.1265C30.6481 21.134 29.5438 22.9419 27.9958 24.3221C26.4477 25.7022 24.5253 26.5926 22.4715 26.8806C20.4177 27.1687 18.3245 26.8416 16.4565 25.9407C14.5885 25.0397 13.0294 23.6053 11.9763 21.8187C10.9231 20.032 10.4231 17.9733 10.5394 15.9027C10.6557 13.832 11.3831 11.8423 12.6297 10.1848C13.8764 8.52736 15.5863 7.27657 17.5434 6.59048C19.5006 5.90438 21.6172 5.81374 23.6259 6.33002L24.3744 3.42527C21.4469 2.6649 18.3488 2.91078 15.5779 4.1234C12.807 5.33603 10.5242 7.44498 9.09642 10.1114C7.6686 12.7777 7.17864 15.8467 7.70526 18.8251C8.23189 21.8035 9.74453 24.5184 12.0001 26.5335V45L21.0001 39L30.0001 45V26.5617C31.9922 24.7862 33.4108 22.458 34.0753 19.8735ZM27.0001 39.3941L21.0001 35.3943L15.0001 39.3941V28.575C16.8616 29.5103 18.9158 29.9981 20.999 29.9997C23.0823 30.0013 25.1371 29.5167 27.0001 28.5843V39.3941Z" fill="#1769E2"/>
         </svg>
       )
     },
@@ -64,39 +52,41 @@ export default async function HubBenefits() {
       id: 5,
       titleKey: 'hubBenefits.feat5',
       icon: (
-        <svg className="h-9 w-9" viewBox="0 0 24 24" fill="none">
-          <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" stroke="#0066FF" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-          <path d="M15.5 8.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z" stroke="#0d9488" strokeWidth="2" />
-          <path d="M14 9.5l-3.5 3.5M9.5 14.5l1-1M8.5 13.5l1-1" stroke="#0d9488" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+        <svg className="h-12 w-12 sm:h-14 sm:w-14" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M39 21.15V3H31.5V6H36V9H31.5V12H36V21.15C33.45 21.75 31.5 24.15 31.5 27C31.5 30.3 34.2 33 37.5 33C40.8 33 43.5 30.3 43.5 27C43.5 24.15 41.55 21.9 39 21.15ZM37.5 30C35.85 30 34.5 28.65 34.5 27C34.5 25.35 35.85 24 37.5 24C39.15 24 40.5 25.35 40.5 27C40.5 28.65 39.15 30 37.5 30Z" fill="#00C3D0"/>
+          <path d="M22.5 46.5L14.25 41.7C9.15 38.7 6 33.3 6 27.45V6C6 4.35 7.35 3 9 3H27V6H9V27.45C9 32.25 11.55 36.75 15.75 39.15L22.5 43.2L29.25 39.15C30.9 38.1 32.4 36.9 33.45 35.25L35.85 36.9C34.5 38.85 32.7 40.5 30.6 41.7L22.5 46.5Z" fill="#1769E2"/>
         </svg>
       )
     }
   ];
 
   return (
-    <section className="w-full bg-white py-12 sm:py-16 lg:py-20">
-      <div className="page-container flex flex-col items-center gap-12 lg:gap-16">
+    <section className="w-full bg-white pt-16 pb-12 lg:pt-[80px] lg:pb-[60px] border-b border-slate-100">
+      <div className="page-container flex flex-col items-center gap-10 lg:gap-[64px] px-6 sm:px-10">
         
         {/* Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-1 sm:space-y-2">
-          <span className="text-[16px] min-[375px]:text-[18px] sm:text-[24px] lg:text-[28px] xl:text-[32px] font-semibold tracking-tight text-blue-600 leading-tight lg:leading-[36px] xl:leading-[40px] block">
+        <div className="text-center max-w-3xl mx-auto space-y-2">
+          <h2 className="text-[20px] sm:text-[24px] lg:text-[28px] font-bold tracking-tight text-slate-900 leading-snug sm:leading-[36px]">
             {t('hubBenefits.eyebrow')}
-          </span>
-          <h2 className="text-[16px] min-[375px]:text-[18px] sm:text-[24px] lg:text-[28px] xl:text-[32px] font-semibold tracking-tight text-slate-900 leading-tight lg:leading-[36px] xl:leading-[40px]">
+          </h2>
+          <h2 className="text-[20px] sm:text-[24px] lg:text-[28px] font-bold tracking-tight text-slate-900 leading-snug sm:leading-[36px]">
             {t('hubBenefits.title')}
           </h2>
         </div>
 
         {/* Benefits Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-5 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-y-4 gap-x-4 lg:gap-4 w-full max-w-[720px] lg:max-w-none mx-auto">
           {items.map((item) => (
-            <div key={item.id} className="group flex flex-col items-center text-center p-5 rounded-[3px] bg-white shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:scale-[1.01] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
+            <div
+              key={item.id}
+              className="group flex flex-col items-center text-center p-2 rounded-[3px] bg-white transition-all duration-300 hover:-translate-y-0.5 last:sm:col-span-2 last:lg:col-span-1"
+            >
               {/* Icon */}
-              <div className="flex items-center justify-center mb-4 h-12 w-12 group-hover:scale-110 transition-transform duration-300">
+              <div className="flex items-center justify-center mb-4 h-[48px] w-[48px] shrink-0 group-hover:scale-105 transition-transform duration-300">
                 {item.icon}
               </div>
               {/* Title */}
-              <h3 className="font-medium text-slate-800 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] leading-snug max-w-[180px]">
+              <h3 className="font-semibold text-[#212529] text-[16px] sm:text-[18px] lg:text-[20px] leading-[26px] sm:leading-[28px] text-center max-w-[260px]">
                 {t(item.titleKey as any)}
               </h3>
             </div>

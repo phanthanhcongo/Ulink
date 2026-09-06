@@ -3,6 +3,8 @@
 import React from 'react';
 import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
+import { ASSETS } from '@/lib/assets';
 
 interface HubOverviewProps {
   locale: string;
@@ -69,6 +71,25 @@ export default function HubOverview({ locale }: HubOverviewProps) {
   };
 
   const t = translations[locale] || translations.en;
+  const tHome = useTranslations('home');
+
+  const row1Logos = [
+    { src: ASSETS.home.partnerSamsung, alt: 'Samsung', width: 'max-w-[70%]' },
+    { src: ASSETS.home.partnerCanon, alt: 'Canon', width: 'max-w-[60%]' },
+    { src: ASSETS.home.partnerPanasonic, alt: 'Panasonic', width: 'max-w-[75%]' },
+    { src: ASSETS.home.partnerIbm, alt: 'IBM', width: 'max-w-[55%]' },
+    { src: ASSETS.home.partnerTraphaco, alt: 'Traphaco', width: 'max-w-[70%]' },
+    { src: ASSETS.home.partnerCocaCola, alt: 'Coca Cola', width: 'max-w-[65%]' },
+  ];
+
+  const row2Logos = [
+    { src: ASSETS.home.partnerVinfast, alt: 'Vinfast', width: 'max-w-[40%]' },
+    { src: ASSETS.home.partnerLg, alt: 'LG', width: 'max-w-[60%]' },
+    { src: ASSETS.home.partnerAmkor, alt: 'Amkor', width: 'max-w-[75%]' },
+    { src: ASSETS.home.partnerVinamilk, alt: 'Vinamilk', width: 'max-w-[65%]' },
+    { src: ASSETS.home.partner3m, alt: '3M', width: 'max-w-[40%]' },
+    { src: ASSETS.home.partnerByd, alt: 'BYD', width: 'max-w-[70%]' },
+  ];
 
   const statsData = [
     { id: 1, iconSrc: '/images/regional_hubs/hub-2/icon/smiley.svg', value: t.stat1Val, label: t.stat1Lbl },
@@ -101,13 +122,13 @@ export default function HubOverview({ locale }: HubOverviewProps) {
         </div>
 
         {/* === Part 2: Metrics Bar (Individual Mapped Cards) === */}
-        <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-1 sm:gap-1.5 w-full">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3.5 w-full">
           {statsData.map((stat) => (
             <div
               key={stat.id}
-              className="group flex items-center gap-4 p-5 sm:p-6 bg-[#E8F0FE]/40 rounded-[3px] border border-blue-100/80 shadow-xs hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:-translate-y-0.5 hover:scale-[1.01] hover:bg-[#E8F0FE]/60 transition-all duration-300"
+              className="group flex items-center gap-2.5 sm:gap-4 p-3.5 sm:p-6 bg-[#E8F0FE]/40 rounded-[3px] border border-blue-100/80 shadow-xs hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:-translate-y-0.5 hover:scale-[1.01] hover:bg-[#E8F0FE]/60 transition-all duration-300"
             >
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-brand/10 group-hover:scale-105 transition-transform p-2.5">
+              <div className="flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-full bg-brand/10 group-hover:scale-105 transition-transform p-2 sm:p-2.5">
                 <div className="relative h-full w-full">
                   <Image
                     src={stat.iconSrc}
@@ -118,10 +139,10 @@ export default function HubOverview({ locale }: HubOverviewProps) {
                 </div>
               </div>
               <div className="flex flex-col text-left">
-                <span className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-slate-900 leading-none">
+                <span className="text-[18px] min-[375px]:text-[20px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-slate-900 leading-none">
                   {stat.value}
                 </span>
-                <span className="mt-1.5 text-[12px] sm:text-[13px] font-medium text-slate-500 leading-tight">
+                <span className="mt-1 sm:mt-1.5 text-[11px] sm:text-[13px] font-medium text-slate-500 leading-tight">
                   {stat.label}
                 </span>
               </div>
@@ -130,11 +151,11 @@ export default function HubOverview({ locale }: HubOverviewProps) {
         </div>
 
         {/* === Part 3: Partner Brand Logos === */}
-        <div className="w-full pt-4 pb-2 px-6 sm:px-12 md:px-16 lg:px-24 xl:px-28">
-          <div className="flex flex-wrap items-center justify-center sm:justify-between gap-6 md:gap-8 lg:gap-10">
+        <div className="hidden lg:block w-full pt-4 pb-2 px-2 lg:px-4 xl:px-10">
+          <div className="flex flex-nowrap items-center justify-between gap-2 lg:gap-4 xl:gap-8 w-full">
             {/* Logo 1: SHELLS */}
-            <div className="flex items-center gap-2.5 text-[#697077] hover:text-slate-900 transition-colors">
-              <div className="relative h-7 w-7 sm:h-8 sm:w-8 shrink-0">
+            <div className="flex items-center gap-1.5 lg:gap-2.5 text-[#697077] hover:text-slate-900 transition-colors shrink-0">
+              <div className="relative h-6 w-6 lg:h-7 lg:w-7 xl:h-8 xl:w-8 shrink-0">
                 <Image
                   src="/images/regional_hubs/hub-2/icon/shells.svg"
                   alt="SHELLS Logo"
@@ -142,14 +163,14 @@ export default function HubOverview({ locale }: HubOverviewProps) {
                   className="object-contain"
                 />
               </div>
-              <span className="text-[16px] sm:text-[18px] lg:text-[20px] font-extrabold tracking-wider uppercase">
+              <span className="text-[14px] lg:text-[16px] xl:text-[20px] font-extrabold tracking-wider uppercase whitespace-nowrap">
                 SHELLS
               </span>
             </div>
 
             {/* Logo 2: SmartFinder */}
-            <div className="flex items-center gap-2.5 text-[#697077] hover:text-slate-900 transition-colors">
-              <div className="relative h-7 w-7 sm:h-8 sm:w-8 shrink-0">
+            <div className="flex items-center gap-1.5 lg:gap-2.5 text-[#697077] hover:text-slate-900 transition-colors shrink-0">
+              <div className="relative h-6 w-6 lg:h-7 lg:w-7 xl:h-8 xl:w-8 shrink-0">
                 <Image
                   src="/images/regional_hubs/hub-2/icon/smart-finder.svg"
                   alt="SmartFinder Logo"
@@ -157,14 +178,14 @@ export default function HubOverview({ locale }: HubOverviewProps) {
                   className="object-contain"
                 />
               </div>
-              <span className="text-[16px] sm:text-[18px] lg:text-[20px] font-bold tracking-tight">
+              <span className="text-[14px] lg:text-[16px] xl:text-[20px] font-bold tracking-tight whitespace-nowrap">
                 SmartFinder
               </span>
             </div>
 
             {/* Logo 3: Zoomerr */}
-            <div className="flex items-center gap-2.5 text-[#697077] hover:text-slate-900 transition-colors">
-              <div className="relative h-7 w-7 sm:h-8 sm:w-8 shrink-0">
+            <div className="flex items-center gap-1.5 lg:gap-2.5 text-[#697077] hover:text-slate-900 transition-colors shrink-0">
+              <div className="relative h-6 w-6 lg:h-7 lg:w-7 xl:h-8 xl:w-8 shrink-0">
                 <Image
                   src="/images/regional_hubs/hub-2/icon/zoomerr.svg"
                   alt="Zoomerr Logo"
@@ -172,14 +193,14 @@ export default function HubOverview({ locale }: HubOverviewProps) {
                   className="object-contain"
                 />
               </div>
-              <span className="text-[16px] sm:text-[18px] lg:text-[20px] font-bold tracking-tight">
+              <span className="text-[14px] lg:text-[16px] xl:text-[20px] font-bold tracking-tight whitespace-nowrap">
                 Zoomerr
               </span>
             </div>
 
             {/* Logo 4: ArtVenue */}
-            <div className="flex items-center gap-2.5 text-[#697077] hover:text-slate-900 transition-colors">
-              <div className="relative h-7 w-12 sm:h-8 sm:w-14 shrink-0">
+            <div className="flex items-center gap-1.5 lg:gap-2.5 text-[#697077] hover:text-slate-900 transition-colors shrink-0">
+              <div className="relative h-6 w-10 lg:h-7 lg:w-12 xl:h-8 xl:w-14 shrink-0">
                 <Image
                   src="/images/regional_hubs/hub-2/icon/art-venue.svg"
                   alt="ArtVenue Logo"
@@ -187,14 +208,14 @@ export default function HubOverview({ locale }: HubOverviewProps) {
                   className="object-contain"
                 />
               </div>
-              <span className="text-[16px] sm:text-[18px] lg:text-[20px] font-bold tracking-tight">
+              <span className="text-[14px] lg:text-[16px] xl:text-[20px] font-bold tracking-tight whitespace-nowrap">
                 ArtVenue
               </span>
             </div>
 
             {/* Logo 5: kontrastr */}
-            <div className="flex items-center gap-2.5 text-[#697077] hover:text-slate-900 transition-colors">
-              <div className="relative h-7 w-6 sm:h-8 sm:w-7 shrink-0">
+            <div className="flex items-center gap-1.5 lg:gap-2.5 text-[#697077] hover:text-slate-900 transition-colors shrink-0">
+              <div className="relative h-6 w-5 lg:h-7 lg:w-6 xl:h-8 xl:w-7 shrink-0">
                 <Image
                   src="/images/regional_hubs/hub-2/icon/kontrastr.svg"
                   alt="kontrastr Logo"
@@ -202,14 +223,14 @@ export default function HubOverview({ locale }: HubOverviewProps) {
                   className="object-contain"
                 />
               </div>
-              <span className="text-[16px] sm:text-[18px] lg:text-[20px] font-bold tracking-tight">
+              <span className="text-[14px] lg:text-[16px] xl:text-[20px] font-bold tracking-tight whitespace-nowrap">
                 kontrastr
               </span>
             </div>
 
             {/* Logo 6: WAVES MARATHON */}
-            <div className="flex items-center gap-2.5 text-[#697077] hover:text-slate-900 transition-colors">
-              <div className="relative h-7 w-6 sm:h-8 sm:w-7 shrink-0">
+            <div className="flex items-center gap-1.5 lg:gap-2.5 text-[#697077] hover:text-slate-900 transition-colors shrink-0">
+              <div className="relative h-6 w-5 lg:h-7 lg:w-6 xl:h-8 xl:w-7 shrink-0">
                 <Image
                   src="/images/regional_hubs/hub-2/icon/waves-marathon.svg"
                   alt="WAVES MARATHON Logo"
@@ -217,18 +238,61 @@ export default function HubOverview({ locale }: HubOverviewProps) {
                   className="object-contain"
                 />
               </div>
-              <div className="flex flex-col leading-none">
-                <span className="text-[13px] sm:text-[15px] font-extrabold tracking-wider uppercase">
+              <div className="flex flex-col leading-none whitespace-nowrap">
+                <span className="text-[11px] lg:text-[13px] xl:text-[15px] font-extrabold tracking-wider uppercase">
                   WAVES
                 </span>
-                <span className="text-[10px] sm:text-[11px] font-medium tracking-widest uppercase text-[#697077]/80">
+                <span className="text-[8px] lg:text-[9px] xl:text-[11px] font-medium tracking-widest uppercase text-[#697077]/80">
                   MARATHON
                 </span>
               </div>
             </div>
           </div>
         </div>
+        {/* === Partner Marquee Logos === */}
+        <div className="lg:hidden w-full mt-4 flex flex-col gap-5 overflow-hidden mask-gradient-x py-2 select-none">
+          {/* Row 1 Marquee: Left scrolling */}
+          <div className="flex w-max animate-marquee-left">
+            {[...row1Logos, ...row1Logos].map((logo, index) => (
+              <div
+                key={`row1-logo-${index}`}
+                className="flex shrink-0 w-[106px] h-[69px] sm:w-[213.3px] sm:h-[138px] items-center justify-center bg-white"
+              >
+                <div className={`relative w-full h-[60%] flex items-center justify-center ${logo.width}`}>
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    fill
+                    className="object-contain"
+                    priority
+                    unoptimized
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
 
+          {/* Row 2 Marquee: Right scrolling */}
+          <div className="flex w-max animate-marquee-right">
+            {[...row2Logos, ...row2Logos].map((logo, index) => (
+              <div
+                key={`row2-logo-${index}`}
+                className="flex shrink-0 w-[106px] h-[69px] sm:w-[213.3px] sm:h-[138px] items-center justify-center bg-white"
+              >
+                <div className={`relative w-full h-[60%] flex items-center justify-center ${logo.width}`}>
+                  <Image
+                    src={logo.src}
+                    alt={logo.alt}
+                    fill
+                    className="object-contain"
+                    priority
+                    unoptimized
+                  />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
   );

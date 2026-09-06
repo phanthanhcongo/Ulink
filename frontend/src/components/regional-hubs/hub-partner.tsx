@@ -8,28 +8,28 @@ export default async function HubPartner() {
   return (
     <div className="w-full flex flex-col">
       {/* ── PART 1: BECOME PARTNER ── */}
-      <section className="w-full bg-gradient-to-br from-[#EBF4FF] to-[#E5EEFF] py-16 sm:py-20 lg:py-24">
-        <div className="page-container flex flex-col gap-10 sm:gap-14">
+      <section className="w-full bg-gradient-to-br from-[#EBF4FF] to-[#E5EEFF] py-12 sm:py-16 lg:py-20">
+        <div className="page-container flex flex-col gap-8 sm:gap-12">
           
           {/* Header & Play Button */}
           <div className="flex flex-col items-start w-full">
-            <h2 className="text-[24px] min-[375px]:text-[28px] sm:text-[36px] lg:text-[40px] xl:text-[48px] font-bold tracking-tight text-slate-900 leading-tight lg:leading-[48px] xl:leading-[56px] mb-4 sm:mb-6 max-w-[1100px]">
+            <h2 className="text-[22px] sm:text-[32px] lg:text-[40px] xl:text-[44px] font-bold tracking-tight text-slate-900 leading-tight mb-3 sm:mb-4 max-w-[1100px]">
               {t('hubPartner.title')}
             </h2>
-            <p className="text-[14px] sm:text-[15px] lg:text-[16px] xl:text-[18px] leading-relaxed text-slate-600 mb-6 sm:mb-8 max-w-[950px]">
+            <p className="text-[14px] sm:text-[15px] lg:text-[16px] xl:text-[18px] leading-relaxed text-slate-600 mb-6 max-w-[950px]">
               {t('hubPartner.desc')}
             </p>
             
             {/* Play Video Button */}
-            <button className="border-2 border-[#0066FF] text-[#0066FF] font-bold py-3 px-10 sm:px-12 rounded-none hover:bg-blue-50/50 transition-all inline-flex items-center justify-center text-[14px] sm:text-[15px] lg:text-[16px] xl:text-[18px] leading-relaxed min-h-[48px] min-w-[180px] sm:min-w-[210px] whitespace-nowrap">
+            <button className="border-2 border-[#0F62FE] text-[#0F62FE] font-bold py-3 px-8 sm:px-10 rounded-[3px] hover:bg-blue-50/50 transition-all inline-flex items-center justify-center text-[14px] sm:text-[15px] lg:text-[16px] whitespace-nowrap">
               {t('hubPartner.playVideo')}
             </button>
           </div>
 
           {/* Details & Image Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 items-center w-full">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center w-full">
             {/* Left Column: Image */}
-            <div className="relative w-full aspect-[3/2] overflow-hidden border border-slate-200/50 shadow-md rounded-none">
+            <div className="relative w-full aspect-[3/2] overflow-hidden border border-slate-200/60 shadow-xs rounded-[3px]">
               <Image
                 src="/images/regional_hubs/hub-2/partner-warehouse.jpg"
                 alt="Partner Warehouse"
@@ -41,7 +41,7 @@ export default async function HubPartner() {
             
             {/* Right Column: Text Details */}
             <div className="flex flex-col justify-center">
-              <p className="text-[14px] sm:text-[15px] lg:text-[16px] xl:text-[18px] leading-relaxed text-slate-700 font-normal">
+              <p className="text-[14px] sm:text-[15px] lg:text-[16px] leading-relaxed text-slate-700 font-normal">
                 {t('hubPartner.detailText')}
               </p>
             </div>
@@ -51,36 +51,38 @@ export default async function HubPartner() {
       </section>
 
       {/* ── PART 2: CTA REGISTER BANNER ── */}
-      <section className="w-full bg-[#A5C7F9] py-12 sm:py-16 border-t border-blue-200/30">
-        <div className="page-container flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
-          {/* Left Text */}
-          <div className="flex flex-col items-start text-left max-w-[750px]">
-            <span className="text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-bold uppercase tracking-wider text-blue-900 mb-2 block">
+      <section className="w-full bg-[#A6C8FF] py-12 sm:py-16 lg:py-20 border-t border-blue-200/50">
+        <div className="page-container flex flex-col gap-6 sm:gap-8 items-start">
+          
+          {/* Header text block */}
+          <div className="flex flex-col items-start text-left max-w-4xl space-y-3">
+            <span className="text-[14px] sm:text-[16px] lg:text-[18px] font-bold uppercase tracking-wider text-[#001D6C]">
               {t('hubPartner.ctaEyebrow')}
             </span>
-            <h3 className="text-[20px] sm:text-[26px] lg:text-[32px] xl:text-[36px] font-bold tracking-tight text-slate-900 leading-tight mb-3">
+            <h3 className="text-[24px] sm:text-[32px] lg:text-[38px] font-bold tracking-tight text-[#212529] leading-tight sm:leading-snug">
               {t('hubPartner.ctaTitle')}
             </h3>
-            <p className="text-[14px] sm:text-[15px] lg:text-[16px] xl:text-[18px] leading-relaxed text-slate-800 font-normal">
+            <p className="text-[14px] sm:text-[15px] lg:text-[16px] leading-relaxed text-slate-800/90 pt-1">
               {t('hubPartner.ctaDesc')}
             </p>
           </div>
 
-          {/* Right Action Buttons */}
-          <div className="flex flex-col sm:flex-row items-center gap-3.5 w-full md:w-auto justify-end shrink-0">
+          {/* Action Buttons (side-by-side flex-row, centered) */}
+          <div className="flex flex-row items-center justify-center gap-3 sm:gap-4 pt-2 flex-wrap w-full">
             <Link
               href="/contact"
-              className="border border-blue-900 text-blue-900 font-semibold py-3 px-7 rounded-none hover:bg-blue-900/5 transition-all text-[14px] sm:text-[15px] lg:text-[16px] xl:text-[18px] leading-relaxed text-center w-full sm:w-auto inline-flex justify-center items-center min-h-[48px]"
+              className="border border-[#001D6C] text-[#001D6C] font-semibold py-3 px-5 sm:px-6 rounded-[3px] hover:bg-white/20 transition-all text-[14px] sm:text-[15px] lg:text-[16px] inline-flex justify-center items-center min-h-[46px]"
             >
               {t('hubPartner.ctaBtnConsult')}
             </Link>
             <Link
               href="/contact"
-              className="bg-[#0066FF] hover:bg-blue-700 text-white font-semibold py-3 px-7 rounded-none transition-all text-[14px] sm:text-[15px] lg:text-[16px] xl:text-[18px] leading-relaxed text-center w-full sm:w-auto inline-flex justify-center items-center shadow-sm min-h-[48px]"
+              className="bg-[#0F62FE] hover:bg-blue-700 text-white font-semibold py-3 px-6 sm:px-8 rounded-[3px] transition-all text-[14px] sm:text-[15px] lg:text-[16px] inline-flex justify-center items-center shadow-sm min-h-[46px]"
             >
               {t('hubPartner.ctaBtnSchedule')}
             </Link>
           </div>
+
         </div>
       </section>
     </div>

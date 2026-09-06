@@ -30,8 +30,8 @@ export default function HubHeroSection({ locale }: HubHeroSectionProps) {
       orderNow: 'Đặt hàng ngay',
       contact: 'Liên hệ',
       trackOrder: 'Tra cứu Đơn hàng',
-      placeholder: 'Nhập mã đơn hàng hoặc mã vận đơn...',
-      search: 'Tra cứu'
+      placeholder: 'Nhập mã đơn hàng',
+      search: 'Tìm kiếm ngay'
     },
     en: {
       title: 'Specialized industrial supply solutions for your business',
@@ -39,8 +39,8 @@ export default function HubHeroSection({ locale }: HubHeroSectionProps) {
       orderNow: 'Order Now',
       contact: 'Contact',
       trackOrder: 'Track Order',
-      placeholder: 'Enter order or tracking code...',
-      search: 'Track'
+      placeholder: 'Enter order code',
+      search: 'Search Now'
     },
     ja: {
       title: 'あなたのビジネスのための専門的な工業用サプライ品ソリューション',
@@ -48,8 +48,8 @@ export default function HubHeroSection({ locale }: HubHeroSectionProps) {
       orderNow: '今すぐ注文',
       contact: 'お問い合わせ',
       trackOrder: '注文追跡',
-      placeholder: '注文または追跡コードを入力...',
-      search: '追跡'
+      placeholder: '注文コードを入力',
+      search: '今すぐ検索'
     }
   };
 
@@ -97,14 +97,14 @@ export default function HubHeroSection({ locale }: HubHeroSectionProps) {
           <div className="mt-8 flex flex-wrap gap-4">
             <Link
               href="/quick-order"
-              className="bg-brand hover:bg-brand-strong text-white px-6 py-3.5 rounded-[3px] font-semibold text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] leading-relaxed flex items-center gap-2 transition-all group"
+              className="bg-brand hover:bg-brand-strong text-white px-6 py-3.5 rounded-[3px] font-semibold text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] leading-relaxed flex items-center justify-center min-w-[180px] sm:min-w-[210px] gap-2 transition-all group"
             >
               {t.orderNow}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
             </Link>
             <Link
               href="/contact"
-              className="bg-white hover:bg-slate-50 text-slate-900 px-6 py-3.5 rounded-[3px] font-semibold text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] leading-relaxed flex items-center gap-2 border border-slate-200 transition-all group"
+              className="bg-white hover:bg-slate-50 text-slate-900 px-6 py-3.5 rounded-[3px] font-semibold text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] leading-relaxed flex items-center justify-center min-w-[180px] sm:min-w-[210px] gap-2 border border-slate-200 transition-all group"
             >
               {t.contact}
               <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
@@ -121,19 +121,21 @@ export default function HubHeroSection({ locale }: HubHeroSectionProps) {
               <span className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 leading-snug text-center md:text-left">
                 {t.trackOrder}
               </span>
-              <form onSubmit={handleSearchTracking} className="flex flex-col sm:flex-row items-center gap-3 w-full">
-                <input
-                  type="text"
-                  value={trackingCode}
-                  onChange={(e) => setTrackingCode(e.target.value)}
-                  placeholder={t.placeholder}
-                  className="w-full border border-slate-300 rounded-[3px] px-4 py-3 text-[13px] sm:text-[14px] leading-relaxed text-slate-800 bg-white placeholder-slate-400 focus:outline-none focus:border-brand transition-colors min-h-[44px]"
-                />
+              <form onSubmit={handleSearchTracking} className="flex flex-col sm:flex-row items-stretch gap-2.5 sm:gap-0 w-full max-w-[700px]">
+                <div className="relative flex-1">
+                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400 pointer-events-none stroke-[2]" />
+                  <input
+                    type="text"
+                    value={trackingCode}
+                    onChange={(e) => setTrackingCode(e.target.value)}
+                    placeholder={t.placeholder}
+                    className="w-full bg-white border border-slate-300 rounded-[3px] sm:rounded-r-none sm:border-r-0 pl-11 pr-4 py-3 text-[14px] sm:text-[15px] text-slate-800 placeholder-slate-400 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand focus:z-10 transition-colors h-[48px]"
+                  />
+                </div>
                 <button
                   type="submit"
-                  className="w-full sm:w-auto bg-brand hover:bg-brand-strong text-white font-bold text-[13px] sm:text-[14px] leading-relaxed px-8 py-3 rounded-[3px] flex items-center justify-center gap-2 transition-colors shrink-0"
+                  className="bg-brand hover:bg-brand-strong text-white font-bold text-[14px] sm:text-[15px] px-8 py-3 rounded-[3px] sm:rounded-l-none flex items-center justify-center transition-colors shrink-0 h-[48px]"
                 >
-                  <Search className="h-4 w-4 stroke-[2.5]" />
                   {t.search}
                 </button>
               </form>

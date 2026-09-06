@@ -8,7 +8,7 @@ export default async function HanamFulfillmentHub() {
   return (
     <section className="w-full bg-white py-16 lg:py-24 border-t border-slate-100">
       <div className="page-container flex flex-col gap-12 lg:gap-16">
-        
+
         {/* Title Area */}
         <div className="text-center w-full mx-auto">
           <h2 className="text-[18px] sm:text-[22px] lg:text-[25px] xl:text-[27px] font-bold tracking-tight text-blue-600 leading-snug sm:leading-normal uppercase block mb-6">
@@ -22,11 +22,11 @@ export default async function HanamFulfillmentHub() {
 
         {/* Content Area */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center w-full">
-          
+
           {/* Left Side: 4 Features & CTA */}
           <div className="lg:col-span-7 flex flex-col gap-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-8 gap-y-10">
-              
+
               {/* Feature 1 */}
               <div className="flex flex-col text-center sm:text-left items-center sm:items-start">
                 <h3 className="font-bold text-slate-900 text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] leading-snug mb-2">
@@ -83,7 +83,7 @@ export default async function HanamFulfillmentHub() {
 
           {/* Right Side: Image Showcase */}
           <div className="lg:col-span-5 w-full flex justify-center">
-            <div className="relative w-full max-w-[420px] lg:max-w-none aspect-[4/5] rounded-[8px] overflow-hidden shadow-sm border border-slate-100 bg-slate-50">
+            <div className="relative w-full aspect-[4/5] sm:aspect-[4/5] lg:aspect-[4/5] rounded-[8px] overflow-hidden shadow-sm border border-slate-100 bg-slate-50">
               <Image
                 src="/images/regional_hubs/hub-2/hanam-warehouse-shelves.jpg"
                 alt="Ha Nam Fulfillment Hub Warehouse"
