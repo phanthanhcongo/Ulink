@@ -39,7 +39,7 @@ export function TargetSegments() {
           <span className="text-caption-responsive font-bold uppercase tracking-tight text-blue-600 leading-tight block">
             {t('targetSegments.sectionTitle')}
           </span>
-          <h2 className="text-section-title font-extrabold text-slate-900">
+          <h2 className="text-section-title font-bold text-slate-900">
             {t('targetSegments.sectionSubTitle')}
           </h2>
         </div>
@@ -102,10 +102,10 @@ export function TargetSegments() {
       <div className="page-container hidden py-8 md:block">
         {/* Desktop Header: Centered 2-line equal size */}
         <div className="text-center max-w-3xl mx-auto space-y-1 sm:space-y-2 mb-10 sm:mb-12">
-          <span className="text-section-title font-extrabold text-blue-600 block">
+          <span className="text-section-title font-bold text-blue-600 block">
             {t('targetSegments.sectionTitle')}
           </span>
-          <h2 className="text-section-title font-extrabold text-slate-900">
+          <h2 className="text-section-title font-bold text-slate-900">
             {t('targetSegments.sectionSubTitle')}
           </h2>
         </div>
