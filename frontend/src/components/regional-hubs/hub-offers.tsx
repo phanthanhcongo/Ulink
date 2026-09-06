@@ -26,7 +26,7 @@ export default async function HubOffers() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8 w-full mt-10">
           
           {/* Card 1: FDI */}
-          <div className="relative overflow-hidden aspect-[4/4.5] sm:aspect-[16/13] w-full min-h-[380px] flex flex-col justify-end p-6 group rounded-[3px] border border-slate-200/60 shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
+          <div className="relative overflow-hidden aspect-[4/4.5] sm:aspect-[16/13] w-full min-h-[380px] flex flex-col justify-end p-6 group rounded-[2px] border border-slate-200/60 shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
             {/* Background Image */}
             <Image
               src="/images/regional_hubs/hub-2/fdi-handshake.jpg"
@@ -38,7 +38,7 @@ export default async function HubOffers() {
             <div className="absolute inset-0 bg-black/10 transition-colors group-hover:bg-black/5 duration-500" />
             
             {/* Inner Floating Translucent Popup (24px margin from outer card edges via parent p-6) */}
-            <div className="relative z-10 w-full p-6 bg-white/85 backdrop-blur-md rounded-[3px] border border-white/60 flex flex-col items-start gap-4 shadow-md">
+            <div className="relative z-10 w-full p-6 bg-white/85 backdrop-blur-md rounded-[2px] border border-white/60 flex flex-col items-start gap-4 shadow-md">
               <h3 className="font-bold text-slate-900 text-[18px] sm:text-[20px] lg:text-[22px] leading-snug">
                 {t('hubOffer.fdiTitle')}
               </h3>
@@ -49,7 +49,7 @@ export default async function HubOffers() {
               {/* CTA Button */}
               <Link
                 href="/contact"
-                className="w-full bg-[#1769E2] hover:bg-blue-700 text-white font-semibold text-[14px] sm:text-[15px] py-3.5 px-6 rounded-[3px] flex items-center justify-between transition-all group/btn"
+                className="w-full bg-[#1769E2] hover:bg-blue-700 text-white font-semibold text-[14px] sm:text-[15px] py-3.5 px-6 rounded-[2px] flex items-center justify-between transition-all group/btn"
               >
                 <span>{t('hubOffer.learnMore')}</span>
                 <svg className="h-5 w-5 fill-none stroke-current transition-transform group-hover/btn:translate-x-1" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -60,7 +60,7 @@ export default async function HubOffers() {
           </div>
 
           {/* Card 2: SME */}
-          <div className="relative overflow-hidden aspect-[4/4.5] sm:aspect-[16/13] w-full min-h-[380px] flex flex-col justify-end p-6 group rounded-[3px] border border-slate-200/60 shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
+          <div className="relative overflow-hidden aspect-[4/4.5] sm:aspect-[16/13] w-full min-h-[380px] flex flex-col justify-end p-6 group rounded-[2px] border border-slate-200/60 shadow-xs transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md">
             {/* Background Image */}
             <Image
               src="/images/regional_hubs/hub-2/sme-worker.jpg"
@@ -72,7 +72,7 @@ export default async function HubOffers() {
             <div className="absolute inset-0 bg-black/10 transition-colors group-hover:bg-black/5 duration-500" />
             
             {/* Inner Floating Translucent Popup (24px margin from outer card edges via parent p-6) */}
-            <div className="relative z-10 w-full p-6 bg-white/85 backdrop-blur-md rounded-[3px] border border-white/60 flex flex-col items-start gap-4 shadow-md">
+            <div className="relative z-10 w-full p-6 bg-white/85 backdrop-blur-md rounded-[2px] border border-white/60 flex flex-col items-start gap-4 shadow-md">
               <h3 className="font-bold text-slate-900 text-[18px] sm:text-[20px] lg:text-[22px] leading-snug">
                 {t('hubOffer.smeTitle')}
               </h3>
@@ -83,7 +83,7 @@ export default async function HubOffers() {
               {/* CTA Button */}
               <Link
                 href="/contact"
-                className="w-full bg-[#1769E2] hover:bg-blue-700 text-white font-semibold text-[14px] sm:text-[15px] py-3.5 px-6 rounded-[3px] flex items-center justify-between transition-all group/btn"
+                className="w-full bg-[#1769E2] hover:bg-blue-700 text-white font-semibold text-[14px] sm:text-[15px] py-3.5 px-6 rounded-[2px] flex items-center justify-between transition-all group/btn"
               >
                 <span>{t('hubOffer.learnMore')}</span>
                 <svg className="h-5 w-5 fill-none stroke-current transition-transform group-hover/btn:translate-x-1" strokeWidth="2.5" viewBox="0 0 24 24">

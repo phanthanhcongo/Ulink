@@ -83,7 +83,7 @@ export default async function HanamFulfillmentHub() {
 
           {/* Right Side: Image Showcase */}
           <div className="lg:col-span-5 w-full flex justify-center">
-            <div className="relative w-full aspect-[4/5] sm:aspect-[4/5] lg:aspect-[4/5] rounded-[8px] overflow-hidden shadow-sm border border-slate-100 bg-slate-50">
+            <div className="relative w-full aspect-[4/5] sm:aspect-[4/5] lg:aspect-[4/5] rounded-[2px] overflow-hidden shadow-sm border border-slate-100 bg-slate-50">
               <Image
                 src="/images/regional_hubs/hub-2/hanam-warehouse-shelves.jpg"
                 alt="Ha Nam Fulfillment Hub Warehouse"

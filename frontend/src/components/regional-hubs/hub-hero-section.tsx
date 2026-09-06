@@ -93,21 +93,21 @@ export default function HubHeroSection({ locale }: HubHeroSectionProps) {
             {t.subtitle}
           </p>
 
-          {/* Buttons Row */}
-          <div className="mt-8 flex flex-wrap gap-4">
+          {/* Buttons Row (Always 1 single row on all screens) */}
+          <div className="mt-8 flex flex-row items-center gap-3 sm:gap-4 w-full sm:w-auto max-w-[460px]">
             <Link
               href="/quick-order"
-              className="bg-brand hover:bg-brand-strong text-white px-6 py-3.5 rounded-[3px] font-semibold text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] leading-relaxed flex items-center justify-center min-w-[180px] sm:min-w-[210px] gap-2 transition-all group"
+              className="flex-1 sm:flex-initial bg-brand hover:bg-brand-strong text-white px-4 sm:px-6 py-3 sm:py-3.5 rounded-[3px] font-semibold text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] leading-relaxed flex items-center justify-center sm:min-w-[180px] lg:min-w-[210px] gap-1.5 sm:gap-2 transition-all group whitespace-nowrap"
             >
-              {t.orderNow}
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              <span>{t.orderNow}</span>
+              <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5" />
             </Link>
             <Link
               href="/contact"
-              className="bg-white hover:bg-slate-50 text-slate-900 px-6 py-3.5 rounded-[3px] font-semibold text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] leading-relaxed flex items-center justify-center min-w-[180px] sm:min-w-[210px] gap-2 border border-slate-200 transition-all group"
+              className="flex-1 sm:flex-initial bg-white hover:bg-slate-50 text-slate-900 px-4 sm:px-6 py-3 sm:py-3.5 rounded-[3px] font-semibold text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] leading-relaxed flex items-center justify-center sm:min-w-[180px] lg:min-w-[210px] gap-1.5 sm:gap-2 border border-slate-200 transition-all group whitespace-nowrap"
             >
-              {t.contact}
-              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+              <span>{t.contact}</span>
+              <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5" />
             </Link>
           </div>
         </div>

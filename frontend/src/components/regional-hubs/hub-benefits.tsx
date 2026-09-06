@@ -74,12 +74,12 @@ export default async function HubBenefits() {
           </h2>
         </div>
 
-        {/* Benefits Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-y-4 gap-x-4 lg:gap-4 w-full max-w-[720px] lg:max-w-none mx-auto">
+        {/* Benefits Grid (2 cols on mobile & iPad, 5 cols on desktop) */}
+        <div className="grid grid-cols-2 lg:grid-cols-5 gap-y-6 gap-x-3 sm:gap-x-4 lg:gap-4 w-full max-w-[720px] lg:max-w-none mx-auto">
           {items.map((item) => (
             <div
               key={item.id}
-              className="group flex flex-col items-center text-center p-2 rounded-[3px] bg-white transition-all duration-300 hover:-translate-y-0.5 last:sm:col-span-2 last:lg:col-span-1"
+              className="group flex flex-col items-center text-center p-2 rounded-[3px] bg-white transition-all duration-300 hover:-translate-y-0.5 last:col-span-2 last:lg:col-span-1"
             >
               {/* Icon */}
               <div className="flex items-center justify-center mb-4 h-[48px] w-[48px] shrink-0 group-hover:scale-105 transition-transform duration-300">

@@ -29,7 +29,7 @@ export default async function HubPartner() {
           {/* Details & Image Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 items-center w-full">
             {/* Left Column: Image */}
-            <div className="relative w-full aspect-[3/2] overflow-hidden border border-slate-200/60 shadow-xs rounded-[3px]">
+            <div className="relative w-full aspect-[3/2] overflow-hidden border border-slate-200/60 shadow-xs rounded-[2px]">
               <Image
                 src="/images/regional_hubs/hub-2/partner-warehouse.jpg"
                 alt="Partner Warehouse"
