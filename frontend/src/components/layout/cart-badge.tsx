@@ -34,7 +34,7 @@ export function CartBadge() {
   }, []);
 
   return (
-    <span className="absolute -right-1 -top-1 flex h-4 min-w-[16px] items-center justify-center rounded-full bg-[#1769E2] px-1 text-[11px] font-bold leading-none text-white shadow-xs">
+    <span className="absolute -right-1 -top-1 flex h-4 min-w-[16px] items-center justify-center rounded-full bg-[#1769E2] px-1 text-caption-responsive font-bold leading-none text-white shadow-xs">
       {count}
     </span>
   );

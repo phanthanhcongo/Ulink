@@ -211,12 +211,12 @@ export function ResourceDetailClient({ data, locale }: ResourceDetailClientProps
 
           {/* Category Badge */}
           <div className="flex flex-wrap items-center gap-3 mb-5">
-            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-[3px] bg-blue-50 text-blue-700 text-xs font-extrabold uppercase tracking-wider border border-blue-100">
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-[3px] bg-blue-50 text-blue-700 text-caption-responsive font-extrabold uppercase tracking-wider border border-blue-100">
               <BookOpen className="h-3.5 w-3.5" />
               {data.category}
             </span>
             {data.type === 'doc' && (
-              <span className="inline-flex items-center gap-1 px-3 py-1 rounded-[3px] bg-emerald-50 text-emerald-700 text-xs font-extrabold border border-emerald-100">
+              <span className="inline-flex items-center gap-1 px-3 py-1 rounded-[3px] bg-emerald-50 text-emerald-700 text-caption-responsive font-extrabold border border-emerald-100">
                 <ShieldCheck className="h-3.5 w-3.5" />
                 {localeLang === 'vi' ? 'Tài liệu Kỹ thuật' : localeLang === 'ja' ? '技術資料' : 'Technical Document'}
               </span>
@@ -224,18 +224,18 @@ export function ResourceDetailClient({ data, locale }: ResourceDetailClientProps
           </div>
 
           {/* Title */}
-          <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-snug lg:leading-tight max-w-4xl">
+          <h1 className="text-section-title font-extrabold text-slate-900 tracking-tight leading-snug lg:leading-tight max-w-4xl">
             {data.title}
           </h1>
 
           {/* Description */}
-          <p className="mt-5 text-sm sm:text-base text-slate-600 leading-relaxed font-medium max-w-4xl">
+          <p className="mt-5 text-body-regular text-slate-600 leading-relaxed font-medium max-w-4xl">
             {data.description}
           </p>
 
           {/* Meta Info Bar & Share Button */}
           <div className="mt-8 flex flex-wrap items-center justify-between gap-6 border-t border-slate-100 pt-6">
-            <div className="flex flex-wrap items-center gap-6 text-xs text-slate-500 font-semibold">
+            <div className="flex flex-wrap items-center gap-6 text-caption-responsive text-slate-500 font-semibold">
               <div className="flex items-center gap-2.5">
                 <div className="relative h-9 w-9 rounded-full overflow-hidden border border-slate-200">
                   <Image
@@ -247,7 +247,7 @@ export function ResourceDetailClient({ data, locale }: ResourceDetailClientProps
                 </div>
                 <div>
                   <span className="block font-bold text-slate-950">{data.author}</span>
-                  <span className="block text-[10px] text-slate-400 font-medium">
+                  <span className="block text-caption-responsive text-slate-400 font-medium">
                     {data.authorRole || (localeLang === 'vi' ? 'Ban biên tập ULink' : 'ULink Editorial')}
                   </span>
                 </div>
@@ -287,11 +287,11 @@ export function ResourceDetailClient({ data, locale }: ResourceDetailClientProps
                 <a
                   href={data.pdfUrl}
                   download
-                  className="inline-flex items-center gap-2 px-4 py-2.5 bg-brand hover:bg-brand-strong text-white text-xs font-bold rounded-[3px] transition-all shadow-sm"
+                  className="inline-flex items-center gap-2 px-4 py-2.5 bg-brand hover:bg-brand-strong text-white text-caption-responsive font-bold rounded-[3px] transition-all shadow-sm"
                 >
                   <Download className="h-4 w-4" />
                   {localeLang === 'vi' ? 'Tải tài liệu PDF' : localeLang === 'ja' ? 'PDFダウンロード' : 'Download PDF'}
-                  <span className="text-[10px] text-blue-200">({data.pdfSize || '1.2 MB'})</span>
+                  <span className="text-caption-responsive text-blue-200">({data.pdfSize || '1.2 MB'})</span>
                 </a>
               )}
             </div>
@@ -306,7 +306,7 @@ export function ResourceDetailClient({ data, locale }: ResourceDetailClientProps
           {/* Cột trái: Table of Contents */}
           {data.sections && data.sections.length > 0 ? (
             <aside className="hidden lg:block lg:col-span-3 sticky top-28 self-start bg-slate-50 p-5 rounded-[3px] border border-slate-200/50">
-              <h3 className="text-base font-extrabold text-slate-900 tracking-tight mb-5 px-1">
+              <h3 className="text-body-regular font-extrabold text-slate-900 tracking-tight mb-5 px-1">
                 {localeLang === 'vi' ? 'Mục lục' : localeLang === 'ja' ? '目次' : 'Mục lục'}
               </h3>
               <nav className="flex flex-col gap-3">
@@ -328,13 +328,13 @@ export function ResourceDetailClient({ data, locale }: ResourceDetailClientProps
                   >
                     <span
                       className={cn(
-                        'h-7 w-7 flex items-center justify-center rounded-full text-xs font-bold shrink-0 transition-colors',
+                        'h-7 w-7 flex items-center justify-center rounded-full text-caption-responsive font-bold shrink-0 transition-colors',
                         activeSectionId === sec.id ? 'bg-brand text-white' : 'bg-slate-100 text-slate-400'
                       )}
                     >
                       {sec.num.replace('.', '').trim()}
                     </span>
-                    <span className="text-xs sm:text-sm tracking-tight leading-snug">{sec.title}</span>
+                    <span className="text-caption-responsive tracking-tight leading-snug">{sec.title}</span>
                   </button>
                 ))}
 
@@ -355,13 +355,13 @@ export function ResourceDetailClient({ data, locale }: ResourceDetailClientProps
                 >
                   <span
                     className={cn(
-                      'h-7 w-7 flex items-center justify-center rounded-full text-xs font-bold shrink-0 transition-colors',
+                      'h-7 w-7 flex items-center justify-center rounded-full text-caption-responsive font-bold shrink-0 transition-colors',
                       activeSectionId === 'related-section' ? 'bg-brand text-white' : 'bg-slate-100 text-slate-400'
                     )}
                   >
                     {data.sections.length + 1}
                   </span>
-                  <span className="text-xs sm:text-sm tracking-tight leading-snug">
+                  <span className="text-caption-responsive tracking-tight leading-snug">
                     {localeLang === 'vi' ? 'Bài viết liên quan' : localeLang === 'ja' ? '関連記事' : 'Related articles'}
                   </span>
                 </button>
@@ -389,11 +389,11 @@ export function ResourceDetailClient({ data, locale }: ResourceDetailClientProps
               <div className="space-y-10">
                 {data.sections.map((sec) => (
                   <section key={sec.id} id={sec.id} className="scroll-mt-28 space-y-4">
-                    <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight flex items-baseline gap-2">
+                    <h2 className="text-card-title font-extrabold text-slate-900 tracking-tight flex items-baseline gap-2">
                       <span className="text-brand font-black">{sec.num}</span>
                       <span>{sec.title}</span>
                     </h2>
-                    <div className="text-sm sm:text-base text-slate-700 leading-relaxed space-y-3 font-normal">
+                    <div className="text-body-regular text-slate-700 leading-relaxed space-y-3 font-normal">
                       {sec.content.split('\n').map((para, pIdx) => (
                         <p key={pIdx}>{para}</p>
                       ))}
@@ -401,7 +401,7 @@ export function ResourceDetailClient({ data, locale }: ResourceDetailClientProps
                     {sec.alertText && (
                       <div className="mt-4 rounded-[3px] border border-blue-100 bg-blue-50/50 p-5 flex items-start gap-3 shadow-sm">
                         <CheckCircle2 className="h-5 w-5 text-brand shrink-0 mt-0.5 animate-pulse" />
-                        <div className="text-xs sm:text-sm leading-relaxed text-slate-700 font-semibold">
+                        <div className="text-caption-responsive leading-relaxed text-slate-700 font-semibold">
                           {sec.alertText}
                         </div>
                       </div>
@@ -412,20 +412,20 @@ export function ResourceDetailClient({ data, locale }: ResourceDetailClientProps
             ) : (
               <div
                 suppressHydrationWarning
-                className="prose prose-slate max-w-none text-sm sm:text-base leading-relaxed text-slate-700 font-normal space-y-4"
+                className="prose prose-slate max-w-none text-body-regular leading-relaxed text-slate-700 font-normal space-y-4"
                 dangerouslySetInnerHTML={{ __html: data.contentHtml }}
               />
             )}
 
             {/* Tags / Share Actions */}
             <div className="mt-12 pt-6 border-t border-slate-100 flex items-center justify-between flex-wrap gap-4">
-              <span className="text-xs font-semibold text-slate-500">
+              <span className="text-caption-responsive font-semibold text-slate-500">
                 {localeLang === 'vi' ? 'Chủ đề' : localeLang === 'ja' ? 'トピック' : 'Topic'}:{' '}
                 <strong className="text-slate-800">{data.category}</strong>
               </span>
               <button
                 onClick={handleCopyLink}
-                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[3px] border border-slate-200 text-xs font-bold text-slate-600 hover:bg-slate-50 transition-colors shadow-sm"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-600 hover:bg-slate-50 transition-colors shadow-sm"
               >
                 <Share2 className="h-3.5 w-3.5" />
                 {localeLang === 'vi'
@@ -440,7 +440,7 @@ export function ResourceDetailClient({ data, locale }: ResourceDetailClientProps
           {/* Cột phải: Related Resources */}
           <aside className="lg:col-span-3 space-y-6">
             <div className="p-6 rounded-[3px] bg-white border border-slate-200/80 shadow-sm">
-              <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider mb-5 border-b border-slate-100 pb-3 flex items-center gap-2">
+              <h3 className="text-body-regular font-extrabold text-slate-900 uppercase tracking-wider mb-5 border-b border-slate-100 pb-3 flex items-center gap-2">
                 <BookOpen className="h-4 w-4 text-brand" />
                 {localeLang === 'vi'
                   ? 'Tài liệu liên quan'
@@ -461,15 +461,15 @@ export function ResourceDetailClient({ data, locale }: ResourceDetailClientProps
                       />
                     </div>
                     <div className="space-y-1">
-                      <span className="inline-block px-2 py-0.5 text-[9px] font-extrabold uppercase tracking-wide bg-blue-50 text-blue-700 rounded-[3px] border border-blue-100">
+                      <span className="inline-block px-2 py-0.5 text-caption-responsive font-extrabold uppercase tracking-wide bg-blue-50 text-blue-700 rounded-[3px] border border-blue-100">
                         {item.badge[localeLang]}
                       </span>
-                      <h4 className="text-xs font-bold text-slate-900 leading-snug line-clamp-2 group-hover:text-brand transition-colors">
+                      <h4 className="text-caption-responsive font-bold text-slate-900 leading-snug line-clamp-2 group-hover:text-brand transition-colors">
                         {item.title[localeLang]}
                       </h4>
                       <Link
                         href={`/resources/${item.id.toLowerCase()}`}
-                        className="inline-flex items-center gap-1 text-[10px] font-extrabold text-brand hover:underline"
+                        className="inline-flex items-center gap-1 text-caption-responsive font-extrabold text-brand hover:underline"
                       >
                         {localeLang === 'vi' ? 'Đọc thêm' : localeLang === 'ja' ? 'もっと読む' : 'Read more'}
                         <ArrowRight className="h-3 w-3" />
@@ -483,10 +483,10 @@ export function ResourceDetailClient({ data, locale }: ResourceDetailClientProps
             {/* Quick Contact Widget */}
             <div className="p-6 rounded-[3px] bg-white border border-slate-200/80 shadow-sm relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl -z-10" />
-              <h3 className="text-base font-extrabold text-slate-955">
+              <h3 className="text-body-regular font-extrabold text-slate-955">
                 {localeLang === 'vi' ? 'Cần tư vấn giải pháp?' : localeLang === 'ja' ? 'ソリューション相談' : 'Need solution consultation?'}
               </h3>
-              <p className="text-xs text-slate-500 mt-2 leading-relaxed font-medium">
+              <p className="text-caption-responsive text-slate-500 mt-2 leading-relaxed font-medium">
                 {localeLang === 'vi'
                   ? 'Đội ngũ kỹ sư phòng sạch ULink sẵn sàng tư vấn mẫu sản phẩm và gửi báo giá chi tiết trong 24h.'
                   : localeLang === 'ja'
@@ -495,7 +495,7 @@ export function ResourceDetailClient({ data, locale }: ResourceDetailClientProps
               </p>
               <Link
                 href="/quick-order"
-                className="mt-5 flex items-center justify-center gap-2 w-full py-3.5 px-4 rounded-[3px] bg-brand hover:bg-brand-strong text-white text-xs font-bold shadow transition-colors"
+                className="mt-5 flex items-center justify-center gap-2 w-full py-3.5 px-4 rounded-[3px] bg-brand hover:bg-brand-strong text-white text-caption-responsive font-bold shadow transition-colors"
               >
                 {localeLang === 'vi' ? 'Yêu cầu Báo giá Ngay' : localeLang === 'ja' ? 'すぐに見積もりを依頼' : 'Request Quote Now'}
                 <ArrowRight className="h-4 w-4" />
@@ -513,14 +513,14 @@ export function ResourceDetailClient({ data, locale }: ResourceDetailClientProps
               <div className="flex-1 space-y-6">
                 <div className="flex items-center gap-3">
                   <div className="relative h-12 w-12 rounded-[3px] bg-brand flex items-center justify-center text-white shadow-md border border-blue-400/20">
-                    <span className="font-extrabold text-sm tracking-wider">AI</span>
+                    <span className="font-extrabold text-body-regular tracking-wider">AI</span>
                     <div className="absolute -bottom-1 -right-1 h-4.5 w-4.5 bg-emerald-500 rounded-full border-2 border-white flex items-center justify-center">
                       <div className="h-2 w-2 bg-white rounded-full animate-ping" />
                     </div>
                   </div>
                   <div>
-                    <h3 className="text-base font-extrabold text-slate-900 leading-tight">AI Agent</h3>
-                    <span className="text-xs text-slate-500 font-semibold">
+                    <h3 className="text-body-regular font-extrabold text-slate-900 leading-tight">AI Agent</h3>
+                    <span className="text-caption-responsive text-slate-500 font-semibold">
                       {localeLang === 'vi'
                         ? 'Trợ lý tóm tắt & phân tích thông tin'
                         : localeLang === 'ja'
@@ -531,15 +531,15 @@ export function ResourceDetailClient({ data, locale }: ResourceDetailClientProps
                 </div>
 
                 <div className="space-y-4 bg-white/70 backdrop-blur-sm p-6 rounded-[3px] border border-white">
-                  <h4 className="text-xs font-extrabold text-brand uppercase tracking-wider">
+                  <h4 className="text-caption-responsive font-extrabold text-brand uppercase tracking-wider">
                     {localeLang === 'vi' ? 'Tóm tắt bài viết' : localeLang === 'ja' ? '記事の要約' : 'Article Summary'}
                   </h4>
-                  <p className="text-xs sm:text-sm leading-relaxed text-slate-700 font-semibold italic">
+                  <p className="text-caption-responsive leading-relaxed text-slate-700 font-semibold italic">
                     {data.aiSummary.intro}
                   </p>
                   <ul className="space-y-3">
                     {data.aiSummary.bullets.map((bullet, bIdx) => (
-                      <li key={bIdx} className="flex items-start gap-3 text-xs sm:text-sm font-semibold text-slate-800">
+                      <li key={bIdx} className="flex items-start gap-3 text-caption-responsive font-semibold text-slate-800">
                         <CheckCircle2 className="h-4.5 w-4.5 text-emerald-600 shrink-0 mt-0.5" />
                         <span>{bullet}</span>
                       </li>
@@ -550,7 +550,7 @@ export function ResourceDetailClient({ data, locale }: ResourceDetailClientProps
 
               {/* Right Column: Audio Player */}
               <div className="w-full md:w-[360px] lg:w-[400px] shrink-0 bg-white p-6 rounded-[3px] border border-slate-200/80 shadow-md space-y-6">
-                <h4 className="text-xs font-extrabold text-slate-900 uppercase tracking-wider border-b border-slate-100 pb-3 flex items-center gap-2">
+                <h4 className="text-caption-responsive font-extrabold text-slate-900 uppercase tracking-wider border-b border-slate-100 pb-3 flex items-center gap-2">
                   <Volume2 className="h-4.5 w-4.5 text-brand" />
                   {localeLang === 'vi' ? 'Nghe bài viết' : localeLang === 'ja' ? '記事を聞く' : 'Listen to article'}
                 </h4>
@@ -576,7 +576,7 @@ export function ResourceDetailClient({ data, locale }: ResourceDetailClientProps
                       onChange={(e) => setCurrentTime(Number(e.target.value))}
                       className="w-full h-1.5 bg-slate-200 rounded-[3px] appearance-none cursor-pointer accent-brand"
                     />
-                    <div className="flex justify-between text-[10px] font-bold text-slate-400">
+                    <div className="flex justify-between text-caption-responsive font-bold text-slate-400">
                       <span>{formatTime(currentTime)}</span>
                       <span>{formatTime(durationSecs)}</span>
                     </div>
@@ -584,7 +584,7 @@ export function ResourceDetailClient({ data, locale }: ResourceDetailClientProps
                 </div>
 
                 {/* Volume bar and info */}
-                <div className="flex items-center justify-between gap-4 text-xs font-semibold text-slate-500">
+                <div className="flex items-center justify-between gap-4 text-caption-responsive font-semibold text-slate-500">
                   <div className="flex items-center gap-2">
                     <button onClick={() => setIsMuted(!isMuted)} className="hover:text-slate-900">
                       {isMuted || volume === 0 ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
@@ -601,7 +601,7 @@ export function ResourceDetailClient({ data, locale }: ResourceDetailClientProps
                       className="w-20 h-1 bg-slate-200 rounded-[3px] appearance-none cursor-pointer accent-slate-600"
                     />
                   </div>
-                  <span className="text-[10px] uppercase bg-slate-100 px-2 py-0.5 rounded-[3px] text-slate-600">
+                  <span className="text-caption-responsive uppercase bg-slate-100 px-2 py-0.5 rounded-[3px] text-slate-600">
                     Text-to-Speech (AI Voice)
                   </span>
                 </div>
@@ -610,14 +610,14 @@ export function ResourceDetailClient({ data, locale }: ResourceDetailClientProps
                 <div className="grid grid-cols-2 gap-3 pt-2">
                   <button
                     onClick={() => toast.success(localeLang === 'vi' ? 'Bắt đầu tải file Audio...' : 'Downloading audio...')}
-                    className="inline-flex items-center justify-center gap-1.5 py-3 rounded-[3px] border border-slate-200 hover:bg-slate-50 text-xs font-bold text-slate-700 transition-colors shadow-sm"
+                    className="inline-flex items-center justify-center gap-1.5 py-3 rounded-[3px] border border-slate-200 hover:bg-slate-50 text-caption-responsive font-bold text-slate-700 transition-colors shadow-sm"
                   >
                     <Download className="h-4 w-4" />
                     {localeLang === 'vi' ? 'Tải Audio' : localeLang === 'ja' ? '音声ダウンロード' : 'Download Audio'}
                   </button>
                   <button
                     onClick={() => toast.success(localeLang === 'vi' ? 'Đang kết nối với AI Assistant...' : 'Connecting to AI Assistant...')}
-                    className="inline-flex items-center justify-center gap-1.5 py-3 rounded-[3px] bg-brand hover:bg-brand-strong text-white text-xs font-bold transition-colors shadow-sm"
+                    className="inline-flex items-center justify-center gap-1.5 py-3 rounded-[3px] bg-brand hover:bg-brand-strong text-white text-caption-responsive font-bold transition-colors shadow-sm"
                   >
                     <MessageSquare className="h-4 w-4" />
                     {localeLang === 'vi' ? 'Hỏi đáp tài liệu' : localeLang === 'ja' ? 'AIに質問する' : 'Q&A Document'}

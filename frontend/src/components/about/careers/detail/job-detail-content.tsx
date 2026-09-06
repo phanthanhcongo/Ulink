@@ -38,7 +38,7 @@ export function JobDetailContent() {
     <div className="flex flex-col gap-8 py-8">
       {/* 1. Mô tả công việc */}
       <div>
-        <h2 className="text-[22px] font-extrabold text-slate-900 mb-3 border-l-4 border-blue-600 pl-3">
+        <h2 className="text-section-title font-extrabold text-slate-900 mb-3 border-l-4 border-blue-600 pl-3">
           Mô tả công việc
         </h2>
         <ul className="space-y-2 text-body-regular leading-relaxed text-slate-700 list-disc list-inside">
@@ -67,7 +67,7 @@ export function JobDetailContent() {
 
       {/* 2. Yêu cầu ứng viên */}
       <div>
-        <h2 className="text-[22px] font-extrabold text-slate-900 mb-3 border-l-4 border-blue-600 pl-3">
+        <h2 className="text-section-title font-extrabold text-slate-900 mb-3 border-l-4 border-blue-600 pl-3">
           Yêu cầu ứng viên
         </h2>
         <ul className="space-y-2 text-body-regular leading-relaxed text-slate-700 list-disc list-inside mb-4">
@@ -105,7 +105,7 @@ export function JobDetailContent() {
 
       {/* 3. Quyền lợi được hưởng */}
       <div>
-        <h2 className="text-[22px] font-extrabold text-slate-900 mb-4 border-l-4 border-blue-600 pl-3">
+        <h2 className="text-section-title font-extrabold text-slate-900 mb-4 border-l-4 border-blue-600 pl-3">
           Quyền lợi được hưởng
         </h2>
         <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
@@ -129,7 +129,7 @@ export function JobDetailContent() {
 
       {/* 4. Địa điểm & Thời gian làm việc */}
       <div>
-        <h2 className="text-lg font-bold text-slate-900 mb-3 border-l-4 border-blue-600 pl-3">
+        <h2 className="text-card-title font-bold text-slate-900 mb-3 border-l-4 border-blue-600 pl-3">
           Địa điểm & Thời gian làm việc
         </h2>
         <div className="rounded-[3px] bg-white p-5 border border-slate-100 shadow-sm flex flex-col gap-3">

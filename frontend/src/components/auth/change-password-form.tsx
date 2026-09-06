@@ -427,16 +427,16 @@ function ChangePasswordFormInner() {
         <span className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-[3px] bg-brand/10 text-brand">
           <CheckCircle2 className="h-7 w-7" aria-hidden="true" />
         </span>
-        <h2 className="text-2xl font-bold tracking-tight text-foreground">
+        <h2 className="text-section-title font-bold tracking-tight text-foreground">
           {t('changePasswordSuccess')}
         </h2>
-        <p className="mx-auto mt-3 max-w-sm text-sm text-muted-foreground">
+        <p className="mx-auto mt-3 max-w-sm text-body-regular text-muted-foreground">
           {t('changePasswordSuccessDesc')}
         </p>
         <button
           type="button"
           onClick={handleBackToLogin}
-          className="mt-6 inline-flex items-center justify-center rounded-[3px] border border-brand bg-brand px-5 py-2.5 text-sm font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong"
+          className="mt-6 inline-flex items-center justify-center rounded-[3px] border border-brand bg-brand px-5 py-2.5 text-body-regular font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong"
         >
           {t('backToLogin')}
         </button>
@@ -445,19 +445,19 @@ function ChangePasswordFormInner() {
   }
 
   const inputBase =
-    'w-full rounded-[3px] border bg-card py-2.5 pl-10 pr-4 text-sm outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-brand focus:ring-1 focus:ring-brand';
+    'w-full rounded-[3px] border bg-card py-2.5 pl-10 pr-4 text-body-regular outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-brand focus:ring-1 focus:ring-brand';
 
   return (
     <div>
-      <h2 className="text-2xl font-bold tracking-tight text-foreground">{t('changePassword')}</h2>
-      <p className="mt-2 text-sm text-muted-foreground">
+      <h2 className="text-section-title font-bold tracking-tight text-foreground">{t('changePassword')}</h2>
+      <p className="mt-2 text-body-regular text-muted-foreground">
         {viaEmail ? t('changePasswordEmailDesc') : t('changePasswordDesc')}
       </p>
 
       {viaEmail && (
         <p
           role="status"
-          className="mt-4 flex items-start gap-2 rounded-[3px] border border-brand/30 bg-brand/5 px-3 py-2 text-sm text-foreground"
+          className="mt-4 flex items-start gap-2 rounded-[3px] border border-brand/30 bg-brand/5 px-3 py-2 text-body-regular text-foreground"
         >
           <Mail className="mt-0.5 h-4 w-4 shrink-0 text-brand" aria-hidden="true" />
           <span>{t('changePasswordEmailHint')}</span>
@@ -467,7 +467,7 @@ function ChangePasswordFormInner() {
       {reason === 'expired' && (
         <p
           role="status"
-          className="mt-4 rounded-[3px] border border-amber-500/30 bg-amber-500/5 px-3 py-2 text-sm text-amber-700 dark:text-amber-400"
+          className="mt-4 rounded-[3px] border border-amber-500/30 bg-amber-500/5 px-3 py-2 text-body-regular text-amber-700 dark:text-amber-400"
         >
           {t('changePasswordExpiredPrompt')}
         </p>
@@ -476,7 +476,7 @@ function ChangePasswordFormInner() {
       {formError && !(lockedUntil != null && lockedUntil > now) && (
         <p
           role="alert"
-          className="mt-4 rounded-[3px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-sm text-destructive"
+          className="mt-4 rounded-[3px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-body-regular text-destructive"
         >
           {formError}
         </p>
@@ -488,10 +488,10 @@ function ChangePasswordFormInner() {
       {lockedUntil != null && lockedUntil > now && (
         <div
           role="alert"
-          className="mt-4 rounded-[3px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-sm text-destructive"
+          className="mt-4 rounded-[3px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-body-regular text-destructive"
         >
           <p className="font-medium">{t('currentPasswordLockedTitle')}</p>
-          <p className="mt-1 text-xs">
+          <p className="mt-1 text-caption-responsive">
             {t('currentPasswordLockedWithCountdown', {
               mm: String(Math.max(0, Math.floor((lockedUntil - now) / 60000))).padStart(2, '0'),
               ss: String(Math.max(0, Math.floor(((lockedUntil - now) % 60000) / 1000))).padStart(
@@ -506,7 +506,7 @@ function ChangePasswordFormInner() {
       <form className="mt-6 space-y-3.5" onSubmit={onSubmit} noValidate>
         {/* Current password */}
         <div>
-          <label htmlFor="current_password" className="mb-1 block text-sm text-foreground">
+          <label htmlFor="current_password" className="mb-1 block text-body-regular text-foreground">
             {t('currentPasswordLabel')}
           </label>
           <div className="relative">
@@ -540,14 +540,14 @@ function ChangePasswordFormInner() {
             </button>
           </div>
           {errors.current_password && (
-            <p id="current_password-error" className="mt-1.5 text-xs text-destructive">
+            <p id="current_password-error" className="mt-1.5 text-caption-responsive text-destructive">
               {errors.current_password}
             </p>
           )}
           {/* Amber "N attempt(s) remaining" hint. Hidden once a
               lockout is active — the red banner takes over. */}
           {attemptsLeft != null && attemptsLeft > 0 && lockedUntil == null && (
-            <p className="mt-1.5 text-xs text-amber-700 dark:text-amber-400">
+            <p className="mt-1.5 text-caption-responsive text-amber-700 dark:text-amber-400">
               {t('currentPasswordAttemptsLeft', { count: attemptsLeft })}
             </p>
           )}
@@ -555,7 +555,7 @@ function ChangePasswordFormInner() {
 
         {/* New password */}
         <div>
-          <label htmlFor="new_password" className="mb-1 block text-sm text-foreground">
+          <label htmlFor="new_password" className="mb-1 block text-body-regular text-foreground">
             {t('newPasswordLabel')}
           </label>
           <div className="relative">
@@ -581,16 +581,16 @@ function ChangePasswordFormInner() {
             />
           </div>
           {errors.new_password && (
-            <p id="new_password-error" className="mt-1.5 text-xs text-destructive">
+            <p id="new_password-error" className="mt-1.5 text-caption-responsive text-destructive">
               {errors.new_password}
             </p>
           )}
-          <p className="mt-1 text-[12px] sm:text-[13px] text-muted-foreground">{t('passwordPolicyHint')}</p>
+          <p className="mt-1 text-caption-responsive text-muted-foreground">{t('passwordPolicyHint')}</p>
         </div>
 
         {/* Confirm new password */}
         <div>
-          <label htmlFor="confirm_new_password" className="mb-1 block text-sm text-foreground">
+          <label htmlFor="confirm_new_password" className="mb-1 block text-body-regular text-foreground">
             {t('confirmNewPasswordLabel')}
           </label>
           <div className="relative">
@@ -617,7 +617,7 @@ function ChangePasswordFormInner() {
             />
           </div>
           {errors.confirm_new_password && (
-            <p id="confirm_new_password-error" className="mt-1.5 text-xs text-destructive">
+            <p id="confirm_new_password-error" className="mt-1.5 text-caption-responsive text-destructive">
               {errors.confirm_new_password}
             </p>
           )}
@@ -626,7 +626,7 @@ function ChangePasswordFormInner() {
         <button
           type="submit"
           disabled={loading || (lockedUntil != null && Date.now() < lockedUntil)}
-          className="flex w-full items-center justify-center gap-2 rounded-[3px] border border-brand bg-brand py-3 text-sm font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong disabled:opacity-60"
+          className="flex w-full items-center justify-center gap-2 rounded-[3px] border border-brand bg-brand py-3 text-body-regular font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong disabled:opacity-60"
         >
           {loading ? (
             <>

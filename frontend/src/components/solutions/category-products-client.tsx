@@ -539,7 +539,7 @@ export function CategoryProductsClient({
   return (
     <div className="min-h-screen bg-slate-50/70 relative">
       {/* ── HERO BANNER (Category or Search) ── */}
-      <header className="w-full ">
+      <header className="w-full">
         <div className="page-container pb-10 pt-6 text-slate-800 relative overflow-hidden">
           {/* Breadcrumb inside the Hero Banner container */}
           <div className="mb-2">
@@ -586,12 +586,12 @@ export function CategoryProductsClient({
               <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
                 {searchQuery.trim() ? (
                   <div>
-                    <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                    <h1 className="text-section-title font-extrabold text-slate-900 tracking-tight leading-tight">
                       {locale === 'vi'
                         ? `Kết quả tìm kiếm cho "${searchQuery}"`
                         : `Search results for "${searchQuery}"`}
                     </h1>
-                    <p className="mt-2 text-xs sm:text-sm text-slate-500 font-semibold">
+                    <p className="mt-2 text-caption-responsive text-slate-500 font-semibold">
                       {locale === 'vi'
                         ? `Hiển thị 1-${Math.min(filteredProducts.length, ITEMS_PER_PAGE)} trong tổng số ${filteredProducts.length} sản phẩm`
                         : `Showing 1-${Math.min(filteredProducts.length, ITEMS_PER_PAGE)} of ${filteredProducts.length} products`}
@@ -599,7 +599,7 @@ export function CategoryProductsClient({
                   </div>
                 ) : (
                   <div>
-                    <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                    <h1 className="text-section-title font-extrabold text-slate-900 tracking-tight leading-tight">
                       {locale === 'vi'
                         ? 'Hãy nhập từ khóa để tìm kiếm sản phẩm'
                         : 'Please enter keywords to search for products'}
@@ -609,11 +609,11 @@ export function CategoryProductsClient({
 
                 {/* Sort dropdown in search banner on right side */}
                 <div className="flex items-center gap-2 self-start md:self-end">
-                  <span className="text-xs text-slate-400 font-bold">{locale === 'vi' ? 'Sắp xếp:' : 'Sort:'}</span>
+                  <span className="text-caption-responsive text-slate-400 font-bold">{locale === 'vi' ? 'Sắp xếp:' : 'Sort:'}</span>
                   <select
                     value={sortBy}
                     onChange={(e) => setSortBy(e.target.value)}
-                    className="px-3 py-2 rounded-[3px] border border-slate-200 text-xs font-bold text-slate-700 bg-white focus:outline-none focus:ring-1 focus:ring-blue-600 shadow-xs cursor-pointer"
+                    className="px-3 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-700 bg-white focus:outline-none focus:ring-1 focus:ring-blue-600 shadow-xs cursor-pointer"
                   >
                     <option value="popular">{locale === 'vi' ? 'Liên quan nhất' : 'Most Relevant'}</option>
                     <option value="newest">{locale === 'vi' ? 'Sản phẩm mới nhất' : 'Newest'}</option>
@@ -638,11 +638,11 @@ export function CategoryProductsClient({
                     }
                   }}
                   placeholder={locale === 'vi' ? 'Tìm kiếm sản phẩm...' : 'Search products...'}
-                  className="flex-1 bg-transparent text-sm text-slate-800 focus:outline-none font-medium placeholder:text-slate-400 py-1.5"
+                  className="flex-1 bg-transparent text-body-regular text-slate-800 focus:outline-none font-medium placeholder:text-slate-400 py-1.5"
                 />
                 <button
                   onClick={handleSearchSubmit}
-                  className="bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs sm:text-sm px-6 py-2 rounded-[3px] shadow-xs transition-colors cursor-pointer shrink-0"
+                  className="bg-blue-600 hover:bg-blue-700 text-white font-bold text-caption-responsive px-6 py-2 rounded-[3px] shadow-xs transition-colors cursor-pointer shrink-0"
                 >
                   {locale === 'vi' ? 'Tìm lại' : 'Search again'}
                 </button>
@@ -652,11 +652,11 @@ export function CategoryProductsClient({
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               {/* Left side text */}
               <div className="lg:col-span-7 space-y-4">
-                <h1 className="text-3xl sm:text-4xl lg:text-[38px] xl:text-[42px] font-extrabold text-slate-900 tracking-tight leading-tight">
+                <h1 className="text-section-title font-extrabold text-slate-900 tracking-tight leading-tight">
                   {currentCategoryName}
                 </h1>
 
-                <p className="text-sm sm:text-base text-slate-500 leading-relaxed font-medium max-w-2xl">
+                <p className="text-body-regular text-slate-500 leading-relaxed font-medium max-w-2xl">
                   {category.description ||
                     `Tổng hợp các loại ${currentCategoryName.toLowerCase()} đạt tiêu chuẩn kiểm định phòng sạch ISO 14644-1, điện trở tĩnh điện ANSI/ESD S20.20 và chứng nhận CO/CQ chính hãng.`}
                 </p>
@@ -687,7 +687,7 @@ export function CategoryProductsClient({
             <div className="flex flex-wrap items-center gap-2.5 overflow-x-auto no-scrollbar scroll-smooth">
               <button
                 onClick={() => setSelectedCategories([])}
-                className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${selectedCategories.length === 0
+                className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-caption-responsive font-bold transition-all whitespace-nowrap cursor-pointer ${selectedCategories.length === 0
                   ? 'bg-blue-600 text-white shadow-md shadow-blue-200'
                   : 'bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-200/65'
                   }`}
@@ -702,7 +702,7 @@ export function CategoryProductsClient({
                   <button
                     key={sub.id}
                     onClick={() => handleToggleCategory(sub.slug)}
-                    className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold transition-all whitespace-nowrap cursor-pointer ${isActive
+                    className={`inline-flex items-center gap-1.5 px-4 py-2 rounded-full text-caption-responsive font-bold transition-all whitespace-nowrap cursor-pointer ${isActive
                       ? 'bg-blue-600 text-white shadow-md shadow-blue-200'
                       : 'bg-slate-50 text-slate-600 hover:bg-slate-100 border border-slate-200/65'
                       }`}
@@ -731,14 +731,14 @@ export function CategoryProductsClient({
                   <div className="flex items-center justify-between border-b border-slate-100 pb-3">
                     <div className="flex items-center gap-2">
                       <SlidersHorizontal className="h-4.5 w-4.5 text-slate-700 stroke-[2.5]" />
-                      <h3 className="text-sm font-bold text-slate-900">
+                      <h3 className="text-body-regular font-bold text-slate-900">
                         {locale === 'vi' ? 'Bộ lọc tìm kiếm' : 'Search Filters'}
                       </h3>
                     </div>
                     {(selectedCategories.length > 0 || selectedBrands.length > 0 || selectedStandards.length > 0 || selectedIndustries.length > 0 || selectedMaterials.length > 0 || minPrice > 0 || maxPrice < maxProductPrice) && (
                       <button
                         onClick={handleResetFilters}
-                        className="text-xs font-bold text-blue-600 hover:text-blue-700 hover:underline cursor-pointer"
+                        className="text-caption-responsive font-bold text-blue-600 hover:text-blue-700 hover:underline cursor-pointer"
                       >
                         {locale === 'vi' ? 'Xóa tất cả' : 'Clear all'}
                       </button>
@@ -749,7 +749,7 @@ export function CategoryProductsClient({
                   <div className="space-y-3">
                     <button
                       onClick={() => setCategoriesExpanded(!categoriesExpanded)}
-                      className="w-full flex items-center justify-between text-left text-sm font-bold text-slate-900 cursor-pointer group"
+                      className="w-full flex items-center justify-between text-left text-body-regular font-bold text-slate-900 cursor-pointer group"
                     >
                       <span>{locale === 'vi' ? 'Danh mục sản phẩm' : 'Categories'}</span>
                       {categoriesExpanded ? (
@@ -763,7 +763,7 @@ export function CategoryProductsClient({
                         {/* All Categories Option */}
                         <button
                           onClick={() => setSelectedCategories([])}
-                          className="w-full flex items-center justify-between py-1.5 hover:text-blue-600 transition-colors text-left text-[13px] font-semibold text-slate-700 cursor-pointer"
+                          className="w-full flex items-center justify-between py-1.5 hover:text-blue-600 transition-colors text-left text-caption-responsive font-semibold text-slate-700 cursor-pointer"
                         >
                           <div className="flex items-center gap-2.5">
                             <div
@@ -778,7 +778,7 @@ export function CategoryProductsClient({
                               {locale === 'vi' ? 'Tất cả danh mục' : 'All Categories'}
                             </span>
                           </div>
-                          <span className="text-slate-400 font-bold text-xs">({categoryCounts['all'] || 0})</span>
+                          <span className="text-slate-400 font-bold text-caption-responsive">({categoryCounts['all'] || 0})</span>
                         </button>
 
                         {/* Individual Categories */}
@@ -789,7 +789,7 @@ export function CategoryProductsClient({
                             <button
                               key={cat.id}
                               onClick={() => handleToggleCategory(cat.slug)}
-                              className="w-full flex items-center justify-between py-1.5 hover:text-blue-600 transition-colors text-left text-[13px] font-semibold text-slate-700 cursor-pointer"
+                              className="w-full flex items-center justify-between py-1.5 hover:text-blue-600 transition-colors text-left text-caption-responsive font-semibold text-slate-700 cursor-pointer"
                             >
                               <div className="flex items-center gap-2.5">
                                 <div
@@ -805,7 +805,7 @@ export function CategoryProductsClient({
                                 </span>
                               </div>
                               {count > 0 && (
-                                <span className="text-slate-400 font-bold text-xs">({count})</span>
+                                <span className="text-slate-400 font-bold text-caption-responsive">({count})</span>
                               )}
                             </button>
                           );
@@ -819,7 +819,7 @@ export function CategoryProductsClient({
                     <div className="space-y-3 border-t border-slate-100 pt-4">
                       <button
                         onClick={() => setMaterialsExpanded(!materialsExpanded)}
-                        className="w-full flex items-center justify-between text-left text-sm font-bold text-slate-900 cursor-pointer group"
+                        className="w-full flex items-center justify-between text-left text-body-regular font-bold text-slate-900 cursor-pointer group"
                       >
                         <span>{locale === 'vi' ? 'Chất liệu' : 'Materials'}</span>
                         {materialsExpanded ? (
@@ -836,7 +836,7 @@ export function CategoryProductsClient({
                               <button
                                 key={matName}
                                 onClick={() => handleToggleMaterial(matName)}
-                                className="w-full flex items-center justify-between py-1.5 hover:text-blue-600 transition-colors text-left text-[13px] font-semibold text-slate-700 cursor-pointer"
+                                className="w-full flex items-center justify-between py-1.5 hover:text-blue-600 transition-colors text-left text-caption-responsive font-semibold text-slate-700 cursor-pointer"
                               >
                                 <div className="flex items-center gap-2.5">
                                   <div
@@ -851,7 +851,7 @@ export function CategoryProductsClient({
                                     {info.name}
                                   </span>
                                 </div>
-                                <span className="text-slate-400 font-bold text-xs">({info.count})</span>
+                                <span className="text-slate-400 font-bold text-caption-responsive">({info.count})</span>
                               </button>
                             );
                           })}
@@ -865,7 +865,7 @@ export function CategoryProductsClient({
                     <div className="space-y-3 border-t border-slate-100 pt-4">
                       <button
                         onClick={() => setIndustriesExpanded(!industriesExpanded)}
-                        className="w-full flex items-center justify-between text-left text-sm font-bold text-slate-900 cursor-pointer group"
+                        className="w-full flex items-center justify-between text-left text-body-regular font-bold text-slate-900 cursor-pointer group"
                       >
                         <span>{locale === 'vi' ? 'Ứng dụng' : 'Applications'}</span>
                         {industriesExpanded ? (
@@ -882,7 +882,7 @@ export function CategoryProductsClient({
                               <button
                                 key={slug}
                                 onClick={() => handleToggleIndustry(slug)}
-                                className="w-full flex items-center justify-between py-1.5 hover:text-blue-600 transition-colors text-left text-[13px] font-semibold text-slate-700 cursor-pointer"
+                                className="w-full flex items-center justify-between py-1.5 hover:text-blue-600 transition-colors text-left text-caption-responsive font-semibold text-slate-700 cursor-pointer"
                               >
                                 <div className="flex items-center gap-2.5">
                                   <div
@@ -897,7 +897,7 @@ export function CategoryProductsClient({
                                     {info.name}
                                   </span>
                                 </div>
-                                <span className="text-slate-400 font-bold text-xs">({info.count})</span>
+                                <span className="text-slate-400 font-bold text-caption-responsive">({info.count})</span>
                               </button>
                             );
                           })}
@@ -910,7 +910,7 @@ export function CategoryProductsClient({
                     <div className="space-y-3 border-t border-slate-100 pt-4">
                       <button
                         onClick={() => setBrandsExpanded(!brandsExpanded)}
-                        className="w-full flex items-center justify-between text-left text-sm font-bold text-slate-900 cursor-pointer group"
+                        className="w-full flex items-center justify-between text-left text-body-regular font-bold text-slate-900 cursor-pointer group"
                       >
                         <span>{locale === 'vi' ? 'Thương hiệu' : 'Brands'}</span>
                         {brandsExpanded ? (
@@ -927,7 +927,7 @@ export function CategoryProductsClient({
                               <button
                                 key={brandName}
                                 onClick={() => handleToggleBrand(brandName)}
-                                className="w-full flex items-center justify-between py-1.5 hover:text-blue-600 transition-colors text-left text-[13px] font-semibold text-slate-700 cursor-pointer"
+                                className="w-full flex items-center justify-between py-1.5 hover:text-blue-600 transition-colors text-left text-caption-responsive font-semibold text-slate-700 cursor-pointer"
                               >
                                 <div className="flex items-center gap-2.5">
                                   <div
@@ -942,7 +942,7 @@ export function CategoryProductsClient({
                                     {brandName}
                                   </span>
                                 </div>
-                                <span className="text-slate-400 font-bold text-xs">({count})</span>
+                                <span className="text-slate-400 font-bold text-caption-responsive">({count})</span>
                               </button>
                             );
                           })}
@@ -953,7 +953,7 @@ export function CategoryProductsClient({
 
                   {/* Group 2: KHOẢNG GIÁ */}
                   <div className="space-y-3 border-t border-slate-100 pt-4">
-                    <h4 className="text-sm font-bold text-slate-900">
+                    <h4 className="text-body-regular font-bold text-slate-900">
                       {locale === 'vi' ? 'Khoảng giá (VNĐ)' : 'Price Range (VND)'}
                     </h4>
                     <div className="relative pt-4 pb-2 px-1">
@@ -988,7 +988,7 @@ export function CategoryProductsClient({
                       />
 
                       {/* Labels */}
-                      <div className="flex items-center justify-between mt-5 text-[11px] font-bold text-slate-400">
+                      <div className="flex items-center justify-between mt-5 text-caption-responsive font-bold text-slate-400">
                         <span>{formatCurrency(minPrice)}đ</span>
                         <span className="text-blue-600 font-extrabold">{formatCurrency(maxPrice)}đ</span>
                       </div>
@@ -1008,13 +1008,13 @@ export function CategoryProductsClient({
                     {/* Mobile Filter Button */}
                     <button
                       onClick={() => setMobileFilterOpen(true)}
-                      className="lg:hidden inline-flex items-center gap-2 px-3.5 py-2 rounded-[3px] bg-blue-50 text-blue-700 border border-blue-200 text-xs font-bold shadow-xs"
+                      className="lg:hidden inline-flex items-center gap-2 px-3.5 py-2 rounded-[3px] bg-blue-50 text-blue-700 border border-blue-200 text-caption-responsive font-bold shadow-xs"
                     >
                       <SlidersHorizontal className="h-4 w-4 text-blue-600" />
                       Danh mục sản phẩm
                     </button>
 
-                    <p className="text-xs sm:text-sm font-semibold text-slate-700">
+                    <p className="text-caption-responsive font-semibold text-slate-700">
                       Hiển thị{' '}
                       <span className="font-extrabold text-blue-600">{filteredProducts.length}</span>{' '}
                       sản phẩm thuộc{' '}
@@ -1026,11 +1026,11 @@ export function CategoryProductsClient({
                   <div className="flex items-center gap-4 shrink-0">
                     {!isSearchPage && (
                       <div className="flex items-center gap-2">
-                        <span className="text-xs text-slate-400 font-bold hidden sm:inline">{locale === 'vi' ? 'Sắp xếp:' : 'Sort:'}</span>
+                        <span className="text-caption-responsive text-slate-400 font-bold hidden sm:inline">{locale === 'vi' ? 'Sắp xếp:' : 'Sort:'}</span>
                         <select
                           value={sortBy}
                           onChange={(e) => setSortBy(e.target.value)}
-                          className="px-3 py-2 rounded-[3px] border border-slate-200 text-xs font-bold text-slate-700 bg-white focus:outline-none focus:ring-1 focus:ring-blue-600 shadow-xs cursor-pointer"
+                          className="px-3 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-700 bg-white focus:outline-none focus:ring-1 focus:ring-blue-600 shadow-xs cursor-pointer"
                         >
                           <option value="popular">{locale === 'vi' ? 'Nổi bật nhất' : 'Most Popular'}</option>
                           <option value="newest">{locale === 'vi' ? 'Sản phẩm mới nhất' : 'Newest'}</option>
@@ -1067,15 +1067,15 @@ export function CategoryProductsClient({
                 {filteredProducts.length === 0 ? (
                   <div className="rounded-[3px] bg-white p-12 border border-slate-200/80 shadow-sm text-center flex flex-col items-center justify-center">
                     <Package className="h-16 w-16 text-slate-300 mb-4" />
-                    <h3 className="text-lg font-extrabold text-slate-800">
+                    <h3 className="text-card-title font-extrabold text-slate-800">
                       Chưa có sản phẩm trong danh mục này
                     </h3>
-                    <p className="text-xs text-slate-500 mt-1 max-w-md">
+                    <p className="text-caption-responsive text-slate-500 mt-1 max-w-md">
                       Vui lòng chọn danh mục sản phẩm khác ở cột bên trái.
                     </p>
                     <button
                       onClick={() => setSelectedCategories([])}
-                      className="mt-6 px-5 py-2.5 rounded-[3px] bg-blue-600 text-white text-xs font-bold shadow-sm hover:bg-blue-700 transition-colors flex items-center gap-2"
+                      className="mt-6 px-5 py-2.5 rounded-[3px] bg-blue-600 text-white text-caption-responsive font-bold shadow-sm hover:bg-blue-700 transition-colors flex items-center gap-2"
                     >
                       <RotateCcw className="h-4 w-4" />
                       Xem tất cả sản phẩm
@@ -1128,26 +1128,26 @@ export function CategoryProductsClient({
                             <div className="flex-1 flex flex-col justify-between">
                               <div>
                                 <div className="flex items-center gap-2 mb-1">
-                                  <span className="text-[9px] font-extrabold uppercase bg-blue-50 text-blue-600 px-2 py-0.5 rounded-[2px] border border-blue-100">
+                                  <span className="text-caption-responsive font-extrabold uppercase bg-blue-50 text-blue-600 px-2 py-0.5 rounded-[2px] border border-blue-100">
                                     {product.brand}
                                   </span>
-                                  <span className="text-[10px] font-bold text-slate-400">
+                                  <span className="text-caption-responsive font-bold text-slate-400">
                                     {product.categoryName}
                                   </span>
                                 </div>
                                 <Link href={`/solutions/listProduct/${product.slug}`} className="block">
-                                  <h4 className="text-base font-extrabold text-slate-900 hover:text-blue-600 transition-colors line-clamp-1">
+                                  <h4 className="text-body-regular font-extrabold text-slate-900 hover:text-blue-600 transition-colors line-clamp-1">
                                     {product.name}
                                   </h4>
                                 </Link>
-                                <p className="text-xs text-slate-500 font-medium line-clamp-2 mt-1.5 leading-relaxed">
+                                <p className="text-caption-responsive text-slate-500 font-medium line-clamp-2 mt-1.5 leading-relaxed">
                                   {product.shortDescription || 'Mô tả chi tiết sản phẩm phòng sạch chất lượng cao từ ULink Industries.'}
                                 </p>
                               </div>
 
                               {/* Price, MOQ, and Location footer */}
                               <div className="flex flex-wrap items-center justify-between gap-4 mt-3 pt-2.5 border-t border-slate-50">
-                                <div className="flex items-center gap-3.5 text-xs font-semibold text-slate-500">
+                                <div className="flex items-center gap-3.5 text-caption-responsive font-semibold text-slate-500">
                                   <div>
                                     <span className="text-slate-400 font-medium">{locale === 'vi' ? 'Kho hàng:' : 'Warehouse:'}</span>{' '}
                                     <span className="text-slate-700 font-bold">Hà Nam, Việt Nam</span>
@@ -1162,7 +1162,7 @@ export function CategoryProductsClient({
                                 <div className="flex items-center gap-2">
                                   <button
                                     onClick={(e) => handleAddToCart(e, product)}
-                                    className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs rounded-[3px] transition-colors shadow-xs cursor-pointer"
+                                    className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white font-bold text-caption-responsive rounded-[3px] transition-colors shadow-xs cursor-pointer"
                                   >
                                     {locale === 'vi' ? 'Đặt hàng' : 'Add to RFQ'}
                                   </button>
@@ -1183,7 +1183,7 @@ export function CategoryProductsClient({
                             window.scrollTo({ top: 300, behavior: 'smooth' });
                           }}
                           disabled={currentPage === 1}
-                          className="h-9 w-9 rounded-[3px] border border-slate-200 text-sm font-bold text-slate-600 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center transition-colors cursor-pointer"
+                          className="h-9 w-9 rounded-[3px] border border-slate-200 text-body-regular font-bold text-slate-600 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center transition-colors cursor-pointer"
                         >
                           &lt;
                         </button>
@@ -1194,7 +1194,7 @@ export function CategoryProductsClient({
                               setCurrentPage(page);
                               window.scrollTo({ top: 300, behavior: 'smooth' });
                             }}
-                            className={`h-9 w-9 rounded-[3px] text-xs font-bold transition-all cursor-pointer ${currentPage === page
+                            className={`h-9 w-9 rounded-[3px] text-caption-responsive font-bold transition-all cursor-pointer ${currentPage === page
                               ? 'bg-blue-600 text-white shadow-md'
                               : 'border border-slate-200 text-slate-600 hover:bg-slate-50'
                               }`}
@@ -1208,7 +1208,7 @@ export function CategoryProductsClient({
                             window.scrollTo({ top: 300, behavior: 'smooth' });
                           }}
                           disabled={currentPage === totalPages}
-                          className="h-9 w-9 rounded-[3px] border border-slate-200 text-sm font-bold text-slate-600 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center transition-colors cursor-pointer"
+                          className="h-9 w-9 rounded-[3px] border border-slate-200 text-body-regular font-bold text-slate-600 hover:bg-slate-50 disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center transition-colors cursor-pointer"
                         >
                           &gt;
                         </button>
@@ -1225,21 +1225,21 @@ export function CategoryProductsClient({
       {/* ── CALL TO ACTION BANNER ── */}
       <section className="w-full bg-[#0F62FE] text-white py-14 mt-16 shadow-inner">
         <div className="page-container text-center space-y-4">
-          <h2 className="text-2xl sm:text-3xl font-extrabold tracking-tight">
+          <h2 className="text-section-title font-extrabold tracking-tight">
             {locale === 'vi' ? 'Bạn cần tư vấn giải pháp công nghiệp?' : 'Do You Need Industrial Solutions Consulting?'}
           </h2>
-          <p className="text-sm sm:text-base text-blue-100/90 font-semibold max-w-2xl mx-auto">
+          <p className="text-body-regular text-blue-100/90 font-semibold max-w-2xl mx-auto">
             {locale === 'vi'
               ? 'Đội ngũ chuyên gia của chúng tôi sẵn sàng hỗ trợ bạn 24/7'
               : 'Our team of experts is ready to support you 24/7'}
           </p>
           <div className="pt-2">
-            <span className="text-xs text-blue-200 uppercase tracking-widest block mb-1 font-bold">
+            <span className="text-caption-responsive text-blue-200 uppercase tracking-widest block mb-1 font-bold">
               {locale === 'vi' ? 'Hoặc gọi ngay:' : 'Or call us now:'}
             </span>
             <a
               href="tel:02473689999"
-              className="text-2xl sm:text-3xl font-extrabold hover:text-blue-100 transition-colors inline-flex items-center gap-2"
+              className="text-section-title font-extrabold hover:text-blue-100 transition-colors inline-flex items-center gap-2"
             >
               <Phone className="h-6 w-6 sm:h-7 sm:w-7" />
               (0247) 368 9999
@@ -1253,10 +1253,10 @@ export function CategoryProductsClient({
         <div className="mx-auto w-full max-w-[1200px] px-4 sm:px-6 lg:px-8 space-y-12">
           {/* Header */}
           <div className="text-center space-y-3">
-            <span className="text-xs sm:text-sm font-bold text-[#0F62FE] uppercase tracking-widest block">
+            <span className="text-caption-responsive font-bold text-[#0F62FE] uppercase tracking-widest block">
               {locale === 'vi' ? 'NĂNG LỰC CỐT LÕI' : 'CORE CAPABILITIES'}
             </span>
-            <h2 className="text-xl sm:text-2xl md:text-3xl font-extrabold text-[#111827] max-w-3xl mx-auto leading-snug tracking-tight">
+            <h2 className="text-card-title font-extrabold text-[#111827] max-w-3xl mx-auto leading-snug tracking-tight">
               {locale === 'vi'
                 ? 'Tích hợp công nghệ tự động hóa và giải pháp kết nối công nghiệp'
                 : 'Integrating Automation Technology & Industrial Connection Solutions'}
@@ -1270,10 +1270,10 @@ export function CategoryProductsClient({
               <div className="text-[#0F62FE] mb-1.5 shrink-0 flex items-center justify-center">
                 <Factory className="h-10 w-10 stroke-[1.5]" />
               </div>
-              <h3 className="text-[15px] font-extrabold text-[#111827]">
+              <h3 className="text-body-regular font-extrabold text-[#111827]">
                 {locale === 'vi' ? 'Vật tư Phòng sạch' : 'Cleanroom Consumables'}
               </h3>
-              <p className="text-xs text-slate-500 font-medium leading-relaxed max-w-xs">
+              <p className="text-caption-responsive text-slate-500 font-medium leading-relaxed max-w-xs">
                 {locale === 'vi'
                   ? 'Cung cấp đầy đủ vật tư phòng sạch đạt chuẩn ISO, từ găng tay, khẩu trang đến giấy lau chuyên dụng cho mọi cấp độ sạch.'
                   : 'Providing full ISO-compliant cleanroom consumables, from gloves and masks to specialized wipers for all cleanliness levels.'}
@@ -1285,10 +1285,10 @@ export function CategoryProductsClient({
               <div className="text-[#0F62FE] mb-1.5 shrink-0 flex items-center justify-center">
                 <Briefcase className="h-10 w-10 stroke-[1.5]" />
               </div>
-              <h3 className="text-[15px] font-extrabold text-[#111827]">
+              <h3 className="text-body-regular font-extrabold text-[#111827]">
                 {locale === 'vi' ? 'Giải pháp Kiểm soát' : 'Contamination Control'}
               </h3>
-              <p className="text-xs text-slate-500 font-medium leading-relaxed max-w-xs">
+              <p className="text-caption-responsive text-slate-500 font-medium leading-relaxed max-w-xs">
                 {locale === 'vi'
                   ? 'Thiết kế và triển khai giải pháp kiểm soát ô nhiễm toàn diện, đảm bảo môi trường sản xuất đạt tiêu chuẩn nghiêm ngặt.'
                   : 'Designing and deploying comprehensive contamination control solutions, ensuring production environments meet strict standards.'}
@@ -1300,10 +1300,10 @@ export function CategoryProductsClient({
               <div className="text-[#0F62FE] mb-1.5 shrink-0 flex items-center justify-center">
                 <Activity className="h-10 w-10 stroke-[1.5]" />
               </div>
-              <h3 className="text-[15px] font-extrabold text-[#111827]">
+              <h3 className="text-body-regular font-extrabold text-[#111827]">
                 {locale === 'vi' ? 'Thiết bị Chuyên dụng' : 'Specialized Equipment'}
               </h3>
-              <p className="text-xs text-slate-500 font-medium leading-relaxed max-w-xs">
+              <p className="text-caption-responsive text-slate-500 font-medium leading-relaxed max-w-xs">
                 {locale === 'vi'
                   ? 'Phân phối thiết bị phòng sạch chính hãng: buồng thổi khí, tủ an toàn sinh học, hệ thống lọc HEPA hiệu suất cao.'
                   : 'Distributing authentic cleanroom equipment: air showers, biosafety cabinets, and high-efficiency HEPA filter systems.'}
@@ -1315,10 +1315,10 @@ export function CategoryProductsClient({
               <div className="text-[#0F62FE] mb-1.5 shrink-0 flex items-center justify-center">
                 <Truck className="h-10 w-10 stroke-[1.5]" />
               </div>
-              <h3 className="text-[15px] font-extrabold text-[#111827]">
+              <h3 className="text-body-regular font-extrabold text-[#111827]">
                 {locale === 'vi' ? 'Đồng hành Doanh nghiệp' : 'Enterprise Partnership'}
               </h3>
-              <p className="text-xs text-slate-500 font-medium leading-relaxed max-w-xs">
+              <p className="text-caption-responsive text-slate-500 font-medium leading-relaxed max-w-xs">
                 {locale === 'vi'
                   ? 'Tư vấn thiết kế phòng sạch, đào tạo quy trình vận hành và hỗ trợ kỹ thuật liên tục cho doanh nghiệp sản xuất.'
                   : 'Advising on cleanroom design, training on operation procedures, and providing continuous technical support for manufacturers.'}
@@ -1330,7 +1330,7 @@ export function CategoryProductsClient({
           <div className="text-center pt-4">
             <Link
               href="/cart"
-              className="inline-flex items-center gap-2.5 px-6 py-3 bg-[#0F62FE] hover:bg-[#0050E6] text-white font-extrabold text-xs rounded-[3px] transition-all shadow-md shadow-blue-200/50 cursor-pointer group uppercase tracking-wider"
+              className="inline-flex items-center gap-2.5 px-6 py-3 bg-[#0F62FE] hover:bg-[#0050E6] text-white font-extrabold text-caption-responsive rounded-[3px] transition-all shadow-md shadow-blue-200/50 cursor-pointer group uppercase tracking-wider"
             >
               {locale === 'vi' ? 'Đặt hàng' : 'Order Now'}
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -1347,13 +1347,13 @@ export function CategoryProductsClient({
           <div className="flex h-9 w-9 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 shrink-0">
             <CheckCircle2 className="h-5 w-5" />
           </div>
-          <div className="text-xs min-w-0">
+          <div className="text-caption-responsive min-w-0">
             <p className="font-extrabold text-white">Đã thêm vào giỏ hàng!</p>
             <p className="text-slate-300 truncate max-w-[220px] font-medium mt-0.5">{addedToast}</p>
           </div>
           <Link
             href="/cart"
-            className="ml-2 px-3.5 py-2 bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-xs rounded-[3px] transition-colors shrink-0 shadow-sm"
+            className="ml-2 px-3.5 py-2 bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-caption-responsive rounded-[3px] transition-colors shrink-0 shadow-sm"
           >
             Xem giỏ hàng &gt;
           </Link>
@@ -1376,7 +1376,7 @@ export function CategoryProductsClient({
             <div className="flex items-center justify-between border-b border-slate-100 pb-4">
               <div className="flex items-center gap-2">
                 <Boxes className="h-4 w-4 text-blue-600" />
-                <h3 className="text-sm font-extrabold text-slate-900 uppercase tracking-wider">
+                <h3 className="text-body-regular font-extrabold text-slate-900 uppercase tracking-wider">
                   Danh mục sản phẩm
                 </h3>
               </div>
@@ -1393,7 +1393,7 @@ export function CategoryProductsClient({
                 onClick={() => {
                   setSelectedCategories([]);
                 }}
-                className={`w-full text-left px-3.5 py-2.5 rounded-[3px] text-xs font-semibold ${selectedCategories.length === 0
+                className={`w-full text-left px-3.5 py-2.5 rounded-[3px] text-caption-responsive font-semibold ${selectedCategories.length === 0
                   ? 'bg-blue-600 text-white font-extrabold'
                   : 'text-slate-700 bg-slate-50'
                   }`}
@@ -1409,14 +1409,14 @@ export function CategoryProductsClient({
                     onClick={() => {
                       handleToggleCategory(c.slug);
                     }}
-                    className={`w-full text-left px-3.5 py-2.5 rounded-[3px] text-xs font-semibold truncate flex items-center justify-between ${isSelected
+                    className={`w-full text-left px-3.5 py-2.5 rounded-[3px] text-caption-responsive font-semibold truncate flex items-center justify-between ${isSelected
                       ? 'bg-blue-600 text-white font-extrabold'
                       : 'text-slate-700 bg-slate-50'
                       }`}
                   >
                     <span className="truncate pr-2">{c.name}</span>
                     <span
-                      className={`text-[10px] px-2 py-0.5 rounded-full font-bold ${isSelected
+                      className={`text-caption-responsive px-2 py-0.5 rounded-full font-bold ${isSelected
                         ? 'bg-white/20 text-white'
                         : 'bg-slate-200 text-slate-600'
                         }`}

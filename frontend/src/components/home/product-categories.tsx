@@ -192,7 +192,7 @@ export async function ProductCategories() {
             {/* Card Content Body */}
             <div className="flex flex-1 flex-col p-5 sm:p-6 lg:p-6 xl:p-8 justify-between">
               <div>
-                <h3 className="text-card-title text-slate-900  group-hover:text-brand transition-colors">
+                <h3 className="text-card-title text-slate-900 group-hover:text-brand transition-colors">
                   {card.title}
                 </h3>
                 <div className="my-3 border-b border-dashed border-slate-300" />

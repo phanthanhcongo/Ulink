@@ -68,7 +68,7 @@ export function MySampleRequestDetail({ id, locale }: Props) {
         <p className="text-gray-600 font-medium">{error ?? t('fetchError')}</p>
         <button
           onClick={() => router.back()}
-          className="mt-4 inline-flex items-center gap-2 text-sm text-blue-600 hover:text-blue-800 font-medium"
+          className="mt-4 inline-flex items-center gap-2 text-body-regular text-blue-600 hover:text-blue-800 font-medium"
         >
           <ArrowLeft className="h-4 w-4" />
           {t('backToList')}
@@ -119,7 +119,7 @@ export function MySampleRequestDetail({ id, locale }: Props) {
           {/* Back link */}
           <button
             onClick={() => router.push(`/${locale}/sample-requests`)}
-            className="inline-flex items-center gap-2 text-sm text-indigo-200 hover:text-white transition-colors mb-5"
+            className="inline-flex items-center gap-2 text-body-regular text-indigo-200 hover:text-white transition-colors mb-5"
           >
             <ArrowLeft className="h-4 w-4" />
             {t('backToList')}
@@ -127,12 +127,12 @@ export function MySampleRequestDetail({ id, locale }: Props) {
 
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
-              <h1 className="text-2xl lg:text-3xl font-bold text-white flex items-center gap-3">
+              <h1 className="text-section-title font-bold text-white flex items-center gap-3">
                 <span>{t('detail')}</span>
-                <span className="text-indigo-300 font-mono text-lg">#{request.id}</span>
+                <span className="text-indigo-300 font-mono text-card-title">#{request.id}</span>
               </h1>
               {request.date_created && (
-                <div className="flex items-center gap-2 mt-2 text-sm text-indigo-200">
+                <div className="flex items-center gap-2 mt-2 text-body-regular text-indigo-200">
                   <Calendar className="h-3.5 w-3.5" />
                   <span>
                     {new Date(request.date_created).toLocaleDateString('vi-VN', {
@@ -155,7 +155,7 @@ export function MySampleRequestDetail({ id, locale }: Props) {
               )}
             >
               <StatusIcon className={cn('h-5 w-5', sc?.classes)} />
-              <span className={cn('text-sm font-bold', sc?.classes)}>{sc?.label}</span>
+              <span className={cn('text-body-regular font-bold', sc?.classes)}>{sc?.label}</span>
             </div>
           </div>
         </div>
@@ -175,8 +175,8 @@ export function MySampleRequestDetail({ id, locale }: Props) {
               <div className="flex items-start gap-3">
                 <CheckCircle2 className="h-5 w-5 text-emerald-600 mt-0.5 shrink-0" />
                 <div>
-                  <p className="text-sm font-semibold text-emerald-800">{t('approvalNote')}</p>
-                  <p className="text-sm text-emerald-700 mt-1 leading-relaxed">
+                  <p className="text-body-regular font-semibold text-emerald-800">{t('approvalNote')}</p>
+                  <p className="text-body-regular text-emerald-700 mt-1 leading-relaxed">
                     {request.approval_note}
                   </p>
                 </div>
@@ -194,8 +194,8 @@ export function MySampleRequestDetail({ id, locale }: Props) {
               <div className="flex items-start gap-3">
                 <XCircle className="h-5 w-5 text-rose-600 mt-0.5 shrink-0" />
                 <div>
-                  <p className="text-sm font-semibold text-rose-800">{t('rejectReason')}</p>
-                  <p className="text-sm text-rose-700 mt-1 leading-relaxed">
+                  <p className="text-body-regular font-semibold text-rose-800">{t('rejectReason')}</p>
+                  <p className="text-body-regular text-rose-700 mt-1 leading-relaxed">
                     {request.reject_reason}
                   </p>
                 </div>
@@ -211,16 +211,16 @@ export function MySampleRequestDetail({ id, locale }: Props) {
               <div className="rounded-[3px] border border-gray-200 bg-white shadow-sm overflow-hidden">
                 <div className="flex items-center gap-2 px-5 py-3 border-b border-gray-100 bg-gray-50/50">
                   <Package className="h-4 w-4 text-indigo-600" />
-                  <h2 className="text-sm font-semibold text-gray-900">{t('product')}</h2>
+                  <h2 className="text-body-regular font-semibold text-gray-900">{t('product')}</h2>
                 </div>
                 <div className="px-5 py-4">
-                  <p className="text-base font-semibold text-gray-900">{request.product_slug}</p>
+                  <p className="text-body-regular font-semibold text-gray-900">{request.product_slug}</p>
                   {request.skus && request.skus.length > 0 && (
                     <div className="flex flex-wrap gap-2 mt-3">
                       {request.skus.map((sku) => (
                         <span
                           key={sku}
-                          className="inline-flex items-center gap-1 rounded-[3px] bg-indigo-50 border border-indigo-100 px-2.5 py-1 text-xs font-mono text-indigo-700"
+                          className="inline-flex items-center gap-1 rounded-[3px] bg-indigo-50 border border-indigo-100 px-2.5 py-1 text-caption-responsive font-mono text-indigo-700"
                         >
                           <Hash className="h-3 w-3 opacity-50" />
                           {sku}
@@ -235,7 +235,7 @@ export function MySampleRequestDetail({ id, locale }: Props) {
               <div className="rounded-[3px] border border-gray-200 bg-white shadow-sm overflow-hidden">
                 <div className="flex items-center gap-2 px-5 py-3 border-b border-gray-100 bg-gray-50/50">
                   <User className="h-4 w-4 text-indigo-600" />
-                  <h2 className="text-sm font-semibold text-gray-900">{t('contactInfo')}</h2>
+                  <h2 className="text-body-regular font-semibold text-gray-900">{t('contactInfo')}</h2>
                 </div>
                 <div className="px-5 py-4">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -252,10 +252,10 @@ export function MySampleRequestDetail({ id, locale }: Props) {
                 <div className="rounded-[3px] border border-gray-200 bg-white shadow-sm overflow-hidden">
                   <div className="flex items-center gap-2 px-5 py-3 border-b border-gray-100 bg-gray-50/50">
                     <MessageSquare className="h-4 w-4 text-indigo-600" />
-                    <h2 className="text-sm font-semibold text-gray-900">{t('message')}</h2>
+                    <h2 className="text-body-regular font-semibold text-gray-900">{t('message')}</h2>
                   </div>
                   <div className="px-5 py-4">
-                    <p className="text-sm text-gray-700 leading-relaxed whitespace-pre-wrap">
+                    <p className="text-body-regular text-gray-700 leading-relaxed whitespace-pre-wrap">
                       {request.message}
                     </p>
                   </div>
@@ -269,26 +269,26 @@ export function MySampleRequestDetail({ id, locale }: Props) {
               <div className="rounded-[3px] border border-gray-200 bg-white shadow-sm overflow-hidden">
                 <div className="flex items-center gap-2 px-5 py-3 border-b border-gray-100 bg-gray-50/50">
                   <MapPin className="h-4 w-4 text-indigo-600" />
-                  <h2 className="text-sm font-semibold text-gray-900">{t('address')}</h2>
+                  <h2 className="text-body-regular font-semibold text-gray-900">{t('address')}</h2>
                 </div>
                 <div className="px-5 py-4 space-y-3">
                   <div>
-                    <p className="text-[11px] uppercase tracking-wide text-gray-400 font-medium">
+                    <p className="text-caption-responsive uppercase tracking-wide text-gray-400 font-medium">
                       {t('province')}
                     </p>
-                    <p className="text-sm font-medium text-gray-900 mt-0.5">{request.province}</p>
+                    <p className="text-body-regular font-medium text-gray-900 mt-0.5">{request.province}</p>
                   </div>
                   <div>
-                    <p className="text-[11px] uppercase tracking-wide text-gray-400 font-medium">
+                    <p className="text-caption-responsive uppercase tracking-wide text-gray-400 font-medium">
                       {t('district')}
                     </p>
-                    <p className="text-sm font-medium text-gray-900 mt-0.5">{request.district}</p>
+                    <p className="text-body-regular font-medium text-gray-900 mt-0.5">{request.district}</p>
                   </div>
                   <div className="pt-2 border-t border-gray-100">
-                    <p className="text-[11px] uppercase tracking-wide text-gray-400 font-medium">
+                    <p className="text-caption-responsive uppercase tracking-wide text-gray-400 font-medium">
                       {t('addressDetail')}
                     </p>
-                    <p className="text-sm font-medium text-gray-900 mt-0.5">
+                    <p className="text-body-regular font-medium text-gray-900 mt-0.5">
                       {request.address_detail}
                     </p>
                   </div>
@@ -299,7 +299,7 @@ export function MySampleRequestDetail({ id, locale }: Props) {
               <div className="rounded-[3px] border border-gray-200 bg-white shadow-sm overflow-hidden">
                 <div className="flex items-center gap-2 px-5 py-3 border-b border-gray-100 bg-gray-50/50">
                   <Clock className="h-4 w-4 text-indigo-600" />
-                  <h2 className="text-sm font-semibold text-gray-900">{t('status')}</h2>
+                  <h2 className="text-body-regular font-semibold text-gray-900">{t('status')}</h2>
                 </div>
                 <div className="px-5 py-4">
                   <div className="space-y-3">
@@ -352,8 +352,8 @@ function InfoItem({
         <Icon className="h-4 w-4 text-gray-500" />
       </div>
       <div className="min-w-0">
-        <p className="text-[11px] uppercase tracking-wide text-gray-400 font-medium">{label}</p>
-        <p className="text-sm font-medium text-gray-900 mt-0.5 break-all">{value}</p>
+        <p className="text-caption-responsive uppercase tracking-wide text-gray-400 font-medium">{label}</p>
+        <p className="text-body-regular font-medium text-gray-900 mt-0.5 break-all">{value}</p>
       </div>
     </div>
   );
@@ -400,11 +400,11 @@ function TimelineStep({
         />
       </div>
       <div className="flex-1 min-w-0">
-        <p className={cn('text-xs font-medium', active ? 'text-gray-900' : 'text-gray-400')}>
+        <p className={cn('text-caption-responsive font-medium', active ? 'text-gray-900' : 'text-gray-400')}>
           {label}
         </p>
         {date && (
-          <p className="text-[10px] text-gray-400">
+          <p className="text-caption-responsive text-gray-400">
             {new Date(date).toLocaleDateString('vi-VN', {
               day: '2-digit',
               month: '2-digit',

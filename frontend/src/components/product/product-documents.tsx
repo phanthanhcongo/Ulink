@@ -61,7 +61,7 @@ export default function ProductDocuments({ documents, labels }: ProductDocuments
   if (!documents || documents.length === 0) {
     return (
       <section>
-        <h2 className="text-xl font-semibold mb-4">{title}</h2>
+        <h2 className="text-card-title font-semibold mb-4">{title}</h2>
         <p className="text-gray-500">{noDocumentsLabel}</p>
       </section>
     );
@@ -69,7 +69,7 @@ export default function ProductDocuments({ documents, labels }: ProductDocuments
 
   return (
     <section>
-      <h2 className="text-xl font-semibold mb-4">{title}</h2>
+      <h2 className="text-card-title font-semibold mb-4">{title}</h2>
       <div className="divide-y border rounded-[3px] overflow-hidden">
         {documents.map((doc) => {
           // file can be a string UUID or an object {id, ...}
@@ -84,7 +84,7 @@ export default function ProductDocuments({ documents, labels }: ProductDocuments
                 <FileText className="h-5 w-5 text-gray-400 shrink-0" />
                 <span className="truncate font-medium text-gray-900">{doc.title}</span>
                 <span
-                  className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-medium shrink-0 ${docTypeBadgeStyles[doc.doc_type] ?? 'bg-gray-100 text-gray-800'}`}
+                  className={`inline-flex items-center px-2 py-0.5 rounded text-caption-responsive font-medium shrink-0 ${docTypeBadgeStyles[doc.doc_type] ?? 'bg-gray-100 text-gray-800'}`}
                 >
                   {docTypeLabels[doc.doc_type] ?? doc.doc_type}
                 </span>
@@ -97,13 +97,13 @@ export default function ProductDocuments({ documents, labels }: ProductDocuments
                   (() => {
                     const ext = getFileExtension(file);
                     return ext ? (
-                      <span className="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-bold uppercase bg-gray-100 text-gray-600 ring-1 ring-gray-200">
+                      <span className="inline-flex items-center px-1.5 py-0.5 rounded text-caption-responsive font-bold uppercase bg-gray-100 text-gray-600 ring-1 ring-gray-200">
                         {ext}
                       </span>
                     ) : null;
                   })()}
                 {hasFile && file && file.filesize != null && (
-                  <span className="text-sm text-gray-500">{formatFileSize(file.filesize)}</span>
+                  <span className="text-body-regular text-gray-500">{formatFileSize(file.filesize)}</span>
                 )}
 
                 {hasFile ? (
@@ -112,7 +112,7 @@ export default function ProductDocuments({ documents, labels }: ProductDocuments
                       href={`/api/files/${fileId}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 rounded px-2 py-1 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                      className="inline-flex items-center gap-1 rounded px-2 py-1 text-body-regular text-gray-700 hover:bg-gray-100 transition-colors"
                       title={previewLabel}
                     >
                       <ExternalLink className="h-4 w-4" />
@@ -121,7 +121,7 @@ export default function ProductDocuments({ documents, labels }: ProductDocuments
                     <a
                       href={`/api/files/${fileId}?download`}
                       download
-                      className="inline-flex items-center gap-1 rounded px-2 py-1 text-sm text-gray-700 hover:bg-gray-100 transition-colors"
+                      className="inline-flex items-center gap-1 rounded px-2 py-1 text-body-regular text-gray-700 hover:bg-gray-100 transition-colors"
                       title={downloadLabel}
                     >
                       <Download className="h-4 w-4" />
@@ -132,7 +132,7 @@ export default function ProductDocuments({ documents, labels }: ProductDocuments
                   <>
                     <button
                       disabled
-                      className="inline-flex items-center gap-1 rounded px-2 py-1 text-sm text-gray-300 cursor-not-allowed"
+                      className="inline-flex items-center gap-1 rounded px-2 py-1 text-body-regular text-gray-300 cursor-not-allowed"
                       title={previewLabel}
                     >
                       <ExternalLink className="h-4 w-4" />
@@ -140,7 +140,7 @@ export default function ProductDocuments({ documents, labels }: ProductDocuments
                     </button>
                     <button
                       disabled
-                      className="inline-flex items-center gap-1 rounded px-2 py-1 text-sm text-gray-300 cursor-not-allowed"
+                      className="inline-flex items-center gap-1 rounded px-2 py-1 text-body-regular text-gray-300 cursor-not-allowed"
                       title={downloadLabel}
                     >
                       <Download className="h-4 w-4" />

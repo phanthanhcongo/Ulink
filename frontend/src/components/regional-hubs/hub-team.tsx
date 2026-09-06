@@ -45,10 +45,10 @@ export default async function HubTeam() {
         
         {/* Header */}
         <div className="text-center max-w-[800px] w-full">
-          <h2 className="text-[16px] min-[375px]:text-[18px] sm:text-[24px] lg:text-[28px] xl:text-[32px] font-semibold sm:font-bold tracking-tight text-slate-900 leading-tight lg:leading-[36px] xl:leading-[40px] uppercase">
+          <h2 className="text-body-regular min-[375px]:text-card-title font-semibold sm:font-bold tracking-tight text-slate-900 leading-tight lg:leading-[36px] xl:leading-[40px] uppercase">
             {t('hubTeam.title')}
           </h2>
-          <p className="mt-4 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] leading-relaxed text-slate-500 max-w-[720px] mx-auto">
+          <p className="mt-4 text-caption-responsive leading-relaxed text-slate-500 max-w-[720px] mx-auto">
             {t('hubTeam.desc')}
           </p>
         </div>
@@ -70,10 +70,10 @@ export default async function HubTeam() {
               </div>
 
               {/* Info */}
-              <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-[#1A1A1A] leading-snug mb-1">
+              <h3 className="text-body-regular font-bold text-[#1A1A1A] leading-snug mb-1">
                 {member.name}
               </h3>
-              <p className="text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] leading-relaxed text-slate-700 font-normal mb-4">
+              <p className="text-caption-responsive leading-relaxed text-slate-700 font-normal mb-4">
                 {t(member.roleKey)}
               </p>
 
@@ -113,7 +113,7 @@ export default async function HubTeam() {
               {/* Contact Button */}
               <Link
                 href="/contact"
-                className="border border-[#0066FF] text-[#0066FF] text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] leading-relaxed font-bold py-2.5 px-8 rounded-none hover:bg-[#0066FF]/5 transition-colors w-[150px] inline-flex justify-center items-center mt-2 min-h-[44px]"
+                className="border border-[#0066FF] text-[#0066FF] text-caption-responsive leading-relaxed font-bold py-2.5 px-8 rounded-none hover:bg-[#0066FF]/5 transition-colors w-[150px] inline-flex justify-center items-center mt-2 min-h-[44px]"
               >
                 {t('hubTeam.contact')}
               </Link>

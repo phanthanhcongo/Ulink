@@ -28,7 +28,7 @@ export function QualityCommitments() {
         <span className="inline-flex items-center rounded-full bg-blue-50 px-3.5 py-1 text-body-regular font-bold uppercase tracking-wider text-blue-700 ring-1 ring-inset ring-blue-700/10 mb-2">
           CAM KẾT DOANH NGHIỆP
         </span>
-        <h2 className="text-[30px] font-extrabold tracking-tight text-slate-900">
+        <h2 className="text-hero-title font-extrabold tracking-tight text-slate-900">
           Đồng hành cùng sự phát triển của Bạn
         </h2>
       </div>
@@ -40,7 +40,7 @@ export function QualityCommitments() {
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-slate-100">
           {metrics.map((item, idx) => (
             <div key={idx} className="flex flex-col items-center text-center pt-4 sm:pt-0 sm:px-4">
-              <span className="text-[30px] font-extrabold text-blue-600">
+              <span className="text-hero-title font-extrabold text-blue-600">
                 {item.value}
               </span>
               <span className="mt-2 text-body-large font-bold text-slate-900">{item.label}</span>

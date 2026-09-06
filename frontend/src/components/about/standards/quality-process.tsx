@@ -33,7 +33,7 @@ export function QualityProcess() {
         <span className="inline-flex items-center rounded-full bg-white/15 px-3.5 py-1 text-body-regular font-bold uppercase tracking-wider text-white border border-white/20 mb-2">
           QUY TRÌNH VẬN HÀNH
         </span>
-        <h2 className="text-[30px] font-extrabold tracking-tight text-white">
+        <h2 className="text-hero-title font-extrabold tracking-tight text-white">
           Quy trình Quản lý Chất lượng
         </h2>
         <p className="mt-2 text-body-large font-medium leading-relaxed text-blue-100 max-w-xl">

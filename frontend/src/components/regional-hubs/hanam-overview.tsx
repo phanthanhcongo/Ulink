@@ -9,17 +9,17 @@ export default async function HanamOverview() {
     <section className="w-full bg-white py-16 sm:py-20 border-t border-slate-100">
       <div className="page-container text-center">
         {/* Eyebrow */}
-        <span className="text-[20px] sm:text-[24px] lg:text-[28px] font-bold uppercase tracking-[0.5px] text-brand block leading-tight">
+        <span className="text-card-title font-bold uppercase tracking-[0.5px] text-brand block leading-tight">
           {t('hanamIntro.eyebrow')}
         </span>
 
         {/* Title */}
-        <h2 className="mt-3 text-[24px] sm:text-[28px] lg:text-[32px] font-semibold text-[#212529] leading-tight tracking-[-0.3px]">
+        <h2 className="mt-3 text-section-title font-semibold text-[#212529] leading-tight tracking-[-0.3px]">
           {t('hanamIntro.title')}
         </h2>
 
         {/* Description */}
-        <p className="mt-4 max-w-[840px] mx-auto text-[15px] sm:text-[16px] leading-[24px] text-[#495057]">
+        <p className="mt-4 max-w-[840px] mx-auto text-body-regular leading-[24px] text-[#495057]">
           {t('hanamIntro.desc')}
         </p>
 
@@ -27,14 +27,14 @@ export default async function HanamOverview() {
         <div className="mt-8 flex flex-wrap justify-center items-center gap-4">
           <Link
             href="/contact"
-            className="bg-brand text-white text-[15px] sm:text-[16px] font-medium py-3 px-6 rounded-[3px] flex items-center gap-2 hover:bg-brand/90 transition-colors shadow-sm"
+            className="bg-brand text-white text-body-regular font-medium py-3 px-6 rounded-[3px] flex items-center gap-2 hover:bg-brand/90 transition-colors shadow-sm"
           >
             {t('hanamIntro.contactSales')}
             <ArrowRight className="h-4 w-4" />
           </Link>
           <Link
             href="/about"
-            className="bg-white border border-brand text-brand text-[15px] sm:text-[16px] font-medium py-3 px-6 rounded-[3px] hover:bg-blue-50 transition-colors flex items-center gap-2"
+            className="bg-white border border-brand text-brand text-body-regular font-medium py-3 px-6 rounded-[3px] hover:bg-blue-50 transition-colors flex items-center gap-2"
           >
             {t('hanamIntro.learnMore')}
             <ArrowRight className="h-4 w-4" />

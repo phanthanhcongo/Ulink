@@ -10,7 +10,7 @@ export function ApplySuccessHero() {
       </div>
 
       {/* Title */}
-      <h1 className="text-[30px] font-extrabold text-slate-900 tracking-tight">
+      <h1 className="text-hero-title font-extrabold text-slate-900 tracking-tight">
         Nộp đơn ứng tuyển thành công!
       </h1>
 

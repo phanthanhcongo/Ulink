@@ -113,10 +113,10 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
       {/* Mobile Top Header Bar */}
       <div className="fixed top-0 left-0 right-0 h-16 bg-white/90 backdrop-blur-md border-b border-sky-100 flex items-center justify-between px-5 z-30 md:hidden shadow-sm">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-[3px] bg-sky-600 flex items-center justify-center font-black text-white tracking-wider text-sm shadow-inner shadow-sky-300/40">
+          <div className="w-8 h-8 rounded-[3px] bg-sky-600 flex items-center justify-center font-black text-white tracking-wider text-body-regular shadow-inner shadow-sky-300/40">
             U
           </div>
-          <span className="font-extrabold text-sm tracking-tight text-slate-900">
+          <span className="font-extrabold text-body-regular tracking-tight text-slate-900">
             ULink Admin
           </span>
         </div>
@@ -151,15 +151,15 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
           isCollapsed ? "justify-center" : "justify-between"
         )}>
           <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-[3px] bg-sky-600 flex items-center justify-center font-black text-white tracking-wider text-base shadow-inner shadow-sky-300/40 shrink-0">
+            <div className="w-8 h-8 rounded-[3px] bg-sky-600 flex items-center justify-center font-black text-white tracking-wider text-body-regular shadow-inner shadow-sky-300/40 shrink-0">
               U
             </div>
             {!isCollapsed && (
               <div className="flex flex-col">
-                <span className="font-extrabold text-sm tracking-tight text-slate-900">
+                <span className="font-extrabold text-body-regular tracking-tight text-slate-900">
                   ULink Industries
                 </span>
-                <span className="text-[10px] text-sky-500 font-semibold uppercase tracking-widest mt-0.5">
+                <span className="text-caption-responsive text-sky-500 font-semibold uppercase tracking-widest mt-0.5">
                   Control Panel
                 </span>
               </div>
@@ -215,7 +215,7 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
             <Link
               href="/"
               onClick={() => setIsOpen(false)}
-              className="flex items-center gap-3.5 px-4 py-3 rounded-[3px] text-xs font-bold text-sky-700 bg-sky-100 hover:bg-sky-200 hover:text-sky-900 border border-sky-200 transition-all mb-4"
+              className="flex items-center gap-3.5 px-4 py-3 rounded-[3px] text-caption-responsive font-bold text-sky-700 bg-sky-100 hover:bg-sky-200 hover:text-sky-900 border border-sky-200 transition-all mb-4"
             >
               <Home className="h-4 w-4 text-sky-600" />
               <span>Về Trang chủ Website</span>
@@ -246,7 +246,7 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
                   'flex items-center transition-all group',
                   isCollapsed
                     ? 'justify-center h-10 w-10 mx-auto rounded-[3px]'
-                    : 'gap-3.5 px-4 py-3 rounded-[3px] text-sm font-bold',
+                    : 'gap-3.5 px-4 py-3 rounded-[3px] text-body-regular font-bold',
                   isActive
                     ? 'bg-sky-600 text-white shadow-sm shadow-sky-300/40'
                     : 'text-slate-600 hover:text-slate-900 hover:bg-sky-100/80'
@@ -275,10 +275,10 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
                 <User className="h-4.5 w-4.5" />
               </div>
               <div className="flex flex-col min-w-0">
-                <span className="text-xs font-bold text-slate-900 truncate">
+                <span className="text-caption-responsive font-bold text-slate-900 truncate">
                   {user?.first_name ? `${user.first_name} ${user.last_name || ''}` : user?.email}
                 </span>
-                <span className="text-[10px] text-slate-500 font-semibold truncate capitalize mt-0.5">
+                <span className="text-caption-responsive text-slate-500 font-semibold truncate capitalize mt-0.5">
                   {user?.role ? 'Administrator' : 'Sales Representative'}
                 </span>
               </div>
@@ -297,7 +297,7 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
             title={isCollapsed ? "Đăng xuất" : undefined}
             className={cn(
               "flex items-center justify-center font-bold bg-sky-100 hover:bg-red-600 hover:text-white text-sky-700 border border-sky-200 transition-colors shadow-sm",
-              isCollapsed ? "h-9 w-9 rounded-[3px]" : "gap-2 w-full px-4 py-2.5 rounded-[3px] text-xs"
+              isCollapsed ? "h-9 w-9 rounded-[3px]" : "gap-2 w-full px-4 py-2.5 rounded-[3px] text-caption-responsive"
             )}
           >
             <LogOut className="h-3.5 w-3.5" />

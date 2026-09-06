@@ -66,10 +66,10 @@ export default async function HubBenefits() {
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto space-y-2">
-          <h2 className="text-[20px] sm:text-[24px] lg:text-[28px] font-bold tracking-tight text-slate-900 leading-snug sm:leading-[36px]">
+          <h2 className="text-card-title font-bold tracking-tight text-slate-900 leading-snug sm:leading-[36px]">
             {t('hubBenefits.eyebrow')}
           </h2>
-          <h2 className="text-[20px] sm:text-[24px] lg:text-[28px] font-bold tracking-tight text-slate-900 leading-snug sm:leading-[36px]">
+          <h2 className="text-card-title font-bold tracking-tight text-slate-900 leading-snug sm:leading-[36px]">
             {t('hubBenefits.title')}
           </h2>
         </div>
@@ -86,7 +86,7 @@ export default async function HubBenefits() {
                 {item.icon}
               </div>
               {/* Title */}
-              <h3 className="font-semibold text-[#212529] text-[16px] sm:text-[18px] lg:text-[20px] leading-[26px] sm:leading-[28px] text-center max-w-[260px]">
+              <h3 className="font-semibold text-[#212529] text-body-regular leading-[26px] sm:leading-[28px] text-center max-w-[260px]">
                 {t(item.titleKey as any)}
               </h3>
             </div>

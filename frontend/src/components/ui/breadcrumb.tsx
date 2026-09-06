@@ -28,7 +28,7 @@ export function Breadcrumb({ items, backLink, className, theme = 'light' }: Brea
       <nav
         aria-label="Breadcrumb"
         className={cn(
-          "mb-6 flex flex-wrap items-center gap-2 text-xs font-semibold",
+          "mb-6 flex flex-wrap items-center gap-2 text-caption-responsive font-semibold",
           isDark ? "text-blue-200/90" : "text-slate-500"
         )}
       >
@@ -60,7 +60,7 @@ export function Breadcrumb({ items, backLink, className, theme = 'light' }: Brea
         <Link
           href={backLink.href}
           className={cn(
-            "inline-flex items-center gap-2 text-xs font-extrabold transition-colors mb-8",
+            "inline-flex items-center gap-2 text-caption-responsive font-extrabold transition-colors mb-8",
             isDark ? "text-blue-200/90 hover:text-white" : "text-slate-600 hover:text-brand"
           )}
         >

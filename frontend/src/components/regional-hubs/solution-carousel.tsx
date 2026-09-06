@@ -140,12 +140,12 @@ export default function SolutionCarousel({ slides, labels }: SolutionCarouselPro
               className={`transition-all duration-300 ${isTransitioning ? 'opacity-0 translate-y-2' : 'opacity-100 translate-y-0'}`}
             >
               {/* Main Headline (28px) */}
-              <h2 className="text-[24px] sm:text-[28px] font-semibold text-brand tracking-[-0.3px] uppercase block mb-2">
+              <h2 className="text-section-title font-semibold text-brand tracking-[-0.3px] uppercase block mb-2">
                 {currentSlide.eyebrow}
               </h2>
 
               {/* Secondary Subtitle / Description (28px) */}
-              <p className="text-[24px] sm:text-[28px] font-semibold text-[#212529] leading-[34px] sm:leading-[38px] tracking-[-0.3px] mb-8 lg:mb-[64px] max-w-[580px]">
+              <p className="text-section-title font-semibold text-[#212529] leading-[34px] sm:leading-[38px] tracking-[-0.3px] mb-8 lg:mb-[64px] max-w-[580px]">
                 {currentSlide.title}
               </p>
 
@@ -156,7 +156,7 @@ export default function SolutionCarousel({ slides, labels }: SolutionCarouselPro
                   <div className="shrink-0 text-brand flex items-center justify-center w-full sm:w-auto">
                     {icon1}
                   </div>
-                  <p className="text-[14px] sm:text-[15px] font-normal leading-[22px] text-[#495057]">{currentSlide.feat1}</p>
+                  <p className="text-body-regular font-normal leading-[22px] text-[#495057]">{currentSlide.feat1}</p>
                 </div>
 
                 {/* Feature 2 */}
@@ -164,7 +164,7 @@ export default function SolutionCarousel({ slides, labels }: SolutionCarouselPro
                   <div className="shrink-0 text-brand flex items-center justify-center w-full sm:w-auto">
                     {icon2}
                   </div>
-                  <p className="text-[14px] sm:text-[15px] font-normal leading-[22px] text-[#495057]">{currentSlide.feat2}</p>
+                  <p className="text-body-regular font-normal leading-[22px] text-[#495057]">{currentSlide.feat2}</p>
                 </div>
               </div>
 
@@ -174,7 +174,7 @@ export default function SolutionCarousel({ slides, labels }: SolutionCarouselPro
                   href="/quick-order"
                   className={cn(
                     buttonVariants({ variant: 'primary', size: 'md' }),
-                    'w-full sm:w-auto px-7 py-3 rounded-[3px] bg-brand text-white font-medium text-[15px] sm:text-[16px] flex items-center justify-center gap-2.5 shadow-sm hover:bg-brand/90 text-center'
+                    'w-full sm:w-auto px-7 py-3 rounded-[3px] bg-brand text-white font-medium text-body-regular  flex items-center justify-center gap-2.5 shadow-sm hover:bg-brand/90 text-center'
                   )}
                 >
                   {labels.rfqButton}
@@ -190,7 +190,7 @@ export default function SolutionCarousel({ slides, labels }: SolutionCarouselPro
                   href="/solutions"
                   className={cn(
                     buttonVariants({ variant: 'secondary', size: 'md' }),
-                    'w-full sm:w-auto px-7 py-3 rounded-[3px] bg-white border border-brand text-brand font-medium text-[15px] sm:text-[16px] flex items-center justify-center gap-2.5 hover:bg-blue-50 text-center'
+                    'w-full sm:w-auto px-7 py-3 rounded-[3px] bg-white border border-brand text-brand font-medium text-body-regular  flex items-center justify-center gap-2.5 hover:bg-blue-50 text-center'
                   )}
                 >
                   {labels.learnMore}

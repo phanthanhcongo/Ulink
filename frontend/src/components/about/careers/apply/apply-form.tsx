@@ -101,7 +101,7 @@ ${coverLetter || 'Không có thư giới thiệu.'}
   return (
     <form onSubmit={handleSubmit} className="flex flex-col gap-8 py-8">
       {error && (
-        <div className="p-4 bg-red-50 border border-red-200 text-red-600 rounded-[3px] text-sm font-semibold">
+        <div className="p-4 bg-red-50 border border-red-200 text-red-600 rounded-[3px] text-body-regular font-semibold">
           {error}
         </div>
       )}
@@ -111,7 +111,7 @@ ${coverLetter || 'Không có thư giới thiệu.'}
           <span className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-100 text-caption-responsive font-bold text-blue-600">
             01
           </span>
-          <h2 className="text-[22px] font-extrabold text-slate-900">Thông tin cá nhân</h2>
+          <h2 className="text-section-title font-extrabold text-slate-900">Thông tin cá nhân</h2>
         </div>
 
         <div className="space-y-4">
@@ -188,7 +188,7 @@ ${coverLetter || 'Không có thư giới thiệu.'}
           <span className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-100 text-caption-responsive font-bold text-blue-600">
             02
           </span>
-          <h2 className="text-[22px] font-extrabold text-slate-900">Trình độ học vấn</h2>
+          <h2 className="text-section-title font-extrabold text-slate-900">Trình độ học vấn</h2>
         </div>
 
         <div className="space-y-4">
@@ -257,7 +257,7 @@ ${coverLetter || 'Không có thư giới thiệu.'}
           <span className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-100 text-caption-responsive font-bold text-blue-600">
             03
           </span>
-          <h2 className="text-[22px] font-extrabold text-slate-900">Kinh nghiệm làm việc gần nhất</h2>
+          <h2 className="text-section-title font-extrabold text-slate-900">Kinh nghiệm làm việc gần nhất</h2>
         </div>
 
         <div className="space-y-4">
@@ -318,7 +318,7 @@ ${coverLetter || 'Không có thư giới thiệu.'}
           <span className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-100 text-caption-responsive font-bold text-blue-600">
             04
           </span>
-          <h2 className="text-[22px] font-extrabold text-slate-900">Hồ sơ đính kèm (CV)</h2>
+          <h2 className="text-section-title font-extrabold text-slate-900">Hồ sơ đính kèm (CV)</h2>
         </div>
 
         <div className="relative border-2 border-dashed border-blue-200 rounded-[3px] p-8 bg-blue-50/30 flex flex-col items-center justify-center text-center transition-colors hover:bg-blue-50/60">
@@ -366,7 +366,7 @@ ${coverLetter || 'Không có thư giới thiệu.'}
           <span className="flex h-6 w-6 items-center justify-center rounded-full bg-blue-100 text-caption-responsive font-bold text-blue-600">
             05
           </span>
-          <h2 className="text-[22px] font-extrabold text-slate-900">
+          <h2 className="text-section-title font-extrabold text-slate-900">
             Thư giới thiệu / Thông điệp gửi nhà tuyển dụng
           </h2>
         </div>

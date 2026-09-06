@@ -104,18 +104,18 @@ export default function HubOverview({ locale }: HubOverviewProps) {
         
         {/* === Part 1: Heading & Description === */}
         <div className="flex flex-col items-start text-left w-full space-y-1 sm:space-y-2">
-          <span className="text-[16px] min-[375px]:text-[18px] sm:text-[24px] lg:text-[28px] xl:text-[32px] font-semibold tracking-tight text-blue-600 leading-tight lg:leading-[36px] xl:leading-[40px] block">
+          <span className="text-body-regular min-[375px]:text-card-title font-semibold tracking-tight text-blue-600 leading-tight lg:leading-[36px] xl:leading-[40px] block">
             {t.eyebrow}
           </span>
-          <h2 className="text-[16px] min-[375px]:text-[18px] sm:text-[24px] lg:text-[28px] xl:text-[32px] font-semibold tracking-tight text-slate-900 leading-tight lg:leading-[36px] xl:leading-[40px]">
+          <h2 className="text-body-regular min-[375px]:text-card-title font-semibold tracking-tight text-slate-900 leading-tight lg:leading-[36px] xl:leading-[40px]">
             {t.title}
           </h2>
-          <p className="pt-2 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] leading-relaxed text-slate-500 max-w-[1100px]">
+          <p className="pt-2 text-caption-responsive leading-relaxed text-slate-500 max-w-[1100px]">
             {t.desc}
           </p>
           <Link
             href="/about"
-            className="pt-2 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] leading-relaxed font-semibold text-blue-600 hover:underline inline-flex items-center"
+            className="pt-2 text-caption-responsive leading-relaxed font-semibold text-blue-600 hover:underline inline-flex items-center"
           >
             {t.learnMore}
           </Link>
@@ -139,10 +139,10 @@ export default function HubOverview({ locale }: HubOverviewProps) {
                 </div>
               </div>
               <div className="flex flex-col text-left">
-                <span className="text-[18px] min-[375px]:text-[20px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-slate-900 leading-none">
+                <span className="text-card-title min-[375px]:text-card-title font-extrabold text-slate-900 leading-none">
                   {stat.value}
                 </span>
-                <span className="mt-1 sm:mt-1.5 text-[11px] sm:text-[13px] font-medium text-slate-500 leading-tight">
+                <span className="mt-1 sm:mt-1.5 text-caption-responsive font-medium text-slate-500 leading-tight">
                   {stat.label}
                 </span>
               </div>
@@ -163,7 +163,7 @@ export default function HubOverview({ locale }: HubOverviewProps) {
                   className="object-contain"
                 />
               </div>
-              <span className="text-[14px] lg:text-[16px] xl:text-[20px] font-extrabold tracking-wider uppercase whitespace-nowrap">
+              <span className="text-body-regular font-extrabold tracking-wider uppercase whitespace-nowrap">
                 SHELLS
               </span>
             </div>
@@ -178,7 +178,7 @@ export default function HubOverview({ locale }: HubOverviewProps) {
                   className="object-contain"
                 />
               </div>
-              <span className="text-[14px] lg:text-[16px] xl:text-[20px] font-bold tracking-tight whitespace-nowrap">
+              <span className="text-body-regular font-bold tracking-tight whitespace-nowrap">
                 SmartFinder
               </span>
             </div>
@@ -193,7 +193,7 @@ export default function HubOverview({ locale }: HubOverviewProps) {
                   className="object-contain"
                 />
               </div>
-              <span className="text-[14px] lg:text-[16px] xl:text-[20px] font-bold tracking-tight whitespace-nowrap">
+              <span className="text-body-regular font-bold tracking-tight whitespace-nowrap">
                 Zoomerr
               </span>
             </div>
@@ -208,7 +208,7 @@ export default function HubOverview({ locale }: HubOverviewProps) {
                   className="object-contain"
                 />
               </div>
-              <span className="text-[14px] lg:text-[16px] xl:text-[20px] font-bold tracking-tight whitespace-nowrap">
+              <span className="text-body-regular font-bold tracking-tight whitespace-nowrap">
                 ArtVenue
               </span>
             </div>
@@ -223,7 +223,7 @@ export default function HubOverview({ locale }: HubOverviewProps) {
                   className="object-contain"
                 />
               </div>
-              <span className="text-[14px] lg:text-[16px] xl:text-[20px] font-bold tracking-tight whitespace-nowrap">
+              <span className="text-body-regular font-bold tracking-tight whitespace-nowrap">
                 kontrastr
               </span>
             </div>
@@ -239,10 +239,10 @@ export default function HubOverview({ locale }: HubOverviewProps) {
                 />
               </div>
               <div className="flex flex-col leading-none whitespace-nowrap">
-                <span className="text-[11px] lg:text-[13px] xl:text-[15px] font-extrabold tracking-wider uppercase">
+                <span className="text-caption-responsive font-extrabold tracking-wider uppercase">
                   WAVES
                 </span>
-                <span className="text-[8px] lg:text-[9px] xl:text-[11px] font-medium tracking-widest uppercase text-[#697077]/80">
+                <span className="text-[8px] font-medium tracking-widest uppercase text-[#697077]/80">
                   MARATHON
                 </span>
               </div>

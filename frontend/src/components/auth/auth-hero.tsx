@@ -43,11 +43,11 @@ export async function AuthHero() {
             />
           </Link>
 
-          <h1 className="mt-10 max-w-lg whitespace-pre-line text-5xl font-bold leading-[1.15] tracking-tight text-primary">
+          <h1 className="mt-10 max-w-lg whitespace-pre-line text-hero-title font-bold leading-[1.15] tracking-tight text-primary">
             {t('heroTitle')} <span className="text-brand">{t('heroHighlight')}</span>
           </h1>
           <div className="mt-5 h-1 w-12 bg-brand" />
-          <p className="mt-5 max-w-md text-base leading-relaxed text-muted-foreground">
+          <p className="mt-5 max-w-md text-body-regular leading-relaxed text-muted-foreground">
             {t('heroDescription')}
           </p>
         </div>
@@ -60,13 +60,13 @@ export async function AuthHero() {
             <li key={title} className="flex items-start gap-2.5">
               <Icon className="mt-0.5 h-6 w-6 shrink-0 text-brand" aria-hidden="true" />
               <span>
-                <span className="block text-sm font-semibold text-brand">{title}</span>
-                <span className="block text-xs leading-snug text-primary/70">{desc}</span>
+                <span className="block text-body-regular font-semibold text-brand">{title}</span>
+                <span className="block text-caption-responsive leading-snug text-primary/70">{desc}</span>
               </span>
             </li>
           ))}
         </ul>
-        <p className="mt-6 font-mono text-xs tracking-wider text-primary/50">
+        <p className="mt-6 font-mono text-caption-responsive tracking-wider text-primary/50">
           2026 ULINK INDUSTRIES.
         </p>
       </div>

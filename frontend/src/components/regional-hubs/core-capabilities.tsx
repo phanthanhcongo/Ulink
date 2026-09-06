@@ -11,10 +11,10 @@ export default async function CoreCapabilities() {
       <div className="page-container">
         {/* Top Header & Description (Stacked Layout matching Tablet Figma) */}
         <div className="mb-10 sm:mb-12 max-w-[840px] flex flex-col items-start text-left">
-          <h2 className="text-[24px] sm:text-[28px] font-semibold text-[#212529] leading-[32px] sm:leading-[36px] tracking-[-0.3px]">
+          <h2 className="text-section-title font-semibold text-[#212529] leading-[32px] sm:leading-[36px] tracking-[-0.3px]">
             {t('capabilities.title')}
           </h2>
-          <p className="mt-3 text-[16px] sm:text-[18px] leading-[26px] sm:leading-[28px] text-[#495057]">
+          <p className="mt-3 text-body-regular leading-[26px] sm:leading-[28px] text-[#495057]">
             {t('capabilities.desc')}
           </p>
         </div>
@@ -32,15 +32,15 @@ export default async function CoreCapabilities() {
                 className="h-12 w-12 object-contain"
               />
             </div>
-            <h3 className="text-[18px] sm:text-[20px] font-semibold text-[#212529] leading-[28px] mb-2">
+            <h3 className="text-card-title font-semibold text-[#212529] leading-[28px] mb-2">
               {t('capabilities.manufacturing.title')}
             </h3>
-            <p className="text-[15px] sm:text-[16px] leading-[24px] text-[#495057] mb-6 flex-1">
+            <p className="text-body-regular leading-[24px] text-[#495057] mb-6 flex-1">
               {t('capabilities.manufacturing.desc')}
             </p>
             <Link
               href="/solutions"
-              className="text-[15px] sm:text-[16px] leading-[24px] font-bold text-brand inline-flex items-center gap-2 hover:text-brand-strong transition-colors mt-auto"
+              className="text-body-regular leading-[24px] font-bold text-brand inline-flex items-center gap-2 hover:text-brand-strong transition-colors mt-auto"
             >
               {t('capabilities.learnMore')}
               <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
@@ -58,15 +58,15 @@ export default async function CoreCapabilities() {
                 className="h-12 w-12 object-contain"
               />
             </div>
-            <h3 className="text-[18px] sm:text-[20px] font-semibold text-[#212529] leading-[28px] mb-2">
+            <h3 className="text-card-title font-semibold text-[#212529] leading-[28px] mb-2">
               {t('capabilities.supplyChain.title')}
             </h3>
-            <p className="text-[15px] sm:text-[16px] leading-[24px] text-[#495057] mb-6 flex-1">
+            <p className="text-body-regular leading-[24px] text-[#495057] mb-6 flex-1">
               {t('capabilities.supplyChain.desc')}
             </p>
             <Link
               href="/about"
-              className="text-[15px] sm:text-[16px] leading-[24px] font-bold text-brand inline-flex items-center gap-2 hover:text-brand-strong transition-colors mt-auto"
+              className="text-body-regular leading-[24px] font-bold text-brand inline-flex items-center gap-2 hover:text-brand-strong transition-colors mt-auto"
             >
               {t('capabilities.learnMore')}
               <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />
@@ -84,15 +84,15 @@ export default async function CoreCapabilities() {
                 className="h-12 w-12 object-contain"
               />
             </div>
-            <h3 className="text-[18px] sm:text-[20px] font-semibold text-[#212529] leading-[28px] mb-2">
+            <h3 className="text-card-title font-semibold text-[#212529] leading-[28px] mb-2">
               {t('capabilities.quality.title')}
             </h3>
-            <p className="text-[15px] sm:text-[16px] leading-[24px] text-[#495057] mb-6 flex-1">
+            <p className="text-body-regular leading-[24px] text-[#495057] mb-6 flex-1">
               {t('capabilities.quality.desc')}
             </p>
             <Link
               href="/about/quality"
-              className="text-[15px] sm:text-[16px] leading-[24px] font-bold text-brand inline-flex items-center gap-2 hover:text-brand-strong transition-colors mt-auto"
+              className="text-body-regular leading-[24px] font-bold text-brand inline-flex items-center gap-2 hover:text-brand-strong transition-colors mt-auto"
             >
               {t('capabilities.learnMore')}
               <ArrowRight className="h-5 w-5 transition-transform group-hover:translate-x-1" />

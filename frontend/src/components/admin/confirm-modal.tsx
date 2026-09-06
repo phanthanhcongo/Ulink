@@ -35,7 +35,7 @@ export function ConfirmModal({
       >
         {/* Header */}
         <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100">
-          <h3 className="text-sm sm:text-base font-extrabold text-slate-800 flex items-center gap-2">
+          <h3 className="text-body-regular font-extrabold text-slate-800 flex items-center gap-2">
             <AlertTriangle
               className={cn(
                 'h-5 w-5',
@@ -56,7 +56,7 @@ export function ConfirmModal({
 
         {/* Content */}
         <div className="p-6">
-          <p className="text-xs sm:text-sm text-slate-600 font-semibold leading-relaxed">
+          <p className="text-caption-responsive text-slate-600 font-semibold leading-relaxed">
             {message}
           </p>
         </div>
@@ -66,7 +66,7 @@ export function ConfirmModal({
           <button
             type="button"
             onClick={onCancel}
-            className="px-4 py-2 rounded-[3px] border border-slate-200 text-xs font-bold text-slate-550 hover:bg-slate-100 transition-colors"
+            className="px-4 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-550 hover:bg-slate-100 transition-colors"
           >
             {cancelText}
           </button>
@@ -74,7 +74,7 @@ export function ConfirmModal({
             type="button"
             onClick={onConfirm}
             className={cn(
-              'inline-flex items-center justify-center px-4 py-2 rounded-[3px] text-xs font-bold text-white shadow-sm transition-colors',
+              'inline-flex items-center justify-center px-4 py-2 rounded-[3px] text-caption-responsive font-bold text-white shadow-sm transition-colors',
               type === 'danger' && 'bg-rose-600 hover:bg-rose-700',
               type === 'warning' && 'bg-amber-600 hover:bg-amber-700',
               type === 'info' && 'bg-blue-600 hover:bg-blue-700'

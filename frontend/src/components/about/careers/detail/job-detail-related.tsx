@@ -29,7 +29,7 @@ export function JobDetailRelated() {
   return (
     <section className="py-12 border-t border-slate-100">
       <div className="flex items-center justify-between mb-8">
-        <h2 className="text-[22px] font-extrabold text-slate-900">Các vị trí khác đang tuyển dụng</h2>
+        <h2 className="text-section-title font-extrabold text-slate-900">Các vị trí khác đang tuyển dụng</h2>
         <Link
           href="/about/careers"
           className="text-body-regular font-semibold text-blue-600 hover:text-blue-700 flex items-center gap-1"

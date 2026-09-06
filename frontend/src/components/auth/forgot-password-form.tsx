@@ -124,7 +124,7 @@ export function ForgotPasswordForm() {
   }
 
   const inputBase =
-    'w-full rounded-[3px] border bg-card py-2.5 pl-10 pr-4 text-sm outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-brand focus:ring-1 focus:ring-brand';
+    'w-full rounded-[3px] border bg-card py-2.5 pl-10 pr-4 text-body-regular outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-brand focus:ring-1 focus:ring-brand';
 
   const isLocked = lockedUntil != null && lockedUntil > now;
 
@@ -136,10 +136,10 @@ export function ForgotPasswordForm() {
         {isLocked && (
           <div
             role="alert"
-            className="mb-6 rounded-[3px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-left text-sm text-destructive"
+            className="mb-6 rounded-[3px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-left text-body-regular text-destructive"
           >
             <p className="font-medium">{t('resetPasswordLockedTitle')}</p>
-            <p className="mt-1 text-xs">
+            <p className="mt-1 text-caption-responsive">
               {t('resetPasswordLockedWithCountdown', {
                 mm: String(Math.max(0, Math.floor((lockedUntil! - now) / 60000))).padStart(2, '0'),
                 ss: String(Math.max(0, Math.floor(((lockedUntil! - now) % 60000) / 1000))).padStart(
@@ -159,22 +159,22 @@ export function ForgotPasswordForm() {
         )}
 
         {/* Title */}
-        <h2 className="text-2xl font-bold tracking-tight text-foreground">
+        <h2 className="text-section-title font-bold tracking-tight text-foreground">
           {t('forgotPasswordSentTitle')}
         </h2>
 
         {/* Description + email */}
         {!isLocked && (
-          <div className="mt-3 text-sm text-muted-foreground">
+          <div className="mt-3 text-body-regular text-muted-foreground">
             <p>{t('forgotPasswordSentDesc')}</p>
             <p className="mt-1 font-medium text-foreground">{email}</p>
-            <p className="mt-3 text-sm text-foreground">{t('forgotPasswordSentAction')}</p>
+            <p className="mt-3 text-body-regular text-foreground">{t('forgotPasswordSentAction')}</p>
           </div>
         )}
 
         {/* Resend + check spam inline */}
         {!isLocked && (
-          <div className="mt-6 flex items-center justify-center gap-2 text-sm text-muted-foreground">
+          <div className="mt-6 flex items-center justify-center gap-2 text-body-regular text-muted-foreground">
             <span>{t('forgotPasswordNoEmail')}</span>
             <span className="text-border">·</span>
             <span>{t('forgotPasswordCheckSpam')}</span>
@@ -193,7 +193,7 @@ export function ForgotPasswordForm() {
           </div>
         )}
 
-        <p className="mt-6 text-sm text-muted-foreground">
+        <p className="mt-6 text-body-regular text-muted-foreground">
           <Link
             href="/login"
             className="inline-flex items-center gap-1 font-medium text-brand hover:underline"
@@ -208,19 +208,19 @@ export function ForgotPasswordForm() {
   // ─── Default view: email input ─────────────────────────────────────────────
   return (
     <div>
-      <h2 className="text-2xl font-bold tracking-tight text-foreground">
+      <h2 className="text-section-title font-bold tracking-tight text-foreground">
         {t('forgotPasswordTitle')}
       </h2>
-      <p className="mt-2 text-sm text-muted-foreground">{t('forgotPasswordDesc')}</p>
+      <p className="mt-2 text-body-regular text-muted-foreground">{t('forgotPasswordDesc')}</p>
 
       {/* Red lockout banner with live MM:SS countdown */}
       {isLocked && (
         <div
           role="alert"
-          className="mt-4 rounded-[3px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-sm text-destructive"
+          className="mt-4 rounded-[3px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-body-regular text-destructive"
         >
           <p className="font-medium">{t('resetPasswordLockedTitle')}</p>
-          <p className="mt-1 text-xs">
+          <p className="mt-1 text-caption-responsive">
             {t('resetPasswordLockedWithCountdown', {
               mm: String(Math.max(0, Math.floor((lockedUntil - now) / 60000))).padStart(2, '0'),
               ss: String(Math.max(0, Math.floor(((lockedUntil - now) % 60000) / 1000))).padStart(
@@ -236,14 +236,14 @@ export function ForgotPasswordForm() {
         {formError && !isLocked && (
           <p
             role="alert"
-            className="rounded-[3px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-sm text-destructive"
+            className="rounded-[3px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-body-regular text-destructive"
           >
             {formError}
           </p>
         )}
 
         <div>
-          <label htmlFor="email" className="mb-1.5 block text-xs font-semibold text-slate-700">
+          <label htmlFor="email" className="mb-1.5 block text-caption-responsive font-semibold text-slate-700">
             {t('emailLabel')} <span className="text-rose-500">*</span>
           </label>
           <div className="relative">
@@ -265,7 +265,7 @@ export function ForgotPasswordForm() {
             />
           </div>
           {emailError && (
-            <p id="email-error" className="mt-1.5 text-xs font-medium text-rose-500">
+            <p id="email-error" className="mt-1.5 text-caption-responsive font-medium text-rose-500">
               {emailError}
             </p>
           )}
@@ -276,7 +276,7 @@ export function ForgotPasswordForm() {
           disabled={loading || isLocked}
           variant="primary"
           fullWidth
-          className="group py-3.5 text-sm font-bold shadow-brand/20 hover:shadow-lg hover:shadow-brand/30 active:scale-[0.99] rounded-[3px]"
+          className="group py-3.5 text-body-regular font-bold shadow-brand/20 hover:shadow-lg hover:shadow-brand/30 active:scale-[0.99] rounded-[3px]"
         >
           {loading ? (
             <>
@@ -292,7 +292,7 @@ export function ForgotPasswordForm() {
         </Button>
       </form>
 
-      <p className="mt-6 text-center text-sm text-muted-foreground">
+      <p className="mt-6 text-center text-body-regular text-muted-foreground">
         <Link href="/login" className="font-medium text-brand hover:underline">
           {t('backToLogin')}
         </Link>

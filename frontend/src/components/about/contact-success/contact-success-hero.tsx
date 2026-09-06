@@ -10,7 +10,7 @@ export function ContactSuccessHero() {
       </div>
 
       {/* Heading */}
-      <h1 className="text-[30px] font-extrabold text-slate-900 tracking-tight">
+      <h1 className="text-hero-title font-extrabold text-slate-900 tracking-tight">
         Cảm ơn bạn đã liên hệ với ULink!
       </h1>
 

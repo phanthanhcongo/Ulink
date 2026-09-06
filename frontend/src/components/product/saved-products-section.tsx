@@ -39,13 +39,13 @@ export default function SavedProductsSection({ allProducts, currentSlug, locale 
       <div className="flex items-center justify-between">
         <div className="flex items-center gap-2">
           <span className="h-2.5 w-2.5 rounded-[3px] bg-blue-600 shrink-0" />
-          <h3 className="text-lg font-bold text-slate-800">
+          <h3 className="text-card-title font-bold text-slate-800">
             {locale === 'vi' ? 'Sản phẩm đã lưu' : 'Saved Products'}
           </h3>
         </div>
         <Link
           href={`/${locale}/solutions/listProduct`}
-          className="text-xs font-bold text-blue-600 hover:underline flex items-center gap-1"
+          className="text-caption-responsive font-bold text-blue-600 hover:underline flex items-center gap-1"
         >
           {locale === 'vi' ? 'Xem tất cả' : 'View All'} &rarr;
         </Link>

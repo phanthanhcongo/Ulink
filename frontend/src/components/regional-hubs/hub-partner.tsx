@@ -13,15 +13,15 @@ export default async function HubPartner() {
           
           {/* Header & Play Button */}
           <div className="flex flex-col items-start w-full">
-            <h2 className="text-[22px] sm:text-[32px] lg:text-[40px] xl:text-[44px] font-bold tracking-tight text-slate-900 leading-tight mb-3 sm:mb-4 max-w-[1100px]">
+            <h2 className="text-section-title lg:text-[40px] font-bold tracking-tight text-slate-900 leading-tight mb-3 sm:mb-4 max-w-[1100px]">
               {t('hubPartner.title')}
             </h2>
-            <p className="text-[14px] sm:text-[15px] lg:text-[16px] xl:text-[18px] leading-relaxed text-slate-600 mb-6 max-w-[950px]">
+            <p className="text-body-regular leading-relaxed text-slate-600 mb-6 max-w-[950px]">
               {t('hubPartner.desc')}
             </p>
             
             {/* Play Video Button */}
-            <button className="border-2 border-[#0F62FE] text-[#0F62FE] font-bold py-3 px-8 sm:px-10 rounded-[3px] hover:bg-blue-50/50 transition-all inline-flex items-center justify-center text-[14px] sm:text-[15px] lg:text-[16px] whitespace-nowrap">
+            <button className="border-2 border-[#0F62FE] text-[#0F62FE] font-bold py-3 px-8 sm:px-10 rounded-[3px] hover:bg-blue-50/50 transition-all inline-flex items-center justify-center text-body-regular whitespace-nowrap">
               {t('hubPartner.playVideo')}
             </button>
           </div>
@@ -41,7 +41,7 @@ export default async function HubPartner() {
             
             {/* Right Column: Text Details */}
             <div className="flex flex-col justify-center">
-              <p className="text-[14px] sm:text-[15px] lg:text-[16px] leading-relaxed text-slate-700 font-normal">
+              <p className="text-body-regular leading-relaxed text-slate-700 font-normal">
                 {t('hubPartner.detailText')}
               </p>
             </div>
@@ -56,13 +56,13 @@ export default async function HubPartner() {
           
           {/* Header text block */}
           <div className="flex flex-col items-start text-left max-w-3xl space-y-3">
-            <span className="text-[14px] sm:text-[16px] lg:text-[18px] font-bold uppercase tracking-wider text-[#001D6C]">
+            <span className="text-body-regular font-bold uppercase tracking-wider text-[#001D6C]">
               {t('hubPartner.ctaEyebrow')}
             </span>
-            <h3 className="text-[24px] sm:text-[32px] lg:text-[38px] font-bold tracking-tight text-[#212529] leading-tight sm:leading-snug">
+            <h3 className="text-section-title font-bold tracking-tight text-[#212529] leading-tight sm:leading-snug">
               {t('hubPartner.ctaTitle')}
             </h3>
-            <p className="text-[14px] sm:text-[15px] lg:text-[16px] leading-relaxed text-slate-800/90 pt-1">
+            <p className="text-body-regular leading-relaxed text-slate-800/90 pt-1">
               {t('hubPartner.ctaDesc')}
             </p>
           </div>
@@ -71,13 +71,13 @@ export default async function HubPartner() {
           <div className="flex flex-row items-center justify-center lg:justify-end gap-3 sm:gap-4 flex-wrap w-full lg:w-auto shrink-0">
             <Link
               href="/contact"
-              className="border border-[#001D6C] text-[#001D6C] font-semibold py-3 px-5 sm:px-6 rounded-[3px] hover:bg-white/20 transition-all text-[14px] sm:text-[15px] lg:text-[16px] inline-flex justify-center items-center min-h-[46px] whitespace-nowrap"
+              className="border border-[#001D6C] text-[#001D6C] font-semibold py-3 px-5 sm:px-6 rounded-[3px] hover:bg-white/20 transition-all text-body-regular inline-flex justify-center items-center min-h-[46px] whitespace-nowrap"
             >
               {t('hubPartner.ctaBtnConsult')}
             </Link>
             <Link
               href="/contact"
-              className="bg-[#0F62FE] hover:bg-blue-700 text-white font-semibold py-3 px-6 sm:px-8 rounded-[3px] transition-all text-[14px] sm:text-[15px] lg:text-[16px] inline-flex justify-center items-center shadow-sm min-h-[46px] whitespace-nowrap"
+              className="bg-[#0F62FE] hover:bg-blue-700 text-white font-semibold py-3 px-6 sm:px-8 rounded-[3px] transition-all text-body-regular inline-flex justify-center items-center shadow-sm min-h-[46px] whitespace-nowrap"
             >
               {t('hubPartner.ctaBtnSchedule')}
             </Link>

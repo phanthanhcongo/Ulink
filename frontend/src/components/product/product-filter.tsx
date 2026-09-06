@@ -83,14 +83,14 @@ export default function ProductFilter({ groups, totalCount = 0, labels }: Produc
       <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
         <div className="flex items-center gap-2">
           <Filter className="h-4 w-4 text-blue-600" />
-          <h3 className="text-sm font-bold text-gray-900 uppercase tracking-wide">
+          <h3 className="text-body-regular font-bold text-gray-900 uppercase tracking-wide">
             {labels?.smartTitle ?? 'BỘ LỌC THÔNG MINH'}
           </h3>
         </div>
         {hasAnyFilter && (
           <button
             onClick={handleClearAll}
-            className="text-xs text-red-500 hover:text-red-700 font-medium transition-colors"
+            className="text-caption-responsive text-red-500 hover:text-red-700 font-medium transition-colors"
           >
             {labels?.clearAll ?? 'Xóa tất cả'}
           </button>
@@ -106,7 +106,7 @@ export default function ProductFilter({ groups, totalCount = 0, labels }: Produc
 
           return (
             <div key={group.key}>
-              <h4 className="text-xs font-bold text-gray-700 uppercase tracking-wider mb-3">
+              <h4 className="text-caption-responsive font-bold text-gray-700 uppercase tracking-wider mb-3">
                 {group.label}
               </h4>
               <div className="space-y-2">
@@ -124,12 +124,12 @@ export default function ProductFilter({ groups, totalCount = 0, labels }: Produc
                           onChange={(e) => handleChange(group.key, option.slug, e.target.checked)}
                           className="h-3.5 w-3.5 rounded border-gray-300 text-blue-600 focus:ring-blue-500 focus:ring-offset-0"
                         />
-                        <span className="text-sm text-gray-700 group-hover/item:text-gray-900">
+                        <span className="text-body-regular text-gray-700 group-hover/item:text-gray-900">
                           {option.name}
                         </span>
                       </div>
                       {option.count != null && (
-                        <span className="text-xs text-gray-400 tabular-nums">
+                        <span className="text-caption-responsive text-gray-400 tabular-nums">
                           {option.count.toLocaleString()}
                         </span>
                       )}
@@ -140,7 +140,7 @@ export default function ProductFilter({ groups, totalCount = 0, labels }: Produc
               {group.options.length > VISIBLE_LIMIT && (
                 <button
                   onClick={() => setExpanded((prev) => ({ ...prev, [group.key]: !isExpanded }))}
-                  className="mt-2 text-xs text-blue-600 hover:text-blue-800 font-medium flex items-center gap-0.5"
+                  className="mt-2 text-caption-responsive text-blue-600 hover:text-blue-800 font-medium flex items-center gap-0.5"
                 >
                   {isExpanded ? 'Thu gọn' : (labels?.showMore ?? 'Xem thêm')}
                   <ChevronDown
@@ -158,12 +158,12 @@ export default function ProductFilter({ groups, totalCount = 0, labels }: Produc
 
       {/* Result count */}
       <div className="px-5 py-4">
-        <p className="text-xs font-bold text-gray-500 uppercase tracking-wider mb-1">
+        <p className="text-caption-responsive font-bold text-gray-500 uppercase tracking-wider mb-1">
           {labels?.resultCount ?? 'SỐ KẾT QUẢ'}
         </p>
-        <p className="text-2xl font-bold text-gray-900">
+        <p className="text-section-title font-bold text-gray-900">
           {totalCount.toLocaleString()}
-          <span className="text-sm font-normal text-gray-500 ml-2">
+          <span className="text-body-regular font-normal text-gray-500 ml-2">
             {labels?.resultUnit ?? 'sản phẩm'}
           </span>
         </p>
@@ -175,7 +175,7 @@ export default function ProductFilter({ groups, totalCount = 0, labels }: Produc
           onClick={() => {
             /* filters already applied on change */
           }}
-          className="w-full flex items-center justify-center gap-2 rounded-[3px] bg-blue-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-blue-700 transition-colors"
+          className="w-full flex items-center justify-center gap-2 rounded-[3px] bg-blue-600 px-4 py-2.5 text-body-regular font-medium text-white hover:bg-blue-700 transition-colors"
         >
           <Filter className="h-4 w-4" />
           {labels?.applyFilter ?? 'Áp dụng bộ lọc'}

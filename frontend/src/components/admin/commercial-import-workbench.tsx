@@ -245,15 +245,15 @@ export function CommercialImportWorkbench() {
       )}
       <div className="grid gap-0 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="border-b border-border/70 bg-gradient-to-br from-brand/10 via-background to-background px-6 py-6 sm:px-8 sm:py-8 lg:border-b-0 lg:border-r">
-          <div className="inline-flex items-center gap-2 rounded-[3px] border border-brand/20 bg-brand/10 px-3 py-1 text-xs font-medium text-brand">
+          <div className="inline-flex items-center gap-2 rounded-[3px] border border-brand/20 bg-brand/10 px-3 py-1 text-caption-responsive font-medium text-brand">
             <Sparkles className="h-3.5 w-3.5" aria-hidden="true" />
             Sales Ops only
           </div>
 
-          <h2 className="mt-4 text-3xl font-semibold tracking-tight text-foreground sm:text-4xl">
+          <h2 className="mt-4 text-section-title font-semibold tracking-tight text-foreground">
             Commercial import workbench
           </h2>
-          <p className="mt-3 max-w-2xl text-sm leading-6 text-muted-foreground">
+          <p className="mt-3 max-w-2xl text-body-regular leading-6 text-muted-foreground">
             Preview or commit CSV rows against Directus through the `/api/import` facade. Customers
             can fall back to tax code or email, while orders use atomic nested `order_items_json`.
           </p>
@@ -276,8 +276,8 @@ export function CommercialImportWorkbench() {
                 >
                   <div className="flex items-start justify-between gap-3">
                     <div>
-                      <p className="text-sm font-semibold text-foreground">{itemMeta.label}</p>
-                      <p className="mt-1 text-xs leading-5 text-muted-foreground">
+                      <p className="text-body-regular font-semibold text-foreground">{itemMeta.label}</p>
+                      <p className="mt-1 text-caption-responsive leading-5 text-muted-foreground">
                         {itemMeta.description}
                       </p>
                     </div>
@@ -291,16 +291,16 @@ export function CommercialImportWorkbench() {
           </div>
 
           <div className="mt-6 rounded-[3px] border border-border/70 bg-background/80 p-4">
-            <div className="flex items-center gap-2 text-sm font-medium text-foreground">
+            <div className="flex items-center gap-2 text-body-regular font-medium text-foreground">
               <FileText className="h-4 w-4 text-brand" aria-hidden="true" />
               Required keys
             </div>
-            <p className="mt-2 text-sm leading-6 text-muted-foreground">{meta.keyHint}</p>
+            <p className="mt-2 text-body-regular leading-6 text-muted-foreground">{meta.keyHint}</p>
             <div className="mt-3 flex flex-wrap gap-2">
               {meta.requiredColumns.map((column) => (
                 <span
                   key={column}
-                  className="rounded-[3px] border border-border bg-card px-3 py-1 text-xs text-muted-foreground"
+                  className="rounded-[3px] border border-border bg-card px-3 py-1 text-caption-responsive text-muted-foreground"
                 >
                   {column}
                 </span>
@@ -318,10 +318,10 @@ export function CommercialImportWorkbench() {
                 key={item.label}
                 className="rounded-[3px] border border-border/70 bg-background/75 px-4 py-4"
               >
-                <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">
+                <p className="text-caption-responsive uppercase tracking-[0.16em] text-muted-foreground">
                   {item.label}
                 </p>
-                <p className="mt-2 text-2xl font-semibold text-foreground">{item.value}</p>
+                <p className="mt-2 text-section-title font-semibold text-foreground">{item.value}</p>
               </div>
             ))}
           </div>
@@ -331,7 +331,7 @@ export function CommercialImportWorkbench() {
           <form className="space-y-5" onSubmit={onSubmit}>
             <div>
               <label
-                className="mb-2 block text-sm font-medium text-foreground"
+                className="mb-2 block text-body-regular font-medium text-foreground"
                 htmlFor="commercial-import-file"
               >
                 CSV file or pasted text
@@ -358,10 +358,10 @@ export function CommercialImportWorkbench() {
                   >
                     <Upload className="h-6 w-6" aria-hidden="true" />
                   </div>
-                  <span className="text-sm font-extrabold text-slate-800">
+                  <span className="text-body-regular font-extrabold text-slate-800">
                     {isDragging ? 'Thả tệp CSV tại đây...' : 'Kéo thả tệp CSV hoặc click để tải lên'}
                   </span>
-                  <span className="mt-1.5 text-xs text-slate-400 max-w-xs leading-normal">
+                  <span className="mt-1.5 text-caption-responsive text-slate-400 max-w-xs leading-normal">
                     Nội dung tệp sẽ được đọc trực tiếp vào khung soạn thảo để bạn xem lại hoặc chỉnh sửa trước khi chạy thử (preview).
                   </span>
                   <input
@@ -374,7 +374,7 @@ export function CommercialImportWorkbench() {
                 </label>
               </div>
               {selectedFile && (
-                <p className="mt-2 text-xs text-muted-foreground">
+                <p className="mt-2 text-caption-responsive text-muted-foreground">
                   Loaded file:{' '}
                   <span className="font-medium text-foreground">{selectedFile.name}</span>
                 </p>
@@ -384,14 +384,14 @@ export function CommercialImportWorkbench() {
             <div>
               <div className="mb-2 flex items-center justify-between gap-3">
                 <label
-                  className="block text-sm font-medium text-foreground"
+                  className="block text-body-regular font-medium text-foreground"
                   htmlFor="commercial-import-csv"
                 >
                   CSV content
                 </label>
                 <button
                   type="button"
-                  className="text-xs font-medium text-brand hover:underline"
+                  className="text-caption-responsive font-medium text-brand hover:underline"
                   onClick={() => {
                     setSelectedFile(null);
                     setCsvText(meta.sampleCsv);
@@ -406,7 +406,7 @@ export function CommercialImportWorkbench() {
                 onChange={(event) => setCsvText(event.target.value)}
                 spellCheck={false}
                 rows={12}
-                className="w-full rounded-[3px] border border-border/80 bg-background/80 px-4 py-3 font-mono text-xs leading-6 text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-brand focus:ring-1 focus:ring-brand"
+                className="w-full rounded-[3px] border border-border/80 bg-background/80 px-4 py-3 font-mono text-caption-responsive leading-6 text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-brand focus:ring-1 focus:ring-brand"
                 placeholder={meta.sampleCsv}
               />
             </div>
@@ -419,24 +419,24 @@ export function CommercialImportWorkbench() {
                 className="mt-1 h-4 w-4 rounded-[3px] border-border text-brand focus:ring-brand"
               />
               <span>
-                <span className="block text-sm font-medium text-foreground">
+                <span className="block text-body-regular font-medium text-foreground">
                   Allow partial success
                 </span>
-                <span className="mt-1 block text-sm leading-6 text-muted-foreground">
+                <span className="mt-1 block text-body-regular leading-6 text-muted-foreground">
                   Keep valid rows and report failures instead of aborting the whole file.
                 </span>
               </span>
             </label>
 
             {state.error && (
-              <div className="flex items-start gap-3 rounded-[3px] border border-rose-500/20 bg-rose-500/10 px-4 py-4 text-sm text-rose-700 dark:text-rose-300">
+              <div className="flex items-start gap-3 rounded-[3px] border border-rose-500/20 bg-rose-500/10 px-4 py-4 text-body-regular text-rose-700 dark:text-rose-300">
                 <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden="true" />
                 <p>{state.error}</p>
               </div>
             )}
 
             {state.result?.aborted && (
-              <div className="rounded-[3px] border border-amber-500/20 bg-amber-500/10 px-4 py-4 text-sm text-amber-800 dark:text-amber-200">
+              <div className="rounded-[3px] border border-amber-500/20 bg-amber-500/10 px-4 py-4 text-body-regular text-amber-800 dark:text-amber-200">
                 The commit was aborted because validation failed and partial success was disabled.
               </div>
             )}
@@ -445,7 +445,7 @@ export function CommercialImportWorkbench() {
               <button
                 type="submit"
                 disabled={state.loading !== null || !canSubmit}
-                className="inline-flex items-center gap-2 rounded-[3px] border border-brand bg-brand px-5 py-3 text-sm font-medium text-brand-foreground transition-colors hover:bg-brand/90 disabled:cursor-not-allowed disabled:opacity-60"
+                className="inline-flex items-center gap-2 rounded-[3px] border border-brand bg-brand px-5 py-3 text-body-regular font-medium text-brand-foreground transition-colors hover:bg-brand/90 disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {state.loading === 'preview' ? (
                   <>
@@ -464,7 +464,7 @@ export function CommercialImportWorkbench() {
                 type="button"
                 onClick={() => void runImport('commit')}
                 disabled={state.loading !== null || !canSubmit}
-                className="inline-flex items-center gap-2 rounded-[3px] border border-border bg-background px-5 py-3 text-sm font-medium text-foreground transition-colors hover:border-brand hover:text-brand disabled:cursor-not-allowed disabled:opacity-60"
+                className="inline-flex items-center gap-2 rounded-[3px] border border-border bg-background px-5 py-3 text-body-regular font-medium text-foreground transition-colors hover:border-brand hover:text-brand disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {state.loading === 'commit' ? (
                   <>
@@ -486,10 +486,10 @@ export function CommercialImportWorkbench() {
               <div className="rounded-[3px] border border-border/70 bg-background/80 px-4 py-4">
                 <div className="flex flex-wrap items-center justify-between gap-3">
                   <div>
-                    <p className="text-xs uppercase tracking-[0.16em] text-muted-foreground">
+                    <p className="text-caption-responsive uppercase tracking-[0.16em] text-muted-foreground">
                       {rowLabel}
                     </p>
-                    <p className="mt-1 text-sm text-foreground">
+                    <p className="mt-1 text-body-regular text-foreground">
                       {state.result.collection} · {state.result.mode} · partial success{' '}
                       {state.result.allowPartial ? 'on' : 'off'}
                     </p>
@@ -498,7 +498,7 @@ export function CommercialImportWorkbench() {
                     type="button"
                     onClick={onDownloadErrors}
                     disabled={errorRows.length === 0}
-                    className="inline-flex items-center gap-2 rounded-[3px] border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors hover:border-brand hover:text-brand disabled:cursor-not-allowed disabled:opacity-50"
+                    className="inline-flex items-center gap-2 rounded-[3px] border border-border px-4 py-2 text-body-regular font-medium text-foreground transition-colors hover:border-brand hover:text-brand disabled:cursor-not-allowed disabled:opacity-50"
                   >
                     <Download className="h-4 w-4" aria-hidden="true" />
                     Download errors
@@ -507,8 +507,8 @@ export function CommercialImportWorkbench() {
               </div>
 
               <div className="flex items-center justify-between gap-3 mb-2">
-                <h3 className="text-sm font-extrabold text-slate-800">Kết quả xử lý chi tiết</h3>
-                <div className="flex gap-1 p-1 bg-slate-100 dark:bg-slate-800 rounded-[3px] text-xs font-bold shadow-inner">
+                <h3 className="text-body-regular font-extrabold text-slate-800">Kết quả xử lý chi tiết</h3>
+                <div className="flex gap-1 p-1 bg-slate-100 dark:bg-slate-800 rounded-[3px] text-caption-responsive font-bold shadow-inner">
                   <button
                     type="button"
                     onClick={() => setShowOnlyErrors(false)}
@@ -537,8 +537,8 @@ export function CommercialImportWorkbench() {
               </div>
 
               <div className="overflow-hidden rounded-[3px] border border-border/70 bg-white">
-                <table className="w-full border-collapse text-left text-sm min-w-[600px]">
-                  <thead className="bg-slate-50 border-b border-slate-100 text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-wider">
+                <table className="w-full border-collapse text-left text-body-regular min-w-[600px]">
+                  <thead className="bg-slate-50 border-b border-slate-100 text-caption-responsive font-bold text-slate-400 uppercase tracking-wider">
                     <tr>
                       <th className="px-4 py-2.5 font-bold w-[70px]">Dòng</th>
                       <th className="px-4 py-2.5 font-bold w-[120px]">Khóa (Key)</th>
@@ -547,7 +547,7 @@ export function CommercialImportWorkbench() {
                       <th className="px-4 py-2.5 font-bold text-right w-[120px]">Nested Items</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-100 text-xs sm:text-sm text-slate-700">
+                  <tbody className="divide-y divide-slate-100 text-caption-responsive text-slate-700">
                     {(showOnlyErrors
                       ? state.result.rows.filter(r => r.action === 'failed' || r.errors.length > 0)
                       : state.result.rows
@@ -559,23 +559,23 @@ export function CommercialImportWorkbench() {
                           (row.action === 'failed' || row.errors.length > 0) && 'bg-rose-50/20 hover:bg-rose-50/35'
                         )}
                       >
-                        <td className="px-4 py-3 font-mono text-xs text-slate-400 font-medium">
+                        <td className="px-4 py-3 font-mono text-caption-responsive text-slate-400 font-medium">
                           #{row.row}
                         </td>
-                        <td className="px-4 py-3 font-mono text-xs text-slate-800 font-extrabold select-all">
+                        <td className="px-4 py-3 font-mono text-caption-responsive text-slate-800 font-extrabold select-all">
                           {row.key || '—'}
                         </td>
                         <td className="px-4 py-3">
                           <span
                             className={cn(
-                              'inline-flex rounded-[3px] border px-2.5 py-1 text-[10px] font-bold shadow-sm select-none',
+                              'inline-flex rounded-[3px] border px-2.5 py-1 text-caption-responsive font-bold shadow-sm select-none',
                               actionStyles(row.action)
                             )}
                           >
                             {row.action}
                           </span>
                         </td>
-                        <td className="px-4 py-3 text-xs">
+                        <td className="px-4 py-3 text-caption-responsive">
                           {row.errors.length === 0 ? (
                             <span className="text-slate-400 font-medium">—</span>
                           ) : (
@@ -583,7 +583,7 @@ export function CommercialImportWorkbench() {
                               {row.errors.map((item, idx) => (
                                 <div
                                   key={idx}
-                                  className="inline-flex items-center gap-1.5 text-rose-600 bg-rose-50 border border-rose-100/50 px-2.5 py-1 rounded-[3px] font-bold text-[10px] sm:text-xs leading-normal"
+                                  className="inline-flex items-center gap-1.5 text-rose-600 bg-rose-50 border border-rose-100/50 px-2.5 py-1 rounded-[3px] font-bold text-caption-responsive leading-normal"
                                 >
                                   <AlertTriangle className="h-3.5 w-3.5 shrink-0 text-rose-500" />
                                   <span>
@@ -594,7 +594,7 @@ export function CommercialImportWorkbench() {
                             </div>
                           )}
                         </td>
-                        <td className="px-4 py-3 text-xs text-slate-550 font-medium text-right font-mono">
+                        <td className="px-4 py-3 text-caption-responsive text-slate-550 font-medium text-right font-mono">
                           {Array.isArray(row.nested?.order_items)
                             ? `${row.nested?.order_items.length ?? 0} items`
                             : '—'}
@@ -606,9 +606,9 @@ export function CommercialImportWorkbench() {
               </div>
 
               {errorRows.length > 0 && (
-                <div className="rounded-[3px] border border-rose-500/20 bg-rose-500/10 px-4 py-4 text-sm text-rose-700 dark:text-rose-300">
+                <div className="rounded-[3px] border border-rose-500/20 bg-rose-500/10 px-4 py-4 text-body-regular text-rose-700 dark:text-rose-300">
                   <p className="font-medium">Validation errors</p>
-                  <p className="mt-1 text-sm leading-6">
+                  <p className="mt-1 text-body-regular leading-6">
                     {errorRows.length} row-level error{errorRows.length === 1 ? '' : 's'} were
                     returned. Download the CSV to fix the source file and re-run the preview.
                   </p>

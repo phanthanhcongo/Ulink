@@ -202,12 +202,12 @@ export default function ProductCard({ product, locale, roundedClass }: ProductCa
         />
 
         {/* Product Badge */}
-        <span className="absolute top-3 left-3 px-[9px] py-[7px] bg-[rgba(255,255,255,0.94)] border border-[rgba(23,105,226,0.16)] text-[#1769e2] text-[9px] font-[900] tracking-[0.06em] uppercase shadow-[0_4px_12px_rgba(0,0,0,0.06)] rounded-[3px] z-10">
+        <span className="absolute top-3 left-3 px-[9px] py-[7px] bg-[rgba(255,255,255,0.94)] border border-[rgba(23,105,226,0.16)] text-[#1769e2] text-caption-responsive font-[900] tracking-[0.06em] uppercase shadow-[0_4px_12px_rgba(0,0,0,0.06)] rounded-[3px] z-10">
           {moqInfo.status}
         </span>
 
         {/* Quick View Button */}
-        <span className="absolute left-1/2 bottom-[14px] -translate-x-1/2 translate-y-3 px-4 py-[9px] bg-[rgba(15,39,68,0.88)] text-white text-[11px] font-extrabold opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-[220ms] ease-out pointer-events-none whitespace-nowrap z-10">
+        <span className="absolute left-1/2 bottom-[14px] -translate-x-1/2 translate-y-3 px-4 py-[9px] bg-[rgba(15,39,68,0.88)] text-white text-caption-responsive font-extrabold opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-[220ms] ease-out pointer-events-none whitespace-nowrap z-10">
           {quickViewText}
         </span>
       </Link>
@@ -215,12 +215,12 @@ export default function ProductCard({ product, locale, roundedClass }: ProductCa
       {/* Product Content Body */}
       <div className="flex flex-col flex-1 p-[19px_14px_14px]">
         {/* Product Code */}
-        <p className="mb-[7px] text-[#8290a1] text-[9px] font-[900] tracking-[0.08em] uppercase">
+        <p className="mb-[7px] text-[#8290a1] text-caption-responsive font-[900] tracking-[0.08em] uppercase">
           {firstSku?.sku_code || product.slug.toUpperCase()}
         </p>
 
         {/* Title */}
-        <h3 className="min-h-[44px] mb-[13px] text-[15px] font-bold leading-[1.45] text-[#202630]">
+        <h3 className="min-h-[44px] mb-[13px] text-body-regular font-bold leading-[1.45] text-[#202630]">
           <Link
             href={`/${locale}/solutions/listProduct/${product.slug}`}
             className="hover:text-[#1769e2] transition-colors line-clamp-2"
@@ -231,18 +231,18 @@ export default function ProductCard({ product, locale, roundedClass }: ProductCa
 
         {/* Price Range */}
         <p className="flex items-baseline gap-2 mb-[15px] text-[#202630]">
-          <strong className="text-[15px] font-extrabold">{priceRangeString}</strong>
-          <span className="text-[#5d6979] text-xs font-normal">/ {priceUnit}</span>
+          <strong className="text-body-regular font-extrabold">{priceRangeString}</strong>
+          <span className="text-[#5d6979] text-caption-responsive font-normal">/ {priceUnit}</span>
         </p>
 
         {/* Meta Row: MOQ & specs status */}
-        <div className="flex items-center gap-2 flex-nowrap whitespace-nowrap mb-4 text-[#5d6979] text-[11px] font-medium">
-          <strong className="text-[#202630] text-[11px] font-bold">{moqInfo.moq}</strong>
-          <span className="pl-[9px] border-l border-[#d7e0ea] text-[10px]">{moqInfo.status}</span>
+        <div className="flex items-center gap-2 flex-nowrap whitespace-nowrap mb-4 text-[#5d6979] text-caption-responsive font-medium">
+          <strong className="text-[#202630] text-caption-responsive font-bold">{moqInfo.moq}</strong>
+          <span className="pl-[9px] border-l border-[#d7e0ea] text-caption-responsive">{moqInfo.status}</span>
         </div>
 
         {/* Location / Hub */}
-        <p className="flex items-center gap-2 mt-auto mb-4 text-[#566273] text-[13px] font-medium">
+        <p className="flex items-center gap-2 mt-auto mb-4 text-[#566273] text-caption-responsive font-medium">
           <svg
             viewBox="0 0 24 24"
             fill="none"
@@ -261,7 +261,7 @@ export default function ProductCard({ product, locale, roundedClass }: ProductCa
           <button
             type="button"
             onClick={handleRfqClick}
-            className={`group/btn min-h-[42px] px-4 rounded-[3px] text-white text-[13px] font-[800] text-center shadow-[0_7px_16px_rgba(23,105,226,0.18)] transition-all duration-200 cursor-pointer flex items-center justify-center ${added
+            className={`group/btn min-h-[42px] px-4 rounded-[3px] text-white text-caption-responsive font-[800] text-center shadow-[0_7px_16px_rgba(23,105,226,0.18)] transition-all duration-200 cursor-pointer flex items-center justify-center ${added
                 ? 'bg-emerald-600 hover:bg-emerald-700'
                 : 'bg-gradient-to-b from-[#2c7beb] to-[#1769e2] hover:from-[#0d57c9] hover:to-[#0d57c9]'
               }`}

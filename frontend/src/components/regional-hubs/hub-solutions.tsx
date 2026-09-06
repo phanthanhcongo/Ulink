@@ -64,10 +64,10 @@ export default function HubSolutions({ locale }: HubSolutionsProps) {
         
         {/* Title Area */}
         <div className="text-center max-w-[600px] w-full flex flex-col items-center gap-[28px]">
-          <h2 className="text-[16px] min-[375px]:text-[18px] sm:text-[24px] lg:text-[28px] xl:text-[28px] font-semibold sm:font-bold tracking-tight text-slate-900 leading-tight lg:leading-[36px]">
+          <h2 className="text-body-regular min-[375px]:text-card-title font-semibold sm:font-bold tracking-tight text-slate-900 leading-tight lg:leading-[36px]">
             {t.eyebrow}
           </h2>
-          <h2 className="text-[16px] min-[375px]:text-[18px] sm:text-[24px] lg:text-[28px] xl:text-[28px] font-semibold sm:font-bold tracking-tight text-slate-900 leading-tight lg:leading-[36px]">
+          <h2 className="text-body-regular min-[375px]:text-card-title font-semibold sm:font-bold tracking-tight text-slate-900 leading-tight lg:leading-[36px]">
             {t.title}
           </h2>
         </div>
@@ -88,10 +88,10 @@ export default function HubSolutions({ locale }: HubSolutionsProps) {
                 />
               </div>
             </div>
-            <h3 className="mt-5 text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 leading-snug group-hover:text-brand transition-colors">
+            <h3 className="mt-5 text-body-regular font-bold text-slate-900 leading-snug group-hover:text-brand transition-colors">
               {t.col1Title}
             </h3>
-            <p className="mt-3 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] leading-relaxed text-slate-500 max-w-[260px]">
+            <p className="mt-3 text-caption-responsive leading-relaxed text-slate-500 max-w-[260px]">
               {t.col1Desc}
             </p>
           </div>
@@ -108,10 +108,10 @@ export default function HubSolutions({ locale }: HubSolutionsProps) {
                 />
               </div>
             </div>
-            <h3 className="mt-5 text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 leading-snug group-hover:text-brand transition-colors">
+            <h3 className="mt-5 text-body-regular font-bold text-slate-900 leading-snug group-hover:text-brand transition-colors">
               {t.col2Title}
             </h3>
-            <p className="mt-3 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] leading-relaxed text-slate-500 max-w-[260px]">
+            <p className="mt-3 text-caption-responsive leading-relaxed text-slate-500 max-w-[260px]">
               {t.col2Desc}
             </p>
           </div>
@@ -128,10 +128,10 @@ export default function HubSolutions({ locale }: HubSolutionsProps) {
                 />
               </div>
             </div>
-            <h3 className="mt-5 text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 leading-snug group-hover:text-brand transition-colors">
+            <h3 className="mt-5 text-body-regular font-bold text-slate-900 leading-snug group-hover:text-brand transition-colors">
               {t.col3Title}
             </h3>
-            <p className="mt-3 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] leading-relaxed text-slate-500 max-w-[260px]">
+            <p className="mt-3 text-caption-responsive leading-relaxed text-slate-500 max-w-[260px]">
               {t.col3Desc}
             </p>
           </div>
@@ -148,10 +148,10 @@ export default function HubSolutions({ locale }: HubSolutionsProps) {
                 />
               </div>
             </div>
-            <h3 className="mt-5 text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 leading-snug group-hover:text-brand transition-colors">
+            <h3 className="mt-5 text-body-regular font-bold text-slate-900 leading-snug group-hover:text-brand transition-colors">
               {t.col4Title}
             </h3>
-            <p className="mt-3 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] leading-relaxed text-slate-500 max-w-[260px]">
+            <p className="mt-3 text-caption-responsive leading-relaxed text-slate-500 max-w-[260px]">
               {t.col4Desc}
             </p>
           </div>

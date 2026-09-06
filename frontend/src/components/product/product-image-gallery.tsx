@@ -26,8 +26,8 @@ export function ProductImageGallery({ images, productName }: ProductImageGallery
         <div className="w-20 h-20 rounded-[3px] bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-300 mb-4">
           <Package className="h-10 w-10 text-slate-400 stroke-[1.5]" />
         </div>
-        <p className="text-sm font-bold text-slate-700">Chưa có hình ảnh trong Database</p>
-        <p className="mt-1 text-xs text-slate-400 max-w-xs">
+        <p className="text-body-regular font-bold text-slate-700">Chưa có hình ảnh trong Database</p>
+        <p className="mt-1 text-caption-responsive text-slate-400 max-w-xs">
           Sản phẩm này chưa được cập nhật hình ảnh trực tiếp trong cơ sở dữ liệu Directus CMS.
         </p>
       </div>
@@ -91,7 +91,7 @@ export function ProductImageGallery({ images, productName }: ProductImageGallery
 
         {/* Slide Counter Badge Top Left */}
         {images.length > 1 && (
-          <span className="absolute top-3 left-3 z-10 px-2.5 py-1 rounded-[3px] bg-slate-900/70 text-white text-[11px] font-extrabold backdrop-blur-md shadow-xs">
+          <span className="absolute top-3 left-3 z-10 px-2.5 py-1 rounded-[3px] bg-slate-900/70 text-white text-caption-responsive font-extrabold backdrop-blur-md shadow-xs">
             {activeIndex + 1} / {images.length}
           </span>
         )}
@@ -100,7 +100,7 @@ export function ProductImageGallery({ images, productName }: ProductImageGallery
         <button
           type="button"
           onClick={() => setZoomOpen(true)}
-          className="absolute bottom-3 right-3 z-10 flex items-center gap-1.5 px-3 py-1.5 rounded-[3px] bg-white/90 hover:bg-blue-600 text-slate-700 hover:text-white text-xs font-bold shadow-md border border-slate-200/60 backdrop-blur-md transition-all cursor-pointer"
+          className="absolute bottom-3 right-3 z-10 flex items-center gap-1.5 px-3 py-1.5 rounded-[3px] bg-white/90 hover:bg-blue-600 text-slate-700 hover:text-white text-caption-responsive font-bold shadow-md border border-slate-200/60 backdrop-blur-md transition-all cursor-pointer"
         >
           <ZoomIn className="h-3.5 w-3.5" />
           <span>Phóng to</span>
@@ -130,7 +130,7 @@ export function ProductImageGallery({ images, productName }: ProductImageGallery
                   sizes="88px"
                 />
                 {img.label && (
-                  <span className="absolute bottom-0 inset-x-0 bg-slate-900/80 text-white text-[9px] font-bold text-center py-0.5 truncate">
+                  <span className="absolute bottom-0 inset-x-0 bg-slate-900/80 text-white text-caption-responsive font-bold text-center py-0.5 truncate">
                     {img.label}
                   </span>
                 )}
@@ -148,7 +148,7 @@ export function ProductImageGallery({ images, productName }: ProductImageGallery
             <button
               type="button"
               onClick={() => setZoomOpen(false)}
-              className="absolute -top-10 right-0 text-white hover:text-blue-400 text-sm font-bold flex items-center gap-1 cursor-pointer"
+              className="absolute -top-10 right-0 text-white hover:text-blue-400 text-body-regular font-bold flex items-center gap-1 cursor-pointer"
             >
               ✕ Đóng (Esc)
             </button>
@@ -186,7 +186,7 @@ export function ProductImageGallery({ images, productName }: ProductImageGallery
               </>
             )}
 
-            <p className="text-white/80 text-xs font-semibold mt-4 text-center">
+            <p className="text-white/80 text-caption-responsive font-semibold mt-4 text-center">
               {currentImage.alt} ({activeIndex + 1}/{images.length})
             </p>
           </div>

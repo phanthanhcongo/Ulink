@@ -97,7 +97,7 @@ export default async function EventRegisterPage({ params }: Props) {
         </div>
 
         {/* Khối 1: Thông tin vé & Thanh toán */}
-        <div className="mt-10  rounded-[3px] bg-white p-5">
+        <div className="mt-10 rounded-[3px] bg-white p-5">
           <h2 className="text-card-title font-bold text-slate-900 font-sans">
             {L.paymentTitle[locale as 'vi' | 'en' | 'ja']}
           </h2>

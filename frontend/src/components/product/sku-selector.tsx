@@ -113,7 +113,7 @@ export default function SkuSelector({ skus, labels }: SkuSelectorProps) {
       {hasAttributes ? (
         attributes.map((attr) => (
           <div key={attr.name}>
-            <p className="text-sm font-semibold text-foreground mb-2">{attr.name}</p>
+            <p className="text-body-regular font-semibold text-foreground mb-2">{attr.name}</p>
             <div className="flex flex-wrap gap-2">
               {attr.values.map((val) => {
                 const isSelected = selections[attr.name] === val;
@@ -123,7 +123,7 @@ export default function SkuSelector({ skus, labels }: SkuSelectorProps) {
                     type="button"
                     onClick={() => handleSelect(attr.name, val)}
                     className={cn(
-                      'inline-flex items-center px-3.5 py-2 rounded-[3px] text-sm font-medium border transition-all',
+                      'inline-flex items-center px-3.5 py-2 rounded-[3px] text-body-regular font-medium border transition-all',
                       !isSelected &&
                         'bg-background hover:border-primary hover:text-primary border-border',
                       isSelected &&
@@ -140,7 +140,7 @@ export default function SkuSelector({ skus, labels }: SkuSelectorProps) {
       ) : skus.length > 1 ? (
         /* Fallback: no structured attributes */
         <div>
-          <p className="text-sm font-semibold text-foreground mb-2">{labels.selectVariant}</p>
+          <p className="text-body-regular font-semibold text-foreground mb-2">{labels.selectVariant}</p>
           <div className="flex flex-wrap gap-2">
             {skus.map((sku) => {
               const isSelected = selectedSku?.id === sku.id;
@@ -150,7 +150,7 @@ export default function SkuSelector({ skus, labels }: SkuSelectorProps) {
                   type="button"
                   onClick={() => setSelections({})}
                   className={cn(
-                    'inline-flex items-center px-3.5 py-2 rounded-[3px] text-sm font-medium border transition-all',
+                    'inline-flex items-center px-3.5 py-2 rounded-[3px] text-body-regular font-medium border transition-all',
                     !isSelected &&
                       'bg-background hover:border-primary hover:text-primary border-border',
                     isSelected && 'border-primary bg-primary/10 text-primary ring-1 ring-primary/30'
@@ -166,9 +166,9 @@ export default function SkuSelector({ skus, labels }: SkuSelectorProps) {
 
       {/* Selected SKU info */}
       {selectedSku && (
-        <div className="flex items-center gap-2 text-sm">
+        <div className="flex items-center gap-2 text-body-regular">
           <Package className="h-4 w-4 text-muted-foreground" />
-          <span className="text-muted-foreground font-mono text-xs">{selectedSku.sku_code}</span>
+          <span className="text-muted-foreground font-mono text-caption-responsive">{selectedSku.sku_code}</span>
           {selectedSku.unit && <span className="text-muted-foreground">· {selectedSku.unit}</span>}
         </div>
       )}
@@ -179,7 +179,7 @@ export default function SkuSelector({ skus, labels }: SkuSelectorProps) {
         onClick={handleAddToCart}
         disabled={!selectedSku}
         className={cn(
-          'w-full inline-flex items-center justify-center gap-2 h-11 rounded-[3px] font-semibold text-sm transition-all',
+          'w-full inline-flex items-center justify-center gap-2 h-11 rounded-[3px] font-semibold text-body-regular transition-all',
           added
             ? 'bg-green-600 text-white'
             : 'bg-primary text-primary-foreground hover:bg-primary/90 hover:shadow-lg hover:shadow-primary/20',

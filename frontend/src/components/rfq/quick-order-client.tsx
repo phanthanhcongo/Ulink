@@ -456,18 +456,18 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
   /* ── shared input classes ── */
   const inputCls = (err?: string) =>
     cn(
-      'w-full rounded-[3px] border  px-3 py-2.5 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand',
+      'w-full rounded-[3px] border  px-3 py-2.5 text-body-regular outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand',
       err ? 'border-rose-500' : 'border-border/80'
     );
 
   const selectCls = (err?: string) =>
     cn(
-      'w-full rounded-[3px] border  px-3 py-2.5 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand appearance-none',
+      'w-full rounded-[3px] border  px-3 py-2.5 text-body-regular outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand appearance-none',
       err ? 'border-rose-500' : 'border-border/80'
     );
 
   const sectionHeadCls =
-    'flex items-center gap-2 text-base font-semibold text-foreground border-l-[3px] border-brand pl-3';
+    'flex items-center gap-2 text-body-regular font-semibold text-foreground border-l-[3px] border-brand pl-3';
 
   /* ───────────────── RENDER ─────────────────── */
 
@@ -477,7 +477,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
         {/* Breadcrumbs */}
         <nav
           aria-label="Breadcrumb"
-          className="flex items-center gap-2 text-[12px] text-muted-foreground justify-center"
+          className="flex items-center gap-2 text-caption-responsive text-muted-foreground justify-center"
         >
           <Link href="/" className="transition-colors hover:text-brand">
             {t('breadcrumbHome')}
@@ -493,10 +493,10 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
 
         {/* Heading & Subtext */}
         <div className="space-y-4 max-w-2xl mx-auto text-center">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-primary tracking-tight">
+          <h2 className="text-section-title font-extrabold text-primary tracking-tight">
             Yêu cầu báo giá đã được gửi thành công!
           </h2>
-          <p className="text-xs sm:text-sm text-slate-500 font-medium leading-relaxed">
+          <p className="text-caption-responsive text-slate-500 font-medium leading-relaxed">
             Cảm ơn Quý khách đã tin tưởng và lựa chọn ULink Industries. Yêu cầu của bạn đã được
             chuyển tới phòng chuyên môn kỹ thuật. Đội ngũ kỹ sư của chúng tôi đang tiến hành rà soát
             các yêu cầu kỹ thuật và sẽ liên hệ phản hồi chi tiết tới Quý khách trong vòng 24 giờ
@@ -506,11 +506,11 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
 
         {/* Card: Chi tiết yêu cầu */}
         <div className="bg-white border border-slate-200/80 rounded-[3px] p-6 sm:p-8 w-full max-w-[540px] mx-auto text-left shadow-sm space-y-6">
-          <h3 className="text-sm font-extrabold text-primary border-b border-slate-100 pb-3 uppercase tracking-wider">
+          <h3 className="text-body-regular font-extrabold text-primary border-b border-slate-100 pb-3 uppercase tracking-wider">
             Chi tiết yêu cầu của Quý khách
           </h3>
 
-          <div className="divide-y divide-slate-100 text-xs sm:text-sm">
+          <div className="divide-y divide-slate-100 text-caption-responsive">
             <div className="flex justify-between items-center py-3">
               <span className="text-slate-400 font-medium">Mã số yêu cầu</span>
               <span className="font-extrabold text-slate-850 font-mono">{submittedRfq.code}</span>
@@ -543,14 +543,14 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
             </div>
             <div className="flex justify-between items-center py-3">
               <span className="text-slate-400 font-medium">Trạng thái</span>
-              <span className="font-bold text-emerald-650 bg-emerald-50 px-2.5 py-0.5 rounded text-[11px] uppercase tracking-wide">
+              <span className="font-bold text-emerald-650 bg-emerald-50 px-2.5 py-0.5 rounded text-caption-responsive uppercase tracking-wide">
                 {submittedRfq.status}
               </span>
             </div>
           </div>
 
           {/* Info note */}
-          <div className="bg-blue-50/50 text-brand-strong p-3 rounded-[3px] text-[11px] font-semibold flex items-start gap-2 border border-blue-100/35">
+          <div className="bg-blue-50/50 text-brand-strong p-3 rounded-[3px] text-caption-responsive font-semibold flex items-start gap-2 border border-blue-100/35">
             <Info className="h-4 w-4 text-blue-600 shrink-0 mt-0.5" />
             <p className="leading-relaxed">
               Một bản sao chi tiết yêu cầu báo giá đã được gửi tự động tới email liên hệ của bạn.
@@ -567,7 +567,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
               setCreatedRfqId(null);
               setSubmittedRfq(null);
             }}
-            className="inline-flex items-center gap-1.5 rounded-[3px] bg-brand px-6 py-3 text-xs sm:text-sm font-bold text-white hover:bg-brand/95 transition-all shadow hover:scale-[1.01]"
+            className="inline-flex items-center gap-1.5 rounded-[3px] bg-brand px-6 py-3 text-caption-responsive font-bold text-white hover:bg-brand/95 transition-all shadow hover:scale-[1.01]"
           >
             {t('createNew')}
             <ArrowRight className="h-4 w-4" />
@@ -577,7 +577,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
         {/* Suggestion block: Có thể Quý khách quan tâm */}
         {meta?.products && meta.products.length > 0 && (
           <div className="w-full text-left pt-12 border-t border-slate-100 mt-12 space-y-6">
-            <h3 className="text-lg sm:text-xl font-bold text-primary">
+            <h3 className="text-card-title font-bold text-primary">
               Có thể Quý khách quan tâm
             </h3>
 
@@ -611,13 +611,13 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                           <Package className="h-8 w-8 text-slate-200 group-hover:scale-105 transition-transform" />
                         )}
                       </div>
-                      <h4 className="text-xs font-bold text-slate-800 line-clamp-2 leading-tight">
+                      <h4 className="text-caption-responsive font-bold text-slate-800 line-clamp-2 leading-tight">
                         {translatedName}
                       </h4>
                     </div>
                     <div className="pt-3 border-t border-slate-50 mt-3 flex items-center justify-between">
-                      <span className="text-[10px] text-slate-400 font-bold uppercase">{unit}</span>
-                      <span className="text-[10px] font-extrabold text-blue-600 group-hover:underline">
+                      <span className="text-caption-responsive text-slate-400 font-bold uppercase">{unit}</span>
+                      <span className="text-caption-responsive font-extrabold text-blue-600 group-hover:underline">
                         Xem chi tiết &gt;
                       </span>
                     </div>
@@ -636,7 +636,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
       {/* Breadcrumbs */}
       <nav
         aria-label="Breadcrumb"
-        className="flex items-center gap-2 text-[12px] text-muted-foreground"
+        className="flex items-center gap-2 text-caption-responsive text-muted-foreground"
       >
         <Link href="/" className="transition-colors hover:text-brand">
           {t('breadcrumbHome')}
@@ -647,13 +647,13 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
 
       {/* Page Header */}
       <div className="max-w-4xl">
-        <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-brand">
+        <p className="text-caption-responsive font-semibold uppercase tracking-[0.2em] text-brand">
           {t('subtitle')}
         </p>
-        <h1 className="mt-2 text-[28px] sm:text-[34px] md:text-[38px] lg:text-[42px] xl:text-[44px] font-extrabold tracking-tight text-foreground">
+        <h1 className="mt-2 text-section-title font-extrabold tracking-tight text-foreground">
           {t('title')}
         </h1>
-        <p className="mt-3 text-sm leading-relaxed text-muted-foreground max-w-3xl">
+        <p className="mt-3 text-body-regular leading-relaxed text-muted-foreground max-w-3xl">
           {t('description')}
         </p>
       </div>
@@ -664,7 +664,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
           <form onSubmit={handleSubmit} className="space-y-8">
             {/* Submit error */}
             {submitError && (
-              <div className="rounded-[3px] border border-rose-100 p-3 text-sm text-rose-800 flex items-center gap-2 dark:border-rose-900/30">
+              <div className="rounded-[3px] border border-rose-100 p-3 text-body-regular text-rose-800 flex items-center gap-2 dark:border-rose-900/30">
                 <AlertCircle className="h-4 w-4 text-rose-500 shrink-0" />
                 <span>{submitError}</span>
               </div>
@@ -676,7 +676,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
 
               {/* Company */}
               <div className="space-y-1.5">
-                <label className="text-sm font-medium text-foreground">
+                <label className="text-body-regular font-medium text-foreground">
                   {t('companyLabel')} <span className="text-rose-500">*</span>
                 </label>
                 <input
@@ -690,14 +690,14 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                   placeholder={t('companyPlaceholder')}
                 />
                 {fieldErrors.company && (
-                  <span className="text-xs text-rose-500 font-medium">{fieldErrors.company}</span>
+                  <span className="text-caption-responsive text-rose-500 font-medium">{fieldErrors.company}</span>
                 )}
               </div>
 
               {/* Tax ID + Contact */}
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-1.5">
-                  <label className="text-sm font-medium text-foreground">{t('taxIdLabel')}</label>
+                  <label className="text-body-regular font-medium text-foreground">{t('taxIdLabel')}</label>
                   <input
                     type="text"
                     value={formTaxId}
@@ -707,7 +707,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                   />
                 </div>
                 <div className="space-y-1.5">
-                  <label className="text-sm font-medium text-foreground">
+                  <label className="text-body-regular font-medium text-foreground">
                     {t('contactLabel')} <span className="text-rose-500">*</span>
                   </label>
                   <input
@@ -721,7 +721,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                     placeholder={t('contactPlaceholder')}
                   />
                   {fieldErrors.contact && (
-                    <span className="text-xs text-rose-500 font-medium">{fieldErrors.contact}</span>
+                    <span className="text-caption-responsive text-rose-500 font-medium">{fieldErrors.contact}</span>
                   )}
                 </div>
               </div>
@@ -729,7 +729,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
               {/* Phone + Email */}
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-1.5">
-                  <label className="text-sm font-medium text-foreground">
+                  <label className="text-body-regular font-medium text-foreground">
                     {t('phoneLabel')} <span className="text-rose-500">*</span>
                   </label>
                   <input
@@ -743,11 +743,11 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                     placeholder={t('phonePlaceholder')}
                   />
                   {fieldErrors.phone && (
-                    <span className="text-xs text-rose-500 font-medium">{fieldErrors.phone}</span>
+                    <span className="text-caption-responsive text-rose-500 font-medium">{fieldErrors.phone}</span>
                   )}
                 </div>
                 <div className="space-y-1.5">
-                  <label className="text-sm font-medium text-foreground">{t('emailLabel')}</label>
+                  <label className="text-body-regular font-medium text-foreground">{t('emailLabel')}</label>
                   <input
                     type="email"
                     value={formEmail}
@@ -759,14 +759,14 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                     placeholder={t('emailPlaceholder')}
                   />
                   {fieldErrors.email && (
-                    <span className="text-xs text-rose-500 font-medium">{fieldErrors.email}</span>
+                    <span className="text-caption-responsive text-rose-500 font-medium">{fieldErrors.email}</span>
                   )}
                 </div>
               </div>
 
               {/* Address */}
               <div className="space-y-1.5">
-                <label className="text-sm font-medium text-foreground">{t('addressLabel')}</label>
+                <label className="text-body-regular font-medium text-foreground">{t('addressLabel')}</label>
                 <input
                   type="text"
                   value={formAddress}
@@ -778,7 +778,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                   placeholder={t('addressPlaceholder')}
                 />
                 {fieldErrors.address && (
-                  <span className="text-xs text-rose-500 font-medium">{fieldErrors.address}</span>
+                  <span className="text-caption-responsive text-rose-500 font-medium">{fieldErrors.address}</span>
                 )}
               </div>
             </div>
@@ -802,7 +802,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                       setManualNote('');
                       setIsAddModalOpen(true);
                     }}
-                    className="inline-flex items-center gap-1.5 rounded-[3px] bg-brand/5 hover:bg-brand/10 border border-brand/20 px-3.5 py-1.5 text-xs font-bold text-brand transition-all cursor-pointer"
+                    className="inline-flex items-center gap-1.5 rounded-[3px] bg-brand/5 hover:bg-brand/10 border border-brand/20 px-3.5 py-1.5 text-caption-responsive font-bold text-brand transition-all cursor-pointer"
                   >
                     <Plus className="h-4 w-4" />
                     Thêm sản phẩm
@@ -812,7 +812,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
 
               {cart.length === 0 ? (
                 <div className="flex flex-col items-center justify-center py-10 px-4 text-center border-2 border-dashed border-border/60 rounded-[3px] space-y-4">
-                  <p className="text-sm text-muted-foreground max-w-md">{t('emptyCart')}</p>
+                  <p className="text-body-regular text-muted-foreground max-w-md">{t('emptyCart')}</p>
                   <div className="flex items-center gap-3">
                     <button
                       type="button"
@@ -828,14 +828,14 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                         setManualNote('');
                         setIsAddModalOpen(true);
                       }}
-                      className="inline-flex items-center gap-1.5 rounded-[3px] bg-brand px-4 py-2 text-xs font-semibold text-white hover:bg-brand/95 transition-all shadow cursor-pointer"
+                      className="inline-flex items-center gap-1.5 rounded-[3px] bg-brand px-4 py-2 text-caption-responsive font-semibold text-white hover:bg-brand/95 transition-all shadow cursor-pointer"
                     >
                       <Plus className="h-4 w-4" />
                       Thêm nhanh sản phẩm
                     </button>
                     <Link
                       href="/solutions/listProduct"
-                      className="inline-flex items-center gap-1.5 rounded-[3px] border border-border px-4 py-2 text-xs font-semibold text-muted-foreground hover:bg-muted/30 transition-all shadow"
+                      className="inline-flex items-center gap-1.5 rounded-[3px] border border-border px-4 py-2 text-caption-responsive font-semibold text-muted-foreground hover:bg-muted/30 transition-all shadow"
                     >
                       {t('viewProducts')}
                       <ArrowRight className="h-3.5 w-3.5" />
@@ -860,11 +860,11 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                           <Trash2 className="h-4 w-4" />
                         </button>
                         <div className="pr-8">
-                          <span className="text-[10px] text-muted-foreground font-mono block">
+                          <span className="text-caption-responsive text-muted-foreground font-mono block">
                             #{String(idx + 1).padStart(2, '0')}
                           </span>
                           <h4
-                            className="font-bold text-foreground text-sm mt-0.5 leading-snug hover:text-brand cursor-pointer transition-colors"
+                            className="font-bold text-foreground text-body-regular mt-0.5 leading-snug hover:text-brand cursor-pointer transition-colors"
                             onClick={() => {
                               setSelectedProductToEdit(idx);
                               setManualName(item.product_name || '');
@@ -880,12 +880,12 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                             {item.product_name || item.sku}
                           </h4>
                           {item.sku && item.product_name && item.sku !== item.product_name && (
-                            <span className="text-[11px] text-muted-foreground/70 font-mono mt-0.5 block">
+                            <span className="text-caption-responsive text-muted-foreground/70 font-mono mt-0.5 block">
                               SKU: {item.sku}
                             </span>
                           )}
                         </div>
-                        <div className="grid grid-cols-2 gap-3 pt-2.5 border-t border-slate-200/40 text-[11px]">
+                        <div className="grid grid-cols-2 gap-3 pt-2.5 border-t border-slate-200/40 text-caption-responsive">
                           <div>
                             <span className="text-muted-foreground block font-medium">
                               {t('colSpec')}
@@ -904,7 +904,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                           </div>
                         </div>
                         <div className="pt-2 flex items-center justify-between border-t border-slate-200/40">
-                          <span className="text-xs font-semibold text-foreground">
+                          <span className="text-caption-responsive font-semibold text-foreground">
                             {t('colQuantity')}
                           </span>
                           <input
@@ -918,7 +918,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                                 Math.max(1, parseInt(e.target.value) || 1)
                               )
                             }
-                            className="w-24 rounded-[3px] border border-border/80 px-2.5 py-1 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand font-semibold text-center bg-white"
+                            className="w-24 rounded-[3px] border border-border/80 px-2.5 py-1 text-body-regular outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand font-semibold text-center bg-white"
                             placeholder="1"
                           />
                         </div>
@@ -928,8 +928,8 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
 
                   {/* Tablet/Desktop Table View */}
                   <div className="hidden sm:block overflow-x-auto rounded-[3px] border border-border/60">
-                    <table className="w-full border-collapse text-left text-sm min-w-[600px]">
-                      <thead className="text-muted-foreground text-xs uppercase font-semibold border-b border-border/60">
+                    <table className="w-full border-collapse text-left text-body-regular min-w-[600px]">
+                      <thead className="text-muted-foreground text-caption-responsive uppercase font-semibold border-b border-border/60">
                         <tr>
                           <th className="px-3 py-3 w-12 text-center">{t('colIndex')}</th>
                           <th className="px-3 py-3">{t('colProductSku')}</th>
@@ -942,12 +942,12 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                       <tbody className="divide-y divide-border/50">
                         {cart.map((item, idx) => (
                           <tr key={idx} className="hover:bg-muted/10 transition-colors">
-                            <td className="px-3 py-2.5 text-center text-xs text-muted-foreground font-mono">
+                            <td className="px-3 py-2.5 text-center text-caption-responsive text-muted-foreground font-mono">
                               {String(idx + 1).padStart(2, '0')}
                             </td>
                             <td className="px-3 py-2.5">
                               <span
-                                className="font-semibold text-foreground hover:text-brand cursor-pointer transition-colors block text-sm"
+                                className="font-semibold text-foreground hover:text-brand cursor-pointer transition-colors block text-body-regular"
                                 onClick={() => {
                                   setSelectedProductToEdit(idx);
                                   setManualName(item.product_name || '');
@@ -963,15 +963,15 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                                 {item.product_name || item.sku}
                               </span>
                               {item.sku && item.product_name && item.sku !== item.product_name && (
-                                <span className="text-[11px] text-muted-foreground/70 font-mono mt-0.5 block">
+                                <span className="text-caption-responsive text-muted-foreground/70 font-mono mt-0.5 block">
                                   SKU: {item.sku}
                                 </span>
                               )}
                             </td>
-                            <td className="px-3 py-2.5 text-sm text-slate-700 font-medium">
+                            <td className="px-3 py-2.5 text-body-regular text-slate-700 font-medium">
                               {item.spec || '-'}
                             </td>
-                            <td className="px-3 py-2.5 text-sm text-slate-700 font-medium">
+                            <td className="px-3 py-2.5 text-body-regular text-slate-700 font-medium">
                               {item.unit || '-'}
                             </td>
                             <td className="px-3 py-2.5">
@@ -986,7 +986,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                                     Math.max(1, parseInt(e.target.value) || 1)
                                   )
                                 }
-                                className="w-24 rounded-[3px] border border-border/80  px-2.5 py-1 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand font-semibold text-center"
+                                className="w-24 rounded-[3px] border border-border/80 px-2.5 py-1 text-body-regular outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand font-semibold text-center"
                                 placeholder="1"
                               />
                             </td>
@@ -1015,7 +1015,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
               <div className="grid gap-4 sm:grid-cols-2">
                 {/* Industry */}
                 <div className="space-y-1.5">
-                  <label className="text-sm font-medium text-foreground">
+                  <label className="text-body-regular font-medium text-foreground">
                     {t('industryLabel')}
                   </label>
                   <div className="relative">
@@ -1037,7 +1037,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                     <ChevronRight className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground rotate-90 pointer-events-none" />
                   </div>
                   {fieldErrors.industry && (
-                    <span className="text-xs text-rose-500 font-medium">
+                    <span className="text-caption-responsive text-rose-500 font-medium">
                       {fieldErrors.industry}
                     </span>
                   )}
@@ -1045,7 +1045,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
 
                 {/* Delivery Time */}
                 <div className="space-y-1.5">
-                  <label className="text-sm font-medium text-foreground">
+                  <label className="text-body-regular font-medium text-foreground">
                     {t('deliveryTimeLabel')}
                   </label>
                   <div className="relative">
@@ -1068,7 +1068,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
               <div className="grid gap-4 sm:grid-cols-2">
                 {/* Payment Method */}
                 <div className="space-y-1.5">
-                  <label className="text-sm font-medium text-foreground">
+                  <label className="text-body-regular font-medium text-foreground">
                     {t('paymentMethodLabel')}
                   </label>
                   <div className="relative">
@@ -1089,7 +1089,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
 
                 {/* Order Frequency */}
                 <div className="space-y-1.5">
-                  <label className="text-sm font-medium text-foreground">
+                  <label className="text-body-regular font-medium text-foreground">
                     {t('orderFrequencyLabel')}
                   </label>
                   <div className="relative">
@@ -1111,7 +1111,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
 
               {/* Hub */}
               <div className="space-y-1.5">
-                <label className="text-sm font-medium text-foreground">{t('hubLabel')}</label>
+                <label className="text-body-regular font-medium text-foreground">{t('hubLabel')}</label>
                 <div className="relative">
                   <select
                     value={formHub}
@@ -1131,13 +1131,13 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                   <ChevronRight className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground rotate-90 pointer-events-none" />
                 </div>
                 {fieldErrors.hub && (
-                  <span className="text-xs text-rose-500 font-medium">{fieldErrors.hub}</span>
+                  <span className="text-caption-responsive text-rose-500 font-medium">{fieldErrors.hub}</span>
                 )}
               </div>
 
               {/* Special Request */}
               <div className="space-y-1.5">
-                <label className="text-sm font-medium text-foreground">
+                <label className="text-body-regular font-medium text-foreground">
                   {t('specialRequestLabel')}
                 </label>
                 <textarea
@@ -1145,7 +1145,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                   value={formMessage}
                   onChange={(e) => setFormMessage(e.target.value)}
                   placeholder={t('specialRequestPlaceholder')}
-                  className="w-full rounded-[3px] border border-border/80  px-3 py-2.5 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand resize-none"
+                  className="w-full rounded-[3px] border border-border/80 px-3 py-2.5 text-body-regular outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand resize-none"
                 />
               </div>
             </div>
@@ -1155,7 +1155,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
               <button
                 type="button"
                 onClick={handleSaveDraft}
-                className="inline-flex items-center justify-center gap-2 rounded-[3px] border border-border/80 px-5 py-3 text-sm font-semibold text-foreground hover:bg-muted/40 transition-all w-full sm:w-auto"
+                className="inline-flex items-center justify-center gap-2 rounded-[3px] border border-border/80 px-5 py-3 text-body-regular font-semibold text-foreground hover:bg-muted/40 transition-all w-full sm:w-auto"
               >
                 {draftSavedMsg ? (
                   <>
@@ -1170,7 +1170,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
               <button
                 type="submit"
                 disabled={submitting}
-                className="inline-flex items-center justify-center gap-2 rounded-[3px] bg-brand px-6 py-3 text-sm font-semibold text-white shadow hover:bg-brand/90 transition-all disabled:opacity-50 w-full sm:w-auto"
+                className="inline-flex items-center justify-center gap-2 rounded-[3px] bg-brand px-6 py-3 text-body-regular font-semibold text-white shadow hover:bg-brand/90 transition-all disabled:opacity-50 w-full sm:w-auto"
               >
                 {submitting && <Loader2 className="h-4 w-4 animate-spin" />}
                 {submitting ? t('submitting') : t('submitRfq')}
@@ -1184,7 +1184,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
           <div className="sticky top-24 space-y-6">
             {/* Why ULink */}
             <div className="rounded-[3px] border border-border p-6 shadow-sm space-y-5">
-              <h3 className="text-lg font-bold text-foreground">{t('sidebarWhyTitle')}</h3>
+              <h3 className="text-card-title font-bold text-foreground">{t('sidebarWhyTitle')}</h3>
 
               {[
                 {
@@ -1217,8 +1217,8 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                     <Icon className="h-5 w-5" />
                   </div>
                   <div>
-                    <p className="text-sm font-semibold text-foreground">{t(titleKey)}</p>
-                    <p className="text-xs text-muted-foreground leading-relaxed mt-0.5">
+                    <p className="text-body-regular font-semibold text-foreground">{t(titleKey)}</p>
+                    <p className="text-caption-responsive text-muted-foreground leading-relaxed mt-0.5">
                       {t(descKey)}
                     </p>
                   </div>
@@ -1228,7 +1228,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
 
             {/* RFQ Process */}
             <div className="rounded-[3px] border border-border p-6 shadow-sm space-y-4">
-              <h3 className="text-lg font-bold text-foreground">{t('sidebarProcessTitle')}</h3>
+              <h3 className="text-card-title font-bold text-foreground">{t('sidebarProcessTitle')}</h3>
 
               <div className="space-y-3">
                 {[
@@ -1240,13 +1240,13 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                   <div key={step} className="flex items-start gap-3">
                     <div
                       className={cn(
-                        'flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-xs font-bold',
+                        'flex h-6 w-6 shrink-0 items-center justify-center rounded-full text-caption-responsive font-bold',
                         color
                       )}
                     >
                       {step}
                     </div>
-                    <p className="text-sm text-foreground leading-relaxed pt-0.5">{t(key)}</p>
+                    <p className="text-body-regular text-foreground leading-relaxed pt-0.5">{t(key)}</p>
                   </div>
                 ))}
               </div>
@@ -1254,26 +1254,26 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
 
             {/* Urgent Support */}
             <div className="rounded-[3px] border border-border p-6 shadow-sm space-y-4">
-              <h3 className="text-lg font-bold text-foreground">{t('sidebarUrgentTitle')}</h3>
-              <p className="text-xs text-muted-foreground leading-relaxed">
+              <h3 className="text-card-title font-bold text-foreground">{t('sidebarUrgentTitle')}</h3>
+              <p className="text-caption-responsive text-muted-foreground leading-relaxed">
                 {t('sidebarUrgentDesc')}
               </p>
 
               <div className="space-y-2.5">
                 <div className="flex items-center gap-2">
-                  <span className="text-xs text-muted-foreground">Hotline:</span>
+                  <span className="text-caption-responsive text-muted-foreground">Hotline:</span>
                   <a
                     href={`tel:${t('sidebarHotline').replace(/\s/g, '')}`}
-                    className="text-lg font-bold text-brand hover:underline"
+                    className="text-card-title font-bold text-brand hover:underline"
                   >
                     {t('sidebarHotline')}
                   </a>
                 </div>
                 <div className="flex items-center gap-2">
-                  <span className="text-xs text-muted-foreground">Email:</span>
+                  <span className="text-caption-responsive text-muted-foreground">Email:</span>
                   <a
                     href={`mailto:${t('sidebarEmail')}`}
-                    className="text-sm font-medium text-brand hover:underline"
+                    className="text-body-regular font-medium text-brand hover:underline"
                   >
                     {t('sidebarEmail')}
                   </a>
@@ -1283,7 +1283,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
               <button
                 type="button"
                 onClick={() => setIsPhoneModalOpen(true)}
-                className="flex items-center justify-center gap-2 w-full rounded-[3px] border-2 border-rose-500 px-4 py-2.5 text-sm font-semibold text-rose-600 hover:bg-rose-50 hover:text-rose-700 transition-all cursor-pointer"
+                className="flex items-center justify-center gap-2 w-full rounded-[3px] border-2 border-rose-500 px-4 py-2.5 text-body-regular font-semibold text-rose-600 hover:bg-rose-50 hover:text-rose-700 transition-all cursor-pointer"
               >
                 <Phone className="h-4 w-4" />
                 {t('sidebarCtaCall')}
@@ -1299,7 +1299,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
           
           {/* Header */}
           <div className="flex items-center justify-between px-6 py-4 border-b border-slate-150">
-            <h3 className="text-lg font-extrabold text-slate-900">
+            <h3 className="text-card-title font-extrabold text-slate-900">
               {selectedProductToEdit !== null ? 'Chỉnh sửa sản phẩm báo giá' : 'Thêm sản phẩm vào danh sách báo giá'}
             </h3>
             <button
@@ -1323,7 +1323,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                     placeholder="Tìm kiếm găng tay, khăn lau, túi..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full rounded-[3px] border border-slate-200 pl-10 pr-4 py-3 text-sm outline-none focus:border-brand focus:ring-1 focus:ring-brand font-medium"
+                    className="w-full rounded-[3px] border border-slate-200 pl-10 pr-4 py-3 text-body-regular outline-none focus:border-brand focus:ring-1 focus:ring-brand font-medium"
                   />
                   <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400">
                     <svg className="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -1331,7 +1331,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                     </svg>
                   </span>
                 </div>
-                <p className="text-[11px] text-slate-400 font-medium">
+                <p className="text-caption-responsive text-slate-400 font-medium">
                   Hoặc nhập thông tin sản phẩm thủ công bên dưới nếu không tìm thấy
                 </p>
               </div>
@@ -1360,7 +1360,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                       )}
                     >
                       <div className="flex items-center gap-3">
-                        <div className="h-10 w-10 bg-slate-50 border border-slate-150 rounded-[3px] flex items-center justify-center text-slate-400 font-mono text-[10px] uppercase font-bold shrink-0 relative overflow-hidden">
+                        <div className="h-10 w-10 bg-slate-50 border border-slate-150 rounded-[3px] flex items-center justify-center text-slate-400 font-mono text-caption-responsive uppercase font-bold shrink-0 relative overflow-hidden">
                           {sku.hero ? (
                             <Image
                               src={`${getDirectusUrl()}/assets/${sku.hero}?width=80&height=80&fit=cover`}
@@ -1374,10 +1374,10 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                           )}
                         </div>
                         <div className="text-left">
-                          <h4 className="text-xs font-extrabold text-slate-800 leading-tight">
+                          <h4 className="text-caption-responsive font-extrabold text-slate-800 leading-tight">
                             {sku.product_name}
                           </h4>
-                          <div className="flex items-center gap-2 text-[10px] text-slate-400 mt-1 font-medium">
+                          <div className="flex items-center gap-2 text-caption-responsive text-slate-400 mt-1 font-medium">
                             <span>SKU: {sku.sku_code}</span>
                             <span>•</span>
                             <span>Quy cách: {sku.pack_size || 'Mặc định'}</span>
@@ -1386,7 +1386,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                       </div>
                       
                       <div className="flex items-center gap-3 shrink-0">
-                        <span className="text-[11px] font-extrabold text-brand-strong">
+                        <span className="text-caption-responsive font-extrabold text-brand-strong">
                           {priceRange}
                         </span>
                         <div className={cn(
@@ -1406,7 +1406,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
             {selectedProductToEdit === null && (
               <div className="relative flex py-2 items-center">
                 <div className="flex-grow border-t border-slate-100"></div>
-                <span className="flex-shrink mx-4 text-slate-400 text-[10px] font-bold uppercase tracking-wider">
+                <span className="flex-shrink mx-4 text-slate-400 text-caption-responsive font-bold uppercase tracking-wider">
                   Hoặc nhập thủ công
                 </span>
                 <div className="flex-grow border-t border-slate-100"></div>
@@ -1417,7 +1417,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
             <div className="space-y-4 text-left">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <label className="text-xs font-bold text-slate-700 uppercase tracking-wider">
+                  <label className="text-caption-responsive font-bold text-slate-700 uppercase tracking-wider">
                     Tên sản phẩm *
                   </label>
                   <input
@@ -1426,11 +1426,11 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                     placeholder="Ví dụ: Găng tay Nitrile bảo hộ"
                     value={manualName}
                     onChange={(e) => setManualName(e.target.value)}
-                    className="w-full rounded-[3px] border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-brand focus:ring-1 focus:ring-brand font-medium"
+                    className="w-full rounded-[3px] border border-slate-200 px-3 py-2.5 text-body-regular outline-none focus:border-brand focus:ring-1 focus:ring-brand font-medium"
                   />
                 </div>
                 <div className="space-y-1">
-                  <label className="text-xs font-bold text-slate-700 uppercase tracking-wider">
+                  <label className="text-caption-responsive font-bold text-slate-700 uppercase tracking-wider">
                     Mã SKU (nếu có)
                   </label>
                   <input
@@ -1438,13 +1438,13 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                     placeholder="Ví dụ: UL-NG-1001"
                     value={manualSku}
                     onChange={(e) => setManualSku(e.target.value)}
-                    className="w-full rounded-[3px] border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-brand focus:ring-1 focus:ring-brand font-mono font-medium"
+                    className="w-full rounded-[3px] border border-slate-200 px-3 py-2.5 text-body-regular outline-none focus:border-brand focus:ring-1 focus:ring-brand font-mono font-medium"
                   />
                 </div>
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs font-bold text-slate-700 uppercase tracking-wider">
+                <label className="text-caption-responsive font-bold text-slate-700 uppercase tracking-wider">
                   Quy cách / Thông số kỹ thuật
                 </label>
                 <input
@@ -1452,19 +1452,19 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                   placeholder="Ví dụ: Size L, Màu xanh dương, hộp 100 chiếc"
                   value={manualSpec}
                   onChange={(e) => setManualSpec(e.target.value)}
-                  className="w-full rounded-[3px] border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-brand focus:ring-1 focus:ring-brand font-medium"
+                  className="w-full rounded-[3px] border border-slate-200 px-3 py-2.5 text-body-regular outline-none focus:border-brand focus:ring-1 focus:ring-brand font-medium"
                 />
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="space-y-1">
-                  <label className="text-xs font-bold text-slate-700 uppercase tracking-wider">
+                  <label className="text-caption-responsive font-bold text-slate-700 uppercase tracking-wider">
                     Đơn vị tính
                   </label>
                   <select
                     value={manualUnit}
                     onChange={(e) => setManualUnit(e.target.value)}
-                    className="w-full rounded-[3px] border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-brand focus:ring-1 focus:ring-brand font-medium bg-white"
+                    className="w-full rounded-[3px] border border-slate-200 px-3 py-2.5 text-body-regular outline-none focus:border-brand focus:ring-1 focus:ring-brand font-medium bg-white"
                   >
                     <option value="cái">Cái</option>
                     <option value="đôi">Đôi</option>
@@ -1477,7 +1477,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                   </select>
                 </div>
                 <div className="space-y-1">
-                  <label className="text-xs font-bold text-slate-700 uppercase tracking-wider">
+                  <label className="text-caption-responsive font-bold text-slate-700 uppercase tracking-wider">
                     Số lượng yêu cầu *
                   </label>
                   <input
@@ -1487,13 +1487,13 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                     placeholder="Nhập số lượng"
                     value={manualQty || ''}
                     onChange={(e) => setManualQty(Math.max(1, parseInt(e.target.value) || 1))}
-                    className="w-full rounded-[3px] border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-brand focus:ring-1 focus:ring-brand font-bold"
+                    className="w-full rounded-[3px] border border-slate-200 px-3 py-2.5 text-body-regular outline-none focus:border-brand focus:ring-1 focus:ring-brand font-bold"
                   />
                 </div>
               </div>
 
               <div className="space-y-1">
-                <label className="text-xs font-bold text-slate-700 uppercase tracking-wider">
+                <label className="text-caption-responsive font-bold text-slate-700 uppercase tracking-wider">
                   Ghi chú yêu cầu đặc biệt
                 </label>
                 <textarea
@@ -1501,7 +1501,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                   placeholder="Yêu cầu đóng gói riêng biệt, thời gian giao hàng cần thiết..."
                   value={manualNote}
                   onChange={(e) => setManualNote(e.target.value)}
-                  className="w-full rounded-[3px] border border-slate-200 px-3 py-2.5 text-sm outline-none focus:border-brand focus:ring-1 focus:ring-brand resize-none font-medium"
+                  className="w-full rounded-[3px] border border-slate-200 px-3 py-2.5 text-body-regular outline-none focus:border-brand focus:ring-1 focus:ring-brand resize-none font-medium"
                 />
               </div>
             </div>
@@ -1513,7 +1513,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
             <button
               type="button"
               onClick={() => setIsAddModalOpen(false)}
-              className="px-5 py-2.5 rounded-[3px] border border-slate-200 bg-white text-sm font-semibold text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer"
+              className="px-5 py-2.5 rounded-[3px] border border-slate-200 bg-white text-body-regular font-semibold text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer"
             >
               Sửa
             </button>
@@ -1542,7 +1542,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                 saveCart(newCart);
                 setIsAddModalOpen(false);
               }}
-              className="px-6 py-2.5 rounded-[3px] bg-brand text-white text-sm font-extrabold shadow hover:bg-brand/95 transition-all cursor-pointer"
+              className="px-6 py-2.5 rounded-[3px] bg-brand text-white text-body-regular font-extrabold shadow hover:bg-brand/95 transition-all cursor-pointer"
             >
               Lưu
             </button>
@@ -1568,22 +1568,22 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
             <Phone className="h-6 w-6 text-rose-600" />
           </div>
 
-          <h3 className="text-lg font-extrabold text-slate-900 mb-2">
+          <h3 className="text-card-title font-extrabold text-slate-900 mb-2">
             Hotline Hỗ Trợ 24/7
           </h3>
           
-          <p className="text-xs text-slate-400 font-medium leading-relaxed mb-6">
+          <p className="text-caption-responsive text-slate-400 font-medium leading-relaxed mb-6">
             Đội ngũ chuyên viên tư vấn của ULink Industries luôn sẵn sàng phục vụ Quý khách hàng doanh nghiệp.
           </p>
 
           <div className="bg-slate-50 border border-slate-100 rounded-[3px] p-4 mb-6">
             <a
               href={`tel:${t('sidebarHotline').replace(/\s/g, '')}`}
-              className="text-2xl sm:text-3xl font-black text-brand tracking-tight hover:underline block"
+              className="text-section-title font-black text-brand tracking-tight hover:underline block"
             >
               {t('sidebarHotline')}
             </a>
-            <span className="text-[10px] text-slate-400 uppercase tracking-widest font-bold mt-1 block">
+            <span className="text-caption-responsive text-slate-400 uppercase tracking-widest font-bold mt-1 block">
               Bấm số trên để thực hiện cuộc gọi
             </span>
           </div>
@@ -1595,13 +1595,13 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                 navigator.clipboard.writeText(t('sidebarHotline'));
                 alert('Đã sao chép số điện thoại Hotline vào bộ nhớ tạm.');
               }}
-              className="flex-1 py-2.5 rounded-[3px] border border-slate-200 bg-white text-xs font-bold text-slate-700 hover:bg-slate-100 transition-all cursor-pointer"
+              className="flex-1 py-2.5 rounded-[3px] border border-slate-200 bg-white text-caption-responsive font-bold text-slate-700 hover:bg-slate-100 transition-all cursor-pointer"
             >
               Sao chép số
             </button>
             <a
               href={`tel:${t('sidebarHotline').replace(/\s/g, '')}`}
-              className="flex-1 py-2.5 rounded-[3px] bg-rose-600 text-white text-xs font-extrabold shadow hover:bg-rose-700 transition-all text-center flex items-center justify-center gap-1.5"
+              className="flex-1 py-2.5 rounded-[3px] bg-rose-600 text-white text-caption-responsive font-extrabold shadow hover:bg-rose-700 transition-all text-center flex items-center justify-center gap-1.5"
             >
               <Phone className="h-3.5 w-3.5" />
               Gọi ngay

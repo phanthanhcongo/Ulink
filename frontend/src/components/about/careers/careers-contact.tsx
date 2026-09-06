@@ -7,7 +7,7 @@ export function CareersContact() {
         {/* Left Column: HR Contacts */}
         <div className="lg:col-span-5 flex flex-col justify-between gap-6">
           <div className="flex flex-col gap-6">
-            <h2 className="text-[30px] font-extrabold text-slate-900">
+            <h2 className="text-hero-title font-extrabold text-slate-900">
               Liên hệ & Địa chỉ
             </h2>
 

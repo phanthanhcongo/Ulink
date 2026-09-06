@@ -192,13 +192,13 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
     <div className="admin-page">
       {/* Header */}
       <div className="border-b border-slate-100 pb-6 mb-8">
-        <span className="text-xs uppercase text-slate-400 font-extrabold tracking-wider">
+        <span className="text-caption-responsive uppercase text-slate-400 font-extrabold tracking-wider">
           Cơ cấu sản phẩm
         </span>
-        <h1 className="text-2xl sm:text-3xl font-extrabold text-primary tracking-tight mt-1">
+        <h1 className="text-section-title font-extrabold text-primary tracking-tight mt-1">
           Quản lý Thuộc tính & Tùy chọn (Attributes & Options)
         </h1>
-        <p className="text-xs sm:text-sm text-slate-500 font-medium mt-1 leading-relaxed">
+        <p className="text-caption-responsive text-slate-500 font-medium mt-1 leading-relaxed">
           Định nghĩa các thuộc tính phân loại (Size, Color...) và thiết lập bộ giá trị tương ứng để
           tự sinh SKU.
         </p>
@@ -206,13 +206,13 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
 
       {/* Error Alert Banner */}
       {error && (
-        <div className="mb-6 p-4 bg-rose-50 border border-rose-200 rounded-[3px] text-rose-800 text-xs sm:text-sm font-semibold flex items-start gap-2.5 shadow-sm">
+        <div className="mb-6 p-4 bg-rose-50 border border-rose-200 rounded-[3px] text-rose-800 text-caption-responsive font-semibold flex items-start gap-2.5 shadow-sm">
           <AlertTriangle className="h-5 w-5 text-rose-500 shrink-0 mt-0.5" />
           <div className="flex-1">
             <span className="font-extrabold text-rose-900 block mb-1">
               Đã xảy ra lỗi khi tải dữ liệu thuộc tính từ API
             </span>
-            <pre className="font-mono text-[11px] bg-white/60 p-2.5 rounded-[3px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all">
+            <pre className="font-mono text-caption-responsive bg-white/60 p-2.5 rounded-[3px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all">
               {error}
             </pre>
           </div>
@@ -224,7 +224,7 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
         {/* Left Column: Attributes List */}
         <div className="lg:col-span-1 admin-panel admin-panel-pad overflow-hidden">
           <div className="flex items-center justify-between gap-4 mb-4">
-            <h2 className="text-sm font-extrabold text-primary uppercase tracking-wider flex items-center gap-1.5">
+            <h2 className="text-body-regular font-extrabold text-primary uppercase tracking-wider flex items-center gap-1.5">
               <Sliders className="h-4 w-4 text-blue-500" />
               Thuộc tính toàn cục
             </h2>
@@ -249,14 +249,14 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder="Tìm thuộc tính..."
-              className="w-full pl-9 pr-3 py-1.5 rounded-[3px] border border-slate-200 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+              className="w-full pl-9 pr-3 py-1.5 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
             />
           </div>
 
           {/* Attributes List */}
           <div className="flex flex-col gap-1.5 max-h-[500px] overflow-y-auto">
             {filteredAttributes.length === 0 ? (
-              <div className="text-center py-8 text-xs text-slate-400">
+              <div className="text-center py-8 text-caption-responsive text-slate-400">
                 Không tìm thấy thuộc tính nào.
               </div>
             ) : (
@@ -265,7 +265,7 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
                   key={attr.id}
                   onClick={() => setSelectedAttrId(attr.id)}
                   className={cn(
-                    'flex items-center justify-between p-3 rounded-[3px] border text-xs sm:text-sm font-bold cursor-pointer transition-all group',
+                    'flex items-center justify-between p-3 rounded-[3px] border text-caption-responsive  font-bold cursor-pointer transition-all group',
                     selectedAttrId === attr.id
                       ? 'bg-blue-50/50 border-blue-200 text-blue-700 shadow-sm'
                       : 'bg-white border-slate-100 text-primary hover:bg-slate-50/60'
@@ -273,7 +273,7 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
                 >
                   <div className="flex flex-col">
                     <span>{attr.name}</span>
-                    <span className="text-[10px] text-slate-400 font-mono font-normal mt-0.5">
+                    <span className="text-caption-responsive text-slate-400 font-mono font-normal mt-0.5">
                       slug: {attr.slug}
                     </span>
                   </div>
@@ -314,14 +314,14 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-slate-100 pb-4 mb-6 gap-4">
                 <div>
                   <div className="flex items-center gap-2">
-                    <h2 className="text-base sm:text-lg font-extrabold text-primary">
+                    <h2 className="text-body-regular font-extrabold text-primary">
                       Tùy chọn cho thuộc tính: {selectedAttr.name}
                     </h2>
-                    <span className="text-[10px] font-mono px-2 py-0.5 rounded-[3px] bg-slate-100 text-slate-650">
+                    <span className="text-caption-responsive font-mono px-2 py-0.5 rounded-[3px] bg-slate-100 text-slate-650">
                       key: {selectedAttr.slug}
                     </span>
                   </div>
-                  <p className="text-xs text-slate-400 font-medium mt-1">
+                  <p className="text-caption-responsive text-slate-400 font-medium mt-1">
                     Cập nhật danh sách các giá trị phân loại để hiển thị dạng dropdown.
                   </p>
                 </div>
@@ -332,7 +332,7 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
                     setOptModalOpen(true);
                     setOptFormError('');
                   }}
-                  className="inline-flex h-9 items-center justify-center gap-1.5 rounded-[3px] bg-blue-600 px-4 text-xs font-bold text-white shadow-sm hover:bg-blue-700 transition-colors"
+                  className="inline-flex h-9 items-center justify-center gap-1.5 rounded-[3px] bg-blue-600 px-4 text-caption-responsive font-bold text-white shadow-sm hover:bg-blue-700 transition-colors"
                 >
                   <Plus className="h-3.5 w-3.5" />
                   Thêm tùy chọn mới
@@ -343,18 +343,18 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
               {!selectedAttr.options || selectedAttr.options.length === 0 ? (
                 <div className="flex flex-col items-center justify-center py-16 text-center">
                   <ListChecks className="h-10 w-10 text-slate-300 mb-2" />
-                  <span className="text-xs font-bold text-slate-500">
+                  <span className="text-caption-responsive font-bold text-slate-500">
                     Thuộc tính này chưa có giá trị tùy chọn nào
                   </span>
-                  <span className="text-[10px] text-slate-400 mt-0.5">
+                  <span className="text-caption-responsive text-slate-400 mt-0.5">
                     Nhấp vào nút ở trên để bắt đầu thêm tùy chọn (Ví dụ: Trắng, Xanh, S, M, L).
                   </span>
                 </div>
               ) : (
                 <div className="overflow-hidden border border-slate-100 rounded-[3px]">
-                  <table className="w-full border-collapse text-left text-xs sm:text-sm">
+                  <table className="w-full border-collapse text-left text-caption-responsive">
                     <thead>
-                      <tr className="bg-slate-50 border-b border-slate-100 text-[10px] font-bold text-slate-450 uppercase tracking-wider">
+                      <tr className="bg-slate-50 border-b border-slate-100 text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                         <th className="px-5 py-3.5">Giá trị hiển thị</th>
                         <th className="px-5 py-3.5">Hậu tố SKU Code</th>
                         <th className="px-5 py-3.5">Thứ tự</th>
@@ -416,7 +416,7 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
           ) : (
             <div className="flex flex-col items-center justify-center py-24 text-center">
               <Settings2 className="h-12 w-12 text-slate-200 mb-3" />
-              <span className="text-sm font-bold text-slate-400">
+              <span className="text-body-regular font-bold text-slate-400">
                 Hãy chọn hoặc tạo một thuộc tính ở cột trái để quản lý tùy chọn.
               </span>
             </div>
@@ -429,7 +429,7 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm">
           <div className="w-full max-w-md admin-panel overflow-hidden animate-in fade-in zoom-in-95 duration-200">
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
-              <h2 className="text-base sm:text-lg font-extrabold text-primary">
+              <h2 className="text-body-regular font-extrabold text-primary">
                 {activeAttr.id ? 'Cập nhật thuộc tính' : 'Tạo thuộc tính mới'}
               </h2>
               <button
@@ -446,13 +446,13 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
 
             <form onSubmit={handleAttrSubmit} className="p-6 flex flex-col gap-4.5">
               {attrFormError && (
-                <div className="p-3 bg-rose-50 border border-rose-100 rounded-[3px] text-xs font-bold text-rose-600 flex items-center gap-2 animate-in fade-in duration-200">
+                <div className="p-3 bg-rose-50 border border-rose-100 rounded-[3px] text-caption-responsive font-bold text-rose-600 flex items-center gap-2 animate-in fade-in duration-200">
                   <AlertTriangle className="h-4 w-4 shrink-0" />
                   <span>{attrFormError}</span>
                 </div>
               )}
               <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-bold text-slate-500 uppercase">
+                <label className="text-caption-responsive font-bold text-slate-500 uppercase">
                   Tên thuộc tính *
                 </label>
                 <input
@@ -470,12 +470,12 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
                     setActiveAttr({ ...activeAttr, name, slug });
                   }}
                   placeholder="Ví dụ: Kích cỡ, Màu sắc, Chất liệu..."
-                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
                 />
               </div>
 
               <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-bold text-slate-500 uppercase">
+                <label className="text-caption-responsive font-bold text-slate-500 uppercase">
                   Slug Key (Dùng trong SKU JSON) *
                 </label>
                 <input
@@ -491,21 +491,21 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
                   }
                   placeholder="size, color, material"
                   className={cn(
-                    'px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-mono focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600',
+                    'px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive  font-mono focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600',
                     activeAttr.id && 'bg-slate-100 cursor-not-allowed text-slate-400'
                   )}
                 />
               </div>
 
               <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-bold text-slate-500 uppercase">
+                <label className="text-caption-responsive font-bold text-slate-500 uppercase">
                   Thứ tự hiển thị
                 </label>
                 <input
                   type="number"
                   value={activeAttr.sort || 1}
                   onChange={(e) => setActiveAttr({ ...activeAttr, sort: Number(e.target.value) })}
-                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
                 />
               </div>
 
@@ -517,14 +517,14 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
                     setActiveAttr(null);
                     setAttrFormError('');
                   }}
-                  className="px-4 py-2.5 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-500 hover:bg-slate-50"
+                  className="px-4 py-2.5 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-500 hover:bg-slate-50"
                 >
                   Hủy bỏ
                 </button>
                 <button
                   type="submit"
                   disabled={isPending}
-                  className="inline-flex items-center justify-center px-4 py-2.5 rounded-[3px] bg-blue-600 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors disabled:opacity-50"
+                  className="inline-flex items-center justify-center px-4 py-2.5 rounded-[3px] bg-blue-600 text-caption-responsive font-bold text-white shadow-sm hover:bg-blue-700 transition-colors disabled:opacity-50"
                 >
                   {isPending ? 'Đang lưu...' : 'Lưu thuộc tính'}
                 </button>
@@ -539,7 +539,7 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm">
           <div className="w-full max-w-md admin-panel overflow-hidden animate-in fade-in zoom-in-95 duration-200">
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
-              <h2 className="text-base sm:text-lg font-extrabold text-primary">
+              <h2 className="text-body-regular font-extrabold text-primary">
                 {activeOpt.id ? 'Cập nhật tùy chọn' : 'Thêm tùy chọn mới'}
               </h2>
               <button
@@ -556,13 +556,13 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
 
             <form onSubmit={handleOptSubmit} className="p-6 flex flex-col gap-4.5">
               {optFormError && (
-                <div className="p-3 bg-rose-50 border border-rose-100 rounded-[3px] text-xs font-bold text-rose-600 flex items-center gap-2 animate-in fade-in duration-200">
+                <div className="p-3 bg-rose-50 border border-rose-100 rounded-[3px] text-caption-responsive font-bold text-rose-600 flex items-center gap-2 animate-in fade-in duration-200">
                   <AlertTriangle className="h-4 w-4 shrink-0" />
                   <span>{optFormError}</span>
                 </div>
               )}
               <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-bold text-slate-500 uppercase">
+                <label className="text-caption-responsive font-bold text-slate-500 uppercase">
                   Giá trị hiển thị *
                 </label>
                 <input
@@ -577,12 +577,12 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
                     setActiveOpt({ ...activeOpt, value, sku_suffix: suffix });
                   }}
                   placeholder="Ví dụ: Size S, Đỏ, Nhám..."
-                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
                 />
               </div>
 
               <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-bold text-slate-500 uppercase">
+                <label className="text-caption-responsive font-bold text-slate-500 uppercase">
                   Hậu tố SKU Code *
                 </label>
                 <input
@@ -596,17 +596,17 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
                     })
                   }
                   placeholder="Ví dụ: S, RED, MATT"
-                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-mono focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-mono focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
                 />
               </div>
 
               <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-bold text-slate-500 uppercase">Thứ tự sắp xếp</label>
+                <label className="text-caption-responsive font-bold text-slate-500 uppercase">Thứ tự sắp xếp</label>
                 <input
                   type="number"
                   value={activeOpt.sort || 1}
                   onChange={(e) => setActiveOpt({ ...activeOpt, sort: Number(e.target.value) })}
-                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
                 />
               </div>
 
@@ -618,14 +618,14 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
                     setActiveOpt(null);
                     setOptFormError('');
                   }}
-                  className="px-4 py-2.5 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-500 hover:bg-slate-50"
+                  className="px-4 py-2.5 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-500 hover:bg-slate-50"
                 >
                   Hủy bỏ
                 </button>
                 <button
                   type="submit"
                   disabled={isPending}
-                  className="inline-flex items-center justify-center px-4 py-2.5 rounded-[3px] bg-blue-600 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors disabled:opacity-50"
+                  className="inline-flex items-center justify-center px-4 py-2.5 rounded-[3px] bg-blue-600 text-caption-responsive font-bold text-white shadow-sm hover:bg-blue-700 transition-colors disabled:opacity-50"
                 >
                   {isPending ? 'Đang lưu...' : 'Lưu tùy chọn'}
                 </button>

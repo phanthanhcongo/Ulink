@@ -149,13 +149,13 @@ export function IndustrialZonesClient({ initialZones, hubs, error }: IndustrialZ
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-100 pb-6 mb-8">
         <div>
-          <span className="text-xs uppercase text-slate-400 font-extrabold tracking-wider">
+          <span className="text-caption-responsive uppercase text-slate-400 font-extrabold tracking-wider">
             Hạ tầng & Logistics
           </span>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-primary tracking-tight mt-1">
+          <h1 className="text-section-title font-extrabold text-primary tracking-tight mt-1">
             Quản lý Khu công nghiệp (KCN)
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 font-medium mt-1 leading-relaxed">
+          <p className="text-caption-responsive text-slate-500 font-medium mt-1 leading-relaxed">
             Xem, thêm mới, cập nhật và xóa danh sách các Khu công nghiệp/Khu chế xuất thuộc quyền quản lý của các Cụm kho (Regional Hubs) ULink.
           </p>
         </div>
@@ -163,7 +163,7 @@ export function IndustrialZonesClient({ initialZones, hubs, error }: IndustrialZ
         <button
           type="button"
           onClick={handleOpenCreateForm}
-          className="inline-flex h-10 items-center justify-center gap-1.5 px-4 rounded-[3px] bg-blue-600 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors shrink-0"
+          className="inline-flex h-10 items-center justify-center gap-1.5 px-4 rounded-[3px] bg-blue-600 text-caption-responsive font-bold text-white shadow-sm hover:bg-blue-700 transition-colors shrink-0"
         >
           <Plus className="h-4 w-4" />
           Thêm KCN mới
@@ -172,13 +172,13 @@ export function IndustrialZonesClient({ initialZones, hubs, error }: IndustrialZ
 
       {/* Error Banner */}
       {error && (
-        <div className="mb-6 p-4 bg-rose-50 border border-rose-200 rounded-[3px] text-rose-800 text-xs sm:text-sm font-semibold flex items-start gap-2.5 shadow-sm">
+        <div className="mb-6 p-4 bg-rose-50 border border-rose-200 rounded-[3px] text-rose-800 text-caption-responsive font-semibold flex items-start gap-2.5 shadow-sm">
           <AlertTriangle className="h-5 w-5 text-rose-500 shrink-0 mt-0.5" />
           <div className="flex-1">
             <span className="font-extrabold text-rose-900 block mb-1">
               Đã xảy ra lỗi khi tải danh sách Khu công nghiệp
             </span>
-            <pre className="font-mono text-[11px] bg-white/60 p-2.5 rounded-[3px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all">
+            <pre className="font-mono text-caption-responsive bg-white/60 p-2.5 rounded-[3px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all">
               {error}
             </pre>
           </div>
@@ -195,14 +195,14 @@ export function IndustrialZonesClient({ initialZones, hubs, error }: IndustrialZ
               placeholder="Tìm kiếm KCN..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full pl-9 pr-4 py-2.5 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand"
+              className="w-full pl-9 pr-4 py-2.5 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand"
             />
           </div>
           <div className="flex items-center gap-2 w-full sm:w-auto">
             <select
               value={hubFilter}
               onChange={(e) => setHubFilter(e.target.value)}
-              className="w-full sm:w-auto px-4 py-2.5 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-700 focus:outline-none bg-white"
+              className="w-full sm:w-auto px-4 py-2.5 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-700 focus:outline-none bg-white"
             >
               <option value="all">Tất cả Cụm kho / Hubs</option>
               {hubs.map((hub) => (
@@ -215,21 +215,21 @@ export function IndustrialZonesClient({ initialZones, hubs, error }: IndustrialZ
         </div>
 
         {filteredZones.length === 0 ? (
-          <div className="p-12 text-center text-slate-400 text-sm font-medium bg-white">
+          <div className="p-12 text-center text-slate-400 text-body-regular font-medium bg-white">
             Không tìm thấy Khu công nghiệp nào.
           </div>
         ) : (
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse min-w-[700px]">
               <thead>
-                <tr className="bg-slate-50 text-[10px] uppercase text-slate-400 tracking-wider font-extrabold border-b border-slate-100">
+                <tr className="bg-slate-50 text-caption-responsive uppercase text-slate-400 tracking-wider font-extrabold border-b border-slate-100">
                   <th className="px-6 py-3 w-[80px]">ID</th>
                   <th className="px-6 py-3">Tên Khu công nghiệp</th>
                   <th className="px-6 py-3">Cụm kho (Hub) quản lý</th>
                   <th className="px-6 py-3 w-[150px] text-right">Thao tác</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 text-xs sm:text-sm font-medium text-slate-750">
+              <tbody className="divide-y divide-slate-100 text-caption-responsive font-medium text-slate-750">
                 {filteredZones.map((z) => (
                   <tr key={z.id} className="hover:bg-slate-50/50 transition-colors">
                     <td className="px-6 py-4 font-mono font-bold text-slate-400">#{z.id}</td>
@@ -243,7 +243,7 @@ export function IndustrialZonesClient({ initialZones, hubs, error }: IndustrialZ
                     </td>
                     <td className="px-6 py-4 text-slate-600">
                       {z.hub ? (
-                        <span className="inline-flex items-center px-2 py-1 rounded bg-slate-100 text-xs font-bold text-slate-700">
+                        <span className="inline-flex items-center px-2 py-1 rounded bg-slate-100 text-caption-responsive font-bold text-slate-700">
                           {z.hub.name}
                         </span>
                       ) : (
@@ -283,7 +283,7 @@ export function IndustrialZonesClient({ initialZones, hubs, error }: IndustrialZ
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/45 backdrop-blur-sm">
           <div className="relative w-full max-w-md bg-white rounded-[3px] border border-slate-100 shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200">
             <div className="flex items-center justify-between p-5 border-b border-slate-100 bg-slate-50/50">
-              <h2 className="text-base font-extrabold text-slate-800">
+              <h2 className="text-body-regular font-extrabold text-slate-800">
                 {activeZone.id ? 'Cập nhật Khu công nghiệp' : 'Thêm mới Khu công nghiệp'}
               </h2>
               <button
@@ -297,14 +297,14 @@ export function IndustrialZonesClient({ initialZones, hubs, error }: IndustrialZ
 
             <form onSubmit={handleFormSubmit} className="p-5 space-y-4">
               {formError && (
-                <div className="p-3.5 bg-rose-50 border border-rose-200 rounded-[3px] text-rose-800 text-xs font-semibold flex items-start gap-2">
+                <div className="p-3.5 bg-rose-50 border border-rose-200 rounded-[3px] text-rose-800 text-caption-responsive font-semibold flex items-start gap-2">
                   <AlertTriangle className="h-4.5 w-4.5 text-rose-500 shrink-0 mt-0.5" />
                   <span>{formError}</span>
                 </div>
               )}
 
               <div>
-                <label className="block text-xs font-extrabold text-slate-500 uppercase tracking-wider mb-1.5">
+                <label className="block text-caption-responsive font-extrabold text-slate-500 uppercase tracking-wider mb-1.5">
                   Tên Khu công nghiệp <span className="text-rose-500">*</span>
                 </label>
                 <input
@@ -312,19 +312,19 @@ export function IndustrialZonesClient({ initialZones, hubs, error }: IndustrialZ
                   value={activeZone.name}
                   onChange={(e) => setActiveZone({ ...activeZone, name: e.target.value })}
                   placeholder="Ví dụ: KCN VSIP Bắc Ninh"
-                  className="w-full px-4 py-2.5 rounded-[3px] border border-slate-200 text-sm font-bold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand bg-white"
+                  className="w-full px-4 py-2.5 rounded-[3px] border border-slate-200 text-body-regular font-bold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand bg-white"
                   required
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-extrabold text-slate-500 uppercase tracking-wider mb-1.5">
+                <label className="block text-caption-responsive font-extrabold text-slate-500 uppercase tracking-wider mb-1.5">
                   Cụm kho (Hub) quản lý <span className="text-rose-500">*</span>
                 </label>
                 <select
                   value={activeZone.hubId}
                   onChange={(e) => setActiveZone({ ...activeZone, hubId: Number(e.target.value) })}
-                  className="w-full px-4 py-2.5 rounded-[3px] border border-slate-200 text-sm font-bold text-slate-700 focus:outline-none bg-white"
+                  className="w-full px-4 py-2.5 rounded-[3px] border border-slate-200 text-body-regular font-bold text-slate-700 focus:outline-none bg-white"
                   required
                 >
                   <option value="">-- Chọn Cụm kho --</option>
@@ -337,7 +337,7 @@ export function IndustrialZonesClient({ initialZones, hubs, error }: IndustrialZ
               </div>
 
               <div>
-                <label className="block text-xs font-extrabold text-slate-500 uppercase tracking-wider mb-1.5">
+                <label className="block text-caption-responsive font-extrabold text-slate-500 uppercase tracking-wider mb-1.5">
                   Đường dẫn ảnh minh họa (Tùy chọn)
                 </label>
                 <input
@@ -345,7 +345,7 @@ export function IndustrialZonesClient({ initialZones, hubs, error }: IndustrialZ
                   value={activeZone.image || ''}
                   onChange={(e) => setActiveZone({ ...activeZone, image: e.target.value })}
                   placeholder="Ví dụ: /images/kcn/vsip.jpg"
-                  className="w-full px-4 py-2.5 rounded-[3px] border border-slate-200 text-sm font-bold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand bg-white"
+                  className="w-full px-4 py-2.5 rounded-[3px] border border-slate-200 text-body-regular font-bold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand bg-white"
                 />
               </div>
 
@@ -353,14 +353,14 @@ export function IndustrialZonesClient({ initialZones, hubs, error }: IndustrialZ
                 <button
                   type="button"
                   onClick={() => setFormOpen(false)}
-                  className="inline-flex h-10 items-center justify-center px-4 rounded-[3px] border border-slate-200 bg-white text-xs sm:text-sm font-bold text-slate-700 hover:bg-slate-50 transition-colors"
+                  className="inline-flex h-10 items-center justify-center px-4 rounded-[3px] border border-slate-200 bg-white text-caption-responsive font-bold text-slate-700 hover:bg-slate-50 transition-colors"
                 >
                   Hủy bỏ
                 </button>
                 <button
                   type="submit"
                   disabled={isPending}
-                  className="inline-flex h-10 items-center justify-center px-4 rounded-[3px] bg-blue-600 text-xs sm:text-sm font-bold text-white hover:bg-blue-700 shadow-sm transition-colors disabled:opacity-50"
+                  className="inline-flex h-10 items-center justify-center px-4 rounded-[3px] bg-blue-600 text-caption-responsive font-bold text-white hover:bg-blue-700 shadow-sm transition-colors disabled:opacity-50"
                 >
                   {isPending ? 'Đang lưu...' : 'Lưu lại'}
                 </button>

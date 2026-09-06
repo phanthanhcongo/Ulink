@@ -60,7 +60,7 @@ export default function PaymentInvoiceClient({
       {/* Breadcrumbs */}
       <nav
         aria-label="Breadcrumb"
-        className="flex flex-wrap items-center gap-1.5 text-[11px] text-slate-400 font-medium"
+        className="flex flex-wrap items-center gap-1.5 text-caption-responsive text-slate-400 font-medium"
       >
         <Link href="/" className="hover:text-brand transition-colors">
           Trang chủ
@@ -81,20 +81,20 @@ export default function PaymentInvoiceClient({
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-5">
         <div className="space-y-1">
           <div className="flex flex-wrap items-center gap-3">
-            <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight">
+            <h2 className="text-card-title font-extrabold text-slate-900 tracking-tight">
               Yêu cầu thanh toán hóa đơn #INV-2026-08974
             </h2>
             <span className="inline-flex items-center bg-[#FEF3C7] text-[#D97706] text-[10.5px] font-bold px-2.5 py-0.5 rounded-full border border-amber-200">
               Chờ thanh toán B2B
             </span>
           </div>
-          <p className="text-xs text-slate-400 font-medium">
+          <p className="text-caption-responsive text-slate-400 font-medium">
             Đơn hàng gốc: ULK-2026-98745 • Kỳ thanh toán định kỳ 30 ngày giao dịch doanh nghiệp
           </p>
         </div>
         <Link
           href="/order-confirmation"
-          className="inline-flex items-center gap-1.5 text-xs font-bold text-slate-600 hover:text-brand transition-all md:self-center"
+          className="inline-flex items-center gap-1.5 text-caption-responsive font-bold text-slate-600 hover:text-brand transition-all md:self-center"
         >
           <ArrowLeft className="h-4 w-4" />
           Quay lại chi tiết đơn hàng
@@ -107,15 +107,15 @@ export default function PaymentInvoiceClient({
         <div className="lg:col-span-8 space-y-6">
           {/* VAT Invoice Details Card */}
           <div className="bg-white border border-slate-200/80 p-5 rounded-[3px] shadow-sm space-y-4">
-            <h4 className="text-sm font-bold text-slate-900 border-b border-slate-100 pb-3 flex items-center gap-2">
+            <h4 className="text-body-regular font-bold text-slate-900 border-b border-slate-100 pb-3 flex items-center gap-2">
               <FileText className="h-5 w-5 text-brand" />
               Thông tin hóa đơn giá trị gia tăng (B2B)
             </h4>
 
-            <div className="text-xs space-y-3.5 pt-1">
+            <div className="text-caption-responsive space-y-3.5 pt-1">
               <div className="flex justify-between items-center py-0.5">
                 <span className="text-slate-500 font-medium">Mã số hóa đơn:</span>
-                <span className="font-bold text-slate-800 text-[13px]">INV-2026-08974</span>
+                <span className="font-bold text-slate-800 text-caption-responsive">INV-2026-08974</span>
               </div>
               <div className="flex justify-between items-center py-0.5">
                 <span className="text-slate-500 font-medium">Ngày phát hành:</span>
@@ -138,12 +138,12 @@ export default function PaymentInvoiceClient({
 
           {/* B2B Bank Transfer Instructions Card */}
           <div className="bg-white border border-slate-200/80 p-5 rounded-[3px] shadow-sm space-y-4">
-            <h4 className="text-sm font-bold text-slate-900 border-b border-slate-100 pb-3 flex items-center gap-2">
+            <h4 className="text-body-regular font-bold text-slate-900 border-b border-slate-100 pb-3 flex items-center gap-2">
               <CreditCard className="h-5 w-5 text-brand" />
               Hướng dẫn chuyển khoản ngân hàng B2B
             </h4>
 
-            <div className="text-xs space-y-3.5 pt-1">
+            <div className="text-caption-responsive space-y-3.5 pt-1">
               {/* Row 1 */}
               <div className="flex justify-between items-start gap-4 py-0.5">
                 <div className="space-y-0.5">
@@ -156,7 +156,7 @@ export default function PaymentInvoiceClient({
                   onClick={() =>
                     handleCopyText('NHTMCP Ngoại Thương Việt Nam (Vietcombank)', 'bank')
                   }
-                  className="inline-flex items-center gap-1 bg-blue-50 text-blue-600 px-2 py-1 rounded-[3px] text-[10px] font-bold hover:bg-blue-100 transition-colors border border-blue-100 shrink-0"
+                  className="inline-flex items-center gap-1 bg-blue-50 text-blue-600 px-2 py-1 rounded-[3px] text-caption-responsive font-bold hover:bg-blue-100 transition-colors border border-blue-100 shrink-0"
                 >
                   {copiedField === 'bank' ? 'Đã sao chép!' : 'Sao chép'}
                   <Copy className="h-3 w-3" />
@@ -167,11 +167,11 @@ export default function PaymentInvoiceClient({
               <div className="flex justify-between items-start gap-4 py-0.5">
                 <div className="space-y-0.5">
                   <span className="text-slate-400 font-medium">Số tài khoản doanh nghiệp:</span>
-                  <p className="font-mono font-bold text-slate-800 text-[14px]">1028 666 5999</p>
+                  <p className="font-mono font-bold text-slate-800 text-body-regular">1028 666 5999</p>
                 </div>
                 <button
                   onClick={() => handleCopyText('1028 666 5999', 'account')}
-                  className="inline-flex items-center gap-1 bg-blue-50 text-blue-600 px-2 py-1 rounded-[3px] text-[10px] font-bold hover:bg-blue-100 transition-colors border border-blue-100 shrink-0"
+                  className="inline-flex items-center gap-1 bg-blue-50 text-blue-600 px-2 py-1 rounded-[3px] text-caption-responsive font-bold hover:bg-blue-100 transition-colors border border-blue-100 shrink-0"
                 >
                   {copiedField === 'account' ? 'Đã sao chép!' : 'Sao chép'}
                   <Copy className="h-3 w-3" />
@@ -192,13 +192,13 @@ export default function PaymentInvoiceClient({
                   <span className="text-[10.5px] text-slate-400 font-bold uppercase tracking-wider">
                     Nội dung chuyển khoản (bắt buộc):
                   </span>
-                  <p className="font-mono font-black text-[#006AA7] text-xs sm:text-sm tracking-wide break-all">
+                  <p className="font-mono font-black text-[#006AA7] text-caption-responsive tracking-wide break-all">
                     THANH TOAN HOA DON INV-2026-08974
                   </p>
                 </div>
                 <button
                   onClick={() => handleCopyText('THANH TOAN HOA DON INV-2026-08974', 'memo')}
-                  className="inline-flex items-center justify-center gap-1 bg-blue-50 text-blue-600 px-3 py-2 rounded-[3px] text-[10px] font-bold hover:bg-blue-100 transition-colors border border-blue-100 shrink-0 w-full sm:w-auto"
+                  className="inline-flex items-center justify-center gap-1 bg-blue-50 text-blue-600 px-3 py-2 rounded-[3px] text-caption-responsive font-bold hover:bg-blue-100 transition-colors border border-blue-100 shrink-0 w-full sm:w-auto"
                 >
                   {copiedField === 'memo' ? 'Đã sao chép!' : 'Sao chép'}
                   <Copy className="h-3 w-3" />
@@ -210,10 +210,10 @@ export default function PaymentInvoiceClient({
           {/* Line Items Card */}
           <div className="bg-white border border-slate-200/80 p-5 rounded-[3px] shadow-sm space-y-4">
             <div className="flex justify-between items-baseline border-b border-slate-100 pb-3">
-              <h4 className="text-sm font-bold text-slate-900 uppercase tracking-wider">
+              <h4 className="text-body-regular font-bold text-slate-900 uppercase tracking-wider">
                 Chi tiết mặt hàng trong hóa đơn (02)
               </h4>
-              <span className="text-[11px] text-slate-400 font-semibold font-mono">
+              <span className="text-caption-responsive text-slate-400 font-semibold font-mono">
                 Mã kiện bàn giao: ULK-PK-921
               </span>
             </div>
@@ -241,16 +241,16 @@ export default function PaymentInvoiceClient({
                   <div className="min-w-0 flex-1 space-y-1 text-left">
                     <Link
                       href="/solutions/mang-quan-pallet-stretch-film"
-                      className="font-bold text-slate-900 text-xs sm:text-sm hover:text-brand transition-all block leading-tight"
+                      className="font-bold text-slate-900 text-caption-responsive hover:text-brand transition-all block leading-tight"
                     >
                       Màng quấn Pallet - Stretch Film (Bản rộng 50cm, 2.4kg)
                     </Link>
-                    <p className="text-[11px] text-slate-400 font-medium">
+                    <p className="text-caption-responsive text-slate-400 font-medium">
                       Số lượng: 500 kg x 39.500đ / kg
                     </p>
                   </div>
                 </div>
-                <span className="text-sm font-bold text-slate-800 shrink-0 self-end sm:self-start">
+                <span className="text-body-regular font-bold text-slate-800 shrink-0 self-end sm:self-start">
                   {formatPrice(19750000)}
                 </span>
               </div>
@@ -277,16 +277,16 @@ export default function PaymentInvoiceClient({
                   <div className="min-w-0 flex-1 space-y-1 text-left">
                     <Link
                       href="/solutions/tui-pe-trong-suot-dung-thuc-pham"
-                      className="font-bold text-slate-900 text-xs sm:text-sm hover:text-brand transition-all block leading-tight"
+                      className="font-bold text-slate-900 text-caption-responsive hover:text-brand transition-all block leading-tight"
                     >
                       Túi PE trong suốt siêu dai - Đóng kiện hàng công nghiệp
                     </Link>
-                    <p className="text-[11px] text-slate-400 font-medium">
+                    <p className="text-caption-responsive text-slate-400 font-medium">
                       Số lượng: 200 kg x 28.000đ / kg
                     </p>
                   </div>
                 </div>
-                <span className="text-sm font-bold text-slate-800 shrink-0 self-end sm:self-start">
+                <span className="text-body-regular font-bold text-slate-800 shrink-0 self-end sm:self-start">
                   {formatPrice(5600000)}
                 </span>
               </div>
@@ -298,11 +298,11 @@ export default function PaymentInvoiceClient({
         <div className="lg:col-span-4 space-y-5">
           {/* Invoice Summary */}
           <div className="bg-white border border-slate-200/80 p-5 rounded-[3px] shadow-sm space-y-4">
-            <h4 className="text-sm font-bold text-slate-900 border-b border-slate-100 pb-3 uppercase tracking-wider">
+            <h4 className="text-body-regular font-bold text-slate-900 border-b border-slate-100 pb-3 uppercase tracking-wider">
               Tổng cộng hóa đơn B2B
             </h4>
 
-            <div className="space-y-3 text-xs">
+            <div className="space-y-3 text-caption-responsive">
               <div className="flex justify-between">
                 <span className="text-slate-500">Tạm tính mặt hàng</span>
                 <span className="font-bold text-slate-800">{formatPrice(25350000)}</span>
@@ -319,8 +319,8 @@ export default function PaymentInvoiceClient({
               <hr className="border-slate-200" />
 
               <div className="flex items-baseline justify-between pt-1">
-                <span className="text-sm font-bold text-slate-900">Tổng thanh toán</span>
-                <span className="text-xl font-extrabold text-[#006AA7] leading-none">
+                <span className="text-body-regular font-bold text-slate-900">Tổng thanh toán</span>
+                <span className="text-card-title font-extrabold text-[#006AA7] leading-none">
                   {formatPrice(27378000)}
                 </span>
               </div>
@@ -333,7 +333,7 @@ export default function PaymentInvoiceClient({
               onClick={() =>
                 toast.success('Đang tạo và chuẩn bị tải xuống file PDF Hóa đơn tài chính B2B chính thức...', { duration: 4000 })
               }
-              className="w-full inline-flex items-center justify-center gap-2 rounded-[3px] border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 py-3 text-sm font-bold shadow-sm transition-all text-center"
+              className="w-full inline-flex items-center justify-center gap-2 rounded-[3px] border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 py-3 text-body-regular font-bold shadow-sm transition-all text-center"
             >
               <Download className="h-4 w-4" />
               Tải hóa đơn PDF
@@ -341,7 +341,7 @@ export default function PaymentInvoiceClient({
 
             <button
               onClick={() => window.print()}
-              className="w-full inline-flex items-center justify-center gap-2 text-slate-500 hover:text-slate-800 py-2.5 text-xs font-bold transition-all text-center"
+              className="w-full inline-flex items-center justify-center gap-2 text-slate-500 hover:text-slate-800 py-2.5 text-caption-responsive font-bold transition-all text-center"
             >
               <Printer className="h-4 w-4" />
               In hóa đơn chứng từ gốc trực tiếp

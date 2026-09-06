@@ -303,7 +303,7 @@ export default function CartClient({
         {/* Breadcrumbs */}
         <nav
           aria-label="Breadcrumb"
-          className="flex items-center gap-2 text-[12px] text-muted-foreground pb-2"
+          className="flex items-center gap-2 text-caption-responsive text-muted-foreground pb-2"
         >
           <Link href="/" className="transition-colors hover:text-brand">
             {t('breadcrumbHome')}
@@ -313,10 +313,10 @@ export default function CartClient({
         </nav>
 
         {/* Step Progress bar */}
-        <div className="flex w-full overflow-hidden text-xs sm:text-sm font-semibold rounded-[3px]">
+        <div className="flex w-full overflow-hidden text-caption-responsive font-semibold rounded-[3px]">
           {/* Step 1: Giỏ hàng */}
           <div className="flex-1 flex items-center justify-center gap-2 py-4 bg-brand text-white">
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white text-[11px] font-extrabold text-brand shrink-0">
+            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white text-caption-responsive font-extrabold text-brand shrink-0">
               1
             </span>
             <span className="font-bold tracking-wide hidden sm:inline">{t('stepCart')}</span>
@@ -324,7 +324,7 @@ export default function CartClient({
 
           {/* Step 2: Thanh toán */}
           <div className="flex-1 flex items-center justify-center gap-2 py-4 bg-[#3B82F6]/90 text-white">
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-brand text-[11px] font-extrabold text-white shrink-0">
+            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-brand text-caption-responsive font-extrabold text-white shrink-0">
               2
             </span>
             <span className="font-bold tracking-wide hidden sm:inline">{t('stepPayment')}</span>
@@ -332,7 +332,7 @@ export default function CartClient({
 
           {/* Step 3: Vận chuyển */}
           <div className="flex-1 flex items-center justify-center gap-2 py-4 bg-slate-200 text-slate-600">
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white text-[11px] font-extrabold text-slate-500 shrink-0">
+            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white text-caption-responsive font-extrabold text-slate-500 shrink-0">
               3
             </span>
             <span className="font-bold tracking-wide hidden sm:inline">{t('stepShipping')}</span>
@@ -340,7 +340,7 @@ export default function CartClient({
 
           {/* Step 4: Hoàn tất */}
           <div className="flex-1 flex items-center justify-center gap-2 py-4 bg-slate-50 text-slate-400">
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white border border-border/40 text-[11px] font-extrabold text-slate-300 shrink-0">
+            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white border border-border/40 text-caption-responsive font-extrabold text-slate-300 shrink-0">
               4
             </span>
             <span className="font-bold tracking-wide hidden sm:inline">{t('stepComplete')}</span>
@@ -352,8 +352,8 @@ export default function CartClient({
           {/* LEFT COLUMN: Cart Items */}
           <div className="lg:col-span-8 space-y-6">
             <div className="flex items-baseline gap-2">
-              <h2 className="text-xl font-bold text-foreground">{t('title')}</h2>
-              <span className="text-xs text-muted-foreground">
+              <h2 className="text-card-title font-bold text-foreground">{t('title')}</h2>
+              <span className="text-caption-responsive text-muted-foreground">
                 {t('totalItems', { count: cart.length })}
               </span>
             </div>
@@ -361,10 +361,10 @@ export default function CartClient({
             {resolvedItems.length === 0 ? (
               <div className="flex flex-col items-center justify-center py-16 px-4 text-center border border-dashed border-border/80 rounded-[3px] space-y-4">
                 <Package className="h-10 w-10 text-muted-foreground/50" />
-                <p className="text-sm text-muted-foreground">{t('emptyCart')}</p>
+                <p className="text-body-regular text-muted-foreground">{t('emptyCart')}</p>
                 <Link
                   href="/solutions"
-                  className="inline-flex items-center gap-1.5 rounded-[3px] border border-brand px-4 py-2 text-xs font-semibold text-brand hover:bg-brand/5 transition-all"
+                  className="inline-flex items-center gap-1.5 rounded-[3px] border border-brand px-4 py-2 text-caption-responsive font-semibold text-brand hover:bg-brand/5 transition-all"
                 >
                   <ArrowLeft className="h-3.5 w-3.5" />
                   {t('btnBack')}
@@ -374,8 +374,8 @@ export default function CartClient({
               <div className="space-y-4">
                 {/* Desktop/Tablet Table Layout */}
                 <div className="hidden md:block overflow-hidden rounded-[3px] border border-slate-200/80 bg-white">
-                  <table className="w-full border-collapse text-left text-sm min-w-[700px]">
-                    <thead className="bg-card text-slate-600 text-xs uppercase font-bold border-b border-slate-200/80">
+                  <table className="w-full border-collapse text-left text-body-regular min-w-[700px]">
+                    <thead className="bg-card text-slate-600 text-caption-responsive uppercase font-bold border-b border-slate-200/80">
                       <tr>
                         <th className="px-4 py-3.5 font-semibold text-slate-700">
                           {t('colProduct')}
@@ -425,19 +425,19 @@ export default function CartClient({
                               {item.slug ? (
                                 <Link
                                   href={`/solutions/${item.slug}`}
-                                  className="font-semibold text-slate-900 text-sm block leading-snug hover:text-brand transition-colors"
+                                  className="font-semibold text-slate-900 text-body-regular block leading-snug hover:text-brand transition-colors"
                                 >
                                   {item.product_name}
                                 </Link>
                               ) : (
-                                <span className="font-semibold text-slate-900 text-sm block leading-snug">
+                                <span className="font-semibold text-slate-900 text-body-regular block leading-snug">
                                   {item.product_name}
                                 </span>
                               )}
-                              <span className="text-[11px] font-mono text-slate-400 block pt-0.5">
+                              <span className="text-caption-responsive font-mono text-slate-400 block pt-0.5">
                                 SKU: {item.sku}
                               </span>
-                              <span className="text-[11px] text-slate-500 block truncate max-w-sm">
+                              <span className="text-caption-responsive text-slate-500 block truncate max-w-sm">
                                 {locale === 'vi' ? 'Quy cách: ' : 'Spec: '}
                                 {item.spec}
                               </span>
@@ -464,7 +464,7 @@ export default function CartClient({
                               >
                                 <Minus className="h-3.5 w-3.5" />
                               </button>
-                              <span className="text-sm font-semibold text-slate-800 min-w-[32px] text-center">
+                              <span className="text-body-regular font-semibold text-slate-800 min-w-[32px] text-center">
                                 {item.quantity}
                               </span>
                               <button
@@ -480,7 +480,7 @@ export default function CartClient({
                           {/* Total Price & Remove Button */}
                           <td className="px-4 py-4 text-right">
                             <div className="flex items-center justify-end gap-3">
-                              <span className="font-bold text-[#006AA7] text-base">
+                              <span className="font-bold text-[#006AA7] text-body-regular">
                                 {formatPrice(item.total)}
                               </span>
                               <button
@@ -533,19 +533,19 @@ export default function CartClient({
                           {item.slug ? (
                             <Link
                               href={`/solutions/${item.slug}`}
-                              className="font-bold text-slate-900 text-sm block leading-snug hover:text-brand transition-colors line-clamp-2"
+                              className="font-bold text-slate-900 text-body-regular block leading-snug hover:text-brand transition-colors line-clamp-2"
                             >
                               {item.product_name}
                             </Link>
                           ) : (
-                            <span className="font-bold text-slate-900 text-sm block leading-snug line-clamp-2">
+                            <span className="font-bold text-slate-900 text-body-regular block leading-snug line-clamp-2">
                               {item.product_name}
                             </span>
                           )}
-                          <span className="text-[10px] font-mono text-slate-400 block pt-0.5">
+                          <span className="text-caption-responsive font-mono text-slate-400 block pt-0.5">
                             SKU: {item.sku}
                           </span>
-                          <span className="text-[11px] text-slate-500 block truncate">
+                          <span className="text-caption-responsive text-slate-500 block truncate">
                             {locale === 'vi' ? 'Quy cách: ' : 'Spec: '}
                             {item.spec}
                           </span>
@@ -553,7 +553,7 @@ export default function CartClient({
                       </div>
 
                       {/* Price and Unit */}
-                      <div className="flex justify-between items-center text-xs border-t border-slate-100 pt-3">
+                      <div className="flex justify-between items-center text-caption-responsive border-t border-slate-100 pt-3">
                         <span className="text-slate-400 font-medium">{locale === 'vi' ? 'Đơn giá / Đơn vị:' : 'Price / Unit:'}</span>
                         <span className="font-semibold text-slate-700">
                           {formatPrice(item.unitPrice)} / {item.unit}
@@ -570,7 +570,7 @@ export default function CartClient({
                           >
                             <Minus className="h-3.5 w-3.5" />
                           </button>
-                          <span className="text-sm font-semibold text-slate-800 min-w-[28px] text-center">
+                          <span className="text-body-regular font-semibold text-slate-800 min-w-[28px] text-center">
                             {item.quantity}
                           </span>
                           <button
@@ -583,7 +583,7 @@ export default function CartClient({
                         </div>
 
                         <div className="flex items-center gap-3">
-                          <span className="font-bold text-[#006AA7] text-base">
+                          <span className="font-bold text-[#006AA7] text-body-regular">
                             {formatPrice(item.total)}
                           </span>
                           <button
@@ -607,9 +607,9 @@ export default function CartClient({
           <div className="lg:col-span-4 space-y-6">
             {/* Order Summary Panel */}
             <div className="rounded-[3px] border border-slate-200 bg-card p-6 shadow-sm space-y-5">
-              <h3 className="text-lg font-bold text-slate-900">{t('summaryTitle')}</h3>
+              <h3 className="text-card-title font-bold text-slate-900">{t('summaryTitle')}</h3>
 
-              <div className="space-y-4 text-sm">
+              <div className="space-y-4 text-body-regular">
                 <div className="flex justify-between">
                   <span className="text-slate-500">{t('subtotal')}</span>
                   <span className="font-semibold text-slate-800">{formatPrice(subtotal)}</span>
@@ -628,7 +628,7 @@ export default function CartClient({
 
                 {/* Promo Code Input */}
                 <form onSubmit={handleApplyPromo} className="space-y-2">
-                  <label className="text-xs font-bold text-slate-500 block">
+                  <label className="text-caption-responsive font-bold text-slate-500 block">
                     {t('promoLabel')}
                   </label>
                   <div className="flex gap-2">
@@ -637,22 +637,22 @@ export default function CartClient({
                       value={promoCode}
                       onChange={(e) => setPromoCode(e.target.value)}
                       placeholder={t('promoPlaceholder')}
-                      className="flex-1 rounded-[3px] border border-slate-200 bg-white px-3 py-2 text-sm outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand font-mono uppercase"
+                      className="flex-1 rounded-[3px] border border-slate-200 bg-white px-3 py-2 text-body-regular outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand font-mono uppercase"
                     />
                     <button
                       type="submit"
-                      className="rounded-[3px] bg-[#E0F2FE] hover:bg-[#BAE6FD] text-sky-700 text-xs font-bold px-4 py-2.5 transition-all border border-sky-200"
+                      className="rounded-[3px] bg-[#E0F2FE] hover:bg-[#BAE6FD] text-sky-700 text-caption-responsive font-bold px-4 py-2.5 transition-all border border-sky-200"
                     >
                       {t('promoApply')}
                     </button>
                   </div>
                   {promoError && (
-                    <span className="text-xs text-rose-500 font-medium block mt-1">
+                    <span className="text-caption-responsive text-rose-500 font-medium block mt-1">
                       {promoError}
                     </span>
                   )}
                   {promoSuccess && (
-                    <span className="text-xs text-emerald-600 font-medium block mt-1">
+                    <span className="text-caption-responsive text-emerald-600 font-medium block mt-1">
                       {promoSuccess}
                     </span>
                   )}
@@ -662,12 +662,12 @@ export default function CartClient({
                 <hr className="border-slate-200" />
 
                 <div className="flex items-baseline justify-between pt-1">
-                  <span className="text-base font-bold text-slate-900">{t('total')}</span>
+                  <span className="text-body-regular font-bold text-slate-900">{t('total')}</span>
                   <div className="text-right">
-                    <span className="text-2xl font-extrabold text-[#006AA7] block leading-none">
+                    <span className="text-section-title font-extrabold text-[#006AA7] block leading-none">
                       {formatPrice(grandTotal)}
                     </span>
-                    <span className="text-[10px] text-slate-400 font-medium block mt-1.5">
+                    <span className="text-caption-responsive text-slate-400 font-medium block mt-1.5">
                       {t('vatIncluded')}
                     </span>
                   </div>
@@ -678,14 +678,14 @@ export default function CartClient({
               <div className="space-y-3.5 pt-2">
                 <Link
                   href="/checkout"
-                  className="inline-flex items-center justify-center gap-2 w-full rounded-[3px] bg-brand py-3.5 text-sm font-bold text-white shadow hover:bg-brand/95 transition-all text-center"
+                  className="inline-flex items-center justify-center gap-2 w-full rounded-[3px] bg-brand py-3.5 text-body-regular font-bold text-white shadow hover:bg-brand/95 transition-all text-center"
                 >
                   {t('btnCheckout')}
                   <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
                   href="/solutions"
-                  className="inline-flex items-center justify-center gap-2 w-full rounded-[3px] border border-brand text-brand hover:bg-brand/5 py-3.5 text-sm font-bold transition-all text-center"
+                  className="inline-flex items-center justify-center gap-2 w-full rounded-[3px] border border-brand text-brand hover:bg-brand/5 py-3.5 text-body-regular font-bold transition-all text-center"
                 >
                   <ArrowLeft className="h-4 w-4" />
                   {t('btnBack')}
@@ -700,15 +700,15 @@ export default function CartClient({
       <div className="w-full bg-card border-y border-slate-200/80 py-10 my-4">
         <div className="page-container flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
           <div className="space-y-2 max-w-3xl">
-            <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">
+            <span className="text-caption-responsive font-bold text-slate-400 uppercase tracking-wider block">
               {t('rfqSectionSubtitle')}
             </span>
-            <h4 className="text-lg font-bold text-slate-800 leading-tight">{t('rfqTitle')}</h4>
-            <p className="text-xs text-slate-500 leading-relaxed">{t('rfqDesc')}</p>
+            <h4 className="text-card-title font-bold text-slate-800 leading-tight">{t('rfqTitle')}</h4>
+            <p className="text-caption-responsive text-slate-500 leading-relaxed">{t('rfqDesc')}</p>
           </div>
           <Link
             href="/quick-order"
-            className="inline-flex items-center justify-center gap-2 rounded-[3px] bg-[#006AA7] hover:bg-[#005B90] px-6 py-3 text-sm font-bold text-white shadow transition-all shrink-0 w-full md:w-auto"
+            className="inline-flex items-center justify-center gap-2 rounded-[3px] bg-[#006AA7] hover:bg-[#005B90] px-6 py-3 text-body-regular font-bold text-white shadow transition-all shrink-0 w-full md:w-auto"
           >
             {t('rfqCta')}
             <Edit3 className="h-4.5 w-4.5" />
@@ -721,8 +721,8 @@ export default function CartClient({
         {/* Suggested Products Grid */}
         <div className="space-y-6">
           <div className="flex items-center justify-between">
-            <h3 className="text-lg font-bold text-slate-900">{t('suggestTitle')}</h3>
-            <Link href="/solutions" className="text-xs font-semibold text-brand hover:underline">
+            <h3 className="text-card-title font-bold text-slate-900">{t('suggestTitle')}</h3>
+            <Link href="/solutions" className="text-caption-responsive font-semibold text-brand hover:underline">
               {t('viewAll')}
             </Link>
           </div>
@@ -752,17 +752,17 @@ export default function CartClient({
                     )}
                   </Link>
                   <div className="space-y-1">
-                    <h4 className="text-sm font-bold text-slate-900 leading-snug line-clamp-2 min-h-[40px] hover:text-brand transition-colors">
+                    <h4 className="text-body-regular font-bold text-slate-900 leading-snug line-clamp-2 min-h-[40px] hover:text-brand transition-colors">
                       <Link href={`/solutions/${prod.slug}`}>{prod.name}</Link>
                     </h4>
-                    <div className="flex items-baseline gap-1 text-xs">
+                    <div className="flex items-baseline gap-1 text-caption-responsive">
                       <span className="font-extrabold text-brand">{prod.priceText}</span>
                     </div>
-                    <div className="text-[10px] text-slate-400 space-y-0.5 pt-1">
+                    <div className="text-caption-responsive text-slate-400 space-y-0.5 pt-1">
                       <p>
                         {t('moqLabel')}: {prod.moqText}
                       </p>
-                      <div className="flex items-center gap-1 text-[9px] text-slate-500 font-semibold pt-1">
+                      <div className="flex items-center gap-1 text-caption-responsive text-slate-500 font-semibold pt-1">
                         <MapPin className="h-3 w-3 text-slate-400" />
                         <span>{prod.hub}</span>
                       </div>
@@ -774,7 +774,7 @@ export default function CartClient({
                   <button
                     type="button"
                     onClick={() => handleAddSuggested(prod)}
-                    className="flex-1 rounded-[3px] bg-brand py-2 text-xs font-semibold text-white hover:bg-brand/95 transition-all"
+                    className="flex-1 rounded-[3px] bg-brand py-2 text-caption-responsive font-semibold text-white hover:bg-brand/95 transition-all"
                   >
                     {t('orderNow')}
                   </button>
@@ -801,24 +801,24 @@ export default function CartClient({
 
         <div className="page-container flex flex-col md:flex-row justify-between items-start md:items-center gap-6 relative z-10">
           <div className="space-y-2 max-w-2xl text-left">
-            <span className="text-xs sm:text-sm font-extrabold text-blue-200 uppercase tracking-wider block">
+            <span className="text-caption-responsive font-extrabold text-blue-200 uppercase tracking-wider block">
               {t('bannerTitle')}
             </span>
-            <h3 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold leading-tight tracking-tight">{t('bannerSubtitle')}</h3>
-            <p className="text-sm sm:text-base text-blue-100 opacity-95 leading-relaxed">{t('bannerDesc')}</p>
+            <h3 className="text-section-title font-extrabold leading-tight tracking-tight">{t('bannerSubtitle')}</h3>
+            <p className="text-body-regular text-blue-100 opacity-95 leading-relaxed">{t('bannerDesc')}</p>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0 pt-2">
             <a
               href={`tel:${t('btnHotline').replace(/\s/g, '')}`}
-              className="inline-flex items-center justify-center gap-2 rounded-[3px] border border-white/60 hover:border-white text-white hover:bg-white/10 px-6 py-3.5 text-sm sm:text-base font-extrabold transition-all text-center"
+              className="inline-flex items-center justify-center gap-2 rounded-[3px] border border-white/60 hover:border-white text-white hover:bg-white/10 px-6 py-3.5 text-body-regular font-extrabold transition-all text-center"
             >
               <Phone className="h-4.5 w-4.5" />
               {t('btnHotline')}
             </a>
             <button
               type="button"
-              className="inline-flex items-center justify-center gap-2 rounded-[3px] bg-[#3B82F6] hover:bg-blue-600 text-white px-6 py-3.5 text-sm sm:text-base font-extrabold transition-all text-center shadow-md"
+              className="inline-flex items-center justify-center gap-2 rounded-[3px] bg-[#3B82F6] hover:bg-blue-600 text-white px-6 py-3.5 text-body-regular font-extrabold transition-all text-center shadow-md"
             >
               <CalendarDays className="h-4.5 w-4.5" />
               {t('btnSchedule')}

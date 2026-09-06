@@ -105,23 +105,23 @@ function LoginFormInner() {
         <div className="relative mb-6 flex items-center border-b border-slate-100">
           <Link
             href="/login"
-            className="relative flex-1 border-b-2 border-brand py-3 text-center text-sm font-bold text-brand transition-colors"
+            className="relative flex-1 border-b-2 border-brand py-3 text-center text-body-regular font-bold text-brand transition-colors"
           >
             Đăng nhập
           </Link>
           <Link
             href="/register"
-            className="flex-1 py-3 text-center text-sm font-medium text-slate-400 transition-colors hover:text-slate-700"
+            className="flex-1 py-3 text-center text-body-regular font-medium text-slate-400 transition-colors hover:text-slate-700"
           >
             Đăng ký tài khoản
           </Link>
         </div>
 
         <div className="space-y-1">
-          <h2 className="text-2xl font-bold tracking-tight text-slate-900 sm:text-3xl">
+          <h2 className="text-section-title font-bold tracking-tight text-slate-900">
             Chào mừng bạn trở lại!
           </h2>
-          <p className="text-xs leading-relaxed text-slate-500 sm:text-sm">
+          <p className="text-caption-responsive leading-relaxed text-slate-500">
             Vui lòng nhập thông tin để đăng nhập hệ thống B2B của ULINK INDUSTRIES.
           </p>
         </div>
@@ -129,7 +129,7 @@ function LoginFormInner() {
         {reasonBanner && (
           <div
             role="status"
-            className="mt-4 flex items-start gap-2.5 rounded-[3px] border border-emerald-200 bg-emerald-50/70 p-3.5 text-xs text-emerald-800"
+            className="mt-4 flex items-start gap-2.5 rounded-[3px] border border-emerald-200 bg-emerald-50/70 p-3.5 text-caption-responsive text-emerald-800"
           >
             <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-emerald-600" aria-hidden="true" />
             <span className="font-medium">{t(reasonBanner.key)}</span>
@@ -140,14 +140,14 @@ function LoginFormInner() {
           {formError && (
             <div
               role="alert"
-              className="rounded-[3px] border border-rose-200 bg-rose-50/80 p-3.5 text-xs font-medium leading-relaxed text-rose-700"
+              className="rounded-[3px] border border-rose-200 bg-rose-50/80 p-3.5 text-caption-responsive font-medium leading-relaxed text-rose-700"
             >
               {formError}
             </div>
           )}
 
           <div>
-            <label htmlFor="email" className="mb-1.5 block text-xs font-semibold text-slate-700">
+            <label htmlFor="email" className="mb-1.5 block text-caption-responsive font-semibold text-slate-700">
               Email Doanh Nghiệp <span className="text-rose-500">*</span>
             </label>
             <div className="relative">
@@ -168,13 +168,13 @@ function LoginFormInner() {
               />
             </div>
             {fieldErrors.email && (
-              <p className="mt-1.5 text-xs font-medium text-rose-500">{fieldErrors.email}</p>
+              <p className="mt-1.5 text-caption-responsive font-medium text-rose-500">{fieldErrors.email}</p>
             )}
           </div>
 
           <div>
             <div className="mb-1.5">
-              <label htmlFor="password" className="block text-xs font-semibold text-slate-700">
+              <label htmlFor="password" className="block text-caption-responsive font-semibold text-slate-700">
                 Mật khẩu <span className="text-rose-500">*</span>
               </label>
             </div>
@@ -208,13 +208,13 @@ function LoginFormInner() {
             <div className="mt-2 flex justify-end">
               <Link
                 href="/forgot-password"
-                className="text-xs font-semibold text-brand transition-colors hover:text-brand-strong hover:underline"
+                className="text-caption-responsive font-semibold text-brand transition-colors hover:text-brand-strong hover:underline"
               >
                 Quên mật khẩu?
               </Link>
             </div>
             {fieldErrors.password && (
-              <p className="mt-1.5 text-xs font-medium text-rose-500">{fieldErrors.password}</p>
+              <p className="mt-1.5 text-caption-responsive font-medium text-rose-500">{fieldErrors.password}</p>
             )}
           </div>
 
@@ -223,7 +223,7 @@ function LoginFormInner() {
             disabled={loading}
             variant="primary"
             fullWidth
-            className="group py-3.5 text-sm font-bold shadow-brand/20 hover:shadow-lg hover:shadow-brand/30 active:scale-[0.99]"
+            className="group py-3.5 text-body-regular font-bold shadow-brand/20 hover:shadow-lg hover:shadow-brand/30 active:scale-[0.99]"
           >
             {loading ? (
               <>
@@ -241,7 +241,7 @@ function LoginFormInner() {
       </div>
 
       <div className="mt-6 border-t border-slate-100 pt-6 text-center">
-        <p className="text-xs text-slate-500">
+        <p className="text-caption-responsive text-slate-500">
           Bạn gặp khó khăn khi đăng nhập? Vui lòng liên hệ hotline{' '}
           <a href="tel:19006868" className="font-bold text-brand hover:underline">
             1900 6868

@@ -14,7 +14,7 @@ interface IndustryCasesProps {
 export function IndustryCases({ industryData, locale }: IndustryCasesProps) {
   return (
     <section id="cases" className="scroll-mt-36 pt-6 border-t border-slate-100 space-y-6">
-      <h3 className="text-[22px] sm:text-[24px] md:text-[26px] lg:text-[28px] xl:text-[30px] font-extrabold text-primary">
+      <h3 className="text-section-title font-extrabold text-primary">
         {industryData.casesTitle}
       </h3>
 
@@ -25,16 +25,16 @@ export function IndustryCases({ industryData, locale }: IndustryCasesProps) {
               <Image src={cs.image} alt={cs.title} fill className="object-cover" />
             </div>
             <div className="space-y-1">
-              <h4 className="text-[15px] sm:text-[16px] lg:text-[18px] font-extrabold text-primary leading-snug">
+              <h4 className="text-body-regular font-extrabold text-primary leading-snug">
                 {cs.title}
               </h4>
-              <p className="text-[12px] sm:text-[13px] text-slate-400 font-semibold leading-relaxed">
+              <p className="text-caption-responsive text-slate-400 font-semibold leading-relaxed">
                 {cs.description}
               </p>
               <div className="pt-1">
                 <Link
                   href="/about"
-                  className="text-[12px] sm:text-[13px] font-bold text-brand inline-flex items-center gap-1 hover:underline"
+                  className="text-caption-responsive font-bold text-brand inline-flex items-center gap-1 hover:underline"
                 >
                   {locale === 'vi'
                     ? 'Xem chi tiết'

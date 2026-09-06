@@ -25,13 +25,13 @@ export function ContactHero() {
       <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
         {/* Left Column */}
         <div className="lg:col-span-6 flex flex-col gap-4">
-          <span className="inline-flex w-fit items-center rounded-full bg-blue-50 px-3.5 py-1 text-xs font-semibold text-blue-700 ring-1 ring-inset ring-blue-700/10">
+          <span className="inline-flex w-fit items-center rounded-full bg-blue-50 px-3.5 py-1 text-caption-responsive font-semibold text-blue-700 ring-1 ring-inset ring-blue-700/10">
             LIÊN HỆ
           </span>
-          <h1 className="text-[30px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold tracking-tight text-slate-900 leading-tight">
+          <h1 className="text-hero-title font-extrabold tracking-tight text-slate-900 leading-tight">
             Hub Hà Nam - Trung tâm phân phối
           </h1>
-          <p className="text-sm leading-relaxed text-slate-600 sm:text-base">
+          <p className="text-body-regular leading-relaxed text-slate-600">
             Trung tâm phân phối chiến lược tại cửa ngõ phía Nam Hà Nội, kết nối linh hoạt với các
             cụm công nghiệp trọng điểm và hệ thống logistics toàn quốc.
           </p>
@@ -48,8 +48,8 @@ export function ContactHero() {
                     <Icon className="h-5 w-5" />
                   </div>
                   <div>
-                    <h3 className="text-xs font-bold text-slate-900">{item.title}</h3>
-                    <p className="text-[11px] text-slate-600">{item.desc}</p>
+                    <h3 className="text-caption-responsive font-bold text-slate-900">{item.title}</h3>
+                    <p className="text-caption-responsive text-slate-600">{item.desc}</p>
                   </div>
                 </div>
               );

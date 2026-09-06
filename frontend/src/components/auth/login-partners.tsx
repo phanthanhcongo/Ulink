@@ -17,7 +17,7 @@ export function LoginPartners() {
   return (
     <section className="py-12 my-8 border-t border-slate-100">
       <div className="flex flex-col items-center text-center mb-8">
-        <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">
+        <span className="text-caption-responsive font-bold text-slate-400 uppercase tracking-widest">
           HƠN 300 DOANH NGHIỆP FDI & TẬP ĐOÀN DƯỢC PHẨM ĐỒNG HÀNH CÙNG ULINK INDUSTRIES
         </span>
       </div>
@@ -26,7 +26,7 @@ export function LoginPartners() {
         {partnerLogos.map((p, idx) => (
           <div
             key={idx}
-            className="flex h-16 w-full items-center justify-center rounded-[3px] bg-slate-50 p-3 text-lg sm:text-xl transition-all hover:bg-white hover:shadow-md hover:scale-105"
+            className="flex h-16 w-full items-center justify-center rounded-[3px] bg-slate-50 p-3 text-card-title transition-all hover:bg-white hover:shadow-md hover:scale-105"
           >
             <span className={p.color}>{p.name}</span>
           </div>

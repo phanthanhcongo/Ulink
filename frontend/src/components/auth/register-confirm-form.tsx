@@ -145,15 +145,15 @@ export function RegisterConfirmForm() {
         <span className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-[3px] bg-brand/10 text-brand">
           <CheckCircle2 className="h-7 w-7" aria-hidden="true" />
         </span>
-        <h2 className="text-2xl font-bold tracking-tight text-foreground">
+        <h2 className="text-section-title font-bold tracking-tight text-foreground">
           {t('registerCompleteTitle')}
         </h2>
-        <p className="mx-auto mt-3 max-w-sm text-sm text-muted-foreground">
+        <p className="mx-auto mt-3 max-w-sm text-body-regular text-muted-foreground">
           {t('registerCompleteDesc', { email: draft?.email ?? '' })}
         </p>
         <Link
           href="/login"
-          className="mt-6 inline-flex items-center justify-center rounded-[3px] border border-brand bg-brand px-5 py-2.5 text-sm font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong"
+          className="mt-6 inline-flex items-center justify-center rounded-[3px] border border-brand bg-brand px-5 py-2.5 text-body-regular font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong"
         >
           {t('loginNow')}
           <ArrowRight className="ml-1.5 h-4 w-4" aria-hidden="true" />
@@ -167,14 +167,14 @@ export function RegisterConfirmForm() {
   if (!draft || !verifiedToken) {
     return (
       <div>
-        <h2 className="text-2xl font-bold tracking-tight text-foreground">
+        <h2 className="text-section-title font-bold tracking-tight text-foreground">
           {t('registerConfirmTitle')}
         </h2>
-        <p className="mt-2 text-sm text-muted-foreground">{t('registerConfirmMissingDraft')}</p>
+        <p className="mt-2 text-body-regular text-muted-foreground">{t('registerConfirmMissingDraft')}</p>
         <button
           type="button"
           onClick={startOver}
-          className="mt-6 flex w-full items-center justify-center gap-2 rounded-[3px] border border-brand bg-brand py-3 text-sm font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong"
+          className="mt-6 flex w-full items-center justify-center gap-2 rounded-[3px] border border-brand bg-brand py-3 text-body-regular font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong"
         >
           <span>{t('backToRegister')}</span>
           <ArrowRight className="h-4 w-4" aria-hidden="true" />
@@ -185,14 +185,14 @@ export function RegisterConfirmForm() {
 
   return (
     <div>
-      <h2 className="text-2xl font-bold tracking-tight text-foreground">
+      <h2 className="text-section-title font-bold tracking-tight text-foreground">
         {t('registerConfirmTitle')}
       </h2>
-      <p className="mt-2 text-sm text-muted-foreground">
+      <p className="mt-2 text-body-regular text-muted-foreground">
         {t('registerConfirmDesc', { email: draft.email })}
       </p>
 
-      <div className="mt-5 space-y-2 rounded-[3px] border border-border bg-muted/40 p-4 text-sm">
+      <div className="mt-5 space-y-2 rounded-[3px] border border-border bg-muted/40 p-4 text-body-regular">
         <Row icon={Building2} label={t('companyLabel')} value={draft.company_name} />
         <Row icon={User} label={t('contactLabel')} value={draft.contact_name} />
         <Row icon={Mail} label={t('emailLabel')} value={draft.email} />
@@ -203,7 +203,7 @@ export function RegisterConfirmForm() {
         {formError && (
           <p
             role="alert"
-            className="rounded-[3px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-sm text-destructive"
+            className="rounded-[3px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-body-regular text-destructive"
           >
             {formError}
           </p>
@@ -212,7 +212,7 @@ export function RegisterConfirmForm() {
         <button
           type="submit"
           disabled={loading}
-          className="flex w-full items-center justify-center gap-2 rounded-[3px] border border-brand bg-brand py-3 text-sm font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong disabled:opacity-60"
+          className="flex w-full items-center justify-center gap-2 rounded-[3px] border border-brand bg-brand py-3 text-body-regular font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong disabled:opacity-60"
         >
           {loading ? (
             <>
@@ -231,7 +231,7 @@ export function RegisterConfirmForm() {
           type="button"
           onClick={startOver}
           disabled={loading}
-          className="block w-full text-center text-xs text-muted-foreground hover:text-foreground disabled:opacity-60"
+          className="block w-full text-center text-caption-responsive text-muted-foreground hover:text-foreground disabled:opacity-60"
         >
           {t('backToRegister')}
         </button>
@@ -245,8 +245,8 @@ function Row({ icon: Icon, label, value }: { icon: typeof Mail; label: string; v
     <div className="flex items-start gap-2.5">
       <Icon className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" aria-hidden="true" />
       <div className="min-w-0 flex-1">
-        <p className="text-xs text-muted-foreground">{label}</p>
-        <p className="truncate text-sm text-foreground">{value}</p>
+        <p className="text-caption-responsive text-muted-foreground">{label}</p>
+        <p className="truncate text-body-regular text-foreground">{value}</p>
       </div>
     </div>
   );

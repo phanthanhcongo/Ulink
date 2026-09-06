@@ -63,7 +63,7 @@ export function HeaderAuthButton() {
             {isAdmin && (
               <Link
                 href="/admin"
-                className="flex items-center gap-2 border-b border-border px-4 py-2 text-xs font-bold text-brand transition-colors hover:bg-blue-50"
+                className="flex items-center gap-2 border-b border-border px-4 py-2 text-caption-responsive font-bold text-brand transition-colors hover:bg-blue-50"
               >
                 <ShieldCheck className="h-4 w-4 text-brand" aria-hidden="true" />
                 {t('adminDashboard')}
@@ -71,14 +71,14 @@ export function HeaderAuthButton() {
             )}
             <Link
               href="/my-rfqs"
-              className="flex items-center gap-2 px-4 py-2 text-sm text-foreground transition-colors hover:bg-muted"
+              className="flex items-center gap-2 px-4 py-2 text-body-regular text-foreground transition-colors hover:bg-muted"
             >
               <ClipboardList className="h-4 w-4" aria-hidden="true" />
               {t('myRfqs')}
             </Link>
             <Link
               href="/sample-requests"
-              className="flex items-center gap-2 px-4 py-2 text-sm text-foreground transition-colors hover:bg-muted"
+              className="flex items-center gap-2 px-4 py-2 text-body-regular text-foreground transition-colors hover:bg-muted"
             >
               <Package className="h-4 w-4" aria-hidden="true" />
               {t('sampleRequests')}
@@ -86,7 +86,7 @@ export function HeaderAuthButton() {
             <button
               type="button"
               onClick={() => logout()}
-              className="flex w-full items-center gap-2 px-4 py-2 text-sm text-foreground transition-colors hover:bg-muted"
+              className="flex w-full items-center gap-2 px-4 py-2 text-body-regular text-foreground transition-colors hover:bg-muted"
             >
               <LogOut className="h-4 w-4" aria-hidden="true" />
               {t('logout')}
@@ -118,7 +118,7 @@ export function HeaderAuthButton() {
         )}
       >
         <UserRound className="h-4 w-4" aria-hidden="true" />
-        <span className="text-[13px] xl:text-[14px] font-medium">{t('login')}</span>
+        <span className="text-caption-responsive font-medium">{t('login')}</span>
       </Link>
     </>
   );

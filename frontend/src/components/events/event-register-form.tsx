@@ -138,16 +138,16 @@ export function EventRegisterForm({ slug, eventTitle, locale }: Props) {
         <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-emerald-100 text-emerald-600 mb-6">
           <CheckCircle2 className="h-10 w-10" />
         </div>
-        <h3 className="text-2xl font-black text-slate-900 tracking-tight">
+        <h3 className="text-section-title font-black text-slate-900 tracking-tight">
           {L.successTitle[locale]}
         </h3>
-        <p className="mt-4 text-sm sm:text-base leading-relaxed text-slate-600 px-2 sm:px-6">
+        <p className="mt-4 text-body-regular leading-relaxed text-slate-600 px-2 sm:px-6">
           {L.successDesc[locale]}
         </p>
         <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             href="/"
-            className="inline-flex items-center justify-center rounded-[3px] bg-blue-600 hover:bg-blue-700 active:scale-[0.98] px-6 py-3 text-sm font-bold text-white transition-all shadow-sm"
+            className="inline-flex items-center justify-center rounded-[3px] bg-blue-600 hover:bg-blue-700 active:scale-[0.98] px-6 py-3 text-body-regular font-bold text-white transition-all shadow-sm"
           >
             {L.backHome[locale]}
           </Link>
@@ -159,16 +159,16 @@ export function EventRegisterForm({ slug, eventTitle, locale }: Props) {
   return (
     <div className="rounded-[3px] bg-white p-5 font-sans">
       <div className="mb-6">
-        <h2 className="text-lg font-bold text-slate-900 font-sans tracking-tight text-left">
+        <h2 className="text-card-title font-bold text-slate-900 font-sans tracking-tight text-left">
           {L.formTitle[locale]}
         </h2>
-        <p className="text-xs sm:text-sm text-slate-500 mt-1 font-sans text-left">
+        <p className="text-caption-responsive text-slate-500 mt-1 font-sans text-left">
           {L.formDesc[locale]}
         </p>
       </div>
 
       {errorMsg && (
-        <div className="mb-4 p-3 rounded-[3px] bg-rose-50 border border-rose-100 text-xs sm:text-sm text-rose-600 text-left font-sans">
+        <div className="mb-4 p-3 rounded-[3px] bg-rose-50 border border-rose-100 text-caption-responsive text-rose-600 text-left font-sans">
           {errorMsg}
         </div>
       )}
@@ -177,7 +177,7 @@ export function EventRegisterForm({ slug, eventTitle, locale }: Props) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {/* Full Name */}
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5 text-left">
+            <label className="block text-caption-responsive font-bold uppercase tracking-wider text-slate-700 mb-1.5 text-left">
               {L.fullName[locale]} <span className="text-rose-500">*</span>
             </label>
             <input
@@ -187,13 +187,13 @@ export function EventRegisterForm({ slug, eventTitle, locale }: Props) {
               value={formData.name}
               onChange={handleInputChange}
               placeholder={locale === 'vi' ? 'Nguyễn Văn A' : 'John Doe'}
-              className="w-full rounded-[3px] border border-slate-200 py-2.5 px-3.5 text-sm text-slate-800 placeholder-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+              className="w-full rounded-[3px] border border-slate-200 py-2.5 px-3.5 text-body-regular text-slate-800 placeholder-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
             />
           </div>
 
           {/* Business Email */}
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5 text-left">
+            <label className="block text-caption-responsive font-bold uppercase tracking-wider text-slate-700 mb-1.5 text-left">
               {L.email[locale]} <span className="text-rose-500">*</span>
             </label>
             <input
@@ -203,13 +203,13 @@ export function EventRegisterForm({ slug, eventTitle, locale }: Props) {
               value={formData.email}
               onChange={handleInputChange}
               placeholder="nguyenvana@company.com"
-              className="w-full rounded-[3px] border border-slate-200 py-2.5 px-3.5 text-sm text-slate-800 placeholder-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+              className="w-full rounded-[3px] border border-slate-200 py-2.5 px-3.5 text-body-regular text-slate-800 placeholder-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
             />
           </div>
 
           {/* Phone Number */}
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5 text-left">
+            <label className="block text-caption-responsive font-bold uppercase tracking-wider text-slate-700 mb-1.5 text-left">
               {L.phone[locale]} <span className="text-rose-500">*</span>
             </label>
             <input
@@ -219,13 +219,13 @@ export function EventRegisterForm({ slug, eventTitle, locale }: Props) {
               value={formData.phone}
               onChange={handleInputChange}
               placeholder="0901 234 567"
-              className="w-full rounded-[3px] border border-slate-200 py-2.5 px-3.5 text-sm text-slate-800 placeholder-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+              className="w-full rounded-[3px] border border-slate-200 py-2.5 px-3.5 text-body-regular text-slate-800 placeholder-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
             />
           </div>
 
           {/* Company Name */}
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5 text-left">
+            <label className="block text-caption-responsive font-bold uppercase tracking-wider text-slate-700 mb-1.5 text-left">
               {L.company[locale]} <span className="text-rose-500">*</span>
             </label>
             <input
@@ -235,13 +235,13 @@ export function EventRegisterForm({ slug, eventTitle, locale }: Props) {
               value={formData.company}
               onChange={handleInputChange}
               placeholder="ULink Industries"
-              className="w-full rounded-[3px] border border-slate-200 py-2.5 px-3.5 text-sm text-slate-800 placeholder-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+              className="w-full rounded-[3px] border border-slate-200 py-2.5 px-3.5 text-body-regular text-slate-800 placeholder-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
             />
           </div>
 
           {/* Job Title */}
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5 text-left">
+            <label className="block text-caption-responsive font-bold uppercase tracking-wider text-slate-700 mb-1.5 text-left">
               {L.role[locale]}
             </label>
             <input
@@ -250,13 +250,13 @@ export function EventRegisterForm({ slug, eventTitle, locale }: Props) {
               value={formData.role}
               onChange={handleInputChange}
               placeholder={L.rolePlaceholder[locale]}
-              className="w-full rounded-[3px] border border-slate-200 py-2.5 px-3.5 text-sm text-slate-800 placeholder-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+              className="w-full rounded-[3px] border border-slate-200 py-2.5 px-3.5 text-body-regular text-slate-800 placeholder-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
             />
           </div>
 
           {/* Referral Source Dropdown */}
           <div>
-            <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5 text-left">
+            <label className="block text-caption-responsive font-bold uppercase tracking-wider text-slate-700 mb-1.5 text-left">
               {L.source[locale]} <span className="text-rose-500">*</span>
             </label>
             <select
@@ -264,7 +264,7 @@ export function EventRegisterForm({ slug, eventTitle, locale }: Props) {
               required
               value={formData.source}
               onChange={handleInputChange}
-              className="w-full rounded-[3px] border border-slate-200 py-2.5 px-3.5 text-sm text-slate-800 placeholder-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all bg-white"
+              className="w-full rounded-[3px] border border-slate-200 py-2.5 px-3.5 text-body-regular text-slate-800 placeholder-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all bg-white"
             >
               <option value="">{L.sourceSelect[locale]}</option>
               {L.sourceOptions[locale].map((opt) => (
@@ -278,7 +278,7 @@ export function EventRegisterForm({ slug, eventTitle, locale }: Props) {
 
         {/* Notes */}
         <div>
-          <label className="block text-xs font-bold uppercase tracking-wider text-slate-700 mb-1.5 text-left">
+          <label className="block text-caption-responsive font-bold uppercase tracking-wider text-slate-700 mb-1.5 text-left">
             {L.notes[locale]}
           </label>
           <textarea
@@ -287,7 +287,7 @@ export function EventRegisterForm({ slug, eventTitle, locale }: Props) {
             value={formData.notes}
             onChange={handleInputChange}
             placeholder={L.notesPlaceholder[locale]}
-            className="w-full rounded-[3px] border border-slate-200 py-2.5 px-3.5 text-sm text-slate-800 placeholder-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all bg-white resize-none"
+            className="w-full rounded-[3px] border border-slate-200 py-2.5 px-3.5 text-body-regular text-slate-800 placeholder-slate-400 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all bg-white resize-none"
           />
         </div>
 
@@ -301,7 +301,7 @@ export function EventRegisterForm({ slug, eventTitle, locale }: Props) {
             onChange={handleCheckboxChange}
             className="mt-1 h-4 w-4 rounded-[3px] border-slate-200 text-blue-600 focus:ring-blue-500"
           />
-          <label htmlFor="agree-checkbox" className="text-xs text-slate-500 leading-relaxed text-left cursor-pointer">
+          <label htmlFor="agree-checkbox" className="text-caption-responsive text-slate-500 leading-relaxed text-left cursor-pointer">
             {L.agreeCheck[locale]}
           </label>
         </div>
@@ -310,7 +310,7 @@ export function EventRegisterForm({ slug, eventTitle, locale }: Props) {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="mt-6 flex w-full items-center justify-center rounded-[3px] bg-blue-600 hover:bg-blue-700 active:scale-[0.98] py-3.5 text-sm font-bold text-white transition-all shadow-md disabled:bg-slate-300 disabled:cursor-not-allowed"
+          className="mt-6 flex w-full items-center justify-center rounded-[3px] bg-blue-600 hover:bg-blue-700 active:scale-[0.98] py-3.5 text-body-regular font-bold text-white transition-all shadow-md disabled:bg-slate-300 disabled:cursor-not-allowed"
         >
           {isSubmitting ? L.submitting[locale] : L.submitBtn[locale]}
         </button>

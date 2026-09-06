@@ -5,7 +5,7 @@ export function QualityBadges() {
   return (
     <section className="py-8">
       <div className="rounded-[3px] bg-slate-50 p-6 sm:p-10 border border-slate-100 flex flex-col items-center text-center">
-        <h2 className="text-[30px] font-extrabold tracking-tight text-slate-900 mb-2">
+        <h2 className="text-hero-title font-extrabold tracking-tight text-slate-900 mb-2">
           Chứng nhận ISO
         </h2>
         <p className="text-body-large font-medium leading-relaxed text-slate-600 max-w-xl mb-8">

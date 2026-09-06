@@ -213,8 +213,8 @@ export default function SampleRequestModal({
         <div className="sticky top-0 z-10 border-b bg-white/95 dark:bg-card/95 backdrop-blur px-6 py-5 rounded-[3px]">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <h2 className="text-xl font-bold tracking-tight">{labels.modalTitle}</h2>
-              <p className="text-sm text-muted-foreground mt-1">{labels.modalDesc}</p>
+              <h2 className="text-card-title font-bold tracking-tight">{labels.modalTitle}</h2>
+              <p className="text-body-regular text-muted-foreground mt-1">{labels.modalDesc}</p>
             </div>
             <button
               type="button"
@@ -227,10 +227,10 @@ export default function SampleRequestModal({
           </div>
 
           {/* Product pill */}
-          <div className="mt-3 inline-flex items-center gap-2 rounded-full bg-primary/5 border border-primary/20 px-3 py-1.5 text-sm">
+          <div className="mt-3 inline-flex items-center gap-2 rounded-full bg-primary/5 border border-primary/20 px-3 py-1.5 text-body-regular">
             <span className="font-medium text-primary">{productName}</span>
             {skuCodes.length > 0 && (
-              <span className="text-xs text-muted-foreground">· {skuCodes.length} SKU</span>
+              <span className="text-caption-responsive text-muted-foreground">· {skuCodes.length} SKU</span>
             )}
           </div>
         </div>
@@ -242,15 +242,15 @@ export default function SampleRequestModal({
               <CheckCircle2 className="h-12 w-12 text-green-500" />
             </div>
             <div>
-              <p className="text-xl font-semibold text-green-700">{labels.success}</p>
-              <p className="text-sm text-muted-foreground mt-2 max-w-sm">
+              <p className="text-card-title font-semibold text-green-700">{labels.success}</p>
+              <p className="text-body-regular text-muted-foreground mt-2 max-w-sm">
                 Chúng tôi sẽ liên hệ với bạn sớm nhất có thể.
               </p>
             </div>
             <button
               type="button"
               onClick={handleClose}
-              className="mt-2 rounded-[3px] bg-primary px-8 py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
+              className="mt-2 rounded-[3px] bg-primary px-8 py-2.5 text-body-regular font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
             >
               Đóng
             </button>
@@ -260,7 +260,7 @@ export default function SampleRequestModal({
           <form onSubmit={handleSubmit} className="p-6">
             {/* Section: Contact Info */}
             <fieldset className="space-y-4">
-              <legend className="flex items-center gap-2 text-sm font-semibold text-foreground mb-3">
+              <legend className="flex items-center gap-2 text-body-regular font-semibold text-foreground mb-3">
                 <div className="flex items-center justify-center w-6 h-6 rounded-full bg-primary/10">
                   <User className="h-3.5 w-3.5 text-primary" />
                 </div>
@@ -275,7 +275,7 @@ export default function SampleRequestModal({
                     value={contactName}
                     onChange={(e) => setContactName(e.target.value)}
                     placeholder="Nguyễn Văn A"
-                    className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
+                    className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-body-regular text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
                   />
                 </Field>
 
@@ -285,7 +285,7 @@ export default function SampleRequestModal({
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="email@congty.com"
-                    className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
+                    className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-body-regular text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
                   />
                 </Field>
               </div>
@@ -298,7 +298,7 @@ export default function SampleRequestModal({
                     value={company}
                     onChange={(e) => setCompany(e.target.value)}
                     placeholder="Công ty TNHH ABC"
-                    className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
+                    className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-body-regular text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
                   />
                 </Field>
 
@@ -310,7 +310,7 @@ export default function SampleRequestModal({
                     value={phone}
                     onChange={(e) => setPhone(e.target.value.replace(/\D/g, ''))}
                     placeholder="0901234567"
-                    className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
+                    className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-body-regular text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
                   />
                 </Field>
               </div>
@@ -321,7 +321,7 @@ export default function SampleRequestModal({
 
             {/* Section: Shipping Address */}
             <fieldset className="space-y-4">
-              <legend className="flex items-center gap-2 text-sm font-semibold text-foreground mb-3">
+              <legend className="flex items-center gap-2 text-body-regular font-semibold text-foreground mb-3">
                 <div className="flex items-center justify-center w-6 h-6 rounded-full bg-primary/10">
                   <MapPin className="h-3.5 w-3.5 text-primary" />
                 </div>
@@ -334,7 +334,7 @@ export default function SampleRequestModal({
                   <select
                     value={province}
                     onChange={(e) => setProvince(e.target.value)}
-                    className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
+                    className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-body-regular text-gray-900 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
                   >
                     <option value="">{labels.selectProvince}</option>
                     {PROVINCES.map((p) => (
@@ -350,7 +350,7 @@ export default function SampleRequestModal({
                     <select
                       value={district}
                       onChange={(e) => setDistrict(e.target.value)}
-                      className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
+                      className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-body-regular text-gray-900 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
                     >
                       <option value="">{labels.selectDistrict}</option>
                       {districts.map((d) => (
@@ -365,7 +365,7 @@ export default function SampleRequestModal({
                       value={district}
                       onChange={(e) => setDistrict(e.target.value)}
                       placeholder={province ? 'Nhập quận/huyện' : labels.selectDistrict}
-                      className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors disabled:bg-gray-100 disabled:cursor-not-allowed"
+                      className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-body-regular text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors disabled:bg-gray-100 disabled:cursor-not-allowed"
                       disabled={!province}
                     />
                   )}
@@ -379,7 +379,7 @@ export default function SampleRequestModal({
                   value={addressDetail}
                   onChange={(e) => setAddressDetail(e.target.value)}
                   placeholder="Số nhà, tên đường, phường/xã..."
-                  className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
+                  className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-body-regular text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
                 />
               </Field>
             </fieldset>
@@ -389,7 +389,7 @@ export default function SampleRequestModal({
 
             {/* Section: Message */}
             <fieldset className="space-y-4">
-              <legend className="flex items-center gap-2 text-sm font-semibold text-foreground mb-3">
+              <legend className="flex items-center gap-2 text-body-regular font-semibold text-foreground mb-3">
                 <div className="flex items-center justify-center w-6 h-6 rounded-full bg-primary/10">
                   <MessageSquare className="h-3.5 w-3.5 text-primary" />
                 </div>
@@ -402,7 +402,7 @@ export default function SampleRequestModal({
                   onChange={(e) => setMessage(e.target.value)}
                   rows={3}
                   placeholder={labels.messagePlaceholder}
-                  className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors resize-y"
+                  className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-body-regular text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors resize-y"
                 />
               </Field>
             </fieldset>
@@ -410,7 +410,7 @@ export default function SampleRequestModal({
             {/* Form-level error */}
             {errors._form && (
               <div className="mt-4 rounded-[3px] bg-red-50 border border-red-200 px-4 py-3">
-                <p className="text-sm text-red-700">{errors._form}</p>
+                <p className="text-body-regular text-red-700">{errors._form}</p>
               </div>
             )}
 
@@ -419,7 +419,7 @@ export default function SampleRequestModal({
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full flex items-center justify-center gap-2 rounded-[3px] bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 disabled:opacity-50 transition-colors"
+                className="w-full flex items-center justify-center gap-2 rounded-[3px] bg-primary px-4 py-3 text-body-regular font-semibold text-primary-foreground hover:bg-primary/90 disabled:opacity-50 transition-colors"
               >
                 {submitting ? (
                   <>
@@ -454,12 +454,12 @@ function Field({
 }) {
   return (
     <div>
-      <label className="block text-xs font-medium text-muted-foreground uppercase tracking-wide mb-1.5">
+      <label className="block text-caption-responsive font-medium text-muted-foreground uppercase tracking-wide mb-1.5">
         {label}
         {required && <span className="text-red-400 ml-0.5">*</span>}
       </label>
       {children}
-      {error && <p className="mt-1.5 text-xs text-red-600">{error}</p>}
+      {error && <p className="mt-1.5 text-caption-responsive text-red-600">{error}</p>}
     </div>
   );
 }

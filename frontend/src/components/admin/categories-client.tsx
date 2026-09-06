@@ -177,13 +177,13 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
       {/* Header section */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-100 pb-6 mb-8">
         <div>
-          <span className="text-xs uppercase text-slate-400 font-extrabold tracking-wider">
+          <span className="text-caption-responsive uppercase text-slate-400 font-extrabold tracking-wider">
             Cơ cấu sản phẩm
           </span>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-primary tracking-tight mt-1">
+          <h1 className="text-section-title font-extrabold text-primary tracking-tight mt-1">
             Quản lý Danh mục
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 font-medium mt-1 leading-relaxed">
+          <p className="text-caption-responsive text-slate-500 font-medium mt-1 leading-relaxed">
             Tạo và sắp xếp cấu trúc danh mục sản phẩm phòng sạch, chống tĩnh điện theo dạng cha-con.
           </p>
         </div>
@@ -194,7 +194,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
             setModalOpen(true);
             setFormError('');
           }}
-          className="inline-flex h-11 items-center justify-center gap-2 rounded-[3px] bg-blue-600 px-5 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors shrink-0"
+          className="inline-flex h-11 items-center justify-center gap-2 rounded-[3px] bg-blue-600 px-5 text-caption-responsive font-bold text-white shadow-sm hover:bg-blue-700 transition-colors shrink-0"
         >
           <Plus className="h-4 w-4" />
           Tạo danh mục mới
@@ -203,13 +203,13 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
 
       {/* Error Alert Banner */}
       {error && (
-        <div className="mb-6 p-4 bg-rose-50 border border-rose-200 rounded-[3px] text-rose-800 text-xs sm:text-sm font-semibold flex items-start gap-2.5 shadow-sm">
+        <div className="mb-6 p-4 bg-rose-50 border border-rose-200 rounded-[3px] text-rose-800 text-caption-responsive font-semibold flex items-start gap-2.5 shadow-sm">
           <AlertTriangle className="h-5 w-5 text-rose-500 shrink-0 mt-0.5" />
           <div className="flex-1">
             <span className="font-extrabold text-rose-900 block mb-1">
               Đã xảy ra lỗi khi tải dữ liệu danh mục từ API
             </span>
-            <pre className="font-mono text-[11px] bg-white/60 p-2.5 rounded-[3px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all">
+            <pre className="font-mono text-caption-responsive bg-white/60 p-2.5 rounded-[3px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all">
               {error}
             </pre>
           </div>
@@ -225,7 +225,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Tìm kiếm danh mục theo tên, slug, mô tả..."
-            className="w-full pl-10 pr-4 py-2.5 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+            className="w-full pl-10 pr-4 py-2.5 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
           />
         </div>
       </div>
@@ -235,10 +235,10 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
         {displayCategories.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 text-center">
             <FolderTree className="h-12 w-12 text-slate-300 mb-3" />
-            <span className="text-sm font-extrabold text-primary">
+            <span className="text-body-regular font-extrabold text-primary">
               Không tìm thấy danh mục nào
             </span>
-            <span className="text-xs text-slate-400 mt-1">
+            <span className="text-caption-responsive text-slate-400 mt-1">
               Thử thay đổi từ khóa tìm kiếm hoặc tạo một danh mục mới.
             </span>
           </div>
@@ -246,7 +246,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
           <div className="overflow-x-auto">
             <table className="w-full border-collapse text-left min-w-[900px]">
               <thead>
-                <tr className="bg-slate-50 border-b border-slate-100 text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-wider">
+                <tr className="bg-slate-50 border-b border-slate-100 text-caption-responsive font-bold text-slate-400 uppercase tracking-wider">
                   <th className="px-6 py-3">Tên Danh mục</th>
                   <th className="px-6 py-3">Đường dẫn (Slug)</th>
                   <th className="px-6 py-3">Mô tả</th>
@@ -255,7 +255,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
                   <th className="px-6 py-3 text-right">Hành động</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 text-xs sm:text-sm text-slate-700">
+              <tbody className="divide-y divide-slate-100 text-caption-responsive text-slate-700">
                 {displayCategories.map((cat) => {
                   const categoryHasChildren = hasChildren(cat.id);
                   const isCollapsed = collapsedIds[cat.id] ?? false;
@@ -297,7 +297,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
                       </td>
 
                       {/* Slug */}
-                      <td className="px-6 py-3.5 font-mono text-[11px] text-slate-500 select-all">
+                      <td className="px-6 py-3.5 font-mono text-caption-responsive text-slate-500 select-all">
                         {cat.slug}
                       </td>
 
@@ -309,11 +309,11 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
                       {/* Parent */}
                       <td className="px-6 py-3.5">
                         {cat.parent ? (
-                          <span className="inline-flex items-center px-2 py-0.5 rounded-[3px] bg-slate-100 text-[10px] font-bold text-slate-600">
+                          <span className="inline-flex items-center px-2 py-0.5 rounded-[3px] bg-slate-100 text-caption-responsive font-bold text-slate-600">
                             {cat.parent.name}
                           </span>
                         ) : (
-                          <span className="text-slate-400 italic text-[11px]">Không có (Gốc)</span>
+                          <span className="text-slate-400 italic text-caption-responsive">Không có (Gốc)</span>
                         )}
                       </td>
 
@@ -321,7 +321,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
                       <td className="px-6 py-3.5">
                         <span
                           className={cn(
-                            'inline-flex items-center px-2 py-0.5 rounded-[3px] text-[10px] font-bold',
+                            'inline-flex items-center px-2 py-0.5 rounded-[3px] text-caption-responsive font-bold',
                             cat.status === 'published'
                               ? 'bg-emerald-50 text-emerald-700'
                               : cat.status === 'draft'
@@ -406,7 +406,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
           <div className="w-full max-w-lg bg-white rounded-[3px] shadow-xl overflow-hidden animate-in fade-in zoom-in-95 duration-200">
             {/* Modal Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
-              <h2 className="text-base sm:text-lg font-extrabold text-primary">
+              <h2 className="text-body-regular font-extrabold text-primary">
                 {activeCategory.id ? 'Cập nhật danh mục' : 'Tạo danh mục mới'}
               </h2>
               <button
@@ -424,14 +424,14 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
             {/* Form */}
             <form onSubmit={handleSubmit} className="p-6 flex flex-col gap-5">
               {formError && (
-                <div className="p-3 bg-rose-50 border border-rose-100 rounded-[3px] text-xs font-bold text-rose-600 flex items-center gap-2 animate-in fade-in duration-200">
+                <div className="p-3 bg-rose-50 border border-rose-100 rounded-[3px] text-caption-responsive font-bold text-rose-600 flex items-center gap-2 animate-in fade-in duration-200">
                   <AlertTriangle className="h-4 w-4 shrink-0" />
                   <span>{formError}</span>
                 </div>
               )}
               {/* Category Name */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-bold text-slate-500 uppercase">Tên danh mục *</label>
+                <label className="text-caption-responsive font-bold text-slate-500 uppercase">Tên danh mục *</label>
                 <input
                   type="text"
                   required
@@ -448,13 +448,13 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
                     setActiveCategory({ ...activeCategory, name, slug });
                   }}
                   placeholder="Ví dụ: Găng tay phòng sạch, Quần áo..."
-                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
                 />
               </div>
 
               {/* Slug */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-bold text-slate-500 uppercase">
+                <label className="text-caption-responsive font-bold text-slate-500 uppercase">
                   Slug (Đường dẫn tĩnh) *
                 </label>
                 <input
@@ -463,13 +463,13 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
                   value={activeCategory.slug || ''}
                   readOnly
                   placeholder="Tự động tạo từ tên..."
-                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-mono focus:outline-none bg-slate-50 cursor-not-allowed text-slate-450 select-none"
+                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-mono focus:outline-none bg-slate-50 cursor-not-allowed text-slate-450 select-none"
                 />
               </div>
 
               {/* Parent Category */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-bold text-slate-500 uppercase">Danh mục cha</label>
+                <label className="text-caption-responsive font-bold text-slate-500 uppercase">Danh mục cha</label>
                 <select
                   value={activeCategory.parent?.id || ''}
                   onChange={(e) => {
@@ -480,7 +480,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
                       parent: id ? { id, name } : null
                     });
                   }}
-                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600 bg-white"
+                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600 bg-white"
                 >
                   <option value="">Không có (Danh mục cấp cao nhất)</option>
                   {categories
@@ -495,7 +495,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
 
               {/* Description */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-bold text-slate-500 uppercase">Mô tả ngắn</label>
+                <label className="text-caption-responsive font-bold text-slate-500 uppercase">Mô tả ngắn</label>
                 <textarea
                   rows={3}
                   value={activeCategory.description || ''}
@@ -503,13 +503,13 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
                     setActiveCategory({ ...activeCategory, description: e.target.value })
                   }
                   placeholder="Mô tả sơ lược về danh mục sản phẩm này..."
-                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
                 />
               </div>
 
               {/* Status */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-bold text-slate-500 uppercase">
+                <label className="text-caption-responsive font-bold text-slate-500 uppercase">
                   Trạng thái phát hành
                 </label>
                 <select
@@ -520,7 +520,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
                       status: e.target.value as 'published' | 'draft' | 'archived'
                     })
                   }
-                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-700 focus:outline-none bg-white"
+                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-700 focus:outline-none bg-white"
                 >
                   <option value="published">Đã xuất bản (Công khai)</option>
                   <option value="draft">Bản thảo (Nháp)</option>
@@ -536,14 +536,14 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
                     setFormError('');
                     setActiveCategory(null);
                   }}
-                  className="px-4 py-2.5 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-500 hover:bg-slate-50 transition-colors"
+                  className="px-4 py-2.5 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-500 hover:bg-slate-50 transition-colors"
                 >
                   Hủy bỏ
                 </button>
                 <button
                   type="submit"
                   disabled={isPending}
-                  className="inline-flex items-center justify-center px-4 py-2.5 rounded-[3px] bg-blue-600 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  className="inline-flex items-center justify-center px-4 py-2.5 rounded-[3px] bg-blue-600 text-caption-responsive font-bold text-white shadow-sm hover:bg-blue-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   {isPending ? 'Đang lưu...' : 'Lưu danh mục'}
                 </button>

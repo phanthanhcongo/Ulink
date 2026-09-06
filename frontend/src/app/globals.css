@@ -170,7 +170,7 @@
   }
 
   .text-section-title {
-    @apply text-[16px] font-semibold leading-tight tracking-tight min-[375px]:text-[18px] sm:text-[24px] sm:leading-[32px] lg:text-[28px] lg:leading-[36px] xl:text-[32px] xl:leading-[40px];
+    @apply text-[16px] font-semibold leading-tight tracking-tight min-[375px]:text-[18px] sm:text-[24px] sm:leading-[32px] lg:text-[28px] lg:leading-[36px] 2xl:text-[32px] 2xl:leading-[40px];
   }
 
   .text-eyebrow {

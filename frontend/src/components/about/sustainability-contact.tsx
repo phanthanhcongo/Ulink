@@ -78,7 +78,7 @@ export function SustainabilityContact({ tContact }: SustainabilityContactProps) 
       <div className="page-container">
         {/* Header */}
         <div className="mb-10 text-left">
-          <h2 className="text-[24px] font-extrabold text-slate-900 tracking-tight">
+          <h2 className="text-section-title font-extrabold text-slate-900 tracking-tight">
             {tContact.title}
           </h2>
           <p className="text-body-large text-slate-500 font-medium mt-2">

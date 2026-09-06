@@ -26,11 +26,11 @@ export default async function CatalogShowcase({ locale }: CatalogShowcaseProps) 
         <div className="flex flex-col items-start border-b border-gray-100 pb-8 mb-12">
           <div className="flex items-center gap-2">
             <span className="h-4 w-1.5 bg-blue-600 rounded-[3px] shrink-0" />
-            <span className="text-xs font-bold uppercase tracking-wider text-slate-800">
+            <span className="text-caption-responsive font-bold uppercase tracking-wider text-slate-800">
               {t('catalogSection.eyebrow')}
             </span>
           </div>
-          <p className="mt-4 text-lg font-bold text-slate-700 leading-snug">
+          <p className="mt-4 text-card-title font-bold text-slate-700 leading-snug">
             {t('catalogSection.subtitle')}
           </p>
         </div>
@@ -45,14 +45,14 @@ export default async function CatalogShowcase({ locale }: CatalogShowcaseProps) 
                 <div className="flex items-center justify-between border-b border-gray-200 pb-4 mb-6">
                   <div className="flex items-center gap-2">
                     <span className="h-5 w-1 bg-blue-600 rounded-[3px] shrink-0" />
-                    <h3 className="text-lg font-extrabold text-slate-900 leading-tight">
+                    <h3 className="text-card-title font-extrabold text-slate-900 leading-tight">
                       {categoryName}
                     </h3>
                   </div>
                   <CategoryNavLink
                     categorySlug={catData.category.slug}
                     href="/solutions/listProduct"
-                    className="group inline-flex items-center gap-1.5 text-xs sm:text-sm font-semibold text-blue-600 hover:text-blue-700 transition-colors"
+                    className="group inline-flex items-center gap-1.5 text-caption-responsive font-semibold text-blue-600 hover:text-blue-700 transition-colors"
                   >
                     {t('catalogSection.viewAll')}
                     <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />

@@ -7,7 +7,7 @@ export function QualityHero() {
         <span className="inline-flex w-fit items-center rounded-full bg-blue-50 px-3.5 py-1 text-body-regular font-bold uppercase tracking-wider text-blue-700 ring-1 ring-inset ring-blue-700/10">
           CHẤT LƯỢNG & TIÊU CHUẨN
         </span>
-        <h1 className="text-[30px] font-extrabold tracking-tight text-slate-900 leading-tight">
+        <h1 className="text-hero-title font-extrabold tracking-tight text-slate-900 leading-tight">
           Chất lượng là cam kết. Tiêu chuẩn là nền tảng.
         </h1>
         <p className="text-body-large font-medium leading-relaxed text-slate-600">
@@ -27,7 +27,7 @@ export function QualityHero() {
           priority
         />
         <div className="absolute bottom-4 right-4 flex h-10 w-10 items-center justify-center rounded-[3px] bg-white/90 p-2 shadow-md backdrop-blur">
-          <span className="text-xs font-extrabold text-blue-600">ULINK</span>
+          <span className="text-caption-responsive font-extrabold text-blue-600">ULINK</span>
         </div>
       </div>
     </section>

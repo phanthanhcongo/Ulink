@@ -1,0 +1,612 @@
+[
+  {
+    "stt": 1,
+    "name": "**Trang chủ**",
+    "url": "/",
+    "file": "src/app/[locale]/(main)/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 2,
+    "name": "**Giới thiệu ULink**",
+    "url": "/about",
+    "file": "src/app/[locale]/(main)/about/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 3,
+    "name": "**Tuyển dụng**",
+    "url": "/about/careers",
+    "file": "src/app/[locale]/(main)/about/careers/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 4,
+    "name": "Chi tiết vị trí tuyển dụng",
+    "url": "/about/careers/[slug]",
+    "file": "src/app/[locale]/(main)/about/careers/[slug]/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 5,
+    "name": "Ứng tuyển vị trí",
+    "url": "/about/careers/[slug]/apply",
+    "file": "src/app/[locale]/(main)/about/careers/[slug]/apply/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 6,
+    "name": "Trạng thái ứng tuyển thành công",
+    "url": "/about/careers/apply-success",
+    "file": "src/app/[locale]/(main)/about/careers/apply-success/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 7,
+    "name": "Trạng thái gửi liên hệ thành công",
+    "url": "/about/contact-success",
+    "file": "src/app/[locale]/(main)/about/contact-success/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 8,
+    "name": "Tin tức công ty",
+    "url": "/about/news",
+    "file": "src/app/[locale]/(main)/about/news/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 9,
+    "name": "Chi tiết tin tức công ty",
+    "url": "/about/news/[id]",
+    "file": "src/app/[locale]/(main)/about/news/[id]/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 10,
+    "name": "Tiêu chuẩn chất lượng",
+    "url": "/about/standards",
+    "file": "src/app/[locale]/(main)/about/standards/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 11,
+    "name": "Phát triển bền vững (ESG)",
+    "url": "/about/sustainability",
+    "file": "src/app/[locale]/(main)/about/sustainability/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 12,
+    "name": "**Giỏ hàng RFQ**",
+    "url": "/cart",
+    "file": "src/app/[locale]/(main)/cart/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 13,
+    "name": "**Thanh toán / Gửi đơn RFQ**",
+    "url": "/checkout",
+    "file": "src/app/[locale]/(main)/checkout/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 14,
+    "name": "**Trang Liên hệ**",
+    "url": "/contact",
+    "file": "src/app/[locale]/(main)/contact/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 15,
+    "name": "**Danh sách Ngành nghề**",
+    "url": "/industries",
+    "file": "src/app/[locale]/(main)/industries/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 16,
+    "name": "Chi tiết ngành nghề",
+    "url": "/industries/[slug]",
+    "file": "src/app/[locale]/(main)/industries/[slug]/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 17,
+    "name": "**Danh sách RFQ cá nhân**",
+    "url": "/my-rfqs",
+    "file": "src/app/[locale]/(main)/my-rfqs/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 18,
+    "name": "**Xác nhận đơn hàng**",
+    "url": "/order-confirmation",
+    "file": "src/app/[locale]/(main)/order-confirmation/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 19,
+    "name": "**Theo dõi đơn hàng**",
+    "url": "/order-tracking",
+    "file": "src/app/[locale]/(main)/order-tracking/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 20,
+    "name": "Xác nhận giao hàng",
+    "url": "/order-tracking/delivery-confirmation",
+    "file": "src/app/[locale]/(main)/order-tracking/delivery-confirmation/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 21,
+    "name": "Hóa đơn & Thanh toán đơn hàng",
+    "url": "/order-tracking/payment-invoice",
+    "file": "src/app/[locale]/(main)/order-tracking/payment-invoice/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 22,
+    "name": "Thanh toán hóa đơn",
+    "url": "/payment-invoice",
+    "file": "src/app/[locale]/(main)/payment-invoice/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 23,
+    "name": "**Đặt hàng nhanh (Quick Order)**",
+    "url": "/quick-order",
+    "file": "src/app/[locale]/(main)/quick-order/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 24,
+    "name": "**Tổng quan Hub & KCN**",
+    "url": "/regional-hubs",
+    "file": "src/app/[locale]/(main)/regional-hubs/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 25,
+    "name": "Chi tiết Cụm Hub 1",
+    "url": "/regional-hubs/cum-1",
+    "file": "src/app/[locale]/(main)/regional-hubs/cum-1/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 26,
+    "name": "Chi tiết Cụm Hub 2 (Hub Hà Nam)",
+    "url": "/regional-hubs/cum-2",
+    "file": "src/app/[locale]/(main)/regional-hubs/cum-2/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 27,
+    "name": "**Trung tâm Tài nguyên**",
+    "url": "/resources",
+    "file": "src/app/[locale]/(main)/resources/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 28,
+    "name": "Danh sách sự kiện",
+    "url": "/resources/events",
+    "file": "src/app/[locale]/(main)/resources/events/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 29,
+    "name": "Chi tiết sự kiện",
+    "url": "/resources/events/[slug]",
+    "file": "src/app/[locale]/(main)/resources/events/[slug]/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 30,
+    "name": "Đăng ký tham gia sự kiện",
+    "url": "/resources/events/[slug]/register",
+    "file": "src/app/[locale]/(main)/resources/events/[slug]/register/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 31,
+    "name": "Chi tiết bài viết tin tức",
+    "url": "/resources/news/[slug]",
+    "file": "src/app/[locale]/(main)/resources/news/[slug]/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 32,
+    "name": "Chi tiết tài liệu / bài viết",
+    "url": "/resources/[slug]",
+    "file": "src/app/[locale]/(main)/resources/[slug]/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 33,
+    "name": "**Yêu cầu mẫu thử cá nhân**",
+    "url": "/sample-requests",
+    "file": "src/app/[locale]/(main)/sample-requests/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 34,
+    "name": "Chi tiết yêu cầu mẫu thử",
+    "url": "/sample-requests/[id]",
+    "file": "src/app/[locale]/(main)/sample-requests/[id]/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 35,
+    "name": "**Tổng quan Sản phẩm & Giải pháp**",
+    "url": "/solutions",
+    "file": "src/app/[locale]/(main)/solutions/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 36,
+    "name": "Danh sách sản phẩm / Danh mục",
+    "url": "/solutions/listProduct",
+    "file": "src/app/[locale]/(main)/solutions/listProduct/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 37,
+    "name": "Chi tiết sản phẩm theo danh mục",
+    "url": "/solutions/listProduct/[slug]",
+    "file": "src/app/[locale]/(main)/solutions/listProduct/[slug]/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 38,
+    "name": "Tìm kiếm sản phẩm nâng cao",
+    "url": "/solutions/searchProduct",
+    "file": "src/app/[locale]/(main)/solutions/searchProduct/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 39,
+    "name": "**Đăng nhập**",
+    "url": "/login",
+    "file": "src/app/[locale]/(auth)/login/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 40,
+    "name": "**Đăng ký tài khoản B2B**",
+    "url": "/register",
+    "file": "src/app/[locale]/(auth)/register/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 41,
+    "name": "Xác nhận đăng ký",
+    "url": "/register/confirm",
+    "file": "src/app/[locale]/(auth)/register/confirm/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 42,
+    "name": "**Quên mật khẩu**",
+    "url": "/forgot-password",
+    "file": "src/app/[locale]/(auth)/forgot-password/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 43,
+    "name": "**Đặt lại mật khẩu**",
+    "url": "/reset-password",
+    "file": "src/app/[locale]/(auth)/reset-password/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 44,
+    "name": "**Đổi mật khẩu**",
+    "url": "/change-password",
+    "file": "src/app/[locale]/(auth)/change-password/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 45,
+    "name": "**Xác thực OTP**",
+    "url": "/verify-otp",
+    "file": "src/app/[locale]/(auth)/verify-otp/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 46,
+    "name": "**Admin Dashboard**",
+    "url": "/admin",
+    "file": "src/app/[locale]/admin/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 47,
+    "name": "Quản lý Bài viết & Tin tức",
+    "url": "/admin/articles",
+    "file": "src/app/[locale]/admin/articles/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 48,
+    "name": "Quản lý Thuộc tính sản phẩm",
+    "url": "/admin/attributes",
+    "file": "src/app/[locale]/admin/attributes/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 49,
+    "name": "Quản lý Danh mục",
+    "url": "/admin/categories",
+    "file": "src/app/[locale]/admin/categories/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 50,
+    "name": "Quản lý Yêu cầu liên hệ",
+    "url": "/admin/contact-requests",
+    "file": "src/app/[locale]/admin/contact-requests/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 51,
+    "name": "Chi tiết yêu cầu liên hệ",
+    "url": "/admin/contact-requests/[id]",
+    "file": "src/app/[locale]/admin/contact-requests/[id]/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 52,
+    "name": "Quản lý Hub vùng",
+    "url": "/admin/hubs",
+    "file": "src/app/[locale]/admin/hubs/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 53,
+    "name": "Nhập dữ liệu hàng loạt (Import)",
+    "url": "/admin/import",
+    "file": "src/app/[locale]/admin/import/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 54,
+    "name": "Quản lý Khu công nghiệp",
+    "url": "/admin/industrial-zones",
+    "file": "src/app/[locale]/admin/industrial-zones/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 55,
+    "name": "Quản lý Sản phẩm",
+    "url": "/admin/products",
+    "file": "src/app/[locale]/admin/products/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 56,
+    "name": "Quản lý Báo giá RFQ",
+    "url": "/admin/rfqs",
+    "file": "src/app/[locale]/admin/rfqs/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 57,
+    "name": "Quản lý Yêu cầu mẫu thử",
+    "url": "/admin/sample-requests",
+    "file": "src/app/[locale]/admin/sample-requests/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 58,
+    "name": "Chi tiết yêu cầu mẫu thử Admin",
+    "url": "/admin/sample-requests/[id]",
+    "file": "src/app/[locale]/admin/sample-requests/[id]/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 59,
+    "name": "Quản lý SKU biến thể",
+    "url": "/admin/skus",
+    "file": "src/app/[locale]/admin/skus/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 60,
+    "name": "Quản lý Đăng ký nhận tin (Subscribers)",
+    "url": "/admin/subscribers",
+    "file": "src/app/[locale]/admin/subscribers/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  },
+  {
+    "stt": 61,
+    "name": "Quản lý Người dùng",
+    "url": "/admin/users",
+    "file": "src/app/[locale]/admin/users/page.tsx",
+    "ok": true,
+    "rawCount": 0,
+    "variantTokenCount": 0,
+    "eyebrowBadCount": 0
+  }
+]

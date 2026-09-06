@@ -253,17 +253,17 @@ export default function ProductDetailClient({
       {/* 1. PRICE DISPLAY HEADER */}
       <div className="space-y-1">
         <div className="flex items-baseline gap-1 flex-wrap">
-          <span className="text-[28px] font-bold text-blue-600 tracking-tight leading-none">
+          <span className="text-section-title font-bold text-blue-600 tracking-tight leading-none">
             {formatPrice(currentUnitPrice)}
           </span>
-          <span className="text-lg text-slate-600 font-medium">/ {displayUnitLabel}</span>
+          <span className="text-card-title text-slate-600 font-medium">/ {displayUnitLabel}</span>
         </div>
-        <p className="text-xs text-slate-500 font-medium">
+        <p className="text-caption-responsive text-slate-500 font-medium">
           {locale === 'vi' ? 'Chưa bao gồm thuế (8% VAT)' : 'Tax excluded (8% VAT)'}
         </p>
         <div className="flex items-center gap-1.5 pt-1">
           <span className="h-2 w-2 rounded-full bg-emerald-500 shrink-0" />
-          <span className="text-xs font-semibold text-emerald-600">
+          <span className="text-caption-responsive font-semibold text-emerald-600">
             {locale === 'vi' ? 'Sẵn hàng tại kho' : 'In Stock at Warehouse'}
           </span>
         </div>
@@ -274,7 +274,7 @@ export default function ProductDetailClient({
       {/* 2. DYNAMIC ATTRIBUTE SELECTORS (Trọng lượng cuộn / Kích cỡ) */}
       {attributes.map((attr) => (
         <div key={attr.name} className="space-y-2.5">
-          <p className="text-xs font-bold text-slate-800">
+          <p className="text-caption-responsive font-bold text-slate-800">
             {attr.name === 'size'
               ? locale === 'vi'
                 ? 'Trọng lượng cuộn (Kích cỡ)'
@@ -290,7 +290,7 @@ export default function ProductDetailClient({
                   type="button"
                   onClick={() => handleSelectAttribute(attr.name, val)}
                   className={cn(
-                    'px-4 py-2 text-xs transition-all flex items-center justify-center cursor-pointer',
+                    'px-4 py-2 text-caption-responsive transition-all flex items-center justify-center cursor-pointer',
                     isSelected
                       ? 'border-2 border-[#1769e2] bg-white text-[#1769e2] rounded-[3px] font-bold'
                       : 'border border-slate-200 bg-white text-slate-700 rounded-[3px] hover:border-slate-350 font-medium'
@@ -307,7 +307,7 @@ export default function ProductDetailClient({
       {/* 3. QUANTITY SELECTOR WITH MOQ */}
       <div className="space-y-2.5">
         <div className="flex items-center justify-between">
-          <p className="text-xs font-bold text-slate-800">
+          <p className="text-caption-responsive font-bold text-slate-800">
             {locale === 'vi'
               ? `Số lượng đặt ${unitLabel} (MOQ: 500 ${unitLabel})`
               : `Order Qty ${unitLabel} (MOQ: 500 ${unitLabel})`}
@@ -317,7 +317,7 @@ export default function ProductDetailClient({
           <button
             type="button"
             onClick={() => handleQuantityChange(quantity - 50 < 1 ? 1 : quantity - 50)}
-            className="w-12 h-10 flex items-center justify-center hover:bg-slate-50 text-slate-600 text-lg font-bold border-r border-slate-200 select-none transition-colors cursor-pointer"
+            className="w-12 h-10 flex items-center justify-center hover:bg-slate-50 text-slate-600 text-card-title font-bold border-r border-slate-200 select-none transition-colors cursor-pointer"
           >
             <Minus className="h-3.5 w-3.5" />
           </button>
@@ -325,12 +325,12 @@ export default function ProductDetailClient({
             type="number"
             value={quantity}
             onChange={(e) => handleQuantityChange(parseInt(e.target.value, 10))}
-            className="flex-1 text-center font-bold text-sm text-slate-900 focus:outline-none w-16 py-2"
+            className="flex-1 text-center font-bold text-body-regular text-slate-900 focus:outline-none w-16 py-2"
           />
           <button
             type="button"
             onClick={() => handleQuantityChange(quantity + 50)}
-            className="w-12 h-10 flex items-center justify-center hover:bg-slate-50 text-slate-600 text-lg font-bold border-l border-slate-200 select-none transition-colors cursor-pointer"
+            className="w-12 h-10 flex items-center justify-center hover:bg-slate-50 text-slate-600 text-card-title font-bold border-l border-slate-200 select-none transition-colors cursor-pointer"
           >
             <Plus className="h-3.5 w-3.5" />
           </button>
@@ -339,7 +339,7 @@ export default function ProductDetailClient({
 
       {/* 4. TIERED B2B VOLUME DISCOUNT TABLE */}
       <div className="space-y-2.5">
-        <p className="text-xs font-bold text-slate-800">
+        <p className="text-caption-responsive font-bold text-slate-800">
           {locale === 'vi' ? 'Chiết khấu B2B theo sản lượng' : 'B2B Volume Discount'}
         </p>
         <div className="border border-slate-200 rounded-[3px] overflow-hidden bg-white divide-y divide-slate-100">
@@ -349,7 +349,7 @@ export default function ProductDetailClient({
               <div
                 key={tier.label}
                 className={cn(
-                  'flex justify-between items-center px-4 py-3 text-xs transition-colors',
+                  'flex justify-between items-center px-4 py-3 text-caption-responsive transition-colors',
                   isActive
                     ? 'bg-[#eaf3ff]/80 text-[#1769e2] font-bold'
                     : 'text-slate-600 bg-white'
@@ -374,11 +374,11 @@ export default function ProductDetailClient({
 
       {/* 5. TOTAL BLOCK */}
       <div className="space-y-1.5 text-left">
-        <p className="text-xs font-bold text-slate-800">{locale === 'vi' ? 'Tổng cộng' : 'Total'}</p>
-        <span className="text-[28px] font-extrabold text-[#1769e2] tracking-tight block leading-none">
+        <p className="text-caption-responsive font-bold text-slate-800">{locale === 'vi' ? 'Tổng cộng' : 'Total'}</p>
+        <span className="text-section-title font-extrabold text-[#1769e2] tracking-tight block leading-none">
           {formatPrice(totalAmount)}
         </span>
-        <p className="text-[11px] text-slate-400 italic font-medium">
+        <p className="text-caption-responsive text-slate-400 italic font-medium">
           {locale === 'vi'
             ? '• Giá bán sỉ ưu đãi khi mua số lượng lớn.'
             : '• Wholesale price discount applied for high volumes.'}
@@ -392,7 +392,7 @@ export default function ProductDetailClient({
           onClick={handleAddToCart}
           disabled={!selectedSku}
           className={cn(
-            'w-full flex items-center justify-center gap-2 h-11 rounded-[3px] font-bold text-sm text-white bg-[#1769e2] hover:bg-[#155fcb] transition-colors cursor-pointer shadow-sm',
+            'w-full flex items-center justify-center gap-2 h-11 rounded-[3px] font-bold text-body-regular text-white bg-[#1769e2] hover:bg-[#155fcb] transition-colors cursor-pointer shadow-sm',
             !selectedSku && 'opacity-50 cursor-not-allowed'
           )}
         >
@@ -414,7 +414,7 @@ export default function ProductDetailClient({
           onClick={handleRequestQuote}
           disabled={!selectedSku}
           className={cn(
-            'w-full flex items-center justify-center h-11 rounded-[3px] font-bold text-sm text-[#1769e2] border border-[#1769e2] bg-white hover:bg-blue-50/50 transition-colors cursor-pointer',
+            'w-full flex items-center justify-center h-11 rounded-[3px] font-bold text-body-regular text-[#1769e2] border border-[#1769e2] bg-white hover:bg-blue-50/50 transition-colors cursor-pointer',
             !selectedSku && 'opacity-50 cursor-not-allowed'
           )}
         >
@@ -425,7 +425,7 @@ export default function ProductDetailClient({
       <hr className="border-slate-200/80" />
 
       {/* 7. TRUST & DELIVERY BADGES */}
-      <div className="space-y-3 pt-1 text-xs text-slate-600 font-medium">
+      <div className="space-y-3 pt-1 text-caption-responsive text-slate-600 font-medium">
         <div className="flex items-center gap-2.5">
           <Settings2 className="h-4 w-4 text-slate-500 shrink-0" />
           <span>

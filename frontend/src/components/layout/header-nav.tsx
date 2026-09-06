@@ -1146,7 +1146,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
           >
             <Link
               href={item.href}
-              className={`inline-flex items-center gap-1.5 text-[13px] sm:text-[14px] lg:text-[16px] font-normal transition-all duration-200 ${isOpen ? 'text-brand font-medium' : 'text-foreground hover:text-brand hover:scale-[1.02]'
+              className={`inline-flex items-center gap-1.5 text-caption-responsive   font-normal transition-all duration-200 ${isOpen ? 'text-brand font-medium' : 'text-foreground hover:text-brand hover:scale-[1.02]'
                 }`}
             >
               {item.label}
@@ -1173,11 +1173,11 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                       if (hasSub) {
                         return (
                           <div key={child.href} className="flex flex-col rounded-[3px] px-3 py-2">
-                            <span className="text-[13px] font-semibold text-slate-800">
+                            <span className="text-caption-responsive font-semibold text-slate-800">
                               {child.label}
                             </span>
                             {child.description && (
-                              <span className="mt-0.5 text-[11px] text-slate-500">
+                              <span className="mt-0.5 text-caption-responsive text-slate-500">
                                 {child.description}
                               </span>
                             )}
@@ -1187,7 +1187,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                                   key={sub.href}
                                   href={sub.href}
                                   onClick={() => setActiveMenu(null)}
-                                  className="rounded-[3px] px-2 py-1.5 text-[12px] text-slate-600 transition-colors hover:bg-slate-50 hover:text-brand"
+                                  className="rounded-[3px] px-2 py-1.5 text-caption-responsive text-slate-600 transition-colors hover:bg-slate-50 hover:text-brand"
                                 >
                                   {sub.label}
                                 </Link>
@@ -1203,11 +1203,11 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                           onClick={() => setActiveMenu(null)}
                           className="group flex flex-col rounded-[3px] px-3 py-2 transition-colors hover:bg-slate-50"
                         >
-                          <span className="text-[13px] font-semibold text-slate-800 transition-colors group-hover:text-brand">
+                          <span className="text-caption-responsive font-semibold text-slate-800 transition-colors group-hover:text-brand">
                             {child.label}
                           </span>
                           {child.description && (
-                            <span className="mt-0.5 text-[11px] text-slate-500">
+                            <span className="mt-0.5 text-caption-responsive text-slate-500">
                               {child.description}
                             </span>
                           )}
@@ -1243,7 +1243,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                             {isCatActive && (
                               <div className="absolute left-3.5 top-1/2 -translate-y-1/2 w-[3px] h-[18px] bg-blue-600 rounded-full" />
                             )}
-                            <span className="text-[14px] leading-none">{cat.name}</span>
+                            <span className="text-body-regular leading-none">{cat.name}</span>
                             <ChevronRight
                               className={`h-4 w-4 transition-transform ${
                                 isCatActive ? 'text-blue-600 translate-x-0.5' : 'text-slate-400'
@@ -1259,7 +1259,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                   <div className="flex flex-col bg-white pt-8 pb-8 pl-12 pr-20">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-6">
-                        <span className="text-[16px] font-bold text-slate-800">
+                        <span className="text-body-regular font-bold text-slate-800">
                           Danh mục Sản phẩm — {currentCategoryData?.name}
                         </span>
                         <div className="h-[2px] w-8 bg-blue-600 rounded-full" />
@@ -1281,10 +1281,10 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                               </div>
 
                               <div className="flex flex-col">
-                                <span className="text-[14px] font-bold text-slate-800 transition-colors group-hover:text-blue-600">
+                                <span className="text-body-regular font-bold text-slate-800 transition-colors group-hover:text-blue-600">
                                   {prod.title}
                                 </span>
-                                <span className="mt-1 text-[12px] text-slate-400 leading-relaxed font-medium">
+                                <span className="mt-1 text-caption-responsive text-slate-400 leading-relaxed font-medium">
                                   {prod.description}
                                 </span>
                               </div>
@@ -1297,7 +1297,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                           <Link
                             href={currentCategoryData?.link || '#'}
                             onClick={() => setActiveMenu(null)}
-                            className="group inline-flex items-center gap-1.5 text-[14px] font-bold text-blue-600 hover:text-blue-700 transition-colors"
+                            className="group inline-flex items-center gap-1.5 text-body-regular font-bold text-blue-600 hover:text-blue-700 transition-colors"
                           >
                             <span>
                               Xem tất cả sản phẩm{' '}
@@ -1314,10 +1314,10 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                 {/* Bottom Bar: spans edge-to-edge */}
                 <div className="border-t border-slate-100 bg-[#F8FAFC] w-full">
                   <div className="page-container flex items-center py-3.5">
-                    <span className="inline-flex items-center justify-center bg-blue-600 text-white text-[11px] font-extrabold px-2 py-0.5 rounded-[2px] tracking-wider">
+                    <span className="inline-flex items-center justify-center bg-blue-600 text-white text-caption-responsive font-extrabold px-2 py-0.5 rounded-[2px] tracking-wider">
                       MỚI
                     </span>
-                    <span className="text-[12px] text-slate-500 font-bold ml-3">
+                    <span className="text-caption-responsive text-slate-500 font-bold ml-3">
                       Giải pháp AI cho nhà máy thông minh —{' '}
                       <Link
                         href="/solutions"
@@ -1357,7 +1357,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                             {isRegActive && (
                               <div className="absolute left-3.5 top-1/2 -translate-y-1/2 w-[3px] h-[18px] bg-blue-600 rounded-full" />
                             )}
-                            <span className="text-[14px] leading-none">{reg.name}</span>
+                            <span className="text-body-regular leading-none">{reg.name}</span>
                             <ChevronRight
                               className={`h-4 w-4 transition-transform ${
                                 isRegActive ? 'text-blue-600 translate-x-0.5' : 'text-slate-400'
@@ -1377,7 +1377,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                     >
                       <div className="flex items-center gap-2">
                         <Warehouse className="h-4 w-4 text-[#F2994A]" />
-                        <span className="text-[14px] font-bold">{currentRegionData?.hubName || 'HUB Hà Nam'}</span>
+                        <span className="text-body-regular font-bold">{currentRegionData?.hubName || 'HUB Hà Nam'}</span>
                       </div>
                       <ChevronRight className="h-4 w-4 text-[#F2994A]" />
                     </Link>
@@ -1398,7 +1398,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                       {activeRegion === 'hub' ? (
                         <>
                           <div className="flex items-center gap-3 mb-6">
-                            <span className="text-[16px] font-bold text-slate-800">
+                            <span className="text-body-regular font-bold text-slate-800">
                               Trở thành Đối tác phân phối - ULink Industries
                             </span>
                             <div className="h-[2px] w-8 bg-[#F2994A] rounded-full" />
@@ -1419,10 +1419,10 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                                   </div>
 
                                   <div className="flex flex-col">
-                                    <span className="text-[14px] font-bold text-slate-800 transition-colors group-hover:text-blue-600">
+                                    <span className="text-body-regular font-bold text-slate-800 transition-colors group-hover:text-blue-600">
                                       {partner.title}
                                     </span>
-                                    <span className="mt-1 text-[12px] text-slate-400 leading-relaxed font-medium">
+                                    <span className="mt-1 text-caption-responsive text-slate-400 leading-relaxed font-medium">
                                       {partner.description}
                                     </span>
                                   </div>
@@ -1435,7 +1435,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                               <Link
                                 href="/regional-hubs/cum-2"
                                 onClick={() => setActiveMenu(null)}
-                                className="group inline-flex items-center gap-1.5 text-[14px] font-bold text-blue-600 hover:text-blue-700 transition-colors"
+                                className="group inline-flex items-center gap-1.5 text-body-regular font-bold text-blue-600 hover:text-blue-700 transition-colors"
                               >
                                 <span>Đăng ký đối tác ngay</span>
                                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -1446,7 +1446,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                       ) : (
                         <>
                           <div className="flex items-center gap-3 mb-6">
-                            <span className="text-[16px] font-bold text-slate-850">
+                            <span className="text-body-regular font-bold text-slate-850">
                               Cụm / Khu công nghiệp — {currentRegionData?.name}
                             </span>
                             <div className="h-[2px] w-8 bg-blue-600 rounded-full" />
@@ -1467,10 +1467,10 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                                   </div>
 
                                   <div className="flex flex-col">
-                                    <span className="text-[14px] font-bold text-slate-800 transition-colors group-hover:text-blue-600">
+                                    <span className="text-body-regular font-bold text-slate-800 transition-colors group-hover:text-blue-600">
                                       {hub.title}
                                     </span>
-                                    <span className="mt-1 text-[12px] text-slate-400 leading-relaxed font-medium">
+                                    <span className="mt-1 text-caption-responsive text-slate-400 leading-relaxed font-medium">
                                       {hub.description}
                                     </span>
                                   </div>
@@ -1483,7 +1483,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                               <Link
                                 href={currentRegionData?.link || '#'}
                                 onClick={() => setActiveMenu(null)}
-                                className="group inline-flex items-center gap-1.5 text-[14px] font-bold text-blue-600 hover:text-blue-700 transition-colors"
+                                className="group inline-flex items-center gap-1.5 text-body-regular font-bold text-blue-600 hover:text-blue-700 transition-colors"
                               >
                                 <span>Xem tất cả Khu công nghiệp</span>
                                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -1499,10 +1499,10 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                 {/* Bottom Bar: spans edge-to-edge */}
                 <div className="border-t border-slate-100 bg-[#F8FAFC] w-full">
                   <div className="page-container flex items-center py-3.5">
-                    <span className="inline-flex items-center justify-center bg-blue-600 text-white text-[11px] font-extrabold px-2 py-0.5 rounded-[2px] tracking-wider">
+                    <span className="inline-flex items-center justify-center bg-blue-600 text-white text-caption-responsive font-extrabold px-2 py-0.5 rounded-[2px] tracking-wider">
                       MỚI
                     </span>
-                    <span className="text-[12px] text-slate-500 font-bold ml-3">
+                    <span className="text-caption-responsive text-slate-500 font-bold ml-3">
                       Giải pháp AI cho nhà máy thông minh —{' '}
                       <Link
                         href="/solutions"
@@ -1542,7 +1542,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                             {isIndActive && (
                               <div className="absolute left-3.5 top-1/2 -translate-y-1/2 w-[3px] h-[18px] bg-blue-600 rounded-full" />
                             )}
-                            <span className="text-[14px] leading-none">{ind.name}</span>
+                            <span className="text-body-regular leading-none">{ind.name}</span>
                             <ChevronRight
                               className={`h-4 w-4 transition-transform ${
                                 isIndActive ? 'text-blue-600 translate-x-0.5' : 'text-slate-400'
@@ -1558,7 +1558,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                   <div className="flex flex-col bg-white pt-8 pb-8 pl-12 pr-20">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-6">
-                        <span className="text-[16px] font-bold text-slate-800">
+                        <span className="text-body-regular font-bold text-slate-800">
                           Giải pháp ngành {currentIndustryData?.id === 'food' ? 'Thực phẩm & Đồ uống' : currentIndustryData?.name}
                         </span>
                         <div className="h-[2px] w-8 bg-blue-655 bg-blue-600 rounded-full" />
@@ -1580,10 +1580,10 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                               </div>
 
                               <div className="flex flex-col">
-                                <span className="text-[14px] font-bold text-slate-800 transition-colors group-hover:text-blue-600">
+                                <span className="text-body-regular font-bold text-slate-800 transition-colors group-hover:text-blue-600">
                                   {hub.title}
                                 </span>
-                                <span className="mt-1 text-[12px] text-slate-400 leading-relaxed font-medium">
+                                <span className="mt-1 text-caption-responsive text-slate-400 leading-relaxed font-medium">
                                   {hub.description}
                                 </span>
                               </div>
@@ -1596,7 +1596,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                           <Link
                             href={`/industries/${(currentIndustryData as any)?.slug || currentIndustryData?.id || 'food-beverage'}`}
                             onClick={() => setActiveMenu(null)}
-                            className="group inline-flex items-center gap-1.5 text-[14px] font-bold text-blue-600 hover:text-blue-700 transition-colors"
+                            className="group inline-flex items-center gap-1.5 text-body-regular font-bold text-blue-600 hover:text-blue-700 transition-colors"
                           >
                             <span>Xem tất cả {currentIndustryData?.name || 'giải pháp ngành'}</span>
                             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -1610,10 +1610,10 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                 {/* Bottom Bar: spans edge-to-edge */}
                 <div className="border-t border-slate-100 bg-[#F8FAFC] w-full">
                   <div className="page-container flex items-center py-3.5">
-                    <span className="inline-flex items-center justify-center bg-blue-600 text-white text-[11px] font-extrabold px-2 py-0.5 rounded-[2px] tracking-wider">
+                    <span className="inline-flex items-center justify-center bg-blue-600 text-white text-caption-responsive font-extrabold px-2 py-0.5 rounded-[2px] tracking-wider">
                       MỚI
                     </span>
-                    <span className="text-[12px] text-slate-500 font-bold ml-3">
+                    <span className="text-caption-responsive text-slate-500 font-bold ml-3">
                       Giải pháp bao bì xanh — Bao bì phân hủy sinh học cho ngành F&B —{' '}
                       <Link
                         href="/solutions"
@@ -1653,7 +1653,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                             {isResActive && (
                               <div className="absolute left-3.5 top-1/2 -translate-y-1/2 w-[3px] h-[18px] bg-blue-600 rounded-full" />
                             )}
-                            <span className="text-[14px] leading-none">{res.name}</span>
+                            <span className="text-body-regular leading-none">{res.name}</span>
                             <ChevronRight
                               className={`h-4 w-4 transition-transform ${
                                 isResActive ? 'text-blue-600 translate-x-0.5' : 'text-slate-400'
@@ -1669,7 +1669,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                   <div className="flex flex-col bg-white pt-8 pb-8 pl-12 pr-20">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-6">
-                        <span className="text-[16px] font-bold text-slate-800">
+                        <span className="text-body-regular font-bold text-slate-800">
                           Kiến thức đóng gói chuyên nghiệp
                         </span>
                         <div className="h-[2px] w-8 bg-blue-600 rounded-full" />
@@ -1691,10 +1691,10 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                               </div>
 
                               <div className="flex flex-col">
-                                <span className="text-[14px] font-bold text-slate-800 transition-colors group-hover:text-blue-600">
+                                <span className="text-body-regular font-bold text-slate-800 transition-colors group-hover:text-blue-600">
                                   {hub.title}
                                 </span>
-                                <span className="mt-1 text-[12px] text-slate-400 leading-relaxed font-medium">
+                                <span className="mt-1 text-caption-responsive text-slate-400 leading-relaxed font-medium">
                                   {hub.description}
                                 </span>
                               </div>
@@ -1707,7 +1707,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                           <Link
                             href={currentResourceData?.id === 'events' ? '/resources/events' : '/resources'}
                             onClick={() => setActiveMenu(null)}
-                            className="group inline-flex items-center gap-1.5 text-[14px] font-bold text-blue-600 hover:text-blue-700 transition-colors"
+                            className="group inline-flex items-center gap-1.5 text-body-regular font-bold text-blue-600 hover:text-blue-700 transition-colors"
                           >
                             <span>Xem tất cả {currentResourceData?.name || 'tài nguyên'}</span>
                             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -1721,10 +1721,10 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                 {/* Bottom Bar: spans edge-to-edge */}
                 <div className="border-t border-slate-100 bg-[#F8FAFC] w-full">
                   <div className="page-container flex items-center py-3.5">
-                    <span className="inline-flex items-center justify-center bg-blue-600 text-white text-[11px] font-extrabold px-2 py-0.5 rounded-[2px] tracking-wider">
+                    <span className="inline-flex items-center justify-center bg-blue-600 text-white text-caption-responsive font-extrabold px-2 py-0.5 rounded-[2px] tracking-wider">
                       MỚI
                     </span>
-                    <span className="text-[12px] text-slate-500 font-bold ml-3">
+                    <span className="text-caption-responsive text-slate-500 font-bold ml-3">
                       Ebook miễn phí — 10 Sai lầm phổ biến khi đóng gói hàng xuất khẩu —{' '}
                       <Link
                         href="/resources"
@@ -1764,7 +1764,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                             {isAbActive && (
                               <div className="absolute left-3.5 top-1/2 -translate-y-1/2 w-[3px] h-[18px] bg-blue-600 rounded-full" />
                             )}
-                            <span className="text-[14px] leading-none">{ab.name}</span>
+                            <span className="text-body-regular leading-none">{ab.name}</span>
                             <ChevronRight
                               className={`h-4 w-4 transition-transform ${
                                 isAbActive ? 'text-blue-600 translate-x-0.5' : 'text-slate-400'
@@ -1780,7 +1780,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                   <div className="flex flex-col bg-white pt-8 pb-8 pl-12 pr-20">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-6">
-                        <span className="text-[16px] font-bold text-slate-800">
+                        <span className="text-body-regular font-bold text-slate-800">
                           {activeAboutTab === 'hub-prod' ? 'Hub Hà Nam' : currentAboutData?.name}
                         </span>
                         <div className="h-[2px] w-8 bg-blue-600 rounded-full" />
@@ -1801,10 +1801,10 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                               </div>
 
                               <div className="flex flex-col">
-                                <span className="text-[14px] font-bold text-slate-800 transition-colors group-hover:text-blue-600">
+                                <span className="text-body-regular font-bold text-slate-800 transition-colors group-hover:text-blue-600">
                                   {hub.title}
                                 </span>
-                                <span className="mt-1 text-[12px] text-slate-400 leading-relaxed font-medium">
+                                <span className="mt-1 text-caption-responsive text-slate-400 leading-relaxed font-medium">
                                   {hub.description}
                                 </span>
                               </div>
@@ -1817,7 +1817,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                           <Link
                             href="/about"
                             onClick={() => setActiveMenu(null)}
-                            className="group inline-flex items-center gap-1.5 text-[14px] font-bold text-blue-600 hover:text-blue-700 transition-colors"
+                            className="group inline-flex items-center gap-1.5 text-body-regular font-bold text-blue-600 hover:text-blue-700 transition-colors"
                           >
                             <span>Xem thêm về chúng tôi</span>
                             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
@@ -1831,10 +1831,10 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                 {/* Bottom Bar: spans edge-to-edge */}
                 <div className="border-t border-slate-100 bg-[#F8FAFC] w-full">
                   <div className="page-container flex items-center py-3.5">
-                    <span className="inline-flex items-center justify-center bg-blue-600 text-white text-[11px] font-extrabold px-2 py-0.5 rounded-[2px] tracking-wider">
+                    <span className="inline-flex items-center justify-center bg-blue-600 text-white text-caption-responsive font-extrabold px-2 py-0.5 rounded-[2px] tracking-wider">
                       MỚI
                     </span>
-                    <span className="text-[12px] text-slate-500 font-bold ml-3">
+                    <span className="text-caption-responsive text-slate-500 font-bold ml-3">
                       Tuyển dụng: ULink đang tìm kiếm Trưởng phòng Kinh doanh B2B (Bao bì) —{' '}
                       <Link
                         href="/about"

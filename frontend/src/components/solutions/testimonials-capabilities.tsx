@@ -92,7 +92,7 @@ export default function TestimonialsCapabilities({ locale }: TestimonialsCapabil
       <section className="w-full bg-card border-t border-gray-150 py-16 lg:py-24">
         <div className="page-container">
           {/* Section Header */}
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight text-center mb-12">
+          <h2 className="text-section-title font-extrabold text-slate-900 tracking-tight text-center mb-12">
             {t('testimonialsCapabilities.testimonialHeading')}
           </h2>
 
@@ -115,13 +115,13 @@ export default function TestimonialsCapabilities({ locale }: TestimonialsCapabil
                   className="bg-white rounded-[3px] border border-gray-200/80 p-8 shadow-sm flex flex-col items-center text-center transition-all hover:shadow-md"
                 >
                   {/* Company Logo text placeholder */}
-                  <div className="text-slate-700 font-extrabold text-lg tracking-tight mb-6 select-none flex items-center gap-1.5">
+                  <div className="text-slate-700 font-extrabold text-card-title tracking-tight mb-6 select-none flex items-center gap-1.5">
                     <span className="w-2.5 h-2.5 bg-blue-600 rounded-full" />
                     {test.company}
                   </div>
 
                   {/* Testimonial text */}
-                  <p className="text-sm text-slate-600 leading-relaxed font-medium italic flex-1 mb-8">
+                  <p className="text-body-regular text-slate-600 leading-relaxed font-medium italic flex-1 mb-8">
                     &ldquo;{test.text}&rdquo;
                   </p>
 
@@ -131,8 +131,8 @@ export default function TestimonialsCapabilities({ locale }: TestimonialsCapabil
                   </div>
 
                   {/* Author Name & Role */}
-                  <h4 className="text-sm font-bold text-slate-900">{test.author}</h4>
-                  <p className="text-xs text-slate-500 mt-1">{test.role}</p>
+                  <h4 className="text-body-regular font-bold text-slate-900">{test.author}</h4>
+                  <p className="text-caption-responsive text-slate-500 mt-1">{test.role}</p>
                 </div>
               ))}
             </div>
@@ -154,10 +154,10 @@ export default function TestimonialsCapabilities({ locale }: TestimonialsCapabil
         <div className="page-container text-center">
           {/* Section Header */}
           <div className="max-w-3xl mx-auto mb-16">
-            <span className="text-xs font-bold uppercase tracking-widest text-blue-600">
+            <span className="text-caption-responsive font-bold uppercase tracking-widest text-blue-600">
               {t('testimonialsCapabilities.capabilitiesEyebrow')}
             </span>
-            <h2 className="mt-4 text-2xl sm:text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900 leading-tight">
+            <h2 className="mt-4 text-section-title font-extrabold tracking-tight text-slate-900 leading-tight">
               {t('testimonialsCapabilities.capabilitiesTitle')}
             </h2>
           </div>
@@ -169,10 +169,10 @@ export default function TestimonialsCapabilities({ locale }: TestimonialsCapabil
               <div className="w-12 h-12 rounded-[3px] bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 shrink-0 mb-6">
                 <Factory className="h-6 w-6" />
               </div>
-              <h3 className="text-base font-bold text-slate-900 mb-3">
+              <h3 className="text-body-regular font-bold text-slate-900 mb-3">
                 {t('testimonialsCapabilities.cap1Heading')}
               </h3>
-              <p className="text-sm text-slate-500 leading-relaxed max-w-xs">
+              <p className="text-body-regular text-slate-500 leading-relaxed max-w-xs">
                 {t('testimonialsCapabilities.cap1Desc')}
               </p>
             </div>
@@ -182,10 +182,10 @@ export default function TestimonialsCapabilities({ locale }: TestimonialsCapabil
               <div className="w-12 h-12 rounded-[3px] bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 shrink-0 mb-6">
                 <Package className="h-6 w-6" />
               </div>
-              <h3 className="text-base font-bold text-slate-900 mb-3">
+              <h3 className="text-body-regular font-bold text-slate-900 mb-3">
                 {t('testimonialsCapabilities.cap2Heading')}
               </h3>
-              <p className="text-sm text-slate-500 leading-relaxed max-w-xs">
+              <p className="text-body-regular text-slate-500 leading-relaxed max-w-xs">
                 {t('testimonialsCapabilities.cap2Desc')}
               </p>
             </div>
@@ -195,10 +195,10 @@ export default function TestimonialsCapabilities({ locale }: TestimonialsCapabil
               <div className="w-12 h-12 rounded-[3px] bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 shrink-0 mb-6">
                 <Activity className="h-6 w-6" />
               </div>
-              <h3 className="text-base font-bold text-slate-900 mb-3">
+              <h3 className="text-body-regular font-bold text-slate-900 mb-3">
                 {t('testimonialsCapabilities.cap3Heading')}
               </h3>
-              <p className="text-sm text-slate-500 leading-relaxed max-w-xs">
+              <p className="text-body-regular text-slate-500 leading-relaxed max-w-xs">
                 {t('testimonialsCapabilities.cap3Desc')}
               </p>
             </div>
@@ -208,10 +208,10 @@ export default function TestimonialsCapabilities({ locale }: TestimonialsCapabil
               <div className="w-12 h-12 rounded-[3px] bg-slate-50 border border-slate-100 flex items-center justify-center text-slate-400 shrink-0 mb-6">
                 <Truck className="h-6 w-6" />
               </div>
-              <h3 className="text-base font-bold text-slate-900 mb-3">
+              <h3 className="text-body-regular font-bold text-slate-900 mb-3">
                 {t('testimonialsCapabilities.cap4Heading')}
               </h3>
-              <p className="text-sm text-slate-500 leading-relaxed max-w-xs">
+              <p className="text-body-regular text-slate-500 leading-relaxed max-w-xs">
                 {t('testimonialsCapabilities.cap4Desc')}
               </p>
             </div>
@@ -223,7 +223,7 @@ export default function TestimonialsCapabilities({ locale }: TestimonialsCapabil
               href={`/${locale}/quick-order`}
               className={cn(
                 buttonVariants({ variant: 'primary', size: 'md' }),
-                'px-6 py-3 text-sm font-bold'
+                'px-6 py-3 text-body-regular font-bold'
               )}
             >
               {t('testimonialsCapabilities.order')}

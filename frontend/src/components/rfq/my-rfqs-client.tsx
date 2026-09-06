@@ -140,8 +140,8 @@ export function MyRfqsClient() {
         <div className="relative container mx-auto px-4 py-8 lg:py-12">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
             <div>
-              <h1 className="text-2xl lg:text-3xl font-bold text-white">{t('title')}</h1>
-              <p className="mt-2 text-indigo-200 text-sm lg:text-base">{t('subtitle')}</p>
+              <h1 className="text-section-title font-bold text-white">{t('title')}</h1>
+              <p className="mt-2 text-indigo-200 text-body-regular">{t('subtitle')}</p>
             </div>
 
             {/* Stats cards */}
@@ -149,22 +149,22 @@ export function MyRfqsClient() {
               <div className="group flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-[3px] px-4 py-3 border border-white/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/20 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.5)]">
                 <Clock className="h-4 w-4 text-amber-300" />
                 <div>
-                  <p className="text-lg font-bold text-white">{counts.pending}</p>
-                  <p className="text-[10px] text-indigo-200">{t('pending')}</p>
+                  <p className="text-card-title font-bold text-white">{counts.pending}</p>
+                  <p className="text-caption-responsive text-indigo-200">{t('pending')}</p>
                 </div>
               </div>
               <div className="group flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-[3px] px-4 py-3 border border-white/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/20 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.5)]">
                 <CheckCircle2 className="h-4 w-4 text-emerald-300" />
                 <div>
-                  <p className="text-lg font-bold text-white">{counts.quoted}</p>
-                  <p className="text-[10px] text-indigo-200">{t('quoted')}</p>
+                  <p className="text-card-title font-bold text-white">{counts.quoted}</p>
+                  <p className="text-caption-responsive text-indigo-200">{t('quoted')}</p>
                 </div>
               </div>
               <div className="group flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-[3px] px-4 py-3 border border-white/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/20 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.5)]">
                 <XCircle className="h-4 w-4 text-rose-300" />
                 <div>
-                  <p className="text-lg font-bold text-white">{counts.rejected}</p>
-                  <p className="text-[10px] text-indigo-200">{t('rejected')}</p>
+                  <p className="text-card-title font-bold text-white">{counts.rejected}</p>
+                  <p className="text-caption-responsive text-indigo-200">{t('rejected')}</p>
                 </div>
               </div>
             </div>
@@ -183,7 +183,7 @@ export function MyRfqsClient() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={t('searchPlaceholder')}
-              className="w-full rounded-[3px] border border-gray-200 bg-gray-50 pl-9 pr-3 py-2 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:bg-white focus:outline-none transition-all"
+              className="w-full rounded-[3px] border border-gray-200 bg-gray-50 pl-9 pr-3 py-2 text-body-regular text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:bg-white focus:outline-none transition-all"
             />
           </div>
 
@@ -193,14 +193,14 @@ export function MyRfqsClient() {
                 key={s}
                 onClick={() => setStatusFilter(s)}
                 className={cn(
-                  'px-3 py-1.5 rounded-[3px] text-xs font-medium transition-all',
+                  'px-3 py-1.5 rounded-[3px] text-caption-responsive font-medium transition-all',
                   statusFilter === s
                     ? 'bg-white text-gray-900 shadow-sm'
                     : 'text-gray-500 hover:text-gray-700'
                 )}
               >
                 {t(s)}
-                <span className="ml-1 text-[10px] opacity-60">{counts[s]}</span>
+                <span className="ml-1 text-caption-responsive opacity-60">{counts[s]}</span>
               </button>
             ))}
           </div>
@@ -213,13 +213,13 @@ export function MyRfqsClient() {
           </div>
         ) : error ? (
           <div className="flex flex-col items-center justify-center py-20 bg-white rounded-[3px] border border-gray-200">
-            <p className="text-red-600 text-sm">{error}</p>
+            <p className="text-red-600 text-body-regular">{error}</p>
           </div>
         ) : filtered.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-20 bg-white rounded-[3px] border border-gray-200">
             <FileBox className="h-14 w-14 text-gray-200 mb-4" />
             <p className="text-gray-600 font-medium">{t('noResults')}</p>
-            <p className="text-gray-400 text-sm mt-1">{t('noResultsDesc')}</p>
+            <p className="text-gray-400 text-body-regular mt-1">{t('noResultsDesc')}</p>
           </div>
         ) : (
           <div className="space-y-3">
@@ -240,12 +240,12 @@ export function MyRfqsClient() {
                     </div>
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-2">
-                        <h3 className="text-sm font-semibold text-gray-900 truncate">
+                        <h3 className="text-body-regular font-semibold text-gray-900 truncate">
                           {req.company}
                         </h3>
-                        <span className="text-[11px] font-mono text-gray-400">#{req.id}</span>
+                        <span className="text-caption-responsive font-mono text-gray-400">#{req.id}</span>
                         {req.hub?.name && (
-                          <span className="inline-flex items-center gap-1 text-[10px] font-medium px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-100">
+                          <span className="inline-flex items-center gap-1 text-caption-responsive font-medium px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-100">
                             <MapPin className="h-2.5 w-2.5" />
                             {req.hub.name}
                           </span>
@@ -253,7 +253,7 @@ export function MyRfqsClient() {
                         {req.source && (
                           <span
                             className={cn(
-                              'text-[10px] font-medium px-1.5 py-0.5 rounded',
+                              'text-caption-responsive font-medium px-1.5 py-0.5 rounded',
                               req.source === 'portal'
                                 ? 'bg-blue-50 text-blue-600'
                                 : 'bg-gray-100 text-gray-500'
@@ -263,7 +263,7 @@ export function MyRfqsClient() {
                           </span>
                         )}
                       </div>
-                      <div className="flex items-center gap-3 mt-1.5 text-xs text-gray-500">
+                      <div className="flex items-center gap-3 mt-1.5 text-caption-responsive text-gray-500">
                         {req.contact_name && <span>{req.contact_name}</span>}
                         {req.date_created && (
                           <>
@@ -283,13 +283,13 @@ export function MyRfqsClient() {
                           {req.line_items.slice(0, 3).map((li) => (
                             <span
                               key={li.sku}
-                              className="inline-flex items-center rounded-[3px] bg-gray-100 px-1.5 py-0.5 text-[10px] font-mono text-gray-600"
+                              className="inline-flex items-center rounded-[3px] bg-gray-100 px-1.5 py-0.5 text-caption-responsive font-mono text-gray-600"
                             >
                               {li.sku}
                             </span>
                           ))}
                           {req.line_items.length > 3 && (
-                            <span className="text-[10px] text-gray-400">
+                            <span className="text-caption-responsive text-gray-400">
                               +{req.line_items.length - 3}
                             </span>
                           )}
@@ -307,12 +307,12 @@ export function MyRfqsClient() {
                       )}
                     >
                       <StatusIcon className="h-3.5 w-3.5" />
-                      <span className="text-xs font-medium">{sc?.label}</span>
+                      <span className="text-caption-responsive font-medium">{sc?.label}</span>
                     </div>
 
                     <button
                       onClick={() => setSelectedRfq(req)}
-                      className="inline-flex items-center gap-1.5 rounded-[3px] border border-gray-200 bg-white px-3 py-2 text-xs font-medium text-gray-700 hover:bg-[#EBF3FE] hover:text-[#1769E2] hover:border-[#1769E2] transition-all shadow-sm"
+                      className="inline-flex items-center gap-1.5 rounded-[3px] border border-gray-200 bg-white px-3 py-2 text-caption-responsive font-medium text-gray-700 hover:bg-[#EBF3FE] hover:text-[#1769E2] hover:border-[#1769E2] transition-all shadow-sm"
                     >
                       <Eye className="h-3.5 w-3.5" />
                       {t('viewDetail')}
@@ -349,8 +349,8 @@ function RfqDetailModal({ rfq, onClose }: { rfq: RfqItem; onClose: () => void })
         {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
           <div>
-            <h2 className="text-lg font-semibold text-gray-900">{t('title')}</h2>
-            <p className="text-xs text-gray-500 mt-0.5">#{rfq.id}</p>
+            <h2 className="text-card-title font-semibold text-gray-900">{t('title')}</h2>
+            <p className="text-caption-responsive text-gray-500 mt-0.5">#{rfq.id}</p>
           </div>
           <button onClick={onClose} className="p-2 rounded-[3px] hover:bg-gray-100 transition-colors">
             <X className="h-5 w-5 text-gray-500" />
@@ -361,7 +361,7 @@ function RfqDetailModal({ rfq, onClose }: { rfq: RfqItem; onClose: () => void })
         <div className="flex-1 overflow-y-auto px-6 py-5 space-y-5">
           {/* Contact Info */}
           <section>
-            <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3">
+            <h3 className="text-caption-responsive font-semibold text-gray-500 uppercase tracking-wider mb-3">
               {t('contactInfo')}
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -390,8 +390,8 @@ function RfqDetailModal({ rfq, onClose }: { rfq: RfqItem; onClose: () => void })
               <div className="flex items-start gap-2">
                 <MessageSquare className="h-4 w-4 text-gray-400 mt-0.5 shrink-0" />
                 <div>
-                  <p className="text-xs text-gray-500 mb-1">{t('message')}</p>
-                  <p className="text-sm text-gray-700">{rfq.message}</p>
+                  <p className="text-caption-responsive text-gray-500 mb-1">{t('message')}</p>
+                  <p className="text-body-regular text-gray-700">{rfq.message}</p>
                 </div>
               </div>
             </section>
@@ -400,18 +400,18 @@ function RfqDetailModal({ rfq, onClose }: { rfq: RfqItem; onClose: () => void })
           {/* Line Items */}
           {rfq.line_items && rfq.line_items.length > 0 && (
             <section>
-              <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-3 flex items-center gap-1.5">
+              <h3 className="text-caption-responsive font-semibold text-gray-500 uppercase tracking-wider mb-3 flex items-center gap-1.5">
                 <Package className="h-3.5 w-3.5" />
                 {t('lineItems')}
               </h3>
               <div className="border border-gray-200 rounded-[3px] overflow-hidden">
-                <table className="w-full text-sm">
+                <table className="w-full text-body-regular">
                   <thead className="bg-gray-50">
                     <tr>
-                      <th className="text-left px-3 py-2 text-xs font-medium text-gray-500">
+                      <th className="text-left px-3 py-2 text-caption-responsive font-medium text-gray-500">
                         {t('sku')}
                       </th>
-                      <th className="text-right px-3 py-2 text-xs font-medium text-gray-500 w-16">
+                      <th className="text-right px-3 py-2 text-caption-responsive font-medium text-gray-500 w-16">
                         {t('qty')}
                       </th>
                     </tr>
@@ -419,8 +419,8 @@ function RfqDetailModal({ rfq, onClose }: { rfq: RfqItem; onClose: () => void })
                   <tbody className="divide-y divide-gray-100">
                     {rfq.line_items.map((li, idx) => (
                       <tr key={idx}>
-                        <td className="px-3 py-2 font-mono text-xs text-gray-700">{li.sku}</td>
-                        <td className="px-3 py-2 text-right text-xs text-gray-600">{li.qty}</td>
+                        <td className="px-3 py-2 font-mono text-caption-responsive text-gray-700">{li.sku}</td>
+                        <td className="px-3 py-2 text-right text-caption-responsive text-gray-600">{li.qty}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -435,8 +435,8 @@ function RfqDetailModal({ rfq, onClose }: { rfq: RfqItem; onClose: () => void })
               <div className="flex items-start gap-2">
                 <Truck className="h-4 w-4 text-gray-400 mt-0.5 shrink-0" />
                 <div>
-                  <p className="text-xs text-gray-500 mb-1">{t('delivery')}</p>
-                  <p className="text-sm text-gray-700">
+                  <p className="text-caption-responsive text-gray-500 mb-1">{t('delivery')}</p>
+                  <p className="text-body-regular text-gray-700">
                     {t('scheduledYes')}
                     {rfq.requested_delivery_date && (
                       <span className="ml-2 inline-flex items-center gap-1 text-blue-600">
@@ -453,10 +453,10 @@ function RfqDetailModal({ rfq, onClose }: { rfq: RfqItem; onClose: () => void })
           {/* Status & Notes */}
           <section className="border-t border-gray-100 pt-4">
             <div className="flex items-center gap-2 mb-3">
-              <span className="text-xs text-gray-500">{t('status')}:</span>
+              <span className="text-caption-responsive text-gray-500">{t('status')}:</span>
               <span
                 className={cn(
-                  'inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-xs font-medium',
+                  'inline-flex items-center gap-1 rounded-full border px-2.5 py-0.5 text-caption-responsive font-medium',
                   ns === 'quoted'
                     ? 'text-emerald-700 bg-emerald-50 border-emerald-200'
                     : ns === 'rejected'
@@ -477,19 +477,19 @@ function RfqDetailModal({ rfq, onClose }: { rfq: RfqItem; onClose: () => void })
 
             {rfq.approval_note && (
               <div className="bg-emerald-50 border border-emerald-200 rounded-[3px] px-3 py-2 mb-2">
-                <p className="text-xs text-emerald-600 font-medium">{t('approvalNote')}</p>
-                <p className="text-sm text-emerald-800 mt-0.5">{rfq.approval_note}</p>
+                <p className="text-caption-responsive text-emerald-600 font-medium">{t('approvalNote')}</p>
+                <p className="text-body-regular text-emerald-800 mt-0.5">{rfq.approval_note}</p>
               </div>
             )}
 
             {rfq.reject_reason && (
               <div className="bg-rose-50 border border-rose-200 rounded-[3px] px-3 py-2 mb-2">
-                <p className="text-xs text-rose-600 font-medium">{t('rejectReason')}</p>
-                <p className="text-sm text-rose-800 mt-0.5">{rfq.reject_reason}</p>
+                <p className="text-caption-responsive text-rose-600 font-medium">{t('rejectReason')}</p>
+                <p className="text-body-regular text-rose-800 mt-0.5">{rfq.reject_reason}</p>
               </div>
             )}
 
-            <div className="flex items-center gap-4 text-xs text-gray-400 mt-3">
+            <div className="flex items-center gap-4 text-caption-responsive text-gray-400 mt-3">
               {rfq.source && (
                 <span>
                   {t('source')}: {rfq.source}
@@ -515,7 +515,7 @@ function RfqDetailModal({ rfq, onClose }: { rfq: RfqItem; onClose: () => void })
         <div className="px-6 py-4 border-t border-gray-100">
           <button
             onClick={onClose}
-            className="w-full rounded-[3px] bg-gray-100 px-4 py-2.5 text-sm font-medium text-gray-700 hover:bg-gray-200 transition-colors"
+            className="w-full rounded-[3px] bg-gray-100 px-4 py-2.5 text-body-regular font-medium text-gray-700 hover:bg-gray-200 transition-colors"
           >
             {t('close')}
           </button>
@@ -539,8 +539,8 @@ function InfoRow({
     <div className="flex items-start gap-2">
       <Icon className="h-4 w-4 text-gray-400 mt-0.5 shrink-0" />
       <div>
-        <p className="text-[10px] text-gray-400 uppercase">{label}</p>
-        <p className="text-sm text-gray-800">{value}</p>
+        <p className="text-caption-responsive text-gray-400 uppercase">{label}</p>
+        <p className="text-body-regular text-gray-800">{value}</p>
       </div>
     </div>
   );

@@ -270,13 +270,13 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
       {/* Header and Add Button */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-100 pb-6 mb-8">
         <div>
-          <span className="text-xs uppercase text-slate-400 font-extrabold tracking-wider">
+          <span className="text-caption-responsive uppercase text-slate-400 font-extrabold tracking-wider">
             Hệ thống danh mục SKUs
           </span>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-primary tracking-tight mt-1">
+          <h1 className="text-section-title font-extrabold text-primary tracking-tight mt-1">
             Quản lý mã SKUs B2B
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 font-medium mt-1 leading-relaxed">
+          <p className="text-caption-responsive text-slate-500 font-medium mt-1 leading-relaxed">
             Xem và cập nhật nhanh tồn kho, quy cách đóng gói và đơn vị tính cho từng biến thể sản
             phẩm.
           </p>
@@ -289,7 +289,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
             setSkuModalOpen(true);
             setFormError('');
           }}
-          className="inline-flex h-11 items-center justify-center gap-2 rounded-[3px] bg-blue-600 px-5 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors shrink-0"
+          className="inline-flex h-11 items-center justify-center gap-2 rounded-[3px] bg-blue-600 px-5 text-caption-responsive font-bold text-white shadow-sm hover:bg-blue-700 transition-colors shrink-0"
         >
           <Plus className="h-4 w-4" />
           Thêm mã SKU mới
@@ -306,7 +306,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Tìm kiếm theo mã SKU, tên sản phẩm cha..."
-            className="w-full pl-10 pr-4 py-2.5 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+            className="w-full pl-10 pr-4 py-2.5 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
           />
         </div>
 
@@ -318,7 +318,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
             <select
               value={selectedProduct}
               onChange={(e) => setSelectedProduct(e.target.value)}
-              className="px-3 py-2.5 rounded-[3px] border border-slate-200 text-xs font-bold text-slate-700 focus:outline-none max-w-[200px]"
+              className="px-3 py-2.5 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-700 focus:outline-none max-w-[200px]"
             >
               <option value="all">Tất cả sản phẩm cha</option>
               {products.map((p) => (
@@ -335,7 +335,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
             <select
               value={selectedStockStatus}
               onChange={(e) => setSelectedStockStatus(e.target.value)}
-              className="px-3 py-2.5 rounded-[3px] border border-slate-200 text-xs font-bold text-slate-700 focus:outline-none"
+              className="px-3 py-2.5 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-700 focus:outline-none"
             >
               <option value="all">Tất cả trạng thái kho</option>
               <option value="in_stock">Còn hàng</option>
@@ -349,7 +349,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
             <button
               type="button"
               onClick={() => setShowColSettings(!showColSettings)}
-              className="inline-flex h-[38px] items-center gap-1.5 px-3 rounded-[3px] border border-slate-200 text-xs font-bold text-slate-700 hover:bg-slate-50 transition-colors focus:outline-none"
+              className="inline-flex h-[38px] items-center gap-1.5 px-3 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-700 hover:bg-slate-50 transition-colors focus:outline-none"
             >
               <Eye className="h-4 w-4 text-slate-400" />
               <span>Ẩn/Hiện cột</span>
@@ -358,7 +358,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
 
             {showColSettings && (
               <div className="absolute right-0 mt-2 w-56 rounded-[3px] border border-slate-150 bg-white p-3 shadow-xl z-20 space-y-2.5 animate-in fade-in duration-200">
-                <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block border-b border-slate-100 pb-1.5">
+                <span className="text-caption-responsive font-bold text-slate-400 uppercase tracking-wider block border-b border-slate-100 pb-1.5">
                   Cấu hình hiển thị cột
                 </span>
                 <div className="space-y-2 max-h-[220px] overflow-y-auto">
@@ -370,7 +370,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                       onChange={() => setVisibleColumns(prev => ({ ...prev, sku_code: !prev.sku_code }))}
                       className="h-3.5 w-3.5 rounded-[3px] border-slate-350 text-blue-600 focus:ring-blue-500 cursor-pointer"
                     />
-                    <span className="text-xs font-semibold text-slate-650">Mã SKU</span>
+                    <span className="text-caption-responsive font-semibold text-slate-650">Mã SKU</span>
                   </label>
                   <label className="flex items-center gap-2 cursor-pointer">
                     <input
@@ -379,7 +379,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                       onChange={() => setVisibleColumns(prev => ({ ...prev, product: !prev.product }))}
                       className="h-3.5 w-3.5 rounded-[3px] border-slate-350 text-blue-600 focus:ring-blue-500 cursor-pointer"
                     />
-                    <span className="text-xs font-semibold text-slate-650">Sản phẩm cha</span>
+                    <span className="text-caption-responsive font-semibold text-slate-650">Sản phẩm cha</span>
                   </label>
                   <label className="flex items-center gap-2 cursor-pointer">
                     <input
@@ -388,7 +388,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                       onChange={() => setVisibleColumns(prev => ({ ...prev, pack_size: !prev.pack_size }))}
                       className="h-3.5 w-3.5 rounded-[3px] border-slate-350 text-blue-600 focus:ring-blue-500 cursor-pointer"
                     />
-                    <span className="text-xs font-semibold text-slate-650">Quy cách & ĐVT</span>
+                    <span className="text-caption-responsive font-semibold text-slate-650">Quy cách & ĐVT</span>
                   </label>
                   <label className="flex items-center gap-2 cursor-pointer">
                     <input
@@ -397,7 +397,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                       onChange={() => setVisibleColumns(prev => ({ ...prev, stock_status: !prev.stock_status }))}
                       className="h-3.5 w-3.5 rounded-[3px] border-slate-350 text-blue-600 focus:ring-blue-500 cursor-pointer"
                     />
-                    <span className="text-xs font-semibold text-slate-650">Trạng thái kho</span>
+                    <span className="text-caption-responsive font-semibold text-slate-650">Trạng thái kho</span>
                   </label>
                   <label className="flex items-center gap-2 cursor-pointer">
                     <input
@@ -406,14 +406,14 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                       onChange={() => setVisibleColumns(prev => ({ ...prev, status: !prev.status }))}
                       className="h-3.5 w-3.5 rounded-[3px] border-slate-350 text-blue-600 focus:ring-blue-500 cursor-pointer"
                     />
-                    <span className="text-xs font-semibold text-slate-650">Trạng thái</span>
+                    <span className="text-caption-responsive font-semibold text-slate-650">Trạng thái</span>
                   </label>
 
                   {/* Dynamic attribute columns */}
                   {allAttributeKeys.length > 0 && (
                     <>
                       <div className="border-t border-slate-100 my-2 pt-2">
-                        <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest block mb-1">
+                        <span className="text-caption-responsive font-bold text-slate-400 uppercase tracking-widest block mb-1">
                           Thuộc tính bổ sung
                         </span>
                       </div>
@@ -427,7 +427,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                               onChange={() => setVisibleAttrs(prev => ({ ...prev, [key]: !isChecked }))}
                               className="h-3.5 w-3.5 rounded-[3px] border-slate-350 text-blue-600 focus:ring-blue-500 cursor-pointer"
                             />
-                            <span className="text-xs font-semibold text-slate-650 capitalize">{key}</span>
+                            <span className="text-caption-responsive font-semibold text-slate-650 capitalize">{key}</span>
                           </label>
                         );
                       })}
@@ -445,8 +445,8 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
         {filteredSkus.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 text-center">
             <Layers className="h-12 w-12 text-slate-300 mb-3" />
-            <span className="text-sm font-extrabold text-primary">Không tìm thấy mã SKU nào</span>
-            <span className="text-xs text-slate-400 mt-1">
+            <span className="text-body-regular font-extrabold text-primary">Không tìm thấy mã SKU nào</span>
+            <span className="text-caption-responsive text-slate-400 mt-1">
               Thử thay đổi bộ lọc hoặc từ khóa tìm kiếm của bạn.
             </span>
           </div>
@@ -454,7 +454,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
           <div className="overflow-x-auto">
             <table className="w-full border-collapse text-left min-w-[1000px]">
               <thead>
-                <tr className="bg-slate-50 border-b border-slate-100 text-[10px] sm:text-xs font-bold text-slate-450 uppercase tracking-wider">
+                <tr className="bg-slate-50 border-b border-slate-100 text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                   {visibleColumns.sku_code && (
                     <th className="px-4 py-2.5 sticky left-0 bg-slate-50 z-10 shadow-[2px_0_5px_rgba(0,0,0,0.05)]">Mã SKU</th>
                   )}
@@ -474,7 +474,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                   <th className="px-4 py-2.5 text-right sticky right-0 bg-slate-50 z-10 shadow-[-2px_0_5px_rgba(0,0,0,0.05)]">Thao tác</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 text-xs sm:text-sm">
+              <tbody className="divide-y divide-slate-100 text-caption-responsive">
                 {filteredSkus.map((sku) => {
                   const parent =
                     sku.product && typeof sku.product === 'object' ? (sku.product as any) : null;
@@ -497,7 +497,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                               {parentName}
                             </span>
                             {parentSlug && (
-                              <span className="text-[10px] text-slate-400 font-mono mt-0.5">
+                              <span className="text-caption-responsive text-slate-400 font-mono mt-0.5">
                                 /{parentSlug}
                               </span>
                             )}
@@ -537,7 +537,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                               )
                             }
                             className={cn(
-                              'px-2 py-0.5 rounded-[3px] text-[11px] font-bold border focus:outline-none cursor-pointer',
+                              'px-2 py-0.5 rounded-[3px] text-caption-responsive font-bold border focus:outline-none cursor-pointer',
                               sku.stock_status === 'in_stock' &&
                                 'bg-green-50 border-green-200 text-green-700',
                               sku.stock_status === 'low_stock' &&
@@ -558,7 +558,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                         <td className="px-4 py-2.5">
                           <span
                             className={cn(
-                              'inline-flex items-center px-2 py-0.5 rounded-[3px] text-[10px] font-bold uppercase',
+                              'inline-flex items-center px-2 py-0.5 rounded-[3px] text-caption-responsive font-bold uppercase',
                               sku.status === 'published' && 'bg-green-50 text-green-600',
                               sku.status === 'draft' && 'bg-slate-105 text-slate-600',
                               sku.status === 'archived' && 'bg-red-50 text-red-650'
@@ -652,7 +652,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
           <div className="bg-white rounded-[3px] w-full max-w-lg shadow-xl border border-slate-100 overflow-hidden max-h-[90vh] overflow-y-auto">
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 sticky top-0 bg-white z-10">
-              <h3 className="text-base font-extrabold text-primary">
+              <h3 className="text-body-regular font-extrabold text-primary">
                 {activeSku.id ? 'Sửa thông tin SKU' : 'Thêm mã SKU mới'}
               </h3>
               <button
@@ -669,20 +669,20 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
             {/* Form */}
             <form onSubmit={handleSaveSkuSubmit} className="p-6 space-y-5">
               {formError && (
-                <div className="p-3 bg-rose-50 border border-rose-100 rounded-[3px] text-xs font-bold text-rose-600 flex items-center gap-2 animate-in fade-in duration-200">
+                <div className="p-3 bg-rose-50 border border-rose-100 rounded-[3px] text-caption-responsive font-bold text-rose-600 flex items-center gap-2 animate-in fade-in duration-200">
                   <AlertTriangle className="h-4 w-4 shrink-0" />
                   <span>{formError}</span>
                 </div>
               )}
               {/* Product Selection */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-bold text-slate-500 uppercase">Sản phẩm cha *</label>
+                <label className="text-caption-responsive font-bold text-slate-500 uppercase">Sản phẩm cha *</label>
                 <select
                   required
                   value={activeSku.productId || ''}
                   onChange={(e) => handleProductChange(Number(e.target.value))}
                   disabled={!!activeSku.id}
-                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-700 focus:outline-none bg-slate-50 disabled:bg-slate-100"
+                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-700 focus:outline-none bg-slate-50 disabled:bg-slate-100"
                 >
                   <option value="">-- Chọn sản phẩm cha --</option>
                   {products.map((p) => (
@@ -696,7 +696,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
               {/* Attributes Section */}
               {activeSku.productId && (
                 <div className="space-y-3 p-4 bg-slate-50 rounded-[3px] border border-slate-100">
-                  <span className="text-[10px] uppercase text-slate-400 font-extrabold tracking-wider block">
+                  <span className="text-caption-responsive uppercase text-slate-400 font-extrabold tracking-wider block">
                     Chọn thuộc tính phân loại
                   </span>
 
@@ -704,7 +704,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                     <>
                       {/* Prefix Display */}
                       <div className="flex flex-col gap-1">
-                        <span className="text-[10px] font-bold text-slate-500">
+                        <span className="text-caption-responsive font-bold text-slate-500">
                           Tiền tố sản phẩm
                         </span>
                         <input
@@ -715,7 +715,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                               .find((p) => p.id === activeSku.productId)
                               ?.slug.toUpperCase() || ''
                           }
-                          className="px-3 py-1.5 rounded-[3px] bg-slate-100 border border-slate-200 text-xs font-bold font-mono text-slate-500 cursor-not-allowed select-none focus:outline-none"
+                          className="px-3 py-1.5 rounded-[3px] bg-slate-100 border border-slate-200 text-caption-responsive font-bold font-mono text-slate-500 cursor-not-allowed select-none focus:outline-none"
                         />
                       </div>
 
@@ -727,7 +727,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                             : [];
                           return (
                             <div key={attr.id} className="flex flex-col gap-1">
-                              <label className="text-[10px] font-bold text-slate-500 uppercase">
+                              <label className="text-caption-responsive font-bold text-slate-500 uppercase">
                                 {attr.name} *
                               </label>
                               <select
@@ -736,7 +736,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                                 onChange={(e) =>
                                   handleOptionChange(attr.id, Number(e.target.value))
                                 }
-                                className="px-3 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-semibold focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600 bg-white"
+                                className="px-3 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-semibold focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600 bg-white"
                               >
                                 <option value="">-- Chọn --</option>
                                 {sortedOptions.map((opt) => (
@@ -755,10 +755,10 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                     <div className="flex items-start gap-2 p-3 bg-amber-50 rounded-[3px] border border-amber-200">
                       <AlertTriangle className="h-4 w-4 text-amber-500 shrink-0 mt-0.5" />
                       <div>
-                        <span className="text-xs font-bold text-amber-700 block">
+                        <span className="text-caption-responsive font-bold text-amber-700 block">
                           Sản phẩm này chưa có thuộc tính phân loại.
                         </span>
-                        <span className="text-[10px] text-amber-600">
+                        <span className="text-caption-responsive text-amber-600">
                           Hãy thêm thuộc tính (Size, Color...) trong Directus Admin trước, hoặc nhập
                           mã SKU thủ công bên dưới.
                         </span>
@@ -771,15 +771,15 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
               {/* SKU Code */}
               <div className="flex flex-col gap-1.5">
                 <div className="flex items-center justify-between">
-                  <label className="text-xs font-bold text-slate-500 uppercase">
+                  <label className="text-caption-responsive font-bold text-slate-500 uppercase">
                     Mã SKU Code *
                   </label>
                   {activeProductAttrs.length > 0 ? (
-                    <span className="text-[10px] text-blue-600 font-bold">
+                    <span className="text-caption-responsive text-blue-600 font-bold">
                       Khóa tự động từ thuộc tính
                     </span>
                   ) : (
-                    <span className="text-[10px] text-amber-600 font-bold">Nhập thủ công</span>
+                    <span className="text-caption-responsive text-amber-600 font-bold">Nhập thủ công</span>
                   )}
                 </div>
                 <input
@@ -802,7 +802,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                       : 'Nhập mã SKU thủ công...'
                   }
                   className={cn(
-                    'px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-extrabold text-primary font-mono focus:outline-none',
+                    'px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive  font-extrabold text-primary font-mono focus:outline-none',
                     activeProductAttrs.length > 0
                       ? 'bg-slate-100 cursor-not-allowed select-all'
                       : 'bg-white focus:ring-1 focus:ring-blue-600 focus:border-blue-600'
@@ -812,19 +812,19 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
 
               {/* Unit */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-bold text-slate-500 uppercase">Đơn vị tính</label>
+                <label className="text-caption-responsive font-bold text-slate-500 uppercase">Đơn vị tính</label>
                 <input
                   type="text"
                   value={activeSku.unit || ''}
                   onChange={(e) => setActiveSku({ ...activeSku, unit: e.target.value })}
                   placeholder="Ví dụ: Hộp, Đôi, Cuộn..."
-                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
                 />
               </div>
 
               {/* Pack Size */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-bold text-slate-500 uppercase">
+                <label className="text-caption-responsive font-bold text-slate-500 uppercase">
                   Quy cách đóng gói
                 </label>
                 <input
@@ -832,13 +832,13 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                   value={activeSku.pack_size || ''}
                   onChange={(e) => setActiveSku({ ...activeSku, pack_size: e.target.value })}
                   placeholder="Ví dụ: 100 đôi/hộp, 10 cuộn/thùng"
-                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
                 />
               </div>
 
               {/* Stock Status */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-bold text-slate-500 uppercase">
+                <label className="text-caption-responsive font-bold text-slate-500 uppercase">
                   Tình trạng tồn kho
                 </label>
                 <select
@@ -849,7 +849,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                       stock_status: e.target.value as 'in_stock' | 'low_stock' | 'out_of_stock'
                     })
                   }
-                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-750 focus:outline-none"
+                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-750 focus:outline-none"
                 >
                   <option value="in_stock">Còn hàng (In Stock)</option>
                   <option value="low_stock">Sắp hết (Low Stock)</option>
@@ -859,7 +859,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
 
               {/* Status Select */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-bold text-slate-500 uppercase">
+                <label className="text-caption-responsive font-bold text-slate-500 uppercase">
                   Trạng thái phát hành
                 </label>
                 <select
@@ -870,7 +870,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                       status: e.target.value as 'published' | 'draft' | 'archived'
                     })
                   }
-                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-750 focus:outline-none"
+                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-750 focus:outline-none"
                 >
                   <option value="published">Hoạt động (Published)</option>
                   <option value="draft">Bản nháp (Draft)</option>
@@ -886,14 +886,14 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                     setSkuModalOpen(false);
                     setSelectedOptions({});
                   }}
-                  className="px-4 py-2 rounded-[3px] border border-slate-200 text-xs font-bold text-slate-500 hover:bg-slate-50 transition-colors"
+                  className="px-4 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-500 hover:bg-slate-50 transition-colors"
                 >
                   Hủy
                 </button>
                 <button
                   type="submit"
                   disabled={isPending}
-                  className="inline-flex h-10 items-center justify-center gap-2 rounded-[3px] bg-blue-600 px-5 text-xs font-bold text-white hover:bg-blue-700 transition-colors disabled:opacity-50"
+                  className="inline-flex h-10 items-center justify-center gap-2 rounded-[3px] bg-blue-600 px-5 text-caption-responsive font-bold text-white hover:bg-blue-700 transition-colors disabled:opacity-50"
                 >
                   {isPending && <Loader2 className="h-3.5 w-3.5 animate-spin" />}
                   Lưu SKU

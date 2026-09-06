@@ -45,10 +45,10 @@ export default async function MarketNews({ locale }: MarketNewsProps) {
     <section className="w-full mt-16 lg:mt-24 border-t border-slate-100 pt-16">
       {/* Section Header */}
       <div className="max-w-3xl mx-auto text-center mb-12">
-        <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-slate-400">
+        <span className="text-caption-responsive font-bold uppercase tracking-wider text-slate-400">
           {t('marketNews.sectionTitle')}
         </span>
-        <h2 className="text-2xl sm:text-3xl font-extrabold text-primary tracking-tight mt-2.5">
+        <h2 className="text-section-title font-extrabold text-primary tracking-tight mt-2.5">
           {t('marketNews.sectionSubtitle')}
         </h2>
       </div>
@@ -73,13 +73,13 @@ export default async function MarketNews({ locale }: MarketNewsProps) {
                 </div>
 
               {/* Category & Title */}
-              <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider block mb-2">
+              <span className="text-caption-responsive font-bold text-slate-400 uppercase tracking-wider block mb-2">
                 {item.category}
               </span>
-              <h3 className="text-base font-extrabold text-primary leading-snug group-hover:text-blue-600 transition-colors mb-3">
+              <h3 className="text-body-regular font-extrabold text-primary leading-snug group-hover:text-blue-600 transition-colors mb-3">
                 {item.title}
               </h3>
-              <p className="text-xs sm:text-sm text-slate-500 leading-relaxed font-medium mb-6">
+              <p className="text-caption-responsive text-slate-500 leading-relaxed font-medium mb-6">
                 {item.desc}
               </p>
             </div>
@@ -90,10 +90,10 @@ export default async function MarketNews({ locale }: MarketNewsProps) {
                 <Image src={item.avatar} alt={item.author} fill className="object-cover" />
               </div>
               <div className="flex flex-col">
-                <span className="text-xs font-bold text-primary leading-tight">
+                <span className="text-caption-responsive font-bold text-primary leading-tight">
                   {item.author}
                 </span>
-                <span className="text-[10px] text-slate-400 font-semibold mt-0.5">{item.role}</span>
+                <span className="text-caption-responsive text-slate-400 font-semibold mt-0.5">{item.role}</span>
               </div>
             </div>
           </div>

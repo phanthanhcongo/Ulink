@@ -69,42 +69,42 @@ export function EventSidebar({
   return (
     <div className="sticky top-6 rounded-[3px] bg-[#0E2142] text-white p-6 sm:p-8 shadow-2xl border border-slate-800">
       <div className="flex justify-between items-start gap-4">
-        <h3 className="text-xl font-extrabold leading-snug tracking-tight text-white pr-4">
+        <h3 className="text-card-title font-extrabold leading-snug tracking-tight text-white pr-4">
           {title}
         </h3>
 
         {/* Calendar Badge */}
         <div className="bg-slate-800/80 rounded-[3px] border border-slate-700 p-2 text-center shrink-0 min-w-[56px]">
-          <p className="text-[10px] font-bold text-slate-400 uppercase tracking-widest leading-none">{calDate.month}</p>
-          <p className="text-lg font-black text-white mt-1 leading-none">{calDate.day}</p>
+          <p className="text-caption-responsive font-bold text-slate-400 uppercase tracking-widest leading-none">{calDate.month}</p>
+          <p className="text-card-title font-black text-white mt-1 leading-none">{calDate.day}</p>
         </div>
       </div>
 
       <div className="mt-4 border-t border-slate-800 pt-4 space-y-4">
         {/* Event By */}
         <div>
-          <span className="text-xs uppercase tracking-widest text-slate-400">Event By</span>
-          <p className="text-sm font-semibold text-slate-200 mt-1">{organizerName}</p>
+          <span className="text-caption-responsive uppercase tracking-widest text-slate-400">Event By</span>
+          <p className="text-body-regular font-semibold text-slate-200 mt-1">{organizerName}</p>
         </div>
 
         {/* Start / End Time Grid */}
         <div className="grid grid-cols-2 gap-4">
           <div>
-            <span className="text-xs uppercase tracking-widest text-slate-400">Start Time</span>
-            <p className="text-sm font-bold text-slate-200 mt-1">{startTime}</p>
-            <span className="text-[10px] text-slate-500">{timezone}</span>
+            <span className="text-caption-responsive uppercase tracking-widest text-slate-400">Start Time</span>
+            <p className="text-body-regular font-bold text-slate-200 mt-1">{startTime}</p>
+            <span className="text-caption-responsive text-slate-500">{timezone}</span>
           </div>
           <div>
-            <span className="text-xs uppercase tracking-widest text-slate-400">End Time</span>
-            <p className="text-sm font-bold text-slate-200 mt-1">{endTime}</p>
-            <span className="text-[10px] text-slate-500">{timezone}</span>
+            <span className="text-caption-responsive uppercase tracking-widest text-slate-400">End Time</span>
+            <p className="text-body-regular font-bold text-slate-200 mt-1">{endTime}</p>
+            <span className="text-caption-responsive text-slate-500">{timezone}</span>
           </div>
         </div>
 
         {/* Event Status */}
         <div>
-          <span className="text-xs uppercase tracking-widest text-slate-400 block">Event Status</span>
-          <span className="inline-block mt-1 text-xs font-black tracking-widest text-emerald-400 uppercase">
+          <span className="text-caption-responsive uppercase tracking-widest text-slate-400 block">Event Status</span>
+          <span className="inline-block mt-1 text-caption-responsive font-black tracking-widest text-emerald-400 uppercase">
             {registrationStatus}
           </span>
         </div>
@@ -112,14 +112,14 @@ export function EventSidebar({
         {/* Ticket Price */}
         <div className="border-t border-slate-800 pt-4 flex items-center gap-3">
           <Calendar className="h-5 w-5 text-emerald-400 shrink-0" />
-          <span className="text-lg font-bold text-slate-200">{price}</span>
+          <span className="text-card-title font-bold text-slate-200">{price}</span>
         </div>
 
         {/* Action Button */}
         <div className="mt-6">
           <Link
               href={`/resources/events/${slug}/register`}
-            className="flex w-full items-center justify-center rounded-[3px] bg-emerald-500 hover:bg-emerald-600 active:scale-[0.98] py-3 text-sm font-bold text-white transition-all shadow-md shadow-emerald-950/20 font-sans"
+            className="flex w-full items-center justify-center rounded-[3px] bg-emerald-500 hover:bg-emerald-600 active:scale-[0.98] py-3 text-body-regular font-bold text-white transition-all shadow-md shadow-emerald-950/20 font-sans"
           >
             Đăng ký ngay
           </Link>
@@ -127,7 +127,7 @@ export function EventSidebar({
 
         {/* Share Section */}
         <div className="border-t border-slate-800 pt-5 mt-6">
-          <span className="text-xs text-slate-400 block font-semibold mb-3">Share this event on</span>
+          <span className="text-caption-responsive text-slate-400 block font-semibold mb-3">Share this event on</span>
           <div className="flex gap-4 mb-4">
             <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition-colors">
               <Linkedin className="h-5 w-5" />
@@ -146,7 +146,7 @@ export function EventSidebar({
               type="text"
               readOnly
               value={shareUrl}
-              className="bg-transparent text-xs text-slate-400 outline-none w-full truncate border-none select-all"
+              className="bg-transparent text-caption-responsive text-slate-400 outline-none w-full truncate border-none select-all"
             />
             <button
               onClick={handleCopyLink}

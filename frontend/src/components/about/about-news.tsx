@@ -7,10 +7,10 @@ export function AboutNews() {
   return (
     <section className="py-6 lg:py-8 xl:py-10">
       <div className="mb-8 flex flex-col items-center text-center">
-        <span className="mb-2 inline-flex items-center rounded-full bg-blue-50 px-3.5 py-1 text-xs font-semibold text-blue-700 ring-1 ring-inset ring-blue-700/10">
+        <span className="mb-2 inline-flex items-center rounded-full bg-blue-50 px-3.5 py-1 text-caption-responsive font-semibold text-blue-700 ring-1 ring-inset ring-blue-700/10">
           Tin tức thị trường
         </span>
-        <h2 className="text-[22px] font-bold tracking-tight text-slate-900">
+        <h2 className="text-section-title font-bold tracking-tight text-slate-900">
           Cập nhật xu hướng và diễn biến mới nhất
         </h2>
       </div>
@@ -27,7 +27,7 @@ export function AboutNews() {
               <Image src={item.coverImage} alt={item.title} fill className="object-cover" />
             </div>
             <div className="flex flex-1 flex-col p-4 sm:p-5 lg:p-4 xl:p-5">
-              <div className="mb-2 flex items-center gap-3 text-caption-responsive sm:text-xs text-slate-500">
+              <div className="mb-2 flex items-center gap-3 text-caption-responsive text-slate-500">
                 <span className="font-semibold text-blue-600">{item.category}</span>
                 <span>•</span>
                 <span className="flex items-center gap-1">
@@ -40,7 +40,7 @@ export function AboutNews() {
               </h3>
               <p className="mt-2 flex-1 text-caption-responsive leading-relaxed text-slate-600 line-clamp-2">{item.summary}</p>
               <div className="mt-4 flex items-center justify-between border-t border-slate-100 pt-3">
-                <span className="flex items-center gap-1 text-caption-responsive sm:text-xs text-slate-500">
+                <span className="flex items-center gap-1 text-caption-responsive text-slate-500">
                   <User className="h-3 w-3" />
                   {item.author}
                 </span>

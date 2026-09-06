@@ -32,15 +32,15 @@ function renderSection(section: Section, locale: 'vi' | 'en' | 'ja') {
   const alert = section.alertText
     ? `
       <div class="mt-4 rounded-2xl border border-blue-100 bg-blue-50/60 p-4">
-        <p class="text-sm leading-relaxed text-slate-700">${renderParagraphs(section.alertText[locale])}</p>
+        <p class="text-body-regular leading-relaxed text-slate-700">${renderParagraphs(section.alertText[locale])}</p>
       </div>
     `
     : '';
 
   return `
     <section class="space-y-4">
-      <h2 class="text-xl font-bold text-slate-900">${escapeHtml(`${section.num} ${section.title[locale]}`)}</h2>
-      <div class="prose prose-slate max-w-none text-sm leading-7 text-slate-600">
+      <h2 class="text-card-title font-bold text-slate-900">${escapeHtml(`${section.num} ${section.title[locale]}`)}</h2>
+      <div class="prose prose-slate max-w-none text-body-regular leading-7 text-slate-600">
         <p>${content}</p>
       </div>
       ${alert}
@@ -67,14 +67,14 @@ export function resourceToDetailData(
       ? resource.sections.map((section) => renderSection(section, locale)).join('')
       : `
       <section class="space-y-4">
-        <h2 class="text-xl font-bold text-slate-900">${escapeHtml(
+        <h2 class="text-card-title font-bold text-slate-900">${escapeHtml(
           locale === 'vi'
             ? 'Tổng quan tài liệu'
             : locale === 'ja'
               ? '資料概要'
               : 'Document overview'
         )}</h2>
-        <p class="text-sm leading-7 text-slate-600">${renderParagraphs(intro)}</p>
+        <p class="text-body-regular leading-7 text-slate-600">${renderParagraphs(intro)}</p>
       </section>
     `;
 
@@ -82,13 +82,13 @@ export function resourceToDetailData(
     intro || highlights.length > 0
       ? `
         <section class="space-y-4">
-          <h2 class="text-xl font-bold text-slate-900">${escapeHtml(
+          <h2 class="text-card-title font-bold text-slate-900">${escapeHtml(
             locale === 'vi' ? 'Tóm tắt nhanh' : locale === 'ja' ? '要約' : 'Quick summary'
           )}</h2>
-          ${intro ? `<p class="text-sm leading-7 text-slate-600">${renderParagraphs(intro)}</p>` : ''}
+          ${intro ? `<p class="text-body-regular leading-7 text-slate-600">${renderParagraphs(intro)}</p>` : ''}
           ${
             highlights.length > 0
-              ? `<ul class="space-y-2 text-sm leading-6 text-slate-600">${highlights
+              ? `<ul class="space-y-2 text-body-regular leading-6 text-slate-600">${highlights
                   .map((item) => `<li>• ${escapeHtml(item)}</li>`)
                   .join('')}</ul>`
               : ''
@@ -99,10 +99,10 @@ export function resourceToDetailData(
 
   const metaHtml = `
     <section class="space-y-3 rounded-2xl border border-slate-200 bg-slate-50 p-5">
-      <h2 class="text-lg font-bold text-slate-900">${escapeHtml(
+      <h2 class="text-card-title font-bold text-slate-900">${escapeHtml(
         locale === 'vi' ? 'Thông tin tài liệu' : locale === 'ja' ? '資料情報' : 'Document details'
       )}</h2>
-      <dl class="grid grid-cols-1 gap-3 text-sm text-slate-600 sm:grid-cols-2">
+      <dl class="grid grid-cols-1 gap-3 text-body-regular text-slate-600 sm:grid-cols-2">
         <div>
           <dt class="font-semibold text-slate-500">${escapeHtml(
             locale === 'vi' ? 'Ngày đăng' : locale === 'ja' ? '公開日' : 'Published'

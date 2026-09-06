@@ -51,7 +51,7 @@ export default function RequestSampleButton({
         onClick={() => setOpen(true)}
         variant="secondary"
         fullWidth
-        className="border-2 border-primary px-4 py-2.5 text-sm font-medium text-primary hover:bg-primary hover:text-primary-foreground"
+        className="border-2 border-primary px-4 py-2.5 text-body-regular font-medium text-primary hover:bg-primary hover:text-primary-foreground"
       >
         <Package className="h-4 w-4" />
         {labels.requestSampleBtn}

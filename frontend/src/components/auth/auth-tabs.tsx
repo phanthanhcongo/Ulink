@@ -39,7 +39,7 @@ export function AuthTabs() {
             href={tab.href}
             aria-current={active ? 'page' : undefined}
             className={cn(
-              'flex-1 pb-3 text-center text-sm font-medium transition-colors',
+              'flex-1 pb-3 text-center text-body-regular font-medium transition-colors',
               active
                 ? 'border-b-2 border-brand text-foreground'
                 : 'text-muted-foreground hover:text-foreground'

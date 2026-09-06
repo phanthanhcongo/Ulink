@@ -23,8 +23,8 @@ export function ContactCapabilities() {
                 <Icon className="h-5 w-5" />
               </div>
               <div>
-                <h3 className="text-xs font-bold text-slate-900">{c.title}</h3>
-                <p className="text-[10px] text-slate-500">{c.desc}</p>
+                <h3 className="text-caption-responsive font-bold text-slate-900">{c.title}</h3>
+                <p className="text-caption-responsive text-slate-500">{c.desc}</p>
               </div>
             </div>
           );

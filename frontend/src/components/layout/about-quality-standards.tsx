@@ -32,12 +32,12 @@ export function AboutQualityStandards() {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-primary">{t('title')}</h2>
-          <p className="mt-1.5 text-[13px] sm:text-[14px] leading-relaxed text-foreground/60">{t('subtitle')}</p>
+          <h2 className="text-caption-responsive font-bold uppercase tracking-wider text-primary">{t('title')}</h2>
+          <p className="mt-1.5 text-caption-responsive leading-relaxed text-foreground/60">{t('subtitle')}</p>
         </div>
         <a
           href="#"
-          className="inline-flex items-center gap-1.5 text-[13px] sm:text-[14px] font-medium text-brand hover:underline"
+          className="inline-flex items-center gap-1.5 text-caption-responsive font-medium text-brand hover:underline"
         >
           {t('viewAll')}
           <ArrowRight className="h-2 w-2" strokeWidth={1.8} />
@@ -60,17 +60,17 @@ export function AboutQualityStandards() {
             </div>
 
             {/* Title */}
-            <p className="mt-4 text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-primary">
+            <p className="mt-4 text-body-regular font-bold text-primary">
               {t(`certs.${cert.key}.title`)}
             </p>
 
             {/* Subtitle */}
-            <p className="mt-1 text-[13px] sm:text-[14px] leading-relaxed text-foreground/50">
+            <p className="mt-1 text-caption-responsive leading-relaxed text-foreground/50">
               {t(`certs.${cert.key}.subtitle`)}
             </p>
 
             {/* Description */}
-            <p className="mt-3 flex-1 text-[13px] sm:text-[14px] leading-relaxed text-foreground/70">
+            <p className="mt-3 flex-1 text-caption-responsive leading-relaxed text-foreground/70">
               {t(`certs.${cert.key}.desc`)}
             </p>
 
@@ -78,7 +78,7 @@ export function AboutQualityStandards() {
             <a
               href="#"
               onClick={handleDownloadClick}
-              className="mt-4 inline-flex items-center gap-1.5 text-[13px] sm:text-[14px] font-medium text-brand hover:underline"
+              className="mt-4 inline-flex items-center gap-1.5 text-caption-responsive font-medium text-brand hover:underline"
             >
               <Download className="h-3 w-3" strokeWidth={1.5} />
               {t('downloadCert')}
@@ -90,7 +90,7 @@ export function AboutQualityStandards() {
       {showToast && (
         <div className="fixed bottom-5 right-5 z-50 flex items-center gap-2.5 rounded-[3px] border border-amber-200 bg-amber-50 px-4 py-3 text-amber-800 shadow-lg animate-in fade-in slide-in-from-bottom-5 duration-300 dark:bg-amber-950/20 dark:text-amber-400 dark:border-amber-500/20">
           <Clock className="h-5 w-5 text-amber-500 shrink-0 animate-pulse" />
-          <span className="text-sm font-semibold">{t('certPending')}</span>
+          <span className="text-body-regular font-semibold">{t('certPending')}</span>
         </div>
       )}
     </section>

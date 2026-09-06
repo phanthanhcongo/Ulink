@@ -231,15 +231,15 @@ function OtpFormInner() {
         <span className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-[3px] bg-brand/10 text-brand">
           <CheckCircle2 className="h-7 w-7" aria-hidden="true" />
         </span>
-        <h2 className="text-2xl font-bold tracking-tight text-foreground">
+        <h2 className="text-section-title font-bold tracking-tight text-foreground">
           {purposeParam === 'register' ? t('verifyEmailTitle') : t('otpVerifySuccess')}
         </h2>
-        <p className="mx-auto mt-3 max-w-sm text-sm text-muted-foreground">
+        <p className="mx-auto mt-3 max-w-sm text-body-regular text-muted-foreground">
           {purposeParam === 'register' ? t('verifyEmailDesc') : t('otpVerifySuccessDesc')}
         </p>
         <Link
           href={redirectParam}
-          className="mt-6 inline-flex items-center justify-center rounded-[3px] border border-brand bg-brand px-5 py-2.5 text-sm font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong"
+          className="mt-6 inline-flex items-center justify-center rounded-[3px] border border-brand bg-brand px-5 py-2.5 text-body-regular font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong"
         >
           {t('continue')}
           <ArrowRight className="ml-1.5 h-4 w-4" aria-hidden="true" />
@@ -249,21 +249,21 @@ function OtpFormInner() {
   }
 
   const inputBase =
-    'w-full rounded-[3px] border bg-card py-2.5 pl-10 pr-4 text-sm outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-brand focus:ring-1 focus:ring-brand';
+    'w-full rounded-[3px] border bg-card py-2.5 pl-10 pr-4 text-body-regular outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-brand focus:ring-1 focus:ring-brand';
 
   return (
     <div>
-      <h2 className="text-2xl font-bold tracking-tight text-foreground">
+      <h2 className="text-section-title font-bold tracking-tight text-foreground">
         {purposeParam === 'register' ? t('verifyEmailTitle') : t('otpTitle')}
       </h2>
-      <p className="mt-2 text-sm text-muted-foreground">
+      <p className="mt-2 text-body-regular text-muted-foreground">
         {purposeParam === 'register' ? t('verifyEmailDesc') : t('otpDesc')}
       </p>
 
       {formError && (
         <p
           role="alert"
-          className="mt-4 rounded-[3px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-sm text-destructive"
+          className="mt-4 rounded-[3px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-body-regular text-destructive"
         >
           {formError}
         </p>
@@ -272,7 +272,7 @@ function OtpFormInner() {
       {!emailParam && (
         <form className="mt-6 space-y-3" onSubmit={onSend} noValidate>
           <div>
-            <label htmlFor="email" className="mb-1 block text-sm text-foreground">
+            <label htmlFor="email" className="mb-1 block text-body-regular text-foreground">
               {t('emailLabel')}
             </label>
             <div className="relative">
@@ -296,13 +296,13 @@ function OtpFormInner() {
               />
             </div>
             {fieldErrors.email && (
-              <p className="mt-1.5 text-xs text-destructive">{fieldErrors.email}</p>
+              <p className="mt-1.5 text-caption-responsive text-destructive">{fieldErrors.email}</p>
             )}
           </div>
           <button
             type="submit"
             disabled={loading || cooldown > 0}
-            className="flex w-full items-center justify-center gap-2 rounded-[3px] border border-brand bg-brand py-3 text-sm font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong disabled:opacity-60"
+            className="flex w-full items-center justify-center gap-2 rounded-[3px] border border-brand bg-brand py-3 text-body-regular font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong disabled:opacity-60"
           >
             {loading ? (
               <>
@@ -323,7 +323,7 @@ function OtpFormInner() {
 
       <form className="mt-6 space-y-3" onSubmit={onVerify} noValidate>
         <div>
-          <label htmlFor="code" className="mb-1 block text-sm text-foreground">
+          <label htmlFor="code" className="mb-1 block text-body-regular text-foreground">
             {t('otpTitle')}
           </label>
           <div className="relative">
@@ -350,14 +350,14 @@ function OtpFormInner() {
             />
           </div>
           {fieldErrors.code && (
-            <p className="mt-1.5 text-xs text-destructive">{fieldErrors.code}</p>
+            <p className="mt-1.5 text-caption-responsive text-destructive">{fieldErrors.code}</p>
           )}
         </div>
 
         <button
           type="submit"
           disabled={loading || !code}
-          className="flex w-full items-center justify-center gap-2 rounded-[3px] border border-brand bg-brand py-3 text-sm font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong disabled:opacity-60"
+          className="flex w-full items-center justify-center gap-2 rounded-[3px] border border-brand bg-brand py-3 text-body-regular font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong disabled:opacity-60"
         >
           {loading ? (
             <>
@@ -372,7 +372,7 @@ function OtpFormInner() {
           )}
         </button>
 
-        <div className="flex items-center justify-between text-xs">
+        <div className="flex items-center justify-between text-caption-responsive">
           <button
             type="button"
             onClick={() => sendOtp(email)}

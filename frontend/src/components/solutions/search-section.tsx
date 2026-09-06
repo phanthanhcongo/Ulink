@@ -79,13 +79,13 @@ export default function SearchSection({ locale, labels }: SearchSectionProps) {
     <section className="w-full bg-card py-12 lg:py-16 border-b border-gray-100">
       <div className="page-container text-center">
         {/* Header */}
-        <p className="text-xs sm:text-sm font-extrabold uppercase tracking-wider text-blue-600">
+        <p className="text-caption-responsive font-extrabold uppercase tracking-wider text-blue-600">
           {labels.eyebrow}
         </p>
-        <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 tracking-tight">
+        <h2 className="mt-3 text-section-title font-extrabold text-slate-900 tracking-tight">
           {labels.title}
         </h2>
-        <p className="mt-4 text-sm sm:text-base text-slate-500 max-w-2xl mx-auto leading-relaxed">
+        <p className="mt-4 text-body-regular text-slate-500 max-w-2xl mx-auto leading-relaxed">
           {labels.subtitle}
         </p>
 
@@ -101,12 +101,12 @@ export default function SearchSection({ locale, labels }: SearchSectionProps) {
               value={value}
               onChange={(e) => setValue(e.target.value)}
               placeholder={labels.placeholder}
-              className="w-full bg-transparent text-sm text-slate-900 placeholder:text-gray-400 focus:outline-none py-2"
+              className="w-full bg-transparent text-body-regular text-slate-900 placeholder:text-gray-400 focus:outline-none py-2"
             />
             <button
               type="submit"
               disabled={isPending}
-              className="rounded-full bg-blue-600 px-6 py-2 text-sm font-semibold text-white shadow-sm hover:bg-blue-700 transition-colors shrink-0"
+              className="rounded-full bg-blue-600 px-6 py-2 text-body-regular font-semibold text-white shadow-sm hover:bg-blue-700 transition-colors shrink-0"
             >
               {labels.buttonText}
             </button>
@@ -129,7 +129,7 @@ export default function SearchSection({ locale, labels }: SearchSectionProps) {
                     handleSearch(tag.value);
                   }
                 }}
-                className={`rounded-full px-4 py-2 text-xs font-semibold transition-all border ${
+                className={`rounded-full px-4 py-2 text-caption-responsive font-semibold transition-all border ${
                   isActive
                     ? 'bg-blue-600 border-blue-600 text-white shadow-sm'
                     : 'bg-white border-gray-200 text-slate-600 hover:bg-slate-50 hover:border-gray-300'

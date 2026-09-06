@@ -14,7 +14,7 @@ export function ApplySuccessRecap() {
               <span className="inline-flex items-center rounded-full bg-blue-50 px-2.5 py-0.5 text-caption-responsive font-bold text-blue-700 mb-1">
                 VỊ TRÍ ỨNG TUYỂN
               </span>
-              <h2 className="text-[22px] font-extrabold text-slate-900">
+              <h2 className="text-section-title font-extrabold text-slate-900">
                 Chuyên viên Phát triển Kinh doanh B2B — Khu Công nghiệp
               </h2>
             </div>

@@ -282,7 +282,7 @@ export default async function EventDetailPage({ params }: Props) {
             <div className="mt-10 border-t border-slate-100 pt-8">
               <h2 className="text-section-title font-black text-slate-900 tracking-tight text-left">Organizer</h2>
               <div className="mt-6 flex flex-col sm:flex-row gap-6 p-6 border border-slate-100 rounded-[3px] bg-white shadow-xs items-start font-sans">
-                <div className="relative h-24 w-24 overflow-hidden  flex items-center justify-center">
+                <div className="relative h-24 w-24 overflow-hidden flex items-center justify-center">
                   {event.organizer.logo ? (
                     <Image
                       src={event.organizer.logo}

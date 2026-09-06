@@ -114,8 +114,8 @@ export function MySampleRequestsClient() {
         <div className="relative container mx-auto px-4 py-8 lg:py-12">
           <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
             <div>
-              <h1 className="text-2xl lg:text-3xl font-bold text-white">{t('title')}</h1>
-              <p className="mt-2 text-indigo-200 text-sm lg:text-base">{t('subtitle')}</p>
+              <h1 className="text-section-title font-bold text-white">{t('title')}</h1>
+              <p className="mt-2 text-indigo-200 text-body-regular">{t('subtitle')}</p>
             </div>
 
             {/* Stats cards */}
@@ -123,22 +123,22 @@ export function MySampleRequestsClient() {
               <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-[3px] px-4 py-3 border border-white/20">
                 <Clock className="h-4 w-4 text-amber-300" />
                 <div>
-                  <p className="text-lg font-bold text-white">{counts.pending}</p>
-                  <p className="text-[10px] text-indigo-200">{t('pending')}</p>
+                  <p className="text-card-title font-bold text-white">{counts.pending}</p>
+                  <p className="text-caption-responsive text-indigo-200">{t('pending')}</p>
                 </div>
               </div>
               <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-[3px] px-4 py-3 border border-white/20">
                 <CheckCircle2 className="h-4 w-4 text-emerald-300" />
                 <div>
-                  <p className="text-lg font-bold text-white">{counts.approved}</p>
-                  <p className="text-[10px] text-indigo-200">{t('approved')}</p>
+                  <p className="text-card-title font-bold text-white">{counts.approved}</p>
+                  <p className="text-caption-responsive text-indigo-200">{t('approved')}</p>
                 </div>
               </div>
               <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-[3px] px-4 py-3 border border-white/20">
                 <XCircle className="h-4 w-4 text-rose-300" />
                 <div>
-                  <p className="text-lg font-bold text-white">{counts.rejected}</p>
-                  <p className="text-[10px] text-indigo-200">{t('rejected')}</p>
+                  <p className="text-card-title font-bold text-white">{counts.rejected}</p>
+                  <p className="text-caption-responsive text-indigo-200">{t('rejected')}</p>
                 </div>
               </div>
             </div>
@@ -158,7 +158,7 @@ export function MySampleRequestsClient() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={t('searchPlaceholder')}
-              className="w-full rounded-[3px] border border-gray-200 bg-gray-50 pl-9 pr-3 py-2 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:bg-white focus:outline-none transition-all"
+              className="w-full rounded-[3px] border border-gray-200 bg-gray-50 pl-9 pr-3 py-2 text-body-regular text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:bg-white focus:outline-none transition-all"
             />
           </div>
 
@@ -169,14 +169,14 @@ export function MySampleRequestsClient() {
                 key={s}
                 onClick={() => setStatusFilter(s)}
                 className={cn(
-                  'px-3 py-1.5 rounded-[3px] text-xs font-medium transition-all',
+                  'px-3 py-1.5 rounded-[3px] text-caption-responsive font-medium transition-all',
                   statusFilter === s
                     ? 'bg-white text-gray-900 shadow-sm'
                     : 'text-gray-500 hover:text-gray-700'
                 )}
               >
                 {s === 'all' ? t('all') : t(s)}
-                <span className="ml-1 text-[10px] opacity-60">{counts[s]}</span>
+                <span className="ml-1 text-caption-responsive opacity-60">{counts[s]}</span>
               </button>
             ))}
           </div>
@@ -189,13 +189,13 @@ export function MySampleRequestsClient() {
           </div>
         ) : error ? (
           <div className="flex flex-col items-center justify-center py-20 bg-white rounded-[3px] border border-gray-200">
-            <p className="text-red-600 text-sm">{error}</p>
+            <p className="text-red-600 text-body-regular">{error}</p>
           </div>
         ) : filtered.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-20 bg-white rounded-[3px] border border-gray-200">
             <FileBox className="h-14 w-14 text-gray-200 mb-4" />
             <p className="text-gray-600 font-medium">{t('noResults')}</p>
-            <p className="text-gray-400 text-sm mt-1">{t('noResultsDesc')}</p>
+            <p className="text-gray-400 text-body-regular mt-1">{t('noResultsDesc')}</p>
           </div>
         ) : (
           <div className="space-y-3">
@@ -216,12 +216,12 @@ export function MySampleRequestsClient() {
                     </div>
                     <div className="min-w-0 flex-1">
                       <div className="flex items-center gap-2">
-                        <h3 className="text-sm font-semibold text-gray-900 truncate">
+                        <h3 className="text-body-regular font-semibold text-gray-900 truncate">
                           {req.product_slug}
                         </h3>
-                        <span className="text-[11px] font-mono text-gray-400">#{req.id}</span>
+                        <span className="text-caption-responsive font-mono text-gray-400">#{req.id}</span>
                       </div>
-                      <div className="flex items-center gap-3 mt-1.5 text-xs text-gray-500">
+                      <div className="flex items-center gap-3 mt-1.5 text-caption-responsive text-gray-500">
                         {req.contact_name && <span>{req.contact_name}</span>}
                         {req.company && (
                           <>
@@ -247,13 +247,13 @@ export function MySampleRequestsClient() {
                           {req.skus.slice(0, 3).map((sku) => (
                             <span
                               key={sku}
-                              className="inline-flex items-center rounded-[3px] bg-gray-100 px-1.5 py-0.5 text-[10px] font-mono text-gray-600"
+                              className="inline-flex items-center rounded-[3px] bg-gray-100 px-1.5 py-0.5 text-caption-responsive font-mono text-gray-600"
                             >
                               {sku}
                             </span>
                           ))}
                           {req.skus.length > 3 && (
-                            <span className="text-[10px] text-gray-400">
+                            <span className="text-caption-responsive text-gray-400">
                               +{req.skus.length - 3}
                             </span>
                           )}
@@ -272,13 +272,13 @@ export function MySampleRequestsClient() {
                       )}
                     >
                       <StatusIcon className="h-3.5 w-3.5" />
-                      <span className="text-xs font-medium">{sc?.label}</span>
+                      <span className="text-caption-responsive font-medium">{sc?.label}</span>
                     </div>
 
                     {/* View detail button */}
                     <button
                       onClick={() => router.push(`/${locale}/sample-requests/${req.id}`)}
-                      className="inline-flex items-center gap-1.5 rounded-[3px] border border-gray-200 bg-white px-3 py-2 text-xs font-medium text-gray-700 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-200 transition-all shadow-sm"
+                      className="inline-flex items-center gap-1.5 rounded-[3px] border border-gray-200 bg-white px-3 py-2 text-caption-responsive font-medium text-gray-700 hover:bg-blue-50 hover:text-blue-700 hover:border-blue-200 transition-all shadow-sm"
                     >
                       <Eye className="h-3.5 w-3.5" />
                       {t('viewDetail')}

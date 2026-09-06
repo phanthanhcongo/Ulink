@@ -191,13 +191,13 @@ function ResetPasswordFormInner() {
         <span className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-[3px] bg-brand/10 text-brand">
           <CheckCircle2 className="h-7 w-7" aria-hidden="true" />
         </span>
-        <h2 className="text-2xl font-bold tracking-tight text-foreground">
+        <h2 className="text-section-title font-bold tracking-tight text-foreground">
           {t('resetPasswordSuccess')}
         </h2>
         <button
           type="button"
           onClick={() => router.push('/login')}
-          className="mt-6 inline-flex items-center justify-center rounded-[3px] border border-brand bg-brand px-5 py-2.5 text-sm font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong"
+          className="mt-6 inline-flex items-center justify-center rounded-[3px] border border-brand bg-brand px-5 py-2.5 text-body-regular font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong"
         >
           {t('backToLogin')}
         </button>
@@ -350,21 +350,21 @@ function ResetPasswordFormInner() {
   }
 
   const inputBase =
-    'w-full rounded-[3px] border bg-card py-2.5 pl-10 pr-4 text-sm outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-brand focus:ring-1 focus:ring-brand';
+    'w-full rounded-[3px] border bg-card py-2.5 pl-10 pr-4 text-body-regular outline-none transition-colors placeholder:text-muted-foreground/60 focus:border-brand focus:ring-1 focus:ring-brand';
 
   return (
     <div>
-      <h2 className="text-2xl font-bold tracking-tight text-foreground">
+      <h2 className="text-section-title font-bold tracking-tight text-foreground">
         {t('resetPasswordTitle')}
       </h2>
-      <p className="mt-2 text-sm text-muted-foreground">{t('resetPasswordDesc')}</p>
+      <p className="mt-2 text-body-regular text-muted-foreground">{t('resetPasswordDesc')}</p>
 
       {/* Generic form error — hidden when the lockout banner is active
           (the lockout banner already shows the title + countdown). */}
       {formError && !(lockedUntil != null && lockedUntil > now) && (
         <p
           role="alert"
-          className="mt-4 rounded-[3px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-sm text-destructive"
+          className="mt-4 rounded-[3px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-body-regular text-destructive"
         >
           {formError}
         </p>
@@ -376,10 +376,10 @@ function ResetPasswordFormInner() {
       {lockedUntil != null && lockedUntil > now && (
         <div
           role="alert"
-          className="mt-4 rounded-[3px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-sm text-destructive"
+          className="mt-4 rounded-[3px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-body-regular text-destructive"
         >
           <p className="font-medium">{t('resetPasswordLockedTitle')}</p>
-          <p className="mt-1 text-xs">
+          <p className="mt-1 text-caption-responsive">
             {t('resetPasswordLockedWithCountdown', {
               mm: String(Math.max(0, Math.floor((lockedUntil - now) / 60000))).padStart(2, '0'),
               ss: String(Math.max(0, Math.floor(((lockedUntil - now) % 60000) / 1000))).padStart(
@@ -408,7 +408,7 @@ function ResetPasswordFormInner() {
         <button
           type="submit"
           disabled={loading || (lockedUntil != null && Date.now() < lockedUntil)}
-          className="flex w-full items-center justify-center gap-2 rounded-[3px] border border-brand bg-brand py-3 text-sm font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong disabled:opacity-60"
+          className="flex w-full items-center justify-center gap-2 rounded-[3px] border border-brand bg-brand py-3 text-body-regular font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong disabled:opacity-60"
         >
           {loading ? (
             <>
@@ -424,7 +424,7 @@ function ResetPasswordFormInner() {
         </button>
       </form>
 
-      <p className="mt-6 text-center text-sm text-muted-foreground">
+      <p className="mt-6 text-center text-body-regular text-muted-foreground">
         <Link href="/login" className="font-medium text-brand hover:underline">
           {t('backToLogin')}
         </Link>
@@ -463,7 +463,7 @@ function PasswordFields({
   return (
     <>
       <div>
-        <label htmlFor="password" className="mb-1 block text-sm text-foreground">
+        <label htmlFor="password" className="mb-1 block text-body-regular text-foreground">
           {t('passwordLabel')}
         </label>
         <div className="relative">
@@ -496,20 +496,20 @@ function PasswordFields({
           </button>
         </div>
         {fieldErrors.password && (
-          <p className="mt-1.5 text-xs text-destructive">{fieldErrors.password}</p>
+          <p className="mt-1.5 text-caption-responsive text-destructive">{fieldErrors.password}</p>
         )}
         {/* Amber "N attempt(s) remaining" hint. Hidden once a
             lockout is active — the red banner takes over. */}
         {attemptsLeft != null && attemptsLeft > 0 && lockedUntil == null && (
-          <p className="mt-1.5 text-xs text-amber-700 dark:text-amber-400">
+          <p className="mt-1.5 text-caption-responsive text-amber-700 dark:text-amber-400">
             {t('resetPasswordAttemptsLeft', { count: attemptsLeft })}
           </p>
         )}
-        <p className="mt-1 text-[12px] sm:text-[13px] text-muted-foreground">{t('passwordPolicyHint')}</p>
+        <p className="mt-1 text-caption-responsive text-muted-foreground">{t('passwordPolicyHint')}</p>
       </div>
 
       <div>
-        <label htmlFor="confirm_password" className="mb-1 block text-sm text-foreground">
+        <label htmlFor="confirm_password" className="mb-1 block text-body-regular text-foreground">
           {t('confirmPasswordLabel')}
         </label>
         <div className="relative">
@@ -533,7 +533,7 @@ function PasswordFields({
           />
         </div>
         {fieldErrors.confirm_password && (
-          <p className="mt-1.5 text-xs text-destructive">{fieldErrors.confirm_password}</p>
+          <p className="mt-1.5 text-caption-responsive text-destructive">{fieldErrors.confirm_password}</p>
         )}
       </div>
     </>

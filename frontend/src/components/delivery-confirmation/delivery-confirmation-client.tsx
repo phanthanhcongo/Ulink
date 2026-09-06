@@ -109,7 +109,7 @@ export default function DeliveryConfirmationClient({
       {/* Breadcrumbs */}
       <nav
         aria-label="Breadcrumb"
-        className="flex items-center gap-1.5 text-[11px] text-slate-400 font-medium"
+        className="flex items-center gap-1.5 text-caption-responsive text-slate-400 font-medium"
       >
         <Link href="/" className="hover:text-brand transition-colors">
           Trang chủ
@@ -136,7 +136,7 @@ export default function DeliveryConfirmationClient({
           <h3 className="text-[17px] font-extrabold text-[#064E3B] leading-none">
             {t('deliverySuccess')}
           </h3>
-          <div className="flex flex-wrap items-center gap-x-8 gap-y-1.5 text-[13px] text-[#065F46] font-medium">
+          <div className="flex flex-wrap items-center gap-x-8 gap-y-1.5 text-caption-responsive text-[#065F46] font-medium">
             <div>
               <span className="font-bold text-[#064E3B]">{t('orderCode')}:</span>{' '}
               <span className="font-semibold text-[#047857]">ULK-2026-98745</span>
@@ -159,11 +159,11 @@ export default function DeliveryConfirmationClient({
         <div className="lg:col-span-8 space-y-6">
           {/* Shipment Info Card */}
           <div className="bg-white border border-slate-200/80 p-5 rounded-[3px] shadow-sm space-y-4">
-            <h4 className="text-sm font-bold text-slate-900 border-b border-slate-100 pb-3 uppercase tracking-wider">
+            <h4 className="text-body-regular font-bold text-slate-900 border-b border-slate-100 pb-3 uppercase tracking-wider">
               {t('shipmentInfoTitle')}
             </h4>
 
-            <div className="grid gap-4 sm:grid-cols-3 text-xs">
+            <div className="grid gap-4 sm:grid-cols-3 text-caption-responsive">
               <div className="space-y-1">
                 <span className="text-slate-400 font-medium">{t('shipMethodLabel')}:</span>
                 <p className="font-bold text-slate-800">ULink Fleet (Vận chuyển B2B hỏa tốc)</p>
@@ -174,7 +174,7 @@ export default function DeliveryConfirmationClient({
               </div>
               <div className="space-y-1">
                 <span className="text-slate-400 font-medium">{t('totalPaidLabel')}:</span>
-                <p className="font-extrabold text-[#006AA7] text-sm">{formatPrice(27378000)}</p>
+                <p className="font-extrabold text-[#006AA7] text-body-regular">{formatPrice(27378000)}</p>
               </div>
             </div>
           </div>
@@ -182,21 +182,21 @@ export default function DeliveryConfirmationClient({
           {/* Delivery Rating / Feedback Form Card */}
           <div className="bg-white border border-slate-200/80 p-6 rounded-[3px] shadow-sm space-y-6">
             <div className="space-y-1 border-b border-slate-100 pb-4">
-              <h4 className="text-sm font-bold text-slate-900 uppercase tracking-wider">
+              <h4 className="text-body-regular font-bold text-slate-900 uppercase tracking-wider">
                 {t('feedbackTitle')}
               </h4>
-              <p className="text-xs text-slate-400 leading-relaxed">{t('feedbackSubtitle')}</p>
+              <p className="text-caption-responsive text-slate-400 leading-relaxed">{t('feedbackSubtitle')}</p>
             </div>
 
             {showFeedbackSuccess ? (
               <div className="bg-[#E8F5E9] border border-green-100 p-6 rounded-[3px] text-center space-y-2">
                 <CheckCircle2 className="h-10 w-10 text-emerald-600 mx-auto" />
-                <p className="text-sm font-bold text-emerald-800">{t('submitFeedbackSuccess')}</p>
+                <p className="text-body-regular font-bold text-emerald-800">{t('submitFeedbackSuccess')}</p>
               </div>
             ) : (
               <form onSubmit={handleFeedbackSubmit} className="space-y-6">
                 {/* Overall Stars Rating */}
-                <div className="flex items-center gap-4 text-xs font-semibold text-slate-500 py-1">
+                <div className="flex items-center gap-4 text-caption-responsive font-semibold text-slate-500 py-1">
                   <span>{t('overallRating')}</span>
                   <div className="flex items-center gap-1">
                     {[1, 2, 3, 4, 5].map((starIdx) => {
@@ -225,7 +225,7 @@ export default function DeliveryConfirmationClient({
                 {/* Criteria Liked list */}
                 <div className="space-y-4 pt-1">
                   {/* Criterion 1 */}
-                  <div className="flex items-center justify-between gap-4 py-1.5 border-b border-slate-50 text-xs">
+                  <div className="flex items-center justify-between gap-4 py-1.5 border-b border-slate-50 text-caption-responsive">
                     <span className="font-semibold text-slate-700">{t('criteriaTime')}</span>
                     <div className="flex gap-2 shrink-0">
                       <button
@@ -254,7 +254,7 @@ export default function DeliveryConfirmationClient({
                   </div>
 
                   {/* Criterion 2 */}
-                  <div className="flex items-center justify-between gap-4 py-1.5 border-b border-slate-55 text-xs">
+                  <div className="flex items-center justify-between gap-4 py-1.5 border-b border-slate-55 text-caption-responsive">
                     <span className="font-semibold text-slate-700">{t('criteriaCondition')}</span>
                     <div className="flex gap-2 shrink-0">
                       <button
@@ -283,7 +283,7 @@ export default function DeliveryConfirmationClient({
                   </div>
 
                   {/* Criterion 3 */}
-                  <div className="flex items-center justify-between gap-4 py-1.5 border-b border-slate-55 text-xs">
+                  <div className="flex items-center justify-between gap-4 py-1.5 border-b border-slate-55 text-caption-responsive">
                     <span className="font-semibold text-slate-700">{t('criteriaAttitude')}</span>
                     <div className="flex gap-2 shrink-0">
                       <button
@@ -313,7 +313,7 @@ export default function DeliveryConfirmationClient({
                 </div>
 
                 {/* Additional comment */}
-                <div className="space-y-1.5 text-xs text-left">
+                <div className="space-y-1.5 text-caption-responsive text-left">
                   <label className="font-bold text-slate-500" htmlFor="additionalComments">
                     {t('additionalComments')}
                   </label>
@@ -331,13 +331,13 @@ export default function DeliveryConfirmationClient({
                 <div className="flex justify-end gap-3 pt-2">
                   <Link
                     href="/order-tracking"
-                    className="inline-flex items-center justify-center rounded-[3px] border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 py-2.5 px-6 text-xs font-bold transition-all shadow-sm"
+                    className="inline-flex items-center justify-center rounded-[3px] border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 py-2.5 px-6 text-caption-responsive font-bold transition-all shadow-sm"
                   >
                     {t('btnSkip')}
                   </Link>
                   <button
                     type="submit"
-                    className="inline-flex items-center justify-center rounded-[3px] bg-brand text-white hover:bg-brand/95 py-2.5 px-6 text-xs font-bold transition-all shadow"
+                    className="inline-flex items-center justify-center rounded-[3px] bg-brand text-white hover:bg-brand/95 py-2.5 px-6 text-caption-responsive font-bold transition-all shadow"
                   >
                     {t('btnSubmit')}
                   </button>
@@ -351,23 +351,23 @@ export default function DeliveryConfirmationClient({
         <div className="lg:col-span-4 space-y-6">
           <div className="bg-white border border-slate-200/80 p-5 rounded-[3px] shadow-sm space-y-5 text-left">
             <div className="space-y-1 border-b border-slate-100 pb-3">
-              <h4 className="text-sm font-bold text-slate-900 uppercase tracking-wider">
+              <h4 className="text-body-regular font-bold text-slate-900 uppercase tracking-wider">
                 {t('incidentTitle')}
               </h4>
-              <p className="text-[11px] text-slate-400 leading-relaxed font-medium">
+              <p className="text-caption-responsive text-slate-400 leading-relaxed font-medium">
                 {t('incidentSubtitle')}
               </p>
             </div>
 
             {showIncidentSuccess ? (
-              <div className="bg-[#E8F5E9] border border-green-100 p-4 rounded-[3px] text-center space-y-1 text-xs">
+              <div className="bg-[#E8F5E9] border border-green-100 p-4 rounded-[3px] text-center space-y-1 text-caption-responsive">
                 <CheckCircle2 className="h-8 w-8 text-emerald-600 mx-auto" />
                 <p className="font-bold text-emerald-800">{t('submitIncidentSuccess')}</p>
               </div>
             ) : (
               <form onSubmit={handleIncidentSubmit} className="space-y-4">
                 {/* Incident Checklist options */}
-                <div className="space-y-2.5 text-xs pt-1">
+                <div className="space-y-2.5 text-caption-responsive pt-1">
                   <label className="flex items-center gap-2 cursor-pointer py-0.5">
                     <input
                       type="checkbox"
@@ -414,7 +414,7 @@ export default function DeliveryConfirmationClient({
                 </div>
 
                 {/* Simulated Image Upload */}
-                <div className="space-y-1.5 text-xs">
+                <div className="space-y-1.5 text-caption-responsive">
                   <span className="font-bold text-slate-500">{t('evidenceLabel')}</span>
                   <div
                     onClick={triggerSimulatedUpload}
@@ -423,13 +423,13 @@ export default function DeliveryConfirmationClient({
                     {uploadedImage ? (
                       <div className="space-y-1">
                         <CheckCircle2 className="h-6 w-6 text-emerald-600 mx-auto" />
-                        <p className="text-[10px] font-bold text-slate-700">{uploadedImage}</p>
-                        <p className="text-[9px] text-slate-400">Click to upload another photo</p>
+                        <p className="text-caption-responsive font-bold text-slate-700">{uploadedImage}</p>
+                        <p className="text-caption-responsive text-slate-400">Click to upload another photo</p>
                       </div>
                     ) : (
                       <>
                         <ImageIcon className="h-6 w-6 text-slate-300" />
-                        <p className="text-[10px] text-slate-400 leading-relaxed px-1">
+                        <p className="text-caption-responsive text-slate-400 leading-relaxed px-1">
                           {t('evidenceUploadText')}
                         </p>
                       </>
@@ -441,13 +441,13 @@ export default function DeliveryConfirmationClient({
                 <div className="flex justify-end gap-3 pt-2.5 border-t border-slate-100">
                   <Link
                     href="/order-tracking"
-                    className="inline-flex items-center justify-center rounded-[3px] border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 py-2 px-4 text-xs font-bold transition-all shadow-sm"
+                    className="inline-flex items-center justify-center rounded-[3px] border border-slate-300 bg-white text-slate-700 hover:bg-slate-50 py-2 px-4 text-caption-responsive font-bold transition-all shadow-sm"
                   >
                     {t('btnSkip')}
                   </Link>
                   <button
                     type="submit"
-                    className="inline-flex items-center justify-center rounded-[3px] bg-brand text-white hover:bg-brand/95 py-2 px-4 text-xs font-bold transition-all shadow"
+                    className="inline-flex items-center justify-center rounded-[3px] bg-brand text-white hover:bg-brand/95 py-2 px-4 text-caption-responsive font-bold transition-all shadow"
                   >
                     {t('btnSubmit')}
                   </button>

@@ -51,7 +51,7 @@ export function ResourceCard({ resource, locale }: ResourceCardProps) {
         />
         <div
           className={cn(
-            'absolute top-4 left-4 z-10 text-[10px] font-bold uppercase tracking-wider px-3.5 py-1 rounded-full shadow-sm',
+            'absolute top-4 left-4 z-10 text-caption-responsive font-bold uppercase tracking-wider px-3.5 py-1 rounded-full shadow-sm',
             getBadgeColorClass(resource.category)
           )}
         >
@@ -63,24 +63,24 @@ export function ResourceCard({ resource, locale }: ResourceCardProps) {
       <div className="p-6 flex-1 flex flex-col justify-between">
         <div>
           {/* Title */}
-          <h3 className="text-base sm:text-lg font-bold text-slate-900 line-clamp-1 leading-snug group-hover:text-blue-600 transition-colors">
+          <h3 className="text-body-regular font-bold text-slate-900 line-clamp-1 leading-snug group-hover:text-blue-600 transition-colors">
             {resource.title[locale]}
           </h3>
 
           {/* Description */}
-          <p className="mt-3 text-xs sm:text-sm text-slate-500 leading-relaxed line-clamp-2 font-normal">
+          <p className="mt-3 text-caption-responsive text-slate-500 leading-relaxed line-clamp-2 font-normal">
             {resource.description[locale]}
           </p>
 
           {/* Date */}
-          <div className="mt-4 text-xs text-slate-400 font-medium">
+          <div className="mt-4 text-caption-responsive text-slate-400 font-medium">
             {resource.date}
           </div>
         </div>
 
         {/* Read More visual button */}
         <div className="mt-5 pt-4 border-t border-slate-50">
-          <div className="inline-flex items-center justify-center                 px-5 py-2 bg-[#1769E2] group-hover:bg-[#1257BD] text-white font-semibold rounded-[3px] text-xs sm:text-sm transition-colors shadow-xs">
+          <div className="inline-flex items-center justify-center px-5 py-2 bg-[#1769E2] group-hover:bg-[#1257BD] text-white font-semibold rounded-[3px] text-caption-responsive transition-colors shadow-xs">
             {L_CARD.readMore[locale]}
           </div>
         </div>

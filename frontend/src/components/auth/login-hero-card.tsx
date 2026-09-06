@@ -16,12 +16,12 @@ export function LoginHeroCard() {
 
       {/* Top Header */}
       <div className="relative z-10 flex flex-col gap-3">
-        <h1 className="text-3xl font-extrabold tracking-tight sm:text-4xl text-white leading-tight">
+        <h1 className="text-section-title font-extrabold tracking-tight text-white leading-tight">
           Kết nối hôm nay,
           <br />
           Kiến tạo <span className="text-blue-300">tương lai.</span>
         </h1>
-        <p className="text-xs sm:text-sm leading-relaxed text-blue-100/90 max-w-md">
+        <p className="text-caption-responsive leading-relaxed text-blue-100/90 max-w-md">
           ULink Industries chuyên sản xuất và phân phối các sản phẩm vật tư kỹ thuật cho doanh
           nghiệp sản xuất, với danh mục đa dạng, đáp ứng mọi nhu cầu vận hành - tối ưu chi phí mang
           lại hiệu suất cao.
@@ -46,8 +46,8 @@ export function LoginHeroCard() {
             <ShieldCheck className="h-4 w-4" />
           </div>
           <div>
-            <span className="block text-xs font-bold text-white">An toàn</span>
-            <span className="block text-[10px] sm:text-[11px] text-blue-200">Tiêu chuẩn kỹ thuật cao</span>
+            <span className="block text-caption-responsive font-bold text-white">An toàn</span>
+            <span className="block text-caption-responsive text-blue-200">Tiêu chuẩn kỹ thuật cao</span>
           </div>
         </div>
 
@@ -56,8 +56,8 @@ export function LoginHeroCard() {
             <Zap className="h-4 w-4" />
           </div>
           <div>
-            <span className="block text-xs font-bold text-white">Hiệu quả</span>
-            <span className="block text-[10px] sm:text-[11px] text-blue-200">Tối ưu chi phí sản xuất</span>
+            <span className="block text-caption-responsive font-bold text-white">Hiệu quả</span>
+            <span className="block text-caption-responsive text-blue-200">Tối ưu chi phí sản xuất</span>
           </div>
         </div>
 
@@ -66,8 +66,8 @@ export function LoginHeroCard() {
             <HeartHandshake className="h-4 w-4" />
           </div>
           <div>
-            <span className="block text-xs font-bold text-white">Đồng hành</span>
-            <span className="block text-[10px] sm:text-[11px] text-blue-200">Hỗ trợ doanh nghiệp 24/7</span>
+            <span className="block text-caption-responsive font-bold text-white">Đồng hành</span>
+            <span className="block text-caption-responsive text-blue-200">Hỗ trợ doanh nghiệp 24/7</span>
           </div>
         </div>
       </div>

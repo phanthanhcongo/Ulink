@@ -11,13 +11,13 @@ export default async function HubOffers() {
         
         {/* Header */}
         <div className="max-w-3xl w-full text-left space-y-2">
-          <span className="text-[20px] sm:text-[24px] lg:text-[28px] font-bold tracking-tight text-slate-900 leading-snug sm:leading-[36px] uppercase block">
+          <span className="text-card-title font-bold tracking-tight text-slate-900 leading-snug sm:leading-[36px] uppercase block">
             {t('hubOffer.eyebrow')}
           </span>
-          <h2 className="text-[20px] sm:text-[24px] lg:text-[28px] font-bold tracking-tight text-slate-900 leading-snug sm:leading-[36px]">
+          <h2 className="text-card-title font-bold tracking-tight text-slate-900 leading-snug sm:leading-[36px]">
             {t('hubOffer.title')}
           </h2>
-          <p className="text-slate-500 text-[14px] sm:text-[15px] lg:text-[16px] leading-relaxed font-normal pt-1">
+          <p className="text-slate-500 text-body-regular leading-relaxed font-normal pt-1">
             {t('hubOffer.subtitle')}
           </p>
         </div>
@@ -39,17 +39,17 @@ export default async function HubOffers() {
             
             {/* Inner Floating Translucent Popup (24px margin from outer card edges via parent p-6) */}
             <div className="relative z-10 w-full p-6 bg-white/85 backdrop-blur-md rounded-[2px] border border-white/60 flex flex-col items-start gap-4 shadow-md">
-              <h3 className="font-bold text-slate-900 text-[18px] sm:text-[20px] lg:text-[22px] leading-snug">
+              <h3 className="font-bold text-slate-900 text-card-title leading-snug">
                 {t('hubOffer.fdiTitle')}
               </h3>
-              <p className="text-slate-600 text-[14px] sm:text-[15px] leading-relaxed">
+              <p className="text-slate-600 text-body-regular leading-relaxed">
                 {t('hubOffer.fdiDesc')}
               </p>
               
               {/* CTA Button */}
               <Link
                 href="/contact"
-                className="w-full bg-[#1769E2] hover:bg-blue-700 text-white font-semibold text-[14px] sm:text-[15px] py-3.5 px-6 rounded-[2px] flex items-center justify-between transition-all group/btn"
+                className="w-full bg-[#1769E2] hover:bg-blue-700 text-white font-semibold text-body-regular py-3.5 px-6 rounded-[2px] flex items-center justify-between transition-all group/btn"
               >
                 <span>{t('hubOffer.learnMore')}</span>
                 <svg className="h-5 w-5 fill-none stroke-current transition-transform group-hover/btn:translate-x-1" strokeWidth="2.5" viewBox="0 0 24 24">
@@ -73,17 +73,17 @@ export default async function HubOffers() {
             
             {/* Inner Floating Translucent Popup (24px margin from outer card edges via parent p-6) */}
             <div className="relative z-10 w-full p-6 bg-white/85 backdrop-blur-md rounded-[2px] border border-white/60 flex flex-col items-start gap-4 shadow-md">
-              <h3 className="font-bold text-slate-900 text-[18px] sm:text-[20px] lg:text-[22px] leading-snug">
+              <h3 className="font-bold text-slate-900 text-card-title leading-snug">
                 {t('hubOffer.smeTitle')}
               </h3>
-              <p className="text-slate-600 text-[14px] sm:text-[15px] leading-relaxed">
+              <p className="text-slate-600 text-body-regular leading-relaxed">
                 {t('hubOffer.smeDesc')}
               </p>
               
               {/* CTA Button */}
               <Link
                 href="/contact"
-                className="w-full bg-[#1769E2] hover:bg-blue-700 text-white font-semibold text-[14px] sm:text-[15px] py-3.5 px-6 rounded-[2px] flex items-center justify-between transition-all group/btn"
+                className="w-full bg-[#1769E2] hover:bg-blue-700 text-white font-semibold text-body-regular py-3.5 px-6 rounded-[2px] flex items-center justify-between transition-all group/btn"
               >
                 <span>{t('hubOffer.learnMore')}</span>
                 <svg className="h-5 w-5 fill-none stroke-current transition-transform group-hover/btn:translate-x-1" strokeWidth="2.5" viewBox="0 0 24 24">

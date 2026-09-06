@@ -209,13 +209,13 @@ export function ArticlesClient({
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-100 pb-6 mb-8">
         <div>
-          <span className="text-xs uppercase text-slate-400 font-extrabold tracking-wider">
+          <span className="text-caption-responsive uppercase text-slate-400 font-extrabold tracking-wider">
             Hệ thống CMS
           </span>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-primary tracking-tight mt-1">
+          <h1 className="text-section-title font-extrabold text-primary tracking-tight mt-1">
             Quản lý Bài viết & Tin tức
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 font-medium mt-1 leading-relaxed">
+          <p className="text-caption-responsive text-slate-500 font-medium mt-1 leading-relaxed">
             Viết và biên tập các bài blog chia sẻ kiến thức phòng sạch, cẩm nang tĩnh điện và tin
             tức thị trường B2B.
           </p>
@@ -224,7 +224,7 @@ export function ArticlesClient({
         <div className="flex items-center gap-3 shrink-0">
           <Link
             href="/"
-            className="inline-flex h-11 items-center justify-center gap-2 rounded-[3px] border border-slate-200 bg-white px-4 text-xs sm:text-sm font-bold text-slate-700 shadow-sm hover:bg-slate-50 hover:border-slate-300 transition-colors"
+            className="inline-flex h-11 items-center justify-center gap-2 rounded-[3px] border border-slate-200 bg-white px-4 text-caption-responsive font-bold text-slate-700 shadow-sm hover:bg-slate-50 hover:border-slate-300 transition-colors"
           >
             <Home className="h-4 w-4 text-blue-600" />
             Về Trang chủ
@@ -245,7 +245,7 @@ export function ArticlesClient({
               setModalOpen(true);
               setFormError('');
             }}
-            className="inline-flex h-11 items-center justify-center gap-2 rounded-[3px] bg-blue-600 px-5 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors"
+            className="inline-flex h-11 items-center justify-center gap-2 rounded-[3px] bg-blue-600 px-5 text-caption-responsive font-bold text-white shadow-sm hover:bg-blue-700 transition-colors"
           >
             <Plus className="h-4 w-4" />
             Viết bài mới
@@ -255,13 +255,13 @@ export function ArticlesClient({
 
       {/* Error Alert Banner */}
       {error && (
-        <div className="mb-6 p-4 bg-rose-50 border border-rose-200 rounded-[3px] text-rose-800 text-xs sm:text-sm font-semibold flex items-start gap-2.5 shadow-sm">
+        <div className="mb-6 p-4 bg-rose-50 border border-rose-200 rounded-[3px] text-rose-800 text-caption-responsive font-semibold flex items-start gap-2.5 shadow-sm">
           <AlertTriangle className="h-5 w-5 text-rose-500 shrink-0 mt-0.5" />
           <div className="flex-1">
             <span className="font-extrabold text-rose-900 block mb-1">
               Đã xảy ra lỗi khi tải dữ liệu bài viết từ API
             </span>
-            <pre className="font-mono text-[11px] bg-white/60 p-2.5 rounded-[3px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all">
+            <pre className="font-mono text-caption-responsive bg-white/60 p-2.5 rounded-[3px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all">
               {error}
             </pre>
           </div>
@@ -277,7 +277,7 @@ export function ArticlesClient({
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Tìm kiếm bài viết theo tiêu đề, slug, tác giả..."
-            className="w-full pl-10 pr-4 py-2.5 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+            className="w-full pl-10 pr-4 py-2.5 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
           />
         </div>
       </div>
@@ -287,8 +287,8 @@ export function ArticlesClient({
         {filteredArticles.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 text-center">
             <FileText className="h-12 w-12 text-slate-300 mb-3" />
-            <span className="text-sm font-extrabold text-primary">Chưa có bài viết nào</span>
-            <span className="text-xs text-slate-400 mt-1">
+            <span className="text-body-regular font-extrabold text-primary">Chưa có bài viết nào</span>
+            <span className="text-caption-responsive text-slate-400 mt-1">
               Nhấp vào nút Viết bài mới ở trên để đăng tải nội dung đầu tiên.
             </span>
           </div>
@@ -298,7 +298,7 @@ export function ArticlesClient({
             <div className="hidden md:block overflow-x-auto">
               <table className="w-full border-collapse text-left min-w-[900px]">
                 <thead>
-                  <tr className="bg-slate-50 border-b border-slate-100 text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-wider">
+                  <tr className="bg-slate-50 border-b border-slate-100 text-caption-responsive font-bold text-slate-400 uppercase tracking-wider">
                     <th className="px-6 py-3.5 sticky left-0 bg-slate-50 z-10 shadow-[2px_0_5px_rgba(0,0,0,0.05)]">Bài viết</th>
                     <th className="px-6 py-3.5">Tác giả</th>
                     <th className="px-6 py-3.5">Ngày xuất bản</th>
@@ -306,7 +306,7 @@ export function ArticlesClient({
                     <th className="px-6 py-3.5 text-right sticky right-0 bg-slate-50 z-10 shadow-[-2px_0_5px_rgba(0,0,0,0.05)]">Hành động</th>
                   </tr>
                 </thead>
-                <tbody className="divide-y divide-slate-100 text-xs sm:text-sm text-slate-700">
+                <tbody className="divide-y divide-slate-100 text-caption-responsive text-slate-700">
                   {filteredArticles.map((art) => {
                     const title = getTranslatedField(art, 'title', locale);
                     const coverUrl = art.cover
@@ -343,7 +343,7 @@ export function ArticlesClient({
                               <span className="font-extrabold text-primary line-clamp-1 leading-tight">
                                 {title}
                               </span>
-                              <span className="text-[10px] text-slate-400 font-mono mt-1 select-all">
+                              <span className="text-caption-responsive text-slate-400 font-mono mt-1 select-all">
                                 /{art.slug}
                               </span>
                             </div>
@@ -362,7 +362,7 @@ export function ArticlesClient({
                         <td className="px-6 py-4">
                           <span
                             className={cn(
-                              'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[3px] text-[10px] font-bold border shadow-sm select-none',
+                              'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[3px] text-caption-responsive font-bold border shadow-sm select-none',
                               art.status === 'published'
                                 ? 'bg-emerald-50 text-emerald-700 border-emerald-100'
                                 : 'bg-amber-50 text-amber-700 border-amber-100'
@@ -464,7 +464,7 @@ export function ArticlesClient({
                     <div className="p-4 flex-1 flex flex-col gap-2">
                       <div className="flex items-center justify-between gap-2">
                         <span className={cn(
-                          'inline-flex items-center gap-1 px-2 py-0.5 rounded-[3px] text-[10px] font-bold border shadow-sm select-none',
+                          'inline-flex items-center gap-1 px-2 py-0.5 rounded-[3px] text-caption-responsive font-bold border shadow-sm select-none',
                           art.status === 'published'
                             ? 'bg-emerald-50 text-emerald-700 border-emerald-100'
                             : 'bg-amber-50 text-amber-700 border-amber-100'
@@ -472,12 +472,12 @@ export function ArticlesClient({
                           <span className={cn('h-1 w-1 rounded-[3px]', art.status === 'published' ? 'bg-emerald-500' : 'bg-amber-500')} />
                           {art.status === 'published' ? 'Công khai' : 'Nháp'}
                         </span>
-                        <span className="text-[10px] text-slate-400 font-mono select-all">/{art.slug}</span>
+                        <span className="text-caption-responsive text-slate-400 font-mono select-all">/{art.slug}</span>
                       </div>
-                      <h3 className="font-extrabold text-primary text-sm sm:text-base line-clamp-2 leading-snug mt-1">
+                      <h3 className="font-extrabold text-primary text-body-regular line-clamp-2 leading-snug mt-1">
                         {title}
                       </h3>
-                      <div className="flex items-center justify-between gap-4 mt-auto pt-3 border-t border-slate-50 text-xs text-slate-500 font-medium">
+                      <div className="flex items-center justify-between gap-4 mt-auto pt-3 border-t border-slate-50 text-caption-responsive text-slate-500 font-medium">
                         <span className="flex items-center gap-1">
                           <User className="h-3.5 w-3.5 text-slate-400" />
                           {art.author || 'ULink Team'}
@@ -512,14 +512,14 @@ export function ArticlesClient({
                             setModalOpen(true);
                             setFormError('');
                           }}
-                          className="flex items-center gap-1.5 px-3 py-1.5 rounded-[3px] hover:bg-slate-50 text-slate-655 text-xs font-bold transition-colors border border-slate-200"
+                          className="flex items-center gap-1.5 px-3 py-1.5 rounded-[3px] hover:bg-slate-50 text-slate-655 text-caption-responsive font-bold transition-colors border border-slate-200"
                         >
                           <Edit className="h-3.5 w-3.5" />
                           Sửa
                         </button>
                         <button
                           onClick={() => handleArchiveArticle(art.id)}
-                          className="flex items-center gap-1.5 px-3 py-1.5 rounded-[3px] hover:bg-rose-50 text-rose-600 text-xs font-bold transition-colors border border-rose-100/50"
+                          className="flex items-center gap-1.5 px-3 py-1.5 rounded-[3px] hover:bg-rose-50 text-rose-600 text-caption-responsive font-bold transition-colors border border-rose-100/50"
                         >
                           <Trash className="h-3.5 w-3.5" />
                           Lưu trữ
@@ -541,11 +541,11 @@ export function ArticlesClient({
             {/* Modal Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
               <div>
-                <h2 className="text-base sm:text-lg font-extrabold text-primary flex items-center gap-2">
+                <h2 className="text-body-regular font-extrabold text-primary flex items-center gap-2">
                   <FileText className="h-5 w-5 text-blue-500" />
                   {activeArticle.id ? 'Cập nhật bài viết' : 'Soạn bài viết mới'}
                 </h2>
-                <p className="text-[10px] text-slate-400 font-medium mt-0.5">
+                <p className="text-caption-responsive text-slate-400 font-medium mt-0.5">
                   Viết nội dung bài viết và tối ưu hóa SEO để tăng lượng truy cập.
                 </p>
               </div>
@@ -567,7 +567,7 @@ export function ArticlesClient({
                 type="button"
                 onClick={() => setActiveFormTab('content')}
                 className={cn(
-                  'px-4 py-3 text-xs font-extrabold border-b-2 transition-all flex items-center gap-1.5 focus:outline-none',
+                  'px-4 py-3 text-caption-responsive font-extrabold border-b-2 transition-all flex items-center gap-1.5 focus:outline-none',
                   activeFormTab === 'content'
                     ? 'border-blue-600 text-blue-600'
                     : 'border-transparent text-slate-500 hover:text-slate-700'
@@ -580,7 +580,7 @@ export function ArticlesClient({
                 type="button"
                 onClick={() => setActiveFormTab('seo')}
                 className={cn(
-                  'px-4 py-3 text-xs font-extrabold border-b-2 transition-all flex items-center gap-1.5 focus:outline-none',
+                  'px-4 py-3 text-caption-responsive font-extrabold border-b-2 transition-all flex items-center gap-1.5 focus:outline-none',
                   activeFormTab === 'seo'
                     ? 'border-blue-600 text-blue-600'
                     : 'border-transparent text-slate-500 hover:text-slate-700'
@@ -594,7 +594,7 @@ export function ArticlesClient({
             <form onSubmit={handleSubmit} className="flex flex-col max-h-[70vh] overflow-hidden">
               <div className="p-6 overflow-y-auto flex-1 bg-white">
                 {formError && (
-                  <div className="p-3 bg-rose-50 border border-rose-100 rounded-[3px] text-xs font-bold text-rose-600 flex items-center gap-2 animate-in fade-in duration-200 mb-5">
+                  <div className="p-3 bg-rose-50 border border-rose-100 rounded-[3px] text-caption-responsive font-bold text-rose-600 flex items-center gap-2 animate-in fade-in duration-200 mb-5">
                     <AlertTriangle className="h-4 w-4 shrink-0" />
                     <span>{formError}</span>
                   </div>
@@ -604,7 +604,7 @@ export function ArticlesClient({
                   <div className="flex flex-col gap-5">
                     {/* Title */}
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-[10px] font-extrabold text-slate-450 uppercase tracking-wider">
+                      <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
                         Tiêu đề bài viết *
                       </label>
                       <input
@@ -627,7 +627,7 @@ export function ArticlesClient({
                           setActiveArticle({ ...activeArticle, title, slug });
                         }}
                         placeholder="Nhập tiêu đề bài viết..."
-                        className="w-full px-4 py-2.5 rounded-[3px] border border-slate-200 text-sm font-extrabold text-primary focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand shadow-sm"
+                        className="w-full px-4 py-2.5 rounded-[3px] border border-slate-200 text-body-regular font-extrabold text-primary focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand shadow-sm"
                       />
                     </div>
 
@@ -635,7 +635,7 @@ export function ArticlesClient({
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {/* Slug */}
                       <div className="flex flex-col gap-1.5">
-                        <label className="text-[10px] font-extrabold text-slate-450 uppercase tracking-wider">
+                        <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
                           Slug (Đường dẫn tĩnh) *
                         </label>
                         <input
@@ -644,13 +644,13 @@ export function ArticlesClient({
                           value={activeArticle.slug || ''}
                           readOnly
                           placeholder="Tự động tạo từ tiêu đề..."
-                          className="w-full px-4 py-2 rounded-[3px] border border-slate-200 text-xs font-mono text-slate-450 focus:outline-none bg-slate-50 cursor-not-allowed select-none"
+                          className="w-full px-4 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-mono text-slate-450 focus:outline-none bg-slate-50 cursor-not-allowed select-none"
                         />
                       </div>
 
                       {/* Author */}
                       <div className="flex flex-col gap-1.5">
-                        <label className="text-[10px] font-extrabold text-slate-450 uppercase tracking-wider flex items-center gap-1">
+                        <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider flex items-center gap-1">
                           <User className="h-3 w-3 text-slate-400" />
                           Tác giả
                         </label>
@@ -661,7 +661,7 @@ export function ArticlesClient({
                             setActiveArticle({ ...activeArticle, author: e.target.value })
                           }
                           placeholder="ULink Team"
-                          className="w-full px-4 py-2 rounded-[3px] border border-slate-200 text-xs font-semibold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand"
+                          className="w-full px-4 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-semibold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand"
                         />
                       </div>
                     </div>
@@ -669,7 +669,7 @@ export function ArticlesClient({
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {/* Status */}
                       <div className="flex flex-col gap-1.5">
-                        <label className="text-[10px] font-extrabold text-slate-450 uppercase tracking-wider">
+                        <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
                           Trạng thái phát hành
                         </label>
                         <select
@@ -680,7 +680,7 @@ export function ArticlesClient({
                               status: e.target.value as 'draft' | 'published'
                             })
                           }
-                          className="w-full px-4 py-2 rounded-[3px] border border-slate-200 text-xs font-bold text-slate-700 focus:outline-none bg-white shadow-sm"
+                          className="w-full px-4 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-700 focus:outline-none bg-white shadow-sm"
                         >
                           <option value="draft">Bản nháp (Draft)</option>
                           <option value="published">Công khai (Published)</option>
@@ -689,7 +689,7 @@ export function ArticlesClient({
 
                       {/* Published At */}
                       <div className="flex flex-col gap-1.5">
-                        <label className="text-[10px] font-extrabold text-slate-450 uppercase tracking-wider flex items-center gap-1">
+                        <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider flex items-center gap-1">
                           <Calendar className="h-3 w-3 text-slate-400" />
                           Ngày hiển thị
                         </label>
@@ -699,14 +699,14 @@ export function ArticlesClient({
                           onChange={(e) =>
                             setActiveArticle({ ...activeArticle, published_at: e.target.value })
                           }
-                          className="w-full px-4 py-2 rounded-[3px] border border-slate-200 text-xs font-semibold text-slate-650 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand bg-white"
+                          className="w-full px-4 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-semibold text-slate-650 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand bg-white"
                         />
                       </div>
                     </div>
 
                     {/* Body textarea */}
                     <div className="flex flex-col gap-1">
-                      <label className="text-[10px] font-extrabold text-slate-450 uppercase tracking-wider">
+                      <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
                         Nội dung bài viết (HTML / Text)
                       </label>
 
@@ -715,7 +715,7 @@ export function ArticlesClient({
                         <button
                           type="button"
                           onClick={() => insertTag('<h2>', '</h2>')}
-                          className="px-2 py-1 text-[11px] font-extrabold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
+                          className="px-2 py-1 text-caption-responsive font-extrabold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
                           title="Tiêu đề lớn H2"
                         >
                           H2
@@ -723,7 +723,7 @@ export function ArticlesClient({
                         <button
                           type="button"
                           onClick={() => insertTag('<h3>', '</h3>')}
-                          className="px-2 py-1 text-[11px] font-extrabold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
+                          className="px-2 py-1 text-caption-responsive font-extrabold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
                           title="Tiêu đề phụ H3"
                         >
                           H3
@@ -732,7 +732,7 @@ export function ArticlesClient({
                         <button
                           type="button"
                           onClick={() => insertTag('<strong>', '</strong>')}
-                          className="px-2 py-1 text-[11px] font-extrabold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
+                          className="px-2 py-1 text-caption-responsive font-extrabold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
                           title="Chữ đậm"
                         >
                           B
@@ -740,7 +740,7 @@ export function ArticlesClient({
                         <button
                           type="button"
                           onClick={() => insertTag('<em>', '</em>')}
-                          className="px-2 py-1 text-[11px] italic font-extrabold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
+                          className="px-2 py-1 text-caption-responsive italic font-extrabold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
                           title="Chữ nghiêng"
                         >
                           I
@@ -748,7 +748,7 @@ export function ArticlesClient({
                         <button
                           type="button"
                           onClick={() => insertTag('<u>', '</u>')}
-                          className="px-2 py-1 text-[11px] underline font-extrabold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
+                          className="px-2 py-1 text-caption-responsive underline font-extrabold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
                           title="Gạch chân"
                         >
                           U
@@ -757,7 +757,7 @@ export function ArticlesClient({
                         <button
                           type="button"
                           onClick={() => insertTag('<p>', '</p>')}
-                          className="px-2 py-1 text-[11px] font-bold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
+                          className="px-2 py-1 text-caption-responsive font-bold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
                           title="Thẻ đoạn văn P"
                         >
                           P
@@ -765,7 +765,7 @@ export function ArticlesClient({
                         <button
                           type="button"
                           onClick={() => insertTag('<a href="" target="_blank">', '</a>')}
-                          className="px-2 py-1 text-[11px] font-bold text-blue-600 hover:bg-blue-50 active:bg-blue-100 rounded-[3px] transition-all"
+                          className="px-2 py-1 text-caption-responsive font-bold text-blue-600 hover:bg-blue-50 active:bg-blue-100 rounded-[3px] transition-all"
                           title="Chèn liên kết"
                         >
                           Link
@@ -773,7 +773,7 @@ export function ArticlesClient({
                         <button
                           type="button"
                           onClick={() => insertTag('<ul>\n  <li>', '</li>\n</ul>')}
-                          className="px-2 py-1 text-[11px] font-bold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
+                          className="px-2 py-1 text-caption-responsive font-bold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
                           title="Danh sách không thứ tự"
                         >
                           UL
@@ -781,7 +781,7 @@ export function ArticlesClient({
                         <button
                           type="button"
                           onClick={() => insertTag('<ol>\n  <li>', '</li>\n</ol>')}
-                          className="px-2 py-1 text-[11px] font-bold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
+                          className="px-2 py-1 text-caption-responsive font-bold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
                           title="Danh sách có thứ tự"
                         >
                           OL
@@ -795,7 +795,7 @@ export function ArticlesClient({
                           setActiveArticle({ ...activeArticle, body: e.target.value })
                         }
                         placeholder="Soạn thảo nội dung bài viết. Bạn có thể sử dụng các thẻ HTML như <p>, <h2>, <strong> hoặc các nút trợ giúp định dạng nhanh trên thanh công cụ ở trên..."
-                        className="w-full px-4 py-3 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-medium font-mono focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand bg-slate-50/10 leading-relaxed min-h-[220px]"
+                        className="w-full px-4 py-3 rounded-[3px] border border-slate-200 text-caption-responsive font-medium font-mono focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand bg-slate-50/10 leading-relaxed min-h-[220px]"
                       />
                     </div>
                   </div>
@@ -806,7 +806,7 @@ export function ArticlesClient({
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
                     {/* Left side: Cover Image upload */}
                     <div className="flex flex-col gap-4">
-                      <label className="text-[10px] font-extrabold text-slate-450 uppercase tracking-wider">
+                      <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
                         Ảnh bìa bài viết (Cover Image)
                       </label>
 
@@ -832,10 +832,10 @@ export function ArticlesClient({
                             <div className="h-12 w-12 rounded-[3px] bg-slate-100 flex items-center justify-center mx-auto mb-3">
                               <ImageIcon className="h-6 w-6 text-slate-400" />
                             </div>
-                            <span className="text-xs font-bold text-primary">
+                            <span className="text-caption-responsive font-bold text-primary">
                               Tải lên hình ảnh đại diện
                             </span>
-                            <span className="text-[10px] text-slate-400 block mt-1">
+                            <span className="text-caption-responsive text-slate-400 block mt-1">
                               Khuyến nghị kích thước tỷ lệ 16:9 (ví dụ: 1200x675px)
                             </span>
                           </div>
@@ -853,7 +853,7 @@ export function ArticlesClient({
                           type="button"
                           disabled={isUploading}
                           onClick={() => fileInputRef.current?.click()}
-                          className="inline-flex h-9 items-center justify-center gap-1.5 px-4 rounded-[3px] border border-slate-200 text-xs font-bold text-primary hover:bg-slate-50 transition-all shadow-sm bg-white hover:border-slate-350 active:scale-98 disabled:opacity-50 disabled:cursor-not-allowed"
+                          className="inline-flex h-9 items-center justify-center gap-1.5 px-4 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-primary hover:bg-slate-50 transition-all shadow-sm bg-white hover:border-slate-350 active:scale-98 disabled:opacity-50 disabled:cursor-not-allowed"
                         >
                           <Upload className="h-3.5 w-3.5 text-slate-400" />
                           {isUploading
@@ -869,14 +869,14 @@ export function ArticlesClient({
                     <div className="flex flex-col gap-4">
                       <div className="flex items-center gap-1.5 pb-2 border-b border-slate-100 mb-2">
                         <Globe className="h-4 w-4 text-blue-500" />
-                        <h3 className="text-xs font-extrabold text-primary uppercase tracking-wider">
+                        <h3 className="text-caption-responsive font-extrabold text-primary uppercase tracking-wider">
                           Tối ưu hóa tìm kiếm (SEO Metadata)
                         </h3>
                       </div>
 
                       {/* Meta Title */}
                       <div className="flex flex-col gap-1.5">
-                        <label className="text-[10px] font-extrabold text-slate-450 uppercase tracking-wider">
+                        <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
                           Thẻ tiêu đề SEO (Meta Title)
                         </label>
                         <input
@@ -886,13 +886,13 @@ export function ArticlesClient({
                             setActiveArticle({ ...activeArticle, meta_title: e.target.value })
                           }
                           placeholder="Nhập Meta Title (Khoảng 50-60 ký tự)..."
-                          className="w-full px-4 py-2.5 rounded-[3px] border border-slate-200 text-xs font-semibold focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand"
+                          className="w-full px-4 py-2.5 rounded-[3px] border border-slate-200 text-caption-responsive font-semibold focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand"
                         />
                       </div>
 
                       {/* Meta Description */}
                       <div className="flex flex-col gap-1.5">
-                        <label className="text-[10px] font-extrabold text-slate-450 uppercase tracking-wider">
+                        <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
                           Thẻ mô tả SEO (Meta Description)
                         </label>
                         <textarea
@@ -902,7 +902,7 @@ export function ArticlesClient({
                             setActiveArticle({ ...activeArticle, meta_description: e.target.value })
                           }
                           placeholder="Mô tả bài viết một cách ngắn gọn, súc tích (Khoảng 150-160 ký tự)..."
-                          className="w-full px-4 py-2.5 rounded-[3px] border border-slate-200 text-xs font-semibold focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand leading-relaxed"
+                          className="w-full px-4 py-2.5 rounded-[3px] border border-slate-200 text-caption-responsive font-semibold focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand leading-relaxed"
                         />
                       </div>
                     </div>
@@ -919,14 +919,14 @@ export function ArticlesClient({
                     setFormError('');
                     setActiveArticle(null);
                   }}
-                  className="px-5 py-2.5 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-550 hover:bg-slate-100 transition-colors"
+                  className="px-5 py-2.5 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-550 hover:bg-slate-100 transition-colors"
                 >
                   Hủy bỏ
                 </button>
                 <button
                   type="submit"
                   disabled={isPending || isUploading}
-                  className="inline-flex items-center justify-center px-5 py-2.5 rounded-[3px] bg-blue-600 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors disabled:opacity-50"
+                  className="inline-flex items-center justify-center px-5 py-2.5 rounded-[3px] bg-blue-600 text-caption-responsive font-bold text-white shadow-sm hover:bg-blue-700 transition-colors disabled:opacity-50"
                 >
                   {isPending ? 'Đang lưu...' : 'Lưu bài viết'}
                 </button>

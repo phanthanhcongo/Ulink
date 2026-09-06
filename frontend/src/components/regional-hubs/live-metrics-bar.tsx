@@ -90,10 +90,10 @@ export default function LiveMetricsBar() {
       <div className="page-container">
         {/* Header */}
         <div className="flex items-center justify-between gap-4 mb-6">
-          <h2 className="text-[18px] sm:text-[20px] font-bold text-[#1e293b] leading-[28px] tracking-tight">
+          <h2 className="text-card-title font-bold text-[#1e293b] leading-[28px] tracking-tight">
             {t('dashboard.headerTitle')}
           </h2>
-          <div className="flex items-center gap-2 text-[14px] sm:text-[15px] font-semibold text-[#94a3b8]">
+          <div className="flex items-center gap-2 text-body-regular font-semibold text-[#94a3b8]">
             <span className="h-2.5 w-2.5 rounded-full bg-[#10b981] animate-pulse" />
             <span>{currentTime ? `Cập nhật lúc: ${currentTime}` : t('dashboard.headerTime')}</span>
           </div>
@@ -118,21 +118,21 @@ export default function LiveMetricsBar() {
                 </div>
 
                 <div className="flex-1 min-w-0">
-                  <p className="text-[16px] sm:text-[18px] font-bold text-[#495057] leading-[24px] group-hover:text-brand transition-colors duration-300 truncate">
+                  <p className="text-body-regular font-bold text-[#495057] leading-[24px] group-hover:text-brand transition-colors duration-300 truncate">
                     {item.label}
                   </p>
                   <div className="mt-0.5 flex items-baseline gap-1.5">
-                    <span className="text-[22px] sm:text-[24px] lg:text-[26px] font-bold text-brand transition-colors duration-300">
+                    <span className="text-section-title font-bold text-brand transition-colors duration-300">
                       {item.val}
                     </span>
                     {item.unit && (
-                      <span className="text-[15px] font-bold text-[#495057] transition-colors duration-300">
+                      <span className="text-body-regular font-bold text-[#495057] transition-colors duration-300">
                         {item.unit}
                       </span>
                     )}
                   </div>
                   {item.hasChange ? (
-                    <div className="mt-1 flex items-center gap-1 text-[14px] font-bold text-[#10b981]">
+                    <div className="mt-1 flex items-center gap-1 text-body-regular font-bold text-[#10b981]">
                       <span>▲</span>
                       <span>{item.change}</span>
                       <span className="text-[#495057] font-normal ml-0.5 truncate">
@@ -140,7 +140,7 @@ export default function LiveMetricsBar() {
                       </span>
                     </div>
                   ) : (
-                    <p className="mt-1 text-[14px] text-[#495057] font-normal truncate">
+                    <p className="mt-1 text-body-regular text-[#495057] font-normal truncate">
                       {item.note}
                     </p>
                   )}

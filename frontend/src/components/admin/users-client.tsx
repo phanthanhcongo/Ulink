@@ -181,13 +181,13 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-100 pb-6 mb-8">
         <div>
-          <span className="text-xs uppercase text-slate-400 font-extrabold tracking-wider">
+          <span className="text-caption-responsive uppercase text-slate-400 font-extrabold tracking-wider">
             Hệ thống phân quyền & Bảo mật
           </span>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-primary tracking-tight mt-1">
+          <h1 className="text-section-title font-extrabold text-primary tracking-tight mt-1">
             Quản lý Tài khoản (Users)
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 font-medium mt-1 leading-relaxed">
+          <p className="text-caption-responsive text-slate-500 font-medium mt-1 leading-relaxed">
             Xem, tạo mới và phân quyền các nhóm tài khoản Administrator, Editor, Salesmen và Khách
             hàng B2B truy cập hệ thống.
           </p>
@@ -196,7 +196,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
         <button
           type="button"
           onClick={handleOpenCreateForm}
-          className="inline-flex h-10 items-center justify-center gap-1.5 px-4 rounded-[3px] bg-blue-600 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors shrink-0 animate-fade-in"
+          className="inline-flex h-10 items-center justify-center gap-1.5 px-4 rounded-[3px] bg-blue-600 text-caption-responsive font-bold text-white shadow-sm hover:bg-blue-700 transition-colors shrink-0 animate-fade-in"
         >
           <Plus className="h-4 w-4" />
           Thêm tài khoản mới
@@ -205,13 +205,13 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
 
       {/* Error Alert Banner */}
       {error && (
-        <div className="mb-6 p-4 bg-rose-50 border border-rose-200 rounded-[3px] text-rose-800 text-xs sm:text-sm font-semibold flex items-start gap-2.5 shadow-sm">
+        <div className="mb-6 p-4 bg-rose-50 border border-rose-200 rounded-[3px] text-rose-800 text-caption-responsive font-semibold flex items-start gap-2.5 shadow-sm">
           <AlertTriangle className="h-5 w-5 text-rose-500 shrink-0 mt-0.5" />
           <div className="flex-1">
             <span className="font-extrabold text-rose-900 block mb-1">
               Đã xảy ra lỗi khi tải dữ liệu người dùng từ Directus API
             </span>
-            <pre className="font-mono text-[11px] bg-white/60 p-2.5 rounded-[3px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all">
+            <pre className="font-mono text-caption-responsive bg-white/60 p-2.5 rounded-[3px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all">
               {error}
             </pre>
           </div>
@@ -228,7 +228,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Tìm theo tên người dùng, email..."
-            className="w-full pl-10 pr-4 py-2.5 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand"
+            className="w-full pl-10 pr-4 py-2.5 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand"
           />
         </div>
 
@@ -237,7 +237,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
           <select
             value={roleFilter}
             onChange={(e) => setRoleFilter(e.target.value)}
-            className="px-3.5 py-2.5 rounded-[3px] border border-slate-200 text-xs font-bold text-slate-700 focus:outline-none bg-white shadow-sm"
+            className="px-3.5 py-2.5 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-700 focus:outline-none bg-white shadow-sm"
           >
             <option value="all">Tất cả vai trò</option>
             {roles.map((r) => (
@@ -254,10 +254,10 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
         {filteredUsers.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 text-center">
             <Users className="h-12 w-12 text-slate-300 mb-3" />
-            <span className="text-sm font-extrabold text-primary">
+            <span className="text-body-regular font-extrabold text-primary">
               Không tìm thấy người dùng nào
             </span>
-            <span className="text-xs text-slate-400 mt-1">
+            <span className="text-caption-responsive text-slate-400 mt-1">
               Thử thay đổi bộ lọc hoặc từ khóa tìm kiếm của bạn.
             </span>
           </div>
@@ -265,7 +265,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
           <div className="overflow-x-auto">
             <table className="w-full border-collapse text-left min-w-[900px]">
               <thead>
-                <tr className="bg-slate-50 border-b border-slate-100 text-[10px] sm:text-xs font-bold text-slate-400 uppercase tracking-wider">
+                <tr className="bg-slate-50 border-b border-slate-100 text-caption-responsive font-bold text-slate-400 uppercase tracking-wider">
                   <th className="px-4 py-2.5 sticky left-0 bg-slate-50 z-10 shadow-[2px_0_5px_rgba(0,0,0,0.05)]">Họ và Tên</th>
                   <th className="px-4 py-2.5">Địa chỉ Email</th>
                   <th className="px-4 py-2.5">Vai trò (Role)</th>
@@ -273,7 +273,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
                   <th className="px-4 py-2.5 text-right sticky right-0 bg-slate-50 z-10 shadow-[-2px_0_5px_rgba(0,0,0,0.05)]">Thao tác</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 text-xs sm:text-sm text-slate-700">
+              <tbody className="divide-y divide-slate-100 text-caption-responsive text-slate-700">
                 {filteredUsers.map((u) => {
                   const roleName = u.role?.name || 'Chưa phân vai trò';
                   const roleLower = roleName.toLowerCase();
@@ -300,7 +300,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
                       <td className="px-4 py-3">
                         <span
                           className={cn(
-                            'inline-flex items-center px-2 py-0.5 rounded-[3px] text-[10px] font-bold border shadow-xs select-none',
+                            'inline-flex items-center px-2 py-0.5 rounded-[3px] text-caption-responsive font-bold border shadow-xs select-none',
                             isSystemAdmin && 'bg-rose-50 text-rose-700 border-rose-100',
                             isManager && 'bg-amber-50 text-amber-700 border-amber-100',
                             !isSystemAdmin && !isManager && 'bg-emerald-50 text-emerald-700 border-emerald-100'
@@ -314,7 +314,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
                       <td className="px-4 py-3">
                         <span
                           className={cn(
-                            'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[3px] text-[10px] font-bold border shadow-sm select-none',
+                            'inline-flex items-center gap-1.5 px-2.5 py-1 rounded-[3px] text-caption-responsive font-bold border shadow-sm select-none',
                             u.status === 'active' && 'bg-emerald-50 text-emerald-700 border-emerald-100',
                             u.status === 'suspended' && 'bg-rose-50 text-rose-750 border-rose-100',
                             u.status === 'invited' && 'bg-blue-50 text-blue-700 border-blue-100',
@@ -379,11 +379,11 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
             {/* Modal Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
               <div>
-                <h2 className="text-base sm:text-lg font-extrabold text-primary flex items-center gap-2">
+                <h2 className="text-body-regular font-extrabold text-primary flex items-center gap-2">
                   <Shield className="h-5 w-5 text-blue-500" />
                   {activeUser.id ? 'Cập nhật tài khoản' : 'Thêm tài khoản mới'}
                 </h2>
-                <p className="text-[10px] text-slate-400 font-semibold mt-0.5">
+                <p className="text-caption-responsive text-slate-400 font-semibold mt-0.5">
                   Thiết lập thông tin đăng nhập và phân quyền nhóm người dùng.
                 </p>
               </div>
@@ -403,7 +403,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
             <form onSubmit={handleFormSubmit} className="flex flex-col">
               <div className="p-6 flex flex-col gap-4 bg-white">
                 {formError && (
-                  <div className="p-3 bg-rose-50 border border-rose-100 rounded-[3px] text-xs font-bold text-rose-600 flex items-center gap-2 animate-in fade-in duration-200">
+                  <div className="p-3 bg-rose-50 border border-rose-100 rounded-[3px] text-caption-responsive font-bold text-rose-600 flex items-center gap-2 animate-in fade-in duration-200">
                     <AlertTriangle className="h-4 w-4 shrink-0" />
                     <span>{formError}</span>
                   </div>
@@ -411,7 +411,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
                 {/* First Name & Last Name */}
                 <div className="grid grid-cols-2 gap-4">
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-[10px] font-extrabold text-slate-450 uppercase tracking-wider">
+                    <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
                       Họ *
                     </label>
                     <input
@@ -420,11 +420,11 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
                       value={activeUser.first_name || ''}
                       onChange={(e) => setActiveUser({ ...activeUser, first_name: e.target.value })}
                       placeholder="Nguyễn"
-                      className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-semibold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand shadow-sm"
+                      className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-semibold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand shadow-sm"
                     />
                   </div>
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-[10px] font-extrabold text-slate-450 uppercase tracking-wider">
+                    <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
                       Tên *
                     </label>
                     <input
@@ -433,14 +433,14 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
                       value={activeUser.last_name || ''}
                       onChange={(e) => setActiveUser({ ...activeUser, last_name: e.target.value })}
                       placeholder="Văn A"
-                      className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-semibold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand shadow-sm"
+                      className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-semibold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand shadow-sm"
                     />
                   </div>
                 </div>
 
                 {/* Email */}
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-[10px] font-extrabold text-slate-450 uppercase tracking-wider flex items-center gap-1">
+                  <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider flex items-center gap-1">
                     <Mail className="h-3 w-3 text-slate-400" />
                     Địa chỉ Email *
                   </label>
@@ -450,13 +450,13 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
                     value={activeUser.email || ''}
                     onChange={(e) => setActiveUser({ ...activeUser, email: e.target.value })}
                     placeholder="email@company.com"
-                    className="px-3.5 py-2.5 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-semibold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand shadow-sm"
+                    className="px-3.5 py-2.5 rounded-[3px] border border-slate-200 text-caption-responsive font-semibold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand shadow-sm"
                   />
                 </div>
 
                 {/* Password */}
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-[10px] font-extrabold text-slate-450 uppercase tracking-wider flex items-center gap-1">
+                  <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider flex items-center gap-1">
                     <Lock className="h-3 w-3 text-slate-400" />
                     Mật khẩu {activeUser.id ? '(Tùy chọn)' : '*'}
                   </label>
@@ -470,13 +470,13 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
                         ? 'Để trống nếu không muốn đổi mật khẩu...'
                         : 'Nhập mật khẩu an toàn...'
                     }
-                    className="px-3.5 py-2.5 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-semibold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand shadow-sm"
+                    className="px-3.5 py-2.5 rounded-[3px] border border-slate-200 text-caption-responsive font-semibold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand shadow-sm"
                   />
                 </div>
 
                  {/* Role grid selector */}
                  <div className="flex flex-col gap-2">
-                   <label className="text-[10px] font-extrabold text-slate-450 uppercase tracking-wider flex items-center gap-1.5">
+                   <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider flex items-center gap-1.5">
                      <ShieldAlert className="h-3.5 w-3.5 text-slate-400" />
                      Vai trò hệ thống (Role) *
                    </label>
@@ -495,7 +495,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
                            )}
                          >
                            <div className="flex items-center justify-between">
-                             <span className="text-xs font-extrabold text-primary">
+                             <span className="text-caption-responsive font-extrabold text-primary">
                                {r.name}
                              </span>
                              <span
@@ -509,7 +509,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
                                {isSelected && <span className="h-1.5 w-1.5 rounded-[3px] bg-white" />}
                              </span>
                            </div>
-                           <span className="text-[10px] text-slate-400 font-semibold leading-tight">
+                           <span className="text-caption-responsive text-slate-400 font-semibold leading-tight">
                              Cấp quyền quản trị viên thuộc nhóm {r.name.toLowerCase()}.
                            </span>
                          </div>
@@ -520,7 +520,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
 
                 {/* Status dropdown */}
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-[10px] font-extrabold text-slate-450 uppercase tracking-wider">
+                  <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
                     Trạng thái tài khoản
                   </label>
                   <select
@@ -531,7 +531,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
                         status: e.target.value as UserItem['status']
                       })
                     }
-                    className="px-3.5 py-2.5 rounded-[3px] border border-slate-200 text-xs font-bold text-slate-700 focus:outline-none bg-white shadow-sm"
+                    className="px-3.5 py-2.5 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-700 focus:outline-none bg-white shadow-sm"
                   >
                     <option value="active">Hoạt động (Active)</option>
                     <option value="suspended">Khóa tài khoản (Suspended)</option>
@@ -549,14 +549,14 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
                     setFormOpen(false);
                     setActiveUser(null);
                   }}
-                  className="px-5 py-2.5 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-550 hover:bg-slate-100 transition-colors"
+                  className="px-5 py-2.5 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-550 hover:bg-slate-100 transition-colors"
                 >
                   Hủy bỏ
                 </button>
                 <button
                   type="submit"
                   disabled={isPending}
-                  className="inline-flex items-center justify-center px-5 py-2.5 rounded-[3px] bg-blue-600 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors disabled:opacity-50"
+                  className="inline-flex items-center justify-center px-5 py-2.5 rounded-[3px] bg-blue-600 text-caption-responsive font-bold text-white shadow-sm hover:bg-blue-700 transition-colors disabled:opacity-50"
                 >
                   {isPending ? 'Đang lưu...' : 'Lưu tài khoản'}
                 </button>

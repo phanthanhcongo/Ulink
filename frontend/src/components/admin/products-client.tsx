@@ -236,13 +236,13 @@ export function ProductsClient({
       {/* Header and Add Button */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-100 pb-6 mb-8">
         <div>
-          <span className="text-xs uppercase text-slate-400 font-extrabold tracking-wider">
+          <span className="text-caption-responsive uppercase text-slate-400 font-extrabold tracking-wider">
             Hệ thống Danh mục
           </span>
-          <h1 className="text-2xl sm:text-3xl font-extrabold text-primary tracking-tight mt-1">
+          <h1 className="text-section-title font-extrabold text-primary tracking-tight mt-1">
             Quản lý Sản phẩm & SKUs
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 font-medium mt-1 leading-relaxed">
+          <p className="text-caption-responsive text-slate-500 font-medium mt-1 leading-relaxed">
             Xem danh sách sản phẩm, quản lý mã SKU và cập nhật nhanh tình trạng tồn kho hàng hóa.
           </p>
         </div>
@@ -255,7 +255,7 @@ export function ProductsClient({
             setProductModalOpen(true);
             setProductFormError('');
           }}
-          className="inline-flex h-11 items-center justify-center gap-2 rounded-[3px] bg-blue-600 px-5 text-xs sm:text-sm font-bold text-white shadow-sm hover:bg-blue-700 transition-colors shrink-0"
+          className="inline-flex h-11 items-center justify-center gap-2 rounded-[3px] bg-blue-600 px-5 text-caption-responsive font-bold text-white shadow-sm hover:bg-blue-700 transition-colors shrink-0"
         >
           <Plus className="h-4 w-4" />
           Tạo sản phẩm mới
@@ -272,7 +272,7 @@ export function ProductsClient({
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             placeholder="Tìm kiếm theo tên sản phẩm, mã SKU, nhãn hiệu..."
-            className="w-full pl-10 pr-4 py-2.5 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+            className="w-full pl-10 pr-4 py-2.5 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
           />
         </div>
 
@@ -284,7 +284,7 @@ export function ProductsClient({
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="px-3 py-2.5 rounded-[3px] border border-slate-200 text-xs font-bold text-slate-700 focus:outline-none"
+              className="px-3 py-2.5 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-700 focus:outline-none"
             >
               <option value="all">Tất cả danh mục</option>
               {categories.map((cat) => (
@@ -301,7 +301,7 @@ export function ProductsClient({
             <select
               value={selectedStatus}
               onChange={(e) => setSelectedStatus(e.target.value)}
-              className="px-3 py-2.5 rounded-[3px] border border-slate-200 text-xs font-bold text-slate-700 focus:outline-none"
+              className="px-3 py-2.5 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-700 focus:outline-none"
             >
               <option value="all">Tất cả trạng thái</option>
               <option value="published">Đã xuất bản</option>
@@ -317,10 +317,10 @@ export function ProductsClient({
         {filteredProducts.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 text-center">
             <Package className="h-12 w-12 text-slate-300 mb-3" />
-            <span className="text-sm font-extrabold text-primary">
+            <span className="text-body-regular font-extrabold text-primary">
               Không tìm thấy sản phẩm nào
             </span>
-            <span className="text-xs text-slate-400 mt-1">
+            <span className="text-caption-responsive text-slate-400 mt-1">
               Thử thay đổi bộ lọc hoặc từ khóa tìm kiếm của bạn.
             </span>
           </div>
@@ -328,7 +328,7 @@ export function ProductsClient({
           <div className="overflow-x-auto">
             <table className="w-full border-collapse text-left min-w-[1000px]">
               <thead>
-                <tr className="bg-slate-50 border-b border-slate-100 text-[10px] sm:text-xs font-bold text-slate-450 uppercase tracking-wider">
+                <tr className="bg-slate-50 border-b border-slate-100 text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                   <th className="px-6 py-4 sticky left-0 bg-slate-50 z-10 shadow-[2px_0_5px_rgba(0,0,0,0.05)]">Sản phẩm</th>
                   <th className="px-6 py-4 min-w-[160px]">Thương hiệu / Danh mục</th>
                   <th className="px-6 py-4 min-w-[100px]">Trạng thái</th>
@@ -336,7 +336,7 @@ export function ProductsClient({
                   <th className="px-6 py-4 text-right sticky right-0 bg-slate-50 z-10 shadow-[-2px_0_5px_rgba(0,0,0,0.05)]">Hành động</th>
                 </tr>
               </thead>
-              <tbody className="divide-y divide-slate-100 text-xs sm:text-sm">
+              <tbody className="divide-y divide-slate-100 text-caption-responsive">
                 {filteredProducts.map((prod) => {
                   const categoryName = (prod.category as any)?.name || 'Chưa phân loại';
                   const canCreateSku = (prod.assigned_attributes?.length ?? 0) > 0;
@@ -362,7 +362,7 @@ export function ProductsClient({
                             <span className="font-extrabold text-primary leading-tight truncate max-w-[200px]" title={prod.name}>
                               {prod.name}
                             </span>
-                            <span className="text-[10px] text-slate-400 font-mono mt-1 select-all truncate max-w-[200px]">
+                            <span className="text-caption-responsive text-slate-400 font-mono mt-1 select-all truncate max-w-[200px]">
                               /{prod.slug}
                             </span>
                           </div>
@@ -373,7 +373,7 @@ export function ProductsClient({
                       <td className="px-6 py-4">
                         <div className="flex flex-col gap-1">
                           <span className="text-slate-500 font-medium">{prod.brand || '---'}</span>
-                          <span className="inline-flex items-center self-start px-2 py-0.5 rounded-[3px] bg-blue-50 text-[10px] font-bold text-blue-600">
+                          <span className="inline-flex items-center self-start px-2 py-0.5 rounded-[3px] bg-blue-50 text-caption-responsive font-bold text-blue-600">
                             {categoryName}
                           </span>
                         </div>
@@ -383,7 +383,7 @@ export function ProductsClient({
                       <td className="px-6 py-4">
                         <span
                           className={cn(
-                            'inline-flex items-center px-2 py-0.5 rounded-[3px] text-[10px] font-bold uppercase',
+                            'inline-flex items-center px-2 py-0.5 rounded-[3px] text-caption-responsive font-bold uppercase',
                             prod.status === 'published' && 'bg-green-50 text-green-600',
                             prod.status === 'draft' && 'bg-slate-105 text-slate-600',
                             prod.status === 'archived' && 'bg-red-50 text-red-650'
@@ -403,10 +403,10 @@ export function ProductsClient({
                           <div className="space-y-2">
                             {prod.skus.map((sku) => (
                               <div key={sku.id} className="flex items-center gap-3">
-                                <span className="text-[11px] font-mono font-semibold text-slate-600 select-all min-w-[70px]">
+                                <span className="text-caption-responsive font-mono font-semibold text-slate-600 select-all min-w-[70px]">
                                   {sku.sku_code}
                                 </span>
-                                <span className="text-[10px] text-slate-400 font-medium">
+                                <span className="text-caption-responsive text-slate-400 font-medium">
                                   {sku.pack_size ? `${sku.unit} (${sku.pack_size})` : sku.unit}
                                 </span>
 
@@ -417,7 +417,7 @@ export function ProductsClient({
                                     handleSkuStockChange(sku.id, e.target.value as any)
                                   }
                                   className={cn(
-                                    'px-1.5 py-0.5 rounded-[3px] text-[10px] font-bold border focus:outline-none cursor-pointer',
+                                    'px-1.5 py-0.5 rounded-[3px] text-caption-responsive font-bold border focus:outline-none cursor-pointer',
                                     sku.stock_status === 'in_stock' &&
                                       'bg-green-50 border-green-200 text-green-700',
                                     sku.stock_status === 'low_stock' &&
@@ -434,7 +434,7 @@ export function ProductsClient({
                             ))}
                           </div>
                         ) : (
-                          <span className="text-slate-400 italic text-[11px]">Chưa có mã SKU</span>
+                          <span className="text-slate-400 italic text-caption-responsive">Chưa có mã SKU</span>
                         )}
                       </td>
 
@@ -519,7 +519,7 @@ export function ProductsClient({
           <div className="relative bg-white rounded-[3px] w-full max-w-3xl shadow-xl border border-slate-100 flex flex-col max-h-[90vh]">
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
-              <h3 className="text-base font-extrabold text-primary">
+              <h3 className="text-body-regular font-extrabold text-primary">
                 {activeProduct.id ? 'Cập nhật Thông tin Sản phẩm' : 'Thêm Sản phẩm mới'}
               </h3>
               <button
@@ -539,20 +539,20 @@ export function ProductsClient({
               className="flex-1 overflow-y-auto p-6 space-y-6"
             >
               {productFormError && (
-                <div className="p-3 bg-rose-50 border border-rose-100 rounded-[3px] text-xs font-bold text-rose-600 flex items-center gap-2 animate-in fade-in duration-200">
+                <div className="p-3 bg-rose-50 border border-rose-100 rounded-[3px] text-caption-responsive font-bold text-rose-600 flex items-center gap-2 animate-in fade-in duration-200">
                   <AlertTriangle className="h-4 w-4 shrink-0" />
                   <span>{productFormError}</span>
                 </div>
               )}
               {/* Section 1: Thông tin cơ bản */}
               <div className="bg-slate-50/40 border border-slate-200 rounded-[3px] p-5 space-y-5">
-                <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider border-b border-slate-100 pb-2">
+                <h4 className="text-caption-responsive font-bold text-slate-800 uppercase tracking-wider border-b border-slate-100 pb-2">
                   1. Thông tin cơ bản
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                   {/* Title */}
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-xs font-bold text-slate-500 uppercase">
+                    <label className="text-caption-responsive font-bold text-slate-500 uppercase">
                       Tên sản phẩm *
                     </label>
                     <input
@@ -568,13 +568,13 @@ export function ProductsClient({
                         }));
                       }}
                       placeholder="Ví dụ: Găng tay Nitrile chống hóa chất"
-                      className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                      className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
                     />
                   </div>
 
                   {/* Slug */}
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-xs font-bold text-slate-500 uppercase">
+                    <label className="text-caption-responsive font-bold text-slate-500 uppercase">
                       Đường dẫn Slug *
                     </label>
                     <input
@@ -583,13 +583,13 @@ export function ProductsClient({
                       value={activeProduct.slug || ''}
                       readOnly
                       placeholder="Tự động tạo từ tên sản phẩm..."
-                      className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none bg-slate-50 cursor-not-allowed text-slate-450 select-none"
+                      className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none bg-slate-50 cursor-not-allowed text-slate-450 select-none"
                     />
                   </div>
 
                   {/* Brand */}
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-xs font-bold text-slate-500 uppercase">
+                    <label className="text-caption-responsive font-bold text-slate-500 uppercase">
                       Thương hiệu / Nhãn hàng
                     </label>
                     <input
@@ -597,13 +597,13 @@ export function ProductsClient({
                       value={activeProduct.brand || ''}
                       onChange={(e) => setActiveProduct({ ...activeProduct, brand: e.target.value })}
                       placeholder="Ví dụ: Honeywell"
-                      className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                      className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
                     />
                   </div>
 
                   {/* Category Selection */}
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-xs font-bold text-slate-500 uppercase">
+                    <label className="text-caption-responsive font-bold text-slate-500 uppercase">
                       Danh mục chính
                     </label>
                     <select
@@ -614,7 +614,7 @@ export function ProductsClient({
                           category: e.target.value ? Number(e.target.value) : undefined
                         })
                       }
-                      className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-700 focus:outline-none"
+                      className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-700 focus:outline-none"
                     >
                       <option value="">-- Chọn danh mục --</option>
                       {categories.map((cat) => (
@@ -627,7 +627,7 @@ export function ProductsClient({
 
                   {/* Status Selection */}
                   <div className="flex flex-col gap-1.5 md:col-span-2">
-                    <label className="text-xs font-bold text-slate-500 uppercase">
+                    <label className="text-caption-responsive font-bold text-slate-500 uppercase">
                       Trạng thái phát hành
                     </label>
                     <select
@@ -638,7 +638,7 @@ export function ProductsClient({
                           status: e.target.value as 'draft' | 'published' | 'archived'
                         })
                       }
-                      className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-700 focus:outline-none"
+                      className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-700 focus:outline-none"
                     >
                       <option value="draft">Bản nháp (Draft)</option>
                       <option value="published">Xuất bản công khai (Published)</option>
@@ -649,7 +649,7 @@ export function ProductsClient({
 
                 {/* Short Description */}
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-xs font-bold text-slate-500 uppercase">
+                  <label className="text-caption-responsive font-bold text-slate-500 uppercase">
                     Mô tả tóm tắt ngắn
                   </label>
                   <textarea
@@ -659,22 +659,22 @@ export function ProductsClient({
                       setActiveProduct({ ...activeProduct, short_description: e.target.value })
                     }
                     placeholder="Viết tóm tắt hiển thị trên danh sách lưới sản phẩm..."
-                    className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600 w-full"
+                    className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600 w-full"
                   />
                 </div>
               </div>
 
               {/* Section 2: Thuộc tính biến thể */}
               <div className="bg-slate-50/40 border border-slate-200 rounded-[3px] p-5 space-y-4">
-                <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider border-b border-slate-100 pb-2">
+                <h4 className="text-caption-responsive font-bold text-slate-800 uppercase tracking-wider border-b border-slate-100 pb-2">
                   2. Thuộc tính phân loại biến thể
                 </h4>
                 <div className="space-y-3">
                   <div className="flex items-center justify-between">
-                    <span className="text-[10px] text-slate-400 font-semibold uppercase">
+                    <span className="text-caption-responsive text-slate-400 font-semibold uppercase">
                       Chọn thuộc tính để áp dụng tạo SKU
                     </span>
-                    <span className="text-[10px] text-slate-400 font-semibold">
+                    <span className="text-caption-responsive text-slate-400 font-semibold">
                       Lấy từ danh mục thuộc tính chính
                     </span>
                   </div>
@@ -707,11 +707,11 @@ export function ProductsClient({
                               className="h-4 w-4 rounded-[3px] border-slate-300 text-blue-600 focus:ring-blue-500"
                             />
                             <div className="flex-1 min-w-0">
-                              <span className="text-xs font-bold text-slate-700 block truncate">
+                              <span className="text-caption-responsive font-bold text-slate-700 block truncate">
                                 {attr.name}
                               </span>
                               {optionPreview && (
-                                <span className="text-[10px] text-slate-400 block mt-0.5 truncate" title={optionPreview}>
+                                <span className="text-caption-responsive text-slate-400 block mt-0.5 truncate" title={optionPreview}>
                                   {optionPreview}
                                 </span>
                               )}
@@ -721,7 +721,7 @@ export function ProductsClient({
                       })}
                     </div>
                   ) : (
-                    <span className="text-slate-400 italic text-[11px] block text-center py-2">
+                    <span className="text-slate-400 italic text-caption-responsive block text-center py-2">
                       Chưa có thuộc tính master data. Thêm trong Directus Admin.
                     </span>
                   )}
@@ -731,13 +731,13 @@ export function ProductsClient({
               {/* Section 3: Thông số kỹ thuật */}
               <div className="bg-slate-50/40 border border-slate-200 rounded-[3px] p-5 space-y-4">
                 <div className="flex items-center justify-between border-b border-slate-100 pb-2">
-                  <h4 className="text-xs font-bold text-slate-800 uppercase tracking-wider">
+                  <h4 className="text-caption-responsive font-bold text-slate-800 uppercase tracking-wider">
                     3. Bảng Thông số Kỹ thuật
                   </h4>
                   <button
                     type="button"
                     onClick={addSpecRow}
-                    className="inline-flex items-center gap-1.5 text-[10px] font-bold text-blue-600 hover:text-blue-700 transition-colors"
+                    className="inline-flex items-center gap-1.5 text-caption-responsive font-bold text-blue-600 hover:text-blue-700 transition-colors"
                   >
                     <Plus className="h-3.5 w-3.5" />
                     Thêm thuộc tính
@@ -757,7 +757,7 @@ export function ProductsClient({
                           setActiveProductSpecs(updated);
                         }}
                         placeholder="Tên thông số (e.g. Chất liệu)"
-                        className="flex-1 px-3 py-1.5 rounded-[3px] border border-slate-200 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                        className="flex-1 px-3 py-1.5 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
                       />
                       <input
                         type="text"
@@ -769,7 +769,7 @@ export function ProductsClient({
                           setActiveProductSpecs(updated);
                         }}
                         placeholder="Giá trị (e.g. Cao su Nitrile)"
-                        className="flex-1 px-3 py-1.5 rounded-[3px] border border-slate-200 text-xs font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                        className="flex-1 px-3 py-1.5 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
                       />
                       <button
                         type="button"
@@ -781,7 +781,7 @@ export function ProductsClient({
                     </div>
                   ))}
                   {activeProductSpecs.length === 0 && (
-                    <span className="text-slate-400 italic text-[11px] block text-center py-2">
+                    <span className="text-slate-400 italic text-caption-responsive block text-center py-2">
                       Chưa thêm thông số nào
                     </span>
                   )}
@@ -789,7 +789,7 @@ export function ProductsClient({
               </div>
 
               {skuFormError && (
-                <div className="rounded-[3px] border border-red-200 bg-red-50 px-3.5 py-3 text-xs font-medium text-red-700">
+                <div className="rounded-[3px] border border-red-200 bg-red-50 px-3.5 py-3 text-caption-responsive font-medium text-red-700">
                   {skuFormError}
                 </div>
               )}
@@ -802,14 +802,14 @@ export function ProductsClient({
                     setProductModalOpen(false);
                     setProductFormError('');
                   }}
-                  className="px-4 py-2 rounded-[3px] border border-slate-200 text-xs font-bold text-slate-500 hover:bg-slate-50 transition-colors"
+                  className="px-4 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-500 hover:bg-slate-50 transition-colors"
                 >
                   Hủy bỏ
                 </button>
                 <button
                   type="submit"
                   disabled={isPending}
-                  className="inline-flex h-10 items-center justify-center gap-2 rounded-[3px] bg-blue-600 px-5 text-xs font-bold text-white hover:bg-blue-700 transition-colors disabled:opacity-50"
+                  className="inline-flex h-10 items-center justify-center gap-2 rounded-[3px] bg-blue-600 px-5 text-caption-responsive font-bold text-white hover:bg-blue-700 transition-colors disabled:opacity-50"
                 >
                   {isPending && <Loader2 className="h-3.5 w-3.5 animate-spin" />}
                   Lưu thay đổi
@@ -826,7 +826,7 @@ export function ProductsClient({
           <div className="bg-white rounded-[3px] w-full max-w-md shadow-xl border border-slate-100 overflow-hidden">
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
-              <h3 className="text-base font-extrabold text-primary">Thêm mã SKU mới</h3>
+              <h3 className="text-body-regular font-extrabold text-primary">Thêm mã SKU mới</h3>
               <button
                 onClick={() => {
                   setSkuModalOpen(false);
@@ -842,7 +842,7 @@ export function ProductsClient({
             <form onSubmit={handleSaveSkuSubmit} className="p-6 space-y-5">
               {/* SKU Code */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-bold text-slate-500 uppercase">Mã SKU Code *</label>
+                <label className="text-caption-responsive font-bold text-slate-500 uppercase">Mã SKU Code *</label>
                 <input
                   type="text"
                   required
@@ -855,25 +855,25 @@ export function ProductsClient({
                     });
                   }}
                   placeholder="Ví dụ: NITRILE-BLUE-L"
-                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-semibold focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-semibold focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
                 />
               </div>
 
               {/* Unit */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-bold text-slate-500 uppercase">Đơn vị tính</label>
+                <label className="text-caption-responsive font-bold text-slate-500 uppercase">Đơn vị tính</label>
                 <input
                   type="text"
                   value={activeSku.unit || ''}
                   onChange={(e) => setActiveSku({ ...activeSku, unit: e.target.value })}
                   placeholder="Ví dụ: Hộp, Đôi, Thùng..."
-                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
                 />
               </div>
 
               {/* Pack Size */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-bold text-slate-500 uppercase">
+                <label className="text-caption-responsive font-bold text-slate-500 uppercase">
                   Quy cách đóng gói
                 </label>
                 <input
@@ -881,13 +881,13 @@ export function ProductsClient({
                   value={activeSku.pack_size || ''}
                   onChange={(e) => setActiveSku({ ...activeSku, pack_size: e.target.value })}
                   placeholder="Ví dụ: 100 đôi/hộp, 50 cuộn/thùng"
-                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
                 />
               </div>
 
               {/* Stock Status */}
               <div className="flex flex-col gap-1.5">
-                <label className="text-xs font-bold text-slate-500 uppercase">
+                <label className="text-caption-responsive font-bold text-slate-500 uppercase">
                   Tình trạng tồn kho
                 </label>
                 <select
@@ -898,7 +898,7 @@ export function ProductsClient({
                       stock_status: e.target.value as 'in_stock' | 'low_stock' | 'out_of_stock'
                     })
                   }
-                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-xs sm:text-sm font-bold text-slate-750 focus:outline-none"
+                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-750 focus:outline-none"
                 >
                   <option value="in_stock">Còn hàng (In Stock)</option>
                   <option value="low_stock">Sắp hết (Low Stock)</option>
@@ -907,7 +907,7 @@ export function ProductsClient({
               </div>
 
               {skuFormError && (
-                <div className="rounded-[3px] border border-red-200 bg-red-50 px-3.5 py-3 text-xs font-medium text-red-700">
+                <div className="rounded-[3px] border border-red-200 bg-red-50 px-3.5 py-3 text-caption-responsive font-medium text-red-700">
                   {skuFormError}
                 </div>
               )}
@@ -920,14 +920,14 @@ export function ProductsClient({
                     setSkuModalOpen(false);
                     setSkuFormError('');
                   }}
-                  className="px-4 py-2 rounded-[3px] border border-slate-200 text-xs font-bold text-slate-500 hover:bg-slate-50 transition-colors"
+                  className="px-4 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-500 hover:bg-slate-50 transition-colors"
                 >
                   Hủy
                 </button>
                 <button
                   type="submit"
                   disabled={isPending}
-                  className="inline-flex h-10 items-center justify-center gap-2 rounded-[3px] bg-blue-600 px-5 text-xs font-bold text-white hover:bg-blue-700 transition-colors disabled:opacity-50"
+                  className="inline-flex h-10 items-center justify-center gap-2 rounded-[3px] bg-blue-600 px-5 text-caption-responsive font-bold text-white hover:bg-blue-700 transition-colors disabled:opacity-50"
                 >
                   {isPending && <Loader2 className="h-3.5 w-3.5 animate-spin" />}
                   Thêm SKU

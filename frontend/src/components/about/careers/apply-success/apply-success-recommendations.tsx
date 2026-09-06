@@ -23,7 +23,7 @@ export function ApplySuccessRecommendations() {
   return (
     <section className="py-10 max-w-5xl mx-auto border-t border-slate-100">
       <div className="flex flex-col items-center text-center mb-8">
-        <h2 className="text-[30px] font-extrabold tracking-tight text-slate-900">
+        <h2 className="text-hero-title font-extrabold tracking-tight text-slate-900">
           Cơ hội nghề nghiệp tương tự dành cho bạn
         </h2>
         <p className="mt-1 text-body-regular text-slate-500">

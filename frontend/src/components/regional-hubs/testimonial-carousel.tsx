@@ -51,7 +51,7 @@ export default function TestimonialCarousel({ labels }: TestimonialCarouselProps
             height={32}
             className="h-8 w-8 object-contain"
           />
-          <span className="text-[18px] font-extrabold text-[#4A5568] tracking-tight">
+          <span className="text-card-title font-extrabold text-[#4A5568] tracking-tight">
             {labels.company1}
           </span>
         </div>
@@ -72,7 +72,7 @@ export default function TestimonialCarousel({ labels }: TestimonialCarouselProps
             height={32}
             className="h-8 w-8 object-contain"
           />
-          <span className="text-[18px] font-extrabold text-[#4A5568] tracking-tight">
+          <span className="text-card-title font-extrabold text-[#4A5568] tracking-tight">
             {labels.company2}
           </span>
         </div>
@@ -86,10 +86,10 @@ export default function TestimonialCarousel({ labels }: TestimonialCarouselProps
       company: labels.company3,
       logo: (
         <div className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center bg-orange-600 text-white font-extrabold text-[11px] rounded-[3px]">
+          <div className="flex h-8 w-8 items-center justify-center bg-orange-600 text-white font-extrabold text-caption-responsive rounded-[3px]">
             HP
           </div>
-          <span className="text-[18px] font-extrabold text-[#4A5568] tracking-tight">
+          <span className="text-card-title font-extrabold text-[#4A5568] tracking-tight">
             {labels.company3}
           </span>
         </div>
@@ -103,10 +103,10 @@ export default function TestimonialCarousel({ labels }: TestimonialCarouselProps
       company: labels.company4,
       logo: (
         <div className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center bg-teal-600 text-white font-extrabold text-[11px] rounded-[3px]">
+          <div className="flex h-8 w-8 items-center justify-center bg-teal-600 text-white font-extrabold text-caption-responsive rounded-[3px]">
             VA
           </div>
-          <span className="text-[18px] font-extrabold text-[#4A5568] tracking-tight">
+          <span className="text-card-title font-extrabold text-[#4A5568] tracking-tight">
             {labels.company4}
           </span>
         </div>
@@ -270,13 +270,13 @@ export default function TestimonialCarousel({ labels }: TestimonialCarouselProps
       <div className="page-container">
         {/* === Header Section === */}
         <div className="text-center mb-10 lg:mb-[60px]">
-          <span className="text-[20px] sm:text-[24px] lg:text-[28px] font-bold text-brand tracking-[0.5px] uppercase block leading-tight">
+          <span className="text-card-title font-bold text-brand tracking-[0.5px] uppercase block leading-tight">
             {labels.eyebrow}
           </span>
-          <h2 className="mt-3 text-[24px] sm:text-[28px] font-semibold text-[#212529] leading-tight sm:leading-[38px] tracking-[-0.3px]">
+          <h2 className="mt-3 text-section-title font-semibold text-[#212529] leading-tight sm:leading-[38px] tracking-[-0.3px]">
             {labels.title}
           </h2>
-          <p className="mt-1 text-[24px] sm:text-[28px] font-semibold text-[#212529] leading-tight sm:leading-[38px] tracking-[-0.3px]">
+          <p className="mt-1 text-section-title font-semibold text-[#212529] leading-tight sm:leading-[38px] tracking-[-0.3px]">
             {labels.subtitle}
           </p>
         </div>
@@ -321,7 +321,7 @@ export default function TestimonialCarousel({ labels }: TestimonialCarouselProps
                     <div className="mb-4 flex justify-center h-8 shrink-0">{item.logo}</div>
 
                     {/* Testimonial Quote */}
-                    <p className="text-[14px] sm:text-[15px] leading-[24px] text-[#495057] font-normal italic px-2 sm:px-4 flex-1 flex items-center justify-center overflow-hidden transition-colors duration-150 group-hover:text-[#212529]">
+                    <p className="text-body-regular leading-[24px] text-[#495057] font-normal italic px-2 sm:px-4 flex-1 flex items-center justify-center overflow-hidden transition-colors duration-150 group-hover:text-[#212529]">
                       {"\""}{item.quote}{"\""}
                     </p>
 
@@ -330,8 +330,8 @@ export default function TestimonialCarousel({ labels }: TestimonialCarouselProps
                       <div className="h-10 w-10 rounded-full flex items-center justify-center bg-[#f5f8fc] text-[#1769e2] mb-2 transition-colors duration-150 group-hover:bg-brand group-hover:text-white">
                         <User className="h-5.5 w-5.5 stroke-[1.5]" />
                       </div>
-                      <span className="text-[16px] sm:text-[18px] font-semibold text-[#212529] leading-tight transition-colors duration-150 group-hover:text-brand">{item.name}</span>
-                      <span className="text-[13px] text-[#6c757d] font-normal mt-1 leading-tight">{item.role}</span>
+                      <span className="text-body-regular font-semibold text-[#212529] leading-tight transition-colors duration-150 group-hover:text-brand">{item.name}</span>
+                      <span className="text-caption-responsive text-[#6c757d] font-normal mt-1 leading-tight">{item.role}</span>
                     </div>
                   </div>
                 </div>

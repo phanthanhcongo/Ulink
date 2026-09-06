@@ -122,7 +122,7 @@ export function SampleRequestDetail({ id, locale }: SampleRequestDetailProps) {
         <button
           type="button"
           onClick={() => router.push(`/${locale}/admin/sample-requests`)}
-          className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground transition-colors"
+          className="inline-flex items-center gap-1 text-body-regular text-muted-foreground hover:text-foreground transition-colors"
         >
           <ArrowLeft className="h-4 w-4" />
           {t('backToList')}
@@ -131,12 +131,12 @@ export function SampleRequestDetail({ id, locale }: SampleRequestDetailProps) {
 
       <div className="flex items-center justify-between flex-wrap gap-4">
         <div>
-          <h1 className="text-2xl font-bold">{t('detail')}</h1>
-          <p className="text-sm text-muted-foreground font-mono">#{request.id}</p>
+          <h1 className="text-section-title font-bold">{t('detail')}</h1>
+          <p className="text-body-regular text-muted-foreground font-mono">#{request.id}</p>
         </div>
         <span
           className={cn(
-            'inline-flex items-center rounded-[3px] px-3 py-1 text-sm font-medium',
+            'inline-flex items-center rounded-[3px] px-3 py-1 text-body-regular font-medium',
             sc?.classes
           )}
         >
@@ -150,9 +150,9 @@ export function SampleRequestDetail({ id, locale }: SampleRequestDetailProps) {
         <div className="rounded-[3px] border bg-white dark:bg-card shadow-sm overflow-hidden">
           <div className="flex items-center gap-2 px-5 py-3 border-b bg-muted/30">
             <User className="h-4 w-4 text-primary" />
-            <h3 className="font-semibold text-sm">{t('contactInfo')}</h3>
+            <h3 className="font-semibold text-body-regular">{t('contactInfo')}</h3>
           </div>
-          <dl className="p-5 space-y-3 text-sm">
+          <dl className="p-5 space-y-3 text-body-regular">
             <InfoRow label={t('customerName')} value={request.contact_name} />
             <InfoRow label="Email" value={request.email} />
             <InfoRow label={t('customerName').replace('Tên', 'Công ty')} value={request.company} />
@@ -170,9 +170,9 @@ export function SampleRequestDetail({ id, locale }: SampleRequestDetailProps) {
         <div className="rounded-[3px] border bg-white dark:bg-card shadow-sm overflow-hidden">
           <div className="flex items-center gap-2 px-5 py-3 border-b bg-muted/30">
             <MapPin className="h-4 w-4 text-primary" />
-            <h3 className="font-semibold text-sm">{t('shippingAddress')}</h3>
+            <h3 className="font-semibold text-body-regular">{t('shippingAddress')}</h3>
           </div>
-          <dl className="p-5 space-y-3 text-sm">
+          <dl className="p-5 space-y-3 text-body-regular">
             <InfoRow label="Tỉnh/Thành" value={provinceName} />
             <InfoRow label="Quận/Huyện" value={districtName} />
             <InfoRow label="Địa chỉ" value={request.address_detail} />
@@ -183,9 +183,9 @@ export function SampleRequestDetail({ id, locale }: SampleRequestDetailProps) {
         <div className="rounded-[3px] border bg-white dark:bg-card shadow-sm overflow-hidden md:col-span-2">
           <div className="flex items-center gap-2 px-5 py-3 border-b bg-muted/30">
             <Box className="h-4 w-4 text-primary" />
-            <h3 className="font-semibold text-sm">{t('productInfo')}</h3>
+            <h3 className="font-semibold text-body-regular">{t('productInfo')}</h3>
           </div>
-          <dl className="p-5 space-y-3 text-sm">
+          <dl className="p-5 space-y-3 text-body-regular">
             <InfoRow label="Product Slug" value={request.product_slug} />
             {request.skus && request.skus.length > 0 && (
               <InfoRow label="SKUs" value={request.skus.join(', ')} />
@@ -197,14 +197,14 @@ export function SampleRequestDetail({ id, locale }: SampleRequestDetailProps) {
         {/* Notes */}
         {request.approval_note && (
           <div className="rounded-[3px] border bg-green-50 dark:bg-green-900/10 shadow-sm p-5 md:col-span-2">
-            <p className="text-sm font-medium text-green-800 dark:text-green-400">
+            <p className="text-body-regular font-medium text-green-800 dark:text-green-400">
               {t('approveNote')}: {request.approval_note}
             </p>
           </div>
         )}
         {request.reject_reason && (
           <div className="rounded-[3px] border bg-red-50 dark:bg-red-900/10 shadow-sm p-5 md:col-span-2">
-            <p className="text-sm font-medium text-red-800 dark:text-red-400">
+            <p className="text-body-regular font-medium text-red-800 dark:text-red-400">
               {t('rejectReason')}: {request.reject_reason}
             </p>
           </div>
@@ -221,7 +221,7 @@ export function SampleRequestDetail({ id, locale }: SampleRequestDetailProps) {
               setActionNote('');
               setActionError(null);
             }}
-            className="inline-flex items-center gap-2 rounded-[3px] bg-green-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-green-700 transition-colors"
+            className="inline-flex items-center gap-2 rounded-[3px] bg-green-600 px-4 py-2.5 text-body-regular font-medium text-white hover:bg-green-700 transition-colors"
           >
             <CheckCircle className="h-4 w-4" />
             {t('approve')}
@@ -233,7 +233,7 @@ export function SampleRequestDetail({ id, locale }: SampleRequestDetailProps) {
               setActionNote('');
               setActionError(null);
             }}
-            className="inline-flex items-center gap-2 rounded-[3px] bg-red-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-red-700 transition-colors"
+            className="inline-flex items-center gap-2 rounded-[3px] bg-red-600 px-4 py-2.5 text-body-regular font-medium text-white hover:bg-red-700 transition-colors"
           >
             <XCircle className="h-4 w-4" />
             {t('reject')}
@@ -246,7 +246,7 @@ export function SampleRequestDetail({ id, locale }: SampleRequestDetailProps) {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
           <div className="absolute inset-0 bg-black/50" onClick={() => setActionModal(null)} />
           <div className="relative w-full max-w-md rounded-[3px] bg-white dark:bg-card shadow-2xl p-6">
-            <h3 className="text-lg font-semibold mb-2">
+            <h3 className="text-card-title font-semibold mb-2">
               {actionModal === 'approve' ? t('confirmApprove') : t('confirmReject')}
             </h3>
 
@@ -255,16 +255,16 @@ export function SampleRequestDetail({ id, locale }: SampleRequestDetailProps) {
               onChange={(e) => setActionNote(e.target.value)}
               rows={3}
               placeholder={actionModal === 'approve' ? t('approveNote') : t('rejectReason')}
-              className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors resize-y mt-2"
+              className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-body-regular text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors resize-y mt-2"
             />
 
-            {actionError && <p className="mt-2 text-sm text-red-600">{actionError}</p>}
+            {actionError && <p className="mt-2 text-body-regular text-red-600">{actionError}</p>}
 
             <div className="flex items-center justify-end gap-3 mt-4">
               <button
                 type="button"
                 onClick={() => setActionModal(null)}
-                className="rounded-[3px] border px-4 py-2 text-sm font-medium hover:bg-muted transition-colors"
+                className="rounded-[3px] border px-4 py-2 text-body-regular font-medium hover:bg-muted transition-colors"
               >
                 Cancel
               </button>
@@ -273,7 +273,7 @@ export function SampleRequestDetail({ id, locale }: SampleRequestDetailProps) {
                 onClick={handleAction}
                 disabled={actionLoading}
                 className={cn(
-                  'inline-flex items-center gap-2 rounded-[3px] px-4 py-2 text-sm font-medium text-white transition-colors',
+                  'inline-flex items-center gap-2 rounded-[3px] px-4 py-2 text-body-regular font-medium text-white transition-colors',
                   actionModal === 'approve'
                     ? 'bg-green-600 hover:bg-green-700'
                     : 'bg-red-600 hover:bg-red-700',

@@ -113,12 +113,12 @@ export function EventCard({ event, locale }: EventCardProps) {
         )}
 
         {/* Top Left Date Badge */}
-        <div className="absolute top-4 left-4 z-10 bg-blue-600/90 backdrop-blur-xs text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-sm">
+        <div className="absolute top-4 left-4 z-10 bg-blue-600/90 backdrop-blur-xs text-white text-caption-responsive font-bold px-4 py-1.5 rounded-full shadow-sm">
           {dateBadge}
         </div>
 
         {/* Top Right Category Badge */}
-        <div className="absolute top-4 right-4 z-10 bg-emerald-600/90 backdrop-blur-xs text-white text-[10px] font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full shadow-sm">
+        <div className="absolute top-4 right-4 z-10 bg-emerald-600/90 backdrop-blur-xs text-white text-caption-responsive font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full shadow-sm">
           {badgeText}
         </div>
       </div>
@@ -127,19 +127,19 @@ export function EventCard({ event, locale }: EventCardProps) {
       <div className="p-6 flex-1 flex flex-col justify-between">
         <div>
           {/* Title */}
-          <h3 className="text-base sm:text-lg font-bold text-slate-900 leading-snug group-hover:text-blue-600 transition-colors">
+          <h3 className="text-body-regular font-bold text-slate-900 leading-snug group-hover:text-blue-600 transition-colors">
             {titleText}
           </h3>
 
           {/* Description */}
           {descText && (
-            <p className="mt-3 text-xs sm:text-sm text-slate-500 leading-relaxed font-normal line-clamp-2">
+            <p className="mt-3 text-caption-responsive text-slate-500 leading-relaxed font-normal line-clamp-2">
               {descText}
             </p>
           )}
 
           {/* Details list */}
-          <div className="mt-5 space-y-2.5 text-xs sm:text-sm text-slate-600">
+          <div className="mt-5 space-y-2.5 text-caption-responsive text-slate-600">
             <div className="flex items-center gap-3">
               <Calendar className="h-4 w-4 text-blue-600 shrink-0" />
               <span className="font-medium">
@@ -167,7 +167,7 @@ export function EventCard({ event, locale }: EventCardProps) {
         <div className="mt-6 pt-4 border-t border-slate-50">
           <Link
             href={href}
-            className="w-full inline-flex items-center justify-center py-3 border-2 border-[#1769E2] hover:bg-[#EBF3FE] text-[#1769E2] font-bold rounded-[3px] text-xs sm:text-sm transition-colors shadow-xs"
+            className="w-full inline-flex items-center justify-center py-3 border-2 border-[#1769E2] hover:bg-[#EBF3FE] text-[#1769E2] font-bold rounded-[3px] text-caption-responsive transition-colors shadow-xs"
           >
             {ctaText}
           </Link>

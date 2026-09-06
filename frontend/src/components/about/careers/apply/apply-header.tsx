@@ -10,7 +10,7 @@ export function ApplyHeader() {
         </span>
       </div>
 
-      <h1 className="text-[30px] font-extrabold text-slate-900 tracking-tight mt-1">
+      <h1 className="text-hero-title font-extrabold text-slate-900 tracking-tight mt-1">
         Chuyên viên Phát triển Kinh doanh B2B — Khu Công nghiệp
       </h1>
 

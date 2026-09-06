@@ -15,10 +15,10 @@ export default async function CoreCapabilities({ locale }: CoreCapabilitiesProps
       <div className="page-container text-center">
         {/* Section Header */}
         <div className="max-w-3xl mx-auto mb-16">
-          <span className="text-[13px] sm:text-[14px] lg:text-[16px] font-bold uppercase tracking-wider text-blue-600">
+          <span className="text-section-title font-bold uppercase tracking-wider text-blue-600">
             {t('testimonialsCapabilities.capabilitiesEyebrow')}
           </span>
-          <h2 className="mt-4 text-[30px] sm:text-[38px] md:text-[44px] lg:text-[50px] xl:text-[52px] font-extrabold tracking-tight text-slate-900 leading-tight">
+          <h2 className="mt-4 text-section-title font-extrabold tracking-tight text-slate-900 leading-tight">
             {t('testimonialsCapabilities.capabilitiesTitle')}
           </h2>
         </div>
@@ -30,10 +30,10 @@ export default async function CoreCapabilities({ locale }: CoreCapabilitiesProps
             <div className="w-12 h-12 flex items-center justify-center text-blue-600 shrink-0 mb-6 transition-colors duration-200 group-hover:shadow-sm">
               <Factory className="h-8 w-8" strokeWidth={1.5} />
             </div>
-            <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 mb-3 transition-colors duration-200 group-hover:text-[#1769E2]">
+            <h3 className="text-body-regular font-bold text-slate-900 mb-3 transition-colors duration-200 group-hover:text-[#1769E2]">
               {t('testimonialsCapabilities.cap1Heading')}
             </h3>
-            <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-500 max-w-xs">
+            <p className="text-caption-responsive leading-relaxed text-slate-500 max-w-xs">
               {t('testimonialsCapabilities.cap1Desc')}
             </p>
           </div>
@@ -43,10 +43,10 @@ export default async function CoreCapabilities({ locale }: CoreCapabilitiesProps
             <div className="w-12 h-12 flex items-center justify-center text-blue-600 shrink-0 mb-6 transition-colors duration-200 group-hover:shadow-sm">
               <Package className="h-8 w-8" strokeWidth={1.5} />
             </div>
-            <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 mb-3 transition-colors duration-200 group-hover:text-[#1769E2]">
+            <h3 className="text-body-regular font-bold text-slate-900 mb-3 transition-colors duration-200 group-hover:text-[#1769E2]">
               {t('testimonialsCapabilities.cap2Heading')}
             </h3>
-            <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-500 max-w-xs">
+            <p className="text-caption-responsive leading-relaxed text-slate-500 max-w-xs">
               {t('testimonialsCapabilities.cap2Desc')}
             </p>
           </div>
@@ -56,10 +56,10 @@ export default async function CoreCapabilities({ locale }: CoreCapabilitiesProps
             <div className="w-12 h-12 flex items-center justify-center text-blue-600 shrink-0 mb-6 transition-colors duration-200 group-hover:shadow-sm">
               <Activity className="h-8 w-8" strokeWidth={1.5} />
             </div>
-            <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 mb-3 transition-colors duration-200 group-hover:text-[#1769E2]">
+            <h3 className="text-body-regular font-bold text-slate-900 mb-3 transition-colors duration-200 group-hover:text-[#1769E2]">
               {t('testimonialsCapabilities.cap3Heading')}
             </h3>
-            <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-500 max-w-xs">
+            <p className="text-caption-responsive leading-relaxed text-slate-500 max-w-xs">
               {t('testimonialsCapabilities.cap3Desc')}
             </p>
           </div>
@@ -69,10 +69,10 @@ export default async function CoreCapabilities({ locale }: CoreCapabilitiesProps
             <div className="w-12 h-12 flex items-center justify-center text-blue-600 shrink-0 mb-6 transition-colors duration-200 group-hover:shadow-sm">
               <Truck className="h-8 w-8" strokeWidth={1.5} />
             </div>
-            <h3 className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 mb-3 transition-colors duration-200 group-hover:text-[#1769E2]">
+            <h3 className="text-body-regular font-bold text-slate-900 mb-3 transition-colors duration-200 group-hover:text-[#1769E2]">
               {t('testimonialsCapabilities.cap4Heading')}
             </h3>
-            <p className="text-[13px] sm:text-[14px] leading-relaxed text-slate-500 max-w-xs">
+            <p className="text-caption-responsive leading-relaxed text-slate-500 max-w-xs">
               {t('testimonialsCapabilities.cap4Desc')}
             </p>
           </div>
@@ -82,7 +82,7 @@ export default async function CoreCapabilities({ locale }: CoreCapabilitiesProps
         <div className="mt-16 flex justify-center">
           <Link
             href={`/${locale}/quick-order`}
-            className="group inline-flex items-center justify-center gap-2 rounded-[3px] bg-[#1769E2] px-6 py-3 text-[13px] sm:text-[14px] font-semibold text-white shadow-sm hover:bg-[#1257BD] transition-colors"
+            className="group inline-flex items-center justify-center gap-2 rounded-[3px] bg-[#1769E2] px-6 py-3 text-caption-responsive font-semibold text-white shadow-sm hover:bg-[#1257BD] transition-colors"
           >
             {t('testimonialsCapabilities.order')}
             <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />

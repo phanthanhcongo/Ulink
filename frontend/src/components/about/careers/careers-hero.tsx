@@ -17,7 +17,7 @@ export function CareersHero() {
           <span className="text-body-regular font-bold uppercase tracking-wider text-blue-600">
             GIA NHẬP ULINK INDUSTRIES
           </span>
-          <h1 className="text-[30px] font-extrabold tracking-tight text-slate-900 leading-tight">
+          <h1 className="text-hero-title font-extrabold tracking-tight text-slate-900 leading-tight">
             Kiến tạo giá trị khác biệt.<br />Phát triển bền vững.
           </h1>
           <p className="text-body-large leading-relaxed text-slate-500 max-w-[540px]">
@@ -78,7 +78,7 @@ export function CareersHero() {
       </div>
 
       {/* Impression Metrics Bar */}
-      <div className="mt-12 sm:mt-16  p-6 sm:p-8 shadow-sm grid grid-cols-2 gap-6 sm:grid-cols-4 items-center">
+      <div className="mt-12 sm:mt-16 p-6 sm:p-8 shadow-sm grid grid-cols-2 gap-6 sm:grid-cols-4 items-center">
         {stats.map((s, idx) => {
           const Icon = s.icon;
           return (
@@ -87,7 +87,7 @@ export function CareersHero() {
                 <Icon className="h-6 w-6" />
               </div>
               <div className="flex flex-col">
-                <span className="text-[22px] font-extrabold text-slate-900 leading-tight transition-colors duration-200 group-hover:text-[#1769E2]">
+                <span className="text-section-title font-extrabold text-slate-900 leading-tight transition-colors duration-200 group-hover:text-[#1769E2]">
                   {s.value}
                 </span>
                 <span className="text-body-regular text-slate-400 font-medium mt-0.5 leading-tight">

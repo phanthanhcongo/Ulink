@@ -132,13 +132,13 @@ export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
               QUADRANT 1 (TOP LEFT): HEADER COPY & MOBILE LOCATION CARDS
              ════════════════════════════════════════════════════════════ */}
           <div className="md:col-span-1 lg:col-span-4 lg:col-start-1 lg:row-start-1 space-y-4 text-center md:text-left">
-            <span className="text-[14px] font-normal text-[#ccf2ff] uppercase tracking-[1px] block">
+            <span className="text-body-regular font-normal text-[#ccf2ff] uppercase tracking-[1px] block">
               {t.eyebrow}
             </span>
-            <h2 className="text-[32px] sm:text-[36px] xl:text-[38px] font-bold text-white leading-[46px] tracking-[-0.6px]">
+            <h2 className="text-hero-title font-bold text-white leading-[46px] tracking-[-0.6px]">
               {t.title}
             </h2>
-            <p className="text-[15px] sm:text-[16px] font-normal text-[#e8f7ff]/90 leading-[24px] max-w-md mx-auto md:mx-0">
+            <p className="text-body-regular font-normal text-[#e8f7ff]/90 leading-[24px] max-w-md mx-auto md:mx-0">
               {t.desc}
             </p>
 
@@ -156,10 +156,10 @@ export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
                   className="flex items-center justify-between bg-[#f4f8fc] hover:bg-white text-[#212529] px-4 py-3.5 rounded-[2px] border border-blue-100 shadow-sm transition-all duration-200 group"
                 >
                   <div className="flex items-center gap-3.5">
-                    <div className="w-10 h-10 rounded-full border border-[#9ed0ff] bg-[#e6f2ff] text-[#1769e2] font-bold text-[15px] flex items-center justify-center shrink-0">
+                    <div className="w-10 h-10 rounded-full border border-[#9ed0ff] bg-[#e6f2ff] text-[#1769e2] font-bold text-body-regular flex items-center justify-center shrink-0">
                       {card.num}
                     </div>
-                    <span className="text-[15px] font-medium text-[#212529] leading-snug">
+                    <span className="text-body-regular font-medium text-[#212529] leading-snug">
                       {card.title}
                     </span>
                   </div>
@@ -175,7 +175,7 @@ export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
           <div className="hidden md:flex md:col-span-1 lg:col-span-4 lg:col-start-5 lg:row-start-1 lg:row-span-2 relative items-center justify-center min-h-[380px] lg:min-h-[460px] xl:min-h-[580px]">
             {/* Status Badge - Shifted UP & Luminous Bright Glow */}
             <div className="absolute -top-5 left-0 sm:-top-7 sm:left-0 z-20 flex items-center gap-2">
-              <span className="inline-flex items-center gap-2 bg-[#0a5cff] text-white border border-[#a1edff] text-[11px] font-bold px-3.5 py-1 rounded-full uppercase tracking-wider shadow-[0_0_18px_rgba(10,92,255,0.7)] backdrop-blur-md">
+              <span className="inline-flex items-center gap-2 bg-[#0a5cff] text-white border border-[#a1edff] text-caption-responsive font-bold px-3.5 py-1 rounded-full uppercase tracking-wider shadow-[0_0_18px_rgba(10,92,255,0.7)] backdrop-blur-md">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#00ff88] shadow-[0_0_10px_#00ff88] animate-pulse" />
                 <span className="drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">{t.networkOnline}</span>
               </span>
@@ -284,9 +284,9 @@ export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
                 <MapPin className="h-6 w-6" />
               </div>
               <div className="flex flex-col text-left justify-center">
-                <span className="text-[14px] font-normal text-[#385782] leading-[20px] transition-colors duration-200 group-hover:text-[#1769E2]">{t.distanceTitle}</span>
-                <span className="text-[24px] font-bold text-[#094aad] leading-[30px] transition-colors duration-200 group-hover:text-[#1769E2]">{t.distanceVal}</span>
-                <span className="text-[14px] font-normal text-[#4d6b96] leading-[20px]">{t.distanceSub}</span>
+                <span className="text-body-regular font-normal text-[#385782] leading-[20px] transition-colors duration-200 group-hover:text-[#1769E2]">{t.distanceTitle}</span>
+                <span className="text-section-title font-bold text-[#094aad] leading-[30px] transition-colors duration-200 group-hover:text-[#1769E2]">{t.distanceVal}</span>
+                <span className="text-body-regular font-normal text-[#4d6b96] leading-[20px]">{t.distanceSub}</span>
               </div>
             </div>
 
@@ -296,9 +296,9 @@ export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
                 <Truck className="h-6 w-6" />
               </div>
               <div className="flex flex-col text-left justify-center">
-                <span className="text-[14px] font-normal text-[#385782] leading-[20px] transition-colors duration-200 group-hover:text-[#1769E2]">{t.slaTitle}</span>
-                <span className="text-[24px] font-bold text-[#094aad] leading-[30px] transition-colors duration-200 group-hover:text-[#1769E2]">{t.slaVal}</span>
-                <span className="text-[14px] font-normal text-[#4d6b96] leading-[20px]">{t.slaSub}</span>
+                <span className="text-body-regular font-normal text-[#385782] leading-[20px] transition-colors duration-200 group-hover:text-[#1769E2]">{t.slaTitle}</span>
+                <span className="text-section-title font-bold text-[#094aad] leading-[30px] transition-colors duration-200 group-hover:text-[#1769E2]">{t.slaVal}</span>
+                <span className="text-body-regular font-normal text-[#4d6b96] leading-[20px]">{t.slaSub}</span>
               </div>
             </div>
 
@@ -308,9 +308,9 @@ export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
                 <Users className="h-6 w-6" />
               </div>
               <div className="flex flex-col text-left justify-center">
-                <span className="text-[14px] font-normal text-[#385782] leading-[20px] transition-colors duration-200 group-hover:text-[#1769E2]">{t.partnerTitle}</span>
-                <span className="text-[24px] font-bold text-[#094aad] leading-[30px] transition-colors duration-200 group-hover:text-[#1769E2]">{t.partnerVal}</span>
-                <span className="text-[14px] font-normal text-[#4d6b96] leading-[20px]">{t.partnerSub}</span>
+                <span className="text-body-regular font-normal text-[#385782] leading-[20px] transition-colors duration-200 group-hover:text-[#1769E2]">{t.partnerTitle}</span>
+                <span className="text-section-title font-bold text-[#094aad] leading-[30px] transition-colors duration-200 group-hover:text-[#1769E2]">{t.partnerVal}</span>
+                <span className="text-body-regular font-normal text-[#4d6b96] leading-[20px]">{t.partnerSub}</span>
               </div>
             </div>
           </div>
@@ -336,16 +336,16 @@ export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
                       }`}
                   >
                     {/* Badge Number */}
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[2px] bg-[#0d63e5] border border-[#abf0ff]/60 text-white font-bold text-[20px] shadow-sm">
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[2px] bg-[#0d63e5] border border-[#abf0ff]/60 text-white font-bold text-card-title shadow-sm">
                       {cluster.num}
                     </div>
 
                     {/* Middle Text */}
                     <div className="flex-1 text-left min-w-0">
-                      <h4 className="text-[16px] font-semibold text-white leading-[22px] truncate">
+                      <h4 className="text-body-regular font-semibold text-white leading-[22px] truncate">
                         {cluster.name}
                       </h4>
-                      <p className="text-[13px] text-[#d9f0ff]/80 font-normal leading-[18px] truncate mt-0.5">
+                      <p className="text-caption-responsive text-[#d9f0ff]/80 font-normal leading-[18px] truncate mt-0.5">
                         {cluster.subName}
                       </p>
                     </div>
@@ -362,7 +362,7 @@ export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
 
         {/* Section Footer Signature */}
         <div className="text-left md:text-right pt-6 mt-2 border-t border-white/10">
-          <span className="text-[11px] font-semibold text-[#8ce8ff]/80 uppercase tracking-[1.5px] block">
+          <span className="text-caption-responsive font-semibold text-[#8ce8ff]/80 uppercase tracking-[1.5px] block">
             ULINK INDUSTRIAL NETWORK // LIVE DATA • 04 HUBS
           </span>
         </div>

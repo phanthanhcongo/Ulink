@@ -84,12 +84,12 @@ export default function HubHeroSection({ locale }: HubHeroSectionProps) {
         {/* Left-aligned Info Card */}
         <div className="max-w-[760px] text-left mt-auto mb-auto">
           {/* Title */}
-          <h1 className="text-[28px] sm:text-[36px] md:text-[40px] lg:text-[48px] xl:text-[56px] font-extrabold text-white leading-[1.2] tracking-tight">
+          <h1 className="text-section-title md:text-[40px] lg:text-[48px] xl:text-[56px] font-extrabold text-white leading-[1.2] tracking-tight">
             {t.title}
           </h1>
 
           {/* Subtitle */}
-          <p className="mt-5 text-[14px] sm:text-[15px] lg:text-[16px] xl:text-[18px] font-medium leading-relaxed text-slate-200/90">
+          <p className="mt-5 text-body-regular font-medium leading-relaxed text-slate-200/90">
             {t.subtitle}
           </p>
 
@@ -97,14 +97,14 @@ export default function HubHeroSection({ locale }: HubHeroSectionProps) {
           <div className="mt-8 flex flex-row items-center gap-3 sm:gap-4 w-full sm:w-auto max-w-[460px]">
             <Link
               href="/quick-order"
-              className="flex-1 sm:flex-initial bg-brand hover:bg-brand-strong text-white px-4 sm:px-6 py-3 sm:py-3.5 rounded-[3px] font-semibold text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] leading-relaxed flex items-center justify-center sm:min-w-[180px] lg:min-w-[210px] gap-1.5 sm:gap-2 transition-all group whitespace-nowrap"
+              className="flex-1 sm:flex-initial bg-brand hover:bg-brand-strong text-white px-4 sm:px-6 py-3 sm:py-3.5 rounded-[3px] font-semibold text-caption-responsive leading-relaxed flex items-center justify-center sm:min-w-[180px] lg:min-w-[210px] gap-1.5 sm:gap-2 transition-all group whitespace-nowrap"
             >
               <span>{t.orderNow}</span>
               <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5" />
             </Link>
             <Link
               href="/contact"
-              className="flex-1 sm:flex-initial bg-white hover:bg-slate-50 text-slate-900 px-4 sm:px-6 py-3 sm:py-3.5 rounded-[3px] font-semibold text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] leading-relaxed flex items-center justify-center sm:min-w-[180px] lg:min-w-[210px] gap-1.5 sm:gap-2 border border-slate-200 transition-all group whitespace-nowrap"
+              className="flex-1 sm:flex-initial bg-white hover:bg-slate-50 text-slate-900 px-4 sm:px-6 py-3 sm:py-3.5 rounded-[3px] font-semibold text-caption-responsive leading-relaxed flex items-center justify-center sm:min-w-[180px] lg:min-w-[210px] gap-1.5 sm:gap-2 border border-slate-200 transition-all group whitespace-nowrap"
             >
               <span>{t.contact}</span>
               <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5" />
@@ -118,7 +118,7 @@ export default function HubHeroSection({ locale }: HubHeroSectionProps) {
         <div className="page-container">
           <div className="w-full bg-white rounded-[3px] p-6 sm:p-8 shadow-2xl border border-slate-100/60">
             <div className="flex flex-col gap-4">
-              <span className="text-[16px] sm:text-[18px] md:text-[20px] lg:text-[22px] xl:text-[24px] font-bold text-slate-900 leading-snug text-center md:text-left">
+              <span className="text-body-regular font-bold text-slate-900 leading-snug text-center md:text-left">
                 {t.trackOrder}
               </span>
               <form onSubmit={handleSearchTracking} className="flex flex-col sm:flex-row items-stretch gap-2.5 sm:gap-0 w-full max-w-[700px]">
@@ -129,12 +129,12 @@ export default function HubHeroSection({ locale }: HubHeroSectionProps) {
                     value={trackingCode}
                     onChange={(e) => setTrackingCode(e.target.value)}
                     placeholder={t.placeholder}
-                    className="w-full bg-white border border-slate-300 rounded-[3px] sm:rounded-r-none sm:border-r-0 pl-11 pr-4 py-3 text-[14px] sm:text-[15px] text-slate-800 placeholder-slate-400 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand focus:z-10 transition-colors h-[48px]"
+                    className="w-full bg-white border border-slate-300 rounded-[3px] sm:rounded-r-none sm:border-r-0 pl-11 pr-4 py-3 text-body-regular text-slate-800 placeholder-slate-400 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand focus:z-10 transition-colors h-[48px]"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="bg-brand hover:bg-brand-strong text-white font-bold text-[14px] sm:text-[15px] px-8 py-3 rounded-[3px] sm:rounded-l-none flex items-center justify-center transition-colors shrink-0 h-[48px]"
+                  className="bg-brand hover:bg-brand-strong text-white font-bold text-body-regular px-8 py-3 rounded-[3px] sm:rounded-l-none flex items-center justify-center transition-colors shrink-0 h-[48px]"
                 >
                   {t.search}
                 </button>

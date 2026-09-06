@@ -174,7 +174,7 @@ export default function HubRfqModal({ hubId, hubName, open, onClose, labels }: H
         <div className="sticky top-0 z-10 border-b bg-white/95 dark:bg-card/95 backdrop-blur px-6 py-5 rounded-[3px]">
           <div className="flex items-start justify-between gap-4">
             <div>
-              <h2 className="text-xl font-bold tracking-tight">{labels.title}</h2>
+              <h2 className="text-card-title font-bold tracking-tight">{labels.title}</h2>
             </div>
             <button
               type="button"
@@ -187,8 +187,8 @@ export default function HubRfqModal({ hubId, hubName, open, onClose, labels }: H
           </div>
 
           {/* Hub pill */}
-          <div className="mt-3 inline-flex items-center gap-2 rounded-full bg-primary/5 border border-primary/20 px-3 py-1.5 text-sm">
-            <span className="text-xs text-muted-foreground">{labels.hubLabel}:</span>
+          <div className="mt-3 inline-flex items-center gap-2 rounded-full bg-primary/5 border border-primary/20 px-3 py-1.5 text-body-regular">
+            <span className="text-caption-responsive text-muted-foreground">{labels.hubLabel}:</span>
             <span className="font-medium text-primary">{hubName}</span>
           </div>
         </div>
@@ -200,12 +200,12 @@ export default function HubRfqModal({ hubId, hubName, open, onClose, labels }: H
               <CheckCircle2 className="h-12 w-12 text-green-500" />
             </div>
             <div>
-              <p className="text-xl font-semibold text-green-700">{labels.success}</p>
+              <p className="text-card-title font-semibold text-green-700">{labels.success}</p>
             </div>
             <button
               type="button"
               onClick={handleClose}
-              className="mt-2 rounded-[3px] bg-primary px-8 py-2.5 text-sm font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
+              className="mt-2 rounded-[3px] bg-primary px-8 py-2.5 text-body-regular font-medium text-primary-foreground hover:bg-primary/90 transition-colors"
             >
               Đóng
             </button>
@@ -220,7 +220,7 @@ export default function HubRfqModal({ hubId, hubName, open, onClose, labels }: H
                 value={contactName}
                 onChange={(e) => setContactName(e.target.value)}
                 placeholder="Nguyễn Văn A"
-                className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
+                className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-body-regular text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
               />
             </Field>
 
@@ -232,7 +232,7 @@ export default function HubRfqModal({ hubId, hubName, open, onClose, labels }: H
                   value={company}
                   onChange={(e) => setCompany(e.target.value)}
                   placeholder="Công ty TNHH ABC"
-                  className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
+                  className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-body-regular text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
                 />
               </Field>
 
@@ -244,7 +244,7 @@ export default function HubRfqModal({ hubId, hubName, open, onClose, labels }: H
                   value={phone}
                   onChange={(e) => setPhone(e.target.value.replace(/\D/g, ''))}
                   placeholder="0901234567"
-                  className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
+                  className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-body-regular text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
                 />
               </Field>
             </div>
@@ -256,7 +256,7 @@ export default function HubRfqModal({ hubId, hubName, open, onClose, labels }: H
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="email@congty.com"
-                className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
+                className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-body-regular text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors"
               />
             </Field>
 
@@ -267,14 +267,14 @@ export default function HubRfqModal({ hubId, hubName, open, onClose, labels }: H
                 onChange={(e) => setMessage(e.target.value)}
                 rows={3}
                 placeholder={labels.notePlaceholder}
-                className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-sm text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors resize-y"
+                className="w-full rounded-[3px] border border-gray-300 bg-white px-3 py-2.5 text-body-regular text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:outline-none transition-colors resize-y"
               />
             </Field>
 
             {/* Form-level error */}
             {errors._form && (
               <div className="rounded-[3px] bg-red-50 border border-red-200 px-4 py-3">
-                <p className="text-sm text-red-700">{errors._form}</p>
+                <p className="text-body-regular text-red-700">{errors._form}</p>
               </div>
             )}
 
@@ -283,7 +283,7 @@ export default function HubRfqModal({ hubId, hubName, open, onClose, labels }: H
               <button
                 type="submit"
                 disabled={submitting}
-                className="w-full flex items-center justify-center gap-2 rounded-[3px] bg-primary px-4 py-3 text-sm font-semibold text-primary-foreground hover:bg-primary/90 disabled:opacity-50 transition-colors"
+                className="w-full flex items-center justify-center gap-2 rounded-[3px] bg-primary px-4 py-3 text-body-regular font-semibold text-primary-foreground hover:bg-primary/90 disabled:opacity-50 transition-colors"
               >
                 {submitting ? (
                   <>
@@ -318,12 +318,12 @@ function Field({
 }) {
   return (
     <div>
-      <label className="block text-xs font-medium text-muted-foreground uppercase tracking-wide mb-1.5">
+      <label className="block text-caption-responsive font-medium text-muted-foreground uppercase tracking-wide mb-1.5">
         {label}
         {required && <span className="text-red-400 ml-0.5">*</span>}
       </label>
       {children}
-      {error && <p className="mt-1.5 text-xs text-red-600">{error}</p>}
+      {error && <p className="mt-1.5 text-caption-responsive text-red-600">{error}</p>}
     </div>
   );
 }

@@ -147,10 +147,10 @@ export function ResourcesClient({
         <div className="absolute inset-0 flex items-center">
           <div className="page-container text-left text-white">
             <div className="inline-block bg-slate-950/30 backdrop-blur-xs p-6 sm:p-8 border border-white/10 max-w-2xl rounded-[3px] shadow-2xl">
-              <h1 className="text-3xl sm:text-4xl lg:text-[38px] xl:text-[44px] font-extrabold tracking-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]">
+              <h1 className="text-section-title font-extrabold tracking-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]">
                 {L.resources[locale]}
               </h1>
-              <p className="mt-4 text-sm sm:text-base md:text-lg text-slate-100 leading-relaxed font-semibold drop-shadow-[0_1.5px_4px_rgba(0,0,0,0.4)]">
+              <p className="mt-4 text-body-regular text-slate-100 leading-relaxed font-semibold drop-shadow-[0_1.5px_4px_rgba(0,0,0,0.4)]">
                 {L.bannerDesc[locale]}
               </p>
             </div>
@@ -168,7 +168,7 @@ export function ResourcesClient({
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
                   className={cn(
-                    'px-4 py-2 text-xs sm:text-sm font-semibold rounded-full transition-all whitespace-nowrap cursor-pointer',
+                    'px-4 py-2 text-caption-responsive  font-semibold rounded-full transition-all whitespace-nowrap cursor-pointer',
                     isActive
                       ? 'bg-[#0E2142] text-white shadow-sm'
                       : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 hover:border-slate-300 hover:text-slate-900'
@@ -187,7 +187,7 @@ export function ResourcesClient({
               placeholder={L.searchPlaceholder[locale]}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full h-10 pl-11 pr-10 border border-slate-200 bg-white text-xs sm:text-sm outline-none focus:border-slate-400 focus:ring-1 focus:ring-slate-400 rounded-full placeholder:text-slate-400 text-slate-800"
+              className="w-full h-10 pl-11 pr-10 border border-slate-200 bg-white text-caption-responsive outline-none focus:border-slate-400 focus:ring-1 focus:ring-slate-400 rounded-full placeholder:text-slate-400 text-slate-800"
             />
             {searchQuery && (
               <button
@@ -209,8 +209,8 @@ export function ResourcesClient({
               className="flex flex-col items-center justify-center py-20 text-center border-2 border-dashed border-slate-200 p-6 bg-card rounded-[3px]"
             >
               <FileText className="h-12 w-12 text-slate-400 mb-4 animate-pulse" />
-              <h3 className="text-base font-bold text-slate-800">{L.noResults[locale]}</h3>
-              <p className="text-xs sm:text-sm text-slate-500 max-w-sm mt-1">
+              <h3 className="text-body-regular font-bold text-slate-800">{L.noResults[locale]}</h3>
+              <p className="text-caption-responsive text-slate-500 max-w-sm mt-1">
                 {L.noResultsDesc[locale]}
               </p>
             </motion.div>
@@ -234,7 +234,7 @@ export function ResourcesClient({
             <button
               onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
               disabled={currentPage === 1}
-              className="h-9 px-4 rounded-[3px] border border-slate-200 text-xs font-semibold hover:bg-slate-50 disabled:opacity-50 transition-colors cursor-pointer"
+              className="h-9 px-4 rounded-[3px] border border-slate-200 text-caption-responsive font-semibold hover:bg-slate-50 disabled:opacity-50 transition-colors cursor-pointer"
             >
               {L.prev[locale]}
             </button>
@@ -243,7 +243,7 @@ export function ResourcesClient({
                 key={index}
                 onClick={() => setCurrentPage(index + 1)}
                 className={cn(
-                  'h-9 w-9 rounded-[3px] text-xs font-semibold transition-colors cursor-pointer',
+                  'h-9 w-9 rounded-[3px] text-caption-responsive font-semibold transition-colors cursor-pointer',
                   currentPage === index + 1
                     ? 'bg-slate-900 text-white'
                     : 'border border-slate-200 hover:bg-slate-50 text-slate-600'
@@ -255,7 +255,7 @@ export function ResourcesClient({
             <button
               onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
               disabled={currentPage === totalPages}
-              className="h-9 px-4 rounded-[3px] border border-slate-200 text-xs font-semibold hover:bg-slate-50 disabled:opacity-50 transition-colors cursor-pointer"
+              className="h-9 px-4 rounded-[3px] border border-slate-200 text-caption-responsive font-semibold hover:bg-slate-50 disabled:opacity-50 transition-colors cursor-pointer"
             >
               {L.next[locale]}
             </button>
@@ -264,7 +264,7 @@ export function ResourcesClient({
 
         <div className="mt-20 pt-16 border-t border-slate-100">
           <div className="flex justify-between items-end mb-8">
-            <h2 className="text-xl sm:text-2xl font-bold text-slate-900">{L.mostViewed[locale]}</h2>
+            <h2 className="text-card-title font-bold text-slate-900">{L.mostViewed[locale]}</h2>
             <button
               onClick={() => {
                 setActiveTab('all');
@@ -273,7 +273,7 @@ export function ResourcesClient({
                   element.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
-              className="text-xs sm:text-sm font-semibold text-blue-600 hover:text-blue-700 flex items-center gap-1.5 transition-colors cursor-pointer"
+              className="text-caption-responsive font-semibold text-blue-600 hover:text-blue-700 flex items-center gap-1.5 transition-colors cursor-pointer"
             >
               {L.seeAll[locale]}
               <ArrowRight className="h-4 w-4" />
@@ -289,12 +289,12 @@ export function ResourcesClient({
 
         <div className="mt-20 pt-16 border-t border-slate-100">
           <div className="flex justify-between items-end mb-8">
-            <h2 className="text-xl sm:text-2xl font-bold text-slate-900">
+            <h2 className="text-card-title font-bold text-slate-900">
               {L.upcomingEvents[locale]}
             </h2>
             <Link
               href="/resources/events"
-              className="text-xs sm:text-sm font-semibold text-blue-600 hover:text-blue-700 flex items-center gap-1.5 transition-colors"
+              className="text-caption-responsive font-semibold text-blue-600 hover:text-blue-700 flex items-center gap-1.5 transition-colors"
             >
               {L.seeAll[locale]}
               <ArrowRight className="h-4 w-4" />

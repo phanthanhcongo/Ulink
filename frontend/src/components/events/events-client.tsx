@@ -169,18 +169,18 @@ export function EventsClient() {
         <div className="absolute inset-0 flex items-center">
           <div className="page-container text-left">
             <div className="bg-[#0000008C] p-8 sm:p-10 md:p-12 max-w-2xl rounded-[3px] shadow-2xl border border-white/20 backdrop-blur-xs">
-              <h1 className="text-3xl sm:text-4xl lg:text-[42px] font-extrabold tracking-tight text-white leading-tight">
+              <h1 className="text-section-title font-extrabold tracking-tight text-white leading-tight">
                 {t.heroTitle}
-                <span className="block mt-2 text-2xl sm:text-3xl lg:text-[38px] font-bold text-white">
+                <span className="block mt-2 text-section-title font-bold text-white">
                   {t.heroSubTitle}
                 </span>
               </h1>
-              <p className="mt-6 text-sm sm:text-base text-slate-200 leading-relaxed font-normal mb-8">
+              <p className="mt-6 text-body-regular text-slate-200 leading-relaxed font-normal mb-8">
                 {t.heroDesc}
               </p>
               <button
                 onClick={handleScrollToEvents}
-                className="inline-flex items-center justify-center px-8 py-3.5 bg-[#1769E2] hover:bg-[#1257BD] text-white font-bold text-sm sm:text-base rounded-[3px] transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer transform hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center px-8 py-3.5 bg-[#1769E2] hover:bg-[#1257BD] text-white font-bold text-body-regular rounded-[3px] transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer transform hover:-translate-y-0.5"
               >
                 {t.heroCta}
               </button>
@@ -218,7 +218,7 @@ export function EventsClient() {
                     className="object-cover"
                   />
                   {/* Overlay Date Badge */}
-                  <div className="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold px-4 py-2 rounded-[3px] shadow-md z-10">
+                  <div className="absolute top-4 left-4 bg-blue-600 text-white text-caption-responsive font-bold px-4 py-2 rounded-[3px] shadow-md z-10">
                     {event.date}
                   </div>
                 </div>
@@ -227,12 +227,12 @@ export function EventsClient() {
                 <div className="p-8 sm:p-10 flex-1 flex flex-col justify-between">
                   <div>
                     {/* Badge Category */}
-                    <span className="inline-block text-xs font-bold text-blue-600 uppercase tracking-widest mb-3">
+                    <span className="inline-block text-caption-responsive font-bold text-blue-600 uppercase tracking-widest mb-3">
                       {badgeText}
                     </span>
 
                     {/* Title */}
-                    <h3 className="text-xl sm:text-2xl font-bold text-[#0E2142] group-hover:text-blue-600 transition-colors duration-300 leading-snug">
+                    <h3 className="text-card-title font-bold text-[#0E2142] group-hover:text-blue-600 transition-colors duration-300 leading-snug">
                       <Link href={detailHref} className="hover:underline">
                         {titleText}
                       </Link>
@@ -240,33 +240,33 @@ export function EventsClient() {
 
                     {/* Description */}
                     {descText && (
-                      <p className="mt-4 text-sm text-slate-500 font-normal leading-relaxed line-clamp-3">
+                      <p className="mt-4 text-body-regular text-slate-500 font-normal leading-relaxed line-clamp-3">
                         {descText}
                       </p>
                     )}
 
                     {/* Metadata details */}
                     <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-slate-100 pt-6">
-                      <div className="flex items-center gap-3 text-xs sm:text-sm text-slate-600">
+                      <div className="flex items-center gap-3 text-caption-responsive text-slate-600">
                         <Calendar className="h-4 w-4 text-blue-600 shrink-0" />
                         <span className="font-semibold text-slate-700">
                           {event.date}
                         </span>
                       </div>
-                      <div className="flex items-center gap-3 text-xs sm:text-sm text-slate-600">
+                      <div className="flex items-center gap-3 text-caption-responsive text-slate-600">
                         <Clock className="h-4 w-4 text-blue-600 shrink-0" />
                         <span className="font-semibold text-slate-700">
                           {event.time}
                         </span>
                       </div>
-                      <div className="flex items-center gap-3 text-xs sm:text-sm text-slate-600 sm:col-span-2">
+                      <div className="flex items-center gap-3 text-caption-responsive text-slate-600 sm:col-span-2">
                         <MapPin className="h-4 w-4 text-blue-600 shrink-0" />
                         <span className="font-semibold text-slate-700">
                           {locationText}
                         </span>
                       </div>
                       {priceText && (
-                        <div className="flex items-center gap-3 text-xs sm:text-sm text-slate-600 sm:col-span-2">
+                        <div className="flex items-center gap-3 text-caption-responsive text-slate-600 sm:col-span-2">
                           <Ticket className="h-4 w-4 text-blue-600 shrink-0" />
                           <span className="font-bold text-blue-600">
                             {priceText}
@@ -280,7 +280,7 @@ export function EventsClient() {
                   <div className="mt-8">
                     <Link
                       href={detailHref}
-                      className="inline-flex items-center justify-center px-6 py-3 border border-[#1769E2] hover:bg-[#EBF3FE] text-[#1769E2] font-bold rounded-[3px] text-xs sm:text-sm transition-all duration-300 shadow-xs group-hover:bg-[#1769E2] group-hover:text-white"
+                      className="inline-flex items-center justify-center px-6 py-3 border border-[#1769E2] hover:bg-[#EBF3FE] text-[#1769E2] font-bold rounded-[3px] text-caption-responsive transition-all duration-300 shadow-xs group-hover:bg-[#1769E2] group-hover:text-white"
                     >
                       {t.registerBtn}
                       <ArrowRight className="ml-2 h-4 w-4" />
@@ -298,7 +298,7 @@ export function EventsClient() {
             <button
               onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
               disabled={currentPage === 1}
-              className="h-10 px-4 rounded-[3px] border border-slate-200 text-xs font-semibold hover:bg-slate-50 disabled:opacity-40 transition-all cursor-pointer flex items-center gap-1 text-slate-700 bg-white"
+              className="h-10 px-4 rounded-[3px] border border-slate-200 text-caption-responsive font-semibold hover:bg-slate-50 disabled:opacity-40 transition-all cursor-pointer flex items-center gap-1 text-slate-700 bg-white"
             >
               <ArrowLeft className="h-3.5 w-3.5" />
               {t.prev}
@@ -308,7 +308,7 @@ export function EventsClient() {
                 key={index}
                 onClick={() => setCurrentPage(index + 1)}
                 className={cn(
-                  'h-10 w-10 rounded-[3px] text-xs font-bold transition-all cursor-pointer border',
+                  'h-10 w-10 rounded-[3px] text-caption-responsive font-bold transition-all cursor-pointer border',
                   currentPage === index + 1
                     ? 'bg-[#1769E2] border-[#1769E2] text-white shadow-md'
                     : 'border-slate-200 hover:bg-slate-50 text-slate-600 bg-white'
@@ -320,7 +320,7 @@ export function EventsClient() {
             <button
               onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
               disabled={currentPage === totalPages}
-              className="h-10 px-4 rounded-[3px] border border-slate-200 text-xs font-semibold hover:bg-slate-50 disabled:opacity-40 transition-all cursor-pointer flex items-center gap-1 text-slate-700 bg-white"
+              className="h-10 px-4 rounded-[3px] border border-slate-200 text-caption-responsive font-semibold hover:bg-slate-50 disabled:opacity-40 transition-all cursor-pointer flex items-center gap-1 text-slate-700 bg-white"
             >
               {t.next}
               <ArrowRight className="h-3.5 w-3.5" />
