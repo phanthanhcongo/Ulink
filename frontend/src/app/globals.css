@@ -94,7 +94,7 @@
   }
 
   .ui-heading {
-    @apply text-primary font-extrabold tracking-tight;
+    @apply text-primary font-bold tracking-tight;
   }
 
   .ui-subheading {
@@ -150,11 +150,11 @@
   }
 
   .admin-page-eyebrow {
-    @apply text-caption-responsive uppercase font-extrabold text-slate-400;
+    @apply text-caption-responsive uppercase font-bold text-slate-400;
   }
 
   .admin-page-title {
-    @apply text-section-title mt-1 font-extrabold text-primary;
+    @apply text-section-title mt-1 font-bold text-primary;
   }
 
   .admin-page-lead {
@@ -166,11 +166,11 @@
   }
 
   .text-hero-title {
-    @apply text-[28px] font-extrabold leading-tight tracking-tight sm:text-[36px] lg:text-[44px] lg:leading-[52px] xl:text-[56px] xl:leading-[64px];
+    @apply text-[28px] font-bold leading-tight tracking-tight sm:text-[36px] lg:text-[44px] lg:leading-[52px] xl:text-[48px] xl:leading-[56px];
   }
 
   .text-section-title {
-    @apply text-[16px] font-semibold leading-tight tracking-tight min-[375px]:text-[18px] sm:text-[24px] sm:leading-[32px] lg:text-[28px] lg:leading-[36px] 2xl:text-[32px] 2xl:leading-[40px];
+    @apply text-[16px] font-semibold leading-tight tracking-tight min-[375px]:text-[18px] sm:text-[24px] sm:leading-[32px] lg:text-[28px] lg:leading-[36px];
   }
 
   .text-eyebrow {
@@ -198,7 +198,7 @@
   }
 
   .text-stat-value {
-    @apply text-[22px] font-extrabold tracking-tight sm:text-[26px] lg:text-[28px] xl:text-[32px];
+    @apply text-[20px] font-semibold tracking-tight sm:text-[24px] lg:text-[26px] xl:text-[28px];
   }
 
   .form-label-responsive {
