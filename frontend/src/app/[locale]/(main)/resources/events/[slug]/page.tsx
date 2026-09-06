@@ -16,7 +16,7 @@ const SPONSOR_LOGOS: Record<string, React.ReactNode> = {
         <path d="M12 6a6 6 0 0 1 6 6c0 1.5-.75 2.5-1.5 3s-1.5 1-2.5 1-2-.5-2.5-1.5S11 12 11 11" />
         <circle cx="12" cy="12" r="1" />
       </svg>
-      <span className="font-sans font-extrabold text-body-regular tracking-tight uppercase">SHELLS</span>
+      <span className="font-sans font-bold text-body-regular tracking-tight uppercase">SHELLS</span>
     </div>
   ),
   SmartFinder: (
@@ -123,7 +123,7 @@ export default async function EventDetailPage({ params }: Props) {
                 {event.sponsors.map((sponsor) => (
                   <div key={sponsor}>
                     {SPONSOR_LOGOS[sponsor] || (
-                      <span className="text-caption-responsive font-extrabold tracking-tight text-slate-400 uppercase">
+                      <span className="text-caption-responsive font-bold tracking-tight text-slate-400 uppercase">
                         {sponsor}
                       </span>
                     )}
@@ -291,7 +291,7 @@ export default async function EventDetailPage({ params }: Props) {
                       className="object-contain p-2"
                     />
                   ) : (
-                    <div className="font-extrabold text-blue-600">{event.organizer.name[0]}</div>
+                    <div className="font-bold text-blue-600">{event.organizer.name[0]}</div>
                   )}
                 </div>
                 <div>

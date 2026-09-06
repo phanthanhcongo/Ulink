@@ -48,7 +48,7 @@ export default async function MarketNews({ locale }: MarketNewsProps) {
         <span className="text-caption-responsive font-bold uppercase tracking-wider text-slate-400">
           {t('marketNews.sectionTitle')}
         </span>
-        <h2 className="text-section-title font-extrabold text-primary tracking-tight mt-2.5">
+        <h2 className="text-section-title font-bold text-primary tracking-tight mt-2.5">
           {t('marketNews.sectionSubtitle')}
         </h2>
       </div>
@@ -76,7 +76,7 @@ export default async function MarketNews({ locale }: MarketNewsProps) {
               <span className="text-caption-responsive font-bold text-slate-400 uppercase tracking-wider block mb-2">
                 {item.category}
               </span>
-              <h3 className="text-body-regular font-extrabold text-primary leading-snug group-hover:text-blue-600 transition-colors mb-3">
+              <h3 className="text-body-regular font-bold text-primary leading-snug group-hover:text-blue-600 transition-colors mb-3">
                 {item.title}
               </h3>
               <p className="text-caption-responsive text-slate-500 leading-relaxed font-medium mb-6">

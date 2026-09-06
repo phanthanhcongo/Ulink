@@ -25,7 +25,7 @@ export default async function CustomerSegments({ locale }: CustomerSegmentsProps
           {/* Blue decorative bar */}
           <div className="w-1.5 h-7 bg-blue-600 rounded-full shrink-0 mt-1" />
           <div className="space-y-1">
-            <h2 className="text-section-title font-extrabold text-primary tracking-tight">
+            <h2 className="text-section-title font-bold text-primary tracking-tight">
               {t('customerSegments.sectionTitle')}
             </h2>
             <p className="text-caption-responsive leading-relaxed text-slate-500 font-medium">

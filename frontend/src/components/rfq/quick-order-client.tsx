@@ -493,7 +493,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
 
         {/* Heading & Subtext */}
         <div className="space-y-4 max-w-2xl mx-auto text-center">
-          <h2 className="text-section-title font-extrabold text-primary tracking-tight">
+          <h2 className="text-section-title font-bold text-primary tracking-tight">
             Yêu cầu báo giá đã được gửi thành công!
           </h2>
           <p className="text-caption-responsive text-slate-500 font-medium leading-relaxed">
@@ -506,19 +506,19 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
 
         {/* Card: Chi tiết yêu cầu */}
         <div className="bg-white border border-slate-200/80 rounded-[3px] p-6 sm:p-8 w-full max-w-[540px] mx-auto text-left shadow-sm space-y-6">
-          <h3 className="text-body-regular font-extrabold text-primary border-b border-slate-100 pb-3 uppercase tracking-wider">
+          <h3 className="text-body-regular font-bold text-primary border-b border-slate-100 pb-3 uppercase tracking-wider">
             Chi tiết yêu cầu của Quý khách
           </h3>
 
           <div className="divide-y divide-slate-100 text-caption-responsive">
             <div className="flex justify-between items-center py-3">
               <span className="text-slate-400 font-medium">Mã số yêu cầu</span>
-              <span className="font-extrabold text-slate-850 font-mono">{submittedRfq.code}</span>
+              <span className="font-bold text-slate-850 font-mono">{submittedRfq.code}</span>
             </div>
             <div className="flex justify-between items-center py-3">
               <span className="text-slate-400 font-medium">Doanh nghiệp</span>
               <span
-                className="font-extrabold text-slate-850 text-right max-w-[240px] truncate"
+                className="font-bold text-slate-850 text-right max-w-[240px] truncate"
                 title={submittedRfq.company}
               >
                 {submittedRfq.company}
@@ -526,12 +526,12 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
             </div>
             <div className="flex justify-between items-center py-3">
               <span className="text-slate-400 font-medium">Ngành nghề</span>
-              <span className="font-extrabold text-slate-850">{submittedRfq.industry}</span>
+              <span className="font-bold text-slate-850">{submittedRfq.industry}</span>
             </div>
             <div className="flex justify-between items-center py-3">
               <span className="text-slate-400 font-medium">Sản phẩm quan tâm</span>
               <span
-                className="font-extrabold text-slate-850 text-right max-w-[285px] truncate"
+                className="font-bold text-slate-850 text-right max-w-[285px] truncate"
                 title={submittedRfq.products}
               >
                 {submittedRfq.products}
@@ -539,7 +539,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
             </div>
             <div className="flex justify-between items-center py-3">
               <span className="text-slate-400 font-medium">Thời gian tiếp nhận</span>
-              <span className="font-extrabold text-slate-850">{submittedRfq.time}</span>
+              <span className="font-bold text-slate-850">{submittedRfq.time}</span>
             </div>
             <div className="flex justify-between items-center py-3">
               <span className="text-slate-400 font-medium">Trạng thái</span>
@@ -617,7 +617,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                     </div>
                     <div className="pt-3 border-t border-slate-50 mt-3 flex items-center justify-between">
                       <span className="text-caption-responsive text-slate-400 font-bold uppercase">{unit}</span>
-                      <span className="text-caption-responsive font-extrabold text-blue-600 group-hover:underline">
+                      <span className="text-caption-responsive font-bold text-blue-600 group-hover:underline">
                         Xem chi tiết &gt;
                       </span>
                     </div>
@@ -650,7 +650,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
         <p className="text-caption-responsive font-semibold uppercase tracking-[0.2em] text-brand">
           {t('subtitle')}
         </p>
-        <h1 className="mt-2 text-section-title font-extrabold tracking-tight text-foreground">
+        <h1 className="mt-2 text-section-title font-bold tracking-tight text-foreground">
           {t('title')}
         </h1>
         <p className="mt-3 text-body-regular leading-relaxed text-muted-foreground max-w-3xl">
@@ -1299,7 +1299,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
           
           {/* Header */}
           <div className="flex items-center justify-between px-6 py-4 border-b border-slate-150">
-            <h3 className="text-card-title font-extrabold text-slate-900">
+            <h3 className="text-card-title font-bold text-slate-900">
               {selectedProductToEdit !== null ? 'Chỉnh sửa sản phẩm báo giá' : 'Thêm sản phẩm vào danh sách báo giá'}
             </h3>
             <button
@@ -1374,7 +1374,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                           )}
                         </div>
                         <div className="text-left">
-                          <h4 className="text-caption-responsive font-extrabold text-slate-800 leading-tight">
+                          <h4 className="text-caption-responsive font-bold text-slate-800 leading-tight">
                             {sku.product_name}
                           </h4>
                           <div className="flex items-center gap-2 text-caption-responsive text-slate-400 mt-1 font-medium">
@@ -1386,7 +1386,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                       </div>
                       
                       <div className="flex items-center gap-3 shrink-0">
-                        <span className="text-caption-responsive font-extrabold text-brand-strong">
+                        <span className="text-caption-responsive font-bold text-brand-strong">
                           {priceRange}
                         </span>
                         <div className={cn(
@@ -1542,7 +1542,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                 saveCart(newCart);
                 setIsAddModalOpen(false);
               }}
-              className="px-6 py-2.5 rounded-[3px] bg-brand text-white text-body-regular font-extrabold shadow hover:bg-brand/95 transition-all cursor-pointer"
+              className="px-6 py-2.5 rounded-[3px] bg-brand text-white text-body-regular font-bold shadow hover:bg-brand/95 transition-all cursor-pointer"
             >
               Lưu
             </button>
@@ -1568,7 +1568,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
             <Phone className="h-6 w-6 text-rose-600" />
           </div>
 
-          <h3 className="text-card-title font-extrabold text-slate-900 mb-2">
+          <h3 className="text-card-title font-bold text-slate-900 mb-2">
             Hotline Hỗ Trợ 24/7
           </h3>
           
@@ -1601,7 +1601,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
             </button>
             <a
               href={`tel:${t('sidebarHotline').replace(/\s/g, '')}`}
-              className="flex-1 py-2.5 rounded-[3px] bg-rose-600 text-white text-caption-responsive font-extrabold shadow hover:bg-rose-700 transition-all text-center flex items-center justify-center gap-1.5"
+              className="flex-1 py-2.5 rounded-[3px] bg-rose-600 text-white text-caption-responsive font-bold shadow hover:bg-rose-700 transition-all text-center flex items-center justify-center gap-1.5"
             >
               <Phone className="h-3.5 w-3.5" />
               Gọi ngay

@@ -43,7 +43,7 @@ export function CareersNewsletter() {
             <span className="text-body-regular font-bold uppercase tracking-wider text-blue-600">
               ĐƠN ỨNG TUYỂN MỞ
             </span>
-            <h2 className="text-hero-title font-extrabold text-slate-900 leading-tight">
+            <h2 className="text-hero-title font-bold text-slate-900 leading-tight">
               Chưa có vị trí phù hợp?<br />Gửi CV của bạn<br />chúng tôi sẽ thông báo cho bạn.
             </h2>
             <p className="text-body-regular text-slate-500 leading-relaxed mt-2">

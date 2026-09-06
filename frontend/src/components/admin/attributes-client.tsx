@@ -192,10 +192,10 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
     <div className="admin-page">
       {/* Header */}
       <div className="border-b border-slate-100 pb-6 mb-8">
-        <span className="text-caption-responsive uppercase text-slate-400 font-extrabold tracking-wider">
+        <span className="text-caption-responsive uppercase text-slate-400 font-bold tracking-wider">
           Cơ cấu sản phẩm
         </span>
-        <h1 className="text-section-title font-extrabold text-primary tracking-tight mt-1">
+        <h1 className="text-section-title font-bold text-primary tracking-tight mt-1">
           Quản lý Thuộc tính & Tùy chọn (Attributes & Options)
         </h1>
         <p className="text-caption-responsive text-slate-500 font-medium mt-1 leading-relaxed">
@@ -209,7 +209,7 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
         <div className="mb-6 p-4 bg-rose-50 border border-rose-200 rounded-[3px] text-rose-800 text-caption-responsive font-semibold flex items-start gap-2.5 shadow-sm">
           <AlertTriangle className="h-5 w-5 text-rose-500 shrink-0 mt-0.5" />
           <div className="flex-1">
-            <span className="font-extrabold text-rose-900 block mb-1">
+            <span className="font-bold text-rose-900 block mb-1">
               Đã xảy ra lỗi khi tải dữ liệu thuộc tính từ API
             </span>
             <pre className="font-mono text-caption-responsive bg-white/60 p-2.5 rounded-[3px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all">
@@ -224,7 +224,7 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
         {/* Left Column: Attributes List */}
         <div className="lg:col-span-1 admin-panel admin-panel-pad overflow-hidden">
           <div className="flex items-center justify-between gap-4 mb-4">
-            <h2 className="text-body-regular font-extrabold text-primary uppercase tracking-wider flex items-center gap-1.5">
+            <h2 className="text-body-regular font-bold text-primary uppercase tracking-wider flex items-center gap-1.5">
               <Sliders className="h-4 w-4 text-blue-500" />
               Thuộc tính toàn cục
             </h2>
@@ -314,7 +314,7 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-slate-100 pb-4 mb-6 gap-4">
                 <div>
                   <div className="flex items-center gap-2">
-                    <h2 className="text-body-regular font-extrabold text-primary">
+                    <h2 className="text-body-regular font-bold text-primary">
                       Tùy chọn cho thuộc tính: {selectedAttr.name}
                     </h2>
                     <span className="text-caption-responsive font-mono px-2 py-0.5 rounded-[3px] bg-slate-100 text-slate-650">
@@ -367,7 +367,7 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
                         .map((opt) => (
                           <tr key={opt.id} className="hover:bg-slate-50/30 transition-colors group">
                             {/* Value */}
-                            <td className="px-5 py-3.5 font-extrabold text-primary">
+                            <td className="px-5 py-3.5 font-bold text-primary">
                               {opt.value}
                             </td>
 
@@ -429,7 +429,7 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm">
           <div className="w-full max-w-md admin-panel overflow-hidden animate-in fade-in zoom-in-95 duration-200">
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
-              <h2 className="text-body-regular font-extrabold text-primary">
+              <h2 className="text-body-regular font-bold text-primary">
                 {activeAttr.id ? 'Cập nhật thuộc tính' : 'Tạo thuộc tính mới'}
               </h2>
               <button
@@ -539,7 +539,7 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4 backdrop-blur-sm">
           <div className="w-full max-w-md admin-panel overflow-hidden animate-in fade-in zoom-in-95 duration-200">
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
-              <h2 className="text-body-regular font-extrabold text-primary">
+              <h2 className="text-body-regular font-bold text-primary">
                 {activeOpt.id ? 'Cập nhật tùy chọn' : 'Thêm tùy chọn mới'}
               </h2>
               <button

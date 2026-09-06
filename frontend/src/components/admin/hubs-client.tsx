@@ -328,10 +328,10 @@ export function HubsClient({ initialHubs, provinces, error }: HubsClientProps) {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-100 pb-6 mb-8">
         <div>
-          <span className="text-caption-responsive uppercase text-slate-400 font-extrabold tracking-wider">
+          <span className="text-caption-responsive uppercase text-slate-400 font-bold tracking-wider">
             Hệ thống kho vận & Địa lý
           </span>
-          <h1 className="text-section-title font-extrabold text-primary tracking-tight mt-1">
+          <h1 className="text-section-title font-bold text-primary tracking-tight mt-1">
             Chi nhánh & Regional Hubs
           </h1>
           <p className="text-caption-responsive text-slate-500 font-medium mt-1 leading-relaxed">
@@ -355,7 +355,7 @@ export function HubsClient({ initialHubs, provinces, error }: HubsClientProps) {
         <div className="mb-6 p-4 bg-rose-50 border border-rose-200 rounded-[3px] text-rose-800 text-caption-responsive font-semibold flex items-start gap-2.5 shadow-sm">
           <AlertTriangle className="h-5 w-5 text-rose-500 shrink-0 mt-0.5" />
           <div className="flex-1">
-            <span className="font-extrabold text-rose-900 block mb-1">
+            <span className="font-bold text-rose-900 block mb-1">
               Đã xảy ra lỗi khi tải dữ liệu chi nhánh Hubs
             </span>
             <pre className="font-mono text-caption-responsive bg-white/60 p-2.5 rounded-[3px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all">
@@ -449,7 +449,7 @@ export function HubsClient({ initialHubs, provinces, error }: HubsClientProps) {
           {selectedHubForMap && (
             <div className="bg-blue-50/40 border border-blue-150/40 rounded-[3px] p-4 flex flex-col sm:flex-row justify-between gap-4 items-start sm:items-center">
               <div>
-                <h3 className="text-body-regular font-extrabold text-primary flex items-center gap-1.5">
+                <h3 className="text-body-regular font-bold text-primary flex items-center gap-1.5">
                   <MapPin className="h-4 w-4 text-blue-500" />
                   {selectedHubForMap.name}
                 </h3>
@@ -473,7 +473,7 @@ export function HubsClient({ initialHubs, provinces, error }: HubsClientProps) {
           activeTab === 'list' ? 'block' : 'hidden md:flex'
         )}>
           <div className="p-4 border-b border-slate-100 bg-slate-50/50 flex justify-between items-center">
-            <h3 className="text-caption-responsive font-extrabold text-slate-500 uppercase tracking-wider">
+            <h3 className="text-caption-responsive font-bold text-slate-500 uppercase tracking-wider">
               Danh sách chi nhánh ({filteredHubs.length})
             </h3>
           </div>
@@ -501,7 +501,7 @@ export function HubsClient({ initialHubs, provinces, error }: HubsClientProps) {
                     )}
                   >
                     <div className="flex items-start justify-between gap-2">
-                      <span className="font-mono text-caption-responsive font-extrabold text-slate-400">
+                      <span className="font-mono text-caption-responsive font-bold text-slate-400">
                         {hub.hub_code}
                       </span>
                       <span className={cn(
@@ -511,7 +511,7 @@ export function HubsClient({ initialHubs, provinces, error }: HubsClientProps) {
                         {OPERATING_STATUS_CONFIG[hub.operating_status]?.label}
                       </span>
                     </div>
-                    <h4 className="font-extrabold text-primary text-caption-responsive">
+                    <h4 className="font-bold text-primary text-caption-responsive">
                       {hub.name}
                     </h4>
                     <p className="text-caption-responsive text-slate-500 font-medium line-clamp-1">
@@ -555,7 +555,7 @@ export function HubsClient({ initialHubs, provinces, error }: HubsClientProps) {
             {/* Modal Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
               <div>
-                <h2 className="text-body-regular font-extrabold text-primary flex items-center gap-2">
+                <h2 className="text-body-regular font-bold text-primary flex items-center gap-2">
                   <Home className="h-5 w-5 text-blue-500" />
                   {activeHub.id
                     ? `Cập nhật chi nhánh: ${activeHub.name}`
@@ -593,14 +593,14 @@ export function HubsClient({ initialHubs, provinces, error }: HubsClientProps) {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
                 {/* Left Column: Basic Geo settings */}
                 <div className="flex flex-col gap-4">
-                  <h3 className="text-caption-responsive font-extrabold text-primary uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-100 pb-2 mb-1">
+                  <h3 className="text-caption-responsive font-bold text-primary uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-100 pb-2 mb-1">
                     <MapPin className="h-4 w-4 text-blue-500" />
                     Thông tin địa lý & hành chính
                   </h3>
 
                   {/* Name */}
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                    <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                       Tên chi nhánh Hub *
                     </label>
                     <input
@@ -616,7 +616,7 @@ export function HubsClient({ initialHubs, provinces, error }: HubsClientProps) {
                   {/* Slug & Hub Code */}
                   <div className="grid grid-cols-2 gap-4">
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                      <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                         Slug định danh *
                       </label>
                       <input
@@ -629,7 +629,7 @@ export function HubsClient({ initialHubs, provinces, error }: HubsClientProps) {
                       />
                     </div>
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                      <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                         Mã Hub code *
                       </label>
                       <input
@@ -645,7 +645,7 @@ export function HubsClient({ initialHubs, provinces, error }: HubsClientProps) {
 
                   {/* Provinces selection */}
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                    <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                       Tỉnh / Thành phố *
                     </label>
                     <select
@@ -663,7 +663,7 @@ export function HubsClient({ initialHubs, provinces, error }: HubsClientProps) {
 
                   {/* Detail Address */}
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                    <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                       Địa chỉ chi tiết kho *
                     </label>
                     <textarea
@@ -680,7 +680,7 @@ export function HubsClient({ initialHubs, provinces, error }: HubsClientProps) {
 
                   {/* Coordinates */}
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                    <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                       Tọa độ GPS (lat,lng)
                     </label>
                     <input
@@ -695,7 +695,7 @@ export function HubsClient({ initialHubs, provinces, error }: HubsClientProps) {
                   {/* Status & Operating Status */}
                   <div className="grid grid-cols-2 gap-4">
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                      <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                         Trạng thái vận hành *
                       </label>
                       <select
@@ -716,7 +716,7 @@ export function HubsClient({ initialHubs, provinces, error }: HubsClientProps) {
                       </select>
                     </div>
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                      <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                         Trạng thái phát hành *
                       </label>
                       <select
@@ -740,14 +740,14 @@ export function HubsClient({ initialHubs, provinces, error }: HubsClientProps) {
                 {/* Right Column: Warehouse capacity & SLA metrics */}
                 <div className="flex flex-col gap-4">
                   {/* Warehouse Capacity */}
-                  <h3 className="text-caption-responsive font-extrabold text-primary uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-100 pb-2 mb-1">
+                  <h3 className="text-caption-responsive font-bold text-primary uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-100 pb-2 mb-1">
                     <Box className="h-4 w-4 text-blue-500" />
                     Thông số năng lực kho hàng
                   </h3>
 
                   <div className="grid grid-cols-2 gap-4">
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                      <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                         Tổng diện tích kho (m²)
                       </label>
                       <input
@@ -762,7 +762,7 @@ export function HubsClient({ initialHubs, provinces, error }: HubsClientProps) {
                       />
                     </div>
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                      <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                         Diện tích đã sử dụng (m²)
                       </label>
                       <input
@@ -780,7 +780,7 @@ export function HubsClient({ initialHubs, provinces, error }: HubsClientProps) {
 
                   <div className="grid grid-cols-3 gap-4">
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                      <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                         DT khả dụng (m²)
                       </label>
                       <input
@@ -795,7 +795,7 @@ export function HubsClient({ initialHubs, provinces, error }: HubsClientProps) {
                       />
                     </div>
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                      <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                         Tấn hàng chứa tối đa
                       </label>
                       <input
@@ -810,7 +810,7 @@ export function HubsClient({ initialHubs, provinces, error }: HubsClientProps) {
                       />
                     </div>
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                      <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                         Số vị trí Pallets
                       </label>
                       <input
@@ -827,13 +827,13 @@ export function HubsClient({ initialHubs, provinces, error }: HubsClientProps) {
                   </div>
 
                   {/* SLA metrics */}
-                  <h3 className="text-caption-responsive font-extrabold text-primary uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-100 pb-2 mb-1 mt-4">
+                  <h3 className="text-caption-responsive font-bold text-primary uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-100 pb-2 mb-1 mt-4">
                     <BarChart2 className="h-4 w-4 text-blue-500" />
                     Hiệu suất vận hành & SLA dịch vụ
                   </h3>
 
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                    <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                       Thời gian giao hàng tiêu chuẩn
                     </label>
                     <input
@@ -849,7 +849,7 @@ export function HubsClient({ initialHubs, provinces, error }: HubsClientProps) {
 
                   <div className="grid grid-cols-2 gap-4">
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                      <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                         Tỉ lệ giao đúng giờ (%)
                       </label>
                       <input
@@ -866,7 +866,7 @@ export function HubsClient({ initialHubs, provinces, error }: HubsClientProps) {
                       />
                     </div>
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                      <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                         Đơn hàng trong hôm nay
                       </label>
                       <input
@@ -916,12 +916,12 @@ export function HubsClient({ initialHubs, provinces, error }: HubsClientProps) {
             {/* Modal Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
               <div>
-                <h2 className="text-body-regular font-extrabold text-primary flex items-center gap-2">
+                <h2 className="text-body-regular font-bold text-primary flex items-center gap-2">
                   <Home className="h-5 w-5 text-blue-500" />
                   Chi tiết chi nhánh: {selectedHub.name}
                 </h2>
                 <div className="flex items-center gap-1.5 mt-1">
-                  <span className="font-mono text-caption-responsive font-extrabold text-slate-400 bg-slate-100 border border-slate-200/50 px-1.5 py-0.5 rounded-[3px]">
+                  <span className="font-mono text-caption-responsive font-bold text-slate-400 bg-slate-100 border border-slate-200/50 px-1.5 py-0.5 rounded-[3px]">
                     {selectedHub.hub_code}
                   </span>
                   <span className="text-caption-responsive text-slate-450 font-bold">
@@ -942,13 +942,13 @@ export function HubsClient({ initialHubs, provinces, error }: HubsClientProps) {
               {/* Address details grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50/50 p-5 rounded-[3px] border border-slate-100 text-caption-responsive">
                 <div className="flex flex-col gap-3">
-                  <h3 className="text-caption-responsive font-extrabold text-primary uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-150 pb-2">
+                  <h3 className="text-caption-responsive font-bold text-primary uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-150 pb-2">
                     <MapPin className="h-4 w-4 text-blue-500" />
                     Địa chỉ kho hàng
                   </h3>
                   <div className="grid grid-cols-3 gap-y-2 text-caption-responsive">
                     <span className="text-slate-400 font-bold">Tỉnh / Thành:</span>
-                    <span className="col-span-2 text-primary font-extrabold">
+                    <span className="col-span-2 text-primary font-bold">
                       {selectedHub.province?.name || '---'}
                     </span>
 
@@ -960,7 +960,7 @@ export function HubsClient({ initialHubs, provinces, error }: HubsClientProps) {
                 </div>
 
                 <div className="flex flex-col gap-3">
-                  <h3 className="text-caption-responsive font-extrabold text-primary uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-150 pb-2">
+                  <h3 className="text-caption-responsive font-bold text-primary uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-150 pb-2">
                     <Shield className="h-4 w-4 text-blue-500" />
                     Cấu hình trạng thái
                   </h3>
@@ -1001,7 +1001,7 @@ export function HubsClient({ initialHubs, provinces, error }: HubsClientProps) {
 
               {/* Capacity details block */}
               <div className="flex flex-col gap-3">
-                <h3 className="text-caption-responsive font-extrabold text-primary uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-100 pb-2">
+                <h3 className="text-caption-responsive font-bold text-primary uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-100 pb-2">
                   <Box className="h-4 w-4 text-blue-500" />
                   Năng lực & Sức chứa kho hàng
                 </h3>
@@ -1010,7 +1010,7 @@ export function HubsClient({ initialHubs, provinces, error }: HubsClientProps) {
                     <span className="text-slate-400 text-caption-responsive font-bold block mb-1">
                       TỔNG DIỆN TÍCH
                     </span>
-                    <span className="text-primary font-extrabold text-body-regular">
+                    <span className="text-primary font-bold text-body-regular">
                       {selectedHub.warehouse_total_area
                         ? `${selectedHub.warehouse_total_area} m²`
                         : '---'}
@@ -1020,7 +1020,7 @@ export function HubsClient({ initialHubs, provinces, error }: HubsClientProps) {
                     <span className="text-slate-400 text-caption-responsive font-bold block mb-1">
                       ĐÃ SỬ DỤNG
                     </span>
-                    <span className="text-slate-700 font-extrabold text-body-regular">
+                    <span className="text-slate-700 font-bold text-body-regular">
                       {selectedHub.warehouse_utilized_area
                         ? `${selectedHub.warehouse_utilized_area} m²`
                         : '---'}
@@ -1030,7 +1030,7 @@ export function HubsClient({ initialHubs, provinces, error }: HubsClientProps) {
                     <span className="text-slate-400 text-caption-responsive font-bold block mb-1">
                       KHẢ DỤNG
                     </span>
-                    <span className="text-emerald-600 font-extrabold text-body-regular">
+                    <span className="text-emerald-600 font-bold text-body-regular">
                       {selectedHub.warehouse_available_area
                         ? `${selectedHub.warehouse_available_area} m²`
                         : '---'}
@@ -1040,7 +1040,7 @@ export function HubsClient({ initialHubs, provinces, error }: HubsClientProps) {
                     <span className="text-slate-400 text-caption-responsive font-bold block mb-1">
                       TỐI ĐA (TẤN)
                     </span>
-                    <span className="text-primary font-extrabold text-body-regular">
+                    <span className="text-primary font-bold text-body-regular">
                       {selectedHub.warehouse_storage_tons
                         ? `${selectedHub.warehouse_storage_tons} tấn`
                         : '---'}
@@ -1050,7 +1050,7 @@ export function HubsClient({ initialHubs, provinces, error }: HubsClientProps) {
                     <span className="text-slate-400 text-caption-responsive font-bold block mb-1">
                       SỐ PALLETS
                     </span>
-                    <span className="text-blue-600 font-extrabold text-body-regular">
+                    <span className="text-blue-600 font-bold text-body-regular">
                       {selectedHub.warehouse_pallets
                         ? `${selectedHub.warehouse_pallets} pallets`
                         : '---'}
@@ -1061,7 +1061,7 @@ export function HubsClient({ initialHubs, provinces, error }: HubsClientProps) {
 
               {/* SLA Metrics block */}
               <div className="flex flex-col gap-3">
-                <h3 className="text-caption-responsive font-extrabold text-primary uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-100 pb-2">
+                <h3 className="text-caption-responsive font-bold text-primary uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-100 pb-2">
                   <Zap className="h-4 w-4 text-blue-500" />
                   SLA Dịch vụ & Đơn hàng
                 </h3>
@@ -1070,7 +1070,7 @@ export function HubsClient({ initialHubs, provinces, error }: HubsClientProps) {
                     <span className="text-slate-400 text-caption-responsive font-bold block mb-1">
                       THỜI GIAN GIAO TIÊU CHUẨN
                     </span>
-                    <span className="text-primary font-extrabold text-body-regular">
+                    <span className="text-primary font-bold text-body-regular">
                       {selectedHub.standard_delivery_time || '24h - 48h'}
                     </span>
                   </div>
@@ -1078,7 +1078,7 @@ export function HubsClient({ initialHubs, provinces, error }: HubsClientProps) {
                     <span className="text-slate-400 text-caption-responsive font-bold block mb-1">
                       TỈ LỆ GIAO ĐÚNG GIỜ
                     </span>
-                    <span className="text-emerald-600 font-extrabold text-body-regular">
+                    <span className="text-emerald-600 font-bold text-body-regular">
                       {selectedHub.on_time_rate ? `${selectedHub.on_time_rate}%` : '98%'}
                     </span>
                   </div>
@@ -1086,7 +1086,7 @@ export function HubsClient({ initialHubs, provinces, error }: HubsClientProps) {
                     <span className="text-slate-400 text-caption-responsive font-bold block mb-1">
                       ĐƠN HÀNG HÔM NAY
                     </span>
-                    <span className="text-blue-600 font-extrabold text-body-regular">
+                    <span className="text-blue-600 font-bold text-body-regular">
                       {selectedHub.orders_today ?? 0}
                     </span>
                   </div>

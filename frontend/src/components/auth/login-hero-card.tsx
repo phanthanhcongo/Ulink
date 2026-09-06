@@ -16,7 +16,7 @@ export function LoginHeroCard() {
 
       {/* Top Header */}
       <div className="relative z-10 flex flex-col gap-3">
-        <h1 className="text-section-title font-extrabold tracking-tight text-white leading-tight">
+        <h1 className="text-section-title font-bold tracking-tight text-white leading-tight">
           Kết nối hôm nay,
           <br />
           Kiến tạo <span className="text-blue-300">tương lai.</span>

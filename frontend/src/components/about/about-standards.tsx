@@ -56,7 +56,7 @@ export function AboutStandards() {
                 <span className={`text-caption-responsive font-bold ${item.tagColor} mb-1.5`}>
                   {item.tag}
                 </span>
-                <h3 className="text-card-title font-extrabold text-slate-900 mb-2">
+                <h3 className="text-card-title font-bold text-slate-900 mb-2">
                   {item.title}
                 </h3>
                 <p className="text-body-regular text-slate-500">

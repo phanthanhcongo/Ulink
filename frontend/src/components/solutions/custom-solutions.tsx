@@ -13,7 +13,7 @@ export default function CustomSolutions({ locale }: CustomSolutionsProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Column: Text Content */}
           <div className="lg:col-span-6 flex flex-col justify-center">
-            <h2 className="text-hero-title font-extrabold text-slate-900 tracking-tight leading-tight">
+            <h2 className="text-hero-title font-bold text-slate-900 tracking-tight leading-tight">
               Giải pháp thiết kế riêng cho Doanh nghiệp
             </h2>
             <p className="mt-6 text-caption-responsive leading-relaxed text-slate-600 font-medium">

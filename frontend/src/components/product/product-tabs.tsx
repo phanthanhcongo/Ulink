@@ -101,7 +101,7 @@ export default function ProductTabs({
           {/* Right: Actual Applications Box */}
           <div className="lg:col-span-4">
             <div className="bg-card border border-slate-100 p-6 rounded-[3px] space-y-4">
-              <h4 className="text-body-regular font-extrabold text-slate-800">
+              <h4 className="text-body-regular font-bold text-slate-800">
                 {locale === 'vi' ? 'Ứng dụng thực tế' : 'Real-world Applications'}
               </h4>
               <div className="space-y-3.5">
@@ -223,7 +223,7 @@ export default function ProductTabs({
               <span className="text-caption-responsive font-bold text-blue-600 uppercase tracking-wider block">
                 {locale === 'vi' ? 'Quy cách đóng gói & Lịch vận chuyển' : 'Packaging & Shipping Schedule'}
               </span>
-              <h3 className="text-card-title font-extrabold text-slate-800">
+              <h3 className="text-card-title font-bold text-slate-800">
                 {locale === 'vi' ? 'HUB Hà Nam → KCN Miền Bắc' : 'Ha Nam HUB → Northern Industrial Zones'}
               </h3>
               <p className="text-caption-responsive text-slate-500 font-semibold pt-1">
@@ -310,7 +310,7 @@ export default function ProductTabs({
                 <FileText className="h-5 w-5" />
               </div>
               <div className="space-y-2">
-                <h4 className="text-caption-responsive font-extrabold text-slate-800">ISO 9001:2015</h4>
+                <h4 className="text-caption-responsive font-bold text-slate-800">ISO 9001:2015</h4>
                 <p className="text-caption-responsive text-slate-500 font-medium leading-relaxed">
                   {locale === 'vi'
                     ? 'Hệ thống quản lý chất lượng đạt tiêu chuẩn quốc tế cho hoạt động sản xuất màng PE và cung ứng vật tư.'
@@ -325,7 +325,7 @@ export default function ProductTabs({
                 <Award className="h-5 w-5" />
               </div>
               <div className="space-y-2">
-                <h4 className="text-caption-responsive font-extrabold text-slate-800">RoHS Compliant</h4>
+                <h4 className="text-caption-responsive font-bold text-slate-800">RoHS Compliant</h4>
                 <p className="text-caption-responsive text-slate-500 font-medium leading-relaxed">
                   {locale === 'vi'
                     ? 'Đảm bảo màng co không chứa các chất độc hại ảnh hưởng xấu tới sức khoẻ và môi trường xung quanh.'

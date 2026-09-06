@@ -14,7 +14,7 @@ interface IndustryCasesProps {
 export function IndustryCases({ industryData, locale }: IndustryCasesProps) {
   return (
     <section id="cases" className="scroll-mt-36 pt-6 border-t border-slate-100 space-y-6">
-      <h3 className="text-section-title font-extrabold text-primary">
+      <h3 className="text-section-title font-bold text-primary">
         {industryData.casesTitle}
       </h3>
 
@@ -25,7 +25,7 @@ export function IndustryCases({ industryData, locale }: IndustryCasesProps) {
               <Image src={cs.image} alt={cs.title} fill className="object-cover" />
             </div>
             <div className="space-y-1">
-              <h4 className="text-body-regular font-extrabold text-primary leading-snug">
+              <h4 className="text-body-regular font-bold text-primary leading-snug">
                 {cs.title}
               </h4>
               <p className="text-caption-responsive text-slate-400 font-semibold leading-relaxed">

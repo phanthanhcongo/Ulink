@@ -51,7 +51,7 @@ export default function TestimonialCarousel({ labels }: TestimonialCarouselProps
             height={32}
             className="h-8 w-8 object-contain"
           />
-          <span className="text-card-title font-extrabold text-[#4A5568] tracking-tight">
+          <span className="text-card-title font-bold text-[#4A5568] tracking-tight">
             {labels.company1}
           </span>
         </div>
@@ -72,7 +72,7 @@ export default function TestimonialCarousel({ labels }: TestimonialCarouselProps
             height={32}
             className="h-8 w-8 object-contain"
           />
-          <span className="text-card-title font-extrabold text-[#4A5568] tracking-tight">
+          <span className="text-card-title font-bold text-[#4A5568] tracking-tight">
             {labels.company2}
           </span>
         </div>
@@ -86,10 +86,10 @@ export default function TestimonialCarousel({ labels }: TestimonialCarouselProps
       company: labels.company3,
       logo: (
         <div className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center bg-orange-600 text-white font-extrabold text-caption-responsive rounded-[3px]">
+          <div className="flex h-8 w-8 items-center justify-center bg-orange-600 text-white font-bold text-caption-responsive rounded-[3px]">
             HP
           </div>
-          <span className="text-card-title font-extrabold text-[#4A5568] tracking-tight">
+          <span className="text-card-title font-bold text-[#4A5568] tracking-tight">
             {labels.company3}
           </span>
         </div>
@@ -103,10 +103,10 @@ export default function TestimonialCarousel({ labels }: TestimonialCarouselProps
       company: labels.company4,
       logo: (
         <div className="flex items-center gap-2">
-          <div className="flex h-8 w-8 items-center justify-center bg-teal-600 text-white font-extrabold text-caption-responsive rounded-[3px]">
+          <div className="flex h-8 w-8 items-center justify-center bg-teal-600 text-white font-bold text-caption-responsive rounded-[3px]">
             VA
           </div>
-          <span className="text-card-title font-extrabold text-[#4A5568] tracking-tight">
+          <span className="text-card-title font-bold text-[#4A5568] tracking-tight">
             {labels.company4}
           </span>
         </div>

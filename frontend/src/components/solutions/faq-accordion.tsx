@@ -27,7 +27,7 @@ export default function FaqAccordion({ sectionTitle, sectionSubtitle, items }: F
       <div className="page-container">
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center mb-12">
-          <h2 className="text-section-title font-extrabold text-primary tracking-tight">
+          <h2 className="text-section-title font-bold text-primary tracking-tight">
             {sectionTitle}
           </h2>
           <p className="text-caption-responsive leading-relaxed text-slate-500 font-medium mt-2">{sectionSubtitle}</p>

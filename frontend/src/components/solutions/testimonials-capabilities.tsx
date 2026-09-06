@@ -92,7 +92,7 @@ export default function TestimonialsCapabilities({ locale }: TestimonialsCapabil
       <section className="w-full bg-card border-t border-gray-150 py-16 lg:py-24">
         <div className="page-container">
           {/* Section Header */}
-          <h2 className="text-section-title font-extrabold text-slate-900 tracking-tight text-center mb-12">
+          <h2 className="text-section-title font-bold text-slate-900 tracking-tight text-center mb-12">
             {t('testimonialsCapabilities.testimonialHeading')}
           </h2>
 
@@ -115,7 +115,7 @@ export default function TestimonialsCapabilities({ locale }: TestimonialsCapabil
                   className="bg-white rounded-[3px] border border-gray-200/80 p-8 shadow-sm flex flex-col items-center text-center transition-all hover:shadow-md"
                 >
                   {/* Company Logo text placeholder */}
-                  <div className="text-slate-700 font-extrabold text-card-title tracking-tight mb-6 select-none flex items-center gap-1.5">
+                  <div className="text-slate-700 font-bold text-card-title tracking-tight mb-6 select-none flex items-center gap-1.5">
                     <span className="w-2.5 h-2.5 bg-blue-600 rounded-full" />
                     {test.company}
                   </div>
@@ -157,7 +157,7 @@ export default function TestimonialsCapabilities({ locale }: TestimonialsCapabil
             <span className="text-caption-responsive font-bold uppercase tracking-widest text-blue-600">
               {t('testimonialsCapabilities.capabilitiesEyebrow')}
             </span>
-            <h2 className="mt-4 text-section-title font-extrabold tracking-tight text-slate-900 leading-tight">
+            <h2 className="mt-4 text-section-title font-bold tracking-tight text-slate-900 leading-tight">
               {t('testimonialsCapabilities.capabilitiesTitle')}
             </h2>
           </div>

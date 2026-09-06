@@ -207,7 +207,7 @@ export default function ProductCard({ product, locale, roundedClass }: ProductCa
         </span>
 
         {/* Quick View Button */}
-        <span className="absolute left-1/2 bottom-[14px] -translate-x-1/2 translate-y-3 px-4 py-[9px] bg-[rgba(15,39,68,0.88)] text-white text-caption-responsive font-extrabold opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-[220ms] ease-out pointer-events-none whitespace-nowrap z-10">
+        <span className="absolute left-1/2 bottom-[14px] -translate-x-1/2 translate-y-3 px-4 py-[9px] bg-[rgba(15,39,68,0.88)] text-white text-caption-responsive font-bold opacity-0 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-[220ms] ease-out pointer-events-none whitespace-nowrap z-10">
           {quickViewText}
         </span>
       </Link>
@@ -231,7 +231,7 @@ export default function ProductCard({ product, locale, roundedClass }: ProductCa
 
         {/* Price Range */}
         <p className="flex items-baseline gap-2 mb-[15px] text-[#202630]">
-          <strong className="text-body-regular font-extrabold">{priceRangeString}</strong>
+          <strong className="text-body-regular font-bold">{priceRangeString}</strong>
           <span className="text-[#5d6979] text-caption-responsive font-normal">/ {priceUnit}</span>
         </p>
 

@@ -14,7 +14,7 @@ const processSteps = [
 export function JobDetailProcess() {
   return (
     <section className="py-6 border-t border-slate-100" id="apply">
-      <h2 className="text-section-title font-extrabold text-slate-900 mb-4 border-l-4 border-blue-600 pl-3">
+      <h2 className="text-section-title font-bold text-slate-900 mb-4 border-l-4 border-blue-600 pl-3">
         Quy trình ứng tuyển
       </h2>
 

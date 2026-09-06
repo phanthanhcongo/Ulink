@@ -57,7 +57,7 @@ export async function AboutHubStats() {
           {stats.map((s, i) => (
             <div key={i} className="flex flex-col items-center px-3 text-center">
               <div className="text-brand">{s.icon}</div>
-              <p className="mt-4 text-hero-title font-extrabold text-primary">{s.value}</p>
+              <p className="mt-4 text-hero-title font-bold text-primary">{s.value}</p>
               <p className="mt-2 max-w-[140px] text-caption-responsive leading-relaxed text-foreground/60">
                 {s.label}
               </p>

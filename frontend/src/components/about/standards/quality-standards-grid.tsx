@@ -32,7 +32,7 @@ export function QualityStandardsGrid() {
         <span className="inline-flex items-center rounded-full bg-blue-50 px-3.5 py-1 text-body-regular font-bold uppercase tracking-wider text-blue-700 ring-1 ring-inset ring-blue-700/10 mb-2">
           ĐẠT CHUẨN QUỐC TẾ
         </span>
-        <h2 className="text-hero-title font-extrabold tracking-tight text-slate-900">
+        <h2 className="text-hero-title font-bold tracking-tight text-slate-900">
           Hệ Thống Tiêu Chuẩn
         </h2>
         <p className="mt-2 text-body-large font-medium leading-relaxed text-slate-600 max-w-xl">
@@ -47,7 +47,7 @@ export function QualityStandardsGrid() {
             key={idx}
             className="flex flex-col rounded-[3px] p-6 shadow-sm border border-slate-100 group transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]"
           >
-            <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-[3px] bg-slate-900 text-white font-extrabold text-body-regular">
+            <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-[3px] bg-slate-900 text-white font-bold text-body-regular">
               {item.code}
             </div>
             <h3 className="text-card-title text-slate-900">{item.title}</h3>

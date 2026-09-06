@@ -169,7 +169,7 @@ export function EventsClient() {
         <div className="absolute inset-0 flex items-center">
           <div className="page-container text-left">
             <div className="bg-[#0000008C] p-8 sm:p-10 md:p-12 max-w-2xl rounded-[3px] shadow-2xl border border-white/20 backdrop-blur-xs">
-              <h1 className="text-section-title font-extrabold tracking-tight text-white leading-tight">
+              <h1 className="text-section-title font-bold tracking-tight text-white leading-tight">
                 {t.heroTitle}
                 <span className="block mt-2 text-section-title font-bold text-white">
                   {t.heroSubTitle}

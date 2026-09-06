@@ -233,7 +233,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
               {skuCode && <span>SKU: {skuCode}</span>}
               {skuCode && <span className="text-slate-300">|</span>}
               <div className="flex items-center gap-1.5">
-                <span className="font-extrabold text-slate-900">4.8</span>
+                <span className="font-bold text-slate-900">4.8</span>
                 <div className="flex text-amber-500 text-card-title gap-0.5 leading-none">
                   <span>★</span>
                   <span>★</span>

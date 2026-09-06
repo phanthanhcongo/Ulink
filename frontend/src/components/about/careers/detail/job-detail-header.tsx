@@ -9,11 +9,11 @@ export function JobDetailHeader() {
       {/* Title & Top Badges */}
       <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-6">
         <div className="flex items-start gap-4">
-            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-[3px] bg-blue-600 text-white font-extrabold text-section-title shadow-md">
+            <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-[3px] bg-blue-600 text-white font-bold text-section-title shadow-md">
             UL
           </div>
           <div>
-            <h1 className="text-hero-title font-extrabold text-slate-900 tracking-tight">
+            <h1 className="text-hero-title font-bold text-slate-900 tracking-tight">
               Chuyên viên Phát triển Kinh doanh B2B - Khu Công nghiệp
             </h1>
             <div className="mt-2.5 flex flex-wrap items-center gap-2 text-body-regular font-semibold text-slate-600">

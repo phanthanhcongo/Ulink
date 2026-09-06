@@ -316,7 +316,7 @@ export default function CartClient({
         <div className="flex w-full overflow-hidden text-caption-responsive font-semibold rounded-[3px]">
           {/* Step 1: Giỏ hàng */}
           <div className="flex-1 flex items-center justify-center gap-2 py-4 bg-brand text-white">
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white text-caption-responsive font-extrabold text-brand shrink-0">
+            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white text-caption-responsive font-bold text-brand shrink-0">
               1
             </span>
             <span className="font-bold tracking-wide hidden sm:inline">{t('stepCart')}</span>
@@ -324,7 +324,7 @@ export default function CartClient({
 
           {/* Step 2: Thanh toán */}
           <div className="flex-1 flex items-center justify-center gap-2 py-4 bg-[#3B82F6]/90 text-white">
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-brand text-caption-responsive font-extrabold text-white shrink-0">
+            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-brand text-caption-responsive font-bold text-white shrink-0">
               2
             </span>
             <span className="font-bold tracking-wide hidden sm:inline">{t('stepPayment')}</span>
@@ -332,7 +332,7 @@ export default function CartClient({
 
           {/* Step 3: Vận chuyển */}
           <div className="flex-1 flex items-center justify-center gap-2 py-4 bg-slate-200 text-slate-600">
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white text-caption-responsive font-extrabold text-slate-500 shrink-0">
+            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white text-caption-responsive font-bold text-slate-500 shrink-0">
               3
             </span>
             <span className="font-bold tracking-wide hidden sm:inline">{t('stepShipping')}</span>
@@ -340,7 +340,7 @@ export default function CartClient({
 
           {/* Step 4: Hoàn tất */}
           <div className="flex-1 flex items-center justify-center gap-2 py-4 bg-slate-50 text-slate-400">
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white border border-border/40 text-caption-responsive font-extrabold text-slate-300 shrink-0">
+            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white border border-border/40 text-caption-responsive font-bold text-slate-300 shrink-0">
               4
             </span>
             <span className="font-bold tracking-wide hidden sm:inline">{t('stepComplete')}</span>
@@ -664,7 +664,7 @@ export default function CartClient({
                 <div className="flex items-baseline justify-between pt-1">
                   <span className="text-body-regular font-bold text-slate-900">{t('total')}</span>
                   <div className="text-right">
-                    <span className="text-section-title font-extrabold text-[#006AA7] block leading-none">
+                    <span className="text-section-title font-bold text-[#006AA7] block leading-none">
                       {formatPrice(grandTotal)}
                     </span>
                     <span className="text-caption-responsive text-slate-400 font-medium block mt-1.5">
@@ -756,7 +756,7 @@ export default function CartClient({
                       <Link href={`/solutions/${prod.slug}`}>{prod.name}</Link>
                     </h4>
                     <div className="flex items-baseline gap-1 text-caption-responsive">
-                      <span className="font-extrabold text-brand">{prod.priceText}</span>
+                      <span className="font-bold text-brand">{prod.priceText}</span>
                     </div>
                     <div className="text-caption-responsive text-slate-400 space-y-0.5 pt-1">
                       <p>
@@ -801,24 +801,24 @@ export default function CartClient({
 
         <div className="page-container flex flex-col md:flex-row justify-between items-start md:items-center gap-6 relative z-10">
           <div className="space-y-2 max-w-2xl text-left">
-            <span className="text-caption-responsive font-extrabold text-blue-200 uppercase tracking-wider block">
+            <span className="text-caption-responsive font-bold text-blue-200 uppercase tracking-wider block">
               {t('bannerTitle')}
             </span>
-            <h3 className="text-section-title font-extrabold leading-tight tracking-tight">{t('bannerSubtitle')}</h3>
+            <h3 className="text-section-title font-bold leading-tight tracking-tight">{t('bannerSubtitle')}</h3>
             <p className="text-body-regular text-blue-100 opacity-95 leading-relaxed">{t('bannerDesc')}</p>
           </div>
 
           <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0 pt-2">
             <a
               href={`tel:${t('btnHotline').replace(/\s/g, '')}`}
-              className="inline-flex items-center justify-center gap-2 rounded-[3px] border border-white/60 hover:border-white text-white hover:bg-white/10 px-6 py-3.5 text-body-regular font-extrabold transition-all text-center"
+              className="inline-flex items-center justify-center gap-2 rounded-[3px] border border-white/60 hover:border-white text-white hover:bg-white/10 px-6 py-3.5 text-body-regular font-bold transition-all text-center"
             >
               <Phone className="h-4.5 w-4.5" />
               {t('btnHotline')}
             </a>
             <button
               type="button"
-              className="inline-flex items-center justify-center gap-2 rounded-[3px] bg-[#3B82F6] hover:bg-blue-600 text-white px-6 py-3.5 text-body-regular font-extrabold transition-all text-center shadow-md"
+              className="inline-flex items-center justify-center gap-2 rounded-[3px] bg-[#3B82F6] hover:bg-blue-600 text-white px-6 py-3.5 text-body-regular font-bold transition-all text-center shadow-md"
             >
               <CalendarDays className="h-4.5 w-4.5" />
               {t('btnSchedule')}

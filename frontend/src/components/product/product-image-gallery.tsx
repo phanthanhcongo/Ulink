@@ -91,7 +91,7 @@ export function ProductImageGallery({ images, productName }: ProductImageGallery
 
         {/* Slide Counter Badge Top Left */}
         {images.length > 1 && (
-          <span className="absolute top-3 left-3 z-10 px-2.5 py-1 rounded-[3px] bg-slate-900/70 text-white text-caption-responsive font-extrabold backdrop-blur-md shadow-xs">
+          <span className="absolute top-3 left-3 z-10 px-2.5 py-1 rounded-[3px] bg-slate-900/70 text-white text-caption-responsive font-bold backdrop-blur-md shadow-xs">
             {activeIndex + 1} / {images.length}
           </span>
         )}

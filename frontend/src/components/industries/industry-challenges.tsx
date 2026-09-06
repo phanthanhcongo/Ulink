@@ -45,7 +45,7 @@ export function IndustryChallenges({ industryData, locale }: IndustryChallengesP
       <div className="flex flex-col lg:flex-row gap-8 lg:items-center justify-between">
         {/* Left Content */}
         <div className="lg:w-[45%] space-y-3">
-          <h2 className="text-section-title font-extrabold text-primary">
+          <h2 className="text-section-title font-bold text-primary">
             {industryData.challengesIntro
               ? industryData.challengesIntro
               : `Thách thức trong ngành ${industryData.name}`}

@@ -79,10 +79,10 @@ export default function SearchSection({ locale, labels }: SearchSectionProps) {
     <section className="w-full bg-card py-12 lg:py-16 border-b border-gray-100">
       <div className="page-container text-center">
         {/* Header */}
-        <p className="text-caption-responsive font-extrabold uppercase tracking-wider text-blue-600">
+        <p className="text-caption-responsive font-bold uppercase tracking-wider text-blue-600">
           {labels.eyebrow}
         </p>
-        <h2 className="mt-3 text-section-title font-extrabold text-slate-900 tracking-tight">
+        <h2 className="mt-3 text-section-title font-bold text-slate-900 tracking-tight">
           {labels.title}
         </h2>
         <p className="mt-4 text-body-regular text-slate-500 max-w-2xl mx-auto leading-relaxed">

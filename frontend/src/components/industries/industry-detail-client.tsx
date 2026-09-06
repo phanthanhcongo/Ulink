@@ -306,12 +306,12 @@ export default function IndustryDetailClient({
               {industryCategoryName}
             </Link>
             <ChevronRight className="h-3.5 w-3.5 text-white/50" />
-            <span className="text-white font-extrabold">{currentBreadcrumb}</span>
+            <span className="text-white font-bold">{currentBreadcrumb}</span>
           </nav>
 
           {/* Heading and Description */}
           <div className="max-w-4xl space-y-4">
-            <h1 className="text-hero-title font-extrabold tracking-tight text-white leading-tight">
+            <h1 className="text-hero-title font-bold tracking-tight text-white leading-tight">
               {industryData.title}
             </h1>
             <p className="text-body-regular font-medium leading-relaxed text-white/95 max-w-3xl">
@@ -324,7 +324,7 @@ export default function IndustryDetailClient({
             <Link
               href={industryData.catalogue.url}
               onClick={handleCatalogueClick}
-              className="inline-flex h-11 items-center justify-center gap-2 border border-white bg-transparent hover:bg-white hover:text-slate-900 text-white font-extrabold text-caption-responsive leading-relaxed px-6 py-2.5 transition-all duration-300 rounded-[3px] shadow-sm"
+              className="inline-flex h-11 items-center justify-center gap-2 border border-white bg-transparent hover:bg-white hover:text-slate-900 text-white font-bold text-caption-responsive leading-relaxed px-6 py-2.5 transition-all duration-300 rounded-[3px] shadow-sm"
             >
               <Download className="h-4 w-4" />
               {isVi ? 'Tải hồ sơ năng lực' : isJa ? '機能プロファイルをダウンロード' : 'Download Capability Profile'}
@@ -365,7 +365,7 @@ export default function IndustryDetailClient({
               <span className="text-caption-responsive font-bold uppercase tracking-wider text-blue-600 block">
                 {isVi ? 'Tổng quan giải pháp' : isJa ? 'ソリューション概要' : 'Solution Overview'}
               </span>
-              <h2 className="text-section-title font-extrabold text-primary">
+              <h2 className="text-section-title font-bold text-primary">
                 {industryData.slug === 'pharmaceutical-cosmetics'
                   ? (isVi ? 'Đảm bảo tiêu chuẩn vô trùng khắt khe nhất' : isJa ? '最も厳格な無菌基準を保証' : 'Ensure the strictest sterility standards')
                   : industryData.slug === 'electronics'
@@ -419,7 +419,7 @@ export default function IndustryDetailClient({
           {/* Right Column (1/3) - Why Choose ULINK Card */}
           <div className="bg-card border border-slate-200/80 p-8 shadow-sm space-y-6 flex flex-col justify-between h-full">
             <div className="space-y-5">
-              <h3 className="text-section-title font-extrabold text-primary border-b pb-4 flex items-center gap-2">
+              <h3 className="text-section-title font-bold text-primary border-b pb-4 flex items-center gap-2">
                 <ShieldCheck className="h-5.5 w-5.5 text-blue-600" />
                 {industryData.whyUsTitle}
               </h3>
@@ -436,7 +436,7 @@ export default function IndustryDetailClient({
             <div className="pt-6">
               <Link
                 href="/contact"
-                className="w-full bg-brand hover:bg-brand/90 text-white font-extrabold text-caption-responsive leading-relaxed h-11 inline-flex items-center justify-center transition-colors shadow-md rounded-[3px]"
+                className="w-full bg-brand hover:bg-brand/90 text-white font-bold text-caption-responsive leading-relaxed h-11 inline-flex items-center justify-center transition-colors shadow-md rounded-[3px]"
               >
                 {isVi ? 'Liên hệ ngay' : isJa ? '今すぐ連絡' : 'Contact Now'}
               </Link>
@@ -453,7 +453,7 @@ export default function IndustryDetailClient({
             <span className="text-caption-responsive font-bold uppercase tracking-wider text-blue-600 block">
               {translations.cleanroomSol}
             </span>
-            <h2 className="text-section-title font-extrabold text-primary">
+            <h2 className="text-section-title font-bold text-primary">
               {isVi ? 'Nhóm sản phẩm chuyên dụng phòng sạch' : isJa ? 'クリーンルーム専用製品グループ' : 'Cleanroom Specialized Products'}
             </h2>
             <p className="text-caption-responsive leading-relaxed text-slate-400 font-semibold">
@@ -482,7 +482,7 @@ export default function IndustryDetailClient({
                     {/* Content */}
                     <div className="p-5 space-y-3">
                       <Link href={item.href} className="block">
-                        <h4 className="text-body-regular font-extrabold text-primary line-clamp-1 leading-snug hover:text-blue-600 transition-colors" title={item.name}>
+                        <h4 className="text-body-regular font-bold text-primary line-clamp-1 leading-snug hover:text-blue-600 transition-colors" title={item.name}>
                           {item.name}
                         </h4>
                       </Link>
@@ -522,7 +522,7 @@ export default function IndustryDetailClient({
             <span className="text-caption-responsive font-bold uppercase tracking-wider text-blue-600 block">
               {translations.packagingSol}
             </span>
-            <h2 className="text-section-title font-extrabold text-primary">
+            <h2 className="text-section-title font-bold text-primary">
               {isVi ? 'Bao bì & Đóng gói công nghiệp' : isJa ? '工業用包装＆パッケージング' : 'Industrial Packaging & Wrapping'}
             </h2>
             <p className="text-caption-responsive leading-relaxed text-slate-400 font-semibold">
@@ -551,7 +551,7 @@ export default function IndustryDetailClient({
                     {/* Content */}
                     <div className="p-5 space-y-3">
                       <Link href={item.href} className="block">
-                        <h4 className="text-body-regular font-extrabold text-primary line-clamp-1 leading-snug hover:text-blue-600 transition-colors" title={item.name}>
+                        <h4 className="text-body-regular font-bold text-primary line-clamp-1 leading-snug hover:text-blue-600 transition-colors" title={item.name}>
                           {item.name}
                         </h4>
                       </Link>
@@ -591,7 +591,7 @@ export default function IndustryDetailClient({
             <span className="text-caption-responsive font-bold uppercase tracking-wider text-blue-600 block">
               {industryData.standardsTitle}
             </span>
-            <h2 className="text-section-title font-extrabold text-primary">
+            <h2 className="text-section-title font-bold text-primary">
               {isVi ? 'Tiêu chuẩn chất lượng khắt khe nhất' : isJa ? '最も厳格な品質管理基準' : 'Strict Quality Standards'}
             </h2>
             <p className="text-caption-responsive text-slate-500 font-semibold leading-relaxed">
@@ -618,7 +618,7 @@ export default function IndustryDetailClient({
                     <IconComp className="h-6 w-6 stroke-[2.2]" />
                   </div>
                   <div className="space-y-2">
-                    <h4 className="text-body-regular font-extrabold text-primary leading-snug">
+                    <h4 className="text-body-regular font-bold text-primary leading-snug">
                       {std.name}
                     </h4>
                     <p className="text-caption-responsive text-slate-500 font-medium leading-relaxed">
@@ -639,7 +639,7 @@ export default function IndustryDetailClient({
             <span className="text-caption-responsive font-bold uppercase tracking-wider text-blue-600 block">
               {translations.cases}
             </span>
-            <h2 className="text-section-title font-extrabold text-primary">
+            <h2 className="text-section-title font-bold text-primary">
               {industryData.casesTitle}
             </h2>
           </div>
@@ -661,13 +661,13 @@ export default function IndustryDetailClient({
                       className="object-cover"
                     />
                     {/* Badge */}
-                    <div className="absolute bottom-3 left-3 bg-blue-600 text-white text-caption-responsive font-extrabold px-3 py-1 uppercase tracking-wider">
+                    <div className="absolute bottom-3 left-3 bg-blue-600 text-white text-caption-responsive font-bold px-3 py-1 uppercase tracking-wider">
                       {cs.badge}
                     </div>
                   </div>
                   {/* Content */}
                   <div className="p-6 space-y-2">
-                    <h4 className="text-body-regular font-extrabold text-primary line-clamp-2 leading-snug">
+                    <h4 className="text-body-regular font-bold text-primary line-clamp-2 leading-snug">
                       {cs.title}
                     </h4>
                     <p className="text-caption-responsive text-slate-500 font-medium leading-relaxed">
@@ -685,7 +685,7 @@ export default function IndustryDetailClient({
       <section className="py-16 w-full bg-slate-50 border-t border-b border-slate-100">
         <div className="page-container space-y-10">
           <div className="text-center max-w-xl mx-auto space-y-2">
-            <h3 className="text-caption-responsive leading-relaxed font-extrabold text-primary uppercase tracking-widest">
+            <h3 className="text-caption-responsive leading-relaxed font-bold text-primary uppercase tracking-widest">
               {isVi
                 ? 'Được tin cậy bởi các tập đoàn và nhà máy sản xuất quy mô'
                 : isJa

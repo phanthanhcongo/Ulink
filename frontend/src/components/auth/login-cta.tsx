@@ -7,7 +7,7 @@ export function LoginCta() {
       <div className="rounded-[3px] bg-white p-8 md:p-10 border border-slate-100 shadow-sm flex flex-col md:flex-row items-center justify-between gap-8">
         <div className="flex flex-col gap-2 text-center md:text-left">
           <span className="text-caption-responsive font-semibold text-slate-500 uppercase tracking-wider">Liên hệ trực tiếp</span>
-          <h2 className="text-section-title font-extrabold text-slate-900">
+          <h2 className="text-section-title font-bold text-slate-900">
             Kết nối với ULink Industries
           </h2>
           <p className="text-body-regular text-slate-500 max-w-xl">

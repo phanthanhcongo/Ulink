@@ -335,10 +335,10 @@ export function MobileNav({ items }: MobileNavProps) {
 
         <div className="flex-1 overflow-y-auto p-4 sm:p-5 overscroll-contain">
           <div className="mb-4 px-1 pt-1">
-            <p className="text-[25px] font-extrabold tracking-[0.05em] text-[#2168df] uppercase mb-1">
+            <p className="text-[25px] font-bold tracking-[0.05em] text-[#2168df] uppercase mb-1">
               MENU
             </p>
-            <h2 className="text-[25px] font-extrabold tracking-[-0.7px] text-[#152944]">
+            <h2 className="text-[25px] font-bold tracking-[-0.7px] text-[#152944]">
               Khám phá ULink Industries
             </h2>
           </div>
@@ -468,7 +468,7 @@ export function MobileNav({ items }: MobileNavProps) {
             onClick={() => setOpen(false)}
             className="mt-5 flex min-h-[72px] items-center gap-3 rounded-[3px] border border-[#dfe6ef] bg-[#f4f8fd] p-3.5 transition-colors hover:bg-[#e8f2fc]"
           >
-            <em className="not-italic text-caption-responsive font-extrabold px-2 py-1 rounded-[3px] bg-[#d9efff] text-[#076caa] uppercase shrink-0">
+            <em className="not-italic text-caption-responsive font-bold px-2 py-1 rounded-[3px] bg-[#d9efff] text-[#076caa] uppercase shrink-0">
               MỚI
             </em>
             <b className="text-[12.5px] font-bold text-[#152944] leading-snug flex-1">

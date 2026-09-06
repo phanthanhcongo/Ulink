@@ -21,7 +21,7 @@ export function CareersGallery() {
         <span className="text-body-regular font-bold uppercase tracking-wider text-blue-600">
           Không gian làm việc
         </span>
-        <h2 className="text-hero-title font-extrabold tracking-tight text-slate-900 mt-1">
+        <h2 className="text-hero-title font-bold tracking-tight text-slate-900 mt-1">
           Môi trường làm việc
         </h2>
         <p className="mt-2 text-body-regular text-slate-500 max-w-xl">

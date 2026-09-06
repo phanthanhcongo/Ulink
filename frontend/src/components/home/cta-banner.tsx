@@ -30,7 +30,7 @@ export function CtaBanner({
             <p className="text-body-regular font-medium text-white/80">
               {tCta('eyebrow')}
             </p>
-            <h2 className="text-section-title mt-4 font-extrabold text-white">
+            <h2 className="text-section-title mt-4 font-bold text-white">
               {tCta('title')}
             </h2>
             <p className="mt-5 text-body-large leading-relaxed text-white/90 max-w-[720px]">
@@ -69,7 +69,7 @@ export function CtaBanner({
               <div className="flex items-start gap-4 border-b border-white/20 pb-5">
                 <PhoneCall className="h-6 w-6 shrink-0 text-white mt-1" aria-hidden="true" />
                 <div>
-                  <p className="text-card-title font-extrabold text-white">
+                  <p className="text-card-title font-bold text-white">
                     {tCta('phone')}
                   </p>
                   <p className="mt-1 text-caption-responsive text-white/75">
@@ -82,7 +82,7 @@ export function CtaBanner({
               <div className="flex items-start gap-4 border-b border-white/20 pb-5">
                 <Mail className="h-6 w-6 shrink-0 text-white mt-1" aria-hidden="true" />
                 <div>
-                  <p className="text-card-title font-extrabold text-white">
+                  <p className="text-card-title font-bold text-white">
                     {tCta('email')}
                   </p>
                   <p className="mt-1 text-caption-responsive text-white/75">
@@ -95,7 +95,7 @@ export function CtaBanner({
               <div className="flex items-start gap-4">
                 <Send className="h-6 w-6 shrink-0 text-white mt-1" aria-hidden="true" />
                 <div>
-                  <p className="text-card-title font-extrabold text-white">
+                  <p className="text-card-title font-bold text-white">
                     {tCta('izConnect')}
                   </p>
                   <p className="mt-1 text-caption-responsive text-white/75">{tCta('izList')}</p>

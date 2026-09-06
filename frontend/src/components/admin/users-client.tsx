@@ -181,10 +181,10 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-100 pb-6 mb-8">
         <div>
-          <span className="text-caption-responsive uppercase text-slate-400 font-extrabold tracking-wider">
+          <span className="text-caption-responsive uppercase text-slate-400 font-bold tracking-wider">
             Hệ thống phân quyền & Bảo mật
           </span>
-          <h1 className="text-section-title font-extrabold text-primary tracking-tight mt-1">
+          <h1 className="text-section-title font-bold text-primary tracking-tight mt-1">
             Quản lý Tài khoản (Users)
           </h1>
           <p className="text-caption-responsive text-slate-500 font-medium mt-1 leading-relaxed">
@@ -208,7 +208,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
         <div className="mb-6 p-4 bg-rose-50 border border-rose-200 rounded-[3px] text-rose-800 text-caption-responsive font-semibold flex items-start gap-2.5 shadow-sm">
           <AlertTriangle className="h-5 w-5 text-rose-500 shrink-0 mt-0.5" />
           <div className="flex-1">
-            <span className="font-extrabold text-rose-900 block mb-1">
+            <span className="font-bold text-rose-900 block mb-1">
               Đã xảy ra lỗi khi tải dữ liệu người dùng từ Directus API
             </span>
             <pre className="font-mono text-caption-responsive bg-white/60 p-2.5 rounded-[3px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all">
@@ -254,7 +254,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
         {filteredUsers.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 text-center">
             <Users className="h-12 w-12 text-slate-300 mb-3" />
-            <span className="text-body-regular font-extrabold text-primary">
+            <span className="text-body-regular font-bold text-primary">
               Không tìm thấy người dùng nào
             </span>
             <span className="text-caption-responsive text-slate-400 mt-1">
@@ -284,7 +284,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
                     <tr key={u.id} className="hover:bg-slate-50/30 transition-colors group">
                       {/* Name (Sticky) */}
                       <td className="px-4 py-3 sticky left-0 bg-white group-hover:bg-slate-50/80 transition-colors shadow-[2px_0_5px_rgba(0,0,0,0.03)] z-10">
-                        <span className="font-extrabold text-primary leading-tight">
+                        <span className="font-bold text-primary leading-tight">
                           {`${u.first_name || ''} ${u.last_name || ''}`.trim() || 'No Name'}
                         </span>
                       </td>
@@ -379,7 +379,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
             {/* Modal Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
               <div>
-                <h2 className="text-body-regular font-extrabold text-primary flex items-center gap-2">
+                <h2 className="text-body-regular font-bold text-primary flex items-center gap-2">
                   <Shield className="h-5 w-5 text-blue-500" />
                   {activeUser.id ? 'Cập nhật tài khoản' : 'Thêm tài khoản mới'}
                 </h2>
@@ -411,7 +411,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
                 {/* First Name & Last Name */}
                 <div className="grid grid-cols-2 gap-4">
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                    <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                       Họ *
                     </label>
                     <input
@@ -424,7 +424,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
                     />
                   </div>
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                    <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                       Tên *
                     </label>
                     <input
@@ -440,7 +440,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
 
                 {/* Email */}
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider flex items-center gap-1">
+                  <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider flex items-center gap-1">
                     <Mail className="h-3 w-3 text-slate-400" />
                     Địa chỉ Email *
                   </label>
@@ -456,7 +456,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
 
                 {/* Password */}
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider flex items-center gap-1">
+                  <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider flex items-center gap-1">
                     <Lock className="h-3 w-3 text-slate-400" />
                     Mật khẩu {activeUser.id ? '(Tùy chọn)' : '*'}
                   </label>
@@ -476,7 +476,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
 
                  {/* Role grid selector */}
                  <div className="flex flex-col gap-2">
-                   <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider flex items-center gap-1.5">
+                   <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider flex items-center gap-1.5">
                      <ShieldAlert className="h-3.5 w-3.5 text-slate-400" />
                      Vai trò hệ thống (Role) *
                    </label>
@@ -495,7 +495,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
                            )}
                          >
                            <div className="flex items-center justify-between">
-                             <span className="text-caption-responsive font-extrabold text-primary">
+                             <span className="text-caption-responsive font-bold text-primary">
                                {r.name}
                              </span>
                              <span
@@ -520,7 +520,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
 
                 {/* Status dropdown */}
                 <div className="flex flex-col gap-1.5">
-                  <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                  <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                     Trạng thái tài khoản
                   </label>
                   <select

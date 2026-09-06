@@ -64,7 +64,7 @@ export function AboutQualityHero() {
             <p className="text-caption-responsive font-bold uppercase tracking-wider text-brand">{t('eyebrow')}</p>
 
             {/* Heading */}
-            <h1 className="mt-4 text-hero-title font-extrabold leading-[1.35] text-primary">
+            <h1 className="mt-4 text-hero-title font-bold leading-[1.35] text-primary">
               <span className="block">{t('titleLine1')}</span>
               <span className="block">{t('titleLine2')}</span>
             </h1>

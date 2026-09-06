@@ -147,7 +147,7 @@ export function ResourcesClient({
         <div className="absolute inset-0 flex items-center">
           <div className="page-container text-left text-white">
             <div className="inline-block bg-slate-950/30 backdrop-blur-xs p-6 sm:p-8 border border-white/10 max-w-2xl rounded-[3px] shadow-2xl">
-              <h1 className="text-section-title font-extrabold tracking-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]">
+              <h1 className="text-section-title font-bold tracking-tight text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.4)]">
                 {L.resources[locale]}
               </h1>
               <p className="mt-4 text-body-regular text-slate-100 leading-relaxed font-semibold drop-shadow-[0_1.5px_4px_rgba(0,0,0,0.4)]">

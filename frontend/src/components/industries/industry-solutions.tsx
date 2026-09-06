@@ -51,7 +51,7 @@ export function IndustrySolutions({
         <div className="pt-2">
           <Link
             href={`/solutions?industry=${currentSlug}&category=cleanroom-consumables`}
-            className="w-full border border-slate-200 bg-white hover:bg-slate-50 px-4 py-2 text-caption-responsive leading-relaxed font-extrabold inline-flex items-center gap-1.5 text-slate-700 transition-colors justify-center"
+            className="w-full border border-slate-200 bg-white hover:bg-slate-50 px-4 py-2 text-caption-responsive leading-relaxed font-bold inline-flex items-center gap-1.5 text-slate-700 transition-colors justify-center"
           >
             {industryData.cleanroomViewAll}
             <ArrowRight className="h-3.5 w-3.5 text-slate-400" />
@@ -91,7 +91,7 @@ export function IndustrySolutions({
         <div className="pt-2">
           <Link
             href={`/solutions?industry=${currentSlug}&category=industrial-packaging`}
-            className="w-full border border-slate-200 bg-white hover:bg-slate-50 px-4 py-2 text-caption-responsive leading-relaxed font-extrabold inline-flex items-center gap-1.5 text-slate-700 transition-colors justify-center"
+            className="w-full border border-slate-200 bg-white hover:bg-slate-50 px-4 py-2 text-caption-responsive leading-relaxed font-bold inline-flex items-center gap-1.5 text-slate-700 transition-colors justify-center"
           >
             {industryData.packagingViewAll}
             <ArrowRight className="h-3.5 w-3.5 text-slate-400" />

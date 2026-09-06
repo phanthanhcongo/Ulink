@@ -405,10 +405,10 @@ export function RfqsClient({ initialRfqs, salesTeam, hubs, skus, error }: RfqsCl
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-100 pb-6 mb-8">
         <div>
-          <span className="text-caption-responsive uppercase text-slate-400 font-extrabold tracking-wider">
+          <span className="text-caption-responsive uppercase text-slate-400 font-bold tracking-wider">
             Chăm sóc khách hàng B2B
           </span>
-          <h1 className="text-section-title font-extrabold text-primary tracking-tight mt-1">
+          <h1 className="text-section-title font-bold text-primary tracking-tight mt-1">
             Xử lý Yêu cầu Báo giá (RFQs)
           </h1>
           <p className="text-caption-responsive text-slate-500 font-medium mt-1 leading-relaxed">
@@ -432,7 +432,7 @@ export function RfqsClient({ initialRfqs, salesTeam, hubs, skus, error }: RfqsCl
         <div className="mb-6 p-4 bg-rose-50 border border-rose-200 rounded-[3px] text-rose-800 text-caption-responsive font-semibold flex items-start gap-2.5 shadow-sm">
           <AlertTriangle className="h-5 w-5 text-rose-500 shrink-0 mt-0.5" />
           <div className="flex-1">
-            <span className="font-extrabold text-rose-900 block mb-1">
+            <span className="font-bold text-rose-900 block mb-1">
               Đã xảy ra lỗi khi tải dữ liệu RFQ từ API
             </span>
             <pre className="font-mono text-caption-responsive bg-white/60 p-2.5 rounded-[3px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all">
@@ -476,7 +476,7 @@ export function RfqsClient({ initialRfqs, salesTeam, hubs, skus, error }: RfqsCl
         {filteredRfqs.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 text-center">
             <FileSpreadsheet className="h-12 w-12 text-slate-300 mb-3" />
-            <span className="text-body-regular font-extrabold text-primary">
+            <span className="text-body-regular font-bold text-primary">
               Không có yêu cầu báo giá nào
             </span>
             <span className="text-caption-responsive text-slate-400 mt-1">
@@ -509,7 +509,7 @@ export function RfqsClient({ initialRfqs, salesTeam, hubs, skus, error }: RfqsCl
                       {/* Company & Name (Sticky) */}
                       <td className="px-4 py-3 sticky left-0 bg-white group-hover:bg-slate-50/80 transition-colors shadow-[2px_0_5px_rgba(0,0,0,0.03)] z-10">
                         <div className="flex flex-col">
-                          <span className="font-extrabold text-primary leading-tight">
+                          <span className="font-bold text-primary leading-tight">
                             {rfq.company}
                           </span>
                           <span className="text-caption-responsive text-slate-400 font-semibold mt-1">
@@ -645,7 +645,7 @@ export function RfqsClient({ initialRfqs, salesTeam, hubs, skus, error }: RfqsCl
             {/* Modal Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
               <div>
-                <h2 className="text-body-regular font-extrabold text-primary flex items-center gap-2">
+                <h2 className="text-body-regular font-bold text-primary flex items-center gap-2">
                   <FileSpreadsheet className="h-5 w-5 text-blue-500" />
                   Chi tiết Yêu cầu báo giá #{selectedRfq.id}
                 </h2>
@@ -677,13 +677,13 @@ export function RfqsClient({ initialRfqs, salesTeam, hubs, skus, error }: RfqsCl
               {/* Top Section: Information grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50/50 p-5 rounded-[3px] border border-slate-100">
                 <div className="flex flex-col gap-3">
-                  <h3 className="text-caption-responsive font-extrabold text-primary uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-150 pb-2">
+                  <h3 className="text-caption-responsive font-bold text-primary uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-150 pb-2">
                     <Building className="h-4 w-4 text-blue-500" />
                     Thông tin doanh nghiệp
                   </h3>
                   <div className="grid grid-cols-3 gap-y-2 text-caption-responsive">
                     <span className="text-slate-400 font-bold">Doanh nghiệp:</span>
-                    <span className="col-span-2 text-primary font-extrabold">
+                    <span className="col-span-2 text-primary font-bold">
                       {selectedRfq.company}
                     </span>
 
@@ -710,7 +710,7 @@ export function RfqsClient({ initialRfqs, salesTeam, hubs, skus, error }: RfqsCl
                 </div>
 
                 <div className="flex flex-col gap-3">
-                  <h3 className="text-caption-responsive font-extrabold text-primary uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-150 pb-2">
+                  <h3 className="text-caption-responsive font-bold text-primary uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-150 pb-2">
                     <Phone className="h-4 w-4 text-blue-500" />
                     Liên hệ & Giao hàng
                   </h3>
@@ -745,7 +745,7 @@ export function RfqsClient({ initialRfqs, salesTeam, hubs, skus, error }: RfqsCl
 
               {/* Middle Section: Line Items list */}
               <div className="flex flex-col gap-3">
-                <h3 className="text-caption-responsive font-extrabold text-primary uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-100 pb-2">
+                <h3 className="text-caption-responsive font-bold text-primary uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-100 pb-2">
                   <FileSpreadsheet className="h-4 w-4 text-blue-500" />
                   Danh sách sản phẩm yêu cầu báo giá
                 </h3>
@@ -763,10 +763,10 @@ export function RfqsClient({ initialRfqs, salesTeam, hubs, skus, error }: RfqsCl
                       <tbody className="divide-y divide-slate-100 text-slate-650">
                         {selectedRfq.line_items.map((item, idx) => (
                           <tr key={idx} className="hover:bg-slate-50/20">
-                            <td className="px-5 py-3 font-mono font-extrabold text-brand select-all">
+                            <td className="px-5 py-3 font-mono font-bold text-brand select-all">
                               {item.sku}
                             </td>
-                            <td className="px-5 py-3 font-extrabold text-primary">
+                            <td className="px-5 py-3 font-bold text-primary">
                               {item.qty || 1}
                             </td>
                             <td className="px-5 py-3 text-slate-500 italic">
@@ -787,7 +787,7 @@ export function RfqsClient({ initialRfqs, salesTeam, hubs, skus, error }: RfqsCl
               {/* Message from client */}
               {selectedRfq.message && (
                 <div className="flex flex-col gap-2">
-                  <span className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                  <span className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                     Tin nhắn từ khách hàng
                   </span>
                   <div className="px-4 py-3 bg-slate-50 rounded-[3px] border border-slate-100 text-caption-responsive text-slate-650 leading-relaxed whitespace-pre-wrap">
@@ -861,7 +861,7 @@ export function RfqsClient({ initialRfqs, salesTeam, hubs, skus, error }: RfqsCl
                     className="p-4 rounded-[3px] border border-slate-100 bg-slate-50/50 flex flex-col gap-4 animate-in fade-in slide-in-from-top-2 duration-200"
                   >
                     <div className="flex items-center justify-between border-b border-slate-150 pb-2 mb-1">
-                      <h4 className="text-caption-responsive font-extrabold text-primary uppercase tracking-wider">
+                      <h4 className="text-caption-responsive font-bold text-primary uppercase tracking-wider">
                         {actionType === 'approve'
                           ? 'Phê duyệt & Gán nhân viên sales'
                           : 'Từ chối yêu cầu báo giá'}
@@ -879,7 +879,7 @@ export function RfqsClient({ initialRfqs, salesTeam, hubs, skus, error }: RfqsCl
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {/* Assigned Sales dropdown */}
                         <div className="flex flex-col gap-1.5">
-                          <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                          <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                             Chọn nhân viên Sales phụ trách *
                           </label>
                           <select
@@ -900,7 +900,7 @@ export function RfqsClient({ initialRfqs, salesTeam, hubs, skus, error }: RfqsCl
 
                         {/* Approval Note */}
                         <div className="flex flex-col gap-1.5">
-                          <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                          <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                             Ghi chú phê duyệt
                           </label>
                           <input
@@ -916,7 +916,7 @@ export function RfqsClient({ initialRfqs, salesTeam, hubs, skus, error }: RfqsCl
 
                     {actionType === 'reject' && (
                       <div className="flex flex-col gap-1.5">
-                        <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                        <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                           Lý do từ chối yêu cầu *
                         </label>
                         <textarea
@@ -973,7 +973,7 @@ export function RfqsClient({ initialRfqs, salesTeam, hubs, skus, error }: RfqsCl
                       <span className="text-caption-responsive font-bold text-emerald-700 uppercase">
                         Sales chăm sóc:
                       </span>
-                      <span className="text-emerald-900 font-extrabold flex items-center gap-1">
+                      <span className="text-emerald-900 font-bold flex items-center gap-1">
                         <User className="h-3.5 w-3.5 text-emerald-600" />
                         {selectedRfq.assigned_sales
                           ? `${selectedRfq.assigned_sales.first_name || ''} ${selectedRfq.assigned_sales.last_name || ''}`.trim() ||
@@ -1021,7 +1021,7 @@ export function RfqsClient({ initialRfqs, salesTeam, hubs, skus, error }: RfqsCl
             {/* Modal Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
               <div>
-                <h2 className="text-body-regular font-extrabold text-primary flex items-center gap-2">
+                <h2 className="text-body-regular font-bold text-primary flex items-center gap-2">
                   <FileSpreadsheet className="h-5 w-5 text-blue-500" />
                   {activeRfq.id
                     ? `Cập nhật yêu cầu báo giá #${activeRfq.id}`
@@ -1058,14 +1058,14 @@ export function RfqsClient({ initialRfqs, salesTeam, hubs, skus, error }: RfqsCl
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
                 {/* Left Column: Customer Details */}
                 <div className="flex flex-col gap-4">
-                  <h3 className="text-caption-responsive font-extrabold text-primary uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-100 pb-2 mb-1">
+                  <h3 className="text-caption-responsive font-bold text-primary uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-100 pb-2 mb-1">
                     <Building className="h-4 w-4 text-blue-500" />
                     Thông tin liên hệ
                   </h3>
 
                   {/* Company */}
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                    <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                       Tên doanh nghiệp *
                     </label>
                     <input
@@ -1080,7 +1080,7 @@ export function RfqsClient({ initialRfqs, salesTeam, hubs, skus, error }: RfqsCl
 
                   {/* Contact Name */}
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                    <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                       Người liên hệ *
                     </label>
                     <input
@@ -1096,7 +1096,7 @@ export function RfqsClient({ initialRfqs, salesTeam, hubs, skus, error }: RfqsCl
                   {/* Email & Phone */}
                   <div className="grid grid-cols-2 gap-4">
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                      <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                         Email *
                       </label>
                       <input
@@ -1109,7 +1109,7 @@ export function RfqsClient({ initialRfqs, salesTeam, hubs, skus, error }: RfqsCl
                       />
                     </div>
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                      <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                         Điện thoại *
                       </label>
                       <input
@@ -1125,7 +1125,7 @@ export function RfqsClient({ initialRfqs, salesTeam, hubs, skus, error }: RfqsCl
 
                   {/* Address */}
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                    <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                       Địa chỉ giao hàng *
                     </label>
                     <input
@@ -1141,7 +1141,7 @@ export function RfqsClient({ initialRfqs, salesTeam, hubs, skus, error }: RfqsCl
                   {/* Industry & Hub */}
                   <div className="grid grid-cols-2 gap-4">
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                      <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                         Ngành nghề
                       </label>
                       <input
@@ -1153,7 +1153,7 @@ export function RfqsClient({ initialRfqs, salesTeam, hubs, skus, error }: RfqsCl
                       />
                     </div>
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                      <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                         Khu vực (Hub) *
                       </label>
                       <select
@@ -1198,7 +1198,7 @@ export function RfqsClient({ initialRfqs, salesTeam, hubs, skus, error }: RfqsCl
 
                   {activeRfq.scheduled_delivery && (
                     <div className="flex flex-col gap-1.5 animate-in fade-in duration-200">
-                      <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                      <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                         Ngày giao hàng mong muốn
                       </label>
                       <input
@@ -1215,7 +1215,7 @@ export function RfqsClient({ initialRfqs, salesTeam, hubs, skus, error }: RfqsCl
                   {/* Status & Assigned Sales */}
                   <div className="grid grid-cols-2 gap-4 border-t border-slate-100 pt-4 mt-1">
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                      <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                         Trạng thái xử lý
                       </label>
                       <select
@@ -1234,7 +1234,7 @@ export function RfqsClient({ initialRfqs, salesTeam, hubs, skus, error }: RfqsCl
                       </select>
                     </div>
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                      <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                         Sales phụ trách
                       </label>
                       <select
@@ -1260,7 +1260,7 @@ export function RfqsClient({ initialRfqs, salesTeam, hubs, skus, error }: RfqsCl
 
                   {/* Message / Customer Request */}
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                    <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                       Tin nhắn đính kèm
                     </label>
                     <textarea
@@ -1276,14 +1276,14 @@ export function RfqsClient({ initialRfqs, salesTeam, hubs, skus, error }: RfqsCl
                 {/* Right Column: Line Items configuration */}
                 <div className="flex flex-col gap-4">
                   <div className="flex items-center justify-between border-b border-slate-100 pb-2 mb-1">
-                    <h3 className="text-caption-responsive font-extrabold text-primary uppercase tracking-wider flex items-center gap-1.5">
+                    <h3 className="text-caption-responsive font-bold text-primary uppercase tracking-wider flex items-center gap-1.5">
                       <FileSpreadsheet className="h-4 w-4 text-blue-500" />
                       Danh sách sản phẩm ({activeRfq.line_items?.length || 0})
                     </h3>
                     <button
                       type="button"
                       onClick={handleAddFormItem}
-                      className="inline-flex h-7 items-center justify-center gap-1 px-3.5 rounded-[3px] border border-blue-200 text-caption-responsive font-extrabold text-blue-600 hover:bg-blue-50 bg-white transition-all shadow-sm"
+                      className="inline-flex h-7 items-center justify-center gap-1 px-3.5 rounded-[3px] border border-blue-200 text-caption-responsive font-bold text-blue-600 hover:bg-blue-50 bg-white transition-all shadow-sm"
                     >
                       <PlusCircle className="h-3.5 w-3.5" />
                       Thêm sản phẩm
@@ -1306,7 +1306,7 @@ export function RfqsClient({ initialRfqs, salesTeam, hubs, skus, error }: RfqsCl
                           <X className="h-3.5 w-3.5" />
                         </button>
 
-                        <span className="text-caption-responsive font-extrabold text-slate-400 uppercase tracking-wider">
+                        <span className="text-caption-responsive font-bold text-slate-400 uppercase tracking-wider">
                           Sản phẩm #{idx + 1}
                         </span>
 

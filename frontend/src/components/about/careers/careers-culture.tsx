@@ -48,7 +48,7 @@ export function CareersCulture() {
           • VĂN HÓA & GIÁ TRỊ CỐT LÕI
         </span>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-end">
-          <h2 className="text-hero-title font-extrabold tracking-tight text-slate-900 leading-tight">
+          <h2 className="text-hero-title font-bold tracking-tight text-slate-900 leading-tight">
             Sáu giá trị<br />cốt lõi của chúng tôi.
           </h2>
           <p className="text-body-large leading-relaxed text-slate-500 max-w-lg">

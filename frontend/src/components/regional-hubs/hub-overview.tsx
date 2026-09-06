@@ -139,7 +139,7 @@ export default function HubOverview({ locale }: HubOverviewProps) {
                 </div>
               </div>
               <div className="flex flex-col text-left">
-                <span className="text-card-title min-[375px]:text-card-title font-extrabold text-slate-900 leading-none">
+                <span className="text-card-title min-[375px]:text-card-title font-bold text-slate-900 leading-none">
                   {stat.value}
                 </span>
                 <span className="mt-1 sm:mt-1.5 text-caption-responsive font-medium text-slate-500 leading-tight">
@@ -163,7 +163,7 @@ export default function HubOverview({ locale }: HubOverviewProps) {
                   className="object-contain"
                 />
               </div>
-              <span className="text-body-regular font-extrabold tracking-wider uppercase whitespace-nowrap">
+              <span className="text-body-regular font-bold tracking-wider uppercase whitespace-nowrap">
                 SHELLS
               </span>
             </div>
@@ -239,7 +239,7 @@ export default function HubOverview({ locale }: HubOverviewProps) {
                 />
               </div>
               <div className="flex flex-col leading-none whitespace-nowrap">
-                <span className="text-caption-responsive font-extrabold tracking-wider uppercase">
+                <span className="text-caption-responsive font-bold tracking-wider uppercase">
                   WAVES
                 </span>
                 <span className="text-[8px] font-medium tracking-widest uppercase text-[#697077]/80">

@@ -1314,7 +1314,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                 {/* Bottom Bar: spans edge-to-edge */}
                 <div className="border-t border-slate-100 bg-[#F8FAFC] w-full">
                   <div className="page-container flex items-center py-3.5">
-                    <span className="inline-flex items-center justify-center bg-blue-600 text-white text-caption-responsive font-extrabold px-2 py-0.5 rounded-[2px] tracking-wider">
+                    <span className="inline-flex items-center justify-center bg-blue-600 text-white text-caption-responsive font-bold px-2 py-0.5 rounded-[2px] tracking-wider">
                       MỚI
                     </span>
                     <span className="text-caption-responsive text-slate-500 font-bold ml-3">
@@ -1499,7 +1499,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                 {/* Bottom Bar: spans edge-to-edge */}
                 <div className="border-t border-slate-100 bg-[#F8FAFC] w-full">
                   <div className="page-container flex items-center py-3.5">
-                    <span className="inline-flex items-center justify-center bg-blue-600 text-white text-caption-responsive font-extrabold px-2 py-0.5 rounded-[2px] tracking-wider">
+                    <span className="inline-flex items-center justify-center bg-blue-600 text-white text-caption-responsive font-bold px-2 py-0.5 rounded-[2px] tracking-wider">
                       MỚI
                     </span>
                     <span className="text-caption-responsive text-slate-500 font-bold ml-3">
@@ -1610,7 +1610,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                 {/* Bottom Bar: spans edge-to-edge */}
                 <div className="border-t border-slate-100 bg-[#F8FAFC] w-full">
                   <div className="page-container flex items-center py-3.5">
-                    <span className="inline-flex items-center justify-center bg-blue-600 text-white text-caption-responsive font-extrabold px-2 py-0.5 rounded-[2px] tracking-wider">
+                    <span className="inline-flex items-center justify-center bg-blue-600 text-white text-caption-responsive font-bold px-2 py-0.5 rounded-[2px] tracking-wider">
                       MỚI
                     </span>
                     <span className="text-caption-responsive text-slate-500 font-bold ml-3">
@@ -1721,7 +1721,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                 {/* Bottom Bar: spans edge-to-edge */}
                 <div className="border-t border-slate-100 bg-[#F8FAFC] w-full">
                   <div className="page-container flex items-center py-3.5">
-                    <span className="inline-flex items-center justify-center bg-blue-600 text-white text-caption-responsive font-extrabold px-2 py-0.5 rounded-[2px] tracking-wider">
+                    <span className="inline-flex items-center justify-center bg-blue-600 text-white text-caption-responsive font-bold px-2 py-0.5 rounded-[2px] tracking-wider">
                       MỚI
                     </span>
                     <span className="text-caption-responsive text-slate-500 font-bold ml-3">
@@ -1831,7 +1831,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                 {/* Bottom Bar: spans edge-to-edge */}
                 <div className="border-t border-slate-100 bg-[#F8FAFC] w-full">
                   <div className="page-container flex items-center py-3.5">
-                    <span className="inline-flex items-center justify-center bg-blue-600 text-white text-caption-responsive font-extrabold px-2 py-0.5 rounded-[2px] tracking-wider">
+                    <span className="inline-flex items-center justify-center bg-blue-600 text-white text-caption-responsive font-bold px-2 py-0.5 rounded-[2px] tracking-wider">
                       MỚI
                     </span>
                     <span className="text-caption-responsive text-slate-500 font-bold ml-3">

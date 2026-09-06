@@ -368,10 +368,10 @@ export function SampleRequestsClient({
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-100 pb-6 mb-8">
         <div>
-          <span className="text-caption-responsive uppercase text-slate-400 font-extrabold tracking-wider">
+          <span className="text-caption-responsive uppercase text-slate-400 font-bold tracking-wider">
             Hệ thống quản lý mẫu test
           </span>
-          <h1 className="text-section-title font-extrabold text-primary tracking-tight mt-1">
+          <h1 className="text-section-title font-bold text-primary tracking-tight mt-1">
             Yêu cầu Hàng mẫu (Sample Requests)
           </h1>
           <p className="text-caption-responsive text-slate-500 font-medium mt-1 leading-relaxed">
@@ -395,7 +395,7 @@ export function SampleRequestsClient({
         <div className="mb-6 p-4 bg-rose-50 border border-rose-200 rounded-[3px] text-rose-800 text-caption-responsive font-semibold flex items-start gap-2.5 shadow-sm">
           <AlertTriangle className="h-5 w-5 text-rose-500 shrink-0 mt-0.5" />
           <div className="flex-1">
-            <span className="font-extrabold text-rose-900 block mb-1">
+            <span className="font-bold text-rose-900 block mb-1">
               Đã xảy ra lỗi khi tải dữ liệu hàng mẫu từ API
             </span>
             <pre className="font-mono text-caption-responsive bg-white/60 p-2.5 rounded-[3px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all">
@@ -439,7 +439,7 @@ export function SampleRequestsClient({
         {filteredRequests.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 text-center">
             <Package className="h-12 w-12 text-slate-300 mb-3" />
-            <span className="text-body-regular font-extrabold text-primary">
+            <span className="text-body-regular font-bold text-primary">
               Không có yêu cầu hàng mẫu nào
             </span>
             <span className="text-caption-responsive text-slate-400 mt-1">
@@ -481,7 +481,7 @@ export function SampleRequestsClient({
                               )}
                             </span>
                             <div className="flex flex-col">
-                              <span className="font-extrabold text-primary leading-tight">
+                              <span className="font-bold text-primary leading-tight">
                                 {req.company}
                               </span>
                               <span className="text-caption-responsive text-slate-400 font-semibold mt-1">
@@ -623,7 +623,7 @@ export function SampleRequestsClient({
                           <td colSpan={7} className="px-10 py-4 border-t border-slate-100/50 bg-slate-50/30">
                             <div className="flex flex-col gap-3 animate-in slide-in-from-top-2 duration-200">
                               <div className="flex flex-col gap-1.5">
-                                <span className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider block">
+                                <span className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider block">
                                   Danh sách mặt hàng yêu cầu gửi mẫu ({req.skus?.length || 0})
                                 </span>
                                 {req.skus && req.skus.length > 0 ? (
@@ -646,7 +646,7 @@ export function SampleRequestsClient({
                               </div>
                               {req.message && (
                                 <div className="mt-1">
-                                  <span className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider block mb-1">
+                                  <span className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider block mb-1">
                                     Yêu cầu & Ghi chú từ khách hàng:
                                   </span>
                                   <p className="text-slate-650 bg-white p-3.5 rounded-[3px] border border-slate-200/80 whitespace-pre-wrap leading-relaxed">
@@ -674,7 +674,7 @@ export function SampleRequestsClient({
             {/* Modal Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
               <div>
-                <h2 className="text-body-regular font-extrabold text-primary flex items-center gap-2">
+                <h2 className="text-body-regular font-bold text-primary flex items-center gap-2">
                   <Package className="h-5 w-5 text-blue-500" />
                   Chi tiết Yêu cầu hàng mẫu #{selectedReq.id}
                 </h2>
@@ -706,13 +706,13 @@ export function SampleRequestsClient({
               {/* Information grid */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50/50 p-5 rounded-[3px] border border-slate-100">
                 <div className="flex flex-col gap-3">
-                  <h3 className="text-caption-responsive font-extrabold text-primary uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-150 pb-2">
+                  <h3 className="text-caption-responsive font-bold text-primary uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-150 pb-2">
                     <Building className="h-4 w-4 text-blue-500" />
                     Thông tin người nhận mẫu
                   </h3>
                   <div className="grid grid-cols-3 gap-y-2 text-caption-responsive">
                     <span className="text-slate-400 font-bold">Doanh nghiệp:</span>
-                    <span className="col-span-2 text-primary font-extrabold">
+                    <span className="col-span-2 text-primary font-bold">
                       {selectedReq.company}
                     </span>
 
@@ -730,7 +730,7 @@ export function SampleRequestsClient({
                 </div>
 
                 <div className="flex flex-col gap-3">
-                  <h3 className="text-caption-responsive font-extrabold text-primary uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-150 pb-2">
+                  <h3 className="text-caption-responsive font-bold text-primary uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-150 pb-2">
                     <Phone className="h-4 w-4 text-blue-500" />
                     Thông tin liên hệ
                   </h3>
@@ -760,7 +760,7 @@ export function SampleRequestsClient({
 
               {/* Line Items (SKUs) */}
               <div className="flex flex-col gap-3">
-                <h3 className="text-caption-responsive font-extrabold text-primary uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-100 pb-2">
+                <h3 className="text-caption-responsive font-bold text-primary uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-100 pb-2">
                   <Package className="h-4 w-4 text-blue-500" />
                   Danh sách sản phẩm mẫu yêu cầu test
                 </h3>
@@ -770,7 +770,7 @@ export function SampleRequestsClient({
                     {selectedReq.skus.map((skuCode, idx) => (
                       <span
                         key={idx}
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-[3px] bg-slate-50 border border-slate-150 text-caption-responsive font-mono font-extrabold text-primary select-all shadow-sm"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-[3px] bg-slate-50 border border-slate-150 text-caption-responsive font-mono font-bold text-primary select-all shadow-sm"
                       >
                         {skuCode}
                       </span>
@@ -786,7 +786,7 @@ export function SampleRequestsClient({
               {/* Message from client */}
               {selectedReq.message && (
                 <div className="flex flex-col gap-2">
-                  <span className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                  <span className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                     Tin nhắn / Yêu cầu thêm của khách hàng
                   </span>
                   <div className="px-4 py-3 bg-slate-50 rounded-[3px] border border-slate-100 text-caption-responsive text-slate-650 leading-relaxed whitespace-pre-wrap">
@@ -804,7 +804,7 @@ export function SampleRequestsClient({
                     </span>
                     <span
                       className={cn(
-                        'inline-flex items-center px-2.5 py-1 rounded-[3px] text-caption-responsive font-extrabold',
+                        'inline-flex items-center px-2.5 py-1 rounded-[3px] text-caption-responsive font-bold',
                         selectedReq.status === 'approved'
                           ? 'bg-emerald-50 text-emerald-800 border border-emerald-100'
                           : selectedReq.status === 'rejected'
@@ -852,7 +852,7 @@ export function SampleRequestsClient({
                     className="p-4 rounded-[3px] border border-slate-100 bg-slate-50/50 flex flex-col gap-4 animate-in fade-in slide-in-from-top-2 duration-200"
                   >
                     <div className="flex items-center justify-between border-b border-slate-150 pb-2 mb-1">
-                      <h4 className="text-caption-responsive font-extrabold text-primary uppercase tracking-wider">
+                      <h4 className="text-caption-responsive font-bold text-primary uppercase tracking-wider">
                         {actionType === 'approve'
                           ? 'Phê duyệt gửi hàng mẫu'
                           : 'Từ chối gửi mẫu thử'}
@@ -870,7 +870,7 @@ export function SampleRequestsClient({
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                         {/* Assigned Sales */}
                         <div className="flex flex-col gap-1.5">
-                          <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                          <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                             Gán nhân viên Sales chăm sóc *
                           </label>
                           <select
@@ -891,7 +891,7 @@ export function SampleRequestsClient({
 
                         {/* Approval Note */}
                         <div className="flex flex-col gap-1.5">
-                          <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                          <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                             Ghi chú duyệt
                           </label>
                           <input
@@ -907,7 +907,7 @@ export function SampleRequestsClient({
 
                     {actionType === 'reject' && (
                       <div className="flex flex-col gap-1.5">
-                        <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                        <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                           Lý do từ chối gửi mẫu *
                         </label>
                         <textarea
@@ -964,7 +964,7 @@ export function SampleRequestsClient({
                       <span className="text-caption-responsive font-bold text-emerald-700 uppercase">
                         Sales theo sát:
                       </span>
-                      <span className="text-emerald-900 font-extrabold flex items-center gap-1">
+                      <span className="text-emerald-900 font-bold flex items-center gap-1">
                         <User className="h-3.5 w-3.5 text-emerald-600" />
                         {selectedReq.assigned_sales
                           ? `${selectedReq.assigned_sales.first_name || ''} ${selectedReq.assigned_sales.last_name || ''}`.trim() ||
@@ -1012,7 +1012,7 @@ export function SampleRequestsClient({
             {/* Modal Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
               <div>
-                <h2 className="text-body-regular font-extrabold text-primary flex items-center gap-2">
+                <h2 className="text-body-regular font-bold text-primary flex items-center gap-2">
                   <Package className="h-5 w-5 text-blue-500" />
                   {activeReq.id
                     ? `Cập nhật yêu cầu hàng mẫu #${activeReq.id}`
@@ -1049,14 +1049,14 @@ export function SampleRequestsClient({
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
                 {/* Left Column: Customer details */}
                 <div className="flex flex-col gap-4">
-                  <h3 className="text-caption-responsive font-extrabold text-primary uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-100 pb-2 mb-1">
+                  <h3 className="text-caption-responsive font-bold text-primary uppercase tracking-wider flex items-center gap-1.5 border-b border-slate-100 pb-2 mb-1">
                     <Building className="h-4 w-4 text-blue-500" />
                     Thông tin giao nhận
                   </h3>
 
                   {/* Company */}
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                    <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                       Tên doanh nghiệp *
                     </label>
                     <input
@@ -1071,7 +1071,7 @@ export function SampleRequestsClient({
 
                   {/* Contact Name */}
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                    <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                       Người nhận mẫu *
                     </label>
                     <input
@@ -1087,7 +1087,7 @@ export function SampleRequestsClient({
                   {/* Email & Phone */}
                   <div className="grid grid-cols-2 gap-4">
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                      <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                         Email *
                       </label>
                       <input
@@ -1100,7 +1100,7 @@ export function SampleRequestsClient({
                       />
                     </div>
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                      <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                         Điện thoại *
                       </label>
                       <input
@@ -1117,7 +1117,7 @@ export function SampleRequestsClient({
                   {/* Address Details (divided fields) */}
                   <div className="grid grid-cols-2 gap-4">
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                      <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                         Tỉnh / Thành phố *
                       </label>
                       <input
@@ -1130,7 +1130,7 @@ export function SampleRequestsClient({
                       />
                     </div>
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                      <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                         Quận / Huyện *
                       </label>
                       <input
@@ -1145,7 +1145,7 @@ export function SampleRequestsClient({
                   </div>
 
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                    <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                       Địa chỉ chi tiết *
                     </label>
                     <input
@@ -1162,7 +1162,7 @@ export function SampleRequestsClient({
 
                   {/* Product slug reference */}
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                    <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                       Đường dẫn sản phẩm gốc *
                     </label>
                     <input
@@ -1178,7 +1178,7 @@ export function SampleRequestsClient({
                   {/* Status & Assigned Sales */}
                   <div className="grid grid-cols-2 gap-4 border-t border-slate-100 pt-4 mt-1">
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                      <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                         Trạng thái
                       </label>
                       <select
@@ -1197,7 +1197,7 @@ export function SampleRequestsClient({
                       </select>
                     </div>
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                      <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                         Sales phụ trách
                       </label>
                       <select
@@ -1223,7 +1223,7 @@ export function SampleRequestsClient({
 
                   {/* Message */}
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                    <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                       Yêu cầu đính kèm
                     </label>
                     <textarea
@@ -1239,14 +1239,14 @@ export function SampleRequestsClient({
                 {/* Right Column: Skus list configuration */}
                 <div className="flex flex-col gap-4">
                   <div className="flex items-center justify-between border-b border-slate-100 pb-2 mb-1">
-                    <h3 className="text-caption-responsive font-extrabold text-primary uppercase tracking-wider flex items-center gap-1.5">
+                    <h3 className="text-caption-responsive font-bold text-primary uppercase tracking-wider flex items-center gap-1.5">
                       <Package className="h-4 w-4 text-blue-500" />
                       Mẫu sản phẩm đăng ký ({activeReq.skus?.length || 0})
                     </h3>
                     <button
                       type="button"
                       onClick={handleAddFormItem}
-                      className="inline-flex h-7 items-center justify-center gap-1 px-3.5 rounded-[3px] border border-blue-200 text-caption-responsive font-extrabold text-blue-600 hover:bg-blue-50 bg-white transition-all shadow-sm"
+                      className="inline-flex h-7 items-center justify-center gap-1 px-3.5 rounded-[3px] border border-blue-200 text-caption-responsive font-bold text-blue-600 hover:bg-blue-50 bg-white transition-all shadow-sm"
                     >
                       <PlusCircle className="h-3.5 w-3.5" />
                       Thêm SKU mẫu

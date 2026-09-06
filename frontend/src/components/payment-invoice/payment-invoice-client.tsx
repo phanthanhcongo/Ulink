@@ -81,7 +81,7 @@ export default function PaymentInvoiceClient({
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-5">
         <div className="space-y-1">
           <div className="flex flex-wrap items-center gap-3">
-            <h2 className="text-card-title font-extrabold text-slate-900 tracking-tight">
+            <h2 className="text-card-title font-bold text-slate-900 tracking-tight">
               Yêu cầu thanh toán hóa đơn #INV-2026-08974
             </h2>
             <span className="inline-flex items-center bg-[#FEF3C7] text-[#D97706] text-[10.5px] font-bold px-2.5 py-0.5 rounded-full border border-amber-200">
@@ -320,7 +320,7 @@ export default function PaymentInvoiceClient({
 
               <div className="flex items-baseline justify-between pt-1">
                 <span className="text-body-regular font-bold text-slate-900">Tổng thanh toán</span>
-                <span className="text-card-title font-extrabold text-[#006AA7] leading-none">
+                <span className="text-card-title font-bold text-[#006AA7] leading-none">
                   {formatPrice(27378000)}
                 </span>
               </div>

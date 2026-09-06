@@ -24,7 +24,7 @@ export default async function FeaturedProduct({ locale }: FeaturedProductProps) 
               {t('featuredProduct.eyebrow')}
             </span>
           </div>
-          <h2 className="mt-4 text-hero-title font-extrabold tracking-tight text-slate-900 leading-tight">
+          <h2 className="mt-4 text-hero-title font-bold tracking-tight text-slate-900 leading-tight">
             {t('featuredProduct.title')}
           </h2>
           <p className="mt-4 text-caption-responsive leading-relaxed text-slate-500 max-w-4xl">
@@ -104,7 +104,7 @@ export default async function FeaturedProduct({ locale }: FeaturedProductProps) 
 
           {/* Right: Description & CTA */}
           <div className="lg:col-span-6 lg:pl-4">
-            <h3 className="text-section-title font-extrabold text-slate-900 tracking-tight uppercase">
+            <h3 className="text-section-title font-bold text-slate-900 tracking-tight uppercase">
               {t('featuredProduct.row2Heading')}
             </h3>
             <p className="mt-5 text-caption-responsive leading-relaxed text-slate-600 font-medium">

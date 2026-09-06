@@ -57,7 +57,7 @@ export function AddToCartButton({ product, className = '' }: AddToCartButtonProp
       <button
         type="button"
         onClick={handleAdd}
-        className={`inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-[3px] text-caption-responsive font-extrabold transition-all shadow-2xs cursor-pointer ${added
+        className={`inline-flex items-center justify-center gap-1.5 px-3 py-2 rounded-[3px] text-caption-responsive font-bold transition-all shadow-2xs cursor-pointer ${added
             ? 'bg-emerald-600 text-white hover:bg-emerald-700'
             : 'bg-blue-600 text-white hover:bg-blue-700 hover:scale-[1.02]'
           } ${className}`}
@@ -81,14 +81,14 @@ export function AddToCartButton({ product, className = '' }: AddToCartButtonProp
             <CheckCircle2 className="h-5 w-5" />
           </div>
           <div className="text-caption-responsive min-w-0 text-left">
-            <p className="font-extrabold text-white">Đã thêm vào giỏ hàng!</p>
+            <p className="font-bold text-white">Đã thêm vào giỏ hàng!</p>
             <p className="text-slate-300 truncate max-w-[220px] font-medium mt-0.5">
               {product.name}
             </p>
           </div>
           <Link
             href="/cart"
-            className="ml-2 px-3.5 py-2 bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-caption-responsive rounded-[3px] transition-colors shrink-0 shadow-sm"
+            className="ml-2 px-3.5 py-2 bg-blue-600 hover:bg-blue-500 text-white font-bold text-caption-responsive rounded-[3px] transition-colors shrink-0 shadow-sm"
           >
             Xem giỏ hàng &gt;
           </Link>

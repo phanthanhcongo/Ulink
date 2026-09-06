@@ -7,14 +7,14 @@ export function ApplySuccessRecap() {
             THÔNG TIN HỒ SƠ ĐÃ NỘP
           </span>
           <div className="flex items-start gap-4">
-            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[3px] bg-blue-600 text-white font-extrabold text-body-large shadow-sm">
+            <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[3px] bg-blue-600 text-white font-bold text-body-large shadow-sm">
               UL
             </div>
             <div>
               <span className="inline-flex items-center rounded-full bg-blue-50 px-2.5 py-0.5 text-caption-responsive font-bold text-blue-700 mb-1">
                 VỊ TRÍ ỨNG TUYỂN
               </span>
-              <h2 className="text-section-title font-extrabold text-slate-900">
+              <h2 className="text-section-title font-bold text-slate-900">
                 Chuyên viên Phát triển Kinh doanh B2B — Khu Công nghiệp
               </h2>
             </div>

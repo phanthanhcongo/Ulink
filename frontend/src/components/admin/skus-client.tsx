@@ -270,10 +270,10 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
       {/* Header and Add Button */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-100 pb-6 mb-8">
         <div>
-          <span className="text-caption-responsive uppercase text-slate-400 font-extrabold tracking-wider">
+          <span className="text-caption-responsive uppercase text-slate-400 font-bold tracking-wider">
             Hệ thống danh mục SKUs
           </span>
-          <h1 className="text-section-title font-extrabold text-primary tracking-tight mt-1">
+          <h1 className="text-section-title font-bold text-primary tracking-tight mt-1">
             Quản lý mã SKUs B2B
           </h1>
           <p className="text-caption-responsive text-slate-500 font-medium mt-1 leading-relaxed">
@@ -445,7 +445,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
         {filteredSkus.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 text-center">
             <Layers className="h-12 w-12 text-slate-300 mb-3" />
-            <span className="text-body-regular font-extrabold text-primary">Không tìm thấy mã SKU nào</span>
+            <span className="text-body-regular font-bold text-primary">Không tìm thấy mã SKU nào</span>
             <span className="text-caption-responsive text-slate-400 mt-1">
               Thử thay đổi bộ lọc hoặc từ khóa tìm kiếm của bạn.
             </span>
@@ -493,7 +493,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                       {visibleColumns.product && (
                         <td className="px-4 py-2.5">
                           <div className="flex flex-col">
-                            <span className="font-extrabold text-primary leading-tight">
+                            <span className="font-bold text-primary leading-tight">
                               {parentName}
                             </span>
                             {parentSlug && (
@@ -652,7 +652,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
           <div className="bg-white rounded-[3px] w-full max-w-lg shadow-xl border border-slate-100 overflow-hidden max-h-[90vh] overflow-y-auto">
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 sticky top-0 bg-white z-10">
-              <h3 className="text-body-regular font-extrabold text-primary">
+              <h3 className="text-body-regular font-bold text-primary">
                 {activeSku.id ? 'Sửa thông tin SKU' : 'Thêm mã SKU mới'}
               </h3>
               <button
@@ -696,7 +696,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
               {/* Attributes Section */}
               {activeSku.productId && (
                 <div className="space-y-3 p-4 bg-slate-50 rounded-[3px] border border-slate-100">
-                  <span className="text-caption-responsive uppercase text-slate-400 font-extrabold tracking-wider block">
+                  <span className="text-caption-responsive uppercase text-slate-400 font-bold tracking-wider block">
                     Chọn thuộc tính phân loại
                   </span>
 
@@ -802,7 +802,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                       : 'Nhập mã SKU thủ công...'
                   }
                   className={cn(
-                    'px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive  font-extrabold text-primary font-mono focus:outline-none',
+                    'px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive  font-bold text-primary font-mono focus:outline-none',
                     activeProductAttrs.length > 0
                       ? 'bg-slate-100 cursor-not-allowed select-all'
                       : 'bg-white focus:ring-1 focus:ring-blue-600 focus:border-blue-600'

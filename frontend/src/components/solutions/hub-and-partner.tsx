@@ -17,7 +17,7 @@ export default async function HubAndPartner({ locale }: HubAndPartnerProps) {
         <div className="page-container text-center">
           {/* Section Header */}
           <div className="max-w-3xl mx-auto mb-12">
-            <h2 className="text-hero-title font-extrabold text-blue-600 tracking-tight uppercase">
+            <h2 className="text-hero-title font-bold text-blue-600 tracking-tight uppercase">
               {t('hubPartner.hubHeading')}
             </h2>
             <p className="mt-6 text-caption-responsive leading-relaxed text-slate-600 font-medium">
@@ -44,7 +44,7 @@ export default async function HubAndPartner({ locale }: HubAndPartnerProps) {
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left: Text Content and Buttons */}
             <div className="lg:col-span-6 flex flex-col items-start">
-              <h2 className="text-hero-title font-extrabold text-slate-900 tracking-tight leading-tight">
+              <h2 className="text-hero-title font-bold text-slate-900 tracking-tight leading-tight">
                 {t('hubPartner.partnerHeading')}
               </h2>
             <p className="mt-6 text-caption-responsive leading-relaxed text-slate-600 font-medium">

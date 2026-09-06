@@ -236,10 +236,10 @@ export function ProductsClient({
       {/* Header and Add Button */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-100 pb-6 mb-8">
         <div>
-          <span className="text-caption-responsive uppercase text-slate-400 font-extrabold tracking-wider">
+          <span className="text-caption-responsive uppercase text-slate-400 font-bold tracking-wider">
             Hệ thống Danh mục
           </span>
-          <h1 className="text-section-title font-extrabold text-primary tracking-tight mt-1">
+          <h1 className="text-section-title font-bold text-primary tracking-tight mt-1">
             Quản lý Sản phẩm & SKUs
           </h1>
           <p className="text-caption-responsive text-slate-500 font-medium mt-1 leading-relaxed">
@@ -317,7 +317,7 @@ export function ProductsClient({
         {filteredProducts.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 text-center">
             <Package className="h-12 w-12 text-slate-300 mb-3" />
-            <span className="text-body-regular font-extrabold text-primary">
+            <span className="text-body-regular font-bold text-primary">
               Không tìm thấy sản phẩm nào
             </span>
             <span className="text-caption-responsive text-slate-400 mt-1">
@@ -359,7 +359,7 @@ export function ProductsClient({
                             )}
                           </div>
                           <div className="flex flex-col min-w-0">
-                            <span className="font-extrabold text-primary leading-tight truncate max-w-[200px]" title={prod.name}>
+                            <span className="font-bold text-primary leading-tight truncate max-w-[200px]" title={prod.name}>
                               {prod.name}
                             </span>
                             <span className="text-caption-responsive text-slate-400 font-mono mt-1 select-all truncate max-w-[200px]">
@@ -519,7 +519,7 @@ export function ProductsClient({
           <div className="relative bg-white rounded-[3px] w-full max-w-3xl shadow-xl border border-slate-100 flex flex-col max-h-[90vh]">
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
-              <h3 className="text-body-regular font-extrabold text-primary">
+              <h3 className="text-body-regular font-bold text-primary">
                 {activeProduct.id ? 'Cập nhật Thông tin Sản phẩm' : 'Thêm Sản phẩm mới'}
               </h3>
               <button
@@ -826,7 +826,7 @@ export function ProductsClient({
           <div className="bg-white rounded-[3px] w-full max-w-md shadow-xl border border-slate-100 overflow-hidden">
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
-              <h3 className="text-body-regular font-extrabold text-primary">Thêm mã SKU mới</h3>
+              <h3 className="text-body-regular font-bold text-primary">Thêm mã SKU mới</h3>
               <button
                 onClick={() => {
                   setSkuModalOpen(false);

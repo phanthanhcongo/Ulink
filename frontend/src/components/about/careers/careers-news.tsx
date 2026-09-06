@@ -45,7 +45,7 @@ export function CareersNews() {
         <span className="text-body-regular font-bold uppercase tracking-wider text-blue-600">
           Cập nhật mới nhất
         </span>
-        <h2 className="text-hero-title font-extrabold tracking-tight text-slate-900 mt-1">
+        <h2 className="text-hero-title font-bold tracking-tight text-slate-900 mt-1">
           Tin tức & Sự kiện
         </h2>
         <p className="mt-2 text-body-regular text-slate-500 max-w-xl">

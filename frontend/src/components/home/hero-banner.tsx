@@ -52,7 +52,7 @@ export function HeroBanner() {
                 {t('hero.eyebrowSub')}
               </p>
 
-              <h1 className="mt-2 sm:mt-2.5 lg:mt-2.5 xl:mt-3 text-hero-title font-semibold sm:font-extrabold text-slate-900">
+              <h1 className="mt-2 sm:mt-2.5 lg:mt-2.5 xl:mt-3 text-hero-title font-semibold sm:font-bold text-slate-900">
                 {t('hero.title')}
               </h1>
 
@@ -123,7 +123,7 @@ export function HeroBanner() {
               key={index}
               className="flex flex-col items-center justify-center rounded-[3px] border border-slate-200/80 bg-white p-4 text-center shadow-xs transition-all hover:border-brand/40"
             >
-              <span className="text-card-title font-extrabold text-brand">
+              <span className="text-card-title font-bold text-brand">
                 {stat.value}
               </span>
               <span className="mt-1 text-caption-responsive font-normal text-slate-500 leading-snug">

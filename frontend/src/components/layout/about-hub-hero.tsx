@@ -12,7 +12,7 @@ export async function AboutHubHero() {
         <div className="relative z-10 flex flex-col justify-center px-6 py-8 sm:px-8 lg:w-[46%] lg:py-10">
           <p className="text-caption-responsive font-bold uppercase tracking-wider text-primary">{t('eyebrow')}</p>
 
-          <h1 className="mt-3 text-hero-title font-extrabold leading-[1.25]">
+          <h1 className="mt-3 text-hero-title font-bold leading-[1.25]">
             <span className="block text-primary">{t('titleLine1')}</span>
             <span className="block text-primary">{t('titleLine2')}</span>
           </h1>

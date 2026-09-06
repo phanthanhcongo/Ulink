@@ -85,7 +85,7 @@ export function CareersJobList() {
         {/* Left Column: Job Search & List */}
         <div className="lg:col-span-8 flex flex-col gap-6">
           <div className="flex justify-between items-end border-b border-slate-200/60 pb-4">
-            <h2 className="text-hero-title font-extrabold text-blue-600 uppercase tracking-wider">
+            <h2 className="text-hero-title font-bold text-blue-600 uppercase tracking-wider">
               VỊ TRÍ TUYỂN DỤNG
             </h2>
             <Link
@@ -200,7 +200,7 @@ export function CareersJobList() {
 
         {/* Right Column: Why Join ULink */}
         <div className="lg:col-span-4 flex flex-col gap-6">
-          <h2 className="text-hero-title font-extrabold text-blue-600 uppercase tracking-wider border-b border-slate-200/60 pb-4">
+          <h2 className="text-hero-title font-bold text-blue-600 uppercase tracking-wider border-b border-slate-200/60 pb-4">
             VÌ SAO NÊN GIA NHẬP ULINK?
           </h2>
 

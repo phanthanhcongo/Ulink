@@ -116,7 +116,7 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
           <div className="w-8 h-8 rounded-[3px] bg-sky-600 flex items-center justify-center font-black text-white tracking-wider text-body-regular shadow-inner shadow-sky-300/40">
             U
           </div>
-          <span className="font-extrabold text-body-regular tracking-tight text-slate-900">
+          <span className="font-bold text-body-regular tracking-tight text-slate-900">
             ULink Admin
           </span>
         </div>
@@ -156,7 +156,7 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
             </div>
             {!isCollapsed && (
               <div className="flex flex-col">
-                <span className="font-extrabold text-body-regular tracking-tight text-slate-900">
+                <span className="font-bold text-body-regular tracking-tight text-slate-900">
                   ULink Industries
                 </span>
                 <span className="text-caption-responsive text-sky-500 font-semibold uppercase tracking-widest mt-0.5">

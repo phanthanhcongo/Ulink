@@ -133,7 +133,7 @@ export default function DeliveryConfirmationClient({
         </div>
 
         <div className="space-y-1.5">
-          <h3 className="text-[17px] font-extrabold text-[#064E3B] leading-none">
+          <h3 className="text-[17px] font-bold text-[#064E3B] leading-none">
             {t('deliverySuccess')}
           </h3>
           <div className="flex flex-wrap items-center gap-x-8 gap-y-1.5 text-caption-responsive text-[#065F46] font-medium">
@@ -174,7 +174,7 @@ export default function DeliveryConfirmationClient({
               </div>
               <div className="space-y-1">
                 <span className="text-slate-400 font-medium">{t('totalPaidLabel')}:</span>
-                <p className="font-extrabold text-[#006AA7] text-body-regular">{formatPrice(27378000)}</p>
+                <p className="font-bold text-[#006AA7] text-body-regular">{formatPrice(27378000)}</p>
               </div>
             </div>
           </div>

@@ -84,7 +84,7 @@ export default function HubHeroSection({ locale }: HubHeroSectionProps) {
         {/* Left-aligned Info Card */}
         <div className="max-w-[760px] text-left mt-auto mb-auto">
           {/* Title */}
-          <h1 className="text-[20px] sm:text-[22px] lg:text-[24px] font-extrabold text-white leading-tight tracking-tight">
+          <h1 className="text-[20px] sm:text-[22px] lg:text-[24px] font-bold text-white leading-tight tracking-tight">
             {t.title}
           </h1>
 

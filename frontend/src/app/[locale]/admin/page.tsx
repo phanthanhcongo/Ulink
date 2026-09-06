@@ -126,10 +126,10 @@ export default async function AdminDashboardPage({ params: { locale } }: Props) 
       {/* Header Welcome Section */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-100 pb-6 mb-8">
         <div>
-          <span className="text-caption-responsive uppercase text-slate-400 font-extrabold tracking-tight">
+          <span className="text-caption-responsive uppercase text-slate-400 font-bold tracking-tight">
             Trang chủ Quản trị
           </span>
-          <h1 className="text-section-title font-extrabold text-primary tracking-tight mt-1">
+          <h1 className="text-section-title font-bold text-primary tracking-tight mt-1">
             Chào mừng quay trở lại, {user?.first_name || 'Admin'}
           </h1>
           <p className="text-caption-responsive text-slate-500 font-medium mt-1 leading-relaxed">
@@ -157,7 +157,7 @@ export default async function AdminDashboardPage({ params: { locale } }: Props) 
             <span className="text-caption-responsive text-slate-400 font-bold tracking-tight block">
               {kpi.label}
             </span>
-            <span className="text-section-title font-extrabold text-primary tracking-tight block mt-1">
+            <span className="text-section-title font-bold text-primary tracking-tight block mt-1">
               {kpi.value}
             </span>
             <span className="text-caption-responsive text-slate-500 font-medium block mt-2">{kpi.desc}</span>
@@ -169,7 +169,7 @@ export default async function AdminDashboardPage({ params: { locale } }: Props) 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Left Column: Quick Actions */}
         <div className="lg:col-span-1 bg-white border border-slate-100 rounded-[3px] p-6 shadow-sm">
-          <h3 className="text-body-regular font-extrabold text-primary mb-4">Thao tác nhanh</h3>
+          <h3 className="text-body-regular font-bold text-primary mb-4">Thao tác nhanh</h3>
           <div className="space-y-3">
             <Link
               href="/admin/products"
@@ -217,7 +217,7 @@ export default async function AdminDashboardPage({ params: { locale } }: Props) 
         {/* Right Columns: System Info Summary */}
         <div className="lg:col-span-2 bg-white border border-slate-100 rounded-[3px] p-6 shadow-sm flex flex-col justify-between">
           <div>
-            <h3 className="text-body-regular font-extrabold text-primary mb-3">
+            <h3 className="text-body-regular font-bold text-primary mb-3">
               Hướng dẫn Vận hành Hệ thống B2B
             </h3>
             <p className="text-caption-responsive text-slate-500 font-medium leading-relaxed mb-4">

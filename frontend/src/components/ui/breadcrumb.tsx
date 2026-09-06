@@ -60,7 +60,7 @@ export function Breadcrumb({ items, backLink, className, theme = 'light' }: Brea
         <Link
           href={backLink.href}
           className={cn(
-            "inline-flex items-center gap-2 text-caption-responsive font-extrabold transition-colors mb-8",
+            "inline-flex items-center gap-2 text-caption-responsive font-bold transition-colors mb-8",
             isDark ? "text-blue-200/90 hover:text-white" : "text-slate-600 hover:text-brand"
           )}
         >

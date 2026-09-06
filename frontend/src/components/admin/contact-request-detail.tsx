@@ -35,10 +35,10 @@ export function ContactRequestDetail({ request, locale }: ContactRequestDetailPr
 
       <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
         <div>
-          <span className="text-caption-responsive uppercase text-slate-400 font-extrabold tracking-wider">
+          <span className="text-caption-responsive uppercase text-slate-400 font-bold tracking-wider">
             Chi tiết liên hệ
           </span>
-          <h1 className="text-section-title font-extrabold text-primary tracking-tight mt-1">
+          <h1 className="text-section-title font-bold text-primary tracking-tight mt-1">
             {request.full_name}
           </h1>
           <p className="text-caption-responsive text-slate-500 font-medium mt-1">#{request.id}</p>

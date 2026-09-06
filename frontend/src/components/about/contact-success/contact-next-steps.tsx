@@ -23,7 +23,7 @@ export function ContactNextSteps() {
         <span className="inline-flex items-center rounded-full bg-blue-50 px-3.5 py-1 text-body-regular font-bold uppercase tracking-wider text-blue-700 ring-1 ring-inset ring-blue-700/10 mb-2">
           QUY TRÌNH TIẾP THEO
         </span>
-        <h2 className="text-hero-title font-extrabold tracking-tight text-slate-900">
+        <h2 className="text-hero-title font-bold tracking-tight text-slate-900">
           Các bước xử lý yêu cầu của ULink
         </h2>
       </div>

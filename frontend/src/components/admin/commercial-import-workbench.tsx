@@ -358,7 +358,7 @@ export function CommercialImportWorkbench() {
                   >
                     <Upload className="h-6 w-6" aria-hidden="true" />
                   </div>
-                  <span className="text-body-regular font-extrabold text-slate-800">
+                  <span className="text-body-regular font-bold text-slate-800">
                     {isDragging ? 'Thả tệp CSV tại đây...' : 'Kéo thả tệp CSV hoặc click để tải lên'}
                   </span>
                   <span className="mt-1.5 text-caption-responsive text-slate-400 max-w-xs leading-normal">
@@ -507,7 +507,7 @@ export function CommercialImportWorkbench() {
               </div>
 
               <div className="flex items-center justify-between gap-3 mb-2">
-                <h3 className="text-body-regular font-extrabold text-slate-800">Kết quả xử lý chi tiết</h3>
+                <h3 className="text-body-regular font-bold text-slate-800">Kết quả xử lý chi tiết</h3>
                 <div className="flex gap-1 p-1 bg-slate-100 dark:bg-slate-800 rounded-[3px] text-caption-responsive font-bold shadow-inner">
                   <button
                     type="button"
@@ -562,7 +562,7 @@ export function CommercialImportWorkbench() {
                         <td className="px-4 py-3 font-mono text-caption-responsive text-slate-400 font-medium">
                           #{row.row}
                         </td>
-                        <td className="px-4 py-3 font-mono text-caption-responsive text-slate-800 font-extrabold select-all">
+                        <td className="px-4 py-3 font-mono text-caption-responsive text-slate-800 font-bold select-all">
                           {row.key || '—'}
                         </td>
                         <td className="px-4 py-3">

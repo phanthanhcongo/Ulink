@@ -586,7 +586,7 @@ export function CategoryProductsClient({
               <div className="flex flex-col md:flex-row md:items-end justify-between gap-4">
                 {searchQuery.trim() ? (
                   <div>
-                    <h1 className="text-section-title font-extrabold text-slate-900 tracking-tight leading-tight">
+                    <h1 className="text-section-title font-bold text-slate-900 tracking-tight leading-tight">
                       {locale === 'vi'
                         ? `Kết quả tìm kiếm cho "${searchQuery}"`
                         : `Search results for "${searchQuery}"`}
@@ -599,7 +599,7 @@ export function CategoryProductsClient({
                   </div>
                 ) : (
                   <div>
-                    <h1 className="text-section-title font-extrabold text-slate-900 tracking-tight leading-tight">
+                    <h1 className="text-section-title font-bold text-slate-900 tracking-tight leading-tight">
                       {locale === 'vi'
                         ? 'Hãy nhập từ khóa để tìm kiếm sản phẩm'
                         : 'Please enter keywords to search for products'}
@@ -652,7 +652,7 @@ export function CategoryProductsClient({
             <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               {/* Left side text */}
               <div className="lg:col-span-7 space-y-4">
-                <h1 className="text-section-title font-extrabold text-slate-900 tracking-tight leading-tight">
+                <h1 className="text-section-title font-bold text-slate-900 tracking-tight leading-tight">
                   {currentCategoryName}
                 </h1>
 
@@ -990,7 +990,7 @@ export function CategoryProductsClient({
                       {/* Labels */}
                       <div className="flex items-center justify-between mt-5 text-caption-responsive font-bold text-slate-400">
                         <span>{formatCurrency(minPrice)}đ</span>
-                        <span className="text-blue-600 font-extrabold">{formatCurrency(maxPrice)}đ</span>
+                        <span className="text-blue-600 font-bold">{formatCurrency(maxPrice)}đ</span>
                       </div>
                     </div>
                   </div>
@@ -1016,9 +1016,9 @@ export function CategoryProductsClient({
 
                     <p className="text-caption-responsive font-semibold text-slate-700">
                       Hiển thị{' '}
-                      <span className="font-extrabold text-blue-600">{filteredProducts.length}</span>{' '}
+                      <span className="font-bold text-blue-600">{filteredProducts.length}</span>{' '}
                       sản phẩm thuộc{' '}
-                      <span className="font-extrabold text-slate-900">{currentCategoryName}</span>
+                      <span className="font-bold text-slate-900">{currentCategoryName}</span>
                     </p>
                   </div>
 
@@ -1067,7 +1067,7 @@ export function CategoryProductsClient({
                 {filteredProducts.length === 0 ? (
                   <div className="rounded-[3px] bg-white p-12 border border-slate-200/80 shadow-sm text-center flex flex-col items-center justify-center">
                     <Package className="h-16 w-16 text-slate-300 mb-4" />
-                    <h3 className="text-card-title font-extrabold text-slate-800">
+                    <h3 className="text-card-title font-bold text-slate-800">
                       Chưa có sản phẩm trong danh mục này
                     </h3>
                     <p className="text-caption-responsive text-slate-500 mt-1 max-w-md">
@@ -1128,7 +1128,7 @@ export function CategoryProductsClient({
                             <div className="flex-1 flex flex-col justify-between">
                               <div>
                                 <div className="flex items-center gap-2 mb-1">
-                                  <span className="text-caption-responsive font-extrabold uppercase bg-blue-50 text-blue-600 px-2 py-0.5 rounded-[2px] border border-blue-100">
+                                  <span className="text-caption-responsive font-bold uppercase bg-blue-50 text-blue-600 px-2 py-0.5 rounded-[2px] border border-blue-100">
                                     {product.brand}
                                   </span>
                                   <span className="text-caption-responsive font-bold text-slate-400">
@@ -1136,7 +1136,7 @@ export function CategoryProductsClient({
                                   </span>
                                 </div>
                                 <Link href={`/solutions/listProduct/${product.slug}`} className="block">
-                                  <h4 className="text-body-regular font-extrabold text-slate-900 hover:text-blue-600 transition-colors line-clamp-1">
+                                  <h4 className="text-body-regular font-bold text-slate-900 hover:text-blue-600 transition-colors line-clamp-1">
                                     {product.name}
                                   </h4>
                                 </Link>
@@ -1225,7 +1225,7 @@ export function CategoryProductsClient({
       {/* ── CALL TO ACTION BANNER ── */}
       <section className="w-full bg-[#0F62FE] text-white py-14 mt-16 shadow-inner">
         <div className="page-container text-center space-y-4">
-          <h2 className="text-section-title font-extrabold tracking-tight">
+          <h2 className="text-section-title font-bold tracking-tight">
             {locale === 'vi' ? 'Bạn cần tư vấn giải pháp công nghiệp?' : 'Do You Need Industrial Solutions Consulting?'}
           </h2>
           <p className="text-body-regular text-blue-100/90 font-semibold max-w-2xl mx-auto">
@@ -1239,7 +1239,7 @@ export function CategoryProductsClient({
             </span>
             <a
               href="tel:02473689999"
-              className="text-section-title font-extrabold hover:text-blue-100 transition-colors inline-flex items-center gap-2"
+              className="text-section-title font-bold hover:text-blue-100 transition-colors inline-flex items-center gap-2"
             >
               <Phone className="h-6 w-6 sm:h-7 sm:w-7" />
               (0247) 368 9999
@@ -1256,7 +1256,7 @@ export function CategoryProductsClient({
             <span className="text-caption-responsive font-bold text-[#0F62FE] uppercase tracking-widest block">
               {locale === 'vi' ? 'NĂNG LỰC CỐT LÕI' : 'CORE CAPABILITIES'}
             </span>
-            <h2 className="text-card-title font-extrabold text-[#111827] max-w-3xl mx-auto leading-snug tracking-tight">
+            <h2 className="text-card-title font-bold text-[#111827] max-w-3xl mx-auto leading-snug tracking-tight">
               {locale === 'vi'
                 ? 'Tích hợp công nghệ tự động hóa và giải pháp kết nối công nghiệp'
                 : 'Integrating Automation Technology & Industrial Connection Solutions'}
@@ -1270,7 +1270,7 @@ export function CategoryProductsClient({
               <div className="text-[#0F62FE] mb-1.5 shrink-0 flex items-center justify-center">
                 <Factory className="h-10 w-10 stroke-[1.5]" />
               </div>
-              <h3 className="text-body-regular font-extrabold text-[#111827]">
+              <h3 className="text-body-regular font-bold text-[#111827]">
                 {locale === 'vi' ? 'Vật tư Phòng sạch' : 'Cleanroom Consumables'}
               </h3>
               <p className="text-caption-responsive text-slate-500 font-medium leading-relaxed max-w-xs">
@@ -1285,7 +1285,7 @@ export function CategoryProductsClient({
               <div className="text-[#0F62FE] mb-1.5 shrink-0 flex items-center justify-center">
                 <Briefcase className="h-10 w-10 stroke-[1.5]" />
               </div>
-              <h3 className="text-body-regular font-extrabold text-[#111827]">
+              <h3 className="text-body-regular font-bold text-[#111827]">
                 {locale === 'vi' ? 'Giải pháp Kiểm soát' : 'Contamination Control'}
               </h3>
               <p className="text-caption-responsive text-slate-500 font-medium leading-relaxed max-w-xs">
@@ -1300,7 +1300,7 @@ export function CategoryProductsClient({
               <div className="text-[#0F62FE] mb-1.5 shrink-0 flex items-center justify-center">
                 <Activity className="h-10 w-10 stroke-[1.5]" />
               </div>
-              <h3 className="text-body-regular font-extrabold text-[#111827]">
+              <h3 className="text-body-regular font-bold text-[#111827]">
                 {locale === 'vi' ? 'Thiết bị Chuyên dụng' : 'Specialized Equipment'}
               </h3>
               <p className="text-caption-responsive text-slate-500 font-medium leading-relaxed max-w-xs">
@@ -1315,7 +1315,7 @@ export function CategoryProductsClient({
               <div className="text-[#0F62FE] mb-1.5 shrink-0 flex items-center justify-center">
                 <Truck className="h-10 w-10 stroke-[1.5]" />
               </div>
-              <h3 className="text-body-regular font-extrabold text-[#111827]">
+              <h3 className="text-body-regular font-bold text-[#111827]">
                 {locale === 'vi' ? 'Đồng hành Doanh nghiệp' : 'Enterprise Partnership'}
               </h3>
               <p className="text-caption-responsive text-slate-500 font-medium leading-relaxed max-w-xs">
@@ -1330,7 +1330,7 @@ export function CategoryProductsClient({
           <div className="text-center pt-4">
             <Link
               href="/cart"
-              className="inline-flex items-center gap-2.5 px-6 py-3 bg-[#0F62FE] hover:bg-[#0050E6] text-white font-extrabold text-caption-responsive rounded-[3px] transition-all shadow-md shadow-blue-200/50 cursor-pointer group uppercase tracking-wider"
+              className="inline-flex items-center gap-2.5 px-6 py-3 bg-[#0F62FE] hover:bg-[#0050E6] text-white font-bold text-caption-responsive rounded-[3px] transition-all shadow-md shadow-blue-200/50 cursor-pointer group uppercase tracking-wider"
             >
               {locale === 'vi' ? 'Đặt hàng' : 'Order Now'}
               <ArrowRight className="h-4 w-4 group-hover:translate-x-1 transition-transform" />
@@ -1348,12 +1348,12 @@ export function CategoryProductsClient({
             <CheckCircle2 className="h-5 w-5" />
           </div>
           <div className="text-caption-responsive min-w-0">
-            <p className="font-extrabold text-white">Đã thêm vào giỏ hàng!</p>
+            <p className="font-bold text-white">Đã thêm vào giỏ hàng!</p>
             <p className="text-slate-300 truncate max-w-[220px] font-medium mt-0.5">{addedToast}</p>
           </div>
           <Link
             href="/cart"
-            className="ml-2 px-3.5 py-2 bg-blue-600 hover:bg-blue-500 text-white font-extrabold text-caption-responsive rounded-[3px] transition-colors shrink-0 shadow-sm"
+            className="ml-2 px-3.5 py-2 bg-blue-600 hover:bg-blue-500 text-white font-bold text-caption-responsive rounded-[3px] transition-colors shrink-0 shadow-sm"
           >
             Xem giỏ hàng &gt;
           </Link>
@@ -1376,7 +1376,7 @@ export function CategoryProductsClient({
             <div className="flex items-center justify-between border-b border-slate-100 pb-4">
               <div className="flex items-center gap-2">
                 <Boxes className="h-4 w-4 text-blue-600" />
-                <h3 className="text-body-regular font-extrabold text-slate-900 uppercase tracking-wider">
+                <h3 className="text-body-regular font-bold text-slate-900 uppercase tracking-wider">
                   Danh mục sản phẩm
                 </h3>
               </div>
@@ -1394,7 +1394,7 @@ export function CategoryProductsClient({
                   setSelectedCategories([]);
                 }}
                 className={`w-full text-left px-3.5 py-2.5 rounded-[3px] text-caption-responsive font-semibold ${selectedCategories.length === 0
-                  ? 'bg-blue-600 text-white font-extrabold'
+                  ? 'bg-blue-600 text-white font-bold'
                   : 'text-slate-700 bg-slate-50'
                   }`}
               >
@@ -1410,7 +1410,7 @@ export function CategoryProductsClient({
                       handleToggleCategory(c.slug);
                     }}
                     className={`w-full text-left px-3.5 py-2.5 rounded-[3px] text-caption-responsive font-semibold truncate flex items-center justify-between ${isSelected
-                      ? 'bg-blue-600 text-white font-extrabold'
+                      ? 'bg-blue-600 text-white font-bold'
                       : 'text-slate-700 bg-slate-50'
                       }`}
                   >

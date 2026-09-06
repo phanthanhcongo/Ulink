@@ -25,7 +25,7 @@ export function AboutSustainability() {
             <span className="text-eyebrow font-bold">Phát triển bền vững</span>
           </div>
 
-          <h2 className="text-section-title font-extrabold text-slate-900">
+          <h2 className="text-section-title font-bold text-slate-900">
             Kiến tạo tương lai xanh
           </h2>
 

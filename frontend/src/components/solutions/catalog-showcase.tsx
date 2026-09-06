@@ -45,7 +45,7 @@ export default async function CatalogShowcase({ locale }: CatalogShowcaseProps) 
                 <div className="flex items-center justify-between border-b border-gray-200 pb-4 mb-6">
                   <div className="flex items-center gap-2">
                     <span className="h-5 w-1 bg-blue-600 rounded-[3px] shrink-0" />
-                    <h3 className="text-card-title font-extrabold text-slate-900 leading-tight">
+                    <h3 className="text-card-title font-bold text-slate-900 leading-tight">
                       {categoryName}
                     </h3>
                   </div>

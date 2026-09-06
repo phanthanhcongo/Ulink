@@ -192,7 +192,7 @@ export default function CheckoutClient({
       case 'Viettel Post':
         return (
           <div
-            className="w-14 h-10 shrink-0 rounded-[3px] bg-[#EE0000] text-white flex flex-col items-center justify-center font-extrabold text-caption-responsive shadow-sm select-none"
+            className="w-14 h-10 shrink-0 rounded-[3px] bg-[#EE0000] text-white flex flex-col items-center justify-center font-bold text-caption-responsive shadow-sm select-none"
             title="Viettel Post"
           >
             <span className="leading-none tracking-tighter">VIETTEL</span>
@@ -202,7 +202,7 @@ export default function CheckoutClient({
       case 'Giao Hàng Nhanh':
         return (
           <div
-            className="w-14 h-10 shrink-0 rounded-[3px] bg-[#FFCC00] text-black flex flex-col items-center justify-center font-extrabold text-[8px] shadow-sm select-none font-bold"
+            className="w-14 h-10 shrink-0 rounded-[3px] bg-[#FFCC00] text-black flex flex-col items-center justify-center font-bold text-[8px] shadow-sm select-none font-bold"
             title="Giao Hàng Nhanh (GHN)"
           >
             <span className="leading-none tracking-tight">GHN</span>
@@ -212,7 +212,7 @@ export default function CheckoutClient({
       case 'Giao Hàng Tiết Kiệm':
         return (
           <div
-            className="w-14 h-10 shrink-0 rounded-[3px] bg-[#069A57] text-white flex flex-col items-center justify-center font-extrabold text-caption-responsive shadow-sm select-none"
+            className="w-14 h-10 shrink-0 rounded-[3px] bg-[#069A57] text-white flex flex-col items-center justify-center font-bold text-caption-responsive shadow-sm select-none"
             title="Giao Hàng Tiết Kiệm (GHTK)"
           >
             <span className="leading-none tracking-tighter">GHTK</span>
@@ -222,7 +222,7 @@ export default function CheckoutClient({
       case 'J&T Express':
         return (
           <div
-            className="w-14 h-10 shrink-0 rounded-[3px] bg-[#F26522] text-white flex flex-col items-center justify-center font-extrabold text-caption-responsive shadow-sm select-none font-bold"
+            className="w-14 h-10 shrink-0 rounded-[3px] bg-[#F26522] text-white flex flex-col items-center justify-center font-bold text-caption-responsive shadow-sm select-none font-bold"
             title="J&T Express"
           >
             <span className="leading-none tracking-tighter">J&T</span>
@@ -232,7 +232,7 @@ export default function CheckoutClient({
       case 'Ninja Van':
         return (
           <div
-            className="w-14 h-10 shrink-0 rounded-[3px] bg-[#FF0000] text-white flex flex-col items-center justify-center font-extrabold text-caption-responsive shadow-sm select-none"
+            className="w-14 h-10 shrink-0 rounded-[3px] bg-[#FF0000] text-white flex flex-col items-center justify-center font-bold text-caption-responsive shadow-sm select-none"
             title="Ninja Van"
           >
             <span className="leading-none tracking-tighter">NINJA</span>
@@ -242,7 +242,7 @@ export default function CheckoutClient({
       default:
         return (
           <div
-            className="w-14 h-10 shrink-0 rounded-[3px] bg-slate-400 text-white flex items-center justify-center font-extrabold text-caption-responsive shadow-sm select-none"
+            className="w-14 h-10 shrink-0 rounded-[3px] bg-slate-400 text-white flex items-center justify-center font-bold text-caption-responsive shadow-sm select-none"
             title="Other"
           >
             <Truck className="h-5 w-5" />
@@ -295,7 +295,7 @@ export default function CheckoutClient({
             href="/cart"
             className="flex-1 flex items-center justify-center gap-2 py-4 bg-blue-50/75 text-brand hover:bg-blue-100/50 transition-colors"
           >
-            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand text-caption-responsive font-extrabold text-white shrink-0">
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand text-caption-responsive font-bold text-white shrink-0">
               ✓
             </span>
             <span className="font-bold tracking-wide hidden sm:inline">{t('stepCart')}</span>
@@ -303,7 +303,7 @@ export default function CheckoutClient({
 
           {/* Step 2: Thanh toán */}
           <div className="flex-1 flex items-center justify-center gap-2 py-4 bg-brand text-white">
-            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white text-caption-responsive font-extrabold text-brand shrink-0">
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white text-caption-responsive font-bold text-brand shrink-0">
               2
             </span>
             <span className="font-bold tracking-wide hidden sm:inline">{t('stepPayment')}</span>
@@ -311,7 +311,7 @@ export default function CheckoutClient({
 
           {/* Step 3: Vận chuyển */}
           <div className="flex-1 flex items-center justify-center gap-2 py-4 bg-slate-100 text-slate-400">
-            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white text-caption-responsive font-extrabold text-slate-300 shrink-0">
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white text-caption-responsive font-bold text-slate-300 shrink-0">
               3
             </span>
             <span className="font-bold tracking-wide hidden sm:inline">{t('stepShipping')}</span>
@@ -319,7 +319,7 @@ export default function CheckoutClient({
 
           {/* Step 4: Hoàn tất */}
           <div className="flex-1 flex items-center justify-center gap-2 py-4 bg-slate-50 text-slate-300">
-            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white border border-border/40 text-caption-responsive font-extrabold text-slate-200 shrink-0">
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white border border-border/40 text-caption-responsive font-bold text-slate-200 shrink-0">
               4
             </span>
             <span className="font-bold tracking-wide hidden sm:inline">{t('stepComplete')}</span>
@@ -330,10 +330,10 @@ export default function CheckoutClient({
           <div className="lg:col-span-8 space-y-8">
             <div className="rounded-[3px] border border-slate-200 bg-white p-6 shadow-sm space-y-6">
               <div className="flex items-center gap-2 pb-1 border-b border-slate-100">
-                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand text-caption-responsive font-extrabold text-white">
+                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand text-caption-responsive font-bold text-white">
                   1
                 </span>
-                <h2 className="text-body-regular font-extrabold text-slate-900 uppercase tracking-wide">
+                <h2 className="text-body-regular font-bold text-slate-900 uppercase tracking-wide">
                   {t('shippingInfoTitle')}
                 </h2>
               </div>
@@ -470,10 +470,10 @@ export default function CheckoutClient({
 
             <div className="rounded-[3px] border border-slate-200 bg-white p-6 shadow-sm space-y-6">
               <div className="flex items-center gap-2 pb-1 border-b border-slate-100">
-                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand text-caption-responsive font-extrabold text-white">
+                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand text-caption-responsive font-bold text-white">
                   3
                 </span>
-                <h2 className="text-body-regular font-extrabold text-slate-900 uppercase tracking-wide">
+                <h2 className="text-body-regular font-bold text-slate-900 uppercase tracking-wide">
                   {t('paymentMethodTitle')}
                 </h2>
               </div>
@@ -556,10 +556,10 @@ export default function CheckoutClient({
             {paymentMethod === 'bank' && (
               <div className="rounded-[3px] border border-slate-200 bg-white p-6 shadow-sm space-y-6">
                 <div className="flex items-center gap-2 pb-1 border-b border-slate-100">
-                  <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand text-caption-responsive font-extrabold text-white">
+                  <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand text-caption-responsive font-bold text-white">
                     3
                   </span>
-                  <h2 className="text-body-regular font-extrabold text-slate-900 uppercase tracking-wide">
+                  <h2 className="text-body-regular font-bold text-slate-900 uppercase tracking-wide">
                     {t('bankInfoTitle')}
                   </h2>
                 </div>
@@ -590,7 +590,7 @@ export default function CheckoutClient({
                   <div className="space-y-3.5 text-caption-responsive flex-1">
                     <div className="grid grid-cols-3 gap-y-2.5 gap-x-2 text-slate-600">
                       <span className="font-bold text-slate-500">{t('bankNameLabel')}</span>
-                      <span className="col-span-2 font-extrabold text-slate-900">
+                      <span className="col-span-2 font-bold text-slate-900">
                         Vietcombank (VCB)
                       </span>
 
@@ -615,7 +615,7 @@ export default function CheckoutClient({
                       </div>
 
                       <span className="font-bold text-slate-500">{t('bankAccountOwnerLabel')}</span>
-                      <span className="col-span-2 font-extrabold text-slate-900 uppercase">
+                      <span className="col-span-2 font-bold text-slate-900 uppercase">
                         CÔNG TY TNHH ULINK VIỆT NAM
                       </span>
 
@@ -635,10 +635,10 @@ export default function CheckoutClient({
 
             <div className="rounded-[3px] border border-slate-200 bg-white p-6 shadow-sm space-y-6">
               <div className="flex items-center gap-2 pb-1 border-b border-slate-100">
-                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand text-caption-responsive font-extrabold text-white">
+                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand text-caption-responsive font-bold text-white">
                   2
                 </span>
-                <h2 className="text-body-regular font-extrabold text-slate-900 uppercase tracking-wide">
+                <h2 className="text-body-regular font-bold text-slate-900 uppercase tracking-wide">
                   {t('shippingMethodTitle')}
                 </h2>
               </div>
@@ -666,7 +666,7 @@ export default function CheckoutClient({
                     <p className="font-bold text-slate-900">{t('shipStandard')}</p>
                     <p className="text-caption-responsive text-slate-500">{t('shipStandardDesc')}</p>
                   </div>
-                  <span className="font-extrabold text-emerald-600 text-body-regular shrink-0">MIỄN PHÍ</span>
+                  <span className="font-bold text-emerald-600 text-body-regular shrink-0">MIỄN PHÍ</span>
                 </button>
 
                 <button
@@ -691,7 +691,7 @@ export default function CheckoutClient({
                     <p className="font-bold text-slate-900">{t('shipExpress')}</p>
                     <p className="text-caption-responsive text-slate-500">{t('shipExpressDesc')}</p>
                   </div>
-                  <span className="font-extrabold text-[#006AA7] text-body-regular shrink-0">{formatPrice(250000)}</span>
+                  <span className="font-bold text-[#006AA7] text-body-regular shrink-0">{formatPrice(250000)}</span>
                 </button>
 
                 <button
@@ -833,7 +833,7 @@ export default function CheckoutClient({
                 <div className="flex items-baseline justify-between pt-1">
                   <span className="text-body-regular font-bold text-slate-900">{t('total')}</span>
                   <div className="text-right">
-                    <span className="text-section-title font-extrabold text-[#006AA7] block leading-none">
+                    <span className="text-section-title font-bold text-[#006AA7] block leading-none">
                       {formatPrice(grandTotal)}
                     </span>
                     <span className="text-caption-responsive text-slate-400 font-medium block mt-1.5">
@@ -890,7 +890,7 @@ export default function CheckoutClient({
               <Check className="h-8 w-8 stroke-[3]" />
             </div>
             <div className="space-y-2">
-              <h3 className="text-card-title font-extrabold text-slate-900">{t('successTitle')}</h3>
+              <h3 className="text-card-title font-bold text-slate-900">{t('successTitle')}</h3>
               <p className="text-caption-responsive text-slate-500 leading-relaxed px-2">
                 {t('successMsg', { orderId })}
               </p>
@@ -899,7 +899,7 @@ export default function CheckoutClient({
               <span className="text-caption-responsive font-bold text-[#3B82F6] tracking-wider uppercase">
                 {t('totalPayment')}
               </span>
-              <span className="text-section-title font-extrabold text-[#1D4ED8] mt-1.5">
+              <span className="text-section-title font-bold text-[#1D4ED8] mt-1.5">
                 {formatPrice(grandTotal)}
               </span>
             </div>
@@ -931,7 +931,7 @@ export default function CheckoutClient({
               <CalendarDays className="h-8 w-8 stroke-[2.5]" />
             </div>
             <div className="space-y-2">
-              <h3 className="text-card-title font-extrabold text-slate-900">{t('pendingTitle')}</h3>
+              <h3 className="text-card-title font-bold text-slate-900">{t('pendingTitle')}</h3>
               <p className="text-caption-responsive text-slate-500 leading-relaxed px-2">
                 {t('pendingMsg')}
               </p>
@@ -940,7 +940,7 @@ export default function CheckoutClient({
               <span className="text-caption-responsive font-bold text-[#D97706] tracking-wider uppercase">
                 {t('txnCode')}
               </span>
-              <span className="text-card-title font-extrabold text-[#B45309] mt-1.5 font-mono">
+              <span className="text-card-title font-bold text-[#B45309] mt-1.5 font-mono">
                 TXN-{orderId.replace('UL-', '')}
               </span>
             </div>
@@ -972,7 +972,7 @@ export default function CheckoutClient({
               </div>
             </div>
             <div className="space-y-2">
-              <h3 className="text-card-title font-extrabold text-slate-900">{t('failureTitle')}</h3>
+              <h3 className="text-card-title font-bold text-slate-900">{t('failureTitle')}</h3>
               <p className="text-caption-responsive text-slate-500 leading-relaxed px-2">
                 {t('failureMsg')}
               </p>

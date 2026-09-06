@@ -78,7 +78,7 @@ export function SustainabilityContact({ tContact }: SustainabilityContactProps) 
       <div className="page-container">
         {/* Header */}
         <div className="mb-10 text-left">
-          <h2 className="text-section-title font-extrabold text-slate-900 tracking-tight">
+          <h2 className="text-section-title font-bold text-slate-900 tracking-tight">
             {tContact.title}
           </h2>
           <p className="text-body-large text-slate-500 font-medium mt-2">
@@ -97,7 +97,7 @@ export function SustainabilityContact({ tContact }: SustainabilityContactProps) 
                 <MapPin className="h-5 w-5" />
               </div>
               <div>
-                <h4 className="text-body-regular font-extrabold text-slate-400 uppercase tracking-wider">
+                <h4 className="text-body-regular font-bold text-slate-400 uppercase tracking-wider">
                   {tContact.info.addressLabel}
                 </h4>
                 <p className="text-body-large font-bold text-slate-800 mt-1 leading-snug">
@@ -112,7 +112,7 @@ export function SustainabilityContact({ tContact }: SustainabilityContactProps) 
                 <Mail className="h-5 w-5" />
               </div>
               <div>
-                <h4 className="text-body-regular font-extrabold text-slate-400 uppercase tracking-wider">
+                <h4 className="text-body-regular font-bold text-slate-400 uppercase tracking-wider">
                   {tContact.info.emailLabel}
                 </h4>
                 <a href={`mailto:${tContact.info.email}`} className="text-body-large font-bold text-brand hover:underline mt-1 block leading-snug">
@@ -127,7 +127,7 @@ export function SustainabilityContact({ tContact }: SustainabilityContactProps) 
                 <Phone className="h-5 w-5" />
               </div>
               <div>
-                <h4 className="text-body-regular font-extrabold text-slate-400 uppercase tracking-wider">
+                <h4 className="text-body-regular font-bold text-slate-400 uppercase tracking-wider">
                   {tContact.info.phoneLabel}
                 </h4>
                 <a href={`tel:${tContact.info.phone}`} className="text-body-large font-bold text-slate-800 hover:text-brand mt-1 block leading-snug">
@@ -142,7 +142,7 @@ export function SustainabilityContact({ tContact }: SustainabilityContactProps) 
                 <Clock className="h-5 w-5" />
               </div>
               <div>
-                <h4 className="text-body-regular font-extrabold text-slate-400 uppercase tracking-wider">
+                <h4 className="text-body-regular font-bold text-slate-400 uppercase tracking-wider">
                   {tContact.info.hoursLabel}
                 </h4>
                 <p className="text-body-large font-bold text-slate-800 mt-1 leading-snug">

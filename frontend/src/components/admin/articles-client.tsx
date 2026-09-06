@@ -209,10 +209,10 @@ export function ArticlesClient({
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-100 pb-6 mb-8">
         <div>
-          <span className="text-caption-responsive uppercase text-slate-400 font-extrabold tracking-wider">
+          <span className="text-caption-responsive uppercase text-slate-400 font-bold tracking-wider">
             Hệ thống CMS
           </span>
-          <h1 className="text-section-title font-extrabold text-primary tracking-tight mt-1">
+          <h1 className="text-section-title font-bold text-primary tracking-tight mt-1">
             Quản lý Bài viết & Tin tức
           </h1>
           <p className="text-caption-responsive text-slate-500 font-medium mt-1 leading-relaxed">
@@ -258,7 +258,7 @@ export function ArticlesClient({
         <div className="mb-6 p-4 bg-rose-50 border border-rose-200 rounded-[3px] text-rose-800 text-caption-responsive font-semibold flex items-start gap-2.5 shadow-sm">
           <AlertTriangle className="h-5 w-5 text-rose-500 shrink-0 mt-0.5" />
           <div className="flex-1">
-            <span className="font-extrabold text-rose-900 block mb-1">
+            <span className="font-bold text-rose-900 block mb-1">
               Đã xảy ra lỗi khi tải dữ liệu bài viết từ API
             </span>
             <pre className="font-mono text-caption-responsive bg-white/60 p-2.5 rounded-[3px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all">
@@ -287,7 +287,7 @@ export function ArticlesClient({
         {filteredArticles.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 text-center">
             <FileText className="h-12 w-12 text-slate-300 mb-3" />
-            <span className="text-body-regular font-extrabold text-primary">Chưa có bài viết nào</span>
+            <span className="text-body-regular font-bold text-primary">Chưa có bài viết nào</span>
             <span className="text-caption-responsive text-slate-400 mt-1">
               Nhấp vào nút Viết bài mới ở trên để đăng tải nội dung đầu tiên.
             </span>
@@ -340,7 +340,7 @@ export function ArticlesClient({
                               </div>
                             )}
                             <div className="flex flex-col">
-                              <span className="font-extrabold text-primary line-clamp-1 leading-tight">
+                              <span className="font-bold text-primary line-clamp-1 leading-tight">
                                 {title}
                               </span>
                               <span className="text-caption-responsive text-slate-400 font-mono mt-1 select-all">
@@ -474,7 +474,7 @@ export function ArticlesClient({
                         </span>
                         <span className="text-caption-responsive text-slate-400 font-mono select-all">/{art.slug}</span>
                       </div>
-                      <h3 className="font-extrabold text-primary text-body-regular line-clamp-2 leading-snug mt-1">
+                      <h3 className="font-bold text-primary text-body-regular line-clamp-2 leading-snug mt-1">
                         {title}
                       </h3>
                       <div className="flex items-center justify-between gap-4 mt-auto pt-3 border-t border-slate-50 text-caption-responsive text-slate-500 font-medium">
@@ -541,7 +541,7 @@ export function ArticlesClient({
             {/* Modal Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
               <div>
-                <h2 className="text-body-regular font-extrabold text-primary flex items-center gap-2">
+                <h2 className="text-body-regular font-bold text-primary flex items-center gap-2">
                   <FileText className="h-5 w-5 text-blue-500" />
                   {activeArticle.id ? 'Cập nhật bài viết' : 'Soạn bài viết mới'}
                 </h2>
@@ -567,7 +567,7 @@ export function ArticlesClient({
                 type="button"
                 onClick={() => setActiveFormTab('content')}
                 className={cn(
-                  'px-4 py-3 text-caption-responsive font-extrabold border-b-2 transition-all flex items-center gap-1.5 focus:outline-none',
+                  'px-4 py-3 text-caption-responsive font-bold border-b-2 transition-all flex items-center gap-1.5 focus:outline-none',
                   activeFormTab === 'content'
                     ? 'border-blue-600 text-blue-600'
                     : 'border-transparent text-slate-500 hover:text-slate-700'
@@ -580,7 +580,7 @@ export function ArticlesClient({
                 type="button"
                 onClick={() => setActiveFormTab('seo')}
                 className={cn(
-                  'px-4 py-3 text-caption-responsive font-extrabold border-b-2 transition-all flex items-center gap-1.5 focus:outline-none',
+                  'px-4 py-3 text-caption-responsive font-bold border-b-2 transition-all flex items-center gap-1.5 focus:outline-none',
                   activeFormTab === 'seo'
                     ? 'border-blue-600 text-blue-600'
                     : 'border-transparent text-slate-500 hover:text-slate-700'
@@ -604,7 +604,7 @@ export function ArticlesClient({
                   <div className="flex flex-col gap-5">
                     {/* Title */}
                     <div className="flex flex-col gap-1.5">
-                      <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                      <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                         Tiêu đề bài viết *
                       </label>
                       <input
@@ -627,7 +627,7 @@ export function ArticlesClient({
                           setActiveArticle({ ...activeArticle, title, slug });
                         }}
                         placeholder="Nhập tiêu đề bài viết..."
-                        className="w-full px-4 py-2.5 rounded-[3px] border border-slate-200 text-body-regular font-extrabold text-primary focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand shadow-sm"
+                        className="w-full px-4 py-2.5 rounded-[3px] border border-slate-200 text-body-regular font-bold text-primary focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand shadow-sm"
                       />
                     </div>
 
@@ -635,7 +635,7 @@ export function ArticlesClient({
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {/* Slug */}
                       <div className="flex flex-col gap-1.5">
-                        <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                        <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                           Slug (Đường dẫn tĩnh) *
                         </label>
                         <input
@@ -650,7 +650,7 @@ export function ArticlesClient({
 
                       {/* Author */}
                       <div className="flex flex-col gap-1.5">
-                        <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider flex items-center gap-1">
+                        <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider flex items-center gap-1">
                           <User className="h-3 w-3 text-slate-400" />
                           Tác giả
                         </label>
@@ -669,7 +669,7 @@ export function ArticlesClient({
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {/* Status */}
                       <div className="flex flex-col gap-1.5">
-                        <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                        <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                           Trạng thái phát hành
                         </label>
                         <select
@@ -689,7 +689,7 @@ export function ArticlesClient({
 
                       {/* Published At */}
                       <div className="flex flex-col gap-1.5">
-                        <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider flex items-center gap-1">
+                        <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider flex items-center gap-1">
                           <Calendar className="h-3 w-3 text-slate-400" />
                           Ngày hiển thị
                         </label>
@@ -706,7 +706,7 @@ export function ArticlesClient({
 
                     {/* Body textarea */}
                     <div className="flex flex-col gap-1">
-                      <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                      <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                         Nội dung bài viết (HTML / Text)
                       </label>
 
@@ -715,7 +715,7 @@ export function ArticlesClient({
                         <button
                           type="button"
                           onClick={() => insertTag('<h2>', '</h2>')}
-                          className="px-2 py-1 text-caption-responsive font-extrabold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
+                          className="px-2 py-1 text-caption-responsive font-bold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
                           title="Tiêu đề lớn H2"
                         >
                           H2
@@ -723,7 +723,7 @@ export function ArticlesClient({
                         <button
                           type="button"
                           onClick={() => insertTag('<h3>', '</h3>')}
-                          className="px-2 py-1 text-caption-responsive font-extrabold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
+                          className="px-2 py-1 text-caption-responsive font-bold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
                           title="Tiêu đề phụ H3"
                         >
                           H3
@@ -732,7 +732,7 @@ export function ArticlesClient({
                         <button
                           type="button"
                           onClick={() => insertTag('<strong>', '</strong>')}
-                          className="px-2 py-1 text-caption-responsive font-extrabold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
+                          className="px-2 py-1 text-caption-responsive font-bold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
                           title="Chữ đậm"
                         >
                           B
@@ -740,7 +740,7 @@ export function ArticlesClient({
                         <button
                           type="button"
                           onClick={() => insertTag('<em>', '</em>')}
-                          className="px-2 py-1 text-caption-responsive italic font-extrabold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
+                          className="px-2 py-1 text-caption-responsive italic font-bold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
                           title="Chữ nghiêng"
                         >
                           I
@@ -748,7 +748,7 @@ export function ArticlesClient({
                         <button
                           type="button"
                           onClick={() => insertTag('<u>', '</u>')}
-                          className="px-2 py-1 text-caption-responsive underline font-extrabold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
+                          className="px-2 py-1 text-caption-responsive underline font-bold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
                           title="Gạch chân"
                         >
                           U
@@ -806,7 +806,7 @@ export function ArticlesClient({
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
                     {/* Left side: Cover Image upload */}
                     <div className="flex flex-col gap-4">
-                      <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                      <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                         Ảnh bìa bài viết (Cover Image)
                       </label>
 
@@ -869,14 +869,14 @@ export function ArticlesClient({
                     <div className="flex flex-col gap-4">
                       <div className="flex items-center gap-1.5 pb-2 border-b border-slate-100 mb-2">
                         <Globe className="h-4 w-4 text-blue-500" />
-                        <h3 className="text-caption-responsive font-extrabold text-primary uppercase tracking-wider">
+                        <h3 className="text-caption-responsive font-bold text-primary uppercase tracking-wider">
                           Tối ưu hóa tìm kiếm (SEO Metadata)
                         </h3>
                       </div>
 
                       {/* Meta Title */}
                       <div className="flex flex-col gap-1.5">
-                        <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                        <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                           Thẻ tiêu đề SEO (Meta Title)
                         </label>
                         <input
@@ -892,7 +892,7 @@ export function ArticlesClient({
 
                       {/* Meta Description */}
                       <div className="flex flex-col gap-1.5">
-                        <label className="text-caption-responsive font-extrabold text-slate-450 uppercase tracking-wider">
+                        <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                           Thẻ mô tả SEO (Meta Description)
                         </label>
                         <textarea

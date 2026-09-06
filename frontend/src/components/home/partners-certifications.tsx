@@ -159,7 +159,7 @@ export function PartnersCertifications() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 11l2 2 4-4" />
               </svg>
             </div>
-            <span className="text-white font-extrabold text-body-large">ISO 9001</span>
+            <span className="text-white font-bold text-body-large">ISO 9001</span>
             <span className="text-blue-100/90 text-caption-responsive font-medium mt-1.5 leading-snug">
               Hệ thống quản lý chất lượng
             </span>
@@ -173,7 +173,7 @@ export function PartnersCertifications() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v11" />
               </svg>
             </div>
-            <span className="text-white font-extrabold text-body-large">ISO 14001</span>
+            <span className="text-white font-bold text-body-large">ISO 14001</span>
             <span className="text-blue-100/90 text-caption-responsive font-medium mt-1.5 leading-snug">
               Quản lý môi trường
             </span>
@@ -186,7 +186,7 @@ export function PartnersCertifications() {
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
               </svg>
             </div>
-            <span className="text-white font-extrabold text-body-large">ISO 45001</span>
+            <span className="text-white font-bold text-body-large">ISO 45001</span>
             <span className="text-blue-100/90 text-caption-responsive font-medium mt-1.5 leading-snug">
               An toàn & sức khỏe nghề nghiệp
             </span>
@@ -200,7 +200,7 @@ export function PartnersCertifications() {
                 <circle cx="15" cy="15" r="3" />
               </svg>
             </div>
-            <span className="text-white font-extrabold text-body-large">MSDS</span>
+            <span className="text-white font-bold text-body-large">MSDS</span>
             <span className="text-blue-100/90 text-caption-responsive font-medium mt-1.5 leading-snug">
               Bảng dữ liệu an toàn vật liệu
             </span>

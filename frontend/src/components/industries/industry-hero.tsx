@@ -84,7 +84,7 @@ export function IndustryHero({ industryData, locale, translations }: IndustryHer
               <HeroIcon className="h-8 w-8 sm:h-10 sm:w-10 text-brand" />
             </div>
             <div className="space-y-2">
-              <h1 className="text-hero-title font-extrabold tracking-tight leading-tight text-primary">
+              <h1 className="text-hero-title font-bold tracking-tight leading-tight text-primary">
                 {industryData.title}
               </h1>
               <p className="text-caption-responsive leading-relaxed text-slate-400 max-w-2xl font-semibold">

@@ -75,7 +75,7 @@ export function IndustrySidebar({ industryData, locale }: IndustrySidebarProps) 
               const CertIcon = cert.type === 'icon' && cert.iconName ? certIconMap[cert.iconName] : null;
               return (
                 <div key={idx} className="flex flex-col items-center text-center">
-                  <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full border-2 border-brand flex flex-col items-center justify-center text-brand font-extrabold bg-white shadow-sm mb-2 select-none">
+                  <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full border-2 border-brand flex flex-col items-center justify-center text-brand font-bold bg-white shadow-sm mb-2 select-none">
                     {cert.type === 'text' ? (
                       <span className="text-caption-responsive uppercase tracking-tighter">{cert.name}</span>
                     ) : CertIcon ? (

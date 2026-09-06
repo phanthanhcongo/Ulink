@@ -17,7 +17,7 @@ export default async function ContactCta({ locale }: ContactCtaProps) {
           <span className="text-caption-responsive leading-relaxed font-bold text-slate-800">
             {t('contactCta.label')}
           </span>
-          <h2 className="text-section-title font-extrabold text-slate-900 mt-1.5 leading-tight tracking-tight">
+          <h2 className="text-section-title font-bold text-slate-900 mt-1.5 leading-tight tracking-tight">
             {t('contactCta.heading')}
           </h2>
           <p className="text-caption-responsive leading-relaxed text-slate-500 font-medium mt-2">

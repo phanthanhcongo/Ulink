@@ -54,7 +54,7 @@ export default async function ProductionMaterials({ locale }: ProductionMaterial
               {t('skuSection.eyebrow')}
             </span>
           </div>
-          <h2 className="mt-4 text-section-title font-extrabold tracking-tight text-slate-900 leading-tight">
+          <h2 className="mt-4 text-section-title font-bold tracking-tight text-slate-900 leading-tight">
             {t('skuSection.title')}
           </h2>
           <p className="mt-4 text-body-regular text-slate-500 max-w-3xl leading-relaxed">

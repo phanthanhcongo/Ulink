@@ -38,7 +38,7 @@ export default async function AboutUsHub({ locale }: AboutUsHubProps) {
           {/* Blue decorative bar */}
           <div className="w-1.5 h-7 bg-blue-600 rounded-full shrink-0 mt-1" />
           <div className="space-y-1">
-            <h2 className="text-section-title font-extrabold text-primary tracking-tight">
+            <h2 className="text-section-title font-bold text-primary tracking-tight">
               {t('aboutHub.sectionTitle')}
             </h2>
             <p className="text-caption-responsive leading-relaxed text-slate-500 font-medium">
@@ -74,7 +74,7 @@ export default async function AboutUsHub({ locale }: AboutUsHubProps) {
         <div className="lg:col-span-7 bg-card/65 rounded-[3px] border border-slate-100 p-6 sm:p-8 flex flex-col justify-between">
           <div>
             {/* Title & Description */}
-            <h3 className="text-section-title font-extrabold text-primary tracking-tight mb-4">
+            <h3 className="text-section-title font-bold text-primary tracking-tight mb-4">
               {t('aboutHub.hubHeading')}
             </h3>
             <p className="text-caption-responsive leading-relaxed text-slate-500 font-medium mb-8">
@@ -85,7 +85,7 @@ export default async function AboutUsHub({ locale }: AboutUsHubProps) {
             <div className="grid grid-cols-2 gap-6 sm:gap-8 mb-8">
               {metrics.map((metric, idx) => (
                 <div key={idx} className="flex flex-col">
-                  <span className="text-section-title font-extrabold text-blue-600 leading-tight">
+                  <span className="text-section-title font-bold text-blue-600 leading-tight">
                     {metric.value}
                   </span>
                   <span className="text-caption-responsive text-slate-500 font-medium mt-1.5 leading-snug">

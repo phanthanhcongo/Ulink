@@ -35,7 +35,7 @@ export function ConfirmModal({
       >
         {/* Header */}
         <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100">
-          <h3 className="text-body-regular font-extrabold text-slate-800 flex items-center gap-2">
+          <h3 className="text-body-regular font-bold text-slate-800 flex items-center gap-2">
             <AlertTriangle
               className={cn(
                 'h-5 w-5',

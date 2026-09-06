@@ -52,12 +52,12 @@ export function NewsDetailClient({ article, locale }: NewsDetailClientProps) {
           <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl -z-10" />
 
           <div className="flex flex-wrap items-center gap-3 mb-5">
-            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-[3px] bg-blue-50 text-blue-700 text-caption-responsive font-extrabold uppercase tracking-wider border border-blue-100">
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-[3px] bg-blue-50 text-blue-700 text-caption-responsive font-bold uppercase tracking-wider border border-blue-100">
               {article.category}
             </span>
           </div>
 
-          <h1 className="text-section-title font-extrabold text-slate-900 tracking-tight leading-snug lg:leading-tight max-w-4xl">
+          <h1 className="text-section-title font-bold text-slate-900 tracking-tight leading-snug lg:leading-tight max-w-4xl">
             {article.title}
           </h1>
 
@@ -95,7 +95,7 @@ export function NewsDetailClient({ article, locale }: NewsDetailClientProps) {
       <main className="page-container mt-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           <aside className="hidden lg:block lg:col-span-3 sticky top-28 self-start bg-slate-50 p-5 rounded-[3px] border border-slate-200/50">
-            <h3 className="text-body-regular font-extrabold text-slate-900 tracking-tight mb-5 px-1">
+            <h3 className="text-body-regular font-bold text-slate-900 tracking-tight mb-5 px-1">
               {localeLang === 'vi' ? 'Mục lục' : localeLang === 'ja' ? '目次' : 'Mục lục'}
             </h3>
             <nav className="flex flex-col gap-3">
@@ -133,7 +133,7 @@ export function NewsDetailClient({ article, locale }: NewsDetailClientProps) {
             <div className="space-y-10">
               {article.content.map((sec) => (
                 <section key={sec.id} id={sec.id} className="scroll-mt-28 space-y-4">
-                  <h2 className="text-card-title font-extrabold text-slate-900 tracking-tight">
+                  <h2 className="text-card-title font-bold text-slate-900 tracking-tight">
                     {sec.title}
                   </h2>
                   <div className="text-body-regular text-slate-700 leading-relaxed space-y-3 font-normal">
@@ -148,7 +148,7 @@ export function NewsDetailClient({ article, locale }: NewsDetailClientProps) {
 
           <aside className="lg:col-span-3 space-y-6">
             <div className="p-6 rounded-[3px] bg-white border border-slate-200/80 shadow-sm">
-              <h3 className="text-body-regular font-extrabold text-slate-900 uppercase tracking-wider mb-5 border-b border-slate-100 pb-3 flex items-center gap-2">
+              <h3 className="text-body-regular font-bold text-slate-900 uppercase tracking-wider mb-5 border-b border-slate-100 pb-3 flex items-center gap-2">
                 <User className="h-4 w-4 text-brand" />
                 {localeLang === 'vi' ? 'Tác giả' : localeLang === 'ja' ? '著者' : 'Author'}
               </h3>
@@ -168,7 +168,7 @@ export function NewsDetailClient({ article, locale }: NewsDetailClientProps) {
 
             <div className="p-6 rounded-[3px] bg-white border border-slate-200/80 shadow-sm relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl -z-10" />
-              <h3 className="text-body-regular font-extrabold text-slate-955">
+              <h3 className="text-body-regular font-bold text-slate-955">
                 {localeLang === 'vi' ? 'Cần tư vấn giải pháp?' : localeLang === 'ja' ? 'ソリューション相談' : 'Need solution consultation?'}
               </h3>
               <p className="text-caption-responsive text-slate-500 mt-2 leading-relaxed font-medium">

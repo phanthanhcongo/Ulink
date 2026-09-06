@@ -375,7 +375,7 @@ export default function ProductDetailClient({
       {/* 5. TOTAL BLOCK */}
       <div className="space-y-1.5 text-left">
         <p className="text-caption-responsive font-bold text-slate-800">{locale === 'vi' ? 'Tổng cộng' : 'Total'}</p>
-        <span className="text-section-title font-extrabold text-[#1769e2] tracking-tight block leading-none">
+        <span className="text-section-title font-bold text-[#1769e2] tracking-tight block leading-none">
           {formatPrice(totalAmount)}
         </span>
         <p className="text-caption-responsive text-slate-400 italic font-medium">

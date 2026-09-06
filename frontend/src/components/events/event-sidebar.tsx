@@ -69,7 +69,7 @@ export function EventSidebar({
   return (
     <div className="sticky top-6 rounded-[3px] bg-[#0E2142] text-white p-6 sm:p-8 shadow-2xl border border-slate-800">
       <div className="flex justify-between items-start gap-4">
-        <h3 className="text-card-title font-extrabold leading-snug tracking-tight text-white pr-4">
+        <h3 className="text-card-title font-bold leading-snug tracking-tight text-white pr-4">
           {title}
         </h3>
 

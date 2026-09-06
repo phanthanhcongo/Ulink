@@ -296,7 +296,7 @@ export default async function AboutSustainabilityPage({
               <span className="text-caption-responsive font-bold text-emerald-600 tracking-tight uppercase">
                 {t.esgStats.eyebrow}
               </span>
-              <h2 className="text-section-title font-extrabold text-slate-900 mt-1">
+              <h2 className="text-section-title font-bold text-slate-900 mt-1">
                 {t.esgStats.title}
               </h2>
             </div>
@@ -356,7 +356,7 @@ export default async function AboutSustainabilityPage({
             <span className="text-caption-responsive font-bold text-emerald-600 tracking-tight uppercase">
               {t.framework.eyebrow}
             </span>
-            <h2 className="text-section-title font-extrabold text-slate-900 mt-1 mb-8">
+            <h2 className="text-section-title font-bold text-slate-900 mt-1 mb-8">
               {t.framework.title}
             </h2>
           </div>
@@ -437,7 +437,7 @@ export default async function AboutSustainabilityPage({
               <span className="text-caption-responsive font-bold text-emerald-600 tracking-tight uppercase">
                 {t.sdgs.eyebrow}
               </span>
-              <h2 className="text-section-title font-extrabold text-slate-900 tracking-tight mt-1 mb-4">
+              <h2 className="text-section-title font-bold text-slate-900 tracking-tight mt-1 mb-4">
                 {t.sdgs.title}
               </h2>
               <p className="text-body-large leading-relaxed text-slate-500 font-medium">
@@ -456,7 +456,7 @@ export default async function AboutSustainabilityPage({
                   >
                     <Icon className={`h-7 w-7 shrink-0 ${sdg.color}`} />
                     <div>
-                      <p className={`text-body-regular font-extrabold ${sdg.numColor || 'text-brand'}`}>
+                      <p className={`text-body-regular font-bold ${sdg.numColor || 'text-brand'}`}>
                         {sdg.num}
                       </p>
                       <p className="text-caption-responsive font-bold text-slate-800 leading-snug mt-0.5">

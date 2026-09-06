@@ -242,7 +242,7 @@ export default async function IndustriesPage({ params: { locale } }: Props) {
 
           {/* Text area */}
           <div className="max-w-3xl my-auto">
-            <h1 className="text-hero-title font-extrabold text-white">
+            <h1 className="text-hero-title font-bold text-white">
               {isVi
                 ? 'Tối ưu chuỗi cung ứng nguyên liệu và vật tư với giải pháp Phòng sạch & Đóng gói.'
                 : isJa
@@ -273,7 +273,7 @@ export default async function IndustriesPage({ params: { locale } }: Props) {
       <div className="page-container section-padding flex flex-col gap-12">
         {/* Section Header */}
         <div className="flex flex-col items-start max-w-3xl">
-          <h2 className="text-section-title font-extrabold text-primary">
+          <h2 className="text-section-title font-bold text-primary">
             {isVi
               ? 'Giải pháp theo ngành nghề'
               : isJa

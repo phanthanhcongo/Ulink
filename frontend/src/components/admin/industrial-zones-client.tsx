@@ -149,10 +149,10 @@ export function IndustrialZonesClient({ initialZones, hubs, error }: IndustrialZ
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-100 pb-6 mb-8">
         <div>
-          <span className="text-caption-responsive uppercase text-slate-400 font-extrabold tracking-wider">
+          <span className="text-caption-responsive uppercase text-slate-400 font-bold tracking-wider">
             Hạ tầng & Logistics
           </span>
-          <h1 className="text-section-title font-extrabold text-primary tracking-tight mt-1">
+          <h1 className="text-section-title font-bold text-primary tracking-tight mt-1">
             Quản lý Khu công nghiệp (KCN)
           </h1>
           <p className="text-caption-responsive text-slate-500 font-medium mt-1 leading-relaxed">
@@ -175,7 +175,7 @@ export function IndustrialZonesClient({ initialZones, hubs, error }: IndustrialZ
         <div className="mb-6 p-4 bg-rose-50 border border-rose-200 rounded-[3px] text-rose-800 text-caption-responsive font-semibold flex items-start gap-2.5 shadow-sm">
           <AlertTriangle className="h-5 w-5 text-rose-500 shrink-0 mt-0.5" />
           <div className="flex-1">
-            <span className="font-extrabold text-rose-900 block mb-1">
+            <span className="font-bold text-rose-900 block mb-1">
               Đã xảy ra lỗi khi tải danh sách Khu công nghiệp
             </span>
             <pre className="font-mono text-caption-responsive bg-white/60 p-2.5 rounded-[3px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all">
@@ -222,7 +222,7 @@ export function IndustrialZonesClient({ initialZones, hubs, error }: IndustrialZ
           <div className="overflow-x-auto">
             <table className="w-full text-left border-collapse min-w-[700px]">
               <thead>
-                <tr className="bg-slate-50 text-caption-responsive uppercase text-slate-400 tracking-wider font-extrabold border-b border-slate-100">
+                <tr className="bg-slate-50 text-caption-responsive uppercase text-slate-400 tracking-wider font-bold border-b border-slate-100">
                   <th className="px-6 py-3 w-[80px]">ID</th>
                   <th className="px-6 py-3">Tên Khu công nghiệp</th>
                   <th className="px-6 py-3">Cụm kho (Hub) quản lý</th>
@@ -283,7 +283,7 @@ export function IndustrialZonesClient({ initialZones, hubs, error }: IndustrialZ
         <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/45 backdrop-blur-sm">
           <div className="relative w-full max-w-md bg-white rounded-[3px] border border-slate-100 shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200">
             <div className="flex items-center justify-between p-5 border-b border-slate-100 bg-slate-50/50">
-              <h2 className="text-body-regular font-extrabold text-slate-800">
+              <h2 className="text-body-regular font-bold text-slate-800">
                 {activeZone.id ? 'Cập nhật Khu công nghiệp' : 'Thêm mới Khu công nghiệp'}
               </h2>
               <button
@@ -304,7 +304,7 @@ export function IndustrialZonesClient({ initialZones, hubs, error }: IndustrialZ
               )}
 
               <div>
-                <label className="block text-caption-responsive font-extrabold text-slate-500 uppercase tracking-wider mb-1.5">
+                <label className="block text-caption-responsive font-bold text-slate-500 uppercase tracking-wider mb-1.5">
                   Tên Khu công nghiệp <span className="text-rose-500">*</span>
                 </label>
                 <input
@@ -318,7 +318,7 @@ export function IndustrialZonesClient({ initialZones, hubs, error }: IndustrialZ
               </div>
 
               <div>
-                <label className="block text-caption-responsive font-extrabold text-slate-500 uppercase tracking-wider mb-1.5">
+                <label className="block text-caption-responsive font-bold text-slate-500 uppercase tracking-wider mb-1.5">
                   Cụm kho (Hub) quản lý <span className="text-rose-500">*</span>
                 </label>
                 <select
@@ -337,7 +337,7 @@ export function IndustrialZonesClient({ initialZones, hubs, error }: IndustrialZ
               </div>
 
               <div>
-                <label className="block text-caption-responsive font-extrabold text-slate-500 uppercase tracking-wider mb-1.5">
+                <label className="block text-caption-responsive font-bold text-slate-500 uppercase tracking-wider mb-1.5">
                   Đường dẫn ảnh minh họa (Tùy chọn)
                 </label>
                 <input

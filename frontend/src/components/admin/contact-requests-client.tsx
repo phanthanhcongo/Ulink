@@ -51,10 +51,10 @@ export function ContactRequestsClient({ initialRequests, error }: ContactRequest
     <div className="admin-page">
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-100 pb-6 mb-8">
         <div>
-          <span className="text-caption-responsive uppercase text-slate-400 font-extrabold tracking-wider">
+          <span className="text-caption-responsive uppercase text-slate-400 font-bold tracking-wider">
             Hộp thư chăm sóc khách hàng
           </span>
-          <h1 className="text-section-title font-extrabold text-primary tracking-tight mt-1">
+          <h1 className="text-section-title font-bold text-primary tracking-tight mt-1">
             Liên hệ gửi về
           </h1>
           <p className="text-caption-responsive text-slate-500 font-medium mt-1 leading-relaxed">
@@ -66,7 +66,7 @@ export function ContactRequestsClient({ initialRequests, error }: ContactRequest
       {error && (
         <div className="mb-6 p-4 bg-rose-50 border border-rose-200 rounded-[3px] text-rose-800 text-caption-responsive font-semibold flex items-start gap-2.5 shadow-sm">
           <div className="flex-1">
-            <span className="font-extrabold text-rose-900 block mb-1">
+            <span className="font-bold text-rose-900 block mb-1">
               Đã xảy ra lỗi khi tải danh sách liên hệ
             </span>
             <pre className="font-mono text-caption-responsive bg-white/60 p-2.5 rounded-[3px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all">
@@ -97,7 +97,7 @@ export function ContactRequestsClient({ initialRequests, error }: ContactRequest
         {filteredRequests.length === 0 ? (
           <div className="flex flex-col items-center justify-center py-16 text-center">
             <Mail className="h-12 w-12 text-slate-300 mb-3" />
-            <span className="text-body-regular font-extrabold text-primary">Chưa có liên hệ nào</span>
+            <span className="text-body-regular font-bold text-primary">Chưa có liên hệ nào</span>
             <span className="text-caption-responsive text-slate-400 mt-1">
               Hệ thống sẽ hiển thị các tin nhắn khách gửi về tại đây.
             </span>
@@ -125,7 +125,7 @@ export function ContactRequestsClient({ initialRequests, error }: ContactRequest
                     {/* Name (Sticky) */}
                     <td className="px-4 py-3 sticky left-0 bg-white group-hover:bg-slate-50/80 transition-colors shadow-[2px_0_5px_rgba(0,0,0,0.03)] z-10">
                       <div className="flex flex-col">
-                        <span className="font-extrabold text-primary leading-tight">
+                        <span className="font-bold text-primary leading-tight">
                           {request.full_name}
                         </span>
                         <span className="text-caption-responsive text-slate-400 font-semibold mt-1">
@@ -211,10 +211,10 @@ export function ContactRequestsClient({ initialRequests, error }: ContactRequest
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-white">
               <div>
-                <span className="text-caption-responsive uppercase text-slate-400 font-extrabold tracking-wider">
+                <span className="text-caption-responsive uppercase text-slate-400 font-bold tracking-wider">
                   Xem nhanh liên hệ #{selectedRequest.id}
                 </span>
-                <h2 className="text-body-regular font-extrabold text-primary flex items-center gap-2 mt-0.5">
+                <h2 className="text-body-regular font-bold text-primary flex items-center gap-2 mt-0.5">
                   <Mail className="h-5 w-5 text-blue-500" />
                   {selectedRequest.full_name}
                 </h2>
@@ -232,15 +232,15 @@ export function ContactRequestsClient({ initialRequests, error }: ContactRequest
               {/* Contact Info block */}
               <div className="grid grid-cols-2 gap-4 bg-slate-50/50 p-4 rounded-[3px] border border-slate-100">
                 <div className="flex flex-col gap-0.5">
-                  <span className="text-caption-responsive font-extrabold text-slate-400 uppercase">Điện thoại</span>
+                  <span className="text-caption-responsive font-bold text-slate-400 uppercase">Điện thoại</span>
                   <span className="text-caption-responsive font-bold text-slate-700 select-all font-mono">{selectedRequest.phone}</span>
                 </div>
                 <div className="flex flex-col gap-0.5">
-                  <span className="text-caption-responsive font-extrabold text-slate-450 uppercase">Email</span>
+                  <span className="text-caption-responsive font-bold text-slate-450 uppercase">Email</span>
                   <span className="text-caption-responsive font-bold text-slate-700 select-all font-mono">{selectedRequest.email}</span>
                 </div>
                 <div className="flex flex-col gap-0.5 col-span-2">
-                  <span className="text-caption-responsive font-extrabold text-slate-450 uppercase">Thời gian gửi</span>
+                  <span className="text-caption-responsive font-bold text-slate-450 uppercase">Thời gian gửi</span>
                   <span className="text-caption-responsive font-bold text-slate-600 font-mono">
                     {selectedRequest.created_at ? new Date(selectedRequest.created_at).toLocaleString('vi-VN') : '---'}
                   </span>
@@ -249,7 +249,7 @@ export function ContactRequestsClient({ initialRequests, error }: ContactRequest
 
               {/* Subject */}
               <div className="flex flex-col gap-1">
-                <span className="text-caption-responsive font-extrabold text-slate-450 uppercase">Chủ đề</span>
+                <span className="text-caption-responsive font-bold text-slate-450 uppercase">Chủ đề</span>
                 <span className="inline-flex w-fit rounded-[3px] bg-cyan-50 px-2.5 py-0.5 text-caption-responsive font-bold text-cyan-700">
                   {selectedRequest.subject}
                 </span>
@@ -257,7 +257,7 @@ export function ContactRequestsClient({ initialRequests, error }: ContactRequest
 
               {/* Message */}
               <div className="flex flex-col gap-1.5">
-                <span className="text-caption-responsive font-extrabold text-slate-455 uppercase">Nội dung tin nhắn</span>
+                <span className="text-caption-responsive font-bold text-slate-455 uppercase">Nội dung tin nhắn</span>
                 <div className="text-caption-responsive text-slate-650 bg-slate-50/30 p-4 rounded-[3px] border border-slate-200/80 whitespace-pre-wrap leading-relaxed max-h-[30vh] overflow-y-auto font-medium">
                   {selectedRequest.message || <span className="italic text-slate-400">Không có nội dung tin nhắn.</span>}
                 </div>

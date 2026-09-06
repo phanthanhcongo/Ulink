@@ -1,14 +1,14 @@
 const partnerLogos = [
-  { name: 'SAMSUNG', color: 'text-blue-700 font-extrabold' },
-  { name: 'Canon', color: 'text-red-600 font-extrabold italic' },
+  { name: 'SAMSUNG', color: 'text-blue-700 font-bold' },
+  { name: 'Canon', color: 'text-red-600 font-bold italic' },
   { name: 'Panasonic', color: 'text-blue-800 font-bold' },
-  { name: 'IBM', color: 'text-blue-600 font-extrabold tracking-widest' },
+  { name: 'IBM', color: 'text-blue-600 font-bold tracking-widest' },
   { name: 'Traphaco', color: 'text-emerald-600 font-bold' },
   { name: 'Coca-Cola', color: 'text-red-600 font-serif italic' },
-  { name: 'VINFAST', color: 'text-slate-800 font-extrabold' },
+  { name: 'VINFAST', color: 'text-slate-800 font-bold' },
   { name: 'LG', color: 'text-rose-600 font-bold' },
   { name: 'Amkor Technology', color: 'text-blue-900 font-semibold' },
-  { name: 'Vinamilk', color: 'text-blue-700 font-extrabold' },
+  { name: 'Vinamilk', color: 'text-blue-700 font-bold' },
   { name: '3M', color: 'text-red-600 font-black' },
   { name: 'BYD', color: 'text-red-700 font-bold tracking-widest' }
 ];

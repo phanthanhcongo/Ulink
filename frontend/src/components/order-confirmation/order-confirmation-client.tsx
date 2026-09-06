@@ -78,7 +78,7 @@ export default function OrderConfirmationClient({
       <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-5">
         <div className="space-y-1">
           <div className="flex flex-wrap items-center gap-3">
-            <h2 className="text-card-title font-extrabold text-slate-900 tracking-tight">
+            <h2 className="text-card-title font-bold text-slate-900 tracking-tight">
               Đơn hàng ULK-2026-98745
             </h2>
             <span className="inline-flex items-center bg-blue-50 text-blue-600 text-[10.5px] font-bold px-2.5 py-0.5 rounded-full border border-blue-100">
@@ -115,7 +115,7 @@ export default function OrderConfirmationClient({
         <div className="flex w-full overflow-hidden text-caption-responsive font-semibold rounded-[3px] border border-slate-100">
           {/* Step 1: Giỏ hàng */}
           <div className="flex-1 flex items-center justify-center gap-2 py-3 bg-blue-50/75 text-brand">
-            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand text-caption-responsive font-extrabold text-white shrink-0">
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand text-caption-responsive font-bold text-white shrink-0">
               ✓
             </span>
             <span className="font-bold tracking-wide hidden sm:inline">Giỏ hàng</span>
@@ -123,7 +123,7 @@ export default function OrderConfirmationClient({
 
           {/* Step 2: Thanh toán */}
           <div className="flex-1 flex items-center justify-center gap-2 py-3 bg-brand text-white">
-            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white text-caption-responsive font-extrabold text-brand shrink-0">
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white text-caption-responsive font-bold text-brand shrink-0">
               2
             </span>
             <span className="font-bold tracking-wide hidden sm:inline">Thanh toán</span>
@@ -134,7 +134,7 @@ export default function OrderConfirmationClient({
             href="/order-tracking/delivery-confirmation"
             className="flex-1 flex items-center justify-center gap-2 py-3 bg-slate-100 text-slate-400 hover:bg-slate-200/80 hover:text-slate-600 transition-colors cursor-pointer"
           >
-            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white text-caption-responsive font-extrabold text-slate-300 shrink-0">
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white text-caption-responsive font-bold text-slate-300 shrink-0">
               3
             </span>
             <span className="font-bold tracking-wide hidden sm:inline">Vận chuyển (Đã giao)</span>
@@ -142,7 +142,7 @@ export default function OrderConfirmationClient({
 
           {/* Step 4: Hoàn tất */}
           <div className="flex-1 flex items-center justify-center gap-2 py-3 bg-slate-50 text-slate-300">
-            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white border border-border/40 text-caption-responsive font-extrabold text-slate-200 shrink-0">
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white border border-border/40 text-caption-responsive font-bold text-slate-200 shrink-0">
               4
             </span>
             <span className="font-bold tracking-wide hidden sm:inline">Hoàn tất</span>
@@ -407,7 +407,7 @@ export default function OrderConfirmationClient({
               <div className="flex items-baseline justify-between pt-1">
                 <span className="text-body-regular font-bold text-slate-900">Tổng thanh toán</span>
                 <div className="text-right">
-                  <span className="text-card-title font-extrabold text-[#006AA7] block leading-none">
+                  <span className="text-card-title font-bold text-[#006AA7] block leading-none">
                     {formatPrice(27378000)}
                   </span>
                   <span className="text-caption-responsive text-slate-400 font-medium block mt-1.5">
