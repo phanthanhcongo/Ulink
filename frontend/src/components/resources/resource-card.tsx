@@ -51,7 +51,7 @@ export function ResourceCard({ resource, locale }: ResourceCardProps) {
         />
         <div
           className={cn(
-            'absolute top-4 left-4 z-10 text-caption-responsive font-bold uppercase tracking-wider px-3.5 py-1 rounded-full shadow-sm',
+            'absolute top-4 left-4 z-10 text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider px-3 py-0.5 sm:px-3.5 sm:py-1 rounded-full shadow-sm',
             getBadgeColorClass(resource.category)
           )}
         >

@@ -113,12 +113,12 @@ export function EventCard({ event, locale }: EventCardProps) {
         )}
 
         {/* Top Left Date Badge */}
-        <div className="absolute top-4 left-4 z-10 bg-blue-600/90 backdrop-blur-xs text-white text-caption-responsive font-bold px-4 py-1.5 rounded-full shadow-sm">
+        <div className="absolute top-4 left-4 z-10 bg-blue-600/90 backdrop-blur-xs text-white text-[10px] sm:text-[11px] font-semibold px-3 py-0.5 sm:px-4 sm:py-1 rounded-full shadow-sm">
           {dateBadge}
         </div>
 
         {/* Top Right Category Badge */}
-        <div className="absolute top-4 right-4 z-10 bg-emerald-600/90 backdrop-blur-xs text-white text-caption-responsive font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full shadow-sm">
+        <div className="absolute top-4 right-4 z-10 bg-emerald-600/90 backdrop-blur-xs text-white text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider px-3 py-0.5 sm:px-3.5 sm:py-1 rounded-full shadow-sm">
           {badgeText}
         </div>
       </div>
