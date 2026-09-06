@@ -52,10 +52,10 @@ export default async function HubPartner() {
 
       {/* ── PART 2: CTA REGISTER BANNER ── */}
       <section className="w-full bg-[#A6C8FF] py-12 sm:py-16 lg:py-20 border-t border-blue-200/50">
-        <div className="page-container flex flex-col gap-6 sm:gap-8 items-start">
+        <div className="page-container flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
           
           {/* Header text block */}
-          <div className="flex flex-col items-start text-left max-w-4xl space-y-3">
+          <div className="flex flex-col items-start text-left max-w-3xl space-y-3">
             <span className="text-[14px] sm:text-[16px] lg:text-[18px] font-bold uppercase tracking-wider text-[#001D6C]">
               {t('hubPartner.ctaEyebrow')}
             </span>
@@ -67,17 +67,17 @@ export default async function HubPartner() {
             </p>
           </div>
 
-          {/* Action Buttons (side-by-side flex-row, centered) */}
-          <div className="flex flex-row items-center justify-center gap-3 sm:gap-4 pt-2 flex-wrap w-full">
+          {/* Action Buttons (centered on mobile/iPad, right-aligned on same row on Desktop) */}
+          <div className="flex flex-row items-center justify-center lg:justify-end gap-3 sm:gap-4 flex-wrap w-full lg:w-auto shrink-0">
             <Link
               href="/contact"
-              className="border border-[#001D6C] text-[#001D6C] font-semibold py-3 px-5 sm:px-6 rounded-[3px] hover:bg-white/20 transition-all text-[14px] sm:text-[15px] lg:text-[16px] inline-flex justify-center items-center min-h-[46px]"
+              className="border border-[#001D6C] text-[#001D6C] font-semibold py-3 px-5 sm:px-6 rounded-[3px] hover:bg-white/20 transition-all text-[14px] sm:text-[15px] lg:text-[16px] inline-flex justify-center items-center min-h-[46px] whitespace-nowrap"
             >
               {t('hubPartner.ctaBtnConsult')}
             </Link>
             <Link
               href="/contact"
-              className="bg-[#0F62FE] hover:bg-blue-700 text-white font-semibold py-3 px-6 sm:px-8 rounded-[3px] transition-all text-[14px] sm:text-[15px] lg:text-[16px] inline-flex justify-center items-center shadow-sm min-h-[46px]"
+              className="bg-[#0F62FE] hover:bg-blue-700 text-white font-semibold py-3 px-6 sm:px-8 rounded-[3px] transition-all text-[14px] sm:text-[15px] lg:text-[16px] inline-flex justify-center items-center shadow-sm min-h-[46px] whitespace-nowrap"
             >
               {t('hubPartner.ctaBtnSchedule')}
             </Link>
