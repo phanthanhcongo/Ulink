@@ -40,9 +40,9 @@ export default async function HomePage({ params: { locale } }: { params: { local
       <SectionDivider />
       <ScrollReveal><CaseStudies /></ScrollReveal>
       <SectionDivider />
-      <ScrollReveal><WorkingProcess /></ScrollReveal>
+      <ScrollReveal><WorkingProcess/></ScrollReveal>
       <SectionDivider />
-      <ScrollReveal><ResourcesNews /></ScrollReveal>
+      <ScrollReveal><ResourcesNews/></ScrollReveal>
       <SectionDivider />
       <DocSection />
       <SectionDivider />

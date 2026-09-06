@@ -11,75 +11,75 @@ export default async function CoreCapabilities({ locale }: CoreCapabilitiesProps
   const t = await getTranslations({ locale, namespace: 'solutions' });
 
   return (
-    <section className="w-full bg-white border-t border-gray-150 py-16 lg:py-24">
+    <section className="w-full bg-white border-t border-gray-150 py-12 sm:py-16 lg:py-24">
       <div className="page-container text-center">
         {/* Section Header */}
-        <div className="max-w-3xl mx-auto mb-16">
-          <span className="text-section-title font-bold uppercase tracking-wider text-blue-600">
+        <div className="max-w-3xl mx-auto mb-10 sm:mb-16">
+          <span className="text-eyebrow font-bold uppercase tracking-wider text-blue-600">
             {t('testimonialsCapabilities.capabilitiesEyebrow')}
           </span>
-          <h2 className="mt-4 text-section-title font-extrabold tracking-tight text-slate-900 leading-tight">
+          <h2 className="mt-2 sm:mt-4 text-section-title font-bold tracking-tight text-slate-900 leading-tight">
             {t('testimonialsCapabilities.capabilitiesTitle')}
           </h2>
         </div>
 
         {/* Capabilities 4-column Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 lg:grid-cols-4 sm:gap-8">
           {/* Capability 1 */}
-          <div className="group flex flex-col items-center p-6 rounded-[3px] transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
-            <div className="w-12 h-12 flex items-center justify-center text-blue-600 shrink-0 mb-6 transition-colors duration-200 group-hover:shadow-sm">
-              <Factory className="h-8 w-8" strokeWidth={1.5} />
+          <div className="group flex flex-col items-start text-left sm:items-center sm:text-center p-4 sm:p-6 rounded-[3px] transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-blue-600 shrink-0 mb-4 sm:mb-6 transition-colors duration-200 group-hover:shadow-sm">
+              <Factory className="h-6 w-6 sm:h-8 sm:w-8" strokeWidth={1.5} />
             </div>
-            <h3 className="text-body-regular font-bold text-slate-900 mb-3 transition-colors duration-200 group-hover:text-[#1769E2]">
+            <h3 className="text-body-regular font-bold text-slate-900 mb-2 sm:mb-3 transition-colors duration-200 group-hover:text-[#1769E2]">
               {t('testimonialsCapabilities.cap1Heading')}
             </h3>
-            <p className="text-caption-responsive leading-relaxed text-slate-500 max-w-xs">
+            <p className="text-caption-responsive leading-relaxed text-slate-500">
               {t('testimonialsCapabilities.cap1Desc')}
             </p>
           </div>
 
           {/* Capability 2 */}
-          <div className="group flex flex-col items-center p-6 rounded-[3px] transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
-            <div className="w-12 h-12 flex items-center justify-center text-blue-600 shrink-0 mb-6 transition-colors duration-200 group-hover:shadow-sm">
-              <Package className="h-8 w-8" strokeWidth={1.5} />
+          <div className="group flex flex-col items-start text-left sm:items-center sm:text-center p-4 sm:p-6 rounded-[3px] transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-blue-600 shrink-0 mb-4 sm:mb-6 transition-colors duration-200 group-hover:shadow-sm">
+              <Package className="h-6 w-6 sm:h-8 sm:w-8" strokeWidth={1.5} />
             </div>
-            <h3 className="text-body-regular font-bold text-slate-900 mb-3 transition-colors duration-200 group-hover:text-[#1769E2]">
+            <h3 className="text-body-regular font-bold text-slate-900 mb-2 sm:mb-3 transition-colors duration-200 group-hover:text-[#1769E2]">
               {t('testimonialsCapabilities.cap2Heading')}
             </h3>
-            <p className="text-caption-responsive leading-relaxed text-slate-500 max-w-xs">
+            <p className="text-caption-responsive leading-relaxed text-slate-500">
               {t('testimonialsCapabilities.cap2Desc')}
             </p>
           </div>
 
           {/* Capability 3 */}
-          <div className="group flex flex-col items-center p-6 rounded-[3px] transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
-            <div className="w-12 h-12 flex items-center justify-center text-blue-600 shrink-0 mb-6 transition-colors duration-200 group-hover:shadow-sm">
-              <Activity className="h-8 w-8" strokeWidth={1.5} />
+          <div className="group flex flex-col items-start text-left sm:items-center sm:text-center p-4 sm:p-6 rounded-[3px] transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-blue-600 shrink-0 mb-4 sm:mb-6 transition-colors duration-200 group-hover:shadow-sm">
+              <Activity className="h-6 w-6 sm:h-8 sm:w-8" strokeWidth={1.5} />
             </div>
-            <h3 className="text-body-regular font-bold text-slate-900 mb-3 transition-colors duration-200 group-hover:text-[#1769E2]">
+            <h3 className="text-body-regular font-bold text-slate-900 mb-2 sm:mb-3 transition-colors duration-200 group-hover:text-[#1769E2]">
               {t('testimonialsCapabilities.cap3Heading')}
             </h3>
-            <p className="text-caption-responsive leading-relaxed text-slate-500 max-w-xs">
+            <p className="text-caption-responsive leading-relaxed text-slate-500">
               {t('testimonialsCapabilities.cap3Desc')}
             </p>
           </div>
 
           {/* Capability 4 */}
-          <div className="group flex flex-col items-center p-6 rounded-[3px] transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
-            <div className="w-12 h-12 flex items-center justify-center text-blue-600 shrink-0 mb-6 transition-colors duration-200 group-hover:shadow-sm">
-              <Truck className="h-8 w-8" strokeWidth={1.5} />
+          <div className="group flex flex-col items-start text-left sm:items-center sm:text-center p-4 sm:p-6 rounded-[3px] transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center text-blue-600 shrink-0 mb-4 sm:mb-6 transition-colors duration-200 group-hover:shadow-sm">
+              <Truck className="h-6 w-6 sm:h-8 sm:w-8" strokeWidth={1.5} />
             </div>
-            <h3 className="text-body-regular font-bold text-slate-900 mb-3 transition-colors duration-200 group-hover:text-[#1769E2]">
+            <h3 className="text-body-regular font-bold text-slate-900 mb-2 sm:mb-3 transition-colors duration-200 group-hover:text-[#1769E2]">
               {t('testimonialsCapabilities.cap4Heading')}
             </h3>
-            <p className="text-caption-responsive leading-relaxed text-slate-500 max-w-xs">
+            <p className="text-caption-responsive leading-relaxed text-slate-500">
               {t('testimonialsCapabilities.cap4Desc')}
             </p>
           </div>
         </div>
 
         {/* CTA Order Button */}
-        <div className="mt-16 flex justify-center">
+        <div className="mt-10 sm:mt-16 flex justify-center">
           <Link
             href={`/${locale}/quick-order`}
             className="group inline-flex items-center justify-center gap-2 rounded-[3px] bg-[#1769E2] px-6 py-3 text-caption-responsive font-semibold text-white shadow-sm hover:bg-[#1257BD] transition-colors"
@@ -92,4 +92,3 @@ export default async function CoreCapabilities({ locale }: CoreCapabilitiesProps
     </section>
   );
 }
-
