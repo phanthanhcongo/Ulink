@@ -90,7 +90,7 @@ export default function LiveMetricsBar() {
       <div className="page-container">
         {/* Header */}
         <div className="flex items-center justify-between gap-4 mb-6">
-          <h2 className="text-card-title font-bold text-[#1e293b] leading-[28px] tracking-tight">
+          <h2 className="text-[16px] sm:text-[18px] font-bold text-[#1e293b] leading-[24px] sm:leading-[28px] tracking-tight">
             {t('dashboard.headerTitle')}
           </h2>
           <div className="flex items-center gap-2 text-body-regular font-semibold text-[#94a3b8]">
@@ -122,7 +122,7 @@ export default function LiveMetricsBar() {
                     {item.label}
                   </p>
                   <div className="mt-0.5 flex items-baseline gap-1.5">
-                    <span className="text-section-title font-bold text-brand transition-colors duration-300">
+                    <span className="text-[16px] sm:text-[18px] font-bold text-brand transition-colors duration-300">
                       {item.val}
                     </span>
                     {item.unit && (

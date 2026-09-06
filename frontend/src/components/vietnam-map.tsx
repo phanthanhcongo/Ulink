@@ -15,9 +15,9 @@ export type ClusterMarker = {
 };
 
 const DEFAULT_CLUSTERS: ClusterMarker[] = [
-  { id: '01', name: 'Bắc Ninh', subName: 'VSIP Bắc Ninh, Tiên Sơn', lat: 21.12, lon: 106.07, num: '01' },
-  { id: '02', name: 'Hải Phòng', subName: 'DEEP C, Tràng Duệ', lat: 20.86, lon: 106.68, num: '02' },
-  { id: '03', name: 'Hưng Yên', subName: 'KCN Thăng Long II', lat: 20.75, lon: 106.05, num: '03' },
+  { id: '01', name: 'Bắc Ninh', subName: 'VSIP Bắc Ninh, Tiên Sơn', lat: 21.2, lon: 105.7, num: '01' },
+  { id: '02', name: 'Hải Phòng', subName: 'DEEP C, Tràng Duệ', lat: 20.3, lon: 106.3, num: '02' },
+  { id: '03', name: 'Hưng Yên', subName: 'KCN Thăng Long II', lat: 20.6, lon: 105.4, num: '03' },
   { id: '04', name: 'Bình Dương', subName: 'VSIP I, II, III', lat: 10.95, lon: 106.83, num: '04' }
 ];
 
@@ -131,50 +131,30 @@ export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
           {/* ════════════════════════════════════════════════════════════
               QUADRANT 1 (TOP LEFT): HEADER COPY & MOBILE LOCATION CARDS
              ════════════════════════════════════════════════════════════ */}
-          <div className="md:col-span-1 lg:col-span-4 lg:col-start-1 lg:row-start-1 space-y-4 text-center md:text-left">
-            <span className="text-body-regular font-normal text-[#ccf2ff] uppercase tracking-[1px] block">
-              {t.eyebrow}
-            </span>
-            <h2 className="text-hero-title font-bold text-white leading-[46px] tracking-[-0.6px]">
+          <div className="order-1 md:order-none md:col-span-1 lg:col-span-4 lg:col-start-1 lg:row-start-1 space-y-4 text-center md:text-left">
+            <div className="flex items-center justify-center md:justify-start gap-3">
+              <span className="text-body-regular font-normal text-[#ccf2ff] uppercase tracking-[1px]">
+                {t.eyebrow}
+              </span>
+              <span className="inline-flex items-center gap-1.5 bg-[#0a5cff] text-white border border-[#a1edff]/40 text-[11px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-sm">
+                <span className="h-2 w-2 rounded-full bg-[#00ff88] shadow-[0_0_8px_#00ff88] animate-pulse" />
+                <span>ONLINE</span>
+              </span>
+            </div>
+            <h2 className="text-[20px] sm:text-[22px] lg:text-[24px] font-bold text-white leading-tight tracking-tight">
               {t.title}
             </h2>
             <p className="text-body-regular font-normal text-[#e8f7ff]/90 leading-[24px] max-w-md mx-auto md:mx-0">
               {t.desc}
             </p>
-
-            {/* Mobile Location Cards: Displayed only on Mobile (< md) */}
-            <div className="block md:hidden w-full space-y-3 pt-4 pb-2">
-              {[
-                { num: '01', title: 'Khu vực Bắc Bộ', href: '/quick-order' },
-                { num: '02', title: 'Khu vực Bắc Bộ', href: '/quick-order' },
-                { num: '03', title: 'Khu vực Duyên Hải', href: '/quick-order' },
-                { num: '04', title: 'Khu vực Nam Bộ', href: '/quick-order' },
-              ].map((card, idx) => (
-                <Link
-                  key={idx}
-                  href={card.href}
-                  className="flex items-center justify-between bg-[#f4f8fc] hover:bg-white text-[#212529] px-4 py-3.5 rounded-[2px] border border-blue-100 shadow-sm transition-all duration-200 group"
-                >
-                  <div className="flex items-center gap-3.5">
-                    <div className="w-10 h-10 rounded-full border border-[#9ed0ff] bg-[#e6f2ff] text-[#1769e2] font-bold text-body-regular flex items-center justify-center shrink-0">
-                      {card.num}
-                    </div>
-                    <span className="text-body-regular font-medium text-[#212529] leading-snug">
-                      {card.title}
-                    </span>
-                  </div>
-                  <ArrowRight className="h-4 w-4 text-[#a0b3d1] group-hover:text-[#1769e2] group-hover:translate-x-1 transition-all" />
-                </Link>
-              ))}
-            </div>
           </div>
 
           {/* ════════════════════════════════════════════════════════════
-              QUADRANT 2 (TOP RIGHT): MAP SILHOUETTE (TABLET & DESKTOP)
+              QUADRANT 2 (TOP RIGHT): MAP SILHOUETTE (TABLET & DESKTOP, BELOW HEADER ON MOBILE)
              ════════════════════════════════════════════════════════════ */}
-          <div className="hidden md:flex md:col-span-1 lg:col-span-4 lg:col-start-5 lg:row-start-1 lg:row-span-2 relative items-center justify-center min-h-[380px] lg:min-h-[460px] xl:min-h-[580px]">
-            {/* Status Badge - Shifted UP & Luminous Bright Glow */}
-            <div className="absolute -top-5 left-0 sm:-top-7 sm:left-0 z-20 flex items-center gap-2">
+          <div className="flex order-2 md:order-none md:col-span-1 lg:col-span-4 lg:col-start-5 lg:row-start-1 lg:row-span-2 relative items-center justify-center min-h-[340px] sm:min-h-[380px] lg:min-h-[460px] xl:min-h-[580px] py-4 md:py-0">
+            {/* Status Badge - Shifted UP & Luminous Bright Glow (Hidden on mobile as it's next to eyebrow) */}
+            <div className="hidden md:flex absolute -top-5 left-0 sm:-top-7 sm:left-0 z-20 items-center gap-2">
               <span className="inline-flex items-center gap-2 bg-[#0a5cff] text-white border border-[#a1edff] text-caption-responsive font-bold px-3.5 py-1 rounded-full uppercase tracking-wider shadow-[0_0_18px_rgba(10,92,255,0.7)] backdrop-blur-md">
                 <span className="h-2.5 w-2.5 rounded-full bg-[#00ff88] shadow-[0_0_10px_#00ff88] animate-pulse" />
                 <span className="drop-shadow-[0_1px_2px_rgba(0,0,0,0.3)]">{t.networkOnline}</span>
@@ -189,7 +169,7 @@ export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
             <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-white/40 rounded-br-[2px] pointer-events-none" />
 
             {/* Map Silhouette */}
-            <div ref={mapContainerRef} className="relative w-[300px] sm:w-[340px] h-[440px] sm:h-[520px] shrink-0">
+            <div ref={mapContainerRef} className="relative w-[260px] sm:w-[340px] h-[380px] sm:h-[520px] shrink-0">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/illustrations/vietnam-provinces.svg"
@@ -236,7 +216,7 @@ export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
                 })}
               </svg>
 
-              {/* Glowing pulsating hub dots */}
+              {/* Glowing pulsating hub dots (Nhân trắng viền xanh) */}
               <svg
                 viewBox={`0 0 ${VIEW_W} ${VIEW_H}`}
                 fill="none"
@@ -248,25 +228,31 @@ export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
                   const isHovered = hoveredHub === cluster.id;
                   return (
                     <g key={`dot-${cluster.id}`}>
+                      {/* Animated ping ripple ring */}
                       <circle
                         cx={x}
                         cy={y}
-                        r={isHovered ? '12' : '8'}
-                        fill="#00FFFF"
-                        opacity={isHovered ? '0.5' : '0.3'}
+                        r={isHovered ? '20' : '15'}
+                        fill="none"
+                        stroke="#00e5ff"
+                        strokeWidth="2"
+                        opacity="0.65"
                         className="animate-ping"
                         style={{ transformOrigin: `${x}px ${y}px` }}
                       />
+                      {/* Main Dot: White Center (Nhân trắng) + Cyan Border (Viền xanh) */}
                       <circle
                         cx={x}
                         cy={y}
-                        r={isHovered ? '9' : '6'}
-                        fill="none"
-                        stroke="#00FFFF"
-                        strokeWidth="1.5"
-                        opacity="0.8"
+                        r={isHovered ? '13' : '9.5'}
+                        fill="#ffffff"
+                        stroke="#00e5ff"
+                        strokeWidth={isHovered ? '3.5' : '3'}
+                        className="transition-all duration-300"
+                        style={{
+                          filter: 'drop-shadow(0 0 6px rgba(0, 229, 255, 0.95)) drop-shadow(0 0 12px rgba(0, 229, 255, 0.5))'
+                        }}
                       />
-                      <circle cx={x} cy={y} r="3.5" fill="#ffffff" />
                     </g>
                   );
                 })}
@@ -277,7 +263,7 @@ export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
           {/* ════════════════════════════════════════════════════════════
               QUADRANT 3 (BOTTOM LEFT): 3 WHITE STAT CARDS
              ════════════════════════════════════════════════════════════ */}
-          <div className="md:col-span-1 lg:col-span-4 lg:col-start-1 lg:row-start-2 flex flex-col justify-between h-full space-y-4 w-full">
+          <div className="order-3 md:order-none md:col-span-1 lg:col-span-4 lg:col-start-1 lg:row-start-2 flex flex-col justify-between h-full space-y-4 w-full">
             {/* Stat 1 */}
             <div className="group bg-white/95 rounded-[2px] p-4 sm:p-5 flex-1 min-h-[96px] flex items-center gap-4 shadow-lg border border-[#bfedff]/80 transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
               <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[2px] bg-[#e0f5ff] border border-[#5cc7ff]/40 text-[#094aad] transition-colors duration-200 group-hover:bg-[#1769E2] group-hover:text-white">
@@ -285,7 +271,7 @@ export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
               </div>
               <div className="flex flex-col text-left justify-center">
                 <span className="text-body-regular font-normal text-[#385782] leading-[20px] transition-colors duration-200 group-hover:text-[#1769E2]">{t.distanceTitle}</span>
-                <span className="text-section-title font-bold text-[#094aad] leading-[30px] transition-colors duration-200 group-hover:text-[#1769E2]">{t.distanceVal}</span>
+                <span className="text-[18px] sm:text-[20px] lg:text-[24px] font-bold text-[#094aad] leading-[30px] transition-colors duration-200 group-hover:text-[#1769E2]">{t.distanceVal}</span>
                 <span className="text-body-regular font-normal text-[#4d6b96] leading-[20px]">{t.distanceSub}</span>
               </div>
             </div>
@@ -297,7 +283,7 @@ export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
               </div>
               <div className="flex flex-col text-left justify-center">
                 <span className="text-body-regular font-normal text-[#385782] leading-[20px] transition-colors duration-200 group-hover:text-[#1769E2]">{t.slaTitle}</span>
-                <span className="text-section-title font-bold text-[#094aad] leading-[30px] transition-colors duration-200 group-hover:text-[#1769E2]">{t.slaVal}</span>
+                <span className="text-[18px] sm:text-[20px] lg:text-[24px] font-bold text-[#094aad] leading-[30px] transition-colors duration-200 group-hover:text-[#1769E2]">{t.slaVal}</span>
                 <span className="text-body-regular font-normal text-[#4d6b96] leading-[20px]">{t.slaSub}</span>
               </div>
             </div>
@@ -309,7 +295,7 @@ export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
               </div>
               <div className="flex flex-col text-left justify-center">
                 <span className="text-body-regular font-normal text-[#385782] leading-[20px] transition-colors duration-200 group-hover:text-[#1769E2]">{t.partnerTitle}</span>
-                <span className="text-section-title font-bold text-[#094aad] leading-[30px] transition-colors duration-200 group-hover:text-[#1769E2]">{t.partnerVal}</span>
+                <span className="text-[18px] sm:text-[20px] lg:text-[24px] font-bold text-[#094aad] leading-[30px] transition-colors duration-200 group-hover:text-[#1769E2]">{t.partnerVal}</span>
                 <span className="text-body-regular font-normal text-[#4d6b96] leading-[20px]">{t.partnerSub}</span>
               </div>
             </div>
