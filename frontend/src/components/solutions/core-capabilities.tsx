@@ -15,7 +15,7 @@ export default async function CoreCapabilities({ locale }: CoreCapabilitiesProps
       <div className="page-container text-center">
         {/* Section Header */}
         <div className="max-w-3xl mx-auto mb-10 sm:mb-16">
-          <span className="text-eyebrow font-bold uppercase tracking-wider text-blue-600">
+          <span className="text-section-title font-bold uppercase tracking-wider text-blue-600">
             {t('testimonialsCapabilities.capabilitiesEyebrow')}
           </span>
           <h2 className="mt-2 sm:mt-4 text-section-title font-bold tracking-tight text-slate-900 leading-tight">
