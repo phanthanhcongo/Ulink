@@ -152,7 +152,7 @@ export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
           {/* ════════════════════════════════════════════════════════════
               QUADRANT 2 (TOP RIGHT): MAP SILHOUETTE (TABLET & DESKTOP, BELOW HEADER ON MOBILE)
              ════════════════════════════════════════════════════════════ */}
-          <div className="flex order-2 md:order-none md:col-span-1 lg:col-span-4 lg:col-start-5 lg:row-start-1 lg:row-span-2 relative items-center justify-center min-h-[340px] sm:min-h-[380px] lg:min-h-[460px] xl:min-h-[580px] py-4 md:py-0">
+          <div className="flex order-2 md:order-none md:col-span-1 lg:col-span-4 lg:col-start-5 lg:row-start-1 lg:row-span-2 relative items-center justify-center min-h-[420px] sm:min-h-[500px] lg:min-h-[600px] xl:min-h-[680px] py-6 md:py-0">
             {/* Status Badge - Shifted UP & Luminous Bright Glow (Hidden on mobile as it's next to eyebrow) */}
             <div className="hidden md:flex absolute -top-5 left-0 sm:-top-7 sm:left-0 z-20 items-center gap-2">
               <span className="inline-flex items-center gap-2 bg-[#0a5cff] text-white border border-[#a1edff] text-caption-responsive font-bold px-3.5 py-1 rounded-full uppercase tracking-wider shadow-[0_0_18px_rgba(10,92,255,0.7)] backdrop-blur-md">
@@ -169,7 +169,7 @@ export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
             <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-white/40 rounded-br-[2px] pointer-events-none" />
 
             {/* Map Silhouette */}
-            <div ref={mapContainerRef} className="relative w-[260px] sm:w-[340px] h-[380px] sm:h-[520px] shrink-0">
+            <div ref={mapContainerRef} className="relative w-[320px] sm:w-[380px] lg:w-[420px] h-[460px] sm:h-[580px] lg:h-[650px] shrink-0">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 src="/images/illustrations/vietnam-provinces.svg"
@@ -304,7 +304,7 @@ export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
           {/* ════════════════════════════════════════════════════════════
               QUADRANT 4 (BOTTOM RIGHT): HUB CARDS LIST (TABLET & DESKTOP)
              ════════════════════════════════════════════════════════════ */}
-          <div className="hidden md:flex md:col-span-1 lg:col-span-4 lg:col-start-9 lg:row-start-1 lg:row-span-2 flex-col justify-center h-full my-auto">
+          <div className="hidden md:flex md:col-span-1 lg:col-span-4 lg:col-start-9 lg:row-start-1 lg:row-span-2 flex-col justify-center h-full my-auto relative z-20">
 
             {/* Hub Cards List */}
             <div className="space-y-4 w-full">
@@ -316,7 +316,7 @@ export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
                     ref={(el) => { cardRefs.current[i] = el; }}
                     onMouseEnter={() => setHoveredHub(cluster.id)}
                     onMouseLeave={() => setHoveredHub(null)}
-                    className={`group rounded-[2px] p-4 sm:p-5 min-h-[96px] flex items-center justify-between gap-4 cursor-pointer transition-all duration-300 border ${isHovered
+                    className={`group rounded-[2px] p-4 sm:p-5 min-h-[96px] flex items-center justify-between gap-4 cursor-pointer transition-all duration-300 border relative z-20 ${isHovered
                       ? 'bg-[#093fa0] border-[#6cdcfb] shadow-[0_10px_26px_rgba(3,31,97,0.45),0_0_20px_rgba(108,220,251,0.5)] scale-[1.02]'
                       : 'bg-[#0940a8] border-[#a1edff]/40 hover:border-[#a1edff]/80 hover:bg-[#083896] shadow-[0_10px_26px_rgba(3,31,97,0.3)]'
                       }`}

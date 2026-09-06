@@ -60,10 +60,10 @@ export default function HubSolutions({ locale }: HubSolutionsProps) {
 
   return (
     <section className="w-full bg-white py-10 lg:py-14 border-b border-slate-100">
-      <div className="page-container flex flex-col items-center">
+      <div className="page-container flex flex-col items-start sm:items-center">
         
         {/* Title Area */}
-        <div className="text-center max-w-[600px] w-full flex flex-col items-center gap-[28px]">
+        <div className="text-left sm:text-center max-w-[600px] w-full flex flex-col items-start sm:items-center gap-2 sm:gap-[28px]">
           <h2 className="text-body-regular min-[375px]:text-card-title font-semibold sm:font-bold tracking-tight text-slate-900 leading-tight lg:leading-[36px]">
             {t.eyebrow}
           </h2>
@@ -73,12 +73,12 @@ export default function HubSolutions({ locale }: HubSolutionsProps) {
         </div>
 
 
-        {/* 4 Feature Columns Row */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-10 mt-16 w-full">
+        {/* 4 Feature Columns Row (2 items per row on mobile) */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 md:gap-10 mt-8 sm:mt-16 w-full">
           
           {/* Column 1: Supply Chain */}
-          <div className="flex flex-col items-center text-center group">
-            <div className="flex h-12 w-12 items-center justify-center transition-transform duration-300 group-hover:scale-110">
+          <div className="flex flex-col items-start text-left sm:items-center sm:text-center group">
+            <div className="flex h-12 w-12 items-center justify-start sm:justify-center transition-transform duration-300 group-hover:scale-110">
               <div className="relative h-12 w-12">
                 <Image
                   src="/images/regional_hubs/hub-2/icon/link.svg"
@@ -88,17 +88,17 @@ export default function HubSolutions({ locale }: HubSolutionsProps) {
                 />
               </div>
             </div>
-            <h3 className="mt-5 text-body-regular font-bold text-slate-900 leading-snug group-hover:text-brand transition-colors">
+            <h3 className="mt-3 sm:mt-5 text-body-regular font-bold text-slate-900 leading-snug group-hover:text-brand transition-colors">
               {t.col1Title}
             </h3>
-            <p className="mt-3 text-caption-responsive leading-relaxed text-slate-500 max-w-[260px]">
+            <p className="mt-2 sm:mt-3 text-caption-responsive leading-relaxed text-slate-500 max-w-none sm:max-w-[260px]">
               {t.col1Desc}
             </p>
           </div>
 
           {/* Column 2: Products */}
-          <div className="flex flex-col items-center text-center group">
-            <div className="flex h-12 w-12 items-center justify-center transition-transform duration-300 group-hover:scale-110">
+          <div className="flex flex-col items-start text-left sm:items-center sm:text-center group">
+            <div className="flex h-12 w-12 items-center justify-start sm:justify-center transition-transform duration-300 group-hover:scale-110">
               <div className="relative h-12 w-12">
                 <Image
                   src="/images/regional_hubs/hub-2/icon/shopping-catalog.svg"
@@ -108,17 +108,17 @@ export default function HubSolutions({ locale }: HubSolutionsProps) {
                 />
               </div>
             </div>
-            <h3 className="mt-5 text-body-regular font-bold text-slate-900 leading-snug group-hover:text-brand transition-colors">
+            <h3 className="mt-3 sm:mt-5 text-body-regular font-bold text-slate-900 leading-snug group-hover:text-brand transition-colors">
               {t.col2Title}
             </h3>
-            <p className="mt-3 text-caption-responsive leading-relaxed text-slate-500 max-w-[260px]">
+            <p className="mt-2 sm:mt-3 text-caption-responsive leading-relaxed text-slate-500 max-w-none sm:max-w-[260px]">
               {t.col2Desc}
             </p>
           </div>
 
           {/* Column 3: Standardization */}
-          <div className="flex flex-col items-center text-center group">
-            <div className="flex h-12 w-12 items-center justify-center transition-transform duration-300 group-hover:scale-110">
+          <div className="flex flex-col items-start text-left sm:items-center sm:text-center group">
+            <div className="flex h-12 w-12 items-center justify-start sm:justify-center transition-transform duration-300 group-hover:scale-110">
               <div className="relative h-12 w-12">
                 <Image
                   src="/images/regional_hubs/hub-2/icon/certificate-check.svg"
@@ -128,17 +128,17 @@ export default function HubSolutions({ locale }: HubSolutionsProps) {
                 />
               </div>
             </div>
-            <h3 className="mt-5 text-body-regular font-bold text-slate-900 leading-snug group-hover:text-brand transition-colors">
+            <h3 className="mt-3 sm:mt-5 text-body-regular font-bold text-slate-900 leading-snug group-hover:text-brand transition-colors">
               {t.col3Title}
             </h3>
-            <p className="mt-3 text-caption-responsive leading-relaxed text-slate-500 max-w-[260px]">
+            <p className="mt-2 sm:mt-3 text-caption-responsive leading-relaxed text-slate-500 max-w-none sm:max-w-[260px]">
               {t.col3Desc}
             </p>
           </div>
 
           {/* Column 4: Delivery */}
-          <div className="flex flex-col items-center text-center group">
-            <div className="flex h-12 w-12 items-center justify-center transition-transform duration-300 group-hover:scale-110">
+          <div className="flex flex-col items-start text-left sm:items-center sm:text-center group">
+            <div className="flex h-12 w-12 items-center justify-start sm:justify-center transition-transform duration-300 group-hover:scale-110">
               <div className="relative h-12 w-12">
                 <Image
                   src="/images/regional_hubs/hub-2/icon/delivery-truck.svg"
@@ -148,10 +148,10 @@ export default function HubSolutions({ locale }: HubSolutionsProps) {
                 />
               </div>
             </div>
-            <h3 className="mt-5 text-body-regular font-bold text-slate-900 leading-snug group-hover:text-brand transition-colors">
+            <h3 className="mt-3 sm:mt-5 text-body-regular font-bold text-slate-900 leading-snug group-hover:text-brand transition-colors">
               {t.col4Title}
             </h3>
-            <p className="mt-3 text-caption-responsive leading-relaxed text-slate-500 max-w-[260px]">
+            <p className="mt-2 sm:mt-3 text-caption-responsive leading-relaxed text-slate-500 max-w-none sm:max-w-[260px]">
               {t.col4Desc}
             </p>
           </div>
