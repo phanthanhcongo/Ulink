@@ -2,179 +2,69 @@ import Image from 'next/image';
 import { ASSETS } from '@/lib/assets';
 
 export function PartnersLogosOnly() {
+  const row1Logos = [
+    { src: ASSETS.home.partnerSamsung, alt: 'Samsung', width: 'max-w-[70%]' },
+    { src: ASSETS.home.partnerCanon, alt: 'Canon', width: 'max-w-[60%]' },
+    { src: ASSETS.home.partnerPanasonic, alt: 'Panasonic', width: 'max-w-[75%]' },
+    { src: ASSETS.home.partnerIbm, alt: 'IBM', width: 'max-w-[55%]' },
+    { src: ASSETS.home.partnerTraphaco, alt: 'Traphaco', width: 'max-w-[70%]' },
+    { src: ASSETS.home.partnerCocaCola, alt: 'Coca Cola', width: 'max-w-[65%]' },
+  ];
+
+  const row2Logos = [
+    { src: ASSETS.home.partnerVinfast, alt: 'Vinfast', width: 'max-w-[40%]' },
+    { src: ASSETS.home.partnerLg, alt: 'LG', width: 'max-w-[60%]' },
+    { src: ASSETS.home.partnerAmkor, alt: 'Amkor', width: 'max-w-[75%]' },
+    { src: ASSETS.home.partnerVinamilk, alt: 'Vinamilk', width: 'max-w-[65%]' },
+    { src: ASSETS.home.partner3m, alt: '3M', width: 'max-w-[40%]' },
+    { src: ASSETS.home.partnerByd, alt: 'BYD', width: 'max-w-[70%]' },
+  ];
+
   return (
-    <div className="w-full flex flex-col gap-8">
-      {/* ── PARTNERS LOGO GRID (6 COLS x 2 ROWS) ── */}
-      <div className="grid grid-cols-3 gap-4 sm:grid-cols-4 lg:grid-cols-6 lg:gap-6 xl:gap-12">
-        {/* 1. Samsung */}
-        <div className="flex h-14 items-center justify-center p-2 transition-transform hover:scale-105 sm:h-20 lg:h-22 xl:h-26">
-          <Image
-            src={ASSETS.home.partnerSamsung}
-            alt="Samsung"
-            width={260}
-            height={120}
-            className="h-9 sm:h-14 lg:h-16 xl:h-20 w-auto max-w-full object-contain"
-          />
-        </div>
-        {/* 2. Canon */}
-        <div className="flex h-14 items-center justify-center p-2 transition-transform hover:scale-105 sm:h-20 lg:h-22 xl:h-26">
-          <Image
-            src={ASSETS.home.partnerCanon}
-            alt="Canon"
-            width={260}
-            height={120}
-            className="h-9 sm:h-14 lg:h-16 xl:h-20 w-auto max-w-full object-contain"
-          />
-        </div>
-        {/* 3. Panasonic */}
-        <div className="flex h-14 items-center justify-center p-2 transition-transform hover:scale-105 sm:h-20 lg:h-22 xl:h-26">
-          <Image
-            src={ASSETS.home.partnerPanasonic}
-            alt="Panasonic"
-            width={260}
-            height={120}
-            className="h-9 sm:h-14 lg:h-16 xl:h-20 w-auto max-w-full object-contain"
-          />
-        </div>
-        {/* 4. IBM */}
-        <div className="flex h-14 items-center justify-center p-2 transition-transform hover:scale-105 sm:h-20 lg:h-22 xl:h-26">
-          <Image
-            src={ASSETS.home.partnerIbm}
-            alt="IBM"
-            width={240}
-            height={120}
-            className="h-9 sm:h-14 lg:h-16 xl:h-20 w-auto max-w-full object-contain"
-          />
-        </div>
-        {/* 5. Traphaco */}
-        <div className="flex h-14 items-center justify-center p-2 transition-transform hover:scale-105 sm:h-20 lg:h-22 xl:h-26">
-          <Image
-            src={ASSETS.home.partnerTraphaco}
-            alt="Traphaco"
-            width={260}
-            height={120}
-            className="h-9 sm:h-14 lg:h-16 xl:h-20 w-auto max-w-full object-contain"
-          />
-        </div>
-        {/* 6. Coca-Cola */}
-        <div className="flex h-14 items-center justify-center p-2 transition-transform hover:scale-105 sm:h-20 lg:h-22 xl:h-26">
-          <Image
-            src={ASSETS.home.partnerCocaCola}
-            alt="Coca-Cola"
-            width={260}
-            height={120}
-            className="h-9 sm:h-14 lg:h-16 xl:h-20 w-auto max-w-full object-contain"
-          />
-        </div>
-        {/* 7. VinFast */}
-        <div className="flex h-14 items-center justify-center p-2 transition-transform hover:scale-105 sm:h-20 lg:h-22 xl:h-26">
-          <Image
-            src={ASSETS.home.partnerVinfast}
-            alt="VinFast"
-            width={260}
-            height={120}
-            className="h-11 sm:h-16 lg:h-18 xl:h-22 w-auto max-w-full object-contain"
-          />
-        </div>
-        {/* 8. LG */}
-        <div className="flex h-14 items-center justify-center p-2 transition-transform hover:scale-105 sm:h-20 lg:h-22 xl:h-26">
-          <Image
-            src={ASSETS.home.partnerLg}
-            alt="LG"
-            width={240}
-            height={120}
-            className="h-9 sm:h-14 lg:h-16 xl:h-20 w-auto max-w-full object-contain"
-          />
-        </div>
-        {/* 9. Amkor */}
-        <div className="flex h-14 items-center justify-center p-2 transition-transform hover:scale-105 sm:h-20 lg:h-22 xl:h-26">
-          <Image
-            src={ASSETS.home.partnerAmkor}
-            alt="Amkor Technology"
-            width={260}
-            height={120}
-            className="h-9 sm:h-14 lg:h-16 xl:h-20 w-auto max-w-full object-contain"
-          />
-        </div>
-        {/* 10. Vinamilk */}
-        <div className="flex h-14 items-center justify-center p-2 transition-transform hover:scale-105 sm:h-20 lg:h-22 xl:h-26">
-          <Image
-            src={ASSETS.home.partnerVinamilk}
-            alt="Vinamilk"
-            width={260}
-            height={120}
-            className="h-9 sm:h-14 lg:h-16 xl:h-20 w-auto max-w-full object-contain"
-          />
-        </div>
-        {/* 11. 3M */}
-        <div className="flex h-14 items-center justify-center p-2 transition-transform hover:scale-105 sm:h-20 lg:h-22 xl:h-26">
-          <Image
-            src={ASSETS.home.partner3m}
-            alt="3M"
-            width={240}
-            height={120}
-            className="h-9 sm:h-14 lg:h-16 xl:h-20 w-auto max-w-full object-contain"
-          />
-        </div>
-        {/* 12. BYD */}
-        <div className="flex h-14 items-center justify-center p-2 transition-transform hover:scale-105 sm:h-20 lg:h-22 xl:h-26">
-          <Image
-            src={ASSETS.home.partnerByd}
-            alt="BYD"
-            width={240}
-            height={120}
-            className="h-7 sm:h-10 lg:h-12 xl:h-16 w-auto max-w-full object-contain"
-          />
-        </div>
+    <div className="flex flex-col gap-5 overflow-hidden mask-gradient-x py-2 select-none w-full">
+      <h3 className="text-center text-caption-responsive font-bold uppercase tracking-wide text-slate-700 px-4">
+        HƠN 300 DOANH NGHIỆP FDI & TẬP ĐOÀN DƯỢC PHẨM ĐỒNG HÀNH CÙNG ULINK INDUSTRIES
+      </h3>
+      {/* Row 1 Marquee: Left scrolling */}
+      <div className="flex w-max animate-marquee-left">
+        {[...row1Logos, ...row1Logos].map((logo, index) => (
+          <div
+            key={`row1-logo-${index}`}
+            className="flex shrink-0 w-[106px] h-[69px] sm:w-[213.3px] sm:h-[138px] items-center justify-center bg-white"
+          >
+            <div className={`relative w-full h-[60%] flex items-center justify-center ${logo.width}`}>
+              <Image
+                src={logo.src}
+                alt={logo.alt}
+                fill
+                className="object-contain"
+                priority
+                unoptimized
+              />
+            </div>
+          </div>
+        ))}
       </div>
 
-      {/* ── CERTIFICATIONS & ISO STANDARDS ROW (4 COLUMNS) ── */}
-      <div className="mt-3 lg:mt-4">
-        <div className="grid grid-cols-2 gap-6 sm:grid-cols-4 items-center justify-center">
-          {/* Col 1: ISO 9001:2015 / QUACERT / JAS-ANZ */}
-          <div className="flex h-20 sm:h-28 lg:h-30 xl:h-36 items-center justify-center p-2">
-            <Image
-              src={ASSETS.home.certIso9001}
-              alt="ISO 9001:2015 QUACERT JAS-ANZ"
-              width={320}
-              height={140}
-              className="h-12 sm:h-18 lg:h-20 xl:h-24 w-auto max-w-full object-contain"
-            />
+      {/* Row 2 Marquee: Right scrolling */}
+      <div className="flex w-max animate-marquee-right">
+        {[...row2Logos, ...row2Logos].map((logo, index) => (
+          <div
+            key={`row2-logo-${index}`}
+            className="flex shrink-0 w-[106px] h-[69px] sm:w-[213.3px] sm:h-[138px] items-center justify-center bg-white"
+          >
+            <div className={`relative w-full h-[60%] flex items-center justify-center ${logo.width}`}>
+              <Image
+                src={logo.src}
+                alt={logo.alt}
+                fill
+                className="object-contain"
+                priority
+                unoptimized
+              />
+            </div>
           </div>
-
-          {/* Col 2: SGS */}
-          <div className="flex h-20 sm:h-28 lg:h-30 xl:h-36 items-center justify-center p-2">
-            <Image
-              src={ASSETS.home.certSgs}
-              alt="SGS Certification"
-              width={300}
-              height={140}
-              className="h-10 sm:h-16 lg:h-18 xl:h-22 w-auto max-w-full object-contain"
-            />
-          </div>
-
-          {/* Col 3: RoHS compliant */}
-          <div className="flex h-20 sm:h-28 lg:h-30 xl:h-36 items-center justify-center p-2">
-            <Image
-              src={ASSETS.home.certRohs}
-              alt="RoHS Compliant"
-              width={320}
-              height={140}
-              className="h-12 sm:h-18 lg:h-20 xl:h-24 w-auto max-w-full object-contain"
-            />
-          </div>
-
-          {/* Col 4: MSDS Material Safety Data Sheet */}
-          <div className="flex h-20 sm:h-28 lg:h-30 xl:h-36 items-center justify-center p-2">
-            <Image
-              src={ASSETS.home.certMsds}
-              alt="MSDS Material Safety Data Sheet"
-              width={340}
-              height={160}
-              className="h-14 sm:h-20 lg:h-22 xl:h-26 w-auto max-w-full object-contain"
-            />
-          </div>
-        </div>
+        ))}
       </div>
     </div>
   );

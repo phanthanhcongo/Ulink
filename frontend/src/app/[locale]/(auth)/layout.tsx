@@ -33,7 +33,7 @@ export default function AuthLayout({
             </div>
           </div>
 
-          {/* Partners & Certifications Logos Section */}
+          {/* Partners Logos Only Section */}
           <div className="mt-8 border-t border-slate-100 pt-8">
             <PartnersLogosOnly />
           </div>

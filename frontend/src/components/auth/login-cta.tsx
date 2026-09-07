@@ -1,12 +1,13 @@
 import Link from 'next/link';
-import { PhoneCall, Send } from 'lucide-react';
 
 export function LoginCta() {
   return (
-    <section className="page-container py-4 my-2">
-      <div className="rounded-[3px] bg-white p-8 md:p-10 border border-slate-100 shadow-sm flex flex-col md:flex-row items-center justify-between gap-8">
-        <div className="flex flex-col gap-2 text-center md:text-left">
-          <span className="text-caption-responsive font-semibold text-slate-500 uppercase tracking-wider">Liên hệ trực tiếp</span>
+    <section className="w-full bg-white border-t border-b border-slate-100 py-8 sm:py-10">
+      <div className="page-container flex flex-col md:flex-row items-start md:items-center justify-between gap-6 md:gap-8">
+        <div className="flex flex-col gap-1.5 text-left">
+          <span className="text-caption-responsive font-semibold text-slate-500 uppercase tracking-wider">
+            Liên hệ trực tiếp
+          </span>
           <h2 className="text-section-title font-bold text-slate-900">
             Kết nối với ULink Industries
           </h2>
@@ -15,18 +16,18 @@ export function LoginCta() {
           </p>
         </div>
 
-        <div className="flex items-center gap-4 shrink-0">
+        <div className="flex items-center gap-4 shrink-0 w-full sm:w-auto">
           <a
             href="tel:19006868"
-            className="inline-flex items-center gap-2.5 rounded-[3px] border border-brand bg-white px-7 py-3 text-body-regular font-bold text-brand shadow-sm hover:bg-blue-50 transition-all hover:scale-[1.02] active:scale-[0.98]"
+            className="inline-flex h-11 items-center justify-center rounded-[3px] border border-brand bg-white px-6 text-caption-responsive font-bold text-brand hover:bg-blue-50 transition-all hover:scale-[1.02] active:scale-[0.98] w-1/2 sm:w-auto text-center"
           >
-            <PhoneCall className="h-4.5 w-4.5" /> Gọi ngay
+            Gọi ngay
           </a>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2.5 rounded-[3px] bg-brand px-8 py-3 text-body-regular font-bold text-white shadow-md hover:bg-brand-strong transition-all hover:scale-[1.02] active:scale-[0.98]"
+            className="inline-flex h-11 items-center justify-center rounded-[3px] bg-brand px-7 text-caption-responsive font-bold text-white shadow-sm hover:bg-brand-strong transition-all hover:scale-[1.02] active:scale-[0.98] w-1/2 sm:w-auto text-center"
           >
-            <Send className="h-4.5 w-4.5" /> Gửi yêu cầu
+            Gửi yêu cầu
           </Link>
         </div>
       </div>
