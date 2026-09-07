@@ -9,7 +9,7 @@ export default async function HanamOverview() {
     <section className="w-full bg-white py-16 sm:py-20 border-t border-slate-100">
       <div className="page-container text-center">
         {/* Eyebrow */}
-        <span className="text-card-title font-bold uppercase tracking-[0.5px] text-brand block leading-tight">
+        <span className="text-section-title font-bold uppercase tracking-[0.5px] text-brand block leading-tight">
           {t('hanamIntro.eyebrow')}
         </span>
 

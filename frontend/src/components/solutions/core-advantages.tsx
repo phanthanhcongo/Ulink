@@ -111,7 +111,7 @@ export default async function CoreAdvantages({ locale }: CoreAdvantagesProps) {
             return (
               <div
                 key={idx}
-                className="flex flex-col items-start text-left md:items-center md:text-center gap-2.5 sm:gap-3 relative lg:pl-6 xl:pl-8 lg:pr-2 first:pl-0 last:pr-0 w-full"
+                className="flex flex-col lg:flex-row items-start text-left gap-2.5 sm:gap-3 lg:gap-4 relative lg:pl-6 xl:pl-8 lg:pr-2 first:pl-0 last:pr-0 w-full"
               >
                 {/* Divider for desktop */}
                 {idx > 0 && (
@@ -122,7 +122,7 @@ export default async function CoreAdvantages({ locale }: CoreAdvantagesProps) {
                   <div className="hidden md:block lg:hidden absolute left-0 top-1/2 -translate-y-1/2 w-[1px] h-10 bg-slate-200/60" />
                 )}
 
-                <IconComp className="h-5 w-5 sm:h-6 sm:w-6 text-slate-700 shrink-0" />
+                <IconComp className="h-7 w-7 sm:h-8 sm:w-8 text-slate-700 shrink-0 lg:mt-0.5" />
                 <div className="flex flex-col gap-1">
                   <h4 className="text-body-regular font-bold text-slate-900 leading-tight">
                     {feat.title}
@@ -157,17 +157,19 @@ export default async function CoreAdvantages({ locale }: CoreAdvantagesProps) {
               return (
                 <div
                   key={idx}
-                  className="group bg-white rounded-[3px] border border-slate-100 p-4 sm:p-6 lg:p-8 flex flex-col items-start text-left md:items-center md:text-center transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]"
+                  className="group bg-white rounded-[3px] border border-slate-100 p-4 sm:p-6 lg:p-8 flex flex-col lg:flex-row items-start text-left gap-3 sm:gap-4 lg:gap-4.5 transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]"
                 >
-                  <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-[3px] bg-slate-50 flex items-center justify-center text-slate-700 shrink-0 mb-3 sm:mb-5 transition-colors duration-200 group-hover:shadow-sm">
-                    <IconComp className="h-4 w-4 sm:h-5 sm:w-5" />
+                  <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-[3px] bg-slate-50 flex items-center justify-center text-slate-700 shrink-0 transition-colors duration-200 group-hover:bg-blue-50 group-hover:text-[#1769E2]">
+                    <IconComp className="h-6 w-6 sm:h-8 sm:w-8" />
                   </div>
-                  <h3 className="text-[12.5px] min-[375px]:text-[13.5px] sm:text-[15px] lg:text-[16px] font-bold text-slate-900 mb-2 sm:mb-2.5 leading-snug tracking-tight transition-colors duration-200 group-hover:text-[#1769E2]">
-                    {adv.title}
-                  </h3>
-                  <p className="text-caption-responsive leading-relaxed text-slate-500 font-medium">
-                    {adv.desc}
-                  </p>
+                  <div className="flex flex-col">
+                    <h3 className="text-[12.5px] min-[375px]:text-[13.5px] sm:text-[15px] lg:text-[16px] font-bold text-slate-900 mb-2 sm:mb-2.5 leading-snug tracking-tight transition-colors duration-200 group-hover:text-[#1769E2]">
+                      {adv.title}
+                    </h3>
+                    <p className="text-caption-responsive leading-relaxed text-slate-500 font-medium">
+                      {adv.desc}
+                    </p>
+                  </div>
                 </div>
               );
             })}

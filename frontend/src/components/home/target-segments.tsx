@@ -34,8 +34,8 @@ export function TargetSegments() {
       {/* 1. MOBILE VIEW (Screens < 768px: md breakpoint)          */}
       {/* ──────────────────────────────────────────────────────── */}
       <div className="block md:hidden px-4 py-8">
-        {/* Mobile Header: Centered 2-line equal size */}
-        <div className="text-center max-w-xl mx-auto mb-8 space-y-1">
+        {/* Mobile Header: Left aligned */}
+        <div className="text-left max-w-xl mb-8 space-y-1">
           <span className="text-caption-responsive font-bold uppercase tracking-tight text-blue-600 leading-tight block">
             {t('targetSegments.sectionTitle')}
           </span>

@@ -214,7 +214,7 @@ export default async function IndustriesPage({ params: { locale } }: Props) {
   ];
 
   return (
-    <div className="min-h-screen bg-white text-slate-900 pb-16">
+    <div className="min-h-screen bg-white text-slate-900 ">
       {/* Hero Section Banner Layout - Full Width */}
       <div className="relative overflow-hidden bg-slate-900 min-h-[420px] lg:min-h-[480px] shadow-sm flex items-stretch w-full">
         {/* Background Image */}

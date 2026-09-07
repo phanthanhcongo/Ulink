@@ -270,7 +270,7 @@ export default function TestimonialCarousel({ labels }: TestimonialCarouselProps
       <div className="page-container">
         {/* === Header Section === */}
         <div className="text-center mb-10 lg:mb-[60px]">
-          <span className="text-card-title font-bold text-brand tracking-[0.5px] uppercase block leading-tight">
+          <span className="text-section-title font-bold text-brand tracking-[0.5px] uppercase block leading-tight">
             {labels.eyebrow}
           </span>
           <h2 className="mt-3 text-section-title font-semibold text-[#212529] leading-tight sm:leading-[38px] tracking-[-0.3px]">

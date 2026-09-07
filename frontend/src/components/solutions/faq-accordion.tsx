@@ -23,7 +23,7 @@ export default function FaqAccordion({ sectionTitle, sectionSubtitle, items }: F
   };
 
   return (
-    <section className="w-full bg-[#F2F4F8] border-t border-b border-slate-100 py-16 lg:py-24 mt-16 lg:mt-24">
+    <section className="w-full bg-[#F2F4F8] border-t border-slate-100/60 py-12 lg:py-16 mt-16 lg:mt-24">
       <div className="page-container">
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center mb-12">

@@ -133,7 +133,7 @@ export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
              ════════════════════════════════════════════════════════════ */}
           <div className="order-1 md:order-none md:col-span-1 lg:col-span-4 lg:col-start-1 lg:row-start-1 space-y-4 text-center md:text-left">
             <div className="flex items-center justify-center md:justify-start gap-3">
-              <span className="text-body-regular font-normal text-[#ccf2ff] uppercase tracking-[1px]">
+              <span className="text-sm font-normal text-[#ccf2ff] uppercase tracking-[1px]">
                 {t.eyebrow}
               </span>
               <span className="inline-flex items-center gap-1.5 bg-[#0a5cff] text-white border border-[#a1edff]/40 text-[11px] font-bold px-2.5 py-0.5 rounded-full uppercase tracking-wider shadow-sm">
@@ -141,7 +141,7 @@ export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
                 <span>ONLINE</span>
               </span>
             </div>
-            <h2 className="text-[20px] sm:text-[22px] lg:text-[24px] font-bold text-white leading-tight tracking-tight">
+            <h2 className="text-[28px] lg:text-[38px] lg:leading-[46px] font-bold text-white leading-tight tracking-tight">
               {t.title}
             </h2>
             <p className="text-body-regular font-normal text-[#e8f7ff]/90 leading-[24px] max-w-md mx-auto md:mx-0">
