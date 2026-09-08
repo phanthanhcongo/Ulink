@@ -82,14 +82,14 @@ export default function ProductTabs({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Left: Bullet Points */}
           <div className="lg:col-span-8 space-y-4">
-            <h4 className="text-body-regular font-bold text-slate-800 uppercase tracking-wider">
+            <h4 className="text-sm sm:text-body-regular font-bold text-slate-800 uppercase tracking-wider">
               {locale === 'vi' ? 'Đặc tính kỹ thuật chi tiết' : 'Detailed Technical Features'}
             </h4>
             <ul className="space-y-3">
               {bulletPoints.map((bp, i) => (
                 <li
                   key={i}
-                  className="flex items-start gap-2.5 text-caption-responsive text-slate-600 leading-relaxed font-medium"
+                  className="flex items-start gap-2.5 text-xs sm:text-caption-responsive text-slate-600 leading-relaxed font-medium"
                 >
                   <span className="text-blue-500 shrink-0 mt-1.5">•</span>
                   <span>{bp}</span>
@@ -101,11 +101,11 @@ export default function ProductTabs({
           {/* Right: Actual Applications Box */}
           <div className="lg:col-span-4">
             <div className="bg-card border border-slate-100 p-6 rounded-[3px] space-y-4">
-              <h4 className="text-body-regular font-bold text-slate-800">
+              <h4 className="text-sm sm:text-body-regular font-bold text-slate-800">
                 {locale === 'vi' ? 'Ứng dụng thực tế' : 'Real-world Applications'}
               </h4>
               <div className="space-y-3.5">
-                <div className="flex items-center gap-3 text-caption-responsive text-slate-700 font-semibold">
+                <div className="flex items-center gap-3 text-xs sm:text-caption-responsive text-slate-700 font-semibold">
                   <div className="w-8 h-8 rounded-[3px] bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
                     <Wrench className="h-4 w-4" />
                   </div>
@@ -115,7 +115,7 @@ export default function ProductTabs({
                       : 'Mechanical & Component Assembly'}
                   </span>
                 </div>
-                <div className="flex items-center gap-3 text-caption-responsive text-slate-700 font-semibold">
+                <div className="flex items-center gap-3 text-xs sm:text-caption-responsive text-slate-700 font-semibold">
                   <div className="w-8 h-8 rounded-[3px] bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
                     <FileText className="h-4 w-4" />
                   </div>
@@ -125,7 +125,7 @@ export default function ProductTabs({
                       : 'Metalworking & Sheet Handling'}
                   </span>
                 </div>
-                <div className="flex items-center gap-3 text-caption-responsive text-slate-700 font-semibold">
+                <div className="flex items-center gap-3 text-xs sm:text-caption-responsive text-slate-700 font-semibold">
                   <div className="w-8 h-8 rounded-[3px] bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
                     <Truck className="h-4 w-4" />
                   </div>
@@ -135,7 +135,7 @@ export default function ProductTabs({
                       : 'Logistics, Warehouse & Packaging'}
                   </span>
                 </div>
-                <div className="flex items-center gap-3 text-caption-responsive text-slate-700 font-semibold">
+                <div className="flex items-center gap-3 text-xs sm:text-caption-responsive text-slate-700 font-semibold">
                   <div className="w-8 h-8 rounded-[3px] bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
                     <Shield className="h-4 w-4" />
                   </div>
@@ -155,43 +155,43 @@ export default function ProductTabs({
           <div className="border border-slate-200/80 rounded-[3px] overflow-hidden shadow-sm bg-white">
             <table className="w-full text-left border-collapse">
               <thead>
-                <tr className="bg-blue-600 text-white text-caption-responsive font-bold uppercase tracking-wider">
-                  <th className="px-6 py-3.5 w-1/3">
+                <tr className="bg-blue-600 text-white text-xs sm:text-caption-responsive font-bold uppercase tracking-wider">
+                  <th className="px-3 sm:px-6 py-2 sm:py-3.5 w-1/3">
                     {locale === 'vi' ? 'Thông số' : 'Parameter'}
                   </th>
-                  <th className="px-6 py-3.5 w-2/3">{locale === 'vi' ? 'Chi tiết' : 'Details'}</th>
+                  <th className="px-3 sm:px-6 py-2 sm:py-3.5 w-2/3">{locale === 'vi' ? 'Chi tiết' : 'Details'}</th>
                 </tr>
               </thead>
-              <tbody className="text-caption-responsive text-slate-700 divide-y divide-slate-100">
+              <tbody className="text-xs sm:text-caption-responsive text-slate-700 divide-y divide-slate-100">
                 {skuCode && (
                   <tr className="bg-white">
-                    <td className="px-6 py-3 font-semibold text-slate-500">
+                    <td className="px-3 sm:px-6 py-2 sm:py-3 font-semibold text-slate-500">
                       {locale === 'vi' ? 'Mã sản phẩm' : 'Product Code'}
                     </td>
-                    <td className="px-6 py-3 font-bold text-slate-800">{skuCode}</td>
+                    <td className="px-3 sm:px-6 py-2 sm:py-3 font-bold text-slate-800">{skuCode}</td>
                   </tr>
                 )}
                 {brand && (
                   <tr className="bg-slate-50/50">
-                    <td className="px-6 py-3 font-semibold text-slate-500">
+                    <td className="px-3 sm:px-6 py-2 sm:py-3 font-semibold text-slate-500">
                       {locale === 'vi' ? 'Thương hiệu' : 'Brand'}
                     </td>
-                    <td className="px-6 py-3 font-bold text-slate-800">{brand}</td>
+                    <td className="px-3 sm:px-6 py-2 sm:py-3 font-bold text-slate-800">{brand}</td>
                   </tr>
                 )}
                 {categoryName && (
                   <tr className="bg-white">
-                    <td className="px-6 py-3 font-semibold text-slate-500">
+                    <td className="px-3 sm:px-6 py-2 sm:py-3 font-semibold text-slate-500">
                       {locale === 'vi' ? 'Danh mục' : 'Category'}
                     </td>
-                    <td className="px-6 py-3 font-bold text-slate-800">{categoryName}</td>
+                    <td className="px-3 sm:px-6 py-2 sm:py-3 font-bold text-slate-800">{categoryName}</td>
                   </tr>
                 )}
                 {specifications &&
                   Object.entries(specifications).map(([key, val], idx) => (
                     <tr key={key} className={idx % 2 === 0 ? 'bg-slate-50/50' : 'bg-white'}>
-                      <td className="px-6 py-3 font-semibold text-slate-500">{key}</td>
-                      <td className="px-6 py-3 font-bold text-slate-800">{val}</td>
+                      <td className="px-3 sm:px-6 py-2 sm:py-3 font-semibold text-slate-500">{key}</td>
+                      <td className="px-3 sm:px-6 py-2 sm:py-3 font-bold text-slate-800">{val}</td>
                     </tr>
                   ))}
               </tbody>
@@ -212,7 +212,7 @@ export default function ProductTabs({
                 sizes="(max-width: 768px) 100vw, 300px"
               />
             </div>
-            <span className="text-caption-responsive font-bold text-slate-400 uppercase tracking-wider mt-2.5">
+            <span className="text-xs sm:text-caption-responsive font-bold text-slate-400 uppercase tracking-wider mt-2.5">
               {locale === 'vi' ? 'Kho hàng' : 'Warehouse'}
             </span>
           </div>
@@ -220,13 +220,13 @@ export default function ProductTabs({
           {/* Right schedule table & description */}
           <div className="lg:col-span-8 space-y-4">
             <div className="space-y-1">
-              <span className="text-caption-responsive font-bold text-blue-600 uppercase tracking-wider block">
+              <span className="text-xs sm:text-caption-responsive font-bold text-blue-600 uppercase tracking-wider block">
                 {locale === 'vi' ? 'Quy cách đóng gói & Lịch vận chuyển' : 'Packaging & Shipping Schedule'}
               </span>
-              <h3 className="text-card-title font-bold text-slate-800">
+              <h3 className="text-base sm:text-card-title font-bold text-slate-800">
                 {locale === 'vi' ? 'HUB Hà Nam → KCN Miền Bắc' : 'Ha Nam HUB → Northern Industrial Zones'}
               </h3>
-              <p className="text-caption-responsive text-slate-500 font-semibold pt-1">
+              <p className="text-xs sm:text-caption-responsive text-slate-500 font-semibold pt-1">
                 {locale === 'vi'
                   ? 'Quy cách: 50 cuộn/thùng carton • 20 thùng/pallet • Seal niêm phong theo lô'
                   : 'Packaging: 50 rolls/carton • 20 cartons/pallet • Batch sealed'}
@@ -235,44 +235,44 @@ export default function ProductTabs({
 
             {/* Shipping schedule table */}
             <div className="border border-slate-200 rounded-[3px] overflow-hidden bg-white">
-              <table className="w-full text-left border-collapse">
+              <table className="w-full text-left border-collapse text-xs sm:text-base">
                 <thead>
-                  <tr className="bg-blue-600 text-white text-caption-responsive font-bold uppercase tracking-wider">
-                    <th className="px-4 py-2.5 w-1/4">{locale === 'vi' ? 'Ngày' : 'Day'}</th>
-                    <th className="px-4 py-2.5 w-1/2">{locale === 'vi' ? 'Tuyến vận chuyển' : 'Shipping Route'}</th>
-                    <th className="px-4 py-2.5 w-1/4 text-right pr-6">{locale === 'vi' ? 'Khởi hành' : 'Departure'}</th>
+                  <tr className="bg-blue-600 text-white text-xs sm:text-caption-responsive font-bold uppercase tracking-wider">
+                    <th className="px-2 sm:px-4 py-1.5 sm:py-2.5 w-1/4">{locale === 'vi' ? 'Ngày' : 'Day'}</th>
+                    <th className="px-2 sm:px-4 py-1.5 sm:py-2.5 w-1/2">{locale === 'vi' ? 'Tuyến vận chuyển' : 'Shipping Route'}</th>
+                    <th className="px-2 sm:px-4 py-1.5 sm:py-2.5 w-1/4 text-right sm:pr-6">{locale === 'vi' ? 'Khởi hành' : 'Departure'}</th>
                   </tr>
                 </thead>
-                <tbody className="text-caption-responsive text-slate-700 divide-y divide-slate-100">
+                <tbody className="text-xs sm:text-caption-responsive text-slate-700 divide-y divide-slate-100">
                   <tr className="bg-white">
-                    <td className="px-4 py-2.5 font-bold text-slate-800">{locale === 'vi' ? 'Thứ 2' : 'Mon'}</td>
-                    <td className="px-4 py-2.5 font-medium">HUB Hà Nam → KCN Thăng Long (Hà Nội)</td>
-                    <td className="px-4 py-2.5 text-right pr-6 font-bold text-blue-600">06:00</td>
+                    <td className="px-2 sm:px-4 py-1.5 sm:py-2.5 font-bold text-slate-800">{locale === 'vi' ? 'Thứ 2' : 'Mon'}</td>
+                    <td className="px-2 sm:px-4 py-1.5 sm:py-2.5 font-medium">{locale === 'vi' ? 'HUB Hà Nam → Thăng Long (HN)' : 'HA Nam → Thang Long (HN)'}</td>
+                    <td className="px-2 sm:px-4 py-1.5 sm:py-2.5 text-right sm:pr-6 font-bold text-blue-600">06:00</td>
                   </tr>
                   <tr className="bg-[#F5F8FC]/50">
-                    <td className="px-4 py-2.5 font-bold text-slate-800">{locale === 'vi' ? 'Thứ 3' : 'Tue'}</td>
-                    <td className="px-4 py-2.5 font-medium">HUB Hà Nam → KCN Yên Phong (Bắc Ninh)</td>
-                    <td className="px-4 py-2.5 text-right pr-6 font-bold text-blue-600">06:00</td>
+                    <td className="px-2 sm:px-4 py-1.5 sm:py-2.5 font-bold text-slate-800">{locale === 'vi' ? 'Thứ 3' : 'Tue'}</td>
+                    <td className="px-2 sm:px-4 py-1.5 sm:py-2.5 font-medium">{locale === 'vi' ? 'HUB Hà Nam → Yên Phong (BN)' : 'HA Nam → Yen Phong (BN)'}</td>
+                    <td className="px-2 sm:px-4 py-1.5 sm:py-2.5 text-right sm:pr-6 font-bold text-blue-600">06:00</td>
                   </tr>
                   <tr className="bg-white">
-                    <td className="px-4 py-2.5 font-bold text-slate-800">{locale === 'vi' ? 'Thứ 4' : 'Wed'}</td>
-                    <td className="px-4 py-2.5 font-medium">HUB Hà Nam → KCN VSIP (Bắc Ninh)</td>
-                    <td className="px-4 py-2.5 text-right pr-6 font-bold text-blue-600">08:30</td>
+                    <td className="px-2 sm:px-4 py-1.5 sm:py-2.5 font-bold text-slate-800">{locale === 'vi' ? 'Thứ 4' : 'Wed'}</td>
+                    <td className="px-2 sm:px-4 py-1.5 sm:py-2.5 font-medium">{locale === 'vi' ? 'HUB Hà Nam → VSIP (BN)' : 'HA Nam → VSIP (BN)'}</td>
+                    <td className="px-2 sm:px-4 py-1.5 sm:py-2.5 text-right sm:pr-6 font-bold text-blue-600">08:30</td>
                   </tr>
                   <tr className="bg-[#F5F8FC]/50">
-                    <td className="px-4 py-2.5 font-bold text-slate-800">{locale === 'vi' ? 'Thứ 5' : 'Thu'}</td>
-                    <td className="px-4 py-2.5 font-medium">HUB Hà Nam → KCN Đình Trám (Bắc Giang)</td>
-                    <td className="px-4 py-2.5 text-right pr-6 font-bold text-blue-600">08:00</td>
+                    <td className="px-2 sm:px-4 py-1.5 sm:py-2.5 font-bold text-slate-800">{locale === 'vi' ? 'Thứ 5' : 'Thu'}</td>
+                    <td className="px-2 sm:px-4 py-1.5 sm:py-2.5 font-medium">{locale === 'vi' ? 'HUB Hà Nam → Đình Trám (BG)' : 'HA Nam → Dinh Tram (BG)'}</td>
+                    <td className="px-2 sm:px-4 py-1.5 sm:py-2.5 text-right sm:pr-6 font-bold text-blue-600">08:00</td>
                   </tr>
                   <tr className="bg-white">
-                    <td className="px-4 py-2.5 font-bold text-slate-800">{locale === 'vi' ? 'Thứ 6' : 'Fri'}</td>
-                    <td className="px-4 py-2.5 font-medium">HUB Hà Nam → KCN Phố Nối A (Hưng Yên)</td>
-                    <td className="px-4 py-2.5 text-right pr-6 font-bold text-blue-600">06:00</td>
+                    <td className="px-2 sm:px-4 py-1.5 sm:py-2.5 font-bold text-slate-800">{locale === 'vi' ? 'Thứ 6' : 'Fri'}</td>
+                    <td className="px-2 sm:px-4 py-1.5 sm:py-2.5 font-medium">{locale === 'vi' ? 'HUB Hà Nam → Phố Nối A (HY)' : 'HA Nam → Pho Noi A (HY)'}</td>
+                    <td className="px-2 sm:px-4 py-1.5 sm:py-2.5 text-right sm:pr-6 font-bold text-blue-600">06:00</td>
                   </tr>
                   <tr className="bg-[#F5F8FC]/50">
-                    <td className="px-4 py-2.5 font-bold text-slate-800">{locale === 'vi' ? 'Thứ 7' : 'Sat'}</td>
-                    <td className="px-4 py-2.5 font-medium">HUB Hà Nam → KCN Đồng Văn (Hà Nam)</td>
-                    <td className="px-4 py-2.5 text-right pr-6 font-bold text-blue-600">07:00</td>
+                    <td className="px-2 sm:px-4 py-1.5 sm:py-2.5 font-bold text-slate-800">{locale === 'vi' ? 'Thứ 7' : 'Sat'}</td>
+                    <td className="px-2 sm:px-4 py-1.5 sm:py-2.5 font-medium">{locale === 'vi' ? 'HUB Hà Nam → Đồng Văn (HN)' : 'HA Nam → Dong Van (HN)'}</td>
+                    <td className="px-2 sm:px-4 py-1.5 sm:py-2.5 text-right sm:pr-6 font-bold text-blue-600">07:00</td>
                   </tr>
                 </tbody>
               </table>
@@ -295,23 +295,23 @@ export default function ProductTabs({
         {/* Tiêu chuẩn & Cam kết */}
         <div className="space-y-6 pt-6 border-t border-slate-100 text-left">
           <div className="space-y-1">
-            <h3 className="text-card-title font-bold text-blue-600">
+            <h3 className="text-base sm:text-card-title font-bold text-blue-600">
               {locale === 'vi' ? 'Tiêu chuẩn & Cam kết' : 'Standards & Commitments'}
             </h3>
-            <p className="text-body-regular font-semibold text-slate-800">
+            <p className="text-sm sm:text-body-regular font-semibold text-slate-800">
               {locale === 'vi' ? 'Chứng nhận chất lượng sản phẩm' : 'Product Quality Certifications'}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Card 1: ISO 9001:2015 */}
-            <div className="p-6 bg-white border border-slate-200/80 rounded-[3px] flex flex-col sm:flex-row gap-4 items-start shadow-2xs">
+            <div className="p-4 sm:p-6 bg-white border border-slate-200/80 rounded-[3px] flex flex-col sm:flex-row gap-4 items-start shadow-2xs">
               <div className="w-10 h-10 rounded-[3px] bg-[#eaf3ff] flex items-center justify-center text-blue-600 shrink-0">
                 <FileText className="h-5 w-5" />
               </div>
               <div className="space-y-2">
-                <h4 className="text-caption-responsive font-bold text-slate-800">ISO 9001:2015</h4>
-                <p className="text-caption-responsive text-slate-500 font-medium leading-relaxed">
+                <h4 className="text-xs sm:text-caption-responsive font-bold text-slate-800">ISO 9001:2015</h4>
+                <p className="text-xs sm:text-caption-responsive text-slate-500 font-medium leading-relaxed">
                   {locale === 'vi'
                     ? 'Hệ thống quản lý chất lượng đạt tiêu chuẩn quốc tế cho hoạt động sản xuất màng PE và cung ứng vật tư.'
                     : 'Quality management system meets international standards for PE film production and supply.'}
@@ -320,13 +320,13 @@ export default function ProductTabs({
             </div>
 
             {/* Card 2: RoHS Compliant */}
-            <div className="p-6 bg-white border border-slate-200/80 rounded-[3px] flex flex-col sm:flex-row gap-4 items-start shadow-2xs">
+            <div className="p-4 sm:p-6 bg-white border border-slate-200/80 rounded-[3px] flex flex-col sm:flex-row gap-4 items-start shadow-2xs">
               <div className="w-10 h-10 rounded-[3px] bg-[#eaf3ff] flex items-center justify-center text-blue-600 shrink-0">
                 <Award className="h-5 w-5" />
               </div>
               <div className="space-y-2">
-                <h4 className="text-caption-responsive font-bold text-slate-800">RoHS Compliant</h4>
-                <p className="text-caption-responsive text-slate-500 font-medium leading-relaxed">
+                <h4 className="text-xs sm:text-caption-responsive font-bold text-slate-800">RoHS Compliant</h4>
+                <p className="text-xs sm:text-caption-responsive text-slate-500 font-medium leading-relaxed">
                   {locale === 'vi'
                     ? 'Đảm bảo màng co không chứa các chất độc hại ảnh hưởng xấu tới sức khoẻ và môi trường xung quanh.'
                     : 'Ensures shrink films are free from hazardous substances that affect health and environment.'}
@@ -336,7 +336,7 @@ export default function ProductTabs({
           </div>
 
           {/* Footer banner */}
-          <div className="p-4 bg-[#F5F8FC] rounded-[3px] flex items-center gap-3.5 text-caption-responsive text-slate-600 font-medium">
+          <div className="p-3 sm:p-4 bg-[#F5F8FC] rounded-[3px] flex items-center gap-3.5 text-xs sm:text-caption-responsive text-slate-600 font-medium">
             <ClipboardCheck className="h-5 w-5 text-blue-600 shrink-0" />
             <span>
               {locale === 'vi'
@@ -357,12 +357,12 @@ export default function ProductTabs({
           <Link
             key={ind.id}
             href={`/${locale}/solutions?industry=${ind.slug}`}
-            className="flex flex-col items-center justify-center p-6 rounded-[3px] border border-slate-200/80 bg-white hover:border-blue-500 hover:shadow-md transition-all text-center group"
+            className="flex flex-col items-center justify-center p-4 sm:p-6 rounded-[3px] border border-slate-200/80 bg-white hover:border-blue-500 hover:shadow-md transition-all text-center group"
           >
-            <div className="w-12 h-12 rounded-full bg-slate-50 flex items-center justify-center text-slate-500 group-hover:bg-blue-50 group-hover:text-blue-600 mb-4 shrink-0 transition-colors">
-              <Cpu className="h-5 w-5" />
+            <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-slate-50 flex items-center justify-center text-slate-500 group-hover:bg-blue-50 group-hover:text-blue-600 mb-2 sm:mb-4 shrink-0 transition-colors">
+              <Cpu className="h-4 sm:h-5 w-4 sm:w-5" />
             </div>
-            <span className="text-body-regular font-bold text-slate-700 group-hover:text-blue-600 transition-colors">
+            <span className="text-xs sm:text-body-regular font-bold text-slate-700 group-hover:text-blue-600 transition-colors line-clamp-2">
               {getTranslatedName(ind, locale)}
             </span>
           </Link>
@@ -378,15 +378,15 @@ export default function ProductTabs({
         {standards.map((std) => (
           <div
             key={std.id}
-            className="flex items-start gap-4 p-5 bg-white border border-slate-200/80 rounded-[3px] shadow-sm"
+            className="flex items-start gap-4 p-3 sm:p-5 bg-white border border-slate-200/80 rounded-[3px] shadow-sm"
           >
-            <div className="w-12 h-12 rounded-[3px] bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 shrink-0">
-              <Award className="h-6 w-6" />
+            <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-[3px] bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 shrink-0">
+              <Award className="h-5 sm:h-6 w-5 sm:w-6" />
             </div>
             <div>
-              <h4 className="text-body-regular font-bold text-slate-800">{getTranslatedName(std, locale)}</h4>
+              <h4 className="text-sm sm:text-body-regular font-bold text-slate-800">{getTranslatedName(std, locale)}</h4>
               {getTranslatedDescription(std, locale) && (
-                <p className="text-caption-responsive text-slate-500 leading-relaxed mt-1 font-medium">
+                <p className="text-xs sm:text-caption-responsive text-slate-500 leading-relaxed mt-1 font-medium">
                   {getTranslatedDescription(std, locale)}
                 </p>
               )}
@@ -426,47 +426,47 @@ export default function ProductTabs({
     return (
       <div className="space-y-6 py-4">
         {/* Rating Summary Card */}
-        <div className="bg-card border border-slate-200/60 p-6 rounded-[3px] flex flex-col sm:flex-row gap-6 items-center justify-between">
+        <div className="bg-card border border-slate-200/60 p-4 sm:p-6 rounded-[3px] flex flex-col sm:flex-row gap-6 items-center justify-between">
           <div className="text-center sm:text-left space-y-1">
-            <p className="text-section-title font-black text-slate-900">4.7 / 5.0</p>
+            <p className="text-base sm:text-section-title font-black text-slate-900">4.7 / 5.0</p>
             <div className="flex text-amber-400 justify-center sm:justify-start">
               {[...Array(5)].map((_, i) => (
-                <Star key={i} className="h-4.5 w-4.5 fill-current" />
+                <Star key={i} className="h-3.5 sm:h-4.5 w-3.5 sm:w-4.5 fill-current" />
               ))}
             </div>
-            <p className="text-caption-responsive text-slate-400 font-semibold">
+            <p className="text-xs sm:text-caption-responsive text-slate-400 font-semibold">
               12 đánh giá thực tế từ khách hàng doanh nghiệp
             </p>
           </div>
-          <div className="flex items-center gap-1.5 px-4 py-2.5 bg-white border border-slate-100 rounded-[3px] shadow-sm">
-            <CheckCircle className="h-4.5 w-4.5 text-emerald-500" />
-            <span className="text-caption-responsive font-bold text-slate-700">100% Khách hàng hài lòng</span>
+          <div className="flex items-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2.5 bg-white border border-slate-100 rounded-[3px] shadow-sm whitespace-nowrap">
+            <CheckCircle className="h-4 sm:h-4.5 w-4 sm:w-4.5 text-emerald-500 shrink-0" />
+            <span className="text-xs sm:text-caption-responsive font-bold text-slate-700">100% Hài lòng</span>
           </div>
         </div>
 
         {/* Reviews List */}
         <div className="space-y-4 divide-y divide-slate-100">
           {reviews.map((rev, i) => (
-            <div key={i} className="pt-4 first:pt-0 space-y-2">
-              <div className="flex items-center justify-between">
+            <div key={i} className="pt-3 sm:pt-4 first:pt-0 space-y-2">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-1 sm:gap-4">
                 <div>
-                  <span className="text-caption-responsive font-bold text-slate-800">{rev.author}</span>
-                  <span className="text-caption-responsive font-bold text-slate-400 ml-2">({rev.company})</span>
+                  <span className="text-xs sm:text-caption-responsive font-bold text-slate-800">{rev.author}</span>
+                  <span className="text-xs sm:text-caption-responsive font-bold text-slate-400 ml-1 sm:ml-2">({rev.company})</span>
                 </div>
-                <span className="text-caption-responsive font-semibold text-slate-400">{rev.date}</span>
+                <span className="text-xs sm:text-caption-responsive font-semibold text-slate-400 shrink-0">{rev.date}</span>
               </div>
               <div className="flex text-amber-400">
                 {[...Array(5)].map((_, starIdx) => (
                   <Star
                     key={starIdx}
                     className={cn(
-                      'h-3.5 w-3.5 fill-current',
+                      'h-3 sm:h-3.5 w-3 sm:w-3.5 fill-current',
                       starIdx < rev.rating ? 'text-amber-400' : 'text-slate-200'
                     )}
                   />
                 ))}
               </div>
-              <p className="text-caption-responsive text-slate-600 font-medium leading-relaxed">
+              <p className="text-xs sm:text-caption-responsive text-slate-600 font-medium leading-relaxed">
                 {rev.text}
               </p>
             </div>
@@ -479,8 +479,8 @@ export default function ProductTabs({
   return (
     <div className="space-y-8">
       {/* Tab Navigation */}
-      <div className="border-b border-gray-200 mb-6">
-        <nav className="flex items-center gap-6 -mb-px">
+      <div className="border-b border-gray-200 mb-6 overflow-x-auto -mx-4 sm:mx-0 px-4 sm:px-0">
+        <nav className="flex items-center gap-4 sm:gap-6 -mb-px">
           {tabs.map((tab) => {
             const isActive = activeTab === tab.id;
             return (
@@ -488,7 +488,7 @@ export default function ProductTabs({
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 className={cn(
-                  'text-body-regular pb-3 px-1 transition-all border-b-2 font-bold focus:outline-none',
+                  'text-xs sm:text-body-regular pb-3 px-1 transition-all border-b-2 font-bold focus:outline-none whitespace-nowrap',
                   isActive
                     ? 'text-blue-600 border-blue-600'
                     : 'text-slate-400 border-transparent hover:text-slate-600'
