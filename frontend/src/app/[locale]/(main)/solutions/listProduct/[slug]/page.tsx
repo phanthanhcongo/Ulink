@@ -196,7 +196,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
             },
             ...(category ? [{
               label: categoryName || '',
-              href: `/solutions/listProduct/categories/${category.slug}`
+              href: `/solutions/listProduct?category=${category.slug}`
             }] : []),
             {
               label: productName || ''

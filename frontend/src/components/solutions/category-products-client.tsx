@@ -518,19 +518,21 @@ export function CategoryProductsClient({
       />
 
       {/* Quick Tabs */}
-      <CategoryQuickTabs
-        tabs={tabsList}
-        selectedCategories={selectedCategories}
-        categoryCounts={categoryCounts}
-        locale={locale}
-        onCategoryChange={handleToggleCategory}
-        onShowAll={() => setSelectedCategories([])}
-      />
+      <div className="hidden md:block">
+        <CategoryQuickTabs
+          tabs={tabsList}
+          selectedCategories={selectedCategories}
+          categoryCounts={categoryCounts}
+          locale={locale}
+          onCategoryChange={handleToggleCategory}
+          onShowAll={() => setSelectedCategories([])}
+        />
+      </div>
 
       {/* Main Content */}
       <div className="w-full bg-slate-50/70 py-8">
         <div className="page-container">
-          <div className="bg-white py-8 px-6 rounded-[3px] shadow-xs border border-slate-200/50">
+          <div className="bg-white py-8 px-4 sm:px-6 lg:px-8 rounded-[3px] shadow-xs border border-slate-200/50">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
               {/* Filters Sidebar */}
               <ProductFilters

@@ -51,7 +51,7 @@ export function CategoryHeroBanner({
   return (
     <header className="w-full">
       <div className="page-container pb-10 pt-6 text-slate-800 relative overflow-hidden">
-        <div className="mb-2">
+        <div className="mb-2 hidden md:block">
           <Breadcrumb
             className="px-0 sm:px-0 lg:px-0 xl:px-0 mx-0 max-w-none"
             items={

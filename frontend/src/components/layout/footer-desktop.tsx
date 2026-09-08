@@ -229,17 +229,17 @@ export function FooterDesktop() {
 
         <ul className="space-y-2.5 text-body-regular">
           <li>
-            <Link href="/solutions/listProduct/categories/cleanroom-consumables" className="text-[#4d5969] transition-colors hover:text-[#1769e2]">
+            <Link href="/solutions/listProduct?category=cleanroom-consumables" className="text-[#4d5969] transition-colors hover:text-[#1769e2]">
               {t('prodCleanroom')}
             </Link>
           </li>
           <li>
-            <Link href="/solutions/listProduct/categories/industrial-packaging" className="text-[#4d5969] transition-colors hover:text-[#1769e2]">
+            <Link href="/solutions/listProduct?category=industrial-packaging" className="text-[#4d5969] transition-colors hover:text-[#1769e2]">
               {t('prodPackaging')}
             </Link>
           </li>
           <li>
-            <Link href="/solutions/listProduct/categories/esd-supplies" className="text-[#4d5969] transition-colors hover:text-[#1769e2]">
+            <Link href="/solutions/listProduct?category=esd-supplies" className="text-[#4d5969] transition-colors hover:text-[#1769e2]">
               {t('prodHvac')}
             </Link>
           </li>

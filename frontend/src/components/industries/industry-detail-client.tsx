@@ -27,6 +27,7 @@ import Image from 'next/image';
 import { ASSETS } from '@/lib/assets';
 import { IndustryDetailClientProps } from './types';
 import { IndustryValueProps } from './industry-value-props';
+import { PartnersLogosOnly } from '@/components/home/partners-logos-only';
 import { getTranslatedName, getTranslatedField } from '@/lib/i18n-content';
 import { getDirectusUrl } from '@/lib/directus-runtime.mjs';
 
@@ -184,14 +185,14 @@ export default function IndustryDetailClient({
       return {
         name: pName,
         image: imageSrc,
-        href: `/solutions/listProduct/categories/${catSlug}`,
+        href: `/solutions/listProduct?category=${catSlug}`,
         bullets: getCategoryBullets(pName, locale)
       };
     })
     : industryData.cleanroomCategories.map((cat) => ({
       name: cat.name,
       image: cat.image,
-      href: `/solutions/listProduct/categories/${cat.slug || 'cleanroom-consumables'}`,
+      href: `/solutions/listProduct?category=${cat.slug || 'cleanroom-consumables'}`,
       bullets: getCategoryBullets(cat.name, locale)
     }));
 
@@ -209,14 +210,14 @@ export default function IndustryDetailClient({
       return {
         name: pName,
         image: imageSrc,
-        href: `/solutions/listProduct/categories/${catSlug}`,
+        href: `/solutions/listProduct?category=${catSlug}`,
         bullets: getCategoryBullets(pName, locale)
       };
     })
     : industryData.packagingCategories.map((cat) => ({
       name: cat.name,
       image: cat.image,
-      href: `/solutions/listProduct/categories/${cat.slug || 'industrial-packaging'}`,
+      href: `/solutions/listProduct?category=${cat.slug || 'industrial-packaging'}`,
       bullets: getCategoryBullets(cat.name, locale)
     }));
 
@@ -604,7 +605,7 @@ export default function IndustryDetailClient({
           </div>
 
           {/* Grid of 4 standards */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {industryData.standards.map((std, idx) => {
               const icons = [ShieldCheck, CheckCircle2, Package, User];
               const IconComp = icons[idx % icons.length];
@@ -612,7 +613,7 @@ export default function IndustryDetailClient({
               return (
                 <div
                   key={idx}
-                  className="group ui-card-hover bg-white border border-slate-200/80 rounded-[3px] p-6 text-center space-y-4 flex flex-col items-center"
+                  className="group ui-card-hover bg-white border border-slate-200/80 rounded-[3px] p-6 space-y-4 flex flex-col"
                 >
                   <div className="flex h-14 w-14 items-center justify-center rounded-full bg-blue-100/70 text-blue-600 border border-blue-200/50">
                     <IconComp className="h-6 w-6 stroke-[2.2]" />
@@ -682,37 +683,7 @@ export default function IndustryDetailClient({
       </section>
 
       {/* ── BRAND PARTNERS LOGOS GRID ── */}
-      <section className="py-16 w-full bg-slate-50 border-t border-b border-slate-100">
-        <div className="page-container space-y-10">
-          <div className="text-center max-w-xl mx-auto space-y-2">
-            <h3 className="text-caption-responsive leading-relaxed font-bold text-primary uppercase tracking-widest">
-              {isVi
-                ? 'Được tin cậy bởi các tập đoàn và nhà máy sản xuất quy mô'
-                : isJa
-                  ? '主要メーカーおよび大手工場からの信頼'
-                  : 'Trusted by leading corporations and large manufacturing factories'}
-            </h3>
-            <div className="h-0.5 w-16 bg-blue-600 mx-auto" />
-          </div>
-
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 items-center">
-            {partnerLogos.map((logo, idx) => (
-              <div
-                key={idx}
-                className="flex h-16 items-center justify-center p-2 bg-white border border-slate-200/50 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:scale-[1.05] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]"
-              >
-                <Image
-                  src={logo.src}
-                  alt={logo.name}
-                  width={140}
-                  height={50}
-                  className="object-contain max-h-10 w-auto"
-                />
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <PartnersLogosOnly />
 
       {/* ── BOTTOM CTA BANNER ── */}
       {children}
