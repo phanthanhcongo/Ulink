@@ -260,10 +260,35 @@ export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
             </div>
           </div>
 
+          {/* Mobile Location Cards: Displayed only on Mobile (< md) */}
+          <div className="order-3 md:hidden w-full space-y-3">
+            {[
+              { num: '01', title: locale === 'vi' ? 'Khu vực Bắc Bộ' : 'Northern Region', href: '/quick-order' },
+              { num: '02', title: locale === 'vi' ? 'Khu vực Duyên Hải' : 'Coastal Region', href: '/quick-order' },
+              { num: '03', title: locale === 'vi' ? 'Khu vực Nam Bộ' : 'Southern Region', href: '/quick-order' },
+            ].map((card) => (
+              <Link
+                key={card.num}
+                href={card.href}
+                className="flex items-center justify-between bg-[#f4f8fc] hover:bg-white text-[#212529] px-4 py-3.5 rounded-[2px] border border-blue-100 shadow-sm transition-all duration-200 group"
+              >
+                <div className="flex items-center gap-3.5">
+                  <div className="w-10 h-10 rounded-full border border-[#9ed0ff] bg-[#e6f2ff] text-[#1769e2] font-bold text-body-regular flex items-center justify-center shrink-0">
+                    {card.num}
+                  </div>
+                  <span className="text-body-regular font-medium text-[#212529] leading-snug">
+                    {card.title}
+                  </span>
+                </div>
+                <ArrowRight className="h-4 w-4 text-[#a0b3d1] group-hover:text-[#1769e2] group-hover:translate-x-1 transition-all" />
+              </Link>
+            ))}
+          </div>
+
           {/* ════════════════════════════════════════════════════════════
               QUADRANT 3 (BOTTOM LEFT): 3 WHITE STAT CARDS
              ════════════════════════════════════════════════════════════ */}
-          <div className="order-3 md:order-none md:col-span-1 lg:col-span-4 lg:col-start-1 lg:row-start-2 flex flex-col justify-between h-full space-y-4 w-full">
+          <div className="order-4 md:order-none md:col-span-1 lg:col-span-4 lg:col-start-1 lg:row-start-2 flex flex-col justify-between h-full space-y-4 w-full">
             {/* Stat 1 */}
             <div className="group bg-white/95 rounded-[2px] p-4 sm:p-5 flex-1 min-h-[96px] flex items-center gap-4 shadow-lg border border-[#bfedff]/80 transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]">
               <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[2px] bg-[#e0f5ff] border border-[#5cc7ff]/40 text-[#094aad] transition-colors duration-200 group-hover:bg-[#1769E2] group-hover:text-white">

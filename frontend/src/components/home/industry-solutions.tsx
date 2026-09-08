@@ -117,7 +117,7 @@ export function IndustrySolutions() {
         />
 
         <div
-          className="mt-8 grid grid-cols-2 gap-3"
+          className="mt-8 grid grid-cols-2 gap-1.5"
         >
           {cards.map((card, idx) => (
             <Link
@@ -167,7 +167,7 @@ export function IndustrySolutions() {
           subtitle={t('industries.sectionSubTitle')}
         />
 
-        <div className="mt-8 md:mt-10 grid grid-cols-2 lg:grid-cols-3 gap-4 md:gap-5 lg:gap-6">
+        <div className="mt-8 md:mt-10 grid grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-5">
           {desktopCards.map((card, idx) => (
             <Link
               key={idx}
