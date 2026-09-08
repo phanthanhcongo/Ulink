@@ -124,7 +124,7 @@ export default async function CatalogShowcase({ locale }: CatalogShowcaseProps) 
                       const maxPrice = Math.round(perUnitPrice);
 
                       displayPrice = `${minPrice.toLocaleString('vi-VN')}-${maxPrice.toLocaleString('vi-VN')}đ`;
-                      displayUnit = `/ per ${baseUnit}`;
+                      displayUnit = `per ${baseUnit}`;
                     } else {
                       // No price in database
                       displayPrice = 'Liên hệ báo giá';
@@ -141,7 +141,7 @@ export default async function CatalogShowcase({ locale }: CatalogShowcaseProps) 
                           description: product.short_description || undefined,
                           image: getImageUrl(product.hero),
                           price: displayPrice || 'Liên hệ báo giá',
-                          unit: displayUnit || '/per kg',
+                          unit: displayUnit || 'per kg',
                           moq: `MOQ: ${firstSku?.pack_size || 'Liên hệ'}`,
                           moqUnit: firstSku?.unit || undefined,
                           status: firstSku?.stock_status === 'in_stock' ? (locale === 'vi' ? 'Có sẵn tại Kho' : 'In Stock') : (locale === 'vi' ? 'Sản xuất theo yêu cầu' : 'Custom orders'),

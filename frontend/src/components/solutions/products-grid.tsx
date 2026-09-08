@@ -135,7 +135,7 @@ export function ProductsGrid({
                     {product.shortDescription || 'Mô tả chi tiết sản phẩm phòng sạch chất lượng cao từ ULink Industries.'}
                   </p>
                   <div className="text-body-small font-bold text-slate-900 mt-3">
-                    {formatPrice(product.price, locale)} / {product.unit || 'per kg'}
+                    {formatPrice(product.price, locale)} / {product.unit || 'kg'}
                   </div>
                 </div>
 

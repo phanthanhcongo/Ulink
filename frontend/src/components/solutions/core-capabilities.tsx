@@ -1,14 +1,13 @@
+'use client';
+
 import React from 'react';
-import Link from 'next/link';
+import { useTranslations, useLocale } from 'next-intl';
 import { Factory, Package, Activity, Truck, ArrowRight } from 'lucide-react';
-import { getTranslations } from 'next-intl/server';
+import { Link } from '@/i18n/navigation';
 
-interface CoreCapabilitiesProps {
-  locale: string;
-}
-
-export default async function CoreCapabilities({ locale }: CoreCapabilitiesProps) {
-  const t = await getTranslations({ locale, namespace: 'solutions' });
+export default function CoreCapabilities() {
+  const t = useTranslations('solutions');
+  const locale = useLocale();
 
   return (
     <section className="w-full bg-white border-t border-gray-150 py-12 sm:py-16 lg:py-24">

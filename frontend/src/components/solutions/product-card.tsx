@@ -85,7 +85,7 @@ export function ProductCard({
               </div>
               <div className="text-caption-responsive text-slate-300 font-medium">/</div>
               <div className="price-old text-caption-responsive text-slate-400 font-medium">
-                {product.unit || '/per kg'}
+                {product.unit || 'per kg'}
               </div>
             </div>
           </div>
