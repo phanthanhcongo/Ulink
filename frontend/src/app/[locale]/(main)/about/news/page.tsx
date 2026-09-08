@@ -8,5 +8,11 @@ export default async function AboutNewsPage({
   setRequestLocale(locale);
   const t = await getTranslations('aboutSidebar');
 
-  return <h1 className="mt-2 text-section-title font-bold text-primary">{t('news')}</h1>;
+  return (
+    <div className="w-full bg-white">
+      <div className="page-container py-2 sm:py-3 lg:py-4 px-3 sm:px-4">
+        <h1 className="mt-1 sm:mt-1.5 lg:mt-2 text-section-title sm:text-section-title font-bold text-primary">{t('news')}</h1>
+      </div>
+    </div>
+  );
 }

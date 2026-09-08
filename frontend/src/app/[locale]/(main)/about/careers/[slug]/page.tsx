@@ -16,11 +16,11 @@ export default async function JobDetailPage({
 
   return (
     <div className="w-full bg-white">
-      <div className="page-container py-4">
+      <div className="page-container py-2 sm:py-3 lg:py-4">
         {/* Breadcrumbs */}
         {/* Breadcrumbs */}
         <Breadcrumb
-          className="px-0 py-0 mx-0 max-w-none mb-4"
+          className="px-0 py-0 mx-0 max-w-none mb-2 sm:mb-3 lg:mb-4"
           items={[
             { label: 'Trang chủ', href: '/' },
             { label: 'Về chúng tôi', href: '/about' },
@@ -33,7 +33,7 @@ export default async function JobDetailPage({
         <JobDetailHeader />
 
         {/* 2. Main Content 2 Columns */}
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
+        <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:gap-8 lg:grid-cols-12">
           <div className="lg:col-span-8">
             <JobDetailContent />
             <JobDetailProcess />

@@ -228,21 +228,21 @@ function OtpFormInner() {
   if (done) {
     return (
       <div className="text-center">
-        <span className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-[3px] bg-brand/10 text-brand">
-          <CheckCircle2 className="h-7 w-7" aria-hidden="true" />
+        <span className="mx-auto mb-3 sm:mb-5 flex h-10 sm:h-14 w-10 sm:w-14 items-center justify-center rounded-[3px] bg-brand/10 text-brand">
+          <CheckCircle2 className="h-5 sm:h-7 w-5 sm:w-7" aria-hidden="true" />
         </span>
-        <h2 className="text-section-title font-bold tracking-tight text-foreground">
+        <h2 className="text-lg sm:text-section-title font-bold tracking-tight text-foreground">
           {purposeParam === 'register' ? t('verifyEmailTitle') : t('otpVerifySuccess')}
         </h2>
-        <p className="mx-auto mt-3 max-w-sm text-body-regular text-muted-foreground">
+        <p className="mx-auto mt-2 sm:mt-3 max-w-sm text-xs sm:text-body-regular text-muted-foreground">
           {purposeParam === 'register' ? t('verifyEmailDesc') : t('otpVerifySuccessDesc')}
         </p>
         <Link
           href={redirectParam}
-          className="mt-6 inline-flex items-center justify-center rounded-[3px] border border-brand bg-brand px-5 py-2.5 text-body-regular font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong"
+          className="mt-4 sm:mt-6 inline-flex items-center justify-center rounded-[3px] border border-brand bg-brand px-3 sm:px-5 py-1.5 sm:py-2.5 text-xs sm:text-body-regular font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong"
         >
           {t('continue')}
-          <ArrowRight className="ml-1.5 h-4 w-4" aria-hidden="true" />
+          <ArrowRight className="ml-0.5 sm:ml-1.5 h-3.5 sm:h-4 w-3.5 sm:w-4" aria-hidden="true" />
         </Link>
       </div>
     );
@@ -253,31 +253,31 @@ function OtpFormInner() {
 
   return (
     <div>
-      <h2 className="text-section-title font-bold tracking-tight text-foreground">
+      <h2 className="text-lg sm:text-section-title font-bold tracking-tight text-foreground">
         {purposeParam === 'register' ? t('verifyEmailTitle') : t('otpTitle')}
       </h2>
-      <p className="mt-2 text-body-regular text-muted-foreground">
+      <p className="mt-1 sm:mt-2 text-xs sm:text-body-regular text-muted-foreground">
         {purposeParam === 'register' ? t('verifyEmailDesc') : t('otpDesc')}
       </p>
 
       {formError && (
         <p
           role="alert"
-          className="mt-4 rounded-[3px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-body-regular text-destructive"
+          className="mt-3 sm:mt-4 rounded-[3px] border border-destructive/30 bg-destructive/5 px-2.5 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-body-regular text-destructive"
         >
           {formError}
         </p>
       )}
 
       {!emailParam && (
-        <form className="mt-6 space-y-3" onSubmit={onSend} noValidate>
+        <form className="mt-4 sm:mt-6 space-y-2 sm:space-y-3" onSubmit={onSend} noValidate>
           <div>
-            <label htmlFor="email" className="mb-1 block text-body-regular text-foreground">
+            <label htmlFor="email" className="mb-1 block text-xs sm:text-body-regular text-foreground">
               {t('emailLabel')}
             </label>
             <div className="relative">
               <Mail
-                className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground"
+                className="absolute left-2.5 sm:left-3.5 top-1/2 h-3.5 sm:h-4 w-3.5 sm:w-4 -translate-y-1/2 text-muted-foreground"
                 aria-hidden="true"
               />
               <input
@@ -291,22 +291,23 @@ function OtpFormInner() {
                 aria-invalid={!!fieldErrors.email}
                 className={cn(
                   inputBase,
+                  'px-2.5 sm:px-3 py-2 sm:py-2.5 pl-8 sm:pl-10 text-xs sm:text-base',
                   fieldErrors.email ? 'border-destructive' : 'border-border'
                 )}
               />
             </div>
             {fieldErrors.email && (
-              <p className="mt-1.5 text-caption-responsive text-destructive">{fieldErrors.email}</p>
+              <p className="mt-1 sm:mt-1.5 text-xs sm:text-caption-responsive text-destructive">{fieldErrors.email}</p>
             )}
           </div>
           <button
             type="submit"
             disabled={loading || cooldown > 0}
-            className="flex w-full items-center justify-center gap-2 rounded-[3px] border border-brand bg-brand py-3 text-body-regular font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong disabled:opacity-60"
+            className="flex w-full items-center justify-center gap-1.5 sm:gap-2 rounded-[3px] border border-brand bg-brand py-2 sm:py-3 text-xs sm:text-body-regular font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong disabled:opacity-60"
           >
             {loading ? (
               <>
-                <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
+                <Loader2 className="h-3.5 sm:h-4 w-3.5 sm:w-4 animate-spin" aria-hidden="true" />
                 <span>{t('otpSending')}</span>
               </>
             ) : cooldown > 0 ? (
@@ -314,21 +315,21 @@ function OtpFormInner() {
             ) : (
               <>
                 <span>{t('otpSend')}</span>
-                <ArrowRight className="h-4 w-4" aria-hidden="true" />
+                <ArrowRight className="h-3.5 sm:h-4 w-3.5 sm:w-4" aria-hidden="true" />
               </>
             )}
           </button>
         </form>
       )}
 
-      <form className="mt-6 space-y-3" onSubmit={onVerify} noValidate>
+      <form className="mt-4 sm:mt-6 space-y-2 sm:space-y-3" onSubmit={onVerify} noValidate>
         <div>
-          <label htmlFor="code" className="mb-1 block text-body-regular text-foreground">
+          <label htmlFor="code" className="mb-1 block text-xs sm:text-body-regular text-foreground">
             {t('otpTitle')}
           </label>
           <div className="relative">
             <ShieldCheck
-              className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground"
+              className="absolute left-2.5 sm:left-3.5 top-1/2 h-3.5 sm:h-4 w-3.5 sm:w-4 -translate-y-1/2 text-muted-foreground"
               aria-hidden="true"
             />
             <input
@@ -344,35 +345,35 @@ function OtpFormInner() {
               aria-invalid={!!fieldErrors.code}
               className={cn(
                 inputBase,
-                'tracking-widest',
+                'px-2.5 sm:px-3 py-2 sm:py-2.5 pl-8 sm:pl-10 text-xs sm:text-base tracking-widest',
                 fieldErrors.code ? 'border-destructive' : 'border-border'
               )}
             />
           </div>
           {fieldErrors.code && (
-            <p className="mt-1.5 text-caption-responsive text-destructive">{fieldErrors.code}</p>
+            <p className="mt-1 sm:mt-1.5 text-xs sm:text-caption-responsive text-destructive">{fieldErrors.code}</p>
           )}
         </div>
 
         <button
           type="submit"
           disabled={loading || !code}
-          className="flex w-full items-center justify-center gap-2 rounded-[3px] border border-brand bg-brand py-3 text-body-regular font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong disabled:opacity-60"
+          className="flex w-full items-center justify-center gap-1.5 sm:gap-2 rounded-[3px] border border-brand bg-brand py-2 sm:py-3 text-xs sm:text-body-regular font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong disabled:opacity-60"
         >
           {loading ? (
             <>
-              <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
+              <Loader2 className="h-3.5 sm:h-4 w-3.5 sm:w-4 animate-spin" aria-hidden="true" />
               <span>{t('otpVerifying')}</span>
             </>
           ) : (
             <>
               <span>{t('otpVerify')}</span>
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              <ArrowRight className="h-3.5 sm:h-4 w-3.5 sm:w-4" aria-hidden="true" />
             </>
           )}
         </button>
 
-        <div className="flex items-center justify-between text-caption-responsive">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-0 text-xs sm:text-caption-responsive">
           <button
             type="button"
             onClick={() => sendOtp(email)}

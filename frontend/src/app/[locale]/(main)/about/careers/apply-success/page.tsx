@@ -14,11 +14,11 @@ export default async function ApplySuccessPage({
   setRequestLocale(locale);
 
   return (
-    <div className="w-full bg-slate-50/50 min-h-screen py-4">
+    <div className="w-full bg-slate-50/50 min-h-screen py-2 sm:py-3 lg:py-4">
       <div className="page-container">
         {/* Breadcrumbs */}
         <Breadcrumb
-          className="px-0 py-0 mx-0 max-w-none mb-4"
+          className="px-0 py-0 mx-0 max-w-none mb-2 sm:mb-3 lg:mb-4"
           items={[
             { label: 'Trang chủ', href: '/' },
             { label: 'Vị trí tuyển dụng', href: '/about/careers' },

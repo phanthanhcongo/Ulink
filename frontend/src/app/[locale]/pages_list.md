@@ -66,31 +66,31 @@ Các trang phục vụ khách hàng B2B tìm kiếm sản phẩm, xem Hub, gửi
 | 11 | Phát triển bền vững (ESG) | `/about/sustainability` | `src/app/[locale]/(main)/about/sustainability/page.tsx` | |
 | 12 | **Giỏ hàng RFQ** | `/cart` | `src/app/[locale]/(main)/cart/page.tsx` | |
 | 13 | **Thanh toán / Gửi đơn RFQ** | `/checkout` | `src/app/[locale]/(main)/checkout/page.tsx` | ✓ |
-| 14 | **Trang Liên hệ** | `/contact` | `src/app/[locale]/(main)/contact/page.tsx` | |
+| 14 | **Trang Liên hệ** | `/contact` | `src/app/[locale]/(main)/contact/page.tsx` | ✓ |
 | 15 | **Danh sách Ngành nghề** | `/industries` | `src/app/[locale]/(main)/industries/page.tsx` | ✓ |
 | 16 | Chi tiết ngành nghề | `/industries/[slug]` | `src/app/[locale]/(main)/industries/[slug]/page.tsx` | ✓ |
-| 17 | **Danh sách RFQ cá nhân** | `/my-rfqs` | `src/app/[locale]/(main)/my-rfqs/page.tsx` | |
-| 18 | **Xác nhận đơn hàng** | `/order-confirmation` | `src/app/[locale]/(main)/order-confirmation/page.tsx` | |
-| 19 | **Theo dõi đơn hàng** | `/order-tracking` | `src/app/[locale]/(main)/order-tracking/page.tsx` | |
-| 20 | Xác nhận giao hàng | `/order-tracking/delivery-confirmation` | `src/app/[locale]/(main)/order-tracking/delivery-confirmation/page.tsx` | |
-| 21 | Hóa đơn & Thanh toán đơn hàng | `/order-tracking/payment-invoice` | `src/app/[locale]/(main)/order-tracking/payment-invoice/page.tsx` | |
-| 22 | Thanh toán hóa đơn | `/payment-invoice` | `src/app/[locale]/(main)/payment-invoice/page.tsx` | |
+| 17 | **Danh sách RFQ cá nhân** | `/my-rfqs` | `src/app/[locale]/(main)/my-rfqs/page.tsx` | ✓ |
+| 18 | **Xác nhận đơn hàng** | `/order-confirmation` | `src/app/[locale]/(main)/order-confirmation/page.tsx` | ✓ |
+| 19 | **Theo dõi đơn hàng** | `/order-tracking` | `src/app/[locale]/(main)/order-tracking/page.tsx` | ✓ |
+| 20 | Xác nhận giao hàng | `/order-tracking/delivery-confirmation` | `src/app/[locale]/(main)/order-tracking/delivery-confirmation/page.tsx` | ✓ |
+| 21 | Hóa đơn & Thanh toán đơn hàng | `/order-tracking/payment-invoice` | `src/app/[locale]/(main)/order-tracking/payment-invoice/page.tsx` | ✓ |
+| 22 | Thanh toán hóa đơn | `/payment-invoice` | `src/app/[locale]/(main)/payment-invoice/page.tsx` | ✓ |
 | 23 | **Đặt hàng nhanh (Quick Order)** | `/quick-order` | `src/app/[locale]/(main)/quick-order/page.tsx` | |
 | 24 | **Tổng quan Hub & KCN** | `/regional-hubs` | `src/app/[locale]/(main)/regional-hubs/page.tsx` | ✓ |
 | 25 | Chi tiết Cụm Hub 1 | `/regional-hubs/cum-1` | `src/app/[locale]/(main)/regional-hubs/cum-1/page.tsx` | ✓ |
 | 26 | Chi tiết Cụm Hub 2 (Hub Hà Nam) | `/regional-hubs/cum-2` | `src/app/[locale]/(main)/regional-hubs/cum-2/page.tsx` | ✓ |
 | 27 | **Trung tâm Tài nguyên** | `/resources` | `src/app/[locale]/(main)/resources/page.tsx` | ✓ |
-| 28 | Danh sách sự kiện | `/resources/events` | `src/app/[locale]/(main)/resources/events/page.tsx` | |
-| 29 | Chi tiết sự kiện | `/resources/events/[slug]` | `src/app/[locale]/(main)/resources/events/[slug]/page.tsx` | |
-| 30 | Đăng ký tham gia sự kiện | `/resources/events/[slug]/register` | `src/app/[locale]/(main)/resources/events/[slug]/register/page.tsx` | |
-| 31 | Chi tiết bài viết tin tức | `/resources/news/[slug]` | `src/app/[locale]/(main)/resources/news/[slug]/page.tsx` | |
-| 32 | Chi tiết tài liệu / bài viết | `/resources/[slug]` | `src/app/[locale]/(main)/resources/[slug]/page.tsx` | |
-| 33 | **Yêu cầu mẫu thử cá nhân** | `/sample-requests` | `src/app/[locale]/(main)/sample-requests/page.tsx` | |
-| 34 | Chi tiết yêu cầu mẫu thử | `/sample-requests/[id]` | `src/app/[locale]/(main)/sample-requests/[id]/page.tsx` | |
+| 28 | Danh sách sự kiện | `/resources/events` | `src/app/[locale]/(main)/resources/events/page.tsx` | ✓ |
+| 29 | Chi tiết sự kiện | `/resources/events/[slug]` | `src/app/[locale]/(main)/resources/events/[slug]/page.tsx` | ✓ |
+| 30 | Đăng ký tham gia sự kiện | `/resources/events/[slug]/register` | `src/app/[locale]/(main)/resources/events/[slug]/register/page.tsx` | ✓ |
+| 31 | Chi tiết bài viết tin tức | `/resources/news/[slug]` | `src/app/[locale]/(main)/resources/news/[slug]/page.tsx` | ✓ |
+| 32 | Chi tiết tài liệu / bài viết | `/resources/[slug]` | `src/app/[locale]/(main)/resources/[slug]/page.tsx` | ✓ |
+| 33 | **Yêu cầu mẫu thử cá nhân** | `/sample-requests` | `src/app/[locale]/(main)/sample-requests/page.tsx` | ✓ |
+| 34 | Chi tiết yêu cầu mẫu thử | `/sample-requests/[id]` | `src/app/[locale]/(main)/sample-requests/[id]/page.tsx` | ✓ |
 | 35 | **Tổng quan Sản phẩm & Giải pháp**| `/solutions` | `src/app/[locale]/(main)/solutions/page.tsx` | ✓ |
 | 36 | Danh sách sản phẩm / Danh mục | `/solutions/listProduct` | `src/app/[locale]/(main)/solutions/listProduct/page.tsx` | ✓ |
 | 37 | Chi tiết sản phẩm theo danh mục | `/solutions/listProduct/[slug]` | `src/app/[locale]/(main)/solutions/listProduct/[slug]/page.tsx` | ✓ |
-| 38 | Tìm kiếm sản phẩm nâng cao | `/solutions/searchProduct` | `src/app/[locale]/(main)/solutions/searchProduct/page.tsx` | |
+| 38 | Tìm kiếm sản phẩm nâng cao | `/solutions/searchProduct` | `src/app/[locale]/(main)/solutions/searchProduct/page.tsx` | ✓ |
 
 ---
 
@@ -101,12 +101,12 @@ Các trang phục vụ quy trình đăng nhập, đăng ký và quản lý tài 
 | STT | Tên Trang / Chức Năng | Đường Dẫn URL (`/url`) | Đường Dẫn File Nguồn | Check Responsive |
 | :---: | :--- | :--- | :--- | :--- |
 | 39 | **Đăng nhập** | `/login` | `src/app/[locale]/(auth)/login/page.tsx` | ✓ |
-| 40 | **Đăng ký tài khoản B2B** | `/register` | `src/app/[locale]/(auth)/register/page.tsx` | |
-| 41 | Xác nhận đăng ký | `/register/confirm` | `src/app/[locale]/(auth)/register/confirm/page.tsx` | |
-| 42 | **Quên mật khẩu** | `/forgot-password` | `src/app/[locale]/(auth)/forgot-password/page.tsx` | |
-| 43 | **Đặt lại mật khẩu** | `/reset-password` | `src/app/[locale]/(auth)/reset-password/page.tsx` | |
-| 44 | **Đổi mật khẩu** | `/change-password` | `src/app/[locale]/(auth)/change-password/page.tsx` | |
-| 45 | **Xác thực OTP** | `/verify-otp` | `src/app/[locale]/(auth)/verify-otp/page.tsx` | |
+| 40 | **Đăng ký tài khoản B2B** | `/register` | `src/app/[locale]/(auth)/register/page.tsx` | ✓ |
+| 41 | Xác nhận đăng ký | `/register/confirm` | `src/app/[locale]/(auth)/register/confirm/page.tsx` | ✓ |
+| 42 | **Quên mật khẩu** | `/forgot-password` | `src/app/[locale]/(auth)/forgot-password/page.tsx` | ✓ |
+| 43 | **Đặt lại mật khẩu** | `/reset-password` | `src/app/[locale]/(auth)/reset-password/page.tsx` | ✓ |
+| 44 | **Đổi mật khẩu** | `/change-password` | `src/app/[locale]/(auth)/change-password/page.tsx` | ✓ |
+| 45 | **Xác thực OTP** | `/verify-otp` | `src/app/[locale]/(auth)/verify-otp/page.tsx` | ✓ |
 
 ---
 
@@ -116,22 +116,22 @@ Các trang dành riêng cho Quản trị viên (Admin) để quản lý sản ph
 
 | STT | Tên Trang / Chức Năng | Đường Dẫn URL (`/url`) | Đường Dẫn File Nguồn | Check Responsive |
 | :---: | :--- | :--- | :--- | :--- |
-| 46 | **Admin Dashboard** | `/admin` | `src/app/[locale]/admin/page.tsx` | |
-| 47 | Quản lý Bài viết & Tin tức | `/admin/articles` | `src/app/[locale]/admin/articles/page.tsx` | |
-| 48 | Quản lý Thuộc tính sản phẩm | `/admin/attributes` | `src/app/[locale]/admin/attributes/page.tsx` | |
-| 49 | Quản lý Danh mục | `/admin/categories` | `src/app/[locale]/admin/categories/page.tsx` | |
-| 50 | Quản lý Yêu cầu liên hệ | `/admin/contact-requests` | `src/app/[locale]/admin/contact-requests/page.tsx` | |
-| 51 | Chi tiết yêu cầu liên hệ | `/admin/contact-requests/[id]` | `src/app/[locale]/admin/contact-requests/[id]/page.tsx` | |
-| 52 | Quản lý Hub vùng | `/admin/hubs` | `src/app/[locale]/admin/hubs/page.tsx` | |
-| 53 | Nhập dữ liệu hàng loạt (Import) | `/admin/import` | `src/app/[locale]/admin/import/page.tsx` | |
-| 54 | Quản lý Khu công nghiệp | `/admin/industrial-zones` | `src/app/[locale]/admin/industrial-zones/page.tsx` | |
-| 55 | Quản lý Sản phẩm | `/admin/products` | `src/app/[locale]/admin/products/page.tsx` | |
-| 56 | Quản lý Báo giá RFQ | `/admin/rfqs` | `src/app/[locale]/admin/rfqs/page.tsx` | |
-| 57 | Quản lý Yêu cầu mẫu thử | `/admin/sample-requests` | `src/app/[locale]/admin/sample-requests/page.tsx` | |
-| 58 | Chi tiết yêu cầu mẫu thử Admin | `/admin/sample-requests/[id]` | `src/app/[locale]/admin/sample-requests/[id]/page.tsx` | |
-| 59 | Quản lý SKU biến thể | `/admin/skus` | `src/app/[locale]/admin/skus/page.tsx` | |
-| 60 | Quản lý Đăng ký nhận tin (Subscribers)| `/admin/subscribers` | `src/app/[locale]/admin/subscribers/page.tsx` | |
-| 61 | Quản lý Người dùng | `/admin/users` | `src/app/[locale]/admin/users/page.tsx` | |
+| 46 | **Admin Dashboard** | `/admin` | `src/app/[locale]/admin/page.tsx` | ✓ |
+| 47 | Quản lý Bài viết & Tin tức | `/admin/articles` | `src/app/[locale]/admin/articles/page.tsx` | ✓ |
+| 48 | Quản lý Thuộc tính sản phẩm | `/admin/attributes` | `src/app/[locale]/admin/attributes/page.tsx` | ✓ |
+| 49 | Quản lý Danh mục | `/admin/categories` | `src/app/[locale]/admin/categories/page.tsx` | ✓ |
+| 50 | Quản lý Yêu cầu liên hệ | `/admin/contact-requests` | `src/app/[locale]/admin/contact-requests/page.tsx` | ✓ |
+| 51 | Chi tiết yêu cầu liên hệ | `/admin/contact-requests/[id]` | `src/app/[locale]/admin/contact-requests/[id]/page.tsx` | ✓ |
+| 52 | Quản lý Hub vùng | `/admin/hubs` | `src/app/[locale]/admin/hubs/page.tsx` | ✓ |
+| 53 | Nhập dữ liệu hàng loạt (Import) | `/admin/import` | `src/app/[locale]/admin/import/page.tsx` | ✓ |
+| 54 | Quản lý Khu công nghiệp | `/admin/industrial-zones` | `src/app/[locale]/admin/industrial-zones/page.tsx` | ✓ |
+| 55 | Quản lý Sản phẩm | `/admin/products` | `src/app/[locale]/admin/products/page.tsx` | ✓ |
+| 56 | Quản lý Báo giá RFQ | `/admin/rfqs` | `src/app/[locale]/admin/rfqs/page.tsx` | ✓ |
+| 57 | Quản lý Yêu cầu mẫu thử | `/admin/sample-requests` | `src/app/[locale]/admin/sample-requests/page.tsx` | ✓ |
+| 58 | Chi tiết yêu cầu mẫu thử Admin | `/admin/sample-requests/[id]` | `src/app/[locale]/admin/sample-requests/[id]/page.tsx` | ✓ |
+| 59 | Quản lý SKU biến thể | `/admin/skus` | `src/app/[locale]/admin/skus/page.tsx` | ✓ |
+| 60 | Quản lý Đăng ký nhận tin (Subscribers)| `/admin/subscribers` | `src/app/[locale]/admin/subscribers/page.tsx` | ✓ |
+| 61 | Quản lý Người dùng | `/admin/users` | `src/app/[locale]/admin/users/page.tsx` | ✓ |
 
 ---
 *Tài liệu được khởi tạo tự động dựa trên cấu trúc nguồn thực tế của dự án ULink B2B Platform.*

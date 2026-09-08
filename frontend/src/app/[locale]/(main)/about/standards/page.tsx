@@ -16,10 +16,10 @@ export default async function QualityStandardsPage({
 
   return (
     <div className="w-full bg-white">
-      <div className="page-container py-4">
+      <div className="page-container py-2 sm:py-3 lg:py-4">
         {/* Breadcrumbs */}
         <Breadcrumb
-          className="px-0 py-0 mx-0 max-w-none mb-4"
+          className="px-0 py-0 mx-0 max-w-none mb-2 sm:mb-3 lg:mb-4"
           items={[
             { label: 'Trang chủ', href: '/' },
             { label: 'Về chúng tôi', href: '/about' },

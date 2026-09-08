@@ -124,7 +124,7 @@ export default async function AdminDashboardPage({ params: { locale } }: Props) 
   return (
     <div className="admin-page">
       {/* Header Welcome Section */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-100 pb-6 mb-8">
+      <div className="admin-header border-b border-slate-100 pb-6 mb-6 md:mb-8">
         <div>
           <span className="text-caption-responsive uppercase text-slate-400 font-bold tracking-tight">
             Trang chủ Quản trị
@@ -139,7 +139,7 @@ export default async function AdminDashboardPage({ params: { locale } }: Props) 
       </div>
 
       {/* Grid of KPI Cards - Optimized columns for intermediate screens */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 mb-10">
+      <div className="admin-kpi-grid mb-8 md:mb-10">
         {kpis.map((kpi, idx) => (
           <Link
             key={idx}
@@ -166,9 +166,9 @@ export default async function AdminDashboardPage({ params: { locale } }: Props) 
       </div>
 
       {/* Grid of Main Content Areas */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="admin-content-grid">
         {/* Left Column: Quick Actions */}
-        <div className="lg:col-span-1 bg-white border border-slate-100 rounded-[3px] p-6 shadow-sm">
+        <div className="md:col-span-1 bg-white border border-slate-100 rounded-[3px] p-4 sm:p-5 md:p-6 shadow-sm">
           <h3 className="text-body-regular font-bold text-primary mb-4">Thao tác nhanh</h3>
           <div className="space-y-3">
             <Link
@@ -215,7 +215,7 @@ export default async function AdminDashboardPage({ params: { locale } }: Props) 
         </div>
 
         {/* Right Columns: System Info Summary */}
-        <div className="lg:col-span-2 bg-white border border-slate-100 rounded-[3px] p-6 shadow-sm flex flex-col justify-between">
+        <div className="md:col-span-2 bg-white border border-slate-100 rounded-[3px] p-4 sm:p-5 md:p-6 shadow-sm flex flex-col justify-between">
           <div>
             <h3 className="text-body-regular font-bold text-primary mb-3">
               Hướng dẫn Vận hành Hệ thống B2B

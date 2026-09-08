@@ -10,10 +10,10 @@ export default async function ContactPage({ params: { locale } }: { params: { lo
 
   return (
     <div className="w-full bg-white">
-      <div className="page-container py-4">
+      <div className="page-container space-y-6 sm:space-y-8 lg:space-y-10 py-4 sm:py-6 lg:py-8">
         {/* Breadcrumbs */}
         <Breadcrumb
-          className="px-0 py-0 mx-0 max-w-none mb-4"
+          className="px-0 py-0 mx-0 max-w-none"
           items={[
             { label: 'Trang chủ', href: '/' },
             { label: 'Liên hệ', href: '/contact' },

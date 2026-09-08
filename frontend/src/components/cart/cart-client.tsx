@@ -297,9 +297,9 @@ export default function CartClient({
   };
 
   return (
-    <div className="space-y-10 w-full">
+    <div className="space-y-6 sm:space-y-8 lg:space-y-10 w-full">
       {/* SECTION 1: Breadcrumbs, Progress, Grid */}
-      <div className="page-container flex flex-col gap-6">
+      <div className="page-container flex flex-col gap-4 sm:gap-6">
         {/* Breadcrumbs */}
         <nav
           aria-label="Breadcrumb"
@@ -315,32 +315,32 @@ export default function CartClient({
         {/* Step Progress bar */}
         <div className="flex w-full overflow-hidden text-caption-responsive font-semibold rounded-[3px]">
           {/* Step 1: Giỏ hàng */}
-          <div className="flex-1 flex items-center justify-center gap-2 py-4 bg-brand text-white">
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white text-caption-responsive font-bold text-brand shrink-0">
+          <div className="flex-1 flex items-center justify-center gap-1 sm:gap-2 py-2.5 sm:py-4 bg-brand text-white text-xs sm:text-caption-responsive">
+            <span className="flex h-5 sm:h-6 w-5 sm:w-6 items-center justify-center rounded-full bg-white text-caption-responsive font-bold text-brand shrink-0">
               1
             </span>
             <span className="font-bold tracking-wide hidden sm:inline">{t('stepCart')}</span>
           </div>
 
           {/* Step 2: Thanh toán */}
-          <div className="flex-1 flex items-center justify-center gap-2 py-4 bg-[#3B82F6]/90 text-white">
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-brand text-caption-responsive font-bold text-white shrink-0">
+          <div className="flex-1 flex items-center justify-center gap-1 sm:gap-2 py-2.5 sm:py-4 bg-[#3B82F6]/90 text-white text-xs sm:text-caption-responsive">
+            <span className="flex h-5 sm:h-6 w-5 sm:w-6 items-center justify-center rounded-full bg-brand text-caption-responsive font-bold text-white shrink-0">
               2
             </span>
             <span className="font-bold tracking-wide hidden sm:inline">{t('stepPayment')}</span>
           </div>
 
           {/* Step 3: Vận chuyển */}
-          <div className="flex-1 flex items-center justify-center gap-2 py-4 bg-slate-200 text-slate-600">
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white text-caption-responsive font-bold text-slate-500 shrink-0">
+          <div className="flex-1 flex items-center justify-center gap-1 sm:gap-2 py-2.5 sm:py-4 bg-slate-200 text-slate-600 text-xs sm:text-caption-responsive">
+            <span className="flex h-5 sm:h-6 w-5 sm:w-6 items-center justify-center rounded-full bg-white text-caption-responsive font-bold text-slate-500 shrink-0">
               3
             </span>
             <span className="font-bold tracking-wide hidden sm:inline">{t('stepShipping')}</span>
           </div>
 
           {/* Step 4: Hoàn tất */}
-          <div className="flex-1 flex items-center justify-center gap-2 py-4 bg-slate-50 text-slate-400">
-            <span className="flex h-6 w-6 items-center justify-center rounded-full bg-white border border-border/40 text-caption-responsive font-bold text-slate-300 shrink-0">
+          <div className="flex-1 flex items-center justify-center gap-1 sm:gap-2 py-2.5 sm:py-4 bg-slate-50 text-slate-400 text-xs sm:text-caption-responsive">
+            <span className="flex h-5 sm:h-6 w-5 sm:w-6 items-center justify-center rounded-full bg-white border border-border/40 text-caption-responsive font-bold text-slate-300 shrink-0">
               4
             </span>
             <span className="font-bold tracking-wide hidden sm:inline">{t('stepComplete')}</span>
@@ -348,48 +348,48 @@ export default function CartClient({
         </div>
 
         {/* Main Grid */}
-        <div className="grid gap-8 lg:grid-cols-12 pt-2">
+        <div className="grid gap-6 sm:gap-8 lg:grid-cols-12">
           {/* LEFT COLUMN: Cart Items */}
-          <div className="lg:col-span-8 space-y-6">
-            <div className="flex items-baseline gap-2">
-              <h2 className="text-card-title font-bold text-foreground">{t('title')}</h2>
+          <div className="lg:col-span-8 space-y-4 sm:space-y-6">
+            <div className="flex items-baseline gap-2 flex-wrap">
+              <h2 className="text-body-regular sm:text-card-title font-bold text-foreground">{t('title')}</h2>
               <span className="text-caption-responsive text-muted-foreground">
                 {t('totalItems', { count: cart.length })}
               </span>
             </div>
 
             {resolvedItems.length === 0 ? (
-              <div className="flex flex-col items-center justify-center py-16 px-4 text-center border border-dashed border-border/80 rounded-[3px] space-y-4">
-                <Package className="h-10 w-10 text-muted-foreground/50" />
-                <p className="text-body-regular text-muted-foreground">{t('emptyCart')}</p>
+              <div className="flex flex-col items-center justify-center py-10 sm:py-16 px-3 sm:px-4 text-center border border-dashed border-border/80 rounded-[3px] space-y-3 sm:space-y-4">
+                <Package className="h-8 sm:h-10 w-8 sm:w-10 text-muted-foreground/50" />
+                <p className="text-caption-responsive sm:text-body-regular text-muted-foreground">{t('emptyCart')}</p>
                 <Link
                   href="/solutions"
-                  className="inline-flex items-center gap-1.5 rounded-[3px] border border-brand px-4 py-2 text-caption-responsive font-semibold text-brand hover:bg-brand/5 transition-all"
+                  className="inline-flex items-center gap-1.5 rounded-[3px] border border-brand px-3 sm:px-4 py-1.5 sm:py-2 text-caption-responsive font-semibold text-brand hover:bg-brand/5 transition-all"
                 >
-                  <ArrowLeft className="h-3.5 w-3.5" />
+                  <ArrowLeft className="h-3 sm:h-3.5 w-3 sm:w-3.5" />
                   {t('btnBack')}
                 </Link>
               </div>
             ) : (
-              <div className="space-y-4">
+              <div className="space-y-3 sm:space-y-4">
                 {/* Desktop/Tablet Table Layout */}
-                <div className="hidden md:block overflow-hidden rounded-[3px] border border-slate-200/80 bg-white">
-                  <table className="w-full border-collapse text-left text-body-regular min-w-[700px]">
+                <div className="hidden md:block overflow-x-auto rounded-[3px] border border-slate-200/80 bg-white">
+                  <table className="w-full border-collapse text-left min-w-[700px]">
                     <thead className="bg-card text-slate-600 text-caption-responsive uppercase font-bold border-b border-slate-200/80">
                       <tr>
-                        <th className="px-4 py-3.5 font-semibold text-slate-700">
+                        <th className="px-3 sm:px-4 py-2.5 sm:py-3.5 font-semibold text-slate-700">
                           {t('colProduct')}
                         </th>
-                        <th className="px-3 py-3.5 w-[110px] text-right font-semibold text-slate-700">
+                        <th className="px-2 sm:px-3 py-2.5 sm:py-3.5 w-[90px] sm:w-[110px] text-right font-semibold text-slate-700">
                           {t('colPrice')}
                         </th>
-                        <th className="px-3 py-3.5 w-[80px] text-center font-semibold text-slate-700">
+                        <th className="px-2 sm:px-3 py-2.5 sm:py-3.5 w-[70px] sm:w-[80px] text-center font-semibold text-slate-700">
                           {t('colUnit')}
                         </th>
-                        <th className="px-3 py-3.5 w-[140px] text-center font-semibold text-slate-700">
+                        <th className="px-2 sm:px-3 py-2.5 sm:py-3.5 w-[110px] sm:w-[140px] text-center font-semibold text-slate-700">
                           {t('colQuantity')}
                         </th>
-                        <th className="px-4 py-3.5 w-[190px] text-right font-semibold text-slate-700">
+                        <th className="px-3 sm:px-4 py-2.5 sm:py-3.5 w-[100px] sm:w-[190px] text-right font-semibold text-slate-700">
                           {t('colTotal')}
                         </th>
                       </tr>
@@ -398,11 +398,11 @@ export default function CartClient({
                       {resolvedItems.map((item, idx) => (
                         <tr key={idx} className="hover:bg-slate-50/50 transition-colors">
                           {/* Product Name & Specs */}
-                          <td className="px-4 py-4 flex gap-3.5 items-start">
+                          <td className="px-3 sm:px-4 py-3 sm:py-4 flex gap-2 sm:gap-3.5 items-start">
                             {item.slug ? (
                               <Link
                                 href={`/solutions/${item.slug}`}
-                                className="relative h-14 w-14 shrink-0 rounded-[3px] border border-slate-200/60 bg-white flex items-center justify-center overflow-hidden hover:opacity-90 transition-opacity block"
+                                className="relative h-12 sm:h-14 w-12 sm:w-14 shrink-0 rounded-[3px] border border-slate-200/60 bg-white flex items-center justify-center overflow-hidden hover:opacity-90 transition-opacity block"
                               >
                                 {item.hero ? (
                                   <Image
@@ -413,31 +413,31 @@ export default function CartClient({
                                     sizes="56px"
                                   />
                                 ) : (
-                                  <Package className="h-6 w-6 text-slate-300" />
+                                  <Package className="h-5 sm:h-6 w-5 sm:w-6 text-slate-300" />
                                 )}
                               </Link>
                             ) : (
-                              <div className="relative h-14 w-14 shrink-0 rounded-[3px] border border-slate-200/60 bg-white flex items-center justify-center overflow-hidden">
-                                <Package className="h-6 w-6 text-slate-300" />
+                              <div className="relative h-12 sm:h-14 w-12 sm:w-14 shrink-0 rounded-[3px] border border-slate-200/60 bg-white flex items-center justify-center overflow-hidden">
+                                <Package className="h-5 sm:h-6 w-5 sm:w-6 text-slate-300" />
                               </div>
                             )}
                             <div className="space-y-0.5 min-w-0">
                               {item.slug ? (
                                 <Link
                                   href={`/solutions/${item.slug}`}
-                                  className="font-semibold text-slate-900 text-body-regular block leading-snug hover:text-brand transition-colors"
+                                  className="font-semibold text-slate-900 text-caption-responsive sm:text-body-regular block leading-snug hover:text-brand transition-colors"
                                 >
                                   {item.product_name}
                                 </Link>
                               ) : (
-                                <span className="font-semibold text-slate-900 text-body-regular block leading-snug">
+                                <span className="font-semibold text-slate-900 text-caption-responsive sm:text-body-regular block leading-snug">
                                   {item.product_name}
                                 </span>
                               )}
                               <span className="text-caption-responsive font-mono text-slate-400 block pt-0.5">
                                 SKU: {item.sku}
                               </span>
-                              <span className="text-caption-responsive text-slate-500 block truncate max-w-sm">
+                              <span className="text-caption-responsive text-slate-500 block truncate max-w-xs">
                                 {locale === 'vi' ? 'Quy cách: ' : 'Spec: '}
                                 {item.spec}
                               </span>
@@ -445,51 +445,51 @@ export default function CartClient({
                           </td>
 
                           {/* Unit Price */}
-                          <td className="px-3 py-4 text-right font-medium text-slate-700">
+                          <td className="px-2 sm:px-3 py-3 sm:py-4 text-right font-medium text-slate-700 text-caption-responsive sm:text-body-regular">
                             {formatPrice(item.unitPrice)}
                           </td>
 
                           {/* Unit */}
-                          <td className="px-3 py-4 text-center text-slate-600 font-medium">
+                          <td className="px-2 sm:px-3 py-3 sm:py-4 text-center text-slate-600 font-medium text-caption-responsive sm:text-body-regular">
                             {item.unit}
                           </td>
 
                           {/* Quantity Input */}
-                          <td className="px-3 py-4 text-center">
-                            <div className="flex items-center justify-center gap-3.5 mx-auto w-fit">
+                          <td className="px-2 sm:px-3 py-3 sm:py-4 text-center">
+                            <div className="flex items-center justify-center gap-2 sm:gap-3.5 mx-auto w-fit">
                               <button
                                 type="button"
                                 onClick={() => handleQtyChange(idx, item.quantity - 10)}
-                                className="p-1 hover:bg-slate-100 rounded-[3px] text-slate-400 hover:text-slate-800 transition-colors"
+                                className="p-0.5 sm:p-1 hover:bg-slate-100 rounded-[3px] text-slate-400 hover:text-slate-800 transition-colors"
                               >
-                                <Minus className="h-3.5 w-3.5" />
+                                <Minus className="h-3 sm:h-3.5 w-3 sm:w-3.5" />
                               </button>
-                              <span className="text-body-regular font-semibold text-slate-800 min-w-[32px] text-center">
+                              <span className="text-caption-responsive sm:text-body-regular font-semibold text-slate-800 min-w-[28px] sm:min-w-[32px] text-center">
                                 {item.quantity}
                               </span>
                               <button
                                 type="button"
                                 onClick={() => handleQtyChange(idx, item.quantity + 10)}
-                                className="p-1 hover:bg-slate-100 rounded-[3px] text-slate-400 hover:text-slate-800 transition-colors"
+                                className="p-0.5 sm:p-1 hover:bg-slate-100 rounded-[3px] text-slate-400 hover:text-slate-800 transition-colors"
                               >
-                                <Plus className="h-3.5 w-3.5" />
+                                <Plus className="h-3 sm:h-3.5 w-3 sm:w-3.5" />
                               </button>
                             </div>
                           </td>
 
                           {/* Total Price & Remove Button */}
-                          <td className="px-4 py-4 text-right">
-                            <div className="flex items-center justify-end gap-3">
-                              <span className="font-bold text-[#006AA7] text-body-regular">
+                          <td className="px-3 sm:px-4 py-3 sm:py-4 text-right">
+                            <div className="flex items-center justify-end gap-2 sm:gap-3">
+                              <span className="font-bold text-[#006AA7] text-caption-responsive sm:text-body-regular">
                                 {formatPrice(item.total)}
                               </span>
                               <button
                                 type="button"
                                 onClick={() => handleRemove(idx)}
-                                className="p-2 border border-slate-200 hover:border-slate-300 rounded-[3px] text-slate-400 hover:text-rose-600 hover:bg-slate-50 transition-all flex items-center justify-center shrink-0"
+                                className="p-1.5 sm:p-2 border border-slate-200 hover:border-slate-300 rounded-[3px] text-slate-400 hover:text-rose-600 hover:bg-slate-50 transition-all flex items-center justify-center shrink-0"
                                 aria-label="Remove item"
                               >
-                                <Trash2 className="h-4 w-4" />
+                                <Trash2 className="h-3.5 sm:h-4 w-3.5 sm:w-4" />
                               </button>
                             </div>
                           </td>
@@ -500,15 +500,15 @@ export default function CartClient({
                 </div>
 
                 {/* Mobile Stacked Card Layout */}
-                <div className="block md:hidden space-y-4">
+                <div className="block md:hidden space-y-3 sm:space-y-4">
                   {resolvedItems.map((item, idx) => (
-                    <div key={idx} className="rounded-[3px] border border-slate-200/85 bg-white p-4 shadow-sm space-y-4">
-                      <div className="flex gap-3">
+                    <div key={idx} className="rounded-[3px] border border-slate-200/85 bg-white p-3 sm:p-4 shadow-sm space-y-3 sm:space-y-4">
+                      <div className="flex gap-2 sm:gap-3">
                         {/* Image */}
                         {item.slug ? (
                           <Link
                             href={`/solutions/${item.slug}`}
-                            className="relative h-16 w-16 shrink-0 rounded-[3px] border border-slate-200/60 bg-white flex items-center justify-center overflow-hidden hover:opacity-90 transition-opacity block"
+                            className="relative h-14 sm:h-16 w-14 sm:w-16 shrink-0 rounded-[3px] border border-slate-200/60 bg-white flex items-center justify-center overflow-hidden hover:opacity-90 transition-opacity block"
                           >
                             {item.hero ? (
                               <Image
@@ -519,12 +519,12 @@ export default function CartClient({
                                 sizes="64px"
                               />
                             ) : (
-                              <Package className="h-6 w-6 text-slate-300" />
+                              <Package className="h-5 sm:h-6 w-5 sm:w-6 text-slate-300" />
                             )}
                           </Link>
                         ) : (
-                          <div className="relative h-16 w-16 shrink-0 rounded-[3px] border border-slate-200/60 bg-white flex items-center justify-center overflow-hidden">
-                            <Package className="h-6 w-6 text-slate-300" />
+                          <div className="relative h-14 sm:h-16 w-14 sm:w-16 shrink-0 rounded-[3px] border border-slate-200/60 bg-white flex items-center justify-center overflow-hidden">
+                            <Package className="h-5 sm:h-6 w-5 sm:w-6 text-slate-300" />
                           </div>
                         )}
 
@@ -533,12 +533,12 @@ export default function CartClient({
                           {item.slug ? (
                             <Link
                               href={`/solutions/${item.slug}`}
-                              className="font-bold text-slate-900 text-body-regular block leading-snug hover:text-brand transition-colors line-clamp-2"
+                              className="font-bold text-slate-900 text-caption-responsive sm:text-body-regular block leading-snug hover:text-brand transition-colors line-clamp-2"
                             >
                               {item.product_name}
                             </Link>
                           ) : (
-                            <span className="font-bold text-slate-900 text-body-regular block leading-snug line-clamp-2">
+                            <span className="font-bold text-slate-900 text-caption-responsive sm:text-body-regular block leading-snug line-clamp-2">
                               {item.product_name}
                             </span>
                           )}
@@ -553,7 +553,7 @@ export default function CartClient({
                       </div>
 
                       {/* Price and Unit */}
-                      <div className="flex justify-between items-center text-caption-responsive border-t border-slate-100 pt-3">
+                      <div className="flex justify-between items-center text-caption-responsive border-t border-slate-100 pt-2 sm:pt-3">
                         <span className="text-slate-400 font-medium">{locale === 'vi' ? 'Đơn giá / Đơn vị:' : 'Price / Unit:'}</span>
                         <span className="font-semibold text-slate-700">
                           {formatPrice(item.unitPrice)} / {item.unit}
@@ -561,38 +561,38 @@ export default function CartClient({
                       </div>
 
                       {/* Quantity Controls and Actions */}
-                      <div className="flex justify-between items-center border-t border-slate-100 pt-3">
-                        <div className="flex items-center gap-3">
+                      <div className="flex justify-between items-center border-t border-slate-100 pt-2 sm:pt-3">
+                        <div className="flex items-center gap-2 sm:gap-3">
                           <button
                             type="button"
                             onClick={() => handleQtyChange(idx, item.quantity - 10)}
-                            className="p-1 hover:bg-slate-100 border border-slate-200 rounded-[3px] text-slate-400 hover:text-slate-800 transition-colors"
+                            className="p-0.5 sm:p-1 hover:bg-slate-100 border border-slate-200 rounded-[3px] text-slate-400 hover:text-slate-800 transition-colors"
                           >
-                            <Minus className="h-3.5 w-3.5" />
+                            <Minus className="h-3 sm:h-3.5 w-3 sm:w-3.5" />
                           </button>
-                          <span className="text-body-regular font-semibold text-slate-800 min-w-[28px] text-center">
+                          <span className="text-caption-responsive sm:text-body-regular font-semibold text-slate-800 min-w-[24px] sm:min-w-[28px] text-center">
                             {item.quantity}
                           </span>
                           <button
                             type="button"
                             onClick={() => handleQtyChange(idx, item.quantity + 10)}
-                            className="p-1 hover:bg-slate-100 border border-slate-200 rounded-[3px] text-slate-400 hover:text-slate-800 transition-colors"
+                            className="p-0.5 sm:p-1 hover:bg-slate-100 border border-slate-200 rounded-[3px] text-slate-400 hover:text-slate-800 transition-colors"
                           >
-                            <Plus className="h-3.5 w-3.5" />
+                            <Plus className="h-3 sm:h-3.5 w-3 sm:w-3.5" />
                           </button>
                         </div>
 
-                        <div className="flex items-center gap-3">
-                          <span className="font-bold text-[#006AA7] text-body-regular">
+                        <div className="flex items-center gap-2 sm:gap-3">
+                          <span className="font-bold text-[#006AA7] text-caption-responsive sm:text-body-regular">
                             {formatPrice(item.total)}
                           </span>
                           <button
                             type="button"
                             onClick={() => handleRemove(idx)}
-                            className="p-2 border border-slate-200 hover:border-slate-300 rounded-[3px] text-slate-400 hover:text-rose-600 hover:bg-slate-50 transition-all flex items-center justify-center shrink-0"
+                            className="p-1.5 sm:p-2 border border-slate-200 hover:border-slate-300 rounded-[3px] text-slate-400 hover:text-rose-600 hover:bg-slate-50 transition-all flex items-center justify-center shrink-0"
                             aria-label="Remove item"
                           >
-                            <Trash2 className="h-4 w-4" />
+                            <Trash2 className="h-3.5 sm:h-4 w-3.5 sm:w-4" />
                           </button>
                         </div>
                       </div>
@@ -604,21 +604,21 @@ export default function CartClient({
           </div>
 
           {/* RIGHT COLUMN: Summary */}
-          <div className="lg:col-span-4 space-y-6">
+          <div className="lg:col-span-4 space-y-4 sm:space-y-6">
             {/* Order Summary Panel */}
-            <div className="rounded-[3px] border border-slate-200 bg-card p-6 shadow-sm space-y-5">
-              <h3 className="text-card-title font-bold text-slate-900">{t('summaryTitle')}</h3>
+            <div className="rounded-[3px] border border-slate-200 bg-card p-4 sm:p-6 shadow-sm space-y-3 sm:space-y-5">
+              <h3 className="text-body-regular sm:text-card-title font-bold text-slate-900">{t('summaryTitle')}</h3>
 
-              <div className="space-y-4 text-body-regular">
-                <div className="flex justify-between">
+              <div className="space-y-3 sm:space-y-4 text-caption-responsive sm:text-body-regular">
+                <div className="flex justify-between text-sm sm:text-base">
                   <span className="text-slate-500">{t('subtotal')}</span>
                   <span className="font-semibold text-slate-800">{formatPrice(subtotal)}</span>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-between text-sm sm:text-base">
                   <span className="text-slate-500">{t('vat')}</span>
                   <span className="font-semibold text-slate-800">{formatPrice(vat)}</span>
                 </div>
-                <div className="flex justify-between">
+                <div className="flex justify-between text-sm sm:text-base">
                   <span className="text-slate-500">{t('shipping')}</span>
                   <span className="font-medium text-brand text-right">{t('shippingContact')}</span>
                 </div>
@@ -627,21 +627,21 @@ export default function CartClient({
                 <hr className="border-slate-200" />
 
                 {/* Promo Code Input */}
-                <form onSubmit={handleApplyPromo} className="space-y-2">
+                <form onSubmit={handleApplyPromo} className="space-y-1.5 sm:space-y-2">
                   <label className="text-caption-responsive font-bold text-slate-500 block">
                     {t('promoLabel')}
                   </label>
-                  <div className="flex gap-2">
+                  <div className="flex gap-1.5 sm:gap-2">
                     <input
                       type="text"
                       value={promoCode}
                       onChange={(e) => setPromoCode(e.target.value)}
                       placeholder={t('promoPlaceholder')}
-                      className="flex-1 rounded-[3px] border border-slate-200 bg-white px-3 py-2 text-body-regular outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand font-mono uppercase"
+                      className="flex-1 rounded-[3px] border border-slate-200 bg-white px-2.5 sm:px-3 py-1.5 sm:py-2 text-caption-responsive sm:text-body-regular outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand font-mono uppercase"
                     />
                     <button
                       type="submit"
-                      className="rounded-[3px] bg-[#E0F2FE] hover:bg-[#BAE6FD] text-sky-700 text-caption-responsive font-bold px-4 py-2.5 transition-all border border-sky-200"
+                      className="rounded-[3px] bg-[#E0F2FE] hover:bg-[#BAE6FD] text-sky-700 text-caption-responsive font-bold px-2.5 sm:px-4 py-1.5 sm:py-2.5 transition-all border border-sky-200 whitespace-nowrap"
                     >
                       {t('promoApply')}
                     </button>
@@ -662,12 +662,12 @@ export default function CartClient({
                 <hr className="border-slate-200" />
 
                 <div className="flex items-baseline justify-between pt-1">
-                  <span className="text-body-regular font-bold text-slate-900">{t('total')}</span>
+                  <span className="text-caption-responsive sm:text-body-regular font-bold text-slate-900">{t('total')}</span>
                   <div className="text-right">
-                    <span className="text-section-title font-bold text-[#006AA7] block leading-none">
+                    <span className="text-body-regular sm:text-section-title font-bold text-[#006AA7] block leading-none">
                       {formatPrice(grandTotal)}
                     </span>
-                    <span className="text-caption-responsive text-slate-400 font-medium block mt-1.5">
+                    <span className="text-caption-responsive text-slate-400 font-medium block mt-1">
                       {t('vatIncluded')}
                     </span>
                   </div>
@@ -675,19 +675,19 @@ export default function CartClient({
               </div>
 
               {/* Buttons */}
-              <div className="space-y-3.5 pt-2">
+              <div className="space-y-2.5 sm:space-y-3.5 pt-1 sm:pt-2">
                 <Link
                   href="/checkout"
-                  className="inline-flex items-center justify-center gap-2 w-full rounded-[3px] bg-brand py-3.5 text-body-regular font-bold text-white shadow hover:bg-brand/95 transition-all text-center"
+                  className="inline-flex items-center justify-center gap-2 w-full rounded-[3px] bg-brand py-2.5 sm:py-3.5 text-caption-responsive sm:text-body-regular font-bold text-white shadow hover:bg-brand/95 transition-all text-center"
                 >
                   {t('btnCheckout')}
-                  <ArrowRight className="h-4 w-4" />
+                  <ArrowRight className="h-3.5 sm:h-4 w-3.5 sm:w-4" />
                 </Link>
                 <Link
                   href="/solutions"
-                  className="inline-flex items-center justify-center gap-2 w-full rounded-[3px] border border-brand text-brand hover:bg-brand/5 py-3.5 text-body-regular font-bold transition-all text-center"
+                  className="inline-flex items-center justify-center gap-2 w-full rounded-[3px] border border-brand text-brand hover:bg-brand/5 py-2.5 sm:py-3.5 text-caption-responsive sm:text-body-regular font-bold transition-all text-center"
                 >
-                  <ArrowLeft className="h-4 w-4" />
+                  <ArrowLeft className="h-3.5 sm:h-4 w-3.5 sm:w-4" />
                   {t('btnBack')}
                 </Link>
               </div>
@@ -697,43 +697,43 @@ export default function CartClient({
       </div>
 
       {/* SECTION 2: Quick Quote Promo Banner - Full Width of Viewport */}
-      <div className="w-full bg-card border-y border-slate-200/80 py-10 my-4">
-        <div className="page-container flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-          <div className="space-y-2 max-w-3xl">
+      <div className="w-full bg-card border-y border-slate-200/80 py-6 sm:py-8 lg:py-10 my-3 sm:my-4">
+        <div className="page-container flex flex-col md:flex-row justify-between items-start md:items-center gap-4 sm:gap-6">
+          <div className="space-y-1.5 sm:space-y-2 max-w-3xl">
             <span className="text-caption-responsive font-bold text-slate-400 uppercase tracking-wider block">
               {t('rfqSectionSubtitle')}
             </span>
-            <h4 className="text-card-title font-bold text-slate-800 leading-tight">{t('rfqTitle')}</h4>
-            <p className="text-caption-responsive text-slate-500 leading-relaxed">{t('rfqDesc')}</p>
+            <h4 className="text-body-regular sm:text-card-title font-bold text-slate-800 leading-tight">{t('rfqTitle')}</h4>
+            <p className="text-caption-responsive text-slate-500 leading-5 sm:leading-relaxed">{t('rfqDesc')}</p>
           </div>
           <Link
             href="/quick-order"
-            className="inline-flex items-center justify-center gap-2 rounded-[3px] bg-[#006AA7] hover:bg-[#005B90] px-6 py-3 text-body-regular font-bold text-white shadow transition-all shrink-0 w-full md:w-auto"
+            className="inline-flex items-center justify-center gap-2 rounded-[3px] bg-[#006AA7] hover:bg-[#005B90] px-4 sm:px-6 py-2.5 sm:py-3 text-caption-responsive sm:text-body-regular font-bold text-white shadow transition-all shrink-0 w-full md:w-auto"
           >
             {t('rfqCta')}
-            <Edit3 className="h-4.5 w-4.5" />
+            <Edit3 className="h-4 sm:h-4.5 w-4 sm:w-4.5" />
           </Link>
         </div>
       </div>
 
       {/* SECTION 3: Suggested Products & Engineer Support Banners */}
-      <div className="page-container flex flex-col gap-10 pb-8">
+      <div className="page-container flex flex-col gap-6 sm:gap-8 lg:gap-10 pb-6 sm:pb-8 lg:pb-12">
         {/* Suggested Products Grid */}
-        <div className="space-y-6">
+        <div className="space-y-4 sm:space-y-6">
           <div className="flex items-center justify-between">
-            <h3 className="text-card-title font-bold text-slate-900">{t('suggestTitle')}</h3>
+            <h3 className="text-body-regular sm:text-card-title font-bold text-slate-900">{t('suggestTitle')}</h3>
             <Link href="/solutions" className="text-caption-responsive font-semibold text-brand hover:underline">
               {t('viewAll')}
             </Link>
           </div>
 
-          <div className="grid gap-6 sm:grid-cols-2 md:grid-cols-4">
+          <div className="grid gap-3 sm:gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
             {suggestedProducts.map((prod, idx) => (
               <div
                 key={idx}
-                className="rounded-[3px] border border-slate-200/80 p-4 shadow-sm flex flex-col justify-between bg-white hover:border-brand/40 transition-all space-y-4"
+                className="rounded-[3px] border border-slate-200/80 p-3 sm:p-4 shadow-sm flex flex-col justify-between bg-white hover:border-brand/40 transition-all space-y-3 sm:space-y-4"
               >
-                <div className="space-y-3">
+                <div className="space-y-2 sm:space-y-3">
                   {/* Fallback/Directus Image */}
                   <Link
                     href={`/solutions/${prod.slug}`}
@@ -748,11 +748,11 @@ export default function CartClient({
                         sizes="(max-width: 768px) 100vw, 25vw"
                       />
                     ) : (
-                      <Package className="h-10 w-10 text-slate-200" />
+                      <Package className="h-8 sm:h-10 w-8 sm:w-10 text-slate-200" />
                     )}
                   </Link>
                   <div className="space-y-1">
-                    <h4 className="text-body-regular font-bold text-slate-900 leading-snug line-clamp-2 min-h-[40px] hover:text-brand transition-colors">
+                    <h4 className="text-caption-responsive sm:text-body-regular font-bold text-slate-900 leading-snug line-clamp-2 min-h-[40px] hover:text-brand transition-colors">
                       <Link href={`/solutions/${prod.slug}`}>{prod.name}</Link>
                     </h4>
                     <div className="flex items-baseline gap-1 text-caption-responsive">
@@ -764,26 +764,26 @@ export default function CartClient({
                       </p>
                       <div className="flex items-center gap-1 text-caption-responsive text-slate-500 font-semibold pt-1">
                         <MapPin className="h-3 w-3 text-slate-400" />
-                        <span>{prod.hub}</span>
+                        <span className="line-clamp-1">{prod.hub}</span>
                       </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="flex gap-2">
+                <div className="flex gap-1.5 sm:gap-2">
                   <button
                     type="button"
                     onClick={() => handleAddSuggested(prod)}
-                    className="flex-1 rounded-[3px] bg-brand py-2 text-caption-responsive font-semibold text-white hover:bg-brand/95 transition-all"
+                    className="flex-1 rounded-[3px] bg-brand py-1.5 sm:py-2 text-caption-responsive font-semibold text-white hover:bg-brand/95 transition-all"
                   >
                     {t('orderNow')}
                   </button>
                   <button
                     type="button"
-                    className="p-2 border border-slate-200 text-slate-400 hover:text-slate-600 rounded-[3px] hover:bg-slate-50 transition-all flex items-center justify-center shrink-0"
+                    className="p-1.5 sm:p-2 border border-slate-200 text-slate-400 hover:text-slate-600 rounded-[3px] hover:bg-slate-50 transition-all flex items-center justify-center shrink-0"
                     aria-label="Bookmark"
                   >
-                    <Bookmark className="h-4 w-4" />
+                    <Bookmark className="h-3.5 sm:h-4 w-3.5 sm:w-4" />
                   </button>
                 </div>
               </div>
@@ -793,34 +793,34 @@ export default function CartClient({
       </div>
 
       {/* Engineer Support Banner - Full Width */}
-      <div className="w-full bg-gradient-to-r from-[#051E44] via-[#0E3E85] to-[#09224A] text-white py-12 relative overflow-hidden mt-4">
+      <div className="w-full bg-gradient-to-r from-[#051E44] via-[#0E3E85] to-[#09224A] text-white py-8 sm:py-10 lg:py-12 relative overflow-hidden mt-2 sm:mt-4">
         {/* Background Decorative Accent */}
         <div className="absolute right-0 top-0 -mt-10 -mr-10 h-72 w-72 rounded-full bg-blue-400/10 blur-3xl pointer-events-none" />
         <div className="absolute left-0 bottom-0 -mb-10 -ml-10 h-72 w-72 rounded-full bg-sky-400/10 blur-3xl pointer-events-none" />
         <div className="absolute inset-0 bg-[linear-gradient(115deg,rgba(255,255,255,0.04)_40%,transparent_40%)] pointer-events-none" />
 
-        <div className="page-container flex flex-col md:flex-row justify-between items-start md:items-center gap-6 relative z-10">
-          <div className="space-y-2 max-w-2xl text-left">
+        <div className="page-container flex flex-col md:flex-row justify-between items-start md:items-center gap-4 sm:gap-6 relative z-10">
+          <div className="space-y-1.5 sm:space-y-2 max-w-2xl text-left">
             <span className="text-caption-responsive font-bold text-blue-200 uppercase tracking-wider block">
               {t('bannerTitle')}
             </span>
-            <h3 className="text-section-title font-bold leading-tight tracking-tight">{t('bannerSubtitle')}</h3>
-            <p className="text-body-regular text-blue-100 opacity-95 leading-relaxed">{t('bannerDesc')}</p>
+            <h3 className="text-body-regular sm:text-section-title font-bold leading-tight tracking-tight">{t('bannerSubtitle')}</h3>
+            <p className="text-caption-responsive sm:text-body-regular text-blue-100 opacity-95 leading-5 sm:leading-relaxed">{t('bannerDesc')}</p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-3 w-full md:w-auto shrink-0 pt-2">
+          <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 w-full md:w-auto shrink-0 pt-1 sm:pt-2">
             <a
               href={`tel:${t('btnHotline').replace(/\s/g, '')}`}
-              className="inline-flex items-center justify-center gap-2 rounded-[3px] border border-white/60 hover:border-white text-white hover:bg-white/10 px-6 py-3.5 text-body-regular font-bold transition-all text-center"
+              className="inline-flex items-center justify-center gap-2 rounded-[3px] border border-white/60 hover:border-white text-white hover:bg-white/10 px-4 sm:px-6 py-2 sm:py-3.5 text-caption-responsive sm:text-body-regular font-bold transition-all text-center"
             >
-              <Phone className="h-4.5 w-4.5" />
+              <Phone className="h-4 sm:h-4.5 w-4 sm:w-4.5" />
               {t('btnHotline')}
             </a>
             <button
               type="button"
-              className="inline-flex items-center justify-center gap-2 rounded-[3px] bg-[#3B82F6] hover:bg-blue-600 text-white px-6 py-3.5 text-body-regular font-bold transition-all text-center shadow-md"
+              className="inline-flex items-center justify-center gap-2 rounded-[3px] bg-[#3B82F6] hover:bg-blue-600 text-white px-4 sm:px-6 py-2 sm:py-3.5 text-caption-responsive sm:text-body-regular font-bold transition-all text-center shadow-md"
             >
-              <CalendarDays className="h-4.5 w-4.5" />
+              <CalendarDays className="h-4 sm:h-4.5 w-4 sm:w-4.5" />
               {t('btnSchedule')}
             </button>
           </div>

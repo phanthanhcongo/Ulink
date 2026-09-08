@@ -48,71 +48,71 @@ export function ContactInfoCards() {
     'rounded-[3px] border border-border bg-card px-3.5 py-2.5 text-body-regular text-foreground outline-none transition-colors placeholder:text-muted-foreground focus:border-brand focus:ring-1 focus:ring-brand';
 
   return (
-    <section className="py-8 lg:py-12">
-      <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
-        <Card className="lg:col-span-4 flex flex-col gap-6 p-6">
-          <h2 className="border-b border-border pb-3 text-caption-responsive font-bold uppercase tracking-wider text-slate-900">
+    <section className="py-6 sm:py-8 lg:py-12">
+      <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:grid-cols-12">
+        <Card className="lg:col-span-4 flex flex-col gap-4 sm:gap-6 p-4 sm:p-6">
+          <h2 className="border-b border-border pb-2 sm:pb-3 text-caption-responsive font-bold uppercase tracking-wider text-slate-900">
             THÔNG TIN LIÊN HỆ
           </h2>
 
-          <div className="space-y-4 text-caption-responsive">
-            <div className="flex items-start gap-3">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[3px] bg-blue-50 text-blue-600">
-                <MapPin className="h-4 w-4" />
+          <div className="space-y-3 sm:space-y-4 text-caption-responsive">
+            <div className="flex items-start gap-2 sm:gap-3">
+              <div className="flex h-7 sm:h-8 w-7 sm:w-8 shrink-0 items-center justify-center rounded-[3px] bg-blue-50 text-blue-600">
+                <MapPin className="h-3.5 sm:h-4 w-3.5 sm:w-4" />
               </div>
               <div>
-                <span className="mb-0.5 block font-bold text-slate-900">Địa chỉ</span>
-                <span className="leading-relaxed text-slate-600">
+                <span className="mb-0.5 block font-bold text-slate-900 text-caption-responsive">Địa chỉ</span>
+                <span className="leading-5 sm:leading-relaxed text-slate-600 text-caption-responsive">
                   Lô CN05, KCN Đồng Văn IV, Xã Đại Cương, Huyện Kim Bảng, Tỉnh Hà Nam, Việt Nam
                 </span>
               </div>
             </div>
 
-            <div className="flex items-start gap-3">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[3px] bg-blue-50 text-blue-600">
-                <Phone className="h-4 w-4" />
+            <div className="flex items-start gap-2 sm:gap-3">
+              <div className="flex h-7 sm:h-8 w-7 sm:w-8 shrink-0 items-center justify-center rounded-[3px] bg-blue-50 text-blue-600">
+                <Phone className="h-3.5 sm:h-4 w-3.5 sm:w-4" />
               </div>
               <div>
-                <span className="mb-0.5 block font-bold text-slate-900">Điện thoại</span>
-                <span className="font-semibold text-slate-600">(+84) 226 3 888 908</span>
+                <span className="mb-0.5 block font-bold text-slate-900 text-caption-responsive">Điện thoại</span>
+                <span className="font-semibold text-slate-600 text-caption-responsive">(+84) 226 3 888 908</span>
               </div>
             </div>
 
-            <div className="flex items-start gap-3">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[3px] bg-blue-50 text-blue-600">
-                <Mail className="h-4 w-4" />
+            <div className="flex items-start gap-2 sm:gap-3">
+              <div className="flex h-7 sm:h-8 w-7 sm:w-8 shrink-0 items-center justify-center rounded-[3px] bg-blue-50 text-blue-600">
+                <Mail className="h-3.5 sm:h-4 w-3.5 sm:w-4" />
               </div>
               <div>
-                <span className="mb-0.5 block font-bold text-slate-900">Email</span>
-                <span className="font-semibold text-slate-600">contact@ulinkindustries.com</span>
+                <span className="mb-0.5 block font-bold text-slate-900 text-caption-responsive">Email</span>
+                <span className="font-semibold text-slate-600 text-caption-responsive">contact@ulinkindustries.com</span>
               </div>
             </div>
 
-            <div className="flex items-start gap-3">
-              <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-[3px] bg-blue-50 text-blue-600">
-                <Clock className="h-4 w-4" />
+            <div className="flex items-start gap-2 sm:gap-3">
+              <div className="flex h-7 sm:h-8 w-7 sm:w-8 shrink-0 items-center justify-center rounded-[3px] bg-blue-50 text-blue-600">
+                <Clock className="h-3.5 sm:h-4 w-3.5 sm:w-4" />
               </div>
               <div>
-                <span className="mb-0.5 block font-bold text-slate-900">Giờ làm việc</span>
-                <span className="block text-slate-600">Thứ 2 - Thứ 6: 08:00 - 17:00</span>
-                <span className="block text-slate-600">Thứ 7: 08:00 - 12:00</span>
+                <span className="mb-0.5 block font-bold text-slate-900 text-caption-responsive">Giờ làm việc</span>
+                <span className="block text-slate-600 text-caption-responsive">Thứ 2 - Thứ 6: 08:00 - 17:00</span>
+                <span className="block text-slate-600 text-caption-responsive">Thứ 7: 08:00 - 12:00</span>
               </div>
             </div>
           </div>
         </Card>
 
-        <Card className="lg:col-span-5 flex flex-col gap-4 p-6">
+        <Card className="lg:col-span-5 flex flex-col gap-3 sm:gap-4 p-4 sm:p-6">
           <div>
-            <h2 className="mb-1 text-caption-responsive font-bold uppercase tracking-wider text-slate-900">
+            <h2 className="mb-1 text-caption-responsive sm:text-body-regular font-bold uppercase tracking-wider text-slate-900">
               GỬI YÊU CẦU LIÊN HỆ
             </h2>
-            <p className="text-caption-responsive text-slate-500">
+            <p className="text-caption-responsive text-slate-500 leading-snug sm:leading-relaxed">
               Vui lòng điền thông tin, đội ngũ của chúng tôi sẽ liên hệ lại trong thời gian sớm nhất.
             </p>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-3">
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+          <form onSubmit={handleSubmit} className="space-y-2.5 sm:space-y-3">
+            <div className="grid grid-cols-1 gap-2.5 sm:gap-3 sm:grid-cols-2">
               <div>
                 <label className="mb-1 block text-caption-responsive font-semibold text-slate-700">
                   Họ và tên *
@@ -139,7 +139,7 @@ export function ContactInfoCards() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+            <div className="grid grid-cols-1 gap-2.5 sm:gap-3 sm:grid-cols-2">
               <div>
                 <label className="mb-1 block text-caption-responsive font-semibold text-slate-700">
                   Số điện thoại *
@@ -185,19 +185,19 @@ export function ContactInfoCards() {
               </p>
             )}
 
-            <Button type="submit" disabled={submitting} variant="primary" className="px-6 py-3 text-caption-responsive">
+            <Button type="submit" disabled={submitting} variant="primary" className="px-4 sm:px-6 py-2.5 sm:py-3 text-caption-responsive w-full sm:w-auto">
               {submitting ? 'Đang gửi...' : 'Gửi đi'}
               <ArrowRight className="h-3.5 w-3.5" />
             </Button>
           </form>
         </Card>
 
-        <Card className="lg:col-span-3 flex flex-col justify-between gap-4 p-6">
+        <Card className="lg:col-span-3 flex flex-col justify-between gap-3 sm:gap-4 p-4 sm:p-6">
           <div>
-            <h2 className="border-b border-border pb-3 text-caption-responsive font-bold uppercase tracking-wider text-slate-900">
+            <h2 className="border-b border-border pb-2 sm:pb-3 text-caption-responsive font-bold uppercase tracking-wider text-slate-900">
               VỊ TRÍ TRUNG TÂM
             </h2>
-            <div className="relative mt-3 aspect-square w-full overflow-hidden rounded-[3px] border border-border">
+            <div className="relative mt-2 sm:mt-3 aspect-square w-full overflow-hidden rounded-[3px] border border-border">
               <iframe
                 title="ULink Hub Ha Nam Location"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3733.473595677843!2d105.975765!3d20.650228!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135c345a5555555%3A0x1!2zS0NOIMSQ4buTbmcgVsSDbiwgRHV5IFRpw6puLCBIw6AgTmFt!5e0!3m2!1svi!2s!4v1700000000000!5m2!1svi!2s"

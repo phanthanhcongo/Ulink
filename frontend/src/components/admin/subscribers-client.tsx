@@ -161,7 +161,7 @@ export function SubscribersClient({ initialSubscribers, error }: SubscribersClie
   return (
     <div className="admin-page">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-100 pb-6 mb-8">
+      <div className="admin-header border-b border-slate-100 pb-6 mb-6 md:mb-8">
         <div>
           <span className="text-caption-responsive uppercase text-slate-400 font-bold tracking-wider">
             Chiến dịch tiếp thị & Marketing
@@ -175,11 +175,11 @@ export function SubscribersClient({ initialSubscribers, error }: SubscribersClie
           </p>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="admin-button-group">
           <button
             type="button"
             onClick={handleExportCSV}
-            className="inline-flex h-10 items-center justify-center gap-1.5 px-4 rounded-[3px] border border-slate-200 bg-white text-caption-responsive font-bold text-slate-700 hover:bg-slate-50 shadow-sm transition-colors"
+            className="admin-button admin-button-secondary"
           >
             <Download className="h-4 w-4" />
             Xuất file CSV
@@ -188,7 +188,7 @@ export function SubscribersClient({ initialSubscribers, error }: SubscribersClie
           <button
             type="button"
             onClick={handleOpenCreateForm}
-            className="inline-flex h-10 items-center justify-center gap-1.5 px-4 rounded-[3px] bg-blue-600 text-caption-responsive font-bold text-white shadow-sm hover:bg-blue-700 transition-colors shrink-0"
+            className="admin-button admin-button-primary"
           >
             <Plus className="h-4 w-4" />
             Thêm email mới
@@ -198,13 +198,13 @@ export function SubscribersClient({ initialSubscribers, error }: SubscribersClie
 
       {/* Error Banner */}
       {error && (
-        <div className="mb-6 p-4 bg-rose-50 border border-rose-200 rounded-[3px] text-rose-800 text-caption-responsive font-semibold flex items-start gap-2.5 shadow-sm">
-          <AlertTriangle className="h-5 w-5 text-rose-500 shrink-0 mt-0.5" />
-          <div className="flex-1">
+        <div className="mb-6 p-3 sm:p-4 bg-rose-50 border border-rose-200 rounded-[3px] text-rose-800 text-caption-responsive font-semibold flex items-start gap-2.5 shadow-sm">
+          <AlertTriangle className="h-5 w-5 text-rose-500 shrink-0 mt-0.5 flex-shrink-0" />
+          <div className="flex-1 min-w-0">
             <span className="font-bold text-rose-900 block mb-1">
               Đã xảy ra lỗi khi tải danh sách email đăng ký nhận tin
             </span>
-            <pre className="font-mono text-caption-responsive bg-white/60 p-2.5 rounded-[3px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all">
+            <pre className="font-mono text-caption-responsive bg-white/60 p-2 sm:p-2.5 rounded-[3px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all text-xs">
               {error}
             </pre>
           </div>

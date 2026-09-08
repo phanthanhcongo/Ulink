@@ -207,7 +207,7 @@ export function ArticlesClient({
   return (
     <div className="admin-page">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-100 pb-6 mb-8">
+      <div className="admin-header border-b border-slate-100 pb-6 mb-6 md:mb-8">
         <div>
           <span className="text-caption-responsive uppercase text-slate-400 font-bold tracking-wider">
             Hệ thống CMS
@@ -221,10 +221,10 @@ export function ArticlesClient({
           </p>
         </div>
 
-        <div className="flex items-center gap-3 shrink-0">
+        <div className="admin-button-group">
           <Link
             href="/"
-            className="inline-flex h-11 items-center justify-center gap-2 rounded-[3px] border border-slate-200 bg-white px-4 text-caption-responsive font-bold text-slate-700 shadow-sm hover:bg-slate-50 hover:border-slate-300 transition-colors"
+            className="admin-button admin-button-secondary"
           >
             <Home className="h-4 w-4 text-blue-600" />
             Về Trang chủ
@@ -245,7 +245,7 @@ export function ArticlesClient({
               setModalOpen(true);
               setFormError('');
             }}
-            className="inline-flex h-11 items-center justify-center gap-2 rounded-[3px] bg-blue-600 px-5 text-caption-responsive font-bold text-white shadow-sm hover:bg-blue-700 transition-colors"
+            className="admin-button admin-button-primary"
           >
             <Plus className="h-4 w-4" />
             Viết bài mới
@@ -255,13 +255,13 @@ export function ArticlesClient({
 
       {/* Error Alert Banner */}
       {error && (
-        <div className="mb-6 p-4 bg-rose-50 border border-rose-200 rounded-[3px] text-rose-800 text-caption-responsive font-semibold flex items-start gap-2.5 shadow-sm">
-          <AlertTriangle className="h-5 w-5 text-rose-500 shrink-0 mt-0.5" />
-          <div className="flex-1">
+        <div className="mb-6 p-3 sm:p-4 bg-rose-50 border border-rose-200 rounded-[3px] text-rose-800 text-caption-responsive font-semibold flex items-start gap-2.5 shadow-sm">
+          <AlertTriangle className="h-5 w-5 text-rose-500 shrink-0 mt-0.5 flex-shrink-0" />
+          <div className="flex-1 min-w-0">
             <span className="font-bold text-rose-900 block mb-1">
               Đã xảy ra lỗi khi tải dữ liệu bài viết từ API
             </span>
-            <pre className="font-mono text-caption-responsive bg-white/60 p-2.5 rounded-[3px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all">
+            <pre className="font-mono text-caption-responsive bg-white/60 p-2 sm:p-2.5 rounded-[3px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all text-xs">
               {error}
             </pre>
           </div>
@@ -269,7 +269,7 @@ export function ArticlesClient({
       )}
 
       {/* Search Filter */}
-      <div className="bg-white border border-slate-100 rounded-[3px] p-5 shadow-sm mb-8">
+      <div className="bg-white border border-slate-100 rounded-[3px] p-4 sm:p-5 md:p-6 shadow-sm mb-6 md:mb-8">
         <div className="relative">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
           <input
@@ -285,7 +285,7 @@ export function ArticlesClient({
       {/* Articles List */}
       <div className="bg-white border border-slate-100 rounded-[3px] shadow-sm overflow-hidden">
         {filteredArticles.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-16 text-center">
+          <div className="flex flex-col items-center justify-center py-12 sm:py-16 px-4 text-center">
             <FileText className="h-12 w-12 text-slate-300 mb-3" />
             <span className="text-body-regular font-bold text-primary">Chưa có bài viết nào</span>
             <span className="text-caption-responsive text-slate-400 mt-1">
@@ -295,14 +295,14 @@ export function ArticlesClient({
         ) : (
           <>
             {/* Desktop Table View */}
-            <div className="hidden md:block overflow-x-auto">
-              <table className="w-full border-collapse text-left min-w-[900px]">
+            <div className="hidden md:block admin-table-wrapper">
+              <table className="admin-table min-w-[900px]">
                 <thead>
-                  <tr className="bg-slate-50 border-b border-slate-100 text-caption-responsive font-bold text-slate-400 uppercase tracking-wider">
-                    <th className="px-6 py-3.5 sticky left-0 bg-slate-50 z-10 shadow-[2px_0_5px_rgba(0,0,0,0.05)]">Bài viết</th>
-                    <th className="px-6 py-3.5">Tác giả</th>
-                    <th className="px-6 py-3.5">Ngày xuất bản</th>
-                    <th className="px-6 py-3.5">Trạng thái</th>
+                  <tr className="admin-table-head">
+                    <th className="admin-table-cell admin-table-cell-sticky">Bài viết</th>
+                    <th className="admin-table-cell">Tác giả</th>
+                    <th className="admin-table-cell">Ngày xuất bản</th>
+                    <th className="admin-table-cell">Trạng thái</th>
                     <th className="px-6 py-3.5 text-right sticky right-0 bg-slate-50 z-10 shadow-[-2px_0_5px_rgba(0,0,0,0.05)]">Hành động</th>
                   </tr>
                 </thead>

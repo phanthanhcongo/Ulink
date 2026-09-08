@@ -41,14 +41,14 @@ const values = [
 
 export function CareersCulture() {
   return (
-    <section className="py-12 lg:py-16">
+    <section className="py-4 sm:py-6 lg:py-8">
       {/* Header section with grid/flex alignment */}
-      <div className="flex flex-col gap-2 mb-10">
+      <div className="flex flex-col gap-2 mb-6 sm:mb-8 lg:mb-10">
         <span className="text-body-regular font-bold uppercase tracking-wider text-blue-600">
           • VĂN HÓA & GIÁ TRỊ CỐT LÕI
         </span>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 items-end">
-          <h2 className="text-hero-title font-bold tracking-tight text-slate-900 leading-tight">
+          <h2 className="text-section-title sm:text-hero-title lg:text-hero-title font-bold tracking-tight text-slate-900 leading-tight">
             Sáu giá trị<br />cốt lõi của chúng tôi.
           </h2>
           <p className="text-body-large leading-relaxed text-slate-500 max-w-lg">
@@ -65,7 +65,7 @@ export function CareersCulture() {
           return (
             <div
               key={idx}
-              className="group flex flex-col bg-white p-8 sm:p-10 transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:bg-white"
+              className="group flex flex-col bg-white p-4 sm:p-6 lg:p-8 transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:bg-white"
             >
               <div className="text-blue-600 mb-6 transition-colors duration-200 group-hover:text-[#1769E2]">
                 <Icon className="h-8 w-8" />

@@ -424,19 +424,19 @@ function ChangePasswordFormInner() {
 
     return (
       <div className="text-center">
-        <span className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-[3px] bg-brand/10 text-brand">
-          <CheckCircle2 className="h-7 w-7" aria-hidden="true" />
+        <span className="mx-auto mb-3 sm:mb-5 flex h-10 sm:h-14 w-10 sm:w-14 items-center justify-center rounded-[3px] bg-brand/10 text-brand">
+          <CheckCircle2 className="h-5 sm:h-7 w-5 sm:w-7" aria-hidden="true" />
         </span>
-        <h2 className="text-section-title font-bold tracking-tight text-foreground">
+        <h2 className="text-lg sm:text-section-title font-bold tracking-tight text-foreground">
           {t('changePasswordSuccess')}
         </h2>
-        <p className="mx-auto mt-3 max-w-sm text-body-regular text-muted-foreground">
+        <p className="mx-auto mt-2 sm:mt-3 max-w-sm text-xs sm:text-body-regular text-muted-foreground">
           {t('changePasswordSuccessDesc')}
         </p>
         <button
           type="button"
           onClick={handleBackToLogin}
-          className="mt-6 inline-flex items-center justify-center rounded-[3px] border border-brand bg-brand px-5 py-2.5 text-body-regular font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong"
+          className="mt-4 sm:mt-6 inline-flex items-center justify-center rounded-[3px] border border-brand bg-brand px-3 sm:px-5 py-1.5 sm:py-2.5 text-xs sm:text-body-regular font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong"
         >
           {t('backToLogin')}
         </button>
@@ -449,17 +449,17 @@ function ChangePasswordFormInner() {
 
   return (
     <div>
-      <h2 className="text-section-title font-bold tracking-tight text-foreground">{t('changePassword')}</h2>
-      <p className="mt-2 text-body-regular text-muted-foreground">
+      <h2 className="text-lg sm:text-section-title font-bold tracking-tight text-foreground">{t('changePassword')}</h2>
+      <p className="mt-1 sm:mt-2 text-xs sm:text-body-regular text-muted-foreground">
         {viaEmail ? t('changePasswordEmailDesc') : t('changePasswordDesc')}
       </p>
 
       {viaEmail && (
         <p
           role="status"
-          className="mt-4 flex items-start gap-2 rounded-[3px] border border-brand/30 bg-brand/5 px-3 py-2 text-body-regular text-foreground"
+          className="mt-3 sm:mt-4 flex items-start gap-1.5 sm:gap-2 rounded-[3px] border border-brand/30 bg-brand/5 px-2.5 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-body-regular text-foreground"
         >
-          <Mail className="mt-0.5 h-4 w-4 shrink-0 text-brand" aria-hidden="true" />
+          <Mail className="mt-0.5 h-3.5 sm:h-4 w-3.5 sm:w-4 shrink-0 text-brand" aria-hidden="true" />
           <span>{t('changePasswordEmailHint')}</span>
         </p>
       )}
@@ -467,7 +467,7 @@ function ChangePasswordFormInner() {
       {reason === 'expired' && (
         <p
           role="status"
-          className="mt-4 rounded-[3px] border border-amber-500/30 bg-amber-500/5 px-3 py-2 text-body-regular text-amber-700 dark:text-amber-400"
+          className="mt-3 sm:mt-4 rounded-[3px] border border-amber-500/30 bg-amber-500/5 px-2.5 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-body-regular text-amber-700 dark:text-amber-400"
         >
           {t('changePasswordExpiredPrompt')}
         </p>
@@ -476,7 +476,7 @@ function ChangePasswordFormInner() {
       {formError && !(lockedUntil != null && lockedUntil > now) && (
         <p
           role="alert"
-          className="mt-4 rounded-[3px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-body-regular text-destructive"
+          className="mt-3 sm:mt-4 rounded-[3px] border border-destructive/30 bg-destructive/5 px-2.5 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-body-regular text-destructive"
         >
           {formError}
         </p>
@@ -488,10 +488,10 @@ function ChangePasswordFormInner() {
       {lockedUntil != null && lockedUntil > now && (
         <div
           role="alert"
-          className="mt-4 rounded-[3px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-body-regular text-destructive"
+          className="mt-3 sm:mt-4 rounded-[3px] border border-destructive/30 bg-destructive/5 px-2.5 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-body-regular text-destructive"
         >
           <p className="font-medium">{t('currentPasswordLockedTitle')}</p>
-          <p className="mt-1 text-caption-responsive">
+          <p className="mt-1 text-xs sm:text-caption-responsive">
             {t('currentPasswordLockedWithCountdown', {
               mm: String(Math.max(0, Math.floor((lockedUntil - now) / 60000))).padStart(2, '0'),
               ss: String(Math.max(0, Math.floor(((lockedUntil - now) % 60000) / 1000))).padStart(
@@ -503,15 +503,15 @@ function ChangePasswordFormInner() {
         </div>
       )}
 
-      <form className="mt-6 space-y-3.5" onSubmit={onSubmit} noValidate>
+      <form className="mt-4 sm:mt-6 space-y-2.5 sm:space-y-3.5" onSubmit={onSubmit} noValidate>
         {/* Current password */}
         <div>
-          <label htmlFor="current_password" className="mb-1 block text-body-regular text-foreground">
+          <label htmlFor="current_password" className="mb-1 block text-xs sm:text-body-regular text-foreground">
             {t('currentPasswordLabel')}
           </label>
           <div className="relative">
             <Lock
-              className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground"
+              className="absolute left-2.5 sm:left-3.5 top-1/2 h-3.5 sm:h-4 w-3.5 sm:w-4 -translate-y-1/2 text-muted-foreground"
               aria-hidden="true"
             />
             <input
@@ -526,7 +526,7 @@ function ChangePasswordFormInner() {
               aria-describedby={errors.current_password ? 'current_password-error' : undefined}
               className={cn(
                 inputBase,
-                'pr-11',
+                'px-2.5 sm:px-3 py-2 sm:py-2.5 pl-8 sm:pl-10 pr-8 sm:pr-11 text-xs sm:text-base',
                 errors.current_password ? 'border-destructive' : 'border-border'
               )}
             />
@@ -534,20 +534,20 @@ function ChangePasswordFormInner() {
               type="button"
               onClick={() => setShowPassword((v) => !v)}
               aria-label={showPassword ? t('hidePassword') : t('showPassword')}
-              className="absolute right-4 top-1/2 -translate-y-1/2 text-muted-foreground transition-colors hover:text-foreground"
+              className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 text-muted-foreground transition-colors hover:text-foreground"
             >
-              {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+              {showPassword ? <EyeOff className="h-3.5 sm:h-4 w-3.5 sm:w-4" /> : <Eye className="h-3.5 sm:h-4 w-3.5 sm:w-4" />}
             </button>
           </div>
           {errors.current_password && (
-            <p id="current_password-error" className="mt-1.5 text-caption-responsive text-destructive">
+            <p id="current_password-error" className="mt-1 sm:mt-1.5 text-xs sm:text-caption-responsive text-destructive">
               {errors.current_password}
             </p>
           )}
           {/* Amber "N attempt(s) remaining" hint. Hidden once a
               lockout is active — the red banner takes over. */}
           {attemptsLeft != null && attemptsLeft > 0 && lockedUntil == null && (
-            <p className="mt-1.5 text-caption-responsive text-amber-700 dark:text-amber-400">
+            <p className="mt-1 sm:mt-1.5 text-xs sm:text-caption-responsive text-amber-700 dark:text-amber-400">
               {t('currentPasswordAttemptsLeft', { count: attemptsLeft })}
             </p>
           )}
@@ -555,12 +555,12 @@ function ChangePasswordFormInner() {
 
         {/* New password */}
         <div>
-          <label htmlFor="new_password" className="mb-1 block text-body-regular text-foreground">
+          <label htmlFor="new_password" className="mb-1 block text-xs sm:text-body-regular text-foreground">
             {t('newPasswordLabel')}
           </label>
           <div className="relative">
             <Lock
-              className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground"
+              className="absolute left-2.5 sm:left-3.5 top-1/2 h-3.5 sm:h-4 w-3.5 sm:w-4 -translate-y-1/2 text-muted-foreground"
               aria-hidden="true"
             />
             <input
@@ -575,27 +575,27 @@ function ChangePasswordFormInner() {
               aria-describedby={errors.new_password ? 'new_password-error' : undefined}
               className={cn(
                 inputBase,
-                'pr-11',
+                'px-2.5 sm:px-3 py-2 sm:py-2.5 pl-8 sm:pl-10 pr-8 sm:pr-11 text-xs sm:text-base',
                 errors.new_password ? 'border-destructive' : 'border-border'
               )}
             />
           </div>
           {errors.new_password && (
-            <p id="new_password-error" className="mt-1.5 text-caption-responsive text-destructive">
+            <p id="new_password-error" className="mt-1 sm:mt-1.5 text-xs sm:text-caption-responsive text-destructive">
               {errors.new_password}
             </p>
           )}
-          <p className="mt-1 text-caption-responsive text-muted-foreground">{t('passwordPolicyHint')}</p>
+          <p className="mt-0.5 sm:mt-1 text-xs sm:text-caption-responsive text-muted-foreground">{t('passwordPolicyHint')}</p>
         </div>
 
         {/* Confirm new password */}
         <div>
-          <label htmlFor="confirm_new_password" className="mb-1 block text-body-regular text-foreground">
+          <label htmlFor="confirm_new_password" className="mb-1 block text-xs sm:text-body-regular text-foreground">
             {t('confirmNewPasswordLabel')}
           </label>
           <div className="relative">
             <Lock
-              className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground"
+              className="absolute left-2.5 sm:left-3.5 top-1/2 h-3.5 sm:h-4 w-3.5 sm:w-4 -translate-y-1/2 text-muted-foreground"
               aria-hidden="true"
             />
             <input
@@ -612,12 +612,13 @@ function ChangePasswordFormInner() {
               }
               className={cn(
                 inputBase,
+                'px-2.5 sm:px-3 py-2 sm:py-2.5 pl-8 sm:pl-10 text-xs sm:text-base',
                 errors.confirm_new_password ? 'border-destructive' : 'border-border'
               )}
             />
           </div>
           {errors.confirm_new_password && (
-            <p id="confirm_new_password-error" className="mt-1.5 text-caption-responsive text-destructive">
+            <p id="confirm_new_password-error" className="mt-1 sm:mt-1.5 text-xs sm:text-caption-responsive text-destructive">
               {errors.confirm_new_password}
             </p>
           )}
@@ -626,11 +627,11 @@ function ChangePasswordFormInner() {
         <button
           type="submit"
           disabled={loading || (lockedUntil != null && Date.now() < lockedUntil)}
-          className="flex w-full items-center justify-center gap-2 rounded-[3px] border border-brand bg-brand py-3 text-body-regular font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong disabled:opacity-60"
+          className="flex w-full items-center justify-center gap-1.5 sm:gap-2 rounded-[3px] border border-brand bg-brand py-2 sm:py-3 text-xs sm:text-body-regular font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong disabled:opacity-60"
         >
           {loading ? (
             <>
-              <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
+              <Loader2 className="h-3.5 sm:h-4 w-3.5 sm:w-4 animate-spin" aria-hidden="true" />
               <span>{t('changePasswordSubmitting')}</span>
             </>
           ) : (

@@ -191,12 +191,12 @@ export function RegisterForm() {
     const err = errors[name];
     return (
       <div>
-        <label htmlFor={name} className="mb-1.5 block text-caption-responsive font-semibold text-slate-700">
+        <label htmlFor={name} className="mb-1 sm:mb-1.5 block text-xs sm:text-caption-responsive font-semibold text-slate-700">
           {opts.label} <span className="text-rose-500">*</span>
         </label>
         <div className="relative">
           <Icon
-            className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400 transition-colors"
+            className="absolute left-2.5 sm:left-3.5 top-1/2 h-3.5 sm:h-4 w-3.5 sm:w-4 -translate-y-1/2 text-slate-400 transition-colors"
             aria-hidden="true"
           />
           <Input
@@ -208,11 +208,11 @@ export function RegisterForm() {
             onChange={(e) => set(name, e.target.value)}
             placeholder={opts.placeholder}
             invalid={!!err}
-            className="bg-slate-50/50 pl-11 hover:bg-white focus:bg-white rounded-[3px]"
+            className="bg-slate-50/50 px-2.5 sm:px-3 py-2 sm:py-2.5 pl-8 sm:pl-11 hover:bg-white focus:bg-white rounded-[3px] text-xs sm:text-base"
           />
         </div>
         {err && (
-          <p id={`${name}-error`} className="mt-1.5 text-caption-responsive font-medium text-rose-500">
+          <p id={`${name}-error`} className="mt-1 sm:mt-1.5 text-xs sm:text-caption-responsive font-medium text-rose-500">
             {err}
           </p>
         )}
@@ -223,39 +223,39 @@ export function RegisterForm() {
   return (
     <div className="flex h-full flex-col justify-between">
       <div>
-        <div className="mb-4 flex justify-end">
+        <div className="mb-3 sm:mb-4 flex justify-end">
           <LocaleSwitcher />
         </div>
 
-        <div className="relative mb-6 flex items-center border-b border-slate-100">
+        <div className="relative mb-4 sm:mb-6 flex items-center border-b border-slate-100">
           <Link
             href="/login"
-            className="flex-1 py-3 text-center text-body-regular font-medium text-slate-400 transition-colors hover:text-slate-700"
+            className="flex-1 py-2 sm:py-3 text-center text-caption-responsive sm:text-body-regular font-medium text-slate-400 transition-colors hover:text-slate-700"
           >
             Đăng nhập
           </Link>
           <Link
             href="/register"
-            className="relative flex-1 border-b-2 border-brand py-3 text-center text-body-regular font-bold text-brand transition-colors"
+            className="relative flex-1 border-b-2 border-brand py-2 sm:py-3 text-center text-caption-responsive sm:text-body-regular font-bold text-brand transition-colors"
           >
             Đăng ký tài khoản
           </Link>
         </div>
 
-        <div className="space-y-1">
-          <h2 className="text-section-title font-bold tracking-tight text-slate-900">
+        <div className="space-y-0.5 sm:space-y-1">
+          <h2 className="text-lg sm:text-section-title font-bold tracking-tight text-slate-900">
             {t('tabRegister')}
           </h2>
-          <p className="text-caption-responsive leading-relaxed text-slate-500">
+          <p className="text-xs sm:text-caption-responsive leading-relaxed text-slate-500">
             {t('registerSubtitle')}
           </p>
         </div>
 
-        <form className="mt-6 space-y-3.5" onSubmit={onSubmit} noValidate>
+        <form className="mt-4 sm:mt-6 space-y-2.5 sm:space-y-3.5" onSubmit={onSubmit} noValidate>
           {formError && (
             <p
               role="alert"
-              className="rounded-[3px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-body-regular text-destructive"
+              className="rounded-[3px] border border-destructive/30 bg-destructive/5 px-2.5 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-body-regular text-destructive"
             >
               {formError}
             </p>
@@ -290,12 +290,12 @@ export function RegisterForm() {
 
           {/* Password */}
           <div>
-            <label htmlFor="password" className="mb-1.5 block text-caption-responsive font-semibold text-slate-700">
+            <label htmlFor="password" className="mb-1 sm:mb-1.5 block text-xs sm:text-caption-responsive font-semibold text-slate-700">
               {t('passwordLabel')} <span className="text-rose-500">*</span>
             </label>
             <div className="relative">
               <Lock
-                className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400 transition-colors"
+                className="absolute left-2.5 sm:left-3.5 top-1/2 h-3.5 sm:h-4 w-3.5 sm:w-4 -translate-y-1/2 text-slate-400 transition-colors"
                 aria-hidden="true"
               />
               <Input
@@ -307,7 +307,7 @@ export function RegisterForm() {
                 onChange={(e) => set('password', e.target.value)}
                 placeholder={t('passwordPlaceholder')}
                 invalid={!!errors.password}
-                className="bg-slate-50/50 pl-11 pr-11 hover:bg-white focus:bg-white rounded-[3px]"
+                className="bg-slate-50/50 px-2.5 sm:px-3 py-2 sm:py-2.5 pl-8 sm:pl-11 pr-8 sm:pr-11 hover:bg-white focus:bg-white rounded-[3px] text-xs sm:text-base"
               />
               <Button
                 type="button"
@@ -315,17 +315,17 @@ export function RegisterForm() {
                 aria-label={showPassword ? t('hidePassword') : t('showPassword')}
                 variant="ghost"
                 size="icon"
-                className="absolute right-2.5 top-1/2 -translate-y-1/2 rounded-[3px] text-slate-400 hover:bg-slate-100 hover:text-slate-600"
+                className="absolute right-1.5 sm:right-2.5 top-1/2 -translate-y-1/2 rounded-[3px] text-slate-400 hover:bg-slate-100 hover:text-slate-600 h-8 w-8 sm:h-10 sm:w-10"
               >
-                {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
+                {showPassword ? <EyeOff className="h-3.5 sm:h-4 w-3.5 sm:w-4" /> : <Eye className="h-3.5 sm:h-4 w-3.5 sm:w-4" />}
               </Button>
             </div>
             {errors.password && (
-              <p id="password-error" className="mt-1.5 text-caption-responsive font-medium text-rose-500">
+              <p id="password-error" className="mt-1 sm:mt-1.5 text-xs sm:text-caption-responsive font-medium text-rose-500">
                 {errors.password}
               </p>
             )}
-            <p className="mt-1 text-caption-responsive text-slate-500">{t('passwordPolicyHint')}</p>
+            <p className="mt-0.5 sm:mt-1 text-xs sm:text-caption-responsive text-slate-500">{t('passwordPolicyHint')}</p>
           </div>
 
           {field('confirm_password', {
@@ -338,17 +338,17 @@ export function RegisterForm() {
 
           {/* Terms */}
           <div>
-            <label className="flex items-start gap-2.5 text-caption-responsive text-slate-500">
+            <label className="flex items-start gap-1.5 sm:gap-2.5 text-xs sm:text-caption-responsive text-slate-500">
               <input
                 type="checkbox"
                 checked={agree}
                 onChange={(e) => setAgree(e.target.checked)}
-                className="mt-0.5 h-4 w-4 accent-brand rounded-[3px]"
+                className="mt-0.5 h-3.5 sm:h-4 w-3.5 sm:w-4 accent-brand rounded-[3px]"
                 aria-invalid={!!errors.agree}
               />
               <span>{t('agreeTerms')}</span>
             </label>
-            {errors.agree && <p className="mt-1.5 text-caption-responsive font-medium text-rose-500">{errors.agree}</p>}
+            {errors.agree && <p className="mt-1 sm:mt-1.5 text-xs sm:text-caption-responsive font-medium text-rose-500">{errors.agree}</p>}
           </div>
 
           <Button
@@ -356,7 +356,7 @@ export function RegisterForm() {
             disabled={loading}
             variant="primary"
             fullWidth
-            className="group py-3.5 text-body-regular font-bold shadow-brand/20 hover:shadow-lg hover:shadow-brand/30 active:scale-[0.99] rounded-[3px]"
+            className="group py-2 sm:py-3.5 text-xs sm:text-body-regular font-bold shadow-brand/20 hover:shadow-lg hover:shadow-brand/30 active:scale-[0.99] rounded-[3px]"
           >
             {loading ? (
               <>
@@ -372,7 +372,7 @@ export function RegisterForm() {
           </Button>
         </form>
 
-        <p className="mt-6 text-center text-body-regular text-muted-foreground">
+        <p className="mt-4 sm:mt-6 text-center text-xs sm:text-body-regular text-muted-foreground">
           {t('haveAccount')}{' '}
           <Link href="/login" className="font-medium text-brand hover:underline">
             {t('loginNow')}

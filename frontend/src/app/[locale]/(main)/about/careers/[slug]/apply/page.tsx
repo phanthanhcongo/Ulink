@@ -13,11 +13,11 @@ export default async function ApplyJobPage({
   setRequestLocale(locale);
 
   return (
-    <div className="w-full bg-slate-50/50 min-h-screen py-4">
+    <div className="w-full bg-slate-50/50 min-h-screen py-4 sm:py-6 lg:py-8">
       <div className="page-container">
         {/* Breadcrumbs */}
         <Breadcrumb
-          className="px-0 py-0 mx-0 max-w-none mb-4"
+          className="px-0 py-0 mx-0 max-w-none mb-3 sm:mb-4"
           items={[
             { label: 'Trang chủ', href: '/' },
             { label: 'Tuyển dụng', href: '/about/careers' },
@@ -30,7 +30,7 @@ export default async function ApplyJobPage({
         <ApplyHeader />
 
         {/* Main 2 Columns Layout */}
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-12">
+        <div className="grid grid-cols-1 gap-4 sm:gap-6 lg:gap-8 lg:grid-cols-12">
           <div className="lg:col-span-8">
             <ApplyForm />
           </div>

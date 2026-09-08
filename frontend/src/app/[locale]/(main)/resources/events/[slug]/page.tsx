@@ -88,7 +88,7 @@ export default async function EventDetailPage({ params }: Props) {
   return (
     <main className="min-h-screen bg-white">
       {/* Breadcrumb */}
-      <div className="page-container pt-6">
+      <div className="page-container pt-3 sm:pt-4 md:pt-6">
         <Breadcrumb
           className="px-0 py-0 mx-0 max-w-none"
           items={[
@@ -101,8 +101,8 @@ export default async function EventDetailPage({ params }: Props) {
       </div>
 
       {/* Main Grid Section */}
-      <section className="page-container pt-8 pb-16">
-        <div className="grid grid-cols-1 lg:grid-cols-[1.8fr_1fr] gap-10 items-start">
+      <section className="page-container pt-6 sm:pt-8 md:pt-10 lg:pt-12 pb-8 sm:pb-12 md:pb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-[1.8fr_1fr] gap-6 sm:gap-8 md:gap-10 items-start">
 
           {/* Left Content Column */}
           <div>
@@ -119,11 +119,11 @@ export default async function EventDetailPage({ params }: Props) {
 
             {/* Sponsor/Partner Logos Row */}
             {event.sponsors && event.sponsors.length > 0 && (
-              <div className="mt-6 flex flex-wrap items-center justify-around gap-6 border border-slate-200 bg-slate-50/50 h-[72px] px-8 rounded-[3px] shadow-sm select-none">
+              <div className="mt-4 sm:mt-5 md:mt-6 flex flex-wrap items-center justify-center sm:justify-around gap-3 sm:gap-4 md:gap-6 border border-slate-200 bg-slate-50/50 px-3 sm:px-4 md:px-8 py-4 sm:py-5 md:py-6 rounded-[3px] shadow-sm select-none min-h-[60px] sm:min-h-[70px] md:h-[72px]">
                 {event.sponsors.map((sponsor) => (
                   <div key={sponsor}>
                     {SPONSOR_LOGOS[sponsor] || (
-                      <span className="text-caption-responsive font-bold tracking-tight text-slate-400 uppercase">
+                      <span className="text-xs sm:text-caption-responsive font-bold tracking-tight text-slate-400 uppercase">
                         {sponsor}
                       </span>
                     )}
@@ -133,17 +133,17 @@ export default async function EventDetailPage({ params }: Props) {
             )}
 
             {/* Overview Section */}
-            <div className="mt-8">
-              <h2 className="text-section-title font-black text-slate-900 tracking-tight text-left">Overview</h2>
-              <div className="mt-4 text-slate-600 leading-relaxed text-body-regular text-justify whitespace-pre-line font-sans">
+            <div className="mt-6 sm:mt-7 md:mt-8">
+              <h2 className="text-lg sm:text-xl md:text-2xl font-black text-slate-900 tracking-tight text-left">Overview</h2>
+              <div className="mt-3 sm:mt-4 text-slate-600 leading-relaxed text-xs sm:text-sm md:text-base text-justify whitespace-pre-line font-sans">
                 {event.overview}
               </div>
             </div>
 
             {/* Thời gian tổ chức */}
-            <div className="mt-10 border-t border-slate-100 pt-8">
-              <h2 className="text-section-title font-black text-slate-900 tracking-tight text-left">Thời gian tổ chức</h2>
-              <div className="mt-4 text-slate-600 text-body-regular space-y-2 font-sans">
+            <div className="mt-6 sm:mt-8 md:mt-10 border-t border-slate-100 pt-6 sm:pt-7 md:pt-8">
+              <h2 className="text-lg sm:text-xl md:text-2xl font-black text-slate-900 tracking-tight text-left">Thời gian tổ chức</h2>
+              <div className="mt-3 sm:mt-4 text-slate-600 text-xs sm:text-sm md:text-base space-y-1.5 sm:space-y-2 font-sans">
                 <p className="font-semibold text-slate-900">
                   Ngày: <span className="font-normal text-slate-600">{event.date}</span>
                 </p>
@@ -154,9 +154,9 @@ export default async function EventDetailPage({ params }: Props) {
             </div>
 
             {/* Địa điểm tổ chức */}
-            <div className="mt-10 border-t border-slate-100 pt-8">
-              <h2 className="text-section-title font-black text-slate-900 tracking-tight text-left">Địa điểm tổ chức</h2>
-              <div className="mt-4 text-slate-600 text-body-regular space-y-2 font-sans">
+            <div className="mt-6 sm:mt-8 md:mt-10 border-t border-slate-100 pt-6 sm:pt-7 md:pt-8">
+              <h2 className="text-lg sm:text-xl md:text-2xl font-black text-slate-900 tracking-tight text-left">Địa điểm tổ chức</h2>
+              <div className="mt-3 sm:mt-4 text-slate-600 text-xs sm:text-sm md:text-base space-y-1.5 sm:space-y-2 font-sans">
                 <p className="font-bold text-slate-900">
                   {event.locationName || event.location}
                 </p>
@@ -170,20 +170,20 @@ export default async function EventDetailPage({ params }: Props) {
 
             {/* Agenda Section */}
             {event.agenda && event.agenda.length > 0 && (
-              <div className="mt-10 border-t border-slate-100 pt-8">
-                <h2 className="text-section-title font-black text-slate-900 tracking-tight text-left">Agenda chương trình</h2>
-                <div className="mt-6 space-y-4 font-sans">
+              <div className="mt-6 sm:mt-8 md:mt-10 border-t border-slate-100 pt-6 sm:pt-7 md:pt-8">
+                <h2 className="text-lg sm:text-xl md:text-2xl font-black text-slate-900 tracking-tight text-left">Agenda chương trình</h2>
+                <div className="mt-4 sm:mt-5 md:mt-6 space-y-3 sm:space-y-4 font-sans">
                   {event.agenda.map((item, index) => (
                     <div
                       key={`${item.time}-${index}`}
-                      className="flex gap-4 rounded-[3px] border border-slate-100 p-4 bg-slate-50/50"
+                      className="flex flex-col sm:flex-row gap-3 sm:gap-4 rounded-[3px] border border-slate-100 p-3 sm:p-4 bg-slate-50/50"
                     >
-                      <div className="min-w-[92px] text-body-regular font-bold text-sky-700">{item.time}</div>
+                      <div className="min-w-[70px] sm:min-w-[92px] text-xs sm:text-sm md:text-base font-bold text-sky-700">{item.time}</div>
                       <div className="flex-1">
-                        <h4 className="text-body-regular font-bold text-slate-900">
+                        <h4 className="text-xs sm:text-sm md:text-base font-bold text-slate-900">
                           {item.title}
                         </h4>
-                        <p className="mt-1 text-caption-responsive leading-relaxed text-slate-500">
+                        <p className="mt-0.5 sm:mt-1 text-xs sm:text-caption-responsive leading-relaxed text-slate-500">
                           {item.description}
                         </p>
                       </div>
@@ -195,13 +195,13 @@ export default async function EventDetailPage({ params }: Props) {
 
             {/* Benefits Section */}
             {event.benefits && event.benefits.length > 0 && (
-              <div className="mt-10 border-t border-slate-100 pt-8">
-                <h2 className="text-section-title font-black text-slate-900 tracking-tight text-left">Quyền lợi người tham gia</h2>
-                <div className="mt-6 grid gap-4 sm:grid-cols-2 font-sans">
+              <div className="mt-6 sm:mt-8 md:mt-10 border-t border-slate-100 pt-6 sm:pt-7 md:pt-8">
+                <h2 className="text-lg sm:text-xl md:text-2xl font-black text-slate-900 tracking-tight text-left">Quyền lợi người tham gia</h2>
+                <div className="mt-4 sm:mt-5 md:mt-6 grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 font-sans">
                   {event.benefits.map((item) => (
                     <div
                       key={item}
-                      className="rounded-[3px] border border-slate-100 bg-slate-50/50 p-4 text-caption-responsive leading-relaxed text-slate-600"
+                      className="rounded-[3px] border border-slate-100 bg-slate-50/50 p-3 sm:p-4 text-xs sm:text-caption-responsive leading-relaxed text-slate-600"
                     >
                       {item}
                     </div>
@@ -212,15 +212,15 @@ export default async function EventDetailPage({ params }: Props) {
 
             {/* Speakers Section */}
             {event.speakers && event.speakers.length > 0 && (
-              <div className="mt-10 border-t border-slate-100 pt-8">
-                <h2 className="text-section-title font-black text-slate-900 tracking-tight text-left">Speakers</h2>
-                <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6 font-sans">
+              <div className="mt-6 sm:mt-8 md:mt-10 border-t border-slate-100 pt-6 sm:pt-7 md:pt-8">
+                <h2 className="text-lg sm:text-xl md:text-2xl font-black text-slate-900 tracking-tight text-left">Speakers</h2>
+                <div className="mt-4 sm:mt-5 md:mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 md:gap-6 font-sans">
                   {event.speakers.map((speaker) => (
                     <div
                       key={speaker.name}
-                      className="flex flex-col items-center text-center p-6 bg-white border border-slate-100 rounded-[3px] shadow-sm card-hover-standard"
+                      className="flex flex-col items-center text-center p-4 sm:p-5 md:p-6 bg-white border border-slate-100 rounded-[3px] shadow-sm card-hover-standard"
                     >
-                      <div className="relative h-20 w-20 overflow-hidden rounded-full bg-slate-100 border border-slate-100">
+                      <div className="relative h-16 sm:h-18 md:h-20 w-16 sm:w-18 md:w-20 overflow-hidden rounded-full bg-slate-100 border border-slate-100 shrink-0">
                         {speaker.avatar ? (
                           <Image
                             src={speaker.avatar}
@@ -229,15 +229,15 @@ export default async function EventDetailPage({ params }: Props) {
                             className="object-cover"
                           />
                         ) : (
-                          <div className="flex h-full w-full items-center justify-center font-bold text-slate-400 bg-slate-200">
+                          <div className="flex h-full w-full items-center justify-center font-bold text-slate-400 bg-slate-200 text-sm md:text-base">
                             {speaker.name[0]}
                           </div>
                         )}
                       </div>
-                      <h3 className="mt-4 font-bold text-slate-900 text-body-regular">{speaker.name}</h3>
-                      <p className="mt-1 text-caption-responsive text-sky-700 font-semibold leading-none">{speaker.title}</p>
-                      <p className="text-caption-responsive text-slate-400 uppercase font-bold tracking-tight mt-1">{speaker.company}</p>
-                      <p className="mt-4 text-caption-responsive text-slate-500 leading-relaxed text-justify">{speaker.bio}</p>
+                      <h3 className="mt-2 sm:mt-3 md:mt-4 font-bold text-slate-900 text-xs sm:text-sm md:text-base line-clamp-2">{speaker.name}</h3>
+                      <p className="mt-0.5 sm:mt-1 text-xs sm:text-caption-responsive text-sky-700 font-semibold leading-none line-clamp-1">{speaker.title}</p>
+                      <p className="text-xs sm:text-caption-responsive text-slate-400 uppercase font-bold tracking-tight mt-0.5 sm:mt-1 line-clamp-1">{speaker.company}</p>
+                      <p className="mt-2 sm:mt-3 md:mt-4 text-xs sm:text-caption-responsive text-slate-500 leading-relaxed text-center line-clamp-3">{speaker.bio}</p>
                     </div>
                   ))}
                 </div>
@@ -246,15 +246,15 @@ export default async function EventDetailPage({ params }: Props) {
 
             {/* Host Section */}
             {event.hosts && event.hosts.length > 0 && (
-              <div className="mt-10 border-t border-slate-100 pt-8">
-                <h2 className="text-section-title font-black text-slate-900 tracking-tight text-left">Host</h2>
-                <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-6 font-sans">
+              <div className="mt-6 sm:mt-8 md:mt-10 border-t border-slate-100 pt-6 sm:pt-7 md:pt-8">
+                <h2 className="text-lg sm:text-xl md:text-2xl font-black text-slate-900 tracking-tight text-left">Host</h2>
+                <div className="mt-4 sm:mt-5 md:mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 md:gap-6 font-sans">
                   {event.hosts.map((host) => (
                     <div
                       key={host.name}
-                      className="flex flex-col items-center text-center p-6 bg-white border border-slate-100 rounded-[3px] shadow-sm card-hover-standard"
+                      className="flex flex-col items-center text-center p-4 sm:p-5 md:p-6 bg-white border border-slate-100 rounded-[3px] shadow-sm card-hover-standard"
                     >
-                      <div className="relative h-20 w-20 overflow-hidden rounded-full bg-slate-100 border border-slate-100">
+                      <div className="relative h-16 sm:h-18 md:h-20 w-16 sm:w-18 md:w-20 overflow-hidden rounded-full bg-slate-100 border border-slate-100 shrink-0">
                         {host.avatar ? (
                           <Image
                             src={host.avatar}
@@ -263,15 +263,15 @@ export default async function EventDetailPage({ params }: Props) {
                             className="object-cover"
                           />
                         ) : (
-                          <div className="flex h-full w-full items-center justify-center font-bold text-slate-400 bg-slate-200">
+                          <div className="flex h-full w-full items-center justify-center font-bold text-slate-400 bg-slate-200 text-sm md:text-base">
                             {host.name[0]}
                           </div>
                         )}
                       </div>
-                      <h3 className="mt-4 font-bold text-slate-900 text-body-regular">{host.name}</h3>
-                      <p className="mt-1 text-caption-responsive text-sky-700 font-semibold leading-none">{host.title}</p>
-                      <p className="text-caption-responsive text-slate-400 uppercase font-bold tracking-tight mt-1">{host.company}</p>
-                      <p className="mt-4 text-caption-responsive text-slate-500 leading-relaxed text-justify">{host.bio}</p>
+                      <h3 className="mt-2 sm:mt-3 md:mt-4 font-bold text-slate-900 text-xs sm:text-sm md:text-base line-clamp-2">{host.name}</h3>
+                      <p className="mt-0.5 sm:mt-1 text-xs sm:text-caption-responsive text-sky-700 font-semibold leading-none line-clamp-1">{host.title}</p>
+                      <p className="text-xs sm:text-caption-responsive text-slate-400 uppercase font-bold tracking-tight mt-0.5 sm:mt-1 line-clamp-1">{host.company}</p>
+                      <p className="mt-2 sm:mt-3 md:mt-4 text-xs sm:text-caption-responsive text-slate-500 leading-relaxed text-center line-clamp-3">{host.bio}</p>
                     </div>
                   ))}
                 </div>
@@ -279,10 +279,10 @@ export default async function EventDetailPage({ params }: Props) {
             )}
 
             {/* Organizer Section */}
-            <div className="mt-10 border-t border-slate-100 pt-8">
-              <h2 className="text-section-title font-black text-slate-900 tracking-tight text-left">Organizer</h2>
-              <div className="mt-6 flex flex-col sm:flex-row gap-6 p-6 border border-slate-100 rounded-[3px] bg-white shadow-xs items-start font-sans">
-                <div className="relative h-24 w-24 overflow-hidden flex items-center justify-center">
+            <div className="mt-6 sm:mt-8 md:mt-10 border-t border-slate-100 pt-6 sm:pt-7 md:pt-8">
+              <h2 className="text-lg sm:text-xl md:text-2xl font-black text-slate-900 tracking-tight text-left">Organizer</h2>
+              <div className="mt-4 sm:mt-5 md:mt-6 flex flex-col sm:flex-row gap-4 sm:gap-5 md:gap-6 p-4 sm:p-5 md:p-6 border border-slate-100 rounded-[3px] bg-white shadow-xs items-start font-sans">
+                <div className="relative h-20 sm:h-22 md:h-24 w-20 sm:w-22 md:w-24 overflow-hidden flex items-center justify-center shrink-0">
                   {event.organizer.logo ? (
                     <Image
                       src={event.organizer.logo}
@@ -291,15 +291,15 @@ export default async function EventDetailPage({ params }: Props) {
                       className="object-contain p-2"
                     />
                   ) : (
-                    <div className="font-bold text-blue-600">{event.organizer.name[0]}</div>
+                    <div className="font-bold text-blue-600 text-xl">{event.organizer.name[0]}</div>
                   )}
                 </div>
                 <div>
-                  <h3 className="font-bold text-slate-900">{event.organizer.name}</h3>
+                  <h3 className="font-bold text-slate-900 text-sm md:text-base">{event.organizer.name}</h3>
                   {event.organizer.role && (
-                    <p className="text-caption-responsive text-slate-400 font-semibold mt-0.5">{event.organizer.role}</p>
+                    <p className="text-xs sm:text-caption-responsive text-slate-400 font-semibold mt-0.5">{event.organizer.role}</p>
                   )}
-                  <p className="mt-3 text-caption-responsive text-slate-600 leading-relaxed text-justify">
+                  <p className="mt-2 sm:mt-3 text-xs sm:text-caption-responsive text-slate-600 leading-relaxed">
                     {event.organizer.description}
                   </p>
                 </div>

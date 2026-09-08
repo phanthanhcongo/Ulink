@@ -270,7 +270,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
   return (
     <div className="admin-page">
       {/* Header and Add Button */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-100 pb-6 mb-8">
+      <div className="admin-header border-b border-slate-100 pb-6 mb-6 md:mb-8">
         <div>
           <span className="text-caption-responsive uppercase text-slate-400 font-bold tracking-wider">
             Hệ thống danh mục SKUs
@@ -291,7 +291,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
             setSkuModalOpen(true);
             setFormError('');
           }}
-          className="inline-flex h-11 items-center justify-center gap-2 rounded-[3px] bg-blue-600 px-5 text-caption-responsive font-bold text-white shadow-sm hover:bg-blue-700 transition-colors shrink-0"
+          className="admin-button admin-button-primary w-full sm:w-auto"
         >
           <Plus className="h-4 w-4" />
           Thêm mã SKU mới
@@ -299,7 +299,7 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
       </div>
 
       {/* Filter Toolbar */}
-      <div className="bg-white border border-slate-100 rounded-[3px] p-5 shadow-sm mb-8 flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between">
+      <div className="bg-white border border-slate-100 rounded-[3px] p-4 sm:p-5 md:p-6 shadow-sm mb-6 md:mb-8 admin-filter-bar">
         {/* Search Input */}
         <div className="relative flex-1">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />

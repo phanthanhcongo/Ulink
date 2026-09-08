@@ -34,7 +34,12 @@ export function AdminLayoutWrapper({ children }: { children: React.ReactNode }) 
           mounted && isCollapsed ? "md:pl-20" : "md:pl-72"
         )}
       >
-        <div className="flex-1 overflow-y-auto">{children}</div>
+        <div className="flex-1 overflow-y-auto w-full">
+          {/* Add responsive container for content */}
+          <div className="w-full">
+            {children}
+          </div>
+        </div>
       </main>
     </div>
   );

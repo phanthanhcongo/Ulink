@@ -115,25 +115,25 @@ export function MySampleRequestDetail({ id, locale }: Props) {
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] bg-repeat" />
         </div>
-        <div className="relative container mx-auto px-4 py-8 lg:py-10">
+        <div className="relative container mx-auto px-3 sm:px-4 md:px-6 py-6 sm:py-7 md:py-8 lg:py-10">
           {/* Back link */}
           <button
             onClick={() => router.push(`/${locale}/sample-requests`)}
-            className="inline-flex items-center gap-2 text-body-regular text-indigo-200 hover:text-white transition-colors mb-5"
+            className="inline-flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm md:text-base text-indigo-200 hover:text-white transition-colors mb-3 sm:mb-4 md:mb-5"
           >
-            <ArrowLeft className="h-4 w-4" />
+            <ArrowLeft className="h-3 sm:h-4 w-3 sm:w-4 shrink-0" />
             {t('backToList')}
           </button>
 
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
             <div>
-              <h1 className="text-section-title font-bold text-white flex items-center gap-3">
+              <h1 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white flex items-center gap-2 sm:gap-3 flex-wrap">
                 <span>{t('detail')}</span>
-                <span className="text-indigo-300 font-mono text-card-title">#{request.id}</span>
+                <span className="text-indigo-300 font-mono text-sm sm:text-base md:text-lg lg:text-xl">#{request.id}</span>
               </h1>
               {request.date_created && (
-                <div className="flex items-center gap-2 mt-2 text-body-regular text-indigo-200">
-                  <Calendar className="h-3.5 w-3.5" />
+                <div className="flex items-center gap-1.5 sm:gap-2 mt-1.5 sm:mt-2 text-xs sm:text-sm md:text-base text-indigo-200">
+                  <Calendar className="h-3 sm:h-3.5 w-3 sm:w-3.5 shrink-0" />
                   <span>
                     {new Date(request.date_created).toLocaleDateString('vi-VN', {
                       day: '2-digit',
@@ -150,33 +150,33 @@ export function MySampleRequestDetail({ id, locale }: Props) {
             {/* Status badge */}
             <div
               className={cn(
-                'inline-flex items-center gap-2 rounded-[3px] border px-5 py-2.5',
+                'inline-flex items-center gap-1.5 sm:gap-2 rounded-[3px] border px-3 sm:px-4 md:px-5 py-1.5 sm:py-2 md:py-2.5 shrink-0',
                 sc?.bgClasses
               )}
             >
-              <StatusIcon className={cn('h-5 w-5', sc?.classes)} />
-              <span className={cn('text-body-regular font-bold', sc?.classes)}>{sc?.label}</span>
+              <StatusIcon className={cn('h-4 sm:h-5 w-4 sm:w-5', sc?.classes)} />
+              <span className={cn('text-xs sm:text-sm md:text-base font-bold', sc?.classes)}>{sc?.label}</span>
             </div>
           </div>
         </div>
       </section>
 
       {/* Main content */}
-      <div className="container mx-auto px-4 py-6 -mt-2">
-        <div className="space-y-5">
+      <div className="container mx-auto px-3 sm:px-4 md:px-6 py-4 sm:py-5 md:py-6 -mt-2">
+        <div className="space-y-3 sm:space-y-4 md:space-y-5">
           {/* Status message (approval note or reject reason) */}
           {status === 'approved' && request.approval_note && (
             <div
               className={cn(
-                'rounded-[3px] border border-l-4 p-5 bg-emerald-50 border-emerald-200',
+                'rounded-[3px] border border-l-4 p-3 sm:p-4 md:p-5 bg-emerald-50 border-emerald-200',
                 sc?.borderColor
               )}
             >
-              <div className="flex items-start gap-3">
-                <CheckCircle2 className="h-5 w-5 text-emerald-600 mt-0.5 shrink-0" />
+              <div className="flex items-start gap-2 sm:gap-3">
+                <CheckCircle2 className="h-4 sm:h-5 w-4 sm:w-5 text-emerald-600 mt-0.5 shrink-0" />
                 <div>
-                  <p className="text-body-regular font-semibold text-emerald-800">{t('approvalNote')}</p>
-                  <p className="text-body-regular text-emerald-700 mt-1 leading-relaxed">
+                  <p className="text-xs sm:text-sm md:text-base font-semibold text-emerald-800">{t('approvalNote')}</p>
+                  <p className="text-xs sm:text-sm md:text-base text-emerald-700 mt-0.5 sm:mt-1 leading-relaxed">
                     {request.approval_note}
                   </p>
                 </div>
@@ -187,15 +187,15 @@ export function MySampleRequestDetail({ id, locale }: Props) {
           {status === 'rejected' && request.reject_reason && (
             <div
               className={cn(
-                'rounded-[3px] border border-l-4 p-5 bg-rose-50 border-rose-200',
+                'rounded-[3px] border border-l-4 p-3 sm:p-4 md:p-5 bg-rose-50 border-rose-200',
                 sc?.borderColor
               )}
             >
-              <div className="flex items-start gap-3">
-                <XCircle className="h-5 w-5 text-rose-600 mt-0.5 shrink-0" />
+              <div className="flex items-start gap-2 sm:gap-3">
+                <XCircle className="h-4 sm:h-5 w-4 sm:w-5 text-rose-600 mt-0.5 shrink-0" />
                 <div>
-                  <p className="text-body-regular font-semibold text-rose-800">{t('rejectReason')}</p>
-                  <p className="text-body-regular text-rose-700 mt-1 leading-relaxed">
+                  <p className="text-xs sm:text-sm md:text-base font-semibold text-rose-800">{t('rejectReason')}</p>
+                  <p className="text-xs sm:text-sm md:text-base text-rose-700 mt-0.5 sm:mt-1 leading-relaxed">
                     {request.reject_reason}
                   </p>
                 </div>
@@ -204,25 +204,25 @@ export function MySampleRequestDetail({ id, locale }: Props) {
           )}
 
           {/* Two-column layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-3 sm:gap-4 md:gap-5">
             {/* Left column: Product + Contact */}
-            <div className="lg:col-span-2 space-y-5">
+            <div className="lg:col-span-2 space-y-3 sm:space-y-4 md:space-y-5">
               {/* Product info card */}
               <div className="rounded-[3px] border border-gray-200 bg-white shadow-sm overflow-hidden">
-                <div className="flex items-center gap-2 px-5 py-3 border-b border-gray-100 bg-gray-50/50">
-                  <Package className="h-4 w-4 text-indigo-600" />
-                  <h2 className="text-body-regular font-semibold text-gray-900">{t('product')}</h2>
+                <div className="flex items-center gap-2 px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 md:py-3 border-b border-gray-100 bg-gray-50/50">
+                  <Package className="h-3.5 sm:h-4 w-3.5 sm:w-4 text-indigo-600 shrink-0" />
+                  <h2 className="text-xs sm:text-sm md:text-base font-semibold text-gray-900">{t('product')}</h2>
                 </div>
-                <div className="px-5 py-4">
-                  <p className="text-body-regular font-semibold text-gray-900">{request.product_slug}</p>
+                <div className="px-3 sm:px-4 md:px-5 py-3 sm:py-4">
+                  <p className="text-xs sm:text-sm md:text-base font-semibold text-gray-900">{request.product_slug}</p>
                   {request.skus && request.skus.length > 0 && (
-                    <div className="flex flex-wrap gap-2 mt-3">
+                    <div className="flex flex-wrap gap-1.5 sm:gap-2 mt-2 sm:mt-3">
                       {request.skus.map((sku) => (
                         <span
                           key={sku}
-                          className="inline-flex items-center gap-1 rounded-[3px] bg-indigo-50 border border-indigo-100 px-2.5 py-1 text-caption-responsive font-mono text-indigo-700"
+                          className="inline-flex items-center gap-0.5 sm:gap-1 rounded-[3px] bg-indigo-50 border border-indigo-100 px-1.5 sm:px-2.5 py-0.5 sm:py-1 text-xs sm:text-caption-responsive font-mono text-indigo-700"
                         >
-                          <Hash className="h-3 w-3 opacity-50" />
+                          <Hash className="h-2.5 sm:h-3 w-2.5 sm:w-3 opacity-50" />
                           {sku}
                         </span>
                       ))}
@@ -233,12 +233,12 @@ export function MySampleRequestDetail({ id, locale }: Props) {
 
               {/* Contact info card */}
               <div className="rounded-[3px] border border-gray-200 bg-white shadow-sm overflow-hidden">
-                <div className="flex items-center gap-2 px-5 py-3 border-b border-gray-100 bg-gray-50/50">
-                  <User className="h-4 w-4 text-indigo-600" />
-                  <h2 className="text-body-regular font-semibold text-gray-900">{t('contactInfo')}</h2>
+                <div className="flex items-center gap-2 px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 md:py-3 border-b border-gray-100 bg-gray-50/50">
+                  <User className="h-3.5 sm:h-4 w-3.5 sm:w-4 text-indigo-600 shrink-0" />
+                  <h2 className="text-xs sm:text-sm md:text-base font-semibold text-gray-900">{t('contactInfo')}</h2>
                 </div>
-                <div className="px-5 py-4">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="px-3 sm:px-4 md:px-5 py-3 sm:py-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                     <InfoItem icon={User} label={t('contactName')} value={request.contact_name} />
                     <InfoItem icon={Mail} label={t('email')} value={request.email} />
                     <InfoItem icon={Building2} label={t('company')} value={request.company} />
@@ -250,12 +250,12 @@ export function MySampleRequestDetail({ id, locale }: Props) {
               {/* Message card (if present) */}
               {request.message && (
                 <div className="rounded-[3px] border border-gray-200 bg-white shadow-sm overflow-hidden">
-                  <div className="flex items-center gap-2 px-5 py-3 border-b border-gray-100 bg-gray-50/50">
-                    <MessageSquare className="h-4 w-4 text-indigo-600" />
-                    <h2 className="text-body-regular font-semibold text-gray-900">{t('message')}</h2>
+                  <div className="flex items-center gap-2 px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 md:py-3 border-b border-gray-100 bg-gray-50/50">
+                    <MessageSquare className="h-3.5 sm:h-4 w-3.5 sm:w-4 text-indigo-600 shrink-0" />
+                    <h2 className="text-xs sm:text-sm md:text-base font-semibold text-gray-900">{t('message')}</h2>
                   </div>
-                  <div className="px-5 py-4">
-                    <p className="text-body-regular text-gray-700 leading-relaxed whitespace-pre-wrap">
+                  <div className="px-3 sm:px-4 md:px-5 py-3 sm:py-4">
+                    <p className="text-xs sm:text-sm md:text-base text-gray-700 leading-relaxed whitespace-pre-wrap">
                       {request.message}
                     </p>
                   </div>
@@ -264,14 +264,14 @@ export function MySampleRequestDetail({ id, locale }: Props) {
             </div>
 
             {/* Right column: Address */}
-            <div className="space-y-5">
+            <div className="space-y-3 sm:space-y-4 md:space-y-5">
               {/* Address card */}
               <div className="rounded-[3px] border border-gray-200 bg-white shadow-sm overflow-hidden">
-                <div className="flex items-center gap-2 px-5 py-3 border-b border-gray-100 bg-gray-50/50">
-                  <MapPin className="h-4 w-4 text-indigo-600" />
-                  <h2 className="text-body-regular font-semibold text-gray-900">{t('address')}</h2>
+                <div className="flex items-center gap-2 px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 md:py-3 border-b border-gray-100 bg-gray-50/50">
+                  <MapPin className="h-3.5 sm:h-4 w-3.5 sm:w-4 text-indigo-600 shrink-0" />
+                  <h2 className="text-xs sm:text-sm md:text-base font-semibold text-gray-900">{t('address')}</h2>
                 </div>
-                <div className="px-5 py-4 space-y-3">
+                <div className="px-3 sm:px-4 md:px-5 py-3 sm:py-4 space-y-2 sm:space-y-3">
                   <div>
                     <p className="text-caption-responsive uppercase tracking-wide text-gray-400 font-medium">
                       {t('province')}

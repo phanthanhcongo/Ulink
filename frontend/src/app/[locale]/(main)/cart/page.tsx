@@ -88,7 +88,7 @@ export default async function CartPage({ params: { locale } }: Props) {
   });
 
   return (
-    <section className="relative overflow-hidden bg-white min-h-screen py-8 lg:py-12">
+    <section className="relative overflow-hidden bg-white min-h-screen py-4 sm:py-6 lg:py-8">
       <CartClient
         user={user}
         locale={locale}

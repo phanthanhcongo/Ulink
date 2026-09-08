@@ -175,7 +175,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
   return (
     <div className="admin-page">
       {/* Header section */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-100 pb-6 mb-8">
+      <div className="admin-header border-b border-slate-100 pb-6 mb-6 md:mb-8">
         <div>
           <span className="text-caption-responsive uppercase text-slate-400 font-bold tracking-wider">
             Cơ cấu sản phẩm
@@ -194,7 +194,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
             setModalOpen(true);
             setFormError('');
           }}
-          className="inline-flex h-11 items-center justify-center gap-2 rounded-[3px] bg-blue-600 px-5 text-caption-responsive font-bold text-white shadow-sm hover:bg-blue-700 transition-colors shrink-0"
+          className="admin-button admin-button-primary w-full sm:w-auto"
         >
           <Plus className="h-4 w-4" />
           Tạo danh mục mới
@@ -203,13 +203,13 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
 
       {/* Error Alert Banner */}
       {error && (
-        <div className="mb-6 p-4 bg-rose-50 border border-rose-200 rounded-[3px] text-rose-800 text-caption-responsive font-semibold flex items-start gap-2.5 shadow-sm">
-          <AlertTriangle className="h-5 w-5 text-rose-500 shrink-0 mt-0.5" />
-          <div className="flex-1">
+        <div className="mb-6 p-3 sm:p-4 bg-rose-50 border border-rose-200 rounded-[3px] text-rose-800 text-caption-responsive font-semibold flex items-start gap-2.5 shadow-sm">
+          <AlertTriangle className="h-5 w-5 text-rose-500 shrink-0 mt-0.5 flex-shrink-0" />
+          <div className="flex-1 min-w-0">
             <span className="font-bold text-rose-900 block mb-1">
               Đã xảy ra lỗi khi tải dữ liệu danh mục từ API
             </span>
-            <pre className="font-mono text-caption-responsive bg-white/60 p-2.5 rounded-[3px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all">
+            <pre className="font-mono text-caption-responsive bg-white/60 p-2 sm:p-2.5 rounded-[3px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all text-xs">
               {error}
             </pre>
           </div>
@@ -217,7 +217,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
       )}
 
       {/* Search and Filters */}
-      <div className="bg-white border border-slate-100 rounded-[3px] p-5 shadow-sm mb-8">
+      <div className="bg-white border border-slate-100 rounded-[3px] p-4 sm:p-5 md:p-6 shadow-sm mb-6 md:mb-8">
         <div className="relative">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
           <input
@@ -233,7 +233,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
       {/* Main Table Content */}
       <div className="bg-white border border-slate-100 rounded-[3px] shadow-sm overflow-hidden">
         {displayCategories.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-16 text-center">
+          <div className="flex flex-col items-center justify-center py-12 sm:py-16 px-4 text-center">
             <FolderTree className="h-12 w-12 text-slate-300 mb-3" />
             <span className="text-body-regular font-bold text-primary">
               Không tìm thấy danh mục nào
@@ -243,16 +243,16 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
             </span>
           </div>
         ) : (
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse text-left min-w-[900px]">
+          <div className="admin-table-wrapper">
+            <table className="admin-table min-w-[900px]">
               <thead>
-                <tr className="bg-slate-50 border-b border-slate-100 text-caption-responsive font-bold text-slate-400 uppercase tracking-wider">
-                  <th className="px-6 py-3">Tên Danh mục</th>
-                  <th className="px-6 py-3">Đường dẫn (Slug)</th>
-                  <th className="px-6 py-3">Mô tả</th>
-                  <th className="px-6 py-3">Danh mục cha</th>
-                  <th className="px-6 py-3">Trạng thái</th>
-                  <th className="px-6 py-3 text-right">Hành động</th>
+                <tr className="admin-table-head">
+                  <th className="admin-table-cell">Tên Danh mục</th>
+                  <th className="admin-table-cell hidden sm:table-cell">Đường dẫn (Slug)</th>
+                  <th className="admin-table-cell hidden md:table-cell">Mô tả</th>
+                  <th className="admin-table-cell hidden lg:table-cell">Danh mục cha</th>
+                  <th className="admin-table-cell hidden sm:table-cell">Trạng thái</th>
+                  <th className="admin-table-cell text-right">Hành động</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 text-caption-responsive text-slate-700">
@@ -261,9 +261,9 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
                   const isCollapsed = collapsedIds[cat.id] ?? false;
 
                   return (
-                    <tr key={cat.id} className="hover:bg-slate-50/50 transition-colors group">
+                    <tr key={cat.id} className="admin-table-row group">
                       {/* Name with level indentation and collapse trigger */}
-                      <td className="px-6 py-3.5 font-bold text-primary">
+                      <td className="admin-table-cell font-bold text-primary">
                         <div
                           className="flex items-center gap-1.5"
                           style={{ paddingLeft: `${cat.level * 20}px` }}

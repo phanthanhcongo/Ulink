@@ -136,10 +136,10 @@ export function ForgotPasswordForm() {
         {isLocked && (
           <div
             role="alert"
-            className="mb-6 rounded-[3px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-left text-body-regular text-destructive"
+            className="mb-4 sm:mb-6 rounded-[3px] border border-destructive/30 bg-destructive/5 px-2.5 sm:px-3 py-1.5 sm:py-2 text-left text-xs sm:text-body-regular text-destructive"
           >
             <p className="font-medium">{t('resetPasswordLockedTitle')}</p>
-            <p className="mt-1 text-caption-responsive">
+            <p className="mt-1 text-xs sm:text-caption-responsive">
               {t('resetPasswordLockedWithCountdown', {
                 mm: String(Math.max(0, Math.floor((lockedUntil! - now) / 60000))).padStart(2, '0'),
                 ss: String(Math.max(0, Math.floor(((lockedUntil! - now) % 60000) / 1000))).padStart(
@@ -153,28 +153,28 @@ export function ForgotPasswordForm() {
 
         {/* Large success icon */}
         {!isLocked && (
-          <span className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-brand/10 text-brand">
-            <CheckCircle2 className="h-7 w-7" aria-hidden="true" />
+          <span className="mx-auto mb-3 sm:mb-5 flex h-10 sm:h-14 w-10 sm:w-14 items-center justify-center rounded-full bg-brand/10 text-brand">
+            <CheckCircle2 className="h-5 sm:h-7 w-5 sm:w-7" aria-hidden="true" />
           </span>
         )}
 
         {/* Title */}
-        <h2 className="text-section-title font-bold tracking-tight text-foreground">
+        <h2 className="text-lg sm:text-section-title font-bold tracking-tight text-foreground">
           {t('forgotPasswordSentTitle')}
         </h2>
 
         {/* Description + email */}
         {!isLocked && (
-          <div className="mt-3 text-body-regular text-muted-foreground">
+          <div className="mt-2 sm:mt-3 text-xs sm:text-body-regular text-muted-foreground">
             <p>{t('forgotPasswordSentDesc')}</p>
-            <p className="mt-1 font-medium text-foreground">{email}</p>
-            <p className="mt-3 text-body-regular text-foreground">{t('forgotPasswordSentAction')}</p>
+            <p className="mt-0.5 sm:mt-1 font-medium text-foreground text-xs sm:text-body-regular">{email}</p>
+            <p className="mt-2 sm:mt-3 text-xs sm:text-body-regular text-foreground">{t('forgotPasswordSentAction')}</p>
           </div>
         )}
 
         {/* Resend + check spam inline */}
         {!isLocked && (
-          <div className="mt-6 flex items-center justify-center gap-2 text-body-regular text-muted-foreground">
+          <div className="mt-4 sm:mt-6 flex flex-wrap items-center justify-center gap-1 sm:gap-2 text-xs sm:text-body-regular text-muted-foreground">
             <span>{t('forgotPasswordNoEmail')}</span>
             <span className="text-border">·</span>
             <span>{t('forgotPasswordCheckSpam')}</span>
@@ -183,9 +183,9 @@ export function ForgotPasswordForm() {
               type="button"
               onClick={handleResend}
               disabled={resending || resendCooldown > 0}
-              className="inline-flex items-center gap-1 font-medium text-brand hover:underline disabled:opacity-50 disabled:no-underline disabled:cursor-not-allowed"
+              className="inline-flex items-center gap-0.5 sm:gap-1 font-medium text-brand hover:underline disabled:opacity-50 disabled:no-underline disabled:cursor-not-allowed"
             >
-              <RotateCw className={cn('h-3 w-3', resending && 'animate-spin')} aria-hidden="true" />
+              <RotateCw className={cn('h-2.5 sm:h-3 w-2.5 sm:w-3', resending && 'animate-spin')} aria-hidden="true" />
               {resendCooldown > 0
                 ? t('forgotPasswordResendCooldown', { seconds: resendCooldown })
                 : t('forgotPasswordResend')}
@@ -193,7 +193,7 @@ export function ForgotPasswordForm() {
           </div>
         )}
 
-        <p className="mt-6 text-body-regular text-muted-foreground">
+        <p className="mt-4 sm:mt-6 text-xs sm:text-body-regular text-muted-foreground">
           <Link
             href="/login"
             className="inline-flex items-center gap-1 font-medium text-brand hover:underline"
@@ -208,19 +208,19 @@ export function ForgotPasswordForm() {
   // ─── Default view: email input ─────────────────────────────────────────────
   return (
     <div>
-      <h2 className="text-section-title font-bold tracking-tight text-foreground">
+      <h2 className="text-lg sm:text-section-title font-bold tracking-tight text-foreground">
         {t('forgotPasswordTitle')}
       </h2>
-      <p className="mt-2 text-body-regular text-muted-foreground">{t('forgotPasswordDesc')}</p>
+      <p className="mt-1 sm:mt-2 text-xs sm:text-body-regular text-muted-foreground">{t('forgotPasswordDesc')}</p>
 
       {/* Red lockout banner with live MM:SS countdown */}
       {isLocked && (
         <div
           role="alert"
-          className="mt-4 rounded-[3px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-body-regular text-destructive"
+          className="mt-3 sm:mt-4 rounded-[3px] border border-destructive/30 bg-destructive/5 px-2.5 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-body-regular text-destructive"
         >
           <p className="font-medium">{t('resetPasswordLockedTitle')}</p>
-          <p className="mt-1 text-caption-responsive">
+          <p className="mt-1 text-xs sm:text-caption-responsive">
             {t('resetPasswordLockedWithCountdown', {
               mm: String(Math.max(0, Math.floor((lockedUntil - now) / 60000))).padStart(2, '0'),
               ss: String(Math.max(0, Math.floor(((lockedUntil - now) % 60000) / 1000))).padStart(
@@ -232,23 +232,23 @@ export function ForgotPasswordForm() {
         </div>
       )}
 
-      <form className="mt-6 space-y-4" onSubmit={onSubmit} noValidate>
+      <form className="mt-4 sm:mt-6 space-y-2.5 sm:space-y-4" onSubmit={onSubmit} noValidate>
         {formError && !isLocked && (
           <p
             role="alert"
-            className="rounded-[3px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-body-regular text-destructive"
+            className="rounded-[3px] border border-destructive/30 bg-destructive/5 px-2.5 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-body-regular text-destructive"
           >
             {formError}
           </p>
         )}
 
         <div>
-          <label htmlFor="email" className="mb-1.5 block text-caption-responsive font-semibold text-slate-700">
+          <label htmlFor="email" className="mb-1 sm:mb-1.5 block text-xs sm:text-caption-responsive font-semibold text-slate-700">
             {t('emailLabel')} <span className="text-rose-500">*</span>
           </label>
           <div className="relative">
             <Mail
-              className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400 transition-colors"
+              className="absolute left-2.5 sm:left-3.5 top-1/2 h-3.5 sm:h-4 w-3.5 sm:w-4 -translate-y-1/2 text-slate-400 transition-colors"
               aria-hidden="true"
             />
             <Input
@@ -261,11 +261,11 @@ export function ForgotPasswordForm() {
               placeholder={t('emailPlaceholder')}
               disabled={isLocked}
               invalid={!!emailError}
-              className="bg-slate-50/50 pl-11 hover:bg-white focus:bg-white rounded-[3px]"
+              className="bg-slate-50/50 px-2.5 sm:px-3 py-2 sm:py-2.5 pl-8 sm:pl-11 hover:bg-white focus:bg-white rounded-[3px] text-xs sm:text-base"
             />
           </div>
           {emailError && (
-            <p id="email-error" className="mt-1.5 text-caption-responsive font-medium text-rose-500">
+            <p id="email-error" className="mt-1 sm:mt-1.5 text-xs sm:text-caption-responsive font-medium text-rose-500">
               {emailError}
             </p>
           )}
@@ -276,7 +276,7 @@ export function ForgotPasswordForm() {
           disabled={loading || isLocked}
           variant="primary"
           fullWidth
-          className="group py-3.5 text-body-regular font-bold shadow-brand/20 hover:shadow-lg hover:shadow-brand/30 active:scale-[0.99] rounded-[3px]"
+          className="group py-2 sm:py-3.5 text-xs sm:text-body-regular font-bold shadow-brand/20 hover:shadow-lg hover:shadow-brand/30 active:scale-[0.99] rounded-[3px]"
         >
           {loading ? (
             <>
@@ -292,7 +292,7 @@ export function ForgotPasswordForm() {
         </Button>
       </form>
 
-      <p className="mt-6 text-center text-body-regular text-muted-foreground">
+      <p className="mt-4 sm:mt-6 text-center text-xs sm:text-body-regular text-muted-foreground">
         <Link href="/login" className="font-medium text-brand hover:underline">
           {t('backToLogin')}
         </Link>

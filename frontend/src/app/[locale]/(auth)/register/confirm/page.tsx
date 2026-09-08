@@ -11,5 +11,9 @@ export async function generateMetadata({ params: { locale } }: Props): Promise<M
 
 export default function RegisterConfirmPage({ params: { locale } }: Props) {
   setRequestLocale(locale);
-  return <RegisterConfirmForm />;
+  return (
+    <div className="mx-auto w-full max-w-md rounded-[3px] bg-white p-4 sm:p-6 lg:p-8 border border-slate-100 shadow-sm">
+      <RegisterConfirmForm />
+    </div>
+  );
 }

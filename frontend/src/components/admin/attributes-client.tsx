@@ -191,28 +191,30 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
   return (
     <div className="admin-page">
       {/* Header */}
-      <div className="border-b border-slate-100 pb-6 mb-8">
-        <span className="text-caption-responsive uppercase text-slate-400 font-bold tracking-wider">
-          Cơ cấu sản phẩm
-        </span>
-        <h1 className="text-section-title font-bold text-primary tracking-tight mt-1">
-          Quản lý Thuộc tính & Tùy chọn (Attributes & Options)
-        </h1>
-        <p className="text-caption-responsive text-slate-500 font-medium mt-1 leading-relaxed">
-          Định nghĩa các thuộc tính phân loại (Size, Color...) và thiết lập bộ giá trị tương ứng để
-          tự sinh SKU.
-        </p>
+      <div className="admin-header border-b border-slate-100 pb-6 mb-6 md:mb-8">
+        <div>
+          <span className="text-caption-responsive uppercase text-slate-400 font-bold tracking-wider">
+            Cơ cấu sản phẩm
+          </span>
+          <h1 className="text-section-title font-bold text-primary tracking-tight mt-1">
+            Quản lý Thuộc tính & Tùy chọn (Attributes & Options)
+          </h1>
+          <p className="text-caption-responsive text-slate-500 font-medium mt-1 leading-relaxed">
+            Định nghĩa các thuộc tính phân loại (Size, Color...) và thiết lập bộ giá trị tương ứng để
+            tự sinh SKU.
+          </p>
+        </div>
       </div>
 
       {/* Error Alert Banner */}
       {error && (
-        <div className="mb-6 p-4 bg-rose-50 border border-rose-200 rounded-[3px] text-rose-800 text-caption-responsive font-semibold flex items-start gap-2.5 shadow-sm">
-          <AlertTriangle className="h-5 w-5 text-rose-500 shrink-0 mt-0.5" />
-          <div className="flex-1">
+        <div className="mb-6 p-3 sm:p-4 bg-rose-50 border border-rose-200 rounded-[3px] text-rose-800 text-caption-responsive font-semibold flex items-start gap-2.5 shadow-sm">
+          <AlertTriangle className="h-5 w-5 text-rose-500 shrink-0 mt-0.5 flex-shrink-0" />
+          <div className="flex-1 min-w-0">
             <span className="font-bold text-rose-900 block mb-1">
               Đã xảy ra lỗi khi tải dữ liệu thuộc tính từ API
             </span>
-            <pre className="font-mono text-caption-responsive bg-white/60 p-2.5 rounded-[3px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all">
+            <pre className="font-mono text-caption-responsive bg-white/60 p-2 sm:p-2.5 rounded-[3px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all text-xs">
               {error}
             </pre>
           </div>
@@ -220,7 +222,7 @@ export function AttributesClient({ initialAttributes, error }: AttributesClientP
       )}
 
       {/* Main Grid Layout */}
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8 items-start">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8 items-start">
         {/* Left Column: Attributes List */}
         <div className="lg:col-span-1 admin-panel admin-panel-pad overflow-hidden">
           <div className="flex items-center justify-between gap-4 mb-4">

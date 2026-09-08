@@ -137,34 +137,34 @@ export function MyRfqsClient() {
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] bg-repeat" />
         </div>
-        <div className="relative container mx-auto px-4 py-8 lg:py-12">
-          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
-            <div>
-              <h1 className="text-section-title font-bold text-white">{t('title')}</h1>
-              <p className="mt-2 text-indigo-200 text-body-regular">{t('subtitle')}</p>
+        <div className="relative container mx-auto px-3 sm:px-4 py-6 sm:py-8 lg:py-12">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 sm:gap-6">
+            <div className="min-w-0">
+              <h1 className="text-2xl sm:text-section-title font-bold text-white">{t('title')}</h1>
+              <p className="mt-2 text-indigo-200 text-sm sm:text-body-regular">{t('subtitle')}</p>
             </div>
 
             {/* Stats cards */}
-            <div className="grid grid-cols-3 gap-3">
-              <div className="group flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-[3px] px-4 py-3 border border-white/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/20 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.5)]">
-                <Clock className="h-4 w-4 text-amber-300" />
-                <div>
-                  <p className="text-card-title font-bold text-white">{counts.pending}</p>
-                  <p className="text-caption-responsive text-indigo-200">{t('pending')}</p>
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 sm:gap-3 shrink-0">
+              <div className="group flex items-center gap-1.5 sm:gap-2 bg-white/10 backdrop-blur-sm rounded-[3px] px-2.5 sm:px-4 py-2.5 sm:py-3 border border-white/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/20 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.5)]">
+                <Clock className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-amber-300 shrink-0" />
+                <div className="min-w-0">
+                  <p className="text-sm sm:text-card-title font-bold text-white">{counts.pending}</p>
+                  <p className="text-[10px] sm:text-caption-responsive text-indigo-200 leading-tight">{t('pending')}</p>
                 </div>
               </div>
-              <div className="group flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-[3px] px-4 py-3 border border-white/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/20 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.5)]">
-                <CheckCircle2 className="h-4 w-4 text-emerald-300" />
-                <div>
-                  <p className="text-card-title font-bold text-white">{counts.quoted}</p>
-                  <p className="text-caption-responsive text-indigo-200">{t('quoted')}</p>
+              <div className="group flex items-center gap-1.5 sm:gap-2 bg-white/10 backdrop-blur-sm rounded-[3px] px-2.5 sm:px-4 py-2.5 sm:py-3 border border-white/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/20 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.5)]">
+                <CheckCircle2 className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-emerald-300 shrink-0" />
+                <div className="min-w-0">
+                  <p className="text-sm sm:text-card-title font-bold text-white">{counts.quoted}</p>
+                  <p className="text-[10px] sm:text-caption-responsive text-indigo-200 leading-tight">{t('quoted')}</p>
                 </div>
               </div>
-              <div className="group flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-[3px] px-4 py-3 border border-white/20 transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/20 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.5)]">
-                <XCircle className="h-4 w-4 text-rose-300" />
-                <div>
-                  <p className="text-card-title font-bold text-white">{counts.rejected}</p>
-                  <p className="text-caption-responsive text-indigo-200">{t('rejected')}</p>
+              <div className="group flex items-center gap-1.5 sm:gap-2 bg-white/10 backdrop-blur-sm rounded-[3px] px-2.5 sm:px-4 py-2.5 sm:py-3 border border-white/20 col-span-2 sm:col-span-1 transition-all duration-200 hover:-translate-y-0.5 hover:bg-white/20 hover:shadow-[0_0_0_1px_rgba(255,255,255,0.5)]">
+                <XCircle className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-rose-300 shrink-0" />
+                <div className="min-w-0">
+                  <p className="text-sm sm:text-card-title font-bold text-white">{counts.rejected}</p>
+                  <p className="text-[10px] sm:text-caption-responsive text-indigo-200 leading-tight">{t('rejected')}</p>
                 </div>
               </div>
             </div>
@@ -173,9 +173,9 @@ export function MyRfqsClient() {
       </section>
 
       {/* Main content */}
-      <div className="container mx-auto px-4 py-6">
+      <div className="container mx-auto px-3 sm:px-4 py-4 sm:py-6">
         {/* Toolbar */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 mb-6 bg-white rounded-[3px] border border-gray-200 shadow-sm px-4 py-3">
+        <div className="flex flex-col gap-3 mb-6 bg-white rounded-[3px] border border-gray-200 shadow-sm px-3 sm:px-4 py-3">
           <div className="relative flex-1">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-gray-400" />
             <input
@@ -183,24 +183,24 @@ export function MyRfqsClient() {
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               placeholder={t('searchPlaceholder')}
-              className="w-full rounded-[3px] border border-gray-200 bg-gray-50 pl-9 pr-3 py-2 text-body-regular text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:bg-white focus:outline-none transition-all"
+              className="w-full rounded-[3px] border border-gray-200 bg-gray-50 pl-9 pr-3 py-2 text-sm sm:text-body-regular text-gray-900 placeholder:text-gray-400 focus:border-blue-500 focus:ring-1 focus:ring-blue-500 focus:bg-white focus:outline-none transition-all"
             />
           </div>
 
-          <div className="flex items-center gap-1 bg-gray-100 rounded-[3px] p-1">
+          <div className="flex items-center gap-1 bg-gray-100 rounded-[3px] p-1 overflow-x-auto">
             {(['all', 'pending', 'quoted', 'rejected'] as const).map((s) => (
               <button
                 key={s}
                 onClick={() => setStatusFilter(s)}
                 className={cn(
-                  'px-3 py-1.5 rounded-[3px] text-caption-responsive font-medium transition-all',
+                  'px-2 sm:px-3 py-1.5 rounded-[3px] text-[11px] sm:text-caption-responsive font-medium transition-all whitespace-nowrap shrink-0',
                   statusFilter === s
                     ? 'bg-white text-gray-900 shadow-sm'
                     : 'text-gray-500 hover:text-gray-700'
                 )}
               >
                 {t(s)}
-                <span className="ml-1 text-caption-responsive opacity-60">{counts[s]}</span>
+                <span className="ml-0.5 sm:ml-1 text-[10px] sm:text-caption-responsive opacity-60">{counts[s]}</span>
               </button>
             ))}
           </div>
@@ -222,7 +222,7 @@ export function MyRfqsClient() {
             <p className="text-gray-400 text-body-regular mt-1">{t('noResultsDesc')}</p>
           </div>
         ) : (
-          <div className="space-y-3">
+          <div className="space-y-2 sm:space-y-3">
             {filtered.map((req) => {
               const ns = normalizeStatus(req.status);
               const sc = statusConfig[ns];
@@ -231,29 +231,29 @@ export function MyRfqsClient() {
               return (
                 <div
                   key={req.id}
-                  className="group flex flex-col sm:flex-row sm:items-center gap-4 bg-white rounded-[3px] border border-gray-200 shadow-sm px-5 py-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]"
+                  className="group flex flex-col gap-3 bg-white rounded-[3px] border border-gray-200 shadow-sm px-3 sm:px-5 py-3 sm:py-4 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]"
                 >
                   {/* Left: icon + info */}
-                  <div className="flex items-start gap-4 flex-1 min-w-0">
-                    <div className="shrink-0 w-10 h-10 rounded-[3px] bg-indigo-50 flex items-center justify-center">
-                      <FileText className="h-5 w-5 text-indigo-600" />
+                  <div className="flex items-start gap-3 flex-1 min-w-0">
+                    <div className="shrink-0 w-9 h-9 sm:w-10 sm:h-10 rounded-[3px] bg-indigo-50 flex items-center justify-center">
+                      <FileText className="h-4 w-4 sm:h-5 sm:w-5 text-indigo-600" />
                     </div>
                     <div className="min-w-0 flex-1">
-                      <div className="flex items-center gap-2">
-                        <h3 className="text-body-regular font-semibold text-gray-900 truncate">
+                      <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
+                        <h3 className="text-sm sm:text-body-regular font-semibold text-gray-900 truncate">
                           {req.company}
                         </h3>
-                        <span className="text-caption-responsive font-mono text-gray-400">#{req.id}</span>
+                        <span className="text-[10px] sm:text-caption-responsive font-mono text-gray-400 shrink-0">#{req.id}</span>
                         {req.hub?.name && (
-                          <span className="inline-flex items-center gap-1 text-caption-responsive font-medium px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-100">
-                            <MapPin className="h-2.5 w-2.5" />
-                            {req.hub.name}
+                          <span className="inline-flex items-center gap-0.5 text-[9px] sm:text-caption-responsive font-medium px-1 sm:px-1.5 py-0.5 rounded bg-blue-50 text-blue-700 border border-blue-100 shrink-0">
+                            <MapPin className="h-2 w-2 sm:h-2.5 sm:w-2.5" />
+                            <span className="hidden sm:inline">{req.hub.name}</span>
                           </span>
                         )}
                         {req.source && (
                           <span
                             className={cn(
-                              'text-caption-responsive font-medium px-1.5 py-0.5 rounded',
+                              'text-[9px] sm:text-caption-responsive font-medium px-1 sm:px-1.5 py-0.5 rounded shrink-0',
                               req.source === 'portal'
                                 ? 'bg-blue-50 text-blue-600'
                                 : 'bg-gray-100 text-gray-500'
@@ -263,12 +263,12 @@ export function MyRfqsClient() {
                           </span>
                         )}
                       </div>
-                      <div className="flex items-center gap-3 mt-1.5 text-caption-responsive text-gray-500">
-                        {req.contact_name && <span>{req.contact_name}</span>}
+                      <div className="flex flex-wrap items-center gap-1.5 sm:gap-3 mt-1.5 text-[10px] sm:text-caption-responsive text-gray-500">
+                        {req.contact_name && <span className="truncate">{req.contact_name}</span>}
                         {req.date_created && (
                           <>
-                            <span className="w-1 h-1 rounded-full bg-gray-300" />
-                            <span>
+                            <span className="w-1 h-1 rounded-full bg-gray-300 hidden sm:inline" />
+                            <span className="shrink-0">
                               {new Date(req.date_created).toLocaleDateString('vi-VN', {
                                 day: '2-digit',
                                 month: '2-digit',
@@ -280,17 +280,17 @@ export function MyRfqsClient() {
                       </div>
                       {req.line_items && req.line_items.length > 0 && (
                         <div className="flex flex-wrap gap-1 mt-2">
-                          {req.line_items.slice(0, 3).map((li) => (
+                          {req.line_items.slice(0, 2).map((li) => (
                             <span
                               key={li.sku}
-                              className="inline-flex items-center rounded-[3px] bg-gray-100 px-1.5 py-0.5 text-caption-responsive font-mono text-gray-600"
+                              className="inline-flex items-center rounded-[3px] bg-gray-100 px-1 py-0.5 text-[9px] sm:text-caption-responsive font-mono text-gray-600"
                             >
                               {li.sku}
                             </span>
                           ))}
-                          {req.line_items.length > 3 && (
-                            <span className="text-caption-responsive text-gray-400">
-                              +{req.line_items.length - 3}
+                          {req.line_items.length > 2 && (
+                            <span className="text-[9px] sm:text-caption-responsive text-gray-400">
+                              +{req.line_items.length - 2}
                             </span>
                           )}
                         </div>
@@ -299,24 +299,25 @@ export function MyRfqsClient() {
                   </div>
 
                   {/* Right: status + action */}
-                  <div className="flex items-center gap-3 sm:shrink-0">
+                  <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3">
                     <div
                       className={cn(
-                        'inline-flex items-center gap-1.5 rounded-full border px-3 py-1',
+                        'inline-flex items-center justify-center gap-1 sm:gap-1.5 rounded-full border px-2 sm:px-3 py-1 text-[10px] sm:text-caption-responsive font-medium',
                         sc?.classes
                       )}
                     >
-                      <StatusIcon className="h-3.5 w-3.5" />
-                      <span className="text-caption-responsive font-medium">{sc?.label}</span>
+                      <StatusIcon className="h-3 w-3 sm:h-3.5 sm:w-3.5 shrink-0" />
+                      <span>{sc?.label}</span>
                     </div>
 
                     <button
                       onClick={() => setSelectedRfq(req)}
-                      className="inline-flex items-center gap-1.5 rounded-[3px] border border-gray-200 bg-white px-3 py-2 text-caption-responsive font-medium text-gray-700 hover:bg-[#EBF3FE] hover:text-[#1769E2] hover:border-[#1769E2] transition-all shadow-sm"
+                      className="inline-flex items-center justify-center gap-1 rounded-[3px] border border-gray-200 bg-white px-3 py-2 text-[10px] sm:text-caption-responsive font-medium text-gray-700 hover:bg-[#EBF3FE] hover:text-[#1769E2] hover:border-[#1769E2] transition-all shadow-sm shrink-0"
                     >
-                      <Eye className="h-3.5 w-3.5" />
-                      {t('viewDetail')}
-                      <ChevronRight className="h-3 w-3 opacity-50" />
+                      <Eye className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
+                      <span className="hidden sm:inline">{t('viewDetail')}</span>
+                      <span className="sm:hidden">Chi tiết</span>
+                      <ChevronRight className="h-2.5 w-2.5 opacity-50" />
                     </button>
                   </div>
                 </div>
@@ -343,28 +344,28 @@ function RfqDetailModal({ rfq, onClose }: { rfq: RfqItem; onClose: () => void })
         : 'pending';
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-3 sm:p-4">
       <div className="absolute inset-0 bg-black/50 backdrop-blur-sm" onClick={onClose} />
-      <div className="relative bg-white rounded-[3px] shadow-2xl w-full max-w-lg max-h-[85vh] overflow-hidden flex flex-col">
+      <div className="relative bg-white rounded-t-[8px] sm:rounded-[3px] shadow-2xl w-full sm:max-w-lg max-h-[90vh] sm:max-h-[85vh] overflow-hidden flex flex-col">
         {/* Header */}
-        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
-          <div>
-            <h2 className="text-card-title font-semibold text-gray-900">{t('title')}</h2>
-            <p className="text-caption-responsive text-gray-500 mt-0.5">#{rfq.id}</p>
+        <div className="flex items-start justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-gray-100 shrink-0">
+          <div className="min-w-0">
+            <h2 className="text-base sm:text-card-title font-semibold text-gray-900">{t('title')}</h2>
+            <p className="text-[10px] sm:text-caption-responsive text-gray-500 mt-0.5">#{rfq.id}</p>
           </div>
-          <button onClick={onClose} className="p-2 rounded-[3px] hover:bg-gray-100 transition-colors">
-            <X className="h-5 w-5 text-gray-500" />
+          <button onClick={onClose} className="p-1.5 sm:p-2 rounded-[3px] hover:bg-gray-100 transition-colors shrink-0">
+            <X className="h-4 w-4 sm:h-5 sm:w-5 text-gray-500" />
           </button>
         </div>
 
         {/* Body */}
-        <div className="flex-1 overflow-y-auto px-6 py-5 space-y-5">
+        <div className="flex-1 overflow-y-auto px-4 sm:px-6 py-4 sm:py-5 space-y-4 sm:space-y-5">
           {/* Contact Info */}
           <section>
-            <h3 className="text-caption-responsive font-semibold text-gray-500 uppercase tracking-wider mb-3">
+            <h3 className="text-[10px] sm:text-caption-responsive font-semibold text-gray-500 uppercase tracking-wider mb-2 sm:mb-3">
               {t('contactInfo')}
             </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3">
               <InfoRow icon={Building2} label={t('company')} value={rfq.company} />
               <InfoRow icon={User} label={t('contact')} value={rfq.contact_name} />
               <InfoRow icon={Mail} label={t('email')} value={rfq.email} />
@@ -400,18 +401,18 @@ function RfqDetailModal({ rfq, onClose }: { rfq: RfqItem; onClose: () => void })
           {/* Line Items */}
           {rfq.line_items && rfq.line_items.length > 0 && (
             <section>
-              <h3 className="text-caption-responsive font-semibold text-gray-500 uppercase tracking-wider mb-3 flex items-center gap-1.5">
-                <Package className="h-3.5 w-3.5" />
+              <h3 className="text-[10px] sm:text-caption-responsive font-semibold text-gray-500 uppercase tracking-wider mb-2 sm:mb-3 flex items-center gap-1">
+                <Package className="h-3 w-3 sm:h-3.5 sm:w-3.5 shrink-0" />
                 {t('lineItems')}
               </h3>
-              <div className="border border-gray-200 rounded-[3px] overflow-hidden">
-                <table className="w-full text-body-regular">
+              <div className="border border-gray-200 rounded-[3px] overflow-x-auto">
+                <table className="w-full text-[11px] sm:text-body-regular">
                   <thead className="bg-gray-50">
                     <tr>
-                      <th className="text-left px-3 py-2 text-caption-responsive font-medium text-gray-500">
+                      <th className="text-left px-2 sm:px-3 py-1.5 sm:py-2 text-[9px] sm:text-caption-responsive font-medium text-gray-500">
                         {t('sku')}
                       </th>
-                      <th className="text-right px-3 py-2 text-caption-responsive font-medium text-gray-500 w-16">
+                      <th className="text-right px-2 sm:px-3 py-1.5 sm:py-2 text-[9px] sm:text-caption-responsive font-medium text-gray-500 w-12 sm:w-16">
                         {t('qty')}
                       </th>
                     </tr>
@@ -419,8 +420,8 @@ function RfqDetailModal({ rfq, onClose }: { rfq: RfqItem; onClose: () => void })
                   <tbody className="divide-y divide-gray-100">
                     {rfq.line_items.map((li, idx) => (
                       <tr key={idx}>
-                        <td className="px-3 py-2 font-mono text-caption-responsive text-gray-700">{li.sku}</td>
-                        <td className="px-3 py-2 text-right text-caption-responsive text-gray-600">{li.qty}</td>
+                        <td className="px-2 sm:px-3 py-1.5 sm:py-2 font-mono text-[10px] sm:text-caption-responsive text-gray-700 truncate">{li.sku}</td>
+                        <td className="px-2 sm:px-3 py-1.5 sm:py-2 text-right text-[10px] sm:text-caption-responsive text-gray-600">{li.qty}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -512,10 +513,10 @@ function RfqDetailModal({ rfq, onClose }: { rfq: RfqItem; onClose: () => void })
         </div>
 
         {/* Footer */}
-        <div className="px-6 py-4 border-t border-gray-100">
+        <div className="px-4 sm:px-6 py-3 sm:py-4 border-t border-gray-100 shrink-0">
           <button
             onClick={onClose}
-            className="w-full rounded-[3px] bg-gray-100 px-4 py-2.5 text-body-regular font-medium text-gray-700 hover:bg-gray-200 transition-colors"
+            className="w-full rounded-[3px] bg-gray-100 px-4 py-2 sm:py-2.5 text-sm sm:text-body-regular font-medium text-gray-700 hover:bg-gray-200 transition-colors"
           >
             {t('close')}
           </button>
@@ -536,11 +537,11 @@ function InfoRow({
 }) {
   if (!value) return null;
   return (
-    <div className="flex items-start gap-2">
-      <Icon className="h-4 w-4 text-gray-400 mt-0.5 shrink-0" />
-      <div>
-        <p className="text-caption-responsive text-gray-400 uppercase">{label}</p>
-        <p className="text-body-regular text-gray-800">{value}</p>
+    <div className="flex items-start gap-1.5 sm:gap-2">
+      <Icon className="h-3.5 w-3.5 sm:h-4 sm:w-4 text-gray-400 mt-0.5 shrink-0" />
+      <div className="min-w-0">
+        <p className="text-[9px] sm:text-caption-responsive text-gray-400 uppercase">{label}</p>
+        <p className="text-[10px] sm:text-body-regular text-gray-800 break-words">{value}</p>
       </div>
     </div>
   );

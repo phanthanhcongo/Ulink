@@ -155,9 +155,9 @@ export function EventsClient() {
   };
 
   return (
-    <div className="w-full bg-[#FAFCFF] pb-24">
+    <div className="w-full bg-[#FAFCFF] pb-12 sm:pb-16 md:pb-24">
       {/* Hero Banner Section */}
-      <div className="relative w-full h-[400px] sm:h-[480px] md:h-[560px] lg:h-[620px] overflow-hidden">
+      <div className="relative w-full h-[280px] sm:h-[360px] md:h-[480px] lg:h-[620px] overflow-hidden">
         <Image
           src="/images/resources/events/event (2).png"
           alt="B2B Business Networking Event"
@@ -168,19 +168,19 @@ export function EventsClient() {
         <div className="absolute inset-0 bg-slate-900/40" />
         <div className="absolute inset-0 flex items-center">
           <div className="page-container text-left">
-            <div className="bg-[#0000008C] p-8 sm:p-10 md:p-12 max-w-2xl rounded-[3px] shadow-2xl border border-white/20 backdrop-blur-xs">
-              <h1 className="text-section-title font-bold tracking-tight text-white leading-tight">
+            <div className="bg-[#0000008C] p-4 sm:p-6 md:p-10 lg:p-12 max-w-2xl rounded-[3px] shadow-2xl border border-white/20 backdrop-blur-xs">
+              <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold tracking-tight text-white leading-tight">
                 {t.heroTitle}
-                <span className="block mt-2 text-section-title font-bold text-white">
+                <span className="block mt-1 sm:mt-2 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white">
                   {t.heroSubTitle}
                 </span>
               </h1>
-              <p className="mt-6 text-body-regular text-slate-200 leading-relaxed font-normal mb-8">
+              <p className="mt-3 sm:mt-4 md:mt-6 text-xs sm:text-sm md:text-base text-slate-200 leading-relaxed font-normal mb-4 sm:mb-6 md:mb-8">
                 {t.heroDesc}
               </p>
               <button
                 onClick={handleScrollToEvents}
-                className="inline-flex items-center justify-center px-8 py-3.5 bg-[#1769E2] hover:bg-[#1257BD] text-white font-bold text-body-regular rounded-[3px] transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer transform hover:-translate-y-0.5"
+                className="inline-flex items-center justify-center px-4 sm:px-6 md:px-8 py-2 sm:py-2.5 md:py-3.5 bg-[#1769E2] hover:bg-[#1257BD] text-white font-bold text-xs sm:text-sm md:text-base rounded-[3px] transition-all duration-300 shadow-md hover:shadow-lg cursor-pointer transform hover:-translate-y-0.5"
               >
                 {t.heroCta}
               </button>
@@ -190,8 +190,8 @@ export function EventsClient() {
       </div>
 
       {/* Events List Section */}
-      <div id="events-list-section" className="mx-auto max-w-[1200px] px-3 sm:px-6 py-20">
-        <div className="space-y-10">
+      <div id="events-list-section" className="mx-auto max-w-[1200px] px-3 sm:px-4 md:px-6 py-8 sm:py-12 md:py-16 lg:py-20">
+        <div className="space-y-4 sm:space-y-6 md:space-y-8 lg:space-y-10">
           {paginatedEvents.map((event) => {
             const titleText = event.title[locale] || event.title.en;
             const descText = event.description?.[locale] || event.description?.en || '';
@@ -206,33 +206,33 @@ export function EventsClient() {
             return (
               <div
                 key={event.id}
-                className="group ui-card-hover flex flex-col lg:flex-row bg-white border border-slate-100 rounded-[3px] overflow-hidden shadow-sm"
+                className="group ui-card-hover flex flex-col lg:flex-row bg-white border border-slate-100 rounded-[3px] overflow-hidden shadow-sm hover:shadow-md transition-shadow"
               >
                 {/* Event Image */}
-                <div className="relative w-full lg:w-[420px] aspect-[16/10] lg:aspect-auto overflow-hidden shrink-0">
+                <div className="relative w-full lg:w-[280px] xl:w-[380px] aspect-[16/10] lg:aspect-auto overflow-hidden shrink-0">
                   <Image
                     src={event.images && event.images[1] ? event.images[1] : event.image}
                     alt={titleText}
                     fill
-                    sizes="(max-width: 1024px) 100vw, 420px"
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 380px"
                     className="object-cover"
                   />
                   {/* Overlay Date Badge */}
-                  <div className="absolute top-4 left-4 bg-blue-600 text-white text-caption-responsive font-bold px-4 py-2 rounded-[3px] shadow-md z-10">
+                  <div className="absolute top-2 sm:top-3 md:top-4 left-2 sm:left-3 md:left-4 bg-blue-600 text-white text-xs sm:text-caption-responsive font-bold px-2 sm:px-3 md:px-4 py-1 sm:py-2 rounded-[3px] shadow-md z-10">
                     {event.date}
                   </div>
                 </div>
 
                 {/* Event Content */}
-                <div className="p-8 sm:p-10 flex-1 flex flex-col justify-between">
+                <div className="p-4 sm:p-5 md:p-7 lg:p-8 xl:p-10 flex-1 flex flex-col justify-between">
                   <div>
                     {/* Badge Category */}
-                    <span className="inline-block text-caption-responsive font-bold text-blue-600 uppercase tracking-widest mb-3">
+                    <span className="inline-block text-xs sm:text-caption-responsive font-bold text-blue-600 uppercase tracking-widest mb-2 sm:mb-3">
                       {badgeText}
                     </span>
 
                     {/* Title */}
-                    <h3 className="text-card-title font-bold text-[#0E2142] group-hover:text-blue-600 transition-colors duration-300 leading-snug">
+                    <h3 className="text-base sm:text-lg md:text-xl font-bold text-[#0E2142] group-hover:text-blue-600 transition-colors duration-300 leading-snug line-clamp-2 sm:line-clamp-none">
                       <Link href={detailHref} className="hover:underline">
                         {titleText}
                       </Link>
@@ -240,34 +240,34 @@ export function EventsClient() {
 
                     {/* Description */}
                     {descText && (
-                      <p className="mt-4 text-body-regular text-slate-500 font-normal leading-relaxed line-clamp-3">
+                      <p className="mt-2 sm:mt-3 md:mt-4 text-xs sm:text-sm md:text-base text-slate-500 font-normal leading-relaxed line-clamp-2 sm:line-clamp-3">
                         {descText}
                       </p>
                     )}
 
                     {/* Metadata details */}
-                    <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-4 border-t border-slate-100 pt-6">
-                      <div className="flex items-center gap-3 text-caption-responsive text-slate-600">
-                        <Calendar className="h-4 w-4 text-blue-600 shrink-0" />
-                        <span className="font-semibold text-slate-700">
+                    <div className="mt-4 sm:mt-5 md:mt-6 grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 md:gap-4 border-t border-slate-100 pt-4 sm:pt-5 md:pt-6">
+                      <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-caption-responsive text-slate-600">
+                        <Calendar className="h-3 sm:h-4 w-3 sm:w-4 text-blue-600 shrink-0" />
+                        <span className="font-semibold text-slate-700 truncate">
                           {event.date}
                         </span>
                       </div>
-                      <div className="flex items-center gap-3 text-caption-responsive text-slate-600">
-                        <Clock className="h-4 w-4 text-blue-600 shrink-0" />
-                        <span className="font-semibold text-slate-700">
+                      <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-caption-responsive text-slate-600">
+                        <Clock className="h-3 sm:h-4 w-3 sm:w-4 text-blue-600 shrink-0" />
+                        <span className="font-semibold text-slate-700 truncate">
                           {event.time}
                         </span>
                       </div>
-                      <div className="flex items-center gap-3 text-caption-responsive text-slate-600 sm:col-span-2">
-                        <MapPin className="h-4 w-4 text-blue-600 shrink-0" />
-                        <span className="font-semibold text-slate-700">
+                      <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-caption-responsive text-slate-600 sm:col-span-2">
+                        <MapPin className="h-3 sm:h-4 w-3 sm:w-4 text-blue-600 shrink-0" />
+                        <span className="font-semibold text-slate-700 truncate">
                           {locationText}
                         </span>
                       </div>
                       {priceText && (
-                        <div className="flex items-center gap-3 text-caption-responsive text-slate-600 sm:col-span-2">
-                          <Ticket className="h-4 w-4 text-blue-600 shrink-0" />
+                        <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-caption-responsive text-slate-600 sm:col-span-2">
+                          <Ticket className="h-3 sm:h-4 w-3 sm:w-4 text-blue-600 shrink-0" />
                           <span className="font-bold text-blue-600">
                             {priceText}
                           </span>
@@ -277,13 +277,13 @@ export function EventsClient() {
                   </div>
 
                   {/* Register CTA Button */}
-                  <div className="mt-8">
+                  <div className="mt-4 sm:mt-5 md:mt-6 lg:mt-8">
                     <Link
                       href={detailHref}
-                      className="inline-flex items-center justify-center px-6 py-3 border border-[#1769E2] hover:bg-[#EBF3FE] text-[#1769E2] font-bold rounded-[3px] text-caption-responsive transition-all duration-300 shadow-xs group-hover:bg-[#1769E2] group-hover:text-white"
+                      className="inline-flex items-center justify-center w-full sm:w-auto px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 border border-[#1769E2] hover:bg-[#EBF3FE] text-[#1769E2] font-bold rounded-[3px] text-xs sm:text-caption-responsive md:text-sm transition-all duration-300 shadow-xs group-hover:bg-[#1769E2] group-hover:text-white"
                     >
                       {t.registerBtn}
-                      <ArrowRight className="ml-2 h-4 w-4" />
+                      <ArrowRight className="ml-1.5 sm:ml-2 h-3 sm:h-4 w-3 sm:w-4" />
                     </Link>
                   </div>
                 </div>
@@ -294,21 +294,21 @@ export function EventsClient() {
 
         {/* Pagination Controls */}
         {totalPages > 1 && (
-          <div className="mt-16 flex justify-center items-center gap-2">
+          <div className="mt-8 sm:mt-12 md:mt-16 flex justify-center items-center gap-1 sm:gap-2 flex-wrap">
             <button
               onClick={() => setCurrentPage((prev) => Math.max(prev - 1, 1))}
               disabled={currentPage === 1}
-              className="h-10 px-4 rounded-[3px] border border-slate-200 text-caption-responsive font-semibold hover:bg-slate-50 disabled:opacity-40 transition-all cursor-pointer flex items-center gap-1 text-slate-700 bg-white"
+              className="h-8 sm:h-10 px-2 sm:px-4 rounded-[3px] border border-slate-200 text-xs sm:text-caption-responsive font-semibold hover:bg-slate-50 disabled:opacity-40 transition-all cursor-pointer flex items-center gap-1 text-slate-700 bg-white"
             >
-              <ArrowLeft className="h-3.5 w-3.5" />
-              {t.prev}
+              <ArrowLeft className="h-3 sm:h-3.5 w-3 sm:w-3.5" />
+              <span className="hidden sm:inline">{t.prev}</span>
             </button>
             {Array.from({ length: totalPages }).map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentPage(index + 1)}
                 className={cn(
-                  'h-10 w-10 rounded-[3px] text-caption-responsive font-bold transition-all cursor-pointer border',
+                  'h-8 sm:h-10 w-8 sm:w-10 rounded-[3px] text-xs sm:text-caption-responsive font-bold transition-all cursor-pointer border',
                   currentPage === index + 1
                     ? 'bg-[#1769E2] border-[#1769E2] text-white shadow-md'
                     : 'border-slate-200 hover:bg-slate-50 text-slate-600 bg-white'
@@ -320,10 +320,10 @@ export function EventsClient() {
             <button
               onClick={() => setCurrentPage((prev) => Math.min(prev + 1, totalPages))}
               disabled={currentPage === totalPages}
-              className="h-10 px-4 rounded-[3px] border border-slate-200 text-caption-responsive font-semibold hover:bg-slate-50 disabled:opacity-40 transition-all cursor-pointer flex items-center gap-1 text-slate-700 bg-white"
+              className="h-8 sm:h-10 px-2 sm:px-4 rounded-[3px] border border-slate-200 text-xs sm:text-caption-responsive font-semibold hover:bg-slate-50 disabled:opacity-40 transition-all cursor-pointer flex items-center gap-1 text-slate-700 bg-white"
             >
-              {t.next}
-              <ArrowRight className="h-3.5 w-3.5" />
+              <span className="hidden sm:inline">{t.next}</span>
+              <ArrowRight className="h-3 sm:h-3.5 w-3 sm:w-3.5" />
             </button>
           </div>
         )}

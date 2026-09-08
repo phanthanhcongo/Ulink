@@ -15,13 +15,13 @@ const row2Photos = [
 
 export function CareersGallery() {
   return (
-    <section className="py-12 lg:py-16">
+    <section className="py-4 sm:py-6 lg:py-8">
       {/* Section Header */}
-      <div className="flex flex-col items-center text-center mb-10">
+      <div className="flex flex-col items-center text-center mb-6 sm:mb-8 lg:mb-10">
         <span className="text-body-regular font-bold uppercase tracking-wider text-blue-600">
           Không gian làm việc
         </span>
-        <h2 className="text-hero-title font-bold tracking-tight text-slate-900 mt-1">
+        <h2 className="text-section-title sm:text-hero-title lg:text-hero-title font-bold tracking-tight text-slate-900 mt-1">
           Môi trường làm việc
         </h2>
         <p className="mt-2 text-body-regular text-slate-500 max-w-xl">
@@ -30,7 +30,7 @@ export function CareersGallery() {
       </div>
 
       {/* Row 1: 3 columns (aspect-square) */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 lg:gap-6">
         {row1Photos.map((p, idx) => (
           <div
             key={idx}
@@ -50,7 +50,7 @@ export function CareersGallery() {
       </div>
 
       {/* Row 2: 4 columns (aspect-[3/4]) */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-6">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 mt-4 sm:mt-5 lg:mt-6">
         {row2Photos.map((p, idx) => (
           <div
             key={idx}

@@ -28,17 +28,17 @@ const solutions = [
 
 export function ContactFeaturedSolutions() {
   return (
-    <section className="py-12 px-3 sm:px-6">
-      <div className="flex flex-col items-center text-center mb-10">
-        <span className="inline-flex items-center rounded-full bg-blue-50 px-3.5 py-1 text-body-regular font-bold uppercase tracking-wider text-blue-700 ring-1 ring-inset ring-blue-700/10 mb-2">
+    <section className="py-4 sm:py-6 lg:py-8 px-3 sm:px-4 lg:px-6">
+      <div className="flex flex-col items-center text-center mb-4 sm:mb-6 lg:mb-10">
+        <span className="inline-flex items-center rounded-full bg-blue-50 px-2.5 sm:px-3 lg:px-3.5 py-0.5 sm:py-1 text-caption-responsive sm:text-body-regular font-bold uppercase tracking-wider text-blue-700 ring-1 ring-inset ring-blue-700/10 mb-2">
           DANH MỤC TIÊU BIỂU
         </span>
-        <h2 className="text-hero-title font-bold tracking-tight text-slate-900">
+        <h2 className="text-section-title sm:text-hero-title font-bold tracking-tight text-slate-900">
           Khám phá thêm giải pháp từ ULink
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 gap-6 md:grid-cols-3 max-w-6xl mx-auto">
+      <div className="grid grid-cols-1 gap-3 sm:gap-4 lg:gap-6 md:grid-cols-3 max-w-6xl mx-auto">
         {solutions.map((item) => (
           <div
             key={item.id}
@@ -52,17 +52,17 @@ export function ContactFeaturedSolutions() {
                 className="object-cover transition-transform duration-300 group-hover:scale-105"
               />
             </div>
-            <div className="flex flex-1 flex-col p-6">
-              <h3 className="text-card-title text-slate-900 group-hover:text-blue-600 transition-colors">
+            <div className="flex flex-1 flex-col p-3 sm:p-4 lg:p-6">
+              <h3 className="text-body-large sm:text-card-title text-slate-900 group-hover:text-blue-600 transition-colors">
                 {item.title}
               </h3>
-              <p className="mt-2 text-body-regular leading-relaxed text-slate-600 flex-1">{item.desc}</p>
-              <div className="mt-4 pt-3 border-t border-slate-100 flex justify-end">
+              <p className="mt-1.5 sm:mt-2 text-body-regular leading-relaxed text-slate-600 flex-1 text-sm sm:text-base">{item.desc}</p>
+              <div className="mt-2 sm:mt-4 pt-2 sm:pt-3 border-t border-slate-100 flex justify-end">
                 <Link
                   href={item.href}
-                  className="text-body-regular font-semibold text-blue-600 hover:text-blue-700 inline-flex items-center gap-1"
+                  className="text-body-regular font-semibold text-blue-600 hover:text-blue-700 inline-flex items-center gap-1 text-xs sm:text-sm"
                 >
-                  Xem thêm <ArrowRight className="h-3.5 w-3.5" />
+                  Xem thêm <ArrowRight className="h-3 sm:h-3.5 w-3 sm:w-3.5" />
                 </Link>
               </div>
             </div>

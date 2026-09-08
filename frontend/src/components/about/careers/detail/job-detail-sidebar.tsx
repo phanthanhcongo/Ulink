@@ -8,14 +8,14 @@ const sameDeptJobs = [
 
 export function JobDetailSidebar() {
   return (
-    <div className="flex flex-col gap-6 py-8">
+    <div className="flex flex-col gap-4 sm:gap-6 py-4 sm:py-6 lg:py-8">
       {/* 1. Job Summary Card */}
-      <div className="rounded-[3px] bg-slate-50 p-6 border border-slate-100 flex flex-col gap-4 shadow-sm">
-        <h3 className="text-card-title text-slate-900 border-b border-slate-200 pb-3">
+      <div className="rounded-[3px] bg-slate-50 p-4 sm:p-6 border border-slate-100 flex flex-col gap-3 sm:gap-4 shadow-sm">
+        <h3 className="text-sm sm:text-card-title font-bold text-slate-900 border-b border-slate-200 pb-2 sm:pb-3">
           Tổng quan vị trí
         </h3>
 
-        <div className="space-y-3 text-body-regular leading-relaxed">
+        <div className="space-y-2 sm:space-y-3 text-xs sm:text-body-regular leading-relaxed">
           <div className="flex justify-between text-slate-600">
             <span>Số lượng tuyển:</span>
             <span className="font-semibold text-slate-900">03 người</span>
@@ -40,29 +40,29 @@ export function JobDetailSidebar() {
 
         <Link
           href="/about/careers/b2b-sales/apply"
-          className="mt-2 inline-flex items-center justify-center rounded-[3px] bg-blue-600 py-2.5 text-body-regular font-semibold text-white shadow-md hover:bg-blue-700 transition-all"
+          className="mt-2 inline-flex items-center justify-center rounded-[3px] bg-blue-600 py-2 sm:py-2.5 px-4 text-xs sm:text-body-regular font-semibold text-white shadow-md hover:bg-blue-700 transition-all"
         >
           Ứng tuyển ngay
         </Link>
       </div>
 
       {/* 2. Same Department Jobs */}
-      <div className="rounded-[3px] bg-white p-6 border border-slate-100 shadow-sm flex flex-col gap-4">
-        <h3 className="text-card-title text-slate-900 border-b border-slate-100 pb-3">
+      <div className="rounded-[3px] bg-white p-4 sm:p-6 border border-slate-100 shadow-sm flex flex-col gap-3 sm:gap-4">
+        <h3 className="text-sm sm:text-card-title font-bold text-slate-900 border-b border-slate-100 pb-2 sm:pb-3">
           Vị trí cùng phòng ban
         </h3>
 
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-2 sm:gap-3">
           {sameDeptJobs.map((item) => (
             <Link
               key={item.id}
               href="/about/careers/b2b-sales"
-              className="flex flex-col p-3 rounded-[3px] bg-slate-50 border border-slate-100 hover:border-blue-200 hover:bg-blue-50/50 transition-all group"
+              className="flex flex-col p-2.5 sm:p-3 rounded-[3px] bg-slate-50 border border-slate-100 hover:border-blue-200 hover:bg-blue-50/50 transition-all group"
             >
-              <span className="text-body-regular font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+              <span className="text-xs sm:text-body-regular font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
                 {item.title}
               </span>
-              <span className="text-caption-responsive text-slate-500 mt-1">{item.location}</span>
+              <span className="text-caption-responsive text-slate-500 mt-0.5 sm:mt-1 text-xs">{item.location}</span>
             </Link>
           ))}
         </div>

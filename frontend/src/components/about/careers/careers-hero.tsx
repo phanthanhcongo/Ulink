@@ -10,14 +10,14 @@ const stats = [
 
 export function CareersHero() {
   return (
-    <section className="py-8 lg:py-12">
-      <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
+    <section className="py-4 sm:py-6 lg:py-8">
+      <div className="grid grid-cols-1 items-center gap-4 sm:gap-6 lg:grid-cols-12 lg:gap-8">
         {/* Left Column: Headline & Quick Props */}
         <div className="lg:col-span-6 flex flex-col gap-4">
           <span className="text-body-regular font-bold uppercase tracking-wider text-blue-600">
             GIA NHẬP ULINK INDUSTRIES
           </span>
-          <h1 className="text-hero-title font-bold tracking-tight text-slate-900 leading-tight">
+          <h1 className="text-section-title sm:text-hero-title lg:text-hero-title font-bold tracking-tight text-slate-900 leading-tight">
             Kiến tạo giá trị khác biệt.<br />Phát triển bền vững.
           </h1>
           <p className="text-body-large leading-relaxed text-slate-500 max-w-[540px]">
@@ -78,7 +78,7 @@ export function CareersHero() {
       </div>
 
       {/* Impression Metrics Bar */}
-      <div className="mt-12 sm:mt-16 p-6 sm:p-8 shadow-sm grid grid-cols-2 gap-6 sm:grid-cols-4 items-center">
+      <div className="mt-6 sm:mt-10 lg:mt-12 p-3 sm:p-4 lg:p-6 shadow-sm grid grid-cols-2 gap-3 sm:gap-4 lg:gap-6 sm:grid-cols-4 items-center">
         {stats.map((s, idx) => {
           const Icon = s.icon;
           return (

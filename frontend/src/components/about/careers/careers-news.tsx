@@ -39,13 +39,13 @@ const newsList = [
 
 export function CareersNews() {
   return (
-    <section className="py-12 lg:py-16">
+    <section className="py-4 sm:py-6 lg:py-8">
       {/* Section Header */}
-      <div className="flex flex-col items-center text-center mb-10">
+      <div className="flex flex-col items-center text-center mb-6 sm:mb-8 lg:mb-10">
         <span className="text-body-regular font-bold uppercase tracking-wider text-blue-600">
           Cập nhật mới nhất
         </span>
-        <h2 className="text-hero-title font-bold tracking-tight text-slate-900 mt-1">
+        <h2 className="text-section-title sm:text-hero-title lg:text-hero-title font-bold tracking-tight text-slate-900 mt-1">
           Tin tức & Sự kiện
         </h2>
         <p className="mt-2 text-body-regular text-slate-500 max-w-xl">
@@ -54,7 +54,7 @@ export function CareersNews() {
       </div>
 
       {/* Top Block: Featured News (2 columns) */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 items-center">
         {/* Left: Image */}
         <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[3px] shadow-md bg-slate-100">
           <Image
@@ -93,7 +93,7 @@ export function CareersNews() {
       <div className="border-t border-slate-200/60 my-10" />
 
       {/* Bottom Block: 3 columns of news cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
         {newsList.map((item) => (
           <div key={item.id} className="flex flex-col gap-3 group">
             {/* Image */}

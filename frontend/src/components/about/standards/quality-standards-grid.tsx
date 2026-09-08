@@ -27,32 +27,32 @@ const standardsList = [
 
 export function QualityStandardsGrid() {
   return (
-    <section className="py-8 lg:py-12">
-      <div className="flex flex-col items-center text-center mb-8">
-        <span className="inline-flex items-center rounded-full bg-blue-50 px-3.5 py-1 text-body-regular font-bold uppercase tracking-wider text-blue-700 ring-1 ring-inset ring-blue-700/10 mb-2">
+    <section className="py-4 sm:py-6 lg:py-8 px-3 sm:px-4">
+      <div className="flex flex-col items-center text-center mb-4 sm:mb-6 lg:mb-8">
+        <span className="inline-flex items-center rounded-full bg-blue-50 px-2.5 sm:px-3 lg:px-3.5 py-0.5 sm:py-1 text-caption-responsive sm:text-body-regular font-bold uppercase tracking-wider text-blue-700 ring-1 ring-inset ring-blue-700/10 mb-2">
           ĐẠT CHUẨN QUỐC TẾ
         </span>
-        <h2 className="text-hero-title font-bold tracking-tight text-slate-900">
+        <h2 className="text-section-title sm:text-hero-title font-bold tracking-tight text-slate-900">
           Hệ Thống Tiêu Chuẩn
         </h2>
-        <p className="mt-2 text-body-large font-medium leading-relaxed text-slate-600 max-w-xl">
+        <p className="mt-1.5 sm:mt-2 text-body-regular sm:text-body-large font-medium leading-relaxed text-slate-600 max-w-xl text-sm sm:text-base">
           ULink cam kết vận hành và tuân thủ các tiêu chuẩn ngành nghiêm ngặt nhất, đảm bảo chất
           lượng vật tư kỹ thuật cho toàn bộ chuỗi cung ứng công nghiệp Việt Nam.
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-3 sm:gap-4 lg:gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {standardsList.map((item, idx) => (
           <div
             key={idx}
-            className="flex flex-col rounded-[3px] p-6 shadow-sm border border-slate-100 group transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]"
+            className="flex flex-col rounded-[3px] p-3 sm:p-4 lg:p-6 shadow-sm border border-slate-100 group transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]"
           >
-            <div className="mb-4 flex h-10 w-10 items-center justify-center rounded-[3px] bg-slate-900 text-white font-bold text-body-regular">
+            <div className="mb-2 sm:mb-3 lg:mb-4 flex h-8 sm:h-9 lg:h-10 w-8 sm:w-9 lg:w-10 items-center justify-center rounded-[3px] bg-slate-900 text-white font-bold text-body-regular text-sm sm:text-base">
               {item.code}
             </div>
-            <h3 className="text-card-title text-slate-900">{item.title}</h3>
-            <span className="mt-1 text-body-regular font-semibold text-blue-600">{item.sub}</span>
-            <p className="mt-3 text-body-regular leading-relaxed text-slate-600">{item.desc}</p>
+            <h3 className="text-body-large sm:text-card-title text-slate-900">{item.title}</h3>
+            <span className="mt-0.5 sm:mt-1 text-body-regular font-semibold text-blue-600 text-xs sm:text-sm">{item.sub}</span>
+            <p className="mt-2 sm:mt-3 text-body-regular leading-relaxed text-slate-600 text-sm sm:text-base">{item.desc}</p>
           </div>
         ))}
       </div>

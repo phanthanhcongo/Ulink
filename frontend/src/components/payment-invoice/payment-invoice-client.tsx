@@ -56,66 +56,67 @@ export default function PaymentInvoiceClient({
   };
 
   return (
-    <div className="page-container flex flex-col gap-6 text-left text-slate-800">
+    <div className="page-container flex flex-col gap-4 sm:gap-6 text-left text-slate-800">
       {/* Breadcrumbs */}
       <nav
         aria-label="Breadcrumb"
-        className="flex flex-wrap items-center gap-1.5 text-caption-responsive text-slate-400 font-medium"
+        className="flex flex-wrap items-center gap-1 sm:gap-1.5 text-[10px] sm:text-caption-responsive text-slate-400 font-medium overflow-x-auto"
       >
-        <Link href="/" className="hover:text-brand transition-colors">
+        <Link href="/" className="hover:text-brand transition-colors shrink-0">
           Trang chủ
         </Link>
-        <ChevronRight className="h-3 w-3 opacity-60" />
-        <Link href="/order-tracking" className="hover:text-brand transition-colors">
-          Đơn hàng của tôi
+        <ChevronRight className="h-2.5 w-2.5 sm:h-3 sm:w-3 opacity-60 shrink-0" />
+        <Link href="/order-tracking" className="hover:text-brand transition-colors shrink-0">
+          Đơn hàng
         </Link>
-        <ChevronRight className="h-3 w-3 opacity-60" />
-        <span className="hover:text-brand transition-colors cursor-pointer">
-          Chi tiết đơn hàng ULK-2026-98745
+        <ChevronRight className="h-2.5 w-2.5 sm:h-3 sm:w-3 opacity-60 shrink-0" />
+        <span className="hover:text-brand transition-colors cursor-pointer shrink-0 truncate">
+          Chi tiết
         </span>
-        <ChevronRight className="h-3 w-3 opacity-60" />
-        <span className="text-slate-600 font-semibold">Thanh toán hóa đơn</span>
+        <ChevronRight className="h-2.5 w-2.5 sm:h-3 sm:w-3 opacity-60 shrink-0" />
+        <span className="text-slate-600 font-semibold truncate">Thanh toán</span>
       </nav>
 
       {/* Header Row */}
-      <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-5">
-        <div className="space-y-1">
-          <div className="flex flex-wrap items-center gap-3">
-            <h2 className="text-card-title font-bold text-slate-900 tracking-tight">
-              Yêu cầu thanh toán hóa đơn #INV-2026-08974
+      <div className="flex flex-col gap-3 sm:gap-4 border-b border-slate-100 pb-4 sm:pb-5">
+        <div className="space-y-1.5 sm:space-y-1">
+          <div className="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-3 flex-wrap">
+            <h2 className="text-base sm:text-card-title font-bold text-slate-900 tracking-tight truncate">
+              Thanh toán hóa đơn #INV-2026-08974
             </h2>
-            <span className="inline-flex items-center bg-[#FEF3C7] text-[#D97706] text-[10.5px] font-bold px-2.5 py-0.5 rounded-full border border-amber-200">
-              Chờ thanh toán B2B
+            <span className="inline-flex items-center bg-[#FEF3C7] text-[#D97706] text-[9px] sm:text-[10.5px] font-bold px-2 sm:px-2.5 py-0.5 rounded-full border border-amber-200 shrink-0">
+              Chờ thanh toán
             </span>
           </div>
-          <p className="text-caption-responsive text-slate-400 font-medium">
-            Đơn hàng gốc: ULK-2026-98745 • Kỳ thanh toán định kỳ 30 ngày giao dịch doanh nghiệp
+          <p className="text-[10px] sm:text-caption-responsive text-slate-400 font-medium">
+            Đơn hàng: ULK-2026-98745 • Hạn: 30 ngày
           </p>
         </div>
         <Link
           href="/order-confirmation"
-          className="inline-flex items-center gap-1.5 text-caption-responsive font-bold text-slate-600 hover:text-brand transition-all md:self-center"
+          className="inline-flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-caption-responsive font-bold text-slate-600 hover:text-brand transition-all w-fit sm:self-auto"
         >
-          <ArrowLeft className="h-4 w-4" />
-          Quay lại chi tiết đơn hàng
+          <ArrowLeft className="h-3 w-3 sm:h-4 sm:w-4 shrink-0" />
+          <span className="hidden sm:inline">Quay lại chi tiết</span>
+          <span className="sm:hidden">Quay lại</span>
         </Link>
       </div>
 
       {/* Grid Layout */}
-      <div className="grid gap-6 lg:grid-cols-12 pt-2">
+      <div className="grid gap-4 sm:gap-6 lg:grid-cols-12 pt-2">
         {/* LEFT COLUMN: VAT Invoice details, Bank details, Invoice items list */}
-        <div className="lg:col-span-8 space-y-6">
+        <div className="lg:col-span-8 space-y-4 sm:space-y-6">
           {/* VAT Invoice Details Card */}
-          <div className="bg-white border border-slate-200/80 p-5 rounded-[3px] shadow-sm space-y-4">
-            <h4 className="text-body-regular font-bold text-slate-900 border-b border-slate-100 pb-3 flex items-center gap-2">
-              <FileText className="h-5 w-5 text-brand" />
-              Thông tin hóa đơn giá trị gia tăng (B2B)
+          <div className="bg-white border border-slate-200/80 p-4 sm:p-5 rounded-[3px] shadow-sm space-y-3 sm:space-y-4">
+            <h4 className="text-sm sm:text-body-regular font-bold text-slate-900 border-b border-slate-100 pb-2 sm:pb-3 flex items-center gap-2">
+              <FileText className="h-4 w-4 sm:h-5 sm:w-5 text-brand shrink-0" />
+              <span>Thông tin hóa đơn</span>
             </h4>
 
-            <div className="text-caption-responsive space-y-3.5 pt-1">
-              <div className="flex justify-between items-center py-0.5">
-                <span className="text-slate-500 font-medium">Mã số hóa đơn:</span>
-                <span className="font-bold text-slate-800 text-caption-responsive">INV-2026-08974</span>
+            <div className="text-[10px] sm:text-caption-responsive space-y-2.5 sm:space-y-3.5 pt-1">
+              <div className="flex justify-between items-center py-0.5 gap-2">
+                <span className="text-slate-500 font-medium shrink-0">Mã số:</span>
+                <span className="font-bold text-slate-800 text-right">INV-2026-08974</span>
               </div>
               <div className="flex justify-between items-center py-0.5">
                 <span className="text-slate-500 font-medium">Ngày phát hành:</span>
@@ -137,29 +138,30 @@ export default function PaymentInvoiceClient({
           </div>
 
           {/* B2B Bank Transfer Instructions Card */}
-          <div className="bg-white border border-slate-200/80 p-5 rounded-[3px] shadow-sm space-y-4">
-            <h4 className="text-body-regular font-bold text-slate-900 border-b border-slate-100 pb-3 flex items-center gap-2">
-              <CreditCard className="h-5 w-5 text-brand" />
-              Hướng dẫn chuyển khoản ngân hàng B2B
+          <div className="bg-white border border-slate-200/80 p-4 sm:p-5 rounded-[3px] shadow-sm space-y-3 sm:space-y-4">
+            <h4 className="text-sm sm:text-body-regular font-bold text-slate-900 border-b border-slate-100 pb-2 sm:pb-3 flex items-center gap-2">
+              <CreditCard className="h-4 w-4 sm:h-5 sm:w-5 text-brand shrink-0" />
+              <span>Chuyển khoản ngân hàng</span>
             </h4>
 
-            <div className="text-caption-responsive space-y-3.5 pt-1">
+            <div className="text-[10px] sm:text-caption-responsive space-y-2.5 sm:space-y-3.5 pt-1">
               {/* Row 1 */}
-              <div className="flex justify-between items-start gap-4 py-0.5">
-                <div className="space-y-0.5">
-                  <span className="text-slate-400 font-medium">Ngân hàng thụ hưởng:</span>
-                  <p className="font-bold text-slate-800 text-[12.5px]">
-                    NHTMCP Ngoại Thương Việt Nam (Vietcombank)
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 py-0.5">
+                <div className="space-y-0.5 min-w-0">
+                  <span className="text-slate-400 font-medium">Ngân hàng:</span>
+                  <p className="font-bold text-slate-800 text-[11px] sm:text-[12.5px] line-clamp-2">
+                    Vietcombank
                   </p>
                 </div>
                 <button
                   onClick={() =>
                     handleCopyText('NHTMCP Ngoại Thương Việt Nam (Vietcombank)', 'bank')
                   }
-                  className="inline-flex items-center gap-1 bg-blue-50 text-blue-600 px-2 py-1 rounded-[3px] text-caption-responsive font-bold hover:bg-blue-100 transition-colors border border-blue-100 shrink-0"
+                  className="inline-flex items-center gap-1 bg-blue-50 text-blue-600 px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-[3px] text-[9px] sm:text-caption-responsive font-bold hover:bg-blue-100 transition-colors border border-blue-100 shrink-0 w-fit"
                 >
-                  {copiedField === 'bank' ? 'Đã sao chép!' : 'Sao chép'}
-                  <Copy className="h-3 w-3" />
+                  <Copy className="h-2.5 w-2.5 sm:h-3 sm:w-3" />
+                  <span className="hidden sm:inline">{copiedField === 'bank' ? 'Đã sao chép!' : 'Sao chép'}</span>
+                  <span className="sm:hidden">Sao chép</span>
                 </button>
               </div>
 
@@ -208,19 +210,19 @@ export default function PaymentInvoiceClient({
           </div>
 
           {/* Line Items Card */}
-          <div className="bg-white border border-slate-200/80 p-5 rounded-[3px] shadow-sm space-y-4">
-            <div className="flex justify-between items-baseline border-b border-slate-100 pb-3">
-              <h4 className="text-body-regular font-bold text-slate-900 uppercase tracking-wider">
-                Chi tiết mặt hàng trong hóa đơn (02)
+          <div className="bg-white border border-slate-200/80 p-4 sm:p-5 rounded-[3px] shadow-sm space-y-3 sm:space-y-4">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-2 border-b border-slate-100 pb-2 sm:pb-3">
+              <h4 className="text-sm sm:text-body-regular font-bold text-slate-900 uppercase tracking-wider">
+                Chi tiết mặt hàng (02)
               </h4>
-              <span className="text-caption-responsive text-slate-400 font-semibold font-mono">
-                Mã kiện bàn giao: ULK-PK-921
+              <span className="text-[9px] sm:text-caption-responsive text-slate-400 font-semibold font-mono shrink-0">
+                Mã: ULK-PK-921
               </span>
             </div>
 
             <div className="divide-y divide-slate-100">
               {/* Product 1 */}
-              <div className="flex flex-col sm:flex-row gap-4 py-3.5 first:pt-1 last:pb-1 sm:items-start justify-between">
+              <div className="flex flex-col gap-3 sm:gap-4 py-3 sm:py-3.5 first:pt-0 last:pb-0 sm:items-start sm:flex-row sm:justify-between">
                 <div className="flex gap-3.5 items-start flex-1 min-w-0">
                   <Link
                     href="/solutions/mang-quan-pallet-stretch-film"
@@ -295,32 +297,32 @@ export default function PaymentInvoiceClient({
         </div>
 
         {/* RIGHT COLUMN: Summary and action triggers */}
-        <div className="lg:col-span-4 space-y-5">
+        <div className="lg:col-span-4 space-y-3 sm:space-y-5">
           {/* Invoice Summary */}
-          <div className="bg-white border border-slate-200/80 p-5 rounded-[3px] shadow-sm space-y-4">
-            <h4 className="text-body-regular font-bold text-slate-900 border-b border-slate-100 pb-3 uppercase tracking-wider">
-              Tổng cộng hóa đơn B2B
+          <div className="bg-white border border-slate-200/80 p-4 sm:p-5 rounded-[3px] shadow-sm space-y-3 sm:space-y-4">
+            <h4 className="text-sm sm:text-body-regular font-bold text-slate-900 border-b border-slate-100 pb-2 sm:pb-3 uppercase tracking-wider">
+              Tổng cộng
             </h4>
 
-            <div className="space-y-3 text-caption-responsive">
-              <div className="flex justify-between">
-                <span className="text-slate-500">Tạm tính mặt hàng</span>
-                <span className="font-bold text-slate-800">{formatPrice(25350000)}</span>
+            <div className="space-y-2 sm:space-y-3 text-[10px] sm:text-caption-responsive">
+              <div className="flex justify-between gap-2">
+                <span className="text-slate-500">Tạm tính</span>
+                <span className="font-bold text-slate-800 text-right">{formatPrice(25350000)}</span>
               </div>
-              <div className="flex justify-between">
-                <span className="text-slate-500">Thuế VAT B2B (8%)</span>
-                <span className="font-bold text-slate-800">{formatPrice(2028000)}</span>
+              <div className="flex justify-between gap-2">
+                <span className="text-slate-500">Thuế VAT (8%)</span>
+                <span className="font-bold text-slate-800 text-right">{formatPrice(2028000)}</span>
               </div>
-              <div className="flex justify-between items-baseline">
-                <span className="text-slate-500">Phí vận tải ULink Fleet</span>
-                <span className="font-bold text-emerald-600 text-right">Miễn phí (Ưu đãi B2B)</span>
+              <div className="flex justify-between items-baseline gap-2">
+                <span className="text-slate-500">Vận tải</span>
+                <span className="font-bold text-emerald-600 text-right">Miễn phí</span>
               </div>
 
               <hr className="border-slate-200" />
 
-              <div className="flex items-baseline justify-between pt-1">
-                <span className="text-body-regular font-bold text-slate-900">Tổng thanh toán</span>
-                <span className="text-card-title font-bold text-[#006AA7] leading-none">
+              <div className="flex items-baseline justify-between pt-1 gap-2">
+                <span className="text-sm sm:text-body-regular font-bold text-slate-900">Tổng</span>
+                <span className="text-base sm:text-card-title font-bold text-[#006AA7] leading-none">
                   {formatPrice(27378000)}
                 </span>
               </div>
@@ -328,23 +330,25 @@ export default function PaymentInvoiceClient({
           </div>
 
           {/* Action buttons */}
-          <div className="space-y-3.5">
+          <div className="space-y-2 sm:space-y-3.5">
             <button
               onClick={() =>
-                toast.success('Đang tạo và chuẩn bị tải xuống file PDF Hóa đơn tài chính B2B chính thức...', { duration: 4000 })
+                toast.success('Đang tạo PDF hóa đơn...', { duration: 4000 })
               }
-              className="w-full inline-flex items-center justify-center gap-2 rounded-[3px] border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 py-3 text-body-regular font-bold shadow-sm transition-all text-center"
+              className="w-full inline-flex items-center justify-center gap-2 rounded-[3px] border border-slate-300 bg-white hover:bg-slate-50 text-slate-700 py-2 sm:py-3 text-[10px] sm:text-body-regular font-bold shadow-sm transition-all text-center"
             >
-              <Download className="h-4 w-4" />
-              Tải hóa đơn PDF
+              <Download className="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0" />
+              <span className="hidden sm:inline">Tải PDF</span>
+              <span className="sm:hidden">Tải</span>
             </button>
 
             <button
               onClick={() => window.print()}
-              className="w-full inline-flex items-center justify-center gap-2 text-slate-500 hover:text-slate-800 py-2.5 text-caption-responsive font-bold transition-all text-center"
+              className="w-full inline-flex items-center justify-center gap-2 text-slate-500 hover:text-slate-800 py-2 sm:py-2.5 text-[10px] sm:text-caption-responsive font-bold transition-all text-center"
             >
-              <Printer className="h-4 w-4" />
-              In hóa đơn chứng từ gốc trực tiếp
+              <Printer className="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0" />
+              <span className="hidden sm:inline">In hóa đơn</span>
+              <span className="sm:hidden">In</span>
             </button>
           </div>
         </div>

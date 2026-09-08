@@ -21,35 +21,34 @@ const valueProps = [
 
 export function ContactHero() {
   return (
-    <section className="py-8 lg:py-12">
-      <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-12 lg:gap-12">
+    <section className="py-6 sm:py-8 lg:py-12">
+      <div className="grid grid-cols-1 items-center gap-6 sm:gap-8 lg:grid-cols-12 lg:gap-10">
         {/* Left Column */}
-        <div className="lg:col-span-6 flex flex-col gap-4">
-          <span className="inline-flex w-fit items-center rounded-full bg-blue-50 px-3.5 py-1 text-caption-responsive font-semibold text-blue-700 ring-1 ring-inset ring-blue-700/10">
+        <div className="lg:col-span-6 flex flex-col gap-3 sm:gap-4">
+          <span className="inline-flex w-fit items-center rounded-full bg-blue-50 px-3 sm:px-3.5 py-1 text-caption-responsive font-semibold text-blue-700 ring-1 ring-inset ring-blue-700/10">
             LIÊN HỆ
           </span>
-          <h1 className="text-hero-title font-bold tracking-tight text-slate-900 leading-tight">
+          <h1 className="text-section-title sm:text-hero-title font-bold tracking-tight text-slate-900 leading-tight">
             Hub Hà Nam - Trung tâm phân phối
           </h1>
-          <p className="text-body-regular leading-relaxed text-slate-600">
-            Trung tâm phân phối chiến lược tại cửa ngõ phía Nam Hà Nội, kết nối linh hoạt với các
-            cụm công nghiệp trọng điểm và hệ thống logistics toàn quốc.
+          <p className="text-caption-responsive sm:text-body-regular leading-6 sm:leading-relaxed text-slate-600">
+            Trung tâm phân phối chiến lược tại cửa ngõ phía Nam Hà Nội, kết nối linh hoạt với các cụm công nghiệp trọng điểm và hệ thống logistics toàn quốc.
           </p>
 
-          <div className="mt-4 flex flex-col gap-3">
+          <div className="mt-3 sm:mt-4 flex flex-col gap-2.5 sm:gap-3">
             {valueProps.map((item, idx) => {
               const Icon = item.icon;
               return (
                 <div
                   key={idx}
-                  className="flex items-start gap-3.5 p-2.5 rounded-[3px] bg-slate-50 border border-slate-100"
+                  className="flex items-start gap-2.5 sm:gap-3.5 p-2 sm:p-2.5 rounded-[3px] bg-slate-50 border border-slate-100"
                 >
-                  <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-[3px] bg-blue-600 text-white">
-                    <Icon className="h-5 w-5" />
+                  <div className="flex h-8 sm:h-9 w-8 sm:w-9 shrink-0 items-center justify-center rounded-[3px] bg-blue-600 text-white">
+                    <Icon className="h-4 sm:h-5 w-4 sm:w-5" />
                   </div>
                   <div>
                     <h3 className="text-caption-responsive font-bold text-slate-900">{item.title}</h3>
-                    <p className="text-caption-responsive text-slate-600">{item.desc}</p>
+                    <p className="text-caption-responsive text-slate-600 leading-snug">{item.desc}</p>
                   </div>
                 </div>
               );
@@ -66,6 +65,7 @@ export function ContactHero() {
               fill
               className="object-cover"
               priority
+              sizes="(max-width: 768px) 100vw, 50vw"
             />
           </div>
         </div>

@@ -235,7 +235,7 @@ export function ProductsClient({
   return (
     <div className="admin-page">
       {/* Header and Add Button */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-100 pb-6 mb-8">
+      <div className="admin-header border-b border-slate-100 pb-6 mb-6 md:mb-8">
         <div>
           <span className="text-caption-responsive uppercase text-slate-400 font-bold tracking-wider">
             Hệ thống Danh mục
@@ -256,7 +256,7 @@ export function ProductsClient({
             setProductModalOpen(true);
             setProductFormError('');
           }}
-          className="inline-flex h-11 items-center justify-center gap-2 rounded-[3px] bg-blue-600 px-5 text-caption-responsive font-bold text-white shadow-sm hover:bg-blue-700 transition-colors shrink-0"
+          className="admin-button admin-button-primary w-full sm:w-auto"
         >
           <Plus className="h-4 w-4" />
           Tạo sản phẩm mới
@@ -264,7 +264,7 @@ export function ProductsClient({
       </div>
 
       {/* Filter and Search Bar */}
-      <div className="bg-white border border-slate-100 rounded-[3px] p-5 shadow-sm mb-8 flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between">
+      <div className="bg-white border border-slate-100 rounded-[3px] p-4 sm:p-5 md:p-6 shadow-sm mb-6 md:mb-8 admin-filter-bar">
         {/* Search */}
         <div className="relative flex-1">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
@@ -278,14 +278,14 @@ export function ProductsClient({
         </div>
 
         {/* Filters */}
-        <div className="flex flex-wrap items-center gap-3">
+        <div className="admin-filter-group">
           {/* Category Filter */}
           <div className="flex items-center gap-2">
-            <Tag className="h-4 w-4 text-slate-400 shrink-0" />
+            <Tag className="h-4 w-4 text-slate-400 shrink-0 hidden sm:block" />
             <select
               value={selectedCategory}
               onChange={(e) => setSelectedCategory(e.target.value)}
-              className="px-3 py-2.5 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-700 focus:outline-none"
+              className="admin-select flex-1 sm:flex-none"
             >
               <option value="all">Tất cả danh mục</option>
               {categories.map((cat) => (
@@ -298,11 +298,11 @@ export function ProductsClient({
 
           {/* Status Filter */}
           <div className="flex items-center gap-2">
-            <Layers className="h-4 w-4 text-slate-400 shrink-0" />
+            <Layers className="h-4 w-4 text-slate-400 shrink-0 hidden sm:block" />
             <select
               value={selectedStatus}
               onChange={(e) => setSelectedStatus(e.target.value)}
-              className="px-3 py-2.5 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-700 focus:outline-none"
+              className="admin-select flex-1 sm:flex-none"
             >
               <option value="all">Tất cả trạng thái</option>
               <option value="published">Đã xuất bản</option>
@@ -316,7 +316,7 @@ export function ProductsClient({
       {/* Products list table */}
       <div className="bg-white border border-slate-100 rounded-[3px] shadow-sm overflow-hidden">
         {filteredProducts.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-16 text-center">
+          <div className="flex flex-col items-center justify-center py-12 sm:py-16 px-4 text-center">
             <Package className="h-12 w-12 text-slate-300 mb-3" />
             <span className="text-body-regular font-bold text-primary">
               Không tìm thấy sản phẩm nào
@@ -326,15 +326,15 @@ export function ProductsClient({
             </span>
           </div>
         ) : (
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse text-left min-w-[1000px]">
+          <div className="admin-table-wrapper">
+            <table className="admin-table min-w-[1000px]">
               <thead>
-                <tr className="bg-slate-50 border-b border-slate-100 text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
-                  <th className="px-6 py-4 sticky left-0 bg-slate-50 z-10 shadow-[2px_0_5px_rgba(0,0,0,0.05)]">Sản phẩm</th>
-                  <th className="px-6 py-4 min-w-[160px]">Thương hiệu / Danh mục</th>
-                  <th className="px-6 py-4 min-w-[100px]">Trạng thái</th>
-                  <th className="px-6 py-4 min-w-[220px]">Quản lý SKU & Tồn kho</th>
-                  <th className="px-6 py-4 text-right sticky right-0 bg-slate-50 z-10 shadow-[-2px_0_5px_rgba(0,0,0,0.05)]">Hành động</th>
+                <tr className="admin-table-head">
+                  <th className="admin-table-cell admin-table-cell-sticky">Sản phẩm</th>
+                  <th className="admin-table-cell min-w-[160px]">Thương hiệu / Danh mục</th>
+                  <th className="admin-table-cell min-w-[100px]">Trạng thái</th>
+                  <th className="admin-table-cell min-w-[220px]">Quản lý SKU & Tồn kho</th>
+                  <th className="admin-table-cell text-right sticky right-0 bg-slate-50 z-10 shadow-[-2px_0_5px_rgba(0,0,0,0.05)]">Hành động</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 text-caption-responsive">
@@ -342,11 +342,11 @@ export function ProductsClient({
                   const categoryName = (prod.category as any)?.name || 'Chưa phân loại';
                   const canCreateSku = (prod.assigned_attributes?.length ?? 0) > 0;
                   return (
-                    <tr key={prod.id} className="hover:bg-slate-50/30 transition-colors group">
+                    <tr key={prod.id} className="admin-table-row group">
                       {/* Product Name & Thumbnail */}
-                      <td className="px-6 py-4 sticky left-0 bg-white group-hover:bg-slate-50/80 transition-colors shadow-[2px_0_5px_rgba(0,0,0,0.03)] z-10">
-                        <div className="flex items-center gap-3.5 min-w-[280px]">
-                          <div className="relative h-12 w-12 shrink-0 overflow-hidden rounded-[3px] border border-slate-200 bg-slate-50 flex items-center justify-center">
+                      <td className="admin-table-cell admin-table-cell-sticky group-hover:bg-slate-50/80 transition-colors">
+                        <div className="flex items-center gap-2 sm:gap-3 min-w-[250px] sm:min-w-[280px]">
+                          <div className="relative h-10 sm:h-12 w-10 sm:w-12 shrink-0 overflow-hidden rounded-[3px] border border-slate-200 bg-slate-50 flex items-center justify-center">
                             {prod.hero ? (
                               <Image
                                 src={`${directusUrl}/assets/${prod.hero}?width=96&height=96&fit=cover`}
@@ -356,14 +356,14 @@ export function ProductsClient({
                                 sizes="48px"
                               />
                             ) : (
-                              <Package className="h-6 w-6 text-slate-300" />
+                              <Package className="h-5 sm:h-6 w-5 sm:w-6 text-slate-300" />
                             )}
                           </div>
                           <div className="flex flex-col min-w-0">
-                            <span className="font-bold text-primary leading-tight truncate max-w-[200px]" title={prod.name}>
+                            <span className="font-bold text-primary leading-tight truncate max-w-[150px] sm:max-w-[200px]" title={prod.name}>
                               {prod.name}
                             </span>
-                            <span className="text-caption-responsive text-slate-400 font-mono mt-1 select-all truncate max-w-[200px]">
+                            <span className="text-caption-responsive text-slate-400 font-mono mt-0.5 select-all truncate max-w-[150px] sm:max-w-[200px]">
                               /{prod.slug}
                             </span>
                           </div>
@@ -371,9 +371,9 @@ export function ProductsClient({
                       </td>
 
                       {/* Brand & Category */}
-                      <td className="px-6 py-4">
+                      <td className="admin-table-cell">
                         <div className="flex flex-col gap-1">
-                          <span className="text-slate-500 font-medium">{prod.brand || '---'}</span>
+                          <span className="text-slate-500 font-medium text-xs sm:text-caption-responsive">{prod.brand || '---'}</span>
                           <span className="inline-flex items-center self-start px-2 py-0.5 rounded-[3px] bg-blue-50 text-caption-responsive font-bold text-blue-600">
                             {categoryName}
                           </span>
@@ -381,7 +381,7 @@ export function ProductsClient({
                       </td>
 
                       {/* Status */}
-                      <td className="px-6 py-4">
+                      <td className="admin-table-cell">
                         <span
                           className={cn(
                             'inline-flex items-center px-2 py-0.5 rounded-[3px] text-caption-responsive font-bold uppercase',
@@ -399,15 +399,15 @@ export function ProductsClient({
                       </td>
 
                       {/* SKUs List & Inline Update */}
-                      <td className="px-6 py-4">
+                      <td className="admin-table-cell">
                         {prod.skus && prod.skus.length > 0 ? (
-                          <div className="space-y-2">
+                          <div className="space-y-1.5 sm:space-y-2">
                             {prod.skus.map((sku) => (
-                              <div key={sku.id} className="flex items-center gap-3">
-                                <span className="text-caption-responsive font-mono font-semibold text-slate-600 select-all min-w-[70px]">
+                              <div key={sku.id} className="flex flex-col sm:flex-row items-start sm:items-center gap-1.5 sm:gap-2">
+                                <span className="text-caption-responsive font-mono font-semibold text-slate-600 select-all min-w-[60px]">
                                   {sku.sku_code}
                                 </span>
-                                <span className="text-caption-responsive text-slate-400 font-medium">
+                                <span className="text-caption-responsive text-slate-400 font-medium hidden sm:inline">
                                   {sku.pack_size ? `${sku.unit} (${sku.pack_size})` : sku.unit}
                                 </span>
                                 {(sku as any).price && (
@@ -423,7 +423,7 @@ export function ProductsClient({
                                     handleSkuStockChange(sku.id, e.target.value as any)
                                   }
                                   className={cn(
-                                    'px-1.5 py-0.5 rounded-[3px] text-caption-responsive font-bold border focus:outline-none cursor-pointer',
+                                    'px-1.5 py-0.5 rounded-[3px] text-caption-responsive font-bold border focus:outline-none cursor-pointer text-xs sm:text-caption-responsive',
                                     sku.stock_status === 'in_stock' &&
                                       'bg-green-50 border-green-200 text-green-700',
                                     sku.stock_status === 'low_stock' &&
@@ -445,8 +445,8 @@ export function ProductsClient({
                       </td>
 
                       {/* Actions */}
-                      <td className="px-6 py-4 text-right sticky right-0 bg-white group-hover:bg-slate-50/80 transition-colors shadow-[-2px_0_5px_rgba(0,0,0,0.03)] z-10">
-                        <div className="flex items-center justify-end gap-2.5">
+                      <td className="admin-table-cell text-right sticky right-0 bg-white group-hover:bg-slate-50/80 transition-colors shadow-[-2px_0_5px_rgba(0,0,0,0.03)] z-10">
+                        <div className="flex items-center justify-end gap-1.5 sm:gap-2">
                           {/* Add SKU */}
                           <button
                             disabled={!canCreateSku}
@@ -459,20 +459,19 @@ export function ProductsClient({
                               canCreateSku ? 'Thêm mã SKU' : 'Cần thêm thuộc tính trước khi tạo SKU'
                             }
                             className={cn(
-                              'p-1 rounded-[3px] transition-colors',
+                              'p-1.5 sm:p-1 rounded-[3px] transition-colors',
                               canCreateSku
                                 ? 'text-slate-400 hover:text-blue-600 hover:bg-slate-100'
                                 : 'text-slate-300 cursor-not-allowed'
                             )}
                           >
-                            <PlusCircle className="h-4.5 w-4.5" />
+                            <PlusCircle className="h-4 sm:h-4.5 w-4 sm:w-4.5" />
                           </button>
 
                           {/* Edit Product */}
                           <button
                             onClick={() => {
                               setActiveProduct(prod);
-                              // Load specs key-value dynamic rows
                               const specRows = Object.entries(prod.specifications || {}).map(
                                 ([key, val]) => ({
                                   key,
@@ -480,7 +479,6 @@ export function ProductsClient({
                                 })
                               );
                               setActiveProductSpecs(specRows);
-                              // Load assigned attribute IDs from M2M
                               const attrIds = (prod.assigned_attributes || [])
                                 .map((a: any) =>
                                   typeof a.product_attributes_id === 'object'
@@ -493,9 +491,9 @@ export function ProductsClient({
                               setProductFormError('');
                             }}
                             title="Chỉnh sửa sản phẩm"
-                            className="p-1 text-slate-400 hover:text-blue-600 hover:bg-slate-100 rounded-[3px] transition-colors"
+                            className="p-1.5 sm:p-1 text-slate-400 hover:text-blue-600 hover:bg-slate-100 rounded-[3px] transition-colors"
                           >
-                            <Edit2 className="h-4.5 w-4.5" />
+                            <Edit2 className="h-4 sm:h-4.5 w-4 sm:w-4.5" />
                           </button>
 
                           {/* Archive/Delete */}
@@ -503,9 +501,9 @@ export function ProductsClient({
                             <button
                               onClick={() => handleArchiveProduct(prod.id)}
                               title="Lưu trữ sản phẩm"
-                              className="p-1 text-slate-400 hover:text-red-600 hover:bg-slate-100 rounded-[3px] transition-colors"
+                              className="p-1.5 sm:p-1 text-slate-400 hover:text-red-600 hover:bg-slate-100 rounded-[3px] transition-colors"
                             >
-                              <Archive className="h-4.5 w-4.5" />
+                              <Archive className="h-4 sm:h-4.5 w-4 sm:w-4.5" />
                             </button>
                           )}
                         </div>
@@ -521,11 +519,11 @@ export function ProductsClient({
 
       {/* Product Form Modal (Create or Edit) */}
       {productModalOpen && activeProduct && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm overflow-y-auto">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/50 backdrop-blur-sm overflow-y-auto">
           <div className="relative bg-white rounded-[3px] w-full max-w-3xl shadow-xl border border-slate-100 flex flex-col max-h-[90vh]">
             {/* Header */}
-            <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100">
-              <h3 className="text-body-regular font-bold text-primary">
+            <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-slate-100">
+              <h3 className="text-body-regular font-bold text-primary pr-2">
                 {activeProduct.id ? 'Cập nhật Thông tin Sản phẩm' : 'Thêm Sản phẩm mới'}
               </h3>
               <button
@@ -533,7 +531,7 @@ export function ProductsClient({
                   setProductModalOpen(false);
                   setProductFormError('');
                 }}
-                className="p-1.5 rounded-[3px] hover:bg-slate-100 text-slate-400 transition-colors"
+                className="p-1 rounded-[3px] hover:bg-slate-100 text-slate-400 transition-colors shrink-0"
               >
                 <X className="h-5 w-5" />
               </button>
@@ -542,7 +540,7 @@ export function ProductsClient({
             {/* Scrollable Form Content */}
             <form
               onSubmit={handleSaveProductSubmit}
-              className="flex-1 overflow-y-auto p-6 space-y-6"
+              className="admin-form-group flex-1 overflow-y-auto p-4 sm:p-6"
             >
               {productFormError && (
                 <div className="p-3 bg-rose-50 border border-rose-100 rounded-[3px] text-caption-responsive font-bold text-rose-600 flex items-center gap-2 animate-in fade-in duration-200">

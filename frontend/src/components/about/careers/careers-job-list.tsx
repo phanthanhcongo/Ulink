@@ -80,12 +80,12 @@ export function CareersJobList() {
   });
 
   return (
-    <section className="py-12 lg:py-16" id="openings">
-      <div className="grid grid-cols-1 gap-10 lg:grid-cols-12 items-start">
+    <section className="py-4 sm:py-6 lg:py-8" id="openings">
+      <div className="grid grid-cols-1 gap-6 sm:gap-8 lg:grid-cols-12 lg:gap-10 items-start">
         {/* Left Column: Job Search & List */}
         <div className="lg:col-span-8 flex flex-col gap-6">
           <div className="flex justify-between items-end border-b border-slate-200/60 pb-4">
-            <h2 className="text-hero-title font-bold text-blue-600 uppercase tracking-wider">
+            <h2 className="text-section-title sm:text-hero-title lg:text-hero-title font-bold text-blue-600 uppercase tracking-wider">
               VỊ TRÍ TUYỂN DỤNG
             </h2>
             <Link
@@ -135,7 +135,7 @@ export function CareersJobList() {
             {filteredJobs.map((job) => (
               <div
                 key={job.id}
-                className="group flex flex-col sm:flex-row sm:items-center justify-between gap-4 rounded-[3px] bg-white p-5 border border-slate-200/80 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]"
+                className="group flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4 rounded-[3px] bg-white p-3 sm:p-4 lg:p-5 border border-slate-200/80 transition-all duration-200 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]"
               >
                 <div className="flex flex-col gap-2">
                   <div className="flex flex-wrap items-center gap-2">
@@ -200,17 +200,17 @@ export function CareersJobList() {
 
         {/* Right Column: Why Join ULink */}
         <div className="lg:col-span-4 flex flex-col gap-6">
-          <h2 className="text-hero-title font-bold text-blue-600 uppercase tracking-wider border-b border-slate-200/60 pb-4">
+          <h2 className="text-section-title sm:text-hero-title lg:text-hero-title font-bold text-blue-600 uppercase tracking-wider border-b border-slate-200/60 pb-4">
             VÌ SAO NÊN GIA NHẬP ULINK?
           </h2>
 
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-3 sm:gap-4">
             {benefitsData.map((b, idx) => {
               const Icon = b.icon;
               return (
                 <div
                   key={idx}
-                  className="group flex items-start gap-4 p-4 rounded-[3px] bg-slate-50/50 border border-slate-100/80 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.15)]"
+                  className="group flex items-start gap-3 sm:gap-4 p-3 sm:p-4 rounded-[3px] bg-slate-50/50 border border-slate-100/80 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.15)]"
                 >
                   <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[3px] bg-blue-50 text-blue-600">
                     <Icon className="h-5 w-5" />

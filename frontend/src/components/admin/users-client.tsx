@@ -179,7 +179,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
   return (
     <div className="admin-page">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 border-b border-slate-100 pb-6 mb-8">
+      <div className="admin-header border-b border-slate-100 pb-6 mb-6 md:mb-8">
         <div>
           <span className="text-caption-responsive uppercase text-slate-400 font-bold tracking-wider">
             Hệ thống phân quyền & Bảo mật
@@ -196,7 +196,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
         <button
           type="button"
           onClick={handleOpenCreateForm}
-          className="inline-flex h-10 items-center justify-center gap-1.5 px-4 rounded-[3px] bg-blue-600 text-caption-responsive font-bold text-white shadow-sm hover:bg-blue-700 transition-colors shrink-0 animate-fade-in"
+          className="admin-button admin-button-primary w-full sm:w-auto"
         >
           <Plus className="h-4 w-4" />
           Thêm tài khoản mới
@@ -205,13 +205,13 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
 
       {/* Error Alert Banner */}
       {error && (
-        <div className="mb-6 p-4 bg-rose-50 border border-rose-200 rounded-[3px] text-rose-800 text-caption-responsive font-semibold flex items-start gap-2.5 shadow-sm">
-          <AlertTriangle className="h-5 w-5 text-rose-500 shrink-0 mt-0.5" />
-          <div className="flex-1">
+        <div className="mb-6 p-3 sm:p-4 bg-rose-50 border border-rose-200 rounded-[3px] text-rose-800 text-caption-responsive font-semibold flex items-start gap-2.5 shadow-sm">
+          <AlertTriangle className="h-5 w-5 text-rose-500 shrink-0 mt-0.5 flex-shrink-0" />
+          <div className="flex-1 min-w-0">
             <span className="font-bold text-rose-900 block mb-1">
               Đã xảy ra lỗi khi tải dữ liệu người dùng từ Directus API
             </span>
-            <pre className="font-mono text-caption-responsive bg-white/60 p-2.5 rounded-[3px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all">
+            <pre className="font-mono text-caption-responsive bg-white/60 p-2 sm:p-2.5 rounded-[3px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all text-xs">
               {error}
             </pre>
           </div>
@@ -219,7 +219,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
       )}
 
       {/* Search and Filters */}
-      <div className="bg-white border border-slate-100 rounded-[3px] p-5 sm:p-6 shadow-sm mb-8 flex flex-col md:flex-row gap-4 items-stretch md:items-center justify-between">
+      <div className="bg-white border border-slate-100 rounded-[3px] p-4 sm:p-5 md:p-6 shadow-sm mb-6 md:mb-8 admin-filter-bar">
         {/* Search */}
         <div className="relative flex-1">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
@@ -233,11 +233,11 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
         </div>
 
         {/* Filters */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 sm:gap-3 flex-1 md:flex-none">
           <select
             value={roleFilter}
             onChange={(e) => setRoleFilter(e.target.value)}
-            className="px-3.5 py-2.5 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-700 focus:outline-none bg-white shadow-sm"
+            className="admin-select flex-1 md:flex-none"
           >
             <option value="all">Tất cả vai trò</option>
             {roles.map((r) => (
@@ -252,7 +252,7 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
       {/* User Table List */}
       <div className="bg-white border border-slate-100 rounded-[3px] shadow-sm overflow-hidden">
         {filteredUsers.length === 0 ? (
-          <div className="flex flex-col items-center justify-center py-16 text-center">
+          <div className="flex flex-col items-center justify-center py-12 sm:py-16 px-4 text-center">
             <Users className="h-12 w-12 text-slate-300 mb-3" />
             <span className="text-body-regular font-bold text-primary">
               Không tìm thấy người dùng nào
@@ -262,15 +262,15 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
             </span>
           </div>
         ) : (
-          <div className="overflow-x-auto">
-            <table className="w-full border-collapse text-left min-w-[900px]">
+          <div className="admin-table-wrapper">
+            <table className="admin-table min-w-[900px]">
               <thead>
-                <tr className="bg-slate-50 border-b border-slate-100 text-caption-responsive font-bold text-slate-400 uppercase tracking-wider">
-                  <th className="px-4 py-2.5 sticky left-0 bg-slate-50 z-10 shadow-[2px_0_5px_rgba(0,0,0,0.05)]">Họ và Tên</th>
-                  <th className="px-4 py-2.5">Địa chỉ Email</th>
-                  <th className="px-4 py-2.5">Vai trò (Role)</th>
-                  <th className="px-4 py-2.5">Trạng thái</th>
-                  <th className="px-4 py-2.5 text-right sticky right-0 bg-slate-50 z-10 shadow-[-2px_0_5px_rgba(0,0,0,0.05)]">Thao tác</th>
+                <tr className="admin-table-head">
+                  <th className="admin-table-cell admin-table-cell-sticky">Họ và Tên</th>
+                  <th className="admin-table-cell">Địa chỉ Email</th>
+                  <th className="admin-table-cell">Vai trò (Role)</th>
+                  <th className="admin-table-cell">Trạng thái</th>
+                  <th className="admin-table-cell text-right sticky right-0 bg-slate-50 z-10 shadow-[-2px_0_5px_rgba(0,0,0,0.05)]">Thao tác</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 text-caption-responsive text-slate-700">
@@ -281,16 +281,16 @@ export function UsersClient({ initialUsers, roles, error }: UsersClientProps) {
                   const isManager = roleLower.includes('manager') || roleLower.includes('sales') || roleLower.includes('editor');
 
                   return (
-                    <tr key={u.id} className="hover:bg-slate-50/30 transition-colors group">
+                    <tr key={u.id} className="admin-table-row group">
                       {/* Name (Sticky) */}
-                      <td className="px-4 py-3 sticky left-0 bg-white group-hover:bg-slate-50/80 transition-colors shadow-[2px_0_5px_rgba(0,0,0,0.03)] z-10">
+                      <td className="admin-table-cell admin-table-cell-sticky group-hover:bg-slate-50/80 transition-colors">
                         <span className="font-bold text-primary leading-tight">
                           {`${u.first_name || ''} ${u.last_name || ''}`.trim() || 'No Name'}
                         </span>
                       </td>
 
                       {/* Email (Truncated) */}
-                      <td className="px-4 py-3">
+                      <td className="admin-table-cell">
                         <span className="text-slate-650 font-medium max-w-[200px] truncate select-all block font-mono" title={u.email}>
                           {u.email}
                         </span>

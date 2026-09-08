@@ -142,21 +142,21 @@ export function RegisterConfirmForm() {
   if (done) {
     return (
       <div className="text-center">
-        <span className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-[3px] bg-brand/10 text-brand">
-          <CheckCircle2 className="h-7 w-7" aria-hidden="true" />
+        <span className="mx-auto mb-3 sm:mb-5 flex h-10 sm:h-14 w-10 sm:w-14 items-center justify-center rounded-[3px] bg-brand/10 text-brand">
+          <CheckCircle2 className="h-5 sm:h-7 w-5 sm:w-7" aria-hidden="true" />
         </span>
-        <h2 className="text-section-title font-bold tracking-tight text-foreground">
+        <h2 className="text-lg sm:text-section-title font-bold tracking-tight text-foreground">
           {t('registerCompleteTitle')}
         </h2>
-        <p className="mx-auto mt-3 max-w-sm text-body-regular text-muted-foreground">
+        <p className="mx-auto mt-2 sm:mt-3 max-w-sm text-xs sm:text-body-regular text-muted-foreground">
           {t('registerCompleteDesc', { email: draft?.email ?? '' })}
         </p>
         <Link
           href="/login"
-          className="mt-6 inline-flex items-center justify-center rounded-[3px] border border-brand bg-brand px-5 py-2.5 text-body-regular font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong"
+          className="mt-4 sm:mt-6 inline-flex items-center justify-center rounded-[3px] border border-brand bg-brand px-3 sm:px-5 py-1.5 sm:py-2.5 text-xs sm:text-body-regular font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong"
         >
           {t('loginNow')}
-          <ArrowRight className="ml-1.5 h-4 w-4" aria-hidden="true" />
+          <ArrowRight className="ml-1 sm:ml-1.5 h-3.5 sm:h-4 w-3.5 sm:w-4" aria-hidden="true" />
         </Link>
       </div>
     );
@@ -167,17 +167,17 @@ export function RegisterConfirmForm() {
   if (!draft || !verifiedToken) {
     return (
       <div>
-        <h2 className="text-section-title font-bold tracking-tight text-foreground">
+        <h2 className="text-lg sm:text-section-title font-bold tracking-tight text-foreground">
           {t('registerConfirmTitle')}
         </h2>
-        <p className="mt-2 text-body-regular text-muted-foreground">{t('registerConfirmMissingDraft')}</p>
+        <p className="mt-1 sm:mt-2 text-xs sm:text-body-regular text-muted-foreground">{t('registerConfirmMissingDraft')}</p>
         <button
           type="button"
           onClick={startOver}
-          className="mt-6 flex w-full items-center justify-center gap-2 rounded-[3px] border border-brand bg-brand py-3 text-body-regular font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong"
+          className="mt-4 sm:mt-6 flex w-full items-center justify-center gap-1.5 sm:gap-2 rounded-[3px] border border-brand bg-brand py-2 sm:py-3 text-xs sm:text-body-regular font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong"
         >
           <span>{t('backToRegister')}</span>
-          <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          <ArrowRight className="h-3.5 sm:h-4 w-3.5 sm:w-4" aria-hidden="true" />
         </button>
       </div>
     );
@@ -185,25 +185,25 @@ export function RegisterConfirmForm() {
 
   return (
     <div>
-      <h2 className="text-section-title font-bold tracking-tight text-foreground">
+      <h2 className="text-lg sm:text-section-title font-bold tracking-tight text-foreground">
         {t('registerConfirmTitle')}
       </h2>
-      <p className="mt-2 text-body-regular text-muted-foreground">
+      <p className="mt-1 sm:mt-2 text-xs sm:text-body-regular text-muted-foreground">
         {t('registerConfirmDesc', { email: draft.email })}
       </p>
 
-      <div className="mt-5 space-y-2 rounded-[3px] border border-border bg-muted/40 p-4 text-body-regular">
+      <div className="mt-3 sm:mt-5 space-y-1.5 sm:space-y-2 rounded-[3px] border border-border bg-muted/40 p-3 sm:p-4 text-xs sm:text-body-regular">
         <Row icon={Building2} label={t('companyLabel')} value={draft.company_name} />
         <Row icon={User} label={t('contactLabel')} value={draft.contact_name} />
         <Row icon={Mail} label={t('emailLabel')} value={draft.email} />
         <Row icon={Phone} label={t('phoneLabel')} value={draft.phone} />
       </div>
 
-      <form className="mt-6 space-y-4" onSubmit={onSubmit} noValidate>
+      <form className="mt-4 sm:mt-6 space-y-2.5 sm:space-y-4" onSubmit={onSubmit} noValidate>
         {formError && (
           <p
             role="alert"
-            className="rounded-[3px] border border-destructive/30 bg-destructive/5 px-3 py-2 text-body-regular text-destructive"
+            className="rounded-[3px] border border-destructive/30 bg-destructive/5 px-2.5 sm:px-3 py-1.5 sm:py-2 text-xs sm:text-body-regular text-destructive"
           >
             {formError}
           </p>
@@ -212,17 +212,17 @@ export function RegisterConfirmForm() {
         <button
           type="submit"
           disabled={loading}
-          className="flex w-full items-center justify-center gap-2 rounded-[3px] border border-brand bg-brand py-3 text-body-regular font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong disabled:opacity-60"
+          className="flex w-full items-center justify-center gap-1.5 sm:gap-2 rounded-[3px] border border-brand bg-brand py-2 sm:py-3 text-xs sm:text-body-regular font-medium text-brand-foreground transition-colors hover:border-brand-strong hover:bg-brand-strong disabled:opacity-60"
         >
           {loading ? (
             <>
-              <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
+              <Loader2 className="h-3.5 sm:h-4 w-3.5 sm:w-4 animate-spin" aria-hidden="true" />
               <span>{t('registerCreating')}</span>
             </>
           ) : (
             <>
               <span>{t('registerConfirmButton')}</span>
-              <ArrowRight className="h-4 w-4" aria-hidden="true" />
+              <ArrowRight className="h-3.5 sm:h-4 w-3.5 sm:w-4" aria-hidden="true" />
             </>
           )}
         </button>
@@ -231,7 +231,7 @@ export function RegisterConfirmForm() {
           type="button"
           onClick={startOver}
           disabled={loading}
-          className="block w-full text-center text-caption-responsive text-muted-foreground hover:text-foreground disabled:opacity-60"
+          className="block w-full text-center text-xs sm:text-caption-responsive text-muted-foreground hover:text-foreground disabled:opacity-60"
         >
           {t('backToRegister')}
         </button>
@@ -242,11 +242,11 @@ export function RegisterConfirmForm() {
 
 function Row({ icon: Icon, label, value }: { icon: typeof Mail; label: string; value: string }) {
   return (
-    <div className="flex items-start gap-2.5">
-      <Icon className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground" aria-hidden="true" />
+    <div className="flex items-start gap-1.5 sm:gap-2.5">
+      <Icon className="mt-0.5 h-3.5 sm:h-4 w-3.5 sm:w-4 shrink-0 text-muted-foreground" aria-hidden="true" />
       <div className="min-w-0 flex-1">
-        <p className="text-caption-responsive text-muted-foreground">{label}</p>
-        <p className="truncate text-body-regular text-foreground">{value}</p>
+        <p className="text-xs sm:text-caption-responsive text-muted-foreground">{label}</p>
+        <p className="truncate text-xs sm:text-body-regular text-foreground">{value}</p>
       </div>
     </div>
   );

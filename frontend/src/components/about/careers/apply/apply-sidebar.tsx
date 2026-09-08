@@ -11,20 +11,20 @@ const processSteps = [
 
 export function ApplySidebar() {
   return (
-    <div className="flex flex-col gap-6 py-8">
+    <div className="flex flex-col gap-4 sm:gap-5 lg:gap-6 py-4 sm:py-6 lg:py-8">
       {/* Card 1: Tóm tắt công việc */}
-      <div className="rounded-[3px] bg-slate-50 p-6 border border-slate-100 shadow-sm flex flex-col gap-4">
-        <h3 className="text-card-title text-slate-900 border-b border-slate-200 pb-3">
+      <div className="rounded-[3px] bg-slate-50 p-3 sm:p-4 lg:p-6 border border-slate-100 shadow-sm flex flex-col gap-3 sm:gap-4">
+        <h3 className="text-base sm:text-card-title text-slate-900 border-b border-slate-200 pb-2 sm:pb-3">
           Tóm tắt công việc
         </h3>
 
-        <div className="space-y-3.5 text-body-regular">
+        <div className="space-y-2 sm:space-y-3 lg:space-y-3.5 text-xs sm:text-body-regular">
           <div className="flex items-center gap-3 text-slate-700">
-            <div className="flex h-7 w-7 items-center justify-center rounded-[3px] bg-blue-100 text-blue-600 shrink-0">
-              <Briefcase className="h-3.5 w-3.5" />
+            <div className="flex h-6 sm:h-7 w-6 sm:w-7 items-center justify-center rounded-[3px] bg-blue-100 text-blue-600 shrink-0">
+              <Briefcase className="h-3 sm:h-3.5 w-3 sm:w-3.5" />
             </div>
             <div>
-              <span className="block text-caption-responsive text-slate-400">Cấp bậc</span>
+              <span className="block text-xs sm:text-caption-responsive text-slate-400">Cấp bậc</span>
               <span className="font-bold text-slate-800">Chuyên viên</span>
             </div>
           </div>
@@ -34,7 +34,7 @@ export function ApplySidebar() {
               <DollarSign className="h-3.5 w-3.5" />
             </div>
             <div>
-              <span className="block text-caption-responsive text-slate-400">Mức lương</span>
+              <span className="block text-xs sm:text-caption-responsive text-slate-400">Mức lương</span>
               <span className="font-bold text-slate-800">15 - 25 triệu VNĐ</span>
             </div>
           </div>
@@ -44,7 +44,7 @@ export function ApplySidebar() {
               <Clock className="h-3.5 w-3.5" />
             </div>
             <div>
-              <span className="block text-caption-responsive text-slate-400">Hình thức làm việc</span>
+              <span className="block text-xs sm:text-caption-responsive text-slate-400">Hình thức làm việc</span>
               <span className="font-bold text-slate-800">Toàn thời gian</span>
             </div>
           </div>
@@ -54,7 +54,7 @@ export function ApplySidebar() {
               <Calendar className="h-3.5 w-3.5" />
             </div>
             <div>
-              <span className="block text-caption-responsive text-slate-400">Hạn nộp hồ sơ</span>
+              <span className="block text-xs sm:text-caption-responsive text-slate-400">Hạn nộp hồ sơ</span>
               <span className="font-bold text-amber-700">30/08/2026</span>
             </div>
           </div>
@@ -62,18 +62,18 @@ export function ApplySidebar() {
       </div>
 
       {/* Card 2: Quy trình tuyển dụng */}
-      <div className="rounded-[3px] bg-white p-6 border border-slate-100 shadow-sm flex flex-col gap-4">
-        <h3 className="text-card-title text-slate-900 border-b border-slate-100 pb-3">
+      <div className="rounded-[3px] bg-white p-3 sm:p-4 lg:p-6 border border-slate-100 shadow-sm flex flex-col gap-3 sm:gap-4">
+        <h3 className="text-base sm:text-card-title text-slate-900 border-b border-slate-100 pb-2 sm:pb-3">
           Quy trình tuyển dụng
         </h3>
 
-        <div className="flex flex-col gap-3">
+        <div className="flex flex-col gap-2 sm:gap-3">
           {processSteps.map((step) => (
-            <div key={step.num} className="flex items-center gap-3">
-              <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-blue-600 text-caption-responsive font-bold text-white">
+            <div key={step.num} className="flex items-center gap-2 sm:gap-3">
+              <span className="flex h-5 sm:h-6 w-5 sm:w-6 shrink-0 items-center justify-center rounded-full bg-blue-600 text-xs sm:text-caption-responsive font-bold text-white text-center">
                 {step.num}
               </span>
-              <span className="text-body-regular font-semibold text-slate-800">{step.title}</span>
+              <span className="text-xs sm:text-body-regular font-semibold text-slate-800">{step.title}</span>
             </div>
           ))}
         </div>

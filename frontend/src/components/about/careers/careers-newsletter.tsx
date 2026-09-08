@@ -35,15 +35,15 @@ export function CareersNewsletter() {
   };
 
   return (
-    <section className="py-12 lg:py-16">
-      <div className="bg-white p-8 sm:p-10 grid grid-cols-1 md:grid-cols-12 gap-8 items-stretch shadow-xs">
+    <section className="py-4 sm:py-6 lg:py-8">
+      <div className="bg-white p-4 sm:p-6 lg:p-8 grid grid-cols-1 md:grid-cols-12 gap-4 sm:gap-6 lg:gap-8 items-stretch shadow-xs">
         {/* Left Column: Information */}
         <div className="md:col-span-6 flex flex-col justify-between pr-0 md:pr-8 gap-6">
           <div className="flex flex-col gap-2">
             <span className="text-body-regular font-bold uppercase tracking-wider text-blue-600">
               ĐƠN ỨNG TUYỂN MỞ
             </span>
-            <h2 className="text-hero-title font-bold text-slate-900 leading-tight">
+            <h2 className="text-section-title sm:text-hero-title lg:text-hero-title font-bold text-slate-900 leading-tight">
               Chưa có vị trí phù hợp?<br />Gửi CV của bạn<br />chúng tôi sẽ thông báo cho bạn.
             </h2>
             <p className="text-body-regular text-slate-500 leading-relaxed mt-2">
@@ -63,7 +63,7 @@ export function CareersNewsletter() {
         {/* Right Column: Application Form */}
         <div className="md:col-span-6 flex flex-col justify-center pl-0 md:pl-8 border-t md:border-t-0 md:border-l border-slate-200/80 pt-6 md:pt-0">
           {submitted ? (
-            <div className="rounded-[3px] bg-blue-50/50 border border-blue-100 p-6 text-center text-slate-800">
+            <div className="rounded-[3px] bg-blue-50/50 border border-blue-100 p-4 sm:p-6 text-center text-slate-800">
               <p className="font-bold text-body-regular text-blue-600">Gửi đơn ứng tuyển thành công!</p>
               <p className="text-body-regular text-slate-500 mt-2">
                 Cảm ơn bạn đã quan tâm. Đội ngũ Tuyển dụng ULink sẽ liên hệ lại với bạn ngay khi có vị trí thích hợp.
@@ -81,9 +81,9 @@ export function CareersNewsletter() {
               </button>
             </div>
           ) : (
-            <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-3 sm:gap-4">
               {/* Row 1: Name & Email */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
                 <div className="flex flex-col gap-1.5">
                   <label className="text-body-regular font-bold text-slate-500 uppercase tracking-wider">
                     HỌ VÀ TÊN

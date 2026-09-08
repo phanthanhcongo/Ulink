@@ -22,7 +22,7 @@ export function NewsDetailClient({ article, locale }: NewsDetailClientProps) {
   const localeLang = locale as 'vi' | 'en' | 'ja';
 
   return (
-    <article className="min-h-screen bg-slate-50/50 pb-20 pt-8">
+    <article className="min-h-screen bg-slate-50/50 pb-12 sm:pb-16 md:pb-20 pt-4 sm:pt-6 md:pt-8">
       <Breadcrumb
         items={[
           {
@@ -48,27 +48,27 @@ export function NewsDetailClient({ article, locale }: NewsDetailClientProps) {
       />
 
       <header className="page-container">
-        <div className="rounded-[3px] bg-white p-6 sm:p-10 border border-slate-200/80 shadow-sm relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-blue-500/5 rounded-full blur-3xl -z-10" />
+        <div className="rounded-[3px] bg-white p-4 sm:p-6 md:p-8 lg:p-10 border border-slate-200/80 shadow-sm relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-48 sm:w-56 md:w-64 h-48 sm:h-56 md:h-64 bg-blue-500/5 rounded-full blur-3xl -z-10" />
 
-          <div className="flex flex-wrap items-center gap-3 mb-5">
-            <span className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-[3px] bg-blue-50 text-blue-700 text-caption-responsive font-bold uppercase tracking-wider border border-blue-100">
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-3 sm:mb-4 md:mb-5">
+            <span className="inline-flex items-center gap-1.5 px-2.5 sm:px-3.5 py-0.5 sm:py-1 rounded-[3px] bg-blue-50 text-blue-700 text-xs sm:text-caption-responsive font-bold uppercase tracking-wider border border-blue-100">
               {article.category}
             </span>
           </div>
 
-          <h1 className="text-section-title font-bold text-slate-900 tracking-tight leading-snug lg:leading-tight max-w-4xl">
+          <h1 className="text-lg sm:text-2xl md:text-3xl lg:text-4xl font-bold text-slate-900 tracking-tight leading-snug lg:leading-tight max-w-4xl">
             {article.title}
           </h1>
 
-          <p className="mt-5 text-body-regular text-slate-600 leading-relaxed font-medium max-w-4xl">
+          <p className="mt-3 sm:mt-4 md:mt-5 text-xs sm:text-sm md:text-base text-slate-600 leading-relaxed font-medium max-w-4xl">
             {article.description}
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center justify-between gap-6 border-t border-slate-100 pt-6">
-            <div className="flex flex-wrap items-center gap-6 text-caption-responsive text-slate-500 font-semibold">
-              <div className="flex items-center gap-2.5">
-                <div className="relative h-9 w-9 rounded-full overflow-hidden border border-slate-200">
+          <div className="mt-5 sm:mt-6 md:mt-8 flex flex-wrap items-center justify-between gap-3 sm:gap-4 md:gap-6 border-t border-slate-100 pt-4 sm:pt-5 md:pt-6">
+            <div className="flex flex-wrap items-center gap-4 sm:gap-5 md:gap-6 text-xs sm:text-caption-responsive text-slate-500 font-semibold">
+              <div className="flex items-center gap-2 sm:gap-2.5">
+                <div className="relative h-8 sm:h-9 w-8 sm:w-9 rounded-full overflow-hidden border border-slate-200 shrink-0">
                   <Image
                     src={article.authorAvatar}
                     alt={article.author}
@@ -77,28 +77,28 @@ export function NewsDetailClient({ article, locale }: NewsDetailClientProps) {
                   />
                 </div>
                 <div>
-                  <span className="block font-bold text-slate-950">{article.author}</span>
-                  <span className="block text-caption-responsive text-slate-400 font-medium">
+                  <span className="block font-bold text-slate-950 text-xs sm:text-sm line-clamp-1">{article.author}</span>
+                  <span className="block text-xs sm:text-caption-responsive text-slate-400 font-medium line-clamp-1">
                     {article.authorRole}
                   </span>
                 </div>
               </div>
-              <div className="flex items-center gap-2">
-                <Calendar className="h-4 w-4 text-brand" />
-                <span>{article.date}</span>
+              <div className="flex items-center gap-1.5 sm:gap-2">
+                <Calendar className="h-3.5 sm:h-4 w-3.5 sm:w-4 text-brand shrink-0" />
+                <span className="text-xs sm:text-caption-responsive">{article.date}</span>
               </div>
             </div>
           </div>
         </div>
       </header>
 
-      <main className="page-container mt-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          <aside className="hidden lg:block lg:col-span-3 sticky top-28 self-start bg-slate-50 p-5 rounded-[3px] border border-slate-200/50">
-            <h3 className="text-body-regular font-bold text-slate-900 tracking-tight mb-5 px-1">
+      <main className="page-container mt-6 sm:mt-8 md:mt-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-7 md:gap-8 items-start">
+          <aside className="hidden lg:block lg:col-span-3 sticky top-28 self-start bg-slate-50 p-4 sm:p-5 md:p-6 rounded-[3px] border border-slate-200/50">
+            <h3 className="text-sm md:text-base font-bold text-slate-900 tracking-tight mb-3 sm:mb-4 md:mb-5 px-1">
               {localeLang === 'vi' ? 'Mục lục' : localeLang === 'ja' ? '目次' : 'Mục lục'}
             </h3>
-            <nav className="flex flex-col gap-3">
+            <nav className="flex flex-col gap-2 sm:gap-2.5 md:gap-3">
               {article.content.map((sec, idx) => (
                 <button
                   key={sec.id}
@@ -108,19 +108,19 @@ export function NewsDetailClient({ article, locale }: NewsDetailClientProps) {
                       el.scrollIntoView({ behavior: 'smooth', block: 'start' });
                     }
                   }}
-                  className="w-full flex items-center gap-3 p-3 text-left transition-all duration-200 rounded-[3px] border shadow-sm bg-white border-slate-100 hover:border-slate-200 text-slate-500 hover:text-slate-900"
+                  className="w-full flex items-center gap-2 sm:gap-2.5 md:gap-3 p-2 sm:p-2.5 md:p-3 text-left transition-all duration-200 rounded-[3px] border shadow-sm bg-white border-slate-100 hover:border-slate-200 text-slate-500 hover:text-slate-900"
                 >
-                  <span className="h-7 w-7 flex items-center justify-center rounded-full text-caption-responsive font-bold shrink-0 bg-slate-100 text-slate-400">
+                  <span className="h-6 sm:h-7 w-6 sm:w-7 flex items-center justify-center rounded-full text-xs sm:text-caption-responsive font-bold shrink-0 bg-slate-100 text-slate-400">
                     {idx + 1}
                   </span>
-                  <span className="text-caption-responsive tracking-tight leading-snug">{sec.title}</span>
+                  <span className="text-xs sm:text-caption-responsive tracking-tight leading-snug line-clamp-2">{sec.title}</span>
                 </button>
               ))}
             </nav>
           </aside>
 
-          <div className="lg:col-span-6 bg-white p-6 sm:p-10 rounded-[3px] border border-slate-200/80 shadow-sm">
-            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[3px] border border-slate-100 shadow-sm mb-8">
+          <div className="lg:col-span-6 bg-white p-4 sm:p-6 md:p-8 lg:p-10 rounded-[3px] border border-slate-200/80 shadow-sm">
+            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[3px] border border-slate-100 shadow-sm mb-6 sm:mb-7 md:mb-8 lg:mb-10">
               <Image
                 src={article.coverImage}
                 alt={article.title}
@@ -130,13 +130,13 @@ export function NewsDetailClient({ article, locale }: NewsDetailClientProps) {
               />
             </div>
 
-            <div className="space-y-10">
+            <div className="space-y-6 sm:space-y-7 md:space-y-8 lg:space-y-10">
               {article.content.map((sec) => (
-                <section key={sec.id} id={sec.id} className="scroll-mt-28 space-y-4">
-                  <h2 className="text-card-title font-bold text-slate-900 tracking-tight">
+                <section key={sec.id} id={sec.id} className="scroll-mt-28 space-y-3 sm:space-y-4">
+                  <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold text-slate-900 tracking-tight">
                     {sec.title}
                   </h2>
-                  <div className="text-body-regular text-slate-700 leading-relaxed space-y-3 font-normal">
+                  <div className="text-xs sm:text-sm md:text-base text-slate-700 leading-relaxed space-y-2 sm:space-y-3 font-normal">
                     {sec.body.map((para, pIdx) => (
                       <p key={pIdx}>{para}</p>
                     ))}
@@ -146,14 +146,14 @@ export function NewsDetailClient({ article, locale }: NewsDetailClientProps) {
             </div>
           </div>
 
-          <aside className="lg:col-span-3 space-y-6">
-            <div className="p-6 rounded-[3px] bg-white border border-slate-200/80 shadow-sm">
-              <h3 className="text-body-regular font-bold text-slate-900 uppercase tracking-wider mb-5 border-b border-slate-100 pb-3 flex items-center gap-2">
-                <User className="h-4 w-4 text-brand" />
+          <aside className="lg:col-span-3 space-y-4 sm:space-y-5 md:space-y-6">
+            <div className="p-4 sm:p-5 md:p-6 rounded-[3px] bg-white border border-slate-200/80 shadow-sm">
+              <h3 className="text-xs sm:text-sm md:text-base font-bold text-slate-900 uppercase tracking-wider mb-3 sm:mb-4 md:mb-5 border-b border-slate-100 pb-2 sm:pb-3 flex items-center gap-2">
+                <User className="h-3 sm:h-4 w-3 sm:w-4 text-brand shrink-0" />
                 {localeLang === 'vi' ? 'Tác giả' : localeLang === 'ja' ? '著者' : 'Author'}
               </h3>
               <div className="flex flex-col items-center text-center">
-                <div className="relative h-16 w-16 rounded-full overflow-hidden border border-slate-200 mb-3">
+                <div className="relative h-12 sm:h-14 md:h-16 w-12 sm:w-14 md:w-16 rounded-full overflow-hidden border border-slate-200 mb-2 sm:mb-3">
                   <Image
                     src={article.authorAvatar}
                     alt={article.author}
@@ -161,17 +161,17 @@ export function NewsDetailClient({ article, locale }: NewsDetailClientProps) {
                     className="object-cover"
                   />
                 </div>
-                <span className="text-body-regular font-bold text-slate-900">{article.author}</span>
-                <span className="text-caption-responsive text-slate-500 mt-0.5">{article.authorRole}</span>
+                <span className="text-xs sm:text-sm md:text-base font-bold text-slate-900">{article.author}</span>
+                <span className="text-xs sm:text-caption-responsive text-slate-500 mt-0.5">{article.authorRole}</span>
               </div>
             </div>
 
-            <div className="p-6 rounded-[3px] bg-white border border-slate-200/80 shadow-sm relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-blue-500/5 rounded-full blur-2xl -z-10" />
-              <h3 className="text-body-regular font-bold text-slate-955">
+            <div className="p-4 sm:p-5 md:p-6 rounded-[3px] bg-white border border-slate-200/80 shadow-sm relative overflow-hidden">
+              <div className="absolute top-0 right-0 w-24 sm:w-28 md:w-32 h-24 sm:h-28 md:h-32 bg-blue-500/5 rounded-full blur-2xl -z-10" />
+              <h3 className="text-xs sm:text-sm md:text-base font-bold text-slate-900">
                 {localeLang === 'vi' ? 'Cần tư vấn giải pháp?' : localeLang === 'ja' ? 'ソリューション相談' : 'Need solution consultation?'}
               </h3>
-              <p className="text-caption-responsive text-slate-500 mt-2 leading-relaxed font-medium">
+              <p className="text-xs sm:text-caption-responsive text-slate-500 mt-1.5 sm:mt-2 leading-relaxed font-medium">
                 {localeLang === 'vi'
                   ? 'Đội ngũ kỹ sư phòng sạch ULink sẵn sàng tư vấn mẫu sản phẩm và gửi báo giá chi tiết trong 24h.'
                   : localeLang === 'ja'
@@ -180,10 +180,10 @@ export function NewsDetailClient({ article, locale }: NewsDetailClientProps) {
               </p>
               <Link
                 href="/quick-order"
-                className="mt-5 flex items-center justify-center gap-2 w-full py-3.5 px-4 rounded-[3px] bg-brand hover:bg-brand-strong text-white text-caption-responsive font-bold shadow transition-colors"
+                className="mt-3 sm:mt-4 md:mt-5 flex items-center justify-center gap-1.5 sm:gap-2 w-full py-2.5 sm:py-3 md:py-3.5 px-3 sm:px-4 rounded-[3px] bg-brand hover:bg-brand-strong text-white text-xs sm:text-caption-responsive md:text-sm font-bold shadow transition-colors"
               >
                 {localeLang === 'vi' ? 'Yêu cầu Báo giá Ngay' : localeLang === 'ja' ? 'すぐに見積もりを依頼' : 'Request Quote Now'}
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="h-3 sm:h-3.5 md:h-4 w-3 sm:w-3.5 md:w-4" />
               </Link>
             </div>
           </aside>

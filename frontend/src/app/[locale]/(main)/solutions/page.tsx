@@ -114,7 +114,7 @@ export default async function SolutionsPage({ params: { locale } }: SolutionsPag
       <TestimonialCarousel labels={testimonialLabels} />
 
       {/* === SECTION: Core Capabilities === */}
-      <CoreCapabilities locale={locale} />
+      <CoreCapabilities />
     </div>
   );
 }

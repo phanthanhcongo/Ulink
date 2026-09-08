@@ -23,28 +23,28 @@ const metrics = [
 
 export function QualityCommitments() {
   return (
-    <section className="py-8 lg:py-12">
-      <div className="flex flex-col items-center text-center mb-8">
-        <span className="inline-flex items-center rounded-full bg-blue-50 px-3.5 py-1 text-body-regular font-bold uppercase tracking-wider text-blue-700 ring-1 ring-inset ring-blue-700/10 mb-2">
+    <section className="py-4 sm:py-6 lg:py-8 px-3 sm:px-4">
+      <div className="flex flex-col items-center text-center mb-4 sm:mb-6 lg:mb-8">
+        <span className="inline-flex items-center rounded-full bg-blue-50 px-2.5 sm:px-3 lg:px-3.5 py-0.5 sm:py-1 text-caption-responsive sm:text-body-regular font-bold uppercase tracking-wider text-blue-700 ring-1 ring-inset ring-blue-700/10 mb-2">
           CAM KẾT DOANH NGHIỆP
         </span>
-        <h2 className="text-hero-title font-bold tracking-tight text-slate-900">
+        <h2 className="text-section-title sm:text-hero-title font-bold tracking-tight text-slate-900">
           Đồng hành cùng sự phát triển của Bạn
         </h2>
       </div>
 
-      <div className="rounded-[3px] bg-white p-8 shadow-sm border border-slate-100">
-        <h3 className="text-center text-card-title text-slate-800 mb-6">
+      <div className="rounded-[3px] bg-white p-3 sm:p-4 lg:p-8 shadow-sm border border-slate-100">
+        <h3 className="text-center text-body-large sm:text-card-title text-slate-800 mb-3 sm:mb-4 lg:mb-6">
           Cam kết với Doanh nghiệp
         </h3>
-        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-slate-100">
+        <div className="grid grid-cols-1 gap-3 sm:gap-4 lg:gap-6 sm:grid-cols-2 lg:grid-cols-4 divide-y sm:divide-y-0 sm:divide-x divide-slate-100">
           {metrics.map((item, idx) => (
-            <div key={idx} className="flex flex-col items-center text-center pt-4 sm:pt-0 sm:px-4">
-              <span className="text-hero-title font-bold text-blue-600">
+            <div key={idx} className="flex flex-col items-center text-center pt-2 sm:pt-0 sm:px-2 lg:px-4">
+              <span className="text-section-title sm:text-hero-title font-bold text-blue-600">
                 {item.value}
               </span>
-              <span className="mt-2 text-body-large font-bold text-slate-900">{item.label}</span>
-              <span className="mt-1 text-body-regular leading-relaxed text-slate-500 max-w-[200px]">{item.sub}</span>
+              <span className="mt-1 sm:mt-2 text-body-regular sm:text-body-large font-bold text-slate-900 text-sm sm:text-base">{item.label}</span>
+              <span className="mt-0.5 sm:mt-1 text-body-regular leading-relaxed text-slate-500 max-w-[200px] text-xs sm:text-sm">{item.sub}</span>
             </div>
           ))}
         </div>
