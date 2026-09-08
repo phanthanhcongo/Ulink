@@ -279,6 +279,7 @@ export async function saveSku(data: {
   productId: number;
   unit?: string;
   pack_size?: string;
+  price?: number | null;
   attributes?: Record<string, string>;
   stock_status?: 'in_stock' | 'low_stock' | 'out_of_stock';
   status?: 'published' | 'draft' | 'archived';
@@ -311,6 +312,7 @@ export async function saveSku(data: {
       product: data.productId,
       unit: data.unit || null,
       pack_size: data.pack_size || null,
+      price: data.price || null,
       attributes: data.attributes || null,
       stock_status: data.stock_status || 'in_stock',
       status: data.status || 'published'

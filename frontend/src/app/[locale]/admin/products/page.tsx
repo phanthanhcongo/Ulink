@@ -58,6 +58,7 @@ export default async function AdminProductsPage({ params: { locale } }: Props) {
             'category.slug',
             'skus.id',
             'skus.sku_code',
+            'skus.price',
             'skus.stock_status',
             'skus.unit',
             'skus.pack_size',

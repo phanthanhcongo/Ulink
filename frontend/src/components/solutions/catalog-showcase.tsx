@@ -4,7 +4,7 @@ import { getTranslations } from 'next-intl/server';
 import { fetchTopCategoriesWithProducts, getProductPricing } from '@/lib/product-data';
 import { getTranslatedName } from '@/lib/i18n-content';
 import type { Product } from '@/lib/directus';
-import { CatalogProductCard } from './catalog-product-card';
+import { ProductCard } from './product-card';
 import { CategoryNavLink } from './category-nav-link';
 
 interface CatalogShowcaseProps {
@@ -102,7 +102,7 @@ export default async function CatalogShowcase({ locale }: CatalogShowcaseProps) 
                       return `${directusUrl}/assets/${fileId}`;
                     };
 
-                    // Get price from SKU or fallback to default pricing
+                    // Get price from SKU
                     let displayPrice: string;
                     let displayUnit: string;
 
@@ -125,29 +125,14 @@ export default async function CatalogShowcase({ locale }: CatalogShowcaseProps) 
 
                       displayPrice = `${minPrice.toLocaleString('vi-VN')}-${maxPrice.toLocaleString('vi-VN')}đ`;
                       displayUnit = `/ per ${baseUnit}`;
-
-                      console.log(`[CatalogShowcase] Price calc for ${product.slug}:`, {
-                        basePrice,
-                        packSize,
-                        packSizeNum,
-                        perUnitPrice,
-                        minPrice,
-                        maxPrice,
-                        displayPrice,
-                        displayUnit
-                      });
                     } else {
-                      // Fallback to default pricing
-                      const fallbackPrice = getProductPricing(product.slug, locale);
-                      const minPrice = Math.round(fallbackPrice.price * 0.8);
-                      const maxPrice = Math.round(fallbackPrice.price);
-                      displayPrice = `${minPrice.toLocaleString('vi-VN')}-${maxPrice.toLocaleString('vi-VN')}đ`;
-                      displayUnit = fallbackPrice.unit;
-                      console.log(`[CatalogShowcase] Using fallback price for ${product.slug}:`, fallbackPrice);
+                      // No price in database
+                      displayPrice = 'Liên hệ báo giá';
+                      displayUnit = '';
                     }
 
                     return (
-                      <CatalogProductCard
+                      <ProductCard
                         key={product.id}
                         product={{
                           id: product.id,

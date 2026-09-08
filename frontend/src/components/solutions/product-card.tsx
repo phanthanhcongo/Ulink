@@ -19,17 +19,17 @@ interface Product {
   unit?: string;
 }
 
-interface CatalogProductCardProps {
+interface ProductCardProps {
   product: Product;
   locale: string;
   showWishlist?: boolean;
 }
 
-export function CatalogProductCard({
+export function ProductCard({
   product,
   locale,
   showWishlist = true
-}: CatalogProductCardProps) {
+}: ProductCardProps) {
   const [isWishlisted, setIsWishlisted] = useState(false);
 
   const handleWishlistClick = (e: React.MouseEvent) => {

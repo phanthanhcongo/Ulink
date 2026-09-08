@@ -2,7 +2,8 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
-import ProductCard from '@/components/product/product-card';
+import { ProductCard } from '@/components/solutions/product-card';
+import { getDirectusUrl } from '@/lib/directus-runtime.mjs';
 import type { Product } from '@/lib/directus';
 
 interface SavedProductsSectionProps {
@@ -34,6 +35,44 @@ export default function SavedProductsSection({ allProducts, currentSlug, locale 
 
   if (savedProducts.length === 0) return null;
 
+  const directusUrl = getDirectusUrl();
+
+  const transformedProducts = savedProducts.map((prod: Product) => {
+    const firstSku = prod.skus?.[0];
+    const imageUrl = prod.hero
+      ? (prod.hero.startsWith('http') || prod.hero.startsWith('/'))
+        ? prod.hero
+        : `${directusUrl}/assets/${prod.hero}`
+      : undefined;
+
+    let displayPrice: string;
+    if (firstSku?.price) {
+      const basePrice = firstSku.price;
+      const packSize = firstSku.pack_size;
+      let baseUnit = firstSku.unit || 'cái';
+      if (baseUnit === 'đôi') baseUnit = 'pcs';
+      const packSizeNum = packSize ? parseInt(String(packSize), 10) : null;
+      const perUnitPrice = packSizeNum && packSizeNum > 0 ? basePrice / packSizeNum : basePrice;
+      const minPrice = Math.round(perUnitPrice * 0.8);
+      const maxPrice = Math.round(perUnitPrice);
+      displayPrice = `${minPrice.toLocaleString('vi-VN')}-${maxPrice.toLocaleString('vi-VN')}đ`;
+    } else {
+      displayPrice = 'Liên hệ báo giá';
+    }
+
+    return {
+      id: prod.id,
+      name: prod.name,
+      slug: prod.slug,
+      image: imageUrl,
+      price: displayPrice,
+      unit: firstSku?.unit || '/per kg',
+      moq: `MOQ: ${firstSku?.pack_size || 'Liên hệ'}`,
+      status: firstSku?.stock_status === 'in_stock' ? (locale === 'vi' ? 'Có sẵn tại Kho' : 'In Stock') : (locale === 'vi' ? 'Sản xuất theo yêu cầu' : 'Custom orders'),
+      location: locale === 'vi' ? 'Hub Hà Nam, Việt Nam' : 'Ha Nam Hub, Vietnam'
+    };
+  });
+
   return (
     <div className="mt-16 space-y-6">
       <div className="flex items-center justify-between">
@@ -51,8 +90,8 @@ export default function SavedProductsSection({ allProducts, currentSlug, locale 
         </Link>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-        {savedProducts.map((prod: Product) => (
-          <ProductCard key={prod.id} product={prod} locale={locale} roundedClass="rounded-[3px]" />
+        {transformedProducts.map((prod) => (
+          <ProductCard key={prod.id} product={prod} locale={locale} />
         ))}
       </div>
     </div>

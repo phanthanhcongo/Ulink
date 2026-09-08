@@ -183,6 +183,7 @@ export function ProductsClient({
         productId: activeSku.productId!,
         unit: activeSku.unit || undefined,
         pack_size: activeSku.pack_size || undefined,
+        price: (activeSku as any).price || null,
         stock_status: activeSku.stock_status || 'in_stock',
         status: 'published'
       });
@@ -409,6 +410,11 @@ export function ProductsClient({
                                 <span className="text-caption-responsive text-slate-400 font-medium">
                                   {sku.pack_size ? `${sku.unit} (${sku.pack_size})` : sku.unit}
                                 </span>
+                                {(sku as any).price && (
+                                  <span className="text-caption-responsive font-semibold text-slate-700 px-2 py-0.5 rounded-[3px] bg-slate-100">
+                                    {((sku as any).price || 0).toLocaleString('vi-VN')}đ
+                                  </span>
+                                )}
 
                                 {/* Quick stock update */}
                                 <select
@@ -881,6 +887,20 @@ export function ProductsClient({
                   value={activeSku.pack_size || ''}
                   onChange={(e) => setActiveSku({ ...activeSku, pack_size: e.target.value })}
                   placeholder="Ví dụ: 100 đôi/hộp, 50 cuộn/thùng"
+                  className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                />
+              </div>
+
+              {/* Price */}
+              <div className="flex flex-col gap-1.5">
+                <label className="text-caption-responsive font-bold text-slate-500 uppercase">
+                  Giá (VNĐ)
+                </label>
+                <input
+                  type="number"
+                  value={(activeSku as any).price || ''}
+                  onChange={(e) => setActiveSku({ ...activeSku, price: Number(e.target.value) || null } as any)}
+                  placeholder="Ví dụ: 2500, 250000"
                   className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
                 />
               </div>

@@ -249,6 +249,7 @@ export async function fetchProductBySlug(slug: string): Promise<Product | null> 
       'skus.stock_status',
       'skus.unit',
       'skus.pack_size',
+      'skus.price',
       'skus.attributes',
       'skus.images',
       'skus.status',

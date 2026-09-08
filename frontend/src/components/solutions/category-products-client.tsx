@@ -5,8 +5,6 @@ import { useSearchParams } from 'next/navigation';
 import { getPendingCategoryFilter, clearPendingCategoryFilter } from '@/lib/filter-session';
 import { readCart, persistCart } from '../rfq/cart-types';
 import CoreCapabilities from '@/components/regional-hubs/core-capabilities';
-import ProductionMaterials from './production-materials';
-import CatalogShowcase from './catalog-showcase';
 import { CategoryHeroBanner } from './category-hero-banner';
 import { CategoryQuickTabs } from './category-quick-tabs';
 import { ProductFilters } from './product-filters';
@@ -598,12 +596,6 @@ export function CategoryProductsClient({
 
       {/* CTA Banner */}
       <CategoryCTA locale={locale} />
-
-      {/* === SECTION: Production SKU & Materials === */}
-      <ProductionMaterials locale={locale} />
-
-      {/* === SECTION: Product Catalog Showcase === */}
-      <CatalogShowcase locale={locale} />
 
       {/* Core Capabilities */}
       <CoreCapabilities />

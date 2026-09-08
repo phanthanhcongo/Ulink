@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { Package, RotateCcw } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { ASSETS } from '@/lib/assets';
-import ProductCard from '@/components/product/product-card';
+import { ProductCard } from './product-card';
 
 export interface ProductItem {
   id: number;
@@ -72,6 +72,16 @@ export function ProductsGrid({
     );
   }
 
+  const formatPrice = (price: number | null | undefined, locale: string) => {
+    if (!price) return 'Liên hệ báo giá';
+    const minPrice = Math.round(price * 0.8);
+    const maxPrice = Math.round(price);
+    if (locale === 'vi') {
+      return `${minPrice.toLocaleString('vi-VN')}-${maxPrice.toLocaleString('vi-VN')}đ`;
+    }
+    return `$${minPrice}-$${maxPrice}`;
+  };
+
   return (
     <div>
       <div className={viewType === 'grid' ? 'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6' : 'flex flex-col gap-4'}>
@@ -80,26 +90,18 @@ export function ProductsGrid({
             id: product.id,
             slug: product.slug,
             name: product.name,
-            brand: product.brand || 'ULink',
-            short_description: product.shortDescription,
-            hero: product.image,
-            category: {
-              name: product.categoryName
-            },
-            skus: [
-              {
-                id: product.id,
-                sku_code: product.slug,
-                stock_status: product.stockStatus,
-                unit: product.unit,
-                pack_size: product.packSize,
-                status: 'published'
-              }
-            ]
-          } as any;
+            description: product.shortDescription,
+            image: product.image,
+            price: formatPrice(product.price, locale),
+            moq: `MOQ: ${product.packSize || 'Liên hệ'}`,
+            moqUnit: product.unit,
+            status: product.stockStatus === 'in_stock' ? (locale === 'vi' ? 'Có sẵn tại Kho' : 'In Stock') : (locale === 'vi' ? 'Sản xuất theo yêu cầu' : 'Custom orders'),
+            location: 'Hub Hà Nam, Việt Nam',
+            unit: product.unit
+          };
 
           return viewType === 'grid' ? (
-            <ProductCard key={product.id} product={mappedProduct} locale={locale} roundedClass="rounded-[3px]" />
+            <ProductCard key={product.id} product={mappedProduct} locale={locale} />
           ) : (
             <div key={product.id} className="bg-white border border-slate-200/80 rounded-[3px] p-4 flex flex-col md:flex-row gap-5 hover:shadow-md transition-shadow">
               <div className="relative w-full md:w-44 h-32 shrink-0 rounded-[3px] overflow-hidden bg-slate-50 border border-slate-100">
@@ -132,6 +134,9 @@ export function ProductsGrid({
                   <p className="text-caption-responsive text-slate-500 font-medium line-clamp-2 mt-1.5 leading-relaxed">
                     {product.shortDescription || 'Mô tả chi tiết sản phẩm phòng sạch chất lượng cao từ ULink Industries.'}
                   </p>
+                  <div className="text-body-small font-bold text-slate-900 mt-3">
+                    {formatPrice(product.price, locale)} / {product.unit || 'per kg'}
+                  </div>
                 </div>
 
                 <div className="flex flex-wrap items-center justify-between gap-4 mt-3 pt-2.5 border-t border-slate-50">

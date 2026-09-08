@@ -36,6 +36,7 @@ export default async function AdminSkusPage({ params: { locale } }: Props) {
           fields: [
             'id',
             'sku_code',
+            'price',
             'stock_status',
             'unit',
             'pack_size',

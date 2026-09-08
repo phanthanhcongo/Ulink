@@ -37,7 +37,6 @@ import {
   Product
 } from '@/lib/product-data';
 import ProductDetailClient from '@/components/product/product-detail-client';
-import ProductCard from '@/components/product/product-card';
 import ProductTabs from '@/components/product/product-tabs';
 import { ProductImageGallery } from '@/components/product/product-image-gallery';
 import RequestSampleButton from '@/components/sample-request/request-sample-button';
