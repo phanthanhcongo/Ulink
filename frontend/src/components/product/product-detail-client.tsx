@@ -249,39 +249,39 @@ export default function ProductDetailClient({
   }, [performAddToCart, quantity, router]);
 
   return (
-    <div className="space-y-6 text-left">
+    <div className="space-y-5 text-left">
       {/* 1. PRICE DISPLAY HEADER */}
       <div className="space-y-1">
         <div className="flex items-baseline gap-1 flex-wrap">
-          <span className="text-section-title font-bold text-blue-600 tracking-tight leading-none">
+          <span className="text-[20px] sm:text-[24px] lg:text-[28px] font-bold text-blue-600 tracking-tight leading-tight">
             {formatPrice(currentUnitPrice)}
           </span>
-          <span className="text-card-title text-slate-600 font-medium">/ {displayUnitLabel}</span>
+          <span className="text-[14px] sm:text-[16px] lg:text-[20px] text-slate-600 font-semibold">/ {displayUnitLabel}</span>
         </div>
-        <p className="text-caption-responsive text-slate-500 font-medium">
+        <p className="text-[11px] sm:text-[12px] lg:text-[12px] text-slate-500 font-semibold">
           {locale === 'vi' ? 'Chưa bao gồm thuế (8% VAT)' : 'Tax excluded (8% VAT)'}
         </p>
-        <div className="flex items-center gap-1.5 pt-1">
-          <span className="h-2 w-2 rounded-full bg-emerald-500 shrink-0" />
-          <span className="text-caption-responsive font-semibold text-emerald-600">
+        <div className="flex items-center gap-1.5 pt-0.5">
+          <span className="h-2 w-2 rounded-full bg-[#10b981] shrink-0" />
+          <span className="text-[11px] sm:text-[12px] lg:text-[12px] font-semibold text-[#10b981]">
             {locale === 'vi' ? 'Sẵn hàng tại kho' : 'In Stock at Warehouse'}
           </span>
         </div>
       </div>
 
-      <hr className="border-slate-200" />
+      <hr className="border-[#dce0e5]" />
 
       {/* 2. DYNAMIC ATTRIBUTE SELECTORS (Trọng lượng cuộn / Kích cỡ) */}
       {attributes.map((attr) => (
-        <div key={attr.name} className="space-y-2.5">
-          <p className="text-caption-responsive font-bold text-slate-800">
+        <div key={attr.name} className="space-y-2">
+          <p className="text-[14px] sm:text-[14px] lg:text-[14px] font-semibold text-slate-800">
             {attr.name === 'size'
               ? locale === 'vi'
                 ? 'Trọng lượng cuộn (Kích cỡ)'
                 : 'Size / Weight'
               : attr.name}
           </p>
-          <div className="flex flex-wrap gap-2.5">
+          <div className="flex flex-wrap gap-2">
             {attr.values.map((val) => {
               const isSelected = selections[attr.name] === val;
               return (
@@ -290,10 +290,10 @@ export default function ProductDetailClient({
                   type="button"
                   onClick={() => handleSelectAttribute(attr.name, val)}
                   className={cn(
-                    'px-4 py-2 text-caption-responsive transition-all flex items-center justify-center cursor-pointer',
+                    'w-12 h-8 text-[14px] transition-all flex items-center justify-center cursor-pointer rounded-[4px] font-semibold',
                     isSelected
-                      ? 'border-2 border-[#1769e2] bg-white text-[#1769e2] rounded-[3px] font-bold'
-                      : 'border border-slate-200 bg-white text-slate-700 rounded-[3px] hover:border-slate-350 font-medium'
+                      ? 'border-2 border-[#1769e2] bg-[#f5f8fc] text-[#1769e2]'
+                      : 'border border-[#dce0e5] bg-white text-slate-700 hover:border-[#b8c0cc]'
                   )}
                 >
                   {val}
@@ -305,62 +305,62 @@ export default function ProductDetailClient({
       ))}
 
       {/* 3. QUANTITY SELECTOR WITH MOQ */}
-      <div className="space-y-2.5">
+      <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <p className="text-caption-responsive font-bold text-slate-800">
+          <p className="text-[14px] sm:text-[14px] lg:text-[14px] font-semibold text-slate-800">
             {locale === 'vi'
               ? `Số lượng đặt ${unitLabel} (MOQ: 500 ${unitLabel})`
               : `Order Qty ${unitLabel} (MOQ: 500 ${unitLabel})`}
           </p>
         </div>
-        <div className="flex items-center w-full bg-white rounded-[3px] border border-slate-200 overflow-hidden shadow-2xs">
+        <div className="flex items-center w-full bg-white rounded-[4px] border border-[#dce0e5] overflow-hidden">
           <button
             type="button"
             onClick={() => handleQuantityChange(quantity - 50 < 1 ? 1 : quantity - 50)}
-            className="w-12 h-10 flex items-center justify-center hover:bg-slate-50 text-slate-600 text-card-title font-bold border-r border-slate-200 select-none transition-colors cursor-pointer"
+            className="w-8 h-8 flex items-center justify-center hover:bg-slate-50 text-slate-600 font-bold border-r border-[#dce0e5] select-none transition-colors cursor-pointer"
           >
-            <Minus className="h-3.5 w-3.5" />
+            <Minus className="h-4 w-4" />
           </button>
           <input
             type="number"
             value={quantity}
             onChange={(e) => handleQuantityChange(parseInt(e.target.value, 10))}
-            className="flex-1 text-center font-bold text-body-regular text-slate-900 focus:outline-none w-16 py-2"
+            className="flex-1 text-center font-semibold text-[16px] text-slate-900 focus:outline-none py-1.5"
           />
           <button
             type="button"
             onClick={() => handleQuantityChange(quantity + 50)}
-            className="w-12 h-10 flex items-center justify-center hover:bg-slate-50 text-slate-600 text-card-title font-bold border-l border-slate-200 select-none transition-colors cursor-pointer"
+            className="w-8 h-8 flex items-center justify-center hover:bg-slate-50 text-slate-600 font-bold border-l border-[#dce0e5] select-none transition-colors cursor-pointer"
           >
-            <Plus className="h-3.5 w-3.5" />
+            <Plus className="h-4 w-4" />
           </button>
         </div>
       </div>
 
       {/* 4. TIERED B2B VOLUME DISCOUNT TABLE */}
-      <div className="space-y-2.5">
-        <p className="text-caption-responsive font-bold text-slate-800">
+      <div className="space-y-2">
+        <p className="text-[14px] sm:text-[14px] lg:text-[14px] font-semibold text-slate-800">
           {locale === 'vi' ? 'Chiết khấu B2B theo sản lượng' : 'B2B Volume Discount'}
         </p>
-        <div className="border border-slate-200 rounded-[3px] overflow-hidden bg-white divide-y divide-slate-100">
+        <div className="border border-[#dce0e5] rounded-[4px] overflow-hidden bg-white divide-y divide-[#e9eff6]">
           {priceTiers.map((tier, idx) => {
             const isActive = activeTierIdx === idx;
             return (
               <div
                 key={tier.label}
                 className={cn(
-                  'flex justify-between items-center px-4 py-3 text-caption-responsive transition-colors',
+                  'flex justify-between items-center px-4 py-3 text-[14px] transition-colors',
                   isActive
-                    ? 'bg-[#eaf3ff]/80 text-[#1769e2] font-bold'
-                    : 'text-slate-600 bg-white'
+                    ? 'bg-[#eaf3ff]/50 text-[#1769e2] font-semibold'
+                    : 'text-slate-600 bg-white font-medium'
                 )}
               >
-                <span className={isActive ? 'font-bold' : 'font-medium'}>
+                <span>
                   {tier.label} {unitLabel}
                 </span>
                 <span
                   className={cn(
-                    'font-bold',
+                    'font-semibold',
                     isActive ? 'text-[#1769e2]' : 'text-slate-800'
                   )}
                 >
@@ -373,12 +373,12 @@ export default function ProductDetailClient({
       </div>
 
       {/* 5. TOTAL BLOCK */}
-      <div className="space-y-1.5 text-left">
-        <p className="text-caption-responsive font-bold text-slate-800">{locale === 'vi' ? 'Tổng cộng' : 'Total'}</p>
-        <span className="text-section-title font-bold text-[#1769e2] tracking-tight block leading-none">
+      <div className="space-y-1 text-left">
+        <p className="text-[14px] font-semibold text-slate-800">{locale === 'vi' ? 'Tổng cộng' : 'Total'}</p>
+        <span className="text-[20px] sm:text-[24px] lg:text-[28px] font-bold text-[#1769e2] tracking-tight block leading-tight">
           {formatPrice(totalAmount)}
         </span>
-        <p className="text-caption-responsive text-slate-400 italic font-medium">
+        <p className="text-[11px] sm:text-[12px] lg:text-[12px] text-slate-400 italic font-medium">
           {locale === 'vi'
             ? '• Giá bán sỉ ưu đãi khi mua số lượng lớn.'
             : '• Wholesale price discount applied for high volumes.'}
@@ -386,24 +386,24 @@ export default function ProductDetailClient({
       </div>
 
       {/* 6. ACTION BUTTONS */}
-      <div className="space-y-3 pt-1">
+      <div className="space-y-2 pt-1">
         <button
           type="button"
           onClick={handleAddToCart}
           disabled={!selectedSku}
           className={cn(
-            'w-full flex items-center justify-center gap-2 h-11 rounded-[3px] font-bold text-body-regular text-white bg-[#1769e2] hover:bg-[#155fcb] transition-colors cursor-pointer shadow-sm',
+            'w-full flex items-center justify-center gap-2 h-11 rounded-[4px] font-semibold text-[14px] text-white bg-[#1769e2] hover:bg-[#155fcb] transition-colors cursor-pointer shadow-sm',
             !selectedSku && 'opacity-50 cursor-not-allowed'
           )}
         >
           {added ? (
             <>
-              <Check className="h-4.5 w-4.5 stroke-[2.5]" />
+              <Check className="h-5 w-5 stroke-[2.5]" />
               <span>{locale === 'vi' ? 'Đã thêm vào giỏ hàng' : 'Added to Cart'}</span>
             </>
           ) : (
             <>
-              <ShoppingCart className="h-4.5 w-4.5" />
+              <ShoppingCart className="h-5 w-5" />
               <span>{locale === 'vi' ? 'Thêm vào giỏ hàng' : labels.addToCart}</span>
             </>
           )}
@@ -414,7 +414,7 @@ export default function ProductDetailClient({
           onClick={handleRequestQuote}
           disabled={!selectedSku}
           className={cn(
-            'w-full flex items-center justify-center h-11 rounded-[3px] font-bold text-body-regular text-[#1769e2] border border-[#1769e2] bg-white hover:bg-blue-50/50 transition-colors cursor-pointer',
+            'w-full flex items-center justify-center h-11 rounded-[4px] font-semibold text-[14px] text-[#1769e2] border border-[#1769e2] bg-white hover:bg-[#eaf3ff]/30 transition-colors cursor-pointer',
             !selectedSku && 'opacity-50 cursor-not-allowed'
           )}
         >
@@ -422,10 +422,10 @@ export default function ProductDetailClient({
         </button>
       </div>
 
-      <hr className="border-slate-200/80" />
+      <hr className="border-[#dce0e5]" />
 
       {/* 7. TRUST & DELIVERY BADGES */}
-      <div className="space-y-3 pt-1 text-caption-responsive text-slate-600 font-medium">
+      <div className="space-y-2 pt-1 text-[12px] text-slate-600 font-medium">
         <div className="flex items-center gap-2.5">
           <Settings2 className="h-4 w-4 text-slate-500 shrink-0" />
           <span>

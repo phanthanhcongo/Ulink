@@ -218,30 +218,30 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
           <div className="lg:col-span-4 space-y-6">
             {categoryName && (
               <div>
-                <span className="inline-block text-caption-responsive font-bold text-blue-600 bg-blue-50/80 border border-blue-100/80 px-3.5 py-1 rounded-[3px] shadow-2xs">
+                <span className="inline-block text-[12px] sm:text-[13px] lg:text-[14px] font-semibold text-blue-600 bg-blue-50/80 border border-blue-100/80 px-3.5 py-1 rounded-[3px] shadow-2xs">
                   {categoryName}
                 </span>
               </div>
             )}
 
-            <h1 className="text-hero-title text-slate-900">
+            <h1 className="text-[24px] sm:text-[28px] lg:text-[28px] font-bold leading-[36px] text-slate-900">
               {productName}
             </h1>
 
             {/* SKU and Rating row */}
-            <div className="flex items-center gap-3 text-caption-responsive text-slate-500 font-semibold">
+            <div className="flex items-center gap-3 text-[11px] sm:text-[12px] lg:text-[12px] text-slate-500 font-semibold">
               {skuCode && <span>SKU: {skuCode}</span>}
               {skuCode && <span className="text-slate-300">|</span>}
               <div className="flex items-center gap-1.5">
-                <span className="font-bold text-slate-900">4.8</span>
-                <div className="flex text-amber-500 text-card-title gap-0.5 leading-none">
+                <span className="text-[12px] sm:text-[13px] lg:text-[14px] font-semibold text-slate-900">4.8</span>
+                <div className="flex text-amber-500 text-[14px] gap-0.5 leading-none">
                   <span>★</span>
                   <span>★</span>
                   <span>★</span>
                   <span>★</span>
                   <span>★</span>
                 </div>
-                <span className="text-slate-500 font-medium">
+                <span className="text-[11px] sm:text-[12px] lg:text-[12px] text-slate-500 font-semibold">
                   (48 {locale === 'vi' ? 'đánh giá' : 'reviews'})
                 </span>
               </div>
@@ -250,7 +250,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
             <hr className="border-slate-200/80" />
 
             {productDescription && (
-              <p className="text-caption-responsive text-slate-600 leading-relaxed font-medium">
+              <p className="text-[12px] sm:text-[13px] lg:text-[14px] text-slate-600 leading-relaxed font-normal">
                 {productDescription}
               </p>
             )}
@@ -261,7 +261,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                 <div className="w-12 h-12 rounded-[3px] bg-slate-50 border border-slate-200/70 flex items-center justify-center text-blue-600 mb-2 shrink-0 group-hover:bg-blue-50 transition-colors shadow-2xs">
                   <Maximize2 className="h-5 w-5" />
                 </div>
-                <span className="text-caption-responsive font-bold text-slate-700 leading-tight">
+                <span className="text-[11px] sm:text-[12px] lg:text-[12px] font-semibold text-slate-700 leading-tight">
                   {locale === 'vi' ? 'Co giãn 400%' : 'Stretch 400%'}
                 </span>
               </div>
@@ -270,7 +270,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                 <div className="w-12 h-12 rounded-[3px] bg-slate-50 border border-slate-200/70 flex items-center justify-center text-blue-600 mb-2 shrink-0 group-hover:bg-blue-50 transition-colors shadow-2xs">
                   <ShieldCheck className="h-5 w-5" />
                 </div>
-                <span className="text-caption-responsive font-bold text-slate-700 leading-tight">
+                <span className="text-[11px] sm:text-[12px] lg:text-[12px] font-semibold text-slate-700 leading-tight">
                   {locale === 'vi' ? 'Dẻo & Khó rách' : 'Tear Resistant'}
                 </span>
               </div>
@@ -279,7 +279,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                 <div className="w-12 h-12 rounded-[3px] bg-slate-50 border border-slate-200/70 flex items-center justify-center text-blue-600 mb-2 shrink-0 group-hover:bg-blue-50 transition-colors shadow-2xs">
                   <Droplets className="h-5 w-5" />
                 </div>
-                <span className="text-caption-responsive font-bold text-slate-700 leading-tight">
+                <span className="text-[11px] sm:text-[12px] lg:text-[12px] font-semibold text-slate-700 leading-tight">
                   {locale === 'vi' ? 'Chống ẩm ướt' : 'Moisture Proof'}
                 </span>
               </div>
@@ -288,7 +288,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                 <div className="w-12 h-12 rounded-[3px] bg-slate-50 border border-slate-200/70 flex items-center justify-center text-blue-600 mb-2 shrink-0 group-hover:bg-blue-50 transition-colors shadow-2xs">
                   <RefreshCw className="h-5 w-5" />
                 </div>
-                <span className="text-caption-responsive font-bold text-slate-700 leading-tight">
+                <span className="text-[11px] sm:text-[12px] lg:text-[12px] font-semibold text-slate-700 leading-tight">
                   {locale === 'vi' ? 'PE Tái chế' : 'Recyclable PE'}
                 </span>
               </div>
@@ -299,28 +299,28 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
             {/* 2x2 Key Specifications Grid */}
             <div className="grid grid-cols-2 gap-y-5 gap-x-8 py-2">
               <div className="flex flex-col">
-                <span className="text-caption-responsive font-semibold text-slate-500">
+                <span className="text-[11px] sm:text-[12px] lg:text-[12px] font-semibold text-slate-500">
                   {locale === 'vi' ? 'Độ dày màng' : 'Thickness'}
                 </span>
-                <span className="text-caption-responsive font-bold text-slate-900 mt-1">
+                <span className="text-[12px] sm:text-[13px] lg:text-[14px] font-semibold text-slate-900 mt-1">
                   {specs?.['Độ dày'] || specs?.['Thickness'] || '17 mic / 20 mic / 23 mic'}
                 </span>
               </div>
 
               <div className="flex flex-col">
-                <span className="text-caption-responsive font-semibold text-slate-500">
+                <span className="text-[11px] sm:text-[12px] lg:text-[12px] font-semibold text-slate-500">
                   {locale === 'vi' ? 'Chất liệu chính' : 'Material'}
                 </span>
-                <span className="text-caption-responsive font-bold text-slate-900 mt-1">
+                <span className="text-[12px] sm:text-[13px] lg:text-[14px] font-semibold text-slate-900 mt-1">
                   {specs?.['Chất liệu'] || specs?.['Material'] || '100% LLDPE Nguyên sinh'}
                 </span>
               </div>
 
               <div className="flex flex-col">
-                <span className="text-caption-responsive font-semibold text-slate-500">
+                <span className="text-[11px] sm:text-[12px] lg:text-[12px] font-semibold text-slate-500">
                   {locale === 'vi' ? 'Quy cách cuộn' : 'Specification'}
                 </span>
-                <span className="text-caption-responsive font-bold text-slate-900 mt-1">
+                <span className="text-[12px] sm:text-[13px] lg:text-[14px] font-semibold text-slate-900 mt-1">
                   {specs?.['Đóng gói'] ||
                     specs?.['Specification'] ||
                     'Khổ rộng 50cm, cân nặng theo yêu cầu'}
@@ -328,10 +328,10 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
               </div>
 
               <div className="flex flex-col">
-                <span className="text-caption-responsive font-semibold text-slate-500">
+                <span className="text-[11px] sm:text-[12px] lg:text-[12px] font-semibold text-slate-500">
                   {locale === 'vi' ? 'Màu sắc' : 'Color'}
                 </span>
-                <span className="text-caption-responsive font-bold text-slate-900 mt-1">
+                <span className="text-[12px] sm:text-[13px] lg:text-[14px] font-semibold text-slate-900 mt-1">
                   {specs?.['Màu sắc'] || specs?.['Color'] || 'Trắng trong'}
                 </span>
               </div>
@@ -342,7 +342,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
             {/* Quality Standards Achieved */}
             {standards.length > 0 && (
               <div className="space-y-3 pt-2">
-                <p className="text-caption-responsive font-bold text-slate-700 uppercase tracking-tight">
+                <p className="text-[12px] sm:text-[13px] lg:text-[14px] font-semibold text-slate-700 uppercase tracking-tight">
                   {locale === 'vi'
                     ? 'Tiêu chuẩn chất lượng đạt được:'
                     : 'Quality Standards Achieved:'}
@@ -357,11 +357,11 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                         <Award className="h-5 w-5" />
                       </div>
                       <div>
-                        <p className="text-caption-responsive font-bold text-slate-800 leading-tight">
+                        <p className="text-[11px] sm:text-[12px] lg:text-[12px] font-semibold text-slate-800 leading-tight">
                           {getTranslatedName(std, locale)}
                         </p>
                         {getTranslatedDescription(std, locale) && (
-                          <p className="text-caption-responsive font-semibold text-slate-400 mt-0.5">
+                          <p className="text-[9px] sm:text-[10px] lg:text-[10px] font-medium text-slate-400 mt-0.5">
                             {getTranslatedDescription(std, locale)}
                           </p>
                         )}
@@ -375,7 +375,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
           {/* RIGHT: Sidebar Card */}
           <div className="lg:col-span-3">
-            <div className="bg-[#F5F8FC] border border-slate-200/80 rounded-[3px] p-6 sticky top-6 space-y-6">
+            <div className="bg-[#f5f8fc] border border-[#dce0e5] rounded-lg p-6 sticky top-6 space-y-5">
               {/* Product interactive config */}
               <ProductDetailClient
                 skus={skus.map((s: ProductSku) => ({
