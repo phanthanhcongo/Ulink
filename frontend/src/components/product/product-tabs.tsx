@@ -55,7 +55,7 @@ export default function ProductTabs({
     { id: 'specs', label: locale === 'vi' ? 'Thông số kỹ thuật' : 'Specifications' },
     { id: 'apps', label: locale === 'vi' ? 'Ứng dụng' : 'Applications' },
     { id: 'certs', label: locale === 'vi' ? 'Chứng nhận' : 'Certifications' },
-    { id: 'reviews', label: locale === 'vi' ? 'Đánh giá (12)' : 'Reviews (12)' }
+    { id: 'reviews', label: locale === 'vi' ? 'Đánh giá' : 'Reviews' }
   ] as const;
 
   // Render specifications tab content
@@ -435,7 +435,7 @@ export default function ProductTabs({
               ))}
             </div>
             <p className="text-xs sm:text-caption-responsive text-slate-400 font-semibold">
-              12 đánh giá thực tế từ khách hàng doanh nghiệp
+              12 {locale === 'vi' ? 'đánh giá' : 'reviews'}
             </p>
           </div>
           <div className="flex items-center gap-1.5 px-3 sm:px-4 py-1.5 sm:py-2.5 bg-white border border-slate-100 rounded-[3px] shadow-sm whitespace-nowrap">
