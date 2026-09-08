@@ -83,36 +83,36 @@ export default async function FeaturedProducts({ locale }: FeaturedProductsProps
               </p>
 
               {/* Key Attributes Box - Exact Figma SVGs */}
-              <div className="bg-[#F4F7FC] p-2.5 sm:p-3 grid grid-cols-4 gap-1 mb-5 rounded-[3px] border border-slate-100">
+              <div className="bg-[#F4F7FC] p-2 sm:p-3 grid grid-cols-4 gap-0.5 sm:gap-1 mb-4 sm:mb-5 rounded-[3px] border border-slate-100">
                 <div className="text-center">
-                  <div className="flex h-8 items-center justify-center">
-                    <Image src="/images/home/section2/_32-security-vectorized0.svg" alt="" width={32} height={32} className="h-7 w-7" />
+                  <div className="flex h-6 sm:h-8 items-center justify-center">
+                    <Image src="/images/home/section2/_32-security-vectorized0.svg" alt="" width={32} height={32} className="h-5 w-5 sm:h-7 sm:w-7" />
                   </div>
-                  <p className="text-caption-responsive text-[#212529] font-medium leading-tight mt-1 truncate">
+                  <p className="text-[10px] sm:text-caption-responsive text-[#212529] font-medium leading-tight mt-0.5 sm:mt-1 truncate">
                     {t('featuredProducts.glove.feat1')}
                   </p>
                 </div>
                 <div className="text-center">
-                  <div className="flex h-8 items-center justify-center">
-                    <Image src="/images/home/section2/_32-xls-vectorized0.svg" alt="" width={32} height={32} className="h-7 w-7" />
+                  <div className="flex h-6 sm:h-8 items-center justify-center">
+                    <Image src="/images/home/section2/_32-xls-vectorized0.svg" alt="" width={32} height={32} className="h-5 w-5 sm:h-7 sm:w-7" />
                   </div>
-                  <p className="text-caption-responsive text-[#212529] font-medium leading-tight mt-1 truncate">
+                  <p className="text-[10px] sm:text-caption-responsive text-[#212529] font-medium leading-tight mt-0.5 sm:mt-1 truncate">
                     {t('featuredProducts.glove.feat2')}
                   </p>
                 </div>
                 <div className="text-center">
-                  <div className="flex h-8 items-center justify-center">
-                    <Image src="/images/home/section2/rectangle-vectorized0.svg" alt="" width={32} height={32} className="h-7 w-7" />
+                  <div className="flex h-6 sm:h-8 items-center justify-center">
+                    <Image src="/images/home/section2/rectangle-vectorized0.svg" alt="" width={32} height={32} className="h-5 w-5 sm:h-7 sm:w-7" />
                   </div>
-                  <p className="text-caption-responsive text-[#212529] font-medium leading-tight mt-1 truncate">
+                  <p className="text-[10px] sm:text-caption-responsive text-[#212529] font-medium leading-tight mt-0.5 sm:mt-1 truncate">
                     {t('featuredProducts.glove.feat3')}
                   </p>
                 </div>
                 <div className="text-center">
-                  <div className="flex h-8 items-center justify-center">
-                    <Image src="/images/home/section2/_32-chart-t-sne-vectorized0.svg" alt="" width={32} height={32} className="h-7 w-7" />
+                  <div className="flex h-6 sm:h-8 items-center justify-center">
+                    <Image src="/images/home/section2/_32-chart-t-sne-vectorized0.svg" alt="" width={32} height={32} className="h-5 w-5 sm:h-7 sm:w-7" />
                   </div>
-                  <p className="text-caption-responsive text-[#212529] font-medium leading-tight mt-1 truncate">
+                  <p className="text-[10px] sm:text-caption-responsive text-[#212529] font-medium leading-tight mt-0.5 sm:mt-1 truncate">
                     {t('featuredProducts.glove.feat4')}
                   </p>
                 </div>
@@ -177,36 +177,36 @@ export default async function FeaturedProducts({ locale }: FeaturedProductsProps
               </p>
 
               {/* Key Attributes Box - Exact Figma SVGs */}
-              <div className="bg-[#F4F7FC] p-2.5 sm:p-3 grid grid-cols-4 gap-1 mb-5 rounded-[3px] border border-slate-100">
+              <div className="bg-[#F4F7FC] p-2 sm:p-3 grid grid-cols-4 gap-0.5 sm:gap-1 mb-4 sm:mb-5 rounded-[3px] border border-slate-100">
                 <div className="text-center">
-                  <div className="flex h-8 items-center justify-center">
-                    <Image src="/images/home/section2/layers0.svg" alt="" width={32} height={32} className="h-7 w-7" />
+                  <div className="flex h-6 sm:h-8 items-center justify-center">
+                    <Image src="/images/home/section2/layers0.svg" alt="" width={32} height={32} className="h-5 w-5 sm:h-7 sm:w-7" />
                   </div>
-                  <p className="text-caption-responsive text-[#212529] font-medium leading-tight mt-1 truncate">
+                  <p className="text-[10px] sm:text-caption-responsive text-[#212529] font-medium leading-tight mt-0.5 sm:mt-1 truncate">
                     {t('featuredProducts.film.feat1')}
                   </p>
                 </div>
                 <div className="text-center">
-                  <div className="flex h-8 items-center justify-center">
-                    <Image src="/images/home/section2/_32-smoke-vectorized0.svg" alt="" width={32} height={32} className="h-7 w-7" />
+                  <div className="flex h-6 sm:h-8 items-center justify-center">
+                    <Image src="/images/home/section2/_32-smoke-vectorized0.svg" alt="" width={32} height={32} className="h-5 w-5 sm:h-7 sm:w-7" />
                   </div>
-                  <p className="text-caption-responsive text-[#212529] font-medium leading-tight mt-1 truncate">
+                  <p className="text-[10px] sm:text-caption-responsive text-[#212529] font-medium leading-tight mt-0.5 sm:mt-1 truncate">
                     {t('featuredProducts.film.feat2')}
                   </p>
                 </div>
                 <div className="text-center">
-                  <div className="flex h-8 items-center justify-center">
-                    <Image src="/images/home/section2/_32-view-vectorized0.svg" alt="" width={32} height={32} className="h-7 w-7" />
+                  <div className="flex h-6 sm:h-8 items-center justify-center">
+                    <Image src="/images/home/section2/_32-view-vectorized0.svg" alt="" width={32} height={32} className="h-5 w-5 sm:h-7 sm:w-7" />
                   </div>
-                  <p className="text-caption-responsive text-[#212529] font-medium leading-tight mt-1 truncate">
+                  <p className="text-[10px] sm:text-caption-responsive text-[#212529] font-medium leading-tight mt-0.5 sm:mt-1 truncate">
                     {t('featuredProducts.film.feat3')}
                   </p>
                 </div>
                 <div className="text-center">
-                  <div className="flex h-8 items-center justify-center">
-                    <Image src="/images/home/section2/_32-tools-alt-vectorized0.svg" alt="" width={32} height={32} className="h-7 w-7" />
+                  <div className="flex h-6 sm:h-8 items-center justify-center">
+                    <Image src="/images/home/section2/_32-tools-alt-vectorized0.svg" alt="" width={32} height={32} className="h-5 w-5 sm:h-7 sm:w-7" />
                   </div>
-                  <p className="text-caption-responsive text-[#212529] font-medium leading-tight mt-1 truncate">
+                  <p className="text-[10px] sm:text-caption-responsive text-[#212529] font-medium leading-tight mt-0.5 sm:mt-1 truncate">
                     {t('featuredProducts.film.feat4')}
                   </p>
                 </div>
@@ -271,36 +271,36 @@ export default async function FeaturedProducts({ locale }: FeaturedProductsProps
               </p>
 
               {/* Key Attributes Box - Exact Figma SVGs */}
-              <div className="bg-[#F4F7FC] p-2.5 sm:p-3 grid grid-cols-4 gap-1 mb-5 rounded-[3px] border border-slate-100">
+              <div className="bg-[#F4F7FC] p-2 sm:p-3 grid grid-cols-4 gap-0.5 sm:gap-1 mb-4 sm:mb-5 rounded-[3px] border border-slate-100">
                 <div className="text-center">
-                  <div className="flex h-8 items-center justify-center">
-                    <Image src="/images/home/section2/_32-layers-vectorized0.svg" alt="" width={32} height={32} className="h-7 w-7" />
+                  <div className="flex h-6 sm:h-8 items-center justify-center">
+                    <Image src="/images/home/section2/_32-layers-vectorized0.svg" alt="" width={32} height={32} className="h-5 w-5 sm:h-7 sm:w-7" />
                   </div>
-                  <p className="text-caption-responsive text-[#212529] font-medium leading-tight mt-1 truncate">
+                  <p className="text-[10px] sm:text-caption-responsive text-[#212529] font-medium leading-tight mt-0.5 sm:mt-1 truncate">
                     {t('featuredProducts.tape.feat1')}
                   </p>
                 </div>
                 <div className="text-center">
-                  <div className="flex h-8 items-center justify-center">
-                    <Image src="/images/home/section2/_32-ruler-alt-vectorized0.svg" alt="" width={32} height={32} className="h-7 w-7" />
+                  <div className="flex h-6 sm:h-8 items-center justify-center">
+                    <Image src="/images/home/section2/_32-ruler-alt-vectorized0.svg" alt="" width={32} height={32} className="h-5 w-5 sm:h-7 sm:w-7" />
                   </div>
-                  <p className="text-caption-responsive text-[#212529] font-medium leading-tight mt-1 truncate">
+                  <p className="text-[10px] sm:text-caption-responsive text-[#212529] font-medium leading-tight mt-0.5 sm:mt-1 truncate">
                     {t('featuredProducts.tape.feat2')}
                   </p>
                 </div>
                 <div className="text-center">
-                  <div className="flex h-8 items-center justify-center">
-                    <Image src="/images/home/section2/_32-temperature-max-vectorized0.svg" alt="" width={32} height={32} className="h-7 w-7" />
+                  <div className="flex h-6 sm:h-8 items-center justify-center">
+                    <Image src="/images/home/section2/_32-temperature-max-vectorized0.svg" alt="" width={32} height={32} className="h-5 w-5 sm:h-7 sm:w-7" />
                   </div>
-                  <p className="text-caption-responsive text-[#212529] font-medium leading-tight mt-1 truncate">
+                  <p className="text-[10px] sm:text-caption-responsive text-[#212529] font-medium leading-tight mt-0.5 sm:mt-1 truncate">
                     {t('featuredProducts.tape.feat3')}
                   </p>
                 </div>
                 <div className="text-center">
-                  <div className="flex h-8 items-center justify-center">
-                    <Image src="/images/home/section2/_32-direct-link-vectorized0.svg" alt="" width={32} height={32} className="h-7 w-7" />
+                  <div className="flex h-6 sm:h-8 items-center justify-center">
+                    <Image src="/images/home/section2/_32-direct-link-vectorized0.svg" alt="" width={32} height={32} className="h-5 w-5 sm:h-7 sm:w-7" />
                   </div>
-                  <p className="text-caption-responsive text-[#212529] font-medium leading-tight mt-1 truncate">
+                  <p className="text-[10px] sm:text-caption-responsive text-[#212529] font-medium leading-tight mt-0.5 sm:mt-1 truncate">
                     {t('featuredProducts.tape.feat4')}
                   </p>
                 </div>
@@ -365,36 +365,36 @@ export default async function FeaturedProducts({ locale }: FeaturedProductsProps
               </p>
 
               {/* Key Attributes Box - Exact Figma SVGs */}
-              <div className="bg-[#F4F7FC] p-2.5 sm:p-3 grid grid-cols-4 gap-1 mb-5 rounded-[3px] border border-slate-100">
+              <div className="bg-[#F4F7FC] p-2 sm:p-3 grid grid-cols-4 gap-0.5 sm:gap-1 mb-4 sm:mb-5 rounded-[3px] border border-slate-100">
                 <div className="text-center">
-                  <div className="flex h-8 items-center justify-center">
-                    <Image src="/images/home/section2/_32-recycle0.svg" alt="" width={32} height={32} className="h-7 w-7" />
+                  <div className="flex h-6 sm:h-8 items-center justify-center">
+                    <Image src="/images/home/section2/_32-recycle0.svg" alt="" width={32} height={32} className="h-5 w-5 sm:h-7 sm:w-7" />
                   </div>
-                  <p className="text-caption-responsive text-[#212529] font-medium leading-tight mt-1 truncate">
+                  <p className="text-[10px] sm:text-caption-responsive text-[#212529] font-medium leading-tight mt-0.5 sm:mt-1 truncate">
                     {t('featuredProducts.pallet.feat1')}
                   </p>
                 </div>
                 <div className="text-center">
-                  <div className="flex h-8 items-center justify-center">
-                    <Image src="/images/home/section2/_32-attachment0.svg" alt="" width={32} height={32} className="h-7 w-7" />
+                  <div className="flex h-6 sm:h-8 items-center justify-center">
+                    <Image src="/images/home/section2/_32-attachment0.svg" alt="" width={32} height={32} className="h-5 w-5 sm:h-7 sm:w-7" />
                   </div>
-                  <p className="text-caption-responsive text-[#212529] font-medium leading-tight mt-1 truncate">
+                  <p className="text-[10px] sm:text-caption-responsive text-[#212529] font-medium leading-tight mt-0.5 sm:mt-1 truncate">
                     {t('featuredProducts.pallet.feat2')}
                   </p>
                 </div>
                 <div className="text-center">
-                  <div className="flex h-8 items-center justify-center">
-                    <Image src="/images/home/section2/_32-rain0.svg" alt="" width={32} height={32} className="h-7 w-7" />
+                  <div className="flex h-6 sm:h-8 items-center justify-center">
+                    <Image src="/images/home/section2/_32-rain0.svg" alt="" width={32} height={32} className="h-5 w-5 sm:h-7 sm:w-7" />
                   </div>
-                  <p className="text-caption-responsive text-[#212529] font-medium leading-tight mt-1 truncate">
+                  <p className="text-[10px] sm:text-caption-responsive text-[#212529] font-medium leading-tight mt-0.5 sm:mt-1 truncate">
                     {t('featuredProducts.pallet.feat3')}
                   </p>
                 </div>
                 <div className="text-center">
-                  <div className="flex h-8 items-center justify-center">
-                    <Image src="/images/home/section2/_32-security0.svg" alt="" width={32} height={32} className="h-7 w-7" />
+                  <div className="flex h-6 sm:h-8 items-center justify-center">
+                    <Image src="/images/home/section2/_32-security0.svg" alt="" width={32} height={32} className="h-5 w-5 sm:h-7 sm:w-7" />
                   </div>
-                  <p className="text-caption-responsive text-[#212529] font-medium leading-tight mt-1 truncate">
+                  <p className="text-[10px] sm:text-caption-responsive text-[#212529] font-medium leading-tight mt-0.5 sm:mt-1 truncate">
                     {t('featuredProducts.pallet.feat4')}
                   </p>
                 </div>
