@@ -1,4 +1,5 @@
 import { setRequestLocale, getTranslations } from 'next-intl/server';
+import { Suspense } from 'react';
 import { ArrowRight } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
@@ -99,7 +100,9 @@ export default async function SolutionsPage({ params: { locale } }: SolutionsPag
       <ProductionMaterials locale={locale} />
 
       {/* === SECTION: Product Catalog Showcase === */}
-      <CatalogShowcase locale={locale} />
+      <Suspense fallback={<div className="w-full bg-white border-t border-gray-150 py-16 md:py-24"><div className="page-container"><div className="h-64 bg-gradient-to-r from-slate-200 to-slate-100 rounded animate-pulse" /></div></div>}>
+        <CatalogShowcase locale={locale} />
+      </Suspense>
 
       {/* === SECTION: Custom Tailored Solutions === */}
       <CustomSolutions locale={locale} />

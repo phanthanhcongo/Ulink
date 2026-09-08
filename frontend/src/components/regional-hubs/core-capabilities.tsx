@@ -1,10 +1,12 @@
+'use client';
+
 import Image from 'next/image';
-import { getTranslations } from 'next-intl/server';
+import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { ArrowRight } from 'lucide-react';
 
-export default async function CoreCapabilities() {
-  const t = await getTranslations('regionalHubs');
+export default function CoreCapabilities() {
+  const t = useTranslations('regionalHubs');
 
   return (
     <section className="w-full bg-white py-12 sm:py-16 border-t border-slate-200">

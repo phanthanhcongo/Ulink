@@ -534,6 +534,7 @@ export async function fetchTopCategoriesWithProducts(
 ): Promise<CategoryWithProducts[]> {
   try {
     const categories = await fetchProductCategories();
+    console.log('[fetchTopCategoriesWithProducts] Categories fetched:', categories.length);
 
     const results: CategoryWithProducts[] = [];
     for (const cat of categories.slice(0, maxCategories)) {
@@ -542,10 +543,12 @@ export async function fetchTopCategoriesWithProducts(
         limit: productsPerCategory,
         sort: 'newest'
       });
+      console.log(`[fetchTopCategoriesWithProducts] Category "${cat.name}" has ${products.length} products`);
       if (products.length > 0) {
         results.push({ category: cat, products });
       }
     }
+    console.log('[fetchTopCategoriesWithProducts] Final results:', results.length);
     return results;
   } catch (error) {
     console.error('Failed to fetch top categories with products:', error);

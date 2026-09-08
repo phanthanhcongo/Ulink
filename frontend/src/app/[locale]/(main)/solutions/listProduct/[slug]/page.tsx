@@ -84,7 +84,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
     notFound();
   }
 
-  const directusUrl = getDirectusUrl();
+  const directusUrl = process.env.NEXT_PUBLIC_DIRECTUS_URL || getDirectusUrl();
   const productName = getTranslatedName(product, locale) || product.name;
   const productDescription =
     getTranslatedField(product, 'short_description', locale) || product.short_description;
