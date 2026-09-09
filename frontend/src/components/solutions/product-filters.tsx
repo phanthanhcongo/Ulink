@@ -19,7 +19,7 @@ interface ProductFiltersProps {
   categoryCounts: Record<string, number>;
   selectedCategories: string[];
   onToggleCategory: (slug: string) => void;
-  onSelectAllCategories: () => void;
+  onSelectAllCategories?: () => void;
 
   brandCounts: Record<string, number>;
   selectedBrands: string[];
@@ -125,26 +125,28 @@ export function ProductFilters({
           </button>
           {categoriesExpanded && (
             <div className="space-y-0.5 max-h-60 overflow-y-auto pr-1 no-scrollbar">
-              <button
-                onClick={onSelectAllCategories}
-                className="w-full flex items-center justify-between py-1.5 hover:text-blue-600 transition-colors text-left text-caption-responsive font-semibold text-slate-700 cursor-pointer"
-              >
-                <div className="flex items-center gap-2.5">
-                  <div
-                    className={`h-4.5 w-4.5 rounded-full flex items-center justify-center shrink-0 border transition-all duration-200 ${
-                      selectedCategories.length === 0
-                        ? 'bg-blue-600 border-blue-600 text-white'
-                        : 'border-slate-300 bg-slate-50/50 text-slate-300'
-                    }`}
-                  >
-                    <Check className="h-3 w-3 stroke-[3]" />
+              {onSelectAllCategories && (
+                <button
+                  onClick={onSelectAllCategories}
+                  className="w-full flex items-center justify-between py-1.5 hover:text-blue-600 transition-colors text-left text-caption-responsive font-semibold text-slate-700 cursor-pointer"
+                >
+                  <div className="flex items-center gap-2.5">
+                    <div
+                      className={`h-4.5 w-4.5 rounded-full flex items-center justify-center shrink-0 border transition-all duration-200 ${
+                        selectedCategories.length === 0
+                          ? 'bg-blue-600 border-blue-600 text-white'
+                          : 'border-slate-300 bg-slate-50/50 text-slate-300'
+                      }`}
+                    >
+                      <Check className="h-3 w-3 stroke-[3]" />
+                    </div>
+                    <span className={selectedCategories.length === 0 ? 'text-slate-900 font-bold' : 'text-slate-750'}>
+                      {locale === 'vi' ? 'Tất cả danh mục' : 'All Categories'}
+                    </span>
                   </div>
-                  <span className={selectedCategories.length === 0 ? 'text-slate-900 font-bold' : 'text-slate-750'}>
-                    {locale === 'vi' ? 'Tất cả danh mục' : 'All Categories'}
-                  </span>
-                </div>
-                <span className="text-slate-400 font-bold text-caption-responsive">({categoryCounts['all'] || 0})</span>
-              </button>
+                  <span className="text-slate-400 font-bold text-caption-responsive">({categoryCounts['all'] || 0})</span>
+                </button>
+              )}
 
               {allCategories.map((cat) => {
                 const isSelected = selectedCategories.includes(cat.slug);

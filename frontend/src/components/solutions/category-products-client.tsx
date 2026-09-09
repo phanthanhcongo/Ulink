@@ -91,12 +91,21 @@ export function CategoryProductsClient({
   const searchParams = useSearchParams();
 
   const [selectedCategories, setSelectedCategories] = useState<string[]>(
-    category.slug && category.slug !== 'all' ? [category.slug] : []
+    isSearchPage
+      ? [] // On search page, show all pre-filtered products by default
+      : (category.slug && category.slug !== 'all' ? [category.slug] : [])
   );
   const [isHydrated, setIsHydrated] = useState(false);
 
   useEffect(() => {
     setIsHydrated(true);
+
+    if (isSearchPage) {
+      // On search page, products are pre-filtered server-side; start with no client-side category filter
+      clearPendingCategoryFilter();
+      return;
+    }
+
     const categoryFromUrl = searchParams?.get('category');
     const pendingCategory = getPendingCategoryFilter();
 
@@ -109,7 +118,7 @@ export function CategoryProductsClient({
     } else if (category.slug && category.slug !== 'all') {
       setSelectedCategories([category.slug]);
     }
-  }, [searchParams, category.slug]);
+  }, [searchParams, category.slug, isSearchPage]);
   const [selectedBrands, setSelectedBrands] = useState<string[]>([]);
   const [selectedStandards, setSelectedStandards] = useState<string[]>([]);
   const [selectedIndustries, setSelectedIndustries] = useState<string[]>([]);
@@ -171,11 +180,11 @@ export function CategoryProductsClient({
     if (category.subCategories && category.subCategories.length > 0) {
       return category.subCategories;
     }
-    if (category.slug === 'all') {
+    if (category.slug === 'all' || isSearchPage) {
       return allCategories;
     }
     return [];
-  }, [category, allCategories]);
+  }, [category, allCategories, isSearchPage]);
 
   // Compute category counts
   const categoryCounts = useMemo(() => {

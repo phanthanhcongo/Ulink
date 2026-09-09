@@ -99,6 +99,11 @@ export default async function SolutionsPage({ params: { locale } }: SolutionsPag
       {/* === SECTION: Production SKU & Materials === */}
       <ProductionMaterials locale={locale} />
 
+      {/* === SECTION: Search === */}
+      <Suspense fallback={null}>
+        <SearchSection locale={locale} />
+      </Suspense>
+
       {/* === SECTION: Product Catalog Showcase === */}
       <Suspense fallback={<div className="w-full bg-white border-t border-gray-150 py-16 md:py-24"><div className="page-container"><div className="h-64 bg-gradient-to-r from-slate-200 to-slate-100 rounded animate-pulse" /></div></div>}>
         <CatalogShowcase locale={locale} />

@@ -1,51 +1,54 @@
 'use client';
 
-import { useState, useTransition, useEffect } from 'react';
-import { useRouter, usePathname, useSearchParams } from 'next/navigation';
+import { useState, useTransition } from 'react';
+import { useRouter } from 'next/navigation';
 import { Search } from 'lucide-react';
 
 interface SearchSectionProps {
   locale: string;
-  labels: {
-    eyebrow: string;
-    title: string;
-    subtitle: string;
-    placeholder: string;
-    buttonText: string;
-  };
 }
 
-export default function SearchSection({ locale, labels }: SearchSectionProps) {
-  const router = useRouter();
-  const pathname = usePathname();
-  const searchParams = useSearchParams();
-  const searchParamValue = searchParams.get('search') ?? '';
-  const [value, setValue] = useState(searchParamValue);
-  const [isPending, startTransition] = useTransition();
+const LABELS: Record<string, { sectionTitle: string; title: string; subtitle: string; placeholder: string; buttonText: string }> = {
+  vi: {
+    sectionTitle: 'Tìm kiếm sản phẩm',
+    title: 'Tìm sản phẩm phù hợp cho doanh nghiệp bạn',
+    subtitle: 'Nhập tên sản phẩm, mã SKU hoặc từ khóa để tìm nhanh trong hệ thống vật tư công nghiệp ULink.',
+    placeholder: 'Nhập tên sản phẩm, mã SKU...',
+    buttonText: 'Tìm kiếm'
+  },
+  en: {
+    sectionTitle: 'Product Search',
+    title: 'Find the right products for your business',
+    subtitle: 'Enter product name, SKU code or keyword to quickly find industrial supplies from ULink.',
+    placeholder: 'Enter product name, SKU code...',
+    buttonText: 'Search'
+  },
+  ja: {
+    sectionTitle: '製品検索',
+    title: 'ビジネスに最適な製品を見つける',
+    subtitle: '製品名、SKUコード、またはキーワードを入力して、ULinkの産業用資材をすばやく検索できます。',
+    placeholder: '製品名、SKUコードを入力...',
+    buttonText: '検索'
+  }
+};
 
-  // Sync state with search param changes (e.g. clearing filters)
-  useEffect(() => {
-    setValue(searchParamValue);
-  }, [searchParamValue]);
+export default function SearchSection({ locale }: SearchSectionProps) {
+  const router = useRouter();
+  const labels = LABELS[locale] || LABELS['vi'];
+  const [value, setValue] = useState('');
+  const [isPending, startTransition] = useTransition();
 
   const tags = [
     {
-      label:
-        locale === 'vi' ? 'Màng co PE' : locale === 'ja' ? 'PE熱収縮フィルム' : 'PE Shrink Film',
+      label: locale === 'vi' ? 'Màng co PE' : locale === 'ja' ? 'PE熱収縮フィルム' : 'PE Shrink Film',
       value: 'Màng co PE'
     },
     {
-      label:
-        locale === 'vi' ? 'Găng tay Nitrile' : locale === 'ja' ? 'ニトリル手袋' : 'Nitrile Gloves',
+      label: locale === 'vi' ? 'Găng tay Nitrile' : locale === 'ja' ? 'ニトリル手袋' : 'Nitrile Gloves',
       value: 'Găng tay Nitrile'
     },
     {
-      label:
-        locale === 'vi'
-          ? 'Thảm phòng sạch'
-          : locale === 'ja'
-            ? 'クリーンルームマット'
-            : 'Cleanroom Sticky Mat',
+      label: locale === 'vi' ? 'Thảm phòng sạch' : locale === 'ja' ? 'クリーンルームマット' : 'Cleanroom Sticky Mat',
       value: 'Thảm phòng sạch'
     },
     {
@@ -56,15 +59,9 @@ export default function SearchSection({ locale, labels }: SearchSectionProps) {
   ];
 
   function handleSearch(searchQuery: string) {
-    const params = new URLSearchParams(searchParams.toString());
-    if (searchQuery.trim()) {
-      params.set('search', searchQuery.trim());
-    } else {
-      params.delete('search');
-    }
-    params.set('page', '1');
+    if (!searchQuery.trim()) return;
     startTransition(() => {
-      router.replace(`${pathname}?${params.toString()}`);
+      router.push(`/${locale}/solutions/searchProduct?q=${encodeURIComponent(searchQuery.trim())}`);
     });
   }
 
@@ -73,14 +70,12 @@ export default function SearchSection({ locale, labels }: SearchSectionProps) {
     handleSearch(value);
   }
 
-  const activeSearch = searchParams.get('search') ?? '';
-
   return (
-    <section className="w-full bg-card py-12 lg:py-16 border-b border-gray-100">
+    <section className="w-full py-12 lg:py-16 border-b border-gray-100" style={{ backgroundColor: '#F5F7FA' }}>
       <div className="page-container text-center">
         {/* Header */}
-        <p className="text-caption-responsive font-bold uppercase tracking-wider text-blue-600">
-          {labels.eyebrow}
+        <p className="text-section-title font-bold uppercase tracking-wider text-blue-600">
+          {labels.sectionTitle}
         </p>
         <h2 className="mt-3 text-section-title font-bold text-slate-900 tracking-tight">
           {labels.title}
@@ -113,36 +108,22 @@ export default function SearchSection({ locale, labels }: SearchSectionProps) {
           </form>
         </div>
 
-        {/* Filter chips (Popular tags) */}
+        {/* Filter chips */}
         <div className="mt-6 flex flex-wrap items-center justify-center gap-2.5">
-          {tags.map((tag) => {
-            const isActive = activeSearch.toLowerCase() === tag.value.toLowerCase();
-            return (
-              <button
-                key={tag.value}
-                onClick={() => {
-                  if (isActive) {
-                    setValue('');
-                    handleSearch('');
-                  } else {
-                    setValue(tag.label);
-                    handleSearch(tag.value);
-                  }
-                }}
-                className={`rounded-full px-4 py-2 text-caption-responsive font-semibold transition-all border ${
-                  isActive
-                    ? 'bg-blue-600 border-blue-600 text-white shadow-sm'
-                    : 'bg-white border-gray-200 text-slate-600 hover:bg-slate-50 hover:border-gray-300'
-                }`}
-              >
-                {tag.label}
-              </button>
-            );
-          })}
+          {tags.map((tag) => (
+            <button
+              key={tag.value}
+              onClick={() => {
+                setValue(tag.label);
+                handleSearch(tag.value);
+              }}
+              className="rounded-full px-4 py-2 text-caption-responsive font-semibold transition-all border bg-white border-gray-200 text-slate-600 hover:bg-slate-50 hover:border-gray-300"
+            >
+              {tag.label}
+            </button>
+          ))}
         </div>
       </div>
     </section>
   );
 }
-
-

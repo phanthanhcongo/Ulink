@@ -86,7 +86,7 @@ export default async function ProductionMaterials({ locale }: ProductionMaterial
                     <li key={itemIdx}>
                       <CategoryNavLink
                         categorySlug={item.slug}
-                        href="/solutions/listProduct"
+                        href={`/solutions/searchProduct?category=${item.slug}`}
                         className="flex items-center gap-2 text-body-regular text-slate-600 hover:text-blue-600 transition-colors"
                       >
                         <span className="w-1.5 h-1.5 bg-blue-500 shrink-0 rounded-[3px]" />
@@ -100,7 +100,7 @@ export default async function ProductionMaterials({ locale }: ProductionMaterial
                 <div className="mt-8">
                   <CategoryNavLink
                     categorySlug={card.categorySlug}
-                    href="/solutions/listProduct"
+                    href={`/solutions/searchProduct?category=${card.categorySlug}`}
                     className="inline-flex items-center justify-center gap-2 rounded-[3px] bg-[#1769E2] px-5 py-2.5 text-body-regular font-semibold text-white shadow-sm hover:bg-[#1257BD] transition-colors w-full sm:w-auto"
                   >
                     {t('skuSection.cta')}

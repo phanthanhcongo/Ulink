@@ -131,7 +131,7 @@ export function CategoryHeroBanner({
               </div>
             </div>
 
-            <div className="max-w-2xl bg-white border border-slate-200 rounded-[3px] p-1 flex items-center shadow-xs">
+            <div className="max-w-2xl bg-white border border-slate-200 rounded-full p-1.5 pl-4 flex items-center shadow-sm focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-100 transition-all">
               <div className="pl-3.5 pr-2 text-slate-400">
                 <Search className="h-5 w-5" />
               </div>
@@ -149,7 +149,7 @@ export function CategoryHeroBanner({
               />
               <button
                 onClick={onSearchSubmit}
-                className="bg-blue-600 hover:bg-blue-700 text-white font-bold text-caption-responsive px-6 py-2 rounded-[3px] shadow-xs transition-colors cursor-pointer shrink-0"
+                className="bg-blue-600 hover:bg-blue-700 text-white font-bold text-caption-responsive px-6 py-2 rounded-full shadow-sm transition-colors cursor-pointer shrink-0"
               >
                 {locale === 'vi' ? 'Tìm lại' : 'Search again'}
               </button>

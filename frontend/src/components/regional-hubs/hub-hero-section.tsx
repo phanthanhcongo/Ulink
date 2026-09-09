@@ -121,7 +121,7 @@ export default function HubHeroSection({ locale }: HubHeroSectionProps) {
               <span className="text-body-regular font-bold text-slate-900 leading-snug text-center md:text-left">
                 {t.trackOrder}
               </span>
-              <form onSubmit={handleSearchTracking} className="flex flex-col sm:flex-row items-stretch gap-2.5 sm:gap-0 w-full max-w-[700px]">
+              <form onSubmit={handleSearchTracking} className="flex flex-col sm:flex-row items-stretch gap-2.5 sm:gap-0 w-full">
                 <div className="relative flex-1">
                   <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400 pointer-events-none stroke-[2]" />
                   <input
