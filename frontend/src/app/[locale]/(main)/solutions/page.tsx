@@ -54,7 +54,7 @@ export default async function SolutionsPage({ params: { locale } }: SolutionsPag
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="relative w-full overflow-hidden py-6 sm:py-10">
+      <section className="relative w-full overflow-hidden py-16 sm:py-20 lg:py-28">
         {/* Background Image */}
         <Image
           src="/images/solutions/solution.png"

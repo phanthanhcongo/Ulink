@@ -10,10 +10,10 @@ interface SearchSectionProps {
 
 const LABELS: Record<string, { sectionTitle: string; title: string; subtitle: string; placeholder: string; buttonText: string }> = {
   vi: {
-    sectionTitle: 'Tìm kiếm sản phẩm',
-    title: 'Tìm sản phẩm phù hợp cho doanh nghiệp bạn',
-    subtitle: 'Nhập tên sản phẩm, mã SKU hoặc từ khóa để tìm nhanh trong hệ thống vật tư công nghiệp ULink.',
-    placeholder: 'Nhập tên sản phẩm, mã SKU...',
+    sectionTitle: 'Vật tư công nghiệp',
+    title: 'Tìm kiếm vật tư công nghiệp',
+    subtitle: 'Cung cấp đầy đủ vật tư, thiết bị và linh kiện công nghiệp chất lượng cao, đáp ứng mọi nhu cầu sản xuất của doanh nghiệp.',
+    placeholder: 'Nhập tên sản phẩm, mã SKU hoặc từ khóa...',
     buttonText: 'Tìm kiếm'
   },
   en: {
@@ -88,7 +88,7 @@ export default function SearchSection({ locale }: SearchSectionProps) {
         <div className="mt-8 max-w-3xl mx-auto">
           <form
             onSubmit={handleSubmit}
-            className="relative flex items-center bg-white rounded-full border border-gray-200 p-1.5 pl-4 shadow-sm focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-100 transition-all"
+            className="relative flex items-center bg-white rounded-full border border-gray-200 p-1.5 pl-5 shadow-sm focus-within:border-blue-500 focus-within:ring-2 focus-within:ring-blue-100 transition-all"
           >
             <Search className="h-5 w-5 text-gray-400 shrink-0 mr-3" />
             <input
@@ -96,12 +96,12 @@ export default function SearchSection({ locale }: SearchSectionProps) {
               value={value}
               onChange={(e) => setValue(e.target.value)}
               placeholder={labels.placeholder}
-              className="w-full bg-transparent text-body-regular text-slate-900 placeholder:text-gray-400 focus:outline-none py-2"
+              className="flex-1 min-w-0 bg-transparent text-body-regular text-slate-900 placeholder:text-gray-400 focus:outline-none py-2.5"
             />
             <button
               type="submit"
               disabled={isPending}
-              className="rounded-full bg-blue-600 px-6 py-2 text-body-regular font-semibold text-white shadow-sm hover:bg-blue-700 transition-colors shrink-0"
+              className="rounded-full bg-blue-600 px-8 py-2.5 text-body-regular font-semibold text-white shadow-sm hover:bg-blue-700 transition-colors shrink-0 ml-2"
             >
               {labels.buttonText}
             </button>
