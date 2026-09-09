@@ -1226,7 +1226,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
               >
                 <div className="page-container grid grid-cols-[340px_1fr]">
                   {/* Left Column: Categories List */}
-                  <div className="border-r border-slate-100 bg-white pt-8 pb-8 pl-20 pr-8">
+                  <div className="border-r border-slate-100 bg-white pt-8 pb-8 pr-8">
                     <div className="flex flex-col gap-1.5">
                       {activeCategories.map((cat) => {
                         const isCatActive = activeCategory === cat.id;
@@ -1256,7 +1256,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                   </div>
 
                   {/* Right Column: Grid and Banner */}
-                  <div className="flex flex-col bg-white pt-8 pb-8 pl-12 pr-20">
+                  <div className="flex flex-col bg-white pt-8 pb-8 pl-12">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-6">
                         <span className="text-body-regular font-bold text-slate-800">
@@ -1340,7 +1340,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
               >
                 <div className="page-container grid grid-cols-[340px_1fr]">
                   {/* Left Column: Regions List */}
-                  <div className="border-r border-slate-100 bg-white pt-8 pb-8 pl-20 pr-8 flex flex-col gap-4">
+                  <div className="border-r border-slate-100 bg-white pt-8 pb-8 pr-8 flex flex-col gap-4">
                     <div className="flex flex-col gap-1.5">
                       {activeRegions.map((reg) => {
                         const isRegActive = activeRegion === reg.id;
@@ -1393,7 +1393,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                   </div>
 
                   {/* Right Column: Grid and Banner */}
-                  <div className="flex flex-col bg-white pt-8 pb-8 pl-12 pr-20">
+                  <div className="flex flex-col bg-white pt-8 pb-8 pl-12">
                     <div className="flex-1">
                       {activeRegion === 'hub' ? (
                         <>
@@ -1525,7 +1525,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
               >
                 <div className="page-container grid grid-cols-[340px_1fr]">
                   {/* Left Column: Industries List */}
-                  <div className="border-r border-slate-100 bg-white pt-8 pb-8 pl-20 pr-8">
+                  <div className="border-r border-slate-100 bg-white pt-8 pb-8 pr-8">
                     <div className="flex flex-col gap-1.5">
                       {industriesData.map((ind) => {
                         const isIndActive = activeIndustry === ind.id;
@@ -1555,7 +1555,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                   </div>
 
                   {/* Right Column: Grid and Banner */}
-                  <div className="flex flex-col bg-white pt-8 pb-8 pl-12 pr-20">
+                  <div className="flex flex-col bg-white pt-8 pb-8 pl-12">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-6">
                         <span className="text-body-regular font-bold text-slate-800">
@@ -1636,7 +1636,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
               >
                 <div className="page-container grid grid-cols-[340px_1fr]">
                   {/* Left Column: Resources List */}
-                  <div className="border-r border-slate-100 bg-white pt-8 pb-8 pl-20 pr-8">
+                  <div className="border-r border-slate-100 bg-white pt-8 pb-8 pr-8">
                     <div className="flex flex-col gap-1.5">
                       {resourcesData.map((res) => {
                         const isResActive = activeResourceTab === res.id;
@@ -1666,7 +1666,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                   </div>
 
                   {/* Right Column: Grid and Banner */}
-                  <div className="flex flex-col bg-white pt-8 pb-8 pl-12 pr-20">
+                  <div className="flex flex-col bg-white pt-8 pb-8 pl-12">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-6">
                         <span className="text-body-regular font-bold text-slate-800">
@@ -1747,7 +1747,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
               >
                 <div className="page-container grid grid-cols-[340px_1fr]">
                   {/* Left Column: About Categories List */}
-                  <div className="border-r border-slate-100 bg-white pt-8 pb-8 pl-20 pr-8">
+                  <div className="border-r border-slate-100 bg-white pt-8 pb-8 pr-8">
                     <div className="flex flex-col gap-1.5">
                       {aboutData.map((ab) => {
                         const isAbActive = activeAboutTab === ab.id;
@@ -1777,7 +1777,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                   </div>
 
                   {/* Right Column: Grid and Banner */}
-                  <div className="flex flex-col bg-white pt-8 pb-8 pl-12 pr-20">
+                  <div className="flex flex-col bg-white pt-8 pb-8 pl-12">
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-6">
                         <span className="text-body-regular font-bold text-slate-800">
