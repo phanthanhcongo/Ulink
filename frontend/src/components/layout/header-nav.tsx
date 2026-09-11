@@ -1159,7 +1159,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
           >
             <Link
               href={item.href}
-              className={`inline-flex items-center gap-1.5 text-caption-responsive   font-normal transition-all duration-200 ${isOpen ? 'text-brand font-medium' : 'text-foreground hover:text-brand hover:scale-[1.02]'
+              className={`inline-flex items-center gap-1.5 text-header-desktop font-normal transition-all duration-200 ${isOpen ? 'text-brand font-medium' : 'text-[#141414] hover:text-brand hover:scale-[1.02]'
                 }`}
             >
               {item.label}

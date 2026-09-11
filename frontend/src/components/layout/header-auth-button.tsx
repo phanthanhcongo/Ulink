@@ -118,7 +118,7 @@ export function HeaderAuthButton() {
         )}
       >
         <UserRound className="h-4 w-4" aria-hidden="true" />
-        <span className="text-caption-responsive font-medium">{t('login')}</span>
+        <span className="text-button-responsive font-medium">{t('login')}</span>
       </Link>
     </>
   );

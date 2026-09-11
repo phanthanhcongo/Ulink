@@ -328,6 +328,10 @@
     @apply text-[13px] font-semibold sm:text-[14px] lg:text-[15px] xl:text-[16px];
   }
 
+  .text-header-desktop {
+    @apply text-[13px] font-normal sm:text-[14px] lg:text-[15px] xl:text-[16px] text-[#141414];
+  }
+
   .text-caption-responsive {
     @apply text-[10px] font-medium sm:text-[11px] lg:text-[12px];
   }
