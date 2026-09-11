@@ -250,40 +250,39 @@ export default function SearchSection({ locale }: SearchSectionProps) {
   };
 
   return (
-    <section className="w-full py-12 lg:py-16 border-b border-gray-100" style={{ backgroundColor: '#F5F7FA' }}>
-      <div className="page-container text-center">
+    <section className="w-full py-8 sm:py-12 lg:py-16 border-b border-gray-100" style={{ backgroundColor: '#F5F7FA' }}>
+      <div className="page-container text-center px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <p className="text-section-title font-bold uppercase tracking-wider text-blue-600">
+        <p className="text-caption-responsive sm:text-section-title font-bold uppercase tracking-wider text-blue-600">
           {labels.sectionTitle}
         </p>
-        <h2 className="mt-3 text-section-title font-bold text-slate-900 tracking-tight">
+        <h2 className="mt-2 sm:mt-3 text-body-large sm:text-section-title font-bold text-slate-900 tracking-tight">
           {labels.title}
         </h2>
-        <p className="mt-4 text-body-regular text-slate-500 max-w-2xl mx-auto leading-relaxed">
+        <p className="mt-2.5 sm:mt-4 text-caption-responsive sm:text-body-regular text-slate-500 max-w-2xl mx-auto leading-relaxed">
           {labels.subtitle}
         </p>
 
         {/* Search Input bar + Interactive Suggestions Dropdown */}
-        <div ref={searchContainerRef} className="mt-8 max-w-3xl mx-auto relative z-30">
+        <div ref={searchContainerRef} className="mt-6 sm:mt-8 max-w-3xl mx-auto relative z-30">
           <form
             onSubmit={handleSubmit}
-            className={`relative flex items-center bg-white rounded-full border transition-all p-1.5 pl-5 shadow-sm ${
-              isFocused ? 'border-blue-500 ring-4 ring-blue-100/60 shadow-md' : 'border-gray-200 hover:border-gray-300'
-            }`}
+            className={`relative flex items-center bg-white rounded-full border transition-all p-1.5 pl-3.5 sm:pl-5 shadow-sm ${isFocused ? 'border-blue-500 ring-4 ring-blue-100/60 shadow-md' : 'border-gray-200 hover:border-gray-300'
+              }`}
           >
-            <Search className="h-5 w-5 text-gray-400 shrink-0 mr-3" />
+            <Search className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400 shrink-0 mr-2 sm:mr-3" />
             <input
               type="text"
               value={value}
               onFocus={() => setIsFocused(true)}
               onChange={(e) => setValue(e.target.value)}
               placeholder={labels.placeholder}
-              className="flex-1 min-w-0 bg-transparent text-body-regular text-slate-900 placeholder:text-gray-400 focus:outline-none py-2.5"
+              className="flex-1 min-w-0 bg-transparent text-caption-responsive sm:text-body-regular text-slate-900 placeholder:text-gray-400 focus:outline-none py-1.5 sm:py-2.5 truncate"
             />
             <button
               type="submit"
               disabled={isPending}
-              className="rounded-full bg-blue-600 px-8 py-2.5 text-body-regular font-semibold text-white shadow-sm hover:bg-blue-700 transition-colors shrink-0 ml-2"
+              className="rounded-full bg-blue-600 px-4 sm:px-8 py-2 sm:py-2.5 text-caption-responsive sm:text-body-regular font-semibold text-white shadow-sm hover:bg-blue-700 transition-colors shrink-0 ml-1.5 sm:ml-2"
             >
               {labels.buttonText}
             </button>
@@ -292,56 +291,56 @@ export default function SearchSection({ locale }: SearchSectionProps) {
           {/* Autocomplete Dropdown showing Parent Categories & Subcategories */}
           {isFocused && (
             <div className="absolute top-full left-0 right-0 mt-2 bg-white rounded-2xl border border-slate-200 shadow-xl overflow-hidden text-left z-40 animate-in fade-in slide-in-from-top-2 duration-150">
-              <div className="p-4 sm:p-5 border-b border-slate-100 bg-slate-50/70 flex items-center justify-between">
+              <div className="p-3 sm:p-5 border-b border-slate-100 bg-slate-50/70 flex items-center justify-between">
                 <span className="text-caption-responsive font-bold uppercase tracking-wider text-slate-700 flex items-center gap-1.5">
-                  <Layers className="h-4 w-4 text-blue-600" />
-                  {labels.parentCategoryLabel} & {labels.suggestedCategoryLabel}
+                  <Layers className="h-4 w-4 text-blue-600 shrink-0" />
+                  <span className="truncate">{labels.parentCategoryLabel} & {labels.suggestedCategoryLabel}</span>
                 </span>
-                <span className="text-xs text-slate-400">Gợi ý danh mục B2B</span>
+                <span className="text-xs text-slate-400 shrink-0 hidden sm:inline">Gợi ý danh mục B2B</span>
               </div>
 
-              <div className="max-h-[380px] overflow-y-auto p-4 space-y-4 divide-y divide-slate-100">
+              <div className="max-h-[300px] sm:max-h-[380px] overflow-y-auto p-3 sm:p-4 space-y-3 sm:space-y-4 divide-y divide-slate-100">
                 {groups.map((group) => (
-                  <div key={group.parentSlug} className="pt-3 first:pt-0">
+                  <div key={group.parentSlug} className="pt-2 sm:pt-3 first:pt-0">
                     {/* Parent category row */}
                     <div
                       onClick={() => handleNavigateCategory(group.parentSlug)}
                       className="group flex items-center justify-between p-2 rounded-xl hover:bg-blue-50/60 cursor-pointer transition-colors"
                     >
-                      <div className="flex items-center gap-2.5">
-                        <div className="p-2 rounded-lg bg-blue-100/50 group-hover:bg-blue-600 group-hover:text-white text-blue-700 transition-colors">
+                      <div className="flex items-center gap-2.5 min-w-0">
+                        <div className="p-2 rounded-lg bg-blue-100/50 group-hover:bg-blue-600 group-hover:text-white text-blue-700 transition-colors shrink-0">
                           {getParentIcon(group.icon)}
                         </div>
-                        <div>
-                          <p className="text-body-regular font-bold text-slate-900 group-hover:text-blue-600 transition-colors flex items-center gap-1.5">
-                            {group.parentName}
-                            <span className="text-xs font-normal text-slate-400 bg-slate-100 px-2 py-0.5 rounded-full">
+                        <div className="min-w-0">
+                          <p className="text-caption-responsive sm:text-body-regular font-bold text-slate-900 group-hover:text-blue-600 transition-colors flex items-center gap-1.5 flex-wrap">
+                            <span>{group.parentName}</span>
+                            <span className="text-[10px] sm:text-xs font-normal text-slate-400 bg-slate-100 px-1.5 sm:px-2 py-0.5 rounded-full">
                               Danh mục cha
                             </span>
                           </p>
                           <p className="text-xs text-slate-500 line-clamp-1">{group.description}</p>
                         </div>
                       </div>
-                      <span className="text-xs font-medium text-blue-600 group-hover:translate-x-0.5 transition-transform flex items-center gap-1 shrink-0 ml-2">
-                        {labels.viewAllParent}
+                      <span className="text-xs font-medium text-blue-600 group-hover:translate-x-0.5 transition-transform flex items-center gap-0.5 sm:gap-1 shrink-0 ml-2">
+                        <span className="hidden sm:inline">{labels.viewAllParent}</span>
                         <ChevronRight className="h-3.5 w-3.5" />
                       </span>
                     </div>
 
                     {/* Subcategories under parent */}
-                    <div className="mt-2 pl-9 grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+                    <div className="mt-1.5 sm:mt-2 pl-2 sm:pl-9 grid grid-cols-1 sm:grid-cols-2 gap-1 sm:gap-1.5">
                       {group.items.map((item) => (
                         <button
                           key={item.name}
                           type="button"
                           onClick={() => handleNavigateCategory(item.categorySlug, item.query)}
-                          className="flex items-center justify-between text-left text-body-small px-3 py-1.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-blue-600 transition-colors group/item"
+                          className="flex items-center justify-between text-left text-caption-responsive sm:text-body-small px-2.5 sm:px-3 py-1.5 rounded-lg text-slate-700 hover:bg-slate-100 hover:text-blue-600 transition-colors group/item"
                         >
-                          <span className="flex items-center gap-2">
-                            <span className="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover/item:bg-blue-500 transition-colors" />
-                            {item.name}
+                          <span className="flex items-center gap-2 truncate">
+                            <span className="w-1.5 h-1.5 rounded-full bg-slate-300 group-hover/item:bg-blue-500 transition-colors shrink-0" />
+                            <span className="truncate">{item.name}</span>
                           </span>
-                          <Tag className="h-3 w-3 text-slate-300 group-hover/item:text-blue-500 transition-colors" />
+                          <Tag className="h-3 w-3 text-slate-300 group-hover/item:text-blue-500 transition-colors shrink-0 ml-1" />
                         </button>
                       ))}
                     </div>
@@ -353,18 +352,18 @@ export default function SearchSection({ locale }: SearchSectionProps) {
         </div>
 
         {/* 3 Parent Category Search Suggestion Chips */}
-        <div className="mt-6 flex flex-wrap items-center justify-center gap-3">
+        <div className="mt-5 sm:mt-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2.5 sm:gap-3 max-w-sm sm:max-w-none mx-auto">
           {groups.map((group) => (
             <button
               key={group.parentSlug}
               type="button"
               onClick={() => handleNavigateCategory(group.parentSlug)}
-              className="group rounded-full px-5 py-2.5 text-body-small font-semibold transition-all border bg-white border-slate-200 text-slate-700 hover:bg-blue-600 hover:border-blue-600 hover:text-white flex items-center gap-2 shadow-sm"
+              className="group rounded-full px-4 sm:px-5 py-2 sm:py-2.5 text-caption-responsive sm:text-body-small font-semibold transition-all border bg-white border-slate-200 text-slate-700 hover:bg-blue-600 hover:border-blue-600 hover:text-white flex items-center justify-center gap-2 shadow-xs hover:shadow-sm"
             >
-              <span className="p-1 rounded-full bg-blue-50 group-hover:bg-white/20 transition-colors">
+              <span className="p-1 rounded-full bg-blue-50 group-hover:bg-white/20 transition-colors shrink-0">
                 {getParentIcon(group.icon)}
               </span>
-              {group.parentName}
+              <span className="truncate">{group.parentName}</span>
             </button>
           ))}
         </div>

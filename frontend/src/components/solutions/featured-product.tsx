@@ -35,9 +35,9 @@ export default async function FeaturedProduct({ locale }: FeaturedProductProps) 
         {/* Row 1: Image Left, 4 Features Grid Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mt-12 items-center">
           {/* Left: Image */}
-          <div className="lg:col-span-6 relative aspect-[4/3] overflow-hidden shadow-sm bg-slate-50 border border-gray-100" style={{ borderRadius: '3px' }}>
+          <div className="lg:col-span-6 relative w-full h-[360px] sm:h-[460px] lg:h-[540px] overflow-hidden shadow-sm bg-slate-50 border border-gray-100" style={{ borderRadius: '3px' }}>
             <Image
-              src="/images/solutions/pallet-wrap-roll.jpg"
+              src="/images/home/section2/placeholder-picture0.png"
               alt={t('featuredProduct.title')}
               fill
               className="object-cover"
@@ -92,9 +92,9 @@ export default async function FeaturedProduct({ locale }: FeaturedProductProps) 
         {/* Row 2: Image Left, Text Paragraph + CTA Button Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mt-16 lg:mt-24 items-center">
           {/* Left: Image */}
-          <div className="lg:col-span-6 relative aspect-[4/3] overflow-hidden shadow-sm bg-slate-50 border border-gray-100" style={{ borderRadius: '3px' }}>
+          <div className="lg:col-span-6 relative w-full h-[360px] sm:h-[460px] lg:h-[540px] overflow-hidden shadow-sm bg-slate-50 border border-gray-100" style={{ borderRadius: '3px' }}>
             <Image
-              src="/images/solutions/wrapped-pallets-warehouse.jpg"
+              src="/images/home/section2/placeholder-picture1.png"
               alt={t('featuredProduct.row2Heading')}
               fill
               className="object-cover"

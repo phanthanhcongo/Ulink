@@ -385,11 +385,11 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                 basePrice={pricing.price}
                 unitLabel={pricing.unit}
                 labels={{
-                  addToCart: locale === 'vi' ? 'Đặt hàng' : 'Add to RFQ',
+                  addToCart: locale === 'vi' ? 'Thêm vào giỏ hàng' : 'Add to Cart',
                   added: locale === 'vi' ? 'Đã thêm' : 'Added',
                   selectVariant: locale === 'vi' ? 'Chọn quy cách' : 'Select Variant',
                   requestQuote:
-                    locale === 'vi' ? 'Yêu cầu báo giá sản lượng lớn' : 'Request Bulk Quote'
+                    locale === 'vi' ? 'Thanh toán' : locale === 'ja' ? 'チェックアウト' : 'Checkout'
                 }}
               />
 

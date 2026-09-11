@@ -149,19 +149,19 @@ export default function SolutionCarousel({ slides, labels }: SolutionCarouselPro
                 {currentSlide.title}
               </p>
 
-              {/* Features Grid (Stacked: Icon on Top of Text) */}
+              {/* Features Grid (Stacked: Icon on Top of Text - Left Aligned) */}
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-8 lg:mb-[64px]">
                 {/* Feature 1 */}
-                <div className="flex flex-col items-center sm:items-start text-center sm:text-left gap-4">
-                  <div className="shrink-0 text-brand flex items-center justify-center w-full sm:w-auto">
+                <div className="flex flex-col items-start text-left gap-4">
+                  <div className="shrink-0 text-brand flex items-center justify-start">
                     {icon1}
                   </div>
                   <p className="text-body-regular font-normal leading-[22px] text-[#495057]">{currentSlide.feat1}</p>
                 </div>
 
                 {/* Feature 2 */}
-                <div className="flex flex-col items-center sm:items-start text-center sm:text-left gap-4">
-                  <div className="shrink-0 text-brand flex items-center justify-center w-full sm:w-auto">
+                <div className="flex flex-col items-start text-left gap-4">
+                  <div className="shrink-0 text-brand flex items-center justify-start">
                     {icon2}
                   </div>
                   <p className="text-body-regular font-normal leading-[22px] text-[#495057]">{currentSlide.feat2}</p>

@@ -13,7 +13,7 @@ export default function CoreCapabilities() {
     <section className="w-full bg-white border-t border-gray-150 py-12 sm:py-16 lg:py-24">
       <div className="page-container">
         {/* Section Header */}
-        <div className="max-w-3xl mx-auto text-left lg:text-center mb-10 sm:mb-16">
+        <div className="max-w-5xl mx-auto text-left lg:text-center mb-10 sm:mb-16">
           <span className="text-section-title font-bold uppercase tracking-wider text-blue-600 block">
             {t('testimonialsCapabilities.capabilitiesEyebrow')}
           </span>

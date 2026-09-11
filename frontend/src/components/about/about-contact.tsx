@@ -51,7 +51,7 @@ export function AboutContact() {
           <span className="text-section-title text-blue-600 block">
             {t('eyebrow')}
           </span>
-          <h2 className="text-section-title text-slate-900">
+          <h2 className="text-[18px] font-semibold sm:text-section-title text-slate-900">
             {t('title')}
           </h2>
         </div>

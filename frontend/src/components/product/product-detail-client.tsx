@@ -274,7 +274,7 @@ export default function ProductDetailClient({
       {/* 2. DYNAMIC ATTRIBUTE SELECTORS (Trọng lượng cuộn / Kích cỡ) */}
       {attributes.map((attr) => (
         <div key={attr.name} className="space-y-2">
-          <p className="text-[14px] sm:text-[14px] lg:text-[14px] font-semibold text-slate-800">
+          <p className="text-[14px] font-semibold text-slate-800">
             {attr.name === 'size'
               ? locale === 'vi'
                 ? 'Trọng lượng cuộn (Kích cỡ)'
@@ -290,7 +290,7 @@ export default function ProductDetailClient({
                   type="button"
                   onClick={() => handleSelectAttribute(attr.name, val)}
                   className={cn(
-                    'w-12 h-8 text-[14px] transition-all flex items-center justify-center cursor-pointer rounded-[4px] font-semibold',
+                    'min-w-[64px] h-[32px] px-2 text-[14px] transition-all flex items-center justify-center cursor-pointer rounded-[4px] font-semibold',
                     isSelected
                       ? 'border-2 border-[#1769e2] bg-[#f5f8fc] text-[#1769e2]'
                       : 'border border-[#dce0e5] bg-white text-slate-700 hover:border-[#b8c0cc]'
@@ -325,7 +325,7 @@ export default function ProductDetailClient({
             type="number"
             value={quantity}
             onChange={(e) => handleQuantityChange(parseInt(e.target.value, 10))}
-            className="flex-1 text-center font-semibold text-[16px] text-slate-900 focus:outline-none py-1.5"
+            className="flex-1 text-center font-semibold text-[16px] text-slate-900 focus:outline-none py-1.5 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
           />
           <button
             type="button"
@@ -392,7 +392,7 @@ export default function ProductDetailClient({
           onClick={handleAddToCart}
           disabled={!selectedSku}
           className={cn(
-            'w-full flex items-center justify-center gap-2 h-10 rounded-[2px] font-semibold text-[13px] text-white bg-[#1769e2] hover:bg-[#155fcb] transition-colors cursor-pointer shadow-sm',
+            'w-full flex items-center justify-center gap-2 h-10 rounded-[2px] font-semibold text-[14px] text-white bg-[#1769e2] hover:bg-[#155fcb] transition-colors cursor-pointer shadow-sm',
             !selectedSku && 'opacity-50 cursor-not-allowed'
           )}
         >
@@ -414,11 +414,11 @@ export default function ProductDetailClient({
           onClick={handleRequestQuote}
           disabled={!selectedSku}
           className={cn(
-            'w-full flex items-center justify-center h-10 rounded-[2px] font-semibold text-[13px] text-white border border-[#24a83b] bg-[#24a83b] hover:bg-[#209635] transition-colors cursor-pointer',
+            'w-full flex items-center justify-center gap-2 h-10 rounded-[2px] font-semibold text-[14px] text-white border border-[#24a83b] bg-[#24a83b] hover:bg-[#209635] transition-colors cursor-pointer shadow-sm',
             !selectedSku && 'opacity-50 cursor-not-allowed'
           )}
         >
-          <span>{locale === 'vi' ? 'Yêu cầu báo giá sản lượng lớn' : labels.requestQuote}</span>
+          <span>{labels.requestQuote || (locale === 'vi' ? 'Thanh toán' : 'Checkout')}</span>
         </button>
       </div>
 

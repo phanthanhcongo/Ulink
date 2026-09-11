@@ -222,7 +222,7 @@
     },
     "features": {
       "nationwideTitle": "Phục vụ toàn quốc",
-      "nationwideDesc": "Kết nối đến các KCN trọng điểm",
+      "nationwideDesc": "Kết nối các KCN trọng điểm",
       "flexibleTitle": "Đáp ứng nhanh & Linh hoạt",
       "flexibleDesc": "Hàng có sẵn tại kho",
       "costTitle": "Tối ưu chi phí mua hàng",
@@ -712,7 +712,7 @@
     },
     "hanamIntro": {
       "eyebrow": "TRUNG TÂM PHÂN PHỐI HÀ NAM",
-      "title": "Kết nối các KCN trọng điểm, giao hàng tức thì",
+      "title": "Kết nối các KCN trọng điểm",
       "desc": "Trung tâm phân phối Hà Nam với quy mô 10.000 m² là đầu mối logistics chiến lược của ULink Industries, kết nối trực tiếp các KCN trọng điểm khu vực phía Bắc. Hệ thống quản lý hơn 2.000 SKU, sẵn sàng đáp ứng giao hàng nhanh chóng. Ứng dụng công nghệ truy xuất và quản lý kho thông minh, ULink tối ưu hóa toàn bộ chuỗi cung ứng — giúp doanh nghiệp tiết kiệm thời gian, giảm chi phí và nâng cao hiệu quả vận hành.",
       "contactSales": "Liên hệ Sales",
       "learnMore": "Tìm hiểu thêm"
@@ -773,7 +773,7 @@
     "testimonials": {
       "eyebrow": "ĐÁNH GIÁ CỦA KHÁCH HÀNG",
       "title": "Khách hàng tin tưởng lựa chọn",
-      "subtitle": "Chất lượng và dịch vụ luôn vượt mong đợi",
+      "subtitle": "Chất lượng và Dịch vụ",
       "company1": "Thành Phát",
       "quote1": "Chúng tôi rất hài lòng với chất lượng sản phẩm và dịch vụ của ULink Industries. Từ khâu tư vấn, thiết kế đến thi công và bàn giao, đội ngũ ULink luôn lắng nghe và đáp ứng chính xác nhu cầu của doanh nghiệp. Sản phẩm nhà xưởng bền vững, dịch vụ hậu mãi chu đáo – đây chính là đối tác đáng tin cậy cho mọi doanh nghiệp sản xuất.",
       "name1": "Nguyễn Văn Minh",

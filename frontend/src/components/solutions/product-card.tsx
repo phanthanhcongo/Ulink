@@ -127,15 +127,15 @@ export function ProductCard({
             {showWishlist && (
               <button
                 onClick={handleWishlistClick}
-                className={`button6 border rounded-[3px] p-2 sm:p-2.5 transition-all cursor-pointer ${
+                className={`button6 border border-slate-200 rounded-[3px] p-2 sm:p-2.5 transition-all cursor-pointer flex items-center justify-center ${
                   isWishlisted
-                    ? 'bg-blue-50 border-blue-200 text-blue-600 hover:bg-blue-100'
-                    : 'bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-400 hover:text-blue-600'
+                    ? 'bg-blue-50 border-blue-600 text-blue-600 hover:bg-blue-100'
+                    : 'bg-white hover:bg-blue-50/60 border-slate-200 hover:border-blue-600 text-blue-600'
                 }`}
                 title={locale === 'vi' ? 'Lưu sản phẩm' : 'Bookmark product'}
               >
                 <Bookmark
-                  className="h-4 w-4"
+                  className="h-6 w-6 stroke-[2] text-blue-600"
                   fill={isWishlisted ? 'currentColor' : 'none'}
                 />
               </button>

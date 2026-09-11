@@ -24,28 +24,30 @@ export function SectionHeader({ title, subtitle, viewAllHref, viewAllLabel, cent
   }
 
   return (
-    <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
-      <div>
-        <div className="flex items-center gap-2.5">
+    <div>
+      <div className="flex flex-row items-center justify-between gap-2">
+        <div className="flex items-center gap-2.5 min-w-0">
           <div className="flex flex-col gap-0.5 shrink-0 justify-center">
             <span className="h-1 w-1 rounded-full bg-brand" />
             <span className="h-1 w-1 rounded-full bg-brand" />
             <span className="h-1 w-1 rounded-full bg-brand" />
           </div>
-          <h2 className="text-section-title font-semibold text-primary">
+          <h2 className="text-section-title font-semibold text-primary truncate">
             {title}
           </h2>
         </div>
-        <p className="mt-1 text-body-large text-muted-foreground sm:font-normal xl:font-normal">{subtitle}</p>
+        {viewAllHref && viewAllLabel && (
+          <Link
+            href={viewAllHref}
+            className="inline-flex items-center gap-1.5 text-caption-responsive font-semibold text-brand transition-colors hover:text-brand-strong shrink-0 whitespace-nowrap"
+          >
+            {viewAllLabel}
+            <ArrowRight className="h-4 w-4" aria-hidden="true" />
+          </Link>
+        )}
       </div>
-      {viewAllHref && viewAllLabel && (
-        <Link
-          href={viewAllHref}
-          className="inline-flex items-center gap-2 text-body-regular font-semibold sm:font-normal text-brand transition-colors hover:text-brand-strong"
-        >
-          {viewAllLabel}
-          <ArrowRight className="h-4 w-4" aria-hidden="true" />
-        </Link>
+      {subtitle && (
+        <p className="mt-1 text-body-large text-muted-foreground sm:font-normal xl:font-normal">{subtitle}</p>
       )}
     </div>
   );

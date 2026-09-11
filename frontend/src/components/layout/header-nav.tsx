@@ -1247,10 +1247,10 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                           <Link
                             key={cat.id}
                             href={buildCategoryProductsHref(cat)}
-                            className={`relative flex items-center justify-between pl-8 pr-4 py-3 rounded-lg cursor-pointer transition-all duration-200 ${
+                            className={`relative flex items-center justify-between pl-8 pr-4 py-3 rounded-lg cursor-pointer transition-all duration-300 ${
                               isCatActive
-                                ? 'bg-blue-50/70 text-blue-600 font-bold'
-                                : 'text-slate-600 hover:bg-slate-50/60 hover:text-brand'
+                                ? 'bg-blue-50/80 text-blue-600 font-bold shadow-[0_0_0_1px_#1769E2,0_4px_15px_-3px_rgba(23,105,226,0.15)]'
+                                : 'text-slate-600 hover:bg-blue-50/50 hover:text-blue-600 hover:shadow-[0_0_0_1px_#1769E2,0_4px_15px_-3px_rgba(23,105,226,0.15)]'
                             }`}
                             onMouseEnter={() => setActiveCategory(cat.id)}
                             onClick={() => setActiveMenu(null)}
@@ -1289,9 +1289,9 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                               key={idx}
                               href={productHref}
                               onClick={() => setActiveMenu(null)}
-                              className="flex items-start gap-4 group p-2 -m-2 rounded-lg hover:bg-slate-50 transition-all duration-200"
+                              className="flex items-start gap-3.5 group p-3 -m-2 rounded-[6px] border border-transparent transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-50/40 hover:shadow-[0_0_0_1px_#1769E2,0_8px_25px_-5px_rgba(23,105,226,0.2)]"
                             >
-                              <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-[8px] ${prod.bgColor} transition-transform duration-200 group-hover:scale-105`}>
+                              <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-[8px] ${prod.bgColor} transition-all duration-300 group-hover:bg-blue-600 group-hover:text-white group-hover:scale-105 group-hover:shadow-sm`}>
                                 <IconComp className="h-5.5 w-5.5" />
                               </div>
 
@@ -1362,10 +1362,10 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                         return (
                           <div
                             key={reg.id}
-                            className={`relative flex items-center justify-between pl-8 pr-4 py-3 rounded-lg cursor-pointer transition-all duration-200 ${
+                            className={`relative flex items-center justify-between pl-8 pr-4 py-3 rounded-lg cursor-pointer transition-all duration-300 ${
                               isRegActive
-                                ? 'bg-blue-50/70 text-blue-600 font-bold'
-                                : 'text-slate-600 hover:bg-slate-50/60 hover:text-brand'
+                                ? 'bg-blue-50/80 text-blue-600 font-bold shadow-[0_0_0_1px_#1769E2,0_4px_15px_-3px_rgba(23,105,226,0.15)]'
+                                : 'text-slate-600 hover:bg-blue-50/50 hover:text-blue-600 hover:shadow-[0_0_0_1px_#1769E2,0_4px_15px_-3px_rgba(23,105,226,0.15)]'
                             }`}
                             onMouseEnter={() => setActiveRegion(reg.id)}
                           >
@@ -1388,7 +1388,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                       href="/regional-hubs/cum-2"
                       onClick={() => setActiveMenu(null)}
                       onMouseEnter={() => setActiveRegion('hub')}
-                      className="flex items-center justify-between border border-[#F2994A] bg-[#FFF9F3] text-[#F2994A] pl-8 pr-4 py-3 rounded-lg cursor-pointer transition-all duration-200 hover:bg-[#FFEEDB]"
+                      className="flex items-center justify-between border border-[#F2994A] bg-[#FFF9F3] text-[#F2994A] pl-8 pr-4 py-3 rounded-lg cursor-pointer transition-all duration-300 hover:bg-[#FFEEDB] hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#F2994A,0_8px_25px_-5px_rgba(242,153,74,0.25)]"
                     >
                       <div className="flex items-center gap-2">
                         <Warehouse className="h-4 w-4 text-[#F2994A]" />
@@ -1427,9 +1427,9 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                                   key={idx}
                                   href="/regional-hubs/cum-2"
                                   onClick={() => setActiveMenu(null)}
-                                  className="flex items-start gap-4 group p-2 -m-2 rounded-lg hover:bg-slate-50 transition-all duration-200"
+                                  className="flex items-start gap-3.5 group p-3 -m-2 rounded-[6px] border border-transparent transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-50/40 hover:shadow-[0_0_0_1px_#1769E2,0_8px_25px_-5px_rgba(23,105,226,0.2)]"
                                 >
-                                  <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-[8px] ${partner.bgColor} transition-transform duration-200 group-hover:scale-105`}>
+                                  <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-[8px] ${partner.bgColor} transition-all duration-300 group-hover:bg-blue-600 group-hover:text-white group-hover:scale-105 group-hover:shadow-sm`}>
                                     <IconComp className="h-5.5 w-5.5" />
                                   </div>
 
@@ -1475,9 +1475,9 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                                   key={idx}
                                   href={currentRegionData.link}
                                   onClick={() => setActiveMenu(null)}
-                                  className="flex items-start gap-4 group p-2 -m-2 rounded-lg hover:bg-slate-50 transition-all duration-200"
+                                  className="flex items-start gap-3.5 group p-3 -m-2 rounded-[6px] border border-transparent transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-50/40 hover:shadow-[0_0_0_1px_#1769E2,0_8px_25px_-5px_rgba(23,105,226,0.2)]"
                                 >
-                                  <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-[8px] ${hub.bgColor} transition-transform duration-200 group-hover:scale-105`}>
+                                  <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-[8px] ${hub.bgColor} transition-all duration-300 group-hover:bg-blue-600 group-hover:text-white group-hover:scale-105 group-hover:shadow-sm`}>
                                     <IconComp className="h-5.5 w-5.5" />
                                   </div>
 
@@ -1547,10 +1547,10 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                         return (
                           <div
                             key={ind.id}
-                            className={`relative flex items-center justify-between pl-8 pr-4 py-3 rounded-lg cursor-pointer transition-all duration-200 ${
+                            className={`relative flex items-center justify-between pl-8 pr-4 py-3 rounded-lg cursor-pointer transition-all duration-300 ${
                               isIndActive
-                                ? 'bg-blue-50/70 text-blue-600 font-bold'
-                                : 'text-slate-600 hover:bg-slate-50/60 hover:text-brand'
+                                ? 'bg-blue-50/80 text-blue-600 font-bold shadow-[0_0_0_1px_#1769E2,0_4px_15px_-3px_rgba(23,105,226,0.15)]'
+                                : 'text-slate-600 hover:bg-blue-50/50 hover:text-blue-600 hover:shadow-[0_0_0_1px_#1769E2,0_4px_15px_-3px_rgba(23,105,226,0.15)]'
                             }`}
                             onMouseEnter={() => setActiveIndustry(ind.id)}
                           >
@@ -1588,9 +1588,9 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                               key={idx}
                               href={`/industries/${industrySlug}`}
                               onClick={() => setActiveMenu(null)}
-                              className="flex items-start gap-4 group p-2 -m-2 rounded-lg hover:bg-slate-50 transition-all duration-200"
+                              className="flex items-start gap-3.5 group p-3 -m-2 rounded-[6px] border border-transparent transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-50/40 hover:shadow-[0_0_0_1px_#1769E2,0_8px_25px_-5px_rgba(23,105,226,0.2)]"
                             >
-                              <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-[8px] ${hub.bgColor} transition-transform duration-200 group-hover:scale-105`}>
+                              <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-[8px] ${hub.bgColor} transition-all duration-300 group-hover:bg-blue-600 group-hover:text-white group-hover:scale-105 group-hover:shadow-sm`}>
                                 <IconComp className="h-5.5 w-5.5" />
                               </div>
 
@@ -1658,10 +1658,10 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                         return (
                           <div
                             key={res.id}
-                            className={`relative flex items-center justify-between pl-8 pr-4 py-3 rounded-lg cursor-pointer transition-all duration-200 ${
+                            className={`relative flex items-center justify-between pl-8 pr-4 py-3 rounded-lg cursor-pointer transition-all duration-300 ${
                               isResActive
-                                ? 'bg-blue-50/70 text-blue-600 font-bold'
-                                : 'text-slate-600 hover:bg-slate-50/60 hover:text-brand'
+                                ? 'bg-blue-50/80 text-blue-600 font-bold shadow-[0_0_0_1px_#1769E2,0_4px_15px_-3px_rgba(23,105,226,0.15)]'
+                                : 'text-slate-600 hover:bg-blue-50/50 hover:text-blue-600 hover:shadow-[0_0_0_1px_#1769E2,0_4px_15px_-3px_rgba(23,105,226,0.15)]'
                             }`}
                             onMouseEnter={() => setActiveResourceTab(res.id)}
                           >
@@ -1699,9 +1699,9 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                               key={idx}
                               href={resourceHref}
                               onClick={() => setActiveMenu(null)}
-                              className="flex items-start gap-4 group p-2 -m-2 rounded-lg hover:bg-slate-50 transition-all duration-200"
+                              className="flex items-start gap-3.5 group p-3 -m-2 rounded-[6px] border border-transparent transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-50/40 hover:shadow-[0_0_0_1px_#1769E2,0_8px_25px_-5px_rgba(23,105,226,0.2)]"
                             >
-                              <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-[8px] ${hub.bgColor} transition-transform duration-200 group-hover:scale-105`}>
+                              <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-[8px] ${hub.bgColor} transition-all duration-300 group-hover:bg-blue-600 group-hover:text-white group-hover:scale-105 group-hover:shadow-sm`}>
                                 <IconComp className="h-5.5 w-5.5" />
                               </div>
 
@@ -1769,10 +1769,10 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                         return (
                           <div
                             key={ab.id}
-                            className={`relative flex items-center justify-between pl-8 pr-4 py-3 rounded-lg cursor-pointer transition-all duration-200 ${
+                            className={`relative flex items-center justify-between pl-8 pr-4 py-3 rounded-lg cursor-pointer transition-all duration-300 ${
                               isAbActive
-                                ? 'bg-blue-50/70 text-blue-600 font-bold'
-                                : 'text-slate-600 hover:bg-slate-50/60 hover:text-brand'
+                                ? 'bg-blue-50/80 text-blue-600 font-bold shadow-[0_0_0_1px_#1769E2,0_4px_15px_-3px_rgba(23,105,226,0.15)]'
+                                : 'text-slate-600 hover:bg-blue-50/50 hover:text-blue-600 hover:shadow-[0_0_0_1px_#1769E2,0_4px_15px_-3px_rgba(23,105,226,0.15)]'
                             }`}
                             onMouseEnter={() => setActiveAboutTab(ab.id)}
                           >
@@ -1809,9 +1809,9 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                               key={idx}
                               href="/about"
                               onClick={() => setActiveMenu(null)}
-                              className="flex items-start gap-4 group p-2 -m-2 rounded-lg hover:bg-slate-50 transition-all duration-200"
+                              className="flex items-start gap-3.5 group p-3 -m-2 rounded-[6px] border border-transparent transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-50/40 hover:shadow-[0_0_0_1px_#1769E2,0_8px_25px_-5px_rgba(23,105,226,0.2)]"
                             >
-                              <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-[8px] ${hub.bgColor} transition-transform duration-200 group-hover:scale-105`}>
+                              <div className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-[8px] ${hub.bgColor} transition-all duration-300 group-hover:bg-blue-600 group-hover:text-white group-hover:scale-105 group-hover:shadow-sm`}>
                                 <IconComp className="h-5.5 w-5.5" />
                               </div>
 

@@ -54,18 +54,18 @@ export default async function CatalogShowcase({ locale }: CatalogShowcaseProps) 
             const categoryName = getTranslatedName(catData.category, locale);
             return (
               <div key={catData.category.id} className="flex flex-col">
-                {/* Category Title bar - Responsive */}
-                <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between border-b border-gray-200 pb-3 sm:pb-4 mb-4 sm:mb-6 gap-2 sm:gap-3">
-                  <div className="flex items-center gap-2">
+                {/* Category Title bar - Responsive (1 single row on all devices) */}
+                <div className="flex flex-row items-center justify-between border-b border-gray-200 pb-3 sm:pb-4 mb-4 sm:mb-6 gap-2 sm:gap-3">
+                  <div className="flex items-center gap-2 min-w-0">
                     <span className="h-5 w-1 bg-blue-600 rounded-[3px] shrink-0" />
-                    <h3 className="text-base sm:text-card-title font-bold text-slate-900 leading-tight">
+                    <h3 className="text-base sm:text-card-title font-bold text-slate-900 leading-tight truncate">
                       {categoryName}
                     </h3>
                   </div>
                   <CategoryNavLink
                     categorySlug={catData.category.slug}
                     href="/solutions/listProduct"
-                    className="group inline-flex items-center gap-1 sm:gap-1.5 text-caption-responsive font-semibold text-blue-600 hover:text-blue-700 transition-colors whitespace-nowrap"
+                    className="group inline-flex items-center gap-1 sm:gap-1.5 text-caption-responsive font-semibold text-blue-600 hover:text-blue-700 transition-colors whitespace-nowrap shrink-0"
                   >
                     {t('catalogSection.viewAll')}
                     <ArrowRight className="h-3.5 sm:h-4 w-3.5 sm:w-4 transition-transform duration-200 group-hover:translate-x-0.5" />
@@ -73,8 +73,8 @@ export default async function CatalogShowcase({ locale }: CatalogShowcaseProps) 
                 </div>
 
                 {/* Product Grid - Responsive Layout */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
-                  {catData.products.map((product: Product) => {
+                <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
+                  {catData.products.map((product: Product, index: number) => {
                     const firstSku = product.skus?.[0];
 
                     // DEBUG: Log product data
@@ -132,24 +132,25 @@ export default async function CatalogShowcase({ locale }: CatalogShowcaseProps) 
                     }
 
                     return (
-                      <ProductCard
-                        key={product.id}
-                        product={{
-                          id: product.id,
-                          name: product.name || '',
-                          slug: product.slug || '',
-                          description: product.short_description || undefined,
-                          image: getImageUrl(product.hero),
-                          price: displayPrice || 'Liên hệ báo giá',
-                          unit: displayUnit || 'per kg',
-                          moq: `MOQ: ${firstSku?.pack_size || 'Liên hệ'}`,
-                          moqUnit: firstSku?.unit || undefined,
-                          status: firstSku?.stock_status === 'in_stock' ? (locale === 'vi' ? 'Có sẵn tại Kho' : 'In Stock') : (locale === 'vi' ? 'Sản xuất theo yêu cầu' : 'Custom orders'),
-                          location: 'Hub Hà Nam, Việt Nam'
-                        }}
-                        locale={locale}
-                        showWishlist={true}
-                      />
+                      <div key={product.id} className={index >= 3 ? 'hidden lg:block' : ''}>
+                        <ProductCard
+                          product={{
+                            id: product.id,
+                            name: product.name || '',
+                            slug: product.slug || '',
+                            description: product.short_description || undefined,
+                            image: getImageUrl(product.hero),
+                            price: displayPrice || 'Liên hệ báo giá',
+                            unit: displayUnit || 'per kg',
+                            moq: `MOQ: ${firstSku?.pack_size || 'Liên hệ'}`,
+                            moqUnit: firstSku?.unit || undefined,
+                            status: firstSku?.stock_status === 'in_stock' ? (locale === 'vi' ? 'Có sẵn tại Kho' : 'In Stock') : (locale === 'vi' ? 'Sản xuất theo yêu cầu' : 'Custom orders'),
+                            location: 'Hub Hà Nam, Việt Nam'
+                          }}
+                          locale={locale}
+                          showWishlist={true}
+                        />
+                      </div>
                     );
                   })}
                 </div>

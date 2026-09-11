@@ -153,7 +153,7 @@ export default function TestimonialsCapabilities({ locale }: TestimonialsCapabil
       <section className="w-full bg-white border-t border-gray-150 py-16 lg:py-24">
         <div className="page-container text-center">
           {/* Section Header */}
-          <div className="max-w-3xl mx-auto mb-16">
+          <div className="max-w-5xl mx-auto mb-16">
             <span className="text-caption-responsive font-bold uppercase tracking-widest text-blue-600">
               {t('testimonialsCapabilities.capabilitiesEyebrow')}
             </span>
