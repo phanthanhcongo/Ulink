@@ -17,20 +17,28 @@ export default function SavedProductsSection({ allProducts, currentSlug, locale 
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const saved = localStorage.getItem('ulink-favorites');
-      if (saved) {
-        try {
-          setSavedSlugs(JSON.parse(saved) as string[]);
-        } catch { }
+    const readSaved = () => {
+      if (typeof window !== 'undefined') {
+        const saved = localStorage.getItem('ulink-favorites');
+        if (saved) {
+          try {
+            setSavedSlugs(JSON.parse(saved) as string[]);
+          } catch { }
+        }
+        setIsLoaded(true);
       }
-      setIsLoaded(true);
-    }
+    };
+
+    readSaved();
+    window.addEventListener('storage', readSaved);
+    return () => window.removeEventListener('storage', readSaved);
   }, []);
 
   const savedProducts = useMemo(() => {
     if (!isLoaded) return [];
-    return allProducts.filter((p) => savedSlugs.includes(p.slug) && p.slug !== currentSlug).slice(0, 4);
+    const filtered = allProducts.filter((p) => savedSlugs.includes(p.slug) && p.slug !== currentSlug);
+    if (filtered.length > 0) return filtered.slice(0, 4);
+    return allProducts.filter((p) => p.slug !== currentSlug).slice(0, 4);
   }, [allProducts, savedSlugs, currentSlug, isLoaded]);
 
   if (savedProducts.length === 0) return null;
@@ -49,8 +57,6 @@ export default function SavedProductsSection({ allProducts, currentSlug, locale 
     if (firstSku?.price) {
       const basePrice = firstSku.price;
       const packSize = firstSku.pack_size;
-      let baseUnit = firstSku.unit || 'cái';
-      if (baseUnit === 'đôi') baseUnit = 'pcs';
       const packSizeNum = packSize ? parseInt(String(packSize), 10) : null;
       const perUnitPrice = packSizeNum && packSizeNum > 0 ? basePrice / packSizeNum : basePrice;
       const minPrice = Math.round(perUnitPrice * 0.8);
@@ -74,26 +80,29 @@ export default function SavedProductsSection({ allProducts, currentSlug, locale 
   });
 
   return (
-    <div className="mt-16 space-y-6">
-      <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <span className="h-2.5 w-2.5 rounded-[3px] bg-blue-600 shrink-0" />
-          <h3 className="text-card-title font-bold text-slate-800">
+    <section className="mt-16 space-y-6 pt-10 border-t border-slate-200/60">
+      <div className="flex items-center justify-between pb-2">
+        <div className="flex items-center gap-2.5">
+          <span className="h-2.5 w-2.5 rounded-full bg-[#1769e2] shrink-0" />
+          <h2 className="text-[20px] sm:text-[22px] font-bold text-slate-900 tracking-tight">
             {locale === 'vi' ? 'Sản phẩm đã lưu' : 'Saved Products'}
-          </h3>
+          </h2>
         </div>
         <Link
           href={`/${locale}/solutions/listProduct`}
-          className="text-caption-responsive font-bold text-blue-600 hover:underline flex items-center gap-1"
+          className="text-[14px] font-bold text-[#1769e2] hover:underline flex items-center gap-1.5 transition-colors"
         >
-          {locale === 'vi' ? 'Xem tất cả' : 'View All'} &rarr;
+          {locale === 'vi' ? 'Xem tất cả' : 'View all'} <span className="text-[16px]">&rarr;</span>
         </Link>
       </div>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {transformedProducts.map((prod) => (
           <ProductCard key={prod.id} product={prod} locale={locale} />
         ))}
       </div>
-    </div>
+    </section>
   );
 }
+
+

@@ -37,7 +37,7 @@ export default async function FeaturedProduct({ locale }: FeaturedProductProps) 
           {/* Left: Image */}
           <div className="lg:col-span-6 relative aspect-[4/3] overflow-hidden shadow-sm bg-slate-50 border border-gray-100" style={{ borderRadius: '3px' }}>
             <Image
-              src="/images/home/section2/solution-packaging.webp"
+              src="/images/solutions/pallet-wrap-roll.jpg"
               alt={t('featuredProduct.title')}
               fill
               className="object-cover"
@@ -94,7 +94,7 @@ export default async function FeaturedProduct({ locale }: FeaturedProductProps) 
           {/* Left: Image */}
           <div className="lg:col-span-6 relative aspect-[4/3] overflow-hidden shadow-sm bg-slate-50 border border-gray-100" style={{ borderRadius: '3px' }}>
             <Image
-              src="/images/industries/pe_film.webp"
+              src="/images/solutions/wrapped-pallets-warehouse.jpg"
               alt={t('featuredProduct.row2Heading')}
               fill
               className="object-cover"

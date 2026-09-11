@@ -33,6 +33,24 @@ const ALL_CATEGORIES_LIST = [
   { id: 8, name: 'Hóa chất phòng sạch', slug: 'cleanroom-chemicals' }
 ];
 
+const PARENT_SUBCATEGORY_MAP: Record<string, string[]> = {
+  'cleanroom-consumables': [
+    'cleanroom-gloves',
+    'cleanroom-wipers',
+    'cleanroom-apparel',
+    'cleanroom-masks',
+    'cleanroom-chemicals'
+  ],
+  'industrial-packaging': [
+    'esd-shielding-bag',
+    'pe-stretch-wrap'
+  ],
+  'esd-supplies': [
+    'esd-table-mat',
+    'ionizer-fan'
+  ]
+};
+
 export default async function ProductsCatalogPage({ params, searchParams }: PageProps) {
   const { locale } = await params;
   const resolvedSearchParams = await searchParams;
@@ -58,7 +76,7 @@ export default async function ProductsCatalogPage({ params, searchParams }: Page
         : 'Comprehensive catalog of cleanroom consumables, industrial packaging, and ESD anti-static supplies.'
   };
 
-  const products: ProductItem[] = dbProducts.map((p) => {
+  const allProducts: ProductItem[] = dbProducts.map((p) => {
     const firstSku = p.skus?.find((s) => s.status === 'published') || p.skus?.[0];
     const catObj =
       typeof p.category === 'object' && p.category !== null ? (p.category as any) : null;
@@ -99,7 +117,28 @@ export default async function ProductsCatalogPage({ params, searchParams }: Page
     };
   });
 
-  const categoriesList =
+  let products = allProducts;
+  const categorySlug = categoryParam.trim();
+  const searchQuery = queryParam.toLowerCase().trim();
+
+  if (categorySlug) {
+    const subSlugs = PARENT_SUBCATEGORY_MAP[categorySlug] || [];
+    products = products.filter((p) => (
+      p.categorySlug === categorySlug ||
+      subSlugs.includes(p.categorySlug)
+    ));
+  }
+
+  if (searchQuery) {
+    products = products.filter((p) => {
+      const matchesName = p.name.toLowerCase().includes(searchQuery);
+      const matchesDesc = p.shortDescription.toLowerCase().includes(searchQuery);
+      const matchesCategory = p.categoryName.toLowerCase().includes(searchQuery);
+      return matchesName || matchesDesc || matchesCategory;
+    });
+  }
+
+  let categoriesList =
     dbCategories.length > 0
       ? dbCategories.map((c) => ({
         id: c.id,
@@ -107,6 +146,20 @@ export default async function ProductsCatalogPage({ params, searchParams }: Page
         slug: c.slug
       }))
       : ALL_CATEGORIES_LIST;
+
+  if (categorySlug) {
+    const subSlugs = PARENT_SUBCATEGORY_MAP[categorySlug] || [];
+    const matchedSlugs = new Set(products.map((p) => p.categorySlug));
+    const relevantCategories = categoriesList.filter((c) => (
+      c.slug === categorySlug ||
+      subSlugs.includes(c.slug) ||
+      matchedSlugs.has(c.slug)
+    ));
+
+    if (relevantCategories.length > 0) {
+      categoriesList = relevantCategories;
+    }
+  }
 
   return (
     <Suspense fallback={<div className="min-h-screen bg-slate-50 p-8 flex items-center justify-center text-slate-500 font-medium">Đang tải danh mục sản phẩm...</div>}>

@@ -52,10 +52,10 @@ Product Card component được thiết kế dựa trên Figma design, với res
 │       │               ├── Order Button
 │       │               │   ├── bg-blue-600 hover:bg-blue-700
 │       │               │   └── flex-1
-│       │               └── Wishlist Button
+│       │               └── Bookmark / Save Button
 │       │                   ├── bg-slate-50 (default)
-│       │                   ├── bg-red-50 (liked)
-│       │                   └── Heart icon with fill toggle
+│       │                   ├── bg-blue-50 (saved)
+│       │                   └── Bookmark icon with fill toggle
 ```
 
 ---

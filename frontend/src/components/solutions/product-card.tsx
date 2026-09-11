@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { MapPin, Heart } from 'lucide-react';
+import { MapPin, Bookmark } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 
 interface Product {
@@ -129,12 +129,12 @@ export function ProductCard({
                 onClick={handleWishlistClick}
                 className={`button6 border rounded-[3px] p-2 sm:p-2.5 transition-all cursor-pointer ${
                   isWishlisted
-                    ? 'bg-red-50 border-red-200 text-red-500 hover:bg-red-100'
-                    : 'bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-400 hover:text-red-500'
+                    ? 'bg-blue-50 border-blue-200 text-blue-600 hover:bg-blue-100'
+                    : 'bg-slate-50 hover:bg-slate-100 border-slate-200 text-slate-400 hover:text-blue-600'
                 }`}
-                title={locale === 'vi' ? 'Thêm vào yêu thích' : 'Add to favorites'}
+                title={locale === 'vi' ? 'Lưu sản phẩm' : 'Bookmark product'}
               >
-                <Heart
+                <Bookmark
                   className="h-4 w-4"
                   fill={isWishlisted ? 'currentColor' : 'none'}
                 />

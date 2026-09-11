@@ -10,6 +10,7 @@ import CustomSolutions from '@/components/solutions/custom-solutions';
 import HubAndPartner from '@/components/solutions/hub-and-partner';
 import TestimonialCarousel from '@/components/regional-hubs/testimonial-carousel';
 import CoreCapabilities from '@/components/solutions/core-capabilities';
+import FeaturedProduct from '@/components/solutions/featured-product';
 import { buttonVariants } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
@@ -108,7 +109,8 @@ export default async function SolutionsPage({ params: { locale } }: SolutionsPag
       <Suspense fallback={<div className="w-full bg-white border-t border-gray-150 py-16 md:py-24"><div className="page-container"><div className="h-64 bg-gradient-to-r from-slate-200 to-slate-100 rounded animate-pulse" /></div></div>}>
         <CatalogShowcase locale={locale} />
       </Suspense>
-
+      {/*Hight light product*/}
+      <FeaturedProduct locale={locale} />
       {/* === SECTION: Custom Tailored Solutions === */}
       <CustomSolutions locale={locale} />
 

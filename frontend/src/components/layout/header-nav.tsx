@@ -279,6 +279,19 @@ const viewAllLabels: Record<string, string> = {
   aluminum: 'Băng keo Nhôm'
 };
 
+const categoryQueryById: Record<string, string> = {
+  packaging: 'industrial-packaging',
+  cleanroom: 'cleanroom-consumables',
+  aluminum: 'industrial-packaging'
+};
+
+export function buildCategoryProductsHref(category?: Pick<NavCategoryItem, 'id'> | null) {
+  if (!category) return '/solutions/listProduct';
+
+  const categorySlug = categoryQueryById[category.id] || category.id;
+  return `/solutions/listProduct?category=${encodeURIComponent(categorySlug)}`;
+}
+
 const partnerItems = [
   {
     title: 'Mạng lưới phân phối rộng khắp',
@@ -1231,14 +1244,16 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                       {activeCategories.map((cat) => {
                         const isCatActive = activeCategory === cat.id;
                         return (
-                          <div
+                          <Link
                             key={cat.id}
+                            href={buildCategoryProductsHref(cat)}
                             className={`relative flex items-center justify-between pl-8 pr-4 py-3 rounded-lg cursor-pointer transition-all duration-200 ${
                               isCatActive
                                 ? 'bg-blue-50/70 text-blue-600 font-bold'
                                 : 'text-slate-600 hover:bg-slate-50/60 hover:text-brand'
                             }`}
                             onMouseEnter={() => setActiveCategory(cat.id)}
+                            onClick={() => setActiveMenu(null)}
                           >
                             {isCatActive && (
                               <div className="absolute left-3.5 top-1/2 -translate-y-1/2 w-[3px] h-[18px] bg-blue-600 rounded-full" />
@@ -1249,7 +1264,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                                 isCatActive ? 'text-blue-600 translate-x-0.5' : 'text-slate-400'
                               }`}
                             />
-                          </div>
+                          </Link>
                         );
                       })}
                     </div>
@@ -1268,7 +1283,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6">
                         {currentCategoryData?.products.map((prod, idx) => {
                           const IconComp = IconMap[prod.icon] || Package;
-                          const productHref = prod.slug ? `/solutions/listProduct/${prod.slug}` : (currentCategoryData?.link || '#');
+                          const productHref = prod.slug ? `/solutions/listProduct/${prod.slug}` : buildCategoryProductsHref(currentCategoryData);
                           return (
                             <Link
                               key={idx}
@@ -1295,7 +1310,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                         {/* 9th Grid Item: View All Link */}
                         <div className="flex items-center">
                           <Link
-                            href={currentCategoryData?.link || '#'}
+                            href={buildCategoryProductsHref(currentCategoryData)}
                             onClick={() => setActiveMenu(null)}
                             className="group inline-flex items-center gap-1.5 text-body-regular font-bold text-blue-600 hover:text-blue-700 transition-colors"
                           >
