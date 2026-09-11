@@ -13,7 +13,7 @@ export default async function HubPartner() {
           
           {/* Header & Play Button */}
           <div className="flex flex-col items-start w-full">
-            <h2 className="text-section-title lg:text-[40px] font-bold tracking-tight text-slate-900 leading-tight mb-3 sm:mb-4 max-w-[1100px]">
+            <h2 className="text-partner-title font-bold tracking-tight text-slate-900 leading-tight mb-3 sm:mb-4 max-w-[1100px]">
               {t('hubPartner.title')}
             </h2>
             <p className="text-body-regular leading-relaxed text-slate-600 mb-6 max-w-[950px]">

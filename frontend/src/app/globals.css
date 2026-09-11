@@ -311,6 +311,10 @@
   .text-section-title-sm {
     @apply text-[16px] font-normal leading-tight tracking-tight min-[375px]:text-[18px] sm:text-[24px] sm:font-semibold sm:leading-[32px] lg:text-[26px] lg:leading-[34px];
   }
+
+  .text-partner-title {
+    @apply text-[22px] font-bold leading-tight tracking-tight sm:text-[24px] sm:leading-[32px] lg:text-[32px] lg:leading-[40px];
+  }
   
   .text-eyebrow {
     @apply text-[12px] font-semibold tracking-tight sm:text-[14px] lg:text-[15px] xl:text-[16px];
