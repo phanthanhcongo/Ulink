@@ -4,10 +4,10 @@
  */
 export const ASSETS = {
   logo: {
-    full: '/images/logo/Main Logo-01.png',
+    full: '/images/logo/Main Logo-01 1.svg',
     mark: '/images/logo/ulink-mark.svg',
-    white: '/images/logo/Main Logo-01.png',
-    main: '/images/logo/Main Logo-01.png'
+    white: '/images/logo/Main Logo-01 1.svg',
+    main: '/images/logo/Main Logo-01 1.svg'
   },
   banners: {
     /** Ảnh nền trang đăng nhập — KHÔNG kèm chữ. */
