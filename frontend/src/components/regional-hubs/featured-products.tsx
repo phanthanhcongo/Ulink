@@ -64,7 +64,7 @@ export default async function FeaturedProducts({ locale }: FeaturedProductsProps
                 src={gloveImgSrc}
                 alt={t('featuredProducts.glove.title')}
                 fill
-                className="object-contain object-center lg:object-cover lg:object-center transition-transform duration-[450ms] ease-out group-hover:scale-[1.035]"
+                className="object-cover object-center transition-transform duration-[450ms] ease-out group-hover:scale-[1.035]"
                 sizes="(max-width: 1024px) 100vw, 588px"
               />
             </Link>
@@ -158,7 +158,7 @@ export default async function FeaturedProducts({ locale }: FeaturedProductsProps
                 src={filmImgSrc}
                 alt={t('featuredProducts.film.title')}
                 fill
-                className="object-contain object-center lg:object-cover lg:object-center transition-transform duration-[450ms] ease-out group-hover:scale-[1.035]"
+                className="object-cover object-center transition-transform duration-[450ms] ease-out group-hover:scale-[1.035]"
                 sizes="(max-width: 1024px) 100vw, 588px"
               />
             </Link>
@@ -252,7 +252,7 @@ export default async function FeaturedProducts({ locale }: FeaturedProductsProps
                 src={tapeImgSrc}
                 alt={t('featuredProducts.tape.title')}
                 fill
-                className="object-contain object-center lg:object-cover lg:object-center transition-transform duration-[450ms] ease-out group-hover:scale-[1.035]"
+                className="object-cover object-center transition-transform duration-[450ms] ease-out group-hover:scale-[1.035]"
                 sizes="(max-width: 1024px) 100vw, 588px"
               />
             </Link>
@@ -346,7 +346,7 @@ export default async function FeaturedProducts({ locale }: FeaturedProductsProps
                 src={palletImgSrc}
                 alt={t('featuredProducts.pallet.title')}
                 fill
-                className="object-contain object-center lg:object-cover lg:object-center transition-transform duration-[450ms] ease-out group-hover:scale-[1.035]"
+                className="object-cover object-center transition-transform duration-[450ms] ease-out group-hover:scale-[1.035]"
                 sizes="(max-width: 1024px) 100vw, 588px"
               />
             </Link>

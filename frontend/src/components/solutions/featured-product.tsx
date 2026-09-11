@@ -41,7 +41,7 @@ export default async function FeaturedProduct({ locale }: FeaturedProductProps) 
               alt={t('featuredProduct.title')}
               width={600}
               height={420}
-              className="w-full h-auto object-contain block"
+              className="w-full h-auto object-cover object-center block"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </div>
@@ -99,7 +99,7 @@ export default async function FeaturedProduct({ locale }: FeaturedProductProps) 
               alt={t('featuredProduct.row2Heading')}
               width={600}
               height={530}
-              className="w-full h-auto object-contain block"
+              className="w-full h-auto object-cover object-center block"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </div>
