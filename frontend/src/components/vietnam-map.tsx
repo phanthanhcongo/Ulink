@@ -262,26 +262,27 @@ export function VietnamMap({ className, locale = 'vi' }: VietnamMapProps) {
 
           {/* Mobile Location Cards: Displayed only on Mobile (< md) */}
           <div className="order-3 md:hidden w-full space-y-3">
-            {[
-              { num: '01', title: locale === 'vi' ? 'Khu vực Bắc Bộ' : 'Northern Region', href: '/quick-order' },
-              { num: '02', title: locale === 'vi' ? 'Khu vực Duyên Hải' : 'Coastal Region', href: '/quick-order' },
-              { num: '03', title: locale === 'vi' ? 'Khu vực Nam Bộ' : 'Southern Region', href: '/quick-order' },
-            ].map((card) => (
-              <Link
-                key={card.num}
-                href={card.href}
-                className="flex items-center justify-between bg-[#f4f8fc] hover:bg-white text-[#212529] px-4 py-3.5 rounded-[2px] border border-blue-100 shadow-sm transition-all duration-200 group"
+            {activeMarkers.map((cluster) => (
+              <div
+                key={cluster.id}
+                onClick={() => setHoveredHub(cluster.id)}
+                className="flex items-center justify-between bg-[#f4f8fc] hover:bg-white text-[#212529] px-4 py-3.5 rounded-[2px] border border-blue-100 shadow-sm transition-all duration-200 group cursor-pointer"
               >
-                <div className="flex items-center gap-3.5">
+                <div className="flex items-center gap-3.5 min-w-0 flex-1">
                   <div className="w-10 h-10 rounded-full border border-[#9ed0ff] bg-[#e6f2ff] text-[#1769e2] font-bold text-body-regular flex items-center justify-center shrink-0">
-                    {card.num}
+                    {cluster.num}
                   </div>
-                  <span className="text-body-regular font-medium text-[#212529] leading-snug">
-                    {card.title}
-                  </span>
+                  <div className="flex flex-col text-left min-w-0">
+                    <span className="text-body-regular font-bold text-[#212529] leading-snug truncate">
+                      {cluster.name}
+                    </span>
+                    <span className="text-caption-responsive font-normal text-slate-500 truncate mt-0.5">
+                      {cluster.subName}
+                    </span>
+                  </div>
                 </div>
-                <ArrowRight className="h-4 w-4 text-[#a0b3d1] group-hover:text-[#1769e2] group-hover:translate-x-1 transition-all" />
-              </Link>
+                <ArrowRight className="h-4 w-4 text-[#a0b3d1] group-hover:text-[#1769e2] group-hover:translate-x-1 transition-all shrink-0 ml-2" />
+              </div>
             ))}
           </div>
 
