@@ -20,7 +20,7 @@ export default function HubSolutions({ locale }: HubSolutionsProps) {
   }> = {
     vi: {
       eyebrow: 'GIẢI PHÁP',
-      title: 'Cung cấp vật tư công nghiệp.',
+      title: 'Cung cấp vật tư công nghiệp',
       col1Title: 'Quản lí chuỗi cung ứng',
       col1Desc: 'Tối ưu quy trình vận hành, kết nối nhà cung cấp và quản lý hàng hóa, cung ứng hiệu quả.',
       col2Title: 'Đa dạng sản phẩm',
@@ -32,7 +32,7 @@ export default function HubSolutions({ locale }: HubSolutionsProps) {
     },
     en: {
       eyebrow: 'SOLUTIONS',
-      title: 'Industrial Supply Solutions.',
+      title: 'Industrial Supply Solutions',
       col1Title: 'Supply Chain Management',
       col1Desc: 'Optimize operational processes, connect suppliers and manage goods, supply efficiently.',
       col2Title: 'Product Diversity',
@@ -44,7 +44,7 @@ export default function HubSolutions({ locale }: HubSolutionsProps) {
     },
     ja: {
       eyebrow: 'ソリューション',
-      title: '工業用資材の供給。',
+      title: '工業用資材の供給',
       col1Title: 'サプライチェーン管理',
       col1Desc: '業務プロセスの最適化、サプライヤーとの接続、効率的な資材供給管理。',
       col2Title: '多様な製品ラインナップ',
