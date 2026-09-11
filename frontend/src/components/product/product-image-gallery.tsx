@@ -49,18 +49,18 @@ export function ProductImageGallery({ images, productName }: ProductImageGallery
   return (
     <div className="flex flex-col gap-4 w-full">
       {/* MAIN SLIDE STAGE */}
-      <div className="relative aspect-square w-full rounded-[3px] overflow-hidden bg-white border border-slate-200/90 shadow-sm flex items-center justify-center group">
+      <div className="relative w-full aspect-square lg:w-[388px] lg:h-[435px] lg:aspect-auto rounded-[3px] overflow-hidden bg-white border border-slate-200/90 shadow-sm flex items-center justify-center group mx-auto lg:mx-0">
         {/* Main Image */}
         <div
           onClick={() => setZoomOpen(true)}
-          className="relative w-full h-full cursor-zoom-in p-6 sm:p-8 transition-transform duration-300"
+          className="relative w-full h-full cursor-zoom-in transition-transform duration-300"
         >
           <Image
             src={currentImage.src}
             alt={currentImage.alt || productName}
             fill
-            className="object-contain p-6 transition-all duration-300 group-hover:scale-105"
-            sizes="(max-width: 1024px) 100vw, 45vw"
+            className="object-cover transition-all duration-300 group-hover:scale-105"
+            sizes="(max-width: 1024px) 100vw, 388px"
             priority
           />
         </div>
