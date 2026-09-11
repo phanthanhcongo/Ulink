@@ -129,11 +129,6 @@ export function ProductImageGallery({ images, productName }: ProductImageGallery
                   className="object-contain p-2"
                   sizes="88px"
                 />
-                {img.label && (
-                  <span className="absolute bottom-0 inset-x-0 bg-slate-900/80 text-white text-caption-responsive font-bold text-center py-0.5 truncate">
-                    {img.label}
-                  </span>
-                )}
               </button>
             );
           })}
