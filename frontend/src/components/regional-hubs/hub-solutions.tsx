@@ -64,10 +64,10 @@ export default function HubSolutions({ locale }: HubSolutionsProps) {
         
         {/* Title Area */}
         <div className="text-left sm:text-center max-w-[600px] w-full flex flex-col items-start sm:items-center gap-2 sm:gap-2.5">
-          <h2 className="text-body-regular min-[375px]:text-card-title font-semibold sm:font-bold tracking-tight text-slate-900 leading-tight lg:leading-[36px]">
+          <h2 className="text-body-regular min-[375px]:text-card-title lg:text-[28px] font-semibold sm:font-bold tracking-tight text-slate-900 leading-tight lg:leading-[36px]">
             {t.eyebrow}
           </h2>
-          <h2 className="text-body-regular min-[375px]:text-card-title font-semibold sm:font-bold tracking-tight text-slate-900 leading-tight lg:leading-[36px]">
+          <h2 className="text-body-regular min-[375px]:text-card-title lg:text-[28px] font-semibold sm:font-bold tracking-tight text-slate-900 leading-tight lg:leading-[36px]">
             {t.title}
           </h2>
         </div>
