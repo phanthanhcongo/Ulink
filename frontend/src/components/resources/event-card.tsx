@@ -80,8 +80,9 @@ export function EventCard({ event, locale }: EventCardProps) {
       : 'Register now';
 
   return (
-    <div
-      className="ui-card-hover flex flex-col bg-white border border-slate-100 rounded-[3px] overflow-hidden shadow-sm"
+    <Link
+      href={href}
+      className="group ui-card-hover flex flex-col bg-white border border-slate-100 rounded-[3px] overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#9fc2ef] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] h-full"
     >
       {/* Top Image Area */}
       <div className="relative aspect-[16/10] w-full bg-slate-50 overflow-hidden">
@@ -108,7 +109,7 @@ export function EventCard({ event, locale }: EventCardProps) {
             alt={titleText}
             fill
             sizes="(max-width: 768px) 100vw, 33vw"
-            className="object-cover"
+            className="object-cover transition-transform duration-500 group-hover:scale-105"
           />
         )}
 
@@ -165,14 +166,13 @@ export function EventCard({ event, locale }: EventCardProps) {
 
         {/* Action Button */}
         <div className="mt-6 pt-4 border-t border-slate-50">
-          <Link
-            href={href}
-            className="w-full inline-flex items-center justify-center py-3 border-2 border-[#1769E2] hover:bg-[#EBF3FE] text-[#1769E2] font-bold rounded-[3px] text-caption-responsive transition-colors shadow-xs"
+          <span
+            className="w-full inline-flex items-center justify-center py-3 border-2 border-[#1769E2] group-hover:bg-[#EBF3FE] text-[#1769E2] font-bold rounded-[3px] text-caption-responsive transition-colors shadow-xs"
           >
             {ctaText}
-          </Link>
+          </span>
         </div>
       </div>
-    </div>
+    </Link>
   );
 }

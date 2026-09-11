@@ -247,28 +247,28 @@ export default async function AboutSustainabilityPage({
     <div className="w-full bg-white font-sans antialiased text-slate-800">
       
       {/* 1. HERO SECTION & BREADCRUMB */}
-      <section className="bg-white py-4 sm:py-6 lg:py-8 border-b border-slate-100">
-        <div className="page-container px-3 sm:px-4">
+      <section className="bg-white py-6 sm:py-8 lg:py-12 border-b border-slate-100">
+        <div className="page-container px-4 sm:px-6">
           <AboutBreadcrumb />
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 lg:gap-10 items-center mt-2 sm:mt-3 lg:mt-4">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center mt-4 sm:mt-5 lg:mt-6">
             {/* Left Content */}
             <div className="lg:col-span-7 flex flex-col items-start">
               <span className="text-caption-responsive sm:text-body-regular font-bold text-emerald-600 tracking-tight uppercase text-xs sm:text-sm">
                 {t.hero.eyebrow}
               </span>
-              <h1 className="text-section-title sm:text-hero-title text-slate-900 mt-1.5 sm:mt-2 lg:mt-2 mb-2 sm:mb-3 lg:mb-4">
+              <h1 className="text-section-title sm:text-hero-title text-slate-900 mt-2 sm:mt-3 mb-3 sm:mb-4 lg:mb-5 leading-tight">
                 {t.hero.title}
               </h1>
-              <p className="text-body-regular sm:text-body-large leading-relaxed text-slate-500 max-w-2xl font-medium text-sm sm:text-base">
+              <p className="text-body-regular sm:text-body-large leading-relaxed text-slate-600 max-w-2xl font-medium text-sm sm:text-base">
                 {t.hero.desc}
               </p>
 
               <Link
                 href="/about/sustainability"
-                className="mt-3 sm:mt-4 lg:mt-6 group inline-flex h-10 sm:h-11 lg:h-12 items-center justify-center gap-1.5 sm:gap-2 lg:gap-2.5 rounded-[3px] bg-brand px-4 sm:px-5 lg:px-6 text-body-regular sm:text-body-large font-bold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:bg-brand-strong active:bg-[#0E4497] text-sm sm:text-base"
+                className="mt-5 sm:mt-6 lg:mt-8 group inline-flex h-11 sm:h-12 lg:h-12 items-center justify-center gap-2 sm:gap-2.5 rounded-[3px] bg-brand px-5 sm:px-6 lg:px-7 text-body-regular sm:text-body-large font-bold text-white shadow-sm transition-all hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:bg-brand-strong active:bg-[#0E4497] text-sm sm:text-base"
               >
-                <FileText className="h-3.5 sm:h-4 lg:h-4.5 w-3.5 sm:w-4 lg:w-4.5" />
+                <FileText className="h-4 sm:h-4.5 lg:h-5 w-4 sm:w-4.5 lg:w-5" />
                 {t.hero.btn}
               </Link>
             </div>
@@ -288,29 +288,29 @@ export default async function AboutSustainabilityPage({
       </section>
 
       {/* 2. ESG PERFORMANCE INDICATORS */}
-      <section className="bg-slate-50 py-4 sm:py-6 lg:py-8 border-b border-slate-100">
-        <div className="page-container px-3 sm:px-4">
+      <section className="bg-slate-50 py-8 sm:py-10 lg:py-14 border-b border-slate-100">
+        <div className="page-container px-4 sm:px-6">
           {/* Header Row */}
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-2 sm:gap-3 lg:gap-4 mb-4 sm:mb-6 lg:mb-8">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 sm:gap-4 lg:gap-6 mb-6 sm:mb-8 lg:mb-10">
             <div>
               <span className="text-caption-responsive font-bold text-emerald-600 tracking-tight uppercase text-xs sm:text-sm">
                 {t.esgStats.eyebrow}
               </span>
-              <h2 className="text-section-title sm:text-section-title font-bold text-slate-900 mt-0.5 sm:mt-1">
+              <h2 className="text-section-title sm:text-section-title font-bold text-slate-900 mt-1 sm:mt-1.5">
                 {t.esgStats.title}
               </h2>
             </div>
             <Link
               href="/about/sustainability"
-              className="group inline-flex items-center gap-0.5 sm:gap-1 text-body-regular font-bold text-brand hover:text-brand-strong transition-colors text-sm sm:text-base"
+              className="group inline-flex items-center gap-1 sm:gap-1.5 text-body-regular font-bold text-brand hover:text-brand-strong transition-colors text-sm sm:text-base mt-2 sm:mt-0"
             >
               {t.esgStats.download}
-              <ArrowRight className="h-3 sm:h-4 w-3 sm:w-4 transition-transform group-hover:translate-x-0.5" />
+              <ArrowRight className="h-3.5 sm:h-4 w-3.5 sm:w-4 transition-transform group-hover:translate-x-0.5" />
             </Link>
           </div>
 
           {/* Grid Layout */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
             {t.esgStats.items.map((item, idx) => {
               // Icon Renderer
               let IconComp = TrendingDown;
@@ -327,9 +327,9 @@ export default async function AboutSustainabilityPage({
               }
 
               return (
-                <div key={idx} className="bg-white p-3 sm:p-4 lg:p-6 rounded-[3px] border border-slate-100 shadow-sm flex flex-col justify-between group card-hover-standard">
+                <div key={idx} className="bg-white p-5 sm:p-6 lg:p-7 rounded-[3px] border border-slate-100 shadow-sm flex flex-col justify-between group card-hover-standard">
                   <div>
-                    <div className="flex items-baseline gap-1">
+                    <div className="flex items-baseline gap-1.5">
                       <span className="text-body-large sm:text-stat-value text-slate-900 tracking-tight font-bold">
                         {item.value}
                       </span>
@@ -337,9 +337,9 @@ export default async function AboutSustainabilityPage({
                         {item.sub}
                       </span>
                     </div>
-                    <p className="text-body-regular sm:text-body-large font-bold text-slate-800 mt-1.5 sm:mt-2 lg:mt-3 flex items-center gap-1">
+                    <p className="text-body-regular sm:text-body-large font-bold text-slate-800 mt-2 sm:mt-3 flex items-center gap-1.5">
                       {item.label}
-                      <IconComp className={`h-3.5 sm:h-4 lg:h-4.5 w-3.5 sm:w-4 lg:w-4.5 ${iconColor}`} />
+                      <IconComp className={`h-4 sm:h-4.5 lg:h-5 w-4 sm:w-4.5 lg:w-5 ${iconColor}`} />
                     </p>
                   </div>
                 </div>
@@ -350,18 +350,18 @@ export default async function AboutSustainabilityPage({
       </section>
 
       {/* 3. ESG STANDARD FRAMEWORK */}
-      <section className="bg-white py-4 sm:py-6 lg:py-8 border-b border-slate-100">
-        <div className="page-container px-3 sm:px-4">
+      <section className="bg-white py-8 sm:py-10 lg:py-14 border-b border-slate-100">
+        <div className="page-container px-4 sm:px-6">
           <div>
             <span className="text-caption-responsive font-bold text-emerald-600 tracking-tight uppercase text-xs sm:text-sm">
               {t.framework.eyebrow}
             </span>
-            <h2 className="text-section-title sm:text-section-title font-bold text-slate-900 mt-0.5 sm:mt-1 mb-4 sm:mb-6 lg:mb-8">
+            <h2 className="text-section-title sm:text-section-title font-bold text-slate-900 mt-1 sm:mt-1.5 mb-6 sm:mb-8 lg:mb-10">
               {t.framework.title}
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
             {t.framework.cards.map((card, idx) => {
               let Icon = Leaf;
               let iconColor = "text-emerald-500";
@@ -374,18 +374,18 @@ export default async function AboutSustainabilityPage({
               }
 
               return (
-                <div key={idx} className="bg-white p-3 sm:p-4 lg:p-6 rounded-[3px] border border-slate-200/80 shadow-sm flex flex-col justify-between group hover:border-brand/30 card-hover-standard">
+                <div key={idx} className="bg-white p-5 sm:p-6 lg:p-7 rounded-[3px] border border-slate-200/80 shadow-sm flex flex-col justify-between group hover:border-brand/30 card-hover-standard">
                   <div>
-                    <div className="flex items-center gap-1.5 sm:gap-2 lg:gap-2.5 mb-2 sm:mb-3 lg:mb-4">
-                      <Icon className={`h-5 sm:h-5.5 lg:h-6 w-5 sm:w-5.5 lg:w-6 shrink-0 ${iconColor}`} />
+                    <div className="flex items-center gap-2 sm:gap-2.5 lg:gap-3 mb-3 sm:mb-4">
+                      <Icon className={`h-5.5 sm:h-6 w-5.5 sm:w-6 shrink-0 ${iconColor}`} />
                       <span className="text-body-regular sm:text-body-large font-bold text-slate-950 tracking-tight text-sm sm:text-base">
                         {card.title}
                       </span>
                     </div>
 
-                    <ul className="space-y-2 sm:space-y-2.5 lg:space-y-3.5">
+                    <ul className="space-y-3 sm:space-y-3.5">
                       {card.bullets.map((bullet, bIdx) => (
-                        <li key={bIdx} className="text-body-regular text-slate-500 leading-relaxed font-medium flex items-start gap-1.5 text-xs sm:text-sm">
+                        <li key={bIdx} className="text-body-regular text-slate-600 leading-relaxed font-medium flex items-start gap-2 text-xs sm:text-sm">
                           <span className="text-emerald-600 font-bold shrink-0 mt-0.5">•</span>
                           <span>{bullet}</span>
                         </li>
@@ -395,31 +395,31 @@ export default async function AboutSustainabilityPage({
 
                   <Link
                     href="/about/sustainability"
-                    className="group inline-flex items-center gap-0.5 sm:gap-1 text-body-regular font-bold text-brand hover:text-brand-strong transition-colors mt-3 sm:mt-4 lg:mt-6 text-xs sm:text-sm"
+                    className="group inline-flex items-center gap-1 text-body-regular font-bold text-brand hover:text-brand-strong transition-colors mt-5 sm:mt-6 text-xs sm:text-sm"
                   >
                     {card.linkText}
-                    <ArrowRight className="h-3 sm:h-3.5 w-3 sm:w-3.5 transition-transform group-hover:translate-x-0.5" />
+                    <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-0.5" />
                   </Link>
                 </div>
               );
             })}
 
             {/* Dark Blue Quote Card */}
-            <div className="bg-[#0B2347] p-3 sm:p-4 lg:p-6 rounded-[3px] text-white flex flex-col justify-between shadow-sm relative overflow-hidden">
+            <div className="bg-[#0B2347] p-6 sm:p-7 lg:p-8 rounded-[3px] text-white flex flex-col justify-between shadow-sm relative overflow-hidden">
               {/* Background Glow */}
               <div className="absolute -top-12 -right-12 h-36 w-36 rounded-full bg-brand/10 blur-2xl" />
 
-              <Quote className="h-6 sm:h-7 lg:h-8 w-6 sm:w-7 lg:w-8 text-emerald-400 opacity-80 mb-2 sm:mb-3 lg:mb-4 shrink-0" />
+              <Quote className="h-7 sm:h-8 w-7 sm:w-8 text-emerald-400 opacity-80 mb-3 sm:mb-4 shrink-0" />
 
               <p className="text-body-regular leading-relaxed italic text-slate-200 font-medium text-xs sm:text-sm">
                 &ldquo;{t.framework.quote}&rdquo;
               </p>
 
-              <div className="mt-3 sm:mt-4 lg:mt-6 border-t border-white/10 pt-2 sm:pt-3 lg:pt-4">
+              <div className="mt-5 sm:mt-6 border-t border-white/10 pt-3 sm:pt-4">
                 <p className="text-body-regular font-bold text-emerald-400 uppercase tracking-wide text-xs sm:text-sm">
                   {t.framework.author}
                 </p>
-                <p className="text-caption-responsive text-slate-300 font-medium text-xs sm:text-sm">
+                <p className="text-caption-responsive text-slate-300 font-medium text-xs sm:text-sm mt-0.5">
                   {t.framework.company}
                 </p>
               </div>
@@ -429,37 +429,37 @@ export default async function AboutSustainabilityPage({
       </section>
 
       {/* 4. UN SDGs PARTNERSHIP */}
-      <section className="bg-slate-50 py-4 sm:py-6 lg:py-8 border-b border-slate-100">
-        <div className="page-container px-3 sm:px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 lg:gap-10 items-center">
+      <section className="bg-slate-50 py-8 sm:py-10 lg:py-14 border-b border-slate-100">
+        <div className="page-container px-4 sm:px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-12 items-center">
             {/* Left Content */}
             <div className="lg:col-span-5 flex flex-col items-start">
               <span className="text-caption-responsive font-bold text-emerald-600 tracking-tight uppercase text-xs sm:text-sm">
                 {t.sdgs.eyebrow}
               </span>
-              <h2 className="text-section-title sm:text-section-title font-bold text-slate-900 tracking-tight mt-0.5 sm:mt-1 mb-2 sm:mb-3 lg:mb-4">
+              <h2 className="text-section-title sm:text-section-title font-bold text-slate-900 tracking-tight mt-1 mb-3 sm:mb-4 lg:mb-5">
                 {t.sdgs.title}
               </h2>
-              <p className="text-body-regular sm:text-body-large leading-relaxed text-slate-500 font-medium text-sm sm:text-base">
+              <p className="text-body-regular sm:text-body-large leading-relaxed text-slate-600 font-medium text-sm sm:text-base">
                 {t.sdgs.desc}
               </p>
             </div>
 
             {/* Right SDGs Grid */}
-            <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 lg:gap-4">
+            <div className="lg:col-span-7 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 lg:gap-5">
               {t.sdgs.items.map((sdg, idx) => {
                 const Icon = sdg.icon;
                 return (
                   <div
                     key={idx}
-                    className="bg-white p-2 sm:p-3 lg:p-4 rounded-[3px] border border-slate-100 shadow-xs flex flex-col gap-1 sm:gap-1.5 lg:gap-2 group card-hover-standard"
+                    className="bg-white p-3.5 sm:p-4 lg:p-5 rounded-[3px] border border-slate-100 shadow-xs flex flex-col gap-2 group card-hover-standard"
                   >
-                    <Icon className={`h-5 sm:h-6 lg:h-7 w-5 sm:w-6 lg:w-7 shrink-0 ${sdg.color}`} />
+                    <Icon className={`h-6 sm:h-7 w-6 sm:w-7 shrink-0 ${sdg.color}`} />
                     <div>
                       <p className={`text-body-regular font-bold text-xs sm:text-sm ${sdg.numColor || 'text-brand'}`}>
                         {sdg.num}
                       </p>
-                      <p className="text-caption-responsive font-bold text-slate-800 leading-snug mt-0.5 text-xs sm:text-sm">
+                      <p className="text-caption-responsive font-bold text-slate-800 leading-snug mt-1 text-xs sm:text-sm">
                         {sdg.label}
                       </p>
                     </div>

@@ -61,7 +61,7 @@ export default async function FeaturedProduct({ locale }: FeaturedProductProps) 
             {/* Feature 2 */}
             <div className="flex flex-col items-start">
               <div className="w-10 h-10 rounded-[2px] flex items-center justify-center text-blue-600 shrink-0 mb-4">
-                <ShieldCheck className="h-6 w-6" />
+              <ShieldCheck className="h-6 w-6" />
               </div>
               <p className="text-caption-responsive leading-relaxed text-slate-600 font-medium">
                 {t('featuredProduct.feat2')}
