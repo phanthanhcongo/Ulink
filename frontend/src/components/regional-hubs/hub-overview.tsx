@@ -84,7 +84,7 @@ export default function HubOverview({ locale }: HubOverviewProps) {
       <div className="page-container flex flex-col gap-[48px]">
 
         {/* === Part 1: Heading & Description === */}
-        <div className="flex flex-col items-start text-left w-full max-w-5xl">
+        <div className="flex flex-col items-start text-left w-full">
           <span className="text-eyebrow font-semibold uppercase tracking-wider text-slate-900 block mb-1">
             {t.eyebrow}
           </span>
