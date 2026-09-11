@@ -30,16 +30,16 @@ export default async function FeaturedProducts({ locale }: FeaturedProductsProps
 
   // Exact Figma HTML Image Assets
   const gloveSlug = '/solutions/listProduct?category=cleanroom-gloves';
-  const gloveImgSrc = '/images/home/section2/frame-4273183070.png';
+  const gloveImgSrc = '/images/home/section2/glove_nitrile_ai.svg';
 
   const filmSlug = '/solutions/listProduct?category=industrial-packaging';
-  const filmImgSrc = '/images/home/section2/frame-4273183071.png';
+  const filmImgSrc = '/images/home/section2/cate_05.svg';
 
   const tapeSlug = '/solutions/listProduct?category=industrial-packaging';
-  const tapeImgSrc = '/images/home/section2/frame-4273183072.png';
+  const tapeImgSrc = '/images/home/section2/hvac 1.svg';
 
   const palletSlug = '/solutions/listProduct?category=industrial-packaging';
-  const palletImgSrc = '/images/regional_hubs/Frame 427318307.png';
+  const palletImgSrc = '/images/regional_hubs/pallet_wrap_hd.svg';
 
   return (
     <section className="w-full bg-white py-14">
