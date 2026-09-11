@@ -392,7 +392,7 @@ export default function ProductDetailClient({
           onClick={handleAddToCart}
           disabled={!selectedSku}
           className={cn(
-            'w-full flex items-center justify-center gap-2 h-11 rounded-[4px] font-semibold text-[14px] text-white bg-[#1769e2] hover:bg-[#155fcb] transition-colors cursor-pointer shadow-sm',
+            'w-full flex items-center justify-center gap-2 h-10 rounded-[2px] font-semibold text-[13px] text-white bg-[#1769e2] hover:bg-[#155fcb] transition-colors cursor-pointer shadow-sm',
             !selectedSku && 'opacity-50 cursor-not-allowed'
           )}
         >
@@ -414,7 +414,7 @@ export default function ProductDetailClient({
           onClick={handleRequestQuote}
           disabled={!selectedSku}
           className={cn(
-            'w-full flex items-center justify-center h-11 rounded-[4px] font-semibold text-[14px] text-[#1769e2] border border-[#1769e2] bg-white hover:bg-[#eaf3ff]/30 transition-colors cursor-pointer',
+            'w-full flex items-center justify-center h-10 rounded-[2px] font-semibold text-[13px] text-white border border-[#24a83b] bg-[#24a83b] hover:bg-[#209635] transition-colors cursor-pointer',
             !selectedSku && 'opacity-50 cursor-not-allowed'
           )}
         >

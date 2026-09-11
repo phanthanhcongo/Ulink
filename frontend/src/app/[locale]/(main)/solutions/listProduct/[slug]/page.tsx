@@ -1,7 +1,6 @@
 import { notFound } from 'next/navigation';
-import { setRequestLocale, getTranslations } from 'next-intl/server';
+import { setRequestLocale } from 'next-intl/server';
 import Image from 'next/image';
-import Link from 'next/link';
 import {
   ChevronRight,
   Package,
@@ -39,7 +38,7 @@ import {
 import ProductDetailClient from '@/components/product/product-detail-client';
 import ProductTabs from '@/components/product/product-tabs';
 import { ProductImageGallery } from '@/components/product/product-image-gallery';
-import RequestSampleButton from '@/components/sample-request/request-sample-button';
+import ProductContactCta from '@/components/product/product-contact-cta';
 import { Breadcrumb } from '@/components/ui/breadcrumb';
 import SavedProductsSection from '@/components/product/saved-products-section';
 
@@ -74,10 +73,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
   const { locale, slug } = await params;
   setRequestLocale(locale);
 
-  const [tSample, product] = await Promise.all([
-    getTranslations({ locale, namespace: 'sampleRequest' }),
-    fetchProductBySlug(slug)
-  ]);
+  const product = await fetchProductBySlug(slug);
 
   if (!product) {
     notFound();
@@ -256,36 +252,36 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
             {/* 4 Feature Icon Circles */}
             <div className="grid grid-cols-4 gap-3 py-2">
-              <div className="flex flex-col items-center text-center group">
-                <div className="w-12 h-12 rounded-[3px] bg-slate-50 border border-slate-200/70 flex items-center justify-center text-blue-600 mb-2 shrink-0 group-hover:bg-blue-50 transition-colors shadow-2xs">
-                  <Maximize2 className="h-5 w-5" />
+              <div className="flex flex-col items-center text-center group rounded-lg border border-slate-200/80 p-3">
+                <div className="w-14 h-14 rounded-full bg-slate-50 border border-slate-200/70 flex items-center justify-center text-blue-600 mb-2 shrink-0 group-hover:bg-blue-50 transition-colors shadow-2xs">
+                  <Maximize2 className="h-6 w-6" />
                 </div>
                 <span className="text-[11px] sm:text-[12px] lg:text-[12px] font-semibold text-slate-700 leading-tight">
                   {locale === 'vi' ? 'Co giãn 400%' : 'Stretch 400%'}
                 </span>
               </div>
 
-              <div className="flex flex-col items-center text-center group">
-                <div className="w-12 h-12 rounded-[3px] bg-slate-50 border border-slate-200/70 flex items-center justify-center text-blue-600 mb-2 shrink-0 group-hover:bg-blue-50 transition-colors shadow-2xs">
-                  <ShieldCheck className="h-5 w-5" />
+              <div className="flex flex-col items-center text-center group rounded-lg border border-slate-200/80 p-3">
+                <div className="w-14 h-14 rounded-full bg-slate-50 border border-slate-200/70 flex items-center justify-center text-blue-600 mb-2 shrink-0 group-hover:bg-blue-50 transition-colors shadow-2xs">
+                  <ShieldCheck className="h-6 w-6" />
                 </div>
                 <span className="text-[11px] sm:text-[12px] lg:text-[12px] font-semibold text-slate-700 leading-tight">
                   {locale === 'vi' ? 'Dẻo & Khó rách' : 'Tear Resistant'}
                 </span>
               </div>
 
-              <div className="flex flex-col items-center text-center group">
-                <div className="w-12 h-12 rounded-[3px] bg-slate-50 border border-slate-200/70 flex items-center justify-center text-blue-600 mb-2 shrink-0 group-hover:bg-blue-50 transition-colors shadow-2xs">
-                  <Droplets className="h-5 w-5" />
+              <div className="flex flex-col items-center text-center group rounded-lg border border-slate-200/80 p-3">
+                <div className="w-14 h-14 rounded-full bg-slate-50 border border-slate-200/70 flex items-center justify-center text-blue-600 mb-2 shrink-0 group-hover:bg-blue-50 transition-colors shadow-2xs">
+                  <Droplets className="h-6 w-6" />
                 </div>
                 <span className="text-[11px] sm:text-[12px] lg:text-[12px] font-semibold text-slate-700 leading-tight">
                   {locale === 'vi' ? 'Chống ẩm ướt' : 'Moisture Proof'}
                 </span>
               </div>
 
-              <div className="flex flex-col items-center text-center group">
-                <div className="w-12 h-12 rounded-[3px] bg-slate-50 border border-slate-200/70 flex items-center justify-center text-blue-600 mb-2 shrink-0 group-hover:bg-blue-50 transition-colors shadow-2xs">
-                  <RefreshCw className="h-5 w-5" />
+              <div className="flex flex-col items-center text-center group rounded-lg border border-slate-200/80 p-3">
+                <div className="w-14 h-14 rounded-full bg-slate-50 border border-slate-200/70 flex items-center justify-center text-blue-600 mb-2 shrink-0 group-hover:bg-blue-50 transition-colors shadow-2xs">
+                  <RefreshCw className="h-6 w-6" />
                 </div>
                 <span className="text-[11px] sm:text-[12px] lg:text-[12px] font-semibold text-slate-700 leading-tight">
                   {locale === 'vi' ? 'PE Tái chế' : 'Recyclable PE'}
@@ -397,39 +393,6 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                 }}
               />
 
-              {/* Request Sample Option */}
-              <div className="pt-2 border-t border-slate-200/80">
-                <RequestSampleButton
-                  productSlug={product.slug}
-                  productName={productName}
-                  skuCodes={skus.map((s: ProductSku) => s.sku_code)}
-                  labels={{
-                    requestSampleBtn: tSample('requestSampleBtn'),
-                    modalTitle: tSample('modalTitle'),
-                    modalDesc: tSample('modalDesc'),
-                    contactName: tSample('contactName'),
-                    email: tSample('email'),
-                    company: tSample('company'),
-                    phone: tSample('phone'),
-                    province: tSample('province'),
-                    district: tSample('district'),
-                    addressDetail: tSample('addressDetail'),
-                    message: tSample('message'),
-                    messagePlaceholder: tSample('messagePlaceholder'),
-                    selectProvince: tSample('selectProvince'),
-                    selectDistrict: tSample('selectDistrict'),
-                    submit: tSample('submit'),
-                    submitting: tSample('submitting'),
-                    success: tSample('success'),
-                    error: tSample('error'),
-                    required: tSample('required'),
-                    invalidEmail: tSample('invalidEmail'),
-                    invalidPhone: tSample('invalidPhone'),
-                    product: tSample('product'),
-                    skus: tSample('skus')
-                  }}
-                />
-              </div>
             </div>
           </div>
         </div>
@@ -451,6 +414,8 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
         <SavedProductsSection allProducts={allDbProducts} currentSlug={product.slug} locale={locale} />
       </div>
+
+      <ProductContactCta locale={locale} />
     </div>
   );
 }
