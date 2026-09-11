@@ -61,7 +61,7 @@ export default async function HubBenefits() {
   ];
 
   return (
-    <section className="w-full bg-white pt-16 pb-12 lg:pt-[80px] lg:pb-[60px] border-b border-slate-100">
+    <section className="w-full bg-white pt-16 pb-12 lg:pt-[80px] lg:pb-[60px] border-t border-b border-slate-100">
       <div className="page-container flex flex-col items-center gap-10 lg:gap-[64px] px-6 sm:px-10">
         
         {/* Header */}
