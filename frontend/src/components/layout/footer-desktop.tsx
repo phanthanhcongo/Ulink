@@ -253,12 +253,10 @@ export function FooterDesktop() {
 
       {/* ── COL 5: APP DOWNLOAD CARD ── */}
       <section aria-label="Tải ứng dụng">
-        <div className="h-20 flex items-center justify-center text-center mb-4">
-          <strong className="block text-[14px] font-bold uppercase tracking-wider text-[#151b2a] text-center">
+        <div className="rounded-[3px] bg-[#eaf1fa] p-5 text-center">
+          <strong className="block text-[14px] font-bold uppercase tracking-wider text-[#151b2a] mb-4">
             {t('downloadApp')}
           </strong>
-        </div>
-        <div className="rounded-[3px] bg-[#eaf1fa] p-4 text-center flex justify-center items-center">
           <div className="relative mx-auto h-32 w-32 rounded bg-white p-1 shadow-xs">
             <Image
               src={ASSETS.footer.qrCode}
