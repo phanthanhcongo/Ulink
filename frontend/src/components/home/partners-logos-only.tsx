@@ -22,7 +22,7 @@ export function PartnersLogosOnly() {
 
   return (
     <div className="flex flex-col gap-5 overflow-hidden mask-gradient-x py-2 select-none w-full">
-      <h3 className="text-center text-caption-responsive font-bold uppercase tracking-wide text-slate-700 px-4">
+      <h3 className="text-center text-[11px] sm:text-[12px] font-bold uppercase tracking-wide text-slate-700 px-8 sm:px-4 max-w-3xl mx-auto">
         HƠN 300 DOANH NGHIỆP FDI & TẬP ĐOÀN DƯỢC PHẨM ĐỒNG HÀNH CÙNG ULINK INDUSTRIES
       </h3>
       {/* Row 1 Marquee: Left scrolling */}
