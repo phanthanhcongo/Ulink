@@ -36,10 +36,10 @@ export function TargetSegments() {
       <div className="block md:hidden px-4 py-8">
         {/* Mobile Header: Left aligned */}
         <div className="text-left max-w-xl mb-8 space-y-1">
-          <span className="text-caption-responsive font-bold uppercase tracking-tight text-blue-600 leading-tight block">
+          <span className="text-section-title-sm uppercase tracking-tight text-blue-600 leading-tight block">
             {t('targetSegments.sectionTitle')}
           </span>
-          <h2 className="text-section-title font-bold text-slate-900">
+          <h2 className="text-section-title text-slate-900">
             {t('targetSegments.sectionSubTitle')}
           </h2>
         </div>

@@ -305,9 +305,13 @@
   }
 
   .text-section-title {
-    @apply text-[18px] font-semibold leading-tight tracking-tight min-[375px]:text-[20px] sm:text-[26px] sm:leading-[34px] lg:text-[28px] lg:leading-[36px];
+    @apply text-[18px] font-bold leading-tight tracking-tight min-[375px]:text-[20px] sm:text-[26px] sm:leading-[34px] lg:text-[28px] lg:leading-[36px];
   }
 
+  .text-section-title-sm {
+    @apply text-[16px] font-normal leading-tight tracking-tight min-[375px]:text-[18px] sm:text-[24px] sm:font-semibold sm:leading-[32px] lg:text-[26px] lg:leading-[34px];
+  }
+  
   .text-eyebrow {
     @apply text-[12px] font-semibold tracking-tight sm:text-[14px] lg:text-[15px] xl:text-[16px];
   }
@@ -333,7 +337,7 @@
   }
 
   .text-caption-responsive {
-    @apply text-[10px] font-medium sm:text-[11px] lg:text-[12px];
+    @apply text-[12px] font-medium sm:text-[12px] lg:text-[12px];
   }
 
   .text-stat-value {
