@@ -121,20 +121,23 @@ export default function HubHeroSection({ locale }: HubHeroSectionProps) {
               <span className="text-body-regular font-bold text-slate-900 leading-snug text-center md:text-left">
                 {t.trackOrder}
               </span>
-              <form onSubmit={handleSearchTracking} className="flex flex-col sm:flex-row items-stretch gap-2.5 sm:gap-0 w-full">
-                <div className="relative flex-1">
-                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400 pointer-events-none stroke-[2]" />
+              <form
+                onSubmit={handleSearchTracking}
+                className="group flex flex-col sm:flex-row items-stretch gap-2.5 sm:gap-0 w-full bg-white border border-slate-300 hover:border-slate-400 focus-within:border-brand focus-within:ring-1 focus-within:ring-brand rounded-[3px] transition-colors overflow-hidden"
+              >
+                <div className="relative flex-1 h-[48px]">
+                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400 group-hover:text-slate-600 group-focus-within:text-brand pointer-events-none stroke-[2] transition-colors" />
                   <input
                     type="text"
                     value={trackingCode}
                     onChange={(e) => setTrackingCode(e.target.value)}
                     placeholder={t.placeholder}
-                    className="w-full bg-white border border-slate-300 rounded-[3px] sm:rounded-r-none sm:border-r-0 pl-11 pr-4 py-3 text-body-regular text-slate-800 placeholder-slate-400 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand focus:z-10 transition-colors h-[48px]"
+                    className="w-full h-full bg-transparent pl-11 pr-4 text-body-regular text-slate-800 placeholder-slate-400 focus:outline-none"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="bg-brand hover:bg-brand-strong text-white font-bold text-body-regular px-8 py-3 rounded-[3px] sm:rounded-l-none flex items-center justify-center transition-colors shrink-0 h-[48px]"
+                  className="bg-brand hover:bg-brand-strong text-white font-bold text-body-regular px-8 py-3 flex items-center justify-center transition-colors shrink-0 h-[48px]"
                 >
                   {t.search}
                 </button>
