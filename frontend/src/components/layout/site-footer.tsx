@@ -10,7 +10,7 @@ export async function SiteFooter() {
   return (
     <footer className="relative w-full overflow-hidden bg-[#f3f7fc] text-slate-800">
       {/* ── MAIN FOOTER CONTAINER ── */}
-      <div className="page-container pt-8 pb-12 sm:pt-10 lg:pt-12 lg:pb-16">
+      <div className="page-container pt-8 pb-12 sm:pt-10 lg:py-[64px]">
         {/* 1. MOBILE VIEW (< md) */}
         <FooterMobile />
 
