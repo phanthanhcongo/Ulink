@@ -35,12 +35,13 @@ export default async function FeaturedProduct({ locale }: FeaturedProductProps) 
         {/* Row 1: Image Left, 4 Features Grid Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mt-12 items-center">
           {/* Left: Image */}
-          <div className="lg:col-span-6 relative w-full h-[360px] sm:h-[460px] lg:h-[540px] overflow-hidden shadow-sm bg-slate-50 border border-gray-100" style={{ borderRadius: '3px' }}>
+          <div className="lg:col-span-6 w-full overflow-hidden shadow-sm bg-slate-50 border border-gray-100 rounded-[2px]">
             <Image
               src="/images/home/section2/placeholder-picture0.png"
               alt={t('featuredProduct.title')}
-              fill
-              className="object-cover"
+              width={600}
+              height={420}
+              className="w-full h-auto object-contain block"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </div>
@@ -49,7 +50,7 @@ export default async function FeaturedProduct({ locale }: FeaturedProductProps) 
           <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-8 lg:pl-4">
             {/* Feature 1 */}
             <div className="flex flex-col items-start">
-              <div className="w-10 h-10 rounded-[3px] flex items-center justify-center text-blue-600 shrink-0 mb-4">
+              <div className="w-10 h-10 rounded-[2px] flex items-center justify-center text-blue-600 shrink-0 mb-4">
                 <ShoppingBag className="h-6 w-6" />
               </div>
               <p className="text-caption-responsive leading-relaxed text-slate-600 font-medium">
@@ -59,7 +60,7 @@ export default async function FeaturedProduct({ locale }: FeaturedProductProps) 
 
             {/* Feature 2 */}
             <div className="flex flex-col items-start">
-              <div className="w-10 h-10 rounded-[3px] flex items-center justify-center text-blue-600 shrink-0 mb-4">
+              <div className="w-10 h-10 rounded-[2px] flex items-center justify-center text-blue-600 shrink-0 mb-4">
                 <ShieldCheck className="h-6 w-6" />
               </div>
               <p className="text-caption-responsive leading-relaxed text-slate-600 font-medium">
@@ -69,7 +70,7 @@ export default async function FeaturedProduct({ locale }: FeaturedProductProps) 
 
             {/* Feature 3 */}
             <div className="flex flex-col items-start">
-              <div className="w-10 h-10 rounded-[3px] flex items-center justify-center text-blue-600 shrink-0 mb-4">
+              <div className="w-10 h-10 rounded-[2px] flex items-center justify-center text-blue-600 shrink-0 mb-4">
                 <Activity className="h-6 w-6" />
               </div>
               <p className="text-caption-responsive leading-relaxed text-slate-600 font-medium">
@@ -79,7 +80,7 @@ export default async function FeaturedProduct({ locale }: FeaturedProductProps) 
 
             {/* Feature 4 */}
             <div className="flex flex-col items-start">
-              <div className="w-10 h-10 rounded-[3px] flex items-center justify-center text-blue-600 shrink-0 mb-4">
+              <div className="w-10 h-10 rounded-[2px] flex items-center justify-center text-blue-600 shrink-0 mb-4">
                 <Truck className="h-6 w-6" />
               </div>
               <p className="text-caption-responsive leading-relaxed text-slate-600 font-medium">
@@ -92,12 +93,13 @@ export default async function FeaturedProduct({ locale }: FeaturedProductProps) 
         {/* Row 2: Image Left, Text Paragraph + CTA Button Right */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mt-16 lg:mt-24 items-center">
           {/* Left: Image */}
-          <div className="lg:col-span-6 relative w-full h-[360px] sm:h-[460px] lg:h-[540px] overflow-hidden shadow-sm bg-slate-50 border border-gray-100" style={{ borderRadius: '3px' }}>
+          <div className="lg:col-span-6 w-full overflow-hidden shadow-sm bg-slate-50 border border-gray-100 rounded-[2px]">
             <Image
               src="/images/home/section2/placeholder-picture1.png"
               alt={t('featuredProduct.row2Heading')}
-              fill
-              className="object-cover"
+              width={600}
+              height={530}
+              className="w-full h-auto object-contain block"
               sizes="(max-width: 1024px) 100vw, 50vw"
             />
           </div>
@@ -114,7 +116,7 @@ export default async function FeaturedProduct({ locale }: FeaturedProductProps) 
               <CategoryNavLink
                 categorySlug="industrial-packaging"
                 href="/solutions/listProduct"
-                className="inline-flex items-center justify-center rounded-[3px] bg-blue-600 px-6 py-3 text-caption-responsive leading-relaxed font-semibold text-white shadow-sm hover:bg-blue-700 transition-colors"
+                className="inline-flex items-center justify-center rounded-[2px] bg-blue-600 px-6 py-3 text-caption-responsive leading-relaxed font-semibold text-white shadow-sm hover:bg-blue-700 transition-colors"
               >
                 {t('featuredProduct.learnMore')}
               </CategoryNavLink>
