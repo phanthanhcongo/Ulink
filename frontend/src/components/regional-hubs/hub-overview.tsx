@@ -28,45 +28,45 @@ export default function HubOverview({ locale }: HubOverviewProps) {
   }> = {
     vi: {
       eyebrow: 'Tổng quan',
-      title: 'Cụm Dược phẩm & Mỹ phẩm Số 2 - Yên Phong, Bắc Ninh',
-      desc: 'Là một trong những trung tâm logistics và sản xuất trọng điểm của Ulink tại miền Bắc, Cụm Số 2 Yên Phong được thiết kế nhằm đáp ứng các tiêu chuẩn khắt khe nhất của ngành Dược phẩm, Mỹ phẩm và Thực phẩm chức năng. Hệ thống kho đạt chuẩn GDP/GSP cùng năng lực cung ứng nguyên liệu đầu vào đa dạng giúp các doanh nghiệp tối ưu hóa chi phí và đảm bảo tiến độ sản xuất liên tục.',
-      learnMore: 'Tìm hiểu thêm về Cụm Yên Phong →',
-      stat1Val: '99.8%',
-      stat1Lbl: 'Độ chính xác đơn hàng',
-      stat2Val: '24/7',
-      stat2Lbl: 'Vận hành kho & Giao hàng',
-      stat3Val: '500+',
-      stat3Lbl: 'Doanh nghiệp FDI tin dùng',
-      stat4Val: 'Top 1',
-      stat4Lbl: 'Hạ tầng logistics Dược phẩm',
+      title: 'Đối tác sản xuất và phân phối',
+      desc: 'ULink Industries hợp tác với hơn 50 đối tác sản xuất và phân phối trong nước và quốc tế, bao gồm các nhà máy gia công tại Việt Nam, Trung Quốc và Malaysia, cùng hệ thống kho vận và logistics trong hệ sinh thái ULINK. Mô hình đối tác giúp tối ưu chi phí sản xuất, rút ngắn thời gian giao hàng và đảm bảo chất lượng sản phẩm theo tiêu chuẩn quốc tế ISO 9001.',
+      learnMore: 'Xem thêm',
+      stat1Val: '98%',
+      stat1Lbl: 'Tỷ lệ khách hàng hài lòng',
+      stat2Val: '10,000+',
+      stat2Lbl: 'Số đơn hàng thực hiện',
+      stat3Val: '5,000+',
+      stat3Lbl: 'Số lượng SKU',
+      stat4Val: '10,000 m²',
+      stat4Lbl: 'Quy mô Nhà xưởng',
     },
     en: {
       eyebrow: 'Overview',
-      title: 'Pharma & Cosmetics Hub No. 2 - Yen Phong, Bac Ninh',
-      desc: 'As one of Ulink\'s key logistics and manufacturing hubs in the North, Yen Phong Hub No. 2 is designed to meet the strictest standards of the Pharmaceutical, Cosmetic, and Functional Food industries. GDP/GSP compliant warehouse system along with diverse raw material supply capability helps businesses optimize costs and ensure continuous production.',
-      learnMore: 'Learn more about Yen Phong Hub →',
-      stat1Val: '99.8%',
-      stat1Lbl: 'Order Accuracy',
-      stat2Val: '24/7',
-      stat2Lbl: 'Warehouse & Delivery',
-      stat3Val: '500+',
-      stat3Lbl: 'FDI Enterprises Trust Us',
-      stat4Val: 'Top 1',
-      stat4Lbl: 'Pharma Logistics Infra',
+      title: 'Manufacturing & Distribution Partners',
+      desc: 'ULink Industries partners with over 50 domestic and international manufacturing and distribution partners, including contract manufacturers in Vietnam, China, and Malaysia, along with warehousing and logistics systems in the ULINK ecosystem. The partner model helps optimize production costs, shorten delivery times, and ensure product quality according to international ISO 9001 standards.',
+      learnMore: 'Learn more',
+      stat1Val: '98%',
+      stat1Lbl: 'Customer Satisfaction Rate',
+      stat2Val: '10,000+',
+      stat2Lbl: 'Completed Orders',
+      stat3Val: '5,000+',
+      stat3Lbl: 'Total SKUs',
+      stat4Val: '10,000 m²',
+      stat4Lbl: 'Warehouse Space',
     },
     ja: {
       eyebrow: '概要',
-      title: '医薬品・化粧品ハブ第2 - バクニン省イエンフォン',
-      desc: '北部におけるUlinkの主要なロジスティクスおよび製造ハブの1つとして、イエンフォン第2ハブは医薬品、化粧品、機能性食品産業の最も厳しい基準を満たすように設計されています。GDP/GSP準拠の倉庫システムと多様な raw material 供給能力により、企業はコストを最適化し、連続生産を確保できます。',
-      learnMore: 'イエンフォンハブの詳細を見る →',
-      stat1Val: '99.8%',
-      stat1Lbl: '注文精度',
-      stat2Val: '24/7',
-      stat2Lbl: '倉庫運営・配送',
-      stat3Val: '500+',
-      stat3Lbl: '信頼するFDI企業',
-      stat4Val: 'Top 1',
-      stat4Lbl: '医薬品物流インフラ',
+      title: '製造・流通パートナー',
+      desc: 'ULink Industriesは、ベトナム、中国、マレーシアの委託製造工場をはじめ、ULINKエコシステム内の倉庫・物流システムを含む、50社以上の国内外の製造・流通パートナーと提携しています。パートナーモデルにより、製造コストの最適化、納期の短縮、および国際規格ISO 9001に準拠した製品品質の確保が実現します。',
+      learnMore: '詳細を見る',
+      stat1Val: '98%',
+      stat1Lbl: '顧客満足度',
+      stat2Val: '10,000+',
+      stat2Lbl: '累計受注数',
+      stat3Val: '5,000+',
+      stat3Lbl: '取扱SKU数',
+      stat4Val: '10,000 m²',
+      stat4Lbl: '倉庫・工場規模',
     }
   };
 
@@ -80,36 +80,36 @@ export default function HubOverview({ locale }: HubOverviewProps) {
   ];
 
   return (
-    <section className="w-full bg-white pt-32 pb-16 sm:pt-40 sm:pb-20 lg:pt-48 lg:pb-24 border-b border-slate-100">
-      <div className="page-container flex flex-col gap-10">
-        
+    <section className="w-full bg-white pt-24 sm:pt-28 lg:pt-[136px] pb-[80px] border-b border-slate-100">
+      <div className="page-container flex flex-col gap-[48px]">
+
         {/* === Part 1: Heading & Description === */}
-        <div className="flex flex-col items-start text-left w-full space-y-1 sm:space-y-2">
-          <span className="text-body-regular min-[375px]:text-card-title font-semibold tracking-tight text-blue-600 leading-tight lg:leading-[36px] xl:leading-[40px] block">
+        <div className="flex flex-col items-start text-left w-full max-w-5xl">
+          <span className="text-eyebrow font-semibold uppercase tracking-wider text-slate-900 block mb-1">
             {t.eyebrow}
           </span>
-          <h2 className="text-body-regular min-[375px]:text-card-title font-semibold tracking-tight text-slate-900 leading-tight lg:leading-[36px] xl:leading-[40px]">
+          <h2 className="text-section-title font-semibold tracking-tight text-slate-900 leading-tight">
             {t.title}
           </h2>
-          <p className="pt-2 text-caption-responsive leading-relaxed text-slate-500 max-w-[1100px]">
+          <p className="mt-3.5 text-body-regular sm:text-body-large leading-relaxed text-slate-600">
             {t.desc}
           </p>
           <Link
             href="/about"
-            className="pt-2 text-caption-responsive leading-relaxed font-semibold text-blue-600 hover:underline inline-flex items-center"
+            className="mt-3 text-body-regular font-semibold text-blue-600 hover:underline inline-flex items-center gap-1"
           >
             {t.learnMore}
           </Link>
         </div>
 
-        {/* === Part 2: Metrics Bar (Individual Mapped Cards) === */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3.5 w-full">
+        {/* === Part 2: Metrics Bar === */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 lg:gap-6 w-full">
           {statsData.map((stat) => (
             <div
               key={stat.id}
-              className="group flex items-center gap-2.5 sm:gap-4 p-3.5 sm:p-6 bg-[#E8F0FE]/40 rounded-[3px] border border-blue-100/80 shadow-xs hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] hover:-translate-y-0.5 hover:scale-[1.01] hover:bg-[#E8F0FE]/60 transition-all duration-300"
+              className="group flex items-center gap-3 sm:gap-4 p-4 sm:p-5 bg-[#F4F7FB] rounded-[4px] border border-slate-200/80 shadow-xs transition-all duration-300"
             >
-              <div className="flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-full bg-brand/10 group-hover:scale-105 transition-transform p-2 sm:p-2.5">
+              <div className="flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-full bg-blue-600/10 p-2.5">
                 <div className="relative h-full w-full">
                   <Image
                     src={stat.iconSrc}
@@ -120,10 +120,10 @@ export default function HubOverview({ locale }: HubOverviewProps) {
                 </div>
               </div>
               <div className="flex flex-col text-left">
-                <span className="text-card-title min-[375px]:text-card-title font-bold text-slate-900 leading-none">
+                <span className="text-stat-value font-semibold text-slate-900 leading-none">
                   {stat.value}
                 </span>
-                <span className="mt-1 sm:mt-1.5 text-caption-responsive font-medium text-slate-500 leading-tight">
+                <span className="mt-1 text-caption-responsive sm:text-body-regular font-medium text-slate-600 leading-tight">
                   {stat.label}
                 </span>
               </div>

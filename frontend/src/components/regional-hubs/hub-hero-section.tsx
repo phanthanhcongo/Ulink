@@ -116,8 +116,8 @@ export default function HubHeroSection({ locale }: HubHeroSectionProps) {
       {/* Order Tracking Card (Overlapping bottom edge) */}
       <div className="absolute bottom-0 left-0 right-0 z-20 translate-y-1/2">
         <div className="page-container">
-          <div className="w-full bg-white rounded-[3px] p-6 sm:p-8 shadow-2xl border border-slate-100/60">
-            <div className="flex flex-col gap-4">
+          <div className="w-full bg-[#F5F8FC] rounded-[3px] p-6 sm:p-8 shadow-2xl border border-slate-100/60">
+            <div className="flex flex-col gap-4 w-[80%] mx-auto">
               <span className="text-body-regular font-bold text-slate-900 leading-snug text-center md:text-left">
                 {t.trackOrder}
               </span>
