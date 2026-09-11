@@ -63,7 +63,7 @@ export default function HubSolutions({ locale }: HubSolutionsProps) {
       <div className="page-container flex flex-col items-start sm:items-center">
         
         {/* Title Area */}
-        <div className="text-left sm:text-center max-w-[600px] w-full flex flex-col items-start sm:items-center gap-2 sm:gap-[28px]">
+        <div className="text-left sm:text-center max-w-[600px] w-full flex flex-col items-start sm:items-center gap-2 sm:gap-2.5">
           <h2 className="text-body-regular min-[375px]:text-card-title font-semibold sm:font-bold tracking-tight text-slate-900 leading-tight lg:leading-[36px]">
             {t.eyebrow}
           </h2>
@@ -74,7 +74,7 @@ export default function HubSolutions({ locale }: HubSolutionsProps) {
 
 
         {/* 4 Feature Columns Row (2 items per row on mobile) */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 md:gap-10 mt-8 sm:mt-16 w-full">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-8 md:gap-10 mt-6 sm:mt-10 w-full">
           
           {/* Column 1: Supply Chain */}
           <div className="flex flex-col items-start text-left sm:items-center sm:text-center group">
