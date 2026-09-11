@@ -50,7 +50,7 @@ export function NewsCard({ slug, date, title, image, readMoreText, category, aut
         </div>
 
         {/* News Article Title */}
-        <h4 className="text-body-large font-bold leading-snug text-slate-900 transition-colors group-hover:text-blue-600 line-clamp-2 min-h-[48px]">
+        <h4 className="text-body-regular font-bold leading-snug text-slate-900 transition-colors group-hover:text-blue-600 line-clamp-2 min-h-[44px]">
           {displayTitle}
         </h4>
 

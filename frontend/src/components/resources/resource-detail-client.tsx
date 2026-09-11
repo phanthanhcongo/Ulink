@@ -440,7 +440,7 @@ export function ResourceDetailClient({ data, locale }: ResourceDetailClientProps
           {/* Cột phải: Related Resources */}
           <aside className="lg:col-span-3 space-y-6">
             <div className="p-6 rounded-[3px] bg-white border border-slate-200/80 shadow-sm">
-              <h3 className="text-body-regular font-bold text-slate-900 uppercase tracking-wider mb-5 border-b border-slate-100 pb-3 flex items-center gap-2">
+              <h3 className="text-caption-responsive font-bold text-slate-800 uppercase tracking-wider mb-4 border-b border-slate-100 pb-2.5 flex items-center gap-2">
                 <BookOpen className="h-4 w-4 text-brand" />
                 {localeLang === 'vi'
                   ? 'Tài liệu liên quan'
@@ -449,10 +449,10 @@ export function ResourceDetailClient({ data, locale }: ResourceDetailClientProps
                     : 'Related documents'}
               </h3>
 
-              <div className="space-y-5">
+              <div className="space-y-4">
                 {relatedResources.map((item) => (
-                  <div key={item.id} className="group flex gap-3 border-b border-slate-100 pb-4 last:border-b-0 last:pb-0">
-                    <div className="relative h-16 w-20 shrink-0 overflow-hidden rounded-[3px] border border-slate-100 shadow-sm bg-slate-50">
+                  <div key={item.id} className="group flex gap-3 border-b border-slate-100 pb-3.5 last:border-b-0 last:pb-0">
+                    <div className="relative h-14 w-16 shrink-0 overflow-hidden rounded-[3px] border border-slate-100 shadow-sm bg-slate-50">
                       <Image
                         src={item.image}
                         alt={item.title[localeLang]}
@@ -461,10 +461,10 @@ export function ResourceDetailClient({ data, locale }: ResourceDetailClientProps
                       />
                     </div>
                     <div className="space-y-1">
-                      <span className="inline-block px-2 py-0.5 text-caption-responsive font-bold uppercase tracking-wide bg-blue-50 text-blue-700 rounded-[3px] border border-blue-100">
+                      <span className="inline-block px-1.5 py-0.5 text-[10px] sm:text-caption-responsive font-bold uppercase tracking-wide bg-blue-50 text-blue-700 rounded-[3px] border border-blue-100">
                         {item.badge[localeLang]}
                       </span>
-                      <h4 className="text-caption-responsive font-bold text-slate-900 leading-snug line-clamp-2 group-hover:text-brand transition-colors">
+                      <h4 className="text-xs sm:text-sm font-semibold text-slate-800 leading-snug line-clamp-2 group-hover:text-brand transition-colors">
                         {item.title[localeLang]}
                       </h4>
                       <Link
