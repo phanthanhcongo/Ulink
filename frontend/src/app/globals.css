@@ -337,7 +337,7 @@
   }
 
   .text-caption-responsive {
-    @apply text-[12px] font-medium sm:text-[12px] lg:text-[12px];
+    @apply text-[13px] font-medium;
   }
 
   .text-stat-value {
