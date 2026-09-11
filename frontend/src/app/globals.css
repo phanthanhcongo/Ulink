@@ -329,7 +329,7 @@
   }
 
   .text-caption-responsive {
-    @apply text-[12px] font-medium sm:text-[13px] lg:text-[14px] xl:text-[15px];
+    @apply text-[10px] font-medium sm:text-[11px] lg:text-[12px];
   }
 
   .text-stat-value {
