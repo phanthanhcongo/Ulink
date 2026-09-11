@@ -47,24 +47,24 @@ export type EventDetail = {
 const EVENT_DETAILS: Record<string, EventDetail> = {
   'ev-001': {
     slug: 'ev-001',
-    title: 'ULink Tech Summit 2026: Decentralized Future',
+    title: 'Hội thảo công nghệ phòng sạch 2024',
     summary:
-      'Chương trình thường niên quy tụ các chuyên gia hàng đầu trong lĩnh vực Blockchain, Web3 và Trí tuệ Nhân tạo để thảo luận và chia sẻ xu hướng phát triển nền kinh tế phi tập trung.',
-    image: '/images/resources/events/event (1).png', // Cập nhật hình ảnh sự kiện tương tự banner
+      'Sự kiện giao lưu và chia sẻ kiến thức chuyên ngành phòng sạch hàng đầu Việt Nam quy tụ các chuyên gia xuất sắc.',
+    image: '/images/resources/autohtml/thumb16.png',
     images: [
-      '/images/resources/events/conference-hall.webp',
-      '/images/resources/events/event (1).png'
+      '/images/resources/autohtml/thumb16.png',
+      '/images/resources/events/conference-hall.webp'
     ],
-    date: 'Thứ Bảy, 15 tháng 11, 2026',
-    time: '08:30 - 17:30',
-    startTime: '08:30 AM',
-    endTime: '17:30 PM',
+    date: '15/08/2024',
+    time: '09:00 - 17:00',
+    startTime: '09:00 AM',
+    endTime: '17:00 PM',
     timezone: 'UTC+07:00',
-    location: 'Trung tâm Hội nghị GEM Center, 8 Nguyễn Bỉnh Khiêm, Đa Kao, Quận 1, TP. Hồ Chí Minh',
-    locationName: 'Trung tâm Hội nghị GEM Center',
-    address: '8 Nguyễn Bỉnh Khiêm, Phường Đa Kao, Quận 1, TP. Hồ Chí Minh',
+    location: 'Hà Nội',
+    locationName: 'Hội trường Khách sạn Quốc tế Hà Nội',
+    address: 'Hà Nội',
     registrationStatus: 'UPCOMING',
-    price: '300.000đ/người',
+    price: '500.000 VNĐ',
     overview:
       'ULink Tech Summit 2026 là sự kiện thường niên quy tụ các chuyên gia hàng đầu trong lĩnh vực Blockchain, Web3 và Trí tuệ Nhân tạo. Sự kiện năm nay tập trung vào chủ đề "Decentralized Future – Xây dựng nền kinh tế số phi tập trung", nơi các diễn giả sẽ chia sẻ kinh nghiệm thực chiến về DeFi, NFT, DAO và các ứng dụng AI trong hệ sinh thái Web3. Tham gia sự kiện, bạn sẽ được kết nối với cộng đồng hơn 500 nhà phát triển, nhà đầu tư và người sáng lập startup từ khắp Đông Nam Á. Đây là cơ hội để cập nhật xu hướng mới nhất, tìm kiếm đối tác và khám phá các dự án tiềm năng trong ngành.',
     highlights: [
@@ -173,53 +173,46 @@ const EVENT_DETAILS: Record<string, EventDetail> = {
   },
   'ev-002': {
     slug: 'ev-002',
-    title:
-      'Hội nghị khách hàng và Triển lãm bao bì ESD cao cấp trong chuỗi cung ứng linh kiện điện tử',
+    title: 'Event: B2B Business Networking',
     summary:
-      'Sự kiện dành cho khách hàng điện tử với nội dung về cấu hình bao bì ESD, demo vật tư và chia sẻ case thực tế từ nhà máy.',
-    image: '/images/about/hero-warehouse.webp',
+      'Sự kiện kết nối doanh nghiệp B2B do ULink Industries tổ chức, tạo cơ hội hợp tác và mở rộng mạng lưới đối tác chiến lược.',
+    image: '/images/resources/autohtml/thumb17.png',
     images: [
-      '/images/resources/events/b2b-networking.webp',
-      '/images/resources/events/event (2).png'
+      '/images/resources/autohtml/thumb17.png',
+      '/images/resources/events/b2b-networking.webp'
     ],
-    date: 'Thứ Ba, 22 tháng 09, 2026',
-    time: '14:00 - 16:30',
-    startTime: '14:00 PM',
-    endTime: '16:30 PM',
+    date: '22/08/2024',
+    time: '08:30 - 12:00',
+    startTime: '08:30 AM',
+    endTime: '12:00 PM',
     timezone: 'UTC+07:00',
-    location: 'Khách sạn Crowne Plaza, Số 36 Lê Đức Thọ, Hà Nội',
-    locationName: 'Khách sạn Crowne Plaza',
-    address: 'Số 36 Lê Đức Thọ, Quận Nam Từ Liêm, Hà Nội',
+    location: 'GOM BISTRO - 2C Trần Thánh Tông, HBT, Hà Nội',
+    locationName: 'GOM BISTRO',
+    address: '2C Trần Thánh Tông, HBT, Hà Nội',
     registrationStatus: 'UPCOMING',
-    price: 'Miễn phí',
+    price: '300.000 VNĐ',
     overview:
-      'Chương trình chia sẻ cách thiết kế gói bao bì ESD đúng chuẩn, giảm lỗi vận chuyển và tối ưu hiệu quả chi phí cho chuỗi cung ứng điện tử.',
+      'Chương trình kết nối doanh nghiệp B2B do ULink Industries tổ chức nhằm tạo cơ hội hợp tác và mở rộng mạng lưới đối tác chiến lược trong chuỗi cung ứng sản xuất.',
     highlights: [
-      'Hiểu cách chọn bao bì ESD theo từng loại linh kiện',
-      'Xem demo vật tư và cấu hình đóng gói thực tế',
-      'Trao đổi trực tiếp với đội ngũ kỹ thuật ULink',
-      'Kết nối với các bộ phận mua hàng và QA/QC'
+      'Giao lưu trực tiếp với hơn 100 lãnh đạo doanh nghiệp B2B',
+      'Tìm kiếm đối tác chiến lược và nhà cung ứng vật tư phòng sạch',
+      'Trao đổi cơ hội hợp tác kinh doanh và mở rộng thị trường'
     ],
     agenda: [
       {
-        time: '13:30 - 14:00',
-        title: 'Đón khách và check-in',
-        description: 'Nhận tài liệu, name tag và thông tin khu trưng bày.'
+        time: '08:30 - 09:00',
+        title: 'Đón khách và check-in Networking',
+        description: 'Nhận thẻ tham dự và giao lưu tự do tại sảnh.'
       },
       {
-        time: '14:00 - 14:35',
-        title: 'Chiến lược bao bì ESD cho chuỗi cung ứng điện tử',
-        description: 'Phân tích các lỗi thường gặp và cách thiết kế gói đóng gói chuẩn xuất khẩu.'
+        time: '09:00 - 10:30',
+        title: 'Phiên kết nối B2B Business Matching',
+        description: 'Thảo luận hợp tác 1-1 giữa các nhà cung ứng và đối tác sản xuất.'
       },
       {
-        time: '14:35 - 15:15',
-        title: 'Demo vật tư và case thực tế',
-        description: 'Trình bày các cấu hình bao bì chống tĩnh điện đang dùng tại nhà máy.'
-      },
-      {
-        time: '15:15 - 15:45',
-        title: 'Giao lưu, hỏi đáp',
-        description: 'Giải đáp tình huống kỹ thuật và nhu cầu tùy chỉnh của doanh nghiệp.'
+        time: '10:30 - 12:00',
+        title: 'Tiệc trà & Thảo luận tự do',
+        description: 'Ký kết biên bản ghi nhớ và trao đổi liên hệ.'
       }
     ],
     speakers: [
@@ -229,43 +222,15 @@ const EVENT_DETAILS: Record<string, EventDetail> = {
         company: 'ULink Industries',
         bio: 'Phụ trách các giải pháp đóng gói, lưu kho và vận chuyển cho ngành điện tử.',
         avatar: '/images/resources/events/eventDetails/speaker (4).png'
-      },
-      {
-        name: 'Bà Nguyễn Thảo Vy',
-        title: 'Chuyên gia vật tư ESD',
-        company: 'ULink Industries',
-        bio: 'Nghiên cứu và triển khai các dòng bao bì chống tĩnh điện, chống ẩm và tối ưu chi phí.',
-        avatar: '/images/resources/events/eventDetails/speaker (5).png'
-      },
-      {
-        name: 'Ông Lâm Hoàng Sơn',
-        title: 'Chuyên gia đánh giá ESD',
-        company: 'SafeTech Vietnam',
-        bio: 'Chuyên gia đánh giá tiêu chuẩn chống tĩnh điện chuẩn ANSI/ESD S20.20 quốc tế cho các nhà máy.',
-        avatar: '/images/resources/events/eventDetails/speaker (3).png'
       }
     ],
     hosts: [
-      {
-        name: 'Ông Nguyễn Văn Thành',
-        title: 'Technical Support Lead',
-        company: 'ULink Industries',
-        bio: 'Chuyên gia hỗ trợ kỹ thuật và đánh giá giải pháp phòng sạch, chống tĩnh điện cho nhà máy.',
-        avatar: '/images/resources/events/eventDetails/speaker (6).png'
-      },
       {
         name: 'Bà Đặng Minh Hằng',
         title: 'Customer Relations Manager',
         company: 'ULink Industries',
         bio: 'Phụ trách chăm sóc khách hàng và điều phối các sự kiện kết nối doanh nghiệp B2B tại ULink.',
         avatar: '/images/resources/events/eventDetails/speaker (5).png'
-      },
-      {
-        name: 'Bà Vũ Thùy Linh',
-        title: 'PR & Event Specialist',
-        company: 'ULink Industries',
-        bio: 'Chuyên viên truyền thông và tổ chức sự kiện, hỗ trợ dẫn dắt kết nối tại triển lãm.',
-        avatar: '/images/resources/events/eventDetails/speaker (2).png'
       }
     ],
     sponsors: [
@@ -273,15 +238,14 @@ const EVENT_DETAILS: Record<string, EventDetail> = {
       'kontrastr'
     ],
     benefits: [
-      'Nắm được cách chọn bao bì ESD đúng cho từng loại linh kiện',
-      'Nhận bảng tham khảo cấu hình gói đóng gói phổ biến',
-      'Trao đổi với đội ngũ kỹ thuật về bài toán xuất khẩu',
-      'Xem demo trực tiếp vật tư và vật liệu đóng gói'
+      'Mở rộng mạng lưới đối tác B2B chiến lược',
+      'Trao đổi cơ hội cung ứng vật tư trực tiếp',
+      'Nhận bộ tài liệu và ưu đãi đối tác từ ULink'
     ],
     organizer: {
       name: 'ULink Industries',
       description:
-        'Sự kiện dành cho khách hàng điện tử, tập trung vào giải pháp bao bì ESD và tối ưu chuỗi cung ứng.',
+        'Sự kiện dành cho khách hàng và đối tác B2B, tập trung vào giải pháp bao bì ESD và tối ưu chuỗi cung ứng.',
       contact: 'contact@ulinkindustries.com',
       logo: '/images/logo/image.png',
       role: 'Đơn vị tổ chức'
@@ -289,22 +253,22 @@ const EVENT_DETAILS: Record<string, EventDetail> = {
   },
   'ev-003': {
     slug: 'ev-003',
-    title: 'Workshop trực tuyến: chọn vật tư phòng sạch phù hợp cho dây chuyền xuất khẩu 2026',
+    title: 'Tọa đàm: Xu hướng công nghiệp 4.0',
     summary:
-      'Workshop thực chiến về cách chọn găng tay, khẩu trang, khăn lau và vật tư đóng gói cho dây chuyền xuất khẩu.',
-    image: '/images/home/section2/solution-packaging.webp',
+      'Cập nhật xu hướng và công nghệ mới nhất trong sản xuất công nghiệp hiện đại.',
+    image: '/images/resources/autohtml/thumb18.png',
     images: [
-      '/images/resources/events/seminar-room.webp',
-      '/images/resources/events/event (3).png'
+      '/images/resources/autohtml/thumb18.png',
+      '/images/resources/events/seminar-room.webp'
     ],
-    date: 'Thứ Hai, 05 tháng 10, 2026',
-    time: '08:30 - 17:00',
-    startTime: '08:30 AM',
-    endTime: '17:00 PM',
+    date: '05/09/2024',
+    time: '14:00 - 16:30',
+    startTime: '14:00 PM',
+    endTime: '16:30 PM',
     timezone: 'UTC+07:00',
-    location: 'Văn phòng đại diện ULink, Quận 1, TP. Hồ Chí Minh',
-    locationName: 'Văn phòng đại diện ULink',
-    address: 'Quận 1, TP. Hồ Chí Minh',
+    location: 'Đà Nẵng',
+    locationName: 'Trung tâm Công nghệ Cao Đà Nẵng',
+    address: 'Đà Nẵng',
     registrationStatus: 'UPCOMING',
     price: 'Miễn phí',
     overview:

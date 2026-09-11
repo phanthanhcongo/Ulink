@@ -82,7 +82,7 @@ export function EventCard({ event, locale }: EventCardProps) {
   return (
     <Link
       href={href}
-      className="group ui-card-hover flex flex-col bg-white border border-slate-100 rounded-[3px] overflow-hidden shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#9fc2ef] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] h-full"
+      className="group ui-card-hover flex flex-col bg-white border border-slate-100 rounded-[6px] overflow-hidden shadow-[0_4px_16px_rgba(10,26,59,0.09)] transition-all duration-300 hover:-translate-y-1 hover:border-[#9fc2ef] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)] h-full cursor-pointer"
     >
       {/* Top Image Area */}
       <div className="relative aspect-[16/10] w-full bg-slate-50 overflow-hidden">
@@ -113,61 +113,61 @@ export function EventCard({ event, locale }: EventCardProps) {
           />
         )}
 
-        {/* Top Left Date Badge */}
-        <div className="absolute top-4 left-4 z-10 bg-blue-600/90 backdrop-blur-xs text-white text-[10px] sm:text-[11px] font-semibold px-3 py-0.5 sm:px-4 sm:py-1 rounded-full shadow-sm">
+        {/* Top Left Date Badge - Figma: 11px / SemiBold 600 */}
+        <div className="absolute top-4 left-4 z-10 bg-[#1769e2] text-white text-[11px] font-semibold px-2.5 py-1 rounded-full shadow-xs">
           {dateBadge}
         </div>
 
-        {/* Top Right Category Badge */}
-        <div className="absolute top-4 right-4 z-10 bg-emerald-600/90 backdrop-blur-xs text-white text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider px-3 py-0.5 sm:px-3.5 sm:py-1 rounded-full shadow-sm">
+        {/* Top Right Category Badge - Figma: 11px / SemiBold 600 */}
+        <div className="absolute top-4 right-4 z-10 bg-[#16a34a] text-white text-[11px] font-semibold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-xs">
           {badgeText}
         </div>
       </div>
 
       {/* Card Content */}
-      <div className="p-6 flex-1 flex flex-col justify-between">
-        <div>
-          {/* Title */}
-          <h3 className="text-body-regular font-bold text-slate-900 leading-snug group-hover:text-blue-600 transition-colors">
+      <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between gap-4">
+        <div className="space-y-3">
+          {/* Title - Figma: 15px / Bold 700 / #0a1a3b */}
+          <h3 className="text-[15px] font-bold text-[#0a1a3b] leading-[140%] group-hover:text-blue-600 transition-colors line-clamp-2">
             {titleText}
           </h3>
 
-          {/* Description */}
+          {/* Description - Figma: 13px / Regular 400 / #6b7a99 */}
           {descText && (
-            <p className="mt-3 text-caption-responsive text-slate-500 leading-relaxed font-normal line-clamp-2">
+            <p className="text-[13px] font-normal text-[#6b7a99] leading-[150%] line-clamp-2">
               {descText}
             </p>
           )}
 
-          {/* Details list */}
-          <div className="mt-5 space-y-2.5 text-caption-responsive text-slate-600">
-            <div className="flex items-center gap-3">
-              <Calendar className="h-4 w-4 text-blue-600 shrink-0" />
-              <span className="font-medium">
-                {event.date} • {timeText}
+          {/* Details list - Figma: 13px / Regular 400 / #6b7a99 */}
+          <div className="space-y-2 text-[13px] font-normal text-[#6b7a99] pt-1">
+            <div className="flex items-center gap-2">
+              <Calendar className="h-4 w-4 text-[#1769e2] shrink-0" />
+              <span>
+                {dateBadge} • {event.date} • {timeText}
               </span>
             </div>
 
             {locationText && (
-              <div className="flex items-center gap-3">
-                <MapPin className="h-4 w-4 text-blue-600 shrink-0" />
-                <span className="font-medium text-slate-500">{locationText}</span>
+              <div className="flex items-center gap-2">
+                <MapPin className="h-4 w-4 text-[#1769e2] shrink-0" />
+                <span className="line-clamp-1">{locationText}</span>
               </div>
             )}
 
             {priceText && (
-              <div className="flex items-center gap-3">
-                <Ticket className="h-4 w-4 text-blue-600 shrink-0" />
-                <span className="font-bold text-blue-600">{priceText}</span>
+              <div className="flex items-center gap-2 pt-1">
+                <Ticket className="h-4 w-4 text-[#1769e2] shrink-0" />
+                <span className="text-[14px] font-bold text-[#1769e2]">{priceText}</span>
               </div>
             )}
           </div>
         </div>
 
-        {/* Action Button */}
-        <div className="mt-6 pt-4 border-t border-slate-50">
+        {/* Action Button - Figma: 14px / Bold 700 / Height 45px / Border 1.25px #1769e2 */}
+        <div className="pt-2 border-t border-slate-50">
           <span
-            className="w-full inline-flex items-center justify-center py-3 border-2 border-[#1769E2] group-hover:bg-[#EBF3FE] text-[#1769E2] font-bold rounded-[3px] text-caption-responsive transition-colors shadow-xs"
+            className="w-full inline-flex items-center justify-center h-[45px] border-[1.25px] border-[#1769e2] group-hover:bg-[#ebf3fe] text-[#1769e2] font-bold rounded-[3px] text-[14px] transition-colors shadow-xs"
           >
             {ctaText}
           </span>

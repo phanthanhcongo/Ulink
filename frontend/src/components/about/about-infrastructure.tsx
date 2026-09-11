@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import { AboutSectionHeader } from './about-section-header';
 
 const items = [
   {
@@ -26,22 +27,18 @@ const items = [
 export function AboutInfrastructure() {
   return (
     <section className="py-6 lg:py-8 xl:py-10">
-      <div className="flex flex-col items-center text-center mb-8">
-        <span className="text-eyebrow font-bold text-blue-600 mb-2">
-          Vận hành hiện đại – Thông minh
-        </span>
-        <h2 className="text-section-title font-bold text-slate-900">
-          Hạ tầng kỹ thuật & Hệ thống tối ưu
-        </h2>
-      </div>
+      <AboutSectionHeader
+        eyebrow="Vận hành hiện đại – Thông minh"
+        title="Hạ tầng kỹ thuật & Hệ thống tối ưu"
+      />
 
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {items.map((item, index) => (
           <div
             key={index}
-            className="group flex flex-col overflow-hidden rounded-[3px] bg-white border border-slate-100 shadow-sm card-hover-standard"
+            className="group flex flex-col gap-4 overflow-hidden rounded-[6px] bg-white border border-slate-200 p-4 shadow-sm transition-all duration-300 hover:shadow-md"
           >
-            <div className="relative aspect-[4/3] w-full overflow-hidden bg-slate-100">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-[3px] bg-slate-100">
               <Image
                 src={item.image}
                 alt={item.title}
@@ -49,11 +46,11 @@ export function AboutInfrastructure() {
                 className="object-cover transition-transform duration-300 group-hover:scale-105"
               />
             </div>
-            <div className="flex flex-col p-4 sm:p-5 lg:p-4 xl:p-5">
-              <h3 className="text-card-title text-slate-900 group-hover:text-blue-600 transition-colors">
+            <div className="flex flex-col gap-2">
+              <h3 className="text-base sm:text-lg lg:text-[20px] lg:leading-[28px] font-semibold text-[#162233] group-hover:text-[#1769e2] transition-colors">
                 {item.title}
               </h3>
-              <p className="text-body-regular mt-2 text-slate-600">{item.desc}</p>
+              <p className="text-sm lg:text-[16px] lg:leading-[24px] font-normal text-[#617084]">{item.desc}</p>
             </div>
           </div>
         ))}

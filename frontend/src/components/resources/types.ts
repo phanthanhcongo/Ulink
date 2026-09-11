@@ -36,10 +36,10 @@ export interface ResourceItem {
   contentType?: 'article' | 'tech-doc' | 'certificate';
   author: Author;
   readTime: TranslatedString;
-  sections: Section[];
-  aiSummary: AISummary;
-  audioDuration: string;
-  audioSecs: number;
+  sections?: Section[];
+  aiSummary?: AISummary;
+  audioDuration?: string;
+  audioSecs?: number;
   size?: string;
   type?: string;
   downloadUrl?: string;
@@ -48,4 +48,6 @@ export interface ResourceItem {
   time?: string;
   location?: TranslatedString;
   price?: TranslatedString;
+  images?: string[];
+  link?: string;
 }

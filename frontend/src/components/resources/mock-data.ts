@@ -1,7 +1,7 @@
 import { FileText, BookOpen, ShieldCheck, Briefcase, Newspaper, CalendarDays } from 'lucide-react';
 import { ResourceItem } from './types';
 
-// Updated 6 Tabs configuration matching the screenshot
+// Updated 6 Tabs configuration matching the HTML design
 export const TABS = [
   { id: 'all', label: { vi: 'Tất cả', en: 'All', ja: 'すべて' }, icon: FileText },
   {
@@ -37,646 +37,1336 @@ export interface EventItem {
   description?: { vi: string; en: string; ja: string };
 }
 
-// 12 Mock Resources to display on the main grid (matching the screenshot layout)
+// 12 Main Resource Cards matching autohtml-project/index.html
 export const MOCK_RESOURCES: ResourceItem[] = [
   {
-    id: 'case-study-1',
-    category: 'case-study',
-    badge: { vi: 'Nghiên cứu điển hình', en: 'Case Study', ja: 'ケーススタディ' },
-    title: { vi: 'DN Điện tử × ULink Nitrile', en: 'Electronics Enterprise × ULink Nitrile', ja: '電子部品企業 × ULink Nitrile' },
-    description: { vi: 'Doanh nghiệp sản xuất linh kiện điện tử tại Bắc Ninh đã áp dụng tiêu chuẩn găng tay Nitrile của ULink, giảm 28% chi phí vật tư bảo hộ nhờ tối ưu độ dày, độ bền và quy trình kiểm định chất lượng.', en: 'Electronics factory in Bac Ninh saved 28% PPE cost by adopting ULink Nitrile glove standard, optimizing thickness and durability.', ja: 'バクニンの電子部品工場は、厚みと耐久性を最適化したULink Nitrile手袋規格を採用し、PPEコストを28%削減しました。' },
-    date: '23/08/2026',
-    image: '/images/home/section2/product-cut-gloves.webp',
-    author: {
-      name: { vi: 'Trần Thị Hồng Nhung', en: 'Tran Thi Hong Nhung', ja: 'Tran Thi Hong Nhung' },
-      role: { vi: 'Giám đốc Sản xuất', en: 'Production Director', ja: '製造ディレクター' },
-      avatar: '/images/regional_hubs/hub-2/QuangTran.png'
+    id: 'card-1',
+    category: 'guide',
+    badge: { vi: 'Infographic', en: 'Infographic', ja: 'インフォグラフィック' },
+    title: {
+      vi: 'Tiêu chuẩn phòng sạch ISO 14644',
+      en: 'Cleanroom Standard ISO 14644',
+      ja: 'クリーンルーム規格 ISO 14644'
     },
-    readTime: { vi: '6 phút đọc', en: '6 min read', ja: '6分' },
-    sections: [
-      {
-        id: 'cs1-sec1',
-        num: '1.',
-        title: { vi: 'Thử thách & Bối cảnh', en: 'Challenges & Context', ja: '課題と背景' },
-        content: { vi: 'Một nhà máy sản xuất bán dẫn và vi mạch lớn tại Bắc Ninh gặp khó khăn trong việc kiểm soát tỷ lệ lỗi sản phẩm do tĩnh điện (ESD) và bụi xơ từ găng tay cao su thông thường. Ngoài ra, hao phí găng tay quá lớn do găng dễ bị rách khi thao tác tiếp xúc với góc sắc cạnh của linh kiện.', en: 'A semiconductor factory in Bac Ninh faced issues with product defects from ESD and lint of standard gloves, plus high tear rates.', ja: 'バクニンの半導体工場は、標準手袋のESDと糸くずによる製品不良、および高い破れ率に直ement。' }
-      },
-      {
-        id: 'cs1-sec2',
-        num: '2.',
-        title: { vi: 'Giải pháp từ ULink Industries', en: 'ULink Industries Solution', ja: 'ULink Industriesの解決策' },
-        content: { vi: 'ULink cung cấp dòng găng tay Nitrile phòng sạch đạt chuẩn ISO Class 5, chống tĩnh điện bề mặt 10^6 - 10^9 Ohms, hoàn toàn không chứa bột và silicone. Chúng tôi hỗ trợ tư vấn độ dày tối ưu cho từng công đoạn lắp ráp.', en: 'ULink provided cleanroom Nitrile gloves with ISO Class 5 certification, surface resistivity of 10^6 - 10^9 Ohms, powder-free, and silicone-free.', ja: 'ULinkは、ISOクラス5認証、表面抵抗10^6-10^9Ω、パウダーフリー、シリコンフリーのクリーンルーム用ニトリル手袋を提供しました。' }
-      },
-      {
-        id: 'cs1-sec3',
-        num: '3.',
-        title: { vi: 'Kết quả đạt được', en: 'Key Results', ja: '主な成果' },
-        content: { vi: 'Tỷ lệ lỗi do ESD giảm 45%. Chi phí mua sắm vật tư bảo hộ giảm 28% hàng tháng nhờ tuổi thọ găng tay cao gấp 1.8 lần so với nhà cung cấp cũ.', en: 'ESD defects dropped by 45%. Monthly PPE costs decreased by 28% due to 1.8x longer lifespan than previous supplier.', ja: 'ESDによる不良が45%減少。前サプライヤーと比較して寿命が1.8倍に延びたため、月間PPEコストが28%削減されました。' }
-      }
-    ],
-    aiSummary: {
-      intro: { vi: 'Tóm tắt câu chuyện thành công lắp đặt quy chuẩn găng tay Nitrile phòng sạch tại nhà máy FDI Bắc Ninh.', en: 'Success story summary of installing cleanroom Nitrile gloves standard at a Bac Ninh FDI factory.', ja: 'バクニンのFDI工場におけるクリーンルーム用ニトリル手袋規格導入の成功事例の要約。' },
-      bullets: [
-        { vi: 'Giảm 28% chi phí mua sắm găng tay bảo hộ.', en: '28% reduction in protective glove purchasing costs.', ja: '保護手袋の購入コストを28%削減。' },
-        { vi: 'Tỷ lệ lỗi sản xuất do phóng tĩnh điện giảm 45%.', en: '45% reduction in production defect rate caused by ESD.', ja: 'ESDによる製造不良率を45%削減。' }
-      ]
+    description: {
+      vi: 'Hướng dẫn đầy đủ về phân loại phòng sạch theo tiêu chuẩn quốc tế ISO 14644.',
+      en: 'Comprehensive guide to cleanroom classification under ISO 14644 international standard.',
+      ja: '国際規格ISO 14644に基づくクリーンルーム分類の完全ガイド。'
     },
-    audioDuration: '0',
-    audioSecs: 0
-  },
-  {
-    id: 'case-study-2',
-    category: 'case-study',
-    badge: { vi: 'Nghiên cứu điển hình', en: 'Case Study', ja: 'ケーススタディ' },
-    title: { vi: 'Ứng dụng màng co PE', en: 'PE Shrink Film Application', ja: 'PEシュリンクフィルムの応用' },
-    description: { vi: 'Màng co PE dùng đóng chai nước ngọt, bó chặt chai thành lốc hoặc thùng, đảm bảo ổn định vận chuyển và lưu kho. Co nhiệt đều, bền kéo cao, chống thủng vượt trội cho nhà máy đồ uống.', en: 'PE shrink film applied for bundling soft drink bottles into packs, ensuring transport stability and high puncture resistance.', ja: 'ソフトドリンクボトルのパック結束用PEシュリンクフィルム、輸送安定性と高い穿刺抵抗性を確保。' },
-    date: '23/08/2026',
-    image: '/images/home/section2/product-custom-pkg.webp',
+    date: 'Tháng 11, 2024',
+    image: '/images/resources/autohtml/thumb0.png',
     author: {
-      name: { vi: 'Nguyễn Minh Tuấn', en: 'Nguyen Minh Tuan', ja: 'Nguyen Minh Tuan' },
-      role: { vi: 'Trưởng phòng Đóng gói', en: 'Packaging Head', ja: '包装責任者' },
-      avatar: '/images/regional_hubs/hub-2/KennyTran.png'
+      name: { vi: 'ULink Editorial', en: 'ULink Editorial', ja: 'ULink 編集部' },
+      role: { vi: 'Chuyên gia phòng sạch', en: 'Cleanroom Specialist', ja: 'クリーンルーム専門家' },
+      avatar: '/images/about/op-team.webp'
     },
     readTime: { vi: '5 phút đọc', en: '5 min read', ja: '5分' },
     sections: [
       {
-        id: 'cs2-sec1',
+        id: 'sec-1-1',
         num: '1.',
-        title: { vi: 'Yêu cầu từ Nhà máy Đồ uống', en: 'Beverage Factory Requirements', ja: '飲料工場の要件' },
-        content: { vi: 'Khách hàng là nhà máy sản xuất nước ngọt lớn yêu cầu giải pháp đóng lốc màng co nhiệt tự động tốc độ cao. Màng co phải có tỷ lệ co rút đồng đều, không bị rách mép hay nhăn góc khi đi qua buồng co nhiệt.', en: 'A major beverage factory required high-speed automatic bundling shrink film solutions with even shrinkage and no tearing.', ja: '主要な飲料工場は、均一な収縮と破れのない高速自動結束シュリンクフィルムソリューションを必要としていました。' }
+        title: {
+          vi: 'Tổng quan & Phạm vi áp dụng ISO 14644',
+          en: 'Overview & Scope of ISO 14644',
+          ja: 'ISO 14644の概要と適用範囲'
+        },
+        content: {
+          vi: 'Bộ tiêu chuẩn ISO 14644 là chuẩn mực quốc tế cao nhất dùng để đánh giá và phân loại độ sạch không khí trong các môi trường kiểm soát hạt bụi như công nghiệp bán dẫn, dược phẩm và thiết bị y tế.\n\nPhần ISO 14644-1 tập trung vào phân cấp nồng độ hạt bụi lơ lửng trong không khí, quy định phương pháp đo lường chính xác để xác định cấp độ sạch từ ISO Class 1 đến ISO Class 9.',
+          en: 'The ISO 14644 standards represent the global benchmark for evaluating air cleanliness in controlled environments such as semiconductor, pharmaceutical, and medical device manufacturing.\n\nISO 14644-1 specifies airborne particle concentration limits, defining precise measurement methodologies for ISO Class 1 through Class 9.',
+          ja: 'ISO 14644規格は、半導体、医薬品、医療機器などの管理環境における空気清浄度を評価する国際基準です。\n\nISO 14644-1は浮遊粒子濃度の分類に焦点を当て、ISOクラス1からクラス9までの清浄度レベルを決定するための正確な測定方法を規定しています。'
+        }
       },
       {
-        id: 'cs2-sec2',
+        id: 'sec-1-2',
         num: '2.',
-        title: { vi: 'Giải pháp Màng co PE nguyên sinh', en: 'Virgin PE Shrink Film Solution', ja: 'バージンPEシュリンクフィルム溶液' },
-        content: { vi: 'ULink cung cấp màng co PE sản xuất từ hạt nhựa LDPE nguyên sinh nhập khẩu, tối ưu hóa độ dày 50-60 mic giúp màng có độ dai chịu lực kéo tốt và độ trong suốt cao.', en: 'ULink supplied virgin LDPE shrink film, optimizing thickness between 50-60 microns for high tensile strength and clarity.', ja: 'ULinkはバージンLDPEシュリンクフィルムを供給し、高い引張強度と透明度のために厚さを50-60ミクロンに最適化しました。' }
+        title: {
+          vi: 'Phân loại cấp độ sạch (ISO Class 1 - Class 9)',
+          en: 'Air Cleanliness Classification (ISO Class 1 - Class 9)',
+          ja: '空気清浄度クラス（ISO Class 1〜Class 9）'
+        },
+        content: {
+          vi: 'Bảng phân loại ISO 14644-1 giới hạn số lượng hạt bụi tối đa cho phép trên mỗi mét khối không khí dựa trên các kích thước hạt từ 0.1 µm đến 5.0 µm.\n\nCác phòng sạch sản xuất chip điện tử quy mô nanomet thường yêu cầu ISO Class 1 đến Class 3, trong khi các nhà máy dược phẩm vô trùng thường áp dụng chuẩn ISO Class 5 đến Class 7.',
+          en: 'The ISO 14644-1 classification table limits maximum allowable particle concentrations per cubic meter of air across sizes from 0.1 µm to 5.0 µm.\n\nNanometer semiconductor fabs typically demand ISO Class 1 to Class 3, whereas sterile pharmaceutical facilities standardly run on ISO Class 5 to Class 7.',
+          ja: 'ISO 14644-1の分類表は、0.1 µmから5.0 µmまでの粒子サイズに基づいて、空気1立方メートルあたりの最大許容粒子数を制限しています。\n\nナノメートル級の半導体工場は通常ISOクラス1〜3を要求し、無菌医薬品工場はISOクラス5〜7を標準適用します。'
+        },
+        alertText: {
+          vi: 'Quy chuẩn: ISO Class 5 tương đương với tiêu chuẩn Federal Standard 209E Class 100 trước đây.',
+          en: 'Standard: ISO Class 5 is equivalent to the legacy Federal Standard 209E Class 100.',
+          ja: '基準：ISOクラス5は従来の米国連邦規格209Eクラス100と同等です。'
+        }
       },
       {
-        id: 'cs2-sec3',
+        id: 'sec-1-3',
         num: '3.',
-        title: { vi: 'Hiệu quả vận hành', en: 'Operational Performance', ja: '運用パフォーマンス' },
-        content: { vi: 'Quy trình đóng gói tự động chạy liên tục không bị gián đoạn do đứt màng. Ngoại quan kiện lốc chai căng phẳng đẹp mắt, bảo vệ hoàn hảo trong suốt quá trình phân phối xe tải.', en: 'Automatic packaging ran smoothly without film breakages, presenting a tight and clean pack appearance.', ja: 'フィルム切れによる停止がなく自動包装がスムーズに行われ、引き締まった清潔なパック外観を提供しました。' }
+        title: {
+          vi: 'Quy trình đo đạc & Kiểm soát nồng độ hạt bụi',
+          en: 'Particle Measurement & Monitoring Protocol',
+          ja: '粒子測定手順とプロトコル'
+        },
+        content: {
+          vi: 'Quy trình đánh giá tuân thủ ISO 14644 đòi hỏi sử dụng máy đếm hạt bụi quang học (Optical Particle Counter) được hiệu chuẩn định kỳ.\n\nMẫu không khí phải được thu thập tại các điểm đại diện ở các trạng thái vận hành: Trạng thái xây dựng (As-built), Trạng thái nghỉ (At-rest), và Trạng thái hoạt động (Operational).',
+          en: 'Compliance validation requires calibrated Optical Particle Counters.\n\nAir samples must be collected across representative sampling points in three operational states: As-built, At-rest, and Operational.',
+          ja: '規格準拠の評価には、定期的に校正された光学式粒子カウンターの使用が必要です。\n\n空気サンプルは、3つの運用状態（構築時、静止時、稼働時）で代表的な測定点から収集する必要があります。'
+        }
+      },
+      {
+        id: 'sec-1-4',
+        num: '4.',
+        title: {
+          vi: 'Khuyến nghị lựa chọn trang thiết bị phù hợp',
+          en: 'Equipment & Material Selection Recommendations',
+          ja: '機器および資材選定の推奨事項'
+        },
+        content: {
+          vi: 'Để duy trì chuẩn ISO 14644, toàn bộ vật tư như găng tay nitrile không bột, khăn lau phòng sạch siêu mịn, và trang phục chống tĩnh điện phải có mức phát sinh vi hạt (Lint generation) tiệm cận 0.',
+          en: 'To maintain ISO 14644 standards, all supplies including powder-free nitrile gloves, ultra-fine cleanroom wipes, and anti-static garments must exhibit near-zero particle generation.',
+          ja: 'ISO 14644規格を維持するために、パウダーフリーのニトリル手袋、極細クリーンルームワイパー、帯電防止服などの資材はすべて粒子発塵がほぼゼロである必要があります。'
+        }
       }
-    ],
-    aiSummary: {
-      intro: { vi: 'Phân tích ứng dụng thành công màng co PE nguyên sinh tại dây chuyền đóng chai nước ngọt.', en: 'Case analysis of successfully utilizing virgin PE shrink film in soft drink bottling lines.', ja: 'ソフトドリンクボトル詰めラインにおけるバージンPEシュリンクフィルムの導入成功事例の分析。' },
-      bullets: [
-        { vi: 'Độ dày tối ưu giúp tiết kiệm 12% nguyên liệu.', en: 'Optimized thickness saved 12% raw material.', ja: '最適化された厚みにより、原材料を12%削減。' },
-        { vi: 'Tỷ lệ lỗi đóng lốc tại buồng nhiệt giảm xuống dưới 0.1%.', en: 'Shrink tunnel error rate dropped below 0.1%.', ja: 'シュリンクトンネルの不良率が0.1%未満に低下。' }
-      ]
-    },
-    audioDuration: '0',
-    audioSecs: 0
+    ]
   },
   {
-    id: 'case-study-3',
-    category: 'case-study',
-    badge: { vi: 'Nghiên cứu điển hình', en: 'Case Study', ja: 'ケーススタディ' },
-    title: { vi: 'Giải pháp cho HVAC', en: 'Solutions for HVAC System', ja: 'HVACシステム向けソリューション' },
-    description: { vi: 'Băng keo nhôm ULink Industries dùng để bọc kín mối nối ống HVAC tại Nhà máy In Hải Quân, đảm bảo kín khít, chống thất thoát nhiệt và rò rỉ khí, nâng cao hiệu suất làm lạnh.', en: 'ULink aluminum foil tape applied to seal HVAC pipe joints at Navy Printing Factory, preventing heat loss and air leaks.', ja: '海軍印刷工場のHVAC配管継手シールにULinkアルミホイルテープを適用し、熱損失と空気漏れを防止。' },
-    date: '23/08/2026',
-    image: '/images/home/section2/product-hvac-tape.webp',
-    author: {
-      name: { vi: 'Phạm Thị Mai Lan', en: 'Pham Thi Mai Lan', ja: 'Pham Thi Mai Lan' },
-      role: { vi: 'Biên tập viên Kỹ thuật', en: 'Technical Editor', ja: '技術編集者' },
-      avatar: '/images/regional_hubs/hub-2/MinhHung.png'
+    id: 'card-2',
+    category: 'guide',
+    badge: { vi: 'Hướng dẫn kỹ thuật', en: 'Technical Guide', ja: '技術ガイド' },
+    title: {
+      vi: 'Hướng dẫn lựa chọn vật tư phòng sạch',
+      en: 'Guide to Selecting Cleanroom Supplies',
+      ja: 'クリーンルーム資材の選定ガイド'
     },
-    readTime: { vi: '4 phút đọc', en: '4 min read', ja: '4分' },
-    sections: [
-      {
-        id: 'cs3-sec1',
-        num: '1.',
-        title: { vi: 'Bảo ôn hệ thống ống gió công nghiệp', en: 'Industrial Duct System Insulation', ja: '産業用ダクトシステムの断熱' },
-        content: { vi: 'Nhà máy In Hải Quân vận hành hệ thống máy điều hòa không khí và thông gió trung tâm công suất lớn. Việc rò rỉ nhiệt tại các mối nối khớp ống gió kim loại gây lãng phí điện năng nghiêm trọng và đọng nước bề mặt ống.', en: 'Navy Printing Factory operated a large HVAC system where joints leaked thermal energy and caused water condensation.', ja: '海軍印刷工場は大型HVACシステムを運用していましたが、ダクト継手での熱漏れ và 結露が発生していました。' }
-      },
-      {
-        id: 'cs3-sec2',
-        num: '2.',
-        title: { vi: 'Băng keo nhôm ULink chịu lực & nhiệt', en: 'ULink High-Temp Aluminum Tape', ja: 'ULink耐熱アルミテープ' },
-        content: { vi: 'ULink cung cấp giải pháp băng keo nhôm có lớp keo Acrylic bám dính siêu mạnh, lớp nhôm dày dặn cản nhiệt tốt, chống cháy và hoạt động bền bỉ trong dải nhiệt độ rộng.', en: 'ULink provided high-grade aluminum tape with strong acrylic adhesive, thick foil for thermal barrier, and fire resistance.', ja: 'ULinkは、強力なアクリル粘着剤、遮熱用の厚いホイル、耐火性を備えた高品質のアルミテープを提供しました。' }
-      },
-      {
-        id: 'cs3-sec3',
-        num: '3.',
-        title: { vi: 'Kết quả bọc bảo ôn', en: 'Insulation Results', ja: '断熱効果' },
-        content: { vi: 'Loại bỏ hoàn toàn đọng sương bề mặt. Hệ thống HVAC đạt hiệu quả làm lạnh sâu nhanh hơn, tiết kiệm điện năng tiêu thụ thực tế hàng tháng của nhà máy lên tới 8.5%.', en: 'Completely eliminated condensation. HVAC reached temperature faster, saving 8.5% of monthly electricity bills.', ja: '結露を完全に解消。HVACの冷却効率が向上し、月間電気代を8.5%削減しました。' }
-      }
-    ],
-    aiSummary: {
-      intro: { vi: 'Đánh giá giải pháp bọc mối nối ống HVAC bằng băng keo nhôm chuyên dụng tại công trình công nghiệp.', en: 'Evaluation of sealing HVAC joints with specialized aluminum tape at an industrial site.', ja: '産業現場における専用アルミテープによるHVAC継手シールの評価。' },
-      bullets: [
-        { vi: 'Tiết kiệm 8.5% lượng điện tiêu thụ của hệ thống thông gió.', en: 'Saved 8.5% electricity consumption of the ventilation system.', ja: '換気システムの電気消費量を8.5%削減。' },
-        { vi: 'Khắc phục triệt để đọng nước gây ẩm mốc nhà xưởng.', en: 'Completely fixed water dripping causing warehouse mold.', ja: '倉庫のカビの原因となる水滴を完全に修復。' }
-      ]
+    description: {
+      vi: 'Tiêu chí quan trọng khi lựa chọn vật tư đạt chuẩn cho môi trường sản xuất sạch.',
+      en: 'Crucial criteria when choosing standard supplies for clean production environments.',
+      ja: 'クリーンな製造環境に適した資材を選定する際の重要な基準。'
     },
-    audioDuration: '0',
-    audioSecs: 0
-  },
-  {
-    id: 'case-study-4',
-    category: 'case-study',
-    badge: { vi: 'Nghiên cứu điển hình', en: 'Case Study', ja: 'ケーススタディ' },
-    title: { vi: 'Máy quấn màng Pallet', en: 'Pallet Wrapping Machine System', ja: 'パレットストレッチ包装機' },
-    description: { vi: 'Ứng dụng giám sát và tối ưu hóa hiệu suất máy quấn màng pallet theo thời gian thực, giúp giảm lãng phí vật liệu, tăng năng suất vận hành và đảm bảo an toàn kiện hàng.', en: 'Monitoring and optimizing pallet wrapping machine efficiency in real-time, reducing material waste and securing loads.', ja: 'パレット包装機の効率をリアルタイムで監視・最適化し、資材の廃棄を削減し荷崩れを防止。' },
-    date: '23/08/2026',
-    image: '/images/home/section2/solution-packaging.webp',
+    date: 'Tháng 11, 2024',
+    image: '/images/resources/autohtml/thumb1.png',
     author: {
-      name: { vi: 'Lê Quốc Hưng', en: 'Le Quoc Hung', ja: 'Le Quoc Hung' },
-      role: { vi: 'Quản lý Kho vận', en: 'Warehouse Manager', ja: '倉庫マネージャー' },
-      avatar: '/images/regional_hubs/hub-2/HaiNguyen.png'
+      name: { vi: 'ULink Editorial', en: 'ULink Editorial', ja: 'ULink 編集部' },
+      role: { vi: 'Kỹ sư chất lượng', en: 'QA Engineer', ja: '品質エンジニア' },
+      avatar: '/images/about/op-team.webp'
     },
     readTime: { vi: '6 phút đọc', en: '6 min read', ja: '6分' },
     sections: [
       {
-        id: 'cs4-sec1',
-        num: '1.',
-        title: { vi: 'Tối ưu hóa khâu quấn màng xuất khẩu', en: 'Optimizing Export Pallet Wrapping', ja: '輸出パレット包装の最適化' },
-        content: { vi: 'Doanh nghiệp kho vận thường quấn màng thủ công dẫn đến độ căng không đồng đều, tốn thời gian và lãng phí màng PE. Hàng hóa khi xuất khẩu đường biển xa dễ bị xô lệch, đổ ngã làm hư hại sản phẩm.', en: 'Manual wrapping caused uneven tension, wasted time, and poor stability, risking load collapses during sea transit.', ja: '手動包装では張力が不均一になり、時間がかかり安定性が低いため、海上輸送中に荷崩れするリスクがありました。' }
-      },
-      {
-        id: 'cs4-sec2',
-        num: '2.',
-        title: { vi: 'Hệ thống Máy quấn màng tự động ULink', en: 'ULink Auto Wrapping Machine Solution', ja: 'ULink自動ストレッチ包装機' },
-        content: { vi: 'ULink cung cấp giải pháp máy quấn màng pallet tự động trang bị bộ căng màng điện từ (pre-stretch) tỷ lệ lên tới 250%, giúp kéo dãn màng tối đa và lực quấn giữ đồng đều.', en: 'ULink provided automatic wrappers with electromagnetic pre-stretch up to 250%, maximizing stretch and holding force.', ja: 'ULinkは、最大250%の電磁プレストレッチを備えた自動包装機を提供し, ストレッチと保持力を最大化しました。' }
-      },
-      {
-        id: 'cs4-sec3',
-        num: '3.',
-        title: { vi: 'Tiết giảm chi phí vật liệu', en: 'Material Cost Reduction', ja: '資材コストの削減' },
-        content: { vi: 'Lượng màng PE sử dụng giảm 40% cho mỗi pallet hàng. Tốc độ quấn nhanh gấp 3 lần so với nhân viên quấn thủ công, loại bỏ hoàn toàn rủi ro hư hỏng xô lệch kiện hàng khi xuất khẩu.', en: 'PE film consumption per pallet reduced by 40%. Wrapping speed increased by 3x, completely eliminating load damage.', ja: 'パレットあたりのフィルム消費量を40%削減。包装速度が3倍に向上し、荷崩れによる破損リスクを解消。' }
-      }
-    ],
-    aiSummary: {
-      intro: { vi: 'Khảo sát hiệu quả của máy quấn màng pallet tự động tích hợp công nghệ căng trước trong khâu đóng gói logistics.', en: 'Performance review of automatic pallet wrapping machines with pre-stretch technology in logistics packaging.', ja: '物流包装におけるプレストレッチ技術を搭載した自動パレット包装機の性能レビュー。' },
-      bullets: [
-        { vi: 'Tiết kiệm 40% chi phí màng co PE đóng gói.', en: 'Saved 40% of packaging PE shrink film costs.', ja: '梱包用PEシュリンクフィルムのコストを40%削減。' },
-        { vi: 'Tốc độ đóng gói xuất khẩu tăng 300%.', en: 'Export packaging speed increased by 300%.', ja: '輸出梱包スピードが300%向上。' }
-      ]
-    },
-    audioDuration: '0',
-    audioSecs: 0
-  },
-  {
-    id: 'RES-001',
-    category: 'guide',
-    badge: {
-      vi: 'Hướng dẫn kỹ thuật',
-      en: 'Technical Guide',
-      ja: '技術ガイド'
-    },
-    title: {
-      vi: 'Tầm quan trọng của phòng sạch trong sản xuất bán dẫn hiện đại',
-      en: 'The Importance of Cleanrooms in Modern Semiconductor Manufacturing',
-      ja: '現代の半導体製造におけるクリーンルームの重要性'
-    },
-    description: {
-      vi: 'Tìm hiểu vì sao kiểm soát độ bụi, nhiệt độ và độ ẩm đóng vai trò quyết định đến hiệu suất và chất lượng của sản phẩm bán dẫn.',
-      en: 'Learn why controlling dust, temperature, and humidity plays a decisive role in the yield and quality of semiconductor products.',
-      ja: 'チリ、温度、湿度の制御が半導体製品의 歩留まりと品質に決定的な役割を果たす理由を学びます。'
-    },
-    date: '19/08/2026',
-    image: '/images/resources/news/cleanroom-technician.webp',
-    author: {
-      name: { vi: 'Minh Thuận Lê', en: 'Minh Thuan Le', ja: 'Minh Thuan Le' },
-      role: { vi: 'Ban biên tập ULink', en: 'ULink Editorial Board', ja: 'ULink編集部' },
-      avatar: '/images/about/op-team.webp'
-    },
-    readTime: { vi: '5 phút đọc', en: '5 min read', ja: '5分で読める' },
-    sections: [
-      {
-        id: 'sec-1',
+        id: 'sec-2-1',
         num: '1.',
         title: {
-          vi: 'Phòng sạch là gì?',
-          en: 'What is a Cleanroom?',
-          ja: 'クリーンルームとは？'
+          vi: 'Tầm quan trọng của vật tư đạt chuẩn phòng sạch',
+          en: 'Importance of Standardized Cleanroom Materials',
+          ja: '標準化されたクリーンルーム資材の重要性'
         },
         content: {
-          vi: 'Phòng sạch (Cleanroom) là một môi trường được kiểm soát nghiêm ngặt về mật độ các hạt bụi lơ lửng trong không khí, nhiệt độ, độ ẩm và áp suất. Mức độ sạch được phân loại theo các tiêu chuẩn quốc tế như ISO 14644, trong đó xác định số lượng hạt bụi tối đa trên mỗi mét khối không khí cho phép theo từng cấp độ.',
-          en: 'A cleanroom is an environment with controlled level of contamination that is specified by the number of particles per cubic meter at a specified particle size. Standard classifications like ISO 14644 determine the maximum allowable concentration of particles per cubic meter for each cleanroom class.',
-          ja: 'クリーンルームとは、空気中に浮遊する微粒子の濃度が一定の基準以下に管理され、必要に応じて温度、湿度、圧力が制御された部屋のことです。ISO 14644などの国際規格により、各クラスで許容される微粒子の最大濃度が定められています。'
+          vi: 'Vật tư tiêu hao chiếm tỷ lệ ô nhiễm thứ hai trong phòng sạch chỉ sau nhân sự. Lựa chọn vật tư kém chất lượng có thể dẫn đến nhiễm hạt trên bề mặt sản phẩm bán dẫn hoặc vi sinh vật trong thuốc.',
+          en: 'Consumables are the second largest contamination vector after personnel. Poor quality materials lead to microparticle defects on semiconductor wafers or microbial contamination in pharmaceuticals.',
+          ja: '消耗品は作業員に次ぐ第2の汚染要因です。粗悪な資材は、半導体ウエハ表面の微粒子欠陥や医薬品中の微生物汚染を引き起こします。'
         }
       },
       {
-        id: 'sec-2',
+        id: 'sec-2-2',
         num: '2.',
         title: {
-          vi: 'Quy chuẩn trong sản xuất bán dẫn',
-          en: 'Standards in Semiconductor Manufacturing',
-          ja: '半導体製造における規格'
+          vi: 'Tiêu chí đánh giá găng tay, khăn lau và quần áo ESD',
+          en: 'Evaluation Criteria for Gloves, Wipes & ESD Apparel',
+          ja: '手袋、ワイパー、ESDウェアの評価基準'
         },
         content: {
-          vi: 'Trong công nghiệp bán dẫn, các bóng bán dẫn (transistor) có kích thước chỉ vài nanomet, nhạy cảm với bất kỳ hạt bụi siêu mịn nào. Quy chuẩn phòng sạch tại đây thường đạt cấp độ Class 10 (ISO 4) hoặc Class 1 (ISO 3). Bất kỳ sự xuất hiện nào của hạt bụi cơ học dù nhỏ nhất cũng có thể làm đứt gãy mạch hoặc gây đoản mạch, dẫn đến hỏng chip hoàn toàn.',
-          en: 'In semiconductor fabrication, transistors measure only a few nanometers, making them extremely vulnerable to any ultra-fine dust. Cleanrooms in this industry typically reach Class 10 (ISO 4) or Class 1 (ISO 3). The slightest presence of even a single mechanical particle can sever microcircuits or cause short circuits, ruining the entire silicon wafer.',
-          ja: '半導体製造では、トランジスタのサイズが数ナノメートルしかなく、極小の塵埃に対しても極めて敏感です。このため、半導体クリーンルームの規格は通常、クラス10（ISO 4）またはクラス1（ISO 3）に達します。ごく微細なチリが1つ存在するだけでも、回路の断線や短絡を引き起こし、シリコンウェーハ全体を台無しにする可能性があります。'
+          vi: 'Găng tay nitrile cần có hàm lượng ion chiết xuất cực thấp và độ bền xé cao.\nKhăn lau polyester kết hợp cellulose cần qua xử lý laser mép để tránh xơ sợi.\nQuần áo phòng sạch phải woven từ sợi carbon chống tĩnh điện (ESD) liên tục.',
+          en: 'Nitrile gloves require low extractable ion levels and high tear strength.\nPolyester-cellulose wipes need laser-sealed edges to prevent fiber shedding.\nCleanroom apparel must feature continuous conductive ESD carbon threads.',
+          ja: 'ニトリル手袋は抽出可能イオン濃度が非常に低く、高い引き裂き強度が必要です。\nポリエステル・セルロースワイパーは、繊維の発生を防ぐためにレーザーカットエッジ処理が必要です。\nクリーンルームウェアは、連続したESDカーボン繊維で織られている必要があります。'
+        },
+        alertText: {
+          vi: 'Khuyên dùng: Nên ưu tiên găng tay dài 12-inch (30cm) để bảo vệ toàn bộ phần cổ tay và tay áo.',
+          en: 'Recommendation: Prefer 12-inch (30cm) gloves to completely seal wrist and sleeve gaps.',
+          ja: '推奨：手首と袖の隙間を完全に保護するために、12インチ（30cm）の手袋を優先してください。'
         }
       },
       {
-        id: 'sec-3',
+        id: 'sec-2-3',
         num: '3.',
         title: {
-          vi: 'Các thành phần phòng sạch',
-          en: 'Cleanroom Core Components',
-          ja: 'クリーンルームの主な構成要素'
+          vi: 'Phân loại vật tư theo cấp độ ISO sạch',
+          en: 'Categorizing Supplies by ISO Cleanliness Class',
+          ja: 'ISO清浄度クラスによる資材の分類'
         },
         content: {
-          vi: 'Hệ thống phòng sạch hoàn chỉnh được xây dựng từ nhiều thành phần khép kín phối hợp chặt chẽ:\n- Hệ thống lọc khí HEPA/ULPA: Lọc sạch hạt bụi mịn với hiệu suất lên tới 99.999%.\n- Trang phục bảo hộ phòng sạch PPE: Quần áo liền quần chống tĩnh điện, găng tay nitrile không bột, mũ trùm và khẩu trang chuyên dụng ngăn phát tán xơ vải và tế bào cơ thể người.\n- Thảm dính bụi phòng sạch (Sticky Mats): Đặt tại các cửa ra vào để loại bỏ cát bụi dưới đế giày trước khi bước vào khu vực sạch.',
-          en: 'A complete cleanroom system is built from several integrated components working together:\n- HEPA/ULPA Filtration: Filters out fine dust particles with efficiency up to 99.999%.\n- Cleanroom Wear (PPE): Antistatic coveralls, powder-free nitrile gloves, hoods, and specialized masks preventing shedding of human skin cells or fibers.\n- Sticky Mats: Placed at entryways to pull dust and particles off the soles of shoes before entering the clean zone.',
-          ja: '完全なクリーンルームシステムは、相互に連携するいくつかの統合コンポーネントから構成されています。\n- HEPA/ULPAフィルター：最大99.999％の効率で微細な塵埃をろ過します。\n- クリーンルームウェア（PPE）：人体からの角質細胞や繊維の脱落を防ぐ、帯電防止カバーオール、パウダーフリーのニトリル手袋、フード、専用マスク。\n- 粘着マット：クリーンゾーンに入る前に、靴底のチリや粒子を取り除くために出入り口に設置されます。'
+          vi: 'Mỗi môi trường ISO 4, 5 hay 7 đều đòi hỏi cấp đóng gói vật tư tương ứng (Class 10 / Class 100 cleanroom packaging).\nVật tư phải trải qua quá trình giặt sấy trong phòng sạch trước khi đóng gói hai lớp (Double-bagged).',
+          en: 'ISO 4, 5, or 7 zones demand corresponding packaging cleanliness (Class 10 / Class 100 cleanroom packaging).\nSupplies undergo cleanroom laundering before double-bagging.',
+          ja: 'ISO 4、5、または7エリアには、対応する包装清浄度が要求されます。\n資材は二重袋（Double-bagged）包装の前にクリーンルームでの洗濯・乾燥プロセスを経る必要があります。'
         }
       },
       {
-        id: 'sec-4',
+        id: 'sec-2-4',
         num: '4.',
         title: {
-          vi: 'Kết luận thiết kế',
-          en: 'Design Conclusions',
-          ja: '設計の結論'
+          vi: 'Quy trình kiểm định và nghiệm thu vật tư đầu vào',
+          en: 'Incoming Inspection & Verification Workflow',
+          ja: '入荷資材の検査および受入プロセス'
         },
         content: {
-          vi: 'Thiết kế phòng sạch tối ưu là sự kết hợp đồng bộ giữa trang thiết bị lọc khí cao cấp và quy trình vận hành nghiêm chỉnh của công nhân. Việc đầu tư hệ thống vật tư bảo hộ phòng sạch chất lượng cao là nền tảng tối quan trọng giúp đảm bảo tỷ lệ lỗi sản phẩm bán dẫn ở mức thấp nhất, tối ưu năng suất và lợi nhuận cho doanh nghiệp.',
-          en: 'Optimal cleanroom design is a synchronized combination of premium air filtration equipment and strict operational procedures for workers. Investing in high-quality cleanroom protective supplies is the crucial foundation to keep semiconductor defect rates at a minimum, optimizing yield and corporate profitability.',
-          ja: '最適なクリーンルーム設計は、高性能な空気ろ過設備と、作業員の厳格な運用の組み合わせによって実現します。高品質なクリーンルーム保護用品への投資は、半導体の不良率を最小限 ở 抑え、歩留まりと企業の収益性を最適化するための極めて重要な基礎となります。'
+          vi: 'Doanh nghiệp cần xây dựng bảng checklist nghiệm thu vật tư gồm: Kiểm tra chứng nhận CO/CQ, đo điện trở bề mặt (Surface Resistivity) và xét nghiệm vi hạt độc lập.',
+          en: 'Enterprises should establish incoming inspection checklists including: CO/CQ certificates, Surface Resistivity measurement, and independent particle testing.',
+          ja: '企業は、CO/CQ証明書の確認、表面抵抗の測定、独立した微粒子テストを含む受入検査チェックリストを作成する必要があります。'
         }
       }
-    ],
-    aiSummary: {
-      intro: {
-        vi: 'Bài viết cung cấp cái nhìn toàn diện về phòng sạch bán dẫn - chìa khóa đảm bảo năng suất sản xuất linh kiện điện tử siêu nhỏ.',
-        en: 'The article provides a comprehensive view of semiconductor cleanrooms - the key to ensuring manufacturing yields of micro-components.',
-        ja: 'この記事は、極小部品の製造歩留まりを確保する鍵である半導体クリーンルームの包括的なビューを提供します。'
-      },
-      bullets: [
-        {
-          vi: 'Phòng sạch bán dẫn đòi hỏi cấp độ Class 10 (ISO 4) hoặc cao hơn do kích thước linh kiện siêu nhỏ.',
-          en: 'Semiconductor cleanrooms require Class 10 (ISO 4) or higher due to micro-sized components.',
-          ja: '半導体クリーンルームは、極小部品のためクラス10（ISO 4）以上が必要です。'
-        },
-        {
-          vi: 'Hệ thống lọc khí HEPA/ULPA và trang phục PPE chống tĩnh điện là bắt buộc để ngăn hạt bụi và tĩnh điện phóng ra.',
-          en: 'HEPA/ULPA filtration and ESD PPE are mandatory to prevent dust particles and electrostatic discharge.',
-          ja: '塵埃粒子と静電気放電を防ぐため、HEPA/ULPAフィルターとESD対応の防護服（PPE）が必須です。'
-        },
-        {
-          vi: 'Đầu tư vật tư phòng sạch chất lượng là giải pháp cốt lõi để hạ thấp tỷ lệ lỗi sản phẩm chip.',
-          en: 'Investing in quality cleanroom supplies is the core solution to reduce chip defect rates.',
-          ja: '高品質なクリーンルーム用品への投資は、チップの不良率を低減するためのコアソリューションです。'
-        }
-      ]
-    },
-    audioDuration: '03:45',
-    audioSecs: 225,
-    size: '1.2 MB',
-    type: 'PDF',
-    downloadUrl: '/documents/lien-he-nha-phat-trien.pdf'
+    ]
   },
   {
-    id: 'RES-002',
+    id: 'card-3',
     category: 'guide',
-    badge: {
-      vi: 'Hướng dẫn kỹ thuật',
-      en: 'Hướng dẫn kỹ thuật',
-      ja: 'Hướng dẫn kỹ thuật'
-    },
-    title: {
-      vi: 'Hướng dẫn lựa chọn vật tư phòng sạch',
-      en: 'Hướng dẫn lựa chọn vật tư phòng sạch',
-      ja: 'Hướng dẫn lựa chọn vật tư phòng sạch'
-    },
-    description: {
-      vi: 'Tiêu chí quan trọng khi lựa chọn vật tư đạt chuẩn cho môi trường sản xuất sạch.',
-      en: 'Tiêu chí quan trọng khi lựa chọn vật tư đạt chuẩn cho môi trường sản xuất sạch.',
-      ja: 'Tiêu chí quan trọng khi lựa chọn vật tư đạt chuẩn cho môi trường sản xuất sạch.'
-    },
-    date: 'Tháng 11, 2024',
-    image: '/images/resources/news/lab-equipment.webp',
-    author: {
-      name: { vi: 'ULink', en: 'ULink', ja: 'ULink' },
-      role: { vi: 'Ban biên tập', en: 'Editorial Board', ja: 'Ban biên tập' },
-      avatar: '/images/about/op-team.webp'
-    },
-    readTime: { vi: '6 phút đọc', en: '6 phút đọc', ja: '6 phút đọc' },
-    sections: [],
-    aiSummary: { intro: { vi: '', en: '', ja: '' }, bullets: [] },
-    audioDuration: '0',
-    audioSecs: 0,
-    size: '1.2 MB',
-    type: 'PDF',
-    downloadUrl: '/documents/lien-he-nha-phat-trien.pdf'
-  },
-  {
-    id: 'RES-003',
-    category: 'guide',
-    badge: {
-      vi: 'Infographic',
-      en: 'Infographic',
-      ja: 'Infographic'
-    },
+    badge: { vi: 'Infographic', en: 'Infographic', ja: 'インフォグラフィック' },
     title: {
       vi: 'Kiến thức về hệ thống HVAC',
-      en: 'Kiến thức về hệ thống HVAC',
-      ja: 'Kiến thức về hệ thống HVAC'
+      en: 'HVAC System Fundamentals',
+      ja: 'HVACシステムに関する基礎知識'
     },
     description: {
       vi: 'Tổng quan về hệ thống điều hòa không khí và thông gió trong công nghiệp.',
-      en: 'Tổng quan về hệ thống điều hòa không khí và thông gió trong công nghiệp.',
-      ja: 'Tổng quan về hệ thống điều hòa không khí và thông gió trong công nghiệp.'
+      en: 'Overview of industrial air conditioning and ventilation system architecture.',
+      ja: '産業における空調および換気システムの概要。'
     },
     date: 'Tháng 11, 2024',
-    image: '/images/resources/news/hvac-system.webp',
+    image: '/images/resources/autohtml/thumb2.png',
     author: {
-      name: { vi: 'ULink', en: 'ULink', ja: 'ULink' },
-      role: { vi: 'Ban biên tập', en: 'Editorial Board', ja: 'Ban biên tập' },
+      name: { vi: 'ULink Editorial', en: 'ULink Editorial', ja: 'ULink 編集部' },
+      role: { vi: 'Kỹ sư HVAC', en: 'HVAC Engineer', ja: 'HVACエンジニア' },
       avatar: '/images/about/op-team.webp'
     },
-    readTime: { vi: '4 phút đọc', en: '4 phút đọc', ja: '4 phút đọc' },
-    sections: [],
-    aiSummary: { intro: { vi: '', en: '', ja: '' }, bullets: [] },
-    audioDuration: '0',
-    audioSecs: 0,
-    size: '1.2 MB',
-    type: 'PDF',
-    downloadUrl: '/documents/lien-he-nha-phat-trien.pdf'
+    readTime: { vi: '4 phút đọc', en: '4 min read', ja: '4分' },
+    sections: [
+      {
+        id: 'sec-3-1',
+        num: '1.',
+        title: {
+          vi: 'Cấu trúc cơ bản của hệ thống HVAC phòng sạch',
+          en: 'Basic Architecture of Cleanroom HVAC Systems',
+          ja: 'クリーンルームHVACシステムの基本構造'
+        },
+        content: {
+          vi: 'Hệ thống HVAC phòng sạch bao gồm AHU (Air Handling Unit), đường ống gió cách nhiệt, van dăm-pơ chênh áp, và cụm bộ lọc HEPA/ULPA lắp ở trần.\nHệ thống giữ vai trò duy trì 4 thông số: Độ sạch, Nhiệt độ (20-22°C), Độ ẩm (45-55%), và Chênh áp dương (10-15 Pa).',
+          en: 'Cleanroom HVAC comprises AHUs, insulated ductwork, differential pressure dampers, and ceiling HEPA/ULPA modules.\nIt controls 4 metrics: Cleanliness, Temperature (20-22°C), Humidity (45-55%), and Positive Differential Pressure (10-15 Pa).',
+          ja: 'クリーンルームHVACは、AHU、断熱ダクト、差圧ダンパー、天井HEPA/ULPAモジュールで構成されます。\n清浄度、温度（20-22°C）、湿度（45-55%）、および陽圧差圧（10-15 Pa）の4つの指標を維持します。'
+        }
+      },
+      {
+        id: 'sec-3-2',
+        num: '2.',
+        title: {
+          vi: 'Nguyên lý tuần hoàn không khí và chênh áp',
+          en: 'Air Recirculation & Differential Pressure Principles',
+          ja: '空気循環と差圧の原理'
+        },
+        content: {
+          vi: 'Chênh áp dương giữ cho không khí luôn chảy từ vùng sạch hơn sang vùng ít sạch hơn, ngăn chặn vi hạt từ bên ngoài xâm nhập.\nBội số tuần hoàn không khí (ACH - Air Changes per Hour) dao động từ 20 đến hơn 600 lần/giờ tùy thuộc cấp ISO.',
+          en: 'Positive pressure forces air flow from cleaner to less clean areas, preventing external particulate ingress.\nAir Changes per Hour (ACH) range from 20 to over 600 times/hour depending on ISO class.',
+          ja: '陽圧差圧により、空気はより清潔なエリアから清浄度の低いエリアへと流れ、外部からの微粒子の侵入を防ぎます。\n換気回数（ACH）はISOクラスに応じて1時間あたり20回から600回以上に及びます。'
+        }
+      },
+      {
+        id: 'sec-3-3',
+        num: '3.',
+        title: {
+          vi: 'Hệ thống màng lọc HEPA/ULPA và hiệu suất lọc',
+          en: 'HEPA/ULPA Filtration & Efficiency Standards',
+          ja: 'HEPA/ULPAフィルターシステムとろ過効率'
+        },
+        content: {
+          vi: 'Bộ lọc HEPA H14 đạt hiệu suất lọc 99.995% với hạt 0.3 µm.\nBộ lọc ULPA U15 đạt hiệu suất 99.9995% với hạt 0.12 µm.\nCần kiểm tra rò rỉ màng lọc bằng phép thử PAO/DOP định kỳ 6-12 tháng/lần.',
+          en: 'HEPA H14 filters capture 99.995% at 0.3 µm MPPS.\nULPA U15 filters achieve 99.9995% at 0.12 µm.\nIntegrity leak testing using PAO/DOP aerosol is mandated every 6-12 months.',
+          ja: 'HEPA H14フィルターは0.3 µmの粒子に対して99.995%の効率を達成します。\nULPA U15フィルターは0.12 µmで99.9995%を達成します。\n6〜12ヶ月ごとにPAO/DOP試験による漏れ検査が必要です。'
+        },
+        alertText: {
+          vi: 'Cảnh báo: Thay thế bộ lọc sơ cấp (Pre-filter) đúng hạn giúp kéo dài tuổi thọ của bộ lọc HEPA đắt tiền lên gấp 3 lần.',
+          en: 'Warning: Timely replacement of pre-filters extends expensive HEPA filter lifespan by up to 3x.',
+          ja: '警告：プレフィルターを適時に交換すると、高価なHEPAフィルターの寿命が最大3倍延びます。'
+        }
+      },
+      {
+        id: 'sec-3-4',
+        num: '4.',
+        title: {
+          vi: 'Bảo trì định kỳ và xử lý sự cố HVAC',
+          en: 'Routine Maintenance & Troubleshooting HVAC',
+          ja: '定期メンテナンスとHVACトラブルシューティング'
+        },
+        content: {
+          vi: 'Lập biểu đồ theo dõi độ chênh áp qua màng lọc (Magnehelic Gauge).\nKhi tổn thất áp suất vượt quá 2 lần ban đầu, cần tiến hành thay thế màng lọc ngay.',
+          en: 'Track differential pressure across filter banks via Magnehelic gauges.\nReplace filters when pressure drop exceeds twice the initial clean resistance.',
+          ja: 'マグネヘリックゲージを介してフィルター前後の差圧を追跡します。\n圧力損失が初期値の2倍を超えた場合は、すぐにフィルターを交換する必要があります。'
+        }
+      }
+    ]
   },
   {
-    id: 'RES-004',
+    id: 'card-4',
     category: 'standard',
-    badge: {
-      vi: 'Tiêu chuẩn',
-      en: 'Tiêu chuẩn',
-      ja: 'Tiêu chuẩn'
-    },
+    badge: { vi: 'Tiêu chuẩn', en: 'Standards', ja: '標準' },
     title: {
       vi: 'Quy trình vận hành phòng sạch',
-      en: 'Quy trình vận hành phòng sạch',
-      ja: 'Quy trình vận hành phòng sạch'
+      en: 'Cleanroom Standard Operating Procedures',
+      ja: 'クリーンルームの標準運用手順'
     },
     description: {
       vi: 'Quy trình chuẩn hóa cho vận hành môi trường phòng sạch hiệu quả và an toàn.',
-      en: 'Quy trình chuẩn hóa cho vận hành môi trường phòng sạch hiệu quả và an toàn.',
-      ja: 'Quy trình chuẩn hóa cho vận hành môi trường phòng sạch hiệu quả và an toàn.'
+      en: 'Standardized workflow for safe and efficient cleanroom operation.',
+      ja: '効率的で safe なクリーンルーム環境運用のための標準化プロセス。'
     },
     date: 'Tháng 10, 2024',
-    image: '/images/resources/news/cleanroom-workers.webp',
+    image: '/images/resources/autohtml/thumb3.png',
     author: {
-      name: { vi: 'ULink', en: 'ULink', ja: 'ULink' },
-      role: { vi: 'Ban biên tập', en: 'Editorial Board', ja: 'Ban biên tập' },
+      name: { vi: 'ULink Editorial', en: 'ULink Editorial', ja: 'ULink 編集部' },
+      role: { vi: 'Quản lý vận hành', en: 'Operations Manager', ja: '運用マネージャー' },
       avatar: '/images/about/op-team.webp'
     },
-    readTime: { vi: '7 phút đọc', en: '7 phút đọc', ja: '7 phút đọc' },
-    sections: [],
-    aiSummary: { intro: { vi: '', en: '', ja: '' }, bullets: [] },
-    audioDuration: '0',
-    audioSecs: 0,
-    size: '1.2 MB',
-    type: 'PDF',
-    downloadUrl: '/documents/lien-he-nha-phat-trien.pdf'
+    readTime: { vi: '7 phút đọc', en: '7 min read', ja: '7分' },
+    sections: [
+      {
+        id: 'sec-4-1',
+        num: '1.',
+        title: {
+          vi: 'Quy định ra vào và thay trang phục phòng sạch (SOP)',
+          en: 'Gowning & Entry Procedures (SOP)',
+          ja: '入室手順および着衣規定（SOP）'
+        },
+        content: {
+          vi: 'Quy trình thay đồ tuân thủ nguyên tắc từ trên xuống dưới và từ trong ra ngoài.\nNhân sự đi qua thảm dính bụi (Sticky mat), vào phòng Air Shower thổi bụi 15-30 giây trước khi bước vào khu vực sản xuất chính.',
+          en: 'Gowning follows top-to-bottom and inside-to-outside sequence.\nPersonnel pass over sticky mats into Air Showers for 15-30 seconds of air jet de-dusting before entering clean bays.',
+          ja: '着衣手順は上から下、内から外の原則に従います。\n作業員は粘着マットを通り、エアシャワーで15〜30秒間除塵した後にメイン生産エリアに入ります。'
+        }
+      },
+      {
+        id: 'sec-4-2',
+        num: '2.',
+        title: {
+          vi: 'Quy trình khử trùng và vệ sinh bề mặt định kỳ',
+          en: 'Surface Disinfection & Cleaning Protocols',
+          ja: '定期的な表面消毒および清掃プロトコル'
+        },
+        content: {
+          vi: 'Vệ sinh bề mặt bằng cồn Isopropyl Alcohol (IPA) 70% đã lọc vi hạt.\nSử dụng kỹ thuật lau một chiều (Single-pass wiping) để không phát tán ngược vi hạt.',
+          en: 'Clean surfaces using filtered 70% Isopropyl Alcohol (IPA).\nApply single-pass overlapping wiping techniques to avoid re-contaminating clean zones.',
+          ja: 'ろ過された70%イソプロピルアルコール（IPA）で表面を清掃します。\n微粒子の再拡散を防ぐため、一方向拭き取り（Single-pass wiping）技術を使用します。'
+        }
+      },
+      {
+        id: 'sec-4-3',
+        num: '3.',
+        title: {
+          vi: 'Quản lý nguyên vật liệu và thiết bị qua Pass-box',
+          en: 'Material & Equipment Transfer via Pass-boxes',
+          ja: 'パスボックスを介した資材・機器の管理'
+        },
+        content: {
+          vi: 'Toàn bộ nguyên vật liệu phải tháo bỏ bao bì carton bên ngoài trước khi đưa qua Pass-box interlock khóa chéo âm dương.',
+          en: 'All materials must undergo outer carton stripping before entering interlocked Pass-boxes.',
+          ja: 'すべての資材は、インターロック付きパスボックスを通過する前に、外箱段ボールを取り除く必要があります。'
+        }
+      },
+      {
+        id: 'sec-4-4',
+        num: '4.',
+        title: {
+          vi: 'Giám sát thông số môi trường (Nhiệt độ, Độ ẩm, Chênh áp)',
+          en: 'Environmental Monitoring (Temp, Humidity, Pressure)',
+          ja: '環境パラメータの監視（温度、湿度、差圧）'
+        },
+        content: {
+          vi: 'Hệ thống cảm biến tự động ghi nhận dữ liệu 24/7 và đưa ra cảnh báo tức thì khi chênh áp tụt xuống dưới 10 Pa.',
+          en: 'Automated sensors log data 24/7, triggering instant alerts whenever room pressure drops below 10 Pa.',
+          ja: '自動センサーがデータを24時間365日記録し、室圧が10 Paを下回ると即座にアラートを発します。'
+        }
+      }
+    ]
   },
   {
-    id: 'RES-005',
+    id: 'card-5',
     category: 'case-study',
-    badge: {
-      vi: 'Case Study',
-      en: 'Case Study',
-      ja: 'Case Study'
-    },
+    badge: { vi: 'Case Study', en: 'Case Study', ja: 'ケーススタディ' },
     title: {
       vi: 'Nhà máy Samsung Việt Nam',
-      en: 'Nhà máy Samsung Việt Nam',
-      ja: 'Nhà máy Samsung Việt Nam'
+      en: 'Samsung Vietnam Plant Case Study',
+      ja: 'サムスンベトナム工場のケーススタディ'
     },
     description: {
       vi: 'Triển khai hệ thống vật tư phòng sạch cho dây chuyền sản xuất chip bán dẫn.',
-      en: 'Triển khai hệ thống vật tư phòng sạch cho dây chuyền sản xuất chip bán dẫn.',
-      ja: 'Triển khai hệ thống vật tư phòng sạch cho dây chuyền sản xuất chip bán dẫn.'
+      en: 'Deploying cleanroom materials for semiconductor chip assembly line.',
+      ja: '半導体チップ生産ライン向けクリーンルーム資材システムの導入。'
     },
     date: 'Tháng 10, 2024',
-    image: '/images/resources/news/semiconductor-assembly.webp',
+    image: '/images/resources/autohtml/thumb4.png',
     author: {
-      name: { vi: 'ULink', en: 'ULink', ja: 'ULink' },
-      role: { vi: 'Ban biên tập', en: 'Editorial Board', ja: 'Ban biên tập' },
+      name: { vi: 'ULink Editorial', en: 'ULink Editorial', ja: 'ULink 編集部' },
+      role: { vi: 'Chuyên gia Dự án', en: 'Project Specialist', ja: 'プロジェクト専門家' },
       avatar: '/images/about/op-team.webp'
     },
-    readTime: { vi: '8 phút đọc', en: '8 phút đọc', ja: '8 phút đọc' },
-    sections: [],
-    aiSummary: { intro: { vi: '', en: '', ja: '' }, bullets: [] },
-    audioDuration: '0',
-    audioSecs: 0,
-    size: '1.2 MB',
-    type: 'PDF',
-    downloadUrl: '/documents/lien-he-nha-phat-trien.pdf'
+    readTime: { vi: '8 phút đọc', en: '8 min read', ja: '8分' },
+    sections: [
+      {
+        id: 'sec-5-1',
+        num: '1.',
+        title: {
+          vi: 'Thách thức về kiểm soát vi hạt trong lắp ráp bán dẫn',
+          en: 'Contamination Control Challenges in Semiconductor Fabs',
+          ja: '半導体組み立てにおける微粒子制御の課題'
+        },
+        content: {
+          vi: 'Với tiến trình sản xuất linh kiện vi mạch mật độ cao, chỉ một hạt bụi kích thước 0.1 µm cũng có thể gây hỏng toàn bộ die bán dẫn. Nhà máy Samsung yêu cầu vật tư phòng sạch tiêu chuẩn ISO Class 3 khắt khe.',
+          en: 'With high-density microchip fabrication, even a single 0.1 µm particle ruins an entire wafer die. Samsung demanded strict ISO Class 3 compliant materials.',
+          ja: '高密度マイクロチップ製造において、わずか0.1 µmの1つの粒子がダイ全体を破壊する可能性があります。サムスンは厳格なISOクラス3準拠の資材を要求しました。'
+        }
+      },
+      {
+        id: 'sec-5-2',
+        num: '2.',
+        title: {
+          vi: 'Giải pháp tích hợp vật tư phòng sạch ULink',
+          en: 'ULink Cleanroom Supplies Integration Solution',
+          ja: 'ULinkクリーンルーム資材統合ソリューション'
+        },
+        content: {
+          vi: 'ULink đã cung cấp giải pháp trọn gói bao gồm: Găng tay nitrile 12" siêu sạch, khăn lau polyester không xơ dệt vi sợi, và khay tĩnh điện ESD chuyên dụng.\nToàn bộ lô hàng được kiểm định hạt bụi tự do bằng máy đếm LPC (Liquid Particle Counter).',
+          en: 'ULink supplied an end-to-end package: 12" ultra-clean nitrile gloves, non-shedding micro-fiber polyester wipes, and specialized ESD trays.\nAll lots were validated via Liquid Particle Counter (LPC).',
+          ja: 'ULinkは、12インチの超清浄ニトリル手袋、発塵のないマイクロファイバーポリエステルワイパー、専用ESDトレイを含むエンドツーエンドのパッケージを提供しました。\nすべてのバッチはLPC（液体粒子カウンター）で検証されました。'
+        }
+      },
+      {
+        id: 'sec-5-3',
+        num: '3.',
+        title: {
+          vi: 'Kết quả cải thiện tỷ lệ lỗi sản phẩm (Yield Rate)',
+          en: 'Product Yield Rate Improvement Results',
+          ja: '歩留まり率（Yield Rate）改善の結果'
+        },
+        content: {
+          vi: 'Sau 6 tháng chuyển đổi sang dòng vật tư cao cấp ULink, tỷ lệ lỗi sản phẩm do vi hạt giảm 34%, giúp nhà máy nâng tỷ lệ sản phẩm đạt (Yield Rate) lên 98.6%.',
+          en: 'After 6 months transitioning to ULink supplies, particle defect rates fell by 34%, lifting wafer yield rates to 98.6%.',
+          ja: 'ULinkの高品質資材への切り替えから6ヶ月後、微粒子による製品欠陥率は34%減少し、歩留まり率は98.6%に向上しました。'
+        },
+        alertText: {
+          vi: 'Thành tựu: Dự án được Samsung vinh danh là Giải pháp Cung ứng B2B Xuất sắc năm 2024.',
+          en: 'Achievement: Awarded Excellent B2B Supply Solution 2024 by Samsung.',
+          ja: '実績：2024年サムスン優秀B2Bサプライソリューション賞を受賞。'
+        }
+      },
+      {
+        id: 'sec-5-4',
+        num: '4.',
+        title: {
+          vi: 'Bài học kinh nghiệm cho doanh nghiệp sản xuất điện tử',
+          en: 'Key Takeaways for Electronics Manufacturers',
+          ja: '電子機器メーカー向けの重要な教訓'
+        },
+        content: {
+          vi: 'Đầu tư chuẩn hóa vật tư tiêu hao đầu vào mang lại hiệu quả kinh tế rõ rệt thông qua việc giảm chi phí tái chế sản phẩm lỗi và tăng năng suất dây chuyền.',
+          en: 'Investing in standardized input consumables yields clear ROI by slashing scrap costs and boosting line throughput.',
+          ja: '標準化された入力消耗品への投資は、廃棄コストの削減とラインスループットの向上により、明確なROIをもたらします。'
+        }
+      }
+    ]
   },
   {
-    id: 'RES-006',
+    id: 'card-6',
     category: 'guide',
-    badge: {
-      vi: 'Infographic',
-      en: 'Infographic',
-      ja: 'Infographic'
-    },
+    badge: { vi: 'Infographic', en: 'Infographic', ja: 'インフォグラフィック' },
     title: {
       vi: 'Bảo hộ lao động trong công nghiệp',
-      en: 'Bảo hộ lao động trong công nghiệp',
-      ja: 'Bảo hộ lao động trong công nghiệp'
+      en: 'Industrial PPE & Personal Safety',
+      ja: '産業労働安全と保護具'
     },
     description: {
       vi: 'Danh mục thiết bị bảo hộ cá nhân theo chuẩn an toàn lao động quốc tế.',
-      en: 'Danh mục thiết bị bảo hộ cá nhân theo chuẩn an toàn lao động quốc tế.',
-      ja: 'Danh mục thiết bị bảo hộ cá nhân theo chuẩn an toàn lao động quốc tế.'
+      en: 'List of personal protective equipment aligned with international safety codes.',
+      ja: '国際労働安全基準に準拠した個人用保護具のリスト。'
     },
     date: 'Tháng 10, 2024',
-    image: '/images/resources/news/safety-equipment.webp',
+    image: '/images/resources/autohtml/thumb5.png',
     author: {
-      name: { vi: 'ULink', en: 'ULink', ja: 'ULink' },
-      role: { vi: 'Ban biên tập', en: 'Editorial Board', ja: 'Ban biên tập' },
+      name: { vi: 'ULink Editorial', en: 'ULink Editorial', ja: 'ULink 編集部' },
+      role: { vi: 'Chuyên gia HSE', en: 'HSE Expert', ja: 'HSE専門家' },
       avatar: '/images/about/op-team.webp'
     },
-    readTime: { vi: '5 phút đọc', en: '5 phút đọc', ja: '5 phút đọc' },
-    sections: [],
-    aiSummary: { intro: { vi: '', en: '', ja: '' }, bullets: [] },
-    audioDuration: '0',
-    audioSecs: 0,
-    size: '1.2 MB',
-    type: 'PDF',
-    downloadUrl: '/documents/lien-he-nha-phat-trien.pdf'
+    readTime: { vi: '5 phút đọc', en: '5 min read', ja: '5分' },
+    sections: [
+      {
+        id: 'sec-6-1',
+        num: '1.',
+        title: {
+          vi: 'Tổng quan về thiết bị bảo hộ cá nhân (PPE)',
+          en: 'Overview of Personal Protective Equipment (PPE)',
+          ja: '個人用保護具（PPE）の概要'
+        },
+        content: {
+          vi: 'Trang thiết bị bảo hộ cá nhân (PPE) đóng vai trò lá chắn bảo vệ người lao động khỏi rủi ro hóa chất, vi hạt độc hại và chấn thương cơ học trong môi trường nhà máy.',
+          en: 'Personal Protective Equipment (PPE) acts as the final defense barrier against chemical splashes, hazardous particulates, and mechanical injuries.',
+          ja: '個人用保護具（PPE）は、化学物質の飛散、有害な微粒子、および機械的負傷に対する最終防護壁として機能します。'
+        }
+      },
+      {
+        id: 'sec-6-2',
+        num: '2.',
+        title: {
+          vi: 'Tiêu chuẩn an toàn và chống tĩnh điện ESD',
+          en: 'Safety Standards & Anti-Static ESD Controls',
+          ja: '安全基準と静電気防止（ESD）制御'
+        },
+        content: {
+          vi: 'Đối với ngành điện tử, giày bảo hộ ESD và găng tay phủ PU tĩnh điện phải tuân thủ chuẩn ANSI/ESD S20.20 với điện trở bề mặt trong khoảng 10^6 đến 10^9 Ohms.',
+          en: 'In electronics, ESD safety footwear and PU-coated anti-static gloves must satisfy ANSI/ESD S20.20 with surface resistance between 10^6 and 10^9 Ohms.',
+          ja: 'エレクトロニクス分野では、ESD安全靴とPUコーティング抗静電手袋は、表面抵抗が10^6から10^9オームの範囲でANSI/ESD S20.20に適合する必要があります。'
+        }
+      },
+      {
+        id: 'sec-6-3',
+        num: '3.',
+        title: {
+          vi: 'Hướng dẫn trang bị PPE theo từng khu vực sản xuất',
+          en: 'PPE Matrix Across Production Zones',
+          ja: '生産エリア別PPE装着ガイドライン'
+        },
+        content: {
+          vi: 'Khu vực hóa chất: Kính bảo hộ chống văng bắn, khẩu trang lọc độc 3M, găng tay neoprene dài tay.\nKhu vực cơ khí: Giày mũi thép chống dập ngón, găng tay chống cắt mức Level 5.',
+          en: 'Chemical zones: Splash goggles, 3M gas respirators, long neoprene gloves.\nMechanical bays: Steel-toe boots, Level 5 cut-resistant gloves.',
+          ja: '化学エリア：飛散 nhãn 鏡、3M防毒マスク、長袖ネオプレン手袋。\n機械エリア：つま先鋼製安全靴、レベル5耐切創手袋。'
+        }
+      },
+      {
+        id: 'sec-6-4',
+        num: '4.',
+        title: {
+          vi: 'Quy trình kiểm tra và thay thế thiết bị bảo hộ',
+          en: 'Inspection & Replacement Lifecycles',
+          ja: '保護具の点検および交換サイクル'
+        },
+        content: {
+          vi: 'Hàng tháng cán bộ HSE cần thực hiện kiểm tra sờn rách, nứt nẻ trên trang thiết bị bảo hộ và thay thế lập tức thiết bị hết hạn hoặc hư hỏng.',
+          en: 'HSE officers must perform monthly degradation audits, replacing worn or expired gear instantly.',
+          ja: 'HSE担当者は毎月劣化監査を実施し、摩耗した装備や期限切れの装備を即座に交換する必要があります。'
+        }
+      }
+    ]
   },
   {
-    id: 'RES-007',
+    id: 'card-7',
     category: 'news',
-    badge: {
-      vi: 'Data Room',
-      en: 'Data Room',
-      ja: 'Data Room'
-    },
+    badge: { vi: 'Data Room', en: 'Data Room', ja: 'データルーム' },
     title: {
       vi: 'Thiết bị đo lường và kiểm soát',
-      en: 'Thiết bị đo lường và kiểm soát',
-      ja: 'Thiết bị đo lường và kiểm soát'
+      en: 'Measurement and Control Instrumentation',
+      ja: '計測・制御機器'
     },
     description: {
       vi: 'Tổng hợp thông số kỹ thuật và ứng dụng các thiết bị đo lường trong sản xuất.',
-      en: 'Tổng hợp thông số kỹ thuật và ứng dụng các thiết bị đo lường trong sản xuất.',
-      ja: 'Tổng hợp thông số kỹ thuật và ứng dụng các thiết bị đo lường trong sản xuất.'
+      en: 'Comprehensive technical specification and applications of factory testing devices.',
+      ja: '製造における計測機器の仕様と用途のまとめ。'
     },
     date: 'Tháng 9, 2024',
-    image: '/images/resources/news/measurement-instruments.webp',
+    image: '/images/resources/autohtml/thumb6.png',
     author: {
-      name: { vi: 'ULink', en: 'ULink', ja: 'ULink' },
-      role: { vi: 'Ban biên tập', en: 'Editorial Board', ja: 'Ban biên tập' },
+      name: { vi: 'ULink Editorial', en: 'ULink Editorial', ja: 'ULink 編集部' },
+      role: { vi: 'Ban biên tập', en: 'Editorial Board', ja: '編集部' },
       avatar: '/images/about/op-team.webp'
     },
-    readTime: { vi: '8 phút đọc', en: '8 phút đọc', ja: '8 phút đọc' },
-    sections: [],
-    aiSummary: { intro: { vi: '', en: '', ja: '' }, bullets: [] },
-    audioDuration: '0',
-    audioSecs: 0,
-    size: '1.2 MB',
-    type: 'PDF',
-    downloadUrl: '/documents/lien-he-nha-phat-trien.pdf'
+    readTime: { vi: '8 phút đọc', en: '8 min read', ja: '8分' },
+    sections: [
+      {
+        id: 'sec-7-1',
+        num: '1.',
+        title: {
+          vi: 'Vai trò của thiết bị đo lường trong phòng sạch',
+          en: 'Role of Measurement Instrumentation in Cleanrooms',
+          ja: 'クリーンルームにおける計測機器の役割'
+        },
+        content: {
+          vi: 'Thiết bị đo lường là con mắt giám sát độ sạch không khí, đảm bảo môi trường sản xuất không bị biến đổi bất ngờ gây ảnh hưởng đến chất lượng sản phẩm.',
+          en: 'Instrumentation acts as the eyes monitoring air quality, ensuring production parameters remain strictly within validated windows.',
+          ja: '計測機器は空気清浄度を監視する目として機能し、生産パラメータが検証済み範囲内に厳格に維持されることを保証します。'
+        }
+      },
+      {
+        id: 'sec-7-2',
+        num: '2.',
+        title: {
+          vi: 'Các loại máy đếm hạt bụi và cảm biến chênh áp',
+          en: 'Particle Counters & Differential Sensors',
+          ja: '粒子カウンターおよび差圧センサーの種類'
+        },
+        content: {
+          vi: 'Máy đếm hạt bụi xách tay dòng 28.3 L/min phục vụ kiểm tra nhanh.\nCảm biến chênh áp kỹ thuật số hiển thị LED kết nối cổng truyền thông Modbus RS485 đưa dữ liệu về trung tâm.',
+          en: 'Handheld 28.3 L/min particle counters provide spot audits.\nDigital differential sensors with RS485 Modbus stream continuous telemetry to SCADA.',
+          ja: 'ポータブル28.3 L/min粒子カウンターは迅速な監査に使用されます。\nRS485 Modbus通信を備えたデジタル差圧センサーは、連続したテレメトリをSCADAに送信します。'
+        }
+      },
+      {
+        id: 'sec-7-3',
+        num: '3.',
+        title: {
+          vi: 'Quy trình hiệu chuẩn (Calibration) đạt chuẩn ISO/IEC 17025',
+          en: 'ISO/IEC 17025 Calibration Standards',
+          ja: 'ISO/IEC 17025に準拠した校正プロセス'
+        },
+        content: {
+          vi: 'Toàn bộ thiết bị đo cần được hiệu chuẩn định kỳ 12 tháng/lần tại các phòng lab đạt chuẩn ISO/IEC 17025 sử dụng hạt chuẩn NIST.',
+          en: 'Instruments require annual calibration at ISO/IEC 17025 accredited labs using NIST-traceable microspheres.',
+          ja: 'すべての測定機器は、NIST追跡可能な標準粒子を使用して、ISO/IEC 17025認定ラボで年に1回校正される必要があります。'
+        }
+      },
+      {
+        id: 'sec-7-4',
+        num: '4.',
+        title: {
+          vi: 'Tích hợp dữ liệu đo lường vào hệ thống BMS/SCADA',
+          en: 'Integrating Sensors into BMS/SCADA Systems',
+          ja: 'BMS/SCADAシステムへの計測データの統合'
+        },
+        content: {
+          vi: 'Tích hợp tự động giúp trích xuất báo cáo tự động, cảnh báo qua SMS/Email khi có bất thường và lưu trữ hồ sơ lịch sử phục vụ kiểm toán.',
+          en: 'Integration enables automated reporting, instant SMS/Email alerts, and audit trail records.',
+          ja: '統合により、自動レポート作成、異常時のSMS/電子メールによるアラート、監査用履歴記録の保管が可能になります。'
+        }
+      }
+    ]
   },
   {
-    id: 'RES-008',
+    id: 'card-8',
     category: 'guide',
-    badge: {
-      vi: 'E-books',
-      en: 'E-books',
-      ja: 'E-books'
-    },
+    badge: { vi: 'E-books', en: 'E-books', ja: 'Eブック' },
     title: {
       vi: 'Tiêu chuẩn GMP trong dược phẩm',
-      en: 'Tiêu chuẩn GMP trong dược phẩm',
-      ja: 'Tiêu chuẩn GMP trong dược phẩm'
+      en: 'GMP Standards in Pharmaceutical Manufacturing',
+      ja: '医薬品製造におけるGMP基準'
     },
     description: {
       vi: 'Hướng dẫn thực hành sản xuất tốt cho ngành dược phẩm và y tế.',
-      en: 'Hướng dẫn thực hành sản xuất tốt cho ngành dược phẩm và y tế.',
-      ja: 'Hướng dẫn thực hành sản xuất tốt cho ngành dược phẩm và y tế.'
+      en: 'Good Manufacturing Practice (GMP) guide for healthcare and pharmaceuticals.',
+      ja: '医薬品および医療産業向けの適正製造規範ガイド。'
     },
     date: 'Tháng 9, 2024',
-    image: '/images/resources/news/gmp-facility.webp',
+    image: '/images/resources/autohtml/thumb7.png',
     author: {
-      name: { vi: 'ULink', en: 'ULink', ja: 'ULink' },
-      role: { vi: 'Ban biên tập', en: 'Editorial Board', ja: 'Ban biên tập' },
+      name: { vi: 'ULink Editorial', en: 'ULink Editorial', ja: 'ULink 編集部' },
+      role: { vi: 'Chuyên gia Dược phẩm', en: 'Pharma Expert', ja: '医薬品専門家' },
       avatar: '/images/about/op-team.webp'
     },
-    readTime: { vi: '12 phút đọc', en: '12 phút đọc', ja: '12 phút đọc' },
-    sections: [],
-    aiSummary: { intro: { vi: '', en: '', ja: '' }, bullets: [] },
-    audioDuration: '0',
-    audioSecs: 0,
-    size: '1.2 MB',
-    type: 'PDF',
-    downloadUrl: '/documents/lien-he-nha-phat-trien.pdf'
+    readTime: { vi: '12 phút đọc', en: '12 min read', ja: '12分' },
+    sections: [
+      {
+        id: 'sec-8-1',
+        num: '1.',
+        title: {
+          vi: 'Tổng quan về nguyên tắc GMP-WHO và EU-GMP',
+          en: 'Principles of GMP-WHO & EU-GMP',
+          ja: 'GMP-WHOおよびEU-GMPの基本原則'
+        },
+        content: {
+          vi: 'Thực hành tốt sản xuất thuốc (GMP) đặt ra các nguyên tắc nghiêm ngặt đảm bảo thuốc được sản xuất đồng đều và kiểm soát theo đúng tiêu chuẩn chất lượng.',
+          en: 'Good Manufacturing Practice (GMP) sets strict directives ensuring pharmaceuticals are consistently produced and controlled to quality standards.',
+          ja: '医薬品適正製造規範（GMP）は、医薬品が品質基準に従って一貫して製造および管理されることを保証する厳格な原則を規定しています。'
+        }
+      },
+      {
+        id: 'sec-8-2',
+        num: '2.',
+        title: {
+          vi: 'Yêu cầu kiểm soát nhiễm chéo trong nhà máy dược',
+          en: 'Cross-Contamination Control Requirements',
+          ja: '医薬品工場における交差汚染の制御要件'
+        },
+        content: {
+          vi: 'Ngăn ngừa nhiễm chéo bằng thiết kế HVAC chênh áp phân khu, hệ thống cửa Air-lock chéo và sử dụng trang phục phòng sạch tiệt trùng single-use.',
+          en: 'Prevent cross-contamination through zoned pressure cascades, airlock doors, and sterile single-use apparel.',
+          ja: 'ゾーン別差圧HVAC、エアロックドア、ステライル使い捨てウェアを使用して交差汚染を防ぎます。'
+        }
+      },
+      {
+        id: 'sec-8-3',
+        num: '3.',
+        title: {
+          vi: 'Hệ thống xử lý không khí và cấp nước tinh khiết (PW/WFI)',
+          en: 'Air Handling & Purified Water Systems (PW/WFI)',
+          ja: '空気処理システムおよび精製水（PW/WFI）供給'
+        },
+        content: {
+          vi: 'Nước pha tiêm (WFI) phải được duy trì tuần hoàn ở nhiệt độ 80°C để chống tái nhiễm khuẩn. Hệ thống HVAC phòng sản xuất thuốc tiêm yêu cầu vô trùng Grade A/B.',
+          en: 'Water for Injection (WFI) must recirculate at 80°C to prevent bio-film formation. Injectable suites mandate Grade A/B cleanroom conditions.',
+          ja: '注射用水（WFI）はバイオフィルム形成を防ぐために80°Cで循環維持する必要があります。注射剤エリアはグレードA/B条件を必須とします。'
+        }
+      },
+      {
+        id: 'sec-8-4',
+        num: '4.',
+        title: {
+          vi: 'Quy trình thẩm định (Validation) nhà xưởng dược',
+          en: 'Facility Validation & Protocol Steps',
+          ja: '医薬品工場のバリデーション（Validation）手順'
+        },
+        content: {
+          vi: 'Hoàn thiện hồ sơ thẩm định 4 giai đoạn: DQ (Thiết kế), IQ (Lắp đặt), OQ (Vận hành), và PQ (Hiệu năng) trước khi đưa nhà máy vào vận hành thương mại.',
+          en: 'Complete 4-stage validation protocols: Design (DQ), Installation (IQ), Operational (OQ), and Performance Qualification (PQ).',
+          ja: '商業運転前に、DQ（設計）、IQ（据付）、OQ（運転）、PQ（性能）の4段階のバリデーションプロトコルを完了します。'
+        }
+      }
+    ]
   },
   {
-    id: 'RES-009',
+    id: 'card-9',
     category: 'case-study',
-    badge: {
-      vi: 'Case Study',
-      en: 'Case Study',
-      ja: 'Case Study'
-    },
+    badge: { vi: 'Case Study', en: 'Case Study', ja: 'ケーススタディ' },
     title: {
       vi: 'An toàn hóa chất công nghiệp',
-      en: 'An toàn hóa chất công nghiệp',
-      ja: 'An toàn hóa chất công nghiệp'
+      en: 'Industrial Chemical Safety Management',
+      ja: '産業용化学物質の安全管理'
     },
     description: {
       vi: 'Quy trình và quy định xử lý an toàn hóa chất trong môi trường công nghiệp.',
-      en: 'Quy trình và quy định xử lý an toàn hóa chất trong môi trường công nghiệp.',
-      ja: 'Quy trình và quy định xử lý an toàn hóa chất trong môi trường công nghiệp.'
+      en: 'Handling regulations and emergency response protocols for industrial chemicals.',
+      ja: '産業環境における化学物質の安全な取り扱い手順と規制。'
     },
     date: 'Tháng 9, 2024',
-    image: '/images/resources/news/chemical-handling.webp',
+    image: '/images/resources/autohtml/thumb8.png',
     author: {
-      name: { vi: 'ULink', en: 'ULink', ja: 'ULink' },
-      role: { vi: 'Ban biên tập', en: 'Editorial Board', ja: 'Ban biên tập' },
+      name: { vi: 'ULink Editorial', en: 'ULink Editorial', ja: 'ULink 編集部' },
+      role: { vi: 'Ban biên tập', en: 'Editorial Board', ja: '編集部' },
       avatar: '/images/about/op-team.webp'
     },
-    readTime: { vi: '9 phút đọc', en: '9 phút đọc', ja: '9 phút đọc' },
-    sections: [],
-    aiSummary: { intro: { vi: '', en: '', ja: '' }, bullets: [] },
-    audioDuration: '0',
-    audioSecs: 0,
-    size: '1.2 MB',
-    type: 'PDF',
-    downloadUrl: '/documents/lien-he-nha-phat-trien.pdf'
+    readTime: { vi: '9 phút đọc', en: '9 min read', ja: '9分' },
+    sections: [
+      {
+        id: 'sec-9-1',
+        num: '1.',
+        title: {
+          vi: 'Phân loại hóa chất nguy hiểm và tiêu chuẩn GHS',
+          en: 'Hazardous Chemical Classification & GHS',
+          ja: '危険有害化学物質の分類とGHS基準'
+        },
+        content: {
+          vi: 'Hệ thống hài hòa toàn cầu GHS quy định nhãn cảnh báo hóa chất dễ cháy, ăn mòn, độc tính cấp tính để người lao động dễ dàng nhận biết nguy cơ.',
+          en: 'GHS harmonizes global chemical warning labels for flammables, corrosives, and acute toxins for instant hazard recognition.',
+          ja: 'GHSは、作業員が危険を即座に認識できるように、引火性、腐食性、急性毒性などの化学物質警告ラベルを世界的に調和させています。'
+        }
+      },
+      {
+        id: 'sec-9-2',
+        num: '2.',
+        title: {
+          vi: 'Quy định lưu trữ, bảo quản và vận chuyển hóa chất',
+          en: 'Storage, Handling & Transport Regulations',
+          ja: '化学物質の保管、取り扱い、輸送に関する規制'
+        },
+        content: {
+          vi: 'Kho hóa chất phải trang bị tủ chống cháy đạt chuẩn FM Approval, khay hứng tràn dung tích 110% và hệ thống thông gió chống nổ.',
+          en: 'Chemical stores require FM-Approved safety cabinets, 110% containment spill pallets, and explosion-proof ventilation.',
+          ja: '化学物質倉庫には、FM承認の安全キャビネット、110%容量の漏洩受けトレイ、防爆換気システムを装備する必要があります。'
+        }
+      },
+      {
+        id: 'sec-9-3',
+        num: '3.',
+        title: {
+          vi: 'Biện pháp phòng ngừa và trang thiết bị ứng cứu sự cố',
+          en: 'Emergency Response & Spill Containment Kits',
+          ja: '事故対応対策および緊急時装備'
+        },
+        content: {
+          vi: 'Trang bị bộ Spill Kit xử lý sự cố tràn hóa chất khẩn cấp, vòi rửa mắt khẩn cấp (Emergency Eyewash) trong bán kính 10 mét từ vị trí thao tác.',
+          en: 'Deploy chemical spill kits and emergency eyewash stations within 10 meters of handling areas.',
+          ja: '作業位置から10メートル以内に、緊急化学物質漏洩キットと緊急洗眼器を配置します。'
+        }
+      },
+      {
+        id: 'sec-9-4',
+        num: '4.',
+        title: {
+          vi: 'Đào tạo an toàn hóa chất cho người lao động',
+          en: 'Worker Safety Training & MSDS Compliance',
+          ja: '作業員向け化学物質安全教育'
+        },
+        content: {
+          vi: 'Tổ chức diễn tập ứng phó sự cố hóa chất định kỳ 6 tháng/lần và đảm bảo phiếu MSDS tiếng Việt luôn có sẵn tại nơi làm việc.',
+          en: 'Conduct bi-annual emergency response drills and keep localized MSDS sheets accessible in all work areas.',
+          ja: '半年に1回緊急対応訓練を実施し、現地語のMSDSシートをすべての作業エリアで閲覧可能にします。'
+        }
+      }
+    ]
   },
   {
-    id: 'RES-010',
+    id: 'card-10',
     category: 'guide',
-    badge: {
-      vi: 'Infographic',
-      en: 'Infographic',
-      ja: 'Infographic'
-    },
+    badge: { vi: 'Infographic', en: 'Infographic', ja: 'インフォグラフィック' },
     title: {
       vi: 'Hệ thống lọc khí công nghiệp',
-      en: 'Hệ thống lọc khí công nghiệp',
-      ja: 'Hệ thống lọc khí công nghiệp'
+      en: 'Industrial Air Filtration Technologies',
+      ja: '産業用空気ろ過技術'
     },
     description: {
       vi: 'So sánh và phân tích các công nghệ lọc khí hiện đại trong sản xuất công nghiệp.',
-      en: 'So sánh và phân tích các công nghệ lọc khí hiện đại trong sản xuất công nghiệp.',
-      ja: 'So sánh và phân tích các công nghệ lọc khí hiện đại trong sản xuất công nghiệp.'
+      en: 'Comparative analysis of advanced air filtration systems in modern manufacturing.',
+      ja: '産業生産における現代の空気ろ過技術の比較と分析。'
     },
     date: 'Tháng 8, 2024',
-    image: '/images/resources/news/air-filtration.webp',
+    image: '/images/resources/autohtml/thumb9.png',
     author: {
-      name: { vi: 'ULink', en: 'ULink', ja: 'ULink' },
-      role: { vi: 'Ban biên tập', en: 'Editorial Board', ja: 'Ban biên tập' },
+      name: { vi: 'ULink Editorial', en: 'ULink Editorial', ja: 'ULink 編集部' },
+      role: { vi: 'Ban biên tập', en: 'Editorial Board', ja: '編集部' },
       avatar: '/images/about/op-team.webp'
     },
-    readTime: { vi: '7 phút đọc', en: '7 phút đọc', ja: '7 phút đọc' },
-    sections: [],
-    aiSummary: { intro: { vi: '', en: '', ja: '' }, bullets: [] },
-    audioDuration: '0',
-    audioSecs: 0,
-    size: '1.2 MB',
-    type: 'PDF',
-    downloadUrl: '/documents/lien-he-nha-phat-trien.pdf'
+    readTime: { vi: '7 phút đọc', en: '7 min read', ja: '7分' },
+    sections: [
+      {
+        id: 'sec-10-1',
+        num: '1.',
+        title: {
+          vi: 'Nguyên lý hoạt động của màng lọc không khí',
+          en: 'Working Principles of Air Filtration Media',
+          ja: '空気ろ過メディアの動作原理'
+        },
+        content: {
+          vi: 'Màng lọc giữ lại hạt bụi nhờ 4 cơ chế cơ bản: Sàng lọc (Sieving), Chặn (Interception), Tác động quán tính (Inertial Impaction), và Khuếch tán (Diffusion).',
+          en: 'Filter media capture contaminants via 4 mechanism stages: Sieving, Interception, Inertial Impaction, and Brownian Diffusion.',
+          ja: 'フィルターメディアは、ふるい分け、遮断、慣性衝突、およびブラウン拡散の4つのメカニズムを介して汚染物質を捕集します。'
+        }
+      },
+      {
+        id: 'sec-10-2',
+        num: '2.',
+        title: {
+          vi: 'Phân biệt màng lọc Sơ cấp, Trung cấp và HEPA/ULPA',
+          en: 'Comparing Pre-filters, Medium Filters & HEPA/ULPA',
+          ja: 'プレフィルター、中性能フィルター、HEPA/ULPAの比較'
+        },
+        content: {
+          vi: 'Màng lọc sơ cấp G4 bảo vệ quạt gió khỏi bụi thô > 10 µm.\nMàng trung cấp F8 giữ hạt 1-5 µm.\nMàng HEPA H14/ULPA U15 là chốt chặn cuối cùng cho vi hạt siêu mịn.',
+          en: 'G4 pre-filters trap coarse particles > 10 µm.\nF8 medium filters catch 1-5 µm dust.\nHEPA H14/ULPA U15 serve as final barriers for sub-micron particles.',
+          ja: 'G4プレフィルターは10 µm超の粗大粒子を捕集します。\nF8中性能フィルターは1〜5 µmの粉塵を捕集します。\nHEPA H14/ULPA U15はサブミクロン粒子の最終バリアとして機能します。'
+        }
+      },
+      {
+        id: 'sec-10-3',
+        num: '3.',
+        title: {
+          vi: 'Đánh giá tuổi thọ và tần suất thay thế màng lọc',
+          en: 'Lifespan Assessment & Replacement Cycles',
+          ja: '寿命評価および交換サイクルの設定'
+        },
+        content: {
+          vi: 'Màng sơ cấp: Thay thế sau 2-3 tháng.\nMàng trung cấp: 6-12 tháng.\nMàng HEPA: 3-5 năm tùy thuộc vào tải lượng bụi và chất lượng màng lọc sơ cấp.',
+          en: 'Pre-filters: Replace every 2-3 months.\nMedium filters: 6-12 months.\nHEPA: 3-5 years based on dust loading.',
+          ja: 'プレフィルター：2〜3ヶ月ごとに交換。\n中性能フィルター：6〜12ヶ月。\nHEPA：粉塵負荷に応じて3〜5年。'
+        }
+      },
+      {
+        id: 'sec-10-4',
+        num: '4.',
+        title: {
+          vi: 'Giải pháp tiết kiệm năng lượng cho hệ thống lọc',
+          en: 'Energy Saving Solutions for Air Filtration',
+          ja: '空気ろ過システムの省エネソリューション'
+        },
+        content: {
+          vi: 'Sử dụng màng lọc HEPA nếp gấp sâu (Deep-pleat) và động cơ EC quạt FFU biến tần giúp giảm đến 30% điện năng tiêu thụ cho AHU.',
+          en: 'Deep-pleat HEPA filters and EC fan FFU modules slash AHU fan energy consumption by up to 30%.',
+          ja: 'ディーププリーツHEPAフィルターとECファンFFUモジュールを使用すると、AHUファンの消費電力を最大30%削減できます。'
+        }
+      }
+    ]
   },
   {
-    id: 'RES-011',
+    id: 'card-11',
     category: 'news',
-    badge: {
-      vi: 'Data Room',
-      en: 'Data Room',
-      ja: 'Data Room'
-    },
+    badge: { vi: 'Data Room', en: 'Data Room', ja: 'データルーム' },
     title: {
       vi: 'Báo cáo thị trường vật tư 2024',
-      en: 'Báo cáo thị trường vật tư 2024',
-      ja: 'Báo cáo thị trường vật tư 2024'
+      en: 'Industrial Supplies Market Report 2024',
+      ja: '産業資材市場レポート 2024'
     },
     description: {
       vi: 'Phân tích xu hướng và dự báo thị trường vật tư công nghiệp Việt Nam năm 2024.',
-      en: 'Phân tích xu hướng và dự báo thị trường vật tư công nghiệp Việt Nam năm 2024.',
-      ja: 'Phân tích xu hướng và dự báo thị trường vật tư công nghiệp Việt Nam năm 2024.'
+      en: 'Trend forecast and supply chain market report for Vietnam industrial sectors in 2024.',
+      ja: '2024年のベトナム産業資材市場のトレンド分析と予測。'
     },
     date: 'Tháng 8, 2024',
-    image: '/images/resources/news/market-report.webp',
+    image: '/images/resources/autohtml/thumb10.png',
     author: {
-      name: { vi: 'ULink', en: 'ULink', ja: 'ULink' },
-      role: { vi: 'Ban biên tập', en: 'Editorial Board', ja: 'Ban biên tập' },
+      name: { vi: 'ULink Editorial', en: 'ULink Editorial', ja: 'ULink 編集部' },
+      role: { vi: 'Chuyên gia Phân tích', en: 'Market Analyst', ja: '市場アナリスト' },
       avatar: '/images/about/op-team.webp'
     },
-    readTime: { vi: '10 phút đọc', en: '10 phút đọc', ja: '10 phút đọc' },
-    sections: [],
-    aiSummary: { intro: { vi: '', en: '', ja: '' }, bullets: [] },
-    audioDuration: '0',
-    audioSecs: 0,
-    size: '1.2 MB',
-    type: 'PDF',
-    downloadUrl: '/documents/lien-he-nha-phat-trien.pdf'
+    readTime: { vi: '10 phút đọc', en: '10 min read', ja: '10分' },
+    sections: [
+      {
+        id: 'sec-11-1',
+        num: '1.',
+        title: {
+          vi: 'Tổng quan thị trường vật tư công nghiệp Việt Nam 2024',
+          en: 'Overview of Vietnam Industrial Supplies Market 2024',
+          ja: '2024年ベトナム産業資材市場の概要'
+        },
+        content: {
+          vi: 'Thị trường vật tư công nghiệp Việt Nam ghi nhận mức tăng trưởng 14.5% nhờ làn sóng dịch chuyển dòng vốn FDI vào các ngành điện tử bán dẫn và công nghệ sinh học.',
+          en: 'Vietnam industrial supplies market registered 14.5% YoY growth driven by FDI inflows into semiconductor assembly and biotech hubs.',
+          ja: '半導体アセンブリおよびバイオテクハブへのFDI流入に牽引され、ベトナムの産業資材市場は前年比14.5%の成長を記録しました。'
+        }
+      },
+      {
+        id: 'sec-11-2',
+        num: '2.',
+        title: {
+          vi: 'Xu hướng dịch chuyển chuỗi cung ứng B2B',
+          en: 'B2B Supply Chain Digitization Trends',
+          ja: 'B2Bサプライチェーンのデジタル化トレンド'
+        },
+        content: {
+          vi: 'Các tập đoàn đa quốc gia chuyển hướng ưu tiên các nhà cung ứng B2B nội địa có khả năng kho vận rải rác, cung ứng JIT (Just-in-Time) và tích hợp nền tảng mua sắm số hóa.',
+          en: 'Multinational corporations increasingly prioritize local B2B vendors offering distributed warehousing, JIT delivery, and digital procurement platforms.',
+          ja: '多国籍企業は、分散型倉庫保管、JIT配送、デジタル調達プラットフォームを提供するローカルB2Bベンダーをますます優先しています。'
+        }
+      },
+      {
+        id: 'sec-11-3',
+        num: '3.',
+        title: {
+          vi: 'Top nhóm hàng phòng sạch và bảo hộ tăng trưởng mạnh',
+          en: 'Fastest Growing Cleanroom & Safety Segments',
+          ja: '最も急成長しているクリーンルームおよび安全セグメント'
+        },
+        content: {
+          vi: 'Găng tay nitrile không bột, quần áo chống tĩnh điện dệt sợi carbon, và khăn lau phòng sạch siêu mịn ghi nhận mức cầu vượt 40% so với cùng kỳ 2023.',
+          en: 'Powder-free nitrile gloves, ESD carbon grid suits, and micro-fiber cleanroom wipes experienced >40% surge in demand.',
+          ja: 'パウダーフリーニトリル手袋、ESDカーボングリッドスーツ、マイクロファイバークリーンルームワイパーの需要は40%以上急増しました。'
+        }
+      },
+      {
+        id: 'sec-11-4',
+        num: '4.',
+        title: {
+          vi: 'Dự báo và khuyến nghị chiến lược thu mua năm 2025',
+          en: 'Forecast & Procurement Strategy Recommendations 2025',
+          ja: '2025年の予測と調達戦略の推奨事項'
+        },
+        content: {
+          vi: 'ULink khuyến nghị doanh nghiệp ký hợp đồng khung khung hàng năm (Blanket Order) để cố định giá thành và đảm bảo nguồn cung không bị gián đoạn.',
+          en: 'ULink advises enterprises to execute annual Blanket Supply Agreements to lock pricing and secure buffer stock reserves.',
+          ja: 'ULinkは、価格を固定し予備在庫を確保するために、年間ブランケット供給契約の締結を推奨します。'
+        }
+      }
+    ]
   },
-    {
-    id: 'RES-012',
+  {
+    id: 'card-12',
     category: 'event',
-    badge: {
-      vi: 'Workshop',
-      en: 'Workshop',
-      ja: 'Workshop'
+    badge: { vi: 'Events', en: 'Events', ja: 'イベント' },
+    title: {
+      vi: 'Hội thảo công nghệ phòng sạch',
+      en: 'Cleanroom Technology Seminar',
+      ja: 'クリーンルーム技術セミナー'
     },
+    description: {
+      vi: 'Sự kiện giao lưu và chia sẻ kiến thức chuyên ngành phòng sạch hàng đầu Việt Nam.',
+      en: 'Premier cleanroom technology knowledge-sharing forum in Vietnam.',
+      ja: 'ベトナムをリードするクリーンルーム業界の知識共有イベント。'
+    },
+    date: 'Tháng 8, 2024',
+    image: '/images/resources/autohtml/thumb11.png',
+    author: {
+      name: { vi: 'ULink Editorial', en: 'ULink Editorial', ja: 'ULink 編集部' },
+      role: { vi: 'Ban biên tập', en: 'Editorial Board', ja: '編集部' },
+      avatar: '/images/about/op-team.webp'
+    },
+    readTime: { vi: 'Tham gia', en: 'Join now', ja: '参加する' },
+    sections: [
+      {
+        id: 'sec-12-1',
+        num: '1.',
+        title: {
+          vi: 'Chương trình tổng quan và các chủ đề thảo luận chính',
+          en: 'Program Overview & Key Discussion Topics',
+          ja: 'プログラムの概要と主要な議論のトピック'
+        },
+        content: {
+          vi: 'Hội thảo tập trung thảo luận về xu hướng thiết kế phòng sạch tiết kiệm năng lượng, ứng dụng IoT trong giám sát vi hạt và các cập nhật mới nhất về tiêu chuẩn ISO 14644-1:2024.',
+          en: 'The seminar highlights energy-efficient cleanroom designs, IoT-enabled particle monitoring, and ISO 14644-1:2024 revisions.',
+          ja: 'セミナーでは、省エネクリーンルームの設計、IoTを活用した粒子監視、ISO 14644-1:2024の改訂に焦点を当てます。'
+        }
+      },
+      {
+        id: 'sec-12-2',
+        num: '2.',
+        title: {
+          vi: 'Danh sách diễn giả và chuyên gia đầu ngành',
+          en: 'Keynote Speakers & Industry Panelists',
+          ja: '基調講演者および業界パネリスト'
+        },
+        content: {
+          vi: 'Sự kiện có sự tham gia của các chuyên gia tư vấn kiểm định quốc tế từ Đức, Nhật Bản cùng hơn 300 giám đốc nhà máy và quản lý QA/QC tại Việt Nam.',
+          en: 'Featuring international audit experts from Germany and Japan alongside 300+ plant directors and QA managers in Vietnam.',
+          ja: 'ドイツおよび日本からの国際監査専門家、ならびにベトナムの300名以上の工場長およびQAマネージャーが参加します。'
+        }
+      },
+      {
+        id: 'sec-12-3',
+        num: '3.',
+        title: {
+          vi: 'Triển lãm công nghệ và giải pháp phòng sạch tiên tiến',
+          en: 'Technology Exhibition & Product Showcase',
+          ja: '技術展示会および製品の紹介'
+        },
+        content: {
+          vi: 'Khu vực gian hàng trải nghiệm trực tiếp hệ thống FFU thông minh, găng tay nitrile siêu mềm ESD, và các thiết bị đo hạt bụi thế hệ mới.',
+          en: 'Hands-on exhibition zone showcasing smart FFUs, ultra-soft ESD nitrile gloves, and next-gen aerosol particle counters.',
+          ja: 'スマートFFU、超ソフトESDニトリル手袋、次世代エアロゾル粒子カウンターを体験できるハンズオン展示ゾーン。'
+        }
+      },
+      {
+        id: 'sec-12-4',
+        num: '4.',
+        title: {
+          vi: 'Hướng dẫn đăng ký tham dự và quyền lợi đại biểu',
+          en: 'Delegate Registration & Exclusive Benefits',
+          ja: '参加登録および特別特典'
+        },
+        content: {
+          vi: 'Đại biểu đăng ký trước ngày 20/08 được miễn phí tham dự, tặng bộ tài liệu cẩm nang kỹ thuật phòng sạch và ưu đãi tư vấn khảo sát nhà máy trực tiếp từ ULink.',
+          en: 'Delegates registering before Aug 20 enjoy free access, technical handbook packages, and complimentary ULink site survey vouchers.',
+          ja: '8月20日までに登録した参加者は、無料入場、技術ハンドブックパッケージ、およびULink現場調査クーポンを受け取ることができます。'
+        }
+      }
+    ]
+  }
+];
+
+// 4 Most Viewed Articles matching autohtml-project/index.html (thumb12.png - thumb15.png)
+export const MOST_VIEWED_ARTICLES: ResourceItem[] = [
+  {
+    id: 'mv-card-1',
+    category: 'guide',
+    badge: { vi: 'Infographic', en: 'Infographic', ja: 'インフォグラフィック' },
+    title: {
+      vi: 'Hướng dẫn thiết kế phòng sạch tối ưu cho Doanh nghiệp',
+      en: 'Optimal Cleanroom Design Guide for Enterprises',
+      ja: '企業向け最適なクリーンルーム設計ガイド'
+    },
+    description: {
+      vi: 'Các nguyên tắc cơ bản và lưu ý quan trọng khi thiết kế môi trường sản xuất sạch.',
+      en: 'Core engineering principles and considerations when setting up cleanrooms.',
+      ja: 'クリーンな製造環境を設計する際の基本原則と重要な考慮事項。'
+    },
+    date: '1.2k lượt xem',
+    image: '/images/resources/autohtml/thumb12.png',
+    author: {
+      name: { vi: 'ULink Editorial', en: 'ULink Editorial', ja: 'ULink 編集部' },
+      role: { vi: 'Ban biên tập', en: 'Editorial Board', ja: '編集部' },
+      avatar: '/images/about/op-team.webp'
+    },
+    readTime: { vi: 'Đọc thêm', en: 'Read more', ja: 'もっと読む' },
+    sections: [
+      {
+        id: 'sec-mv1-1',
+        num: '1.',
+        title: {
+          vi: 'Khảo sát mặt bằng và xác định cấp độ sạch ISO',
+          en: 'Site Survey & Target ISO Class Determination',
+          ja: '現地調査と目標ISOクラスの決定'
+        },
+        content: {
+          vi: 'Bước đầu tiên trong quy trình thiết kế phòng sạch là khảo sát điều kiện mặt bằng hiện hữu, luồng gió tự nhiên và xác định cấp ISO sạch mục tiêu (ISO Class 3 - Class 8) theo đúng đặc thù ngành hàng sản xuất.',
+          en: 'The first step involves evaluating site conditions, natural airflow paths, and determining target ISO cleanliness classes (ISO Class 3 - Class 8) aligned with specific manufacturing requirements.',
+          ja: '設計の第一歩は、現地条件や自然気流経路を評価し、特定の製造要件に合わせた目標ISOクラス（ISOクラス3〜8）を決定することです。'
+        }
+      },
+      {
+        id: 'sec-mv1-2',
+        num: '2.',
+        title: {
+          vi: 'Lựa chọn vật liệu vách panel và sàn epoxy/vinyl ESD',
+          en: 'Selecting Wall Panels & ESD Epoxy/Vinyl Flooring',
+          ja: '壁パネルおよびESDエポキシ/ビニール床材の選定'
+        },
+        content: {
+          vi: 'Ưu tiên vách Panel Sandwich lõi PU/PIR chống cháy với bề mặt phẳng láng, kháng hóa chất tẩy rửa.\nSàn phòng sạch cần thi công lớp phủ Epoxy hoặc Vinyl chống tĩnh điện ESD nối đất tiêu chuẩn.',
+          en: 'Prioritize PU/PIR sandwich panels featuring chemical-resistant smooth surfaces.\nFlooring requires conductive ESD epoxy or vinyl coatings connected to verified ground points.',
+          ja: '耐薬品性の滑らかな表面を備えたPU/PIRサンドイッチパネルを優先します。\n床材は、検証された接地ポイントに接続された導電性ESDエポキシまたはビニールコーティングが必要です。'
+        }
+      },
+      {
+        id: 'sec-mv1-3',
+        num: '3.',
+        title: {
+          vi: 'Bố trí luồng di chuyển nhân sự và hàng hóa (Pass-box / Air Shower)',
+          en: 'Personnel & Material Flow Layout (Pass-box / Air Shower)',
+          ja: '作業員および資材の動線レイアウト（パスボックス/エアシャワー）'
+        },
+        content: {
+          vi: 'Tách biệt hoàn toàn luồng di chuyển của nhân sự (Person Flow) và luồng hàng hóa (Material Flow).\nTrang bị Air Shower ở lối vào nhân sự và Pass-box khóa chéo cơ/điện ở các khu vực chuyển giao sản phẩm.',
+          en: 'Completely segregate Personnel Flow from Material Flow.\nInstall Air Showers at personnel entries and interlocked Pass-boxes at material transfer points.',
+          ja: '人流（Personnel Flow）と物流（Material Flow）を完全に分離します。\n作業員入口にエアシャワーを、資材移送ポイントにインターロック付きパスボックスを設置します。'
+        }
+      },
+      {
+        id: 'sec-mv1-4',
+        num: '4.',
+        title: {
+          vi: 'Dự toán chi phí đầu tư và tối ưu hóa vận hành',
+          en: 'CAPEX Cost Estimation & Operational Optimization',
+          ja: 'CAPEXコスト見積もりと運用の最適化'
+        },
+        content: {
+          vi: 'Cân đối giữa chi phí đầu tư ban đầu (CAPEX) và chi phí vận hành hàng năm (OPEX).\nSử dụng hệ thống FFU điều khiển thông minh giúp cắt giảm 25% tiền điện hàng tháng.',
+          en: 'Balance initial CAPEX with annual OPEX.\nDeploying smart FFU controls saves up to 25% on monthly electricity bills.',
+          ja: '初期CAPEXと年間OPEXのバランスをとります。\nスマートFFU制御の導入により、毎月の電気代を最大25%削減できます。'
+        }
+      }
+    ]
+  },
+  {
+    id: 'mv-card-2',
+    category: 'guide',
+    badge: { vi: 'Hướng dẫn kỹ thuật', en: 'Technical Guide', ja: '技術ガイド' },
+    title: {
+      vi: 'Kiểm soát ô nhiễm trong sản xuất Dược phẩm',
+      en: 'Contamination Control in Pharmaceutical Manufacturing',
+      ja: '医薬品製造における汚染制御'
+    },
+    description: {
+      vi: 'Phương pháp hiệu quả để giảm thiểu bụi và vi khuẩn trong môi trường công nghiệp.',
+      en: 'Effective protocols to eliminate dust particles and airborne microbes.',
+      ja: '産業環境における粉塵と細菌を最小限に抑える効果的な方法。'
+    },
+    date: '850 lượt xem',
+    image: '/images/resources/autohtml/thumb13.png',
+    author: {
+      name: { vi: 'ULink Editorial', en: 'ULink Editorial', ja: 'ULink 編集部' },
+      role: { vi: 'Ban biên tập', en: 'Editorial Board', ja: '編集部' },
+      avatar: '/images/about/op-team.webp'
+    },
+    readTime: { vi: 'Đọc thêm', en: 'Read more', ja: 'もっと読む' },
+    sections: [
+      {
+        id: 'sec-mv2-1',
+        num: '1.',
+        title: {
+          vi: 'Các nguồn ô nhiễm tiềm ẩn trong sản xuất dược',
+          en: 'Potential Contamination Sources in Pharma Facilities',
+          ja: '医薬品施設における潜在的な汚染源'
+        },
+        content: {
+          vi: 'Ô nhiễm vi sinh vật và vi hạt từ người lao động, thiết bị chưa tiệt trùng, nguyên liệu thầu đầu vào và luồng không khí chưa qua xử lý.',
+          en: 'Microbial and particulate contamination originates from operators, unsterilized equipment, raw materials, and untreated ambient air.',
+          ja: '微生物および微粒子汚染は、作業員、未滅菌の機器、原料、および未処理の周囲空気から発生します。'
+        }
+      },
+      {
+        id: 'sec-mv2-2',
+        num: '2.',
+        title: {
+          vi: 'Giải pháp kiểm soát vi sinh và vi hạt theo EU-GMP',
+          en: 'Microbial & Particulate Control under EU-GMP',
+          ja: 'EU-GMPに基づく微生物および微粒子の制御ソリューション'
+        },
+        content: {
+          vi: 'Thiết lập các cấp độ sạch Grade A, B, C, D.\nKhu vực Grade A yêu cầu luồng khí một chiều (Laminar Air Flow - LAF) tốc độ 0.36 - 0.54 m/s.',
+          en: 'Establish Grade A, B, C, D cleanliness zones.\nGrade A critical zones demand unidirectional Laminar Air Flow (LAF) at 0.36 - 0.54 m/s velocity.',
+          ja: 'グレードA、B、C、Dの清浄度ゾーンを設定します。\nグレードAの重要ゾーンでは、0.36〜0.54 m/sの速度で一方向ラミナーエアフロー（LAF）が必要です。'
+        }
+      },
+      {
+        id: 'sec-mv2-3',
+        num: '3.',
+        title: {
+          vi: 'Áp dụng vật tư tiêu hao phòng sạch vô trùng',
+          en: 'Deploying Sterile Cleanroom Consumables',
+          ja: 'ステライル（無菌）クリーンルーム消耗品の適用'
+        },
+        content: {
+          vi: 'Sử dụng găng tay tiệt trùng bằng tia Gamma, khẩu trang và khăn lau phòng sạch đóng gói tiệt trùng từng chiếc có chỉ thị màu tiệt trùng.',
+          en: 'Utilize Gamma-irradiated sterile gloves, masks, and individually pouch-sealed cleanroom wipes with sterilization indicators.',
+          ja: 'ガンマ線滅菌手袋、マスク、および滅菌インジケーターが付いた個別包装のクリーンルームワイパーを使用します。'
+        }
+      },
+      {
+        id: 'sec-mv2-4',
+        num: '4.',
+        title: {
+          vi: 'Giám sát liên tục và đánh giá rủi ro nhiễm chéo',
+          en: 'Continuous Environmental Monitoring & Risk Assessment',
+          ja: '継続的な環境モニタリングとリスク評価'
+        },
+        content: {
+          vi: 'Đặt dĩa thạch lắng bụi (Settle plates) và máy hút vi sinh không khí (Active Air Sampler) định kỳ để đảm bảo giới hạn vi sinh luôn nằm trong ngưỡng cho phép.',
+          en: 'Deploy settle plates and active air samplers routinely to guarantee bioburden metrics remain well beneath action thresholds.',
+          ja: '落下菌用シャーレ（Settle plates）と空中浮遊菌サンプラーを定期的に配置し、生菌数指標がアクション閾値以下に維持されることを保証します。'
+        }
+      }
+    ]
+  },
+  {
+    id: 'mv-card-3',
+    category: 'standard',
+    badge: { vi: 'Tiêu chuẩn', en: 'Standards', ja: '標準' },
+    title: {
+      vi: 'Cập nhật tài liệu Tiêu chuẩn ISO 14644 mới nhất',
+      en: 'Latest ISO 14644 Cleanroom Standard Updates',
+      ja: '最新のISO 14644標準文書の更新'
+    },
+    description: {
+      vi: 'Cập nhật các yêu cầu mới về phân loại và kiểm soát môi trường phòng sạch.',
+      en: 'Key revision highlights for cleanroom classification and air purity monitoring.',
+      ja: 'クリーンルーム環境の分類と制御に関する新しい要件の更新。'
+    },
+    date: '2.1k lượt xem',
+    image: '/images/resources/autohtml/thumb14.png',
+    author: {
+      name: { vi: 'ULink Editorial', en: 'ULink Editorial', ja: 'ULink 編集部' },
+      role: { vi: 'Ban biên tập', en: 'Editorial Board', ja: '編集部' },
+      avatar: '/images/about/op-team.webp'
+    },
+    readTime: { vi: 'Đọc thêm', en: 'Read more', ja: 'もっと読む' },
+    sections: [
+      {
+        id: 'sec-mv3-1',
+        num: '1.',
+        title: {
+          vi: 'Điểm mới trong ISO 14644-1:2015 so với phiên bản cũ',
+          en: 'Key Revision Highlights in ISO 14644-1:2015',
+          ja: 'ISO 14644-1:2015の主な改訂ポイント'
+        },
+        content: {
+          vi: 'Bỏ phương pháp tính giới hạn tin cậy 95% UCL và thay thế bằng bảng tra cứu số lượng vị trí lấy mẫu tối thiểu dựa trên diện tích phòng sạch.',
+          en: 'Eliminated the 95% Upper Confidence Limit (UCL) method, replacing it with a direct lookup table for minimum sampling point counts by room area.',
+          ja: '95%上限信頼限界（UCL）法を廃止し、部屋の面積に基づく最小サンプリングポイント数の直接検索テーブルに置き換えました。'
+        }
+      },
+      {
+        id: 'sec-mv3-2',
+        num: '2.',
+        title: {
+          vi: 'Thay đổi về phương pháp lấy mẫu hạt bụi phòng sạch',
+          en: 'Revised Airborne Particle Sampling Methodologies',
+          ja: '改訂された空気中粒子サンプリング手法'
+        },
+        content: {
+          vi: 'Quy định cụ thể thể tích mẫu tối thiểu cho mỗi vị trí và yêu cầu máy đếm hạt bụi phải có chứng nhận hiệu chuẩn ISO 21501-4 còn hiệu lực.',
+          en: 'Mandates specific minimum sample volumes per location and requires particle counters certified to ISO 21501-4.',
+          ja: '場所ごとの具体的な最小サンプル量を義務付け、ISO 21501-4に認定された粒子カウンターを要求します。'
+        }
+      },
+      {
+        id: 'sec-mv3-3',
+        num: '3.',
+        title: {
+          vi: 'Yêu cầu giám sát định kỳ theo ISO 14644-2',
+          en: 'Periodic Monitoring Mandates under ISO 14644-2',
+          ja: 'ISO 14644-2に基づく定期的なモニタリング要件'
+        },
+        content: {
+          vi: 'Yêu cầu xây dựng Kế hoạch giám sát (Monitoring Plan) dựa trên đánh giá rủi ro, quy định tần suất đo kiểm rò rỉ màng lọc HEPA tối đa 24 tháng/lần.',
+          en: 'Requires establishing a risk-based Monitoring Plan, specifying maximum HEPA filter leak test intervals of 24 months.',
+          ja: 'リスクベースのモニタリング計画の策定を義務付け、HEPAフィルターの漏れ試験の最大間隔を24ヶ月と規定します。'
+        }
+      },
+      {
+        id: 'sec-mv3-4',
+        num: '4.',
+        title: {
+          vi: 'Hướng dẫn cập nhật hồ sơ tuân thủ cho doanh nghiệp',
+          en: 'Action Plan for Updating Compliance Audits',
+          ja: 'コンプライアンス監査更新のアクションプラン'
+        },
+        content: {
+          vi: 'Doanh nghiệp cần cập nhật lại SOP đo kiểm, kiểm tra thiết bị đo và đào tạo nhân sự theo các tiêu chuẩn sửa đổi mới nhất.',
+          en: 'Facilities must update measurement SOPs, re-verify counter calibrations, and train personnel to the revised standards.',
+          ja: '施設は、測定SOPを更新し、カウンターの校正を再検証し、改訂された規格に基づいて作業員を訓練する必要があります。'
+        }
+      }
+    ]
+  },
+  {
+    id: 'mv-card-4',
+    category: 'case-study',
+    badge: { vi: 'Case Study', en: 'Case Study', ja: 'ケーススタディ' },
+    title: {
+      vi: 'Triển khai phòng sạch cho dây chuyền mới',
+      en: 'Cleanroom Implementation for New Lines',
+      ja: '新規生産ライン向けクリーンルームの導入'
+    },
+    description: {
+      vi: 'Kinh nghiệm thực tế từ dự án triển khai phòng sạch cho nhà máy sản xuất điện tử.',
+      en: 'Field insights and rollout lessons from electronics fab construction.',
+      ja: '電子工場のクリーンルーム導入プロジェクトの実践経験。'
+    },
+    date: '1.5k lượt xem',
+    image: '/images/resources/autohtml/thumb15.png',
+    author: {
+      name: { vi: 'ULink Editorial', en: 'ULink Editorial', ja: 'ULink 編集部' },
+      role: { vi: 'Ban biên tập', en: 'Editorial Board', ja: '編集部' },
+      avatar: '/images/about/op-team.webp'
+    },
+    readTime: { vi: 'Đọc thêm', en: 'Read more', ja: 'もっと読む' },
+    sections: [
+      {
+        id: 'sec-mv4-1',
+        num: '1.',
+        title: {
+          vi: 'Lập kế hoạch và giai đoạn thiết kế thi công',
+          en: 'Project Planning & Construction Design Phases',
+          ja: 'プロジェクト計画および施工設計フェーズ'
+        },
+        content: {
+          vi: 'Lập tiến độ thi công chi tiết từng hạng mục: Xây dựng cơ bản, lắp dựng vách panel, thi công đường ống HVAC và hoàn thiện bề mặt sàn.',
+          en: 'Formulate detailed milestones: Civil works, panel erection, HVAC ducting installation, and specialized floor finishing.',
+          ja: '詳細なマイルストーンを策定します：土木工事、パネルの設置、HVACダクトの設置、および専門的な床仕上げ。'
+        }
+      },
+      {
+        id: 'sec-mv4-2',
+        num: '2.',
+        title: {
+          vi: 'Lắp đặt hệ thống HVAC, màng lọc HEPA và FFU',
+          en: 'Installing HVAC, HEPA Filters & FFU Units',
+          ja: 'HVAC、HEPAフィルター、FFUユニットの設置'
+        },
+        content: {
+          vi: 'Thi công lắp đặt cụm quạt lọc FFU trên hệ trần T-grid, kết nối đường ống gió AHU và cân chỉnh van tiết lưu để đạt chênh áp thiết kế.',
+          en: 'Mount FFU modules on ceiling T-grids, hook up AHU ducting, and balance dampers to achieve design differential pressure.',
+          ja: '天井TグリッドにFFUモジュールを取り付け、AHUダクトを接続し、ダンパーを調整して設計差圧を達成します。'
+        }
+      },
+      {
+        id: 'sec-mv4-3',
+        num: '3.',
+        title: {
+          vi: 'Chạy thử nghiệm (Commissioning) và đo đạc thông số',
+          en: 'Commissioning & Environmental Parameter Testing',
+          ja: '試運転（Commissioning）および環境パラメータの測定'
+        },
+        content: {
+          vi: 'Vận hành thử nghiệm hệ thống trong 72 giờ liên tục. Tiến hành đo tốc độ gió, lưu lượng khí, độ chênh áp và nồng độ hạt bụi ban đầu.',
+          en: 'Run continuous 72-hour system burn-in. Measure air velocity, airflow volumes, room differential pressure, and baseline particle counts.',
+          ja: 'システムを72時間連続して試運転します。風速、風量、室差圧、および初期粒子数を測定します。'
+        }
+      },
+      {
+        id: 'sec-mv4-4',
+        num: '4.',
+        title: {
+          vi: 'Nghiệm thu đánh giá đạt chuẩn (IQ/OQ/PQ)',
+          en: 'Standard Validation & Sign-off (IQ/OQ/PQ)',
+          ja: '標準バリデーションおよび承認（IQ/OQ/PQ）'
+        },
+        content: {
+          vi: 'Nghiệm thu chính thức cấp chứng nhận ISO Class 6 cho dây chuyền sản xuất, sẵn sàng bàn giao cho nhà máy đưa vào hoạt động.',
+          en: 'Final sign-off granting ISO Class 6 certification for the production line, fully ready for commercial handoff.',
+          ja: '生産ラインにISOクラス6認証を付与する公式承認を行い、商業運用の引き渡しに完全に備えます。'
+        }
+      }
+    ]
+  }
+];
+
+// 3 Upcoming Events matching autohtml-project/index.html (thumb16.png - thumb18.png)
+export const UPCOMING_EVENTS: ResourceItem[] = [
+  {
+    id: 'ev-001',
+    category: 'event',
+    badge: { vi: 'Workshop', en: 'Workshop', ja: 'ワークショップ' },
     title: {
       vi: 'Hội thảo công nghệ phòng sạch 2024',
       en: 'Cleanroom Technology Seminar 2024',
@@ -684,10 +1374,17 @@ export const MOCK_RESOURCES: ResourceItem[] = [
     },
     description: {
       vi: 'Sự kiện giao lưu và chia sẻ kiến thức chuyên ngành phòng sạch hàng đầu Việt Nam.',
-      en: 'Sự kiện giao lưu và chia sẻ kiến thức chuyên ngành phòng sạch hàng đầu Việt Nam.',
-      ja: 'Sự kiện giao lưu và chia sẻ kiến thức chuyên ngành phòng sạch hàng đầu Việt Nam.'
+      en: 'Leading cleanroom industry knowledge-sharing event in Vietnam.',
+      ja: 'ベトナムをリードするクリーンルーム業界の知識共有イベント。'
     },
     date: '15/08/2024',
+    image: '/images/resources/autohtml/thumb16.png',
+    author: {
+      name: { vi: 'ULink Events', en: 'ULink Events', ja: 'ULink イベント' },
+      role: { vi: 'Ban tổ chức', en: 'Organizer', ja: '主催者' },
+      avatar: '/images/about/op-team.webp'
+    },
+    readTime: { vi: 'Đăng ký ngay', en: 'Register now', ja: '今すぐ登録' },
     time: '09:00 - 17:00',
     location: {
       vi: 'Hà Nội',
@@ -699,537 +1396,77 @@ export const MOCK_RESOURCES: ResourceItem[] = [
       en: '500,000 VND',
       ja: '500,000 VND'
     },
-    image: '/images/resources/events/conference-hall.webp',
-    author: {
-      name: { vi: 'ULink', en: 'ULink', ja: 'ULink' },
-      role: { vi: 'Ban biên tập', en: 'Editorial Board', ja: 'Ban biên tập' },
-      avatar: '/images/about/op-team.webp'
-    },
-    readTime: { vi: 'Đăng ký ngay', en: 'Register now', ja: 'Register now' },
-    sections: [],
-    aiSummary: { intro: { vi: '', en: '', ja: '' }, bullets: [] },
-    audioDuration: '0',
-    audioSecs: 0,
-    size: '1.2 MB',
-    type: 'PDF',
-    downloadUrl: '/documents/lien-he-nha-phat-trien.pdf'
-  }
-];
-
-
-export const MOST_VIEWED_ARTICLES: ResourceItem[] = [
-  {
-    id: 'MV-001',
-    category: 'guide',
-    badge: {
-      vi: 'Hướng dẫn kỹ thuật',
-      en: 'Technical Guide',
-      ja: '技術ガイド'
-    },
-    title: {
-      vi: 'Xu hướng phát triển vật liệu phòng sạch sinh học năm 2026',
-      en: 'Trends in Biological Cleanroom Materials Development in 2026',
-      ja: '2026年におけるバイオクリーンルーム資材開発の動向'
-    },
-    description: {
-      vi: 'Phân tích các thế hệ vật liệu kháng khuẩn mới và ứng dụng trong phòng sạch y tế, dược phẩm.',
-      en: 'Analysis of new antibacterial materials and their applications in medical and pharmaceutical cleanrooms.',
-      ja: '医療および医薬品クリーンルームにおける新しい抗菌素材とその応用の analysis。'
-    },
-    date: 'Tháng 10, 2024',
-    image: '/images/resources/news/gmp-facility.webp',
-    author: {
-      name: { vi: 'TS. Lê Mạnh Hùng', en: 'Dr. Hung Le', ja: 'TS. Lê Mạnh Hùng' },
-      role: { vi: 'Chuyên gia vật liệu sinh học', en: 'Biomaterials Expert', ja: 'Chuyên gia vật liệu sinh học' },
-      avatar: '/images/about/op-team.webp'
-    },
-    readTime: { vi: '6 phút đọc', en: '6 min read', ja: '6 min read' },
-    audioDuration: '04:12',
-    audioSecs: 252,
-    size: '1.5 MB',
-    type: 'PDF',
-    downloadUrl: '/documents/lien-he-nha-phat-trien.pdf',
-    sections: [
-      {
-        id: 'mv1-sec-1',
-        num: '1.',
-        title: {
-          vi: 'Vật liệu tự khử khuẩn',
-          en: 'Self-disinfecting Materials',
-          ja: '自己消毒素材'
-        },
-        content: {
-          vi: 'Các nghiên cứu mới nhất năm 2026 tập trung vào tích hợp các hạt nano kháng khuẩn (như nano bạc hoặc titan dioxit) trực tiếp vào cấu trúc bề mặt vật liệu tấm tường và sàn phòng sạch. Công nghệ này giúp ức chế liên tục sự phát triển của vi khuẩn và nấm mốc mà không phụ thuộc hoàn toàn vào hóa chất lau chùi.',
-          en: 'The latest research in 2026 focuses on embedding antibacterial nanoparticles (like nano-silver or titanium dioxide) directly into the surface structure of cleanroom wall and floor panels. This technology continuously inhibits the growth of bacteria and fungi without relying solely on chemical cleaning agents.',
-          ja: '2026年の最新研究では、クリーンルームの壁や床パネルの表面構造に抗菌ナノ粒子（ナノシルバーや二酸化チタンなど）を直接組み込むことに焦点を当てています。この技術は、化学洗浄剤のみに頼ることなく、細菌や真菌の増殖を継続的に抑制します。'
-        }
-      },
-      {
-        id: 'mv1-sec-2',
-        num: '2.',
-        title: {
-          vi: 'Ứng dụng trong y tế',
-          en: 'Medical Applications',
-          ja: '医療への応用'
-        },
-        content: {
-          vi: 'Trong phòng sạch y tế và phòng mổ vô trùng, các vật liệu polyme thông minh có khả năng tự phục hồi vết trầy xước siêu nhỏ đang được ứng dụng rộng rãi. Việc loại bỏ các khe hở siêu nhỏ giúp ngăn chặn hoàn toàn nơi ẩn nấp và phát triển của các bào tử vi sinh vật gây nhiễm trùng bệnh viện.',
-          en: 'In medical cleanrooms and sterile operating theatres, smart polymer materials capable of self-healing micro-scratches are being widely applied. Eliminating microscopic crevices completely blocks nesting grounds where microbial spores could grow and cause hospital-acquired infections.',
-          ja: '医療用クリーンルームや無菌手術室では、微細な傷を自己修復できるスマートポリマー素材が広く応用されています。微細な隙間を排除することで、微生物の胞子が繁殖して院内感染を引き起こす可能性のある温床を完全に遮断します。'
-        }
-      },
-      {
-        id: 'mv1-sec-3',
-        num: '3.',
-        title: {
-          vi: 'Tiêu chuẩn vô trùng mới',
-          en: 'New Sterility Standards',
-          ja: '新しい無菌基準'
-        },
-        content: {
-          vi: 'Quy chuẩn phòng sạch sinh học thế hệ mới đòi hỏi kiểm soát nghiêm ngặt không chỉ hạt bụi trơ mà cả các hạt vi sinh sống (viable particles). Các vật liệu mới phải vượt qua bài kiểm tra kháng hóa chất khử trùng mạnh (như Hydro peroxit hóa hơi - VHP) mà không bị biến tính hay xuống cấp bề mặt.',
-          en: 'Next-generation biological cleanroom standards require strict control over both inert dust and viable biological particles. New materials must pass rigorous resistance tests against strong chemical sterilizers (such as vaporized hydrogen peroxide - VHP) without surface degradation.',
-          ja: '次世代のバイオクリーンルーム規格では、不活性な塵埃と生きた生物粒子の両方を厳格に管理することが求められます。新しい資材は、表面の劣化を伴うことなく、強力な化学滅菌剤（過酸化水素ガス - VHPなど）に対する厳格な耐性試験に合格する必要があります。'
-        }
-      }
-    ],
-    aiSummary: {
-      intro: {
-        vi: 'Tóm tắt xu hướng phát triển vật liệu phòng sạch sinh học thế hệ mới với khả năng tự diệt khuẩn và chống ăn mòn hóa chất vượt trội.',
-        en: 'Summary of next-generation biological cleanroom material trends featuring superior self-disinfection and chemical corrosion resistance.',
-        ja: '優れた自己消毒機能と化学腐食耐性を備えた次世代バイオクリーンルーム資材のトレンドの要約。'
-      },
-      bullets: [
-        {
-          vi: 'Tích hợp công nghệ nano bạc giúp diệt khuẩn liên tục trên bề mặt phòng sạch.',
-          en: 'Integrating nano-silver technology enables continuous sterilization on cleanroom surfaces.',
-          ja: 'ナノシルバー技術の統合により、クリーンルーム表面の継続的な滅菌が可能になります。'
-        },
-        {
-          vi: 'Polyme thông minh tự vá vết xước giúp loại bỏ nơi trú ẩn của vi sinh vật.',
-          en: 'Smart self-healing polymers eliminate micro-crevices where microbes hide.',
-          ja: 'スマート自己修復ポリマーにより、微生物が潜む微細な隙間が排除されます。'
-        },
-        {
-          vi: 'Khả năng chịu đựng phương pháp tiệt trùng VHP (Hydrogen Peroxide hóa hơi) là bắt buộc.',
-          en: 'Resilience against VHP (Vaporized Hydrogen Peroxide) sterilization is mandatory.',
-          ja: 'VHP（過酸化水素ガス）滅菌に対する耐性が必須となります。'
-        }
-      ]
-    }
+    sections: []
   },
   {
-    id: 'MV-002',
-    category: 'standard',
-    badge: {
-      vi: 'Tiêu chuẩn',
-      en: 'Standard',
-      ja: '規格'
-    },
+    id: 'ev-002',
+    category: 'event',
+    badge: { vi: 'Event', en: 'Event', ja: 'イベント' },
     title: {
-      vi: 'Kiểm soát tĩnh điện (ESD) trong đóng gói linh kiện bán dẫn',
-      en: 'Electrostatic Discharge (ESD) Control in Semiconductor Packaging',
-      ja: '半導体パッケージングにおける静電気放電（ESD）管理'
+      vi: 'Event: B2B Business Networking',
+      en: 'Event: B2B Business Networking',
+      ja: 'Event: B2B Business Networking'
     },
     description: {
-      vi: 'Các nguyên tắc cốt lõi giúp loại bỏ hoàn toàn rủi ro phóng tĩnh điện trong khâu đóng gói thành phẩm xuất khẩu.',
-      en: 'Core principles to completely eliminate electrostatic discharge risks during export finished-product packaging.',
-      ja: '輸出完成品の梱包プロセスにおいて静電気放電リスクを完全に排除するための核心原則。'
+      vi: 'Sự kiện kết nối doanh nghiệp B2B do ULink Industries tổ chức, tạo cơ hội hợp tác và mở rộng mạng lưới đối tác chiến lược.',
+      en: 'B2B business networking event hosted by ULink Industries for expanding strategic partnerships.',
+      ja: 'ULink Industriesが主催するB2Bビジネスネットワーキングイベント。'
     },
-    date: 'Tháng 10, 2024',
-    image: '/images/resources/news/lab-equipment.webp',
+    date: '22/08/2024',
+    image: '/images/resources/autohtml/thumb17.png',
     author: {
-      name: { vi: 'KS. Trần Quốc Trung', en: 'KS. Trần Quốc Trung', ja: 'KS. Trần Quốc Trung' },
-      role: { vi: 'Trưởng phòng Giải pháp ESD', en: 'ESD Solutions Lead', ja: 'Trưởng phòng Giải pháp ESD' },
+      name: { vi: 'ULink Events', en: 'ULink Events', ja: 'ULink イベント' },
+      role: { vi: 'Ban tổ chức', en: 'Organizer', ja: '主催者' },
       avatar: '/images/about/op-team.webp'
     },
-    readTime: { vi: '8 phút đọc', en: '8 min read', ja: '8 min read' },
-    audioDuration: '05:30',
-    audioSecs: 330,
-    size: '1.8 MB',
-    type: 'PDF',
-    downloadUrl: '/documents/lien-he-nha-phat-trien.pdf',
-    sections: [
-      {
-        id: 'mv2-sec-1',
-        num: '1.',
-        title: {
-          vi: 'Nguyên lý phóng tĩnh điện (ESD)',
-          en: 'Electrostatic Discharge Principles',
-          ja: '静電気放電の原理'
-        },
-        content: {
-          vi: 'Hiện tượng phóng tĩnh điện xảy ra do sự mất cân biến điện tích giữa hai vật thể khi tiếp xúc hoặc ma sát. Trong sản xuất bán dẫn, các linh kiện vi mạch siêu nhỏ có thể bị phá hủy hoàn toàn bởi dòng điện phóng tĩnh điện cực nhỏ (chỉ vài vôn) mà mắt thường hay xúc giác con người không thể cảm nhận được.',
-          en: 'Electrostatic discharge occurs due to charge imbalance between two objects when they contact or rub. In semiconductor manufacturing, microscopic microcircuit components can be completely destroyed by very small discharge currents (just a few volts) undetectable to human sight or touch.',
-          ja: '静電気放電は、2つの物体が接触または摩擦したときの電荷の不均衡によって発生します。半導体製造では、目視や触覚では検出できない極小の放end電流（わずか数ボルト）によって、微細なマイクロ回路部品が完全に破壊される可能性があります。'
-        }
-      },
-      {
-        id: 'mv2-sec-2',
-        num: '2.',
-        title: {
-          vi: 'Vật liệu đóng gói chống tĩnh điện',
-          en: 'Anti-Static Packaging Materials',
-          ja: '帯電防止梱包資材'
-        },
-        content: {
-          vi: 'Quy trình bảo quản và vận chuyển đòi hỏi sử dụng đồng bộ các bao bì chống tĩnh điện chuyên dụng như:\n- Túi nhôm chắn sóng (Shielding Bags): Tạo lồng Faraday ngăn bức xạ điện từ và phóng điện bên ngoài.\n- Khay nhựa dẫn điện/chống tĩnh điện (ESD Trays): Giữ linh kiện cố định và giải phóng điện tích an toàn.\n- Màng PE quấn ESD: Bảo vệ pallet hàng hóa tránh tích tụ ma sát tĩnh điện trong quá trình rung lắc cơ học.',
-          en: 'Storage and transport processes require synchronized usage of specialized anti-static packaging such as:\n- Shielding Bags: Creates a Faraday cage effect to block electromagnetic radiation and external discharges.\n- ESD Trays: Keeps components secure and dissipates electrical charges safely.\n- ESD PE Stretch Film: Protects palletized cargo from triboelectric charge accumulation during physical transport vibration.',
-          ja: '保管および輸送プロセスでは、以下のような専用の帯電防止梱包資材を一貫して使用する必要があります。\n- シールドバッグ：ファラデーケージ効果を構築し、電磁波や外部放電を遮断します。\n- ESDトレイ：部品を固定し、電荷を安全に放散します。\n- ESD対応PEストレッチフィルム：輸送中の機械的振動による静電気の蓄積からパレット貨物を保護します。'
-        }
-      },
-      {
-        id: 'mv2-sec-3',
-        num: '3.',
-        title: {
-          vi: 'Quy trình đóng gói chuẩn hóa',
-          en: 'Standardized Packaging Process',
-          ja: '標準化された梱包プロセス'
-        },
-        content: {
-          vi: 'Để đảm bảo an toàn ESD, toàn bộ công nhân phải tuân thủ nghiêm ngặt quy trình: đeo vòng tiếp địa cổ tay kiểm định hàng ngày, đứng trên thảm ESD dẫn điện, và chỉ bóc mở túi bao bì chống tĩnh điện ngay tại khu vực EPA (Electrostatic Protected Area) đã được nối đất đầy đủ.',
-          en: 'To ensure ESD safety, all personnel must strictly comply with procedures: wearing a daily-verified wrist strap, standing on conductive ESD maps, and unpacking anti-static bags only within a fully grounded Electrostatic Protected Area (EPA).',
-          ja: 'ESDの安全を確保するため、すべての作業員は手順を厳格に遵守する必要があります。毎日検査されるリストストラップの着用、導電性ESDマット上への起立、接地された静電気対策区域（EPA）内のみでの帯電防止袋の開封などです。'
-        }
-      }
-    ],
-    aiSummary: {
-      intro: {
-        vi: 'Hướng dẫn toàn diện về kiểm soát ESD trong đóng gói bán dẫn, ngăn ngừa hư hỏng chip do dòng điện phóng tĩnh điện.',
-        en: 'Comprehensive guide to ESD control in semiconductor packaging, preventing chip damage from electrostatic discharge.',
-        ja: '半導体パッケージングにおけるESD管理の包括的なガイド。静電気放電によるチップの損傷を防止します。'
-      },
-      bullets: [
-        {
-          vi: 'Các chip bán dẫn hiện đại rất dễ bị phá hủy bởi dòng điện phóng tĩnh điện siêu nhỏ.',
-          en: 'Modern semiconductor chips are highly vulnerable to microscopic electrostatic discharge currents.',
-          ja: '現代の半導体チップは、極小の静電気放電電流によって非常に破壊されやすいです。'
-        },
-        {
-          vi: 'Sử dụng túi chắn sóng shielding bags và khay ESD để tạo môi trường bảo vệ Faraday.',
-          en: 'Using shielding bags and ESD trays creates a protective Faraday environment.',
-          ja: 'シールドバッグとESDトレイを使用することで、保護ファラデー環境を構築します。'
-        },
-        {
-          vi: 'Mọi hoạt động đóng gói phải diễn ra trong vùng bảo vệ EPA được kiểm định tĩnh điện định kỳ.',
-          en: 'All packaging activities must take place inside a periodically certified EPA protection zone.',
-          ja: 'すべての梱包作業は、定期的に検証されるEPA保護区域内で行う必要があります。'
-        }
-      ]
-    }
-  },
-  {
-    id: 'MV-003',
-    category: 'case-study',
-    badge: {
-      vi: 'Case Study',
-      en: 'Case Study',
-      ja: 'ケーススタディ'
-    },
-    title: {
-      vi: 'Tối ưu hóa năng lượng hệ thống AHU trong nhà máy điện tử',
-      en: 'Optimizing AHU System Energy in Electronics Factories',
-      ja: '電子工場におけるAHUシステムのエネルギー最適化'
-    },
-    description: {
-      vi: 'Giải pháp điều tiết lưu lượng gió giúp giảm thiểu đến 30% điện năng tiêu thụ mà vẫn đảm bảo cấp độ sạch.',
-      en: 'Airflow regulation solution that reduces power consumption by up to 30% while maintaining cleanroom standards.',
-      ja: 'クリーンルーム規格を維持しながら、電力消費を最大30％削減する風量制御ソリューション。'
-    },
-    date: 'Tháng 10, 2024',
-    image: '/images/resources/news/hvac-system.webp',
-    author: {
-      name: { vi: 'KS. Nguyễn Hoàng Nam', en: 'KS. Nguyễn Hoàng Nam', ja: 'KS. Nguyễn Hoàng Nam' },
-      role: { vi: 'Kỹ sư HVAC Cấp cao', en: 'Senior HVAC Engineer', ja: 'Kỹ sư HVAC Cấp cao' },
-      avatar: '/images/about/op-team.webp'
-    },
-    readTime: { vi: '7 phút đọc', en: '7 min read', ja: '7 min read' },
-    audioDuration: '04:45',
-    audioSecs: 285,
-    size: '2.1 MB',
-    type: 'PDF',
-    downloadUrl: '/documents/lien-he-nha-phat-trien.pdf',
-    sections: [
-      {
-        id: 'mv3-sec-1',
-        num: '1.',
-        title: {
-          vi: 'Vai trò của AHU trong phòng sạch',
-          en: 'The Role of AHUs in Cleanrooms',
-          ja: 'クリーンルームにおけるAHUの役割'
-        },
-        content: {
-          vi: 'Hệ thống AHU (Air Handling Unit) là trái tim của điều hòa không khí phòng sạch, có nhiệm vụ luân chuyển, lọc bụi và điều hòa nhiệt ẩm lượng không khí khổng lồ. Tuy nhiên, việc vận hành liên tục các quạt công suất lớn khiến AHU chiếm tới 50-60% tổng lượng điện năng tiêu thụ của cả nhà máy.',
-          en: 'The Air Handling Unit (AHU) system is the heart of cleanroom air conditioning, responsible for circulating, filtering dust, and regulating temperature/humidity for huge volumes of air. However, continuous operation of high-power fans makes AHUs account for 50-60% of the entire factory electricity consumption.',
-          ja: 'AHU（空気調和機）システムは、クリーンルーム空調の心臓部であり、大風量の空気を循環、ろ過、および温湿度調整する役割を担っています。しかし、高出力ファンの連続運転により、AHUは工場全体の電力消費量の50〜60％を占めることになります。'
-        }
-      },
-      {
-        id: 'mv3-sec-2',
-        num: '2.',
-        title: {
-          vi: 'Giải pháp điều tiết lưu lượng gió',
-          en: 'Airflow Regulation Solutions',
-          ja: '風量制御ソリューション'
-        },
-        content: {
-          vi: 'Giải pháp ứng dụng biến tần thông minh tự động giảm tốc độ quạt AHU vào các giờ thấp điểm (ban đêm hoặc khi không có ca sản xuất) mà vẫn duy trì áp suất dương phòng sạch. Điều này giúp ngăn chặn bụi bẩn tràn vào bên trong nhưng tiết kiệm được điện năng hao phí vô cùng lớn.',
-          en: 'Applying smart variable frequency drives (VFD) automatically slows down AHU fan speeds during off-peak hours (nighttime or non-production shifts) while maintaining cleanroom positive pressure. This prevents external dust intrusion while cutting down massive idle energy waste.',
-          ja: 'スマートなインバータ（VFD）を適用することで、夜間や非生産シフトなどのオフピーク時に、クリーンルームの陽圧を維持しながらAHUのファン速度を自動的に低下させます。これにより、外部からの塵埃侵入を防ぎつつ、膨大な無駄な電力を削減します。'
-        }
-      },
-      {
-        id: 'mv3-sec-3',
-        num: '3.',
-        title: {
-          vi: 'Hiệu quả tiết kiệm năng lượng',
-          en: 'Energy Saving Efficiency',
-          ja: '省エネ効率'
-        },
-        content: {
-          vi: 'Dự án áp dụng thực tế tại nhà máy điện tử cho thấy điện năng tiêu thụ giảm trung bình 32% hàng tháng. Chi phí đầu tư hệ thống điều khiển tự động biến tần được hoàn vốn chỉ trong vòng 14 tháng vận hành, mang lại hiệu quả kinh tế vượt mong đợi.',
-          en: 'Real-world deployment projects in electronics factories show an average monthly electricity consumption drop of 32%. The investment cost for the VFD automatic control system was fully recouped in just 14 months of operation, bringing better-than-expected economic returns.',
-          ja: '電子工場における実際の展開プロジェクトでは、月平均の電力消費量が32％削減されました。インバータ自動制御システムへの投資コストは、わずか14ヶ月の運転で完全に回収され、予想を上回る経済的利益をもたらしました。'
-        }
-      }
-    ],
-    aiSummary: {
-      intro: {
-        vi: 'Nghiên cứu điển hình về tối ưu hóa điện năng AHU thông qua công nghệ điều khiển tần số quạt gió tự động theo ca sản xuất.',
-        en: 'Case study on AHU power optimization through automatic fan frequency control technology based on production shifts.',
-        ja: '生産シフトに基づき送風ファンの周波数を自動制御する技術を通じた、AHU電力最適化に関するケーススタディ。'
-      },
-      bullets: [
-        {
-          vi: 'AHU thường chiếm tỷ trọng tiêu thụ điện lớn nhất trong hệ thống phòng sạch nhà máy.',
-          en: 'AHUs typically consume the largest share of electricity in factory cleanroom systems.',
-          ja: 'AHUは通常、工場のクリーンルームシステムにおいて最大の電力を消費します。'
-        },
-        {
-          vi: 'Ứng dụng biến tần thông minh để hạ thấp công suất quạt vào giờ nghỉ không sản xuất.',
-          en: 'Using smart VFDs to lower fan power during non-production resting hours.',
-          ja: 'スマートインバータを使用し、非生産時間帯にファン出力を低下させます。'
-        },
-        {
-          vi: 'Đạt hiệu quả giảm tới 32% điện năng hao phí, thu hồi vốn nhanh chóng.',
-          en: 'Achieved up to 32% waste electricity reduction with rapid investment recovery.',
-          ja: '最大32％の無駄な電力を削減し、迅速な投資回収を実現しました。'
-        }
-      ]
-    }
-  },
-  {
-    id: 'MV-004',
-    category: 'news',
-    badge: {
-      vi: 'Data Room',
-      en: 'Data Room',
-      ja: 'Data Room'
-    },
-    title: {
-      vi: 'Quy trình phân loại và kiểm soát rác thải phòng sạch',
-      en: 'Cleanroom Waste Classification and Control Process',
-      ja: 'クリーンルーム廃棄物の分別および管理手順'
-    },
-    description: {
-      vi: 'Hướng quan trọng giúp phân tách và thu gom rác thải nguy hại, bao bì nhiễm bẩn theo tiêu chuẩn an toàn lao động quốc tế.',
-      en: 'Important guide to separate and collect hazardous waste and contaminated packaging according to international safety standards.',
-      ja: '国際安全規格に準拠した危険廃棄物および汚染梱包資材の分別・収集に関する重要ガイド。'
-    },
-    date: 'Tháng 10, 2024',
-    image: '/images/resources/news/chemical-handling.webp',
-    author: {
-      name: { vi: 'KS. Đỗ Hoàng Giang', en: 'KS. Đỗ Hoàng Giang', ja: 'KS. Đỗ Hoàng Giang' },
-      role: { vi: 'Chuyên viên an toàn HSE', en: 'Safety HSE Specialist', ja: 'Chuyên viên an toàn HSE' },
-      avatar: '/images/about/op-team.webp'
-    },
-    readTime: { vi: '5 phút đọc', en: '5 min read', ja: '5 min read' },
-    audioDuration: '03:50',
-    audioSecs: 230,
-    size: '1.4 MB',
-    type: 'PDF',
-    downloadUrl: '/documents/lien-he-nha-phat-trien.pdf',
-    sections: [
-      {
-        id: 'mv4-sec-1',
-        num: '1.',
-        title: {
-          vi: 'Phân loại chất thải nguy hại',
-          en: 'Hazardous Waste Classification',
-          ja: '危険廃棄物の分別'
-        },
-        content: {
-          vi: 'Trong phòng sạch bán dẫn và y dược, rác thải được phát sinh từ nhiều hoạt động khác nhau. Phân loại chuẩn bao gồm: rác thải hạt bám dính, vật tư bảo hộ dính hóa chất tẩy rửa, và các dung môi tẩy rửa bay hơi. Các nhóm này tuyệt đối không được trộn lẫn để tránh phản ứng hóa học phát sinh khí độc.',
-          en: 'In semiconductor and pharmaceutical cleanrooms, waste is generated from various activities. Standard classification includes: particulate-adhered waste, protective gear stained with chemical cleaning agents, and volatile solvent residues. These groups must never be mixed to prevent chemical reactions generating toxic fumes.',
-          ja: '半導体や医薬品のクリーンルームでは、様々な作業から廃棄物が発生します。標準的な分別には、粒子が付着した廃棄物、化学洗浄剤で汚染された保護具、および揮発性溶剤残渣が含まれます。有毒ガスを発生させる化学反応を防ぐため、これらのグループは絶対に混合してはなりません。'
-        }
-      },
-      {
-        id: 'mv4-sec-2',
-        num: '2.',
-        title: {
-          vi: 'Quy chuẩn thùng chứa chuyên dụng',
-          en: 'Specialized Container Standards',
-          ja: '専用容器の規格'
-        },
-        content: {
-          vi: 'Thùng chứa rác thải phòng sạch phải là loại chống tĩnh điện ESD để tránh nguy cơ phóng tia lửa điện bắt lửa hóa chất. Nắp thùng phải thiết kế tự động đóng kín hoặc dùng bàn đạp chân để ngăn bụi từ rác phát tán ngược lại vào luồng khí phòng sạch đang luân chuyển.',
-          en: 'Cleanroom waste containers must be ESD-safe to prevent spark risks from igniting chemicals. Lids must be self-closing or pedal-operated to prevent dust from escaping back into the circulating cleanroom airflow.',
-          ja: 'クリーンルームの廃棄物容器は、化学物質の引火原因となる火花の発生を防ぐため、ESD対応である必要があります。塵埃が循環するクリーンルーム内の気流に逆流するのを防ぐため、蓋は自動密閉式またはペダル式である必要があります。'
-        }
-      },
-      {
-        id: 'mv4-sec-3',
-        num: '3.',
-        title: {
-          vi: 'Quy trình thu gom an toàn',
-          en: 'Safe Collection Procedures',
-          ja: '安全な回収手順'
-        },
-        content: {
-          vi: 'Thu gom chất thải phải tiến hành định kỳ vào cuối mỗi ca làm việc. Nhân viên thu gom phải mặc trang phục bảo hộ đầy đủ và vận chuyển rác qua các lối đi chuyên dụng (Service Corridors) cách biệt, tuyệt đối không được đưa rác đi qua lối đi chính của phòng sạch đang vận hành.',
-          en: 'Waste collection must be conducted periodically at the end of each shift. Collecting personnel must wear full protective gear and transport waste through dedicated service corridors, never passing through the main cleanroom lanes under operation.',
-          ja: '廃棄物の回収は、各シフトの終了時に定期的に行う必要があります。回収作業員は防護具を着用し、専用のサービスコリドー（作業用通路）を通過して搬出する必要があり、稼働中のメインクリーンルーム内を通過することは厳禁です。'
-        }
-      }
-    ],
-    aiSummary: {
-      intro: {
-        vi: 'Hướng dẫn chuẩn hóa quy trình phân tách, chứa đựng và vận chuyển chất thải phòng sạch đảm bảo không gây ô nhiễm chéo môi trường sản xuất.',
-        en: 'Guidelines to standardize the process of separating, containing, and transporting cleanroom waste, ensuring no cross-contamination to the production environment.',
-        ja: 'クリーンルーム廃棄物の分別、封入、および輸送プロセスを標準化し、製造環境への交差汚染を防止するためのガイドライン。'
-      },
-      bullets: [
-        {
-          vi: 'Bắt buộc tách biệt rác thải dính hóa chất và dung môi bay hơi để tránh phản ứng.',
-          en: 'Mandatory separation of chemical-stained waste and volatile solvents to prevent reactions.',
-          ja: '化学反応を防ぐため、化学物質で汚染された廃棄物と揮発性溶剤の分別が義務付けられています。'
-        },
-        {
-          vi: 'Sử dụng thùng chứa rác chống tĩnh điện ESD có cơ chế tự động đóng kín.',
-          en: 'Using ESD-safe waste bins equipped with automatic self-closing mechanisms.',
-          ja: '自動密閉機能を備えたESD対応の廃棄物容器を使用します。'
-        },
-        {
-          vi: 'Chỉ vận chuyển rác qua hành lang dịch vụ kỹ thuật chuyên dụng bên ngoài phòng sạch.',
-          en: 'Transport waste only through dedicated technical service corridors outside the cleanroom.',
-          ja: '廃棄物はクリーンルーム外の専用サービス通路のみを通って搬出します。'
-        }
-      ]
-    }
-  }
-];
-
-
-// Upcoming Events Mock Data
-export const UPCOMING_EVENTS: EventItem[] = [
-  {
-    id: 'EV-001',
-    title: {
-      vi: 'Công nghệ kiểm soát ô nhiễm phòng sạch bán dẫn thế hệ mới',
-      en: 'Next-Generation Semiconductor Cleanroom Contamination Control Technology',
-      ja: '次世代半導体クリーンルームの汚染制御技術'
-    },
-    description: {
-      vi: 'Hội thảo khoa học quốc tế về các công nghệ kiểm soát ô nhiễm hạt mịn thế hệ mới trong sản xuất vi mạch.',
-      en: 'International scientific conference on next-generation fine particle contamination control technologies in semiconductor manufacturing.',
-      ja: 'マイクロチップ製造における次世代微粒子汚染制御技術に関する国際科学セミナー。'
-    },
-    badge: {
-      vi: 'Hội thảo',
-      en: 'Conference',
-      ja: 'セミナー'
-    },
-    price: {
-      vi: 'Miễn phí',
-      en: 'Free',
-      ja: '無料'
-    },
-    image: '/images/resources/events/conference-hall.webp',
-    images: [
-      '/images/resources/events/conference-hall.webp',
-      '/images/resources/events/event (1).png'
-    ],
-    date: '15/09/2026',
-    time: '09:00 - 11:30',
+    readTime: { vi: 'Đăng ký ngay', en: 'Register now', ja: '今すぐ登録' },
+    time: '08:30 - 12:00',
     location: {
-      vi: 'Hội trường ULink Hà Nam',
-      en: 'ULink Ha Nam Hall',
-      ja: 'ULinkハナムホール'
-    },
-    link: '/events/ev-001'
-  },
-  {
-    id: 'EV-002',
-    title: {
-      vi: 'Hội nghị khách hàng và Triển lãm bao bì ESD cao cấp',
-      en: 'Customer Conference & Premium ESD Packaging Exhibition',
-      ja: '顧客会議およびプレミアムESDパッケージング展示会'
-    },
-    description: {
-      vi: 'Sự kiện kết nối và giới thiệu các giải pháp đóng gói chống tĩnh điện đột phá cho chuỗi cung ứng điện tử.',
-      en: 'An event to connect and introduce breakthrough anti-static packaging solutions for the electronics supply chain.',
-      ja: '電子機器サプライチェーン向けの革新的な帯電防止パッケージングソリューションの紹介およびネットワーキングイベント。'
-    },
-    badge: {
-      vi: 'Triển lãm',
-      en: 'Exhibition',
-      ja: '展示会'
+      vi: 'GOM BISTRO - 2C Trần Thánh Tông, HBT, Hà Nội',
+      en: 'GOM BISTRO - 2C Tran Thanh Tong, HBT, Hanoi',
+      ja: 'GOM BISTRO - 2C Tran Thanh Tong, HBT, Hanoi'
     },
     price: {
-      vi: 'Miễn phí',
-      en: 'Free',
-      ja: '無料'
+      vi: '300.000 VNĐ',
+      en: '300,000 VND',
+      ja: '300,000 VND'
     },
-    image: '/images/resources/events/b2b-networking.webp',
-    images: [
-      '/images/resources/events/b2b-networking.webp',
-      '/images/resources/events/event (2).png'
-    ],
-    date: '22/09/2026',
+    sections: []
+  },
+  {
+    id: 'ev-003',
+    category: 'event',
+    badge: { vi: 'Online', en: 'Online', ja: 'オンライン' },
+    title: {
+      vi: 'Tọa đàm: Xu hướng công nghiệp 4.0',
+      en: 'Seminar: Industry 4.0 Trends',
+      ja: 'セミナー：インダストリー4.0のトレンド'
+    },
+    description: {
+      vi: 'Cập nhật xu hướng và công nghệ mới nhất trong sản xuất công nghiệp hiện đại.',
+      en: 'Latest trend updates and smart manufacturing technology in modern industry.',
+      ja: '現代の産業製造における最新のトレンドと技術の更新。'
+    },
+    date: '05/09/2024',
+    image: '/images/resources/autohtml/thumb18.png',
+    author: {
+      name: { vi: 'ULink Events', en: 'ULink Events', ja: 'ULink イベント' },
+      role: { vi: 'Ban tổ chức', en: 'Organizer', ja: '主催者' },
+      avatar: '/images/about/op-team.webp'
+    },
+    readTime: { vi: 'Đăng ký ngay', en: 'Register now', ja: '今すぐ登録' },
     time: '14:00 - 16:30',
     location: {
-      vi: 'Khách sạn Crowne Plaza, Hà Nội',
-      en: 'Crowne Plaza Hotel, Hanoi',
-      ja: 'クラウンプラザホテルハノイ'
-    },
-    link: '/events/ev-002'
-  },
-  {
-    id: 'EV-003',
-    title: {
-      vi: 'Đào tạo thực hành Gowning và Đo đạc chất lượng phòng sạch',
-      en: 'Practical Cleanroom Gowning & Quality Measurement Training',
-      ja: '実用的クリーンルームガウニングおよび品質測定トレーニング'
-    },
-    description: {
-      vi: 'Khóa đào tạo thực hành mặc trang phục phòng sạch và kiểm chuẩn chất lượng theo ISO 14644.',
-      en: 'Practical training course on cleanroom gowning and quality verification according to ISO 14644.',
-      ja: 'ISO 14644に準拠したクリーンルームウェアの着用と品質測定の実践的なトレーニングコース。'
-    },
-    badge: {
-      vi: 'Đào tạo',
-      en: 'Training',
-      ja: 'トレーニング'
+      vi: 'Đà Nẵng',
+      en: 'Da Nang',
+      ja: 'ダナン'
     },
     price: {
-      vi: '1.200.000 VNĐ',
-      en: '1,200,000 VND',
-      ja: '1,200,000 VND'
+      vi: 'Miễn phí',
+      en: 'Free',
+      ja: '無料'
     },
-    image: '/images/resources/events/seminar-room.webp',
-    images: [
-      '/images/resources/events/seminar-room.webp',
-      '/images/resources/events/event (3).png'
-    ],
-    date: '05/10/2026',
-    time: '08:30 - 17:00',
-    location: {
-      vi: 'Văn phòng ULink, TP. Hồ Chí Minh',
-      en: 'ULink Office, Ho Chi Minh City',
-      ja: 'ULinkホーチミンオフィス'
-    },
-    link: '/events/ev-003'
+    sections: []
   }
 ];
 
@@ -1275,7 +1512,7 @@ export const POPULAR_ARTICLES = [
     id: 'pop-5',
     number: '05',
     title: {
-      vi: 'Xu thái công nghệ phòng sạch năm 2025',
+      vi: 'Xu thế công nghệ phòng sạch năm 2025',
       en: 'Cleanroom Technology Trends in 2025',
       ja: '2025年のクリーンルーム技術動向'
     }

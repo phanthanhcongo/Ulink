@@ -195,7 +195,7 @@ export function EventsClient() {
           {paginatedEvents.map((event) => {
             const titleText = event.title[locale] || event.title.en;
             const descText = event.description?.[locale] || event.description?.en || '';
-            const locationText = event.location[locale] || event.location.en;
+            const locationText = event.location ? (event.location[locale] || event.location.en) : '';
             const priceText = event.price?.[locale] || event.price?.en || '';
             const badgeText = event.badge?.[locale] || event.badge?.en || t.eventLabel;
 

@@ -41,8 +41,10 @@ export function AboutStats() {
               <div className="mb-3 sm:mb-4 flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center rounded-full bg-blue-50 text-blue-600 transition-colors duration-200 group-hover:bg-[#1769E2] group-hover:text-white">
                 <Icon className="h-5 w-5" />
               </div>
-              <span className="text-stat-value text-slate-900 group-hover:text-[#1769E2] transition-colors duration-200">{item.value}</span>
-              <p className="text-caption-responsive mt-1.5 sm:mt-2 text-slate-500">
+              <span className="text-xl sm:text-2xl lg:text-[28px] lg:leading-[36px] font-bold text-[#162233] group-hover:text-[#1769E2] transition-colors duration-200">
+                {item.value}
+              </span>
+              <p className="text-sm lg:text-[16px] lg:leading-[24px] font-medium mt-1.5 sm:mt-2 text-[#617084]">
                 {item.label}
                 <span className="block">{item.sub}</span>
               </p>

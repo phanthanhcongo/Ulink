@@ -40,8 +40,20 @@ export function ResourcesClient({
   const itemsPerPage = 6;
 
   const parseDate = (dateStr: string) => {
-    const [day, month, year] = dateStr.split('/').map(Number);
-    return new Date(year, month - 1, day).getTime();
+    if (!dateStr) return 0;
+    if (dateStr.includes('/')) {
+      const parts = dateStr.split('/').map(Number);
+      if (parts.length === 3 && !parts.some(isNaN)) {
+        return new Date(parts[2], parts[1] - 1, parts[0]).getTime();
+      }
+    }
+    const match = dateStr.match(/(\d+)[^\d]+(\d{4})/);
+    if (match) {
+      const month = parseInt(match[1], 10);
+      const year = parseInt(match[2], 10);
+      return new Date(year, month - 1, 1).getTime();
+    }
+    return 0;
   };
 
   const filteredResources = useMemo(() => {
@@ -136,7 +148,7 @@ export function ResourcesClient({
 
   return (
     <div className="w-full min-h-screen bg-white pb-20">
-      <div className="relative w-full h-[350px] sm:h-[420px] md:h-[480px] lg:h-[520px] mb-8 overflow-hidden">
+      <div className="relative w-full h-[350px] sm:h-[420px] md:h-[480px] lg:h-[520px] overflow-hidden">
         <Image
           src="/images/resources/news/banner.webp"
           alt="ULink Factory Plant"
@@ -158,8 +170,8 @@ export function ResourcesClient({
         </div>
       </div>
 
-      <div id="resources-list-section" className="page-container">
-        <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-slate-200 pb-4 mb-8">
+      <div id="resources-list-section" className="w-full bg-[#f7f9fb] border-y border-[#e5e8ed] mb-8">
+        <div className="page-container py-5 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
           <div className="flex items-center gap-2 overflow-x-auto scrollbar-none py-1">
             {TABS.map((tab) => {
               const isActive = activeTab === tab.id;
@@ -168,10 +180,10 @@ export function ResourcesClient({
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
                   className={cn(
-                    'px-4 py-2 text-caption-responsive  font-semibold rounded-full transition-all whitespace-nowrap cursor-pointer',
+                    'px-5 py-2 text-[13px] rounded-full transition-all whitespace-nowrap cursor-pointer',
                     isActive
-                      ? 'bg-[#0E2142] text-white shadow-sm'
-                      : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-50 hover:border-slate-300 hover:text-slate-900'
+                      ? 'bg-[#0a1a3b] text-white font-semibold shadow-xs'
+                      : 'bg-white border border-[#e5e8ed] text-[#374151] font-medium hover:bg-slate-50 hover:border-slate-300 hover:text-slate-900'
                   )}
                 >
                   {tab.label[locale]}
@@ -180,25 +192,28 @@ export function ResourcesClient({
             })}
           </div>
 
-          <div className="relative w-full lg:w-80">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+          <div className="relative w-full lg:w-[280px]">
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-[#9ca3af]" />
             <input
               type="text"
               placeholder={L.searchPlaceholder[locale]}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full h-10 pl-11 pr-10 border border-slate-200 bg-white text-caption-responsive outline-none focus:border-slate-400 focus:ring-1 focus:ring-slate-400 rounded-full placeholder:text-slate-400 text-slate-800"
+              className="w-full h-[42px] pl-10 pr-9 border border-[#cbd5e1] bg-white text-[13px] font-normal outline-none focus:border-slate-400 rounded-full placeholder:text-[#9ca3af] text-slate-800"
             />
             {searchQuery && (
               <button
                 onClick={() => setSearchQuery('')}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
+                className="absolute right-3.5 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
               >
                 <X className="h-4 w-4" />
               </button>
             )}
           </div>
         </div>
+      </div>
+
+      <div className="page-container">
 
         <AnimatePresence mode="popLayout">
           {filteredResources.length === 0 ? (
@@ -264,7 +279,7 @@ export function ResourcesClient({
 
         <div className="mt-20 pt-16 border-t border-slate-100">
           <div className="flex justify-between items-end mb-8">
-            <h2 className="text-card-title font-bold text-slate-900">{L.mostViewed[locale]}</h2>
+            <h2 className="text-xl md:text-[24px] font-bold text-[#0a1a3b]">{L.mostViewed[locale]}</h2>
             <button
               onClick={() => {
                 setActiveTab('all');
@@ -273,7 +288,7 @@ export function ResourcesClient({
                   element.scrollIntoView({ behavior: 'smooth' });
                 }
               }}
-              className="text-caption-responsive font-semibold text-blue-600 hover:text-blue-700 flex items-center gap-1.5 transition-colors cursor-pointer"
+              className="text-[14px] font-semibold text-[#1769e2] hover:underline flex items-center gap-1.5 transition-colors cursor-pointer"
             >
               {L.seeAll[locale]}
               <ArrowRight className="h-4 w-4" />
@@ -289,12 +304,12 @@ export function ResourcesClient({
 
         <div className="mt-20 pt-16 border-t border-slate-100">
           <div className="flex justify-between items-end mb-8">
-            <h2 className="text-card-title font-bold text-slate-900">
+            <h2 className="text-xl md:text-[24px] font-bold text-[#0a1a3b]">
               {L.upcomingEvents[locale]}
             </h2>
             <Link
               href="/resources/events"
-              className="text-caption-responsive font-semibold text-blue-600 hover:text-blue-700 flex items-center gap-1.5 transition-colors"
+              className="text-[14px] font-semibold text-[#1769e2] hover:underline flex items-center gap-1.5 transition-colors"
             >
               {L.seeAll[locale]}
               <ArrowRight className="h-4 w-4" />

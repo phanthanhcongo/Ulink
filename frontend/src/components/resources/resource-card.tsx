@@ -38,7 +38,7 @@ export function ResourceCard({ resource, locale }: ResourceCardProps) {
   return (
     <Link
       href={getResourceHref(resource)}
-      className="ui-card-hover flex flex-col bg-white border border-slate-100 rounded-[3px] overflow-hidden shadow-sm cursor-pointer"
+      className="ui-card-hover flex flex-col bg-white border border-slate-100 rounded-[6px] overflow-hidden shadow-[0_4px_16px_rgba(10,26,59,0.09)] cursor-pointer hover:shadow-md transition-all duration-300"
     >
       {/* Top Image area with Badge */}
       <div className="relative aspect-[16/10] w-full bg-slate-50 overflow-hidden">
@@ -47,11 +47,11 @@ export function ResourceCard({ resource, locale }: ResourceCardProps) {
           alt={resource.title[locale]}
           fill
           sizes="(max-width: 768px) 100vw, 33vw"
-          className="object-cover"
+          className="object-cover transition-transform duration-500 hover:scale-105"
         />
         <div
           className={cn(
-            'absolute top-4 left-4 z-10 text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider px-3 py-0.5 sm:px-3.5 sm:py-1 rounded-full shadow-sm',
+            'absolute top-4 left-4 z-10 text-[11px] font-semibold px-2.5 py-1 rounded-full shadow-xs',
             getBadgeColorClass(resource.category)
           )}
         >
@@ -60,27 +60,27 @@ export function ResourceCard({ resource, locale }: ResourceCardProps) {
       </div>
 
       {/* Card Body */}
-      <div className="p-6 flex-1 flex flex-col justify-between">
-        <div>
-          {/* Title */}
-          <h3 className="text-body-regular font-bold text-slate-900 line-clamp-1 leading-snug group-hover:text-blue-600 transition-colors">
+      <div className="p-4 sm:p-5 flex-1 flex flex-col justify-between gap-3">
+        <div className="space-y-2">
+          {/* Title - Figma: 15px / Bold 700 / #0a1a3b */}
+          <h3 className="text-[15px] font-bold text-[#0a1a3b] line-clamp-2 leading-[140%] group-hover:text-blue-600 transition-colors">
             {resource.title[locale]}
           </h3>
 
-          {/* Description */}
-          <p className="mt-3 text-caption-responsive text-slate-500 leading-relaxed line-clamp-2 font-normal">
+          {/* Description - Figma: 13px / Regular 400 / #6b7a99 */}
+          <p className="text-[13px] font-normal text-[#6b7a99] leading-[150%] line-clamp-2">
             {resource.description[locale]}
           </p>
 
-          {/* Date */}
-          <div className="mt-4 text-caption-responsive text-slate-400 font-medium">
+          {/* Date - Figma: 12px / Regular 400 / #9ca3af */}
+          <div className="text-[12px] font-normal text-[#9ca3af] pt-1">
             {resource.date}
           </div>
         </div>
 
-        {/* Read More visual button */}
-        <div className="mt-5 pt-4 border-t border-slate-50">
-          <div className="inline-flex items-center justify-center px-5 py-2 bg-[#1769E2] group-hover:bg-[#1257BD] text-white font-semibold rounded-[3px] text-caption-responsive transition-colors shadow-xs">
+        {/* Read More button - Figma: 13px / Bold 700 / #1858c1 */}
+        <div className="pt-2">
+          <div className="inline-flex items-center justify-center px-4 py-2 bg-[#1858c1] hover:bg-[#1257bd] text-white font-bold rounded-[4px] text-[13px] transition-colors shadow-xs">
             {L_CARD.readMore[locale]}
           </div>
         </div>
