@@ -20,7 +20,7 @@ export function IndustryStandardsSection({
     <section id="standards" className="scroll-mt-16 py-12 sm:py-16 lg:py-[64px] w-full bg-white">
       <div className="page-container space-y-10 lg:space-y-[40px]">
         {/* Header (Figma Node #1228:11531) */}
-        <div className="space-y-3 lg:space-y-[16px] text-left sm:text-center max-w-4xl mx-0 sm:mx-auto">
+        <div className="space-y-3 lg:space-y-[16px] text-left sm:text-center max-w-5xl mx-0 sm:mx-auto">
           <span className="text-[14px] sm:text-[18px] lg:text-[20px] font-bold uppercase tracking-[0.05em] text-[#1769E2] block">
             {industryData.standardsTitle || (isVi ? 'TIÊU CHUẨN KỸ THUẬT' : isJa ? '技術基準' : 'TECHNICAL STANDARDS')}
           </span>
