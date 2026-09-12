@@ -23,7 +23,7 @@ export async function SiteFooter() {
 
       {/* ── BOTTOM BAR: COPYRIGHT & LEGAL LINKS (COMMON TO ALL VIEWPORTS) ── */}
       <div className="bg-[#eaf1fa] py-4">
-        <div className="page-container flex flex-col items-center justify-between gap-3 text-caption-responsive text-[#748196] sm:flex-row">
+        <div className="page-container flex flex-col items-center justify-between gap-3 text-[13px] font-medium text-[#748196] sm:flex-row">
           <span>{t('copyright')}</span>
           <div className="flex items-center gap-5">
             <Link href="/privacy" className="transition-colors hover:text-[#1769e2]">

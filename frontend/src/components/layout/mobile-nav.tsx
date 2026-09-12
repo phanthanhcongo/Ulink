@@ -378,7 +378,7 @@ export function MobileNav({ items }: MobileNavProps) {
                         <IconComp className="h-5 w-5" />
                       </div>
                       <div className="flex flex-col min-w-0">
-                        <b className="text-body-regular font-bold text-[#152944] leading-tight group-hover:text-brand transition-colors">
+                        <b className="text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-bold text-[#152944] leading-tight group-hover:text-brand transition-colors">
                           {it.label}
                         </b>
                         <small className="mt-0.5 text-[12.5px] font-medium text-[#66717e] leading-snug">
@@ -408,7 +408,7 @@ export function MobileNav({ items }: MobileNavProps) {
                           <div key={sIdx} className="flex flex-col gap-2">
                             <div className="flex items-center gap-2 px-1">
                               <div className="h-3.5 w-[3px] rounded-full bg-[#2168df]" />
-                              <span className="text-body-regular font-bold text-[#152944] tracking-tight">
+                              <span className="text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-bold text-[#152944] tracking-tight">
                                 {subGroup.title}
                               </span>
                             </div>
@@ -427,10 +427,10 @@ export function MobileNav({ items }: MobileNavProps) {
                                       <SubIcon className="h-4.5 w-4.5" />
                                     </div>
                                     <div className="flex flex-col min-w-0">
-                                      <span className="text-body-regular font-bold text-[#152944] leading-snug truncate">
+                                      <span className="text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-bold text-[#152944] leading-snug truncate">
                                         {subItem.title}
                                       </span>
-                                      <span className="mt-0.5 text-caption-responsive font-medium text-[#66717e] leading-snug line-clamp-2">
+                                      <span className="mt-0.5 text-[13px] font-medium text-[#66717e] leading-snug line-clamp-2">
                                         {subItem.desc}
                                       </span>
                                     </div>
@@ -446,7 +446,7 @@ export function MobileNav({ items }: MobileNavProps) {
                             key={child.href}
                             href={child.href}
                             onClick={() => setOpen(false)}
-                            className="relative pl-3 text-body-regular font-bold text-[#152944] transition-colors hover:text-[#2168df] flex items-center gap-2"
+                            className="relative pl-3 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-bold text-[#152944] transition-colors hover:text-[#2168df] flex items-center gap-2"
                           >
                             <span
                               className="h-1.5 w-1.5 rounded-full shrink-0"
@@ -468,7 +468,7 @@ export function MobileNav({ items }: MobileNavProps) {
             onClick={() => setOpen(false)}
             className="mt-5 flex min-h-[72px] items-center gap-3 rounded-[3px] border border-[#dfe6ef] bg-[#f4f8fd] p-3.5 transition-colors hover:bg-[#e8f2fc]"
           >
-            <em className="not-italic text-caption-responsive font-bold px-2 py-1 rounded-[3px] bg-[#d9efff] text-[#076caa] uppercase shrink-0">
+            <em className="not-italic text-[13px] font-bold px-2 py-1 rounded-[3px] bg-[#d9efff] text-[#076caa] uppercase shrink-0">
               MỚI
             </em>
             <b className="text-[12.5px] font-bold text-[#152944] leading-snug flex-1">
@@ -481,16 +481,16 @@ export function MobileNav({ items }: MobileNavProps) {
             {status === 'authenticated' && user ? (
               <div className="rounded-[3px] border border-blue-100 bg-[#f4f8fd] p-3.5 shadow-2xs">
                 <div className="flex items-center gap-3">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#2168df] text-white font-bold text-body-regular">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-[#2168df] text-white font-bold text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px]">
                     {(user.first_name?.[0] || user.email[0] || 'U').toUpperCase()}
                   </div>
                   <div className="flex flex-col min-w-0 flex-1">
-                    <span className="text-body-regular font-bold text-[#152944] truncate">
+                    <span className="text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-bold text-[#152944] truncate">
                       {user.first_name
                         ? `${user.first_name}${user.last_name ? ` ${user.last_name}` : ''}`
                         : user.email.split('@')[0]}
                     </span>
-                    <span className="text-caption-responsive font-medium text-[#66717e] truncate">
+                    <span className="text-[13px] font-medium text-[#66717e] truncate">
                       {user.email}
                     </span>
                   </div>
@@ -501,7 +501,7 @@ export function MobileNav({ items }: MobileNavProps) {
                     <Link
                       href="/admin"
                       onClick={() => setOpen(false)}
-                      className="flex items-center gap-2.5 rounded-[3px] px-2.5 py-2 text-caption-responsive font-semibold text-brand transition-colors hover:bg-white"
+                      className="flex items-center gap-2.5 rounded-[3px] px-2.5 py-2 text-[13px] font-semibold text-brand transition-colors hover:bg-white"
                     >
                       <ShieldCheck className="h-4 w-4 text-brand" />
                       <span>{t('adminDashboard') || 'Trang quản trị'}</span>
@@ -510,7 +510,7 @@ export function MobileNav({ items }: MobileNavProps) {
                   <Link
                     href="/my-rfqs"
                     onClick={() => setOpen(false)}
-                    className="flex items-center gap-2.5 rounded-[3px] px-2.5 py-2 text-caption-responsive font-medium text-[#152944] transition-colors hover:bg-white"
+                    className="flex items-center gap-2.5 rounded-[3px] px-2.5 py-2 text-[13px] font-medium text-[#152944] transition-colors hover:bg-white"
                   >
                     <ClipboardList className="h-4 w-4 text-[#2168df]" />
                     <span>{t('myRfqs') || 'Yêu cầu báo giá của tôi'}</span>
@@ -518,7 +518,7 @@ export function MobileNav({ items }: MobileNavProps) {
                   <Link
                     href="/sample-requests"
                     onClick={() => setOpen(false)}
-                    className="flex items-center gap-2.5 rounded-[3px] px-2.5 py-2 text-caption-responsive font-medium text-[#152944] transition-colors hover:bg-white"
+                    className="flex items-center gap-2.5 rounded-[3px] px-2.5 py-2 text-[13px] font-medium text-[#152944] transition-colors hover:bg-white"
                   >
                     <Package className="h-4 w-4 text-[#2168df]" />
                     <span>{t('sampleRequests') || 'Yêu cầu mẫu sản phẩm'}</span>
@@ -529,7 +529,7 @@ export function MobileNav({ items }: MobileNavProps) {
                       setOpen(false);
                       logout();
                     }}
-                    className="flex w-full items-center gap-2.5 rounded-[3px] px-2.5 py-2 text-caption-responsive font-medium text-red-600 transition-colors hover:bg-red-50 text-left"
+                    className="flex w-full items-center gap-2.5 rounded-[3px] px-2.5 py-2 text-[13px] font-medium text-red-600 transition-colors hover:bg-red-50 text-left"
                   >
                     <LogOut className="h-4 w-4" />
                     <span>{t('logout') || 'Đăng xuất'}</span>
@@ -566,7 +566,7 @@ export function MobileNav({ items }: MobileNavProps) {
             <Link
               href="/quick-order"
               onClick={() => setOpen(false)}
-              className="min-h-[48px] w-full inline-flex items-center justify-center gap-2 rounded-[3px] bg-[#2168df] text-white text-caption-responsive font-bold transition-colors hover:bg-[#1a55b8] shadow-sm"
+              className="min-h-[48px] w-full inline-flex items-center justify-center gap-2 rounded-[3px] bg-[#2168df] text-white text-[13px] font-bold transition-colors hover:bg-[#1a55b8] shadow-sm"
             >
               <span>{t('quickOrder') || 'Yêu cầu báo giá'}</span>
               <ArrowRight className="h-4 w-4" />

@@ -22,16 +22,16 @@ export function FooterMobile() {
           />
         </Link>
 
-        <p className="mt-3 text-caption-responsive leading-relaxed text-[#485669]">
+        <p className="mt-3 text-[13px] font-medium leading-relaxed text-[#485669]">
           {t('descLine1')}
         </p>
-        <p className="mt-2 text-caption-responsive leading-relaxed text-[#647084]">
+        <p className="mt-2 text-[13px] font-medium leading-relaxed text-[#647084]">
           {t('descLine2')}
         </p>
 
         {/* Contact Details */}
         <div className="mt-4 space-y-3">
-          <div className="flex items-start gap-2.5 text-caption-responsive text-[#4d5a6b]">
+          <div className="flex items-start gap-2.5 text-[13px] font-medium text-[#4d5a6b]">
             <MapPin className="h-5 w-5 shrink-0 text-[#1769e2] mt-0.5" />
             <div>
               <strong className="font-bold text-slate-900">{t('hubTitle')}</strong>
@@ -39,7 +39,7 @@ export function FooterMobile() {
             </div>
           </div>
 
-          <div className="flex items-center gap-2.5 text-caption-responsive text-[#4d5a6b]">
+          <div className="flex items-center gap-2.5 text-[13px] font-medium text-[#4d5a6b]">
             <Mail className="h-5 w-5 shrink-0 text-[#1769e2]" />
             <a
               href="mailto:contact@ulinkindustries.com"
@@ -49,7 +49,7 @@ export function FooterMobile() {
             </a>
           </div>
 
-          <div className="flex items-center gap-2.5 text-caption-responsive text-[#4d5a6b]">
+          <div className="flex items-center gap-2.5 text-[13px] font-medium text-[#4d5a6b]">
             <Phone className="h-5 w-5 shrink-0 text-[#1769e2]" />
             <a
               href="tel:02473099899"
@@ -69,11 +69,11 @@ export function FooterMobile() {
         <nav aria-label="Về chúng tôi">
           <Link
             href="/about"
-            className="group inline-flex items-center gap-1 text-body-regular font-bold uppercase tracking-wider text-[#151b2a]"
+            className="group inline-flex items-center gap-1 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-bold uppercase tracking-wider text-[#151b2a]"
           >
             <span>{t('aboutTitle')}</span>
           </Link>
-          <ul className="mt-2.5 space-y-2 text-caption-responsive">
+          <ul className="mt-2.5 space-y-2 text-[13px] font-medium">
             <li>
               <Link href="/regional-hubs/cum-1" className="text-[#4d5969] hover:text-[#1769e2]">
                 {t('aboutHub')}
@@ -106,11 +106,11 @@ export function FooterMobile() {
         <nav aria-label="Ngành nghề">
           <Link
             href="/industries"
-            className="group inline-flex items-center gap-1 text-body-regular font-bold uppercase tracking-wider text-[#151b2a]"
+            className="group inline-flex items-center gap-1 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-bold uppercase tracking-wider text-[#151b2a]"
           >
             <span>{t('industriesTitle')}</span>
           </Link>
-          <ul className="mt-2.5 space-y-2 text-caption-responsive">
+          <ul className="mt-2.5 space-y-2 text-[13px] font-medium">
             <li>
               <Link href="/industries/electronics" className="text-[#4d5969] hover:text-[#1769e2]">
                 {t('indElectronics')}
@@ -143,11 +143,11 @@ export function FooterMobile() {
         <nav aria-label="Sản phẩm">
           <Link
             href="/solutions"
-            className="group inline-flex items-center gap-1 text-body-regular font-bold uppercase tracking-wider text-[#151b2a]"
+            className="group inline-flex items-center gap-1 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-bold uppercase tracking-wider text-[#151b2a]"
           >
             <span>{t('productsTitle')}</span>
           </Link>
-          <ul className="mt-2.5 space-y-2 text-caption-responsive">
+          <ul className="mt-2.5 space-y-2 text-[13px] font-medium">
             <li>
               <Link href="/solutions/listProduct?category=cleanroom-consumables" className="text-[#4d5969] hover:text-[#1769e2]">
                 {t('prodCleanroom')}
@@ -171,13 +171,13 @@ export function FooterMobile() {
 
       {/* Section 3: Become Distributor */}
       <div>
-        <span className="inline-block rounded bg-[#e8f0fa] px-3 py-1 text-caption-responsive font-semibold text-[#3c4150]">
+        <span className="inline-block rounded bg-[#e8f0fa] px-3 py-1 text-[13px] font-semibold text-[#3c4150]">
           {t('becomeDistributor')}
         </span>
         <div className="mt-2">
           <a
             href="tel:02473099899"
-            className="inline-flex items-center gap-2 text-card-title font-bold text-[#1769e2]"
+            className="inline-flex items-center gap-2 text-[16px] sm:text-[18px] lg:text-[20px] font-bold text-[#1769e2]"
           >
             <Phone className="h-5 w-5 shrink-0 text-[#1769e2]" />
             0247 309 9899
@@ -189,7 +189,7 @@ export function FooterMobile() {
 
       {/* Section 4: Connect Socials & Logo Bộ Công Thương */}
       <div className="space-y-4">
-        <p className="text-caption-responsive font-bold text-[#4b5666]">
+        <p className="text-[13px] font-bold text-[#4b5666]">
           {t('connectSocials')}
         </p>
         <div className="flex items-center gap-3">
@@ -221,7 +221,7 @@ export function FooterMobile() {
       <div className="space-y-4">
         <FooterLocaleSwitcher />
         <div className="rounded-[3px] border border-[#dfe8f3] bg-[#eaf1fa] p-4 text-center">
-          <strong className="block text-body-regular font-semibold text-[#172033]">
+          <strong className="block text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-semibold text-[#172033]">
             {t('downloadApp')}
           </strong>
           <div className="relative mx-auto mt-2.5 h-32 w-32 rounded bg-white p-1 shadow-xs">

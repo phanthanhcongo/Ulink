@@ -84,7 +84,7 @@ export function LocaleSwitcher() {
         onClick={() => setOpen((v) => !v)}
         aria-haspopup="listbox"
         aria-expanded={open}
-        className="flex items-center gap-2 border border-border bg-card px-3 py-1 text-caption-responsive font-semibold text-slate-600 transition-colors hover:text-slate-900 rounded-[3px]"
+        className="flex items-center gap-2 border border-border bg-card px-3 py-1 text-[13px] font-semibold text-slate-600 transition-colors hover:text-slate-900 rounded-[3px]"
       >
         <ActiveFlag className="h-3 w-4 shrink-0 rounded-[3px] object-cover" aria-hidden="true" />
         <span>{LABELS[locale]}</span>
@@ -107,7 +107,7 @@ export function LocaleSwitcher() {
                   type="button"
                   onClick={() => switchTo(l)}
                   className={cn(
-                    'flex w-full items-center gap-2 px-3 py-2 text-left text-body-regular   transition-colors hover:bg-muted',
+                    'flex w-full items-center gap-2 px-3 py-2 text-left text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] transition-colors hover:bg-muted',
                     l === locale ? 'font-medium text-brand' : 'text-foreground'
                   )}
                 >
