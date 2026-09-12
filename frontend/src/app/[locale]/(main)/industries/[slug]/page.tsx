@@ -154,27 +154,28 @@ function getIndustryDetails(slug: string, locale: string) {
           : 'ULink Industries provides sterile PPE cleanroom supplies, protective packaging films, and optimal anti-cross contamination solutions complying with GMP, ISO 14644, and FDA standards.',
       iconName: 'Activity',
       gradient: 'from-emerald-600 to-teal-900',
-      bannerImage: '/images/industries/electronics_hero.webp',
+      bannerImage: '/images/industries/pharma/pharma_hero.png',
+      overviewImage: '/images/industries/pharma/pharma_overview.png',
       valueProps: [
         {
-          title: isVi ? 'Chuẩn vô trùng tối đa' : isJa ? '最大レベルの無菌' : 'Max Sterility Level',
-          desc: isVi ? 'Đạt tiêu chuẩn phòng sạch Class 100 - ISO 5 khắt khe.' : isJa ? '厳しいClass 100 - ISO 5クリーンルーム基準に準拠。' : 'Complies with strict Class 100 - ISO 5 cleanroom standards.',
+          title: isVi ? 'Môi trường vô trùng' : isJa ? '無菌環境' : 'Sterile Environment',
+          desc: isVi ? 'Kiểm soát bụi & vi sinh vật theo chuẩn phòng sạch' : isJa ? 'クリーンルーム基準に基づく塵埃・微生物の制御' : 'Cleanroom dust & microbe control',
           iconName: 'ShieldCheck'
         },
         {
-          title: isVi ? 'Chống nhiễm chéo' : isJa ? '交差汚染防止' : 'Cross Contamination Control',
-          desc: isVi ? 'Vật tư thiết kế tối ưu giảm thiểu nguy cơ lây nhiễm vi sinh.' : isJa ? '微生物汚染リスクを最小限に抑える最適な資材設計。' : 'Optimally designed supplies minimizing microbial risks.',
-          iconName: 'Activity'
-        },
-        {
-          title: isVi ? 'Đạt chuẩn GMP & FDA' : isJa ? 'GMP & FDA適合' : 'GMP & FDA Compliant',
-          desc: isVi ? 'Đáp ứng đầy đủ các chứng nhận an toàn y tế quốc tế.' : isJa ? '国際的な医療安全認証に完全に適合。' : 'Fully complies with international medical safety certs.',
+          title: isVi ? 'Đạt chuẩn GMP & ISO' : isJa ? 'GMP & ISO適合' : 'GMP & ISO Certified',
+          desc: isVi ? 'Chứng nhận ISO 13485, CE, FDA cho sản phẩm y tế' : isJa ? '医療製品向けのISO 13485、CE、FDA認証' : 'ISO 13485, CE, FDA certified medical supplies',
           iconName: 'CheckCircle2'
         },
         {
-          title: isVi ? 'Hỗ trợ kỹ thuật 24/7' : isJa ? '24/7技術サポート' : '24/7 Tech Support',
-          desc: isVi ? 'Tư vấn giải pháp và cung cấp hồ sơ năng lực đầy đủ.' : isJa ? 'ソリューション提案と完全な機能プロファイルの提供。' : 'Solution consulting and complete capability profiles.',
-          iconName: 'Factory'
+          title: isVi ? 'Giao hàng thần tốc 48h' : isJa ? '48時間迅速配送' : 'Express 48h Delivery',
+          desc: isVi ? 'Từ trung tâm Hà Nam tới toàn bộ KCN trên cả nước' : isJa ? 'ハナム拠点から全国の工業団地へお届け' : 'From Ha Nam center to industrial zones nationwide',
+          iconName: 'Truck'
+        },
+        {
+          title: isVi ? 'Đội ngũ giàu kinh nghiệm' : isJa ? '経験豊富なチーム' : 'Experienced Team',
+          desc: isVi ? 'Đội ngũ kỹ sư chuyên sâu hỗ trợ lựa chọn giải pháp' : isJa ? '専門エンジニアによる最適なソリューション選定支援' : 'Expert engineers supporting tailored solutions',
+          iconName: 'User'
         }
       ],
       challengesIntro: isVi ? 'Thách thức trong ngành Dược phẩm' : isJa ? '医薬品産業における課題' : 'Challenges in the Pharmaceutical Industry',
@@ -197,38 +198,85 @@ function getIndustryDetails(slug: string, locale: string) {
       ],
       cleanroomIntro: isVi ? 'Giải pháp bảo vệ môi trường sản xuất vô trùng, phòng sạch dược phẩm.' : isJa ? '無菌製造環境や医薬品クリーンルーム向けの保護ソリューション。' : 'Protective solutions for sterile pharmaceutical and cleanroom manufacturing environments.',
       cleanroomCategories: [
-        { name: isVi ? 'Quần áo phòng sạch' : isJa ? 'クリーンルームウェア' : 'Cleanroom Wear & Coveralls', image: '/images/industries/electronics_hero.webp', slug: 'cleanroom-apparel' },
-        { name: isVi ? 'Khẩu trang phòng sạch vô trùng' : isJa ? '滅菌クリーンルームマスク' : 'Sterile Cleanroom Masks', image: '/images/industries/electronics_hero.webp', slug: 'cleanroom-masks' },
-        { name: isVi ? 'Khăn lau phòng sạch' : isJa ? 'クリーンルームワイパー' : 'Cleanroom Wipers', image: '/images/industries/electronics_hero.webp', slug: 'cleanroom-wipers' },
-        { name: isVi ? 'Thảm dính bụi phòng dịch' : isJa ? '除塵粘着マット' : 'De-dusting Sticky Mats', image: '/images/industries/electronics_hero.webp', slug: 'cleanroom-consumables' }
+        {
+          name: isVi ? 'Trang phục phòng sạch' : isJa ? 'クリーンルームウェア' : 'Cleanroom Wear & Coveralls',
+          desc: isVi ? 'Quần áo liền thân, mũ trùm đầu, bọc giày chống tĩnh điện chuyên dụng cho phòng sạch Class 100 - 10,000.' : isJa ? 'Class 100 - 10,000クリーンルーム専用のつなぎ服、フード、帯電防止シューズカバー。' : 'Coveralls, hoods, and anti-static shoe covers specialized for Class 100 - 10,000 cleanrooms.',
+          image: '/images/industries/pharma/pharma_apparel.png',
+          slug: 'cleanroom-apparel'
+        },
+        {
+          name: isVi ? 'Găng tay y tế & công nghiệp' : isJa ? '医療用・産業用手袋' : 'Medical & Industrial Gloves',
+          desc: isVi ? 'Găng tay Nitrile, Latex không bột, vô trùng chuyên dụng đạt tiêu chuẩn phẫu thuật và kiểm nghiệm phòng lab.' : isJa ? '手術およびラボ検査基準を満たすパウダーフリー無菌ニトリル・ラテックス手袋。' : 'Powder-free sterile Nitrile and Latex gloves for surgical and laboratory testing standards.',
+          image: '/images/industries/pharma/pharma_gloves.png',
+          slug: 'cleanroom-gloves'
+        },
+        {
+          name: isVi ? 'Khăn lau phòng sạch' : isJa ? 'クリーンルームワイパー' : 'Cleanroom Wipers',
+          desc: isVi ? 'Khăn lau Wiper không xơ vải, kiểm soát hạt bụi tối đa và không để lại vết dầu dành riêng cho môi trường vô trùng.' : isJa ? '無菌環境専用の発塵ゼロ、最大塵埃制御、油分を残さないワイパー。' : 'Lint-free wipers with maximum particle control and zero oil residue for sterile environments.',
+          image: '/images/industries/pharma/pharma_wipers.png',
+          slug: 'cleanroom-wipers'
+        },
+        {
+          name: isVi ? 'Thảm dính phòng sạch' : isJa ? '除塵粘着マット' : 'Cleanroom Sticky Mats',
+          desc: isVi ? 'Sticky mat nhiều lớp kiểm soát bụi và vi khuẩn tại cửa vào phòng sạch, ngăn ô nhiễm chéo từ bên ngoài.' : isJa ? 'クリーンルーム入口での塵埃・細菌制御、外部からの交差汚染を防ぐ多層粘着マット。' : 'Multi-layer sticky mats controlling dust and bacteria at cleanroom entrances to prevent cross-contamination.',
+          image: '/images/industries/pharma/pharma_mats.png',
+          slug: 'cleanroom-consumables'
+        }
       ],
       cleanroomViewAll: isVi ? 'Xem tất cả sản phẩm phòng sạch' : isJa ? 'すべてのクリーンルーム製品を見る' : 'See all cleanroom products',
       packagingIntro: isVi ? 'Bao bì sơ cấp tiếp xúc trực tiếp vô trùng và màng bảo vệ bên ngoài.' : isJa ? '無菌の直接接触一次包装および外装保護フィルム。' : 'Sterile primary contact packaging and external protective film solutions.',
       packagingCategories: [
-        { name: isVi ? 'Túi nhôm chống ẩm & tiệt trùng' : isJa ? '防湿・滅菌アルミ袋' : 'Sterile Moisture Barrier Aluminum Bags', image: '/images/industries/electronics_hero.webp', slug: 'industrial-packaging' },
-        { name: isVi ? 'Màng PE quấn bảo vệ y tế' : isJa ? '医療用保護PEフィルム' : 'Medical Grade PE protective film', image: '/images/industries/electronics_hero.webp', slug: 'industrial-packaging' },
-        { name: isVi ? 'Khay nhựa chống tĩnh điện y tế' : isJa ? '医療用ESDプラスチックトレイ' : 'Medical ESD Plastic Trays', image: '/images/industries/electronics_hero.webp', slug: 'esd-supplies' }
+        {
+          name: isVi ? 'Túi PE phòng sạch' : isJa ? 'クリーンルームPE袋' : 'Cleanroom PE Bags',
+          desc: isVi ? 'Túi polyethylene sạch dùng cho đóng gói linh kiện, thiết bị trong môi trường phòng sạch Class 100-10,000.' : isJa ? 'Class 100-10,000クリーンルーム環境での部品・機器梱包用クリーンポリエチレン袋。' : 'Clean polyethylene bags for component and device packaging in Class 100-10,000 cleanrooms.',
+          image: '/images/industries/pharma/pharma_pe_bags.png',
+          slug: 'cleanroom-consumables'
+        },
+        {
+          name: isVi ? 'Bao bì nhôm chân không' : isJa ? '真空アルミ包装' : 'Vacuum Aluminum Bags',
+          desc: isVi ? 'Bao bì nhôm hàn nhiệt chân không, bảo quản sản phẩm khỏi ẩm và ô nhiễm. Có nhiều kích thước lựa chọn.' : isJa ? '湿気や汚染から製品を保護するヒートシール真空アルミ包装。多様なサイズ展開。' : 'Heat-sealed vacuum aluminum packaging protecting products from moisture & contamination.',
+          image: '/images/industries/pharma/pharma_aluminum_bags.png',
+          slug: 'industrial-packaging'
+        },
+        {
+          name: isVi ? 'Túi zip chống tĩnh điện' : isJa ? '帯電防止ジップ袋' : 'ESD Zip Shielding Bags',
+          desc: isVi ? 'Túi ESD shielding bảo vệ linh kiện điện tử khỏi phóng tĩnh điện trong vận chuyển và lưu kho.' : isJa ? '輸送や保管時の静電気放電から電子部品を保護するESDシールドジップ袋。' : 'ESD shielding zip bags protecting electronic components from static discharge during transit.',
+          image: '/images/industries/pharma/pharma_zip_bags.png',
+          slug: 'esd-supplies'
+        },
+        {
+          name: isVi ? 'Khay & hộp đóng gói' : isJa ? 'トレイ＆梱包ボックス' : 'Packaging Trays & Boxes',
+          desc: isVi ? 'Khay nhựa và hộp carton sạch thiết kế riêng cho từng sản phẩm, đảm bảo cố định và bảo vệ tối ưu.' : isJa ? '製品ごとのカスタム設計プラスチックトレイとクリーン段ボール、最適な固定と保護。' : 'Custom designed plastic trays & clean carton boxes ensuring fixed placement & optimal protection.',
+          image: '/images/industries/pharma/pharma_trays.png',
+          slug: 'industrial-packaging'
+        }
       ],
       packagingViewAll: isVi ? 'Xem tất cả sản phẩm đóng gói' : isJa ? 'すべての包装製品を見る' : 'See all packaging products',
-      casesTitle: isVi ? 'Trường hợp áp dụng thực tế' : isJa ? '実際の導入事例' : 'Real-world Applications',
+      casesTitle: isVi ? 'Khách hàng tin dùng trong ngành Dược' : isJa ? '医薬品業界における信頼の導入実績' : 'Trusted Clients in Pharmaceutical Industry',
       cases: [
         {
-          title: isVi ? 'Đạt chuẩn GMP WHO cho nhà máy Dược Hậu Giang' : isJa ? 'Dược Hậu Giang工場のGMP WHO基準の達成' : 'Achieving GMP WHO Standards for DHG Pharma Factory',
-          description: isVi ? 'Đồng bộ hóa vật tư quần áo phòng sạch vô trùng Class 100 giúp vượt qua đợt đánh giá khắt khe của Bộ Y Tế thành công.' : isJa ? 'Class 100滅菌クリーンルームウェア等の資材同期化により、保健省による厳格な評価を通過。' : 'Synchronizing Class 100 sterile cleanroom wear and supplies successfully passed strict Ministry of Health audits.',
-          image: '/images/industries/electronics_hero.webp',
-          badge: isVi ? 'Đạt chuẩn GMP' : isJa ? 'GMP適合' : 'GMP Compliant'
+          title: isVi ? 'Hà Nam - Nhà máy dược phẩm vô trùng Class 100' : isJa ? 'ハナム - Class 100無菌医薬品工場' : 'Ha Nam - Class 100 Sterile Pharmaceutical Factory',
+          description: isVi ? 'Cung cấp toàn bộ vật tư phòng sạch cho dây chuyền sản xuất thuốc tiêm đòi hỏi độ vô trùng tuyệt đối tại nhà máy đạt chuẩn EU-GMP.' : isJa ? 'EU-GMP基準工場において、絶対的な無菌性が求められる注射剤生産ライン向けにすべてのクリーンルーム資材を供給。' : 'Provided complete cleanroom supplies for injectable drug production lines requiring absolute sterility at an EU-GMP factory.',
+          image: '/images/industries/pharma/pharma_case1.png',
+          badge: isVi ? 'Sản xuất thuốc tiêm' : isJa ? '注射剤製造' : 'Injectable Production',
+          badgeBg: 'bg-[#DBEAFE]',
+          badgeText: 'text-[#1769E2]'
         },
         {
-          title: isVi ? 'Tối ưu màng đóng gói cho nhà máy thiết bị y tế' : isJa ? '医療機器工場の包装フィルム最適化' : 'Optimizing packaging film for medical device factory',
-          description: isVi ? 'Ứng dụng túi nhôm chống ẩm và màng tiệt trùng giúp tăng thời gian bảo quản dụng cụ phẫu thuật thêm 18 tháng.' : isJa ? '防湿アルミ袋と滅菌フィルムの採用により、手術器具の保存期間を18ヶ月延長。' : 'Application of moisture-barrier aluminum bags and sterile film extended surgical instrument shelf life by 18 months.',
-          image: '/images/industries/electronics_hero.webp',
-          badge: isVi ? 'Tăng 18 tháng bảo quản' : isJa ? '保存期間18ヶ月延長' : '+18mo Shelf Life'
+          title: isVi ? 'Dây chuyền đóng gói dược phẩm xuất khẩu' : isJa ? '輸出用医薬品包装生産ライン' : 'Export Pharmaceutical Packaging Line',
+          description: isVi ? 'ULink Industries cung cấp - Giải pháp màng nhôm đa lớp và túi ép tiệt trùng bảo vệ dược chất chống ẩm và tia cực tím cho thị trường xuất khẩu EU.' : isJa ? 'ULink Industriesが多層アルミフィルムと滅菌圧縮袋のソリューションを提供し、EU輸出市場向けに湿気や紫外線から有効成分を保護。' : 'ULink Industries provided multilayer aluminum film & sterile pouch solutions protecting active ingredients from moisture and UV for EU exports.',
+          image: '/images/industries/pharma/pharma_case2.png',
+          badge: isVi ? 'Đóng gói thứ cấp' : isJa ? '二次包装' : 'Secondary Packaging',
+          badgeBg: 'bg-[#DCFCE7]',
+          badgeText: 'text-[#16A34A]'
         },
         {
-          title: isVi ? 'Kiểm soát nhiễm chéo tại lab nghiên cứu vacxin' : isJa ? 'ワクチン研究所における交差汚染制御' : 'Controlling cross-contamination at vaccine research lab',
-          description: isVi ? 'Hệ thống giấy lau phòng sạch và thảm dính bụi chuyên dụng giúp triệt tiêu hoàn toàn vi khuẩn phát tán trong phòng thí nghiệm.' : isJa ? '専用クリーンルームワイパーと粘着マットの導入により、実験室内の浮遊細菌を完全に排除。' : 'Specialized cleanroom wipers and sticky mats completely eliminated airborne bacteria in the laboratory room.',
-          image: '/images/industries/electronics_hero.webp',
-          badge: isVi ? 'Triệt tiêu 100% khuẩn' : isJa ? '細菌100%排除' : '100% Bacteria Elimination'
+          title: isVi ? 'Nhà sản xuất Dược phẩm - Phòng lab kiểm nghiệm chất lượng thuốc' : isJa ? '医薬品メーカー - 薬事品質検査ラボ' : 'Pharma Manufacturer - Drug Quality Testing Lab',
+          description: isVi ? 'Cung cấp găng tay vô trùng, khăn lau phòng sạch và dụng cụ bảo hộ cá nhân tiêu chuẩn cho phòng lab kiểm nghiệm đạt chuẩn ISO và GMP.' : isJa ? 'ISOおよびGMP基準を満たす品質検査ラボ向けに、滅菌手袋、クリーンルームワイパー、標準個人防護具を供給。' : 'Supplied sterile gloves, cleanroom wipers, and standard PPE for quality testing labs complying with ISO and GMP standards.',
+          image: '/images/industries/pharma/pharma_case3.png',
+          badge: isVi ? 'Kiểm nghiệm & Lab' : isJa ? '検査＆ラボ' : 'Testing & Lab',
+          badgeBg: 'bg-[#FEF9C3]',
+          badgeText: 'text-[#CA8A04]'
         }
       ],
       whyUsTitle: isVi ? 'Vì sao chọn ULINK?' : isJa ? 'なぜULINKを選ぶのか？' : 'Why Choose ULINK?',
@@ -237,6 +285,74 @@ function getIndustryDetails(slug: string, locale: string) {
         : isJa
           ? ['最高水準の無菌品質を満たす製品', 'WHO-GMPおよびFDA規格に準拠した厳格な品質管理', '豊富な供給能力により確実な納期を約束', '技術サポート、製品検査、工場向け機能プロファイルの提供']
           : ['Products meeting premium sterile quality standards', 'Strict quality control complying with WHO-GMP and FDA', 'Abundant supply capacity ensuring on-time delivery', 'Technical support, inspection reports, and full factory profile documentation'],
+      whyUsItems: isVi
+        ? [
+            {
+              title: 'Chứng nhận quốc tế uy tín',
+              desc: 'ISO 13485, CE, FDA và tiêu chuẩn an toàn y tế nghiêm ngặt nhất.',
+              iconName: 'ShieldCheck'
+            },
+            {
+              title: 'Năng lực cung ứng lớn',
+              desc: 'Trung tâm phân phối hiện đại tại Hà Nam, không đứt gãy nguồn hàng.',
+              iconName: 'Package'
+            },
+            {
+              title: 'Giao nhận thần tốc 24-48h',
+              desc: 'Kết nối nhanh tới các khu công nghiệp dược phẩm toàn quốc.',
+              iconName: 'Truck'
+            },
+            {
+              title: 'Tư vấn kỹ thuật',
+              desc: 'Kỹ sư chuyên sâu tư vấn giải pháp phù hợp ngân sách doanh nghiệp.',
+              iconName: 'User'
+            }
+          ]
+        : isJa
+          ? [
+              {
+                title: '信頼性の高い国際認証',
+                desc: 'ISO 13485、CE、FDAおよび最も厳格な医療安全基準に適合。',
+                iconName: 'ShieldCheck'
+              },
+              {
+                title: '大規模な供給能力',
+                desc: 'ハナムの現代的な物流センターにより供給の断絶を防ぎます。',
+                iconName: 'Package'
+              },
+              {
+                title: '24-48時間の迅速配送',
+                desc: '全国の医薬品工業団地へ迅速に配送いたします。',
+                iconName: 'Truck'
+              },
+              {
+                title: '専門技術コンサルティング',
+                desc: '専門エンジニアが企業の予算に合わせた最適ソリューションをご提案。',
+                iconName: 'User'
+              }
+            ]
+          : [
+              {
+                title: 'Prestigious International Certifications',
+                desc: 'ISO 13485, CE, FDA, and the strictest medical safety standards.',
+                iconName: 'ShieldCheck'
+              },
+              {
+                title: 'Large Supply Capacity',
+                desc: 'Modern distribution center in Ha Nam ensuring uninterrupted supply.',
+                iconName: 'Package'
+              },
+              {
+                title: 'Express 24-48h Delivery',
+                desc: 'Fast connection to pharmaceutical industrial zones nationwide.',
+                iconName: 'Truck'
+              },
+              {
+                title: 'Technical Consulting',
+                desc: 'Expert engineers advise solutions tailored to enterprise budget.',
+                iconName: 'User'
+              }
+            ],
       standardsTitle: isVi ? 'Chứng nhận & tiêu chuẩn áp dụng' : isJa ? '適用される認証＆規格' : 'Certifications & Standards',
       standards: [
         { name: 'ISO 13485:2016', detail: isVi ? 'Hệ thống quản lý chất lượng thiết bị y tế - tiêu chuẩn toàn cầu cho sản xuất dược phẩm an toàn.' : isJa ? '医療機器品質マネジメントシステム。' : 'Medical device quality management system standard.' },
@@ -660,8 +776,6 @@ export default async function IndustryDetailPage({ params: { locale, slug } }: I
       locale={locale}
       currentSlug={slug}
       translations={translations}
-    >
-      <CtaBanner containerClassName="page-container" />
-    </IndustryDetailClient>
+    />
   );
 }

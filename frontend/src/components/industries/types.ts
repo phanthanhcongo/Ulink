@@ -47,6 +47,7 @@ export interface IndustryData {
   cases: CaseStudyItem[];
   whyUsTitle: string;
   whyUsList: string[];
+  whyUsItems?: Array<{ title: string; desc: string; iconName?: string }>;
   standardsTitle: string;
   standards: Array<{ name: string; detail: string }>;
   resourcesTitle: string;
