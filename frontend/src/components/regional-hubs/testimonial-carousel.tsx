@@ -11,6 +11,7 @@ interface TestimonialItem {
   quote: string;
   name: string;
   role: string;
+  avatar?: string;
 }
 
 interface TestimonialCarouselProps {
@@ -58,7 +59,8 @@ export default function TestimonialCarousel({ labels }: TestimonialCarouselProps
       ),
       quote: labels.quote1,
       name: labels.name1,
-      role: labels.role1
+      role: labels.role1,
+      avatar: '/images/avatars/avatar_minh.jpg'
     },
     {
       id: 2,
@@ -79,7 +81,8 @@ export default function TestimonialCarousel({ labels }: TestimonialCarouselProps
       ),
       quote: labels.quote2,
       name: labels.name2,
-      role: labels.role2
+      role: labels.role2,
+      avatar: '/images/avatars/avatar_huong.jpg'
     },
     {
       id: 3,
@@ -96,7 +99,8 @@ export default function TestimonialCarousel({ labels }: TestimonialCarouselProps
       ),
       quote: labels.quote3,
       name: labels.name3,
-      role: labels.role3
+      role: labels.role3,
+      avatar: '/images/avatars/avatar_chinh.jpg'
     },
     {
       id: 4,
@@ -113,7 +117,8 @@ export default function TestimonialCarousel({ labels }: TestimonialCarouselProps
       ),
       quote: labels.quote4,
       name: labels.name4,
-      role: labels.role4
+      role: labels.role4,
+      avatar: '/images/avatars/avatar_quan.jpg'
     }
   ];
 
@@ -270,15 +275,15 @@ export default function TestimonialCarousel({ labels }: TestimonialCarouselProps
       <div className="page-container">
         {/* === Header Section === */}
         <div className="text-center mb-10 lg:mb-[60px]">
-          <span className="text-section-title font-bold text-brand tracking-[0.5px] uppercase block leading-tight">
+          <span className="text-section-title font-bold text-[#162233] tracking-[0.5px] uppercase block leading-tight">
             {labels.eyebrow}
           </span>
-          <h2 className="mt-3 text-section-title font-semibold text-[#212529] leading-tight sm:leading-[38px] tracking-[-0.3px]">
+          {/* <h2 className="mt-3 text-section-title font-semibold text-[#212529] leading-tight sm:leading-[38px] tracking-[-0.3px]">
             {labels.title}
           </h2>
           <p className="mt-1 text-section-title font-semibold text-[#212529] leading-tight sm:leading-[38px] tracking-[-0.3px]">
             {labels.subtitle}
-          </p>
+          </p> */}
         </div>
 
         {/* === Carousel Container === */}
@@ -327,8 +332,20 @@ export default function TestimonialCarousel({ labels }: TestimonialCarouselProps
 
                     {/* User Profile */}
                     <div className="mt-6 flex flex-col items-center shrink-0">
-                      <div className="h-10 w-10 rounded-full flex items-center justify-center bg-[#f5f8fc] text-[#1769e2] mb-2 transition-colors duration-150 group-hover:bg-brand group-hover:text-white">
-                        <User className="h-5.5 w-5.5 stroke-[1.5]" />
+                      <div className="relative h-12 w-12 rounded-full overflow-hidden border-2 border-slate-100 shadow-sm mb-2 group-hover:border-brand transition-colors duration-150 shrink-0">
+                        {item.avatar ? (
+                          <Image
+                            src={item.avatar}
+                            alt={item.name}
+                            fill
+                            className="object-cover"
+                            sizes="48px"
+                          />
+                        ) : (
+                          <div className="h-full w-full flex items-center justify-center bg-[#f5f8fc] text-[#1769e2]">
+                            <User className="h-6 w-6 stroke-[1.5]" />
+                          </div>
+                        )}
                       </div>
                       <span className="text-body-regular font-semibold text-[#212529] leading-tight transition-colors duration-150 group-hover:text-brand">{item.name}</span>
                       <span className="text-caption-responsive text-[#6c757d] font-normal mt-1 leading-tight">{item.role}</span>

@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   ChevronLeft,
   ChevronRight,
@@ -29,14 +30,16 @@ export default function TestimonialsCapabilities({ locale }: TestimonialsCapabil
       text: t('testimonialsCapabilities.test1Text'),
       author: t('testimonialsCapabilities.test1Author'),
       role: t('testimonialsCapabilities.test1Role'),
-      gender: 'female'
+      gender: 'female',
+      avatar: '/images/avatars/avatar_huong.jpg'
     },
     {
       company: 'ArtVenue',
       text: t('testimonialsCapabilities.test2Text'),
       author: t('testimonialsCapabilities.test2Author'),
       role: t('testimonialsCapabilities.test2Role'),
-      gender: 'male'
+      gender: 'male',
+      avatar: '/images/avatars/avatar_minh.jpg'
     },
     {
       company: 'LogixFlow',
@@ -54,7 +57,8 @@ export default function TestimonialsCapabilities({ locale }: TestimonialsCapabil
           : locale === 'ja'
             ? 'サプライチェーンディレクター'
             : 'Supply Chain Director',
-      gender: 'male'
+      gender: 'male',
+      avatar: '/images/avatars/avatar_quan.jpg'
     },
     {
       company: 'EcoPack',
@@ -72,7 +76,8 @@ export default function TestimonialsCapabilities({ locale }: TestimonialsCapabil
           : locale === 'ja'
             ? '購買マネージャー'
             : 'Procurement Manager',
-      gender: 'female'
+      gender: 'female',
+      avatar: '/images/avatars/avatar_chinh.jpg'
     }
   ];
 
@@ -126,8 +131,20 @@ export default function TestimonialsCapabilities({ locale }: TestimonialsCapabil
                   </p>
 
                   {/* Avatar */}
-                  <div className="relative w-12 h-12 rounded-full bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-500 mb-3 overflow-hidden shrink-0">
-                    <User className="h-6 w-6" />
+                  <div className="relative w-12 h-12 rounded-full border-2 border-slate-100 shadow-sm mb-3 overflow-hidden shrink-0">
+                    {test.avatar ? (
+                      <Image
+                        src={test.avatar}
+                        alt={test.author}
+                        fill
+                        className="object-cover"
+                        sizes="48px"
+                      />
+                    ) : (
+                      <div className="h-full w-full bg-blue-50 flex items-center justify-center text-blue-500">
+                        <User className="h-6 w-6" />
+                      </div>
+                    )}
                   </div>
 
                   {/* Author Name & Role */}

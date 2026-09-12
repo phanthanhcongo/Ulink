@@ -11,14 +11,10 @@ export default async function ContactSuccessPage({
   setRequestLocale(locale);
 
   return (
-    <div className="w-full bg-slate-50/50 min-h-screen py-3 sm:py-4 lg:py-6">
-      <div className="page-container">
-        <ContactSuccessHero />
-        <div className="my-3 sm:my-4 lg:my-6 h-px w-full bg-slate-200/80 max-w-6xl mx-auto" />
-        <ContactNextSteps />
-        <div className="my-3 sm:my-4 lg:my-6 h-px w-full bg-slate-200/80 max-w-6xl mx-auto" />
-        <ContactFeaturedSolutions />
-      </div>
+    <div className="w-full min-h-screen bg-white">
+      <ContactSuccessHero />
+      <ContactNextSteps />
+      <ContactFeaturedSolutions />
     </div>
   );
 }

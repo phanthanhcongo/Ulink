@@ -1,73 +1,92 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
+import { CategoryNavLink } from '@/components/solutions/category-nav-link';
 
 const solutions = [
   {
     id: 'cleanroom',
     title: 'Phòng sạch',
     desc: 'Giải pháp vật tư phòng sạch đạt chuẩn ISO, đảm bảo môi trường kiểm soát nhiễm cho ngành dược phẩm & điện tử.',
-    image: '/images/about/quality-hero-bg.webp',
-    href: '/industries/electronics'
+    image: '/images/contact-success/card-image0.png',
+    href: '/solutions/listProduct?category=cleanroom-consumables',
+    categorySlug: 'cleanroom-consumables'
   },
   {
     id: 'packaging',
     title: 'Bao bì Công nghiệp',
     desc: 'Cung cấp các loại bao bì chuyên dụng cho vận chuyển, bảo quản hàng hóa công nghiệp an toàn & hiệu quả.',
-    image: '/images/about/op-warehouse.webp',
-    href: '/industries/logistics'
+    image: '/images/contact-success/card-image1.png',
+    href: '/solutions/listProduct?category=industrial-packaging',
+    categorySlug: 'industrial-packaging'
   },
   {
     id: 'hvac',
     title: 'Băng keo nhôm HVAC',
-    desc: 'Các sản phẩm băng keo nhôm chịu nhiệt cao, chống ẩm, dùng cho hệ thống HVAC, ống gió và cách nhiệt công nghiệp.',
-    image: '/images/about/op-wms.webp',
-    href: '/industries/construction'
+    desc: 'Các sản phẩm Băng keo nhôm chịu nhiệt cao, chống ẩm, dùng cho hệ thống HVAC, ống gió và cách nhiệt công nghiệp.',
+    image: '/images/contact-success/card-image2.png',
+    href: '/solutions/listProduct?category=esd-supplies',
+    categorySlug: 'esd-supplies'
   }
 ];
 
 export function ContactFeaturedSolutions() {
   return (
-    <section className="py-4 sm:py-6 lg:py-8 px-3 sm:px-4 lg:px-6">
-      <div className="flex flex-col items-center text-center mb-4 sm:mb-6 lg:mb-10">
-        <span className="inline-flex items-center rounded-full bg-blue-50 px-2.5 sm:px-3 lg:px-3.5 py-0.5 sm:py-1 text-caption-responsive sm:text-body-regular font-bold uppercase tracking-wider text-blue-700 ring-1 ring-inset ring-blue-700/10 mb-2">
-          DANH MỤC TIÊU BIỂU
-        </span>
-        <h2 className="text-section-title sm:text-hero-title font-bold tracking-tight text-slate-900">
-          Khám phá thêm giải pháp từ ULink
-        </h2>
-      </div>
+    <section className="w-full bg-white py-12 lg:py-[80px]">
+      <div className="page-container max-w-[1280px]">
+        {/* Section Header */}
+        <div className="flex flex-col items-center text-center gap-3 mb-10 lg:mb-[48px]">
+          <span className="text-base sm:text-lg lg:text-[20px] font-semibold text-[#1769e2] tracking-[0.5px] uppercase">
+            DANH MỤC TIÊU BIỂU
+          </span>
+          <h2 className="text-xl sm:text-2xl lg:text-[28px] lg:leading-[36px] font-semibold tracking-[-0.3px] text-[#162233]">
+            Khám phá thêm giải pháp từ ULink
+          </h2>
+        </div>
 
-      <div className="grid grid-cols-1 gap-3 sm:gap-4 lg:gap-6 md:grid-cols-3 max-w-6xl mx-auto">
-        {solutions.map((item) => (
-          <div
-            key={item.id}
-            className="flex flex-col overflow-hidden rounded-[3px] bg-white border border-slate-100 shadow-sm group transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]"
-          >
-            <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100">
-              <Image
-                src={item.image}
-                alt={item.title}
-                fill
-                className="object-cover transition-transform duration-300 group-hover:scale-105"
-              />
-            </div>
-            <div className="flex flex-1 flex-col p-3 sm:p-4 lg:p-6">
-              <h3 className="text-body-large sm:text-card-title text-slate-900 group-hover:text-blue-600 transition-colors">
-                {item.title}
-              </h3>
-              <p className="mt-1.5 sm:mt-2 text-body-regular leading-relaxed text-slate-600 flex-1 text-sm sm:text-base">{item.desc}</p>
-              <div className="mt-2 sm:mt-4 pt-2 sm:pt-3 border-t border-slate-100 flex justify-end">
-                <Link
+        {/* Product List Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {solutions.map((item) => (
+            <div
+              key={item.id}
+              className="flex flex-col overflow-hidden rounded-[8px] bg-white border border-[#cad5e2] shadow-sm group transition-all duration-300 hover:-translate-y-1 hover:border-[#1769e2] hover:shadow-[0_0_0_1px_#1769E2,0_8px_25px_-5px_rgba(23,105,226,0.2)] cursor-pointer"
+            >
+              <CategoryNavLink
+                categorySlug={item.categorySlug}
+                href={item.href}
+                className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100 block"
+              >
+                <Image
+                  src={item.image}
+                  alt={item.title}
+                  fill
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
+                  sizes="(max-width: 768px) 100vw, 33vw"
+                />
+              </CategoryNavLink>
+              <div className="flex flex-1 flex-col p-6">
+                <CategoryNavLink
+                  categorySlug={item.categorySlug}
                   href={item.href}
-                  className="text-body-regular font-semibold text-blue-600 hover:text-blue-700 inline-flex items-center gap-1 text-xs sm:text-sm"
+                  className="text-lg lg:text-[20px] font-bold text-[#162233] group-hover:text-[#1769e2] transition-colors mb-2 block"
                 >
-                  Xem thêm <ArrowRight className="h-3 sm:h-3.5 w-3 sm:w-3.5" />
-                </Link>
+                  {item.title}
+                </CategoryNavLink>
+                <p className="text-sm sm:text-base lg:text-[16px] lg:leading-[24px] font-normal text-[#617084] flex-1">
+                  {item.desc}
+                </p>
+                <div className="mt-4 pt-4 border-t border-slate-100 flex items-center justify-end">
+                  <CategoryNavLink
+                    categorySlug={item.categorySlug}
+                    href={item.href}
+                    className="text-sm font-semibold text-[#1769e2] hover:underline inline-flex items-center gap-1"
+                  >
+                    Xem thêm <ArrowRight className="h-4 w-4" />
+                  </CategoryNavLink>
+                </div>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </section>
   );

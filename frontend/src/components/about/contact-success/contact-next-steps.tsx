@@ -2,7 +2,7 @@ const steps = [
   {
     badge: 'BƯỚC 01',
     title: 'Xác nhận & Phân tích',
-    desc: 'Hệ thống CRM chuyển hồ sơ trực tiếp đến kỹ thuật viên chuyên ngành vật tư của ULink Industries để bóc tách quy cách kỹ thuật.'
+    desc: 'Hệ thống CRM chuyển hồ sơ trực tiếp đến kỹ thuật chuyên trách lĩnh vực vật tư của ULink Industries để bóc tách quy cách kỹ thuật.'
   },
   {
     badge: 'BƯỚC 02',
@@ -18,29 +18,39 @@ const steps = [
 
 export function ContactNextSteps() {
   return (
-    <section className="py-4 sm:py-6 lg:py-8 px-3 sm:px-4 lg:px-6">
-      <div className="flex flex-col items-center text-center mb-4 sm:mb-6 lg:mb-10">
-        <span className="inline-flex items-center rounded-full bg-blue-50 px-2.5 sm:px-3 lg:px-3.5 py-0.5 sm:py-1 text-caption-responsive sm:text-body-regular font-bold uppercase tracking-wider text-blue-700 ring-1 ring-inset ring-blue-700/10 mb-2">
-          QUY TRÌNH TIẾP THEO
-        </span>
-        <h2 className="text-section-title sm:text-hero-title font-bold tracking-tight text-slate-900">
-          Các bước xử lý yêu cầu của ULink
-        </h2>
-      </div>
+    <section className="w-full bg-white py-12 lg:py-[80px]">
+      <div className="page-container max-w-[1280px]">
+        {/* Section Header */}
+        <div className="flex flex-col items-center text-center gap-3 mb-10 lg:mb-[48px]">
+          <span className="text-base sm:text-lg lg:text-[20px] font-semibold text-[#1769e2] tracking-[0.5px] uppercase">
+            QUY TRÌNH TIẾP THEO
+          </span>
+          <h2 className="text-xl sm:text-2xl lg:text-[28px] lg:leading-[36px] font-semibold tracking-[-0.3px] text-[#162233]">
+            Các bước xử lý yêu cầu của ULink
+          </h2>
+        </div>
 
-      <div className="grid grid-cols-1 gap-3 sm:gap-4 lg:gap-6 md:grid-cols-3 max-w-6xl mx-auto">
-        {steps.map((item, idx) => (
-          <div
-            key={idx}
-            className="flex flex-col rounded-[3px] bg-white p-3 sm:p-4 lg:p-6 shadow-sm border border-slate-100 group transition-all duration-200 hover:-translate-y-1 hover:scale-[1.02] hover:shadow-[0_0_0_1px_#1769E2,0_4px_20px_-4px_rgba(23,105,226,0.25)]"
-          >
-            <span className="inline-flex w-fit items-center rounded-full bg-blue-600 px-2 sm:px-2.5 lg:px-2.5 py-0.5 sm:py-1 text-caption-responsive sm:text-body-regular font-bold uppercase tracking-wider text-white mb-2 sm:mb-3 lg:mb-4 text-xs sm:text-sm">
-              {item.badge}
-            </span>
-            <h3 className="text-body-large sm:text-card-title text-slate-900 mb-1.5 sm:mb-2">{item.title}</h3>
-            <p className="text-body-regular leading-relaxed text-slate-600 text-sm sm:text-base">{item.desc}</p>
-          </div>
-        ))}
+        {/* Steps Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {steps.map((item, idx) => (
+            <div
+              key={idx}
+              className="group flex flex-col items-start gap-4 rounded-[8px] bg-white p-6 border border-[#cad5e2] shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-[#1769e2] hover:shadow-[0_0_0_1px_#1769E2,0_8px_25px_-5px_rgba(23,105,226,0.2)] cursor-pointer"
+            >
+              <div className="bg-[#1769e2] rounded-[4px] px-3 py-[6px] transition-transform duration-300 group-hover:scale-105">
+                <span className="text-xs font-bold text-white uppercase tracking-wider">
+                  {item.badge}
+                </span>
+              </div>
+              <h3 className="text-base sm:text-lg lg:text-[18px] font-semibold text-[#162233] leading-tight group-hover:text-[#1769e2] transition-colors duration-300">
+                {item.title}
+              </h3>
+              <p className="text-sm sm:text-base lg:text-[16px] lg:leading-[24px] font-normal text-[#617084]">
+                {item.desc}
+              </p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
   );
