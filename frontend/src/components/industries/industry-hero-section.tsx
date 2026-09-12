@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { Download, ChevronRight } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 import { IndustryData } from './types';
@@ -26,7 +25,7 @@ export function IndustryHeroSection({
   const industryCategoryName = isVi ? 'Ngành nghề' : isJa ? '業界別' : 'Industries';
 
   return (
-    <section className="relative w-full overflow-hidden bg-slate-950 flex flex-col justify-center min-h-[460px] lg:min-h-[500px]">
+    <section className="relative w-full overflow-hidden bg-slate-950 flex flex-col justify-center min-h-[560px]">
       {/* Background Image */}
       <div className="absolute inset-0 z-0">
         <Image
@@ -36,45 +35,52 @@ export function IndustryHeroSection({
           className="object-cover"
           priority
         />
+        {/* Figma Linear Gradient Overlay: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.4) 100%) */}
+        <div
+          className="absolute inset-0 z-10"
+          style={{
+            background: 'linear-gradient(180deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.55) 100%)'
+          }}
+        />
       </div>
 
-      {/* Content Container */}
-      <div className="page-container z-20 pt-28 pb-16 lg:pt-32 lg:pb-20 relative flex flex-col items-start justify-center h-full">
+      {/* Content Container - Vertically Centered */}
+      <div className="page-container z-20 py-12 lg:py-16 relative flex flex-col justify-center h-full min-h-[560px]">
         {/* Breadcrumbs */}
-        <nav className="flex items-center gap-2 text-[13px] text-white/70 font-semibold mb-6">
-          <Link href="/" className="hover:text-white transition-colors">
-            {translations.home}
+        <nav className="flex items-center gap-[8px] text-[13px] leading-none mb-[24px] lg:mb-[32px]">
+          <Link href="/" className="text-[#DDE1E6] hover:text-white transition-colors">
+            {translations.home || 'Trang chủ'}
           </Link>
-          <ChevronRight className="h-3.5 w-3.5 text-white/50" />
-          <Link href="/industries" className="hover:text-white transition-colors">
+          <span className="text-[#DDE1E6] font-normal">{'>'}</span>
+          <Link href="/industries" className="text-[#DDE1E6] hover:text-white transition-colors">
             {industryCategoryName}
           </Link>
-          <ChevronRight className="h-3.5 w-3.5 text-white/50" />
-          <span className="text-white font-bold">{currentBreadcrumb}</span>
+          <span className="text-[#DDE1E6] font-normal">{'>'}</span>
+          <span className="text-[#F9FAFB] font-bold">{currentBreadcrumb}</span>
         </nav>
 
-        {/* Heading & Description */}
-        <div className="max-w-4xl space-y-4">
-          <h1 className="text-[32px] sm:text-[40px] lg:text-[48px] lg:leading-[56px] font-bold tracking-tight text-white">
+        {/* Heading, Description & CTA */}
+        <div className="flex flex-col gap-[20px] pb-[16px]">
+          <h1 className="text-[32px] sm:text-[40px] lg:text-[48px] lg:leading-[56px] font-bold tracking-[-0.0208em] text-white max-w-[1050px]">
             {industryData.title}
           </h1>
-          <p className="text-[15px] sm:text-[16px] lg:text-[18px] lg:leading-[28px] font-normal text-white/95 max-w-3xl">
+          <p className="text-[15px] sm:text-[16px] lg:text-[16px] lg:leading-[25.6px] font-normal text-[#E5E7EB] max-w-[740px]">
             {industryData.description}
           </p>
-        </div>
 
-        {/* Download button */}
-        <div className="mt-8">
-          <Link
-            href={industryData.catalogue.url}
-            onClick={onCatalogueClick}
-            className="inline-flex h-12 items-center justify-center gap-2.5 border border-white bg-transparent hover:bg-white hover:text-[#141414] text-white font-bold text-[14px] leading-none px-6 py-3 transition-all duration-300 rounded-[3px] shadow-sm"
-          >
-            <Download className="h-4.5 w-4.5" />
-            {isVi ? 'Tải hồ sơ năng lực' : isJa ? '機能プロファイルをダウンロード' : 'Download Capability Profile'}
-          </Link>
+          {/* CTA Row (Figma Node #1119:10535) */}
+          <div className="pt-[8px] flex items-center gap-[16px]">
+            <Link
+              href={industryData.catalogue.url}
+              onClick={onCatalogueClick}
+              className="inline-flex h-[44px] items-center justify-center gap-2 border-[1.5px] border-[#F9FAFB] bg-transparent hover:bg-white hover:text-[#141414] text-[#F9FAFB] font-semibold text-[14px] leading-none px-[24px] py-[12px] transition-all duration-300 rounded-[6px] shadow-sm"
+            >
+              {isVi ? 'Yêu cầu tư vấn kỹ thuật' : isJa ? '技術相談をリクエスト' : 'Request Technical Advice'}
+            </Link>
+          </div>
         </div>
       </div>
     </section>
   );
 }
+

@@ -1,7 +1,13 @@
 import Image from 'next/image';
 import { ASSETS } from '@/lib/assets';
 
-export function PartnersLogosOnly() {
+interface PartnersLogosOnlyProps {
+  title?: string;
+}
+
+export function PartnersLogosOnly({ title }: PartnersLogosOnlyProps = {}) {
+  const displayTitle = title || 'HƠN 300 DOANH NGHIỆP FDI & TẬP ĐOÀN DƯỢC PHẨM ĐỒNG HÀNH CÙNG ULINK INDUSTRIES';
+
   const row1Logos = [
     { src: ASSETS.home.partnerSamsung, alt: 'Samsung', width: 'max-w-[70%]' },
     { src: ASSETS.home.partnerCanon, alt: 'Canon', width: 'max-w-[60%]' },
@@ -21,9 +27,9 @@ export function PartnersLogosOnly() {
   ];
 
   return (
-    <div className="flex flex-col gap-5 overflow-hidden mask-gradient-x py-2 select-none w-full">
-      <h3 className="text-center text-[11px] sm:text-[12px] font-bold uppercase tracking-wide text-slate-700 px-8 sm:px-4 max-w-3xl mx-auto">
-        HƠN 300 DOANH NGHIỆP FDI & TẬP ĐOÀN DƯỢC PHẨM ĐỒNG HÀNH CÙNG ULINK INDUSTRIES
+    <div className="flex flex-col gap-5 overflow-hidden mask-gradient-x py-8 select-none w-full">
+      <h3 className="text-center text-[14px] sm:text-[16px] lg:text-[18px] font-bold uppercase tracking-wide text-slate-800 px-8 sm:px-4 max-w-4xl mx-auto">
+        {displayTitle}
       </h3>
       {/* Row 1 Marquee: Left scrolling */}
       <div className="flex w-max animate-marquee-left">

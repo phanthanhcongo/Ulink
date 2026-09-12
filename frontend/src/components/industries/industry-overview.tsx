@@ -34,7 +34,8 @@ const iconMap: Record<string, React.ComponentType<any>> = {
   CheckCircle2,
   Factory,
   Package,
-  User
+  User,
+  PhoneCall
 };
 
 interface IndustryOverviewSectionProps {
@@ -47,20 +48,20 @@ export function IndustryOverviewSection({ industryData, locale }: IndustryOvervi
   const isJa = locale === 'ja';
 
   return (
-    <section id="overview" className="scroll-mt-16 py-12 lg:py-20 w-full bg-white">
+    <section id="overview" className="scroll-mt-16 py-16 lg:py-[80px] w-full bg-white">
       <div className="page-container flex flex-col lg:flex-row gap-8 lg:gap-[48px] items-stretch">
-        {/* Left Column - Text & Large Image */}
+        {/* Left Column - Text & Overview Image (Figma Node #1119:10539) */}
         <div className="flex-1 space-y-6 flex flex-col justify-between">
-          <div className="space-y-3">
-            <span className="text-[14px] font-bold uppercase tracking-wider text-[#1769E2] block">
+          <div className="space-y-[12px]">
+            <span className="text-[13px] sm:text-[14px] font-bold uppercase tracking-[0.05em] text-[#1769E2] block">
               {isVi ? 'TỔNG QUAN GIẢI PHÁP' : isJa ? 'ソリューション概要' : 'SOLUTION OVERVIEW'}
             </span>
-            <h2 className="text-[26px] sm:text-[32px] lg:text-[38px] lg:leading-[46px] font-bold text-[#141414] tracking-tight">
+            <h2 className="text-[28px] sm:text-[34px] lg:text-[38px] lg:leading-[46px] font-bold text-[#1D2A49] tracking-[-0.0158em]">
               {industryData.slug === 'pharmaceutical-cosmetics'
                 ? (isVi ? 'Đảm bảo tiêu chuẩn vô trùng khắt khe nhất' : isJa ? '最も厳格な無菌基準を保証' : 'Ensure the strictest sterility standards')
                 : industryData.slug === 'electronics'
                   ? (isVi ? 'Kiểm soát ô nhiễm & tĩnh điện tối ưu' : isJa ? '汚染管理と静電気対策の最適化' : 'Optimize contamination & electrostatic control')
-                  : industryData.slug === 'food-beverage'
+                  : industryData.slug === 'food-beverage' || industryData.slug === 'food'
                     ? (isVi ? 'Giải pháp Toàn diện cho Chuỗi Sản xuất F&B' : isJa ? 'F&B生産チェーン向け総合ソリューション' : 'Comprehensive Solution for F&B Production Chain')
                     : industryData.slug === 'logistics'
                       ? (isVi ? 'Tối ưu hóa Chuỗi Vận chuyển & Kho vận' : isJa ? '物流と倉庫管理の最適化' : 'Optimize Freight & Logistics Management')
@@ -68,7 +69,7 @@ export function IndustryOverviewSection({ industryData, locale }: IndustryOvervi
                         ? (isVi ? 'Giải pháp Bảo vệ Bề mặt & Đóng gói Gỗ Nội thất' : isJa ? '家具・木製品の表面保護と包装' : 'Furniture Surface Protection & Packaging')
                         : (isVi ? 'Giải pháp Vật tư & Bảo vệ Công trình Xây dựng' : isJa ? '建設・工事用資材＆保護ソリューション' : 'Construction Materials & Protection Solutions')}
             </h2>
-            <div className="text-[15px] lg:text-[16px] leading-[24px] lg:leading-[26px] text-[#495057] font-normal space-y-4 pt-2">
+            <div className="text-[15px] lg:text-[16px] leading-[24px] text-[#495057] font-normal space-y-4 pt-2">
               {industryData.slug === 'pharmaceutical-cosmetics' ? (
                 <>
                   <p>
@@ -82,7 +83,7 @@ export function IndustryOverviewSection({ industryData, locale }: IndustryOvervi
                       : 'ULink products are specially engineered to dissipate static charges, maximize fine dust retention, and maintain high airtightness. We accompany factories through rigorous quality audits and certifications from the Ministry of Health and international bodies.'}
                   </p>
                 </>
-              ) : industryData.slug === 'food-beverage' ? (
+              ) : industryData.slug === 'food-beverage' || industryData.slug === 'food' ? (
                 <>
                   <p>
                     {isVi
@@ -110,47 +111,66 @@ export function IndustryOverviewSection({ industryData, locale }: IndustryOvervi
             </div>
           </div>
 
-          {industryData.overviewImage && (
-            <div className="relative w-full flex-1 min-h-[300px] sm:min-h-[340px] rounded-[2px] overflow-hidden mt-6 shadow-sm border border-slate-100">
-              <Image
-                src={industryData.overviewImage}
-                alt={industryData.title}
-                fill
-                className="object-cover"
-                sizes="(max-width: 1024px) 100vw, 58vw"
-              />
-            </div>
-          )}
+          {/* Overview Image (Figma Node #1119:10545 - Height 320px, rounded 8px) */}
+          <div className="relative w-full h-[320px] rounded-[8px] overflow-hidden mt-6 border border-[#DDE1E6]">
+            <Image
+              src={industryData.overviewImage || '/images/industries/food/overview.png'}
+              alt={industryData.title}
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 58vw"
+            />
+          </div>
         </div>
 
-        {/* Right Sidebar (Fixed 380px - Matching Figma 100%) */}
-        <div className="w-full lg:w-[380px] shrink-0 bg-[#F5F7FA] border border-[#E2E8F0] rounded-[2px] p-[28px] flex flex-col justify-between h-full space-y-[30px]">
-          <div className="space-y-[30px]">
-            <div className="border-b border-[#E2E8F0] pb-[20px]">
-              <h3 className="text-[24px] font-bold text-[#0F172A] tracking-tight">
-                {industryData.whyUsTitle}
+        {/* Right Sidebar (Figma Node #1119:10546 - Fixed 380px, bg #F2F4F8, rounded 8px, padding 28px) */}
+        <div className="w-full lg:w-[380px] shrink-0 bg-[#F2F4F8] rounded-[8px] p-[28px] flex flex-col justify-between space-y-[24px]">
+          <div className="space-y-[24px]">
+            {/* Header Title */}
+            <div className="border-b border-[#DDE1E6] pb-[16px]">
+              <h3 className="text-[20px] font-semibold text-[#1D2A49] leading-[28px]">
+                {industryData.whyUsTitle || (isVi ? 'Vì sao chọn ULINK?' : isJa ? 'なぜULINKを選ぶのか？' : 'Why Choose ULINK?')}
               </h3>
             </div>
-            <div className="space-y-[30px]">
-              {(industryData.whyUsItems || [
-                { title: industryData.whyUsList[0] || 'Chứng nhận quốc tế uy tín', desc: 'ISO 13485, CE, FDA và tiêu chuẩn an toàn y tế nghiêm ngặt nhất.', iconName: 'ShieldCheck' },
-                { title: industryData.whyUsList[1] || 'Năng lực cung ứng lớn', desc: 'Trung tâm phân phối hiện đại tại Hà Nam, không đứt gãy nguồn hàng.', iconName: 'Package' },
-                { title: industryData.whyUsList[2] || 'Giao nhận thần tốc 24-48h', desc: 'Kết nối nhanh tới các khu công nghiệp dược phẩm toàn quốc.', iconName: 'Truck' },
-                { title: industryData.whyUsList[3] || 'Tư vấn kỹ thuật', desc: 'Kỹ sư chuyên sâu tư vấn giải pháp phù hợp ngân sách doanh nghiệp.', iconName: 'User' }
-              ]).map((item, idx) => {
-                const fallbackIcons = [ShieldCheck, Package, Truck, User];
-                const IconComp = (item.iconName && iconMap[item.iconName]) ? iconMap[item.iconName] : fallbackIcons[idx % fallbackIcons.length];
+
+            {/* 3 Advantage Items */}
+            <div className="space-y-[24px]">
+              {(industryData.slug === 'food-beverage' || industryData.slug === 'food'
+                ? [
+                  {
+                    title: isVi ? 'Cam kết chất lượng vượt trội' : 'Superior Quality Commitment',
+                    desc: isVi ? 'Sản phẩm được kiểm định nghiêm ngặt qua từng công đoạn, đảm bảo độ chính xác cao và hiệu suất ổn định.' : 'Rigorously inspected products ensuring high precision.',
+                    iconComp: ShieldCheck
+                  },
+                  {
+                    title: isVi ? 'Tích hợp tự động hóa cao' : 'High Automation Integration',
+                    desc: isVi ? 'Đồng bộ hóa dữ liệu thời gian thực, quản lý và truy xuất chính xác từng lô hàng.' : 'Real-time data synchronization for precise batch tracking.',
+                    iconComp: Cpu
+                  },
+                  {
+                    title: isVi ? 'Cung ứng liên tục 24/7' : 'Continuous 24/7 Supply',
+                    desc: isVi ? 'Tổng kho Hà Nam trữ lượng dồi dào, đảm bảo không gián đoạn dây chuyền.' : 'Abundant Ha Nam warehouse inventory ensures no downtime.',
+                    iconComp: Truck
+                  }
+                ]
+                : (industryData.whyUsItems || [
+                  { title: industryData.whyUsList?.[0] || 'Cam kết chất lượng vượt trội', desc: 'Sản phẩm được kiểm định nghiêm ngặt qua từng công đoạn, đảm bảo độ chính xác cao và hiệu suất ổn định.', iconComp: ShieldCheck },
+                  { title: industryData.whyUsList?.[1] || 'Tích hợp tự động hóa cao', desc: 'Đồng bộ hóa dữ liệu thời gian thực, quản lý và truy xuất chính xác từng lô hàng.', iconComp: Cpu },
+                  { title: industryData.whyUsList?.[2] || 'Cung ứng liên tục 24/7', desc: 'Tổng kho Hà Nam trữ lượng dồi dào, đảm bảo không gián đoạn dây chuyền.', iconComp: Truck }
+                ])
+              ).map((item, idx) => {
+                const IconComponent = item.iconComp || ShieldCheck;
 
                 return (
-                  <div key={idx} className="flex gap-4 items-start">
-                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[10px] bg-[#EAF2FF] text-[#1769E2] mt-0.5">
-                      <IconComp className="h-5 w-5 stroke-[2]" />
+                  <div key={idx} className="flex gap-[12px] items-start">
+                    <div className="flex h-[36px] w-[36px] shrink-0 items-center justify-center rounded-[6px] bg-[#DBEAFE] text-[#1769E2] mt-0.5">
+                      <IconComponent className="h-[20px] w-[20px] stroke-[2]" />
                     </div>
-                    <div className="space-y-1">
-                      <h4 className="text-[16px] font-bold text-[#0F172A] leading-snug">
+                    <div className="space-y-[4px] flex-1">
+                      <h4 className="text-[18px] font-normal text-[#212529] leading-[28px]">
                         {item.title}
                       </h4>
-                      <p className="text-[14px] text-[#64748B] font-normal leading-relaxed">
+                      <p className="text-[14px] text-[#495057] font-normal leading-[20px]">
                         {item.desc}
                       </p>
                     </div>
@@ -160,25 +180,25 @@ export function IndustryOverviewSection({ industryData, locale }: IndustryOvervi
             </div>
           </div>
 
-          {/* Hotline & Contact CTA Box */}
-          <div className="border-t border-[#E2E8F0] pt-[30px] space-y-4">
-            <div className="flex items-center gap-3.5">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[10px] bg-[#EAF2FF] text-[#1769E2]">
-                <PhoneCall className="h-5 w-5 stroke-[2]" />
+          {/* Hotline & Call Now CTA Section */}
+          <div className="border-t border-[#DDE1E6] pt-[20px] space-y-[16px]">
+            <div className="flex items-center gap-[12px]">
+              <div className="flex h-[36px] w-[36px] shrink-0 items-center justify-center rounded-[6px] bg-[#DBEAFE] text-[#1769E2]">
+                <PhoneCall className="h-[20px] w-[20px] stroke-[2]" />
               </div>
-              <div className="space-y-0.5">
-                <span className="text-[13px] text-[#64748B] block font-normal">
-                  {isVi ? 'Liên hệ tư vấn miễn phí' : isJa ? '無料相談のお問い合わせ' : 'Contact for free consultation'}
+              <div className="space-y-[2px]">
+                <span className="text-[16px] text-[#495057] leading-[24px] block font-normal">
+                  {isVi ? 'Liên hệ chuyên gia tư vấn' : isJa ? '専門家へのお問い合わせ' : 'Contact expert consultant'}
                 </span>
-                <span className="text-[16px] lg:text-[18px] font-bold text-[#0F172A] block">
-                  Hotline: 0247 309 9899
+                <span className="text-[18px] font-normal text-[#212529] leading-[28px] block">
+                  0247 309 9899
                 </span>
               </div>
             </div>
 
             <Link
               href="/contact"
-              className="w-full bg-[#1769E2] hover:bg-[#1257BD] text-white font-bold text-[15px] h-12 inline-flex items-center justify-center transition-all shadow-xs rounded-[8px]"
+              className="w-full bg-[#1769E2] hover:bg-[#1257BD] text-white font-semibold text-[14px] h-[48px] inline-flex items-center justify-center transition-all rounded-[3px]"
             >
               {isVi ? 'Gọi ngay' : isJa ? '今すぐお電話' : 'Call Now'}
             </Link>
@@ -188,3 +208,4 @@ export function IndustryOverviewSection({ industryData, locale }: IndustryOvervi
     </section>
   );
 }
+

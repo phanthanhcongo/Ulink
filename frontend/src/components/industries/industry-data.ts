@@ -505,33 +505,101 @@ export function getIndustryDetails(slug: string, locale: string) {
         { name: isVi ? 'Màng co POF bọc khay thực phẩm' : isJa ? 'POFシュリンクフィルム' : 'POF Shrink Film for Trays', desc: isVi ? 'Màng co POF trong suốt, độ bóng cao, an toàn tuyệt đối cho thực phẩm chế biến sẵn.' : isJa ? '高透明・高光沢のPOFフィルム。' : 'High transparency POF shrink film for ready meals.', image: '/images/industries/food/food_pof_film.png', slug: 'industrial-packaging' }
       ],
       packagingViewAll: isVi ? 'Xem tất cả sản phẩm đóng gói' : isJa ? 'すべての包装製品を見る' : 'See all packaging products',
-      casesTitle: isVi ? 'Trường hợp áp dụng thực tế' : isJa ? '実際の導入事例' : 'Real-world Applications',
+      casesTitle: isVi ? 'Khách hàng tin dùng trong ngành Thực phẩm & Đồ uống' : isJa ? '食品・飲料業界の導入事例' : 'Trusted by Food & Beverage Clients',
       cases: [
         {
-          title: isVi ? 'Cải tiến quy trình đóng gói hàng xuất khẩu thủy sản' : isJa ? '水産輸出製品包装プロセスの改善' : 'Improving seafood export packaging process',
-          description: isVi ? 'Sử dụng màng PE lực căng cao của ULink giúp pallet thủy sản vững chắc, chống ẩm lạnh 100% suốt quá trình vận chuyển đường biển.' : isJa ? 'ULinkの高張力PEフィルムを使用することで、海上輸送中も水産パレットを強固に固定し、100%防湿防寒します。' : 'Using ULink high-tension PE film secured seafood pallets firmly, ensuring 100% moisture protection during ocean freight.',
+          title: isVi ? 'Nhà máy chế biến thực phẩm đông lạnh xuất khẩu' : isJa ? '水産・冷凍食品加工工場' : 'Export frozen food processing plant',
+          description: isVi ? 'Cung cấp toàn bộ giải pháp vệ sinh công nghiệp, bao bì tiệt trùng và vật tư phòng sạch cho dây chuyền chế biến thực phẩm đông lạnh đạt chuẩn HACCP & BRC.' : isJa ? 'HACCPおよびBRC基準を満たす冷凍食品加工ライン向け清掃・無菌包装・クリーンルーム資材を提供。' : 'Provided complete industrial hygiene, sterile packaging, and cleanroom supplies for frozen food processing lines meeting HACCP & BRC standards.',
           image: '/images/industries/food/food_case1.png',
-          badge: isVi ? 'Chống ẩm 100%' : isJa ? '100%防湿' : '100% Moisture Proof'
+          badge: isVi ? 'Chế biến thực phẩm' : isJa ? '食品加工' : 'Food Processing'
         },
         {
-          title: isVi ? 'Giảm thiểu dị vật tại nhà máy sữa chua' : isJa ? 'ヨーグルト工場における異物混入の削減' : 'Reducing foreign object entry at yogurt factory',
-          description: isVi ? 'Thay thế trang phục bảo hộ thông thường bằng bộ đồ chống phát tán xơ vải của ULink giúp tỷ lệ dị vật đạt mức 0%.' : isJa ? '通常の防護服をULinkの発塵防止ウェアに変更したことで、異物混入率が0%になりました。' : 'Replacing regular suits with ULink lint-free coveralls successfully reduced foreign object entry rate to 0%.',
+          title: isVi ? 'Dây chuyền đóng gói sữa và nước giải khát' : isJa ? '乳製品・飲料包装ライン' : 'Milk & beverage packaging line',
+          description: isVi ? 'Giải pháp bao bì vô trùng, màng co nhiệt và hệ thống chiết rót khép kín đảm bảo an toàn thực phẩm cho sản phẩm sữa tươi và nước giải khát.' : isJa ? '無菌包装、シュリンクフィルム、密閉充填システムにより、牛乳および清涼飲料の食品安全を確保。' : 'Sterile packaging, shrink film, and closed filling system solutions ensuring food safety for fresh milk and beverages.',
           image: '/images/industries/food/food_case2.png',
-          badge: isVi ? 'Dị vật giảm về 0%' : isJa ? '異物混入0%' : '0% Foreign Objects'
+          badge: isVi ? 'Đóng gói & Bảo quản' : isJa ? '包装・保管' : 'Packaging & Preservation'
         },
         {
-          title: isVi ? 'Tự động hóa dây chuyền đóng gói chai nước giải khát' : isJa ? '飲料ボトル包装ラインの自動化' : 'Beverage bottle packaging line automation',
-          description: isVi ? 'Áp dụng màng co POF kết hợp dao cắt tự động giúp tăng 35% tốc độ đóng gói lốc chai và tiết kiệm 20% điện năng khò nhiệt.' : isJa ? 'POFシュリンクフィルムと自動カッターを導入し、パック包装速度を35%向上。' : 'Applying POF shrink film increased bundle packaging speed by 35% and cut energy by 20%.',
+          title: isVi ? 'Phòng lab kiểm tra an toàn vệ sinh thực phẩm' : isJa ? '食品安全検査ラボ' : 'Food safety testing lab',
+          description: isVi ? 'Cung cấp kit test nhanh, dụng cụ lấy mẫu vô trùng và thiết bị bảo hộ cho phòng lab kiểm nghiệm vi sinh, hóa lý thực phẩm.' : isJa ? '微生物・物理化学食品検査ラボ向けに迅速テストキット、無菌採水器具、保護具を提供。' : 'Supplied rapid test kits, sterile sampling tools, and protective gear for microbiological and physicochemical food testing labs.',
           image: '/images/industries/food/food_case3.png',
-          badge: isVi ? 'Tăng 35% năng suất' : isJa ? '生産性35%向上' : '+35% Productivity'
+          badge: isVi ? 'Kiểm nghiệm & QC' : isJa ? '検査・QC' : 'Testing & QC'
         }
       ],
-      whyUsTitle: isVi ? 'Vì sao chọn ULINK?' : isJa ? 'なぜULINKを選ぶのか？' : 'Why Choose ULINK?',
+      whyUsTitle: isVi ? 'Năng lực công nghệ & Cung ứng thực tế' : isJa ? 'テクノロジーと供給能力' : 'Technology & Supply Capability',
       whyUsList: isVi
-        ? ['Sản phẩm đạt chuẩn FDA, an toàn tuyệt đối cho thực phẩm', 'Kiểm soát chất lượng vệ sinh nghiêm ngặt đạt chuẩn HACCP', 'Chuỗi cung ứng bền vững và giải pháp logistics tối ưu', 'Hỗ trợ thiết kế kích thước và quy cách theo yêu cầu riêng']
+        ? ['Dây chuyền sản xuất tự động với máy móc châu Âu', 'Áp dụng QC đa tầng theo ISO 9001:2015', 'Đội ngũ kỹ sư R&D kinh nghiệm, dùng mô phỏng 3D', 'Sản xuất theo yêu cầu riêng từ vật liệu đến quy cách']
         : isJa
-          ? ['FDA基準を満たし、食品に完全に安全な製品', 'HACCP基準に準拠した厳格な衛生・品質管理', '持続可能なサプライチェーンと最適化された物流ソリューション', 'ご要望に応じたカスタムサイズ・仕様の設計サポート']
-          : ['Products meeting FDA standards, fully safe for food contact', 'Strict hygiene and quality control complying with HACCP standards', 'Sustainable supply chain and optimized logistics solutions', 'Support for custom size and specifications design tailoring'],
+          ? ['欧州製機械による自動生産ライン', 'ISO 9001:2015に準拠した多層QCの適用', '3Dシミュレーションを使用する経験豊富なR&Dチーム', '素材から仕様まで個別カスタマイズ生産']
+          : ['Automated production line with European machinery', 'Applying multi-tier QC according to ISO 9001:2015', 'Experienced R&D engineering team using 3D simulation', 'Custom manufacturing tailored from materials to specifications'],
+      whyUsItems: isVi
+        ? [
+          {
+            title: 'Công Nghệ Sản Xuất Tiên Tiến',
+            desc: 'Dây chuyền sản xuất tự động với máy móc châu Âu, đảm bảo chính xác tuyệt đối trong gia công và lắp ráp.',
+            iconName: 'Award'
+          },
+          {
+            title: 'Kiểm Soát Chất Lượng Nghiêm Ngặt',
+            desc: 'Áp dụng QC đa tầng theo ISO 9001:2015, kiểm tra 100% sản phẩm trước xuất xưởng bằng thiết bị chuyên dụng.',
+            iconName: 'ShieldCheck'
+          },
+          {
+            title: 'Năng Lực Kỹ Thuật Chuyên Sâu',
+            desc: 'Đội ngũ kỹ sư R&D kinh nghiệm, dùng mô phỏng 3D để tối ưu thiết kế trước sản xuất hàng loạt.',
+            iconName: 'Activity'
+          },
+          {
+            title: 'Giải Pháp Sản Xuất Tùy Chỉnh',
+            desc: 'Sản xuất theo yêu cầu riêng của khách hàng — từ vật liệu, kích thước đến thông số kỹ thuật phù hợp từng ngành.',
+            iconName: 'Settings'
+          }
+        ]
+        : isJa
+          ? [
+            {
+              title: '高度な製造技術',
+              desc: '欧州製機械による自動生産ラインにより、精密な加工と組立てを実現。',
+              iconName: 'Award'
+            },
+            {
+              title: '厳格な品質管理',
+              desc: 'ISO 9001:2015に準拠した多層QCを適用し、出荷前に製品を100%検査。',
+              iconName: 'ShieldCheck'
+            },
+            {
+              title: '深遠な技術能力',
+              desc: '経験豊富なR&Dエンジニアが3Dシミュレーションを用いて設計を最適化。',
+              iconName: 'Activity'
+            },
+            {
+              title: 'カスタム製造ソリューション',
+              desc: '素材、サイズから仕様までお客様のご要望に応じて個別カスタマイズ。',
+              iconName: 'Settings'
+            }
+          ]
+          : [
+            {
+              title: 'Advanced Production Technology',
+              desc: 'Automated production line with European machinery ensuring absolute precision in processing and assembly.',
+              iconName: 'Award'
+            },
+            {
+              title: 'Strict Quality Control',
+              desc: 'Applying multi-tier QC under ISO 9001:2015, testing 100% of products before shipment.',
+              iconName: 'ShieldCheck'
+            },
+            {
+              title: 'Deep Engineering Expertise',
+              desc: 'Experienced R&D engineering team using 3D simulation to optimize designs prior to mass production.',
+              iconName: 'Activity'
+            },
+            {
+              title: 'Custom Manufacturing Solutions',
+              desc: 'Custom manufacturing tailored to client requests — from materials and dimensions to industry specs.',
+              iconName: 'Settings'
+            }
+          ],
       standardsTitle: isVi ? 'Chứng nhận & tiêu chuẩn áp dụng' : isJa ? '適用される認証＆規格' : 'Certifications & Standards',
       standards: [
         { name: 'FDA 21 CFR', detail: isVi ? 'Tiêu chuẩn an toàn vật liệu tiếp xúc trực tiếp thực phẩm Hoa Kỳ.' : isJa ? '米国FDA食品直接接触安全基準。' : 'FDA regulations for direct food contact safety.' },
