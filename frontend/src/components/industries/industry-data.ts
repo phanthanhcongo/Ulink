@@ -91,18 +91,58 @@ export function getIndustryDetails(slug: string, locale: string) {
       ],
       cleanroomIntro: isVi ? 'Duy trì môi trường vô trùng tuyệt đối trong sản xuất dược phẩm với các vật tư phòng sạch chuyên dụng.' : isJa ? '専門のクリーンルーム用品で医薬品製造における完全な無菌環境を維持します。' : 'Maintain absolute sterile environments in pharmaceutical manufacturing with specialized cleanroom supplies.',
       cleanroomCategories: [
-        { name: isVi ? 'Quần áo phòng sạch dược phẩm' : isJa ? '医薬品用クリーンルームウェア' : 'Pharmaceutical Cleanroom Wear', desc: isVi ? 'Trang phục vô trùng chuyên dụng cho khu vực sản xuất GMP.' : isJa ? 'GMP製造エリア用滅菌ウェア。' : 'Sterile wear for GMP production areas.', image: '/images/industries/pharma/pharma_apparel.png', slug: 'cleanroom-apparel' },
-        { name: isVi ? 'Găng tay vô trùng y tế' : isJa ? '滅菌医療用手袋' : 'Sterile Medical Gloves', desc: isVi ? 'Găng tay Nitrile không bột đạt chuẩn ISO 13485.' : isJa ? 'ISO 13485適合パウダーフリーニトリル手袋。' : 'Powder-free Nitrile gloves complying with ISO 13485.', image: '/images/industries/pharma/pharma_gloves.png', slug: 'cleanroom-gloves' },
-        { name: isVi ? 'Khẩu trang phòng sạch dược' : isJa ? '医薬品用クリーンルームマスク' : 'Pharma Cleanroom Masks', desc: isVi ? 'Khẩu trang lọc khuẩn hiệu suất cao, tiệt trùng riêng từng chiếc.' : isJa ? '高効率細菌ろ過マスク、個別滅菌包装。' : 'High-efficiency bacterial filter masks, individually sterilized.', image: '/images/industries/cleanroom_mask.webp', slug: 'cleanroom-masks' },
-        { name: isVi ? 'Khăn lau phòng sạch' : isJa ? 'クリーンルームワイパー' : 'Cleanroom Wipers', desc: isVi ? 'Khăn lau không xơ vải cho môi trường phòng sạch ISO 4-7.' : isJa ? 'ISO 4-7クリーンルーム用無塵ワイパー。' : 'Lint-free wipers for ISO 4-7 cleanroom environments.', image: '/images/industries/pharma/pharma_wipers.png', slug: 'cleanroom-wipers' }
+        {
+          name: isVi ? 'Trang phục phòng sạch' : isJa ? 'クリーンルームウェア' : 'Cleanroom Apparel',
+          desc: isVi ? 'Quần áo liền thân, mũ trùm đầu, bọc giày chống tĩnh điện chuyên dụng cho phòng sạch Class 100 - 10,000.' : 'Specialized anti-static apparel for Class 100 - 10,000 cleanrooms.',
+          image: '/images/industries/pharma/pharma_apparel.png',
+          slug: 'cleanroom-apparel'
+        },
+        {
+          name: isVi ? 'Găng tay y tế & công nghiệp' : isJa ? '医療・工業用手袋' : 'Medical & Industrial Gloves',
+          desc: isVi ? 'Găng tay Nitrile, Latex không bột, vô trùng chuyên dụng đạt tiêu chuẩn phẫu thuật và kiểm nghiệm phòng lab.' : 'Powder-free, sterile Nitrile & Latex gloves for surgical and lab testing.',
+          image: '/images/industries/pharma/pharma_gloves.png',
+          slug: 'cleanroom-gloves'
+        },
+        {
+          name: isVi ? 'Khăn lau phòng sạch' : isJa ? 'クリーンルームワイパー' : 'Cleanroom Wipers',
+          desc: isVi ? 'Khăn lau Wiper không xơ vải, kiểm soát hạt bụi tối đa và không để lại vết dầu dành riêng cho môi trường vô trùng.' : 'Lint-free wipers, maximum dust control and oil-free for sterile environments.',
+          image: '/images/industries/pharma/pharma_wipers.png',
+          slug: 'cleanroom-wipers'
+        },
+        {
+          name: isVi ? 'Thảm dính phòng sạch' : isJa ? 'クリーンルーム用粘着マット' : 'Cleanroom Sticky Mats',
+          desc: isVi ? 'Sticky mat nhiều lớp kiểm soát bụi và vi khuẩn tại cửa vào phòng sạch, ngăn ô nhiễm chéo từ bên ngoài.' : 'Multi-layer sticky mats controlling dust and bacteria at cleanroom entrances.',
+          image: '/images/industries/pharma/pharma_mats.png',
+          slug: 'cleanroom-consumables'
+        }
       ],
       cleanroomViewAll: isVi ? 'Xem tất cả sản phẩm phòng sạch' : isJa ? 'すべてのクリーンルーム製品を見る' : 'See all cleanroom products',
       packagingIntro: isVi ? 'Bao bì chống nhiễm khuẩn và bảo quản dược phẩm đạt chuẩn FDA.' : isJa ? 'FDA基準に適合した抗菌・医薬品保管包装。' : 'Anti-contamination packaging and pharmaceutical preservation meeting FDA standards.',
       packagingCategories: [
-        { name: isVi ? 'Túi PE vô trùng dược phẩm' : isJa ? '医薬品用滅菌PEバッグ' : 'Sterile Pharmaceutical PE Bags', desc: isVi ? 'Túi PE sạch đạt chuẩn FDA cho đóng gói nguyên liệu dược.' : isJa ? '医薬品原材料包装用FDA適合クリーンPE袋。' : 'Clean PE bags meeting FDA for pharmaceutical material packaging.', image: '/images/industries/pharma/pharma_pe_bags.png', slug: 'industrial-packaging' },
-        { name: isVi ? 'Túi nhôm chống ẩm dược phẩm' : isJa ? '医薬品用防湿アルミ袋' : 'Pharma Moisture Barrier Bags', desc: isVi ? 'Túi nhôm hàn nhiệt bảo quản dược phẩm nhạy cảm với độ ẩm.' : isJa ? '湿気に敏感な医薬品を保管する熱シールアルミ袋。' : 'Heat-sealed aluminum bags preserving moisture-sensitive pharmaceuticals.', image: '/images/industries/pharma/pharma_aluminum_bags.png', slug: 'industrial-packaging' },
-        { name: isVi ? 'Màng co dược phẩm' : isJa ? '医薬品用シュリンクフィルム' : 'Pharmaceutical Shrink Film', desc: isVi ? 'Màng co trong suốt bảo vệ hộp thuốc và chai lọ dược phẩm.' : isJa ? '薬箱やボトルを保護する透明シュリンクフィルム。' : 'Transparent shrink film protecting medicine boxes and pharmaceutical bottles.', image: '/images/industries/pharma/pharma_zip_bags.png', slug: 'industrial-packaging' },
-        { name: isVi ? 'Thảm dính bụi phòng sạch' : isJa ? 'クリーンルーム用粘着マット' : 'Cleanroom Sticky Mats', desc: isVi ? 'Thảm dính bóc lớp 30-60 lớp cho cửa ra vào khu vực GMP.' : isJa ? 'GMP区域入口用30-60層ピーラブルマット。' : '30-60 layer peelable mats for GMP area entrances.', image: '/images/industries/pharma/pharma_mats.png', slug: 'cleanroom-consumables' }
+        {
+          name: isVi ? 'Túi PE phòng sạch' : isJa ? 'クリーンルーム用PE袋' : 'Cleanroom PE Bags',
+          desc: isVi ? 'Túi polyethylene sạch dùng cho đóng gói linh kiện, thiết bị trong môi trường phòng sạch Class 100-10,000.' : 'Clean polyethylene bags for component packaging in Class 100-10,000 cleanrooms.',
+          image: '/images/industries/pharma/pharma_pe_bags.png',
+          slug: 'industrial-packaging'
+        },
+        {
+          name: isVi ? 'Bao bì nhôm chân không' : isJa ? 'アルミ真空包装' : 'Vacuum Aluminum Packaging',
+          desc: isVi ? 'Bao bì nhôm hàn nhiệt chân không, bảo quản sản phẩm khỏi ẩm và ô nhiễm. Có nhiều kích thước lựa chọn.' : 'Vacuum heat-sealed aluminum packaging protecting products from moisture & contamination.',
+          image: '/images/industries/pharma/pharma_aluminum_bags.png',
+          slug: 'industrial-packaging'
+        },
+        {
+          name: isVi ? 'Túi zip chống tĩnh điện' : isJa ? '帯電防止ジッパー袋' : 'Anti-Static Zipper Bags',
+          desc: isVi ? 'Túi ESD shielding bảo vệ linh kiện điện tử khỏi phóng tĩnh điện trong vận chuyển và lưu kho.' : 'ESD shielding bags protecting electronic components from electrostatic discharge.',
+          image: '/images/industries/pharma/pharma_zip_bags.png',
+          slug: 'industrial-packaging'
+        },
+        {
+          name: isVi ? 'Khay & hộp đóng gói' : isJa ? 'トレイ＆包装ボックス' : 'Packaging Trays & Boxes',
+          desc: isVi ? 'Khay nhựa và hộp carton sạch thiết kế riêng cho từng sản phẩm, đảm bảo cố định và bảo vệ tối ưu.' : 'Clean plastic trays and carton boxes custom-designed for each product.',
+          image: '/images/industries/pharma/pharma_trays.png',
+          slug: 'industrial-packaging'
+        }
       ],
       packagingViewAll: isVi ? 'Xem tất cả sản phẩm đóng gói' : isJa ? 'すべての包装製品を見る' : 'See all packaging products',
       casesTitle: isVi ? 'Trường hợp áp dụng thực tế' : isJa ? '実際の導入事例' : 'Real-world Applications',
