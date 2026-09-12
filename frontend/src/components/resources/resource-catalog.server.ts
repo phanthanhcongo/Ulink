@@ -197,7 +197,7 @@ export async function loadResourceBySlug(slug: string) {
   const catalog = await loadResourceCatalog();
 
   // Exact match by ID in full catalog
-  let found = catalog.find((item) => item.id.toLowerCase() === lowerSlug);
+  const found = catalog.find((item) => item.id.toLowerCase() === lowerSlug);
   if (found) return found;
 
   // Fallback by index e.g. case-1 -> catalog[0]

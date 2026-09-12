@@ -37,9 +37,9 @@ interface IndustryValuePropsProps {
 
 export function IndustryValueProps({ valueProps }: IndustryValuePropsProps) {
   return (
-    <section className="w-full bg-[#F2F4F8] border-y border-[#DDE1E6] py-10 lg:py-12">
+    <section className="w-full bg-[#E9EFF6] py-5 lg:py-6">
       <div className="page-container">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-1.5 sm:gap-2 lg:gap-[2px]">
           {valueProps.map((prop, idx) => {
             const PropIcon = iconMap[prop.iconName] || ShieldCheck;
             return (

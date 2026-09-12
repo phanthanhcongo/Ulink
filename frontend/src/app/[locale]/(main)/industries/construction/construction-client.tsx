@@ -194,7 +194,7 @@ export default function ConstructionClient({
       {/* 2. FEATURE HIGHLIGHTS BAR (Figma Node #1240:2054 - bg #E9EFF6, 4 White Cards in 2 Rows on Mobile) */}
       <section className="w-full bg-[#E9EFF6] py-3 sm:py-4 lg:py-[20px]">
         <div className="page-container">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 lg:gap-[2px] items-stretch">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-1.5 sm:gap-2 lg:gap-[2px] items-stretch">
             {/* Feature 1 */}
             <div className="group bg-white p-3 sm:p-4 lg:p-[24px] min-h-[120px] sm:min-h-[136px] flex flex-col justify-start sm:justify-center gap-1.5 sm:gap-[10px] rounded-[2px] border border-slate-200/90 shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_12px_30px_-5px_rgba(23,105,226,0.2)] cursor-pointer">
               <Thermometer className="w-5 h-5 sm:w-[28px] sm:h-[28px] text-[#1769E2] shrink-0 transition-transform duration-300 group-hover:scale-110" />

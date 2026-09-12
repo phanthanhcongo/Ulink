@@ -234,7 +234,7 @@ export default function FoodClient({
       {/* 2. FEATURE HIGHLIGHTS BAR (Figma Node #1125:1210 - 1440x175px, bg #E9EFF6, 4 White Cards) */}
       <section className="w-full bg-[#E9EFF6] py-[20px]">
         <div className="page-container">
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-[2px] items-stretch">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-1.5 sm:gap-2 lg:gap-[2px] items-stretch">
             {/* Feature 1 */}
             <div className="bg-white p-4 sm:p-[24px] min-h-[136px] flex flex-col justify-start sm:justify-center gap-2 sm:gap-[10px] shadow-2xs">
               <Image

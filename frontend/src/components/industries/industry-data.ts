@@ -268,7 +268,8 @@ export function getIndustryDetails(slug: string, locale: string) {
           : 'Optimize contamination control and packaging processes to ensure the quality and reliability of electronic components.',
       iconName: 'Cpu',
       gradient: 'from-blue-600 to-indigo-900',
-      bannerImage: '/images/industries/electronics_hero.webp',
+      bannerImage: '/images/industries/electronics/banner.png',
+      overviewImage: '/images/industries/electronics/overview-product.png',
       valueProps: [
         {
           title: isVi ? 'Đảm bảo chất lượng cao' : isJa ? '高品質の保証' : 'High Quality Assurance',

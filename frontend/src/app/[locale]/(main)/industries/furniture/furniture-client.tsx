@@ -115,7 +115,7 @@ export default function FurnitureClient({
 
       <IndustryValueProps valueProps={industryData.valueProps} />
 
-      <div className="sticky top-0 z-40 bg-white border-b border-[#DDE1E6] transition-all duration-300 shadow-2xs backdrop-blur-md">
+      <div className="hidden md:block sticky top-0 z-40 bg-white border-b border-[#DDE1E6] transition-all duration-300 shadow-2xs backdrop-blur-md">
         <div className="page-container">
           <div className="flex overflow-x-auto no-scrollbar py-0.5 gap-8 scroll-smooth">
             {tabs.map((tab) => (

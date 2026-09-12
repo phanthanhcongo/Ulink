@@ -56,7 +56,7 @@ export function IndustryOverviewSection({ industryData, locale }: IndustryOvervi
             <span className="text-[13px] sm:text-[14px] font-bold uppercase tracking-[0.05em] text-[#1769E2] block">
               {isVi ? 'TỔNG QUAN GIẢI PHÁP' : isJa ? 'ソリューション概要' : 'SOLUTION OVERVIEW'}
             </span>
-            <h2 className="text-[28px] sm:text-[34px] lg:text-[38px] lg:leading-[46px] font-bold text-[#1D2A49] tracking-[-0.0158em]">
+            <h2 className="text-[20px] sm:text-[28px] md:text-[34px] lg:text-[38px] leading-snug lg:leading-[46px] font-bold text-[#1D2A49] tracking-[-0.0158em]">
               {industryData.slug === 'pharmaceutical-cosmetics'
                 ? (isVi ? 'Đảm bảo tiêu chuẩn vô trùng khắt khe nhất' : isJa ? '最も厳格な無菌基準を保証' : 'Ensure the strictest sterility standards')
                 : industryData.slug === 'electronics'
@@ -121,8 +121,8 @@ export function IndustryOverviewSection({ industryData, locale }: IndustryOvervi
             </div>
           </div>
 
-          {/* Overview Image (Figma Node #1119:10545 - Height 320px, rounded 2px) */}
-          <div className="relative w-full h-[320px] rounded-[2px] overflow-hidden mt-6">
+          {/* Overview Image */}
+          <div className="relative w-full h-[340px] sm:h-[370px] lg:h-[390px] rounded-[4px] overflow-hidden mt-6">
             <Image
               src={industryData.overviewImage || '/images/industries/food/overview.png'}
               alt={industryData.title}
@@ -169,7 +169,7 @@ export function IndustryOverviewSection({ industryData, locale }: IndustryOvervi
                   { title: industryData.whyUsList?.[2] || 'Cung ứng liên tục 24/7', desc: 'Tổng kho Hà Nam trữ lượng dồi dào, đảm bảo không gián đoạn dây chuyền.', iconComp: Truck }
                 ])
               ).map((item, idx) => {
-                const IconComponent = item.iconComp || ShieldCheck;
+                const IconComponent = (item as any).iconComp || ShieldCheck;
 
                 return (
                   <div key={idx} className="flex gap-[12px] items-start">

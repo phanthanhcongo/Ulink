@@ -61,7 +61,7 @@ export function IndustryHeroSection({
 
         {/* Heading, Description & CTA */}
         <div className="flex flex-col gap-[20px] pb-[16px]">
-          <h1 className="text-[32px] sm:text-[40px] lg:text-[48px] lg:leading-[56px] font-bold tracking-[-0.0208em] text-white max-w-[1050px]">
+          <h1 className="text-2xl sm:text-[40px] lg:text-[48px] lg:leading-[56px] font-bold tracking-[-0.0208em] text-white max-w-[1050px]">
             {industryData.title}
           </h1>
           <p className="text-[15px] sm:text-[16px] lg:text-[16px] lg:leading-[25.6px] font-normal text-[#E5E7EB] max-w-[740px]">
