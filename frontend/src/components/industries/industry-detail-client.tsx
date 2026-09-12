@@ -763,7 +763,7 @@ export default function IndustryDetailClient({
       {/* ── BOTTOM CTA BANNER (Exact Figma Specs node 1106:1310 / 1119:10610) ── */}
       <section className="w-full bg-[#1769E2] text-white py-16 lg:py-20">
         <div className="page-container flex flex-col items-center text-center space-y-6 max-w-6xl mx-auto">
-          <h2 className="text-[24px] sm:text-[30px] lg:text-[34px] xl:text-[38px] lg:leading-[46px] font-bold text-white tracking-tight whitespace-normal">
+          <h2 className="text-[20px] sm:text-[30px] lg:text-[34px] xl:text-[38px] lg:leading-[46px] font-bold text-white tracking-tight whitespace-normal">
             {industryData.slug === 'food-beverage'
               ? (isVi ? 'Giải pháp đóng gói thực phẩm toàn diện' : isJa ? '包括的な食品包装ソリューション' : 'Comprehensive Food Packaging Solutions')
               : (isVi
@@ -818,5 +818,4 @@ export default function IndustryDetailClient({
     </div>
   );
 }
-
 

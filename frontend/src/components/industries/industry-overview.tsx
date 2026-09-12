@@ -67,7 +67,9 @@ export function IndustryOverviewSection({ industryData, locale }: IndustryOvervi
                       ? (isVi ? 'Tối ưu hóa Chuỗi Vận chuyển & Kho vận' : isJa ? '物流と倉庫管理の最適化' : 'Optimize Freight & Logistics Management')
                       : industryData.slug === 'furniture'
                         ? (isVi ? 'Giải pháp Bảo vệ Bề mặt & Đóng gói Gỗ Nội thất' : isJa ? '家具・木製品の表面保護と包装' : 'Furniture Surface Protection & Packaging')
-                        : (isVi ? 'Giải pháp Vật tư & Bảo vệ Công trình Xây dựng' : isJa ? '建設・工事用資材＆保護ソリューション' : 'Construction Materials & Protection Solutions')}
+                        : industryData.slug === 'construction'
+                          ? (isVi ? 'Đảm bảo độ kín khí và bảo ôn hoàn hảo cho hệ thống Cơ Điện' : isJa ? 'M&Eシステムの完璧な気密性と保温を確保' : 'Ensuring Perfect Airtightness and Thermal Insulation for M&E Systems')
+                          : (isVi ? 'Giải pháp Vật tư & Bảo vệ Công trình Xây dựng' : isJa ? '建設・工事用資材＆保護ソリューション' : 'Construction Materials & Protection Solutions')}
             </h2>
             <div className="text-[15px] lg:text-[16px] leading-[24px] text-[#495057] font-normal space-y-4 pt-2">
               {industryData.slug === 'pharmaceutical-cosmetics' ? (
@@ -105,14 +107,22 @@ export function IndustryOverviewSection({ industryData, locale }: IndustryOvervi
                     Tất cả găng tay, khăn lau và khay nhựa đựng linh kiện của chúng tôi đều đạt tiêu chuẩn điện trở bề mặt an toàn, giúp phân tán dòng điện tích tích tụ và bảo vệ linh kiện.
                   </p>
                 </>
+              ) : industryData.slug === 'construction' ? (
+                <p>
+                  {isVi
+                    ? 'Trong thiết kế hệ thống HVAC, việc rò rỉ khí và đọng sương bề mặt ống gió là những lỗi vận hành nghiêm trọng gây lãng phí điện năng lớn. Băng keo nhôm ULINK đóng vai trò là màng ngăn ẩm, bịt kín tuyệt đối các mối nối ghép ống gió và bảo vệ hoàn thiện các lớp bông thủy tinh cách nhiệt.'
+                    : isJa
+                      ? 'HVACシステム設計において、空気漏れとダクト表面の結露は重大な運用エラーであり、大規模な電力無駄を引き起こします。ULINKアルミテープは防湿膜として機能し、ダクト接続部を完全に密閉してグラスウール断熱層を保護します。'
+                      : 'In HVAC system design, air leakage and surface condensation on ducts are critical operational flaws causing massive energy waste. ULINK aluminum tape acts as a vapor barrier, perfectly sealing duct joints and completely protecting glasswool insulation layers.'}
+                </p>
               ) : (
                 <p>{industryData.description}</p>
               )}
             </div>
           </div>
 
-          {/* Overview Image (Figma Node #1119:10545 - Height 320px, rounded 8px) */}
-          <div className="relative w-full h-[320px] rounded-[8px] overflow-hidden mt-6 border border-[#DDE1E6]">
+          {/* Overview Image (Figma Node #1119:10545 - Height 320px, rounded 2px) */}
+          <div className="relative w-full h-[320px] rounded-[2px] overflow-hidden mt-6">
             <Image
               src={industryData.overviewImage || '/images/industries/food/overview.png'}
               alt={industryData.title}

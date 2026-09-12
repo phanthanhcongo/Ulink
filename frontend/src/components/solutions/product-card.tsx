@@ -45,13 +45,13 @@ export function ProductCard({
       <Link href={productLink} className="flex flex-col h-full">
 
         {/* IMAGE SECTION */}
-        <div className="image-wrap relative w-full aspect-[3/3] overflow-hidden bg-gradient-to-b from-slate-100 to-slate-50 flex items-center justify-center group">
+        <div className="image-wrap relative w-full aspect-[3/3] overflow-hidden bg-gradient-to-b from-slate-100 to-slate-50 flex items-center justify-center">
           {product.image && (product.image.startsWith('http') || product.image.startsWith('/')) ? (
             <Image
               src={product.image}
               alt={product.name}
               fill
-              className="object-cover"
+              className="object-cover transition-transform duration-500 group-hover:scale-105"
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
               onError={(e) => {
                 // Fallback if image fails to load
@@ -127,11 +127,10 @@ export function ProductCard({
             {showWishlist && (
               <button
                 onClick={handleWishlistClick}
-                className={`button6 border border-slate-200 rounded-[3px] p-2 sm:p-2.5 transition-all cursor-pointer flex items-center justify-center ${
-                  isWishlisted
+                className={`button6 border border-slate-200 rounded-[3px] p-2 sm:p-2.5 transition-all cursor-pointer flex items-center justify-center ${isWishlisted
                     ? 'bg-blue-50 border-blue-600 text-blue-600 hover:bg-blue-100'
                     : 'bg-white hover:bg-blue-50/60 border-slate-200 hover:border-blue-600 text-blue-600'
-                }`}
+                  }`}
                 title={locale === 'vi' ? 'Lưu sản phẩm' : 'Bookmark product'}
               >
                 <Bookmark

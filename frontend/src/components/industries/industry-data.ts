@@ -784,71 +784,155 @@ export function getIndustryDetails(slug: string, locale: string) {
   if (actualSlug === 'construction') {
     return {
       slug: 'construction',
-      name: isVi ? 'Xây dựng & Cơ khí - HVAC' : isJa ? '精密機械＆HVAC' : 'Precision Engineering & HVAC',
-      title: isVi ? 'Giải pháp cho ngành Xây dựng & Cơ khí - HVAC' : isJa ? '精密機械＆HVAC向けソリューション' : 'Solutions for Engineering & HVAC',
+      name: isVi ? 'Cơ Điện - HVAC' : isJa ? '設備・HVAC' : 'M&E - HVAC',
+      title: isVi ? 'Giải pháp Băng keo Nhôm chuyên dụng cho ngành Cơ Điện – HVAC' : isJa ? '設備・HVAC産業向けアルミテープソリューション' : 'Specialized Aluminum Tape Solutions for M&E – HVAC',
       description: isVi
-        ? 'Cung cấp vật tư cơ khí, phụ kiện ống đồng, van điều khiển, băng keo nhôm cách nhiệt và thiết bị HVAC chính hãng cho hệ thống điều hòa không khí.'
+        ? 'ULINK cung cấp các dòng băng keo nhôm (Aluminum Foil Tape) chất lượng cao chịu nhiệt vượt trội, bám dính cực mạnh chuyên dùng bịt kín ống gió, bọc cách nhiệt bảo ôn và hoàn thiện hệ thống cơ điện HVAC đạt chuẩn UL 723.'
         : isJa
-          ? '産業用空調・換気システム向けに、機械資材、銅管継手、制御バルブ、および純正HVAC機器を提供します。'
-          : 'Providing engineering materials, copper pipe fittings, control valves, and genuine HVAC equipment for industrial air conditioning and ventilation systems.',
+          ? 'ULINKは、ダクト密閉、保温断熱ラッピング、およびUL 723規格に準拠したHVAC設備の完成に使用される、優れた耐熱性と強力な粘着力を備えた高品質なアルミテープ（Aluminum Foil Tape）製品を提供します。'
+          : 'ULINK provides high-quality aluminum foil tape with superior heat resistance and strong adhesion for sealing ductwork, wrapping thermal insulation, and completing M&E HVAC systems meeting UL 723 standards.',
       iconName: 'Wrench',
       gradient: 'from-cyan-700 to-blue-900',
-      bannerImage: '/images/industries/electronics_hero.webp',
+      bannerImage: '/images/industries/construction/construction_hero.png',
+      overviewImage: '/images/industries/construction/construction_overview.png',
       valueProps: [
         {
-          title: isVi ? 'Cách nhiệt & Tiết kiệm năng lượng' : isJa ? '断熱＆省エネ' : 'Insulation & Energy Saving',
-          desc: isVi ? 'Băng keo nhôm cách nhiệt giúp giảm thất thoát nhiệt 25%.' : isJa ? '断熱アルミテープにより熱損失を25%削減。' : 'Aluminum insulation tape reduces heat loss by 25%.',
+          title: isVi ? 'Chịu nhiệt cao' : isJa ? '高耐熱性' : 'High Heat Resistance',
+          desc: isVi ? 'Hoạt động ổn định trong dải nhiệt từ -30°C đến +120°C.' : isJa ? '-30°Cから+120°Cの温度範囲で安定稼働。' : 'Stable operation in temperatures from -30°C to +120°C.',
           iconName: 'ShieldCheck'
         },
         {
-          title: isVi ? 'Chống oxy hóa & Rỉ sét' : isJa ? '防錆・防食' : 'Anti-Oxidation & Rust Proof',
-          desc: isVi ? 'Bảo vệ đường ống đồng và linh kiện kim loại công trình.' : isJa ? '銅管や機械金属部品の長寿命化保護。' : 'Protects copper pipes and metal parts from rust.',
+          title: isVi ? 'Bám dính vượt trội' : isJa ? '優れた粘着性' : 'Superior Adhesion',
+          desc: isVi ? 'Keo acrylic chịu lực, bám chắc trên bề mặt kim loại & ống gió.' : isJa ? '金属やダクト表面に強力に接着する重荷重アクリル粘着剤。' : 'Heavy-duty acrylic adhesive adhering firmly to metal & duct surfaces.',
           iconName: 'Activity'
         }
       ],
-      challengesIntro: isVi ? 'Thách thức trong ngành HVAC & Cơ khí' : isJa ? 'HVAC＆機械産業における課題' : 'Challenges in Engineering & HVAC',
+      challengesIntro: isVi ? 'Thách thức trong ngành Cơ Điện - HVAC' : isJa ? '設備・HVAC産業における課題' : 'Challenges in M&E - HVAC',
       challenges: [
         {
           title: isVi ? 'Thất thoát nhiệt tại các mối nối ống gió' : isJa ? 'ダクト接続部における熱損失' : 'Heat loss at duct connections',
-          desc: isVi ? 'Băng dán thông thường bị đứt keo khi nhiệt độ thay đổi.' : isJa ? '通常のテープは温度変化で粘着力が低下。' : 'Regular tape loses adhesion under temperature fluctuations.',
+          desc: isVi ? 'Rò rỉ khí và đọng sương bề mặt ống gió gây lãng phí điện năng lớn.' : isJa ? '空気漏れとダクト結露により大きな電力損失が発生。' : 'Air leakage and surface condensation on ducts cause heavy energy loss.',
           iconName: 'AlertCircle'
         }
       ],
       cleanroomIntro: isVi ? 'Trang phục & găng tay bảo hộ cơ khí HVAC.' : isJa ? 'HVAC・機械作業用保護具。' : 'HVAC and mechanical safety gear.',
       cleanroomCategories: [
-        { name: isVi ? 'Găng tay chống cắt cấp 5' : isJa ? 'Level 5耐切創手袋' : 'Level 5 Cut Resistant Gloves', image: '/images/industries/electronics_hero.webp', slug: 'cleanroom-gloves' }
+        { name: isVi ? 'Găng tay chống cắt cấp 5' : isJa ? 'Level 5耐切創手袋' : 'Level 5 Cut Resistant Gloves', image: '/images/industries/construction/product_1.png', slug: 'cleanroom-gloves' }
       ],
       cleanroomViewAll: isVi ? 'Xem tất cả sản phẩm an toàn lao động' : isJa ? 'すべての安全用品を見る' : 'See all safety products',
       packagingIntro: isVi ? 'Vật tư dán cách nhiệt & màng bọc bảo vệ tấm ốp.' : isJa ? '断熱テープ＆保護フィルム。' : 'Insulation tape & protective film.',
       packagingCategories: [
-        { name: isVi ? 'Băng keo nhôm cách nhiệt HVAC' : isJa ? 'HVAC用断熱アルミテープ' : 'HVAC Aluminum Foil Insulation Tape', image: '/images/industries/electronics_hero.webp', slug: 'industrial-packaging' }
+        { name: isVi ? 'Băng keo nhôm cách nhiệt HVAC' : isJa ? 'HVAC用断熱アルミテープ' : 'HVAC Aluminum Foil Insulation Tape', image: '/images/industries/construction/product_2.png', slug: 'industrial-packaging' }
       ],
       packagingViewAll: isVi ? 'Xem tất cả sản phẩm dán cách nhiệt' : isJa ? 'すべての断熱製品を見る' : 'See all insulation products',
-      casesTitle: isVi ? 'Trường hợp áp dụng thực tế' : isJa ? '実際の導入事例' : 'Real-world Applications',
+      casesTitle: isVi ? 'Khách hàng tin dùng trong ngành Cơ Điện - HVAC' : isJa ? '設備・HVAC業界の導入事例' : 'Real-world Applications in M&E - HVAC',
       cases: [
         {
-          title: isVi ? 'Thi công hệ thống HVAC cho Nhà máy LG Hải Phòng' : isJa ? 'LGハイフォン工場HVACシステム施工' : 'HVAC Installation for LG Hai Phong Factory',
-          description: isVi ? 'Sử dụng băng keo nhôm ULink giúp kín khí 100% và tiết kiệm 18% điện năng vận hành máy lạnh trung tâm.' : isJa ? 'ULinkアルミテープの採用で100%の気密性を確保し中央空調の消費電力を18%削減。' : 'Using ULink aluminum tape achieved 100% airtightness and saved 18% in central AC power consumption.',
-          image: '/images/industries/electronics_hero.webp',
-          badge: isVi ? 'Tiết kiệm 18% điện' : isJa ? '省エネ18%' : '18% Energy Savings'
+          slug: 'hvac-office-building',
+          title: isVi ? 'Hệ thống HVAC tòa nhà văn phòng cao cấp' : isJa ? '高級オフィスビルHVACシステム' : 'High-End Office Building HVAC System',
+          description: isVi ? 'Ứng dụng băng dính nhôm lưới gia cường bọc cách nhiệt hệ chiller, đảm bảo tuổi thọ đường ống trên 15 năm mà không bong tróc.' : isJa ? 'チラーシステム断熱に補強アルミテープを使用し、剥がれることなく15年以上の耐久性を確保。' : 'Applying mesh-reinforced aluminum tape to chiller insulation, ensuring pipe lifespan over 15 years without peeling.',
+          image: '/images/industries/construction/usecase_1.png',
+          badge: isVi ? 'Tòa nhà thương mại' : isJa ? '商業ビル' : 'Commercial Building'
+        },
+        {
+          slug: 'fdi-electronics-plant',
+          title: isVi ? 'Nhà máy sản xuất điện tử FDI quy mô lớn tại Việt Nam' : isJa ? 'ベトナムの大規模FDI電子製造工場' : 'Large-Scale FDI Electronics Manufacturing Plant',
+          description: isVi ? 'Cung ứng đồng bộ băng keo nhôm FSK ngăn ẩm tuyệt đối cho hệ thống ống cấp gió sạch phòng máy, vượt qua các đợt kiểm tra chất lượng FDI nghiêm ngặt.' : isJa ? 'クリーンルーム送風ダクト用に完全防湿FSKアルミテープを同期供給し、厳格なFDI品質検査に合格。' : 'Synchronized supply of 100% moisture-barrier FSK aluminum tape for cleanroom supply ducts, passing strict FDI quality audits.',
+          image: '/images/industries/construction/usecase_2.png',
+          badge: isVi ? 'Khu công nghiệp' : isJa ? '工業団地' : 'Industrial Park'
+        },
+        {
+          slug: 'hospital-cleanroom',
+          title: isVi ? 'Bệnh viện quốc tế & Phòng sạch vô trùng' : isJa ? '国際病院＆無菌クリーンルーム' : 'International Hospital & Cleanroom',
+          description: isVi ? 'Bịt kín ống thông gió phòng mổ áp lực âm bằng băng keo nhôm chuẩn chống khuẩn RoHS, tuyệt đối không tạo bụi bẩn, không mùi dung môi hữu cơ.' : isJa ? 'RoHS抗菌アルミテープで陰圧手術室の換気ダクトを密閉し、粉塵や有機溶剤臭の発生をゼロに抑制。' : 'Sealing negative pressure operating room ventilation ducts with RoHS antibacterial aluminum tape, zero dust and solvent odor.',
+          image: '/images/industries/construction/usecase_3.png',
+          badge: isVi ? 'Bệnh viện & Lab' : isJa ? '病院＆ラボ' : 'Hospital & Lab'
         }
       ],
       whyUsTitle: isVi ? 'Vì sao chọn ULINK?' : isJa ? 'なぜULINKを選ぶのか？' : 'Why Choose ULINK?',
       whyUsList: isVi
-        ? ['Băng keo nhôm chịu nhiệt & chống cháy đạt tiêu chuẩn UL 181', 'Găng tay chống cắt tiêu chuẩn EN 388 Level 5', 'Giao hàng tận chân công trình toàn quốc']
+        ? ['Nhôm nguyên chất 99.5%', 'Keo acrylic chịu nhiệt cao', 'An toàn sức khỏe & RoHS', 'Độ dày đa dạng 30-80μm']
         : isJa
-          ? ['UL 181適合の耐熱・難燃アルミテープ', 'EN 388 Level 5適合の耐切創手袋', '全国の施工現場へ直接納品可能']
-          : ['UL 181 flame-retardant aluminum tape', 'EN 388 Level 5 cut resistant gloves', 'Direct jobsite delivery nationwide'],
-      standardsTitle: isVi ? 'Chứng nhận & tiêu chuẩn áp dụng' : isJa ? '適用される認証＆規格' : 'Certifications & Standards',
+          ? ['99.5%純アルミニウム', '高耐熱アクリル粘着剤', 'RoHS適合・健康安全', '30-80μmの多様な厚み']
+          : ['99.5% Pure Aluminum', 'High Heat Resistant Acrylic Adhesive', 'Health Safety & RoHS Compliant', 'Diverse Thickness 30-80μm'],
+      whyUsItems: isVi
+        ? [
+          {
+            title: 'Nhôm nguyên chất 99.5%',
+            desc: 'Màng nhôm dẻo dai, không rách nứt khi thi công ở các góc cạnh ống gió phức tạp.',
+            iconName: 'Factory'
+          },
+          {
+            title: 'Keo acrylic chịu nhiệt cao',
+            desc: 'Lớp keo bám dính cực tốt, không bị khô giòn hay bong tróc khi hệ thống hoạt động liên tục.',
+            iconName: 'ShieldCheck'
+          },
+          {
+            title: 'An toàn sức khỏe & RoHS',
+            desc: 'Sản phẩm không chứa chì, không mùi độc hại, an toàn tuyệt đối cho hệ thống dẫn khí tòa nhà.',
+            iconName: 'User'
+          },
+          {
+            title: 'Độ dày đa dạng 30-80μm',
+            desc: 'Đáp ứng linh hoạt các tiêu chuẩn kỹ thuật của từng dự án và chủ đầu tư.',
+            iconName: 'Award'
+          }
+        ]
+        : isJa
+          ? [
+            {
+              title: '99.5%純アルミニウム',
+              desc: '複雑なダクト角部の施工時にも裂けない柔軟なアルミフィルム。',
+              iconName: 'Factory'
+            },
+            {
+              title: '高耐熱アクリル粘着剤',
+              desc: '連続稼働時にも乾燥や剥がれが発生しない優れた粘着層。',
+              iconName: 'ShieldCheck'
+            },
+            {
+              title: 'RoHS適合・健康安全',
+              desc: '無鉛・無毒性で建物の送風システムに100%安全。',
+              iconName: 'User'
+            },
+            {
+              title: '30-80μmの多様な厚み',
+              desc: '各プロジェクトや事業主の技術要件に柔軟に対応。',
+              iconName: 'Award'
+            }
+          ]
+          : [
+            {
+              title: '99.5% Pure Aluminum',
+              desc: 'Flexible aluminum film, non-tearing during complex duct corner installation.',
+              iconName: 'Factory'
+            },
+            {
+              title: 'High Heat Resistant Acrylic Adhesive',
+              desc: 'Superior adhesion layer, non-brittle and non-peeling during continuous system operation.',
+              iconName: 'ShieldCheck'
+            },
+            {
+              title: 'Health Safety & RoHS',
+              desc: 'Lead-free, no toxic odor, absolute safety for building air supply systems.',
+              iconName: 'User'
+            },
+            {
+              title: 'Diverse Thickness 30-80μm',
+              desc: 'Flexibly meeting technical standards of various projects and investors.',
+              iconName: 'Award'
+            }
+          ],
+      standardsTitle: isVi ? 'TIÊU CHUẨN KỸ THUẬT' : isJa ? '技術基準' : 'TECHNICAL STANDARDS',
       standards: [
-        { name: 'UL 181', detail: isVi ? 'Tiêu chuẩn chống cháy và chịu nhiệt băng keo nhôm ống gió HVAC.' : isJa ? 'ULダクト・断熱難燃テープ規格。' : 'UL standard for safety factory-made air ducts & tapes.' },
-        { name: 'EN 388 Level 5', detail: isVi ? 'Tiêu chuẩn găng tay bảo hộ chống cắt cao nhất cho cơ khí.' : isJa ? '耐切創手袋最高レベル規格。' : 'Highest cut resistance standard level for protective gloves.' },
-        { name: 'ISO 9001:2015', detail: isVi ? 'Hệ thống quản lý chất lượng vật tư cơ khí công trình.' : isJa ? '機械建築資材の品質管理システム。' : 'Quality management system for engineering construction.' },
-        { name: 'ISO 14001:2015', detail: isVi ? 'Quản lý an toàn môi trường và an toàn lao động thi công.' : isJa ? '施工現場の環境・安全管理規格。' : 'Environmental & occupational safety management system.' }
+        { name: 'ISO 9001:2015', detail: isVi ? 'Hệ thống quản lý chất lượng đồng bộ, kiểm soát nghiêm ngặt từ hạt keo đến màng nhôm đầu vào.' : isJa ? '接着剤の粒子から入力アルミフィルムまで厳格に管理する同期品質マネジメントシステム。' : 'Synchronized quality management system, strictly controlled from adhesive particles to raw aluminum film.' },
+        { name: 'UL 723 Standards', detail: isVi ? 'Kiểm nghiệm an toàn phòng cháy chữa cháy cực kỳ khắt khe của UL Hoa Kỳ đối với vật liệu cơ điện.' : isJa ? 'M&E資材に対する米国ULの極めて厳格な防火・防災安全試験。' : 'Extremely strict fire and burn safety testing by US UL for M&E materials.' },
+        { name: 'SMACNA Compliant', detail: isVi ? 'Đạt tiêu chuẩn thi công chế tạo ống gió công nghiệp của hiệp hội cơ điện Hoa Kỳ, Việt Nam.' : isJa ? '米国およびベトナムのM&E協会による産業用ダクトの製造・施工規格に適合。' : 'Meeting industrial duct fabrication and installation standards of US & Vietnam M&E associations.' },
+        { name: 'SGS Tested (RoHS)', detail: isVi ? 'Chứng nhận an toàn sinh học, không chứa chất độc hại gây ảnh hưởng chất lượng không khí.' : isJa ? '空気品質に影響を与える有害物質を含まない生物学的安全認証。' : 'Biosafety certification, free from harmful substances affecting air quality.' }
       ],
       resourcesTitle: isVi ? 'Tài liệu liên quan' : isJa ? '関連資料' : 'Related Resources',
       catalogue: {
-        title: isVi ? 'Catalogue giải pháp ngành Xây dựng & Cơ khí HVAC' : isJa ? 'HVAC・建築ソリューションカタログ' : 'Solutions Catalogue for HVAC',
+        title: isVi ? 'Catalogue giải pháp ngành Cơ Điện - HVAC' : isJa ? 'HVAC・設備ソリューションカタログ' : 'Solutions Catalogue for M&E - HVAC',
         info: 'PDF / 6.0MB',
         url: '#'
       }

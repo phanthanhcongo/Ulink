@@ -34,7 +34,7 @@ export function IndustryCtaBanner({
   return (
     <section className="w-full bg-[#1769E2] text-white py-16 lg:py-20">
       <div className="page-container flex flex-col items-center text-center space-y-6 max-w-6xl mx-auto">
-        <h2 className="text-[24px] sm:text-[30px] lg:text-[34px] xl:text-[38px] lg:leading-[46px] font-bold text-white tracking-tight whitespace-normal">
+        <h2 className="text-[20px] sm:text-[30px] lg:text-[34px] xl:text-[38px] lg:leading-[46px] font-bold text-white tracking-tight whitespace-normal">
           {title || defaultTitle}
         </h2>
         <p className="text-[16px] lg:text-[18px] leading-relaxed text-white/90 max-w-5xl font-normal">

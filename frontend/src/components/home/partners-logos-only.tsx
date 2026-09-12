@@ -28,7 +28,7 @@ export function PartnersLogosOnly({ title }: PartnersLogosOnlyProps = {}) {
 
   return (
     <div className="flex flex-col gap-5 overflow-hidden mask-gradient-x py-8 select-none w-full">
-      <h3 className="text-center text-[14px] sm:text-[16px] lg:text-[18px] font-bold uppercase tracking-wide text-slate-800 px-8 sm:px-4 max-w-4xl mx-auto">
+      <h3 className="text-center text-[14px] sm:text-[16px] lg:text-[18px] font-bold uppercase tracking-wide text-slate-800 px-4 sm:px-6 max-w-6xl mx-auto">
         {displayTitle}
       </h3>
       {/* Row 1 Marquee: Left scrolling */}
