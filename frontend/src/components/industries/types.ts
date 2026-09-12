@@ -34,6 +34,7 @@ export interface IndustryData {
   iconName: string;
   gradient: string;
   bannerImage: string;
+  overviewImage?: string;
   valueProps: ValueProp[];
   challengesIntro: string;
   challenges: ChallengeItem[];

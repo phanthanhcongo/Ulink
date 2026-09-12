@@ -26,14 +26,17 @@ import {
 import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 import { ASSETS } from '@/lib/assets';
-import { IndustryDetailClientProps } from './types';
-import { IndustryValueProps } from './industry-value-props';
+import { IndustryData } from '@/components/industries/types';
+import { IndustryValueProps } from '@/components/industries/industry-value-props';
 import { PartnersLogosOnly } from '@/components/home/partners-logos-only';
-import { getTranslatedName, getTranslatedField } from '@/lib/i18n-content';
-import { getDirectusUrl } from '@/lib/directus-runtime.mjs';
 
-
-
+interface PharmaceuticalClientProps {
+  industryData: IndustryData;
+  products: any[];
+  locale: string;
+  currentSlug: string;
+  translations: Record<string, string>;
+}
 
 // Map icon names to Lucide icons
 const iconMap: Record<string, React.ComponentType<any>> = {
@@ -51,22 +54,6 @@ const iconMap: Record<string, React.ComponentType<any>> = {
   Package,
   User
 };
-
-// List of partner logos for rendering
-const partnerLogos = [
-  { name: 'Samsung', src: ASSETS.home.partnerSamsung },
-  { name: 'Canon', src: ASSETS.home.partnerCanon },
-  { name: 'Panasonic', src: ASSETS.home.partnerPanasonic },
-  { name: 'IBM', src: ASSETS.home.partnerIbm },
-  { name: 'Traphaco', src: ASSETS.home.partnerTraphaco },
-  { name: 'Coca-Cola', src: ASSETS.home.partnerCocaCola },
-  { name: 'VinFast', src: ASSETS.home.partnerVinfast },
-  { name: 'LG', src: ASSETS.home.partnerLg },
-  { name: 'Amkor', src: ASSETS.home.partnerAmkor },
-  { name: 'Vinamilk', src: ASSETS.home.partnerVinamilk },
-  { name: '3M', src: ASSETS.home.partner3m },
-  { name: 'BYD', src: ASSETS.home.partnerByd }
-];
 
 // Helper to generate realistic high-fidelity bullet points for category items
 function getCategoryBullets(catName: string, locale: string): string[] {
@@ -159,14 +146,13 @@ function getCategoryBullets(catName: string, locale: string): string[] {
       : ['Complies with high safety standards', 'Complete quality CO/CQ certification', 'Optimizes factory operational costs'];
 }
 
-export default function IndustryDetailClient({
+export default function PharmaceuticalClient({
   industryData,
   products,
   locale,
   currentSlug,
-  translations,
-  children
-}: IndustryDetailClientProps & { children?: React.ReactNode }) {
+  translations
+}: PharmaceuticalClientProps) {
   const [activeTab, setActiveTab] = useState<string>('overview');
   const [showToast, setShowToast] = useState(false);
   const observerRef = useRef<IntersectionObserver | null>(null);
@@ -207,7 +193,6 @@ export default function IndustryDetailClient({
   }));
 
   // Set up Scrollspy using Intersection Observer
-  // Use stable tab IDs array to avoid unnecessary re-subscriptions
   const TAB_IDS = ['overview', 'cleanroom', 'packaging', 'standards', 'cases'];
 
   useEffect(() => {
@@ -360,51 +345,19 @@ export default function IndustryDetailClient({
                 {isVi ? 'TỔNG QUAN GIẢI PHÁP' : isJa ? 'ソリューション概要' : 'SOLUTION OVERVIEW'}
               </span>
               <h2 className="text-[26px] sm:text-[32px] lg:text-[38px] lg:leading-[46px] font-bold text-[#141414] tracking-tight">
-                {industryData.slug === 'pharmaceutical-cosmetics'
-                  ? (isVi ? 'Đảm bảo tiêu chuẩn vô trùng khắt khe nhất' : isJa ? '最も厳格な無菌基準を保証' : 'Ensure the strictest sterility standards')
-                  : industryData.slug === 'electronics'
-                    ? (isVi ? 'Kiểm soát ô nhiễm & tĩnh điện tối ưu' : isJa ? '汚染管理と静電気対策の最適化' : 'Optimize contamination & electrostatic control')
-                    : industryData.slug === 'food-beverage'
-                      ? (isVi ? 'Giải pháp Toàn diện cho Chuỗi Sản xuất F&B' : isJa ? 'F&B生産チェーン向け総合ソリューション' : 'Comprehensive Solution for F&B Production Chain')
-                      : (isVi ? 'Quy trình chuẩn hóa và an toàn vệ sinh' : isJa ? '衛生管理とプロセスの標準化' : 'Hygiene control & process standardization')}
+                {isVi ? 'Đảm bảo tiêu chuẩn vô trùng khắt khe nhất' : isJa ? '最も厳格な無菌基準を保証' : 'Ensure the strictest sterility standards'}
               </h2>
               <div className="text-[15px] lg:text-[16px] leading-[24px] lg:leading-[26px] text-[#495057] font-normal space-y-4 pt-2">
-                {industryData.slug === 'pharmaceutical-cosmetics' ? (
-                  <>
-                    <p>
-                      {isVi
-                        ? 'Trong sản xuất Dược phẩm, bất kỳ hạt bụi nhỏ hay vi sinh vật nào cũng có thể làm ảnh hưởng trực tiếp tới chất lượng mẻ thuốc và an toàn của người bệnh. Do đó, kiểm soát ô nhiễm và bảo vệ môi trường vô trùng là ưu tiên hàng đầu.'
-                        : 'In pharmaceutical manufacturing, any small dust particle or microorganism can directly affect batch quality and patient safety. Therefore, contamination control and protecting sterile environments are top priorities.'}
-                    </p>
-                    <p>
-                      {isVi
-                        ? 'Các sản phẩm của ULink được thiết kế chuyên biệt để triệt tiêu tĩnh điện, giữ lại bụi mịn tối đa và duy trì độ kín khí cao. Chúng tôi đồng hành cùng nhà máy vượt qua các đợt đánh giá chất lượng và chứng nhận nghiêm ngặt của Bộ Y Tế và quốc tế.'
-                        : 'ULink products are specially engineered to dissipate static charges, maximize fine dust retention, and maintain high airtightness. We accompany factories through rigorous quality audits and certifications from the Ministry of Health and international bodies.'}
-                    </p>
-                  </>
-                ) : industryData.slug === 'food-beverage' ? (
-                  <>
-                    <p>
-                      {isVi
-                        ? 'Trong ngành chế biến Thực phẩm và Đồ uống (F&B), việc duy trì và tuân thủ các quy định khắt khe về an toàn thực phẩm như HACCP và ISO 22000 là yếu tố sống còn quyết định sự uy tín thương hiệu. Mọi quy trình từ chuẩn bị nguyên liệu, chế biến, chiết rót đến đóng gói đều yêu cầu các tiêu chuẩn cơ lý và vệ sinh ở mức tối đa.'
-                        : 'In the Food & Beverage (F&B) processing industry, maintaining and complying with strict food safety regulations like HACCP and ISO 22000 is vital for brand reputation. Every process from raw preparation, processing, filling to packaging demands maximum physical and hygiene standards.'}
-                    </p>
-                    <p>
-                      {isVi
-                        ? 'Các hệ thống thiết bị và giải pháp công nghiệp của ULink được tối ưu hóa nhằm đáp ứng tốt các yêu cầu về tẩy rửa liên tục (CIP/COP), chống bám bẩn vi sinh, kiểm soát nhiệt độ nghiêm ngặt và tự động hóa truy xuất nguồn gốc. Chúng tôi đồng hành cùng các nhà máy F&B nâng cao công suất, triệt tiêu hao hụt và nâng tầm chất lượng thành phẩm.'
-                        : 'ULink equipment systems and industrial solutions are optimized for continuous cleaning (CIP/COP), microbial anti-fouling, temperature control, and automated traceability. We partner with F&B plants to boost capacity, eliminate waste, and elevate finished product quality.'}
-                    </p>
-                  </>
-                ) : industryData.slug === 'electronics' ? (
-                  <>
-                    <p>
-                      Quy trình sản xuất mạch tích hợp, chip bán dẫn và linh kiện điện tử đòi hỏi môi trường siêu sạch (Class 10 - Class 100) để ngăn ngừa hỏng hóc do hạt bụi siêu mịn. ULINK mang lại các giải pháp kiểm soát tĩnh điện (ESD) vượt trội và lọc bụi chất lượng cao.
-                    </p>
-                    <p>
-                      Tất cả găng tay, khăn lau và khay nhựa đựng linh kiện của chúng tôi đều đạt tiêu chuẩn điện trở bề mặt an toàn, giúp phân tán dòng điện tích tích tụ và bảo vệ linh kiện.
-                    </p>
-                  </>
-                ) : null}
+                <p>
+                  {isVi
+                    ? 'Trong sản xuất Dược phẩm, bất kỳ hạt bụi nhỏ hay vi sinh vật nào cũng có thể làm ảnh hưởng trực tiếp tới chất lượng mẻ thuốc và an toàn của người bệnh. Do đó, kiểm soát ô nhiễm và bảo vệ môi trường vô trùng là ưu tiên hàng đầu.'
+                    : 'In pharmaceutical manufacturing, any small dust particle or microorganism can directly affect batch quality and patient safety. Therefore, contamination control and protecting sterile environments are top priorities.'}
+                </p>
+                <p>
+                  {isVi
+                    ? 'Các sản phẩm của ULink được thiết kế chuyên biệt để triệt tiêu tĩnh điện, giữ lại bụi mịn tối đa và duy trì độ kín khí cao. Chúng tôi đồng hành cùng nhà máy vượt qua các đợt đánh giá chất lượng và chứng nhận nghiêm ngặt của Bộ Y Tế và quốc tế.'
+                    : 'ULink products are specially engineered to dissipate static charges, maximize fine dust retention, and maintain high airtightness. We accompany factories through rigorous quality audits and certifications from the Ministry of Health and international bodies.'}
+                </p>
               </div>
             </div>
 
@@ -421,7 +374,7 @@ export default function IndustryDetailClient({
             )}
           </div>
 
-          {/* Right Column (5/12) - Why Choose ULINK Sidebar (Matching Figma Specs 100%) */}
+          {/* Right Column (5/12) - Why Choose ULINK Sidebar */}
           <div className="lg:col-span-5 bg-[#F5F7FA] border border-[#E2E8F0] rounded-[16px] p-6 lg:p-8 flex flex-col justify-between h-full space-y-6">
             <div className="space-y-6">
               <div className="border-b border-[#E2E8F0] pb-4">
@@ -458,7 +411,7 @@ export default function IndustryDetailClient({
               </div>
             </div>
 
-            {/* Hotline & Contact CTA Box (Matching Figma) */}
+            {/* Hotline & Contact CTA Box */}
             <div className="border-t border-[#E2E8F0] pt-6 space-y-4">
               <div className="flex items-center gap-3.5">
                 <div className="flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-[10px] bg-[#EAF2FF] text-[#1769E2]">
@@ -701,9 +654,7 @@ export default function IndustryDetailClient({
           {/* Grid of 3 columns */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {industryData.cases.map((cs, idx) => {
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               const badgeBg = (cs as any).badgeBg || (idx === 0 ? 'bg-[#DBEAFE]' : idx === 1 ? 'bg-[#DCFCE7]' : 'bg-[#FEF9C3]');
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               const badgeText = (cs as any).badgeText || (idx === 0 ? 'text-[#1769E2]' : idx === 1 ? 'text-[#16A34A]' : 'text-[#CA8A04]');
 
               return (
@@ -760,47 +711,35 @@ export default function IndustryDetailClient({
       {/* ── BRAND PARTNERS LOGOS GRID ── */}
       <PartnersLogosOnly />
 
-      {/* ── BOTTOM CTA BANNER (Exact Figma Specs node 1106:1310 / 1119:10610) ── */}
+      {/* ── BOTTOM CTA BANNER ── */}
       <section className="w-full bg-[#1769E2] text-white py-16 lg:py-20">
         <div className="page-container flex flex-col items-center text-center space-y-6 max-w-6xl mx-auto">
           <h2 className="text-[24px] sm:text-[30px] lg:text-[34px] xl:text-[38px] lg:leading-[46px] font-bold text-white tracking-tight whitespace-normal">
-            {industryData.slug === 'food-beverage'
-              ? (isVi ? 'Giải pháp đóng gói thực phẩm toàn diện' : isJa ? '包括的な食品包装ソリューション' : 'Comprehensive Food Packaging Solutions')
-              : (isVi
-                ? `Sẵn sàng tối ưu hóa chuỗi cung ứng ${industryData.name.toLowerCase().startsWith('ngành') ? industryData.name : `ngành ${industryData.name}`} của bạn?`
-                : isJa
-                  ? `${industryData.name}サプライチェーンを最適化する準備はできていますか？`
-                  : `Ready to optimize your ${industryData.name} supply chain?`)}
+            {isVi
+              ? `Sẵn sàng tối ưu hóa chuỗi cung ứng ${industryData.name.toLowerCase().startsWith('ngành') ? industryData.name : `ngành ${industryData.name}`} của bạn?`
+              : isJa
+                ? `${industryData.name}サプライチェーンを最適化する準備はできていますか？`
+                : `Ready to optimize your ${industryData.name} supply chain?`}
           </h2>
           <p className="text-[16px] lg:text-[18px] leading-relaxed text-white/90 max-w-5xl font-normal">
-            {industryData.slug === 'food-beverage'
-              ? (isVi
-                ? 'Từ bao bì dạng túi, hộp, khay, đến chai lọ và lon — ULINK Industries cung cấp hệ thống đóng gói trọn bộ cho các sản phẩm thực phẩm: thực phẩm khô, đông lạnh, chế biến sẵn, đồ uống, gia vị và nông sản. Đội ngũ kỹ sư của chúng tôi tư vấn giải pháp phù hợp nhất với từng loại bao bì và quy trình sản xuất của bạn.'
-                : isJa
-                  ? '袋、箱、トレイからボトル、缶まで — ULINK Industriesは、乾燥食品、冷凍食品、調理済み食品、飲料、調味料、農産物など、あらゆる食品にフルセットの包装システムを提供します。'
-                  : 'From bags, boxes, trays to bottles and cans — ULINK Industries provides complete packaging systems for food products: dry food, frozen, processed meals, beverages, spices, and agricultural produce.')
-              : (isVi
-                ? 'Liên hệ ngay với đội ngũ chuyên gia ULink để nhận tư vấn giải pháp phù hợp và báo giá cạnh tranh nhất.'
-                : isJa
-                  ? 'ULinkの専門チームに今すぐ連絡し、最適なソリューションと最も競争力のある見積もりを受け取りましょう。'
-                  : 'Contact ULink experts today for tailored solution advice and competitive quotes.')}
+            {isVi
+              ? 'Liên hệ ngay với đội ngũ chuyên gia ULink để nhận tư vấn giải pháp phù hợp và báo giá cạnh tranh nhất.'
+              : isJa
+                ? 'ULinkの専門チームに今すぐ連絡し、最適なソリューションと最も競争力のある見積もりを受け取りましょう。'
+                : 'Contact ULink experts today for tailored solution advice and competitive quotes.'}
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2 w-full sm:w-auto">
             <Link
               href="/quick-order"
               className="w-full sm:w-auto inline-flex h-12 items-center justify-center px-8 rounded-[3px] bg-white text-[#1769E2] font-bold text-[15px] sm:text-[16px] shadow-sm hover:bg-slate-100 transition-all duration-200"
             >
-              {industryData.slug === 'food-beverage'
-                ? (isVi ? 'Nhận Khảo Sát & Báo Giá Miễn Phí' : isJa ? '無料現地調査・見積もりを取得' : 'Get Free Survey & Quote')
-                : (isVi ? 'Nhận báo giá ngay' : isJa ? '今すぐ見積もりを取得' : 'Get Quote Now')}
+              {isVi ? 'Nhận báo giá ngay' : isJa ? '今すぐ見積もりを取得' : 'Get Quote Now'}
             </Link>
             <Link
               href="/contact"
               className="w-full sm:w-auto inline-flex h-12 items-center justify-center px-8 rounded-[3px] border-[1.5px] border-white bg-transparent text-white font-bold text-[15px] sm:text-[16px] hover:bg-white/10 transition-all duration-200"
             >
-              {industryData.slug === 'food-beverage'
-                ? (isVi ? 'Trò Chuyện Với Kỹ Sư F&B' : isJa ? 'F&Bエンジニアと相談' : 'Talk with F&B Engineer')
-                : (isVi ? 'Liên hệ tư vấn' : isJa ? 'お問い合わせ' : 'Contact Us')}
+              {isVi ? 'Liên hệ tư vấn' : isJa ? 'お問い合わせ' : 'Contact Us'}
             </Link>
           </div>
         </div>
@@ -818,5 +757,3 @@ export default function IndustryDetailClient({
     </div>
   );
 }
-
-
