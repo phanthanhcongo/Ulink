@@ -11,10 +11,10 @@ export default async function HanamFulfillmentHub() {
 
         {/* Title Area (Căn lề trái ở mobile, căn giữa ở desktop) */}
         <div className="text-left sm:text-center w-full mx-auto">
-          <h2 className="text-body-regular min-[375px]:text-card-title lg:text-[25px] font-bold tracking-tight text-blue-600 leading-snug sm:leading-normal uppercase block mb-2 sm:mb-3">
+          <h2 className="text-xl lg:text-[28px] font-semibold lg:font-bold tracking-tight text-blue-600 leading-snug lg:leading-[36px] uppercase block mb-2 sm:mb-3">
             {t('hanamHub.eyebrow')}
           </h2>
-          <div className="text-body-regular min-[375px]:text-card-title lg:text-[25px] font-bold tracking-tight text-slate-900 leading-snug sm:leading-normal w-full">
+          <div className="text-2xl lg:text-[28px] font-semibold lg:font-bold tracking-tight text-slate-900 leading-snug lg:leading-[36px] w-full">
             <span className="inline sm:block">{t('hanamHub.title').split(',')[0]}, </span>
             <span className="inline sm:block sm:mt-1 w-full">{t('hanamHub.title').split(',').slice(1).join(',').trim()}</span>
           </div>
@@ -29,40 +29,40 @@ export default async function HanamFulfillmentHub() {
 
               {/* Feature 1 */}
               <div className="flex flex-col text-left items-start">
-                <h3 className="font-bold text-slate-900 text-body-regular leading-snug mb-1.5 sm:mb-2">
+                <h3 className="font-bold text-slate-900 text-base lg:text-[20px] leading-snug mb-1.5 sm:mb-2">
                   {t('hanamHub.feat1Title')}
                 </h3>
-                <p className="text-caption-responsive leading-relaxed text-slate-500">
+                <p className="text-sm lg:text-[18px] font-normal leading-relaxed lg:leading-[28px] text-slate-600">
                   {t('hanamHub.feat1Desc')}
                 </p>
               </div>
 
               {/* Feature 2 */}
               <div className="flex flex-col text-left items-start">
-                <h3 className="font-bold text-slate-900 text-body-regular leading-snug mb-1.5 sm:mb-2">
+                <h3 className="font-bold text-slate-900 text-base lg:text-[20px] leading-snug mb-1.5 sm:mb-2">
                   {t('hanamHub.feat2Title')}
                 </h3>
-                <p className="text-caption-responsive leading-relaxed text-slate-500">
+                <p className="text-sm lg:text-[18px] font-normal leading-relaxed lg:leading-[28px] text-slate-600">
                   {t('hanamHub.feat2Desc')}
                 </p>
               </div>
 
               {/* Feature 3 */}
               <div className="flex flex-col text-left items-start">
-                <h3 className="font-bold text-slate-900 text-body-regular leading-snug mb-1.5 sm:mb-2">
+                <h3 className="font-bold text-slate-900 text-base lg:text-[20px] leading-snug mb-1.5 sm:mb-2">
                   {t('hanamHub.feat3Title')}
                 </h3>
-                <p className="text-caption-responsive leading-relaxed text-slate-500">
+                <p className="text-sm lg:text-[18px] font-normal leading-relaxed lg:leading-[28px] text-slate-600">
                   {t('hanamHub.feat3Desc')}
                 </p>
               </div>
 
               {/* Feature 4 */}
               <div className="flex flex-col text-left items-start">
-                <h3 className="font-bold text-slate-900 text-body-regular leading-snug mb-1.5 sm:mb-2">
+                <h3 className="font-bold text-slate-900 text-base lg:text-[20px] leading-snug mb-1.5 sm:mb-2">
                   {t('hanamHub.feat4Title')}
                 </h3>
-                <p className="text-caption-responsive leading-relaxed text-slate-500">
+                <p className="text-sm lg:text-[18px] font-normal leading-relaxed lg:leading-[28px] text-slate-600">
                   {t('hanamHub.feat4Desc')}
                 </p>
               </div>

@@ -83,31 +83,31 @@ export default function HubHeroSection({ locale }: HubHeroSectionProps) {
       <div className="relative z-10 page-container pt-20 pb-20 sm:pt-24 lg:pt-32 lg:pb-28 flex flex-col justify-between min-h-[520px] sm:min-h-[580px] lg:min-h-[640px]">
         {/* Left-aligned Info Card */}
         <div className="max-w-[760px] text-left mt-auto mb-auto">
-          {/* Title */}
-          <h1 className="text-[20px] sm:text-[22px] lg:text-[24px] font-bold text-white leading-tight tracking-tight">
+          {/* Title (Figma Heading/2: 42px Bold, line-height 46px) */}
+          <h1 className="text-2xl sm:text-3xl lg:text-[42px] font-bold text-white leading-tight lg:leading-[46px] tracking-tight">
             {t.title}
           </h1>
 
-          {/* Subtitle */}
-          <p className="mt-5 text-body-regular font-medium leading-relaxed text-slate-200/90">
+          {/* Subtitle (Figma Body/L: 18px Regular, line-height 25px) */}
+          <p className="mt-5 text-base sm:text-lg lg:text-[18px] font-normal leading-relaxed lg:leading-[25px] text-slate-200/90">
             {t.subtitle}
           </p>
 
-          {/* Buttons Row (Always 1 single row on all screens) */}
-          <div className="mt-8 flex flex-row items-center gap-3 sm:gap-4 w-full sm:w-auto max-w-[460px]">
+          {/* Buttons Row (Figma Button/L: 20px Medium/SemiBold, height 56px) */}
+          <div className="mt-8 flex flex-row items-center gap-3 sm:gap-4 w-full sm:w-auto max-w-[500px]">
             <Link
               href="/quick-order"
-              className="flex-1 sm:flex-initial bg-brand hover:bg-brand-strong text-white px-4 sm:px-6 py-3 sm:py-3.5 rounded-[3px] font-semibold text-caption-responsive leading-relaxed flex items-center justify-center sm:min-w-[180px] lg:min-w-[210px] gap-1.5 sm:gap-2 transition-all group whitespace-nowrap"
+              className="flex-1 sm:flex-initial bg-brand hover:bg-brand-strong text-white px-5 sm:px-8 py-3.5 lg:py-4 rounded-[3px] font-medium lg:font-semibold text-base sm:text-lg lg:text-[20px] leading-snug flex items-center justify-center sm:min-w-[180px] lg:min-w-[210px] lg:h-[56px] gap-2 transition-all group whitespace-nowrap"
             >
               <span>{t.orderNow}</span>
-              <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5" />
+              <ArrowRight className="h-5 w-5 shrink-0 transition-transform group-hover:translate-x-0.5" />
             </Link>
             <Link
               href="/contact"
-              className="flex-1 sm:flex-initial bg-white hover:bg-slate-50 text-slate-900 px-4 sm:px-6 py-3 sm:py-3.5 rounded-[3px] font-semibold text-caption-responsive leading-relaxed flex items-center justify-center sm:min-w-[180px] lg:min-w-[210px] gap-1.5 sm:gap-2 border border-slate-200 transition-all group whitespace-nowrap"
+              className="flex-1 sm:flex-initial bg-white hover:bg-slate-50 text-slate-900 px-5 sm:px-8 py-3.5 lg:py-4 rounded-[3px] font-medium lg:font-semibold text-base sm:text-lg lg:text-[20px] leading-snug flex items-center justify-center sm:min-w-[180px] lg:min-w-[210px] lg:h-[56px] gap-2 border border-slate-200 transition-all group whitespace-nowrap"
             >
               <span>{t.contact}</span>
-              <ArrowRight className="h-4 w-4 shrink-0 transition-transform group-hover:translate-x-0.5" />
+              <ArrowRight className="h-5 w-5 shrink-0 transition-transform group-hover:translate-x-0.5" />
             </Link>
           </div>
         </div>
@@ -118,7 +118,8 @@ export default function HubHeroSection({ locale }: HubHeroSectionProps) {
         <div className="page-container">
           <div className="w-full bg-[#F5F8FC] rounded-[3px] p-4 sm:p-8 border border-slate-200">
             <div className="flex flex-col gap-2.5 sm:gap-4 w-full sm:w-[80%] mx-auto">
-              <span className="text-caption-responsive sm:text-body-regular font-bold text-slate-900 leading-snug text-center sm:text-left">
+              {/* Header (Figma Heading/5: 20px Bold) */}
+              <span className="text-lg sm:text-[20px] font-bold text-slate-900 leading-snug text-center sm:text-left">
                 {t.trackOrder}
               </span>
               <form
@@ -132,12 +133,12 @@ export default function HubHeroSection({ locale }: HubHeroSectionProps) {
                     value={trackingCode}
                     onChange={(e) => setTrackingCode(e.target.value)}
                     placeholder={t.placeholder}
-                    className="w-full h-full bg-transparent pl-9 sm:pl-11 pr-3 text-caption-responsive sm:text-body-regular text-slate-800 placeholder-slate-400 focus:outline-none"
+                    className="w-full h-full bg-transparent pl-9 sm:pl-11 pr-3 text-base font-normal text-slate-800 placeholder-slate-400 focus:outline-none"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="bg-brand hover:bg-brand-strong text-white font-bold text-caption-responsive sm:text-body-regular px-4 sm:px-8 flex items-center justify-center transition-colors shrink-0 h-full whitespace-nowrap"
+                  className="bg-brand hover:bg-brand-strong text-white font-bold text-base px-4 sm:px-8 flex items-center justify-center transition-colors shrink-0 h-full whitespace-nowrap"
                 >
                   <span className="hidden sm:inline">{t.search}</span>
                   <span className="sm:hidden flex items-center gap-1">

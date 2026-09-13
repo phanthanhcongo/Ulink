@@ -64,10 +64,10 @@ export default function HubSolutions({ locale }: HubSolutionsProps) {
         
         {/* Title Area */}
         <div className="text-left sm:text-center max-w-[600px] w-full flex flex-col items-start sm:items-center gap-2 sm:gap-2.5">
-          <h2 className="text-body-regular min-[375px]:text-card-title lg:text-[28px] font-semibold sm:font-bold tracking-tight text-slate-900 leading-tight lg:leading-[36px]">
+          <h2 className="text-xl lg:text-[28px] font-semibold tracking-tight text-slate-900 leading-snug lg:leading-[36px]">
             {t.eyebrow}
           </h2>
-          <h2 className="text-body-regular min-[375px]:text-card-title lg:text-[28px] font-semibold sm:font-bold tracking-tight text-slate-900 leading-tight lg:leading-[36px]">
+          <h2 className="text-2xl lg:text-[28px] font-semibold lg:font-bold tracking-tight text-slate-900 leading-snug lg:leading-[36px]">
             {t.title}
           </h2>
         </div>
@@ -88,10 +88,10 @@ export default function HubSolutions({ locale }: HubSolutionsProps) {
                 />
               </div>
             </div>
-            <h3 className="mt-3 sm:mt-5 text-[17px] sm:text-[20px] font-bold text-slate-900 leading-snug group-hover:text-brand transition-colors">
+            <h3 className="mt-3 sm:mt-5 text-lg lg:text-[20px] font-bold text-slate-900 leading-snug group-hover:text-brand transition-colors">
               {t.col1Title}
             </h3>
-            <p className="mt-2 sm:mt-3 text-[14px] sm:text-[18px] leading-relaxed text-slate-500 max-w-none sm:max-w-[280px]">
+            <p className="mt-2 sm:mt-3 text-base lg:text-[18px] font-normal leading-relaxed lg:leading-[28px] text-slate-600 max-w-none sm:max-w-[280px]">
               {t.col1Desc}
             </p>
           </div>
@@ -108,10 +108,10 @@ export default function HubSolutions({ locale }: HubSolutionsProps) {
                 />
               </div>
             </div>
-            <h3 className="mt-3 sm:mt-5 text-[17px] sm:text-[20px] font-bold text-slate-900 leading-snug group-hover:text-brand transition-colors">
+            <h3 className="mt-3 sm:mt-5 text-lg lg:text-[20px] font-bold text-slate-900 leading-snug group-hover:text-brand transition-colors">
               {t.col2Title}
             </h3>
-            <p className="mt-2 sm:mt-3 text-[14px] sm:text-[18px] leading-relaxed text-slate-500 max-w-none sm:max-w-[280px]">
+            <p className="mt-2 sm:mt-3 text-base lg:text-[18px] font-normal leading-relaxed lg:leading-[28px] text-slate-600 max-w-none sm:max-w-[280px]">
               {t.col2Desc}
             </p>
           </div>
@@ -128,10 +128,10 @@ export default function HubSolutions({ locale }: HubSolutionsProps) {
                 />
               </div>
             </div>
-            <h3 className="mt-3 sm:mt-5 text-[17px] sm:text-[20px] font-bold text-slate-900 leading-snug group-hover:text-brand transition-colors">
+            <h3 className="mt-3 sm:mt-5 text-lg lg:text-[20px] font-bold text-slate-900 leading-snug group-hover:text-brand transition-colors">
               {t.col3Title}
             </h3>
-            <p className="mt-2 sm:mt-3 text-[14px] sm:text-[18px] leading-relaxed text-slate-500 max-w-none sm:max-w-[280px]">
+            <p className="mt-2 sm:mt-3 text-base lg:text-[18px] font-normal leading-relaxed lg:leading-[28px] text-slate-600 max-w-none sm:max-w-[280px]">
               {t.col3Desc}
             </p>
           </div>
@@ -148,10 +148,10 @@ export default function HubSolutions({ locale }: HubSolutionsProps) {
                 />
               </div>
             </div>
-            <h3 className="mt-3 sm:mt-5 text-[17px] sm:text-[20px] font-bold text-slate-900 leading-snug group-hover:text-brand transition-colors">
+            <h3 className="mt-3 sm:mt-5 text-lg lg:text-[20px] font-bold text-slate-900 leading-snug group-hover:text-brand transition-colors">
               {t.col4Title}
             </h3>
-            <p className="mt-2 sm:mt-3 text-[14px] sm:text-[18px] leading-relaxed text-slate-500 max-w-none sm:max-w-[280px]">
+            <p className="mt-2 sm:mt-3 text-base lg:text-[18px] font-normal leading-relaxed lg:leading-[28px] text-slate-600 max-w-none sm:max-w-[280px]">
               {t.col4Desc}
             </p>
           </div>

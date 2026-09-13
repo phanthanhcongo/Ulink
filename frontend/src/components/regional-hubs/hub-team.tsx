@@ -45,10 +45,10 @@ export default async function HubTeam() {
         
         {/* Header */}
         <div className="text-center max-w-[800px] w-full">
-          <h2 className="text-section-title text-slate-900 uppercase">
+          <h2 className="text-2xl lg:text-[28px] font-semibold lg:font-bold lg:leading-[36px] text-slate-900 uppercase">
             {t('hubTeam.title')}
           </h2>
-          <p className="mt-3 sm:mt-4 text-caption-responsive sm:text-body-regular lg:text-[18px] leading-relaxed text-slate-500 max-w-[720px] mx-auto">
+          <p className="mt-3 sm:mt-4 text-base lg:text-[18px] font-normal leading-relaxed lg:leading-[28px] text-slate-600 max-w-[720px] mx-auto">
             {t('hubTeam.desc')}
           </p>
         </div>
@@ -71,10 +71,10 @@ export default async function HubTeam() {
 
               {/* Card Body Info */}
               <div className="flex flex-col items-center text-center p-6 w-full">
-                <h3 className="text-body-regular font-bold text-[#1A1A1A] leading-snug mb-1">
+                <h3 className="text-base lg:text-[18px] font-bold text-slate-900 leading-snug mb-1">
                   {member.name}
                 </h3>
-                <p className="text-caption-responsive leading-relaxed text-slate-700 font-normal mb-4">
+                <p className="text-sm lg:text-[18px] font-normal leading-relaxed lg:leading-[28px] text-slate-600 mb-4">
                   {t(member.roleKey)}
                 </p>
 

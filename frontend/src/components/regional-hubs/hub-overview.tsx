@@ -85,18 +85,18 @@ export default function HubOverview({ locale }: HubOverviewProps) {
 
         {/* === Part 1: Heading & Description === */}
         <div className="flex flex-col items-start text-left w-full">
-          <span className="text-eyebrow font-semibold uppercase tracking-wider text-slate-900 block mb-1">
+          <span className="text-xl lg:text-[28px] font-semibold uppercase tracking-wider text-slate-900 block mb-1">
             {t.eyebrow}
           </span>
-          <h2 className="text-section-title font-semibold tracking-tight text-slate-900 leading-tight">
+          <h2 className="text-2xl lg:text-[28px] font-semibold lg:font-bold tracking-tight text-slate-900 leading-snug lg:leading-[36px]">
             {t.title}
           </h2>
-          <p className="mt-3.5 text-body-regular sm:text-body-large leading-relaxed text-slate-600">
+          <p className="mt-3.5 text-base lg:text-[18px] font-normal leading-relaxed lg:leading-[28px] text-slate-600">
             {t.desc}
           </p>
           <Link
             href="/about"
-            className="mt-3 text-body-regular font-semibold text-blue-600 hover:underline inline-flex items-center gap-1"
+            className="mt-3 text-base font-medium text-blue-600 hover:underline inline-flex items-center gap-1"
           >
             {t.learnMore}
           </Link>
@@ -120,10 +120,10 @@ export default function HubOverview({ locale }: HubOverviewProps) {
                 </div>
               </div>
               <div className="flex flex-col text-left">
-                <span className="text-stat-value font-semibold text-slate-900 leading-none">
+                <span className="text-lg lg:text-[20px] font-semibold text-slate-900 leading-tight lg:leading-[28px]">
                   {stat.value}
                 </span>
-                <span className="mt-1 text-caption-responsive sm:text-body-regular font-medium text-slate-600 leading-tight">
+                <span className="mt-1 text-sm lg:text-[16px] font-normal text-slate-600 leading-tight lg:leading-[24px]">
                   {stat.label}
                 </span>
               </div>
