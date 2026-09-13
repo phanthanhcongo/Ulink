@@ -7,7 +7,6 @@ import {
   LayoutDashboard,
   Package,
   FileSpreadsheet,
-  FileCheck,
   Users,
   Mail,
   LogOut,
@@ -79,11 +78,6 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
       icon: ShoppingCart
     },
     {
-      href: '/admin/sample-requests',
-      label: 'Hàng mẫu thử',
-      icon: FileCheck
-    },
-    {
       href: '/admin/users',
       label: 'Tài khoản User',
       icon: Users
@@ -97,11 +91,6 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
       href: '/admin/industrial-zones',
       label: 'Khu công nghiệp (KCN)',
       icon: Factory
-    },
-    {
-      href: '/admin/subscribers',
-      label: 'Đăng ký bản tin',
-      icon: Mail
     },
     {
       href: '/admin/contact-requests',
