@@ -4,6 +4,7 @@ import { getCurrentUser } from '@/lib/auth-helpers';
 import { createAuthenticatedDirectusClient } from '@/lib/directus';
 import { readItems } from '@directus/sdk';
 import InventoryClient from '@/components/admin/inventory-client';
+import InventoryCrud from '@/components/admin/inventory-crud';
 
 export default async function AdminInventoryPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
@@ -16,5 +17,5 @@ export default async function AdminInventoryPage({ params }: { params: Promise<{
       client.request(readItems('inventory_movements' as any, { fields: ['id', 'movement_type', 'quantity_delta', 'quantity_before', 'quantity_after', 'note', 'date_created', 'sku.sku_code', 'hub.name', 'order_id'], sort: ['-date_created'], limit: 100 } as any)) as Promise<any[]>
     ]);
   } catch (err) { error = err instanceof Error ? err.message : 'Không thể tải dữ liệu tồn kho'; }
-  return <InventoryClient initialStock={stock} initialMovements={movements} error={error} />;
+  return <><InventoryClient initialStock={stock} initialMovements={movements} error={error} /><div className="admin-page pt-0"><InventoryCrud stock={stock} /></div></>;
 }
