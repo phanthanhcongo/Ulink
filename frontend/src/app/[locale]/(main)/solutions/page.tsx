@@ -66,9 +66,6 @@ export default async function SolutionsPage({ params: { locale } }: SolutionsPag
           className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none z-0"
         />
 
-        {/* Dark overlay for text readability over video */}
-        <div className="absolute inset-0 bg-black/40 z-0" />
-
         <div className="relative page-container z-10 section-padding w-full">
 
 
