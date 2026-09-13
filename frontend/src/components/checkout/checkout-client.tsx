@@ -57,7 +57,7 @@ export default function CheckoutClient({
   const [showSuccessModal, setShowSuccessModal] = useState(false);
   const [showFailureModal, setShowFailureModal] = useState(false);
   const [showPendingModal, setShowPendingModal] = useState(false);
-  const [clickCount, setClickCount] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Form states (prefilled realistic B2B data)
   const [formData, setFormData] = useState({
@@ -251,7 +251,7 @@ export default function CheckoutClient({
     }
   };
 
-  const handleSubmitOrder = () => {
+  const handleSubmitOrder = async () => {
     if (!validateForm()) {
       const firstErr = Object.keys(errors)[0];
       const el = document.getElementById(firstErr);
@@ -259,15 +259,44 @@ export default function CheckoutClient({
       return;
     }
 
-    const mode = clickCount % 3;
-    if (mode === 0) {
+    if (!resolvedItems.length) {
       setShowFailureModal(true);
-    } else if (mode === 1) {
-      setShowPendingModal(true);
-    } else {
-      setShowSuccessModal(true);
+      return;
     }
-    setClickCount((prev) => prev + 1);
+
+    setIsSubmitting(true);
+    try {
+      const response = await fetch('/api/orders', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          userId: user?.id ?? null,
+          buyer: formData,
+          paymentMethod,
+          shippingMethod,
+          subtotal,
+          tax: vat,
+          total: grandTotal,
+          items: resolvedItems.map((item) => ({
+            sku: item.sku,
+            productName: item.product_name,
+            quantity: item.quantity,
+            unitPrice: item.unitPrice,
+            lineTotal: item.total
+          }))
+        })
+      });
+      if (!response.ok) throw new Error('Không thể tạo đơn hàng. Vui lòng thử lại.');
+      const result = (await response.json()) as { data?: { id: string | number } };
+      if (!result.data?.id) throw new Error('Đơn hàng chưa được tạo.');
+      persistCart([]);
+      setCart([]);
+      window.location.href = `/${locale}/order-confirmation?orderId=${result.data.id}`;
+    } catch {
+      setShowFailureModal(true);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -847,9 +876,11 @@ export default function CheckoutClient({
                 <button
                   type="button"
                   onClick={handleSubmitOrder}
+                  disabled={isSubmitting}
+                  aria-busy={isSubmitting}
                   className="inline-flex items-center justify-center gap-2 w-full rounded-[3px] bg-brand py-3.5 text-body-regular font-bold text-white shadow hover:bg-brand/95 transition-all text-center"
                 >
-                  {t('btnPayNow')}
+                  {isSubmitting ? 'Đang xử lý...' : t('btnPayNow')}
                   <ArrowRight className="h-4 w-4" />
                 </button>
                 <Link
@@ -1016,5 +1047,4 @@ function ChevronRightIcon({ className }: { className?: string }) {
     </svg>
   );
 }
-
 
