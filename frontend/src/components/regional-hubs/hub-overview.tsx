@@ -107,9 +107,9 @@ export default function HubOverview({ locale }: HubOverviewProps) {
           {statsData.map((stat) => (
             <div
               key={stat.id}
-              className="group flex items-center gap-3 sm:gap-4 p-4 sm:p-5 bg-[#F4F7FB] rounded-[4px] border border-slate-200/80 shadow-xs transition-all duration-300"
+              className="group flex flex-col items-start sm:flex-row sm:items-center gap-2.5 sm:gap-4 p-3.5 sm:p-5 bg-[#F4F7FB] rounded-[4px] border border-slate-200/80 shadow-xs transition-all duration-300"
             >
-              <div className="flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-full bg-blue-600/10 p-2.5">
+              <div className="flex h-10 w-10 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-full bg-blue-600/10 p-2 sm:p-2.5">
                 <div className="relative h-full w-full">
                   <Image
                     src={stat.iconSrc}
@@ -120,10 +120,10 @@ export default function HubOverview({ locale }: HubOverviewProps) {
                 </div>
               </div>
               <div className="flex flex-col text-left">
-                <span className="text-lg lg:text-[20px] font-semibold text-slate-900 leading-tight lg:leading-[28px]">
+                <span className="text-base sm:text-lg lg:text-[20px] font-semibold text-slate-900 leading-tight lg:leading-[28px]">
                   {stat.value}
                 </span>
-                <span className="mt-1 text-sm lg:text-[16px] font-normal text-slate-600 leading-tight lg:leading-[24px]">
+                <span className="mt-0.5 sm:mt-1 text-xs sm:text-sm lg:text-[16px] font-normal text-slate-600 leading-snug lg:leading-[24px]">
                   {stat.label}
                 </span>
               </div>
