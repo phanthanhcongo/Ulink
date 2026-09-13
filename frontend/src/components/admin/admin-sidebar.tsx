@@ -24,6 +24,7 @@ import {
   ,ShoppingCart
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { ASSETS } from '@/lib/assets';
 
 interface AdminSidebarProps {
   isCollapsed?: boolean;
@@ -144,7 +145,7 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
           isCollapsed ? "justify-center" : "justify-between"
         )}>
           <div className="flex items-center gap-2.5 pr-20">
-            <img src="/images/logo/ulink-logo.svg" alt="ULink Industries" className="h-12 w-[116px] shrink-0 object-contain object-left" />
+            <img src={ASSETS.logo.full} alt="ULink Industries" className="h-12 w-[116px] shrink-0 object-contain object-left" />
             {!isCollapsed && (
               <div className="flex flex-col">
                 <span className="font-bold text-sm tracking-tight text-slate-900">
