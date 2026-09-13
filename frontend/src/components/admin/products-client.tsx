@@ -400,7 +400,7 @@ export function ProductsClient({
                       <td className="admin-table-cell">
                         <span
                           className={cn(
-                            'inline-flex items-center px-2 py-0.5 rounded-[3px] text-caption-responsive font-bold uppercase',
+                            'inline-flex min-w-[76px] items-center justify-center whitespace-nowrap px-2.5 py-1 rounded-[3px] text-caption-responsive font-bold uppercase',
                             prod.status === 'published' && 'bg-green-50 text-green-600',
                             prod.status === 'draft' && 'bg-slate-105 text-slate-600',
                             prod.status === 'archived' && 'bg-red-50 text-red-650'
