@@ -232,16 +232,23 @@ export function ProductsClient({
     return matchesSearch && matchesCategory && matchesStatus;
   });
 
+  const productStats = {
+    total: products.length,
+    published: products.filter((p) => p.status === 'published').length,
+    drafts: products.filter((p) => p.status === 'draft').length,
+    skus: products.reduce((sum, p) => sum + (p.skus?.length || 0), 0)
+  };
+
   return (
     <div className="admin-page">
       {/* Header and Add Button */}
-      <div className="admin-header border-b border-slate-100 pb-6 mb-6 md:mb-8">
+      <div className="admin-header border-b border-slate-100 pb-4 mb-4 md:mb-5">
         <div>
           <span className="text-caption-responsive uppercase text-slate-400 font-bold tracking-wider">
             Hệ thống Danh mục
           </span>
           <h1 className="text-section-title font-bold text-primary tracking-tight mt-1">
-            Quản lý Sản phẩm & SKUs
+            Sản phẩm & SKUs
           </h1>
           <p className="text-caption-responsive text-slate-500 font-medium mt-1 leading-relaxed">
             Xem danh sách sản phẩm, quản lý mã SKU và cập nhật nhanh tình trạng tồn kho hàng hóa.
@@ -263,8 +270,17 @@ export function ProductsClient({
         </button>
       </div>
 
+      <div className="mb-4 grid grid-cols-2 gap-3 lg:grid-cols-4">
+        {[
+          { label: 'Tổng sản phẩm', value: productStats.total, icon: Package, tone: 'bg-blue-50 text-blue-600' },
+          { label: 'Đã xuất bản', value: productStats.published, icon: Layers, tone: 'bg-emerald-50 text-emerald-600' },
+          { label: 'Bản thảo', value: productStats.drafts, icon: Edit2, tone: 'bg-amber-50 text-amber-600' },
+          { label: 'Tổng SKU', value: productStats.skus, icon: Tag, tone: 'bg-violet-50 text-violet-600' }
+        ].map((item) => <div key={item.label} className="admin-panel flex items-center gap-3 p-3"><div className={cn('flex h-9 w-9 shrink-0 items-center justify-center rounded-[6px]', item.tone)}><item.icon className="h-4 w-4" /></div><div><p className="text-[11px] font-semibold text-slate-500">{item.label}</p><p className="text-lg font-bold text-[#162233]">{item.value}</p></div></div>)}
+      </div>
+
       {/* Filter and Search Bar */}
-      <div className="bg-white border border-slate-100 rounded-[3px] p-4 sm:p-5 md:p-6 shadow-sm mb-6 md:mb-8 admin-filter-bar">
+      <div className="bg-white border border-slate-100 rounded-[3px] p-3 sm:p-4 shadow-sm mb-4 admin-filter-bar">
         {/* Search */}
         <div className="relative flex-1">
           <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
@@ -967,4 +983,3 @@ export function ProductsClient({
     </div>
   );
 }
-
