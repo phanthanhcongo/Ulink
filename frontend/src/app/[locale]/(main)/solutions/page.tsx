@@ -73,10 +73,10 @@ export default async function SolutionsPage({ params: { locale } }: SolutionsPag
 
           {/* Text and Button block */}
           <div className="max-w-2xl mt-4">
-            <h1 className="text-hero-title text-white whitespace-pre-line">
+            <h1 className="text-2xl sm:text-3xl lg:text-[42px] lg:leading-[46px] font-bold text-white whitespace-pre-line">
               {t('heroTitle')}
             </h1>
-            <p className="mt-5 text-white text-body-regular leading-relaxed max-w-xl">
+            <p className="mt-5 text-base sm:text-lg lg:text-[18px] lg:leading-[28px] font-normal text-white max-w-xl">
               {t('heroSubtitle')}
             </p>
 
@@ -86,7 +86,7 @@ export default async function SolutionsPage({ params: { locale } }: SolutionsPag
                 href="/quick-order"
                 className={cn(
                   buttonVariants({ variant: 'secondary', size: 'md' }),
-                  'bg-white px-6 py-3 text-body-large font-bold text-blue-600 shadow-md hover:bg-slate-50'
+                  'bg-white px-6 py-3 text-base sm:text-lg lg:text-[20px] font-bold text-blue-600 shadow-md hover:bg-slate-50'
                 )}
               >
                 {t('heroCta')}

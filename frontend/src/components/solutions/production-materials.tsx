@@ -50,14 +50,14 @@ export default async function ProductionMaterials({ locale }: ProductionMaterial
         <div className="flex flex-col items-start">
           <div className="flex items-center gap-2">
             <span className="h-4 w-1 bg-blue-600 rounded-[3px]" />
-            <span className="text-caption-responsive font-bold uppercase tracking-wider text-slate-800">
+            <span className="text-xs sm:text-sm lg:text-[16px] font-bold uppercase tracking-wider text-slate-800">
               {t('skuSection.eyebrow')}
             </span>
           </div>
-          <h2 className="mt-4 text-section-title font-bold tracking-tight text-slate-900 leading-tight">
+          <h2 className="mt-4 text-xl sm:text-3xl lg:text-[38px] lg:leading-[46px] font-bold tracking-tight text-slate-900">
             {t('skuSection.title')}
           </h2>
-          <p className="mt-4 text-body-regular text-slate-500 max-w-3xl leading-relaxed">
+          <p className="mt-4 text-sm sm:text-base lg:text-[18px] lg:leading-[28px] font-normal text-slate-500 max-w-3xl">
             {t('skuSection.subtitle')}
           </p>
         </div>
@@ -78,7 +78,7 @@ export default async function ProductionMaterials({ locale }: ProductionMaterial
                 />
               </div>
               <div className="p-6 sm:p-8 flex flex-col flex-1">
-                <h3 className="text-card-title font-bold text-slate-900 transition-colors duration-200 group-hover:text-[#1769E2]">{card.title}</h3>
+                <h3 className="text-lg sm:text-xl lg:text-[24px] lg:leading-[30px] font-bold text-slate-900 transition-colors duration-200 group-hover:text-[#1769E2]">{card.title}</h3>
 
                 {/* List items */}
                 <ul className="mt-6 space-y-3 flex-1">
@@ -87,7 +87,7 @@ export default async function ProductionMaterials({ locale }: ProductionMaterial
                       <CategoryNavLink
                         categorySlug={item.slug}
                         href={`/solutions/listProduct?category=${item.slug}`}
-                        className="flex items-center gap-2 text-body-regular text-slate-600 hover:text-blue-600 transition-colors"
+                        className="flex items-center gap-2 text-sm sm:text-base lg:text-[16px] font-normal text-slate-600 hover:text-blue-600 transition-colors"
                       >
                         <span className="w-1.5 h-1.5 bg-blue-500 shrink-0 rounded-[3px]" />
                         {item.label}
@@ -101,7 +101,7 @@ export default async function ProductionMaterials({ locale }: ProductionMaterial
                   <CategoryNavLink
                     categorySlug={card.categorySlug}
                     href={`/solutions/listProduct?category=${card.categorySlug}`}
-                    className="inline-flex items-center justify-center gap-2 rounded-[3px] bg-[#1769E2] px-5 py-2.5 text-body-regular font-semibold text-white shadow-sm hover:bg-[#1257BD] transition-colors w-full sm:w-auto"
+                    className="inline-flex items-center justify-center gap-2 rounded-[3px] bg-[#1769E2] px-5 py-2.5 text-sm sm:text-base lg:text-[16px] font-semibold text-white shadow-sm hover:bg-[#1257BD] transition-colors w-full sm:w-auto"
                   >
                     {t('skuSection.cta')}
                     <ArrowRight className="h-4 w-4 transition-transform duration-200 group-hover:translate-x-0.5" />

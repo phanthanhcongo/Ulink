@@ -253,13 +253,13 @@ export default function SearchSection({ locale }: SearchSectionProps) {
     <section className="w-full py-8 sm:py-12 lg:py-16 border-b border-gray-100" style={{ backgroundColor: '#F5F7FA' }}>
       <div className="page-container text-center px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <p className="text-caption-responsive sm:text-section-title font-bold uppercase tracking-wider text-blue-600">
+        <p className="text-xs sm:text-sm lg:text-[16px] font-bold uppercase tracking-wider text-blue-600">
           {labels.sectionTitle}
         </p>
-        <h2 className="mt-2 sm:mt-3 text-body-large sm:text-section-title font-bold text-slate-900 tracking-tight">
+        <h2 className="mt-2 sm:mt-3 text-xl sm:text-3xl lg:text-[38px] lg:leading-[46px] font-bold text-slate-900 tracking-tight">
           {labels.title}
         </h2>
-        <p className="mt-2.5 sm:mt-4 text-caption-responsive sm:text-body-regular text-slate-500 max-w-2xl mx-auto leading-relaxed">
+        <p className="mt-2.5 sm:mt-4 text-sm sm:text-base lg:text-[18px] lg:leading-[28px] font-normal text-slate-500 max-w-none w-full mx-auto leading-relaxed lg:whitespace-nowrap">
           {labels.subtitle}
         </p>
 
