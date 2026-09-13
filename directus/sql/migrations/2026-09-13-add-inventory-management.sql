@@ -32,6 +32,30 @@ CREATE INDEX IF NOT EXISTS idx_inventory_movements_sku_hub ON inventory_movement
 CREATE INDEX IF NOT EXISTS idx_inventory_movements_order ON inventory_movements(order_id);
 CREATE INDEX IF NOT EXISTS idx_inventory_movements_created ON inventory_movements(date_created);
 
+-- The tables may already exist from Directus schema bootstrap. Add the FK constraints
+-- explicitly so rerunning this migration also upgrades those existing tables.
+DO $$
+BEGIN
+  IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'fk_inventory_stock_sku') THEN
+    ALTER TABLE inventory_stock ADD CONSTRAINT fk_inventory_stock_sku FOREIGN KEY (sku) REFERENCES product_skus(id) ON DELETE CASCADE;
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'fk_inventory_stock_hub') THEN
+    ALTER TABLE inventory_stock ADD CONSTRAINT fk_inventory_stock_hub FOREIGN KEY (hub) REFERENCES regional_hubs(id) ON DELETE CASCADE;
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'fk_inventory_movements_sku') THEN
+    ALTER TABLE inventory_movements ADD CONSTRAINT fk_inventory_movements_sku FOREIGN KEY (sku) REFERENCES product_skus(id) ON DELETE RESTRICT;
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'fk_inventory_movements_hub') THEN
+    ALTER TABLE inventory_movements ADD CONSTRAINT fk_inventory_movements_hub FOREIGN KEY (hub) REFERENCES regional_hubs(id) ON DELETE RESTRICT;
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'fk_inventory_movements_order') THEN
+    ALTER TABLE inventory_movements ADD CONSTRAINT fk_inventory_movements_order FOREIGN KEY (order_id) REFERENCES orders(id) ON DELETE SET NULL;
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'fk_inventory_movements_performed_by') THEN
+    ALTER TABLE inventory_movements ADD CONSTRAINT fk_inventory_movements_performed_by FOREIGN KEY (performed_by) REFERENCES directus_users(id) ON DELETE SET NULL;
+  END IF;
+END $$;
+
 -- Create an inventory balance row for every existing SKU at every hub.
 -- The statement is idempotent so it is safe to run when new migrations/bootstrap jobs replay.
 INSERT INTO inventory_stock (sku, hub, quantity_on_hand, quantity_reserved, reorder_level)
