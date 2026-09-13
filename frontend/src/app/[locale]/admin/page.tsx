@@ -1,4 +1,4 @@
-import React from 'react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { setRequestLocale } from 'next-intl/server';
 import { getCurrentUser } from '@/lib/auth-helpers';
 import { createWriteDirectusClient, Schema } from '@/lib/directus';
@@ -6,255 +6,27 @@ import { createDirectus, rest, readItems, readUsers } from '@directus/sdk';
 import { Link } from '@/i18n/navigation';
 import { cookies } from 'next/headers';
 import { getDirectusUrl } from '@/lib/directus-runtime.mjs';
+import { Activity, ArrowRight, BarChart3, ClipboardList, FileSpreadsheet, Mail, Package, PlusCircle, ShoppingCart, Users } from 'lucide-react';
 
 async function getSessionClient() {
-  const store = await cookies();
-  const sessionToken = store.get('directus_session_token')?.value;
-  const refreshToken = store.get('directus_refresh_token')?.value;
-
-  if (sessionToken) {
-    const cookieHeader = [
-      `directus_session_token=${sessionToken}`,
-      refreshToken ? `directus_refresh_token=${refreshToken}` : null
-    ]
-      .filter(Boolean)
-      .join('; ');
-
-    const cookieFetch: typeof globalThis.fetch = (input, init) => {
-      const headers = new Headers(init?.headers);
-      headers.set('cookie', cookieHeader);
-      return globalThis.fetch(input, { ...init, headers });
-    };
-
-    const url = getDirectusUrl();
-    return createDirectus<Schema>(url, { globals: { fetch: cookieFetch } }).with(rest());
-  }
-
-  return createWriteDirectusClient();
+  const store = await cookies(); const session = store.get('directus_session_token')?.value; const refresh = store.get('directus_refresh_token')?.value;
+  if (!session) return createWriteDirectusClient();
+  const cookieFetch: typeof globalThis.fetch = (input, init) => { const headers = new Headers(init?.headers); headers.set('cookie', `directus_session_token=${session}${refresh ? `; directus_refresh_token=${refresh}` : ''}`); return globalThis.fetch(input, { ...init, headers }); };
+  return createDirectus<Schema>(getDirectusUrl(), { globals: { fetch: cookieFetch } }).with(rest());
 }
-import {
-  FileSpreadsheet,
-  FileCheck,
-  Package,
-  PlusCircle,
-  Users,
-  Mail,
-  TrendingUp,
-  ArrowRight
-} from 'lucide-react';
+const money = (value: number) => new Intl.NumberFormat('vi-VN').format(Number(value || 0)) + 'đ';
+const statusLabel: Record<string, string> = { pending: 'Chờ xử lý', confirmed: 'Đã xác nhận', processing: 'Đang xử lý', shipped: 'Đã giao', completed: 'Hoàn tất', cancelled: 'Đã hủy' };
 
-interface Props {
-  params: { locale: string };
-}
-
-export default async function AdminDashboardPage({ params: { locale } }: Props) {
-  setRequestLocale(locale);
-  const user = await getCurrentUser();
-
-  // Try to fetch actual counts from Directus (with fallbacks if offline/unconfigured)
-  const stats = {
-    rfqs: 12,
-    sampleRequests: 4,
-    contacts: 0,
-    products: 48,
-    users: 5
-  };
-
+export default async function AdminDashboardPage({ params: { locale } }: { params: { locale: string } }) {
+  setRequestLocale(locale); const user = await getCurrentUser();
+  let stats = { rfqs: 0, orders: 0, pendingOrders: 0, contacts: 0, products: 0, users: 0, revenue: 0 }; let recentOrders: any[] = []; let error = '';
   try {
     const client = await getSessionClient();
-    const [rfqRes, sampleRes, contactRes, productRes, usersRes] = await Promise.all([
-      client.request(readItems('rfq_requests', { fields: ['id'] })),
-      client.request(readItems('sample_requests', { fields: ['id'] })),
-      client.request(readItems('contact_requests', { fields: ['id'] })),
-      client.request(readItems('products', { fields: ['id'] })),
-      client.request(readUsers({ fields: ['id'] }))
+    const [rfqs, orders, contacts, products, users] = await Promise.all([
+      client.request(readItems('rfq_requests' as any, { fields: ['id'], limit: -1 } as any)), client.request(readItems('orders' as any, { fields: ['id', 'code', 'status', 'order_date', 'total', 'customer.name', 'customer.email'], sort: ['-order_date', '-id'], limit: 8 } as any)), client.request(readItems('contact_requests' as any, { fields: ['id'], limit: -1 } as any)), client.request(readItems('products' as any, { fields: ['id'], limit: -1 } as any)), client.request(readUsers({ fields: ['id'], limit: -1 }))
     ]);
-    if (rfqRes) stats.rfqs = rfqRes.length;
-    if (sampleRes) stats.sampleRequests = sampleRes.length;
-    if (contactRes) stats.contacts = contactRes.length;
-    if (productRes) stats.products = productRes.length;
-    if (usersRes) stats.users = usersRes.length;
-  } catch (err) {
-    console.warn('Directus stats fetch failed, using fallback numbers:', err);
-  }
-
-  const kpis = [
-    {
-      label: 'Yêu cầu Báo giá',
-      value: stats.rfqs,
-      desc: 'Yêu cầu RFQ cần phản hồi',
-      icon: FileSpreadsheet,
-      color: 'bg-blue-500/10 text-blue-600 border-blue-100',
-      href: '/admin/rfqs'
-    },
-    {
-      label: 'Yêu cầu Hàng mẫu',
-      value: stats.sampleRequests,
-      desc: 'Hồ sơ chờ phê duyệt mẫu thử',
-      icon: FileCheck,
-      color: 'bg-orange-500/10 text-orange-600 border-orange-100',
-      href: '/admin/sample-requests'
-    },
-    {
-      label: 'Liên hệ gửi về',
-      value: stats.contacts,
-      desc: 'Tin nhắn từ form liên hệ',
-      icon: Mail,
-      color: 'bg-cyan-500/10 text-cyan-600 border-cyan-100',
-      href: '/admin/contact-requests'
-    },
-    {
-      label: 'Sản phẩm đang bán',
-      value: stats.products,
-      desc: 'SKUs đang hoạt động trên hệ thống',
-      icon: Package,
-      color: 'bg-green-500/10 text-green-600 border-green-100',
-      href: '/admin/products'
-    },
-    {
-      label: 'Tài khoản User',
-      value: stats.users,
-      desc: 'Tài khoản đăng nhập hệ thống',
-      icon: Users,
-      color: 'bg-purple-500/10 text-purple-600 border-purple-100',
-      href: '/admin/users'
-    }
-  ];
-
-  return (
-    <div className="admin-page">
-      {/* Header Welcome Section */}
-      <div className="admin-header border-b border-slate-100 pb-6 mb-6 md:mb-8">
-        <div>
-          <span className="text-caption-responsive uppercase text-slate-400 font-bold tracking-tight">
-            Trang chủ Quản trị
-          </span>
-          <h1 className="text-section-title font-bold text-primary tracking-tight mt-1">
-            Chào mừng quay trở lại, {user?.first_name || 'Admin'}
-          </h1>
-          <p className="text-caption-responsive text-slate-500 font-medium mt-1 leading-relaxed">
-            Hệ thống quản lý thông tin B2B ULink Industries.
-          </p>
-        </div>
-      </div>
-
-      {/* Grid of KPI Cards - Optimized columns for intermediate screens */}
-      <div className="admin-kpi-grid mb-8 md:mb-10">
-        {kpis.map((kpi, idx) => (
-          <Link
-            key={idx}
-            href={kpi.href}
-            className="block bg-white border border-slate-100 hover:border-slate-200 rounded-[3px] p-6 shadow-sm card-hover-standard group"
-          >
-            <div className="flex items-center justify-between mb-4">
-              <div
-                className={`w-10 h-10 rounded-[3px] flex items-center justify-center border transition-transform duration-300 group-hover:scale-110 ${kpi.color}`}
-              >
-                <kpi.icon className="h-5 w-5" />
-              </div>
-              <TrendingUp className="h-4 w-4 text-slate-350 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            </div>
-            <span className="text-caption-responsive text-slate-400 font-bold tracking-tight block">
-              {kpi.label}
-            </span>
-            <span className="text-section-title font-bold text-primary tracking-tight block mt-1">
-              {kpi.value}
-            </span>
-            <span className="text-caption-responsive text-slate-500 font-medium block mt-2">{kpi.desc}</span>
-          </Link>
-        ))}
-      </div>
-
-      {/* Grid of Main Content Areas */}
-      <div className="admin-content-grid">
-        {/* Left Column: Quick Actions */}
-        <div className="md:col-span-1 bg-white border border-slate-100 rounded-[3px] p-4 sm:p-5 md:p-6 shadow-sm">
-          <h3 className="text-body-regular font-bold text-primary mb-4">Thao tác nhanh</h3>
-          <div className="space-y-3">
-            <Link
-              href="/admin/products"
-              className="flex items-center justify-between p-3.5 rounded-[3px] border border-slate-50 hover:bg-slate-50 text-slate-700 hover:text-primary text-caption-responsive font-bold transition-colors"
-            >
-              <div className="flex items-center gap-3">
-                <PlusCircle className="h-4.5 w-4.5 text-blue-600" />
-                <span>Thêm sản phẩm mới</span>
-              </div>
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-            {/* <Link
-              href="/admin/articles"
-              className="flex items-center justify-between p-3.5 rounded-[3px] border border-slate-50 hover:bg-slate-50 text-slate-700 hover:text-primary text-caption-responsive font-bold transition-colors"
-            >
-              <div className="flex items-center gap-3">
-                <FileText className="h-4.5 w-4.5 text-blue-600" />
-                <span>Viết bài tin tức mới</span>
-              </div>
-              <ArrowRight className="h-4 w-4" />
-            </Link> */}
-            <Link
-              href="/admin/users"
-              className="flex items-center justify-between p-3.5 rounded-[3px] border border-slate-50 hover:bg-slate-50 text-slate-700 hover:text-primary text-caption-responsive font-bold transition-colors"
-            >
-              <div className="flex items-center gap-3">
-                <Users className="h-4.5 w-4.5 text-blue-600" />
-                <span>Quản lý tài khoản User</span>
-              </div>
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-            <Link
-              href="/admin/contact-requests"
-              className="flex items-center justify-between p-3.5 rounded-[3px] border border-slate-50 hover:bg-slate-50 text-slate-700 hover:text-primary text-caption-responsive font-bold transition-colors"
-            >
-              <div className="flex items-center gap-3">
-                <Mail className="h-4.5 w-4.5 text-cyan-600" />
-                <span>Hộp thư liên hệ</span>
-              </div>
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-          </div>
-        </div>
-
-        {/* Right Columns: System Info Summary */}
-        <div className="md:col-span-2 bg-white border border-slate-100 rounded-[3px] p-4 sm:p-5 md:p-6 shadow-sm flex flex-col justify-between">
-          <div>
-            <h3 className="text-body-regular font-bold text-primary mb-3">
-              Hướng dẫn Vận hành Hệ thống B2B
-            </h3>
-            <p className="text-caption-responsive text-slate-500 font-medium leading-relaxed mb-4">
-              Đây là trang tổng quan vận hành hệ thống bán hàng và truyền thông B2B của ULink. Bạn
-              có thể sử dụng menu bên trái để điều hướng nhanh đến các khu vực quản lý:
-            </p>
-            <ul className="space-y-2.5 text-caption-responsive text-slate-650 font-medium">
-              <li className="flex items-start gap-2">
-                <span className="w-1.5 h-1.5 rounded-[3px] bg-blue-600 mt-1.5 shrink-0" />
-                <span>
-                  Cập nhật và chỉnh sửa thông số kỹ thuật của sản phẩm trong thẻ{' '}
-                  <strong>Sản phẩm & SKUs</strong>.
-                </span>
-              </li>
-              {/* <li className="flex items-start gap-2">
-                <span className="w-1.5 h-1.5 rounded-[3px] bg-blue-600 mt-1.5 shrink-0" />
-                <span>
-                  Xuất bản cẩm nang, tin tức thị trường B2B trong thẻ <strong>Bài viết CMS</strong>.
-                </span>
-              </li> */}
-              <li className="flex items-start gap-2">
-                <span className="w-1.5 h-1.5 rounded-[3px] bg-blue-600 mt-1.5 shrink-0" />
-                <span>
-                  Phản hồi báo giá RFQ của khách hàng doanh nghiệp trong thẻ{' '}
-                  <strong>Yêu cầu Báo giá</strong>.
-                </span>
-              </li>
-            </ul>
-          </div>
-
-          <div className="border-t border-slate-100 pt-5 mt-6 flex items-center justify-between text-caption-responsive font-semibold text-slate-400">
-            <span>Phiên bản Admin Panel v1.0.0</span>
-            <span>ULink B2B Platform</span>
-          </div>
-        </div>
-      </div>
-    </div>
-  );
+    recentOrders = orders || []; stats = { rfqs: rfqs?.length || 0, orders: recentOrders.length, pendingOrders: recentOrders.filter(o => ['pending', 'confirmed', 'processing'].includes(o.status)).length, contacts: contacts?.length || 0, products: products?.length || 0, users: users?.length || 0, revenue: recentOrders.reduce((sum, o) => sum + Number(o.total || 0), 0) };
+  } catch (err) { error = err instanceof Error ? err.message : 'Không thể tải báo cáo'; }
+  const kpis = [{ label: 'Tổng doanh thu', value: money(stats.revenue), desc: 'Từ các order gần đây', icon: BarChart3, tone: 'text-[#2163F5] bg-[#EFF6FF]', href: '/admin/orders' }, { label: 'Tổng Order', value: stats.orders, desc: 'Đơn hàng trong hệ thống', icon: ShoppingCart, tone: 'text-[#0F766E] bg-[#ECFDF5]', href: '/admin/orders' }, { label: 'Order cần xử lý', value: stats.pendingOrders, desc: 'Chờ xác nhận hoặc xử lý', icon: ClipboardList, tone: 'text-[#B45309] bg-[#FFFBEB]', href: '/admin/orders' }, { label: 'Yêu cầu Báo giá', value: stats.rfqs, desc: 'RFQ cần phản hồi', icon: FileSpreadsheet, tone: 'text-[#7C3AED] bg-[#F5F3FF]', href: '/admin/rfqs' }, { label: 'Sản phẩm', value: stats.products, desc: 'Sản phẩm đang quản lý', icon: Package, tone: 'text-[#0369A1] bg-[#F0F9FF]', href: '/admin/products' }, { label: 'Tài khoản User', value: stats.users, desc: 'Tài khoản trên hệ thống', icon: Users, tone: 'text-[#BE185D] bg-[#FDF2F8]', href: '/admin/users' }];
+  return <div className="admin-page space-y-8"><header className="flex flex-col gap-4 border-b border-[#E4E9F0] pb-6 md:flex-row md:items-end md:justify-between"><div><span className="admin-page-eyebrow">TỔNG QUAN VẬN HÀNH</span><h1 className="admin-page-title">Chào mừng trở lại, {user?.first_name || 'Admin'}</h1><p className="admin-page-lead">Theo dõi hiệu suất bán hàng và các công việc cần xử lý của ULink.</p></div><div className="flex items-center gap-2 text-sm text-slate-500"><Activity className="h-4 w-4 text-[#2163F5]" /> Cập nhật theo dữ liệu hệ thống</div></header>{error && <div className="rounded-[6px] border border-red-200 bg-red-50 p-4 text-sm text-red-700">{error}</div>}<section className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">{kpis.map(k => <Link key={k.label} href={k.href} className="admin-panel group p-5 transition hover:-translate-y-0.5 hover:border-[#2163F5]"><div className="flex items-start justify-between"><div className={`flex h-10 w-10 items-center justify-center rounded-[6px] ${k.tone}`}><k.icon className="h-5 w-5" /></div><ArrowRight className="h-4 w-4 text-slate-300 transition group-hover:text-[#2163F5]" /></div><p className="mt-4 text-sm font-semibold text-slate-500">{k.label}</p><p className="mt-1 text-2xl font-bold text-[#162233]">{k.value}</p><p className="mt-1 text-xs text-slate-400">{k.desc}</p></Link>)}</section><section className="grid gap-6 lg:grid-cols-[1.4fr_1fr]"><div className="admin-panel overflow-hidden"><div className="flex items-center justify-between border-b border-[#E4E9F0] p-5"><div><h2 className="text-lg font-bold text-[#162233]">Order gần đây</h2><p className="mt-1 text-sm text-slate-500">Các đơn hàng mới nhất cần theo dõi</p></div><Link href="/admin/orders" className="text-sm font-semibold text-[#2163F5]">Xem tất cả</Link></div><div className="overflow-x-auto"><table className="admin-table min-w-[700px]"><thead><tr className="admin-table-head"><th className="admin-table-cell">Mã order</th><th className="admin-table-cell">Khách hàng</th><th className="admin-table-cell">Tổng tiền</th><th className="admin-table-cell">Trạng thái</th></tr></thead><tbody>{recentOrders.map(o => <tr key={o.id} className="admin-table-row"><td className="admin-table-cell font-bold text-[#2163F5]">{o.code || `#${o.id}`}</td><td className="admin-table-cell"><div className="font-medium text-slate-700">{o.customer?.name || 'Khách vãng lai'}</div><div className="text-xs text-slate-400">{o.customer?.email || '-'}</div></td><td className="admin-table-cell font-semibold">{money(o.total)}</td><td className="admin-table-cell"><span className="rounded-full bg-[#EFF6FF] px-2.5 py-1 text-xs font-semibold text-[#2163F5]">{statusLabel[o.status] || o.status || '-'}</span></td></tr>)}{!recentOrders.length && <tr><td colSpan={4} className="p-8 text-center text-sm text-slate-500">Chưa có order.</td></tr>}</tbody></table></div></div><div className="admin-panel p-5"><h2 className="text-lg font-bold text-[#162233]">Thao tác nhanh</h2><p className="mt-1 text-sm text-slate-500">Đi đến các khu vực thường dùng</p><div className="mt-5 space-y-3">{[[ShoppingCart, 'Quản lý Order', '/admin/orders'], [FileSpreadsheet, 'Xử lý yêu cầu báo giá', '/admin/rfqs'], [PlusCircle, 'Thêm sản phẩm mới', '/admin/products'], [Mail, 'Hộp thư liên hệ', '/admin/contact-requests']].map(([Icon, label, href]: any) => <Link key={label} href={href} className="flex items-center justify-between rounded-[6px] border border-[#E4E9F0] px-4 py-3 text-sm font-semibold text-slate-700 transition hover:border-[#2163F5] hover:bg-[#EFF6FF]"><span className="flex items-center gap-3"><Icon className="h-5 w-5 text-[#2163F5]" />{label}</span><ArrowRight className="h-4 w-4 text-slate-400" /></Link>)}</div></div></section><section className="admin-panel p-5"><div className="flex items-center justify-between"><div><h2 className="text-lg font-bold text-[#162233]">Tình hình xử lý</h2><p className="mt-1 text-sm text-slate-500">Tổng quan các đầu việc đang mở</p></div><span className="rounded-full bg-[#EFF6FF] px-3 py-1 text-xs font-semibold text-[#2163F5]">Live report</span></div><div className="mt-5 grid gap-4 sm:grid-cols-3"><Link href="/admin/rfqs" className="rounded-[6px] bg-[#F5F8FC] p-4"><p className="text-sm text-slate-500">RFQ cần phản hồi</p><p className="mt-2 text-2xl font-bold text-[#162233]">{stats.rfqs}</p></Link><Link href="/admin/orders" className="rounded-[6px] bg-[#F5F8FC] p-4"><p className="text-sm text-slate-500">Order đang xử lý</p><p className="mt-2 text-2xl font-bold text-[#162233]">{stats.pendingOrders}</p></Link><Link href="/admin/contact-requests" className="rounded-[6px] bg-[#F5F8FC] p-4"><p className="text-sm text-slate-500">Liên hệ mới</p><p className="mt-2 text-2xl font-bold text-[#162233]">{stats.contacts}</p></Link></div></section></div>;
 }
-
