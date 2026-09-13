@@ -205,7 +205,9 @@ export function IndustryOverviewSection({ industryData, locale }: IndustryOvervi
                   { title: industryData.whyUsList?.[2] || 'Cung ứng liên tục 24/7', desc: 'Tổng kho Hà Nam trữ lượng dồi dào, đảm bảo không gián đoạn dây chuyền.', iconComp: Truck }
                 ])
               ).map((item, idx) => {
-                const IconComponent = (item as any).iconComp || iconMap[item.iconName] || ShieldCheck;
+                const IconComponent = 'iconComp' in item
+                  ? item.iconComp
+                  : iconMap[item.iconName || ''] || ShieldCheck;
 
                 return (
                   <div key={idx} className="group flex gap-[12px] items-start p-3 sm:p-3.5 rounded-[4px] bg-[#F2F4F8] hover:bg-white border border-transparent hover:border-[#1769E2] shadow-none hover:shadow-[0_0_0_1px_#1769E2,0_8px_25px_-5px_rgba(23,105,226,0.2)] hover:-translate-y-0.5 transition-all duration-300 cursor-pointer">
@@ -254,4 +256,3 @@ export function IndustryOverviewSection({ industryData, locale }: IndustryOvervi
     </section>
   );
 }
-
