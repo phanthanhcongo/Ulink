@@ -146,16 +146,6 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
         )}>
           <div className="flex items-center gap-2.5 pr-20">
             <img src={ASSETS.logo.full} alt="ULink Industries" className="h-12 w-[116px] shrink-0 object-contain object-left" />
-            {!isCollapsed && (
-              <div className="flex flex-col">
-                <span className="font-bold text-sm tracking-tight text-slate-900">
-                  ULink Industries
-                </span>
-                <span className="text-caption-responsive text-sky-500 font-semibold uppercase tracking-widest mt-0.5">
-                  Control Panel
-                </span>
-              </div>
-            )}
           </div>
 
           <div className="md:hidden">
