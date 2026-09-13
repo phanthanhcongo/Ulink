@@ -25,14 +25,16 @@ export default async function HubAndPartner({ locale }: HubAndPartnerProps) {
             </p>
           </div>
 
-          {/* Central Showcase Image */}
+          {/* Central Showcase Video */}
           <div className="ui-card-hover relative w-full max-w-4xl mx-auto aspect-[16/10] rounded-[3px] overflow-hidden shadow-md bg-slate-50 border border-gray-100">
-            <Image
-              src="/images/home/section2/solution-packaging.webp"
-              alt={t('hubPartner.hubHeading')}
-              fill
-              className="object-cover"
-              sizes="(max-width: 1024px) 100vw, 80vw"
+            <video
+              src="/images/solutions/eno_sw_website_2 (720p).mp4"
+              autoPlay
+              loop
+              muted
+              playsInline
+              controls
+              className="w-full h-full object-cover"
             />
           </div>
         </div>
