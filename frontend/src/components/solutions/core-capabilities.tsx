@@ -13,11 +13,11 @@ export default function CoreCapabilities() {
     <section className="w-full bg-white border-t border-gray-150 py-12 sm:py-16 lg:py-24">
       <div className="page-container">
         {/* Section Header */}
-        <div className="max-w-5xl mx-auto text-left lg:text-center mb-10 sm:mb-16">
+        <div className="w-full max-w-full mx-auto text-left lg:text-center mb-10 sm:mb-16">
           <span className="text-sm sm:text-xl lg:text-[28px] lg:leading-[36px] font-semibold uppercase tracking-wider text-[#1769E2] block">
             {t('testimonialsCapabilities.capabilitiesEyebrow')}
           </span>
-          <h2 className="mt-2 sm:mt-4 text-xl sm:text-3xl lg:text-[38px] lg:leading-[46px] font-bold tracking-tight text-[#212529]">
+          <h2 className="mt-2 sm:mt-4 text-xl sm:text-3xl lg:text-[38px] lg:leading-[46px] font-bold tracking-tight text-[#212529] lg:whitespace-nowrap">
             {t('testimonialsCapabilities.capabilitiesTitle')}
           </h2>
         </div>
