@@ -26,10 +26,13 @@ export default async function AdminOrdersPage({ params }: { params: Promise<{ lo
   let error = '';
   try {
     const client = await getClient();
-    [orders, skus] = await Promise.all([client.request(readItems('orders' as any, {
+    const results = await Promise.allSettled([client.request(readItems('orders' as any, {
       fields: ['id', 'code', 'status', 'order_date', 'subtotal', 'tax', 'total', 'notes', 'customer.id', 'customer.name', 'customer.email', 'items.id', 'items.sku.sku_code', 'items.description', 'items.qty', 'items.unit_price', 'items.line_total'],
       sort: ['-order_date', '-id'], limit: -1
-    } as any)), client.request(readItems('skus' as any, { fields: ['id', 'sku_code', 'price', 'unit', 'product.name'], filter: { status: { _eq: 'published' } }, sort: ['sku_code'], limit: -1 } as any))]) as any[];
+    } as any)), client.request(readItems('product_skus' as any, { fields: ['id', 'sku_code', 'price', 'unit', 'product.name'], filter: { status: { _eq: 'published' } }, sort: ['sku_code'], limit: -1 } as any))]);
+    if (results[0].status === 'fulfilled') orders = results[0].value as any[] || [];
+    if (results[1].status === 'fulfilled') skus = results[1].value as any[] || [];
+    if (results[0].status === 'rejected') error = 'Không thể tải danh sách order';
   } catch (err) { error = err instanceof Error ? err.message : 'Không thể tải danh sách order'; }
   return <OrdersClient initialOrders={orders} availableSkus={skus} error={error} />;
 }
