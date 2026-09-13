@@ -108,9 +108,7 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
       {/* Mobile Top Header Bar */}
       <div className="fixed top-0 left-0 right-0 h-16 bg-white/90 backdrop-blur-md border-b border-sky-100 flex items-center justify-between px-5 z-30 md:hidden shadow-sm">
         <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-[3px] bg-sky-600 flex items-center justify-center font-black text-white tracking-wider text-body-regular shadow-inner shadow-sky-300/40">
-            U
-          </div>
+          <img src="/images/logo/ulink-mark.svg" alt="ULink" className="h-9 w-9 shrink-0 object-contain" />
           <span className="font-bold text-body-regular tracking-tight text-slate-900">
             ULink Admin
           </span>
@@ -146,9 +144,7 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
           isCollapsed ? "justify-center" : "justify-between"
         )}>
           <div className="flex items-center gap-2.5 pr-20">
-            <div className="w-8 h-8 rounded-[3px] bg-sky-600 flex items-center justify-center font-black text-white tracking-wider text-body-regular shadow-inner shadow-sky-300/40 shrink-0">
-              U
-            </div>
+            <img src="/images/logo/ulink-logo.svg" alt="ULink Industries" className="h-12 w-[116px] shrink-0 object-contain object-left" />
             {!isCollapsed && (
               <div className="flex flex-col">
                 <span className="font-bold text-sm tracking-tight text-slate-900">
@@ -170,16 +166,13 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
             </button>
           </div>
 
-          {!isCollapsed && <div className="absolute right-3 top-3 hidden items-center gap-1.5 md:flex">
-            <div className="flex h-9 w-9 items-center justify-center rounded-[3px] bg-sky-100 text-sky-600 border border-sky-200" title={user?.email}>
-              <User className="h-4 w-4" />
-            </div>
+          {!isCollapsed && <div className="absolute right-2 top-1/2 hidden -translate-y-1/2 md:block">
             {toggleCollapse && <button
               onClick={toggleCollapse}
               title="Thu gọn Sidebar"
-              className="flex h-9 w-9 items-center justify-center rounded-[3px] bg-sky-100 text-sky-600 hover:bg-sky-600 hover:text-white transition-colors border border-sky-200"
+              className="flex h-7 w-7 items-center justify-center rounded-full bg-sky-100 text-sky-600 hover:bg-sky-600 hover:text-white transition-colors border border-sky-200"
             >
-              <ChevronLeft className="h-4 w-4" />
+              <ChevronLeft className="h-3.5 w-3.5" />
             </button>}
           </div>}
 
@@ -187,9 +180,9 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
               <button
                 onClick={toggleCollapse}
                 title="Mở rộng Sidebar"
-                className="flex h-9 w-9 items-center justify-center rounded-[3px] bg-sky-100 text-sky-600 hover:bg-sky-600 hover:text-white transition-colors border border-sky-200"
+                className="flex h-7 w-7 items-center justify-center rounded-full bg-sky-100 text-sky-600 hover:bg-sky-600 hover:text-white transition-colors border border-sky-200"
               >
-                <ChevronRight className="h-4 w-4" />
+                <ChevronRight className="h-3.5 w-3.5" />
               </button>
             </div>}
         </div>
