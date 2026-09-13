@@ -31,7 +31,7 @@ export function AdminLayoutWrapper({ children }: { children: React.ReactNode }) 
       <main
         className={cn(
           "flex-1 min-h-screen flex flex-col pt-16 md:pt-0 transition-all duration-300 ease-in-out",
-          mounted && isCollapsed ? "md:pl-20" : "md:pl-[252px]"
+          mounted && isCollapsed ? "md:pl-20" : "md:pl-[228px]"
         )}
       >
         <div className="flex-1 overflow-y-auto w-full">

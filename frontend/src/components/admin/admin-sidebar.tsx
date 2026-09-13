@@ -142,21 +142,21 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
         className={cn(
           'fixed top-0 bottom-0 left-0 z-50 bg-[#EFF6FF] text-[#162233] flex flex-col justify-between transition-all duration-300 ease-in-out md:translate-x-0 border-r border-[#D8E6F5] shadow-none',
           isOpen ? 'translate-x-0' : '-translate-x-full',
-          isCollapsed ? 'w-20' : 'w-[252px]'
+          isCollapsed ? 'w-20' : 'w-[228px]'
         )}
       >
         {/* Header Branding */}
         <div className={cn(
-          "p-5 border-b border-sky-100 flex items-center bg-white/70 backdrop-blur-sm transition-all duration-300",
+          "p-4 border-b border-sky-100 flex items-center bg-white/70 backdrop-blur-sm transition-all duration-300",
           isCollapsed ? "justify-center" : "justify-between"
         )}>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
             <div className="w-8 h-8 rounded-[3px] bg-sky-600 flex items-center justify-center font-black text-white tracking-wider text-body-regular shadow-inner shadow-sky-300/40 shrink-0">
               U
             </div>
             {!isCollapsed && (
               <div className="flex flex-col">
-                <span className="font-bold text-body-regular tracking-tight text-slate-900">
+                <span className="font-bold text-sm tracking-tight text-slate-900">
                   ULink Industries
                 </span>
                 <span className="text-caption-responsive text-sky-500 font-semibold uppercase tracking-widest mt-0.5">
@@ -210,12 +210,12 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
         </div>
 
         {/* Navigation Items */}
-        <nav className="flex-1 overflow-y-auto px-4 py-5 space-y-2">
+        <nav className="flex-1 overflow-y-auto px-3 py-3 space-y-1">
           {!isCollapsed ? (
             <Link
               href="/"
               onClick={() => setIsOpen(false)}
-              className="flex items-center gap-3.5 px-4 py-3 rounded-[3px] text-caption-responsive font-bold text-sky-700 bg-sky-100 hover:bg-sky-200 hover:text-sky-900 border border-sky-200 transition-all mb-4"
+              className="flex items-center gap-3 px-3 py-2.5 rounded-[3px] text-sm font-bold text-sky-700 bg-sky-100 hover:bg-sky-200 hover:text-sky-900 border border-sky-200 transition-all mb-3"
             >
               <Home className="h-4 w-4 text-sky-600" />
               <span>Về Trang chủ Website</span>
@@ -246,7 +246,7 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
                   'flex items-center transition-all group',
                   isCollapsed
                     ? 'justify-center h-10 w-10 mx-auto rounded-[3px]'
-                    : 'gap-3.5 px-4 py-3 rounded-[3px] text-body-regular font-bold',
+                    : 'gap-3 px-3 py-2.5 rounded-[3px] text-sm font-bold',
                   isActive
                     ? 'bg-sky-600 text-white shadow-sm shadow-sky-300/40'
                     : 'text-slate-600 hover:text-slate-900 hover:bg-sky-100/80'
@@ -266,11 +266,11 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
 
         {/* Footer User Profile & Logout */}
         <div className={cn(
-          "p-4 border-t border-sky-100 bg-white/70 backdrop-blur-sm transition-all duration-300",
+          "p-3 border-t border-sky-100 bg-white/70 backdrop-blur-sm transition-all duration-300",
           isCollapsed ? "flex flex-col items-center gap-3" : ""
         )}>
           {!isCollapsed ? (
-            <div className="flex items-center gap-3 px-2 py-2 mb-4">
+            <div className="flex items-center gap-2.5 px-1.5 py-1.5 mb-3">
               <div className="w-9 h-9 rounded-[3px] bg-sky-100 flex items-center justify-center text-sky-600 border border-sky-200 shrink-0">
                 <User className="h-4.5 w-4.5" />
               </div>
