@@ -47,8 +47,8 @@ export default async function FeaturedProduct({ locale }: FeaturedProductProps) 
           <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-8 lg:pl-4">
             {/* Feature 1 */}
             <div className="flex flex-col items-start">
-              <div className="w-12 h-12 rounded-[2px] flex items-center justify-center text-blue-600 shrink-0 mb-4">
-                <ShoppingBag className="h-12 w-12" />
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-[2px] flex items-center justify-center text-blue-600 shrink-0 mb-3 sm:mb-4">
+                <ShoppingBag className="h-8 w-8 sm:h-10 sm:w-10" />
               </div>
               <p className="text-sm sm:text-base lg:text-[18px] lg:leading-[28px] font-normal text-[#617084]">
                 {t('featuredProduct.feat1')}
@@ -57,8 +57,8 @@ export default async function FeaturedProduct({ locale }: FeaturedProductProps) 
 
             {/* Feature 2 */}
             <div className="flex flex-col items-start">
-              <div className="w-12 h-12 rounded-[2px] flex items-center justify-center text-blue-600 shrink-0 mb-4">
-                <ShieldCheck className="h-12 w-12" />
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-[2px] flex items-center justify-center text-blue-600 shrink-0 mb-3 sm:mb-4">
+                <ShieldCheck className="h-8 w-8 sm:h-10 sm:w-10" />
               </div>
               <p className="text-sm sm:text-base lg:text-[18px] lg:leading-[28px] font-normal text-[#617084]">
                 {t('featuredProduct.feat2')}
@@ -67,8 +67,8 @@ export default async function FeaturedProduct({ locale }: FeaturedProductProps) 
 
             {/* Feature 3 */}
             <div className="flex flex-col items-start">
-              <div className="w-12 h-12 rounded-[2px] flex items-center justify-center text-blue-600 shrink-0 mb-4">
-                <Activity className="h-12 w-12" />
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-[2px] flex items-center justify-center text-blue-600 shrink-0 mb-3 sm:mb-4">
+                <Activity className="h-8 w-8 sm:h-10 sm:w-10" />
               </div>
               <p className="text-sm sm:text-base lg:text-[18px] lg:leading-[28px] font-normal text-[#617084]">
                 {t('featuredProduct.feat3')}
@@ -77,8 +77,8 @@ export default async function FeaturedProduct({ locale }: FeaturedProductProps) 
 
             {/* Feature 4 */}
             <div className="flex flex-col items-start">
-              <div className="w-12 h-12 rounded-[2px] flex items-center justify-center text-blue-600 shrink-0 mb-4">
-                <Truck className="h-12 w-12" />
+              <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-[2px] flex items-center justify-center text-blue-600 shrink-0 mb-3 sm:mb-4">
+                <Truck className="h-8 w-8 sm:h-10 sm:w-10" />
               </div>
               <p className="text-sm sm:text-base lg:text-[18px] lg:leading-[28px] font-normal text-[#617084]">
                 {t('featuredProduct.feat4')}
