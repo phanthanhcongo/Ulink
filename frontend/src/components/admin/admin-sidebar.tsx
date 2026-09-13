@@ -43,6 +43,16 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
       exact: true
     },
     {
+      href: '/admin/orders',
+      label: 'Quản lý Order',
+      icon: ShoppingCart
+    },
+    {
+      href: '/admin/inventory',
+      label: 'Quản lý tồn kho',
+      icon: Package
+    },
+    {
       href: '/admin/products',
       label: 'Sản phẩm',
       icon: Package
@@ -62,30 +72,10 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
       label: 'Mã SKUs',
       icon: Layers
     },
-    // {
-    //   href: '/admin/articles',
-    //   label: 'Bài viết CMS',
-    //   icon: FileText
-    // },
     {
       href: '/admin/rfqs',
       label: 'Yêu cầu Báo giá',
       icon: FileSpreadsheet
-    },
-    {
-      href: '/admin/orders',
-      label: 'Quản lý Order',
-      icon: ShoppingCart
-    },
-    {
-      href: '/admin/inventory',
-      label: 'Quản lý tồn kho',
-      icon: Package
-    },
-    {
-      href: '/admin/users',
-      label: 'Tài khoản User',
-      icon: Users
     },
     {
       href: '/admin/hubs',
@@ -96,6 +86,11 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
       href: '/admin/industrial-zones',
       label: 'Khu công nghiệp (KCN)',
       icon: Factory
+    },
+    {
+      href: '/admin/users',
+      label: 'Tài khoản User',
+      icon: Users
     },
     {
       href: '/admin/contact-requests',
