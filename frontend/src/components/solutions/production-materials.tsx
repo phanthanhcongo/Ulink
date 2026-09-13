@@ -49,8 +49,8 @@ export default async function ProductionMaterials({ locale }: ProductionMaterial
         {/* Section Header */}
         <div className="flex flex-col items-start">
           <div className="flex items-center gap-2">
-            <span className="h-4 w-1 bg-blue-600 rounded-[3px]" />
-            <span className="text-xs sm:text-sm lg:text-[16px] font-bold uppercase tracking-wider text-slate-800">
+            <span className="h-4 w-1 bg-[#1769E2] rounded-[3px]" />
+            <span className="text-xs sm:text-sm lg:text-[16px] font-bold uppercase tracking-wider text-[#1769E2]">
               {t('skuSection.eyebrow')}
             </span>
           </div>
