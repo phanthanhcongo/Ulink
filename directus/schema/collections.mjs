@@ -994,5 +994,32 @@ export const COLLECTION_DEFS = [
         schema: { default_value: 'CURRENT_TIMESTAMP' }
       }
     ]
+  },
+  {
+    collection: 'inventory_stock', meta: { icon: 'inventory_2', note: 'Inventory by SKU and hub' }, schema: {}, fields: [
+      ID_FIELD,
+      { field: 'sku', type: 'integer', meta: { interface: 'select-dropdown-m2o', special: ['m2o'] } },
+      { field: 'hub', type: 'integer', meta: { interface: 'select-dropdown-m2o', special: ['m2o'] } },
+      { field: 'quantity_on_hand', type: 'integer', meta: { interface: 'input' }, schema: { default_value: 0 } },
+      { field: 'quantity_reserved', type: 'integer', meta: { interface: 'input' }, schema: { default_value: 0 } },
+      { field: 'reorder_level', type: 'integer', meta: { interface: 'input' }, schema: { default_value: 0 } },
+      { field: 'date_created', type: 'timestamp', meta: { interface: 'datetime', readonly: true } },
+      { field: 'date_updated', type: 'timestamp', meta: { interface: 'datetime', readonly: true } }
+    ]
+  },
+  {
+    collection: 'inventory_movements', meta: { icon: 'swap_vert', note: 'Inventory movement history' }, schema: {}, fields: [
+      ID_FIELD,
+      { field: 'sku', type: 'integer', meta: { interface: 'select-dropdown-m2o', special: ['m2o'] } },
+      { field: 'hub', type: 'integer', meta: { interface: 'select-dropdown-m2o', special: ['m2o'] } },
+      { field: 'movement_type', type: 'string', meta: { interface: 'select-dropdown' } },
+      { field: 'quantity_delta', type: 'integer', meta: { interface: 'input' } },
+      { field: 'quantity_before', type: 'integer', meta: { interface: 'input' } },
+      { field: 'quantity_after', type: 'integer', meta: { interface: 'input' } },
+      { field: 'order_id', type: 'integer', meta: { interface: 'select-dropdown-m2o', special: ['m2o'] } },
+      { field: 'performed_by', type: 'uuid', meta: { interface: 'select-dropdown-m2o', special: ['m2o'] } },
+      { field: 'note', type: 'text', meta: { interface: 'textarea' } },
+      { field: 'date_created', type: 'timestamp', meta: { interface: 'datetime', readonly: true } }
+    ]
   }
 ];
