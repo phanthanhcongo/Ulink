@@ -58,7 +58,7 @@ export default async function SolutionsPage({ params: { locale } }: SolutionsPag
       <section className="relative w-full overflow-hidden py-16 sm:py-20 lg:py-28">
         {/* Background Image */}
         <Image
-          src="/images/solutions/solution.png"
+          src="/images/solutions/maxresdefault.jpg"
           alt="Cleanroom Solutions"
           fill
           priority
