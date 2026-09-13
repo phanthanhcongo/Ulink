@@ -78,6 +78,11 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
       icon: ShoppingCart
     },
     {
+      href: '/admin/inventory',
+      label: 'Quản lý tồn kho',
+      icon: Package
+    },
+    {
       href: '/admin/users',
       label: 'Tài khoản User',
       icon: Users
