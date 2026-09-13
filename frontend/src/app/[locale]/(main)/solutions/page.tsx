@@ -58,18 +58,15 @@ export default async function SolutionsPage({ params: { locale } }: SolutionsPag
       <section className="relative w-full overflow-hidden py-16 sm:py-20 lg:py-28">
         {/* Background Image */}
         <Image
-          src="/images/solutions/maxresdefault.jpg"
+          src="/images/solutions/bcd600a3-5a35-4a63-83b5-6162b4e8f67b.jpg"
           alt="Cleanroom Solutions"
           fill
           priority
           className="object-cover object-center pointer-events-none"
         />
 
-        {/* Dark overlay to ensure text contrast */}
-        <div className="absolute inset-0 bg-black/25 z-0" />
-
         <div className="relative page-container z-10 section-padding">
-         
+
 
           {/* Text and Button block */}
           <div className="max-w-2xl mt-4">
