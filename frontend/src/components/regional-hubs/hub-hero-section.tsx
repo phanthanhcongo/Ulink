@@ -116,30 +116,33 @@ export default function HubHeroSection({ locale }: HubHeroSectionProps) {
       {/* Order Tracking Card (Overlapping bottom edge) */}
       <div className="absolute bottom-0 left-0 right-0 z-20 translate-y-1/2">
         <div className="page-container">
-          <div className="w-full bg-[#F5F8FC] rounded-[3px] p-6 sm:p-8 shadow-2xl border border-slate-100/60">
-            <div className="flex flex-col gap-4 w-[80%] mx-auto">
-              <span className="text-body-regular font-bold text-slate-900 leading-snug text-center md:text-left">
+          <div className="w-full bg-[#F5F8FC] rounded-[3px] p-4 sm:p-8 border border-slate-200">
+            <div className="flex flex-col gap-2.5 sm:gap-4 w-full sm:w-[80%] mx-auto">
+              <span className="text-caption-responsive sm:text-body-regular font-bold text-slate-900 leading-snug text-center sm:text-left">
                 {t.trackOrder}
               </span>
               <form
                 onSubmit={handleSearchTracking}
-                className="group flex flex-col sm:flex-row items-stretch gap-2.5 sm:gap-0 w-full bg-white border border-slate-300 hover:border-slate-400 focus-within:border-brand focus-within:ring-1 focus-within:ring-brand rounded-[3px] transition-colors overflow-hidden"
+                className="group flex flex-row items-center w-full bg-white border border-slate-300 hover:border-slate-400 focus-within:border-brand focus-within:ring-1 focus-within:ring-brand rounded-[3px] transition-colors overflow-hidden h-[44px] sm:h-[48px]"
               >
-                <div className="relative flex-1 h-[48px]">
-                  <Search className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-slate-400 group-hover:text-slate-600 group-focus-within:text-brand pointer-events-none stroke-[2] transition-colors" />
+                <div className="relative flex-1 h-full flex items-center">
+                  <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 sm:h-5 sm:w-5 text-slate-400 group-hover:text-slate-600 group-focus-within:text-brand pointer-events-none stroke-[2] transition-colors" />
                   <input
                     type="text"
                     value={trackingCode}
                     onChange={(e) => setTrackingCode(e.target.value)}
                     placeholder={t.placeholder}
-                    className="w-full h-full bg-transparent pl-11 pr-4 text-body-regular text-slate-800 placeholder-slate-400 focus:outline-none"
+                    className="w-full h-full bg-transparent pl-9 sm:pl-11 pr-3 text-caption-responsive sm:text-body-regular text-slate-800 placeholder-slate-400 focus:outline-none"
                   />
                 </div>
                 <button
                   type="submit"
-                  className="bg-brand hover:bg-brand-strong text-white font-bold text-body-regular px-8 py-3 flex items-center justify-center transition-colors shrink-0 h-[48px]"
+                  className="bg-brand hover:bg-brand-strong text-white font-bold text-caption-responsive sm:text-body-regular px-4 sm:px-8 flex items-center justify-center transition-colors shrink-0 h-full whitespace-nowrap"
                 >
-                  {t.search}
+                  <span className="hidden sm:inline">{t.search}</span>
+                  <span className="sm:hidden flex items-center gap-1">
+                    <span>{locale === 'vi' ? 'Tìm' : locale === 'ja' ? '検索' : 'Search'}</span>
+                  </span>
                 </button>
               </form>
             </div>
