@@ -13,10 +13,10 @@ export default function CustomSolutions({ locale }: CustomSolutionsProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           {/* Left Column: Text Content */}
           <div className="lg:col-span-6 flex flex-col justify-center">
-            <h2 className="text-xl sm:text-3xl lg:text-[38px] lg:leading-[46px] font-bold text-slate-900 tracking-tight">
+            <h2 className="text-xl sm:text-3xl lg:text-[48px] lg:leading-[56px] font-bold text-slate-900 tracking-tight">
               Giải pháp thiết kế riêng cho Doanh nghiệp
             </h2>
-            <p className="mt-6 text-sm sm:text-base lg:text-[18px] lg:leading-[28px] font-normal text-slate-600">
+            <p className="mt-6 text-sm sm:text-base lg:text-[20px] lg:leading-[30px] font-normal text-slate-600">
               Giải pháp đóng gói thông minh dành riêng cho Doanh nghiệp, giúp tối ưu chi phí vật liệu, giảm thiểu hao hụt và tự động hóa quy trình đóng gói theo quy mô đơn hàng. Tích hợp dễ dàng với hệ thống quản lý kho vận hiện có, đảm bảo vận hành liền mạch và tiết kiệm lên đến 30% chi phí logistics.
             </p>
             <div className="mt-8">

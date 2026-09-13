@@ -69,12 +69,12 @@ export default async function ProductionMaterials({ locale }: ProductionMaterial
               key={idx}
               className="group ui-card-hover flex flex-col bg-white rounded-[3px] border border-gray-100 shadow-sm overflow-hidden"
             >
-              <div className="h-[240px] relative overflow-hidden bg-gray-50">
+              <div className="h-[280px] sm:h-[300px] relative overflow-hidden bg-gray-50 flex items-center justify-center">
                 <Image
                   src={card.image}
                   alt={card.title}
                   fill
-                  className="object-cover"
+                  className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
               <div className="p-6 sm:p-8 flex flex-col flex-1">
