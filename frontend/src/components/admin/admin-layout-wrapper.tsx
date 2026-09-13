@@ -23,7 +23,7 @@ export function AdminLayoutWrapper({ children }: { children: React.ReactNode }) 
   };
 
   return (
-    <div className="min-h-screen bg-slate-50 text-slate-800 flex flex-col md:flex-row">
+    <div className="min-h-screen bg-[#F5F8FC] text-[#162233] flex flex-col md:flex-row">
       {/* Navigation panel */}
       <AdminSidebar isCollapsed={isCollapsed} toggleCollapse={toggleCollapse} />
 
@@ -31,7 +31,7 @@ export function AdminLayoutWrapper({ children }: { children: React.ReactNode }) 
       <main
         className={cn(
           "flex-1 min-h-screen flex flex-col pt-16 md:pt-0 transition-all duration-300 ease-in-out",
-          mounted && isCollapsed ? "md:pl-20" : "md:pl-72"
+          mounted && isCollapsed ? "md:pl-20" : "md:pl-[252px]"
         )}
       >
         <div className="flex-1 overflow-y-auto w-full">

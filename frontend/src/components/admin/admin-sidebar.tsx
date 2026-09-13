@@ -135,9 +135,9 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
       {/* Sidebar Panel */}
       <aside
         className={cn(
-          'fixed top-0 bottom-0 left-0 z-50 bg-gradient-to-b from-sky-50 via-white to-sky-50 text-slate-900 flex flex-col justify-between transition-all duration-300 ease-in-out md:translate-x-0 border-r border-sky-100 shadow-[0_20px_60px_rgba(56,189,248,0.08)]',
+          'fixed top-0 bottom-0 left-0 z-50 bg-[#EFF6FF] text-[#162233] flex flex-col justify-between transition-all duration-300 ease-in-out md:translate-x-0 border-r border-[#D8E6F5] shadow-none',
           isOpen ? 'translate-x-0' : '-translate-x-full',
-          isCollapsed ? 'w-20' : 'w-72'
+          isCollapsed ? 'w-20' : 'w-[252px]'
         )}
       >
         {/* Header Branding */}
