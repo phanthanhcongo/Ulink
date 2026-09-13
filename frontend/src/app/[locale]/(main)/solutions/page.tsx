@@ -55,25 +55,29 @@ export default async function SolutionsPage({ params: { locale } }: SolutionsPag
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="relative w-full overflow-hidden py-16 sm:py-20 lg:py-28">
-        {/* Background Image */}
-        <Image
-          src="/images/solutions/bcd600a3-5a35-4a63-83b5-6162b4e8f67b.jpg"
-          alt="Cleanroom Solutions"
-          fill
-          priority
-          className="object-cover object-center pointer-events-none"
+      <section className="relative w-full overflow-hidden py-24 sm:py-32 lg:py-44 min-h-[500px] sm:min-h-[600px] lg:min-h-[680px] flex items-center">
+        {/* Background Video */}
+        <video
+          src="/images/solutions/atlantic-stretch.mp4"
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover object-center pointer-events-none z-0"
         />
 
-        <div className="relative page-container z-10 section-padding">
+        {/* Dark overlay for text readability over video */}
+        <div className="absolute inset-0 bg-black/40 z-0" />
+
+        <div className="relative page-container z-10 section-padding w-full">
 
 
           {/* Text and Button block */}
-          <div className="max-w-2xl mt-4">
-            <h1 className="text-2xl sm:text-3xl lg:text-[42px] lg:leading-[46px] font-bold text-white whitespace-pre-line">
+          <div className="max-w-3xl mt-4">
+            <h1 className="text-2xl sm:text-4xl lg:text-[44px] xl:text-[48px] font-extrabold text-white leading-tight lg:leading-[54px] tracking-tight whitespace-pre-line drop-shadow-xs">
               {t('heroTitle')}
             </h1>
-            <p className="mt-5 text-base sm:text-lg lg:text-[18px] lg:leading-[28px] font-normal text-white max-w-xl">
+            <p className="mt-5 text-base sm:text-lg lg:text-[20px] font-normal leading-relaxed lg:leading-[30px] text-slate-100 max-w-2xl drop-shadow-xs">
               {t('heroSubtitle')}
             </p>
 
@@ -82,12 +86,12 @@ export default async function SolutionsPage({ params: { locale } }: SolutionsPag
               <Link
                 href="/quick-order"
                 className={cn(
-                  buttonVariants({ variant: 'secondary', size: 'md' }),
-                  'bg-white px-6 py-3 text-base sm:text-lg lg:text-[20px] font-bold text-blue-600 shadow-md hover:bg-slate-50'
+                  buttonVariants({ variant: 'secondary', size: 'lg' }),
+                  'bg-white px-7 py-3.5 text-base sm:text-lg lg:text-[18px] font-bold text-blue-600 shadow-lg hover:bg-slate-50 transition-all rounded-[3px] inline-flex items-center gap-2.5'
                 )}
               >
                 {t('heroCta')}
-                <ArrowRight className="h-4 w-4" />
+                <ArrowRight className="h-5 w-5 stroke-[2.5]" />
               </Link>
             </div>
           </div>
