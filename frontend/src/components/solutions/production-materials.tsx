@@ -13,7 +13,7 @@ export default async function ProductionMaterials({ locale }: ProductionMaterial
   const cards = [
     {
       title: t('skuSection.card1Title'),
-      image: '/images/home/section2/product-hvac-tape.webp',
+      image: '/images/solutions/bangkeo.png',
       categorySlug: 'esd-supplies',
       items: [
         { label: t('skuSection.card1Item1'), slug: 'esd-supplies' },
@@ -23,7 +23,7 @@ export default async function ProductionMaterials({ locale }: ProductionMaterial
     },
     {
       title: t('skuSection.card2Title'),
-      image: '/images/about/quality-lab.webp',
+      image: '/images/solutions/clean.png',
       categorySlug: 'cleanroom-consumables',
       items: [
         { label: t('skuSection.card2Item1'), slug: 'cleanroom-gloves' },
@@ -33,7 +33,7 @@ export default async function ProductionMaterials({ locale }: ProductionMaterial
     },
     {
       title: t('skuSection.card3Title'),
-      image: '/images/home/section2/product-custom-pkg.webp',
+      image: '/images/solutions/baobi.png',
       categorySlug: 'industrial-packaging',
       items: [
         { label: t('skuSection.card3Item1'), slug: 'industrial-packaging' },
