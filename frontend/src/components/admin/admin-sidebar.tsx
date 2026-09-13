@@ -231,6 +231,7 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
 
         {/* Footer User Profile & Logout */}
         <div className={cn(
+          "hidden",
           "p-3 border-t border-sky-100 bg-white/70 backdrop-blur-sm transition-all duration-300",
           isCollapsed ? "flex flex-col items-center gap-3" : ""
         )}>
