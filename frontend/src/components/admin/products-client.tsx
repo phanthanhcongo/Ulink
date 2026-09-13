@@ -343,13 +343,13 @@ export function ProductsClient({
           </div>
         ) : (
           <div className="admin-table-wrapper">
-            <table className="admin-table min-w-[1000px]">
+            <table className="admin-table min-w-[900px]">
               <thead>
                 <tr className="admin-table-head">
                   <th className="admin-table-cell admin-table-cell-sticky">Sản phẩm</th>
                   <th className="admin-table-cell min-w-[160px]">Thương hiệu / Danh mục</th>
                   <th className="admin-table-cell min-w-[100px]">Trạng thái</th>
-                  <th className="admin-table-cell min-w-[220px]">Quản lý SKU & Tồn kho</th>
+                  <th className="admin-table-cell min-w-[260px]">SKU & tồn kho</th>
                   <th className="admin-table-cell text-right sticky right-0 bg-slate-50 z-10 shadow-[-2px_0_5px_rgba(0,0,0,0.05)]">Hành động</th>
                 </tr>
               </thead>
@@ -360,8 +360,8 @@ export function ProductsClient({
                   return (
                     <tr key={prod.id} className="admin-table-row group">
                       {/* Product Name & Thumbnail */}
-                      <td className="admin-table-cell admin-table-cell-sticky group-hover:bg-slate-50/80 transition-colors">
-                        <div className="flex items-center gap-2 sm:gap-3 min-w-[250px] sm:min-w-[280px]">
+                      <td className="admin-table-cell admin-table-cell-sticky group-hover:bg-slate-50/80 transition-colors py-3">
+                          <div className="flex items-center gap-2 sm:gap-3 min-w-[230px] sm:min-w-[250px]">
                           <div className="relative h-10 sm:h-12 w-10 sm:w-12 shrink-0 overflow-hidden rounded-[3px] border border-slate-200 bg-slate-50 flex items-center justify-center">
                             {prod.hero ? (
                               <Image
@@ -415,19 +415,19 @@ export function ProductsClient({
                       </td>
 
                       {/* SKUs List & Inline Update */}
-                      <td className="admin-table-cell">
+                      <td className="admin-table-cell py-3">
                         {prod.skus && prod.skus.length > 0 ? (
-                          <div className="space-y-1.5 sm:space-y-2">
+                          <div className="space-y-1.5">
                             {prod.skus.map((sku) => (
-                              <div key={sku.id} className="flex flex-col sm:flex-row items-start sm:items-center gap-1.5 sm:gap-2">
-                                <span className="text-caption-responsive font-mono font-semibold text-slate-600 select-all min-w-[60px]">
+                              <div key={sku.id} className="flex flex-wrap items-center gap-1.5 rounded-[4px] bg-slate-50 px-2 py-1">
+                                <span className="text-[11px] font-mono font-semibold text-slate-700 select-all">
                                   {sku.sku_code}
                                 </span>
                                 <span className="text-caption-responsive text-slate-400 font-medium hidden sm:inline">
                                   {sku.pack_size ? `${sku.unit} (${sku.pack_size})` : sku.unit}
                                 </span>
                                 {(sku as any).price && (
-                                  <span className="text-caption-responsive font-semibold text-slate-700 px-2 py-0.5 rounded-[3px] bg-slate-100">
+                                  <span className="text-[11px] font-semibold text-slate-700 px-1.5 py-0.5 rounded-[3px] bg-white border border-slate-200">
                                     {((sku as any).price || 0).toLocaleString('vi-VN')}đ
                                   </span>
                                 )}
