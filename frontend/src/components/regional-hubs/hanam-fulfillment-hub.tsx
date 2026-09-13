@@ -73,10 +73,10 @@ export default async function HanamFulfillmentHub() {
             <div className="flex justify-start mt-2">
               <Link
                 href="/about"
-                className="w-full sm:w-auto bg-brand text-white text-caption-responsive leading-relaxed font-semibold py-2.5 px-6 rounded-[3px] hover:bg-brand-strong transition-all inline-flex items-center justify-center gap-1 min-h-[44px]"
+                className="w-full sm:w-auto bg-brand text-white text-base leading-relaxed font-semibold py-2.5 px-6 rounded-[3px] hover:bg-brand-strong transition-all inline-flex items-center justify-center gap-1 min-h-[44px]"
               >
                 {t('hanamHub.learnMore')}
-                <span className="ml-1 text-body-regular">→</span>
+                <span className="ml-1 text-base">→</span>
               </Link>
             </div>
           </div>
