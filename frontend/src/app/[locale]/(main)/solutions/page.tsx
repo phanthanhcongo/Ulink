@@ -55,7 +55,7 @@ export default async function SolutionsPage({ params: { locale } }: SolutionsPag
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="relative w-full overflow-hidden py-24 sm:py-32 lg:py-44 min-h-[500px] sm:min-h-[600px] lg:min-h-[680px] flex items-center">
+      <section className="relative w-full overflow-hidden py-32 sm:py-44 lg:py-56 min-h-[600px] sm:min-h-[750px] lg:min-h-[850px] flex items-center">
         {/* Background Video */}
         <video
           src="/images/solutions/atlantic-stretch.mp4"
