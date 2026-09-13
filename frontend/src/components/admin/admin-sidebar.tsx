@@ -147,10 +147,10 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
       >
         {/* Header Branding */}
         <div className={cn(
-          "p-4 border-b border-sky-100 flex items-center bg-white/70 backdrop-blur-sm transition-all duration-300",
+          "relative p-3 border-b border-sky-100 flex items-center bg-white/70 backdrop-blur-sm transition-all duration-300 min-h-[76px]",
           isCollapsed ? "justify-center" : "justify-between"
         )}>
-          <div className="flex items-center gap-2.5">
+          <div className="flex items-center gap-2.5 pr-20">
             <div className="w-8 h-8 rounded-[3px] bg-sky-600 flex items-center justify-center font-black text-white tracking-wider text-body-regular shadow-inner shadow-sky-300/40 shrink-0">
               U
             </div>
@@ -175,29 +175,20 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
             </button>
           </div>
 
-          {!isCollapsed && (
-            <div className="hidden md:flex gap-2">
-              <Link
-                href="/"
-                title="Quay lại trang chủ website"
-                className="flex h-9 w-9 items-center justify-center rounded-[3px] bg-sky-100 text-sky-600 hover:bg-sky-600 hover:text-white transition-colors border border-sky-200"
-              >
-                <Home className="h-4 w-4" />
-              </Link>
-              {toggleCollapse && (
-                <button
-                  onClick={toggleCollapse}
-                  title="Thu gọn Sidebar"
-                  className="flex h-9 w-9 items-center justify-center rounded-[3px] bg-sky-100 text-sky-600 hover:bg-sky-600 hover:text-white transition-colors border border-sky-200"
-                >
-                  <ChevronLeft className="h-4 w-4" />
-                </button>
-              )}
+          {!isCollapsed && <div className="absolute right-3 top-3 hidden items-center gap-1.5 md:flex">
+            <div className="flex h-9 w-9 items-center justify-center rounded-[3px] bg-sky-100 text-sky-600 border border-sky-200" title={user?.email}>
+              <User className="h-4 w-4" />
             </div>
-          )}
+            {toggleCollapse && <button
+              onClick={toggleCollapse}
+              title="Thu gọn Sidebar"
+              className="flex h-9 w-9 items-center justify-center rounded-[3px] bg-sky-100 text-sky-600 hover:bg-sky-600 hover:text-white transition-colors border border-sky-200"
+            >
+              <ChevronLeft className="h-4 w-4" />
+            </button>}
+          </div>}
 
-          {isCollapsed && toggleCollapse && (
-            <div className="hidden md:block">
+          {isCollapsed && toggleCollapse && <div className="absolute right-2 top-3 hidden md:block">
               <button
                 onClick={toggleCollapse}
                 title="Mở rộng Sidebar"
@@ -205,32 +196,11 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
               >
                 <ChevronRight className="h-4 w-4" />
               </button>
-            </div>
-          )}
+            </div>}
         </div>
 
         {/* Navigation Items */}
         <nav className="flex-1 overflow-y-auto px-3 py-3 space-y-1">
-          {!isCollapsed ? (
-            <Link
-              href="/"
-              onClick={() => setIsOpen(false)}
-              className="flex items-center gap-3 px-3 py-2.5 rounded-[3px] text-sm font-bold text-sky-700 bg-sky-100 hover:bg-sky-200 hover:text-sky-900 border border-sky-200 transition-all mb-3"
-            >
-              <Home className="h-4 w-4 text-sky-600" />
-              <span>Về Trang chủ Website</span>
-            </Link>
-          ) : (
-            <Link
-              href="/"
-              title="Về Trang chủ Website"
-              onClick={() => setIsOpen(false)}
-              className="flex items-center justify-center h-10 w-10 mx-auto rounded-[3px] text-sky-700 bg-sky-100 hover:bg-sky-200 hover:text-sky-900 border border-sky-200 transition-all mb-4"
-            >
-              <Home className="h-4 w-4 text-sky-600" />
-            </Link>
-          )}
-
           {menuItems.map((item) => {
             const isActive = item.exact
               ? pathname === item.href
@@ -269,28 +239,18 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
           "p-3 border-t border-sky-100 bg-white/70 backdrop-blur-sm transition-all duration-300",
           isCollapsed ? "flex flex-col items-center gap-3" : ""
         )}>
-          {!isCollapsed ? (
-            <div className="flex items-center gap-2.5 px-1.5 py-1.5 mb-3">
-              <div className="w-9 h-9 rounded-[3px] bg-sky-100 flex items-center justify-center text-sky-600 border border-sky-200 shrink-0">
-                <User className="h-4.5 w-4.5" />
-              </div>
-              <div className="flex flex-col min-w-0">
-                <span className="text-caption-responsive font-bold text-slate-900 truncate">
-                  {user?.first_name ? `${user.first_name} ${user.last_name || ''}` : user?.email}
-                </span>
-                <span className="text-caption-responsive text-slate-500 font-semibold truncate capitalize mt-0.5">
-                  {user?.role ? 'Administrator' : 'Sales Representative'}
-                </span>
-              </div>
-            </div>
-          ) : (
-            <div
-              className="w-9 h-9 rounded-[3px] bg-sky-100 flex items-center justify-center text-sky-600 border border-sky-200 shrink-0 cursor-default"
-              title={user?.first_name ? `${user.first_name} ${user.last_name || ''} (${user?.role ? 'Administrator' : 'Sales Representative'})` : user?.email}
-            >
-              <User className="h-4.5 w-4.5" />
-            </div>
-          )}
+          <Link
+            href="/"
+            title="Quay lại trang chủ website"
+            onClick={() => setIsOpen(false)}
+            className={cn(
+              "flex items-center justify-center border border-sky-200 bg-sky-100 text-sky-700 hover:bg-sky-200 transition-colors",
+              isCollapsed ? "h-9 w-9 rounded-[3px] mx-auto mb-2" : "w-full gap-2 rounded-[3px] px-3 py-2 text-xs font-bold mb-2"
+            )}
+          >
+            <Home className="h-4 w-4" />
+            {!isCollapsed && <span>Về Trang chủ Website</span>}
+          </Link>
 
           <button
             onClick={handleLogout}
