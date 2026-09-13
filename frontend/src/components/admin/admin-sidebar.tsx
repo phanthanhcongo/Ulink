@@ -22,6 +22,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Factory
+  ,ShoppingCart
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -71,6 +72,11 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
       href: '/admin/rfqs',
       label: 'Yêu cầu Báo giá',
       icon: FileSpreadsheet
+    },
+    {
+      href: '/admin/orders',
+      label: 'Quản lý Order',
+      icon: ShoppingCart
     },
     {
       href: '/admin/sample-requests',
