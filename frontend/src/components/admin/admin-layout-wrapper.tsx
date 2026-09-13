@@ -10,6 +10,7 @@ import { useAuth } from '@/lib/auth-context';
 export function AdminLayoutWrapper({ children }: { children: React.ReactNode }) {
   const [isCollapsed, setIsCollapsed] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   const { user, logout } = useAuth();
 
   useEffect(() => {
@@ -39,13 +40,18 @@ export function AdminLayoutWrapper({ children }: { children: React.ReactNode }) 
         )}
       >
         <div className="flex-1 overflow-y-auto w-full">
-          <header className="sticky top-0 z-20 flex h-14 items-center justify-end gap-2 border-b border-[#E4E9F0] bg-white/90 px-4 backdrop-blur-md md:px-6">
-            <div className="mr-2 hidden items-center gap-2 text-right sm:flex">
-              <div className="flex h-8 w-8 items-center justify-center rounded-[3px] border border-sky-200 bg-sky-100 text-sky-600"><User className="h-4 w-4" /></div>
-              <div className="leading-tight"><p className="max-w-[150px] truncate text-xs font-bold text-slate-800">{user?.first_name ? `${user.first_name} ${user.last_name || ''}` : user?.email || 'Admin User'}</p><p className="text-[10px] text-slate-500">{user?.role ? 'Administrator' : 'Sales Representative'}</p></div>
+          <header className="sticky top-0 z-20 flex h-14 items-center justify-end border-b border-[#E4E9F0] bg-white/90 px-4 backdrop-blur-md md:px-6">
+            <div className="relative">
+              <button onClick={() => setIsUserMenuOpen(value => !value)} title="Mở menu tài khoản" aria-expanded={isUserMenuOpen} className="flex h-9 items-center gap-2 rounded-[3px] border border-sky-200 bg-sky-50 px-2 text-sky-700 transition-colors hover:bg-sky-100">
+                <span className="flex h-7 w-7 items-center justify-center rounded-[3px] bg-sky-100"><User className="h-4 w-4" /></span>
+                <span className="hidden max-w-[150px] truncate text-xs font-bold text-slate-800 sm:inline">{user?.first_name ? `${user.first_name} ${user.last_name || ''}` : user?.email || 'Admin User'}</span>
+              </button>
+              {isUserMenuOpen && <div className="absolute right-0 top-11 w-56 rounded-[6px] border border-[#E4E9F0] bg-white p-2 shadow-lg">
+                <div className="border-b border-slate-100 px-3 py-2"><p className="truncate text-xs font-bold text-slate-800">{user?.first_name ? `${user.first_name} ${user.last_name || ''}` : user?.email || 'Admin User'}</p><p className="text-[10px] text-slate-500">{user?.role ? 'Administrator' : 'Sales Representative'}</p></div>
+                <Link href="/" onClick={() => setIsUserMenuOpen(false)} className="mt-1 flex items-center gap-2 rounded-[3px] px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-sky-50"><Home className="h-3.5 w-3.5 text-sky-600" />Về website</Link>
+                <button onClick={() => { setIsUserMenuOpen(false); void logout(); }} className="flex w-full items-center gap-2 rounded-[3px] px-3 py-2 text-xs font-semibold text-slate-700 hover:bg-red-50 hover:text-red-600"><LogOut className="h-3.5 w-3.5" />Đăng xuất</button>
+              </div>}
             </div>
-            <Link href="/" title="Về trang chủ website" className="flex h-8 items-center gap-1.5 rounded-[3px] border border-sky-200 bg-sky-50 px-2.5 text-xs font-semibold text-sky-700 transition-colors hover:bg-sky-100"><Home className="h-3.5 w-3.5" /><span className="hidden sm:inline">Về website</span></Link>
-            <button onClick={() => logout()} title="Đăng xuất" className="flex h-8 items-center gap-1.5 rounded-[3px] border border-sky-200 bg-sky-50 px-2.5 text-xs font-semibold text-sky-700 transition-colors hover:bg-red-600 hover:text-white"><LogOut className="h-3.5 w-3.5" /><span className="hidden sm:inline">Đăng xuất</span></button>
           </header>
           {/* Add responsive container for content */}
           <div className="w-full">
