@@ -185,6 +185,11 @@ export function buildPermissionDefs() {
         'user'
       ]
     },
+    ...['inventory_stock', 'inventory_movements'].flatMap((collection) => [
+      { policy: FRONTEND_SERVICE_POLICY_ID, collection, action: 'read', permissions: {}, fields: ['*'] },
+      { policy: FRONTEND_SERVICE_POLICY_ID, collection, action: 'create', permissions: {}, fields: ['*'] },
+      { policy: FRONTEND_SERVICE_POLICY_ID, collection, action: 'update', permissions: {}, fields: ['*'] }
+    ]),
     {
       policy: FRONTEND_SERVICE_POLICY_ID,
       collection: 'sample_requests',
