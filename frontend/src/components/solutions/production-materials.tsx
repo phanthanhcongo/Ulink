@@ -57,7 +57,7 @@ export default async function ProductionMaterials({ locale }: ProductionMaterial
           <h2 className="mt-4 text-xl sm:text-3xl lg:text-[38px] lg:leading-[46px] font-bold tracking-tight text-slate-900">
             {t('skuSection.title')}
           </h2>
-          <p className="mt-4 text-sm sm:text-base lg:text-[18px] lg:leading-[28px] font-normal text-slate-500 max-w-3xl">
+          <p className="mt-4 text-sm sm:text-base lg:text-[18px] lg:leading-[28px] font-normal text-slate-500 max-w-none lg:whitespace-nowrap">
             {t('skuSection.subtitle')}
           </p>
         </div>
