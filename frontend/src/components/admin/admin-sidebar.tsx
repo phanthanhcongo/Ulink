@@ -157,7 +157,7 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
             </button>
           </div>
 
-          {!isCollapsed && <div className="absolute right-2 top-1/2 hidden -translate-y-1/2 md:block">
+          {!isCollapsed && <div className="absolute right-1 top-1/2 hidden -translate-y-1/2 md:block">
             {toggleCollapse && <button
               onClick={toggleCollapse}
               title="Thu gọn Sidebar"
@@ -167,7 +167,7 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
             </button>}
           </div>}
 
-          {isCollapsed && toggleCollapse && <div className="absolute right-2 top-3 hidden md:block">
+          {isCollapsed && toggleCollapse && <div className="absolute right-1 top-3 hidden md:block">
               <button
                 onClick={toggleCollapse}
                 title="Mở rộng Sidebar"
