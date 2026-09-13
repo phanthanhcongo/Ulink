@@ -170,16 +170,16 @@ export default function ElectronicsClient({
           <div className="page-container">
             <div className="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 lg:gap-[2px]">
               {/* Feature 1 */}
-              <div className="bg-white p-3.5 sm:p-4 lg:p-6 flex flex-col justify-center space-y-2 sm:space-y-2.5 min-h-[120px] sm:min-h-[136px] rounded-md border border-[#DDE1E6] shadow-2xs">
+              <div className="group bg-white p-3.5 sm:p-4 lg:p-6 flex flex-col justify-center space-y-2 sm:space-y-2.5 min-h-[120px] sm:min-h-[136px] rounded-md border border-[#DDE1E6] shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_8px_25px_-5px_rgba(23,105,226,0.2)] hover:border-[#1769E2] cursor-pointer">
                 <Image
                   src="/images/industries/electronics/feature-cleanroom.svg"
                   alt="Vật tư phòng sạch"
                   width={32}
                   height={32}
-                  className="w-6 h-6 sm:w-8 sm:h-8 object-contain shrink-0"
+                  className="w-6 h-6 sm:w-8 sm:h-8 object-contain shrink-0 transition-transform duration-300 group-hover:scale-110"
                 />
                 <div>
-                  <h4 className="text-[13px] sm:text-[15px] font-bold text-[#212529] mb-1">
+                  <h4 className="text-[13px] sm:text-[15px] font-bold text-[#212529] mb-1 group-hover:text-[#1769E2] transition-colors">
                     {isVi ? 'Vật tư phòng sạch' : isJa ? 'クリーンルーム資材' : 'Cleanroom Supplies'}
                   </h4>
                   <p className="text-[11px] sm:text-[14px] text-[#495057] leading-[16px] sm:leading-[20px]">
@@ -189,16 +189,16 @@ export default function ElectronicsClient({
               </div>
 
               {/* Feature 2 */}
-              <div className="bg-white p-3.5 sm:p-4 lg:p-6 flex flex-col justify-center space-y-2 sm:space-y-2.5 min-h-[120px] sm:min-h-[136px] rounded-md border border-[#DDE1E6] shadow-2xs">
+              <div className="group bg-white p-3.5 sm:p-4 lg:p-6 flex flex-col justify-center space-y-2 sm:space-y-2.5 min-h-[120px] sm:min-h-[136px] rounded-md border border-[#DDE1E6] shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_8px_25px_-5px_rgba(23,105,226,0.2)] hover:border-[#1769E2] cursor-pointer">
                 <Image
                   src="/images/industries/electronics/feature-esd.svg"
                   alt="Kiểm soát ESD"
                   width={32}
                   height={32}
-                  className="w-6 h-6 sm:w-8 sm:h-8 object-contain shrink-0"
+                  className="w-6 h-6 sm:w-8 sm:h-8 object-contain shrink-0 transition-transform duration-300 group-hover:scale-110"
                 />
                 <div>
-                  <h4 className="text-[13px] sm:text-[15px] font-bold text-[#212529] mb-1">
+                  <h4 className="text-[13px] sm:text-[15px] font-bold text-[#212529] mb-1 group-hover:text-[#1769E2] transition-colors">
                     {isVi ? 'Kiểm soát ESD' : isJa ? 'ESD制御' : 'ESD Control'}
                   </h4>
                   <p className="text-[11px] sm:text-[14px] text-[#495057] leading-[16px] sm:leading-[20px]">
@@ -208,16 +208,16 @@ export default function ElectronicsClient({
               </div>
 
               {/* Feature 3 */}
-              <div className="bg-white p-3.5 sm:p-4 lg:p-6 flex flex-col justify-center space-y-2 sm:space-y-2.5 min-h-[120px] sm:min-h-[136px] rounded-md border border-[#DDE1E6] shadow-2xs">
+              <div className="group bg-white p-3.5 sm:p-4 lg:p-6 flex flex-col justify-center space-y-2 sm:space-y-2.5 min-h-[120px] sm:min-h-[136px] rounded-md border border-[#DDE1E6] shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_8px_25px_-5px_rgba(23,105,226,0.2)] hover:border-[#1769E2] cursor-pointer">
                 <Image
                   src="/images/industries/electronics/feature-precision.svg"
                   alt="Độ chính xác cao"
                   width={32}
                   height={32}
-                  className="w-6 h-6 sm:w-8 sm:h-8 object-contain shrink-0"
+                  className="w-6 h-6 sm:w-8 sm:h-8 object-contain shrink-0 transition-transform duration-300 group-hover:scale-110"
                 />
                 <div>
-                  <h4 className="text-[13px] sm:text-[15px] font-bold text-[#212529] mb-1">
+                  <h4 className="text-[13px] sm:text-[15px] font-bold text-[#212529] mb-1 group-hover:text-[#1769E2] transition-colors">
                     {isVi ? 'Độ chính xác cao' : isJa ? '高精度' : 'High Precision'}
                   </h4>
                   <p className="text-[11px] sm:text-[14px] text-[#495057] leading-[16px] sm:leading-[20px]">
@@ -227,16 +227,16 @@ export default function ElectronicsClient({
               </div>
 
               {/* Feature 4 */}
-              <div className="bg-white p-3.5 sm:p-4 lg:p-6 flex flex-col justify-center space-y-2 sm:space-y-2.5 min-h-[120px] sm:min-h-[136px] rounded-md border border-[#DDE1E6] shadow-2xs">
+              <div className="group bg-white p-3.5 sm:p-4 lg:p-6 flex flex-col justify-center space-y-2 sm:space-y-2.5 min-h-[120px] sm:min-h-[136px] rounded-md border border-[#DDE1E6] shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_8px_25px_-5px_rgba(23,105,226,0.2)] hover:border-[#1769E2] cursor-pointer">
                 <Image
                   src="/images/industries/electronics/feature-cert.svg"
                   alt="Chứng nhận quốc tế"
                   width={32}
                   height={32}
-                  className="w-6 h-6 sm:w-8 sm:h-8 object-contain shrink-0"
+                  className="w-6 h-6 sm:w-8 sm:h-8 object-contain shrink-0 transition-transform duration-300 group-hover:scale-110"
                 />
                 <div>
-                  <h4 className="text-[13px] sm:text-[15px] font-bold text-[#162233] mb-1">
+                  <h4 className="text-[13px] sm:text-[15px] font-bold text-[#162233] mb-1 group-hover:text-[#1769E2] transition-colors">
                     {isVi ? 'Chứng nhận quốc tế' : isJa ? '国際認証' : 'International Certifications'}
                   </h4>
                   <p className="text-[11px] sm:text-[14px] text-[#495057] leading-[16px] sm:leading-[20px]">
@@ -300,14 +300,14 @@ export default function ElectronicsClient({
           {/* 6 Product Cards Grid */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
             {/* Card 1: Phòng sạch */}
-            <div className="bg-white rounded-lg border border-[#DDE1E6] overflow-hidden shadow-2xs flex flex-col justify-between hover:shadow-md transition-shadow">
+            <div className="group bg-white rounded-lg border border-[#DDE1E6] overflow-hidden shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_8px_25px_-5px_rgba(23,105,226,0.2)] hover:border-[#1769E2] flex flex-col justify-between cursor-pointer">
               <div>
                 <div className="relative w-full h-[200px]">
                   <Image
                     src="/images/industries/electronics/cleanroom.png"
                     alt="Phòng sạch"
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
                 <div className="p-6 space-y-4">
@@ -317,9 +317,9 @@ export default function ElectronicsClient({
                       alt="Phòng sạch icon"
                       width={24}
                       height={24}
-                      className="w-6 h-6 object-contain"
+                      className="w-6 h-6 object-contain transition-transform duration-300 group-hover:scale-110"
                     />
-                    <h3 className="text-xl font-semibold text-[#0B153D]">
+                    <h3 className="text-xl font-semibold text-[#0B153D] group-hover:text-[#1769E2] transition-colors">
                       {isVi ? 'Phòng sạch' : isJa ? 'クリーンルーム' : 'Cleanroom'}
                     </h3>
                   </div>
@@ -359,14 +359,14 @@ export default function ElectronicsClient({
             </div>
 
             {/* Card 2: Chống tĩnh điện ESD */}
-            <div className="bg-white rounded-lg border border-[#DDE1E6] overflow-hidden shadow-2xs flex flex-col justify-between hover:shadow-md transition-shadow">
+            <div className="group bg-white rounded-lg border border-[#DDE1E6] overflow-hidden shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_8px_25px_-5px_rgba(23,105,226,0.2)] hover:border-[#1769E2] flex flex-col justify-between cursor-pointer">
               <div>
                 <div className="relative w-full h-[200px]">
                   <Image
                     src="/images/industries/electronics/esd-protection.png"
                     alt="Chống tĩnh điện ESD"
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
                 <div className="p-6 space-y-4">
@@ -376,9 +376,9 @@ export default function ElectronicsClient({
                       alt="Chống tĩnh điện ESD icon"
                       width={24}
                       height={24}
-                      className="w-6 h-6 object-contain"
+                      className="w-6 h-6 object-contain transition-transform duration-300 group-hover:scale-110"
                     />
-                    <h3 className="text-xl font-semibold text-[#0B153D]">
+                    <h3 className="text-xl font-semibold text-[#0B153D] group-hover:text-[#1769E2] transition-colors">
                       {isVi ? 'Chống tĩnh điện ESD' : isJa ? '静電気防止 ESD' : 'ESD Anti-Static'}
                     </h3>
                   </div>
@@ -418,14 +418,14 @@ export default function ElectronicsClient({
             </div>
 
             {/* Card 3: Bao bì bán dẫn */}
-            <div className="bg-white rounded-lg border border-[#DDE1E6] overflow-hidden shadow-2xs flex flex-col justify-between hover:shadow-md transition-shadow">
+            <div className="group bg-white rounded-lg border border-[#DDE1E6] overflow-hidden shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_8px_25px_-5px_rgba(23,105,226,0.2)] hover:border-[#1769E2] flex flex-col justify-between cursor-pointer">
               <div>
                 <div className="relative w-full h-[200px]">
                   <Image
                     src="/images/industries/electronics/semiconductor-packaging.png"
                     alt="Bao bì bán dẫn"
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
                 <div className="p-6 space-y-4">
@@ -435,9 +435,9 @@ export default function ElectronicsClient({
                       alt="Bao bì bán dẫn icon"
                       width={24}
                       height={24}
-                      className="w-6 h-6 object-contain"
+                      className="w-6 h-6 object-contain transition-transform duration-300 group-hover:scale-110"
                     />
-                    <h3 className="text-xl font-semibold text-[#0B153D]">
+                    <h3 className="text-xl font-semibold text-[#0B153D] group-hover:text-[#1769E2] transition-colors">
                       {isVi ? 'Bao bì bán dẫn' : isJa ? '半導体包装' : 'Semiconductor Packaging'}
                     </h3>
                   </div>
@@ -477,14 +477,14 @@ export default function ElectronicsClient({
             </div>
 
             {/* Card 4: Hóa chất & Vật liệu */}
-            <div className="bg-white rounded-lg border border-[#DDE1E6] overflow-hidden shadow-2xs flex flex-col justify-between hover:shadow-md transition-shadow">
+            <div className="group bg-white rounded-lg border border-[#DDE1E6] overflow-hidden shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_8px_25px_-5px_rgba(23,105,226,0.2)] hover:border-[#1769E2] flex flex-col justify-between cursor-pointer">
               <div>
                 <div className="relative w-full h-[200px]">
                   <Image
                     src="/images/industries/electronics/chemicals-materials.png"
                     alt="Hóa chất & Vật liệu"
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
                 <div className="p-6 space-y-4">
@@ -494,9 +494,9 @@ export default function ElectronicsClient({
                       alt="Hóa chất & Vật liệu icon"
                       width={24}
                       height={24}
-                      className="w-6 h-6 object-contain"
+                      className="w-6 h-6 object-contain transition-transform duration-300 group-hover:scale-110"
                     />
-                    <h3 className="text-xl font-semibold text-[#0B153D]">
+                    <h3 className="text-xl font-semibold text-[#0B153D] group-hover:text-[#1769E2] transition-colors">
                       {isVi ? 'Hóa chất & Vật liệu' : isJa ? '化学薬品・材料' : 'Chemicals & Materials'}
                     </h3>
                   </div>
@@ -536,14 +536,14 @@ export default function ElectronicsClient({
             </div>
 
             {/* Card 5: Kiểm soát nhiễm bẩn */}
-            <div className="bg-white rounded-lg border border-[#DDE1E6] overflow-hidden shadow-2xs flex flex-col justify-between hover:shadow-md transition-shadow">
+            <div className="group bg-white rounded-lg border border-[#DDE1E6] overflow-hidden shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_8px_25px_-5px_rgba(23,105,226,0.2)] hover:border-[#1769E2] flex flex-col justify-between cursor-pointer">
               <div>
                 <div className="relative w-full h-[200px]">
                   <Image
                     src="/images/industries/electronics/contamination-control.png"
                     alt="Kiểm soát nhiễm bẩn"
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
                 <div className="p-6 space-y-4">
@@ -553,9 +553,9 @@ export default function ElectronicsClient({
                       alt="Kiểm soát nhiễm bẩn icon"
                       width={24}
                       height={24}
-                      className="w-6 h-6 object-contain"
+                      className="w-6 h-6 object-contain transition-transform duration-300 group-hover:scale-110"
                     />
-                    <h3 className="text-xl font-semibold text-[#0B153D]">
+                    <h3 className="text-xl font-semibold text-[#0B153D] group-hover:text-[#1769E2] transition-colors">
                       {isVi ? 'Kiểm soát nhiễm bẩn' : isJa ? '汚染管理' : 'Contamination Control'}
                     </h3>
                   </div>
@@ -595,14 +595,14 @@ export default function ElectronicsClient({
             </div>
 
             {/* Card 6: Đóng gói & Vận chuyển */}
-            <div className="bg-white rounded-lg border border-[#DDE1E6] overflow-hidden shadow-2xs flex flex-col justify-between hover:shadow-md transition-shadow">
+            <div className="group bg-white rounded-lg border border-[#DDE1E6] overflow-hidden shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_8px_25px_-5px_rgba(23,105,226,0.2)] hover:border-[#1769E2] flex flex-col justify-between cursor-pointer">
               <div>
                 <div className="relative w-full h-[200px]">
                   <Image
                     src="/images/industries/electronics/packaging-shipping.png"
                     alt="Đóng gói & Vận chuyển"
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
                 <div className="p-6 space-y-4">
@@ -612,9 +612,9 @@ export default function ElectronicsClient({
                       alt="Đóng gói & Vận chuyển icon"
                       width={24}
                       height={24}
-                      className="w-6 h-6 object-contain"
+                      className="w-6 h-6 object-contain transition-transform duration-300 group-hover:scale-110"
                     />
-                    <h3 className="text-xl font-semibold text-[#0B153D]">
+                    <h3 className="text-xl font-semibold text-[#0B153D] group-hover:text-[#1769E2] transition-colors">
                       {isVi ? 'Đóng gói & Vận chuyển' : isJa ? '梱包と輸送' : 'Packaging & Shipping'}
                     </h3>
                   </div>
@@ -683,14 +683,14 @@ export default function ElectronicsClient({
           {/* 4 Application Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Card 1 */}
-            <div className="bg-white rounded-lg border border-[#DDE1E6] overflow-hidden flex flex-col justify-between shadow-2xs hover:shadow-md transition-shadow">
+            <div className="group bg-white rounded-lg border border-[#DDE1E6] overflow-hidden shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_8px_25px_-5px_rgba(23,105,226,0.2)] hover:border-[#1769E2] flex flex-col justify-between cursor-pointer">
               <div>
                 <div className="relative w-full h-[200px]">
                   <Image
                     src="/images/industries/electronics/app-wafer-fab.png"
                     alt="Sản xuất chip bán dẫn (Wafer Fab)"
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
                 <div className="p-5 space-y-3">
@@ -698,7 +698,7 @@ export default function ElectronicsClient({
                     <span className="inline-block px-2.5 py-1 bg-[#DBEAFE] text-[#1769E2] text-[12px] font-semibold rounded mb-2">
                       {isVi ? 'Bán dẫn' : isJa ? '半導体' : 'Semiconductors'}
                     </span>
-                    <h3 className="text-lg font-semibold text-[#0B153D] leading-snug">
+                    <h3 className="text-lg font-semibold text-[#0B153D] leading-snug group-hover:text-[#1769E2] transition-colors">
                       {isVi ? 'Sản xuất chip bán dẫn (Wafer Fab)' : isJa ? '半導体チップ製造 (Wafer Fab)' : 'Semiconductor Chip Fab (Wafer Fab)'}
                     </h3>
                   </div>
@@ -722,14 +722,14 @@ export default function ElectronicsClient({
             </div>
 
             {/* Card 2 */}
-            <div className="bg-white rounded-lg border border-[#DDE1E6] overflow-hidden flex flex-col justify-between shadow-2xs hover:shadow-md transition-shadow">
+            <div className="group bg-white rounded-lg border border-[#DDE1E6] overflow-hidden shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_8px_25px_-5px_rgba(23,105,226,0.2)] hover:border-[#1769E2] flex flex-col justify-between cursor-pointer">
               <div>
                 <div className="relative w-full h-[200px]">
                   <Image
                     src="/images/industries/electronics/app-smt-assembly.png"
                     alt="Lắp ráp & kiểm tra PCB (SMT Assembly)"
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
                 <div className="p-5 space-y-3">
@@ -737,7 +737,7 @@ export default function ElectronicsClient({
                     <span className="inline-block px-2.5 py-1 bg-[#DBEAFE] text-[#1769E2] text-[12px] font-semibold rounded mb-2">
                       PCB/SMT
                     </span>
-                    <h3 className="text-lg font-semibold text-[#0B153D] leading-snug">
+                    <h3 className="text-lg font-semibold text-[#0B153D] leading-snug group-hover:text-[#1769E2] transition-colors">
                       {isVi ? 'Lắp ráp & kiểm tra PCB (SMT Assembly)' : isJa ? 'PCB実装＆検査 (SMT実装)' : 'PCB Assembly & Inspection (SMT)'}
                     </h3>
                   </div>
@@ -761,14 +761,14 @@ export default function ElectronicsClient({
             </div>
 
             {/* Card 3 */}
-            <div className="bg-white rounded-lg border border-[#DDE1E6] overflow-hidden flex flex-col justify-between shadow-2xs hover:shadow-md transition-shadow">
+            <div className="group bg-white rounded-lg border border-[#DDE1E6] overflow-hidden shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_8px_25px_-5px_rgba(23,105,226,0.2)] hover:border-[#1769E2] flex flex-col justify-between cursor-pointer">
               <div>
                 <div className="relative w-full h-[200px]">
                   <Image
                     src="/images/industries/electronics/app-ic-packaging.png"
                     alt="Đóng gói linh kiện (IC Packaging)"
                     fill
-                    className="object-cover"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
                   />
                 </div>
                 <div className="p-5 space-y-3">
@@ -776,7 +776,7 @@ export default function ElectronicsClient({
                     <span className="inline-block px-2.5 py-1 bg-[#DBEAFE] text-[#1769E2] text-[12px] font-semibold rounded mb-2">
                       {isVi ? 'Đóng gói IC' : isJa ? 'ICパッケージング' : 'IC Packaging'}
                     </span>
-                    <h3 className="text-lg font-semibold text-[#0B153D] leading-snug">
+                    <h3 className="text-lg font-semibold text-[#0B153D] leading-snug group-hover:text-[#1769E2] transition-colors">
                       {isVi ? 'Đóng gói linh kiện (IC Packaging)' : isJa ? 'ICパッケージング' : 'IC Component Packaging'}
                     </h3>
                   </div>

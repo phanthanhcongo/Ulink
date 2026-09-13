@@ -1,24 +1,23 @@
 export function ApplyHeader() {
   return (
-    <section className="py-4 sm:py-6 lg:py-8 border-b border-slate-100">
-      <div className="flex items-center gap-2 sm:gap-3 mb-2">
-        <div className="flex h-8 w-8 sm:h-10 sm:w-10 shrink-0 items-center justify-center rounded-[3px] bg-blue-600 text-white font-bold text-xs sm:text-body-regular shadow-sm">
+    <section className="py-4 sm:py-6 lg:py-8 bg-[#F5F8FC] px-4 sm:px-6 lg:px-8 rounded-[2px] border border-slate-200/80 mb-6 sm:mb-8">
+      <div className="flex items-center gap-3 mb-2">
+        <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gradient-to-tr from-[#1769E2] to-[#0089FF] text-white font-bold text-base shadow-sm border border-[#BCE0FF]">
           UL
         </div>
-        <span className="inline-flex items-center rounded-full bg-blue-50 px-2.5 sm:px-3.5 py-0.5 sm:py-1 text-xs sm:text-caption-responsive font-semibold text-blue-700 ring-1 ring-inset ring-blue-700/10">
+        <span className="text-[#1257C0] font-bold text-xs lg:text-[13px] uppercase tracking-widest">
           NỘP ĐƠN ỨNG TUYỂN
         </span>
       </div>
 
-      <h1 className="text-xl sm:text-2xl lg:text-hero-title font-bold text-slate-900 tracking-tight mt-2 sm:mt-1">
+      <h1 className="text-[#162233] font-bold text-2xl sm:text-3xl lg:text-[28px] leading-snug tracking-tight mt-2">
         Chuyên viên Phát triển Kinh doanh B2B — Khu Công nghiệp
       </h1>
 
-      <p className="mt-2 text-sm sm:text-body-regular text-slate-600 leading-relaxed max-w-3xl">
-        Cảm ơn bạn đã quan tâm đến cơ hội nghề nghiệp tại ULink Industries. Vui lòng hoàn thành biểu
-        mẫu thông tin dưới đây, Đội ngũ Tuyển dụng sẽ phản hồi hồ sơ của bạn trong vòng 3 ngày làm
-        việc.
+      <p className="mt-2 text-[#617084] font-normal text-sm sm:text-base lg:text-[15px] leading-[22px] max-w-4xl">
+        Cảm ơn bạn đã quan tâm đến cơ hội nghề nghiệp tại ULink Industries. Vui lòng hoàn thành biểu mẫu thông tin dưới đây. Đội ngũ Tuyển dụng sẽ phản hồi hồ sơ của bạn trong vòng 3 ngày làm việc.
       </p>
     </section>
   );
 }
+

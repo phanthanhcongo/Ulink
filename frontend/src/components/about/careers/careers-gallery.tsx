@@ -18,13 +18,13 @@ export function CareersGallery() {
     <section className="py-4 sm:py-6 lg:py-8">
       {/* Section Header */}
       <div className="flex flex-col items-center text-center mb-6 sm:mb-8 lg:mb-10">
-        <span className="text-body-regular font-bold uppercase tracking-wider text-blue-600">
+        <span className="text-[#1769E2] font-semibold text-xl lg:text-[28px] leading-tight lg:leading-[36px] uppercase tracking-wider">
           Không gian làm việc
         </span>
-        <h2 className="text-section-title sm:text-hero-title lg:text-hero-title font-bold tracking-tight text-slate-900 mt-1">
+        <h2 className="text-[#263A4D] font-bold text-2xl sm:text-3xl lg:text-[38px] leading-tight lg:leading-[46px] tracking-tight mt-1">
           Môi trường làm việc
         </h2>
-        <p className="mt-2 text-body-regular text-slate-500 max-w-xl">
+        <p className="mt-2 text-[#7F878F] font-normal text-base lg:text-[16px] leading-[24px] max-w-3xl">
           Môi trường được thiết kế để truyền cảm hứng sáng tạo và kết nối con người
         </p>
       </div>
@@ -34,16 +34,16 @@ export function CareersGallery() {
         {row1Photos.map((p, idx) => (
           <div
             key={idx}
-            className="relative aspect-square w-full overflow-hidden rounded-[3px] shadow-xs border border-slate-100 group"
+            className="group relative aspect-square w-full overflow-hidden rounded-[2px] shadow-xs border border-slate-100 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:ring-1 hover:ring-[#1769E2]/30 cursor-pointer"
           >
             <Image
               src={p.src}
               alt={p.alt}
               fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-108"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 flex items-end p-4">
-              <span className="text-caption-responsive font-semibold text-white">{p.alt}</span>
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-slate-900/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 flex items-end p-4">
+              <span className="text-caption-responsive font-semibold text-white transition-transform duration-300 translate-y-2 group-hover:translate-y-0">{p.alt}</span>
             </div>
           </div>
         ))}
@@ -54,16 +54,16 @@ export function CareersGallery() {
         {row2Photos.map((p, idx) => (
           <div
             key={idx}
-            className="relative aspect-[3/4] w-full overflow-hidden rounded-[3px] shadow-xs border border-slate-100 group"
+            className="group relative aspect-[3/4] w-full overflow-hidden rounded-[2px] shadow-xs border border-slate-100 transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl hover:ring-1 hover:ring-[#1769E2]/30 cursor-pointer"
           >
             <Image
               src={p.src}
               alt={p.alt}
               fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
+              className="object-cover transition-transform duration-700 ease-out group-hover:scale-108"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 via-transparent to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 flex items-end p-4">
-              <span className="text-caption-responsive font-semibold text-white">{p.alt}</span>
+            <div className="absolute inset-0 bg-gradient-to-t from-slate-900/70 via-slate-900/10 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 flex items-end p-4">
+              <span className="text-caption-responsive font-semibold text-white transition-transform duration-300 translate-y-2 group-hover:translate-y-0">{p.alt}</span>
             </div>
           </div>
         ))}

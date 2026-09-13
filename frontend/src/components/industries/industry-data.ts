@@ -621,83 +621,208 @@ export function getIndustryDetails(slug: string, locale: string) {
     return {
       slug: 'logistics',
       name: isVi ? 'Kho vận & Logistics' : isJa ? '倉庫＆物流' : 'Warehouse & Logistics',
-      title: isVi ? 'Giải pháp cho ngành Kho vận & Logistics' : isJa ? '倉庫＆物流向けソリューション' : 'Solutions for Warehouse & Logistics',
+      title: isVi ? 'Giải pháp Vật tư & Bao bì Đóng gói Kho vận Chuyên nghiệp' : isJa ? 'プロフェッショナルな倉庫・物流梱包資材ソリューション' : 'Professional Logistics Packaging & Warehouse Supply Solutions',
       description: isVi
-        ? 'Tối ưu hóa quy trình lưu kho, vận chuyển và phân phối hàng hóa với giải pháp màng quấn pallet, bao bì chống ẩm và chống va đập chuyên dụng.'
+        ? 'ULINK cung cấp giải pháp màng PE quấn pallet lực căng cao, bao bì chống ẩm container và trang thiết bị an toàn bốc xếp kho bãi đạt chuẩn vận tải quốc tế ISTA & ISO 9001.'
         : isJa
-          ? '専用のパレットラッピングフィルム、防湿・耐衝撃包装ソリューションにより、倉庫保管、輸送、および流通プロセスを最適化します。'
-          : 'Optimize warehousing, transport, and distribution processes with specialized pallet wrap film, moisture-proof, and anti-impact packaging solutions.',
+          ? 'ULINKは、高張力PEパレットラッピングフィルム、コンテナ防湿包装、および国際輸送規格ISTA & ISO 9001に適合する倉庫安全資材を提供します。'
+          : 'ULINK provides high-tension PE pallet wrap, container moisture barriers, and ISTA & ISO 9001 compliant warehouse safety gear for global supply chains.',
       iconName: 'Warehouse',
-      gradient: 'from-slate-700 to-slate-900',
-      bannerImage: '/images/industries/electronics_hero.webp',
+      gradient: 'from-blue-900 via-indigo-950 to-slate-950',
+      bannerImage: '/images/industries/logistics/logistics_hero.png',
+      overviewImage: '/images/industries/logistics/logistics_overview.png',
       valueProps: [
         {
-          title: isVi ? 'Tối ưu lưu kho & vận chuyển' : isJa ? '保管・輸送の最適化' : 'Storage & Transport Optimization',
-          desc: isVi ? 'Bảo vệ hàng hóa vững chắc khi xếp chồng và di chuyển đường dài.' : isJa ? '長距離移動や積み重ね時の貨物を強固に保護。' : 'Firmly protects goods during stacking and long-distance transport.',
+          title: isVi ? 'Chống gãy đổ Pallet 100%' : isJa ? '荷崩れ100%防止' : '100% Pallet Collapse Prevention',
+          desc: isVi ? 'Màng PE lực co giãn 300% giữ vững khối hàng khi va quệt và lật nghiêng.' : isJa ? '300%伸縮PEフィルムにより、傾斜や擦れ時にも貨物を強固に保持。' : '300% stretch PE film securely locks stacked cargo against tilting.',
           iconName: 'ShieldCheck'
         },
         {
-          title: isVi ? 'Giảm thiểu tỷ lệ hư hỏng' : isJa ? '破損率の削減' : 'Minimize Damage Rate',
-          desc: isVi ? 'Chống ẩm, chống nước bám và chống trầy xước bao bì bên ngoài.' : isJa ? '外装包装の防湿・防水・防傷効果。' : 'Moisture-proof, waterproof, and scratch-resistant for outer packaging.',
-          iconName: 'Activity'
-        },
-        {
-          title: isVi ? 'Tăng tốc độ đóng gói' : isJa ? '梱包スピードの向上' : 'Accelerate Packaging Speed',
-          desc: isVi ? 'Màng co & màng quấn pallet lực căng cao giúp đóng kiện nhanh.' : isJa ? '高張力シュリンク＆パレットフィルムで迅速な梱包を実現。' : 'High-tension shrink & pallet wrap enables fast bundling.',
-          iconName: 'Settings'
-        },
-        {
-          title: isVi ? 'Tiết kiệm chi phí bao bì' : isJa ? '包装コストの削減' : 'Save Packaging Costs',
-          desc: isVi ? 'Tối ưu độ dày và chiều dài cuộn màng giúp giảm hao phí 20%.' : isJa ? 'フィルムの厚みと長さを最適化し無駄を20%削減。' : 'Optimized thickness and roll length reduces waste by 20%.',
+          title: isVi ? 'Tăng 30% tốc độ đóng kiện' : isJa ? '梱包速度30%向上' : '30% Faster Packaging',
+          desc: isVi ? 'Cuộn màng mỏng dai vừa vặn máy quấn tự động, tối ưu nhịp vận hành kho.' : isJa ? '自動巻き機に適合する薄型高強度フィルムにより作業効率を向上。' : 'High-tensile film fits automatic wrappers seamlessly, speeding up workflows.',
           iconName: 'Zap'
+        },
+        {
+          title: isVi ? 'Chống ẩm mốc kho lạnh' : isJa ? '冷暗倉庫の防湿・防カビ' : 'Cold Chain Moisture Protection',
+          desc: isVi ? 'Màng co & túi hút ẩm giữ thùng carton khô ráo trong môi trường độ ẩm cao.' : isJa ? '高湿度環境でもダンボールを乾燥状態に保つ防湿ソリューション。' : 'Shrink film & desiccants protect outer cartons in high-humidity storage.',
+          iconName: 'Package'
+        },
+        {
+          title: isVi ? 'Tiết kiệm 20% chi phí' : isJa ? 'コスト20%削減' : '20% Cost Reduction',
+          desc: isVi ? 'Công nghệ đùn nhiều lớp giảm chiều dày cuộn nhưng tăng sức chịu xé thủng.' : isJa ? '多層押出技術によりフィルム厚を抑えつつ耐 thủng 強度を向上。' : 'Multilayer extrusion reduces film weight while boosting puncture resistance.',
+          iconName: 'Factory'
         }
       ],
-      challengesIntro: isVi ? 'Thách thức trong ngành Kho vận & Logistics' : isJa ? '倉庫＆物流における課題' : 'Challenges in Logistics',
+      challengesIntro: isVi ? 'Thách thức trong ngành Kho vận & Logistics' : isJa ? '倉庫＆物流における課題' : 'Challenges in Warehousing & Logistics',
       challenges: [
         {
-          title: isVi ? 'Hàng hóa dịch chuyển gãy đổ khi vận chuyển' : isJa ? '輸送中の貨物の荷崩れ・破損' : 'Cargo shifting and tumbling during transport',
-          desc: isVi ? 'Màng quấn kém chất lượng bị đứt cuộn làm pallet hàng bị xiêu quẹo và va đập.' : isJa ? '低品質なフィルムの切れによりパレット荷崩れが発生。' : 'Poor quality film snaps cause pallet goods to lean and impact each other.',
+          title: isVi ? 'Hàng hóa dịch chuyển gãy đổ khi vận chuyển đường dài' : isJa ? '長距離輸送中の貨物の荷崩れ・破損' : 'Cargo shifting and pallet collapse during transit',
+          desc: isVi ? 'Màng quấn kém chất lượng bị đứt đứt ngang làm xiêu vẹo pallet, hỏng hàng hóa và đền bù lớn.' : isJa ? '低品質フィルムの đứt 切れによりパレットが傾き、貨物損害が発生。' : 'Poor quality film snaps, causing pallets to lean and crush boxed goods.',
           iconName: 'AlertCircle'
         },
         {
-          title: isVi ? 'Độ ẩm kho bãi làm hỏng thùng carton' : isJa ? '倉庫の湿気によるダンボールの破損' : 'Warehouse moisture softening cartons',
-          desc: isVi ? 'Độ ẩm cao tại kho lạnh làm nhũn rách vỏ hộp bọc ngoài hàng hóa.' : isJa ? '冷暗倉庫での高湿度により外装箱が軟化・破損。' : 'High humidity in cold storage softens and tears outer cartons.',
-          iconName: 'Sparkles'
+          title: isVi ? 'Độ ẩm kho bãi & kho lạnh làm nhũn rách vỏ thùng carton' : isJa ? '倉庫や冷暗所の湿気によるダンボールの軟化・破損' : 'High humidity and cold storage softening cartons',
+          desc: isVi ? 'Độ ẩm cao gây đọng sương làm yếu khung hộp carton, đe dọa an toàn xếp chồng tầng cao.' : isJa ? '高湿度の結露によりダンボール強度が低下し、高層積載時のリスクが増大。' : 'Condensation weakens carton walls, risking collapse during high-bay stacking.',
+          iconName: 'ShieldCheck'
+        },
+        {
+          title: isVi ? 'Tai nạn lao động bốc xếp do thiếu trang bị an toàn' : isJa ? '安全保護具不足による荷役作業中の rủi ro' : 'Occupational hazards during manual warehouse handling',
+          desc: isVi ? 'Trầy xước tay và va đập vật nặng khi bốc xếp hàng thủ công trong các ca làm việc liên tục.' : isJa ? '連続 đợt 荷役作業中の手傷や重物 va đập による作業員 rủi ro。' : 'Hand injuries and heavy box impacts occur during intensive warehouse shifts.',
+          iconName: 'Package'
         }
       ],
-      cleanroomIntro: isVi ? 'Vật tư bảo hộ & an toàn lao động trong kho bãi.' : isJa ? '倉庫内での安全・保護用品。' : 'Safety and protective gear in warehousing.',
+      cleanroomIntro: isVi ? 'Vật tư bảo hộ lao động & trang thiết bị an toàn bốc xếp kho bãi.' : isJa ? '倉庫内荷役作業用保護具＆安全資材。' : 'Personal protective equipment & safety supplies for warehouse handling.',
       cleanroomCategories: [
-        { name: isVi ? 'Găng tay kho bãi & bốc xếp' : isJa ? '倉庫・荷役用手袋' : 'Warehouse Handling Gloves', image: '/images/industries/electronics_hero.webp', slug: 'cleanroom-gloves' },
-        { name: isVi ? 'Khẩu trang chống bụi kho' : isJa ? '防塵防護マスク' : 'Dust Protective Masks', image: '/images/industries/electronics_hero.webp', slug: 'cleanroom-masks' }
+        {
+          name: isVi ? 'Găng tay bốc xếp kho' : isJa ? '倉庫・荷役用耐切創手袋' : 'Warehouse Handling Gloves',
+          image: '/images/industries/logistics/product_1.png',
+          slug: 'cleanroom-gloves'
+        },
+        {
+          name: isVi ? 'Khẩu trang & Kính bảo hộ' : isJa ? '倉庫作業用保護メガネ' : 'Warehouse Safety Goggles',
+          image: '/images/industries/logistics/product_2.png',
+          slug: 'cleanroom-masks'
+        },
+        {
+          name: isVi ? 'Màng PE quấn Pallet' : isJa ? 'PEパレットフィルム' : 'PE Pallet Stretch Film',
+          image: '/images/industries/logistics/product_3.png',
+          slug: 'industrial-packaging'
+        },
+        {
+          name: isVi ? 'Màng co PE đóng kiện' : isJa ? 'PEシュリンクフィルム' : 'PE Shrink Film',
+          image: '/images/industries/logistics/product_4.png',
+          slug: 'industrial-packaging'
+        }
       ],
       cleanroomViewAll: isVi ? 'Xem tất cả sản phẩm bảo hộ kho' : isJa ? 'すべての保護用品を見る' : 'See all warehouse safety products',
-      packagingIntro: isVi ? 'Giải pháp màng quấn & bao bì đóng kiện vận chuyển.' : isJa ? 'パレット梱包・輸送用フィルムソリューション。' : 'Pallet wrapping and shipping packaging solutions.',
+      packagingIntro: isVi ? 'Giải pháp màng quấn pallet, màng co & bao bì chống ẩm container.' : isJa ? 'パレット梱包・シュリンク＆コンテナ防湿包装ソリューション。' : 'Pallet stretch wrap, shrink film & container moisture control packaging.',
       packagingCategories: [
-        { name: isVi ? 'Màng PE quấn pallet lực căng cao' : isJa ? '高張力PEパレットフィルム' : 'High-Tension PE Pallet Film', image: '/images/industries/electronics_hero.webp', slug: 'industrial-packaging' },
-        { name: isVi ? 'Màng co PE bảo vệ hàng hóa' : isJa ? '保護用PEシュリンクフィルム' : 'Protective PE Shrink Film', image: '/images/industries/electronics_hero.webp', slug: 'industrial-packaging' }
-      ],
-      packagingViewAll: isVi ? 'Xem tất cả sản phẩm đóng gói' : isJa ? 'すべての包装製品を見る' : 'See all packaging products',
-      casesTitle: isVi ? 'Trường hợp áp dụng thực tế' : isJa ? '実際の導入事例' : 'Real-world Applications',
-      cases: [
         {
-          title: isVi ? 'Tối ưu hóa quy trình quấn pallet tại Tổng kho Bắc Ninh' : isJa ? 'バクニン倉庫でのパレット梱包最適化' : 'Optimizing Pallet Wrapping at Bac Ninh Depot',
-          description: isVi ? 'Tăng 35% tốc độ đóng gói và triệt tiêu 100% rủi ro đổ vỡ pallet khi vận chuyển đường dài.' : isJa ? '梱包スピードを35%向上させ、長距離輸送時の荷崩れを100%防止。' : 'Increased packaging speed by 35% and eliminated 100% of long-distance pallet collapse risks.',
-          image: '/images/industries/electronics_hero.webp',
-          badge: isVi ? 'Tăng 35% tốc độ' : isJa ? 'スピード35%向上' : '35% Faster Speed'
+          name: isVi ? 'Màng PE quấn Pallet' : isJa ? 'PEパレットフィルム' : 'PE Pallet Stretch Film',
+          image: '/images/industries/logistics/product_3.png',
+          slug: 'industrial-packaging'
+        },
+        {
+          name: isVi ? 'Màng co PE đóng kiện' : isJa ? 'PEシュリンクフィルム' : 'PE Shrink Film',
+          image: '/images/industries/logistics/product_4.png',
+          slug: 'industrial-packaging'
+        },
+        {
+          name: isVi ? 'Găng tay bốc xếp kho' : isJa ? '倉庫・荷役用耐切創手袋' : 'Warehouse Handling Gloves',
+          image: '/images/industries/logistics/product_1.png',
+          slug: 'cleanroom-gloves'
+        },
+        {
+          name: isVi ? 'Khẩu trang & Kính bảo hộ' : isJa ? '倉庫作業用保護メガネ' : 'Warehouse Safety Goggles',
+          image: '/images/industries/logistics/product_2.png',
+          slug: 'cleanroom-masks'
         }
       ],
-      whyUsTitle: isVi ? 'Vì sao chọn ULINK?' : isJa ? 'なぜULINKを選ぶのか？' : 'Why Choose ULINK?',
+      packagingViewAll: isVi ? 'Xem tất cả sản phẩm đóng gói kho' : isJa ? 'すべての包装製品を見る' : 'See all packaging products',
+      casesTitle: isVi ? 'Dự án thực tế ứng dụng trong ngành Kho vận & Logistics' : isJa ? '倉庫＆物流業界での実地導入事例' : 'Real-world Applications in Logistics',
+      cases: [
+        {
+          slug: 'logistics-bac-ninh-hub',
+          title: isVi ? 'Tối ưu hóa quy trình quấn Pallet tại Trung tâm Logistics Bắc Ninh' : isJa ? 'バクニン物流ハブでのパレット梱包最適化' : 'Optimizing Pallet Packaging at Bac Ninh Logistics Hub',
+          description: isVi ? 'Đồng bộ màng PE lực căng 300% cho máy quấn tự động, tăng 35% tốc độ đóng gói và triệt tiêu 100% rủi ro đổ vỡ pallet khi vận chuyển đường dài.' : isJa ? '自動巻き機に300%伸縮PEフィルムを同期導入し、梱包スピードを35%向上、荷崩れを100%防止。' : 'Synchronized 300% stretch PE film for automatic wrappers, boosting speed by 35% and eliminating 100% pallet collapse risks.',
+          image: '/images/industries/logistics/usecase_1.png',
+          badge: isVi ? 'Trung tâm Logistics' : isJa ? '物流ハブ' : 'Logistics Hub'
+        },
+        {
+          slug: 'cold-chain-logistics',
+          title: isVi ? 'Bảo vệ thùng hàng xuất khẩu tại Chuỗi Kho Lạnh Cold Chain Bình Dương' : isJa ? 'ビンズオン冷暗倉庫での輸出箱防湿保護' : 'Export Carton Protection at Binh Duong Cold Chain Depot',
+          description: isVi ? 'Ứng dụng màng co PE kết hợp túi hút ẩm container, ngăn chặn 100% hiện tượng đọng sương làm nhũn carton trong môi trường ẩm -18°C đến 5°C.' : isJa ? 'PEシュリンクフィルムと防湿剤を併用し、-18°C〜5°Cの冷暗環境での結露と箱軟化を100%防止。' : 'Applied PE shrink film and desiccants, preventing 100% condensation and carton softening in cold storage (-18°C to 5°C).',
+          image: '/images/industries/logistics/usecase_2.png',
+          badge: isVi ? 'Kho lạnh & Chuỗi cung ứng' : isJa ? 'コールドチェーン' : 'Cold Chain Logistics'
+        },
+        {
+          slug: 'cat-lai-port-export',
+          title: isVi ? 'Bao bì chống đứt rách cho Pallet xi măng & hóa chất Cảng Cát Lái' : isJa ? 'キャットライ港でのセメント・化学品パレット梱包' : 'Heavy Cargo Pallet Wrap for Cat Lai Ocean Port Export',
+          description: isVi ? 'Cung ứng màng PE đùn 5 lớp chịu lực thủng cực cao, đảm bảo an toàn tuyệt đối khi cẩu xếp container vận chuyển xuyên đại dương.' : isJa ? '超高耐 thủng 5層PEフィルムを供給し、外洋コンテナクレーン荷役時の安全性100%を確保。' : 'Supplying 5-layer extruded PE film with high puncture resistance, ensuring 100% safety during ocean container crane handling.',
+          image: '/images/industries/logistics/usecase_3.png',
+          badge: isVi ? 'Cảng biển Xuất khẩu' : isJa ? '港湾・海運' : 'Ocean Container Port'
+        }
+      ],
+      whyUsTitle: isVi ? 'Vì sao chọn ULINK cho Ngành Kho vận & Logistics?' : isJa ? 'なぜULINKの物流ソリューションを選ぶのか？' : 'Why Choose ULINK for Logistics Operations?',
       whyUsList: isVi
-        ? ['Đạt tiêu chuẩn đóng gói vận tải quốc tế ISTA', 'Màng PE lực dai vượt trội chống rách thủng', 'Nguồn cung dồi dào, giao hàng kho trong 24h', 'Hỗ trợ thiết kế kích thước cuộn màng theo máy quấn']
+        ? ['Đạt tiêu chuẩn đóng gói vận tải quốc tế ISTA 3A / 6', 'Màng PE đùn 5 lớp lực dai vượt trội chống rách thủng', 'Nguồn cung trữ lượng lớn, giao hàng kho trong 24h', 'Hỗ trợ kỹ thuật thiết kế khổ màng chuẩn máy quấn tự động']
         : isJa
-          ? ['国際輸送梱包規格ISTAに準拠', '優れた耐引き裂き性を持つPEフィルム', '豊富な在庫で24時間以内に納品', '自動巻き機に応じたフィルムサイズ設計']
-          : ['Complying with ISTA international transport packaging standards', 'Superior puncture-resistant PE film', 'Abundant inventory, 24h warehouse delivery', 'Custom roll size design for automatic wrappers'],
-      standardsTitle: isVi ? 'Chứng nhận & tiêu chuẩn áp dụng' : isJa ? '適用される認証＆規格' : 'Certifications & Standards',
+          ? ['国際輸送安全規格ISTA 3A / 6に適合', '耐引き裂き性に優れた5層押出PEフィルム', '大容量在庫により24時間以内に倉庫へ納品', '自動巻き機に合わせたフィルムサイズ設計サポート']
+          : ['Compliant with ISTA 3A / 6 international transport packaging standards', '5-layer extruded PE film with superior puncture resistance', 'Large inventory capacity with 24h warehouse delivery', 'Technical support matching roll sizes for automatic wrappers'],
+      whyUsItems: isVi
+        ? [
+          {
+            title: 'Tiêu chuẩn vận tải ISTA 3A',
+            desc: 'Được chứng nhận độ bền bao bì chịu rung xóc và va đập trong suốt quy trình vận chuyển quốc tế.',
+            iconName: 'ShieldCheck'
+          },
+          {
+            title: 'Màng PE đùn 5 lớp siêu dai',
+            desc: 'Lực co giãn 300% chống rách thủng khi quấn các góc kiện hàng nhọn hoặc thùng hàng nặng.',
+            iconName: 'Package'
+          },
+          {
+            title: 'Giao hàng kho trong 24h',
+            desc: 'Tổng kho Hà Nam trữ lượng hàng nghìn cuộn, sẵn sàng ứng cứu và cấp hàng hỏa tốc.',
+            iconName: 'Truck'
+          },
+          {
+            title: 'Chuẩn máy quấn tự động',
+            desc: 'Tư vấn khổ màng và độ dày tối ưu giúp máy quấn tự động vận hành trơn tru không đứt cuộn.',
+            iconName: 'Factory'
+          }
+        ]
+        : isJa
+          ? [
+            {
+              title: 'ISTA 3A輸送安全規格',
+              desc: '国際輸送中の振動や衝撃に対する梱包耐久性が認証されています。',
+              iconName: 'ShieldCheck'
+            },
+            {
+              title: '高強度5層押出PEフィルム',
+              desc: '300%の伸縮力により、鋭い角や重量物パレットんでも破れを防止。',
+              iconName: 'Package'
+            },
+            {
+              title: '24時間以内の倉庫納品',
+              desc: '河南省倉庫の豊富な在庫により、緊急の納品要請にも即座に対応。',
+              iconName: 'Truck'
+            },
+            {
+              title: '自動巻き機適合設計',
+              desc: '自動巻き機が途切れずにスムーズに稼働する最適な厚みとサイズを提案。',
+              iconName: 'Factory'
+            }
+          ]
+          : [
+            {
+              title: 'ISTA 3A Transport Standard',
+              desc: 'Certified packaging durability against vibration and impacts throughout international freight routes.',
+              iconName: 'ShieldCheck'
+            },
+            {
+              title: '5-Layer Extruded PE Film',
+              desc: '300% elongation rate preventing tearing on sharp pallet corners or heavy bulk boxes.',
+              iconName: 'Package'
+            },
+            {
+              title: '24h Warehouse Delivery',
+              desc: 'Ha Nam warehouse hub holds thousands of rolls, ready for immediate emergency dispatch.',
+              iconName: 'Truck'
+            },
+            {
+              title: 'Automatic Wrapper Compliant',
+              desc: 'Optimized width and thickness specs ensuring smooth continuous automated wrapping.',
+              iconName: 'Factory'
+            }
+          ],
+      standardsTitle: isVi ? 'TIÊU CHUẨN KỸ THUẬT & CHỨNG NHẬN KHO VẬN' : isJa ? '技術基準＆物流認証' : 'TECHNICAL STANDARDS & LOGISTICS CERTIFICATIONS',
       standards: [
-        { name: 'ISTA 3A / 6', detail: isVi ? 'Tiêu chuẩn thử nghiệm độ bền bao bì đóng gói vận tải quốc tế.' : isJa ? '国際安全輸送協会試験規格。' : 'International safe transit association packaging test standard.' },
-        { name: 'ISO 9001:2015', detail: isVi ? 'Hệ thống quản lý chất lượng quy trình lưu kho và phân phối.' : isJa ? '倉庫保管および流通プロセスの品質管理。' : 'Quality management system for warehousing & distribution.' },
-        { name: 'ISO 14001:2015', detail: isVi ? 'Tiêu chuẩn vận hành kho bãi xanh và quản lý môi trường.' : isJa ? 'グリーン倉庫管理および環境適合規格。' : 'Environmental management system for green warehousing.' },
-        { name: 'RoHS & REACH', detail: isVi ? 'Chứng nhận an toàn vật liệu màng PE quấn pallet và túi chống ẩm.' : isJa ? 'パレットフィルムおよび防湿袋の資材安全認証。' : 'Material safety compliance for PE film and desiccant bags.' }
+        { name: 'ISTA 3A / 6 Standard', detail: isVi ? 'Tiêu chuẩn thử nghiệm độ bền bao bì đóng gói vận tải quốc tế chịu rung xóc và rơi tự do.' : isJa ? '国際安全輸送協会の振動・落下耐久試験規格。' : 'International safe transit association packaging vibration & drop test standard.' },
+        { name: 'ISO 9001:2015', detail: isVi ? 'Hệ thống quản lý chất lượng quy trình lưu kho, bốc xếp và phân phối hàng hóa.' : isJa ? '倉庫保管、荷役、流通プロセスの品質管理システム。' : 'Quality management system for warehousing, handling & distribution.' },
+        { name: 'ISO 14001:2015', detail: isVi ? 'Tiêu chuẩn vận hành kho bãi xanh và quản lý tác động môi trường.' : isJa ? 'グリーン倉庫管理および環境適合規格。' : 'Environmental management system for green warehousing operations.' },
+        { name: 'RoHS & REACH Compliance', detail: isVi ? 'Chứng nhận an toàn sinh học cho màng quấn PE, màng co và túi chống ẩm bọc kiện.' : isJa ? 'パレットフィルムおよび防湿袋の資材安全認証。' : 'Material safety compliance for PE film and container desiccant bags.' }
       ],
       resourcesTitle: isVi ? 'Tài liệu liên quan' : isJa ? '関連資料' : 'Related Resources',
       catalogue: {
@@ -712,66 +837,208 @@ export function getIndustryDetails(slug: string, locale: string) {
     return {
       slug: 'furniture',
       name: isVi ? 'Đồ gỗ - Nội thất' : isJa ? '家具・インテリア' : 'Furniture & Interior',
-      title: isVi ? 'Giải pháp cho ngành Đồ gỗ - Nội thất' : isJa ? '家具・インテリア産業向けソリューション' : 'Solutions for Furniture & Interior',
+      title: isVi ? 'Giải pháp Bảo vệ Bề mặt & Đóng gói Đồ gỗ Xuất khẩu' : isJa ? '家具・木製品の表面保護および輸出梱包ソリューション' : 'Surface Protection & Packaging Solutions for Export Furniture',
       description: isVi
-        ? 'Bảo vệ toàn diện bề mặt gỗ, da, vải và kim loại trong suốt quy trình sản xuất, vận chuyển và lắp đặt nội thất cao cấp.'
+        ? 'ULINK cung cấp giải pháp màng PE bảo vệ sơn gỗ bóc sạch không để lại keo, xốp nẹp góc chống va đập 360° và hệ bao bì đóng gói chống ẩm mốc cho đồ gỗ xuất khẩu Mỹ & Châu Âu.'
         : isJa
-          ? '高級家具の製造、輸送、設置プロセス全体において、木材、皮革、布地、金属の表面を包括的に保護します。'
-          : 'Comprehensive protection for wood, leather, fabric, and metal surfaces throughout the manufacturing, transport, and installation of premium furniture.',
+          ? 'ULINKは、のり残りゼロの木材表面保護PEフィルム、360度角落ち防止の成形PEフォーム、および米国・欧州向け輸出家具の防湿包装ソリューションを提供します。'
+          : 'ULINK provides zero-residue PE protective film, 360° shockproof corner foam, and moisture-barrier packaging solutions for premium US & EU export furniture.',
       iconName: 'Armchair',
-      gradient: 'from-amber-700 to-yellow-900',
-      bannerImage: '/images/industries/electronics_hero.webp',
+      gradient: 'from-amber-800 via-amber-900 to-stone-950',
+      bannerImage: '/images/industries/furniture/furniture_hero.png',
+      overviewImage: '/images/industries/furniture/furniture_overview.png',
       valueProps: [
         {
-          title: isVi ? 'Bảo vệ bề mặt cao cấp' : isJa ? '高級表面保護' : 'Premium Surface Protection',
-          desc: isVi ? 'Chống trầy xước nước sơn gỗ và bề mặt da cao cấp.' : isJa ? '塗装面や高級皮革の傷を完全に防止。' : 'Prevents scratches on wood paint and premium leather.',
+          title: isVi ? 'Bảo vệ bề mặt sơn 100%' : isJa ? '100%表面塗装保護' : '100% Paint Surface Protection',
+          desc: isVi ? 'Màng PE chuyên dụng chống trầy xước nước sơn PU, Melamine & Veneer.' : isJa ? 'PU、メラミン、ツキ板塗装の傷を完全に防止する専用PEフィルム。' : 'Specialized PE film prevents scratches on PU, Melamine & Veneer finishes.',
           iconName: 'ShieldCheck'
         },
         {
-          title: isVi ? 'Chống ẩm mốc xuất khẩu' : isJa ? '輸出用防湿・防カビ' : 'Export Anti-Mold',
-          desc: isVi ? 'Hạn chế ẩm mốc trong container đi biển dài ngày.' : isJa ? '海上コンテナ輸送中の湿気・カビを抑制。' : 'Prevents mold in long ocean container transits.',
-          iconName: 'Activity'
+          title: isVi ? 'Bóc sạch 0% vệt keo' : isJa ? 'のり残りゼロ' : 'Zero Residue Adhesives',
+          desc: isVi ? 'Công nghệ keo acrylic nhạy áp lực bóc tách dễ dàng, không để lại vết mờ.' : isJa ? '感圧アクリル粘着技術により、簡単に剥がせて跡が残りません。' : 'Pressure-sensitive acrylic technology peels off cleanly without staining.',
+          iconName: 'Sparkles'
+        },
+        {
+          title: isVi ? 'Chống sốc góc 360°' : isJa ? '360度耐衝撃保護' : '360° Corner Protection',
+          desc: isVi ? 'Nẹp góc xốp PE foam định hình chống bẹp góc và va đập khi xếp pallet.' : isJa ? '成形PEフォーム角当てにより、パレット積載時の角潰れを防ぎます。' : 'Custom PE foam corner guards prevent edge crushing during transport.',
+          iconName: 'Package'
+        },
+        {
+          title: isVi ? 'Chống ẩm mốc Container' : isJa ? 'コンテナ防湿・防カビ' : 'Container Moisture Control',
+          desc: isVi ? 'Túi chống ẩm & màng co PE quấn pallet an toàn cho các chuyến biển dài ngày.' : isJa ? '長時間の海上輸送でも安全な防湿剤とPEストレッチフィルム。' : 'Desiccant bags & PE stretch film ensuring ocean freight safety.',
+          iconName: 'Zap'
         }
       ],
-      challengesIntro: isVi ? 'Thách thức trong ngành Nội thất' : isJa ? '家具産業における課題' : 'Challenges in Furniture',
+      challengesIntro: isVi ? 'Thách thức trong ngành Đồ gỗ & Nội thất Xuất khẩu' : isJa ? '家具・インテリア輸出産業における課題' : 'Challenges in Export Furniture Manufacturing',
       challenges: [
         {
-          title: isVi ? 'Trầy xước nước sơn gỗ khi va chạm' : isJa ? '衝突による木材塗装の傷' : 'Scratches on wood finish from collisions',
-          desc: isVi ? 'Va quệt trong quá trình di chuyển từ xưởng ra kho làm hỏng lớp sơn PU.' : isJa ? '工場から倉庫への移動時の擦れでPU塗装が損壊。' : 'Friction during transit damages the PU paint coat.',
+          title: isVi ? 'Khiếu nại trầy xước nước sơn gỗ khi giao hàng' : isJa ? '納品時の木材塗装傷によるクレーム' : 'Paint scratch claims upon delivery',
+          desc: isVi ? 'Va chạm trong quá trình vận chuyển container làm hỏng bề mặt sơn cao cấp, tốn chi phí đền bù lớn.' : isJa ? 'コンテナ輸送中の擦れにより高級塗装面が損壊し、大きな損害が発生。' : 'Friction during container transport damages premium finishes, leading to costly claims.',
           iconName: 'AlertCircle'
+        },
+        {
+          title: isVi ? 'Vệt keo dán dính cứng trên mặt gỗ sau khi bóc' : isJa ? '剥離後の木材表面へののり残り' : 'Adhesive residue stuck on wood surfaces',
+          desc: isVi ? 'Màng bọc thông thường để lại vệt keo gây ố hoen và hỏng bóng bề mặt sản phẩm.' : isJa ? '通常のフィルムではのり残りが発生し、製品の美観を損ないます。' : 'Standard films leave sticky residue, staining expensive wood products.',
+          iconName: 'ShieldCheck'
+        },
+        {
+          title: isVi ? 'Bẹp góc và ẩm mốc trong container đi biển' : isJa ? '海上コンテナ内での角潰れと湿気・カビ' : 'Corner crushing & mold in ocean shipping',
+          desc: isVi ? 'Độ ẩm cao trên biển làm mốc gỗ và va đập làm sứt mẻ các góc bàn ghế.' : isJa ? '高湿度の海上環境でカビが発生し、衝撃により角が欠ける問題。' : 'High sea humidity leads to mold growth while impacts chip table corners.',
+          iconName: 'Package'
         }
       ],
-      cleanroomIntro: isVi ? 'Trang phục & vật tư sạch cho phòng sơn nội thất.' : isJa ? '家具塗装室用クリーンウェア＆資材。' : 'Cleanwear & supplies for furniture paint rooms.',
+      cleanroomIntro: isVi ? 'Trang phục & vật tư che chắn cho phòng sơn nội thất gỗ.' : isJa ? '家具塗装室用保護ウェア＆マスキング資材。' : 'Protective apparel & masking supplies for furniture spray rooms.',
       cleanroomCategories: [
-        { name: isVi ? 'Khẩu trang phòng sơn nội thất' : isJa ? '塗装用防護マスク' : 'Furniture Paint Room Masks', image: '/images/industries/electronics_hero.webp', slug: 'cleanroom-masks' }
+        {
+          name: isVi ? 'Màng PE bọc bảo vệ bề mặt gỗ cao cấp' : isJa ? '高級木材表面保護PEフィルム' : 'Premium Wood Surface PE Protective Film',
+          image: '/images/industries/furniture/product_1.png',
+          slug: 'industrial-packaging'
+        },
+        {
+          name: isVi ? 'Băng keo giấy che sơn gỗ cao cấp' : isJa ? '高級木材塗装用マスキングテープ' : 'Premium Wood Masking Tape',
+          image: '/images/industries/furniture/product_3.png',
+          slug: 'cleanroom-tapes'
+        },
+        {
+          name: isVi ? 'Trang phục & khẩu trang bảo hộ phòng sơn' : isJa ? '塗装作業用防護服＆マスク' : 'Spray Paint Protective Suit & Mask',
+          image: '/images/industries/furniture/product_4.png',
+          slug: 'cleanroom-apparel'
+        },
+        {
+          name: isVi ? 'Khăn lau bụi bề mặt gỗ trước khi sơn' : isJa ? '塗装前木材表面用無塵ワイパー' : 'Lint-Free Pre-Paint Wood Wipes',
+          image: '/images/industries/furniture/product_5.png',
+          slug: 'cleanroom-wipes'
+        }
       ],
-      cleanroomViewAll: isVi ? 'Xem tất cả sản phẩm phòng sơn' : isJa ? 'すべての塗装用品を見る' : 'See all paint room products',
-      packagingIntro: isVi ? 'Giải pháp màng bọc bảo vệ bề mặt gỗ & bao bì đóng gói.' : isJa ? '木材保護フィルム＆梱包ソリューション。' : 'Wood surface protection film & packaging solutions.',
+      cleanroomViewAll: isVi ? 'Xem tất cả sản phẩm bảo vệ bề mặt' : isJa ? 'すべての表面保護製品を見る' : 'See all surface protection products',
+      packagingIntro: isVi ? 'Giải pháp đóng gói, nẹp góc xốp & chống ẩm mốc cho container xuất khẩu.' : isJa ? '輸出コンテナ用梱包・角当てフォーム・防湿ソリューション。' : 'Packaging, corner foam & moisture barrier solutions for export containers.',
       packagingCategories: [
-        { name: isVi ? 'Màng PE bọc bảo vệ bề mặt gỗ' : isJa ? '木材表面保護PEフィルム' : 'Wood Surface PE Protective Film', image: '/images/industries/electronics_hero.webp', slug: 'industrial-packaging' }
+        {
+          name: isVi ? 'Xốp nẹp góc & Màng quấn Pallet đóng gói' : isJa ? '角当てフォーム＆パレット梱包フィルム' : 'Corner Guard Foam & Pallet Stretch Film',
+          image: '/images/industries/furniture/product_2.png',
+          slug: 'industrial-packaging'
+        },
+        {
+          name: isVi ? 'Túi chống ẩm & Thanh hút ẩm Container xuất khẩu' : isJa ? '輸出コンテナ用防湿剤＆乾燥ポール' : 'Export Container Desiccant Bags & Poles',
+          image: '/images/industries/furniture/product_6.png',
+          slug: 'industrial-packaging'
+        },
+        {
+          name: isVi ? 'Xốp PE Foam chèn lót bảo vệ tấm gỗ' : isJa ? '木材保護用PEフォームシート' : 'PE Foam Cushioning Sheets for Wood Panels',
+          image: '/images/industries/furniture/product_7.png',
+          slug: 'industrial-packaging'
+        },
+        {
+          name: isVi ? 'Màng PE bọc bảo vệ gỗ cao cấp' : isJa ? '高級木材保護PEフィルム' : 'Premium Wood Protection PE Film',
+          image: '/images/industries/furniture/product_1.png',
+          slug: 'industrial-packaging'
+        }
       ],
-      packagingViewAll: isVi ? 'Xem tất cả sản phẩm đóng gói' : isJa ? 'すべての包装製品を見る' : 'See all packaging products',
-      casesTitle: isVi ? 'Trường hợp áp dụng thực tế' : isJa ? '実際の導入事例' : 'Real-world Applications',
+      packagingViewAll: isVi ? 'Xem tất cả sản phẩm bao bì đóng gói' : isJa ? 'すべての包装製品を見る' : 'See all packaging products',
+      casesTitle: isVi ? 'Dự án thực tế ứng dụng trong ngành Đồ gỗ - Nội thất' : isJa ? '家具・インテリア業界での実地導入事例' : 'Real-world Applications in Export Furniture',
       cases: [
         {
-          title: isVi ? 'Bảo vệ đồ gỗ xuất khẩu Mỹ cho Nhà máy Gỗ An Cường' : isJa ? 'An Cường工場向け米国輸出家具の保護' : 'Protecting US Export Furniture for An Cuong Factory',
-          description: isVi ? 'Loại bỏ 100% khiếu nại trầy xước sơn và giảm 40% thời gian bọc hàng thủ công.' : isJa ? '塗装傷のクレームを100%排除し、手梱包時間を40%削減。' : 'Eliminated 100% of paint scratch complaints and reduced manual wrap time by 40%.',
-          image: '/images/industries/electronics_hero.webp',
-          badge: isVi ? 'Giảm 100% lỗi sơn' : isJa ? '傷クレーム0' : 'Zero Scratch Complaints'
+          slug: 'an-cuong-wood-export',
+          title: isVi ? 'Bảo vệ bề mặt gỗ xuất khẩu Mỹ cho Tập đoàn Gỗ An Cường' : isJa ? 'An Cườngグループ向け米国輸出家具の表面保護' : 'Protecting US Export Furniture for An Cuong Group',
+          description: isVi ? 'Ứng dụng màng PE dán bảo vệ không để lại keo kết hợp nẹp góc xốp PE, loại bỏ 100% khiếu nại trầy xước và giảm 40% thời gian bọc hàng thủ công.' : isJa ? 'のり残りゼロPEフィルムと角当てフォームを導入し、傷クレームを100%排除、手梱包時間を40%削減。' : 'Applied zero-residue PE protection film with corner foam guards, eliminating 100% scratch complaints and cutting manual wrap time by 40%.',
+          image: '/images/industries/furniture/usecase_1.png',
+          badge: isVi ? 'Xuất khẩu Mỹ & EU' : isJa ? '米国・欧州輸出' : 'US & EU Export'
+        },
+        {
+          slug: 'vinhomes-penthouse-furniture',
+          title: isVi ? 'Bọc bảo vệ toàn bộ nội thất gỗ cao cấp Căn hộ Vinhomes Grand Park' : isJa ? 'Vinhomes高級マンション家具の保護フィルム施工' : 'Protecting Luxury Woodwork for Vinhomes Penthouse Apartment',
+          description: isVi ? 'Bảo vệ 100% hệ tủ bếp gỗ An Cường và bàn ghế nội thất cao cấp trong suốt 6 tháng thi công hoàn thiện, không phát sinh bất kỳ lỗi trầy xước.' : isJa ? '6ヶ月の内装施工期間中、高級キッチンキャビネットと家具の傷を完全に防止。' : '100% surface protection for custom kitchen cabinets and furniture during 6 months of interior finishing, zero scratches.',
+          image: '/images/industries/furniture/usecase_2.png',
+          badge: isVi ? 'Nội thất & Dự án' : isJa ? '内装＆プロジェクト' : 'Interior Project'
+        },
+        {
+          slug: 'woodsland-eu-export',
+          title: isVi ? 'Cung ứng màng bọc bảo vệ bề mặt gỗ cho Tập đoàn Woodsland xuất khẩu EU' : isJa ? 'Woodslandグループ向け欧州輸出家具保護フィルム供給' : 'Supplying Wood Surface Protection Film for Woodsland EU Export',
+          description: isVi ? 'Đồng bộ giải pháp màng PE nhạy áp lực bóc sạch cho dây chuyền xuất khẩu nội thất sang thị trường Châu Âu, đạt tiêu chuẩn FSC & REACH.' : isJa ? '欧州向け家具輸出ラインにのり残りゼロ感圧PEフィルムを同期導入し、FSCおよびREACH規格に適合。' : 'Synchronized pressure-sensitive PE protection film for furniture export lines to European markets, compliant with FSC & REACH.',
+          image: '/images/industries/furniture/usecase_3.png',
+          badge: isVi ? 'Dây chuyền Xuất khẩu' : isJa ? '輸出製造ライン' : 'Export Line'
         }
       ],
-      whyUsTitle: isVi ? 'Vì sao chọn ULINK?' : isJa ? 'なぜULINKを選ぶのか？' : 'Why Choose ULINK?',
+      whyUsTitle: isVi ? 'Vì sao chọn ULINK cho Ngành Đồ gỗ - Nội thất?' : isJa ? 'なぜULINKの家具ソリューションを選ぶのか？' : 'Why Choose ULINK for Furniture Manufacturing?',
       whyUsList: isVi
-        ? ['Màng bọc bảo vệ chuyên dụng không để lại keo', 'Xốp PE foam định hình chống va đập góc hoàn hảo', 'Nguồn cung ổn định cho các tập đoàn gỗ xuất khẩu']
+        ? ['Công nghệ keo nhạy áp không để lại vệt mờ trên sơn gỗ', 'Thanh nẹp góc xốp PE foam chống bẹp góc 360°', 'Giải pháp bao bì đạt chuẩn xuất khẩu Mỹ & Châu Âu', 'Nguồn cung trữ lượng lớn tại Kho vận Hà Nam']
         : isJa
-          ? ['のり残りしない専用保護フィルム', '角落ち防止の完璧な成形PEフォーム', '大手木材輸出企業への安定供給実績']
-          : ['Specialized non-residue protective film', 'Perfect corner impact-proof PE foam shapes', 'Stable supply for major wood exporters'],
-      standardsTitle: isVi ? 'Chứng nhận & tiêu chuẩn áp dụng' : isJa ? '適用される認証＆規格' : 'Certifications & Standards',
+          ? ['木材塗装面に跡が残らない感圧粘着技術', '角潰れを防ぐ360度成形PEフォーム角当て', '米国・欧州の厳格な輸出規格に適合する包装', '河南省物流倉庫からの大容量安定供給']
+          : ['Pressure-sensitive adhesive leaving zero residue on wood finish', '360° PE foam corner guards preventing edge crushing', 'Export packaging compliant with strict US & EU standards', 'Abundant supply capacity from Ha Nam logistics hub'],
+      whyUsItems: isVi
+        ? [
+          {
+            title: 'Keo dán nhạy áp 0% vệt mờ',
+            desc: 'Bóc tách dễ dàng sau khi giao hàng, tuyệt đối không phản ứng hóa học với các loại sơn PU, UV, Melamine.',
+            iconName: 'ShieldCheck'
+          },
+          {
+            title: 'Nẹp góc xốp PE Foam 360°',
+            desc: 'Thiết kế ôm sát mọi góc bàn ghế, tủ bếp, hấp thụ hoàn toàn lực va đập trong container.',
+            iconName: 'Package'
+          },
+          {
+            title: 'Chuẩn xuất khẩu US & EU',
+            desc: 'Đáp ứng các tiêu chuẩn FSC CoC, RoHS & REACH về an toàn sinh học và bảo vệ môi trường.',
+            iconName: 'Award'
+          },
+          {
+            title: 'Kho vận Hà Nam trữ lượng lớn',
+            desc: 'Đáp ứng ngay lập tức các đơn hàng quy mô lớn của các tập đoàn nội thất hàng đầu.',
+            iconName: 'Factory'
+          }
+        ]
+        : isJa
+          ? [
+            {
+              title: '跡が残らない感圧粘着剤',
+              desc: '納品後に簡単に剥がせ、PU・UV・メラミン塗装と化学反応を起こしません。',
+              iconName: 'ShieldCheck'
+            },
+            {
+              title: '360度成形PEフォーム角当て',
+              desc: 'テーブルやキャビネットのあらゆる角にフィットし、衝撃を吸収。',
+              iconName: 'Package'
+            },
+            {
+              title: '米国・欧州の輸出規格適合',
+              desc: 'FSC CoC、RoHS、REACHなどの環境・生物学的安全基準に完全適合。',
+              iconName: 'Award'
+            },
+            {
+              title: '河南省倉庫の豊富な在庫',
+              desc: '大手家具メーカーの大規模注文に即座に対応可能。',
+              iconName: 'Factory'
+            }
+          ]
+          : [
+            {
+              title: 'Zero Residue Adhesives',
+              desc: 'Peels off cleanly after delivery, non-reactive with PU, UV, and Melamine wood finishes.',
+              iconName: 'ShieldCheck'
+            },
+            {
+              title: '360° PE Foam Corner Guards',
+              desc: 'Hugs every corner of tables & cabinets, absorbing all impact forces inside containers.',
+              iconName: 'Package'
+            },
+            {
+              title: 'US & EU Export Standards',
+              desc: 'Meeting FSC CoC, RoHS & REACH environmental and safety compliance.',
+              iconName: 'Award'
+            },
+            {
+              title: 'Ha Nam Large Inventory Hub',
+              desc: 'Instantly fulfilling large-scale orders for leading export furniture manufacturers.',
+              iconName: 'Factory'
+            }
+          ],
+      standardsTitle: isVi ? 'TIÊU CHUẨN KỸ THUẬT & CHỨNG NHẬN' : isJa ? '技術基準＆認証' : 'TECHNICAL STANDARDS & CERTIFICATIONS',
       standards: [
-        { name: 'FSC CoC', detail: isVi ? 'Chứng nhận quản lý chuỗi hành trình sản phẩm rừng bền vững.' : isJa ? 'FSC森林認証 CoCサプライチェーン。' : 'Forest stewardship council chain of custody certification.' },
-        { name: 'ISO 9001:2015', detail: isVi ? 'Hệ thống quản lý chất lượng bao bì bọc bảo vệ bề mặt nội thất.' : isJa ? '家具保護フィルムの品質管理システム。' : 'Quality management system for furniture protective packaging.' },
-        { name: 'RoHS', detail: isVi ? 'Đảm bảo màng PE và xốp foam không chứa hóa chất độc hại.' : isJa ? 'PEフィルムおよびフォーム材の有害物質非含有証明。' : 'RoHS certification for non-hazardous PE film & foam.' },
-        { name: 'REACH', detail: isVi ? 'An toàn keo dán bóc tách không để lại vết vệt trên gỗ cao cấp.' : isJa ? '高級木材用のり残りゼロ粘着剤の安全基準。' : 'EU chemical safety for non-residue protective adhesive film.' }
+        { name: 'FSC CoC Certified', detail: isVi ? 'Chứng nhận quản lý chuỗi hành trình sản phẩm rừng bền vững.' : isJa ? 'FSC持続可能な森林管理サプライチェーン認証。' : 'Forest stewardship council chain of custody certification.' },
+        { name: 'ISO 9001:2015', detail: isVi ? 'Hệ thống quản lý chất lượng bao bì và màng bọc bảo vệ bề mặt nội thất.' : isJa ? '家具保護フィルムおよび包装資材の品質管理システム。' : 'Quality management system for furniture protective packaging.' },
+        { name: 'RoHS & REACH', detail: isVi ? 'Đảm bảo màng PE và xốp foam không chứa chì và hóa chất độc hại.' : isJa ? 'PEフィルムおよびフォーム材の有害物質非含有証明。' : 'RoHS & REACH certification for non-hazardous materials.' },
+        { name: 'ASTM D3330 Tested', detail: isVi ? 'Kiểm định tiêu chuẩn lực bám dính keo nhạy áp lực bóc tách 0% vết bẩn.' : isJa ? '感圧粘着剤の剥離強度および跡残りゼロ試験規格。' : 'Standard test method for pressure-sensitive tape peel adhesion.' }
       ],
       resourcesTitle: isVi ? 'Tài liệu liên quan' : isJa ? '関連資料' : 'Related Resources',
       catalogue: {

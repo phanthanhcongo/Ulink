@@ -17,7 +17,8 @@ import {
   Zap,
   Sparkles,
   CheckCircle2,
-  Factory
+  Factory,
+  Award
 } from 'lucide-react';
 import { IndustryData } from './types';
 
@@ -35,7 +36,8 @@ const iconMap: Record<string, React.ComponentType<any>> = {
   Factory,
   Package,
   User,
-  PhoneCall
+  PhoneCall,
+  Award
 };
 
 interface IndustryOverviewSectionProps {
@@ -107,6 +109,40 @@ export function IndustryOverviewSection({ industryData, locale }: IndustryOvervi
                     Tất cả găng tay, khăn lau và khay nhựa đựng linh kiện của chúng tôi đều đạt tiêu chuẩn điện trở bề mặt an toàn, giúp phân tán dòng điện tích tích tụ và bảo vệ linh kiện.
                   </p>
                 </>
+              ) : industryData.slug === 'logistics' ? (
+                <>
+                  <p>
+                    {isVi
+                      ? 'Trong vận hành kho vận và chuỗi cung ứng hiện đại, việc đảm bảo tính toàn vẹn của kiện hàng trong suốt quá trình bốc xếp, lưu kho và vận tải đường dài là yếu tố sống còn để cắt giảm chi phí hao hụt.'
+                      : isJa
+                        ? '現代の倉庫管理およびサプライチェーン運用において、荷役、倉庫保管、および長距離輸送における貨物の完全性を確保することは、損失コストを削減するために不可欠です。'
+                        : 'In modern warehousing and supply chain operations, ensuring cargo integrity during handling, storage, and long-haul transit is critical for minimizing loss and damage costs.'}
+                  </p>
+                  <p>
+                    {isVi
+                      ? 'ULINK cung cấp hệ giải pháp vật tư kho vận đồng bộ gồm màng PE quấn pallet lực co giãn cao, hệ bao bì chống ẩm container và trang bị bảo hộ lao động đạt tiêu chuẩn quốc tế ISTA & ISO 9001. Chúng tôi giúp các trung tâm kho vận tối ưu 30% thời gian quấn kiện và nâng cao an toàn lao động tuyệt đối.'
+                      : isJa
+                        ? 'ULINKは、高伸長性PEパレットフィルム、コンテナ防湿包装、および国際輸送規格ISTA & ISO 9001に適合する作業用保護具を含む包括的な物流資材ソリューションを提供します。'
+                        : 'ULINK provides comprehensive logistics supplies including high-stretch PE pallet film, container moisture-barrier packaging, and international ISTA & ISO 9001 compliant safety gear. We empower logistics hubs to optimize wrapping speed by 30% and ensure absolute workplace safety.'}
+                  </p>
+                </>
+              ) : industryData.slug === 'furniture' ? (
+                <>
+                  <p>
+                    {isVi
+                      ? 'Trong ngành sản xuất và xuất khẩu Đồ gỗ - Nội thất cao cấp, bề mặt sơn PU, Melamine hay Veneer rất dễ bị trầy xước, ố hoen hoặc móp góc trong quá trình luân chuyển giữa các công đoạn xưởng, lưu kho và vận chuyển container đường biển dài ngày.'
+                      : isJa
+                        ? '高級家具・木製品の製造および輸出において、PU、メラミン、ツキ板の塗装面は、工場内移動、倉庫保管、および長期間の海上コンテナ輸送中に傷、汚れ、または角潰れが発生しやすい課題があります。'
+                        : 'In luxury furniture manufacturing and export, delicate PU, Melamine, and Veneer finishes are highly vulnerable to scratches, stains, and corner crushing during factory handling, warehousing, and long maritime container transits.'}
+                  </p>
+                  <p>
+                    {isVi
+                      ? 'Giải pháp màng PE bảo vệ bề mặt nhạy áp lực và hệ nẹp góc xốp PE Foam của ULINK giúp bảo vệ 360° mọi sản phẩm nội thất. Đặc biệt, màng PE bóc sạch 100% không để lại vệt keo hay tổn hại lớp bóng thẩm mỹ, giúp các nhà máy tự tin đáp ứng các tiêu chuẩn chất lượng khắt khe nhất của thị trường Mỹ & Châu Âu.'
+                      : isJa
+                        ? 'ULINKの感圧性表面保護PEフィルムおよび成形PEフォーム角当てソリューションは、家具製品を360度から包括的に保護します。特に、のり残りゼロで剥がせるPEフィルムは美観を損なわず、米国および欧州市場の厳格な品質基準を満たすのに役立ちます。'
+                        : "ULINK's pressure-sensitive PE protection film and EPE foam corner guards offer 360° comprehensive protection for all furniture items. Notably, our 100% clean-peel PE film leaves zero adhesive residue or surface damage, enabling factories to confidently meet the most stringent US & EU quality standards."}
+                  </p>
+                </>
               ) : industryData.slug === 'construction' ? (
                 <p>
                   {isVi
@@ -122,7 +158,7 @@ export function IndustryOverviewSection({ industryData, locale }: IndustryOvervi
           </div>
 
           {/* Overview Image */}
-          <div className="relative w-full h-[340px] sm:h-[370px] lg:h-[390px] rounded-[4px] overflow-hidden mt-6">
+          <div className="relative w-full h-[420px] sm:h-[460px] lg:h-[500px] rounded-[6px] overflow-hidden">
             <Image
               src={industryData.overviewImage || '/images/industries/food/overview.png'}
               alt={industryData.title}
@@ -134,17 +170,17 @@ export function IndustryOverviewSection({ industryData, locale }: IndustryOvervi
         </div>
 
         {/* Right Sidebar (Figma Node #1119:10546 - Fixed 380px, bg #F2F4F8, rounded 8px, padding 28px) */}
-        <div className="w-full lg:w-[380px] shrink-0 bg-[#F2F4F8] rounded-[8px] p-[28px] flex flex-col justify-between space-y-[24px]">
-          <div className="space-y-[24px]">
+        <div className="w-full lg:w-[380px] shrink-0 bg-[#F2F4F8] rounded-[8px] p-[24px] sm:p-[28px] flex flex-col justify-between space-y-[16px]">
+          <div className="space-y-[16px]">
             {/* Header Title */}
-            <div className="border-b border-[#DDE1E6] pb-[16px]">
-              <h3 className="text-[20px] font-semibold text-[#1D2A49] leading-[28px]">
+            <div className="border-b border-[#DDE1E6] pb-[12px]">
+              <h3 className="text-[18px] sm:text-[20px] font-semibold text-[#1D2A49] leading-[26px]">
                 {industryData.whyUsTitle || (isVi ? 'Vì sao chọn ULINK?' : isJa ? 'なぜULINKを選ぶのか？' : 'Why Choose ULINK?')}
               </h3>
             </div>
 
-            {/* 3 Advantage Items */}
-            <div className="space-y-[24px]">
+            {/* Advantage Items */}
+            <div className="space-y-[10px]">
               {(industryData.slug === 'food-beverage' || industryData.slug === 'food'
                 ? [
                   {
@@ -169,15 +205,15 @@ export function IndustryOverviewSection({ industryData, locale }: IndustryOvervi
                   { title: industryData.whyUsList?.[2] || 'Cung ứng liên tục 24/7', desc: 'Tổng kho Hà Nam trữ lượng dồi dào, đảm bảo không gián đoạn dây chuyền.', iconComp: Truck }
                 ])
               ).map((item, idx) => {
-                const IconComponent = (item as any).iconComp || ShieldCheck;
+                const IconComponent = (item as any).iconComp || iconMap[item.iconName] || ShieldCheck;
 
                 return (
-                  <div key={idx} className="flex gap-[12px] items-start">
-                    <div className="flex h-[36px] w-[36px] shrink-0 items-center justify-center rounded-[6px] bg-[#DBEAFE] text-[#1769E2] mt-0.5">
-                      <IconComponent className="h-[20px] w-[20px] stroke-[2]" />
+                  <div key={idx} className="group flex gap-[12px] items-start p-3 sm:p-3.5 rounded-[4px] bg-[#F2F4F8] hover:bg-white border border-transparent hover:border-[#1769E2] shadow-none hover:shadow-[0_0_0_1px_#1769E2,0_8px_25px_-5px_rgba(23,105,226,0.2)] hover:-translate-y-0.5 transition-all duration-300 cursor-pointer">
+                    <div className="flex h-[36px] w-[36px] shrink-0 items-center justify-center rounded-[6px] bg-[#DBEAFE] text-[#1769E2] border border-[#d0e2fb] mt-0.5 transition-colors duration-300 group-hover:bg-[#1769E2] group-hover:border-[#1769E2] group-hover:text-white">
+                      <IconComponent className="h-[20px] w-[20px] stroke-[2] transition-transform duration-300 group-hover:scale-110" />
                     </div>
                     <div className="space-y-[4px] flex-1">
-                      <h4 className="text-[18px] font-normal text-[#212529] leading-[28px]">
+                      <h4 className="text-[18px] font-normal text-[#212529] leading-[28px] group-hover:text-[#1769E2] transition-colors duration-300">
                         {item.title}
                       </h4>
                       <p className="text-[14px] text-[#495057] font-normal leading-[20px]">

@@ -32,8 +32,8 @@ export function IndustryCasesSection({
           </h2>
           <p className="text-[15px] sm:text-[16px] leading-[24px] text-[#697077] font-normal">
             {isVi
-              ? 'Giải pháp băng keo nhôm ULINK đáp ứng tối đa yêu cầu kỹ thuật tại các dự án cơ điện công nghiệp quy mô lớn.'
-              : 'ULINK aluminum tape solutions fulfill strict technical requirements for large-scale industrial M&E projects.'}
+              ? 'Giải pháp vật tư & bao bì ULINK đáp ứng tối đa yêu cầu kỹ thuật khắt khe nhất tại các nhà máy và dự án quy mô lớn.'
+              : 'ULINK material & packaging solutions fulfill strict technical requirements for large-scale industrial projects.'}
           </p>
         </div>
 
@@ -50,7 +50,7 @@ export function IndustryCasesSection({
               <Link
                 key={idx}
                 href={targetHref}
-                className="group bg-white border border-[#DDE1E6] rounded-[2px] overflow-hidden shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_12px_30px_-5px_rgba(23,105,226,0.2)] flex flex-col justify-between h-full cursor-pointer"
+                className="group bg-white border border-[#DDE1E6] rounded-[2px] overflow-hidden shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_12px_30px_-5px_rgba(23,105,226,0.2)] hover:border-[#1769E2] flex flex-col justify-between h-full cursor-pointer"
               >
                 <div className="flex flex-col h-full justify-between">
                   {/* Image wrapper (Figma Node height 200px) */}

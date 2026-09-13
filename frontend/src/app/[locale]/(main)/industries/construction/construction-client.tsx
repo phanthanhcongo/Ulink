@@ -196,7 +196,7 @@ export default function ConstructionClient({
         <div className="page-container">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-1.5 sm:gap-2 lg:gap-[2px] items-stretch">
             {/* Feature 1 */}
-            <div className="group bg-white p-3 sm:p-4 lg:p-[24px] min-h-[120px] sm:min-h-[136px] flex flex-col justify-start sm:justify-center gap-1.5 sm:gap-[10px] rounded-[2px] border border-slate-200/90 shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_12px_30px_-5px_rgba(23,105,226,0.2)] cursor-pointer">
+            <div className="group bg-white p-3 sm:p-4 lg:p-[24px] min-h-[120px] sm:min-h-[136px] flex flex-col justify-start sm:justify-center gap-1.5 sm:gap-[10px] rounded-[2px] border border-slate-200/90 shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_12px_30px_-5px_rgba(23,105,226,0.2)] hover:border-[#1769E2] cursor-pointer">
               <Thermometer className="w-5 h-5 sm:w-[28px] sm:h-[28px] text-[#1769E2] shrink-0 transition-transform duration-300 group-hover:scale-110" />
               <h4 className="text-[13px] sm:text-[15px] font-bold text-[#212529] leading-snug group-hover:text-[#1769E2] transition-colors duration-300">
                 {isVi ? 'Chịu nhiệt cao' : 'High Heat Resistance'}
@@ -207,7 +207,7 @@ export default function ConstructionClient({
             </div>
 
             {/* Feature 2 */}
-            <div className="group bg-white p-3 sm:p-4 lg:p-[24px] min-h-[120px] sm:min-h-[136px] flex flex-col justify-start sm:justify-center gap-1.5 sm:gap-[10px] rounded-[2px] border border-slate-200/90 shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_12px_30px_-5px_rgba(23,105,226,0.2)] cursor-pointer">
+            <div className="group bg-white p-3 sm:p-4 lg:p-[24px] min-h-[120px] sm:min-h-[136px] flex flex-col justify-start sm:justify-center gap-1.5 sm:gap-[10px] rounded-[2px] border border-slate-200/90 shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_12px_30px_-5px_rgba(23,105,226,0.2)] hover:border-[#1769E2] cursor-pointer">
               <Zap className="w-5 h-5 sm:w-[28px] sm:h-[28px] text-[#1769E2] shrink-0 transition-transform duration-300 group-hover:scale-110" />
               <h4 className="text-[13px] sm:text-[15px] font-bold text-[#212529] leading-snug group-hover:text-[#1769E2] transition-colors duration-300">
                 {isVi ? 'Bám dính vượt trội' : 'Superior Adhesion'}
@@ -218,7 +218,7 @@ export default function ConstructionClient({
             </div>
 
             {/* Feature 3 */}
-            <div className="group bg-white p-3 sm:p-4 lg:p-[24px] min-h-[120px] sm:min-h-[136px] flex flex-col justify-start sm:justify-center gap-1.5 sm:gap-[10px] rounded-[2px] border border-slate-200/90 shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_12px_30px_-5px_rgba(23,105,226,0.2)] cursor-pointer">
+            <div className="group bg-white p-3 sm:p-4 lg:p-[24px] min-h-[120px] sm:min-h-[136px] flex flex-col justify-start sm:justify-center gap-1.5 sm:gap-[10px] rounded-[2px] border border-slate-200/90 shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_12px_30px_-5px_rgba(23,105,226,0.2)] hover:border-[#1769E2] cursor-pointer">
               <ShieldCheck className="w-5 h-5 sm:w-[28px] sm:h-[28px] text-[#1769E2] shrink-0 transition-transform duration-300 group-hover:scale-110" />
               <h4 className="text-[13px] sm:text-[15px] font-bold text-[#212529] leading-snug group-hover:text-[#1769E2] transition-colors duration-300">
                 {isVi ? 'Chống ẩm & chống ăn mòn' : 'Moisture & Corrosion Barrier'}
@@ -229,7 +229,7 @@ export default function ConstructionClient({
             </div>
 
             {/* Feature 4 */}
-            <div className="group bg-white p-3 sm:p-4 lg:p-[24px] min-h-[120px] sm:min-h-[136px] flex flex-col justify-start sm:justify-center gap-1.5 sm:gap-[10px] rounded-[2px] border border-slate-200/90 shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_12px_30px_-5px_rgba(23,105,226,0.2)] cursor-pointer">
+            <div className="group bg-white p-3 sm:p-4 lg:p-[24px] min-h-[120px] sm:min-h-[136px] flex flex-col justify-start sm:justify-center gap-1.5 sm:gap-[10px] rounded-[2px] border border-slate-200/90 shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_12px_30px_-5px_rgba(23,105,226,0.2)] hover:border-[#1769E2] cursor-pointer">
               <Layers className="w-5 h-5 sm:w-[28px] sm:h-[28px] text-[#1769E2] shrink-0 transition-transform duration-300 group-hover:scale-110" />
               <h4 className="text-[13px] sm:text-[15px] font-bold text-[#162233] leading-snug group-hover:text-[#1769E2] transition-colors duration-300">
                 {isVi ? 'Thi công nhanh chóng' : 'Quick Installation'}
@@ -374,7 +374,7 @@ export default function ConstructionClient({
           {/* 4 Cards Row in 2 Rows on Mobile */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 lg:gap-[16px]">
             {/* Card 1 */}
-            <div className="group p-4 sm:p-6 lg:p-[24px] bg-[#F2F4F8] hover:bg-white rounded-[2px] border border-slate-200/90 shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_12px_30px_-5px_rgba(23,105,226,0.2)] flex flex-col justify-start sm:justify-center gap-2 sm:gap-[10px] min-h-[140px] sm:min-h-[160px] cursor-pointer">
+            <div className="group p-4 sm:p-6 lg:p-[24px] bg-[#F2F4F8] hover:bg-white rounded-[2px] border border-slate-200/90 shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_12px_30px_-5px_rgba(23,105,226,0.2)] hover:border-[#1769E2] flex flex-col justify-start sm:justify-center gap-2 sm:gap-[10px] min-h-[140px] sm:min-h-[160px] cursor-pointer">
               <CheckCircle2 className="w-6 h-6 sm:w-8 sm:h-8 text-[#1769E2] shrink-0 transition-transform duration-300 group-hover:scale-110" />
               <h4 className="font-bold text-[14px] sm:text-[16px] text-[#0F172A] leading-snug group-hover:text-[#1769E2] transition-colors duration-300">
                 {isVi ? 'Tiêu chuẩn Nhật Bản' : 'Japanese Quality Standard'}
@@ -385,7 +385,7 @@ export default function ConstructionClient({
             </div>
 
             {/* Card 2 */}
-            <div className="group p-4 sm:p-6 lg:p-[24px] bg-[#F2F4F8] hover:bg-white rounded-[2px] border border-slate-200/90 shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_12px_30px_-5px_rgba(23,105,226,0.2)] flex flex-col justify-start sm:justify-center gap-2 sm:gap-[10px] min-h-[140px] sm:min-h-[160px] cursor-pointer">
+            <div className="group p-4 sm:p-6 lg:p-[24px] bg-[#F2F4F8] hover:bg-white rounded-[2px] border border-slate-200/90 shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_12px_30px_-5px_rgba(23,105,226,0.2)] hover:border-[#1769E2] flex flex-col justify-start sm:justify-center gap-2 sm:gap-[10px] min-h-[140px] sm:min-h-[160px] cursor-pointer">
               <Settings className="w-6 h-6 sm:w-8 sm:h-8 text-[#1769E2] shrink-0 transition-transform duration-300 group-hover:scale-110" />
               <h4 className="font-bold text-[14px] sm:text-[16px] text-[#0F172A] leading-snug group-hover:text-[#1769E2] transition-colors duration-300">
                 {isVi ? 'Tư vấn kỹ thuật miễn phí' : 'Free Technical Consulting'}
@@ -396,7 +396,7 @@ export default function ConstructionClient({
             </div>
 
             {/* Card 3 */}
-            <div className="group p-4 sm:p-6 lg:p-[24px] bg-[#F2F4F8] hover:bg-white rounded-[2px] border border-slate-200/90 shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_12px_30px_-5px_rgba(23,105,226,0.2)] flex flex-col justify-start sm:justify-center gap-2 sm:gap-[10px] min-h-[140px] sm:min-h-[160px] cursor-pointer">
+            <div className="group p-4 sm:p-6 lg:p-[24px] bg-[#F2F4F8] hover:bg-white rounded-[2px] border border-slate-200/90 shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_12px_30px_-5px_rgba(23,105,226,0.2)] hover:border-[#1769E2] flex flex-col justify-start sm:justify-center gap-2 sm:gap-[10px] min-h-[140px] sm:min-h-[160px] cursor-pointer">
               <Package className="w-6 h-6 sm:w-8 sm:h-8 text-[#1769E2] shrink-0 transition-transform duration-300 group-hover:scale-110" />
               <h4 className="font-bold text-[14px] sm:text-[16px] text-[#0F172A] leading-snug group-hover:text-[#1769E2] transition-colors duration-300">
                 {isVi ? 'Mẫu thử miễn phí' : 'Free Product Samples'}
@@ -407,7 +407,7 @@ export default function ConstructionClient({
             </div>
 
             {/* Card 4 */}
-            <div className="group p-4 sm:p-6 lg:p-[24px] bg-[#F2F4F8] hover:bg-white rounded-[2px] border border-slate-200/90 shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_12px_30px_-5px_rgba(23,105,226,0.2)] flex flex-col justify-start sm:justify-center gap-2 sm:gap-[10px] min-h-[140px] sm:min-h-[160px] cursor-pointer">
+            <div className="group p-4 sm:p-6 lg:p-[24px] bg-[#F2F4F8] hover:bg-white rounded-[2px] border border-slate-200/90 shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_12px_30px_-5px_rgba(23,105,226,0.2)] hover:border-[#1769E2] flex flex-col justify-start sm:justify-center gap-2 sm:gap-[10px] min-h-[140px] sm:min-h-[160px] cursor-pointer">
               <Truck className="w-6 h-6 sm:w-8 sm:h-8 text-[#1769E2] shrink-0 transition-transform duration-300 group-hover:scale-110" />
               <h4 className="font-bold text-[14px] sm:text-[16px] text-[#0F172A] leading-snug group-hover:text-[#1769E2] transition-colors duration-300">
                 {isVi ? 'Giao hàng nhanh 24h' : 'Express 24h Delivery'}

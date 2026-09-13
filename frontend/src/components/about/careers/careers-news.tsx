@@ -42,13 +42,13 @@ export function CareersNews() {
     <section className="py-4 sm:py-6 lg:py-8">
       {/* Section Header */}
       <div className="flex flex-col items-center text-center mb-6 sm:mb-8 lg:mb-10">
-        <span className="text-body-regular font-bold uppercase tracking-wider text-blue-600">
+        <span className="text-[#1769E2] font-semibold text-xl lg:text-[28px] leading-tight lg:leading-[36px] uppercase tracking-wider">
           Cập nhật mới nhất
         </span>
-        <h2 className="text-section-title sm:text-hero-title lg:text-hero-title font-bold tracking-tight text-slate-900 mt-1">
+        <h2 className="text-[#263A4D] font-bold text-2xl sm:text-3xl lg:text-[38px] leading-tight lg:leading-[46px] tracking-tight mt-1">
           Tin tức & Sự kiện
         </h2>
-        <p className="mt-2 text-body-regular text-slate-500 max-w-xl">
+        <p className="mt-2 text-[#7F878F] font-normal text-base lg:text-[16px] leading-[24px] max-w-3xl">
           Cập nhật các hoạt động sản xuất, kinh doanh và hợp tác quốc tế của ULink Industries
         </p>
       </div>
@@ -56,33 +56,33 @@ export function CareersNews() {
       {/* Top Block: Featured News (2 columns) */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 items-center">
         {/* Left: Image */}
-        <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[3px] shadow-md bg-slate-100">
+        <div className="group relative aspect-[16/10] w-full overflow-hidden rounded-[2px] shadow-md bg-slate-100 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:ring-1 hover:ring-[#1769E2] cursor-pointer">
           <Image
             src={featuredNews.image}
             alt={featuredNews.title}
             fill
-            className="object-cover transition-transform duration-300 hover:scale-102"
+            className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
             priority
           />
         </div>
 
         {/* Right: Details */}
         <div className="flex flex-col gap-3">
-          <span className="text-body-regular text-slate-400 font-medium">
+          <span className="text-[#5E6368] font-normal text-sm lg:text-[14px] leading-[20px]">
             {featuredNews.date}
           </span>
-          <h3 className="text-card-title text-slate-900 leading-snug">
+          <h3 className="text-[#303235] font-semibold text-lg lg:text-[20px] leading-[28px]">
             {featuredNews.title}
           </h3>
-          <p className="text-body-regular leading-relaxed text-slate-500">
+          <p className="text-[#303235] font-normal text-base lg:text-[16px] leading-[24px]">
             {featuredNews.excerpt}
           </p>
           <Link
             href="/about/news"
-            className="inline-flex items-center gap-3 rounded-[3px] bg-blue-600 px-5 py-2.5 text-body-regular font-semibold text-white transition-colors hover:bg-blue-700 w-fit mt-3 shadow-xs"
+            className="inline-flex items-center gap-3 rounded-[3px] bg-[#023DA0] px-5 py-2.5 text-white font-semibold text-sm lg:text-[14px] transition-colors hover:bg-[#002B73] w-fit mt-3 shadow-xs"
           >
             <span>Đọc thêm</span>
-            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white text-blue-600">
+            <span className="flex h-5 w-5 items-center justify-center rounded-full bg-white text-[#023DA0]">
               <ArrowRight className="h-3 w-3" />
             </span>
           </Link>
@@ -97,28 +97,28 @@ export function CareersNews() {
         {newsList.map((item) => (
           <div key={item.id} className="flex flex-col gap-3 group">
             {/* Image */}
-            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[3px] bg-slate-100 shadow-xs">
+            <div className="relative aspect-[16/10] w-full overflow-hidden rounded-[2px] bg-slate-100 shadow-xs transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-xl group-hover:ring-1 group-hover:ring-[#1769E2] cursor-pointer">
               <Image
                 src={item.image}
                 alt={item.title}
                 fill
-                className="object-cover transition-transform duration-300 group-hover:scale-105"
+                className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
               />
             </div>
             {/* Details */}
             <div className="flex flex-col flex-1 gap-2">
-              <span className="text-body-regular text-slate-400 font-medium mt-1">
+              <span className="text-[#5E6368] font-normal text-sm lg:text-[14px] mt-1">
                 {item.date}
               </span>
-              <h4 className="text-body-large font-semibold text-slate-800 leading-snug line-clamp-2 group-hover:text-blue-600 transition-colors">
+              <h4 className="text-[#303235] font-semibold text-base lg:text-[16px] leading-[24px] line-clamp-2 group-hover:text-[#1769E2] transition-colors">
                 {item.title}
               </h4>
-              <p className="text-body-regular text-slate-500 leading-relaxed line-clamp-3">
+              <p className="text-[#5E6368] font-normal text-sm lg:text-[14px] leading-[20px] line-clamp-3">
                 {item.excerpt}
               </p>
               <Link
                 href={`/about/news/${item.id}`}
-                className="text-body-regular font-bold text-blue-600 hover:text-blue-700 inline-flex items-center mt-auto pt-2"
+                className="text-[#1769E2] font-semibold text-sm lg:text-[14px] hover:text-[#1257BD] inline-flex items-center mt-auto pt-2"
               >
                 Đọc thêm
               </Link>

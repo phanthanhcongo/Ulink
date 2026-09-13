@@ -43,7 +43,7 @@ export function IndustryStandardsSection({
             return (
               <div
                 key={idx}
-                className="group bg-white border border-[#DDE1E6] rounded-[2px] p-6 lg:p-[28px] space-y-4 flex flex-col items-start sm:items-center text-left sm:text-center justify-start shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_12px_30px_-5px_rgba(23,105,226,0.2)] cursor-pointer"
+                className="group bg-white border border-[#DDE1E6] rounded-[2px] p-6 lg:p-[28px] space-y-4 flex flex-col items-start sm:items-center text-left sm:text-center justify-start shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_0_0_1px_#1769E2,0_12px_30px_-5px_rgba(23,105,226,0.2)] hover:border-[#1769E2] cursor-pointer"
               >
                 {/* 56x56 Icon Circle Wrapper */}
                 <div className="flex h-[56px] w-[56px] shrink-0 items-center justify-center rounded-full bg-[#DBEAFE] text-[#1769E2] border border-[#d0e2fb] transition-colors duration-300 group-hover:bg-[#1769E2] group-hover:border-[#1769E2] group-hover:text-white">

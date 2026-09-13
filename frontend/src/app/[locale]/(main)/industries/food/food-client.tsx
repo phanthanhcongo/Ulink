@@ -236,15 +236,15 @@ export default function FoodClient({
         <div className="page-container">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-1.5 sm:gap-2 lg:gap-[2px] items-stretch">
             {/* Feature 1 */}
-            <div className="bg-white p-4 sm:p-[24px] min-h-[136px] flex flex-col justify-start sm:justify-center gap-2 sm:gap-[10px] shadow-2xs">
+            <div className="group bg-white p-4 sm:p-[24px] min-h-[136px] flex flex-col justify-start sm:justify-center gap-2 sm:gap-[10px] rounded-[2px] border border-slate-200/90 shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_8px_25px_-5px_rgba(23,105,226,0.2)] hover:border-[#1769E2] cursor-pointer">
               <Image
                 src="/images/industries/food/icon_settings_services.svg"
                 width={28}
                 height={28}
                 alt="Sản xuất theo yêu cầu"
-                className="w-6 h-6 sm:w-[28px] sm:h-[28px] shrink-0"
+                className="w-6 h-6 sm:w-[28px] sm:h-[28px] shrink-0 transition-transform duration-300 group-hover:scale-110"
               />
-              <h4 className="text-xs sm:text-[15px] font-bold text-[#212529] leading-snug">
+              <h4 className="text-xs sm:text-[15px] font-bold text-[#212529] leading-snug group-hover:text-[#1769E2] transition-colors">
                 {isVi ? 'Sản xuất theo yêu cầu' : 'Custom Manufacturing'}
               </h4>
               <p className="text-[12px] sm:text-[14px] font-normal text-[#495057] leading-[18px] sm:leading-[20px]">
@@ -253,15 +253,15 @@ export default function FoodClient({
             </div>
 
             {/* Feature 2 */}
-            <div className="bg-white p-4 sm:p-[24px] min-h-[136px] flex flex-col justify-start sm:justify-center gap-2 sm:gap-[10px] shadow-2xs">
+            <div className="group bg-white p-4 sm:p-[24px] min-h-[136px] flex flex-col justify-start sm:justify-center gap-2 sm:gap-[10px] rounded-[2px] border border-slate-200/90 shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_8px_25px_-5px_rgba(23,105,226,0.2)] hover:border-[#1769E2] cursor-pointer">
               <Image
                 src="/images/industries/food/icon_task_approved.svg"
                 width={28}
                 height={28}
                 alt="Chất lượng ổn định"
-                className="w-6 h-6 sm:w-[28px] sm:h-[28px] shrink-0"
+                className="w-6 h-6 sm:w-[28px] sm:h-[28px] shrink-0 transition-transform duration-300 group-hover:scale-110"
               />
-              <h4 className="text-xs sm:text-[15px] font-bold text-[#212529] leading-snug">
+              <h4 className="text-xs sm:text-[15px] font-bold text-[#212529] leading-snug group-hover:text-[#1769E2] transition-colors">
                 {isVi ? 'Chất lượng ổn định' : 'Stable Quality'}
               </h4>
               <p className="text-[12px] sm:text-[14px] font-normal text-[#495057] leading-[18px] sm:leading-[20px]">
@@ -270,15 +270,15 @@ export default function FoodClient({
             </div>
 
             {/* Feature 3 */}
-            <div className="bg-white p-4 sm:p-[24px] min-h-[136px] flex flex-col justify-start sm:justify-center gap-2 sm:gap-[10px] shadow-2xs">
+            <div className="group bg-white p-4 sm:p-[24px] min-h-[136px] flex flex-col justify-start sm:justify-center gap-2 sm:gap-[10px] rounded-[2px] border border-slate-200/90 shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_8px_25px_-5px_rgba(23,105,226,0.2)] hover:border-[#1769E2] cursor-pointer">
               <Image
                 src="/images/industries/food/icon_tag.svg"
                 width={28}
                 height={28}
                 alt="Giá cả cạnh tranh"
-                className="w-6 h-6 sm:w-[28px] sm:h-[28px] shrink-0"
+                className="w-6 h-6 sm:w-[28px] sm:h-[28px] shrink-0 transition-transform duration-300 group-hover:scale-110"
               />
-              <h4 className="text-xs sm:text-[15px] font-bold text-[#212529] leading-snug">
+              <h4 className="text-xs sm:text-[15px] font-bold text-[#212529] leading-snug group-hover:text-[#1769E2] transition-colors">
                 {isVi ? 'Giá cả cạnh tranh' : 'Competitive Pricing'}
               </h4>
               <p className="text-[12px] sm:text-[14px] font-normal text-[#495057] leading-[18px] sm:leading-[20px]">
@@ -287,15 +287,15 @@ export default function FoodClient({
             </div>
 
             {/* Feature 4 */}
-            <div className="bg-white p-4 sm:p-[24px] min-h-[136px] flex flex-col justify-start sm:justify-center gap-2 sm:gap-[10px] shadow-2xs">
+            <div className="group bg-white p-4 sm:p-[24px] min-h-[136px] flex flex-col justify-start sm:justify-center gap-2 sm:gap-[10px] rounded-[2px] border border-slate-200/90 shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_8px_25px_-5px_rgba(23,105,226,0.2)] hover:border-[#1769E2] cursor-pointer">
               <Image
                 src="/images/industries/food/icon_delivery_truck.svg"
                 width={28}
                 height={28}
                 alt="Giao hàng nhanh"
-                className="w-6 h-6 sm:w-[28px] sm:h-[28px] shrink-0"
+                className="w-6 h-6 sm:w-[28px] sm:h-[28px] shrink-0 transition-transform duration-300 group-hover:scale-110"
               />
-              <h4 className="text-xs sm:text-[15px] font-bold text-[#162233] leading-snug">
+              <h4 className="text-xs sm:text-[15px] font-bold text-[#162233] leading-snug group-hover:text-[#1769E2] transition-colors">
                 {isVi ? 'Giao hàng nhanh' : 'Fast Delivery'}
               </h4>
               <p className="text-[12px] sm:text-[14px] font-normal text-[#495057] leading-[18px] sm:leading-[20px]">
@@ -561,9 +561,9 @@ export default function FoodClient({
           {/* 4 Feature Cards Row (Figma Node #1119:10591 - Gap 16px, Padding 24px, Rounded 3px) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-[16px] items-stretch">
             {/* Feature 1 */}
-            <div className="bg-white p-[24px] rounded-[3px] border border-[#DCE0E5] space-y-[10px] min-h-[160px] flex flex-col justify-center shadow-2xs">
-              <Award className="h-[32px] w-[32px] text-[#1769E2] shrink-0" />
-              <h4 className="text-[16px] font-bold text-[#212529]">
+            <div className="group bg-white p-[24px] rounded-[3px] border border-[#DCE0E5] space-y-[10px] min-h-[160px] flex flex-col justify-center shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_8px_25px_-5px_rgba(23,105,226,0.2)] hover:border-[#1769E2] cursor-pointer">
+              <Award className="h-[32px] w-[32px] text-[#1769E2] shrink-0 transition-transform duration-300 group-hover:scale-110" />
+              <h4 className="text-[16px] font-bold text-[#212529] group-hover:text-[#1769E2] transition-colors">
                 {isVi ? 'Công Nghệ Sản Xuất Tiên Tiến' : 'Advanced Production Tech'}
               </h4>
               <p className="text-[14px] font-normal text-[#495057] leading-[20px]">
@@ -572,9 +572,9 @@ export default function FoodClient({
             </div>
 
             {/* Feature 2 */}
-            <div className="bg-white p-[24px] rounded-[3px] border border-[#DCE0E5] space-y-[10px] min-h-[160px] flex flex-col justify-center shadow-2xs">
-              <Users className="h-[32px] w-[32px] text-[#1769E2] shrink-0" />
-              <h4 className="text-[16px] font-bold text-[#212529]">
+            <div className="group bg-white p-[24px] rounded-[3px] border border-[#DCE0E5] space-y-[10px] min-h-[160px] flex flex-col justify-center shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_8px_25px_-5px_rgba(23,105,226,0.2)] hover:border-[#1769E2] cursor-pointer">
+              <Users className="h-[32px] w-[32px] text-[#1769E2] shrink-0 transition-transform duration-300 group-hover:scale-110" />
+              <h4 className="text-[16px] font-bold text-[#212529] group-hover:text-[#1769E2] transition-colors">
                 {isVi ? 'Kiểm Soát Chất Lượng Nghiêm Ngặt' : 'Strict Quality Control'}
               </h4>
               <p className="text-[14px] font-normal text-[#495057] leading-[20px]">
@@ -583,9 +583,9 @@ export default function FoodClient({
             </div>
 
             {/* Feature 3 */}
-            <div className="bg-white p-[24px] rounded-[3px] border border-[#DCE0E5] space-y-[10px] min-h-[160px] flex flex-col justify-center shadow-2xs">
-              <Activity className="h-[32px] w-[32px] text-[#1769E2] shrink-0" />
-              <h4 className="text-[16px] font-bold text-[#212529]">
+            <div className="group bg-white p-[24px] rounded-[3px] border border-[#DCE0E5] space-y-[10px] min-h-[160px] flex flex-col justify-center shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_8px_25px_-5px_rgba(23,105,226,0.2)] hover:border-[#1769E2] cursor-pointer">
+              <Activity className="h-[32px] w-[32px] text-[#1769E2] shrink-0 transition-transform duration-300 group-hover:scale-110" />
+              <h4 className="text-[16px] font-bold text-[#212529] group-hover:text-[#1769E2] transition-colors">
                 {isVi ? 'Năng Lực Kỹ Thuật Chuyên Sâu' : 'Deep Technical Expertise'}
               </h4>
               <p className="text-[14px] font-normal text-[#495057] leading-[20px]">
@@ -594,9 +594,9 @@ export default function FoodClient({
             </div>
 
             {/* Feature 4 */}
-            <div className="bg-white p-[24px] rounded-[3px] border border-[#DCE0E5] space-y-[10px] min-h-[160px] flex flex-col justify-center shadow-2xs">
-              <Settings className="h-[32px] w-[32px] text-[#1769E2] shrink-0" />
-              <h4 className="text-[16px] font-bold text-[#212529]">
+            <div className="group bg-white p-[24px] rounded-[3px] border border-[#DCE0E5] space-y-[10px] min-h-[160px] flex flex-col justify-center shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_8px_25px_-5px_rgba(23,105,226,0.2)] hover:border-[#1769E2] cursor-pointer">
+              <Settings className="h-[32px] w-[32px] text-[#1769E2] shrink-0 transition-transform duration-300 group-hover:scale-110" />
+              <h4 className="text-[16px] font-bold text-[#212529] group-hover:text-[#1769E2] transition-colors">
                 {isVi ? 'Giải Pháp Sản Xuất Tùy Chỉnh' : 'Customized Solutions'}
               </h4>
               <p className="text-[14px] font-normal text-[#495057] leading-[20px]">

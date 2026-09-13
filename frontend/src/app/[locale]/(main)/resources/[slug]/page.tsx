@@ -15,6 +15,10 @@ export default async function ResourceDetailPage({ params }: PageProps) {
   const { locale, slug } = params;
   setRequestLocale(locale);
 
+  if (slug === 'event' || slug === 'events') {
+    redirect({ href: '/resources/events', locale });
+  }
+
   const resource = await loadResourceBySlug(slug);
 
   if (!resource) {

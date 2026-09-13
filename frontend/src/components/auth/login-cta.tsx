@@ -2,30 +2,34 @@ import Link from 'next/link';
 
 export function LoginCta() {
   return (
-    <section className="w-full bg-white border-t border-b border-slate-100 py-8 sm:py-10">
-      <div className="page-container flex flex-col md:flex-row items-start md:items-center justify-between gap-6 md:gap-8">
-        <div className="flex flex-col gap-1.5 text-left">
-          <span className="text-caption-responsive font-semibold text-slate-500 uppercase tracking-wider">
-            Liên hệ trực tiếp
-          </span>
-          <h2 className="text-section-title font-bold text-slate-900">
-            Kết nối với ULink Industries
-          </h2>
-          <p className="text-body-regular text-slate-500 max-w-xl">
+    <section className="w-full bg-white border-t border-b border-slate-100 py-10 sm:py-14 lg:py-[80px]">
+      <div className="page-container flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 lg:gap-[80px]">
+        {/* Left Content Side */}
+        <div className="flex flex-col gap-4 max-w-3xl text-left">
+          <div className="flex flex-col gap-2">
+            <span className="text-[16px] sm:text-[20px] lg:text-[24px] font-semibold text-[#212529] leading-tight">
+              Liên hệ trực tiếp
+            </span>
+            <h2 className="text-[22px] sm:text-[26px] lg:text-[28px] font-semibold text-[#21272A] leading-[36px] tracking-[-0.0107em]">
+              Kết nối với ULink Industries
+            </h2>
+          </div>
+          <p className="text-[15px] sm:text-[16px] lg:text-[18px] leading-[28px] text-[#21272A] font-normal">
             Hãy liên hệ với chúng tôi để được tư vấn giải pháp tối ưu cho doanh nghiệp của bạn.
           </p>
         </div>
 
+        {/* Right Action Side */}
         <div className="flex items-center gap-4 shrink-0 w-full sm:w-auto">
           <a
             href="tel:19006868"
-            className="inline-flex h-11 items-center justify-center rounded-[3px] border border-brand bg-white px-6 text-caption-responsive font-bold text-brand hover:bg-blue-50 transition-all hover:scale-[1.02] active:scale-[0.98] w-1/2 sm:w-auto text-center"
+            className="inline-flex h-[56px] flex-1 sm:flex-initial items-center justify-center rounded-[3px] border-2 border-[#1769E2] bg-white px-6 sm:px-8 text-[16px] sm:text-[18px] lg:text-[20px] font-medium text-[#1769E2] tracking-[0.025em] leading-none hover:bg-[#EBF3FE] hover:border-[#1257BD] hover:text-[#1257BD] transition-all duration-200 text-center shrink-0"
           >
             Gọi ngay
           </a>
           <Link
             href="/contact"
-            className="inline-flex h-11 items-center justify-center rounded-[3px] bg-brand px-7 text-caption-responsive font-bold text-white shadow-sm hover:bg-brand-strong transition-all hover:scale-[1.02] active:scale-[0.98] w-1/2 sm:w-auto text-center"
+            className="inline-flex h-[56px] flex-1 sm:flex-initial items-center justify-center rounded-[3px] border-2 border-[#1769E2] bg-[#1769E2] px-6 sm:px-8 text-[16px] sm:text-[18px] lg:text-[20px] font-medium text-white tracking-[0.025em] leading-none hover:bg-[#1257BD] hover:border-[#1257BD] transition-all duration-200 text-center shrink-0"
           >
             Gửi yêu cầu
           </Link>

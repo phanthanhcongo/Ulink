@@ -1,16 +1,16 @@
 const steps = [
   {
-    num: '1',
+    num: 1,
     title: 'Xác nhận hồ sơ',
-    desc: 'Hệ thống tự động gửi email xác nhận đã nhận CV đầy đủ đến email của bạn.'
+    desc: 'Hệ thống tự động gửi email xác nhận đã nhận CV đầy đủ đến email của bạn hoặc Đội ngũ liên hệ trực tiếp với Bạn.'
   },
   {
-    num: '2',
+    num: 2,
     title: 'Đánh giá năng lực',
     desc: 'Chuyên viên tuyển dụng ULink đánh giá kinh nghiệm và độ phù hợp trong 3 ngày làm việc.'
   },
   {
-    num: '3',
+    num: 3,
     title: 'Liên hệ phỏng vấn',
     desc: 'Nếu CV phù hợp, chúng tôi sẽ gọi điện trực tiếp để đặt lịch phỏng vấn chính thức.'
   }
@@ -18,30 +18,31 @@ const steps = [
 
 export function ApplySuccessSteps() {
   return (
-    <section className="py-4 sm:py-6 lg:py-8 max-w-5xl mx-auto px-3 sm:px-4">
-      <div className="flex flex-col items-center text-center mb-4 sm:mb-6 lg:mb-8">
-        <h2 className="text-section-title sm:text-hero-title font-bold tracking-tight text-slate-900">
+    <section className="py-6 sm:py-10 max-w-4xl mx-auto px-4">
+      <div className="flex flex-col items-center text-center mb-6 sm:mb-8">
+        <h2 className="text-[#162233] font-bold text-xl sm:text-2xl lg:text-[24px] tracking-tight">
           Các bước tiếp theo của bạn là gì?
         </h2>
-        <p className="mt-1.5 sm:mt-2 lg:mt-3 text-body-regular text-slate-500 text-sm sm:text-base">
+        <p className="mt-1.5 text-[#617084] font-normal text-sm sm:text-base lg:text-[15px]">
           Hành trình gia nhập đại gia đình ULink Industries bắt đầu từ đây
         </p>
       </div>
 
-      <div className="grid grid-cols-1 gap-3 sm:gap-4 lg:gap-6 md:grid-cols-3">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
         {steps.map((item) => (
           <div
             key={item.num}
-            className="flex flex-col rounded-[3px] bg-slate-50 p-3 sm:p-4 lg:p-6 border border-slate-100 shadow-sm transition-all hover:bg-white hover:shadow-md"
+            className="group flex flex-col rounded-[2px] bg-[#F5F8FC] p-6 border border-slate-100/80 shadow-xs transition-all duration-200 hover:-translate-y-1 hover:shadow-md hover:bg-white hover:ring-1 hover:ring-[#1769E2]/30 cursor-pointer"
           >
-            <div className="flex h-7 sm:h-7.5 lg:h-8 w-7 sm:w-7.5 lg:w-8 items-center justify-center rounded-full bg-blue-600 text-body-regular font-bold text-white mb-2 sm:mb-3 lg:mb-4 shadow-sm text-xs sm:text-sm">
+            <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#1769E2] text-white font-bold text-sm mb-4 shrink-0 transition-transform group-hover:scale-110">
               {item.num}
             </div>
-            <h3 className="text-body-large sm:text-card-title text-slate-900 mb-1.5 sm:mb-2">{item.title}</h3>
-            <p className="text-body-regular leading-relaxed text-slate-600 text-sm sm:text-base">{item.desc}</p>
+            <h3 className="text-[#162233] font-bold text-base lg:text-[16px] mb-2">{item.title}</h3>
+            <p className="text-[#617084] font-normal text-xs lg:text-[13px] leading-relaxed">{item.desc}</p>
           </div>
         ))}
       </div>
     </section>
   );
 }
+

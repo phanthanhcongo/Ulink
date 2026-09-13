@@ -19,8 +19,10 @@ export function IndustryCtaBanner({
   const isVi = locale === 'vi';
   const isJa = locale === 'ja';
 
+  const displayIndustryName = (isVi && (industryName === 'Dược phẩm & Y tế' || industryName === 'Dược phẩm \u0026 Y tế')) ? 'Dược' : industryName;
+
   const defaultTitle = isVi
-    ? `Sẵn sàng tối ưu hóa chuỗi cung ứng ${industryName.toLowerCase().startsWith('ngành') ? industryName : `ngành ${industryName}`} của bạn?`
+    ? `Sẵn sàng tối ưu hóa chuỗi cung ứng ${displayIndustryName.toLowerCase().startsWith('ngành') ? displayIndustryName : `ngành ${displayIndustryName}`} của bạn?`
     : isJa
       ? `${industryName}サプライチェーンを最適化する準備はできていますか？`
       : `Ready to optimize your ${industryName} supply chain?`;

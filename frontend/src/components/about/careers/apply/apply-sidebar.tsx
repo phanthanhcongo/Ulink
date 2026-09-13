@@ -1,79 +1,61 @@
-import { Briefcase, DollarSign, Clock, Calendar } from 'lucide-react';
+import { UserCheck, Coins, Clock, Calendar } from 'lucide-react';
+
+const overviewItems = [
+  { label: 'Cấp bậc', value: 'Chuyên viên', icon: UserCheck },
+  { label: 'Mức lương', value: '15 - 25M VND', icon: Coins },
+  { label: 'Hình thức làm việc', value: 'Toàn thời gian', icon: Clock },
+  { label: 'Hạn nộp hồ sơ', value: '30/09/2026', icon: Calendar }
+];
 
 const processSteps = [
-  { num: '1', title: 'Tiếp nhận hồ sơ' },
-  { num: '2', title: 'Sàng lọc CV phù hợp' },
-  { num: '3', title: 'Phỏng vấn' },
-  { num: '4', title: 'Đánh giá' },
-  { num: '5', title: 'Gửi Offer' },
-  { num: '6', title: 'Onboarding' }
+  { num: 1, title: 'Tiếp nhận hồ sơ' },
+  { num: 2, title: 'Lựa chọn CV phù hợp' },
+  { num: 3, title: 'Phỏng vấn' },
+  { num: 4, title: 'Đánh giá' },
+  { num: 5, title: 'Gửi Offer' },
+  { num: 6, title: 'Onboarding' }
 ];
 
 export function ApplySidebar() {
   return (
-    <div className="flex flex-col gap-4 sm:gap-5 lg:gap-6 py-4 sm:py-6 lg:py-8">
+    <div className="flex flex-col gap-6">
       {/* Card 1: Tóm tắt công việc */}
-      <div className="rounded-[3px] bg-slate-50 p-3 sm:p-4 lg:p-6 border border-slate-100 shadow-sm flex flex-col gap-3 sm:gap-4">
-        <h3 className="text-base sm:text-card-title text-slate-900 border-b border-slate-200 pb-2 sm:pb-3">
+      <div className="rounded-[2px] bg-white p-5 sm:p-6 border border-[#CAD5E2] shadow-xs flex flex-col gap-5">
+        <h3 className="text-[#162233] font-bold text-base lg:text-[18px] border-b border-slate-100 pb-3">
           Tóm tắt công việc
         </h3>
 
-        <div className="space-y-2 sm:space-y-3 lg:space-y-3.5 text-xs sm:text-body-regular">
-          <div className="flex items-center gap-3 text-slate-700">
-            <div className="flex h-6 sm:h-7 w-6 sm:w-7 items-center justify-center rounded-[3px] bg-blue-100 text-blue-600 shrink-0">
-              <Briefcase className="h-3 sm:h-3.5 w-3 sm:w-3.5" />
-            </div>
-            <div>
-              <span className="block text-xs sm:text-caption-responsive text-slate-400">Cấp bậc</span>
-              <span className="font-bold text-slate-800">Chuyên viên</span>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-3 text-slate-700">
-            <div className="flex h-7 w-7 items-center justify-center rounded-[3px] bg-blue-100 text-blue-600 shrink-0">
-              <DollarSign className="h-3.5 w-3.5" />
-            </div>
-            <div>
-              <span className="block text-xs sm:text-caption-responsive text-slate-400">Mức lương</span>
-              <span className="font-bold text-slate-800">15 - 25 triệu VNĐ</span>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-3 text-slate-700">
-            <div className="flex h-7 w-7 items-center justify-center rounded-[3px] bg-blue-100 text-blue-600 shrink-0">
-              <Clock className="h-3.5 w-3.5" />
-            </div>
-            <div>
-              <span className="block text-xs sm:text-caption-responsive text-slate-400">Hình thức làm việc</span>
-              <span className="font-bold text-slate-800">Toàn thời gian</span>
-            </div>
-          </div>
-
-          <div className="flex items-center gap-3 text-slate-700">
-            <div className="flex h-7 w-7 items-center justify-center rounded-[3px] bg-blue-100 text-blue-600 shrink-0">
-              <Calendar className="h-3.5 w-3.5" />
-            </div>
-            <div>
-              <span className="block text-xs sm:text-caption-responsive text-slate-400">Hạn nộp hồ sơ</span>
-              <span className="font-bold text-amber-700">30/08/2026</span>
-            </div>
-          </div>
+        <div className="flex flex-col gap-4">
+          {overviewItems.map((item, idx) => {
+            const Icon = item.icon;
+            return (
+              <div key={idx} className="flex items-center gap-3.5">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-[#1769E2] bg-[#EFF8FF] text-[#1769E2]">
+                  <Icon className="h-4.5 w-4.5 stroke-[2.25]" />
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-[#617084] font-normal text-xs lg:text-[12px]">{item.label}</span>
+                  <span className="text-[#162233] font-semibold text-sm lg:text-[14px]">{item.value}</span>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
 
       {/* Card 2: Quy trình tuyển dụng */}
-      <div className="rounded-[3px] bg-white p-3 sm:p-4 lg:p-6 border border-slate-100 shadow-sm flex flex-col gap-3 sm:gap-4">
-        <h3 className="text-base sm:text-card-title text-slate-900 border-b border-slate-100 pb-2 sm:pb-3">
+      <div className="rounded-[2px] bg-white p-5 sm:p-6 border border-[#CAD5E2] shadow-xs flex flex-col gap-5">
+        <h3 className="text-[#162233] font-bold text-base lg:text-[18px] border-b border-slate-100 pb-3">
           Quy trình tuyển dụng
         </h3>
 
-        <div className="flex flex-col gap-2 sm:gap-3">
+        <div className="flex flex-col gap-3">
           {processSteps.map((step) => (
-            <div key={step.num} className="flex items-center gap-2 sm:gap-3">
-              <span className="flex h-5 sm:h-6 w-5 sm:w-6 shrink-0 items-center justify-center rounded-full bg-blue-600 text-xs sm:text-caption-responsive font-bold text-white text-center">
+            <div key={step.num} className="flex items-center gap-3">
+              <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#3878F5] text-white font-bold text-xs">
                 {step.num}
-              </span>
-              <span className="text-xs sm:text-body-regular font-semibold text-slate-800">{step.title}</span>
+              </div>
+              <span className="text-[#162233] font-semibold text-sm lg:text-[14px]">{step.title}</span>
             </div>
           ))}
         </div>
@@ -81,3 +63,4 @@ export function ApplySidebar() {
     </div>
   );
 }
+

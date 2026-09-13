@@ -61,7 +61,7 @@ export function IndustryCategorySection({
             return (
               <div
                 key={idx}
-                className="group bg-white border border-[#DDE1E6] rounded-[3px] overflow-hidden hover:shadow-md transition-all duration-300 flex flex-col justify-between h-full"
+                className="group bg-white border border-[#DDE1E6] rounded-[3px] overflow-hidden shadow-[0_4px_20px_-4px_rgba(6,26,54,0.06)] transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_8px_25px_-5px_rgba(23,105,226,0.2)] hover:border-[#1769E2] flex flex-col justify-between h-full cursor-pointer"
               >
                 <div>
                   {/* Square Image container */}
@@ -70,15 +70,15 @@ export function IndustryCategorySection({
                       src={item.image}
                       alt={item.name}
                       fill
-                      className="object-cover p-2"
+                      className="object-cover p-2 transition-transform duration-300 group-hover:scale-105"
                     />
                   </Link>
 
                   {/* Content */}
                   <div className="p-5 space-y-3">
                     <div className="space-y-1">
-                      <Link href={itemHref} className="block">
-                        <h4 className="text-[16px] lg:text-[18px] font-bold text-[#141414] hover:text-[#1769E2] line-clamp-1 leading-snug transition-colors" title={item.name}>
+                      <Link href={itemHref} className="block min-h-[48px] flex items-center">
+                        <h4 className="text-[15px] lg:text-[17px] font-bold text-[#141414] group-hover:text-[#1769E2] line-clamp-2 leading-snug transition-colors" title={item.name}>
                           {item.name}
                         </h4>
                       </Link>

@@ -163,7 +163,7 @@ export default function PharmaceuticalClient({
 
       <PartnersLogosOnly />
 
-      <IndustryCtaBanner locale={locale} industryName={industryData.name} />
+      <IndustryCtaBanner locale={locale} industryName={isVi ? 'Dược' : industryData.name} />
 
       {showToast && (
         <div className="fixed bottom-5 right-5 z-50 flex items-center gap-2.5 rounded-[3px] border border-amber-200 bg-amber-50 px-4 py-3 text-amber-800 shadow-lg animate-in fade-in slide-in-from-bottom-5 duration-300 dark:bg-amber-950/20 dark:text-amber-400 dark:border-amber-500/20">

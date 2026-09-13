@@ -31,8 +31,10 @@ export default function LogisticsClient({
   const [showToast, setShowToast] = useState(false);
   const observerRef = useRef<IntersectionObserver | null>(null);
 
+  const isVi = locale === 'vi';
+  const isJa = locale === 'ja';
+
   const handleCatalogueClick = (e: React.MouseEvent) => {
-    e.preventDefault();
     setShowToast(true);
     setTimeout(() => {
       setShowToast(false);
@@ -41,7 +43,7 @@ export default function LogisticsClient({
 
   const tabs = [
     { id: 'overview', label: translations.overview },
-    { id: 'cleanroom', label: translations.cleanroomSol },
+    { id: 'cleanroom', label: isVi ? 'Bảo hộ & An toàn kho' : isJa ? '安全・保護具' : 'Warehouse Safety' },
     { id: 'packaging', label: translations.packagingSol },
     { id: 'standards', label: industryData.standardsTitle },
     { id: 'cases', label: translations.cases }
@@ -100,9 +102,6 @@ export default function LogisticsClient({
       setActiveTab(id);
     }
   };
-
-  const isVi = locale === 'vi';
-  const isJa = locale === 'ja';
 
   return (
     <div className="min-h-screen bg-white text-[#141414] font-sans">

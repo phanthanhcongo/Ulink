@@ -296,7 +296,7 @@ export function ResourcesClient({
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {MOST_VIEWED_ARTICLES.map((art) => (
+            {MOST_VIEWED_ARTICLES.slice(0, 4).map((art) => (
               <ResourceCard key={art.id} resource={art} locale={locale} />
             ))}
           </div>

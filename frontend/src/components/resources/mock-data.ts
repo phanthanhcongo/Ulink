@@ -1138,145 +1138,7 @@ export const MOST_VIEWED_ARTICLES: ResourceItem[] = [
       avatar: '/images/about/op-team.webp'
     },
     readTime: { vi: 'Đọc thêm', en: 'Read more', ja: 'もっと読む' },
-    sections: [
-      {
-        id: 'sec-mv2-1',
-        num: '1.',
-        title: {
-          vi: 'Các nguồn ô nhiễm tiềm ẩn trong sản xuất dược',
-          en: 'Potential Contamination Sources in Pharma Facilities',
-          ja: '医薬品施設における潜在的な汚染源'
-        },
-        content: {
-          vi: 'Ô nhiễm vi sinh vật và vi hạt từ người lao động, thiết bị chưa tiệt trùng, nguyên liệu thầu đầu vào và luồng không khí chưa qua xử lý.',
-          en: 'Microbial and particulate contamination originates from operators, unsterilized equipment, raw materials, and untreated ambient air.',
-          ja: '微生物および微粒子汚染は、作業員、未滅菌の機器、原料、および未処理の周囲空気から発生します。'
-        }
-      },
-      {
-        id: 'sec-mv2-2',
-        num: '2.',
-        title: {
-          vi: 'Giải pháp kiểm soát vi sinh và vi hạt theo EU-GMP',
-          en: 'Microbial & Particulate Control under EU-GMP',
-          ja: 'EU-GMPに基づく微生物および微粒子の制御ソリューション'
-        },
-        content: {
-          vi: 'Thiết lập các cấp độ sạch Grade A, B, C, D.\nKhu vực Grade A yêu cầu luồng khí một chiều (Laminar Air Flow - LAF) tốc độ 0.36 - 0.54 m/s.',
-          en: 'Establish Grade A, B, C, D cleanliness zones.\nGrade A critical zones demand unidirectional Laminar Air Flow (LAF) at 0.36 - 0.54 m/s velocity.',
-          ja: 'グレードA、B、C、Dの清浄度ゾーンを設定します。\nグレードAの重要ゾーンでは、0.36〜0.54 m/sの速度で一方向ラミナーエアフロー（LAF）が必要です。'
-        }
-      },
-      {
-        id: 'sec-mv2-3',
-        num: '3.',
-        title: {
-          vi: 'Áp dụng vật tư tiêu hao phòng sạch vô trùng',
-          en: 'Deploying Sterile Cleanroom Consumables',
-          ja: 'ステライル（無菌）クリーンルーム消耗品の適用'
-        },
-        content: {
-          vi: 'Sử dụng găng tay tiệt trùng bằng tia Gamma, khẩu trang và khăn lau phòng sạch đóng gói tiệt trùng từng chiếc có chỉ thị màu tiệt trùng.',
-          en: 'Utilize Gamma-irradiated sterile gloves, masks, and individually pouch-sealed cleanroom wipes with sterilization indicators.',
-          ja: 'ガンマ線滅菌手袋、マスク、および滅菌インジケーターが付いた個別包装のクリーンルームワイパーを使用します。'
-        }
-      },
-      {
-        id: 'sec-mv2-4',
-        num: '4.',
-        title: {
-          vi: 'Giám sát liên tục và đánh giá rủi ro nhiễm chéo',
-          en: 'Continuous Environmental Monitoring & Risk Assessment',
-          ja: '継続的な環境モニタリングとリスク評価'
-        },
-        content: {
-          vi: 'Đặt dĩa thạch lắng bụi (Settle plates) và máy hút vi sinh không khí (Active Air Sampler) định kỳ để đảm bảo giới hạn vi sinh luôn nằm trong ngưỡng cho phép.',
-          en: 'Deploy settle plates and active air samplers routinely to guarantee bioburden metrics remain well beneath action thresholds.',
-          ja: '落下菌用シャーレ（Settle plates）と空中浮遊菌サンプラーを定期的に配置し、生菌数指標がアクション閾値以下に維持されることを保証します。'
-        }
-      }
-    ]
-  },
-  {
-    id: 'mv-card-3',
-    category: 'standard',
-    badge: { vi: 'Tiêu chuẩn', en: 'Standards', ja: '標準' },
-    title: {
-      vi: 'Cập nhật tài liệu Tiêu chuẩn ISO 14644 mới nhất',
-      en: 'Latest ISO 14644 Cleanroom Standard Updates',
-      ja: '最新のISO 14644標準文書の更新'
-    },
-    description: {
-      vi: 'Cập nhật các yêu cầu mới về phân loại và kiểm soát môi trường phòng sạch.',
-      en: 'Key revision highlights for cleanroom classification and air purity monitoring.',
-      ja: 'クリーンルーム環境の分類と制御に関する新しい要件の更新。'
-    },
-    date: '2.1k lượt xem',
-    image: '/images/resources/autohtml/thumb14.png',
-    author: {
-      name: { vi: 'ULink Editorial', en: 'ULink Editorial', ja: 'ULink 編集部' },
-      role: { vi: 'Ban biên tập', en: 'Editorial Board', ja: '編集部' },
-      avatar: '/images/about/op-team.webp'
-    },
-    readTime: { vi: 'Đọc thêm', en: 'Read more', ja: 'もっと読む' },
-    sections: [
-      {
-        id: 'sec-mv3-1',
-        num: '1.',
-        title: {
-          vi: 'Điểm mới trong ISO 14644-1:2015 so với phiên bản cũ',
-          en: 'Key Revision Highlights in ISO 14644-1:2015',
-          ja: 'ISO 14644-1:2015の主な改訂ポイント'
-        },
-        content: {
-          vi: 'Bỏ phương pháp tính giới hạn tin cậy 95% UCL và thay thế bằng bảng tra cứu số lượng vị trí lấy mẫu tối thiểu dựa trên diện tích phòng sạch.',
-          en: 'Eliminated the 95% Upper Confidence Limit (UCL) method, replacing it with a direct lookup table for minimum sampling point counts by room area.',
-          ja: '95%上限信頼限界（UCL）法を廃止し、部屋の面積に基づく最小サンプリングポイント数の直接検索テーブルに置き換えました。'
-        }
-      },
-      {
-        id: 'sec-mv3-2',
-        num: '2.',
-        title: {
-          vi: 'Thay đổi về phương pháp lấy mẫu hạt bụi phòng sạch',
-          en: 'Revised Airborne Particle Sampling Methodologies',
-          ja: '改訂された空気中粒子サンプリング手法'
-        },
-        content: {
-          vi: 'Quy định cụ thể thể tích mẫu tối thiểu cho mỗi vị trí và yêu cầu máy đếm hạt bụi phải có chứng nhận hiệu chuẩn ISO 21501-4 còn hiệu lực.',
-          en: 'Mandates specific minimum sample volumes per location and requires particle counters certified to ISO 21501-4.',
-          ja: '場所ごとの具体的な最小サンプル量を義務付け、ISO 21501-4に認定された粒子カウンターを要求します。'
-        }
-      },
-      {
-        id: 'sec-mv3-3',
-        num: '3.',
-        title: {
-          vi: 'Yêu cầu giám sát định kỳ theo ISO 14644-2',
-          en: 'Periodic Monitoring Mandates under ISO 14644-2',
-          ja: 'ISO 14644-2に基づく定期的なモニタリング要件'
-        },
-        content: {
-          vi: 'Yêu cầu xây dựng Kế hoạch giám sát (Monitoring Plan) dựa trên đánh giá rủi ro, quy định tần suất đo kiểm rò rỉ màng lọc HEPA tối đa 24 tháng/lần.',
-          en: 'Requires establishing a risk-based Monitoring Plan, specifying maximum HEPA filter leak test intervals of 24 months.',
-          ja: 'リスクベースのモニタリング計画の策定を義務付け、HEPAフィルターの漏れ試験の最大間隔を24ヶ月と規定します。'
-        }
-      },
-      {
-        id: 'sec-mv3-4',
-        num: '4.',
-        title: {
-          vi: 'Hướng dẫn cập nhật hồ sơ tuân thủ cho doanh nghiệp',
-          en: 'Action Plan for Updating Compliance Audits',
-          ja: 'コンプライアンス監査更新のアクションプラン'
-        },
-        content: {
-          vi: 'Doanh nghiệp cần cập nhật lại SOP đo kiểm, kiểm tra thiết bị đo và đào tạo nhân sự theo các tiêu chuẩn sửa đổi mới nhất.',
-          en: 'Facilities must update measurement SOPs, re-verify counter calibrations, and train personnel to the revised standards.',
-          ja: '施設は、測定SOPを更新し、カウンターの校正を再検証し、改訂された規格に基づいて作業員を訓練する必要があります。'
-        }
-      }
-    ]
+    sections: []
   },
   {
     id: 'mv-card-4',
@@ -1358,6 +1220,78 @@ export const MOST_VIEWED_ARTICLES: ResourceItem[] = [
         }
       }
     ]
+  },
+  {
+    id: 'hvac-office-building',
+    category: 'case-study',
+    badge: { vi: 'Tòa nhà thương mại', en: 'Commercial Building', ja: '商業ビル' },
+    title: {
+      vi: 'Hệ thống HVAC tòa nhà văn phòng cao cấp',
+      en: 'High-End Office Building HVAC System',
+      ja: '高級オフィスビルHVACシステム'
+    },
+    description: {
+      vi: 'Ứng dụng băng dính nhôm lưới gia cường bọc cách nhiệt hệ chiller, đảm bảo tuổi thọ đường ống trên 15 năm mà không bong tróc.',
+      en: 'Applying mesh-reinforced aluminum tape to chiller insulation, ensuring pipe lifespan over 15 years without peeling.',
+      ja: 'チラーシステム断熱に補強アルミテープを使用し、剥がれることなく15年以上の耐久性を確保。'
+    },
+    date: 'Tháng 12, 2025',
+    image: '/images/industries/construction/usecase_1.png',
+    author: {
+      name: { vi: 'ULINK M&E Engineering', en: 'ULINK M&E Engineering', ja: 'ULINK M&E Engineering' },
+      role: { vi: 'Chuyên gia HVAC', en: 'HVAC Specialist', ja: 'HVAC専門家' },
+      avatar: '/images/about/op-team.webp'
+    },
+    readTime: { vi: '6 phút đọc', en: '6 min read', ja: '6分' },
+    sections: []
+  },
+  {
+    id: 'fdi-electronics-plant',
+    category: 'case-study',
+    badge: { vi: 'Khu công nghiệp', en: 'Industrial Park', ja: '工業団地' },
+    title: {
+      vi: 'Nhà máy sản xuất điện tử FDI quy mô lớn tại Việt Nam',
+      en: 'Large-Scale FDI Electronics Manufacturing Plant',
+      ja: 'ベトナムの大規模FDI電子製造工場'
+    },
+    description: {
+      vi: 'Cung ứng đồng bộ băng keo nhôm FSK ngăn ẩm tuyệt đối cho hệ thống ống cấp gió sạch phòng máy, vượt qua các đợt kiểm tra chất lượng FDI nghiêm ngặt.',
+      en: 'Synchronized supply of 100% moisture-barrier FSK aluminum tape for cleanroom supply ducts, passing strict FDI quality audits.',
+      ja: 'クリーンルーム送風ダクト用に完全防湿FSKアルミテープを同期供給し、厳格なFDI品質検査に合格。'
+    },
+    date: 'Tháng 01, 2026',
+    image: '/images/industries/construction/usecase_2.png',
+    author: {
+      name: { vi: 'ULINK Technical Advisory', en: 'ULINK Technical Advisory', ja: 'ULINK Technical Advisory' },
+      role: { vi: 'Kỹ sư dự án FDI', en: 'FDI Project Engineer', ja: 'FDIプロジェクトエンジニア' },
+      avatar: '/images/about/op-team.webp'
+    },
+    readTime: { vi: '7 phút đọc', en: '7 min read', ja: '7分' },
+    sections: []
+  },
+  {
+    id: 'hospital-cleanroom',
+    category: 'case-study',
+    badge: { vi: 'Bệnh viện & Lab', en: 'Hospital & Lab', ja: '病院＆ラボ' },
+    title: {
+      vi: 'Bệnh viện quốc tế & Phòng sạch vô trùng',
+      en: 'International Hospital & Cleanroom',
+      ja: '国際病院＆無菌クリーンルーム'
+    },
+    description: {
+      vi: 'Bịt kín ống thông gió phòng mổ áp lực âm bằng băng keo nhôm chuẩn chống khuẩn RoHS, tuyệt đối không tạo bụi bẩn, không mùi dung môi hữu cơ.',
+      en: 'Sealing negative pressure operating room ventilation ducts with RoHS antibacterial aluminum tape, zero dust and solvent odor.',
+      ja: 'RoHS抗菌アルミテープで陰圧手術室の換気ダクトを密閉し、粉塵や有機溶剤臭の発生をゼロに抑制。'
+    },
+    date: 'Tháng 02, 2026',
+    image: '/images/industries/construction/usecase_3.png',
+    author: {
+      name: { vi: 'ULINK Medical Solutions', en: 'ULINK Medical Solutions', ja: 'ULINK Medical Solutions' },
+      role: { vi: 'Chuyên gia Y tế & Vi sinh', en: 'Biomedical Specialist', ja: '生物医療専門家' },
+      avatar: '/images/about/op-team.webp'
+    },
+    readTime: { vi: '5 phút đọc', en: '5 min read', ja: '5分' },
+    sections: []
   }
 ];
 
@@ -1467,170 +1401,6 @@ export const UPCOMING_EVENTS: ResourceItem[] = [
       ja: '無料'
     },
     sections: []
-  },
-  {
-    id: 'hvac-office-building',
-    category: 'case-study',
-    badge: { vi: 'Tòa nhà thương mại', en: 'Commercial Building', ja: '商業ビル' },
-    title: {
-      vi: 'Hệ thống HVAC tòa nhà văn phòng cao cấp',
-      en: 'High-End Office Building HVAC System',
-      ja: '高級オフィスビルHVACシステム'
-    },
-    description: {
-      vi: 'Ứng dụng băng dính nhôm lưới gia cường bọc cách nhiệt hệ chiller, đảm bảo tuổi thọ đường ống trên 15 năm mà không bong tróc.',
-      en: 'Applying mesh-reinforced aluminum tape to chiller insulation, ensuring pipe lifespan over 15 years without peeling.',
-      ja: 'チラーシステム断熱に補強アルミテープを使用し、剥がれることなく15年以上の耐久性を確保。'
-    },
-    date: 'Tháng 12, 2025',
-    image: '/images/industries/construction/usecase_1.png',
-    author: {
-      name: { vi: 'ULINK M&E Engineering', en: 'ULINK M&E Engineering', ja: 'ULINK M&E Engineering' },
-      role: { vi: 'Chuyên gia HVAC', en: 'HVAC Specialist', ja: 'HVAC専門家' },
-      avatar: '/images/about/op-team.webp'
-    },
-    readTime: { vi: '6 phút đọc', en: '6 min read', ja: '6分' },
-    sections: [
-      {
-        id: 'sec-hvac-1',
-        num: '1.',
-        title: {
-          vi: 'Bối cảnh dự án & Yêu cầu cách nhiệt hệ thống Chiller',
-          en: 'Project Context & Chiller Insulation Requirements',
-          ja: 'プロジェクトの背景とチラー断熱の要件'
-        },
-        content: {
-          vi: 'Các tòa nhà văn phòng hạng A đòi hỏi hệ thống điều hòa trung tâm Chiller hoạt động liên tục 24/7 với áp suất lớn và chênh lệch nhiệt độ cao.\n\nViệc đọng sương (condensation) hoặc bong tróc lớp bảo ôn tại các mối nối đường ống tôn mạ kẽm sẽ gây hư hỏng hệ thống trần thạch cao và thất thoát năng lượng nghiêm trọng.',
-          en: 'Grade-A office buildings require 24/7 Chiller operations with high pressure differential.\n\nCondensation or tape peeling at duct joints can severely damage ceiling structures and cause significant energy loss.',
-          ja: 'グレードAオフィスビルは24時間365日の高圧・高温度差でのチラー運用を必要とします。\n\nダクト接続部での結露やテープの剥がれは、天井構造を損ない、重大なエネルギー損失を引き起こします。'
-        }
-      },
-      {
-        id: 'sec-hvac-2',
-        num: '2.',
-        title: {
-          vi: 'Giải pháp Băng keo nhôm lưới gia cường FSK ULINK',
-          en: 'ULINK FSK Reinforced Aluminum Tape Solution',
-          ja: 'ULINK FSK補強アルミテープソリューション'
-        },
-        content: {
-          vi: 'ULINK đã tư vấn sử dụng băng keo nhôm FSK gia cường sợi thủy tinh với lớp keo acrylic chịu nhiệt từ -30°C đến +120°C.\n\nMàng nhôm nguyên chất kết hợp lưới sợi gia cường giúp tăng khả năng chịu lực kéo, chống xé rách và bám dính tuyệt đối trên bề mặt bông cách nhiệt Glasswool.',
-          en: 'ULINK recommended fiberglass-reinforced FSK aluminum tape with high-tack acrylic adhesive rated from -30°C to +120°C.\n\nPure aluminum foil combined with reinforcing mesh increases tensile strength and eliminates tearing on Glasswool insulation.',
-          ja: 'ULINKは、-30°Cから+120°Cに対応するアクリル粘着剤付きグラスファイバー補強FSKアルミテープを提案しました。\n\n補強メッシュ付き純アルミ箔が引張強度を高め、グラスウール断熱材への優れた bám dính を củng cố します。'
-        },
-        alertText: {
-          vi: 'Kết quả: Tiết kiệm 12% điện năng tiêu thụ cho hệ Chiller và bảo hành độ bền màng dính trên 15 năm.',
-          en: 'Result: 12% energy saving for Chiller system and 15+ years adhesive warranty.',
-          ja: '成果：チラーシステムの消費電力を12%削減し、15年以上の粘着耐久性を保証。'
-        }
-      }
-    ]
-  },
-  {
-    id: 'fdi-electronics-plant',
-    category: 'case-study',
-    badge: { vi: 'Khu công nghiệp', en: 'Industrial Park', ja: '工業団地' },
-    title: {
-      vi: 'Nhà máy sản xuất điện tử FDI quy mô lớn tại Việt Nam',
-      en: 'Large-Scale FDI Electronics Manufacturing Plant',
-      ja: 'ベトナムの大規模FDI電子製造工場'
-    },
-    description: {
-      vi: 'Cung ứng đồng bộ băng keo nhôm FSK ngăn ẩm tuyệt đối cho hệ thống ống cấp gió sạch phòng máy, vượt qua các đợt kiểm tra chất lượng FDI nghiêm ngặt.',
-      en: 'Synchronized supply of 100% moisture-barrier FSK aluminum tape for cleanroom supply ducts, passing strict FDI quality audits.',
-      ja: 'クリーンルーム送風ダクト用に完全防湿FSKアルミテープを同期供給し、厳格なFDI品質検査に合格。'
-    },
-    date: 'Tháng 01, 2026',
-    image: '/images/industries/construction/usecase_2.png',
-    author: {
-      name: { vi: 'ULINK Technical Advisory', en: 'ULINK Technical Advisory', ja: 'ULINK Technical Advisory' },
-      role: { vi: 'Kỹ sư dự án FDI', en: 'FDI Project Engineer', ja: 'FDIプロジェクトエンジニア' },
-      avatar: '/images/about/op-team.webp'
-    },
-    readTime: { vi: '7 phút đọc', en: '7 min read', ja: '7分' },
-    sections: [
-      {
-        id: 'sec-fdi-1',
-        num: '1.',
-        title: {
-          vi: 'Yêu cầu kiểm soát độ ẩm & Cấp sạch sản xuất linh kiện',
-          en: 'Moisture Control & Cleanliness for Electronics Fabs',
-          ja: '電子部品製造における湿度管理と清浄度要件'
-        },
-        content: {
-          vi: 'Dây chuyền lắp ráp bán dẫn và mạch điện tử đòi hỏi môi trường phòng sạch ISO Class 5 với độ ẩm kiểm soát nghiêm ngặt dưới 45% RH.\n\nBất kỳ sự rò rỉ hơi ẩm nào từ ống gió HVAC cũng có thể gây oxy hóa vi mạch và đe dọa tỷ lệ sản phẩm lỗi (Yield rate).',
-          en: 'Semiconductor assembly lines require ISO Class 5 cleanrooms with humidity strictly below 45% RH.\n\nAny moisture leakage from HVAC ducts risks microchip oxidation and damages yield rates.',
-          ja: '半導体実装ラインは、湿度45% RH以下に厳格管理されたISOクラス5クリーンルームを必要とします。\n\nHVACダクトからのわずかな湿気漏れもマイクロチップの酸化を引き起こします。'
-        }
-      },
-      {
-        id: 'sec-fdi-2',
-        num: '2.',
-        title: {
-          vi: 'Giải pháp cấp hàng hỏa tốc & Kiểm định chứng nhận CO/CQ',
-          en: 'Express Supply & Full CO/CQ Quality Certification',
-          ja: '特急供給とCO/CQ品質認証の完全対応'
-        },
-        content: {
-          vi: 'ULINK đã giao 20.000 cuộn băng keo nhôm FSK trong 48h từ Tổng kho Hà Nam, kèm đầy đủ chứng nhận RoHS và báo cáo test bám dính quốc tế.\n\nHệ thống ống gió được nghiệm thu 100% đạt chuẩn không rò rỉ khí.',
-          en: 'ULINK delivered 20,000 FSK tape rolls within 48 hours from Ha Nam Hub, accompanied by RoHS and test reports.\n\n100% duct air-tightness verification passed.',
-          ja: 'ULINKはハナムハブから48時間以内に20,000巻のFSKテープを納品し、RoHSおよび品質テストレポートを添付しました。'
-        }
-      }
-    ]
-  },
-  {
-    id: 'hospital-cleanroom',
-    category: 'case-study',
-    badge: { vi: 'Bệnh viện & Lab', en: 'Hospital & Lab', ja: '病院＆ラボ' },
-    title: {
-      vi: 'Bệnh viện quốc tế & Phòng sạch vô trùng',
-      en: 'International Hospital & Cleanroom',
-      ja: '国際病院＆無菌クリーンルーム'
-    },
-    description: {
-      vi: 'Bịt kín ống thông gió phòng mổ áp lực âm bằng băng keo nhôm chuẩn chống khuẩn RoHS, tuyệt đối không tạo bụi bẩn, không mùi dung môi hữu cơ.',
-      en: 'Sealing negative pressure operating room ventilation ducts with RoHS antibacterial aluminum tape, zero dust and solvent odor.',
-      ja: 'RoHS抗菌アルミテープで陰圧手術室の換気ダクトを密閉し、粉塵や有機溶剤臭の発生をゼロに抑制。'
-    },
-    date: 'Tháng 02, 2026',
-    image: '/images/industries/construction/usecase_3.png',
-    author: {
-      name: { vi: 'ULINK Medical Solutions', en: 'ULINK Medical Solutions', ja: 'ULINK Medical Solutions' },
-      role: { vi: 'Chuyên gia Y tế & Vi sinh', en: 'Biomedical Specialist', ja: '生物医療専門家' },
-      avatar: '/images/about/op-team.webp'
-    },
-    readTime: { vi: '5 phút đọc', en: '5 min read', ja: '5分' },
-    sections: [
-      {
-        id: 'sec-hosp-1',
-        num: '1.',
-        title: {
-          vi: 'Yêu cầu vô trùng tuyệt đối trong phòng mổ áp lực âm',
-          en: 'Sterility Standards in Negative Pressure Operating Rooms',
-          ja: '陰圧手術室における絶対的な無菌基準'
-        },
-        content: {
-          vi: 'Phòng mổ áp lực âm tiêu chuẩn quốc tế cần đảm bảo hệ thống thông khí HEPA khép kín hoàn toàn, ngăn chặn chéo vi khuẩn và bào tử nấm.\n\nVật tư băng keo dán phải tuyệt đối không phát sinh VOC (hợp chất hữu cơ bay hơi) ảnh hưởng sức khỏe bệnh nhân.',
-          en: 'Negative pressure operating rooms demand 100% sealed HEPA air ducts to prevent bacterial cross-contamination.\n\nTape materials must emit zero VOCs.',
-          ja: '陰圧手術室は細菌の交差汚染を防ぐため100%密閉されたHEPAダクトを必要とします。テープ資材はVOC発生ゼロでなければなりません。'
-        }
-      },
-      {
-        id: 'sec-hosp-2',
-        num: '2.',
-        title: {
-          vi: 'Ứng dụng Băng keo nhôm y tế ULINK đạt chuẩn RoHS',
-          en: 'Application of ULINK RoHS Medical Aluminum Tape',
-          ja: 'RoHS適合ULINK医療用アルミテープの応用'
-        },
-        content: {
-          vi: 'Sản phẩm băng keo nhôm ULINK đáp ứng chứng nhận an toàn y tế, màng nhôm không gỉ sét, keo không mùi và bề mặt nhẵn mịn chống bám vi khuẩn.',
-          en: 'ULINK aluminum tape complies with medical safety standards, rust-proof foil, odorless adhesive, and antibacterial smooth surface.',
-          ja: 'ULINKアルミテープは医療安全規格に適合し、防錆アルミ箔、無臭粘着剤、抗菌滑らかな表面を備えています。'
-        }
-      }
-    ]
   }
 ];
 

@@ -27,6 +27,9 @@ export default function FurnitureClient({
   currentSlug,
   translations
 }: FurnitureClientProps) {
+  const isVi = locale === 'vi';
+  const isJa = locale === 'ja';
+
   const [activeTab, setActiveTab] = useState<string>('overview');
   const [showToast, setShowToast] = useState(false);
   const observerRef = useRef<IntersectionObserver | null>(null);
@@ -41,7 +44,7 @@ export default function FurnitureClient({
 
   const tabs = [
     { id: 'overview', label: translations.overview },
-    { id: 'cleanroom', label: translations.cleanroomSol },
+    { id: 'cleanroom', label: isVi ? 'Bảo vệ bề mặt gỗ' : isJa ? '表面保護' : 'Surface Protection' },
     { id: 'packaging', label: translations.packagingSol },
     { id: 'standards', label: industryData.standardsTitle },
     { id: 'cases', label: translations.cases }
@@ -100,9 +103,6 @@ export default function FurnitureClient({
       setActiveTab(id);
     }
   };
-
-  const isVi = locale === 'vi';
-  const isJa = locale === 'ja';
 
   return (
     <div className="min-h-screen bg-white text-[#141414] font-sans">
