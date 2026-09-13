@@ -354,3 +354,13 @@ export function createSessionDirectusClient(cookieHeader: string) {
     });
   return createDirectus<Schema>(url, { globals: { fetch: cookieFetch } }).with(rest());
 }
+
+/** Use the currently authenticated user's Directus session for server actions/pages. */
+export async function createAuthenticatedDirectusClient() {
+  const store = await cookies();
+  const cookieHeader = [
+    store.get('directus_session_token')?.value && `directus_session_token=${store.get('directus_session_token')?.value}`,
+    store.get('directus_refresh_token')?.value && `directus_refresh_token=${store.get('directus_refresh_token')?.value}`,
+  ].filter(Boolean).join('; ');
+  return createSessionDirectusClient(cookieHeader);
+}

@@ -2,7 +2,7 @@
 
 import { createItem, readItem, readItems, updateItem } from '@directus/sdk';
 import { revalidatePath } from 'next/cache';
-import { createWriteDirectusClient } from '@/lib/directus';
+import { createAuthenticatedDirectusClient } from '@/lib/directus';
 import { getCurrentUser } from '@/lib/auth-helpers';
 
 type MovementInput = { stockId: number; movementType: 'inbound' | 'adjustment' | 'return'; quantity: number; note?: string };
@@ -13,7 +13,7 @@ export async function createInventoryMovement(input: MovementInput) {
   if (!Number.isInteger(input.stockId) || !['inbound', 'adjustment', 'return'].includes(input.movementType)) throw new Error('Dữ liệu movement không hợp lệ');
   const quantity = Number(input.quantity);
   if (!Number.isFinite(quantity) || quantity === 0 || (input.movementType !== 'adjustment' && quantity < 0)) throw new Error('Số lượng không hợp lệ');
-  const client = createWriteDirectusClient();
+  const client = await createAuthenticatedDirectusClient();
   const stock: any = await client.request(readItem('inventory_stock' as any, input.stockId, { fields: ['id', 'sku', 'hub', 'quantity_on_hand', 'quantity_reserved'] } as any));
   const delta = input.movementType === 'inbound' || input.movementType === 'return' ? Math.abs(quantity) : quantity;
   const before = Number(stock.quantity_on_hand || 0); const after = before + delta;

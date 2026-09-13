@@ -1,20 +1,21 @@
 'use server';
 import { updateItem, readItems, createItem } from '@directus/sdk';
 import { revalidatePath } from 'next/cache';
-import { createWriteDirectusClient } from '@/lib/directus';
+import { createAuthenticatedDirectusClient } from '@/lib/directus';
 import { getCurrentUser } from '@/lib/auth-helpers';
 export async function updateOrderStatus(id: number, status: string) {
   if (!(await getCurrentUser())) throw new Error('Unauthorized');
   const allowed = ['pending', 'confirmed', 'processing', 'shipped', 'completed', 'cancelled'];
   if (!allowed.includes(status)) throw new Error('Invalid status');
-  await createWriteDirectusClient().request(updateItem('orders' as any, id, { status } as any));
+  const client = await createAuthenticatedDirectusClient();
+  await client.request(updateItem('orders' as any, id, { status } as any));
   revalidatePath('/[locale]/admin/orders', 'page');
 }
 
 export async function cancelOrder(id: number) {
   const user = await getCurrentUser();
   if (!user) throw new Error('Unauthorized');
-  const client = createWriteDirectusClient();
+  const client = await createAuthenticatedDirectusClient();
   const orderItems: any[] = await client.request(readItems('inventory_movements' as any, { filter: { _and: [{ order_id: { _eq: id } }, { movement_type: { _eq: 'outbound' } }] }, limit: -1 } as any));
   for (const movement of orderItems) {
     const stocks: any[] = await client.request(readItems('inventory_stock' as any, { filter: { _and: [{ sku: { _eq: movement.sku } }, { hub: { _eq: movement.hub } }] }, limit: 1 } as any));
