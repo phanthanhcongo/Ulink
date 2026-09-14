@@ -15,6 +15,6 @@ $$ LANGUAGE plpgsql;
 
 DROP TRIGGER IF EXISTS trigger_validate_directus_file_upload ON directus_files;
 CREATE TRIGGER trigger_validate_directus_file_upload
-BEFORE INSERT ON directus_files
+BEFORE INSERT OR UPDATE ON directus_files
 FOR EACH ROW
 EXECUTE FUNCTION validate_directus_file_upload();

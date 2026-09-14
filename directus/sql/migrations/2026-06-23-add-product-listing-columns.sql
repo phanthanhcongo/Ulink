@@ -20,5 +20,6 @@ CREATE TABLE IF NOT EXISTS standards (
 CREATE TABLE IF NOT EXISTS products_standards (
   id SERIAL PRIMARY KEY,
   products_id INTEGER REFERENCES products(id) ON DELETE CASCADE,
-  standards_id INTEGER REFERENCES standards(id) ON DELETE CASCADE
-)
+  standards_id INTEGER REFERENCES standards(id) ON DELETE CASCADE,
+  UNIQUE(products_id, standards_id)
+);

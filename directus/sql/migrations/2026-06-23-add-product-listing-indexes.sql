@@ -31,4 +31,4 @@ CREATE INDEX IF NOT EXISTS idx_products_standards_products_id ON products_standa
 CREATE INDEX IF NOT EXISTS idx_products_standards_standards_id ON products_standards (standards_id);
 
 -- products_files junction: FK for gallery image loading
-CREATE INDEX IF NOT EXISTS idx_products_files_products_id ON products_files (products_id)
+CREATE INDEX IF NOT EXISTS idx_products_files_products_id ON products_files (products_id);
