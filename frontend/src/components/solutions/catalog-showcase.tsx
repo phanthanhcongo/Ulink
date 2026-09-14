@@ -13,7 +13,7 @@ interface CatalogShowcaseProps {
 
 export default async function CatalogShowcase({ locale }: CatalogShowcaseProps) {
   const t = await getTranslations({ locale, namespace: 'solutions' });
-  const categoriesWithProducts = await fetchTopCategoriesWithProducts(4, 4);
+  const categoriesWithProducts = await fetchTopCategoriesWithProducts(4, 3);
 
   console.log('[CatalogShowcase] Data received:', {
     categoriesCount: categoriesWithProducts.length,
@@ -75,7 +75,7 @@ export default async function CatalogShowcase({ locale }: CatalogShowcaseProps) 
                 {/* Product Grid - Responsive Layout */}
                 <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
                   {catData.products.map((product: Product, index: number) => {
-                    const firstSku = product.skus?.[0];
+                    const firstSku = product.skus?.find((s) => s.status === 'published') || product.skus?.[0];
 
                     // DEBUG: Log product data
                     if (product.id === catData.products[0]?.id) {
@@ -102,33 +102,31 @@ export default async function CatalogShowcase({ locale }: CatalogShowcaseProps) 
                       return `${directusUrl}/assets/${fileId}`;
                     };
 
-                    // Get price from SKU
+                    // Get price directly from DB (firstSku.price_min / price_max / price)
                     let displayPrice: string;
                     let displayUnit: string;
 
-                    if (firstSku?.price) {
-                      // Price from database
-                      const basePrice = firstSku.price;
-                      const packSize = firstSku.pack_size;
-                      let baseUnit = firstSku.unit || 'cái';
+                    const rawPrice = firstSku?.price;
 
-                      // Normalize unit display
+                    if (rawPrice && rawPrice > 0) {
+                      let baseUnit = firstSku?.unit || 'cái';
                       if (baseUnit === 'đôi') baseUnit = 'pcs';
-
-                      // Try to parse pack_size as number to calculate per-unit price
-                      const packSizeNum = packSize ? parseInt(String(packSize), 10) : null;
-                      const perUnitPrice = packSizeNum && packSizeNum > 0 ? basePrice / packSizeNum : basePrice;
-
-                      // Calculate price range: 80-100% (discount tier)
-                      const minPrice = Math.round(perUnitPrice * 0.8);
-                      const maxPrice = Math.round(perUnitPrice);
-
-                      displayPrice = `${minPrice.toLocaleString('vi-VN')}-${maxPrice.toLocaleString('vi-VN')}đ`;
+                      displayPrice = `${Number(rawPrice).toLocaleString('vi-VN')}đ`;
                       displayUnit = `per ${baseUnit}`;
                     } else {
-                      // No price in database
                       displayPrice = 'Liên hệ báo giá';
-                      displayUnit = '';
+                      displayUnit = firstSku?.unit ? `per ${firstSku.unit}` : '';
+                    }
+
+                    // Get MOQ directly from DB
+                    let moqText: string;
+                    if (firstSku?.moq) {
+                      const unitStr = firstSku.moq_unit || firstSku.unit || '';
+                      moqText = `MOQ: ${Number(firstSku.moq).toLocaleString('vi-VN')} ${unitStr}`.trim();
+                    } else if (firstSku?.pack_size) {
+                      moqText = `MOQ: ${firstSku.pack_size}`;
+                    } else {
+                      moqText = 'MOQ: Liên hệ';
                     }
 
                     return (
@@ -140,9 +138,9 @@ export default async function CatalogShowcase({ locale }: CatalogShowcaseProps) 
                             slug: product.slug || '',
                             description: product.short_description || undefined,
                             image: getImageUrl(product.hero),
-                            price: displayPrice || 'Liên hệ báo giá',
-                            unit: displayUnit || 'per kg',
-                            moq: `MOQ: ${firstSku?.pack_size || 'Liên hệ'}`,
+                            price: displayPrice,
+                            unit: displayUnit,
+                            moq: moqText,
                             moqUnit: firstSku?.unit || undefined,
                             status: firstSku?.stock_status === 'in_stock' ? (locale === 'vi' ? 'Có sẵn tại Kho' : 'In Stock') : (locale === 'vi' ? 'Sản xuất theo yêu cầu' : 'Custom orders'),
                             location: 'Hub Hà Nam, Việt Nam'

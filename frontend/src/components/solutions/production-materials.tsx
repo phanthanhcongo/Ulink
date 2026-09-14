@@ -2,6 +2,8 @@ import { getTranslations } from 'next-intl/server';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { CategoryNavLink } from './category-nav-link';
+import { fetchProductCategories } from '@/lib/product-data';
+import { getTranslatedName } from '@/lib/i18n-content';
 
 interface ProductionMaterialsProps {
   locale: string;
@@ -10,38 +12,37 @@ interface ProductionMaterialsProps {
 export default async function ProductionMaterials({ locale }: ProductionMaterialsProps) {
   const t = await getTranslations({ locale, namespace: 'solutions' });
 
-  const cards = [
-    {
-      title: t('skuSection.card1Title'),
-      image: '/images/solutions/bangkeo.png',
-      categorySlug: 'esd-supplies',
-      items: [
-        { label: t('skuSection.card1Item1'), slug: 'esd-supplies' },
-        { label: t('skuSection.card1Item2'), slug: 'esd-supplies' },
-        { label: t('skuSection.card1Item3'), slug: 'esd-supplies' }
-      ]
-    },
-    {
-      title: t('skuSection.card2Title'),
-      image: '/images/solutions/clean.png',
-      categorySlug: 'cleanroom-consumables',
-      items: [
-        { label: t('skuSection.card2Item1'), slug: 'cleanroom-gloves' },
-        { label: t('skuSection.card2Item2'), slug: 'cleanroom-wipers' },
-        { label: t('skuSection.card2Item3'), slug: 'cleanroom-apparel' }
-      ]
-    },
-    {
-      title: t('skuSection.card3Title'),
-      image: '/images/solutions/baobi.png',
-      categorySlug: 'industrial-packaging',
-      items: [
-        { label: t('skuSection.card3Item1'), slug: 'industrial-packaging' },
-        { label: t('skuSection.card3Item2'), slug: 'industrial-packaging' },
-        { label: t('skuSection.card3Item3'), slug: 'industrial-packaging' }
-      ]
-    }
+  // Dynamically fetch all categories from Directus DB
+  const dbCategories = await fetchProductCategories();
+
+  // Filter top-level parent categories (no parent)
+  const parentCategories = dbCategories
+    .filter((cat) => !cat.parent || (typeof cat.parent === 'object' && !(cat.parent as any).id))
+    .slice(0, 3);
+
+  // Default image mapping by slug
+  const defaultImages: Record<string, string> = {
+    'esd-supplies': '/images/solutions/bangkeo.png',
+    'cleanroom-consumables': '/images/solutions/clean.png',
+    'industrial-packaging': '/images/solutions/baobi.png'
+  };
+
+  const fallbackImages = [
+    '/images/solutions/bangkeo.png',
+    '/images/solutions/clean.png',
+    '/images/solutions/baobi.png'
   ];
+
+  const cards = (parentCategories.length > 0 ? parentCategories : dbCategories.slice(0, 3)).map((cat, idx) => {
+    const title = getTranslatedName(cat, locale) || cat.name;
+    const image = defaultImages[cat.slug] || fallbackImages[idx % fallbackImages.length];
+
+    return {
+      title,
+      image,
+      categorySlug: cat.slug
+    };
+  });
 
   return (
     <section className="w-full bg-white border-t border-gray-150 py-16 lg:py-24">
@@ -62,7 +63,7 @@ export default async function ProductionMaterials({ locale }: ProductionMaterial
           </p>
         </div>
 
-        {/* Cards Grid */}
+        {/* Cards Grid — 3 Parent Categories */}
         <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-8">
           {cards.map((card, idx) => (
             <div
@@ -77,27 +78,13 @@ export default async function ProductionMaterials({ locale }: ProductionMaterial
                   className="object-cover transition-transform duration-300 group-hover:scale-105"
                 />
               </div>
-              <div className="p-6 sm:p-8 flex flex-col flex-1">
-                <h3 className="text-lg sm:text-xl lg:text-[24px] lg:leading-[30px] font-bold text-slate-900 transition-colors duration-200 group-hover:text-[#1769E2]">{card.title}</h3>
-
-                {/* List items */}
-                <ul className="mt-6 space-y-3 flex-1">
-                  {card.items.map((item, itemIdx) => (
-                    <li key={itemIdx}>
-                      <CategoryNavLink
-                        categorySlug={item.slug}
-                        href={`/solutions/listProduct?category=${item.slug}`}
-                        className="flex items-center gap-2 text-sm sm:text-base lg:text-[16px] font-normal text-slate-600 hover:text-blue-600 transition-colors"
-                      >
-                        <span className="w-1.5 h-1.5 bg-blue-500 shrink-0 rounded-[3px]" />
-                        {item.label}
-                      </CategoryNavLink>
-                    </li>
-                  ))}
-                </ul>
+              <div className="p-6 sm:p-8 flex flex-col flex-1 justify-between">
+                <h3 className="text-lg sm:text-xl lg:text-[24px] lg:leading-[30px] font-bold text-slate-900 transition-colors duration-200 group-hover:text-[#1769E2]">
+                  {card.title}
+                </h3>
 
                 {/* Blue Button */}
-                <div className="mt-8">
+                <div className="mt-6 sm:mt-8">
                   <CategoryNavLink
                     categorySlug={card.categorySlug}
                     href={`/solutions/listProduct?category=${card.categorySlug}`}

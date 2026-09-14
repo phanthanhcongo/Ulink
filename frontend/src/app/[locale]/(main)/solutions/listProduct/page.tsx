@@ -108,12 +108,14 @@ export default async function ProductsCatalogPage({ params, searchParams }: Page
       stockStatus: (firstSku?.stock_status as any) || 'in_stock',
       image: resolvedImage,
       unit: firstSku?.unit ?? '',
-      packSize: firstSku?.pack_size ?? '',
+      packSize: firstSku?.moq
+        ? `${Number(firstSku.moq).toLocaleString('vi-VN')} ${firstSku.moq_unit || firstSku.unit || ''}`.trim()
+        : (firstSku?.pack_size ?? ''),
       specs: ['Tiêu chuẩn ISO / ESD', 'Chính hãng 100%'],
       standards: productStandards,
       industries: productIndustries,
       specifications: p.specifications || null,
-      price: firstSku?.price || null
+      price: (firstSku as any)?.price_min ?? firstSku?.price ?? null
     };
   });
 

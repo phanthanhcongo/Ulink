@@ -22,6 +22,7 @@
     "openapi:export": "node scripts/openapi_export.mjs",
     "ext:build": "node -e \"const fs = require('fs'); const path = require('path'); fs.readdirSync('extensions').forEach(d => { const src = path.join('extensions', d, 'src'); const dist = path.join('extensions', d, 'dist'); if (fs.existsSync(src)) { fs.mkdirSync(dist, { recursive: true }); fs.cpSync(src, dist, { recursive: true }); } })\"",
     "seed:dev": "node -e \"process.env.SEED_DEV_USERS='true'; import('./bootstrap.mjs')\"",
+    "seed:v2": "cross-env DB_PORT_EXTERNAL=5460 node seed-v2/run-seed.mjs",
     "bootstrap:railway": "cross-env DOTENV_CONFIG_PATH=../.env.railway node bootstrap.mjs",
     "diagnostic:railway": "cross-env DOTENV_CONFIG_PATH=../.env.railway node diagnostic.mjs"
   },

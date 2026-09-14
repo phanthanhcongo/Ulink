@@ -68,6 +68,10 @@ export interface ProductSku {
   image?: string | null;
   stock_status: 'in_stock' | 'low_stock' | 'out_of_stock';
   price?: number | null;
+  price_min?: number | null;
+  price_max?: number | null;
+  moq?: number | null;
+  moq_unit?: string | null;
   status: 'published' | 'draft' | 'archived';
 }
 

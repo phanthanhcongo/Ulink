@@ -77,14 +77,7 @@ const PRODUCT_LIST_FIELDS = [
   'category.slug',
   'category.translations.languages_code',
   'category.translations.name',
-  'skus.id',
-  'skus.sku_code',
-  'skus.price',
-  'skus.stock_status',
-  'skus.unit',
-  'skus.pack_size',
-  'skus.images',
-  'skus.status',
+  'skus.*',
   'industries.industries_id.id',
   'industries.industries_id.name',
   'industries.industries_id.slug',
@@ -202,7 +195,7 @@ export async function fetchProducts(params: ProductListParams = {}): Promise<Pro
         documents: { _filter: { status: { _eq: 'published' } } }
       })
     );
-    const res = await fetch(url, { next: { revalidate: 3600 } });
+    const res = await fetch(url, { cache: 'no-store' });
 
     if (!res.ok) {
       console.error('[product-data] fetchProducts HTTP error:', res.status);
@@ -402,7 +395,7 @@ export async function fetchProductCategories(): Promise<ProductCategory[]> {
     url.searchParams.set('sort', 'name');
     url.searchParams.set('limit', '-1');
 
-    const res = await fetch(url.toString(), { next: { revalidate: 3600 } });
+    const res = await fetch(url.toString(), { cache: 'no-store' });
     if (!res.ok) return [];
     const json = (await res.json()) as { data: ProductCategory[] };
     return json.data ?? [];
@@ -531,20 +524,42 @@ export interface CategoryWithProducts {
  */
 export async function fetchTopCategoriesWithProducts(
   productsPerCategory = 4,
-  maxCategories = 8
+  maxCategories = 3
 ): Promise<CategoryWithProducts[]> {
   try {
     const categories = await fetchProductCategories();
     console.log('[fetchTopCategoriesWithProducts] Categories fetched:', categories.length);
 
+    // Filter top-level parent categories (no parent)
+    let parentCategories = categories.filter((cat) => {
+      if (!cat.parent) return true;
+      if (typeof cat.parent === 'object' && !(cat.parent as any).id) return true;
+      return false;
+    });
+
+    if (parentCategories.length === 0) {
+      parentCategories = categories;
+    }
+
     const results: CategoryWithProducts[] = [];
-    for (const cat of categories.slice(0, maxCategories)) {
+    for (const cat of parentCategories.slice(0, maxCategories)) {
+      // Include products from subcategories belonging to this parent category
+      const childSlugs = categories
+        .filter((c) => {
+          if (!c.parent) return false;
+          const parentId = typeof c.parent === 'object' ? (c.parent as any).id : c.parent;
+          return parentId === cat.id;
+        })
+        .map((c) => c.slug);
+
+      const categorySlugs = [cat.slug, ...childSlugs].join(',');
+
       const { products } = await fetchProducts({
-        category: cat.slug,
+        category: categorySlugs,
         limit: productsPerCategory,
         sort: 'newest'
       });
-      console.log(`[fetchTopCategoriesWithProducts] Category "${cat.name}" has ${products.length} products`);
+      console.log(`[fetchTopCategoriesWithProducts] Parent category "${cat.name}" has ${products.length} products`);
       if (products.length > 0) {
         results.push({ category: cat, products });
       }

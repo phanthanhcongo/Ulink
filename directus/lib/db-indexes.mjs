@@ -41,8 +41,8 @@ export async function applyDbIndexes() {
       const sqlFilePath = path.join(migrationDir, fileName);
       const sqlContent = fs.readFileSync(sqlFilePath, 'utf8');
 
-      if (sqlContent.includes('CREATE FUNCTION') || sqlContent.includes('CREATE OR REPLACE FUNCTION')) {
-        console.log(`Applying function migration ${fileName} as a single batch.`);
+      if (sqlContent.includes('CREATE FUNCTION') || sqlContent.includes('CREATE OR REPLACE FUNCTION') || sqlContent.includes('DO $$') || sqlContent.includes('DO $fn$')) {
+        console.log(`Applying migration ${fileName} as a single batch (contains PL/pgSQL blocks).`);
         await pgClient.query(sqlContent);
       } else {
         const statements = sqlContent
