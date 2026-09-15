@@ -350,150 +350,156 @@ export default function CartClient({
         </div>
 
         {/* Main Grid */}
-        <div className="grid gap-6 sm:gap-8 lg:grid-cols-12">
+        <div className="flex flex-col lg:flex-row lg:items-start gap-6 sm:gap-8 lg:gap-[35px]">
           {/* LEFT COLUMN: Cart Items */}
-          <div className="lg:col-span-8 space-y-4 sm:space-y-6">
-            <div className="flex items-baseline gap-2 flex-wrap">
-              <h2 className="text-body-regular sm:text-card-title font-bold text-foreground">{t('title')}</h2>
-              <span className="text-caption-responsive text-muted-foreground">
+          <div className="w-full lg:flex-1 lg:min-w-0">
+            {/* Cart Header Title Row (Item count aligned to end of Column 1) */}
+            <div className="flex items-baseline justify-between flex-wrap gap-2 mb-3 min-h-[36px]">
+              <h2 className="text-[24px] sm:text-[28px] font-semibold text-[#162233] tracking-[-0.0107em] leading-[36px]">
+                {t('title')}
+              </h2>
+              <span className="text-[16px] font-normal text-[#495057] leading-[24px]">
                 {t('totalItems', { count: cart.length })}
               </span>
             </div>
 
             {resolvedItems.length === 0 ? (
-              <div className="flex flex-col items-center justify-center py-10 sm:py-16 px-3 sm:px-4 text-center border border-dashed border-border/80 rounded-[3px] space-y-3 sm:space-y-4">
-                <Package className="h-8 sm:h-10 w-8 sm:w-10 text-muted-foreground/50" />
-                <p className="text-caption-responsive sm:text-body-regular text-muted-foreground">{t('emptyCart')}</p>
+              <div className="flex flex-col items-center justify-center py-10 sm:py-16 px-3 sm:px-4 text-center border border-dashed border-[#dce0e5] rounded-[6px] space-y-3 sm:space-y-4 bg-white">
+                <Package className="h-10 w-10 text-slate-300" />
+                <p className="text-[16px] font-normal text-[#495057] leading-[24px]">{t('emptyCart')}</p>
                 <Link
                   href="/solutions"
-                  className="inline-flex items-center gap-1.5 rounded-[3px] border border-brand px-3 sm:px-4 py-1.5 sm:py-2 text-caption-responsive font-semibold text-brand hover:bg-brand/5 transition-all"
+                  className="inline-flex items-center gap-1.5 rounded-[4px] border border-[#1257c0] px-4 py-2 text-[14px] font-semibold text-[#1257c0] bg-[#dbeafe] hover:bg-blue-100 transition-all"
                 >
-                  <ArrowLeft className="h-3 sm:h-3.5 w-3 sm:w-3.5" />
+                  <ArrowLeft className="h-4 w-4" />
                   {t('btnBack')}
                 </Link>
               </div>
             ) : (
-              <div className="space-y-3 sm:space-y-4">
+              <div className="space-y-4">
                 {/* Desktop/Tablet Table Layout */}
-                <div className="hidden md:block overflow-x-auto rounded-[3px] border border-slate-200/80 bg-white">
+                <div className="hidden md:block overflow-x-auto rounded-[6px] border border-[#dce0e5] bg-white">
                   <table className="w-full border-collapse text-left min-w-[700px]">
-                    <thead className="bg-card text-slate-600 text-caption-responsive uppercase font-bold border-b border-slate-200/80">
+                    <thead className="bg-[#f2f4f8] text-[#495057] border-b border-[#cad5e2]">
                       <tr>
-                        <th className="px-3 sm:px-4 py-2.5 sm:py-3.5 font-semibold text-slate-700">
+                        <th className="px-4 py-3 w-[320px] text-left text-[14px] font-semibold text-[#495057] leading-[20px] tracking-[0.0071em]">
                           {t('colProduct')}
                         </th>
-                        <th className="px-2 sm:px-3 py-2.5 sm:py-3.5 w-[90px] sm:w-[110px] text-right font-semibold text-slate-700">
+                        <th className="px-3 py-3 w-[120px] text-right text-[14px] font-semibold text-[#495057] leading-[20px] tracking-[0.0071em]">
                           {t('colPrice')}
                         </th>
-                        <th className="px-2 sm:px-3 py-2.5 sm:py-3.5 w-[70px] sm:w-[80px] text-center font-semibold text-slate-700">
+                        <th className="px-3 py-3 w-[80px] text-center text-[14px] font-semibold text-[#495057] leading-[20px] tracking-[0.0071em]">
                           {t('colUnit')}
                         </th>
-                        <th className="px-2 sm:px-3 py-2.5 sm:py-3.5 w-[110px] sm:w-[140px] text-center font-semibold text-slate-700">
+                        <th className="px-3 py-3 w-[160px] text-center text-[14px] font-semibold text-[#495057] leading-[20px] tracking-[0.0071em]">
                           {t('colQuantity')}
                         </th>
-                        <th className="px-3 sm:px-4 py-2.5 sm:py-3.5 w-[100px] sm:w-[190px] text-right font-semibold text-slate-700">
+                        <th className="px-4 py-3 w-[140px] text-right text-[14px] font-semibold text-[#495057] leading-[20px] tracking-[0.0071em]">
                           {t('colTotal')}
                         </th>
+                        <th className="px-3 py-3 w-[40px] text-center text-[14px] font-semibold text-[#495057] leading-[20px]" />
                       </tr>
                     </thead>
-                    <tbody className="divide-y divide-slate-200/60 bg-white">
+                    <tbody className="divide-y divide-[#dce0e5] bg-white">
                       {resolvedItems.map((item, idx) => (
                         <tr key={idx} className="hover:bg-slate-50/50 transition-colors">
                           {/* Product Name & Specs */}
-                          <td className="px-3 sm:px-4 py-3 sm:py-4 flex gap-2 sm:gap-3.5 items-start">
-                            {item.slug ? (
-                              <Link
-                                href={`/solutions/${item.slug}`}
-                                className="relative h-12 sm:h-14 w-12 sm:w-14 shrink-0 rounded-[3px] border border-slate-200/60 bg-white flex items-center justify-center overflow-hidden hover:opacity-90 transition-opacity block"
-                              >
-                                {item.hero ? (
-                                  <Image
-                                    src={resolveImageUrl(item.hero) || '/images/banners/login-hero.webp'}
-                                    alt={item.product_name || item.sku}
-                                    fill
-                                    className="object-contain p-1"
-                                    sizes="56px"
-                                  />
-                                ) : (
-                                  <Package className="h-5 sm:h-6 w-5 sm:w-6 text-slate-300" />
-                                )}
-                              </Link>
-                            ) : (
-                              <div className="relative h-12 sm:h-14 w-12 sm:w-14 shrink-0 rounded-[3px] border border-slate-200/60 bg-white flex items-center justify-center overflow-hidden">
-                                <Package className="h-5 sm:h-6 w-5 sm:w-6 text-slate-300" />
-                              </div>
-                            )}
-                            <div className="space-y-0.5 min-w-0">
+                          <td className="px-4 py-5">
+                            <div className="flex gap-4 items-center w-[320px]">
                               {item.slug ? (
                                 <Link
-                                  href={`/solutions/${item.slug}`}
-                                  className="font-semibold text-slate-900 text-caption-responsive sm:text-body-regular block leading-snug hover:text-brand transition-colors"
+                                  href={`/solutions/listProduct/${item.slug}`}
+                                  className="relative h-[80px] w-[80px] shrink-0 rounded-[4px] border border-[#dce0e5] bg-[#f2f4f8] flex items-center justify-center overflow-hidden hover:opacity-90 transition-opacity block"
                                 >
-                                  {item.product_name}
+                                  {item.hero ? (
+                                    <Image
+                                      src={resolveImageUrl(item.hero) || '/images/banners/login-hero.webp'}
+                                      alt={item.product_name || item.sku}
+                                      fill
+                                      className="object-cover"
+                                      sizes="80px"
+                                    />
+                                  ) : (
+                                    <Package className="h-8 w-8 text-slate-300" />
+                                  )}
                                 </Link>
                               ) : (
-                                <span className="font-semibold text-slate-900 text-caption-responsive sm:text-body-regular block leading-snug">
-                                  {item.product_name}
-                                </span>
+                                <div className="relative h-[80px] w-[80px] shrink-0 rounded-[4px] border border-[#dce0e5] bg-[#f2f4f8] flex items-center justify-center overflow-hidden">
+                                  <Package className="h-8 w-8 text-slate-300" />
+                                </div>
                               )}
-                              <span className="text-caption-responsive font-mono text-slate-400 block pt-0.5">
-                                SKU: {item.sku}
-                              </span>
-                              <span className="text-caption-responsive text-slate-500 block truncate max-w-xs">
-                                {locale === 'vi' ? 'Quy cách: ' : 'Spec: '}
-                                {item.spec}
-                              </span>
+                              <div className="space-y-1 min-w-0 flex-1">
+                                {item.slug ? (
+                                  <Link
+                                    href={`/solutions/listProduct/${item.slug}`}
+                                    className="font-semibold text-[#162233] text-[14px] leading-[20px] tracking-[0.0071em] block hover:text-[#1769e2] transition-colors"
+                                  >
+                                    {item.product_name}
+                                  </Link>
+                                ) : (
+                                  <span className="font-semibold text-[#162233] text-[14px] leading-[20px] tracking-[0.0071em] block">
+                                    {item.product_name}
+                                  </span>
+                                )}
+                                <span className="text-[12px] font-normal text-[#495057] block leading-[16px] tracking-[0.0333em]">
+                                  SKU: {item.sku}
+                                </span>
+                                <span className="text-[12px] font-normal text-[#495057] block truncate leading-[16px] tracking-[0.0333em]">
+                                  {locale === 'vi' ? 'Quy cách: ' : 'Spec: '}
+                                  {item.spec}
+                                </span>
+                              </div>
                             </div>
                           </td>
 
                           {/* Unit Price */}
-                          <td className="px-2 sm:px-3 py-3 sm:py-4 text-right font-medium text-slate-700 text-caption-responsive sm:text-body-regular">
+                          <td className="px-3 py-5 text-right font-normal text-[#212529] text-[16px] leading-[24px]">
                             {formatPrice(item.unitPrice)}
                           </td>
 
                           {/* Unit */}
-                          <td className="px-2 sm:px-3 py-3 sm:py-4 text-center text-slate-600 font-medium text-caption-responsive sm:text-body-regular">
+                          <td className="px-3 py-5 text-center text-[#212529] font-semibold text-[14px] leading-[20px]">
                             {item.unit}
                           </td>
 
                           {/* Quantity Input */}
-                          <td className="px-2 sm:px-3 py-3 sm:py-4 text-center">
-                            <div className="flex items-center justify-center gap-2 sm:gap-3.5 mx-auto w-fit">
+                          <td className="px-3 py-5 text-center">
+                            <div className="flex items-center justify-center w-[110px] h-[32px] mx-auto bg-white rounded-[4px] border border-[#dce0e5] overflow-hidden">
                               <button
                                 type="button"
                                 onClick={() => handleQtyChange(idx, item.quantity - 10)}
-                                className="p-0.5 sm:p-1 hover:bg-slate-100 rounded-[3px] text-slate-400 hover:text-slate-800 transition-colors"
+                                className="w-[32px] h-full flex items-center justify-center hover:bg-slate-50 text-slate-600 font-bold border-r border-[#dce0e5] select-none transition-colors cursor-pointer shrink-0"
                               >
-                                <Minus className="h-3 sm:h-3.5 w-3 sm:w-3.5" />
+                                <Minus className="h-3.5 w-3.5" />
                               </button>
-                              <span className="text-caption-responsive sm:text-body-regular font-semibold text-slate-800 min-w-[28px] sm:min-w-[32px] text-center">
+                              <span className="flex-1 text-center font-semibold text-[14px] text-[#212529] leading-[20px]">
                                 {item.quantity}
                               </span>
                               <button
                                 type="button"
                                 onClick={() => handleQtyChange(idx, item.quantity + 10)}
-                                className="p-0.5 sm:p-1 hover:bg-slate-100 rounded-[3px] text-slate-400 hover:text-slate-800 transition-colors"
+                                className="w-[32px] h-full flex items-center justify-center hover:bg-slate-50 text-slate-600 font-bold border-l border-[#dce0e5] select-none transition-colors cursor-pointer shrink-0"
                               >
-                                <Plus className="h-3 sm:h-3.5 w-3 sm:w-3.5" />
+                                <Plus className="h-3.5 w-3.5" />
                               </button>
                             </div>
                           </td>
 
-                          {/* Total Price & Remove Button */}
-                          <td className="px-3 sm:px-4 py-3 sm:py-4 text-right">
-                            <div className="flex items-center justify-end gap-2 sm:gap-3">
-                              <span className="font-bold text-[#006AA7] text-caption-responsive sm:text-body-regular">
-                                {formatPrice(item.total)}
-                              </span>
-                              <button
-                                type="button"
-                                onClick={() => handleRemove(idx)}
-                                className="p-1.5 sm:p-2 border border-slate-200 hover:border-slate-300 rounded-[3px] text-slate-400 hover:text-rose-600 hover:bg-slate-50 transition-all flex items-center justify-center shrink-0"
-                                aria-label="Remove item"
-                              >
-                                <Trash2 className="h-3.5 sm:h-4 w-3.5 sm:w-4" />
-                              </button>
-                            </div>
+                          {/* Total Price */}
+                          <td className="px-4 py-5 text-right font-semibold text-[#1769e2] text-[20px] leading-[28px]">
+                            {formatPrice(item.total)}
+                          </td>
+
+                          {/* Remove Button */}
+                          <td className="px-3 py-5 text-center">
+                            <button
+                              type="button"
+                              onClick={() => handleRemove(idx)}
+                              className="w-[32px] h-[32px] flex items-center justify-center hover:text-rose-600 text-slate-400 hover:bg-rose-50 rounded-[4px] transition-colors cursor-pointer mx-auto"
+                              aria-label="Remove item"
+                            >
+                              <Trash2 className="h-5 w-5" />
+                            </button>
                           </td>
                         </tr>
                       ))}
@@ -502,99 +508,95 @@ export default function CartClient({
                 </div>
 
                 {/* Mobile Stacked Card Layout */}
-                <div className="block md:hidden space-y-3 sm:space-y-4">
+                <div className="block md:hidden space-y-3">
                   {resolvedItems.map((item, idx) => (
-                    <div key={idx} className="rounded-[3px] border border-slate-200/85 bg-white p-3 sm:p-4 shadow-sm space-y-3 sm:space-y-4">
-                      <div className="flex gap-2 sm:gap-3">
-                        {/* Image */}
+                    <div key={idx} className="rounded-[6px] border border-[#dce0e5] bg-white p-4 space-y-3">
+                      <div className="flex gap-3">
                         {item.slug ? (
                           <Link
-                            href={`/solutions/${item.slug}`}
-                            className="relative h-14 sm:h-16 w-14 sm:w-16 shrink-0 rounded-[3px] border border-slate-200/60 bg-white flex items-center justify-center overflow-hidden hover:opacity-90 transition-opacity block"
+                            href={`/solutions/listProduct/${item.slug}`}
+                            className="relative h-16 w-16 shrink-0 rounded-[4px] border border-[#dce0e5] bg-[#f2f4f8] flex items-center justify-center overflow-hidden hover:opacity-90 transition-opacity block"
                           >
                             {item.hero ? (
                               <Image
-                                    src={resolveImageUrl(item.hero) || '/images/banners/login-hero.webp'}
+                                src={resolveImageUrl(item.hero) || '/images/banners/login-hero.webp'}
                                 alt={item.product_name || item.sku}
                                 fill
-                                className="object-contain p-1"
+                                className="object-cover"
                                 sizes="64px"
                               />
                             ) : (
-                              <Package className="h-5 sm:h-6 w-5 sm:w-6 text-slate-300" />
+                              <Package className="h-6 w-6 text-slate-300" />
                             )}
                           </Link>
                         ) : (
-                          <div className="relative h-14 sm:h-16 w-14 sm:w-16 shrink-0 rounded-[3px] border border-slate-200/60 bg-white flex items-center justify-center overflow-hidden">
-                            <Package className="h-5 sm:h-6 w-5 sm:w-6 text-slate-300" />
+                          <div className="relative h-16 w-16 shrink-0 rounded-[4px] border border-[#dce0e5] bg-[#f2f4f8] flex items-center justify-center overflow-hidden">
+                            <Package className="h-6 w-6 text-slate-300" />
                           </div>
                         )}
 
-                        {/* Name & Specs */}
                         <div className="min-w-0 flex-1 space-y-0.5 text-left">
                           {item.slug ? (
                             <Link
-                              href={`/solutions/${item.slug}`}
-                              className="font-bold text-slate-900 text-caption-responsive sm:text-body-regular block leading-snug hover:text-brand transition-colors line-clamp-2"
+                              href={`/solutions/listProduct/${item.slug}`}
+                              className="font-semibold text-[#162233] text-[14px] leading-[20px] block hover:text-[#1769e2] transition-colors line-clamp-2"
                             >
                               {item.product_name}
                             </Link>
                           ) : (
-                            <span className="font-bold text-slate-900 text-caption-responsive sm:text-body-regular block leading-snug line-clamp-2">
+                            <span className="font-semibold text-[#162233] text-[14px] leading-[20px] block line-clamp-2">
                               {item.product_name}
                             </span>
                           )}
-                          <span className="text-caption-responsive font-mono text-slate-400 block pt-0.5">
+                          <span className="text-[12px] font-normal text-[#495057] block">
                             SKU: {item.sku}
                           </span>
-                          <span className="text-caption-responsive text-slate-500 block truncate">
+                          <span className="text-[12px] font-normal text-[#495057] block truncate">
                             {locale === 'vi' ? 'Quy cách: ' : 'Spec: '}
                             {item.spec}
                           </span>
                         </div>
                       </div>
 
-                      {/* Price and Unit */}
-                      <div className="flex justify-between items-center text-caption-responsive border-t border-slate-100 pt-2 sm:pt-3">
-                        <span className="text-slate-400 font-medium">{locale === 'vi' ? 'Đơn giá / Đơn vị:' : 'Price / Unit:'}</span>
-                        <span className="font-semibold text-slate-700">
+                      <div className="flex justify-between items-center text-[14px] border-t border-[#dce0e5] pt-2">
+                        <span className="text-[#495057] font-normal">{locale === 'vi' ? 'Đơn giá / ĐVT:' : 'Price / Unit:'}</span>
+                        <span className="font-semibold text-[#212529]">
                           {formatPrice(item.unitPrice)} / {item.unit}
                         </span>
                       </div>
 
-                      {/* Quantity Controls and Actions */}
-                      <div className="flex justify-between items-center border-t border-slate-100 pt-2 sm:pt-3">
-                        <div className="flex items-center gap-2 sm:gap-3">
+                      <div className="flex justify-between items-center border-t border-[#dce0e5] pt-2">
+                        <div className="flex items-center justify-center w-[100px] h-[32px] bg-white rounded-[4px] border border-[#dce0e5] overflow-hidden">
                           <button
                             type="button"
                             onClick={() => handleQtyChange(idx, item.quantity - 10)}
-                            className="p-0.5 sm:p-1 hover:bg-slate-100 border border-slate-200 rounded-[3px] text-slate-400 hover:text-slate-800 transition-colors"
+                            className="w-[28px] h-full flex items-center justify-center hover:bg-slate-50 text-slate-600 font-bold border-r border-[#dce0e5] select-none transition-colors cursor-pointer shrink-0"
                           >
-                            <Minus className="h-3 sm:h-3.5 w-3 sm:w-3.5" />
+                            <Minus className="h-3 w-3" />
                           </button>
-                          <span className="text-caption-responsive sm:text-body-regular font-semibold text-slate-800 min-w-[24px] sm:min-w-[28px] text-center">
+                          <span className="flex-1 text-center font-semibold text-[13px] text-[#212529]">
                             {item.quantity}
                           </span>
                           <button
                             type="button"
                             onClick={() => handleQtyChange(idx, item.quantity + 10)}
-                            className="p-0.5 sm:p-1 hover:bg-slate-100 border border-slate-200 rounded-[3px] text-slate-400 hover:text-slate-800 transition-colors"
+                            className="w-[28px] h-full flex items-center justify-center hover:bg-slate-50 text-slate-600 font-bold border-l border-[#dce0e5] select-none transition-colors cursor-pointer shrink-0"
                           >
-                            <Plus className="h-3 sm:h-3.5 w-3 sm:w-3.5" />
+                            <Plus className="h-3 w-3" />
                           </button>
                         </div>
 
-                        <div className="flex items-center gap-2 sm:gap-3">
-                          <span className="font-bold text-[#006AA7] text-caption-responsive sm:text-body-regular">
+                        <div className="flex items-center gap-3">
+                          <span className="font-semibold text-[#1769e2] text-[16px]">
                             {formatPrice(item.total)}
                           </span>
                           <button
                             type="button"
                             onClick={() => handleRemove(idx)}
-                            className="p-1.5 sm:p-2 border border-slate-200 hover:border-slate-300 rounded-[3px] text-slate-400 hover:text-rose-600 hover:bg-slate-50 transition-all flex items-center justify-center shrink-0"
+                            className="p-1.5 border border-[#dce0e5] rounded-[4px] text-slate-400 hover:text-rose-600 hover:bg-rose-50 transition-all cursor-pointer"
                             aria-label="Remove item"
                           >
-                            <Trash2 className="h-3.5 sm:h-4 w-3.5 sm:w-4" />
+                            <Trash2 className="h-4 w-4" />
                           </button>
                         </div>
                       </div>
@@ -605,92 +607,93 @@ export default function CartClient({
             )}
           </div>
 
-          {/* RIGHT COLUMN: Summary */}
-          <div className="lg:col-span-4 space-y-4 sm:space-y-6">
-            {/* Order Summary Panel */}
-            <div className="rounded-[3px] border border-slate-200 bg-card p-4 sm:p-6 shadow-sm space-y-3 sm:space-y-5">
-              <h3 className="text-body-regular sm:text-card-title font-bold text-slate-900">{t('summaryTitle')}</h3>
+          {/* RIGHT COLUMN: Sidebar Summary (360px fixed, aligned to top of Table 1) */}
+          <div className="w-full lg:w-[360px] lg:shrink-0 lg:pt-[48px]">
+            <div className="w-full p-6 space-y-5 bg-[#f5f8fc] border border-[#dce0e5] rounded-[8px] text-left">
+              <h3 className="text-[20px] font-semibold text-[#162233] leading-[28px]">
+                {t('summaryTitle')}
+              </h3>
 
-              <div className="space-y-3 sm:space-y-4 text-caption-responsive sm:text-body-regular">
-                <div className="flex justify-between text-sm sm:text-base">
-                  <span className="text-slate-500">{t('subtotal')}</span>
-                  <span className="font-semibold text-slate-800">{formatPrice(subtotal)}</span>
+              <hr className="border-[#dce0e5]" />
+
+              <div className="space-y-3">
+                <div className="flex justify-between items-center text-[16px] leading-[24px]">
+                  <span className="text-[#495057] font-normal">{t('subtotal')}</span>
+                  <span className="font-semibold text-[#212529] text-[14px] leading-[20px] tracking-[0.0071em]">{formatPrice(subtotal)}</span>
                 </div>
-                <div className="flex justify-between text-sm sm:text-base">
-                  <span className="text-slate-500">{t('vat')}</span>
-                  <span className="font-semibold text-slate-800">{formatPrice(vat)}</span>
+                <div className="flex justify-between items-center text-[16px] leading-[24px]">
+                  <span className="text-[#495057] font-normal">{t('vat')}</span>
+                  <span className="font-semibold text-[#212529] text-[14px] leading-[20px] tracking-[0.0071em]">{formatPrice(vat)}</span>
                 </div>
-                <div className="flex justify-between text-sm sm:text-base">
-                  <span className="text-slate-500">{t('shipping')}</span>
-                  <span className="font-medium text-brand text-right">{t('shippingContact')}</span>
+                <div className="flex justify-between items-center text-[16px] leading-[24px]">
+                  <span className="text-[#495057] font-normal">{t('shipping')}</span>
+                  <span className="font-semibold text-[#1257c0] text-[14px] leading-[20px] tracking-[0.0071em]">{t('shippingContact')}</span>
                 </div>
 
-                {/* Divider */}
-                <hr className="border-slate-200" />
+                <hr className="border-[#dce0e5]" />
 
                 {/* Promo Code Input */}
-                <form onSubmit={handleApplyPromo} className="space-y-1.5 sm:space-y-2">
-                  <label className="text-caption-responsive font-bold text-slate-500 block">
+                <form onSubmit={handleApplyPromo} className="space-y-2">
+                  <label className="text-[12px] font-semibold text-[#212529] leading-[16px] tracking-[0.0333em] block">
                     {t('promoLabel')}
                   </label>
-                  <div className="flex gap-1.5 sm:gap-2">
+                  <div className="flex gap-2">
                     <input
                       type="text"
                       value={promoCode}
                       onChange={(e) => setPromoCode(e.target.value)}
                       placeholder={t('promoPlaceholder')}
-                      className="flex-1 rounded-[3px] border border-slate-200 bg-white px-2.5 sm:px-3 py-1.5 sm:py-2 text-caption-responsive sm:text-body-regular outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand font-mono uppercase"
+                      className="flex-1 h-[38px] rounded-[4px] border border-[#dce0e5] bg-white px-3 text-[14px] font-normal text-[#212529] placeholder:text-[#495057] focus:outline-none focus:border-[#1769e2] uppercase leading-[20px]"
                     />
                     <button
                       type="submit"
-                      className="rounded-[3px] bg-[#E0F2FE] hover:bg-[#BAE6FD] text-sky-700 text-caption-responsive font-bold px-2.5 sm:px-4 py-1.5 sm:py-2.5 transition-all border border-sky-200 whitespace-nowrap"
+                      className="h-[38px] rounded-[4px] bg-[#dbeafe] text-[#1257c0] text-[14px] font-semibold leading-[20px] tracking-[0.0071em] px-4 transition-all hover:bg-blue-100 cursor-pointer shrink-0"
                     >
                       {t('promoApply')}
                     </button>
                   </div>
                   {promoError && (
-                    <span className="text-caption-responsive text-rose-500 font-medium block mt-1">
+                    <span className="text-[12px] text-rose-500 font-semibold block mt-1">
                       {promoError}
                     </span>
                   )}
                   {promoSuccess && (
-                    <span className="text-caption-responsive text-emerald-600 font-medium block mt-1">
+                    <span className="text-[12px] text-emerald-600 font-semibold block mt-1">
                       {promoSuccess}
                     </span>
                   )}
                 </form>
 
-                {/* Divider */}
-                <hr className="border-slate-200" />
+                <hr className="border-[#dce0e5]" />
 
-                <div className="flex items-baseline justify-between pt-1">
-                  <span className="text-caption-responsive sm:text-body-regular font-bold text-slate-900">{t('total')}</span>
-                  <div className="text-right">
-                    <span className="text-body-regular sm:text-section-title font-bold text-[#006AA7] block leading-none">
+                <div className="space-y-1 pt-1">
+                  <div className="flex items-baseline justify-between">
+                    <span className="text-[20px] font-semibold text-[#162233] leading-[28px]">{t('total')}</span>
+                    <span className="text-[28px] font-semibold text-[#1769e2] leading-[36px] tracking-[-0.0107em]">
                       {formatPrice(grandTotal)}
                     </span>
-                    <span className="text-caption-responsive text-slate-400 font-medium block mt-1">
-                      {t('vatIncluded')}
-                    </span>
                   </div>
+                  <span className="text-[12px] font-semibold text-[#495057] leading-[16px] block">
+                    {t('vatIncluded')}
+                  </span>
                 </div>
               </div>
 
               {/* Buttons */}
-              <div className="space-y-2.5 sm:space-y-3.5 pt-1 sm:pt-2">
+              <div className="space-y-[10px] pt-1">
                 <Link
                   href="/checkout"
-                  className="inline-flex items-center justify-center gap-2 w-full rounded-[3px] bg-brand py-2.5 sm:py-3.5 text-caption-responsive sm:text-body-regular font-bold text-white shadow hover:bg-brand/95 transition-all text-center"
+                  className="w-full flex items-center justify-center gap-2 h-[50px] px-6 rounded-[3px] font-bold text-[16px] text-white bg-[#00b233] hover:bg-[#009b2c] transition-colors cursor-pointer shadow-xs text-center leading-[24px]"
                 >
-                  {t('btnCheckout')}
-                  <ArrowRight className="h-3.5 sm:h-4 w-3.5 sm:w-4" />
+                  <span>{t('btnCheckout')}</span>
+                  <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
                   href="/solutions"
-                  className="inline-flex items-center justify-center gap-2 w-full rounded-[3px] border border-brand text-brand hover:bg-brand/5 py-2.5 sm:py-3.5 text-caption-responsive sm:text-body-regular font-bold transition-all text-center"
+                  className="w-full flex items-center justify-center gap-2 h-[50px] px-6 rounded-[3px] font-normal text-[16px] text-[#1257c0] bg-[#dbeafe] border border-[#1257c0] hover:bg-blue-100 transition-colors cursor-pointer text-center leading-[24px]"
                 >
-                  <ArrowLeft className="h-3.5 sm:h-4 w-3.5 sm:w-4" />
-                  {t('btnBack')}
+                  <ArrowLeft className="h-4 w-4" />
+                  <span>{t('btnBack')}</span>
                 </Link>
               </div>
             </div>
@@ -698,22 +701,26 @@ export default function CartClient({
         </div>
       </div>
 
-      {/* SECTION 2: Quick Quote Promo Banner - Full Width of Viewport */}
-      <div className="w-full bg-card border-y border-slate-200/80 py-6 sm:py-8 lg:py-10 my-3 sm:my-4">
-        <div className="page-container flex flex-col md:flex-row justify-between items-start md:items-center gap-4 sm:gap-6">
-          <div className="space-y-1.5 sm:space-y-2 max-w-3xl">
-            <span className="text-caption-responsive font-bold text-slate-400 uppercase tracking-wider block">
+      {/* SECTION 2: Quick Quote Promo Banner (Figma Node #929:5910) */}
+      <div className="w-full bg-[#F5F8FC] border-t border-[#CAD5E2] py-8 sm:py-10 lg:py-12 my-6 sm:my-8">
+        <div className="page-container flex flex-col md:flex-row justify-between items-start md:items-center gap-6 sm:gap-8">
+          <div className="flex flex-col gap-3 max-w-3xl text-left">
+            <span className="text-[14px] font-semibold text-[#162233] leading-[20px] tracking-[0.0071em] uppercase block">
               {t('rfqSectionSubtitle')}
             </span>
-            <h4 className="text-body-regular sm:text-card-title font-bold text-slate-800 leading-tight">{t('rfqTitle')}</h4>
-            <p className="text-caption-responsive text-slate-500 leading-5 sm:leading-relaxed">{t('rfqDesc')}</p>
+            <h4 className="text-[20px] font-semibold text-[#162233] leading-[28px]">
+              {t('rfqTitle')}
+            </h4>
+            <p className="text-[16px] font-normal text-[#495057] leading-[24px]">
+              {t('rfqDesc')}
+            </p>
           </div>
           <Link
             href="/quick-order"
-            className="inline-flex items-center justify-center gap-2 rounded-[3px] bg-[#006AA7] hover:bg-[#005B90] px-4 sm:px-6 py-2.5 sm:py-3 text-caption-responsive sm:text-body-regular font-bold text-white shadow transition-all shrink-0 w-full md:w-auto"
+            className="inline-flex items-center justify-center gap-3 rounded-[3px] bg-[#1769E2] hover:bg-[#1257C0] px-6 py-[14px] text-[16px] font-bold text-white transition-colors shrink-0 w-full md:w-auto cursor-pointer shadow-xs leading-[24px]"
           >
-            {t('rfqCta')}
-            <Edit3 className="h-4 sm:h-4.5 w-4 sm:w-4.5" />
+            <span>{t('rfqCta')}</span>
+            <Edit3 className="h-5 w-5" />
           </Link>
         </div>
       </div>
