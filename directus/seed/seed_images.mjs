@@ -70,7 +70,28 @@ const PRODUCT_IMAGES = [
 ];
 
 export async function seedProductImages() {
-  console.log('Seeding product and SKU images...');
+  console.log('Seeding frontend image paths...');
+
+  await withDbClient(async (dbClient) => {
+    for (const item of PRODUCT_IMAGES) {
+      const productRes = await dbClient.query('SELECT id FROM products WHERE slug = $1 LIMIT 1', [item.slug]);
+      if (productRes.rows.length === 0) {
+        console.warn(`[Seeder] Product with slug not found: ${item.slug}`);
+        continue;
+      }
+
+      const productId = productRes.rows[0].id;
+      await dbClient.query('UPDATE products SET hero = $1 WHERE id = $2', [item.src, productId]);
+      await dbClient.query(
+        'UPDATE product_skus SET images = $1::jsonb WHERE product = $2',
+        [JSON.stringify([item.src]), productId]
+      );
+      console.log(`  Linked frontend image path for: ${item.slug}`);
+    }
+  });
+
+  console.log('Frontend image paths seeded successfully.');
+  return;
 
   await withDbClient(async (dbClient) => {
     // 1. Get the folder ID for 'products'

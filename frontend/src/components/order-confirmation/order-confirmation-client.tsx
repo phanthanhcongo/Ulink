@@ -17,6 +17,7 @@ import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 import type { AuthUser } from '@/lib/auth-helpers';
+import { resolveImageUrl } from '@/lib/image-url';
 
 interface OrderConfirmationClientProps {
   user: AuthUser | null;
@@ -288,7 +289,7 @@ export default function OrderConfirmationClient({
                   >
                     {dbProductMap['UL-PF-2002']?.hero ? (
                       <Image
-                        src={`${DIRECTUS_URL}/assets/${dbProductMap['UL-PF-2002'].hero}`}
+                        src={resolveImageUrl(dbProductMap['UL-PF-2002'].hero) || '/images/banners/login-hero.webp'}
                         alt="Màng quấn Pallet"
                         fill
                         className="object-contain p-1"
@@ -324,7 +325,7 @@ export default function OrderConfirmationClient({
                   >
                     {dbProductMap['UL-PE-1008']?.hero ? (
                       <Image
-                        src={`${DIRECTUS_URL}/assets/${dbProductMap['UL-PE-1008'].hero}`}
+                        src={resolveImageUrl(dbProductMap['UL-PE-1008'].hero) || '/images/banners/login-hero.webp'}
                         alt="Túi PE"
                         fill
                         className="object-contain p-1"
@@ -427,5 +428,4 @@ export default function OrderConfirmationClient({
     </div>
   );
 }
-
 

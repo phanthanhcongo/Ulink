@@ -25,7 +25,7 @@ Conventions:
 | `hero_banners` | `title`, `subtitle`, `image`, `cta_label`, `cta_url`, `sort`, `status` | Homepage hero, module 1 |
 | `partners` | `name`, `logo`, `url`, `sort`, `status` | Strategic partners, module 2 |
 | `product_categories` | `name`, `slug`, `parent`, `description`, `hero_image`, `sort`, `status`, `meta_title`, `meta_description` | Category tree, self-reference on `parent` |
-| `products` | `name`, `slug`, `category`, `short_description`, `specifications`, `hero`, `gallery`, `industries`, `status`, `meta_title`, `meta_description` | Product detail, module 5 |
+| `products` | `name`, `slug`, `category`, `short_description`, `specifications`, `hero`, `gallery`, `industries`, `status`, `meta_title`, `meta_description` | Product detail, module 5; image fields store frontend paths such as `/images/products/foo.webp` |
 | `product_skus` | `sku_code`, `product`, `unit`, `pack_size`, `attributes`, `status` | SKU layer, Redis-backed lookup for `/api/sku`; `sku_code` is canonical lowercased text and the DB enforces case-insensitive uniqueness on `lower(btrim(sku_code))` |
 | `documents` | `title`, `doc_type`, `product`, `file`, `language`, `status` | TDS, MSDS, certificate, brochure |
 | `regional_hubs` | `hub_code`, `name`, `slug`, `province`, `detail_address`, `operating_status`, `coordinates`, `warehouse_total_area`, `warehouse_utilized_area`, `warehouse_available_area`, `warehouse_storage_tons`, `warehouse_pallets`, `standard_delivery_time`, `on_time_rate`, `on_time_rate_delta`, `orders_today`, `order_capacity_per_day`, `avg_delivery_time`, `person_in_charge_name`, `person_in_charge_title`, `person_in_charge_phone`, `current_personnel_count`, `status` | Hub management with warehouse, SLA, and team sections |

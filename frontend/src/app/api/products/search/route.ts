@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import { fetchProducts } from '@/lib/product-data';
 import { getTranslatedName } from '@/lib/i18n-content';
 import { getDirectusUrl } from '@/lib/directus-runtime.mjs';
+import { resolveImageUrl } from '@/lib/image-url';
 
 export const dynamic = 'force-dynamic';
 
@@ -20,7 +21,7 @@ export async function GET(req: NextRequest) {
 
     const results = products.map((p) => {
       const heroUrl = p.hero
-        ? `${getDirectusUrl()}/assets/${p.hero}?width=80&height=80&fit=cover`
+        ? resolveImageUrl(p.hero)
         : null;
 
       return {

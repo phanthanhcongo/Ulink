@@ -24,6 +24,7 @@ import { cn } from '@/lib/utils';
 import { ConfirmModal } from './confirm-modal';
 import { getDirectusUrlClient } from '@/lib/directus-runtime.mjs';
 import { getTranslatedField } from '@/lib/i18n-content';
+import { resolveImageUrl } from '@/lib/image-url';
 import { saveArticle, deleteArticle, uploadImage } from '@/app/[locale]/admin/articles/actions';
 
 interface Translation {
@@ -310,7 +311,7 @@ export function ArticlesClient({
                   {filteredArticles.map((art) => {
                     const title = getTranslatedField(art, 'title', locale);
                     const coverUrl = art.cover
-                      ? `${directusUrl}/assets/${art.cover}?width=80&height=50&fit=cover`
+                      ? resolveImageUrl(art.cover)
                       : null;
                     const publishDate = art.published_at
                       ? new Date(art.published_at).toLocaleDateString(
@@ -439,7 +440,7 @@ export function ArticlesClient({
               {filteredArticles.map((art) => {
                 const title = getTranslatedField(art, 'title', locale);
                 const coverUrl = art.cover
-                  ? `${directusUrl}/assets/${art.cover}?width=300&height=180&fit=cover`
+                  ? resolveImageUrl(art.cover)
                   : null;
                 const publishDate = art.published_at
                   ? new Date(art.published_at).toLocaleDateString(
@@ -814,7 +815,7 @@ export function ArticlesClient({
                         {activeArticle.cover ? (
                           <div className="relative w-full aspect-[16/10] rounded-[3px] overflow-hidden border border-slate-100 shadow-md bg-slate-100 mb-4 animate-fade-in">
                             <img
-                              src={`${directusUrl}/assets/${activeArticle.cover}`}
+                              src={resolveImageUrl(activeArticle.cover) || '/images/banners/login-hero.webp'}
                               alt="Cover preview"
                               className="w-full h-full object-cover"
                             />
@@ -947,4 +948,3 @@ export function ArticlesClient({
     </div>
   );
 }
-
