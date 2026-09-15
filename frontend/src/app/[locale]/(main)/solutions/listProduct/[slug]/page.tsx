@@ -23,6 +23,7 @@ import {
   ArrowRight
 } from 'lucide-react';
 import { getDirectusUrl } from '@/lib/directus-runtime.mjs';
+import { resolveImageUrl } from '@/lib/image-url';
 import {
   getTranslatedName,
   getTranslatedField,
@@ -123,11 +124,8 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
   const heroId = typeof rawHero === 'object' && rawHero !== null ? (rawHero as any).id : rawHero;
 
   if (heroId) {
-    const heroSrc =
-      typeof heroId === 'string' && (heroId.startsWith('http') || heroId.startsWith('/'))
-        ? heroId
-        : `${directusUrl}/assets/${heroId}`;
-    productGalleryImages.push({
+    const heroSrc = resolveImageUrl(heroId);
+    if (heroSrc) productGalleryImages.push({
       src: heroSrc,
       alt: `${productName} - Ảnh đại diện Database`,
       label: 'Ảnh chính DB'
@@ -139,8 +137,8 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
     const fileId =
       typeof rawFileRef === 'object' && rawFileRef !== null ? (rawFileRef as any).id : rawFileRef;
     if (fileId) {
-      const fileSrc = `${directusUrl}/assets/${fileId}`;
-      if (!productGalleryImages.some((img) => img.src === fileSrc)) {
+      const fileSrc = resolveImageUrl(fileId);
+      if (fileSrc && !productGalleryImages.some((img) => img.src === fileSrc)) {
         productGalleryImages.push({
           src: fileSrc,
           alt: `${productName} - Bộ sưu tập DB ${idx + 1}`,
@@ -158,12 +156,8 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
         : rawSkuImage;
 
     if (skuImageId) {
-      const skuSrc =
-        typeof skuImageId === 'string' &&
-          (skuImageId.startsWith('http') || skuImageId.startsWith('/'))
-          ? skuImageId
-          : `${directusUrl}/assets/${skuImageId}`;
-      if (!productGalleryImages.some((img) => img.src === skuSrc)) {
+      const skuSrc = resolveImageUrl(skuImageId);
+      if (skuSrc && !productGalleryImages.some((img) => img.src === skuSrc)) {
         productGalleryImages.push({
           src: skuSrc,
           alt: `${productName} - Mã SKU ${sku.sku_code || idx + 1}`,

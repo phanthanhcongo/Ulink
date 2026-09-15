@@ -26,6 +26,7 @@ import { cn } from '@/lib/utils';
 import type { AuthUser } from '@/lib/auth-helpers';
 import Image from 'next/image';
 import { getDirectusUrl } from '@/lib/directus-runtime.mjs';
+import { resolveImageUrl } from '@/lib/image-url';
 import { getTranslatedName } from '@/lib/i18n-content';
 import {
   type CartItem,
@@ -585,9 +586,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
             <div className="grid gap-4 grid-cols-2 sm:grid-cols-4">
               {meta.products.slice(0, 4).map((product) => {
                 const directusUrl = getDirectusUrl();
-                const imageUrl = product.hero
-                  ? `${directusUrl}/assets/${product.hero}?width=200&height=200&fit=cover`
-                  : null;
+                const imageUrl = product.hero ? resolveImageUrl(product.hero) : null;
                 const translatedName = getTranslatedName(product, locale);
                 const unit = product.skus?.[0]?.unit || 'cái';
 
@@ -1363,7 +1362,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                         <div className="h-8 sm:h-10 w-8 sm:w-10 bg-slate-50 border border-slate-150 rounded-[3px] flex items-center justify-center text-slate-400 font-mono text-caption-responsive uppercase font-bold shrink-0 relative overflow-hidden">
                           {sku.hero ? (
                             <Image
-                              src={`${getDirectusUrl()}/assets/${sku.hero}?width=80&height=80&fit=cover`}
+                              src={resolveImageUrl(sku.hero) || '/images/banners/login-hero.webp'}
                               alt={sku.product_name || ""}
                               fill
                               className="object-cover"
@@ -1612,5 +1611,3 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
   </div>
   );
 }
-
-

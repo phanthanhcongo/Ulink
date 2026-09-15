@@ -3,7 +3,7 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import Link from 'next/link';
 import { ProductCard } from '@/components/solutions/product-card';
-import { getDirectusUrl } from '@/lib/directus-runtime.mjs';
+import { resolveImageUrl } from '@/lib/image-url';
 import type { Product } from '@/lib/directus';
 
 interface SavedProductsSectionProps {
@@ -43,14 +43,12 @@ export default function SavedProductsSection({ allProducts, currentSlug, locale 
 
   if (savedProducts.length === 0) return null;
 
-  const directusUrl = getDirectusUrl();
-
   const transformedProducts = savedProducts.map((prod: Product) => {
     const firstSku = prod.skus?.[0];
     const imageUrl = prod.hero
       ? (prod.hero.startsWith('http') || prod.hero.startsWith('/'))
         ? prod.hero
-        : `${directusUrl}/assets/${prod.hero}`
+        : resolveImageUrl(prod.hero)
       : undefined;
 
     let displayPrice: string;
@@ -104,5 +102,3 @@ export default function SavedProductsSection({ allProducts, currentSlug, locale 
     </section>
   );
 }
-
-

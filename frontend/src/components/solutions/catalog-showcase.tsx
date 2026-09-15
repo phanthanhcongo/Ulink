@@ -4,6 +4,7 @@ import { getTranslations } from 'next-intl/server';
 import { fetchTopCategoriesWithProducts, getProductPricing } from '@/lib/product-data';
 import { getTranslatedName } from '@/lib/i18n-content';
 import type { Product } from '@/lib/directus';
+import { resolveImageUrl } from '@/lib/image-url';
 import { ProductCard } from './product-card';
 import { CategoryNavLink } from './category-nav-link';
 
@@ -98,8 +99,7 @@ export default async function CatalogShowcase({ locale }: CatalogShowcaseProps) 
                         return fileId;
                       }
                       // It's a Directus file ID - convert to URL
-                      const directusUrl = (process.env.NEXT_PUBLIC_DIRECTUS_URL || 'http://localhost:8055').replace(/\/$/, '');
-                      return `${directusUrl}/assets/${fileId}`;
+                      return resolveImageUrl(fileId);
                     };
 
                     // Get price directly from DB (firstSku.price_min / price_max / price)
@@ -160,4 +160,3 @@ export default async function CatalogShowcase({ locale }: CatalogShowcaseProps) 
     </section>
   );
 }
-

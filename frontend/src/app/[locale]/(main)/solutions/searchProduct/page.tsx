@@ -8,6 +8,7 @@ import {
 import { fetchProducts, fetchProductCategories } from '@/lib/product-data';
 import { getTranslatedName, getTranslatedField } from '@/lib/i18n-content';
 import { getDirectusUrl } from '@/lib/directus-runtime.mjs';
+import { resolveImageUrl } from '@/lib/image-url';
 import { ASSETS } from '@/lib/assets';
 
 export const dynamic = 'force-dynamic';
@@ -73,7 +74,7 @@ export default async function ProductsSearchPage({ params, searchParams }: PageP
       : 'Vật tư công nghiệp';
 
     const resolvedImage = p.hero
-      ? `${getDirectusUrl()}/assets/${p.hero}`
+      ? resolveImageUrl(p.hero) ?? undefined
       : ASSETS.home.solutionCleanroom;
 
     const productStandards = Array.isArray(p.standards)

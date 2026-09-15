@@ -26,6 +26,7 @@ import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 import { getDirectusUrl } from '@/lib/directus-runtime.mjs';
+import { resolveImageUrl } from '@/lib/image-url';
 
 /* ───────────────────── static data lookup ───────────────────── */
 
@@ -406,7 +407,7 @@ export default function CartClient({
                               >
                                 {item.hero ? (
                                   <Image
-                                    src={`${DIRECTUS_URL}/assets/${item.hero}`}
+                                    src={resolveImageUrl(item.hero) || '/images/banners/login-hero.webp'}
                                     alt={item.product_name || item.sku}
                                     fill
                                     className="object-contain p-1"
@@ -512,7 +513,7 @@ export default function CartClient({
                           >
                             {item.hero ? (
                               <Image
-                                src={`${DIRECTUS_URL}/assets/${item.hero}`}
+                                    src={resolveImageUrl(item.hero) || '/images/banners/login-hero.webp'}
                                 alt={item.product_name || item.sku}
                                 fill
                                 className="object-contain p-1"
@@ -741,7 +742,7 @@ export default function CartClient({
                   >
                     {prod.hero ? (
                       <Image
-                        src={`${DIRECTUS_URL}/assets/${prod.hero}`}
+                        src={resolveImageUrl(prod.hero) || '/images/banners/login-hero.webp'}
                         alt={prod.name}
                         fill
                         className="object-contain p-2"
@@ -829,5 +830,3 @@ export default function CartClient({
     </div>
   );
 }
-
-

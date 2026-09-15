@@ -25,6 +25,7 @@ import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 import { getDirectusUrl } from '@/lib/directus-runtime.mjs';
+import { resolveImageUrl } from '@/lib/image-url';
 
 export interface SuggestedProduct {
   sku: string;
@@ -805,7 +806,7 @@ export default function CheckoutClient({
                       >
                         {item.hero ? (
                           <Image
-                            src={`${DIRECTUS_URL}/assets/${item.hero}`}
+                            src={resolveImageUrl(item.hero) || '/images/banners/login-hero.webp'}
                             alt={item.product_name || item.sku}
                             fill
                             className="object-contain p-1"
@@ -1047,4 +1048,3 @@ function ChevronRightIcon({ className }: { className?: string }) {
     </svg>
   );
 }
-

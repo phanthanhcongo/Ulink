@@ -5,6 +5,7 @@
 import React, { useState, useTransition } from 'react';
 import Image from 'next/image';
 import { getDirectusUrl } from '@/lib/directus-runtime.mjs';
+import { resolveImageUrl } from '@/lib/image-url';
 import {
   Search,
   Plus,
@@ -365,7 +366,7 @@ export function ProductsClient({
                           <div className="relative h-10 sm:h-12 w-10 sm:w-12 shrink-0 overflow-hidden rounded-[3px] border border-slate-200 bg-slate-50 flex items-center justify-center">
                             {prod.hero ? (
                               <Image
-                                src={`${directusUrl}/assets/${prod.hero}?width=96&height=96&fit=cover`}
+                                src={resolveImageUrl(prod.hero) || '/images/banners/login-hero.webp'}
                                 alt={prod.name}
                                 fill
                                 className="object-cover"
