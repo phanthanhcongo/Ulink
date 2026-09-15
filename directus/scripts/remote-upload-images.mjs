@@ -1,6 +1,6 @@
 /**
- * Upload product images to a remote Directus instance via the /files API.
- * This replaces the local file-copy approach used by seedProductImages().
+ * Deprecated: website images are now served by the frontend and Directus
+ * stores only paths. Use the normal content seed/migration commands instead.
  *
  * Usage:
  *   node scripts/remote-upload-images.mjs <URL> <EMAIL> <PASSWORD>
@@ -12,6 +12,10 @@ import { fileURLToPath } from 'node:url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+
+console.error('This script is deprecated. It no longer uploads website images to Directus.');
+console.error('Run: node scripts/migrate-image-fields-to-paths.mjs --write');
+process.exit(1);
 
 const [,, url, email, password] = process.argv;
 if (!url || !email || !password) {

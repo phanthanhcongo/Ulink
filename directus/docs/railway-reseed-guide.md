@@ -145,3 +145,18 @@ Invalid foreign key for field "file" in collection "documents".
 | [`scripts/remote-seed.mjs`](scripts/remote-seed.mjs) | Chỉ seed data (không tạo schema) lên remote |
 | [`scripts/remote-upload-images.mjs`](scripts/remote-upload-images.mjs) | Upload hình ảnh sản phẩm lên remote qua API |
 | [`bootstrap.mjs`](bootstrap.mjs) | Bootstrap chính (dùng cho local Docker) |
+## Website image storage
+
+Website images are served from the frontend repository under
+`frontend/public/images`. Directus stores only relative paths such as
+`/images/solutions/product/phongSach/gang-tay-nitrile-class-1000.png`.
+
+Before reseeding an existing database, back it up and run the migration in
+dry-run mode:
+
+```bash
+node scripts/migrate-image-fields-to-paths.mjs
+node scripts/migrate-image-fields-to-paths.mjs --write
+```
+
+Do not run the deprecated `remote-upload-images.mjs` script.

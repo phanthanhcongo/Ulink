@@ -260,8 +260,8 @@ async function seedData() {
   for (const prod of productsToSeed) {
     const { categorySlug, imagePath, ...data } = prod;
     data.category = catIdMap[categorySlug];
-    // Store imagePath as a field (will be resolved to directus_files later)
-    data.image_path = imagePath;
+    // Store the frontend-served image path directly.
+    data.hero = imagePath;
     const id = await helpers.ensureItem('products', 'slug', data);
     productIdMap[prod.slug] = id;
   }

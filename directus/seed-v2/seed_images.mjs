@@ -1,11 +1,7 @@
 /**
  * Seed V2 — Product Image Seeder
  *
- * Upload ảnh sản phẩm từ frontend/public/images → directus_files
- * rồi link vào products.hero + product_skus.images.
- *
- * Logic: Copy file vật lý → directus/uploads/, insert directus_files record,
- * update products.hero FK.
+ * Link product image paths from frontend/public/images directly into content.
  */
 import { copyFileSync, statSync, existsSync, mkdirSync } from 'node:fs';
 import { join, dirname, extname } from 'node:path';
@@ -49,6 +45,21 @@ export async function seedProductImages() {
 
   const imageMap = buildImageMap();
   console.log(`   Found ${imageMap.length} products with imagePath`);
+
+  await withDbClient(async (db) => {
+    for (const img of imageMap) {
+      const productRes = await db.query('SELECT id FROM products WHERE slug = $1 LIMIT 1', [img.slug]);
+      if (!productRes.rows.length) {
+        console.warn(`   ⚠  Product not found in DB: ${img.slug}`);
+        continue;
+      }
+      const productId = productRes.rows[0].id;
+      await db.query('UPDATE products SET hero = $1 WHERE id = $2', [img.src, productId]);
+      await db.query('UPDATE product_skus SET images = $1::jsonb WHERE product = $2', [JSON.stringify([img.src]), productId]);
+      console.log(`   + ${img.slug} → ${img.src}`);
+    }
+  });
+  return;
 
   await withDbClient(async (db) => {
     // 1. Ensure 'products' folder exists in directus_folders
