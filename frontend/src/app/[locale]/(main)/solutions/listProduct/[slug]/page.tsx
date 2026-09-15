@@ -196,33 +196,33 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
       </div>
 
       {/* Main Content Area */}
-      <div className="page-container py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10">
-          {/* LEFT: Image Gallery Slider */}
-          <div className="lg:col-span-4">
+      <div className="page-container px-4 sm:px-10 lg:px-[80px] pt-2.5 pb-10">
+        <div className="flex flex-col lg:flex-row lg:items-start gap-8 lg:gap-[40px]">
+          {/* LEFT: Image Gallery Slider (420px fixed) */}
+          <div className="w-full lg:w-[420px] lg:shrink-0">
             <ProductImageGallery images={productGalleryImages} productName={productName} />
           </div>
 
-          {/* CENTER: Product Info */}
-          <div className="lg:col-span-4 space-y-6">
+          {/* CENTER: Product Info (Flex Fill) */}
+          <div className="w-full lg:flex-1 lg:min-w-0 space-y-6">
             {categoryName && (
               <div>
-                <span className="inline-block text-[12px] sm:text-[13px] lg:text-[14px] font-semibold text-blue-600 bg-blue-50/80 border border-blue-100/80 px-3.5 py-1 rounded-[3px] shadow-2xs">
+                <span className="inline-block text-[14px] font-semibold text-[#1257c0] bg-[#f5f8fc] px-2 py-1 rounded-[24px]">
                   {categoryName}
                 </span>
               </div>
             )}
 
-            <h1 className="text-[24px] sm:text-[28px] lg:text-[28px] font-bold leading-[36px] text-slate-900">
+            <h1 className="text-[24px] sm:text-[28px] lg:text-[28px] font-semibold leading-[36px] text-[#162233] tracking-[-0.0107em]">
               {productName}
             </h1>
 
             {/* SKU and Rating row */}
-            <div className="flex items-center gap-3 text-[11px] sm:text-[12px] lg:text-[12px] text-slate-500 font-semibold">
+            <div className="flex items-center gap-4 text-[14px] font-semibold text-[#495057]">
               {skuCode && <span>SKU: {skuCode}</span>}
-              {skuCode && <span className="text-slate-300">|</span>}
+              {skuCode && <div className="w-[1px] h-[12px] bg-[#dce0e5]" />}
               <div className="flex items-center gap-1.5">
-                <span className="text-[12px] sm:text-[13px] lg:text-[14px] font-semibold text-slate-900">4.8</span>
+                <span className="text-[14px] font-semibold text-[#212529]">4.8</span>
                 <div className="flex text-amber-500 text-[14px] gap-0.5 leading-none">
                   <span>★</span>
                   <span>★</span>
@@ -230,108 +230,106 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                   <span>★</span>
                   <span>★</span>
                 </div>
-                <span className="text-[11px] sm:text-[12px] lg:text-[12px] text-slate-500 font-semibold">
+                <span className="text-[12px] font-semibold text-[#495057]">
                   (48 {locale === 'vi' ? 'đánh giá' : 'reviews'})
                 </span>
               </div>
             </div>
 
-            <hr className="border-slate-200/80" />
+            <hr className="border-[#dce0e5]" />
 
             {productDescription && (
-              <p className="text-[12px] sm:text-[13px] lg:text-[14px] text-slate-600 leading-relaxed font-normal">
+              <p className="text-[14px] text-[#495057] leading-[20px] font-normal">
                 {productDescription}
               </p>
             )}
 
-            {/* 4 Feature Icon Circles */}
-            <div className="grid grid-cols-4 gap-3 py-2">
-              <div className="flex flex-col items-center text-center group rounded-lg border border-slate-200/80 p-3">
-                <div className="w-14 h-14 rounded-full bg-slate-50 border border-slate-200/70 flex items-center justify-center text-blue-600 mb-2 shrink-0 group-hover:bg-blue-50 transition-colors shadow-2xs">
-                  <Maximize2 className="h-6 w-6" />
+            {/* 4 Feature Icon Badges */}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 py-2">
+              <div className="flex flex-col items-center justify-center p-2 sm:py-2.5 sm:px-1 gap-2 border border-[#c89a955c] rounded-[3px] bg-white">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#f5f8fc] border border-[#c89a955c] flex items-center justify-center text-[#1769e2] shrink-0">
+                  <Maximize2 className="h-4 w-4 sm:h-5 sm:w-5" />
                 </div>
-                <span className="text-[11px] sm:text-[12px] lg:text-[12px] font-semibold text-slate-700 leading-tight">
+                <span className="text-[11px] sm:text-[12px] font-semibold text-[#495057] leading-tight text-center px-1">
                   {locale === 'vi' ? 'Co giãn 400%' : 'Stretch 400%'}
                 </span>
               </div>
 
-              <div className="flex flex-col items-center text-center group rounded-lg border border-slate-200/80 p-3">
-                <div className="w-14 h-14 rounded-full bg-slate-50 border border-slate-200/70 flex items-center justify-center text-blue-600 mb-2 shrink-0 group-hover:bg-blue-50 transition-colors shadow-2xs">
-                  <ShieldCheck className="h-6 w-6" />
+              <div className="flex flex-col items-center justify-center p-2 sm:py-2.5 sm:px-1 gap-2 border border-[#c89a955c] rounded-[3px] bg-white">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#f5f8fc] border border-[#c89a955c] flex items-center justify-center text-[#1769e2] shrink-0">
+                  <ShieldCheck className="h-4 w-4 sm:h-5 sm:w-5" />
                 </div>
-                <span className="text-[11px] sm:text-[12px] lg:text-[12px] font-semibold text-slate-700 leading-tight">
-                  {locale === 'vi' ? 'Dẻo & Khó rách' : 'Tear Resistant'}
+                <span className="text-[11px] sm:text-[12px] font-semibold text-[#495057] leading-tight text-center px-1">
+                  {locale === 'vi' ? 'Dai & Khó rách' : 'Tear Resistant'}
                 </span>
               </div>
 
-              <div className="flex flex-col items-center text-center group rounded-lg border border-slate-200/80 p-3">
-                <div className="w-14 h-14 rounded-full bg-slate-50 border border-slate-200/70 flex items-center justify-center text-blue-600 mb-2 shrink-0 group-hover:bg-blue-50 transition-colors shadow-2xs">
-                  <Droplets className="h-6 w-6" />
+              <div className="flex flex-col items-center justify-center p-2 sm:py-2.5 sm:px-1 gap-2 border border-[#c89a955c] rounded-[3px] bg-white">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#f5f8fc] border border-[#c89a955c] flex items-center justify-center text-[#1769e2] shrink-0">
+                  <Droplets className="h-4 w-4 sm:h-5 sm:w-5" />
                 </div>
-                <span className="text-[11px] sm:text-[12px] lg:text-[12px] font-semibold text-slate-700 leading-tight">
+                <span className="text-[11px] sm:text-[12px] font-semibold text-[#495057] leading-tight text-center px-1">
                   {locale === 'vi' ? 'Chống ẩm ướt' : 'Moisture Proof'}
                 </span>
               </div>
 
-              <div className="flex flex-col items-center text-center group rounded-lg border border-slate-200/80 p-3">
-                <div className="w-14 h-14 rounded-full bg-slate-50 border border-slate-200/70 flex items-center justify-center text-blue-600 mb-2 shrink-0 group-hover:bg-blue-50 transition-colors shadow-2xs">
-                  <RefreshCw className="h-6 w-6" />
+              <div className="flex flex-col items-center justify-center p-2 sm:py-2.5 sm:px-1 gap-2 border border-[#c89a955c] rounded-[3px] bg-white">
+                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#f5f8fc] border border-[#c89a955c] flex items-center justify-center text-[#1769e2] shrink-0">
+                  <RefreshCw className="h-4 w-4 sm:h-5 sm:w-5" />
                 </div>
-                <span className="text-[11px] sm:text-[12px] lg:text-[12px] font-semibold text-slate-700 leading-tight">
+                <span className="text-[11px] sm:text-[12px] font-semibold text-[#495057] leading-tight text-center px-1">
                   {locale === 'vi' ? 'PE Tái chế' : 'Recyclable PE'}
                 </span>
               </div>
             </div>
 
-            <hr className="border-slate-200/80" />
+            <hr className="border-[#dce0e5]" />
 
             {/* 2x2 Key Specifications Grid */}
-            <div className="grid grid-cols-2 gap-y-5 gap-x-8 py-2">
-              <div className="flex flex-col">
-                <span className="text-[11px] sm:text-[12px] lg:text-[12px] font-semibold text-slate-500">
+            <div className="grid grid-cols-2 gap-y-4 gap-x-4 py-2">
+              <div className="flex flex-col gap-1">
+                <span className="text-[12px] font-semibold text-[#495057]">
                   {locale === 'vi' ? 'Độ dày màng' : 'Thickness'}
                 </span>
-                <span className="text-[12px] sm:text-[13px] lg:text-[14px] font-semibold text-slate-900 mt-1">
+                <span className="text-[14px] font-normal text-[#212529]">
                   {specs?.['Độ dày'] || specs?.['Thickness'] || '17 mic / 20 mic / 23 mic'}
                 </span>
               </div>
 
-              <div className="flex flex-col">
-                <span className="text-[11px] sm:text-[12px] lg:text-[12px] font-semibold text-slate-500">
+              <div className="flex flex-col gap-1">
+                <span className="text-[12px] font-semibold text-[#495057]">
                   {locale === 'vi' ? 'Chất liệu chính' : 'Material'}
                 </span>
-                <span className="text-[12px] sm:text-[13px] lg:text-[14px] font-semibold text-slate-900 mt-1">
-                  {specs?.['Chất liệu'] || specs?.['Material'] || '100% LLDPE Nguyên sinh'}
+                <span className="text-[14px] font-normal text-[#212529]">
+                  {specs?.['Chất liệu'] || specs?.['Material'] || '100% LLDPE Nguyên Sinh'}
                 </span>
               </div>
 
-              <div className="flex flex-col">
-                <span className="text-[11px] sm:text-[12px] lg:text-[12px] font-semibold text-slate-500">
+              <div className="flex flex-col gap-1">
+                <span className="text-[12px] font-semibold text-[#495057]">
                   {locale === 'vi' ? 'Quy cách cuộn' : 'Specification'}
                 </span>
-                <span className="text-[12px] sm:text-[13px] lg:text-[14px] font-semibold text-slate-900 mt-1">
+                <span className="text-[14px] font-normal text-[#212529]">
                   {specs?.['Đóng gói'] ||
                     specs?.['Specification'] ||
                     'Khổ rộng 50cm, cân nặng theo yêu cầu'}
                 </span>
               </div>
 
-              <div className="flex flex-col">
-                <span className="text-[11px] sm:text-[12px] lg:text-[12px] font-semibold text-slate-500">
+              <div className="flex flex-col gap-1">
+                <span className="text-[12px] font-semibold text-[#495057]">
                   {locale === 'vi' ? 'Màu sắc' : 'Color'}
                 </span>
-                <span className="text-[12px] sm:text-[13px] lg:text-[14px] font-semibold text-slate-900 mt-1">
+                <span className="text-[14px] font-normal text-[#212529]">
                   {specs?.['Màu sắc'] || specs?.['Color'] || 'Trắng trong'}
                 </span>
               </div>
             </div>
 
-            <hr className="border-gray-150" />
-
             {/* Quality Standards Achieved */}
             {standards.length > 0 && (
               <div className="space-y-3 pt-2">
-                <p className="text-[12px] sm:text-[13px] lg:text-[14px] font-semibold text-slate-700 uppercase tracking-tight">
+                <p className="text-[12px] font-semibold text-slate-700 uppercase tracking-tight">
                   {locale === 'vi'
                     ? 'Tiêu chuẩn chất lượng đạt được:'
                     : 'Quality Standards Achieved:'}
@@ -340,17 +338,17 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                   {standards.map((std) => (
                     <div
                       key={std.id}
-                      className="flex items-center gap-3 p-4 bg-white border border-slate-200/80 rounded-[3px]"
+                      className="flex items-center gap-3 p-4 bg-white border border-[#dce0e5] rounded-[3px]"
                     >
                       <div className="w-10 h-10 rounded-[3px] bg-blue-50 flex items-center justify-center text-blue-600 shrink-0">
                         <Award className="h-5 w-5" />
                       </div>
                       <div>
-                        <p className="text-[11px] sm:text-[12px] lg:text-[12px] font-semibold text-slate-800 leading-tight">
+                        <p className="text-[12px] font-semibold text-[#212529] leading-tight">
                           {getTranslatedName(std, locale)}
                         </p>
                         {getTranslatedDescription(std, locale) && (
-                          <p className="text-[9px] sm:text-[10px] lg:text-[10px] font-medium text-slate-400 mt-0.5">
+                          <p className="text-[10px] font-medium text-slate-400 mt-0.5">
                             {getTranslatedDescription(std, locale)}
                           </p>
                         )}
@@ -362,22 +360,20 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
             )}
           </div>
 
-          {/* RIGHT: Sidebar Card */}
-          <div className="lg:col-span-4">
-            <div className="bg-[#f5f8fc] border border-[#dce0e5] rounded-lg p-6 sticky top-6 space-y-5">
-              {/* Product interactive config */}
-              <ProductDetailClient
-                skus={skus.map((s: ProductSku) => ({
-                  id: s.id,
-                  sku_code: s.sku_code,
-                  unit: s.unit,
-                  pack_size: s.pack_size,
-                  price: s.price,
-                  attributes: s.attributes as Record<string, string> | null
-                }))}
-                productName={productName}
-                locale={locale}
-                basePrice={pricing.price}
+          {/* RIGHT: Sidebar Card (340px fixed) */}
+          <div className="w-full lg:w-[340px] lg:shrink-0 lg:sticky lg:top-6">
+            <ProductDetailClient
+              skus={skus.map((s: ProductSku) => ({
+                id: s.id,
+                sku_code: s.sku_code,
+                unit: s.unit,
+                pack_size: s.pack_size,
+                price: s.price,
+                attributes: s.attributes as Record<string, string> | null
+              }))}
+              productName={productName}
+              locale={locale}
+              basePrice={pricing.price}
                 unitLabel={pricing.unit}
                 labels={{
                   addToCart: locale === 'vi' ? 'Thêm vào giỏ hàng' : 'Add to Cart',
@@ -387,10 +383,8 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                     locale === 'vi' ? 'Thanh toán' : locale === 'ja' ? 'チェックアウト' : 'Checkout'
                 }}
               />
-
             </div>
           </div>
-        </div>
 
         {/* Product details tabs section */}
         <div className="mt-10 pt-8 border-t border-slate-100">

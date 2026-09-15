@@ -63,20 +63,20 @@ interface CategoryProductsClientProps {
 }
 
 const PARENT_SUBCATEGORY_MAP: Record<string, string[]> = {
-  'cleanroom-consumables': [
-    'cleanroom-gloves',
-    'cleanroom-wipers',
-    'cleanroom-apparel',
-    'cleanroom-masks',
-    'cleanroom-chemicals'
+  'vat-tu-phong-sach': [
+    'vat-tu-phong-sach', 'quan-ao-phong-sach', 'gang-tay-phong-sach',
+    'khau-trang-phong-sach', 'vai-lau-phong-sach', 'tham-dinh-bui',
+    'dung-cu-ve-sinh', 'phu-kien-khac'
   ],
-  'industrial-packaging': [
-    'esd-shielding-bag',
-    'pe-stretch-wrap'
+  'bao-bi-dong-goi': [
+    'bao-bi-dong-goi', 'mang-quan-pallet-cat', 'thung-carton-cac-loai',
+    'bang-keo-cong-nghiep', 'tui-pe-pp-ziper', 'pallet-nhua-go',
+    'day-dai-dong-hang', 'vat-lieu-dem-lot'
   ],
-  'esd-supplies': [
-    'esd-table-mat',
-    'ionizer-fan'
+  'bang-keo-nhom': [
+    'bang-keo-nhom', 'bang-keo-nhom-tieu-chuan', 'bang-keo-nhom-chiu-nhiet',
+    'bang-keo-nhom-gia-co-luoi', 'bang-keo-nhom-cach-nhiet-cat',
+    'bang-keo-nhom-ong-gio', 'bang-keo-nhom-ma-kem-cat', 'bang-keo-nhom-tu-dinh-cat'
   ]
 };
 
@@ -628,6 +628,4 @@ export function CategoryProductsClient({
     </div>
   );
 }
-
-
 

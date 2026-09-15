@@ -31,8 +31,16 @@ export default function SavedProductsSection({ allProducts, currentSlug, locale 
 
     readSaved();
     window.addEventListener('storage', readSaved);
-    return () => window.removeEventListener('storage', readSaved);
+    window.addEventListener('ulink-favorites-changed', readSaved);
+    return () => {
+      window.removeEventListener('storage', readSaved);
+      window.removeEventListener('ulink-favorites-changed', readSaved);
+    };
   }, []);
+
+  const hasSavedItems = useMemo(() => {
+    return savedSlugs.some((slug) => slug !== currentSlug && allProducts.some((p) => p.slug === slug));
+  }, [savedSlugs, currentSlug, allProducts]);
 
   const savedProducts = useMemo(() => {
     if (!isLoaded) return [];
@@ -83,7 +91,9 @@ export default function SavedProductsSection({ allProducts, currentSlug, locale 
         <div className="flex items-center gap-2.5">
           <span className="h-2.5 w-2.5 rounded-full bg-[#1769e2] shrink-0" />
           <h2 className="text-[20px] sm:text-[22px] font-bold text-slate-900 tracking-tight">
-            {locale === 'vi' ? 'Sản phẩm đã lưu' : 'Saved Products'}
+            {hasSavedItems
+              ? (locale === 'vi' ? 'Sản phẩm đã lưu' : 'Saved Products')
+              : (locale === 'vi' ? 'Sản phẩm gợi ý cho bạn' : 'Recommended Products')}
           </h2>
         </div>
         <Link

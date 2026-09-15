@@ -32,10 +32,47 @@ export function ProductCard({
 }: ProductCardProps) {
   const [isWishlisted, setIsWishlisted] = useState(false);
 
+  React.useEffect(() => {
+    if (typeof window === 'undefined' || !product.slug) return;
+    try {
+      const saved = localStorage.getItem('ulink-favorites');
+      if (saved) {
+        const arr = JSON.parse(saved) as string[];
+        if (Array.isArray(arr) && arr.includes(product.slug)) {
+          setIsWishlisted(true);
+        }
+      }
+    } catch (e) {
+      console.error(e);
+    }
+  }, [product.slug]);
+
   const handleWishlistClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    setIsWishlisted(!isWishlisted);
+    if (typeof window === 'undefined' || !product.slug) return;
+
+    try {
+      const saved = localStorage.getItem('ulink-favorites');
+      let arr: string[] = saved ? JSON.parse(saved) : [];
+      if (!Array.isArray(arr)) arr = [];
+
+      if (isWishlisted) {
+        arr = arr.filter((s) => s !== product.slug);
+        setIsWishlisted(false);
+      } else {
+        if (!arr.includes(product.slug)) {
+          arr.push(product.slug);
+        }
+        setIsWishlisted(true);
+      }
+
+      localStorage.setItem('ulink-favorites', JSON.stringify(arr));
+      window.dispatchEvent(new Event('storage'));
+      window.dispatchEvent(new Event('ulink-favorites-changed'));
+    } catch (err) {
+      console.error('Failed to update ulink-favorites:', err);
+    }
   };
 
   const productLink = `/solutions/listProduct/${product.slug}`;

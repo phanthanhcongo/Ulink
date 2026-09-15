@@ -251,21 +251,21 @@ export default function ProductDetailClient({
   }, [performAddToCart, quantity, router]);
 
   return (
-    <div className="space-y-5 text-left">
+    <div className="w-full lg:w-[340px] p-4 sm:p-6 space-y-5 bg-[#f5f8fc] border border-[#dce0e5] rounded-[8px] text-left">
       {/* 1. PRICE DISPLAY HEADER */}
       <div className="space-y-1">
         <div className="flex items-baseline gap-1 flex-wrap">
-          <span className="text-[20px] sm:text-[24px] lg:text-[28px] font-bold text-blue-600 tracking-tight leading-tight">
+          <span className="text-[28px] font-semibold text-[#1769e2] tracking-tight leading-tight">
             {formatPrice(currentUnitPrice)}
           </span>
-          <span className="text-[14px] sm:text-[16px] lg:text-[20px] text-slate-600 font-semibold">/ {displayUnitLabel}</span>
+          <span className="text-[20px] text-[#495057] font-semibold">/ {displayUnitLabel}</span>
         </div>
-        <p className="text-[11px] sm:text-[12px] lg:text-[12px] text-slate-500 font-semibold">
+        <p className="text-[12px] text-[#495057] font-semibold">
           {locale === 'vi' ? 'Chưa bao gồm thuế (8% VAT)' : 'Tax excluded (8% VAT)'}
         </p>
         <div className="flex items-center gap-1.5 pt-0.5">
           <span className="h-2 w-2 rounded-full bg-[#10b981] shrink-0" />
-          <span className="text-[11px] sm:text-[12px] lg:text-[12px] font-semibold text-[#10b981]">
+          <span className="text-[12px] font-semibold text-[#10b981]">
             {locale === 'vi' ? 'Sẵn hàng tại kho' : 'In Stock at Warehouse'}
           </span>
         </div>
@@ -276,7 +276,7 @@ export default function ProductDetailClient({
       {/* 2. DYNAMIC ATTRIBUTE SELECTORS (Trọng lượng cuộn / Kích cỡ) */}
       {attributes.map((attr) => (
         <div key={attr.name} className="space-y-2">
-          <p className="text-[14px] font-semibold text-slate-800">
+          <p className="text-[14px] font-semibold text-[#212529]">
             {attr.name === 'size'
               ? locale === 'vi'
                 ? 'Trọng lượng cuộn (Kích cỡ)'
@@ -292,10 +292,10 @@ export default function ProductDetailClient({
                   type="button"
                   onClick={() => handleSelectAttribute(attr.name, val)}
                   className={cn(
-                    'min-w-[64px] h-[32px] px-2 text-[14px] transition-all flex items-center justify-center cursor-pointer rounded-[4px] font-semibold',
+                    'w-[64px] h-[32px] text-[14px] transition-all flex items-center justify-center cursor-pointer rounded-[4px] font-semibold select-none',
                     isSelected
                       ? 'border-2 border-[#1769e2] bg-[#f5f8fc] text-[#1769e2]'
-                      : 'border border-[#dce0e5] bg-white text-slate-700 hover:border-[#b8c0cc]'
+                      : 'border border-[#dce0e5] bg-white text-[#212529] hover:border-[#b8c0cc]'
                   )}
                 >
                   {val}
@@ -309,17 +309,17 @@ export default function ProductDetailClient({
       {/* 3. QUANTITY SELECTOR WITH MOQ */}
       <div className="space-y-2">
         <div className="flex items-center justify-between">
-          <p className="text-[14px] sm:text-[14px] lg:text-[14px] font-semibold text-slate-800">
+          <p className="text-[14px] font-semibold text-[#212529]">
             {locale === 'vi'
               ? `Số lượng đặt ${unitLabel} (MOQ: 500 ${unitLabel})`
               : `Order Qty ${unitLabel} (MOQ: 500 ${unitLabel})`}
           </p>
         </div>
-        <div className="flex items-center w-full bg-white rounded-[4px] border border-[#dce0e5] overflow-hidden">
+        <div className="flex items-center w-full h-[36px] bg-white rounded-[3px] border border-[#dce0e5] overflow-hidden">
           <button
             type="button"
             onClick={() => handleQuantityChange(quantity - 50 < 1 ? 1 : quantity - 50)}
-            className="w-8 h-8 flex items-center justify-center hover:bg-slate-50 text-slate-600 font-bold border-r border-[#dce0e5] select-none transition-colors cursor-pointer"
+            className="w-[40px] h-full flex items-center justify-center hover:bg-slate-50 text-slate-600 font-bold border-r border-[#dce0e5] select-none transition-colors cursor-pointer shrink-0"
           >
             <Minus className="h-4 w-4" />
           </button>
@@ -327,12 +327,12 @@ export default function ProductDetailClient({
             type="number"
             value={quantity}
             onChange={(e) => handleQuantityChange(parseInt(e.target.value, 10))}
-            className="flex-1 text-center font-semibold text-[16px] text-slate-900 focus:outline-none py-1.5 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+            className="flex-1 text-center font-semibold text-[14px] text-[#212529] focus:outline-none py-1 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
           />
           <button
             type="button"
             onClick={() => handleQuantityChange(quantity + 50)}
-            className="w-8 h-8 flex items-center justify-center hover:bg-slate-50 text-slate-600 font-bold border-l border-[#dce0e5] select-none transition-colors cursor-pointer"
+            className="w-[40px] h-full flex items-center justify-center hover:bg-slate-50 text-slate-600 font-bold border-l border-[#dce0e5] select-none transition-colors cursor-pointer shrink-0"
           >
             <Plus className="h-4 w-4" />
           </button>
@@ -341,20 +341,20 @@ export default function ProductDetailClient({
 
       {/* 4. TIERED B2B VOLUME DISCOUNT TABLE */}
       <div className="space-y-2">
-        <p className="text-[14px] sm:text-[14px] lg:text-[14px] font-semibold text-slate-800">
+        <p className="text-[12px] font-semibold text-[#212529]">
           {locale === 'vi' ? 'Chiết khấu B2B theo sản lượng' : 'B2B Volume Discount'}
         </p>
-        <div className="border border-[#dce0e5] rounded-[4px] overflow-hidden bg-white divide-y divide-[#e9eff6]">
+        <div className="border border-[#dce0e5] rounded-[6px] overflow-hidden bg-white divide-y divide-[#dce0e5]">
           {priceTiers.map((tier, idx) => {
             const isActive = activeTierIdx === idx;
             return (
               <div
                 key={tier.label}
                 className={cn(
-                  'flex justify-between items-center px-4 py-3 text-[14px] transition-colors',
+                  'flex justify-between items-center px-[12px] py-[10px] text-[12px] transition-colors',
                   isActive
-                    ? 'bg-[#eaf3ff]/50 text-[#1769e2] font-semibold'
-                    : 'text-slate-600 bg-white font-medium'
+                    ? 'bg-[#f5f8fc] text-[#1769e2] font-semibold'
+                    : 'text-[#495057] bg-white font-semibold'
                 )}
               >
                 <span>
@@ -363,7 +363,7 @@ export default function ProductDetailClient({
                 <span
                   className={cn(
                     'font-semibold',
-                    isActive ? 'text-[#1769e2]' : 'text-slate-800'
+                    isActive ? 'text-[#1769e2]' : 'text-[#212529]'
                   )}
                 >
                   {formatPrice(tier.price)}/{unitLabel}
@@ -376,36 +376,36 @@ export default function ProductDetailClient({
 
       {/* 5. TOTAL BLOCK */}
       <div className="space-y-1 text-left">
-        <p className="text-[14px] font-semibold text-slate-800">{locale === 'vi' ? 'Tổng cộng' : 'Total'}</p>
-        <span className="text-[20px] sm:text-[24px] lg:text-[28px] font-bold text-[#1769e2] tracking-tight block leading-tight">
+        <p className="text-[14px] font-semibold text-[#212529]">{locale === 'vi' ? 'Tổng cộng' : 'Total'}</p>
+        <span className="text-[28px] font-semibold text-[#1769e2] tracking-tight block leading-tight">
           {formatPrice(totalAmount)}
         </span>
-        <p className="text-[11px] sm:text-[12px] lg:text-[12px] text-slate-400 italic font-medium">
+        <p className="text-[12px] text-[#495057] italic font-normal">
           {locale === 'vi'
-            ? '• Giá bán sỉ ưu đãi khi mua số lượng lớn.'
-            : '• Wholesale price discount applied for high volumes.'}
+            ? '*Giá bán sỉ ưu đãi khi mua số lượng lớn.'
+            : '*Wholesale price discount applied for high volumes.'}
         </p>
       </div>
 
       {/* 6. ACTION BUTTONS */}
-      <div className="space-y-2 pt-1">
+      <div className="space-y-[10px] pt-1">
         <button
           type="button"
           onClick={handleAddToCart}
           disabled={!selectedSku}
           className={cn(
-            'w-full flex items-center justify-center gap-2 h-10 rounded-[2px] font-semibold text-[14px] text-white bg-[#1769e2] hover:bg-[#155fcb] transition-colors cursor-pointer shadow-sm',
+            'w-full flex items-center justify-center gap-2 py-3 px-4 rounded-[3px] font-semibold text-[14px] text-white bg-[#1769e2] hover:bg-[#155fcb] transition-colors cursor-pointer shadow-xs',
             !selectedSku && 'opacity-50 cursor-not-allowed'
           )}
         >
           {added ? (
             <>
-              <Check className="h-5 w-5 stroke-[2.5]" />
+              <Check className="h-4 w-4 stroke-[2.5]" />
               <span>{locale === 'vi' ? 'Đã thêm vào giỏ hàng' : 'Added to Cart'}</span>
             </>
           ) : (
             <>
-              <ShoppingCart className="h-5 w-5" />
+              <ShoppingCart className="h-4 w-4" />
               <span>{locale === 'vi' ? 'Thêm vào giỏ hàng' : labels.addToCart}</span>
             </>
           )}
@@ -416,19 +416,20 @@ export default function ProductDetailClient({
           onClick={handleRequestQuote}
           disabled={!selectedSku}
           className={cn(
-            'w-full flex items-center justify-center gap-2 h-10 rounded-[2px] font-semibold text-[14px] text-white border border-[#24a83b] bg-[#24a83b] hover:bg-[#209635] transition-colors cursor-pointer shadow-sm',
+            'w-full flex items-center justify-center gap-2 h-[50px] px-4 rounded-[3px] font-semibold text-[14px] text-white bg-[#00b233] hover:bg-[#009b2c] transition-colors cursor-pointer shadow-xs',
             !selectedSku && 'opacity-50 cursor-not-allowed'
           )}
         >
           <span>{labels.requestQuote || (locale === 'vi' ? 'Thanh toán' : 'Checkout')}</span>
+          <span className="text-[16px]">→</span>
         </button>
       </div>
 
       <hr className="border-[#dce0e5]" />
 
       {/* 7. TRUST & DELIVERY BADGES */}
-      <div className="space-y-2 pt-1 text-[12px] text-slate-600 font-medium">
-        <div className="flex items-center gap-2.5">
+      <div className="space-y-2 pt-1 text-[12px] text-[#495057] font-normal">
+        <div className="flex items-center gap-2">
           <Settings2 className="h-4 w-4 text-slate-500 shrink-0" />
           <span>
             {locale === 'vi'
@@ -436,13 +437,13 @@ export default function ProductDetailClient({
               : 'Custom manufacturing upon request'}
           </span>
         </div>
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-2">
           <Clock className="h-4 w-4 text-slate-500 shrink-0" />
           <span>
             {locale === 'vi' ? 'Thời gian giao hàng: 3-5 ngày' : 'Delivery: 3-5 business days'}
           </span>
         </div>
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center gap-2">
           <MapPin className="h-4 w-4 text-slate-500 shrink-0" />
           <span>
             {locale === 'vi'

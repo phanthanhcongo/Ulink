@@ -25,7 +25,7 @@ export interface ParentCategoryGroup {
 const CATEGORY_GROUPS: Record<string, ParentCategoryGroup[]> = {
   vi: [
     {
-      parentSlug: 'cleanroom-consumables',
+      parentSlug: 'vat-tu-phong-sach',
       parentName: 'Vật Tư Phòng Sạch',
       description: 'Găng tay, khăn lau, trang phục và đồ bảo hộ phòng sạch đạt chuẩn ISO',
       icon: 'cleanroom',
@@ -38,7 +38,7 @@ const CATEGORY_GROUPS: Record<string, ParentCategoryGroup[]> = {
       ]
     },
     {
-      parentSlug: 'industrial-packaging',
+      parentSlug: 'bao-bi-dong-goi',
       parentName: 'Bao Bì & Đóng Gói',
       description: 'Màng co PE, màng quấn pallet, thùng carton và giải pháp đóng gói',
       icon: 'packaging',
@@ -50,7 +50,7 @@ const CATEGORY_GROUPS: Record<string, ParentCategoryGroup[]> = {
       ]
     },
     {
-      parentSlug: 'esd-supplies',
+      parentSlug: 'bang-keo-nhom',
       parentName: 'Băng Keo & Vật Tư ESD',
       description: 'Thiết bị chống tĩnh điện, thảm cao su ESD và băng keo kỹ thuật',
       icon: 'esd',
@@ -63,7 +63,7 @@ const CATEGORY_GROUPS: Record<string, ParentCategoryGroup[]> = {
   ],
   en: [
     {
-      parentSlug: 'cleanroom-consumables',
+      parentSlug: 'vat-tu-phong-sach',
       parentName: 'Cleanroom Supplies',
       description: 'ISO certified cleanroom gloves, wipers, garments & safety gear',
       icon: 'cleanroom',
@@ -76,7 +76,7 @@ const CATEGORY_GROUPS: Record<string, ParentCategoryGroup[]> = {
       ]
     },
     {
-      parentSlug: 'industrial-packaging',
+      parentSlug: 'bao-bi-dong-goi',
       parentName: 'Packaging & Logistics',
       description: 'PE shrink films, stretch wrap, cartons & industrial packaging solutions',
       icon: 'packaging',
@@ -88,7 +88,7 @@ const CATEGORY_GROUPS: Record<string, ParentCategoryGroup[]> = {
       ]
     },
     {
-      parentSlug: 'esd-supplies',
+      parentSlug: 'bang-keo-nhom',
       parentName: 'ESD & Technical Tapes',
       description: 'Anti-static supplies, ESD matting, ionizers & specialized tapes',
       icon: 'esd',
@@ -101,7 +101,7 @@ const CATEGORY_GROUPS: Record<string, ParentCategoryGroup[]> = {
   ],
   ja: [
     {
-      parentSlug: 'cleanroom-consumables',
+      parentSlug: 'vat-tu-phong-sach',
       parentName: 'クリーンルーム用品',
       description: 'ISO規格適合のクリーンルーム用手袋、ワイパー、ウェア',
       icon: 'cleanroom',
@@ -114,7 +114,7 @@ const CATEGORY_GROUPS: Record<string, ParentCategoryGroup[]> = {
       ]
     },
     {
-      parentSlug: 'industrial-packaging',
+      parentSlug: 'bao-bi-dong-goi',
       parentName: '産業用包装資材',
       description: 'PEシュリンクフィルム、ストレッチフィルム、梱包ソリューション',
       icon: 'packaging',
@@ -126,7 +126,7 @@ const CATEGORY_GROUPS: Record<string, ParentCategoryGroup[]> = {
       ]
     },
     {
-      parentSlug: 'esd-supplies',
+      parentSlug: 'bang-keo-nhom',
       parentName: 'ESD対策・テープ',
       description: '静電気対策マット、イオナイザー、工業用テープ',
       icon: 'esd',
@@ -371,5 +371,4 @@ export default function SearchSection({ locale }: SearchSectionProps) {
     </section>
   );
 }
-
 
