@@ -65,6 +65,27 @@ export function ProductCard({
           arr.push(product.slug);
         }
         setIsWishlisted(true);
+
+        // Automatically Add to Cart (rfq-cart) when wishlisted
+        try {
+          const rawCart = localStorage.getItem('rfq-cart');
+          const cart: Array<any> = rawCart ? JSON.parse(rawCart) : [];
+          const existingIdx = cart.findIndex((item) => item.sku === product.slug);
+          if (existingIdx === -1) {
+            cart.push({
+              sku: product.slug,
+              product_name: product.name,
+              qty: 500,
+              quantity: 500,
+              unit: product.unit || 'kg',
+              note: ''
+            });
+            localStorage.setItem('rfq-cart', JSON.stringify(cart));
+            window.dispatchEvent(new Event('rfq-cart-changed'));
+          }
+        } catch (cartErr) {
+          console.error('Failed to auto add saved item to rfq-cart:', cartErr);
+        }
       }
 
       localStorage.setItem('ulink-favorites', JSON.stringify(arr));

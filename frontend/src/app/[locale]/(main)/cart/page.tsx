@@ -15,24 +15,6 @@ export async function generateMetadata({ params: { locale } }: Props): Promise<M
   };
 }
 
-// B2B Pricing helper based on product category/slug
-function getProductPricing(slug: string, locale: string) {
-  const isVi = locale === 'vi';
-  const pricingMap: Record<string, { price: number; unit: string }> = {
-    'nitrile-cleanroom-gloves': { price: 2500, unit: isVi ? 'đôi' : 'pair' },
-    'polyester-cleanroom-wipers': { price: 250000, unit: isVi ? 'gói' : 'pack' },
-    'tyvek-cleanroom-coverall': { price: 180000, unit: isVi ? 'bộ' : 'pcs' },
-    'cleanroom-face-mask-3ply': { price: 75000, unit: isVi ? 'hộp' : 'box' },
-    'esd-wrist-strap': { price: 45000, unit: isVi ? 'cái' : 'pcs' },
-    'esd-table-mat-2layer': { price: 1200000, unit: isVi ? 'cuộn' : 'roll' },
-    'ipa-cleanroom-grade-999': { price: 95000, unit: isVi ? 'chai' : 'bottle' },
-    'sticky-mat-30-layers': { price: 150000, unit: isVi ? 'tấm' : 'sheet' },
-    'esd-shielding-bag': { price: 3500, unit: isVi ? 'túi' : 'bag' },
-    'sterile-latex-cleanroom-gloves': { price: 4500, unit: isVi ? 'đôi' : 'pair' }
-  };
-  return pricingMap[slug] || { price: 100000, unit: isVi ? 'cái' : 'pcs' };
-}
-
 export default async function CartPage({ params: { locale } }: Props) {
   setRequestLocale(locale);
 
@@ -52,12 +34,19 @@ export default async function CartPage({ params: { locale } }: Props) {
     }
   }
 
-  // Fetch real suggested products from Directus (taking the first 4)
+  // Fetch real suggested products dynamically from Directus DB
   const suggestedProducts = allDbProducts.slice(0, 4).map((prod) => {
-    const pricing = getProductPricing(prod.slug, locale);
-    const sku =
-      (prod.skus ?? []).find((s: any) => s.status === 'published') || (prod.skus ?? [])[0];
+    const sku = (prod.skus ?? []).find((s: any) => s.status === 'published') || (prod.skus ?? [])[0];
     const skuCode = sku ? sku.sku_code : prod.slug.toUpperCase();
+    const unitLabel = sku?.unit || (locale === 'vi' ? 'kg' : 'kg');
+
+    let priceText = locale === 'vi' ? 'Liên hệ báo giá' : 'Contact for quote';
+    if (sku?.price) {
+      const priceVal = Number(sku.price) || 0;
+      priceText = locale === 'vi'
+        ? `${new Intl.NumberFormat('vi-VN').format(priceVal)}đ / ${unitLabel}`
+        : `$${(priceVal / 25000).toFixed(2)} / ${unitLabel}`;
+    }
 
     const hub =
       prod.slug.includes('glove') || prod.slug.includes('latex')
@@ -68,22 +57,27 @@ export default async function CartPage({ params: { locale } }: Props) {
           ? 'Hub Hà Nam, Việt Nam'
           : 'Ha Nam Hub, Vietnam';
 
-    const moqVal = sku?.pack_size ? parseInt(sku.pack_size) || 100 : 100;
-    const moqText = locale === 'vi' ? `${moqVal} ${pricing.unit}` : `${moqVal} ${pricing.unit}`;
+    const moqVal = sku?.pack_size ? parseInt(sku.pack_size, 10) || 500 : 500;
+    const moqText = locale === 'vi' ? `MOQ: ${moqVal} ${unitLabel}` : `MOQ: ${moqVal} ${unitLabel}`;
+
+    const imageUrl = prod.hero
+      ? (prod.hero.startsWith('http') || prod.hero.startsWith('/'))
+        ? prod.hero
+        : resolveImageUrl(prod.hero)
+      : undefined;
 
     return {
+      id: prod.id,
       sku: skuCode,
       slug: prod.slug,
-      name: getTranslatedName(prod, locale),
-      priceText:
-        locale === 'vi'
-          ? `${new Intl.NumberFormat('vi-VN').format(pricing.price)}đ /${pricing.unit}`
-          : `$${(pricing.price / 25000).toFixed(2)} /${pricing.unit}`,
+      name: getTranslatedName(prod, locale) || prod.name,
+      priceText,
+      unit: unitLabel,
       moq: moqVal,
       moqText,
       desc: getTranslatedField(prod, 'short_description', locale) || '',
       hub,
-      hero: prod.hero || null
+      hero: imageUrl || null
     };
   });
 

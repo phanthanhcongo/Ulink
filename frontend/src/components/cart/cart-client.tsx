@@ -27,6 +27,7 @@ import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 import { getDirectusUrl } from '@/lib/directus-runtime.mjs';
 import { resolveImageUrl } from '@/lib/image-url';
+import { ProductCard } from '@/components/solutions/product-card';
 
 /* ───────────────────── static data lookup ───────────────────── */
 
@@ -730,64 +731,21 @@ export default function CartClient({
 
           <div className="grid gap-3 sm:gap-4 md:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
             {suggestedProducts.map((prod, idx) => (
-              <div
-                key={idx}
-                className="rounded-[3px] border border-slate-200/80 p-3 sm:p-4 shadow-sm flex flex-col justify-between bg-white hover:border-brand/40 transition-all space-y-3 sm:space-y-4"
-              >
-                <div className="space-y-2 sm:space-y-3">
-                  {/* Fallback/Directus Image */}
-                  <Link
-                    href={`/solutions/${prod.slug}`}
-                    className="aspect-square w-full rounded-[3px] bg-slate-50 border border-slate-200/40 flex items-center justify-center overflow-hidden relative block hover:opacity-90 transition-opacity"
-                  >
-                    {prod.hero ? (
-                      <Image
-                        src={resolveImageUrl(prod.hero) || '/images/banners/login-hero.webp'}
-                        alt={prod.name}
-                        fill
-                        className="object-contain p-2"
-                        sizes="(max-width: 768px) 100vw, 25vw"
-                      />
-                    ) : (
-                      <Package className="h-8 sm:h-10 w-8 sm:w-10 text-slate-200" />
-                    )}
-                  </Link>
-                  <div className="space-y-1">
-                    <h4 className="text-caption-responsive sm:text-body-regular font-bold text-slate-900 leading-snug line-clamp-2 min-h-[40px] hover:text-brand transition-colors">
-                      <Link href={`/solutions/${prod.slug}`}>{prod.name}</Link>
-                    </h4>
-                    <div className="flex items-baseline gap-1 text-caption-responsive">
-                      <span className="font-bold text-brand">{prod.priceText}</span>
-                    </div>
-                    <div className="text-caption-responsive text-slate-400 space-y-0.5 pt-1">
-                      <p>
-                        {t('moqLabel')}: {prod.moqText}
-                      </p>
-                      <div className="flex items-center gap-1 text-caption-responsive text-slate-500 font-semibold pt-1">
-                        <MapPin className="h-3 w-3 text-slate-400" />
-                        <span className="line-clamp-1">{prod.hub}</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="flex gap-1.5 sm:gap-2">
-                  <button
-                    type="button"
-                    onClick={() => handleAddSuggested(prod)}
-                    className="flex-1 rounded-[3px] bg-brand py-1.5 sm:py-2 text-caption-responsive font-semibold text-white hover:bg-brand/95 transition-all"
-                  >
-                    {t('orderNow')}
-                  </button>
-                  <button
-                    type="button"
-                    className="p-1.5 sm:p-2 border border-slate-200 text-slate-400 hover:text-slate-600 rounded-[3px] hover:bg-slate-50 transition-all flex items-center justify-center shrink-0"
-                    aria-label="Bookmark"
-                  >
-                    <Bookmark className="h-3.5 sm:h-4 w-3.5 sm:w-4" />
-                  </button>
-                </div>
-              </div>
+              <ProductCard
+                key={prod.id || idx}
+                product={{
+                  id: prod.id || idx,
+                  name: prod.name,
+                  slug: prod.slug,
+                  image: prod.hero,
+                  price: prod.priceText,
+                  moq: prod.moqText,
+                  status: locale === 'vi' ? 'Có sẵn tại Kho' : 'In Stock',
+                  location: prod.hub,
+                  unit: prod.unit
+                }}
+                locale={locale}
+              />
             ))}
           </div>
         </div>
