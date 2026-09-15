@@ -28,26 +28,21 @@ export async function migrateImageFieldsToPaths({ dryRun = true } = {}) {
       changed.push(`${table}.${field}`);
       if (dryRun) continue;
 
-      await db.query(
-        `DO $migration$
-         DECLARE c record;
-         BEGIN
-           FOR c IN
-             SELECT tc.constraint_name
-             FROM information_schema.table_constraints tc
-             JOIN information_schema.key_column_usage kcu
-               ON kcu.constraint_name = tc.constraint_name
-              AND kcu.table_schema = tc.table_schema
-             WHERE tc.table_schema = 'public'
-               AND tc.table_name = $1
-               AND kcu.column_name = $2
-               AND tc.constraint_type = 'FOREIGN KEY'
-           LOOP
-             EXECUTE format('ALTER TABLE %I DROP CONSTRAINT %I', $1, c.constraint_name);
-           END LOOP;
-         END $migration$;`,
+      const constraints = await db.query(
+        `SELECT tc.constraint_name
+         FROM information_schema.table_constraints tc
+         JOIN information_schema.key_column_usage kcu
+           ON kcu.constraint_name = tc.constraint_name
+          AND kcu.table_schema = tc.table_schema
+         WHERE tc.table_schema = 'public'
+           AND tc.table_name = $1
+           AND kcu.column_name = $2
+           AND tc.constraint_type = 'FOREIGN KEY'`,
         [table, field]
       );
+      for (const row of constraints.rows) {
+        await db.query(`ALTER TABLE "${table}" DROP CONSTRAINT "${row.constraint_name}"`);
+      }
       await db.query(`ALTER TABLE ${table} ALTER COLUMN ${field} TYPE text USING ${field}::text`);
       await db.query(
         'DELETE FROM directus_relations WHERE many_collection = $1 AND many_field = $2',
