@@ -72,15 +72,14 @@ Authenticated as admin@ulink.com @ https://...
 Bootstrap & seed data setup completed successfully!
 ```
 
-### Bước 4: Upload hình ảnh sản phẩm
+### Bước 4: Kiểm tra path ảnh frontend
 
 ```bash
 cd directus
-node scripts/remote-upload-images.mjs "<DIRECTUS_URL>" "<ADMIN_EMAIL>" "<ADMIN_PASSWORD>"
+node scripts/migrate-image-fields-to-paths.mjs
 ```
 
-> [!WARNING]
-> **Bước này bắt buộc!** Bootstrap chỉ tạo record file trong DB, không upload file vật lý lên Railway. Nếu bỏ qua bước này, sản phẩm sẽ hiển thị "Chưa có hình ảnh trong Database".
+> Kiểm tra danh sách mapping trước. Chỉ chạy `--write` sau khi backup database và xác nhận toàn bộ ảnh đã có trong frontend.
 
 **Kết quả mong đợi:**
 ```
@@ -104,8 +103,8 @@ node scripts/wipe-db.mjs "postgresql://postgres:NmHrdccBnCBDFHmmhntIhdLVUeKVcwab
 # 3. Bootstrap + seed
 node scripts/remote-bootstrap.mjs "https://directus-production-8018.up.railway.app" "admin@ulink.com" "change-me-admin-password"
 
-# 4. Upload hình
-node scripts/remote-upload-images.mjs "https://directus-production-8018.up.railway.app" "admin@ulink.com" "change-me-admin-password"
+# 4. Chuyển các field ảnh sang frontend paths (sau khi đã backup và kiểm tra dry-run)
+node scripts/migrate-image-fields-to-paths.mjs --write
 ```
 
 ## Xử lý lỗi thường gặp
@@ -132,9 +131,7 @@ Invalid foreign key for field "file" in collection "documents".
 
 ### Hình ảnh không hiển thị trên frontend
 
-**Nguyên nhân:** Bootstrap chỉ tạo metadata file trong DB, không upload file vật lý lên Railway storage.
-
-**Giải pháp:** Chạy Bước 4 (`remote-upload-images.mjs`).
+Kiểm tra path trong Directus có bắt đầu bằng `/images/` và file tương ứng có tồn tại trong `frontend/public/images` hay không.
 
 ## Scripts liên quan
 
@@ -143,7 +140,7 @@ Invalid foreign key for field "file" in collection "documents".
 | [`scripts/wipe-db.mjs`](scripts/wipe-db.mjs) | Xoá toàn bộ tables trong DB |
 | [`scripts/remote-bootstrap.mjs`](scripts/remote-bootstrap.mjs) | Chạy full bootstrap (schema + RBAC + seed) lên remote |
 | [`scripts/remote-seed.mjs`](scripts/remote-seed.mjs) | Chỉ seed data (không tạo schema) lên remote |
-| [`scripts/remote-upload-images.mjs`](scripts/remote-upload-images.mjs) | Upload hình ảnh sản phẩm lên remote qua API |
+| [`scripts/migrate-image-fields-to-paths.mjs`](scripts/migrate-image-fields-to-paths.mjs) | Chuyển field ảnh từ UUID sang frontend path |
 | [`bootstrap.mjs`](bootstrap.mjs) | Bootstrap chính (dùng cho local Docker) |
 ## Website image storage
 
