@@ -131,7 +131,7 @@ export const productsRegionalHubs = ALL_PRODUCT_SLUGS.flatMap(productSlug =>
 // Gán attribute options cho từng sản phẩm.
 // ═══════════════════════════════════════════════════════════════
 
-export const productsAttributes = [
+const explicitProductsAttributes = [
   // ── Kích cỡ (Size) ──
   { productSlug: 'gang-tay-nitrile-class-1000', attributeSlug: 'size', optionValue: 'S' },
   { productSlug: 'gang-tay-nitrile-class-1000', attributeSlug: 'size', optionValue: 'M' },
@@ -158,3 +158,45 @@ export const productsAttributes = [
   { productSlug: 'bang-keo-chiu-nhiet-72mm',    attributeSlug: 'roll-weight', optionValue: '3.0kg' },
   { productSlug: 'bang-keo-opp',                attributeSlug: 'roll-weight', optionValue: '2.4kg' }
 ];
+
+// Every product gets at least one classification attribute so the SKU admin
+// form can generate/associate SKUs instead of falling back to manual entry.
+// Products with explicit options above keep those options; the generated
+// entries only fill products that had no attribute mapping yet.
+const productAttributeFallbacks = [
+  ['size', ['tui-pe-cong-nghiep', 'tui-pe-nhieu-kich-thuoc', 'tui-ziper-nhieu-kich-thuoc', 'thung-carton-5-lop', 'day-dai-pp-dong-hang']],
+  ['color', ['pallet-nhua-cong-nghiep', 'tham-phong-sach']],
+  ['roll-weight', ['mang-quan-pallet-dong-kien', 'mang-co-pof', 'mang-co-pe-shrink-film', 'giay-chong-am']]
+];
+
+const mappedProductSlugs = new Set([
+  ...explicitProductsAttributes.map(({ productSlug }) => productSlug),
+  ...productAttributeFallbacks.flatMap(([, productSlugs]) => productSlugs)
+]);
+
+const partialProductsAttributes = [
+  ...explicitProductsAttributes,
+  ...productAttributeFallbacks.flatMap(([attributeSlug, productSlugs]) =>
+    productSlugs.map(productSlug => ({ productSlug, attributeSlug, optionValue: null }))
+  ),
+  // Remaining single-SKU products use Size as a classification dimension.
+  ...ALL_PRODUCT_SLUGS
+    .filter(productSlug => !mappedProductSlugs.has(productSlug))
+    .map(productSlug => ({ productSlug, attributeSlug: 'size', optionValue: null }))
+];
+
+const attributeDefaults = { size: 'S', color: 'blue', 'roll-weight': '2.4kg' };
+const uniqueLinks = new Map();
+for (const link of partialProductsAttributes) {
+  const key = `${link.productSlug}:${link.attributeSlug}`;
+  if (!uniqueLinks.has(key)) uniqueLinks.set(key, link);
+}
+
+export const productsAttributes = ALL_PRODUCT_SLUGS.flatMap(productSlug =>
+  Object.entries(attributeDefaults).map(([attributeSlug, defaultValue]) => {
+    const key = `${productSlug}:${attributeSlug}`;
+    return uniqueLinks.has(key)
+      ? uniqueLinks.get(key)
+      : { productSlug, attributeSlug, optionValue: defaultValue };
+  })
+);

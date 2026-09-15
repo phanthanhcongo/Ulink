@@ -10,6 +10,7 @@ interface SkuItem {
   sku_code: string;
   unit: string | null;
   pack_size: string | null;
+  price?: number | null;
   attributes: Record<string, string> | null;
 }
 
@@ -117,15 +118,16 @@ export default function ProductDetailClient({
 
   // Dynamic B2B price tiers matching user screenshot
   const priceTiers = useMemo(() => {
-    const minPrice = 39500;
-    const midPrice = 41500;
-    const maxPrice = 43000;
+    const skuPrice = Number(selectedSku?.price ?? basePrice) || 0;
+    const minPrice = skuPrice * 0.94;
+    const midPrice = skuPrice;
+    const maxPrice = skuPrice * 1.03;
     return [
       { min: 500, max: 999, label: '500 - 999', price: maxPrice },
       { min: 1000, max: 2999, label: '1.000 - 2.999', price: midPrice },
       { min: 3000, max: null, label: '>= 3.000', price: minPrice }
     ];
-  }, []);
+  }, [selectedSku, basePrice]);
 
   // Determine current active discount tier index based on quantity
   const activeTierIdx = useMemo(() => {

@@ -270,14 +270,28 @@ async function seedData() {
   console.log('\n── [9/13] Product SKUs ──');
   const skuIdMap = {};
   for (const sku of skusToSeed) {
-    const { productSlug, moq, moq_unit, ...data } = sku;
-    data.product = productIdMap[productSlug];
-    data.price = sku.price ?? null;
-    if (moq) {
-      data.pack_size = `MOQ: ${moq} ${moq_unit || sku.unit || ''}`.trim();
+    const variants = [
+      { suffix: '', size: 'S' },
+      { suffix: '-M', size: 'M' },
+      { suffix: '-L', size: 'L' }
+    ];
+    for (const variant of variants) {
+      const { productSlug, moq, moq_unit, ...data } = sku;
+      data.sku_code = `${sku.sku_code}${variant.suffix}`;
+      data.product = productIdMap[productSlug];
+      const priceMultiplier = { S: 1, M: 1.1, L: 1.2 }[variant.size];
+      data.price = sku.price == null ? null : Math.round(sku.price * priceMultiplier);
+      data.attributes = {
+        size: variant.size,
+        color: 'blue',
+        'roll-weight': '2.4kg'
+      };
+      if (moq) {
+        data.pack_size = `MOQ: ${moq} ${moq_unit || sku.unit || ''}`.trim();
+      }
+      const id = await helpers.ensureItem('product_skus', 'sku_code', data);
+      if (variant.suffix === '') skuIdMap[sku.sku_code] = id;
     }
-    const id = await helpers.ensureItem('product_skus', 'sku_code', data);
-    skuIdMap[sku.sku_code] = id;
   }
 
   // ── 2.10 Product Translations ──
@@ -344,15 +358,19 @@ async function seedData() {
 
   // Products ↔ Product Attributes
   linkCount = 0;
+  const linkedAttributeKeys = new Set();
   for (const link of productsAttributes) {
     const pId = productIdMap[link.productSlug];
-    const optId = optionIdMap[`${link.attributeSlug}:${link.optionValue}`];
-    if (!pId || !optId) continue;
+    const attrId = attrIdMap[link.attributeSlug];
+    if (!pId || !attrId) continue;
+    const linkKey = `${pId}:${attrId}`;
+    if (linkedAttributeKeys.has(linkKey)) continue;
     try {
       await client.request(createItem('products_product_attributes', {
         products_id: pId,
-        product_attribute_options_id: optId
+        product_attributes_id: attrId
       }));
+      linkedAttributeKeys.add(linkKey);
       linkCount++;
     } catch { /* duplicate */ }
   }

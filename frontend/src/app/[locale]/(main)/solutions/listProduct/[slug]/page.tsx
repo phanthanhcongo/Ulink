@@ -372,6 +372,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                   sku_code: s.sku_code,
                   unit: s.unit,
                   pack_size: s.pack_size,
+                  price: s.price,
                   attributes: s.attributes as Record<string, string> | null
                 }))}
                 productName={productName}
