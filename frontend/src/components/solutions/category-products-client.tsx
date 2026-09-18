@@ -183,7 +183,14 @@ export function CategoryProductsClient({
     if (category.slug === 'all' || isSearchPage) {
       return allCategories;
     }
-    return [];
+    // Show subcategories of the parent category
+    const subSlugs = PARENT_SUBCATEGORY_MAP[category.slug];
+    if (subSlugs && subSlugs.length > 0) {
+      const subTabs = allCategories.filter((c) => subSlugs.includes(c.slug) && c.slug !== category.slug);
+      if (subTabs.length > 0) return subTabs;
+    }
+    // Fallback: show all categories
+    return allCategories;
   }, [category, allCategories, isSearchPage]);
 
   // Compute category counts
@@ -509,12 +516,11 @@ export function CategoryProductsClient({
   };
 
   return (
-    <div className="min-h-screen bg-slate-50/70 relative">
+    <div className="min-h-screen relative" style={{ backgroundColor: '#F5F8FC' }}>
       {/* Hero Banner */}
       <CategoryHeroBanner
         isSearchPage={isSearchPage}
-        currentCategoryName={currentCategoryName}
-        categoryDescription={category.description}
+        currentCategoryName={category.name}        categoryDescription={category.description}
         categorySlug={category.slug}
         locale={locale}
         searchQuery={searchQuery}
@@ -546,7 +552,11 @@ export function CategoryProductsClient({
               {/* Filters Sidebar */}
               <ProductFilters
                 locale={locale}
-                allCategories={allCategories}
+                allCategories={
+                  PARENT_SUBCATEGORY_MAP[category.slug]
+                    ? allCategories.filter((c) => c.slug !== category.slug)
+                    : allCategories
+                }
                 categoryCounts={categoryCounts}
                 selectedCategories={selectedCategories}
                 onToggleCategory={handleToggleCategory}

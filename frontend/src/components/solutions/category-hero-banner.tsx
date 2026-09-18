@@ -22,6 +22,11 @@ interface CategoryHeroBannerProps {
 }
 
 const CATEGORY_IMAGE_MAP: Record<string, string> = {
+  // Parent categories
+  'vat-tu-phong-sach': '/images/solutions/banerVattu.png',
+  'bao-bi-dong-goi': '/images/solutions/maxresdefault.jpg',
+  'bang-keo-nhom': '/images/solutions/banerBangkeo.png',
+  // Sub categories
   'cleanroom-consumables': '/images/about/gallery/cleanroom-materials-warehouse.png',
   'cleanroom-gloves': ASSETS.home.productCutGloves,
   'cleanroom-wipers': ASSETS.home.solutionPackaging,
@@ -30,6 +35,48 @@ const CATEGORY_IMAGE_MAP: Record<string, string> = {
   'industrial-packaging': ASSETS.home.productCustomPkg,
   'esd-supplies': ASSETS.home.productHvacTape,
   'cleanroom-chemicals': ASSETS.home.solutionCleanroom
+};
+
+const PARENT_CATEGORY_BANNER: Record<string, {
+  vi: { title: string; description: string; breadcrumbParent: string };
+  en: { title: string; description: string; breadcrumbParent: string };
+}> = {
+  'bao-bi-dong-goi': {
+    vi: {
+      title: 'Tất cả sản phẩm Bao bì & Đóng gói',
+      description: 'Đa dạng giải pháp bao bì công nghiệp chất lượng cao, từ màng co, thùng carton đến vật liệu đóng gói chuyên dụng, đáp ứng mọi nhu cầu sản xuất và xuất khẩu.',
+      breadcrumbParent: 'Bao bì & Đóng gói'
+    },
+    en: {
+      title: 'All Packaging & Logistics Products',
+      description: 'Comprehensive industrial packaging solutions from shrink films, cartons to specialized packing materials for all manufacturing and export needs.',
+      breadcrumbParent: 'Packaging & Logistics'
+    }
+  },
+  'vat-tu-phong-sach': {
+    vi: {
+      title: 'Tất cả sản phẩm phòng sạch',
+      description: 'Sản phẩm chất lượng cao giúp kiểm soát ô nhiễm, duy trì môi trường sản xuất sạch sẽ, bảo đảm an toàn tuyệt đối cho linh kiện, thiết bị và con người.',
+      breadcrumbParent: 'Giải pháp phòng sạch'
+    },
+    en: {
+      title: 'All Cleanroom Products',
+      description: 'High-quality products for contamination control, maintaining clean production environments, ensuring absolute safety for components, equipment and personnel.',
+      breadcrumbParent: 'Cleanroom Supplies'
+    }
+  },
+  'bang-keo-nhom': {
+    vi: {
+      title: 'Tất cả sản phẩm Băng keo Nhôm',
+      description: 'Đa dạng giải pháp băng keo nhôm chất lượng cao cho hệ thống HVAC, ống gió, cách nhiệt và bảo trì công nghiệp, đáp ứng tiêu chuẩn kỹ thuật khắt khe.',
+      breadcrumbParent: 'Công nghiệp & HVAC'
+    },
+    en: {
+      title: 'All Aluminum Tape Products',
+      description: 'High-quality aluminum tape solutions for HVAC systems, air ducts, insulation and industrial maintenance, meeting strict technical standards.',
+      breadcrumbParent: 'Industrial & HVAC'
+    }
+  }
 };
 
 export function CategoryHeroBanner({
@@ -47,11 +94,22 @@ export function CategoryHeroBanner({
   onSortChange
 }: CategoryHeroBannerProps) {
   const ITEMS_PER_PAGE = 6;
+  const parentBanner = PARENT_CATEGORY_BANNER[categorySlug];
+  const bannerLocale = (locale === 'vi' || locale === 'en') ? locale : 'vi';
+  const bannerTitle = parentBanner
+    ? parentBanner[bannerLocale].title
+    : (locale === 'vi'
+        ? `Tất cả sản phẩm ${currentCategoryName.toLowerCase()}`
+        : `All ${currentCategoryName} Products`);
+  const bannerDescription = parentBanner
+    ? parentBanner[bannerLocale].description
+    : (categoryDescription ||
+        `Tổng hợp các loại ${currentCategoryName.toLowerCase()} đạt tiêu chuẩn kiểm định phòng sạch ISO 14644-1, điện trở tĩnh điện ANSI/ESD S20.20 và chứng nhận CO/CQ chính hãng.`);
 
   return (
-    <header className="w-full">
-      <div className="page-container pb-10 pt-6 text-slate-800 relative overflow-hidden">
-        <div className="mb-2 hidden md:block">
+    <header className="w-full" style={{ backgroundColor: '#F5F8FC' }}>
+      <div className="page-container py-6 lg:py-[48px] text-slate-800 relative overflow-hidden">
+        <div className="mb-4 hidden md:block">
           <Breadcrumb
             className="px-0 sm:px-0 lg:px-0 xl:px-0 mx-0 max-w-none"
             items={
@@ -79,11 +137,13 @@ export function CategoryHeroBanner({
                       href: '/solutions/listProduct'
                     },
                     {
-                      label: locale === 'vi' ? 'Giải pháp phòng sạch' : 'Cleanroom Solutions',
-                      href: '#'
+                      label: parentBanner
+                        ? parentBanner[bannerLocale].breadcrumbParent
+                        : currentCategoryName,
+                      href: `/solutions/listProduct?category=${categorySlug}`
                     },
                     {
-                      label: currentCategoryName || ''
+                      label: bannerTitle
                     }
                   ]
             }
@@ -156,25 +216,26 @@ export function CategoryHeroBanner({
             </div>
           </div>
         ) : (
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            <div className="lg:col-span-7 space-y-4">
-              <h1 className="text-section-title font-bold text-slate-900 tracking-tight leading-tight" suppressHydrationWarning>
-                {currentCategoryName}
+          <div className="relative z-10 flex flex-col lg:flex-row items-center gap-6 lg:gap-[40px]">
+            {/* Banner Left - Text */}
+            <div className="flex-1 flex flex-col gap-[16px]">
+              <h1 className="text-2xl sm:text-3xl lg:text-[38px] lg:leading-[46px] font-bold text-[#212529] tracking-[-0.0158em]" suppressHydrationWarning>
+                {bannerTitle}
               </h1>
 
-              <p className="text-body-regular text-slate-500 leading-relaxed font-medium max-w-2xl">
-                {categoryDescription ||
-                  `Tổng hợp các loại ${currentCategoryName.toLowerCase()} đạt tiêu chuẩn kiểm định phòng sạch ISO 14644-1, điện trở tĩnh điện ANSI/ESD S20.20 và chứng nhận CO/CQ chính hãng.`}
+              <p className="text-base lg:text-[20px] lg:leading-[28px] font-normal text-[#495057] max-w-2xl">
+                {bannerDescription}
               </p>
             </div>
 
-            <div className="lg:col-span-5 hidden lg:block">
-              <div className="relative aspect-[16/9] w-full rounded-[3px] overflow-hidden border border-slate-200 shadow-sm">
+            {/* Banner Right - Image */}
+            <div className="hidden lg:block shrink-0">
+              <div className="relative w-[496px] h-[280px] rounded-[3px] overflow-hidden">
                 <Image
                   src={CATEGORY_IMAGE_MAP[categorySlug] || ASSETS.home.solutionCleanroom}
                   alt={currentCategoryName}
                   fill
-                  sizes="(max-width: 1024px) 100vw, 40vw"
+                  sizes="496px"
                   className="object-cover"
                   priority
                 />
