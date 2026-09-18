@@ -142,11 +142,11 @@ export default async function CatalogShowcase({ locale }: CatalogShowcaseProps) 
                     let moqText: string;
                     if (firstSku?.moq) {
                       const unitStr = firstSku.moq_unit || firstSku.unit || '';
-                      moqText = `MOQ: ${Number(firstSku.moq).toLocaleString('vi-VN')} ${unitStr}`.trim();
+                      moqText = `${Number(firstSku.moq).toLocaleString('vi-VN')} ${unitStr}`.trim();
                     } else if (firstSku?.pack_size) {
-                      moqText = `MOQ: ${firstSku.pack_size}`;
+                      moqText = `${firstSku.pack_size}`;
                     } else {
-                      moqText = 'MOQ: Liên hệ';
+                      moqText = 'Liên hệ';
                     }
 
                     return (
