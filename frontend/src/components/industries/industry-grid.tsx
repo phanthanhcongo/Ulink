@@ -12,6 +12,16 @@ const IconMap: Record<string, React.ComponentType<any>> = {
   Cpu: Cpu
 };
 
+// Map slug → image (use Figma images if available, fallback to existing)
+const ImageMap: Record<string, string> = {
+  furniture: '/images/industries/furniture.png',
+  logistics: '/images/industries/logistics.png',
+  pharmaceutical: '/images/industries/pharmaceutical.png',
+  food: '/images/industries/food.png',
+  manufacturing: '/images/industries/manufacturing.png',
+  electronics: '/images/industries/electronics.png'
+};
+
 export interface IndustryGridItem {
   slug: string;
   name: string;
@@ -28,67 +38,77 @@ interface IndustryGridProps {
 
 export default function IndustryGrid({ industriesList, viewDetailsLabel }: IndustryGridProps) {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {industriesList.map((ind, index) => {
         const IconComponent = IconMap[ind.icon] || Cpu;
+        const figmaImage = ImageMap[ind.slug] || ind.image;
         return (
           <div
             key={index}
-            className="group ui-card-hover bg-white rounded-[3px] border border-slate-100 overflow-hidden shadow-sm flex flex-col"
+            className="group bg-white rounded-[3px] border border-[#DDE1E6] overflow-hidden shadow-[0_4px_12px_0_rgba(0,0,0,0.05)] flex flex-col hover:shadow-[0_8px_24px_0_rgba(0,0,0,0.1)] transition-shadow duration-300"
           >
-            {/* Top Image */}
+            {/* Photo - Figma: height 200px, object-fit cover */}
             <Link
               href={`/industries/${ind.slug}`}
-              className="relative aspect-[16/10] w-full bg-slate-50 overflow-hidden block"
+              className="relative h-[200px] w-full overflow-hidden block shrink-0"
             >
               <Image
-                src={ind.image}
+                src={figmaImage}
                 alt={ind.name}
                 fill
-                className="object-cover"
+                className="object-cover transition-transform duration-300 group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
             </Link>
 
-            {/* Card Body */}
+            {/* Content - Figma: padding 24px, gap 10px */}
             <div className="p-6 flex flex-col flex-1">
-              {/* Icon & Title */}
-              <Link
-                href={`/industries/${ind.slug}`}
-                className="flex items-center gap-2.5 mb-4 group/title"
-              >
-                <IconComponent className="h-5.5 w-5.5 text-blue-600 shrink-0" />
-                <h3 className="text-body-regular font-bold text-primary group-hover/title:text-blue-600 leading-tight transition-colors">
-                  {ind.name}
-                </h3>
-              </Link>
-
-              {/* Description */}
-              <p className="text-caption-responsive leading-relaxed text-slate-500 mb-6 flex-1 font-medium">
-                {ind.description}
-              </p>
-
-              {/* Bullet Points */}
-              <ul className="space-y-2.5 mb-6">
-                {ind.bullets.map((bullet, bIdx) => (
-                  <li
-                    key={bIdx}
-                    className="flex items-start gap-2 text-caption-responsive text-slate-600 font-medium leading-normal"
-                  >
-                    <Check className="h-4 w-4 text-blue-500 shrink-0 mt-0.5" />
-                    <span>{bullet}</span>
-                  </li>
-                ))}
-              </ul>
-
-              {/* View Details Link */}
-              <div className="pt-4 border-t border-slate-100 mt-auto">
+              {/* Header Group - gap 12px */}
+              <div className="flex flex-col gap-3">
+                {/* Title Row - icon 24x24 + H4 20px SemiBold */}
                 <Link
                   href={`/industries/${ind.slug}`}
-                  className="group/link inline-flex items-center gap-1.5 text-caption-responsive font-bold text-blue-600 hover:text-blue-700 transition-colors"
+                  className="flex items-center gap-3 group/title"
+                >
+                  <IconComponent className="h-6 w-6 text-[#0B153D] shrink-0" strokeWidth={1.5} />
+                  <h3 className="text-[20px] leading-[28px] font-semibold text-[#0B153D] group-hover/title:text-blue-600 transition-colors">
+                    {ind.name}
+                  </h3>
+                </Link>
+
+                {/* Description - Body/M 16px, color #162233 */}
+                <p className="text-[16px] leading-[24px] font-normal text-[#162233]">
+                  {ind.description}
+                </p>
+              </div>
+
+              {/* Checklist - separator line + items */}
+              <div className="flex flex-col gap-2.5 mt-3 flex-1">
+                {/* Separator line - Figma: #ECEFF2 */}
+                <div className="w-full h-px bg-[#ECEFF2]" />
+
+                {/* Checklist items - Body/S 14px, color #495057 */}
+                {ind.bullets.map((bullet, bIdx) => (
+                  <div
+                    key={bIdx}
+                    className="flex items-center gap-2"
+                  >
+                    <Check className="h-4 w-4 text-[#495057] shrink-0" strokeWidth={2} />
+                    <span className="text-[14px] leading-[20px] font-normal text-[#495057]">
+                      {bullet}
+                    </span>
+                  </div>
+                ))}
+              </div>
+
+              {/* CTA Button - Figma: "Xem chi tiết", 14px SemiBold, #1257C0 */}
+              <div className="mt-auto pt-4">
+                <Link
+                  href={`/industries/${ind.slug}`}
+                  className="group/link inline-flex items-center gap-2 rounded-[3px] bg-white px-4 py-2.5 text-[14px] leading-[20px] font-semibold text-[#1257C0] hover:text-[#0E4A9E] transition-colors tracking-[0.007em]"
                 >
                   {viewDetailsLabel}
-                  <ArrowRight className="h-3.5 w-3.5 transition-transform duration-200 group-hover/link:translate-x-0.5" />
+                  <ArrowRight className="h-2.5 w-2.5 transition-transform duration-200 group-hover/link:translate-x-0.5" strokeWidth={2.5} />
                 </Link>
               </div>
             </div>

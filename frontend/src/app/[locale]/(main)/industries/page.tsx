@@ -271,16 +271,16 @@ export default async function IndustriesPage({ params: { locale } }: Props) {
 
       {/* Main Grid Content */}
       <div className="page-container section-padding flex flex-col gap-12">
-        {/* Section Header */}
-        <div className="flex flex-col items-start max-w-3xl">
-          <h2 className="text-section-title font-bold text-primary">
+        {/* Section Header - Figma: H3 28px SemiBold, Body/M 16px, gap 16px */}
+        <div className="flex flex-col items-start gap-4 max-w-3xl">
+          <h2 className="text-[28px] leading-[36px] font-semibold text-[#0B153D] tracking-[-0.0107em]">
             {isVi
               ? 'Giải pháp theo ngành nghề'
               : isJa
                 ? '業界別ソリューション'
                 : 'Solutions by Industry'}
           </h2>
-          <p className="mt-3 text-body-regular text-slate-500 leading-relaxed font-medium">
+          <p className="text-[16px] leading-[24px] font-normal text-[#495057]">
             {isVi
               ? 'Các giải pháp phòng sạch & đóng gói được thiết kế phù hợp với đặc thù & yêu cầu riêng của từng ngành nghề sản xuất.'
               : isJa
