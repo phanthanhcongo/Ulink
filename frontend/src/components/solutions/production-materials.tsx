@@ -20,7 +20,7 @@ export default async function ProductionMaterials({ locale }: ProductionMaterial
       ],
       image: '/images/solutions/bangkeo.png',
       imageFit: 'contain' as const,
-      categorySlug: 'industrial-tapes',
+      categorySlug: 'bang-keo-nhom',
     },
     {
       title: t('skuSection.card2Title'),
@@ -31,7 +31,7 @@ export default async function ProductionMaterials({ locale }: ProductionMaterial
       ],
       image: '/images/solutions/clean.png',
       imageFit: 'cover' as const,
-      categorySlug: 'cleanroom-consumables',
+      categorySlug: 'vat-tu-phong-sach',
     },
     {
       title: t('skuSection.card3Title'),
@@ -42,7 +42,7 @@ export default async function ProductionMaterials({ locale }: ProductionMaterial
       ],
       image: '/images/solutions/baobi.png',
       imageFit: 'contain' as const,
-      categorySlug: 'industrial-packaging',
+      categorySlug: 'bao-bi-dong-goi',
     },
   ];
 

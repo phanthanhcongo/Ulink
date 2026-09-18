@@ -594,6 +594,8 @@ export function CategoryProductsClient({
                   onSortChange={setSortBy}
                   onViewChange={setViewType}
                   onMobileFilterOpen={() => setMobileFilterOpen(true)}
+                  currentPage={currentPage}
+                  pageSize={ITEMS_PER_PAGE}
                 />
 
                 {/* Products Grid */}
