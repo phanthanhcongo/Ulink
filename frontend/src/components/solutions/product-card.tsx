@@ -103,7 +103,7 @@ export function ProductCard({
       <Link href={productLink} className="flex flex-col h-full">
 
         {/* IMAGE SECTION */}
-        <div className="image-wrap relative w-full aspect-[3/3] overflow-hidden bg-gradient-to-b from-slate-100 to-slate-50 flex items-center justify-center">
+        <div className="image-wrap relative w-full aspect-square lg:aspect-[10/9] overflow-hidden bg-gradient-to-b from-slate-100 to-slate-50 flex items-center justify-center">
           {product.image && (product.image.startsWith('http') || product.image.startsWith('/')) ? (
             <Image
               src={product.image}

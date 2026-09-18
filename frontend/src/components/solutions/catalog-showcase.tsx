@@ -14,7 +14,7 @@ interface CatalogShowcaseProps {
 
 export default async function CatalogShowcase({ locale }: CatalogShowcaseProps) {
   const t = await getTranslations({ locale, namespace: 'solutions' });
-  const categoriesWithProducts = await fetchTopCategoriesWithProducts(4, 3);
+  const categoriesWithProducts = await fetchTopCategoriesWithProducts(4, 4);
 
   console.log('[CatalogShowcase] Data received:', {
     categoriesCount: categoriesWithProducts.length,
@@ -23,7 +23,7 @@ export default async function CatalogShowcase({ locale }: CatalogShowcaseProps) 
 
   if (categoriesWithProducts.length === 0) {
     return (
-      <section className="w-full bg-white border-t border-gray-150 py-8 sm:py-12 md:py-16 lg:py-24">
+      <section className="w-full bg-white border-t border-gray-150 py-8 sm:py-12 md:py-16 lg:pt-[30px] lg:pb-[60px]">
         <div className="page-container">
           <div className="text-center py-12">
             <p className="text-slate-500">{locale === 'vi' ? 'Không có sản phẩm nào' : 'No products available'}</p>
@@ -34,7 +34,7 @@ export default async function CatalogShowcase({ locale }: CatalogShowcaseProps) 
   }
 
   return (
-    <section className="w-full bg-white border-t border-gray-150 py-8 sm:py-12 md:py-16 lg:py-24">
+    <section className="w-full bg-white border-t border-gray-150 py-8 sm:py-12 md:py-16 lg:pt-[30px] lg:pb-[60px]">
       <div className="page-container">
         {/* Section Header - Responsive */}
         <div className="flex flex-col items-start border-b border-gray-100 pb-6 sm:pb-8 mb-8 sm:mb-10 md:mb-12">
@@ -50,7 +50,7 @@ export default async function CatalogShowcase({ locale }: CatalogShowcaseProps) 
         </div>
 
         {/* Rows of categories - Responsive spacing */}
-        <div className="space-y-10 sm:space-y-12 md:space-y-14 lg:space-y-16">
+        <div className="space-y-10 sm:space-y-12 md:space-y-14 lg:space-y-[48px]">
           {categoriesWithProducts.map((catData) => {
             const categoryName = getTranslatedName(catData.category, locale);
             return (
@@ -74,7 +74,7 @@ export default async function CatalogShowcase({ locale }: CatalogShowcaseProps) 
                 </div>
 
                 {/* Product Grid - Responsive Layout */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-[27px]">
                   {catData.products.map((product: Product, index: number) => {
                     const firstSku = product.skus?.find((s) => s.status === 'published') || product.skus?.[0];
 
