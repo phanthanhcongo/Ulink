@@ -188,6 +188,30 @@ const LABELS: Record<
   }
 };
 
+const SUGGESTION_CHIPS: Record<string, { label: string; query: string }[]> = {
+  vi: [
+    { label: 'Màng co PE', query: 'Màng co PE' },
+    { label: 'Găng tay Nitrile', query: 'Găng tay Nitrile' },
+    { label: 'Thảm phòng sạch', query: 'Thảm phòng sạch' },
+    { label: 'Khăn lau', query: 'Khăn lau phòng sạch' },
+    { label: 'Túi PE', query: 'Túi PE' }
+  ],
+  en: [
+    { label: 'PE Shrink Film', query: 'PE Shrink Film' },
+    { label: 'Nitrile Gloves', query: 'Nitrile Gloves' },
+    { label: 'Sticky Mats', query: 'Sticky Mat' },
+    { label: 'Cleanroom Wipers', query: 'Cleanroom Wipers' },
+    { label: 'PE Bags', query: 'PE Bag' }
+  ],
+  ja: [
+    { label: 'PEシュリンクフィルム', query: 'シュリンクフィルム' },
+    { label: 'ニトリル手袋', query: 'ニトリル手袋' },
+    { label: '粘着マット', query: '粘着マット' },
+    { label: 'ワイパー', query: 'ワイパー' },
+    { label: 'PEバッグ', query: 'PEバッグ' }
+  ]
+};
+
 export default function SearchSection({ locale }: SearchSectionProps) {
   const router = useRouter();
   const labels = LABELS[locale] || LABELS['vi'];
@@ -253,10 +277,10 @@ export default function SearchSection({ locale }: SearchSectionProps) {
     <section className="w-full py-8 sm:py-12 lg:py-16 border-b border-gray-100" style={{ backgroundColor: '#F5F7FA' }}>
       <div className="page-container text-center px-4 sm:px-6 lg:px-8">
         {/* Header */}
-        <p className="text-xs sm:text-sm lg:text-[16px] font-bold uppercase tracking-wider text-blue-600">
+        <p className="text-lg sm:text-2xl lg:text-[28px] lg:leading-[36px] font-semibold uppercase tracking-[-0.0107em] text-blue-600">
           {labels.sectionTitle}
         </p>
-        <h2 className="mt-2 sm:mt-3 text-xl sm:text-3xl lg:text-[38px] lg:leading-[46px] font-bold text-slate-900 tracking-tight">
+        <h2 className="mt-1 sm:mt-2 text-lg sm:text-2xl lg:text-[28px] lg:leading-[36px] font-semibold text-[#21272A] tracking-[-0.0107em]">
           {labels.title}
         </h2>
         <p className="mt-2.5 sm:mt-4 text-sm sm:text-base lg:text-[18px] lg:leading-[28px] font-normal text-slate-500 max-w-none w-full mx-auto leading-relaxed lg:whitespace-nowrap">
@@ -351,19 +375,20 @@ export default function SearchSection({ locale }: SearchSectionProps) {
           )}
         </div>
 
-        {/* 3 Parent Category Search Suggestion Chips */}
-        <div className="mt-5 sm:mt-6 flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-2.5 sm:gap-3 max-w-sm sm:max-w-none mx-auto">
-          {groups.map((group) => (
+        {/* 5 Product Keyword Suggestion Chips - matches Figma */}
+        <div className="mt-5 sm:mt-6 flex flex-wrap sm:flex-nowrap items-center justify-center gap-2.5 sm:gap-3">
+          {(SUGGESTION_CHIPS[locale] || SUGGESTION_CHIPS['vi']).map((chip, idx) => (
             <button
-              key={group.parentSlug}
+              key={chip.query}
               type="button"
-              onClick={() => handleNavigateCategory(group.parentSlug)}
-              className="group rounded-full px-4 sm:px-5 py-2 sm:py-2.5 text-caption-responsive sm:text-body-small font-semibold transition-all border bg-white border-slate-200 text-slate-700 hover:bg-blue-600 hover:border-blue-600 hover:text-white flex items-center justify-center gap-2 shadow-xs hover:shadow-sm"
+              onClick={() => {
+                startTransition(() => {
+                  router.push(`/${locale}/solutions/searchProduct?q=${encodeURIComponent(chip.query)}`);
+                });
+              }}
+              className="rounded-full px-4 py-2 text-sm font-semibold transition-all border bg-white border-slate-300 text-slate-800 hover:bg-blue-600 hover:border-blue-600 hover:text-white flex items-center justify-center"
             >
-              <span className="p-1 rounded-full bg-blue-50 group-hover:bg-white/20 transition-colors shrink-0">
-                {getParentIcon(group.icon)}
-              </span>
-              <span className="truncate">{group.parentName}</span>
+              {chip.label}
             </button>
           ))}
         </div>
