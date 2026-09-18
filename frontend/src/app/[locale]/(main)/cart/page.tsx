@@ -3,6 +3,7 @@ import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { getCurrentUser } from '@/lib/auth-helpers';
 import { fetchProducts } from '@/lib/product-data';
 import { getTranslatedName, getTranslatedField } from '@/lib/i18n-content';
+import { resolveImageUrl } from '@/lib/image-url';
 import CartClient from '@/components/cart/cart-client';
 
 type Props = { params: { locale: string } };
