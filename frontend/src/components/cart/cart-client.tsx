@@ -137,10 +137,12 @@ function getTierMultiplier(qty: number): number {
 }
 
 export interface SuggestedProduct {
+  id?: number | string;
   sku: string;
   slug: string;
   name: string;
   priceText: string;
+  unit?: string;
   moq: number;
   moqText: string;
   desc: string;

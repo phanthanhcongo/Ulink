@@ -6,7 +6,7 @@ import { MapPin, Bookmark } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 
 interface Product {
-  id: number;
+  id: number | string;
   name: string;
   slug: string;
   description?: string | null;

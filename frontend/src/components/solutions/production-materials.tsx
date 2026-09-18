@@ -12,6 +12,17 @@ export default async function ProductionMaterials({ locale }: ProductionMaterial
 
   const cards = [
     {
+      title: t('skuSection.card3Title'),
+      items: [
+        t('skuSection.card3Item1'),
+        t('skuSection.card3Item2'),
+        t('skuSection.card3Item3'),
+      ],
+      image: '/images/solutions/baobi.png',
+      imageFit: 'contain' as const,
+      categorySlug: 'industrial-packaging',
+    },
+    {
       title: t('skuSection.card1Title'),
       items: [
         t('skuSection.card1Item1'),
@@ -32,17 +43,6 @@ export default async function ProductionMaterials({ locale }: ProductionMaterial
       image: '/images/solutions/clean.png',
       imageFit: 'cover' as const,
       categorySlug: 'cleanroom-consumables',
-    },
-    {
-      title: t('skuSection.card3Title'),
-      items: [
-        t('skuSection.card3Item1'),
-        t('skuSection.card3Item2'),
-        t('skuSection.card3Item3'),
-      ],
-      image: '/images/solutions/baobi.png',
-      imageFit: 'contain' as const,
-      categorySlug: 'industrial-packaging',
     },
   ];
 
