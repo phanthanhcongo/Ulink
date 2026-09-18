@@ -23,12 +23,14 @@ interface ProductCardProps {
   product: Product;
   locale: string;
   showWishlist?: boolean;
+  className?: string;
 }
 
 export function ProductCard({
   product,
   locale,
-  showWishlist = true
+  showWishlist = true,
+  className
 }: ProductCardProps) {
   const [isWishlisted, setIsWishlisted] = useState(false);
 
@@ -99,85 +101,79 @@ export function ProductCard({
   const productLink = `/solutions/listProduct/${product.slug}`;
 
   return (
-    <div className="bg-white rounded-[3px] border border-slate-200/50 overflow-hidden h-full flex flex-col group transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_8px_25px_-5px_rgba(23,105,226,0.2)]">
+    <div
+      className={`bg-white rounded-[3px] border border-[#DCE0E5] overflow-hidden h-full flex flex-col group transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_8px_25px_-5px_rgba(23,105,226,0.2)] w-full lg:w-[300px] lg:max-w-[300px] ${className || ''}`}
+    >
       <Link href={productLink} className="flex flex-col h-full">
-
-        {/* IMAGE SECTION */}
-        <div className="image-wrap relative w-full aspect-square lg:aspect-[10/9] overflow-hidden bg-gradient-to-b from-slate-100 to-slate-50 flex items-center justify-center">
+        {/* IMAGE SECTION - Exact 270px height from Figma */}
+        <div className="image-wrap relative w-full h-[240px] sm:h-[260px] lg:h-[270px] bg-white flex items-center justify-center p-2.5 overflow-hidden">
           {product.image && (product.image.startsWith('http') || product.image.startsWith('/')) ? (
-            <Image
-              src={product.image}
-              alt={product.name}
-              fill
-              className="object-cover transition-transform duration-500 group-hover:scale-105"
-              sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-              onError={(e) => {
-                // Fallback if image fails to load
-                e.currentTarget.style.display = 'none';
-              }}
-            />
-          ) : null}
-          {!product.image || (!product.image.startsWith('http') && !product.image.startsWith('/')) ? (
+            <div className="relative w-full h-full rounded-[3px] overflow-hidden">
+              <Image
+                src={product.image}
+                alt={product.name}
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                sizes="(max-width: 640px) 100vw, 300px"
+                onError={(e) => {
+                  e.currentTarget.style.display = 'none';
+                }}
+              />
+            </div>
+          ) : (
             <div className="text-slate-400 text-center p-4">
               <div className="text-4xl mb-2">📦</div>
               <p className="text-sm font-medium">{locale === 'vi' ? 'Chưa có hình ảnh' : 'No image'}</p>
             </div>
-          ) : null}
+          )}
         </div>
 
-        {/* BOTTOM INFO SECTION */}
-        <div className="bottom-info flex-1 p-4 sm:p-5 flex flex-col gap-3">
-
-          {/* PRODUCT TITLE */}
-          <div className="title3">
-            <h3 className="text-body-small sm:text-body-regular font-bold text-slate-900 line-clamp-2 hover:text-blue-600 transition-colors">
+        {/* BOTTOM INFO SECTION - Figma: padding 16px, gap 12px, border-t #DCE0E5 */}
+        <div className="bottom-info flex-1 p-4 flex flex-col justify-between gap-3 border-t border-[#DCE0E5] bg-white">
+          <div className="space-y-2.5">
+            {/* PRODUCT TITLE */}
+            <h3 className="text-[15px] leading-[1.4em] tracking-[-0.02em] font-normal text-[#14181F] line-clamp-2 hover:text-[#1769E2] transition-colors">
               {product.name}
             </h3>
-          </div>
 
-          {/* PRICE INFO */}
-          <div className="info-main">
-            <div className="price-wrap flex items-baseline gap-1">
-              <div className="price text-caption-responsive sm:text-body-small font-bold text-slate-900">
+            {/* PRICE INFO */}
+            <div className="flex items-baseline gap-1.5">
+              <span className="text-[16px] leading-[24px] font-normal text-[#14181F]">
                 {product.price || 'Liên hệ báo giá'}
-              </div>
-              <div className="text-caption-responsive text-slate-300 font-medium">/</div>
-              <div className="price-old text-caption-responsive text-slate-400 font-medium">
-                {product.unit || 'per kg'}
-              </div>
+              </span>
+              <span className="text-[14px] sm:text-[16px] leading-[24px] font-normal text-[#495057]">
+                {product.unit ? `${product.unit.startsWith('/') ? '' : '/'}${product.unit}` : '/per kg'}
+              </span>
             </div>
-          </div>
 
-          {/* MOQ / STATUS INFO */}
-          <div className="info-main">
-            <div className="price-wrap flex items-baseline justify-between">
-              <div className="price text-caption-responsive font-semibold text-slate-700">
-                {product.moq || 'MOQ: Liên hệ'}
-              </div>
-              <div className="price-old2 text-caption-responsive text-slate-500 font-medium">
+            {/* MOQ / STATUS INFO */}
+            <div className="flex items-baseline justify-between gap-2">
+              <span className="text-[16px] leading-[24px] font-normal text-[#14181F]">
+                {product.moq || 'MOQ: 500 kg'}
+              </span>
+              <span className="text-[14px] leading-[20px] font-normal text-[#495057] text-right truncate">
                 {product.status || (locale === 'vi' ? 'Sản xuất theo yêu cầu' : 'Custom orders')}
-              </div>
+              </span>
+            </div>
+
+            {/* LOCATION */}
+            <div className="flex items-center gap-2 pt-0.5">
+              <MapPin className="h-[18px] w-[18px] text-[#495057] opacity-50 shrink-0" />
+              <span className="text-[14px] sm:text-[16px] leading-[24px] font-normal text-[#495057] truncate">
+                {product.location || 'Hub Hà Nam, Việt Nam'}
+              </span>
             </div>
           </div>
 
-          {/* LOCATION */}
-          <div className="frame-1030 flex items-center gap-2">
-            <MapPin className="h-4 w-4 text-slate-400 shrink-0" />
-            <div className="location text-caption-responsive text-slate-600 font-medium">
-              {product.location || 'Hub Hà Nam, Việt Nam'}
-            </div>
-          </div>
-
-          {/* ACTION BUTTONS */}
-          <div className="frame-10302 flex items-stretch gap-2 mt-auto pt-3 border-t border-slate-50">
+          {/* ACTION BUTTONS - Figma: height 40px, gap 8px, button primary & button soft */}
+          <div className="flex items-stretch gap-2 pt-3 border-t border-slate-100 mt-auto">
             <button
               onClick={(e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                // Navigate to product page or open order modal
                 window.location.href = productLink;
               }}
-              className="flex-1 button5 h-9 sm:h-10 bg-blue-600 hover:bg-blue-700 text-white font-bold text-caption-responsive rounded-[3px] transition-colors shadow-xs cursor-pointer flex items-center justify-center px-3"
+              className="flex-1 h-[40px] bg-[#1769E2] hover:bg-[#1257BD] text-white font-medium text-[15px] rounded-[3px] transition-colors shadow-xs cursor-pointer flex items-center justify-center px-3"
             >
               {locale === 'vi' ? 'Đặt hàng' : 'Order'}
             </button>
@@ -185,15 +181,15 @@ export function ProductCard({
             {showWishlist && (
               <button
                 onClick={handleWishlistClick}
-                className={`button6 h-9 w-9 sm:h-10 sm:w-10 shrink-0 border rounded-[3px] transition-all cursor-pointer flex items-center justify-center ${
+                className={`h-[40px] w-[40px] shrink-0 rounded-[3px] transition-all cursor-pointer flex items-center justify-center ${
                   isWishlisted
-                    ? 'bg-blue-50 border-blue-600 text-blue-600 hover:bg-blue-100'
-                    : 'bg-white hover:bg-blue-50/60 border-slate-200 hover:border-blue-600 text-blue-600'
+                    ? 'bg-[#1769E2] text-white hover:bg-[#1257BD]'
+                    : 'bg-[#E0EDFF] text-[#1769E2] hover:bg-[#d0e3ff]'
                 }`}
                 title={locale === 'vi' ? 'Lưu sản phẩm' : 'Bookmark product'}
               >
                 <Bookmark
-                  className="h-4.5 w-4.5 sm:h-5 sm:w-5 stroke-[2] text-blue-600"
+                  className="h-[20px] w-[20px] stroke-[2]"
                   fill={isWishlisted ? 'currentColor' : 'none'}
                 />
               </button>

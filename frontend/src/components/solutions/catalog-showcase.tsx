@@ -94,7 +94,7 @@ export default async function CatalogShowcase({ locale }: CatalogShowcaseProps) 
                 </div>
 
                 {/* Product Grid - Responsive Layout */}
-                <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5 lg:gap-[27px]">
+                <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-2 sm:gap-2.5 lg:gap-2.5">
                   {catData.products.map((product: Product, index: number) => {
                     const firstSku = product.skus?.find((s) => s.status === 'published') || product.skus?.[0];
 
@@ -150,7 +150,7 @@ export default async function CatalogShowcase({ locale }: CatalogShowcaseProps) 
                     }
 
                     return (
-                      <div key={product.id} className={index >= 3 ? 'hidden lg:block' : ''}>
+                      <div key={product.id} className={`w-full lg:w-[300px] lg:max-w-[300px] ${index >= 3 ? 'hidden lg:block' : ''}`}>
                         <ProductCard
                           product={{
                             id: product.id,
