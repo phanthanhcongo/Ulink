@@ -51,7 +51,7 @@ export default async function ProductionMaterials({ locale }: ProductionMaterial
       <div className="page-container">
         {/* Section Header */}
         <div className="flex flex-col items-start w-full">
-          <div className="flex items-center gap-1.5 text-[#1769E2] font-bold text-base sm:text-lg">
+          <div className="flex items-center gap-1.5 text-[#1769E2] font-bold text-sm sm:text-base lg:text-lg">
             <span className="font-extrabold text-lg leading-none">|</span>
             <span>{t('skuSection.eyebrow')}</span>
           </div>

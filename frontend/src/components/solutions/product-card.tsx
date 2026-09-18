@@ -106,7 +106,7 @@ export function ProductCard({
     >
       <Link href={productLink} className="flex flex-col h-full">
         {/* IMAGE SECTION - Exact 270px height from Figma */}
-        <div className="image-wrap relative w-full h-[240px] sm:h-[260px] lg:h-[270px] bg-white flex items-center justify-center p-2.5 overflow-hidden">
+        <div className="image-wrap relative w-full h-[350px] sm:h-[270px] bg-white flex items-center justify-center p-2.5 overflow-hidden">
           {product.image && (product.image.startsWith('http') || product.image.startsWith('/')) ? (
             <div className="relative w-full h-full rounded-[3px] overflow-hidden">
               <Image
