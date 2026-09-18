@@ -169,7 +169,7 @@ export function ProductCard({
           </div>
 
           {/* ACTION BUTTONS */}
-          <div className="frame-10302 flex items-center gap-2 mt-auto pt-3 border-t border-slate-50">
+          <div className="frame-10302 flex items-stretch gap-2 mt-auto pt-3 border-t border-slate-50">
             <button
               onClick={(e) => {
                 e.preventDefault();
@@ -177,7 +177,7 @@ export function ProductCard({
                 // Navigate to product page or open order modal
                 window.location.href = productLink;
               }}
-              className="flex-1 button5 bg-blue-600 hover:bg-blue-700 text-white font-bold text-caption-responsive py-2 sm:py-2.5 rounded-[3px] transition-colors shadow-xs cursor-pointer"
+              className="flex-1 button5 h-9 sm:h-10 bg-blue-600 hover:bg-blue-700 text-white font-bold text-caption-responsive rounded-[3px] transition-colors shadow-xs cursor-pointer flex items-center justify-center px-3"
             >
               {locale === 'vi' ? 'Đặt hàng' : 'Order'}
             </button>
@@ -185,14 +185,15 @@ export function ProductCard({
             {showWishlist && (
               <button
                 onClick={handleWishlistClick}
-                className={`button6 border border-slate-200 rounded-[3px] p-2 sm:p-2.5 transition-all cursor-pointer flex items-center justify-center ${isWishlisted
+                className={`button6 h-9 w-9 sm:h-10 sm:w-10 shrink-0 border rounded-[3px] transition-all cursor-pointer flex items-center justify-center ${
+                  isWishlisted
                     ? 'bg-blue-50 border-blue-600 text-blue-600 hover:bg-blue-100'
                     : 'bg-white hover:bg-blue-50/60 border-slate-200 hover:border-blue-600 text-blue-600'
-                  }`}
+                }`}
                 title={locale === 'vi' ? 'Lưu sản phẩm' : 'Bookmark product'}
               >
                 <Bookmark
-                  className="h-6 w-6 stroke-[2] text-blue-600"
+                  className="h-4.5 w-4.5 sm:h-5 sm:w-5 stroke-[2] text-blue-600"
                   fill={isWishlisted ? 'currentColor' : 'none'}
                 />
               </button>

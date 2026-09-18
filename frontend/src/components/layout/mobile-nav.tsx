@@ -285,7 +285,7 @@ export function MobileNav({ items }: MobileNavProps) {
       <aside
         aria-hidden={!open}
         aria-label="Menu điều hướng"
-        className={`fixed inset-y-0 right-0 z-[9999] flex w-full max-w-[430px] flex-col bg-white shadow-[-24px_0_70px_rgba(15,34,58,0.18)] transition-transform duration-300 ease-[cubic-bezier(0.22,1,0.36,1)] ${
+        className={`fixed inset-y-0 right-0 z-[9999] flex w-full max-w-[430px] flex-col bg-white shadow-[-24px_0_70px_rgba(15,34,58,0.18)] transition-transform duration-300 ease-out ${
           open ? 'translate-x-0' : 'translate-x-full'
         }`}
       >
