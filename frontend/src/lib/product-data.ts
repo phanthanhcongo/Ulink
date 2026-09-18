@@ -541,6 +541,24 @@ export async function fetchTopCategoriesWithProducts(
       parentCategories = categories;
     }
 
+    // Fixed order priority: 1. Bao bi, 2. Bang keo, 3. Vat tu phong sach
+    const getCategoryRank = (slug: string, name: string): number => {
+      const s = (slug || '').toLowerCase();
+      const n = (name || '').toLowerCase();
+      if (s.includes('packag') || s.includes('bao-bi') || s.includes('baobi') || n.includes('bao bì') || n.includes('đóng gói') || n.includes('packaging')) {
+        return 1;
+      }
+      if (s.includes('tape') || s.includes('keo') || s.includes('esd') || n.includes('băng keo') || n.includes('tape') || n.includes('băng dính')) {
+        return 2;
+      }
+      if (s.includes('clean') || s.includes('phong-sach') || s.includes('consumable') || n.includes('phòng sạch') || n.includes('cleanroom') || n.includes('vật tư')) {
+        return 3;
+      }
+      return 99;
+    };
+
+    parentCategories.sort((a, b) => getCategoryRank(a.slug, a.name) - getCategoryRank(b.slug, b.name));
+
     const results: CategoryWithProducts[] = [];
     for (const cat of parentCategories.slice(0, maxCategories)) {
       // Include products from subcategories belonging to this parent category

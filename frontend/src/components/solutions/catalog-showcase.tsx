@@ -33,6 +33,26 @@ export default async function CatalogShowcase({ locale }: CatalogShowcaseProps) 
     );
   }
 
+  // Fixed order priority: 1. Bao bì & Đóng gói, 2. Băng keo, 3. Vật tư phòng sạch
+  const getCategoryRank = (slug: string, name: string): number => {
+    const s = (slug || '').toLowerCase();
+    const n = (name || '').toLowerCase();
+    if (s.includes('packag') || s.includes('bao-bi') || s.includes('baobi') || n.includes('bao bì') || n.includes('đóng gói') || n.includes('packaging')) {
+      return 1;
+    }
+    if (s.includes('tape') || s.includes('keo') || s.includes('esd') || n.includes('băng keo') || n.includes('tape') || n.includes('băng dính')) {
+      return 2;
+    }
+    if (s.includes('clean') || s.includes('phong-sach') || s.includes('consumable') || n.includes('phòng sạch') || n.includes('cleanroom') || n.includes('vật tư')) {
+      return 3;
+    }
+    return 99;
+  };
+
+  const sortedCategoriesWithProducts = [...categoriesWithProducts].sort((a, b) => {
+    return getCategoryRank(a.category.slug, a.category.name) - getCategoryRank(b.category.slug, b.category.name);
+  });
+
   return (
     <section className="w-full bg-white border-t border-gray-150 py-8 sm:py-12 md:py-16 lg:pt-[30px] lg:pb-[60px]">
       <div className="page-container">
@@ -51,7 +71,7 @@ export default async function CatalogShowcase({ locale }: CatalogShowcaseProps) 
 
         {/* Rows of categories - Responsive spacing */}
         <div className="space-y-10 sm:space-y-12 md:space-y-14 lg:space-y-[48px]">
-          {categoriesWithProducts.map((catData) => {
+          {sortedCategoriesWithProducts.map((catData) => {
             const categoryName = getTranslatedName(catData.category, locale);
             return (
               <div key={catData.category.id} className="flex flex-col">
