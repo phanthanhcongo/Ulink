@@ -50,17 +50,17 @@ export default async function ProductionMaterials({ locale }: ProductionMaterial
     <section className="w-full bg-white py-12 sm:py-16">
       <div className="page-container">
         {/* Section Header */}
-        <div className="flex flex-col items-start max-w-4xl">
+        <div className="flex flex-col items-start w-full">
           <div className="flex items-center gap-1.5 text-[#1769E2] font-bold text-base sm:text-lg">
             <span className="font-extrabold text-lg leading-none">|</span>
             <span>{t('skuSection.eyebrow')}</span>
           </div>
 
-          <h2 className="mt-3.5 text-2xl sm:text-3xl lg:text-[34px] lg:leading-[42px] font-bold tracking-tight text-slate-900">
+          <h2 className="mt-3.5 text-2xl sm:text-3xl lg:text-[34px] lg:leading-[42px] font-bold tracking-tight text-slate-900 w-full whitespace-normal lg:whitespace-nowrap">
             {t('skuSection.title')}
           </h2>
 
-          <p className="mt-2.5 text-sm sm:text-base text-slate-600 font-normal leading-relaxed">
+          <p className="mt-2.5 text-sm sm:text-base text-slate-600 font-normal leading-relaxed max-w-5xl">
             {t('skuSection.subtitle')}
           </p>
         </div>
