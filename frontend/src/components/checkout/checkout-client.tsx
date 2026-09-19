@@ -16,7 +16,13 @@ import {
   Check,
   CreditCard,
   Truck,
-  X
+  X,
+  Wallet,
+  Landmark,
+  ShoppingBag,
+  Lock,
+  Banknote,
+  QrCode
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { AuthUser } from '@/lib/auth-helpers';
@@ -356,69 +362,76 @@ export default function CheckoutClient({
           </div>
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-12 pt-2">
-          <div className="lg:col-span-8 space-y-8">
-            <div className="rounded-[3px] border border-slate-200 bg-white p-6 shadow-sm space-y-6">
-              <div className="flex items-center gap-2 pb-1 border-b border-slate-100">
-                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand text-caption-responsive font-bold text-white">
-                  1
-                </span>
-                <h2 className="text-body-regular font-bold text-slate-900 uppercase tracking-wide">
-                  {t('shippingInfoTitle')}
+        <div className="flex flex-col lg:flex-row gap-[35px] pt-2">
+          {/* Left Column (Shipping, Payment, Shipping Method) */}
+          <div className="flex-1 space-y-10 min-w-0">
+            {/* Card 1: Shipping Info Card (B2B) */}
+            <div className="rounded-[12px] border border-[#DCE0E5] bg-white p-6 sm:p-8 space-y-6 shadow-sm">
+              <div className="flex items-center gap-3">
+                <MapPin className="h-8 w-8 text-[#162233] shrink-0" />
+                <h2 className="text-[20px] font-semibold text-[#162233] leading-7">
+                  Thông tin giao hàng (B2B)
                 </h2>
               </div>
 
-              <div className="grid gap-5 md:grid-cols-2 text-left">
-                <div className="space-y-1.5">
-                  <label className="text-caption-responsive font-bold text-slate-500 block">
-                    {t('fullName')} <span className="text-rose-500">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    value={formData.fullName}
-                    onChange={(e) => handleInputChange('fullName', e.target.value)}
-                    className={cn(
-                      'w-full rounded-[3px] border border-slate-200 bg-white px-3.5 py-2.5 text-body-regular outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand',
-                      errors.fullName && 'border-rose-400 focus:ring-rose-200'
+              <div className="h-[1px] w-full bg-[#DCE0E5]" />
+
+              <div className="space-y-5 text-left">
+                <div className="grid gap-5 md:grid-cols-2">
+                  <div className="space-y-2">
+                    <label className="text-[16px] font-semibold text-[#162233] flex items-center gap-1">
+                      {t('fullName')} <span className="text-[#E11D48]">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="fullName"
+                      value={formData.fullName}
+                      onChange={(e) => handleInputChange('fullName', e.target.value)}
+                      className={cn(
+                        'w-full rounded-[6px] border border-[#CAD5E2] bg-white px-4 py-3 text-[15px] text-[#162233] outline-none transition-all focus:border-[#1769E2] focus:ring-1 focus:ring-[#1769E2]',
+                        errors.fullName && 'border-rose-400 focus:ring-rose-200'
+                      )}
+                    />
+                    {errors.fullName && (
+                      <span className="text-caption-responsive text-rose-500 font-medium block">
+                        {errors.fullName}
+                      </span>
                     )}
-                  />
-                  {errors.fullName && (
-                    <span className="text-caption-responsive text-rose-500 font-medium block">
-                      {errors.fullName}
-                    </span>
-                  )}
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-[16px] font-semibold text-[#162233] flex items-center gap-1">
+                      {t('phone')} <span className="text-[#E11D48]">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      id="phone"
+                      value={formData.phone}
+                      onChange={(e) => handleInputChange('phone', e.target.value)}
+                      className={cn(
+                        'w-full rounded-[6px] border border-[#CAD5E2] bg-white px-4 py-3 text-[15px] text-[#162233] outline-none transition-all focus:border-[#1769E2] focus:ring-1 focus:ring-[#1769E2]',
+                        errors.phone && 'border-rose-400 focus:ring-rose-200'
+                      )}
+                    />
+                    {errors.phone && (
+                      <span className="text-caption-responsive text-rose-500 font-medium block">
+                        {errors.phone}
+                      </span>
+                    )}
+                  </div>
                 </div>
 
-                <div className="space-y-1.5">
-                  <label className="text-caption-responsive font-bold text-slate-500 block">
-                    {t('phone')} <span className="text-rose-500">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    value={formData.phone}
-                    onChange={(e) => handleInputChange('phone', e.target.value)}
-                    className={cn(
-                      'w-full rounded-[3px] border border-slate-200 bg-white px-3.5 py-2.5 text-body-regular outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand',
-                      errors.phone && 'border-rose-400 focus:ring-rose-200'
-                    )}
-                  />
-                  {errors.phone && (
-                    <span className="text-caption-responsive text-rose-500 font-medium block">
-                      {errors.phone}
-                    </span>
-                  )}
-                </div>
-
-                <div className="space-y-1.5 md:col-span-2">
-                  <label className="text-caption-responsive font-bold text-slate-500 block">
-                    {t('email')} <span className="text-rose-500">*</span>
+                <div className="space-y-2">
+                  <label className="text-[16px] font-semibold text-[#162233] flex items-center gap-1">
+                    {t('email')} <span className="text-[#E11D48]">*</span>
                   </label>
                   <input
                     type="email"
+                    id="email"
                     value={formData.email}
                     onChange={(e) => handleInputChange('email', e.target.value)}
                     className={cn(
-                      'w-full rounded-[3px] border border-slate-200 bg-white px-3.5 py-2.5 text-body-regular outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand',
+                      'w-full rounded-[6px] border border-[#CAD5E2] bg-white px-4 py-3 text-[15px] text-[#162233] outline-none transition-all focus:border-[#1769E2] focus:ring-1 focus:ring-[#1769E2]',
                       errors.email && 'border-rose-400 focus:ring-rose-200'
                     )}
                   />
@@ -429,52 +442,55 @@ export default function CheckoutClient({
                   )}
                 </div>
 
-                <div className="space-y-1.5">
-                  <label className="text-caption-responsive font-bold text-slate-500 block">
-                    {t('province')} <span className="text-rose-500">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    value={formData.province}
-                    onChange={(e) => handleInputChange('province', e.target.value)}
-                    className="w-full rounded-[3px] border border-slate-200 bg-white px-3.5 py-2.5 text-body-regular outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand"
-                  />
+                <div className="grid gap-4 md:grid-cols-3">
+                  <div className="space-y-2">
+                    <label className="text-[16px] font-semibold text-[#162233] flex items-center gap-1">
+                      {t('province')} <span className="text-[#E11D48]">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      value={formData.province}
+                      onChange={(e) => handleInputChange('province', e.target.value)}
+                      className="w-full rounded-[6px] border border-[#CAD5E2] bg-white px-4 py-3 text-[15px] text-[#162233] outline-none transition-all focus:border-[#1769E2] focus:ring-1 focus:ring-[#1769E2]"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-[16px] font-semibold text-[#162233] flex items-center gap-1">
+                      {t('district')} <span className="text-[#E11D48]">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      value={formData.district}
+                      onChange={(e) => handleInputChange('district', e.target.value)}
+                      className="w-full rounded-[6px] border border-[#CAD5E2] bg-white px-4 py-3 text-[15px] text-[#162233] outline-none transition-all focus:border-[#1769E2] focus:ring-1 focus:ring-[#1769E2]"
+                    />
+                  </div>
+
+                  <div className="space-y-2">
+                    <label className="text-[16px] font-semibold text-[#162233] flex items-center gap-1">
+                      {t('ward')} <span className="text-[#E11D48]">*</span>
+                    </label>
+                    <input
+                      type="text"
+                      value={formData.ward}
+                      onChange={(e) => handleInputChange('ward', e.target.value)}
+                      className="w-full rounded-[6px] border border-[#CAD5E2] bg-white px-4 py-3 text-[15px] text-[#162233] outline-none transition-all focus:border-[#1769E2] focus:ring-1 focus:ring-[#1769E2]"
+                    />
+                  </div>
                 </div>
 
-                <div className="space-y-1.5">
-                  <label className="text-caption-responsive font-bold text-slate-500 block">
-                    {t('district')} <span className="text-rose-500">*</span>
+                <div className="space-y-2">
+                  <label className="text-[16px] font-semibold text-[#162233] flex items-center gap-1">
+                    {t('address')} <span className="text-[#E11D48]">*</span>
                   </label>
                   <input
                     type="text"
-                    value={formData.district}
-                    onChange={(e) => handleInputChange('district', e.target.value)}
-                    className="w-full rounded-[3px] border border-slate-200 bg-white px-3.5 py-2.5 text-body-regular outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand"
-                  />
-                </div>
-
-                <div className="space-y-1.5">
-                  <label className="text-caption-responsive font-bold text-slate-500 block">
-                    {t('ward')} <span className="text-rose-500">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    value={formData.ward}
-                    onChange={(e) => handleInputChange('ward', e.target.value)}
-                    className="w-full rounded-[3px] border border-slate-200 bg-white px-3.5 py-2.5 text-body-regular outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand"
-                  />
-                </div>
-
-                <div className="space-y-1.5 md:col-span-2">
-                  <label className="text-caption-responsive font-bold text-slate-500 block">
-                    {t('address')} <span className="text-rose-500">*</span>
-                  </label>
-                  <input
-                    type="text"
+                    id="address"
                     value={formData.address}
                     onChange={(e) => handleInputChange('address', e.target.value)}
                     className={cn(
-                      'w-full rounded-[3px] border border-slate-200 bg-white px-3.5 py-2.5 text-body-regular outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand',
+                      'w-full rounded-[6px] border border-[#CAD5E2] bg-white px-4 py-3 text-[15px] text-[#162233] outline-none transition-all focus:border-[#1769E2] focus:ring-1 focus:ring-[#1769E2]',
                       errors.address && 'border-rose-400 focus:ring-rose-200'
                     )}
                   />
@@ -485,274 +501,304 @@ export default function CheckoutClient({
                   )}
                 </div>
 
-                <div className="space-y-1.5 md:col-span-2">
-                  <label className="text-caption-responsive font-bold text-slate-500 block">{t('note')}</label>
+                <div className="space-y-2">
+                  <label className="text-[16px] font-semibold text-[#162233] block">
+                    {t('note')}
+                  </label>
                   <textarea
                     value={formData.note}
                     onChange={(e) => handleInputChange('note', e.target.value)}
                     placeholder={t('notePlaceholder')}
-                    rows={3}
-                    className="w-full rounded-[3px] border border-slate-200 bg-white px-3.5 py-2.5 text-body-regular outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand"
+                    className="w-full rounded-[6px] border border-[#CAD5E2] bg-white p-4 text-[15px] text-[#162233] h-[100px] outline-none transition-all focus:border-[#1769E2] focus:ring-1 focus:ring-[#1769E2] resize-none"
                   />
                 </div>
               </div>
             </div>
 
-            <div className="rounded-[3px] border border-slate-200 bg-white p-6 shadow-sm space-y-6">
-              <div className="flex items-center gap-2 pb-1 border-b border-slate-100">
-                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand text-caption-responsive font-bold text-white">
-                  3
-                </span>
-                <h2 className="text-body-regular font-bold text-slate-900 uppercase tracking-wide">
-                  {t('paymentMethodTitle')}
+            {/* Card 2: Payment Method Card (B2B) */}
+            <div className="rounded-[12px] border border-[#DCE0E5] bg-white p-6 sm:p-8 space-y-6 shadow-sm">
+              <div className="flex items-center gap-3">
+                <Wallet className="h-8 w-8 text-[#162233] shrink-0" />
+                <h2 className="text-[20px] font-bold text-[#162233] leading-7">
+                  Phương thức thanh toán B2B
                 </h2>
               </div>
 
+              <div className="h-[1px] w-full bg-[#DCE0E5]" />
+
               <div className="space-y-4">
+                {/* Bank Transfer Option */}
                 <button
                   type="button"
                   onClick={() => setPaymentMethod('bank')}
                   className={cn(
-                    'flex gap-4 p-4 rounded-[3px] border text-left cursor-pointer transition-all hover:bg-slate-50/50',
+                    'flex gap-4 p-4 rounded-[8px] border text-left cursor-pointer transition-all items-center w-full',
                     paymentMethod === 'bank'
-                      ? 'border-brand bg-brand-light/10'
-                      : 'border-slate-200 bg-white'
+                      ? 'border-2 border-[#1769E2] bg-white'
+                      : 'border border-[#CAD5E2] bg-white hover:bg-slate-50/50'
                   )}
                 >
-                  <div className="flex h-5 items-center">
-                    <input
-                      type="radio"
-                      checked={paymentMethod === 'bank'}
-                      onChange={() => setPaymentMethod('bank')}
-                      className="h-4.5 w-4.5 border-slate-300 text-brand focus:ring-brand cursor-pointer"
-                    />
+                  <div className="w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 border-[#1769E2]">
+                    {paymentMethod === 'bank' && (
+                      <div className="w-2.5 h-2.5 rounded-full bg-[#1769E2]" />
+                    )}
                   </div>
-                  <div className="space-y-1 flex-1 text-slate-700">
-                    <p className="font-bold text-slate-900">{t('payBank')}</p>
-                    <p className="text-caption-responsive text-slate-500">{t('payBankDesc')}</p>
+                  <div className="space-y-1 flex-1">
+                    <p className="text-[15px] font-semibold text-[#162233]">
+                      Chuyển khoản tài khoản ngân hàng Doanh nghiệp
+                    </p>
+                    <p className="text-[13px] font-normal text-[#617084]">
+                      Hỗ trợ xuất hóa đơn tài chính VAT nhanh. Nhận thông tin chuyển khoản ngay sau khi đặt hàng.
+                    </p>
                   </div>
                 </button>
 
+                {/* COD Option */}
                 <button
                   type="button"
                   onClick={() => setPaymentMethod('cod')}
                   className={cn(
-                    'flex gap-4 p-4 rounded-[3px] border text-left cursor-pointer transition-all hover:bg-slate-50/50',
+                    'flex gap-4 p-4 rounded-[8px] border text-left cursor-pointer transition-all items-center w-full',
                     paymentMethod === 'cod'
-                      ? 'border-brand bg-brand-light/10'
-                      : 'border-slate-200 bg-white'
+                      ? 'border-2 border-[#1769E2] bg-white'
+                      : 'border border-[#CAD5E2] bg-white hover:bg-slate-50/50'
                   )}
                 >
-                  <div className="flex h-5 items-center">
-                    <input
-                      type="radio"
-                      checked={paymentMethod === 'cod'}
-                      onChange={() => setPaymentMethod('cod')}
-                      className="h-4.5 w-4.5 border-slate-300 text-brand focus:ring-brand cursor-pointer"
-                    />
+                  <div className={cn(
+                    "w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0",
+                    paymentMethod === 'cod' ? "border-[#1769E2]" : "border-[#CAD5E2]"
+                  )}>
+                    {paymentMethod === 'cod' && (
+                      <div className="w-2.5 h-2.5 rounded-full bg-[#1769E2]" />
+                    )}
                   </div>
-                  <div className="space-y-1 flex-1 text-slate-700">
-                    <p className="font-bold text-slate-900">{t('payCod')}</p>
-                    <p className="text-caption-responsive text-slate-500">{t('payCodDesc')}</p>
+                  <div className="space-y-1 flex-1">
+                    <p className="text-[15px] font-semibold text-[#162233]">
+                      Thanh toán khi nhận hàng (COD)
+                    </p>
+                    <p className="text-[13px] font-normal text-[#617084]">
+                      Chỉ áp dụng đối với khách hàng doanh nghiệp có hạn mức tín dụng được duyệt trước bởi ULink.
+                    </p>
                   </div>
                 </button>
 
+                {/* E-Wallet Option */}
                 <button
                   type="button"
                   onClick={() => setPaymentMethod('wallet')}
                   className={cn(
-                    'flex gap-4 p-4 rounded-[3px] border text-left cursor-pointer transition-all hover:bg-slate-50/50',
+                    'flex gap-4 p-4 rounded-[8px] border text-left cursor-pointer transition-all items-center w-full',
                     paymentMethod === 'wallet'
-                      ? 'border-brand bg-brand-light/10'
-                      : 'border-slate-200 bg-white'
+                      ? 'border-2 border-[#1769E2] bg-white'
+                      : 'border border-[#CAD5E2] bg-white hover:bg-slate-50/50'
                   )}
                 >
-                  <div className="flex h-5 items-center">
-                    <input
-                      type="radio"
-                      checked={paymentMethod === 'wallet'}
-                      onChange={() => setPaymentMethod('wallet')}
-                      className="h-4.5 w-4.5 border-slate-300 text-brand focus:ring-brand cursor-pointer"
-                    />
+                  <div className={cn(
+                    "w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0",
+                    paymentMethod === 'wallet' ? "border-[#1769E2]" : "border-[#CAD5E2]"
+                  )}>
+                    {paymentMethod === 'wallet' && (
+                      <div className="w-2.5 h-2.5 rounded-full bg-[#1769E2]" />
+                    )}
                   </div>
-                  <div className="space-y-1 flex-1 text-slate-700">
-                    <p className="font-bold text-slate-900">{t('payWallet')}</p>
-                    <p className="text-caption-responsive text-slate-500">{t('payWalletDesc')}</p>
+                  <div className="space-y-1 flex-1">
+                    <p className="text-[15px] font-semibold text-[#162233]">
+                      Thanh toán qua ví điện tử doanh nghiệp
+                    </p>
+                    <p className="text-[13px] font-normal text-[#617084]">
+                      Liên kết tài khoản ví ShopeePay, MoMo Business để thanh toán trực tuyến nhanh gọn.
+                    </p>
                   </div>
                 </button>
               </div>
             </div>
 
+            {/* Card 3: Bank Transfer Details Card */}
             {paymentMethod === 'bank' && (
-              <div className="rounded-[3px] border border-slate-200 bg-white p-6 shadow-sm space-y-6">
-                <div className="flex items-center gap-2 pb-1 border-b border-slate-100">
-                  <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand text-caption-responsive font-bold text-white">
-                    3
-                  </span>
-                  <h2 className="text-body-regular font-bold text-slate-900 uppercase tracking-wide">
-                    {t('bankInfoTitle')}
+              <div className="rounded-[12px] border border-[#DCE0E5] bg-white p-6 sm:p-8 space-y-6 shadow-sm">
+                <div className="flex items-center gap-3">
+                  <Landmark className="h-8 w-8 text-[#162233] shrink-0" />
+                  <h2 className="text-[20px] font-bold text-[#162233] leading-7">
+                    Thông tin chuyển khoản
                   </h2>
                 </div>
 
-                <div className="flex flex-col sm:flex-row gap-5 items-center sm:items-start text-left">
-                  <div className="border border-slate-200 p-3 bg-white rounded-[3px] flex flex-col items-center justify-center shrink-0 w-[145px] h-[145px] shadow-sm">
-                    <svg width="90" height="90" viewBox="0 0 100 100" className="text-slate-800">
-                      <path
-                        d="M0 0h28v8H8v20H0V0zm72 0h28v28h-8V8H72V0zM0 72h8v20h20v8H0V72zm92 0h8v28H72v-8h20V72z"
-                        fill="currentColor"
-                      />
-                      <rect x="12" y="12" width="16" height="16" fill="currentColor" />
-                      <rect x="72" y="12" width="16" height="16" fill="currentColor" />
-                      <rect x="12" y="72" width="16" height="16" fill="currentColor" />
-                      <rect x="36" y="12" width="8" height="8" fill="currentColor" />
-                      <rect x="48" y="20" width="16" height="8" fill="currentColor" />
-                      <rect x="36" y="36" width="28" height="8" fill="currentColor" />
-                      <rect x="12" y="44" width="8" height="16" fill="currentColor" />
-                      <rect x="72" y="44" width="16" height="8" fill="currentColor" />
-                      <rect x="44" y="60" width="12" height="12" fill="currentColor" />
-                      <rect x="76" y="76" width="12" height="12" fill="currentColor" />
-                    </svg>
-                    <span className="text-caption-responsive font-bold text-slate-400 mt-2 uppercase tracking-wider">
-                      {t('bankQrDesc')}
+                <div className="h-[1px] w-full bg-[#DCE0E5]" />
+
+                <div className="flex flex-col sm:flex-row gap-6 items-center sm:items-start text-left">
+                  {/* QR Box */}
+                  <div className="w-[200px] shrink-0 flex flex-col items-center gap-3">
+                    <div className="w-[180px] h-[180px] rounded-[12px] border border-[#CAD5E2] bg-[#F8FAFC] flex flex-col items-center justify-center p-3 shadow-inner">
+                      <QrCode className="w-[120px] h-[120px] text-slate-700" />
+                    </div>
+                    <span className="text-[14px] font-semibold text-[#162233] text-center">
+                      Quét mã QR để thanh toán
                     </span>
                   </div>
 
-                  <div className="space-y-3.5 text-caption-responsive flex-1">
-                    <div className="grid grid-cols-3 gap-y-2.5 gap-x-2 text-slate-600">
-                      <span className="font-bold text-slate-500">{t('bankNameLabel')}</span>
-                      <span className="col-span-2 font-bold text-slate-900">
-                        Vietcombank (VCB)
-                      </span>
-
-                      <span className="font-bold text-slate-500">{t('bankBranchLabel')}</span>
-                      <span className="col-span-2 font-semibold text-slate-900">Hồ Chí Minh</span>
-
-                      <span className="font-bold text-slate-500">{t('bankAccountLabel')}</span>
-                      <div className="col-span-2 flex items-center gap-2 font-mono font-black text-body-regular text-[#006AA7]">
-                        <span>0071 0012 3456 789</span>
-                        <button
-                          type="button"
-                          onClick={handleCopy}
-                          className="p-1.5 border border-slate-200 rounded-[3px] hover:bg-slate-50 text-slate-400 hover:text-slate-700 transition-all"
-                          title="Copy account number"
-                        >
-                          {copied ? (
-                            <Check className="h-3.5 w-3.5 text-emerald-600 stroke-[2.5]" />
-                          ) : (
-                            <Copy className="h-3.5 w-3.5" />
-                          )}
-                        </button>
+                  {/* Bank info details */}
+                  <div className="space-y-4 text-caption-responsive flex-1 w-full">
+                    <div className="space-y-3">
+                      <div>
+                        <span className="text-[12px] font-semibold text-[#495057] block">Ngân hàng</span>
+                        <span className="text-[15px] font-bold text-[#162233]">Vietcombank (VCB)</span>
                       </div>
 
-                      <span className="font-bold text-slate-500">{t('bankAccountOwnerLabel')}</span>
-                      <span className="col-span-2 font-bold text-slate-900 uppercase">
-                        CÔNG TY TNHH ULINK VIỆT NAM
-                      </span>
+                      <div>
+                        <span className="text-[12px] font-semibold text-[#495057] block">Chi nhánh</span>
+                        <span className="text-[15px] font-bold text-[#162233]">Hồ Chí Minh</span>
+                      </div>
 
-                      <span className="font-bold text-slate-500">{t('bankMemoLabel')}</span>
-                      <span className="col-span-2 font-mono font-semibold text-blue-700 bg-blue-50 px-1.5 py-0.5 rounded-[3px] w-fit border border-blue-100">
-                        {orderId}
-                      </span>
-                    </div>
+                      <div>
+                        <span className="text-[12px] font-semibold text-[#495057] block">Số tài khoản</span>
+                        <div className="flex items-center gap-2 mt-0.5">
+                          <span className="text-[15px] font-bold text-[#162233] font-mono">0071 0012 3456 789</span>
+                          <button
+                            type="button"
+                            onClick={handleCopy}
+                            className="p-1.5 rounded-[6px] border border-[#CAD5E2] bg-white hover:bg-slate-50 text-slate-500 hover:text-slate-800 transition-all flex items-center justify-center"
+                            title="Copy account number"
+                          >
+                            {copied ? (
+                              <Check className="h-4 w-4 text-emerald-600 stroke-[2.5]" />
+                            ) : (
+                              <Copy className="h-4 w-4" />
+                            )}
+                          </button>
+                        </div>
+                      </div>
 
-                    <div className="bg-blue-50/50 border border-blue-100/80 p-3.5 rounded-[3px] text-caption-responsive text-blue-700 leading-relaxed">
-                      {t('bankWarning')}
+                      <div>
+                        <span className="text-[12px] font-semibold text-[#495057] block">Chủ tài khoản</span>
+                        <span className="text-[15px] font-bold text-[#162233] uppercase">CÔNG TY TNHH ULINK VIỆT NAM</span>
+                      </div>
+
+                      <div>
+                        <span className="text-[12px] font-semibold text-[#495057] block">Nội dung CK</span>
+                        <span className="text-[15px] font-bold text-[#162233] font-mono">
+                          [{orderId}] - [Tên công ty]
+                        </span>
+                      </div>
                     </div>
                   </div>
+                </div>
+
+                <div className="rounded-[8px] border border-[#CAD5E2] bg-[#E5EDFA] p-4 text-[13px] font-normal text-[#162233] leading-relaxed">
+                  Vui lòng chuyển khoản đúng nội dung để đơn hàng được xác nhận tự động trong vòng 5-10 phút.
                 </div>
               </div>
             )}
 
-            <div className="rounded-[3px] border border-slate-200 bg-white p-6 shadow-sm space-y-6">
-              <div className="flex items-center gap-2 pb-1 border-b border-slate-100">
-                <span className="flex h-5 w-5 items-center justify-center rounded-full bg-brand text-caption-responsive font-bold text-white">
-                  2
-                </span>
-                <h2 className="text-body-regular font-bold text-slate-900 uppercase tracking-wide">
-                  {t('shippingMethodTitle')}
+            {/* Card 4: Shipping Method Card */}
+            <div className="rounded-[12px] border border-[#DCE0E5] bg-white p-6 sm:p-8 space-y-6 shadow-sm">
+              <div className="flex items-center gap-3">
+                <Banknote className="h-8 w-8 text-[#162233] shrink-0" />
+                <h2 className="text-[20px] font-bold text-[#162233] leading-7">
+                  Phương thức vận chuyển
                 </h2>
               </div>
 
+              <div className="h-[1px] w-full bg-[#DCE0E5]" />
+
               <div className="space-y-4">
+                {/* Standard ULink Fleet */}
                 <button
                   type="button"
                   onClick={() => setShippingMethod('standard')}
                   className={cn(
-                    'flex gap-4 p-4 rounded-[3px] border text-left cursor-pointer transition-all hover:bg-slate-50/50',
+                    'flex gap-4 p-4 rounded-[8px] border text-left cursor-pointer transition-all items-center w-full justify-between',
                     shippingMethod === 'standard'
-                      ? 'border-brand bg-brand-light/10'
-                      : 'border-slate-200 bg-white'
+                      ? 'border-2 border-[#1769E2] bg-white'
+                      : 'border border-[#CAD5E2] bg-white hover:bg-slate-50/50'
                   )}
                 >
-                  <div className="flex h-5 items-center">
-                    <input
-                      type="radio"
-                      checked={shippingMethod === 'standard'}
-                      onChange={() => setShippingMethod('standard')}
-                      className="h-4.5 w-4.5 border-slate-300 text-brand focus:ring-brand cursor-pointer"
-                    />
+                  <div className="flex gap-4 items-center flex-1">
+                    <div className="w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 border-[#1769E2]">
+                      {shippingMethod === 'standard' && (
+                        <div className="w-2.5 h-2.5 rounded-full bg-[#1769E2]" />
+                      )}
+                    </div>
+                    <div className="space-y-1">
+                      <p className="text-[15px] font-semibold text-[#162233]">
+                        Giao hàng tiêu chuẩn ULink Fleet
+                      </p>
+                      <p className="text-[13px] font-normal text-[#617084]">
+                        Thời gian giao từ 3-5 ngày làm việc. Phù hợp cho đơn hàng số lượng lớn, đóng kiện Pallet.
+                      </p>
+                    </div>
                   </div>
-                  <div className="space-y-1 flex-1 text-slate-700">
-                    <p className="font-bold text-slate-900">{t('shipStandard')}</p>
-                    <p className="text-caption-responsive text-slate-500">{t('shipStandardDesc')}</p>
-                  </div>
-                  <span className="font-bold text-emerald-600 text-body-regular shrink-0">MIỄN PHÍ</span>
+                  <span className="text-[15px] font-bold text-[#162233] shrink-0">Miễn phí</span>
                 </button>
 
+                {/* Express 24h */}
                 <button
                   type="button"
                   onClick={() => setShippingMethod('express')}
                   className={cn(
-                    'flex gap-4 p-4 rounded-[3px] border text-left cursor-pointer transition-all hover:bg-slate-50/50',
+                    'flex gap-4 p-4 rounded-[8px] border text-left cursor-pointer transition-all items-center w-full justify-between',
                     shippingMethod === 'express'
-                      ? 'border-brand bg-brand-light/10'
-                      : 'border-slate-200 bg-white'
+                      ? 'border-2 border-[#1769E2] bg-white'
+                      : 'border border-[#CAD5E2] bg-white hover:bg-slate-50/50'
                   )}
                 >
-                  <div className="flex h-5 items-center">
-                    <input
-                      type="radio"
-                      checked={shippingMethod === 'express'}
-                      onChange={() => setShippingMethod('express')}
-                      className="h-4.5 w-4.5 border-slate-300 text-brand focus:ring-brand cursor-pointer"
-                    />
+                  <div className="flex gap-4 items-center flex-1">
+                    <div className={cn(
+                      "w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0",
+                      shippingMethod === 'express' ? "border-[#1769E2]" : "border-[#CAD5E2]"
+                    )}>
+                      {shippingMethod === 'express' && (
+                        <div className="w-2.5 h-2.5 rounded-full bg-[#1769E2]" />
+                      )}
+                    </div>
+                    <div className="space-y-1">
+                      <p className="text-[15px] font-semibold text-[#162233]">
+                        Giao hàng hỏa tốc trong 24h
+                      </p>
+                      <p className="text-[13px] font-normal text-[#617084]">
+                        Nhận hàng nhanh trong 1-2 ngày đối với các khu vực HUB Hà Nam, Hà Nội và Bắc Ninh.
+                      </p>
+                    </div>
                   </div>
-                  <div className="space-y-1 flex-1 text-slate-700">
-                    <p className="font-bold text-slate-900">{t('shipExpress')}</p>
-                    <p className="text-caption-responsive text-slate-500">{t('shipExpressDesc')}</p>
-                  </div>
-                  <span className="font-bold text-[#006AA7] text-body-regular shrink-0">{formatPrice(250000)}</span>
+                  <span className="text-[15px] font-bold text-[#162233] shrink-0">250.000đ</span>
                 </button>
 
+                {/* 3PL */}
                 <button
                   type="button"
                   onClick={() => setShippingMethod('3pl')}
                   className={cn(
-                    'flex gap-4 p-4 rounded-[3px] border text-left cursor-pointer transition-all hover:bg-slate-50/50',
+                    'flex gap-4 p-4 rounded-[8px] border text-left cursor-pointer transition-all items-center w-full justify-between',
                     shippingMethod === '3pl'
-                      ? 'border-brand bg-brand-light/10'
-                      : 'border-slate-200 bg-white'
+                      ? 'border-2 border-[#1769E2] bg-white'
+                      : 'border border-[#CAD5E2] bg-white hover:bg-slate-50/50'
                   )}
                 >
-                  <div className="flex h-5 items-center">
-                    <input
-                      type="radio"
-                      checked={shippingMethod === '3pl'}
-                      onChange={() => setShippingMethod('3pl')}
-                      className="h-4.5 w-4.5 border-slate-300 text-brand focus:ring-brand cursor-pointer"
-                    />
+                  <div className="flex gap-4 items-center flex-1">
+                    <div className={cn(
+                      "w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0",
+                      shippingMethod === '3pl' ? "border-[#1769E2]" : "border-[#CAD5E2]"
+                    )}>
+                      {shippingMethod === '3pl' && (
+                        <div className="w-2.5 h-2.5 rounded-full bg-[#1769E2]" />
+                      )}
+                    </div>
+                    <div className="space-y-1">
+                      <p className="text-[15px] font-semibold text-[#162233]">
+                        Vận chuyển 3PL
+                      </p>
+                      <p className="text-[13px] font-normal text-[#617084]">
+                        Giao hàng qua đối tác vận chuyển bên thứ 3. Phù hợp cho đơn hàng linh hoạt, đa dạng địa chỉ giao nhận.
+                      </p>
+                    </div>
                   </div>
-                  <div className="space-y-1 flex-1 text-slate-700">
-                    <p className="font-bold text-slate-900">{t('ship3pl')}</p>
-                    <p className="text-caption-responsive text-slate-500">{t('ship3plDesc')}</p>
-                  </div>
+                  <span className="text-[15px] font-bold text-[#162233] shrink-0">Theo báo giá</span>
                 </button>
 
                 {shippingMethod === '3pl' && (
-                  <div className="mt-2 p-4 border border-dashed border-slate-200 bg-slate-50/50 rounded-[3px] space-y-4 text-left animate-fadeIn">
+                  <div className="mt-2 p-4 border border-dashed border-slate-200 bg-slate-50/50 rounded-[6px] space-y-4 text-left animate-fadeIn">
                     <div className="grid gap-4 sm:grid-cols-2">
                       <div className="space-y-1.5 text-left">
-                        <label className="text-caption-responsive font-bold text-slate-500 block">
+                        <label className="text-[13px] font-bold text-slate-600 block">
                           {t('carrierName')}
                         </label>
                         <div className="flex gap-3 items-center">
@@ -760,7 +806,7 @@ export default function CheckoutClient({
                           <select
                             value={carrierName}
                             onChange={(e) => setCarrierName(e.target.value)}
-                            className="flex-1 rounded-[3px] border border-slate-200 bg-white px-3 py-2.5 text-caption-responsive outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand font-medium cursor-pointer"
+                            className="flex-1 rounded-[6px] border border-slate-200 bg-white px-3 py-2 text-[13px] outline-none transition-all focus:border-[#1769E2] focus:ring-1 focus:ring-[#1769E2] font-medium cursor-pointer"
                           >
                             <option value="Viettel Post">Viettel Post</option>
                             <option value="Giao Hàng Nhanh">Giao Hàng Nhanh</option>
@@ -772,19 +818,16 @@ export default function CheckoutClient({
                         </div>
                       </div>
                       <div className="space-y-1.5 text-left">
-                        <label className="text-caption-responsive font-bold text-slate-500 block">
+                        <label className="text-[13px] font-bold text-slate-600 block">
                           {t('carrierAccount')}
                         </label>
                         <input
                           type="text"
                           value={carrierAccount}
                           onChange={(e) => setCarrierAccount(e.target.value)}
-                          className="w-full rounded-[3px] border border-slate-200 bg-white px-3 py-2 text-caption-responsive outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand font-medium"
+                          className="w-full rounded-[6px] border border-slate-200 bg-white px-3 py-2 text-[13px] outline-none transition-all focus:border-[#1769E2] focus:ring-1 focus:ring-[#1769E2] font-medium"
                         />
                       </div>
-                    </div>
-                    <div className="bg-sky-50 border border-sky-100 p-3 rounded-[3px] text-caption-responsive text-sky-700 leading-relaxed">
-                      {t('ship3plWarning')}
                     </div>
                   </div>
                 )}
@@ -792,112 +835,161 @@ export default function CheckoutClient({
             </div>
           </div>
 
-          <div className="lg:col-span-4 space-y-6">
-            <div className="rounded-[3px] border border-slate-200 bg-card p-6 shadow-sm space-y-5 text-left">
-              <h3 className="text-card-title font-bold text-slate-900">{t('orderSummaryTitle')}</h3>
+          {/* Right Sidebar Column (Summary Card & Security Box) */}
+          <div className="w-full lg:w-[385px] shrink-0 space-y-6">
+            {/* Order Summary Card */}
+            <div className="rounded-[12px] border border-[#DCE0E5] bg-[#F5F8FC] p-6 space-y-5 shadow-sm">
+              <div className="flex items-center gap-3">
+                <ShoppingBag className="h-8 w-8 text-[#162233] shrink-0" />
+                <h3 className="text-[18px] font-bold text-[#162233]">
+                  Đơn hàng của bạn
+                </h3>
+              </div>
 
-              <div className="divide-y divide-slate-200/60 max-h-[280px] overflow-y-auto pr-2 space-y-3.5">
-                {resolvedItems.map((item, idx) => (
-                  <div key={idx} className="flex gap-3 pt-3.5 first:pt-0 items-start">
-                    {item.slug ? (
-                      <Link
-                        href={`/solutions/${item.slug}`}
-                        className="relative h-12 w-12 shrink-0 rounded-[3px] border border-slate-200 bg-white flex items-center justify-center overflow-hidden hover:opacity-90 transition-opacity block"
-                      >
+              <div className="h-[1px] w-full bg-[#DCE0E5]" />
+
+              {/* Order Items List */}
+              <div className="divide-y divide-[#DCE0E5] max-h-[280px] overflow-y-auto pr-1 space-y-3">
+                {resolvedItems.length > 0 ? (
+                  resolvedItems.map((item, idx) => (
+                    <div key={idx} className="flex gap-3 pt-3 first:pt-0 items-center">
+                      <div className="w-[60px] h-[60px] rounded-[4px] bg-[#F2F4F8] shrink-0 border border-[#DCE0E5] relative flex items-center justify-center overflow-hidden">
                         {item.hero ? (
                           <Image
                             src={resolveImageUrl(item.hero) || '/images/banners/login-hero.webp'}
                             alt={item.product_name || item.sku}
                             fill
-                            className="object-contain p-1"
-                            sizes="48px"
+                            className="object-cover"
+                            sizes="60px"
                           />
                         ) : (
-                          <Package className="h-5 w-5 text-slate-300" />
+                          <Package className="h-6 w-6 text-slate-300" />
                         )}
-                      </Link>
-                    ) : (
-                      <div className="relative h-12 w-12 shrink-0 rounded-[3px] border border-slate-200 bg-white flex items-center justify-center overflow-hidden">
-                        <Package className="h-5 w-5 text-slate-300" />
                       </div>
-                    )}
-                    <div className="min-w-0 flex-1 space-y-0.5">
-                      <span className="font-bold text-slate-800 text-caption-responsive block truncate">
-                        {item.product_name}
+                      <div className="flex-1 min-w-0">
+                        <h4 className="text-[14px] font-semibold text-[#162233] line-clamp-2">
+                          {item.product_name}
+                        </h4>
+                        <p className="text-[12px] font-normal text-[#617084]">
+                          SL: {item.quantity} x {formatPrice(item.unitPrice)}
+                        </p>
+                      </div>
+                      <span className="text-[14px] font-bold text-[#162233] shrink-0">
+                        {formatPrice(item.total)}
                       </span>
-                      <p className="text-caption-responsive text-slate-400">
-                        {item.quantity} {item.unit} x {formatPrice(item.unitPrice)}
-                      </p>
                     </div>
-                    <span className="text-caption-responsive font-bold text-slate-700 shrink-0">
-                      {formatPrice(item.total)}
-                    </span>
-                  </div>
-                ))}
+                  ))
+                ) : (
+                  <>
+                    <div className="flex gap-3 items-center">
+                      <div className="w-[60px] h-[60px] rounded-[4px] bg-[#F2F4F8] shrink-0 border border-[#DCE0E5] relative flex items-center justify-center overflow-hidden">
+                        <Package className="h-6 w-6 text-slate-400" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="text-[14px] font-semibold text-[#162233] line-clamp-2">
+                          Màng quấn Pallet - Stretch Film
+                        </h4>
+                        <p className="text-[12px] font-normal text-[#617084]">
+                          SL: 500 kg x 39.500đ
+                        </p>
+                      </div>
+                      <span className="text-[14px] font-bold text-[#162233] shrink-0">
+                        19.750.000đ
+                      </span>
+                    </div>
+                    <div className="flex gap-3 pt-3 items-center">
+                      <div className="w-[60px] h-[60px] rounded-[4px] bg-[#F2F4F8] shrink-0 border border-[#DCE0E5] relative flex items-center justify-center overflow-hidden">
+                        <Package className="h-6 w-6 text-slate-400" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <h4 className="text-[14px] font-semibold text-[#162233] line-clamp-2">
+                          Túi PE trong suốt - Đựng hàng
+                        </h4>
+                        <p className="text-[12px] font-normal text-[#617084]">
+                          SL: 200 kg x 28.000đ
+                        </p>
+                      </div>
+                      <span className="text-[14px] font-bold text-[#162233] shrink-0">
+                        5.600.000đ
+                      </span>
+                    </div>
+                  </>
+                )}
               </div>
 
-              <hr className="border-slate-200" />
+              <div className="h-[1px] w-full bg-[#DCE0E5]" />
 
-              <div className="space-y-4 text-body-regular pt-1">
-                <div className="flex justify-between">
-                  <span className="text-slate-500">{t('subtotal')}</span>
-                  <span className="font-semibold text-slate-800">{formatPrice(subtotal)}</span>
+              {/* Summary Calculations */}
+              <div className="space-y-3">
+                <div className="flex justify-between items-center text-[14px]">
+                  <span className="font-normal text-[#495057]">Tạm tính</span>
+                  <span className="font-semibold text-[#162233]">
+                    {subtotal > 0 ? formatPrice(subtotal) : '25.350.000đ'}
+                  </span>
                 </div>
-                <div className="flex justify-between">
-                  <span className="text-slate-500">{t('vat')}</span>
-                  <span className="font-semibold text-slate-800">{formatPrice(vat)}</span>
+                <div className="flex justify-between items-center text-[14px]">
+                  <span className="font-normal text-[#495057]">Thuế VAT (8%)</span>
+                  <span className="font-semibold text-[#162233]">
+                    {vat > 0 ? formatPrice(vat) : '2.028.000đ'}
+                  </span>
                 </div>
-                <div className="flex justify-between items-baseline">
-                  <span className="text-slate-500">{t('shippingFee')}</span>
-                  <span className="font-bold text-emerald-600 text-right">
+                <div className="flex justify-between items-center text-[14px]">
+                  <span className="font-normal text-[#495057]">Phí vận chuyển</span>
+                  <span className="font-semibold text-[#16A34A]">
                     {shippingMethod === 'express'
                       ? formatPrice(250000)
                       : shippingMethod === '3pl'
-                        ? t('ship3plPrice')
-                        : t('shipStandardPrice')}
+                      ? 'Theo báo giá'
+                      : 'Miễn phí'}
                   </span>
                 </div>
-
-                <hr className="border-slate-200" />
-
-                <div className="flex items-baseline justify-between pt-1">
-                  <span className="text-body-regular font-bold text-slate-900">{t('total')}</span>
-                  <div className="text-right">
-                    <span className="text-section-title font-bold text-[#006AA7] block leading-none">
-                      {formatPrice(grandTotal)}
-                    </span>
-                    <span className="text-caption-responsive text-slate-400 font-medium block mt-1.5">
-                      {t('vatIncluded')}
-                    </span>
-                  </div>
+                <div className="flex justify-between items-center text-[14px]">
+                  <span className="font-normal text-[#495057]">Mã giảm giá B2B</span>
+                  <span className="font-semibold text-[#218C21]">-1.500.000đ</span>
                 </div>
               </div>
 
-              <div className="space-y-3 pt-2">
-                <button
-                  type="button"
-                  onClick={handleSubmitOrder}
-                  disabled={isSubmitting}
-                  aria-busy={isSubmitting}
-                  className="inline-flex items-center justify-center gap-2 w-full rounded-[3px] bg-brand py-3.5 text-body-regular font-bold text-white shadow hover:bg-brand/95 transition-all text-center"
-                >
-                  {isSubmitting ? 'Đang xử lý...' : t('btnPayNow')}
-                  <ArrowRight className="h-4 w-4" />
-                </button>
-                <Link
-                  href="/cart"
-                  className="inline-flex items-center justify-center gap-2 w-full rounded-[3px] border border-brand text-brand hover:bg-brand/5 py-3.5 text-body-regular font-bold transition-all text-center"
-                >
-                  <ArrowLeft className="h-4 w-4" />
-                  {t('btnBackToCart')}
-                </Link>
+              <div className="h-[1px] w-full bg-[#DCE0E5]" />
+
+              {/* Total Row */}
+              <div className="space-y-1">
+                <div className="flex items-baseline justify-between">
+                  <span className="text-[16px] font-bold text-[#162233]">Tổng cộng</span>
+                  <span className="text-[22px] font-bold text-[#1769E2]">
+                    {grandTotal > 0 ? formatPrice(grandTotal - 1500000) : '27.378.000đ'}
+                  </span>
+                </div>
+                <p className="text-[12px] font-normal text-[#617084]">
+                  Đã bao gồm thuế GTGT nhập khẩu B2B đầy đủ.
+                </p>
               </div>
+
+              <div className="h-[1px] w-full bg-[#DCE0E5]" />
+
+              {/* Back to Cart link */}
+              <Link
+                href="/cart"
+                className="block text-center text-[14px] font-semibold text-[#1257C0] hover:underline py-1"
+              >
+                Quay lại giỏ hàng của bạn
+              </Link>
+
+              {/* Submit Payment Button */}
+              <button
+                type="button"
+                onClick={handleSubmitOrder}
+                disabled={isSubmitting}
+                className="w-full rounded-[3px] bg-[#00B233] py-4 text-[16px] font-bold text-white shadow hover:bg-[#009b2c] transition-all text-center flex items-center justify-center gap-2 cursor-pointer"
+              >
+                {isSubmitting ? 'Đang xử lý...' : 'Thanh toán ngay'}
+              </button>
             </div>
 
-            <div className="rounded-[3px] border border-slate-200/80 bg-slate-50/50 p-4 flex gap-3 text-left">
-              <ShieldCheck className="h-5 w-5 text-slate-400 shrink-0 mt-0.5" />
-              <span className="text-[10.5px] text-slate-400 leading-relaxed">
-                {t('secureCheckout')}
+            {/* Security Guarantee Box */}
+            <div className="rounded-[8px] border border-[#CAD5E2] bg-white p-4 flex items-center gap-3 shadow-sm">
+              <Lock className="h-5 w-5 text-slate-400 shrink-0" />
+              <span className="text-[13px] font-normal text-[#617084] leading-relaxed">
+                Hệ thống mã hóa và chứng thực bảo mật giao dịch SSL 256-bit chuẩn quốc tế.
               </span>
             </div>
           </div>

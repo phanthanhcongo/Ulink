@@ -246,7 +246,7 @@ export default function ProductDetailClient({
   const handleRequestQuote = useCallback(() => {
     const success = performAddToCart(quantity);
     if (success) {
-      router.push('/quick-order');
+      router.push('/cart');
     }
   }, [performAddToCart, quantity, router]);
 
