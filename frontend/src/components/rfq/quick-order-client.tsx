@@ -123,7 +123,6 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
   const [formEmail, setFormEmail] = useState('');
   const [formPhone, setFormPhone] = useState('');
   const [formAddress, setFormAddress] = useState('');
-  const [formHub, setFormHub] = useState('');
   const [formIndustry, setFormIndustry] = useState('');
   const [formDeliveryTime, setFormDeliveryTime] = useState('');
   const [formPaymentMethod, setFormPaymentMethod] = useState('');
@@ -158,6 +157,40 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
   const [manualNote, setManualNote] = useState('');
   const [selectedProductToEdit, setSelectedProductToEdit] = useState<number | null>(null);
 
+  // Product name autocomplete dropdown
+  const [showNameDropdown, setShowNameDropdown] = useState(false);
+  const nameDropdownRef = useRef<HTMLDivElement>(null);
+
+  // Quantity modal state
+  const [isQtyModalOpen, setIsQtyModalOpen] = useState(false);
+  const [qtyModalSku, setQtyModalSku] = useState<SkuItem | null>(null);
+  const [qtyModalValue, setQtyModalValue] = useState(1);
+  const [qtyModalUnit, setQtyModalUnit] = useState('cái');
+
+  // Filter skus by product name input for autocomplete
+  const nameFilteredSkus = useMemo(() => {
+    if (!meta?.skus || !manualName.trim()) return [];
+    const q = manualName.toLowerCase();
+    return meta.skus.filter(
+      (sku) =>
+        (sku.product_name && sku.product_name.toLowerCase().includes(q)) ||
+        sku.sku_code.toLowerCase().includes(q)
+    ).slice(0, 8);
+  }, [meta?.skus, manualName]);
+
+  // Close name dropdown on click outside
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (nameDropdownRef.current && !nameDropdownRef.current.contains(e.target as Node)) {
+        setShowNameDropdown(false);
+      }
+    }
+    if (showNameDropdown) {
+      document.addEventListener('mousedown', handleClickOutside);
+      return () => document.removeEventListener('mousedown', handleClickOutside);
+    }
+  }, [showNameDropdown]);
+
   // Filter products by search query
   const filteredSkus = useMemo(() => {
     if (!meta?.skus) return [];
@@ -185,7 +218,6 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
       setFormEmail((draft.email as string) || '');
       setFormPhone((draft.phone as string) || '');
       setFormAddress((draft.address as string) || '');
-      setFormHub((draft.hub as string) || '');
       setFormIndustry((draft.industry as string) || '');
       setFormDeliveryTime((draft.deliveryTime as string) || '');
       setFormPaymentMethod((draft.paymentMethod as string) || '');
@@ -207,7 +239,6 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
             setFormEmail(data.customer.email || user?.email || '');
             setFormPhone(data.customer.phone || '');
             setFormAddress(data.customer.address || '');
-            setFormHub(data.customer.hub ? String(data.customer.hub) : '');
             setFormIndustry(data.customer.industry || '');
           } else if (user && !draft) {
             setFormContact(`${user.last_name ?? ''} ${user.first_name ?? ''}`.trim());
@@ -294,7 +325,6 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
       email: formEmail,
       phone: formPhone,
       address: formAddress,
-      hub: formHub,
       industry: formIndustry,
       deliveryTime: formDeliveryTime,
       paymentMethod: formPaymentMethod,
@@ -310,7 +340,6 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
     formEmail,
     formPhone,
     formAddress,
-    formHub,
     formIndustry,
     formDeliveryTime,
     formPaymentMethod,
@@ -340,7 +369,6 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
     }
 
     if (!formAddress.trim()) errors.address = t('required');
-    if (!formHub) errors.hub = t('required');
     if (!formIndustry) errors.industry = t('required');
 
     const validCartItems = cart.filter((item) => item.sku.trim() || item.product_name.trim());
@@ -367,7 +395,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
           email: formEmail.trim(),
           phone: formPhone.trim(),
           address: formAddress.trim(),
-          hub: parseInt(formHub),
+          hub: meta?.user?.hub || meta?.hubs?.[0]?.id || 1,
           industry: formIndustry,
           message: formMessage.trim(),
           items: validCartItems.map((item) => ({
@@ -439,7 +467,6 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
         setFormEmail('');
         setFormPhone('');
         setFormAddress('');
-        setFormHub('');
         setFormIndustry('');
       }
       setFormDeliveryTime('');
@@ -784,29 +811,8 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
 
             {/* ── Section 2: Product Table ── */}
             <div className="rounded-[3px] border border-border p-4 sm:p-6 shadow-sm space-y-3 sm:space-y-5">
-              <div className="flex items-center justify-between border-b border-slate-100 pb-2 sm:pb-3">
+              <div className="pb-2 sm:pb-3">
                 <h3 className={sectionHeadCls}>{t('sectionProducts')}</h3>
-                {cart.length > 0 && (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setSelectedProductToEdit(null);
-                      setSearchQuery('');
-                      setSelectedSkuId(null);
-                      setManualName('');
-                      setManualSku('');
-                      setManualSpec('');
-                      setManualUnit('cái');
-                      setManualQty(1);
-                      setManualNote('');
-                      setIsAddModalOpen(true);
-                    }}
-                    className="inline-flex items-center gap-1.5 rounded-[3px] bg-brand/5 hover:bg-brand/10 border border-brand/20 px-3.5 py-1.5 text-caption-responsive font-bold text-brand transition-all cursor-pointer"
-                  >
-                    <Plus className="h-4 w-4" />
-                    Thêm sản phẩm
-                  </button>
-                )}
               </div>
 
               {cart.length === 0 ? (
@@ -926,27 +932,27 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                   </div>
 
                   {/* Tablet/Desktop Table View */}
-                  <div className="hidden sm:block overflow-x-auto rounded-[3px] border border-border/60">
+                  <div className="hidden sm:block overflow-x-auto rounded-[3px] border border-slate-200">
                     <table className="w-full border-collapse text-left text-body-regular min-w-[600px]">
-                      <thead className="text-muted-foreground text-caption-responsive uppercase font-semibold border-b border-border/60">
+                      <thead className="bg-slate-50 text-muted-foreground text-caption-responsive uppercase font-semibold border-b border-slate-200">
                         <tr>
-                          <th className="px-2 sm:px-3 py-2 sm:py-3 w-12 text-center">{t('colIndex')}</th>
-                          <th className="px-2 sm:px-3 py-2 sm:py-3">{t('colProductSku')}</th>
-                          <th className="px-2 sm:px-3 py-2 sm:py-3 w-[160px]">{t('colSpec')}</th>
-                          <th className="px-2 sm:px-3 py-2 sm:py-3 w-[90px]">{t('colUnit')}</th>
-                          <th className="px-2 sm:px-3 py-2 sm:py-3 w-[110px]">{t('colQuantity')}</th>
-                          <th className="px-2 sm:px-3 py-2 sm:py-3 w-10"></th>
+                          <th className="px-2 sm:px-3 py-2.5 sm:py-3 w-12 text-center">{t('colIndex')}</th>
+                          <th className="px-2 sm:px-3 py-2.5 sm:py-3">{t('colProductSku')}</th>
+                          <th className="px-2 sm:px-3 py-2.5 sm:py-3 w-[160px]">{t('colSpec')}</th>
+                          <th className="px-2 sm:px-3 py-2.5 sm:py-3 w-[90px]">{t('colUnit')}</th>
+                          <th className="px-2 sm:px-3 py-2.5 sm:py-3 w-[130px]">{t('colQuantity')}</th>
+                          <th className="px-2 sm:px-3 py-2.5 sm:py-3 w-10"></th>
                         </tr>
                       </thead>
-                      <tbody className="divide-y divide-border/50">
+                      <tbody className="divide-y divide-slate-100 bg-white">
                         {cart.map((item, idx) => (
-                          <tr key={idx} className="hover:bg-muted/10 transition-colors">
-                            <td className="px-2 sm:px-3 py-2 sm:py-2.5 text-center text-caption-responsive text-muted-foreground font-mono">
+                          <tr key={idx} className="hover:bg-slate-50/60 transition-colors">
+                            <td className="px-2 sm:px-3 py-3 sm:py-4 text-center text-caption-responsive text-muted-foreground font-mono">
                               {String(idx + 1).padStart(2, '0')}
                             </td>
-                            <td className="px-2 sm:px-3 py-2 sm:py-2.5">
+                            <td className="px-2 sm:px-3 py-3 sm:py-4">
                               <span
-                                className="font-semibold text-foreground hover:text-brand cursor-pointer transition-colors block text-body-regular"
+                                className="font-bold text-foreground hover:text-brand cursor-pointer transition-colors block text-body-regular leading-snug"
                                 onClick={() => {
                                   setSelectedProductToEdit(idx);
                                   setManualName(item.product_name || '');
@@ -962,34 +968,23 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                                 {item.product_name || item.sku}
                               </span>
                               {item.sku && item.product_name && item.sku !== item.product_name && (
-                                <span className="text-caption-responsive text-muted-foreground/70 font-mono mt-0.5 block">
+                                <span className="text-caption-responsive text-muted-foreground/60 font-mono mt-0.5 block">
                                   SKU: {item.sku}
                                 </span>
                               )}
                             </td>
-                            <td className="px-2 sm:px-3 py-2 sm:py-2.5 text-body-regular text-slate-700 font-medium">
+                            <td className="px-2 sm:px-3 py-3 sm:py-4 text-body-regular text-slate-600 font-medium">
                               {item.spec || '-'}
                             </td>
-                            <td className="px-2 sm:px-3 py-2 sm:py-2.5 text-body-regular text-slate-700 font-medium">
+                            <td className="px-2 sm:px-3 py-3 sm:py-4 text-body-regular text-slate-700 font-medium">
                               {item.unit || '-'}
                             </td>
-                            <td className="px-3 py-2.5">
-                              <input
-                                type="number"
-                                min={1}
-                                value={item.quantity || ''}
-                                onChange={(e) =>
-                                  handleUpdateCartField(
-                                    idx,
-                                    'quantity',
-                                    Math.max(1, parseInt(e.target.value) || 1)
-                                  )
-                                }
-                                className="w-24 rounded-[3px] border border-border/80 px-2.5 py-1 text-body-regular outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand font-semibold text-center"
-                                placeholder="1"
-                              />
+                            <td className="px-3 py-3 sm:py-4">
+                              <span className="text-brand font-bold text-body-regular">
+                                {(item.quantity || 1).toLocaleString('vi-VN')}
+                              </span>
                             </td>
-                            <td className="px-3 py-2.5 text-center">
+                            <td className="px-3 py-3 sm:py-4 text-center">
                               <button
                                 type="button"
                                 onClick={() => handleRemoveItem(idx)}
@@ -1003,6 +998,27 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                       </tbody>
                     </table>
                   </div>
+
+                  {/* Add product row link */}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSelectedProductToEdit(null);
+                      setSearchQuery('');
+                      setSelectedSkuId(null);
+                      setManualName('');
+                      setManualSku('');
+                      setManualSpec('');
+                      setManualUnit('cái');
+                      setManualQty(1);
+                      setManualNote('');
+                      setIsAddModalOpen(true);
+                    }}
+                    className="inline-flex items-center gap-2 text-brand font-semibold text-body-regular hover:text-brand/80 transition-colors cursor-pointer pt-1"
+                  >
+                    <Plus className="h-4 w-4" />
+                    Thêm dòng sản phẩm / Mã hàng khác
+                  </button>
                 </>
               )}
             </div>
@@ -1054,10 +1070,9 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                       className={selectCls()}
                     >
                       <option value="">{t('deliveryTimePlaceholder')}</option>
-                      <option value="7d">{t('deliveryTimeOpt1')}</option>
-                      <option value="15-30d">{t('deliveryTimeOpt2')}</option>
-                      <option value="30-60d">{t('deliveryTimeOpt3')}</option>
-                      <option value="60d+">{t('deliveryTimeOpt4')}</option>
+                      <option value="1-3d">1-3 ngày</option>
+                      <option value="7d">Trong vòng 7 ngày</option>
+                      <option value="15-30d">Trong vòng 15-30 ngày</option>
                     </select>
                     <ChevronRight className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground rotate-90 pointer-events-none" />
                   </div>
@@ -1108,32 +1123,6 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                 </div>
               </div>
 
-              {/* Hub */}
-              <div className="space-y-1.5">
-                <label className="text-body-regular font-medium text-foreground">{t('hubLabel')}</label>
-                <div className="relative">
-                  <select
-                    value={formHub}
-                    onChange={(e) => {
-                      setFormHub(e.target.value);
-                      setFieldErrors((p) => ({ ...p, hub: '' }));
-                    }}
-                    className={selectCls(fieldErrors.hub)}
-                  >
-                    <option value="">{t('hubPlaceholder')}</option>
-                    {meta?.hubs.map((hub) => (
-                      <option key={hub.id} value={hub.id}>
-                        {hub.name}
-                      </option>
-                    ))}
-                  </select>
-                  <ChevronRight className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground rotate-90 pointer-events-none" />
-                </div>
-                {fieldErrors.hub && (
-                  <span className="text-caption-responsive text-rose-500 font-medium">{fieldErrors.hub}</span>
-                )}
-              </div>
-
               {/* Special Request */}
               <div className="space-y-1.5">
                 <label className="text-body-regular font-medium text-foreground">
@@ -1147,6 +1136,76 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
                   className="w-full rounded-[3px] border border-border/80 px-3 py-2.5 text-body-regular outline-none transition-all focus:border-brand focus:ring-1 focus:ring-brand resize-none"
                 />
               </div>
+            </div>
+
+            {/* ── Section 4: Technical Documents ── */}
+            <div className="rounded-[3px] border border-border p-4 sm:p-6 shadow-sm space-y-3 sm:space-y-4">
+              <h3 className={sectionHeadCls}>Tài liệu kỹ thuật đính kèm</h3>
+
+              {/* Drag & drop upload area */}
+              <div
+                onDragOver={(e) => { e.preventDefault(); setDragActive(true); }}
+                onDragLeave={() => setDragActive(false)}
+                onDrop={handleDrop}
+                onClick={() => fileInputRef.current?.click()}
+                className={cn(
+                  "border-2 border-dashed rounded-lg p-6 sm:p-8 text-center cursor-pointer transition-all",
+                  dragActive
+                    ? "border-[#0F62FE] bg-[#E0EDFF]"
+                    : "border-[#DDE1E6] bg-[#F2F4F8] hover:border-[#0F62FE]/50 hover:bg-[#F2F4F8]/80"
+                )}
+              >
+                <input
+                  ref={fileInputRef}
+                  type="file"
+                  multiple
+                  accept=".pdf,.docx,.xlsx,.png,.jpg,.jpeg"
+                  onChange={handleFileChange}
+                  className="hidden"
+                />
+                <div className="flex flex-col items-center gap-2">
+                  <svg className="h-8 w-8 text-[#697077]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
+                  </svg>
+                  <p className="text-sm font-medium text-[#21272A]">
+                    Kéo thả hoặc click để tải lên tệp tin của bạn
+                  </p>
+                  <p className="text-xs text-[#697077]">
+                    Hỗ trợ định dạng PDF, DOCX, XLSX, PNG, JPG (Dung lượng tối đa: 10MB)
+                  </p>
+                </div>
+              </div>
+
+              {/* Uploaded files list */}
+              {uploadedFiles.length > 0 && (
+                <div className="space-y-2">
+                  {uploadedFiles.map((file, index) => (
+                    <div
+                      key={index}
+                      className="flex items-center justify-between p-3 bg-white border border-[#DDE1E6] rounded-lg"
+                    >
+                      <div className="flex items-center gap-3 min-w-0">
+                        <div className="h-9 w-9 rounded-lg bg-[#F2F4F8] flex items-center justify-center shrink-0">
+                          <svg className="h-5 w-5 text-[#697077]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                          </svg>
+                        </div>
+                        <div className="min-w-0">
+                          <p className="text-sm font-medium text-[#21272A] truncate">{file.name}</p>
+                          <p className="text-xs text-[#697077]">{(file.size / (1024 * 1024)).toFixed(1)} MB · Tải lên hoàn tất</p>
+                        </div>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => handleRemoveFile(index)}
+                        className="text-rose-400 hover:text-rose-600 transition-colors cursor-pointer p-1 shrink-0"
+                      >
+                        <X className="h-4 w-4" />
+                      </button>
+                    </div>
+                  ))}
+                </div>
+              )}
             </div>
 
             {/* ── Actions ── */}
@@ -1282,7 +1341,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
               <button
                 type="button"
                 onClick={() => setIsPhoneModalOpen(true)}
-                className="flex items-center justify-center gap-2 w-full rounded-[3px] border-2 border-rose-500 px-4 py-2.5 text-body-regular font-semibold text-rose-600 hover:bg-rose-50 hover:text-rose-700 transition-all cursor-pointer"
+                className="flex items-center justify-center gap-2 w-full rounded-[3px] bg-blue-600 px-4 py-2.5 text-body-regular font-semibold text-white hover:bg-blue-700 transition-all cursor-pointer"
               >
                 <Phone className="h-4 w-4" />
                 {t('sidebarCtaCall')}
@@ -1292,322 +1351,554 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
         </div>
       </div>
       {/* Add / Edit Product Modal */}
-    {isAddModalOpen && (
-      <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-3 sm:p-4">
-        <div className="bg-white rounded-[3px] shadow-2xl border border-slate-200 w-full max-w-sm sm:max-w-[600px] flex flex-col max-h-[95vh] sm:max-h-[90vh] text-slate-800 animate-in fade-in zoom-in-95 duration-250">
-          
-          {/* Header */}
-          <div className="flex items-center justify-between px-4 sm:px-6 py-3 sm:py-4 border-b border-slate-150">
-            <h3 className="text-body-regular sm:text-card-title font-bold text-slate-900">
-              {selectedProductToEdit !== null ? 'Chỉnh sửa sản phẩm báo giá' : 'Thêm sản phẩm vào danh sách báo giá'}
-            </h3>
+      {isAddModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-3 sm:p-4">
+          {/* Outer blue wrapper — Figma: 5px padding, bg #1769E2, rounded 16px */}
+          <div className="bg-[#1769E2] rounded-2xl p-[5px] w-full max-w-sm sm:max-w-[720px] max-h-[95vh] sm:max-h-[90vh] animate-in fade-in zoom-in-95 duration-250">
+            {/* Inner modal card — Figma: bg #FFF, rounded 12px, shadow */}
+            <div className="bg-white rounded-xl shadow-[0px_12px_24px_-2px_rgba(0,0,0,0.1)] border border-[#DDE1E6] flex flex-col max-h-[calc(95vh-10px)] sm:max-h-[calc(90vh-10px)] text-slate-800">
+
+              {/* Header — Figma: padding 20px 24px, border-bottom #F2F4F8 */}
+              <div className="flex items-center justify-between px-4 sm:px-6 py-4 sm:py-5 border-b border-[#F2F4F8]">
+                <h3 className="text-base sm:text-lg font-semibold text-[#001D6C]">
+                  {selectedProductToEdit !== null ? 'Chỉnh sửa sản phẩm báo giá' : 'Thêm sản phẩm vào danh sách báo giá'}
+                </h3>
+                <button
+                  type="button"
+                  onClick={() => setIsAddModalOpen(false)}
+                  className="text-slate-400 hover:text-slate-600 transition-colors cursor-pointer p-1"
+                >
+                  <X className="h-5 w-5 sm:h-6 sm:w-6" />
+                </button>
+              </div>
+
+              {/* Scrollable Content — Figma: padding 24px, gap 24px */}
+              <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-5 sm:space-y-6 scrollbar-thin">
+
+                {/* Search input (only if not editing) */}
+                {selectedProductToEdit === null && (
+                  <div className="space-y-1.5 sm:space-y-2">
+                    <div className="relative">
+                      <input
+                        type="text"
+                        placeholder="Tìm kiếm găng tay, khăn lau, túi..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="w-full rounded-md border-[1.5px] border-[#0F62FE] pl-10 sm:pl-11 pr-4 py-2.5 sm:py-3 text-sm outline-none focus:ring-1 focus:ring-[#0F62FE] font-normal text-[#21272A] placeholder:text-[#21272A]/60"
+                      />
+                      <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-[#21272A]/50">
+                        <svg className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                          <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                        </svg>
+                      </span>
+                    </div>
+                    <p className="text-xs text-[#697077] font-normal">
+                      Hoặc nhập thông tin sản phẩm thủ công bên dưới nếu không tìm thấy
+                    </p>
+                  </div>
+                )}
+
+                {/* Searched Product List (only if not editing) — Figma: gap 8px */}
+                {selectedProductToEdit === null && filteredSkus.length > 0 && (
+                  <div className="space-y-2 max-h-[150px] sm:max-h-[240px] overflow-y-auto pr-1">
+                    {filteredSkus.map((sku) => {
+                      const isSelected = selectedSkuId === sku.id;
+                      const priceRange = getSkuPriceRange(sku.sku_code, sku.unit);
+
+                      return (
+                        <div
+                          key={sku.id}
+                          onClick={() => {
+                            setQtyModalSku(sku);
+                            // Compute MOQ from sku hash
+                            let h = 0;
+                            for (let i = 0; i < sku.sku_code.length; i++) h = sku.sku_code.charCodeAt(i) + ((h << 5) - h);
+                            const moqVal = Math.abs(h % 10) * 100 + 500;
+                            setQtyModalValue(moqVal);
+                            setQtyModalUnit(sku.unit || 'cái');
+                            setIsQtyModalOpen(true);
+                          }}
+                          className={cn(
+                            "flex items-center justify-between p-3 bg-white border rounded-lg cursor-pointer transition-all hover:border-[#0F62FE] hover:shadow-sm gap-4",
+                            isSelected ? "border-[#0F62FE] border-[1.5px] bg-[#F2F4F8]" : "border-[#DDE1E6]"
+                          )}
+                        >
+                          <div className="flex items-center gap-3 sm:gap-4 min-w-0">
+                            {/* Thumbnail — Figma: 48x48, rounded 4px */}
+                            <div className="h-10 sm:h-12 w-10 sm:w-12 bg-slate-50 border border-slate-200 rounded flex items-center justify-center text-slate-400 font-mono text-xs uppercase font-bold shrink-0 relative overflow-hidden">
+                              {sku.hero ? (
+                                <Image
+                                  src={resolveImageUrl(sku.hero) || '/images/banners/login-hero.webp'}
+                                  alt={sku.product_name || ""}
+                                  fill
+                                  className="object-cover"
+                                  sizes="48px"
+                                />
+                              ) : (
+                                sku.sku_code.slice(0, 3)
+                              )}
+                            </div>
+                            <div className="text-left min-w-0 flex-1 space-y-0.5">
+                              <h4 className="text-sm font-semibold text-[#001D6C] leading-tight line-clamp-1">
+                                {sku.product_name}
+                              </h4>
+                              <p className="text-xs text-[#697077] font-normal truncate">
+                                SKU: {sku.sku_code}{sku.pack_size ? ` · Quy cách: ${sku.pack_size}` : ''} · MOQ: {(() => { let h = 0; for (let i = 0; i < sku.sku_code.length; i++) h = sku.sku_code.charCodeAt(i) + ((h << 5) - h); return (Math.abs(h % 10) * 100 + 500).toLocaleString('vi-VN'); })()} {sku.unit}
+                              </p>
+                            </div>
+                          </div>
+
+                          <div className="flex items-center gap-3 sm:gap-4 shrink-0">
+                            <span className={cn(
+                              "text-sm font-semibold text-right hidden sm:inline",
+                              isSelected ? "text-[#0F62FE]" : "text-[#21272A]"
+                            )}>
+                              {priceRange}
+                            </span>
+                            {/* Radio circle — Figma: 20x20 rounded full */}
+                            <div className={cn(
+                              "h-5 w-5 rounded-full border flex items-center justify-center transition-all shrink-0",
+                              isSelected ? "border-[#0F62FE] bg-[#0F62FE] text-white" : "border-[#C1C7CD] bg-white"
+                            )}>
+                              {isSelected && <Check className="h-3 w-3 stroke-[3]" />}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                )}
+
+                {/* Divider — Figma: line + text + line, gap 16px */}
+                {selectedProductToEdit === null && (
+                  <div className="relative flex items-center gap-4">
+                    <div className="flex-grow border-t border-[#DDE1E6]"></div>
+                    <span className="text-xs text-[#697077] font-normal whitespace-nowrap">
+                      Hoặc nhập thủ công
+                    </span>
+                    <div className="flex-grow border-t border-[#DDE1E6]"></div>
+                  </div>
+                )}
+
+                {/* Form fields — Figma: gap 16px, labels 14px medium, inputs rounded-md border #DDE1E6 */}
+                <div className="space-y-4 text-left">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="space-y-1.5 relative" ref={nameDropdownRef}>
+                      <label className="text-sm font-medium text-[#21272A] flex items-center gap-0.5">
+                        Tên sản phẩm <span className="text-[#FF3B30]">*</span>
+                      </label>
+                      <input
+                        type="text"
+                        required
+                        placeholder="Gõ để tìm sản phẩm..."
+                        value={manualName}
+                        onChange={(e) => {
+                          setManualName(e.target.value);
+                          setShowNameDropdown(true);
+                        }}
+                        onFocus={() => { if (manualName.trim()) setShowNameDropdown(true); }}
+                        autoComplete="off"
+                        className="w-full rounded-md border border-[#DDE1E6] px-4 py-2.5 text-sm outline-none focus:border-[#0F62FE] focus:ring-1 focus:ring-[#0F62FE] font-normal text-[#21272A] placeholder:text-[#A2A9B0]"
+                      />
+                      {/* Autocomplete dropdown */}
+                      {showNameDropdown && nameFilteredSkus.length > 0 && (
+                        <div className="absolute z-20 left-0 right-0 top-full mt-1 bg-white border border-[#DDE1E6] rounded-lg shadow-lg max-h-[200px] overflow-y-auto">
+                          {nameFilteredSkus.map((sku) => (
+                            <button
+                              key={sku.id}
+                              type="button"
+                              onClick={() => {
+                                setManualName(sku.product_name || sku.sku_code);
+                                setManualSku(sku.sku_code);
+                                setManualSpec(sku.pack_size || '');
+                                setManualUnit(sku.unit || 'cái');
+                                setShowNameDropdown(false);
+                              }}
+                              className="w-full text-left px-4 py-2.5 hover:bg-[#F2F4F8] transition-colors flex items-center gap-3 border-b border-[#F2F4F8] last:border-b-0 cursor-pointer"
+                            >
+                              <div className="h-8 w-8 bg-slate-50 border border-slate-200 rounded flex items-center justify-center shrink-0 relative overflow-hidden">
+                                {sku.hero ? (
+                                  <Image
+                                    src={resolveImageUrl(sku.hero) || '/images/banners/login-hero.webp'}
+                                    alt={sku.product_name || ''}
+                                    fill
+                                    className="object-cover"
+                                    sizes="32px"
+                                  />
+                                ) : (
+                                  <span className="text-[10px] font-bold text-slate-400 uppercase">{sku.sku_code.slice(0, 3)}</span>
+                                )}
+                              </div>
+                              <div className="min-w-0 flex-1">
+                                <p className="text-sm font-medium text-[#001D6C] truncate">{sku.product_name}</p>
+                                <p className="text-xs text-[#697077] truncate">SKU: {sku.sku_code}{sku.pack_size ? ` · ${sku.pack_size}` : ''} · {sku.unit}</p>
+                              </div>
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                    <div className="space-y-1.5">
+                      <label className="text-sm font-medium text-[#21272A]">
+                        Mã SKU (nếu có)
+                      </label>
+                      <input
+                        type="text"
+                        placeholder="Ví dụ: UL-NG-1001"
+                        value={manualSku}
+                        onChange={(e) => setManualSku(e.target.value)}
+                        className="w-full rounded-md border border-[#DDE1E6] px-4 py-2.5 text-sm outline-none focus:border-[#0F62FE] focus:ring-1 focus:ring-[#0F62FE] font-normal text-[#21272A] placeholder:text-[#A2A9B0]"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <label className="text-sm font-medium text-[#21272A]">
+                      Quy cách / Thông số kỹ thuật
+                    </label>
+                    <input
+                      type="text"
+                      placeholder="Ví dụ: Size L, Màu xanh dương, hộp 100 chiếc"
+                      value={manualSpec}
+                      onChange={(e) => setManualSpec(e.target.value)}
+                      className="w-full rounded-md border border-[#DDE1E6] px-4 py-2.5 text-sm outline-none focus:border-[#0F62FE] focus:ring-1 focus:ring-[#0F62FE] font-normal text-[#21272A] placeholder:text-[#A2A9B0]"
+                    />
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div className="space-y-1.5">
+                      <label className="text-sm font-medium text-[#21272A]">
+                        Đơn vị tính
+                      </label>
+                      <select
+                        value={manualUnit}
+                        onChange={(e) => setManualUnit(e.target.value)}
+                        className="w-full rounded-md border border-[#DDE1E6] px-4 py-2.5 text-sm outline-none focus:border-[#0F62FE] focus:ring-1 focus:ring-[#0F62FE] font-normal text-[#21272A] bg-white appearance-none"
+                      >
+                        <option value="cái">Cái</option>
+                        <option value="đôi">Đôi</option>
+                        <option value="cuộn">Cuộn</option>
+                        <option value="hộp">Hộp</option>
+                        <option value="thùng">Thùng</option>
+                        <option value="gói">Gói</option>
+                        <option value="mét">Mét</option>
+                        <option value="kg">Kg</option>
+                      </select>
+                    </div>
+                    <div className="space-y-1.5">
+                      <label className="text-sm font-medium text-[#21272A] flex items-center gap-0.5">
+                        Số lượng yêu cầu <span className="text-[#FF3B30]">*</span>
+                      </label>
+                      <input
+                        type="number"
+                        min={1}
+                        required
+                        placeholder="Nhập số lượng"
+                        value={manualQty || ''}
+                        onChange={(e) => setManualQty(Math.max(1, parseInt(e.target.value) || 1))}
+                        className="w-full rounded-md border border-[#DDE1E6] px-4 py-2.5 text-sm outline-none focus:border-[#0F62FE] focus:ring-1 focus:ring-[#0F62FE] font-normal text-[#21272A] placeholder:text-[#A2A9B0]"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <label className="text-sm font-medium text-[#21272A]">
+                      Ghi chú yêu cầu đặc biệt
+                    </label>
+                    <textarea
+                      rows={2}
+                      placeholder="Yêu cầu đóng gói riêng biệt 50 hộp/thùng carton..."
+                      value={manualNote}
+                      onChange={(e) => setManualNote(e.target.value)}
+                      className="w-full rounded-md border border-[#DDE1E6] px-4 py-4 text-sm outline-none focus:border-[#0F62FE] focus:ring-1 focus:ring-[#0F62FE] resize-none font-normal text-[#21272A] placeholder:text-[#A2A9B0]"
+                    />
+                  </div>
+                </div>
+
+              </div>
+
+              {/* Footer — Figma: padding 16px 24px, border-top #F2F4F8, gap 12px */}
+              <div className="flex items-center justify-end gap-3 px-4 sm:px-6 py-3 sm:py-4 border-t border-[#F2F4F8]">
+                <button
+                  type="button"
+                  onClick={() => setIsAddModalOpen(false)}
+                  className="px-5 sm:px-6 py-2.5 rounded-md border-[1.5px] border-[#0F62FE] bg-white text-sm font-semibold text-[#0F62FE] hover:bg-blue-50 transition-colors cursor-pointer"
+                >
+                  {selectedProductToEdit !== null ? 'Hủy' : 'Sửa'}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    if (!manualName.trim()) {
+                      alert('Vui lòng nhập tên sản phẩm.');
+                      return;
+                    }
+                    const itemToSave: CartItem = {
+                      sku: manualSku.trim() || manualName.trim(),
+                      product_name: manualName.trim(),
+                      spec: manualSpec.trim(),
+                      unit: manualUnit,
+                      quantity: manualQty || 1,
+                      note: manualNote.trim()
+                    };
+
+                    const newCart = [...cart];
+                    if (selectedProductToEdit !== null) {
+                      newCart[selectedProductToEdit] = itemToSave;
+                    } else {
+                      newCart.push(itemToSave);
+                    }
+                    saveCart(newCart);
+                    setIsAddModalOpen(false);
+                  }}
+                  className="px-5 sm:px-6 py-2.5 rounded-md bg-[#0F62FE] text-white text-sm font-semibold shadow hover:bg-[#0353E9] transition-all cursor-pointer"
+                >
+                  {selectedProductToEdit !== null ? 'Cập nhật' : 'Lưu'}
+                </button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      )}
+      {/* Quantity Modal — Figma: popup-quantity */}
+      {isQtyModalOpen && qtyModalSku && (() => {
+        const sku = qtyModalSku;
+        const priceRange = getSkuPriceRange(sku.sku_code, sku.unit);
+        // Derive MOQ & price tiers from hash
+        let hash = 0;
+        for (let i = 0; i < sku.sku_code.length; i++) hash = sku.sku_code.charCodeAt(i) + ((hash << 5) - hash);
+        const moq = Math.abs(hash % 10) * 100 + 500;
+        const basePrice = Math.abs(hash % 150) * 1000 + 15000;
+        const tier1Hi = moq + 499;
+        const tier2Lo = tier1Hi + 1;
+        const tier2Hi = tier2Lo + 3999;
+        const tier3Lo = tier2Hi + 1;
+        const price1 = basePrice;
+        const price2 = Math.round(basePrice * 0.92);
+        const unitCap = (sku.unit || 'cái').charAt(0).toUpperCase() + (sku.unit || 'cái').slice(1);
+
+        return (
+          <div className="fixed inset-0 z-[60] flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-3 sm:p-4">
+            <div className="bg-[#1769E2] rounded-2xl p-[5px] pb-2.5 w-full max-w-[480px] animate-in fade-in zoom-in-95 duration-250">
+              <div className="bg-white rounded-xl shadow-[0px_12px_24px_-2px_rgba(0,0,0,0.1)] border border-[#DDE1E6] flex flex-col text-slate-800">
+
+                {/* Header */}
+                <div className="flex items-center justify-between px-5 sm:px-6 py-4 sm:py-5 border-b border-[#F2F4F8]">
+                  <h3 className="text-base sm:text-lg font-semibold text-[#001D6C]">Nhập số lượng đặt hàng</h3>
+                  <button type="button" onClick={() => setIsQtyModalOpen(false)} className="text-slate-400 hover:text-slate-600 transition-colors cursor-pointer p-1">
+                    <X className="h-5 w-5 sm:h-6 sm:w-6" />
+                  </button>
+                </div>
+
+                {/* Body */}
+                <div className="p-5 sm:p-6 space-y-5">
+                  {/* Product summary */}
+                  <div className="bg-[#F2F4F8] rounded-lg p-4 space-y-1">
+                    <p className="text-sm font-semibold text-[#001D6C]">{sku.product_name}</p>
+                    <p className="text-xs text-[#697077]">SKU: {sku.sku_code} · Đơn vị tính cơ bản: {unitCap}</p>
+                  </div>
+
+                  {/* Quantity input row */}
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium text-[#21272A] flex items-center gap-0.5">
+                      Số lượng yêu cầu <span className="text-[#FF3B30]">*</span>
+                    </label>
+                    <div className="flex items-center gap-3">
+                      {/* Stepper */}
+                      <div className="flex items-center flex-1 border border-[#DDE1E6] rounded-lg overflow-hidden bg-white">
+                        <button
+                          type="button"
+                          onClick={() => setQtyModalValue(Math.max(moq, qtyModalValue - 1))}
+                          className="w-11 h-11 flex items-center justify-center bg-[#F2F4F8] border-r border-[#DDE1E6] text-lg font-semibold text-[#21272A] hover:bg-slate-200 transition-colors cursor-pointer select-none"
+                        >—</button>
+                        <input
+                          type="text"
+                          value={qtyModalValue.toLocaleString('vi-VN')}
+                          onChange={(e) => {
+                            const v = parseInt(e.target.value.replace(/\./g, '')) || moq;
+                            setQtyModalValue(Math.max(moq, v));
+                          }}
+                          className="flex-1 text-center py-2.5 text-base font-semibold text-[#21272A] outline-none"
+                        />
+                        <button
+                          type="button"
+                          onClick={() => setQtyModalValue(qtyModalValue + 1)}
+                          className="w-11 h-11 flex items-center justify-center bg-[#F2F4F8] border-l border-[#DDE1E6] text-lg font-semibold text-[#21272A] hover:bg-slate-200 transition-colors cursor-pointer select-none"
+                        >+</button>
+                      </div>
+                      {/* Unit dropdown */}
+                      <select
+                        value={qtyModalUnit}
+                        onChange={(e) => setQtyModalUnit(e.target.value)}
+                        className="w-[120px] h-11 rounded-md border border-[#DDE1E6] px-4 text-sm font-medium text-[#21272A] bg-white outline-none focus:border-[#0F62FE] appearance-none cursor-pointer"
+                      >
+                        <option value="cái">Cái</option>
+                        <option value="đôi">Đôi</option>
+                        <option value="cuộn">Cuộn</option>
+                        <option value="hộp">Hộp</option>
+                        <option value="thùng">Thùng</option>
+                        <option value="gói">Gói</option>
+                        <option value="mét">Mét</option>
+                        <option value="kg">Kg</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  {/* MOQ info box */}
+                  <div className="bg-[#E0EDFF] border border-[#0F62FE] rounded-lg p-4 space-y-1">
+                    <div className="flex items-center gap-2">
+                      <span className="w-1.5 h-1.5 rounded-full bg-[#0F62FE] shrink-0"></span>
+                      <p className="text-[13px] font-semibold text-[#001D6C]">Số lượng tối thiểu (MOQ): {moq.toLocaleString('vi-VN')} {unitCap}</p>
+                    </div>
+                    <p className="text-xs text-[#001D6C] pl-3.5">* Đơn giá ưu đãi tốt nhất áp dụng tự động cho các đơn hàng từ {tier2Lo.toLocaleString('vi-VN')} {unitCap} trở lên.</p>
+                  </div>
+
+                  {/* Price tier table */}
+                  {(() => {
+                    const activeTier = qtyModalValue >= tier3Lo ? 3 : qtyModalValue >= tier2Lo ? 2 : 1;
+                    const activeRow = "flex justify-between items-center px-4 py-3 bg-[#F2F4F8] border-y border-[#0F62FE] transition-all";
+                    const normalRow = "flex justify-between px-4 py-3 border-b border-[#F2F4F8] last:border-b-0 transition-all";
+                    return (
+                      <div className="border border-[#DDE1E6] rounded-lg overflow-hidden">
+                        <div className="flex justify-between px-4 py-2.5 bg-[#F2F4F8]">
+                          <span className="text-xs font-semibold text-[#697077]">Số lượng đặt</span>
+                          <span className="text-xs font-semibold text-[#697077]">Đơn giá ước tính</span>
+                        </div>
+                        {/* Row 1 */}
+                        <div className={activeTier === 1 ? activeRow : normalRow}>
+                          <div className="flex items-center gap-2">
+                            <span className={`text-[13px] ${activeTier === 1 ? 'font-semibold text-[#0F62FE]' : 'text-[#697077]'}`}>
+                              {moq.toLocaleString('vi-VN')} - {tier1Hi.toLocaleString('vi-VN')} {unitCap}
+                            </span>
+                            {activeTier === 1 && <span className="bg-[#0F62FE] text-white text-[10px] font-semibold px-1.5 py-0.5 rounded">Hiện tại</span>}
+                          </div>
+                          <span className={`text-[13px] ${activeTier === 1 ? 'font-semibold text-[#0F62FE]' : 'text-[#21272A]'}`}>
+                            {price1.toLocaleString('vi-VN')}đ/{unitCap}
+                          </span>
+                        </div>
+                        {/* Row 2 */}
+                        <div className={activeTier === 2 ? activeRow : normalRow}>
+                          <div className="flex items-center gap-2">
+                            <span className={`text-[13px] ${activeTier === 2 ? 'font-semibold text-[#0F62FE]' : 'text-[#697077]'}`}>
+                              {tier2Lo.toLocaleString('vi-VN')} - {tier2Hi.toLocaleString('vi-VN')} {unitCap}
+                            </span>
+                            {activeTier === 2 && <span className="bg-[#0F62FE] text-white text-[10px] font-semibold px-1.5 py-0.5 rounded">Hiện tại</span>}
+                          </div>
+                          <span className={`text-[13px] ${activeTier === 2 ? 'font-semibold text-[#0F62FE]' : 'text-[#21272A]'}`}>
+                            {price2.toLocaleString('vi-VN')}đ/{unitCap}
+                          </span>
+                        </div>
+                        {/* Row 3 */}
+                        <div className={activeTier === 3 ? activeRow : normalRow}>
+                          <div className="flex items-center gap-2">
+                            <span className={`text-[13px] ${activeTier === 3 ? 'font-semibold text-[#0F62FE]' : 'text-[#697077]'}`}>
+                              Trên {tier3Lo.toLocaleString('vi-VN')} {unitCap}
+                            </span>
+                            {activeTier === 3 && <span className="bg-[#0F62FE] text-white text-[10px] font-semibold px-1.5 py-0.5 rounded">Hiện tại</span>}
+                          </div>
+                          <span className={`text-[13px] ${activeTier === 3 ? 'font-semibold text-[#0F62FE]' : 'font-medium text-[#0F62FE]'}`}>
+                            {activeTier === 3 ? 'Liên hệ hỗ trợ' : 'Liên hệ hỗ trợ'}
+                          </span>
+                        </div>
+                      </div>
+                    );
+                  })()}
+                </div>
+
+                {/* Footer */}
+                <div className="flex items-center justify-end gap-3 px-5 sm:px-6 py-3 sm:py-4 border-t border-[#F2F4F8]">
+                  <button
+                    type="button"
+                    onClick={() => setIsQtyModalOpen(false)}
+                    className="px-6 py-2.5 rounded-md border-[1.5px] border-[#2E408F] bg-white text-sm font-semibold text-[#2E408F] hover:bg-blue-50 transition-colors cursor-pointer"
+                  >Sửa</button>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const itemToSave: CartItem = {
+                        sku: sku.sku_code,
+                        product_name: sku.product_name || sku.sku_code,
+                        spec: sku.pack_size || '',
+                        unit: qtyModalUnit,
+                        quantity: qtyModalValue,
+                        note: ''
+                      };
+                      const newCart = [...cart];
+                      newCart.push(itemToSave);
+                      saveCart(newCart);
+                      setIsQtyModalOpen(false);
+                      setIsAddModalOpen(false);
+                    }}
+                    className="px-6 py-2.5 rounded-md bg-[#1769E2] text-white text-sm font-semibold shadow hover:bg-[#0353E9] transition-all cursor-pointer"
+                  >Lưu</button>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        );
+      })()}
+      {/* Hotline Phone Modal */}
+      {isPhoneModalOpen && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4 animate-in fade-in duration-200">
+          <div className="bg-white rounded-[3px] shadow-2xl border border-slate-200 w-full max-w-[420px] p-6 text-center text-slate-800 animate-in zoom-in-95 duration-200 relative">
+
             <button
               type="button"
-              onClick={() => setIsAddModalOpen(false)}
-              className="text-slate-400 hover:text-slate-650 transition-colors cursor-pointer"
+              onClick={() => setIsPhoneModalOpen(false)}
+              className="absolute top-4 right-4 text-slate-400 hover:text-slate-650 transition-colors cursor-pointer"
             >
               <X className="h-5 w-5" />
             </button>
-          </div>
 
-          {/* Scrollable Content */}
-          <div className="flex-1 overflow-y-auto p-4 sm:p-6 space-y-4 sm:space-y-6 scrollbar-thin">
-            
-            {/* Search input (only if not editing) */}
-            {selectedProductToEdit === null && (
-              <div className="space-y-1.5 sm:space-y-2">
-                <div className="relative">
-                  <input
-                    type="text"
-                    placeholder="Tìm kiếm găng tay, khăn lau, túi..."
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="w-full rounded-[3px] border border-slate-200 pl-9 pr-3 sm:pl-10 sm:pr-4 py-2 sm:py-3 text-caption-responsive sm:text-body-regular outline-none focus:border-brand focus:ring-1 focus:ring-brand font-medium"
-                  />
-                  <span className="absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400">
-                    <svg className="h-4.5 w-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
-                  </span>
-                </div>
-                <p className="text-caption-responsive text-slate-400 font-medium">
-                  Hoặc nhập thông tin sản phẩm thủ công bên dưới nếu không tìm thấy
-                </p>
-              </div>
-            )}
+            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-rose-50 border border-rose-100 mb-4 animate-bounce">
+              <Phone className="h-6 w-6 text-rose-600" />
+            </div>
 
-            {/* Searched Product List (only if not editing) */}
-            {selectedProductToEdit === null && filteredSkus.length > 0 && (
-              <div className="space-y-2 sm:space-y-2.5 max-h-[150px] sm:max-h-[220px] overflow-y-auto pr-1 border border-slate-100 rounded-[3px] p-1.5 sm:p-2 bg-slate-50/50">
-                {filteredSkus.map((sku) => {
-                  const isSelected = selectedSkuId === sku.id;
-                  const priceRange = getSkuPriceRange(sku.sku_code, sku.unit);
+            <h3 className="text-card-title font-bold text-slate-900 mb-2">
+              Hotline Hỗ Trợ 24/7
+            </h3>
 
-                  return (
-                    <div
-                      key={sku.id}
-                      onClick={() => {
-                        setSelectedSkuId(sku.id);
-                        setManualName(sku.product_name || 'Sản phẩm ULink');
-                        setManualSku(sku.sku_code);
-                        setManualSpec(sku.pack_size || '');
-                        setManualUnit(sku.unit || 'cái');
-                      }}
-                      className={cn(
-                        "flex items-center justify-between p-2 sm:p-3.5 bg-white border rounded-[3px] cursor-pointer transition-all hover:border-brand hover:shadow-sm gap-2",
-                        isSelected ? "border-brand ring-1 ring-brand bg-blue-50/10" : "border-slate-200"
-                      )}
-                    >
-                      <div className="flex items-center gap-2 sm:gap-3 min-w-0">
-                        <div className="h-8 sm:h-10 w-8 sm:w-10 bg-slate-50 border border-slate-150 rounded-[3px] flex items-center justify-center text-slate-400 font-mono text-caption-responsive uppercase font-bold shrink-0 relative overflow-hidden">
-                          {sku.hero ? (
-                            <Image
-                              src={resolveImageUrl(sku.hero) || '/images/banners/login-hero.webp'}
-                              alt={sku.product_name || ""}
-                              fill
-                              className="object-cover"
-                              sizes="40px"
-                            />
-                          ) : (
-                            sku.sku_code.slice(0, 3)
-                          )}
-                        </div>
-                        <div className="text-left min-w-0 flex-1">
-                          <h4 className="text-xs sm:text-caption-responsive font-bold text-slate-800 leading-tight line-clamp-1">
-                            {sku.product_name}
-                          </h4>
-                          <div className="flex items-center gap-1 text-xs sm:text-caption-responsive text-slate-400 mt-0.5 font-medium">
-                            <span className="truncate">SKU: {sku.sku_code}</span>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
-                        <span className="text-xs sm:text-caption-responsive font-bold text-brand-strong text-right hidden sm:inline">
-                          {priceRange}
-                        </span>
-                        <div className={cn(
-                          "h-4 sm:h-5 w-4 sm:w-5 rounded-full border flex items-center justify-center transition-all",
-                          isSelected ? "border-brand bg-brand text-white border-brand" : "border-slate-300 bg-white"
-                        )}>
-                          {isSelected && <Check className="h-2 sm:h-3 w-2 sm:w-3 stroke-[3]" />}
-                        </div>
-                      </div>
-                    </div>
-                  );
-                })}
-              </div>
-            )}
+            <p className="text-caption-responsive text-slate-400 font-medium leading-relaxed mb-6">
+              Đội ngũ chuyên viên tư vấn của ULink Industries luôn sẵn sàng phục vụ Quý khách hàng doanh nghiệp.
+            </p>
 
-            {/* Divider "Hoặc nhập thủ công" */}
-            {selectedProductToEdit === null && (
-              <div className="relative flex py-2 items-center">
-                <div className="flex-grow border-t border-slate-100"></div>
-                <span className="flex-shrink mx-4 text-slate-400 text-caption-responsive font-bold uppercase tracking-wider">
-                  Hoặc nhập thủ công
-                </span>
-                <div className="flex-grow border-t border-slate-100"></div>
-              </div>
-            )}
+            <div className="bg-slate-50 border border-slate-100 rounded-[3px] p-4 mb-6">
+              <a
+                href={`tel:${t('sidebarHotline').replace(/\s/g, '')}`}
+                className="text-section-title font-black text-brand tracking-tight hover:underline block"
+              >
+                {t('sidebarHotline')}
+              </a>
+              <span className="text-caption-responsive text-slate-400 uppercase tracking-widest font-bold mt-1 block">
+                Bấm số trên để thực hiện cuộc gọi
+              </span>
+            </div>
 
-            {/* Form fields */}
-            <div className="space-y-3 sm:space-y-4 text-left">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                <div className="space-y-1 sm:space-y-1">
-                  <label className="text-xs sm:text-caption-responsive font-bold text-slate-700 uppercase tracking-wider">
-                    Tên sản phẩm *
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    placeholder="Ví dụ: Găng tay Nitrile bảo hộ"
-                    value={manualName}
-                    onChange={(e) => setManualName(e.target.value)}
-                    className="w-full rounded-[3px] border border-slate-200 px-2.5 sm:px-3 py-2 sm:py-2.5 text-caption-responsive sm:text-body-regular outline-none focus:border-brand focus:ring-1 focus:ring-brand font-medium"
-                  />
-                </div>
-                <div className="space-y-1">
-                  <label className="text-xs sm:text-caption-responsive font-bold text-slate-700 uppercase tracking-wider">
-                    Mã SKU (nếu có)
-                  </label>
-                  <input
-                    type="text"
-                    placeholder="Ví dụ: UL-NG-1001"
-                    value={manualSku}
-                    onChange={(e) => setManualSku(e.target.value)}
-                    className="w-full rounded-[3px] border border-slate-200 px-3 py-2.5 text-body-regular outline-none focus:border-brand focus:ring-1 focus:ring-brand font-mono font-medium"
-                  />
-                </div>
-              </div>
-
-              <div className="space-y-1">
-                <label className="text-caption-responsive font-bold text-slate-700 uppercase tracking-wider">
-                  Quy cách / Thông số kỹ thuật
-                </label>
-                <input
-                  type="text"
-                  placeholder="Ví dụ: Size L, Màu xanh dương, hộp 100 chiếc"
-                  value={manualSpec}
-                  onChange={(e) => setManualSpec(e.target.value)}
-                  className="w-full rounded-[3px] border border-slate-200 px-2.5 sm:px-3 py-2 sm:py-2.5 text-caption-responsive sm:text-body-regular outline-none focus:border-brand focus:ring-1 focus:ring-brand font-medium"
-                />
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
-                <div className="space-y-1">
-                  <label className="text-xs sm:text-caption-responsive font-bold text-slate-700 uppercase tracking-wider">
-                    Đơn vị tính
-                  </label>
-                  <select
-                    value={manualUnit}
-                    onChange={(e) => setManualUnit(e.target.value)}
-                    className="w-full rounded-[3px] border border-slate-200 px-2.5 sm:px-3 py-2 sm:py-2.5 text-caption-responsive sm:text-body-regular outline-none focus:border-brand focus:ring-1 focus:ring-brand font-medium bg-white"
-                  >
-                    <option value="cái">Cái</option>
-                    <option value="đôi">Đôi</option>
-                    <option value="cuộn">Cuộn</option>
-                    <option value="hộp">Hộp</option>
-                    <option value="thùng">Thùng</option>
-                    <option value="gói">Gói</option>
-                    <option value="mét">Mét</option>
-                    <option value="kg">Kg</option>
-                  </select>
-                </div>
-                <div className="space-y-1">
-                  <label className="text-xs sm:text-caption-responsive font-bold text-slate-700 uppercase tracking-wider">
-                    Số lượng yêu cầu *
-                  </label>
-                  <input
-                    type="number"
-                    min={1}
-                    required
-                    placeholder="Nhập số lượng"
-                    value={manualQty || ''}
-                    onChange={(e) => setManualQty(Math.max(1, parseInt(e.target.value) || 1))}
-                    className="w-full rounded-[3px] border border-slate-200 px-2.5 sm:px-3 py-2 sm:py-2.5 text-caption-responsive sm:text-body-regular outline-none focus:border-brand focus:ring-1 focus:ring-brand font-bold"
-                  />
-                </div>
-              </div>
-
-              <div className="space-y-1">
-                <label className="text-xs sm:text-caption-responsive font-bold text-slate-700 uppercase tracking-wider">
-                  Ghi chú yêu cầu đặc biệt
-                </label>
-                <textarea
-                  rows={2}
-                  placeholder="Yêu cầu đóng gói riêng biệt, thời gian giao hàng cần thiết..."
-                  value={manualNote}
-                  onChange={(e) => setManualNote(e.target.value)}
-                  className="w-full rounded-[3px] border border-slate-200 px-2.5 sm:px-3 py-2 sm:py-2.5 text-caption-responsive sm:text-body-regular outline-none focus:border-brand focus:ring-1 focus:ring-brand resize-none font-medium"
-                />
-              </div>
+            <div className="flex gap-3">
+              <button
+                type="button"
+                onClick={() => {
+                  navigator.clipboard.writeText(t('sidebarHotline'));
+                  alert('Đã sao chép số điện thoại Hotline vào bộ nhớ tạm.');
+                }}
+                className="flex-1 py-2.5 rounded-[3px] border border-slate-200 bg-white text-caption-responsive font-bold text-slate-700 hover:bg-slate-100 transition-all cursor-pointer"
+              >
+                Sao chép số
+              </button>
+              <a
+                href={`tel:${t('sidebarHotline').replace(/\s/g, '')}`}
+                className="flex-1 py-2.5 rounded-[3px] bg-blue-600 text-white text-caption-responsive font-bold shadow hover:bg-blue-700 transition-all text-center flex items-center justify-center gap-1.5"
+              >
+                <Phone className="h-3.5 w-3.5" />
+                Gọi ngay
+              </a>
             </div>
 
           </div>
-
-          {/* Footer */}
-          <div className="flex items-center justify-end gap-2 sm:gap-3 px-4 sm:px-6 py-3 sm:py-4 border-t border-slate-150 bg-slate-50/50">
-            <button
-              type="button"
-              onClick={() => setIsAddModalOpen(false)}
-              className="px-3 sm:px-5 py-2 sm:py-2.5 rounded-[3px] border border-slate-200 bg-white text-caption-responsive sm:text-body-regular font-semibold text-slate-700 hover:bg-slate-100 transition-colors cursor-pointer"
-            >
-              Hủy
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                if (!manualName.trim()) {
-                  alert('Vui lòng nhập tên sản phẩm.');
-                  return;
-                }
-                const itemToSave: CartItem = {
-                  sku: manualSku.trim() || manualName.trim(),
-                  product_name: manualName.trim(),
-                  spec: manualSpec.trim(),
-                  unit: manualUnit,
-                  quantity: manualQty || 1,
-                  note: manualNote.trim()
-                };
-
-                const newCart = [...cart];
-                if (selectedProductToEdit !== null) {
-                  newCart[selectedProductToEdit] = itemToSave;
-                } else {
-                  newCart.push(itemToSave);
-                }
-                saveCart(newCart);
-                setIsAddModalOpen(false);
-              }}
-              className="px-4 sm:px-6 py-2 sm:py-2.5 rounded-[3px] bg-brand text-white text-caption-responsive sm:text-body-regular font-bold shadow hover:bg-brand/95 transition-all cursor-pointer"
-            >
-              {selectedProductToEdit !== null ? 'Cập nhật' : 'Thêm'}
-            </button>
-          </div>
-
         </div>
-      </div>
-    )}
-    {/* Hotline Phone Modal */}
-    {isPhoneModalOpen && (
-      <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4 animate-in fade-in duration-200">
-        <div className="bg-white rounded-[3px] shadow-2xl border border-slate-200 w-full max-w-[420px] p-6 text-center text-slate-800 animate-in zoom-in-95 duration-200 relative">
-          
-          <button
-            type="button"
-            onClick={() => setIsPhoneModalOpen(false)}
-            className="absolute top-4 right-4 text-slate-400 hover:text-slate-650 transition-colors cursor-pointer"
-          >
-            <X className="h-5 w-5" />
-          </button>
-
-          <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full bg-rose-50 border border-rose-100 mb-4 animate-bounce">
-            <Phone className="h-6 w-6 text-rose-600" />
-          </div>
-
-          <h3 className="text-card-title font-bold text-slate-900 mb-2">
-            Hotline Hỗ Trợ 24/7
-          </h3>
-          
-          <p className="text-caption-responsive text-slate-400 font-medium leading-relaxed mb-6">
-            Đội ngũ chuyên viên tư vấn của ULink Industries luôn sẵn sàng phục vụ Quý khách hàng doanh nghiệp.
-          </p>
-
-          <div className="bg-slate-50 border border-slate-100 rounded-[3px] p-4 mb-6">
-            <a
-              href={`tel:${t('sidebarHotline').replace(/\s/g, '')}`}
-              className="text-section-title font-black text-brand tracking-tight hover:underline block"
-            >
-              {t('sidebarHotline')}
-            </a>
-            <span className="text-caption-responsive text-slate-400 uppercase tracking-widest font-bold mt-1 block">
-              Bấm số trên để thực hiện cuộc gọi
-            </span>
-          </div>
-
-          <div className="flex gap-3">
-            <button
-              type="button"
-              onClick={() => {
-                navigator.clipboard.writeText(t('sidebarHotline'));
-                alert('Đã sao chép số điện thoại Hotline vào bộ nhớ tạm.');
-              }}
-              className="flex-1 py-2.5 rounded-[3px] border border-slate-200 bg-white text-caption-responsive font-bold text-slate-700 hover:bg-slate-100 transition-all cursor-pointer"
-            >
-              Sao chép số
-            </button>
-            <a
-              href={`tel:${t('sidebarHotline').replace(/\s/g, '')}`}
-              className="flex-1 py-2.5 rounded-[3px] bg-rose-600 text-white text-caption-responsive font-bold shadow hover:bg-rose-700 transition-all text-center flex items-center justify-center gap-1.5"
-            >
-              <Phone className="h-3.5 w-3.5" />
-              Gọi ngay
-            </a>
-          </div>
-
-        </div>
-      </div>
-    )}
-  </div>
+      )}
+    </div>
   );
 }

@@ -2,11 +2,23 @@ export type OrderItemInput = { sku: string; productName: string; quantity: numbe
 export type OrderInput = {
   userId: string | number | null;
   buyer: { fullName: string; email: string; phone: string; address: string; province?: string; district?: string; ward?: string; note?: string };
-  paymentMethod: string; shippingMethod: string; subtotal: number; tax: number; total: number; items: OrderItemInput[];
+  paymentMethod: string; shippingMethod: string; carrierName?: string; subtotal: number; tax: number; total: number; items: OrderItemInput[];
 };
 export type OrderSubmitDeps = {
   create: (collection: 'orders' | 'order_items', data: Record<string, unknown>) => Promise<{ id: string | number; code?: string }>;
   findSkuId: (sku: string) => Promise<string | number | null>;
+};
+
+const SHIPPING_LABELS: Record<string, string> = {
+  standard: 'Giao hàng tiêu chuẩn ULink Fleet',
+  express: 'Giao hàng hỏa tốc trong 24h',
+  '3pl': 'Vận chuyển 3PL',
+};
+
+const PAYMENT_LABELS: Record<string, string> = {
+  vnpay: 'VNPay QR',
+  cod: 'Thanh toán khi nhận hàng (COD)',
+  bank_transfer: 'Chuyển khoản ngân hàng',
 };
 
 export async function submitOrder(input: OrderInput, deps: OrderSubmitDeps) {
@@ -25,7 +37,13 @@ export async function submitOrder(input: OrderInput, deps: OrderSubmitDeps) {
     ...(input.paymentMethod === 'vnpay' ? { payment_status: 'pending' } : {}),
     customer: input.userId || null, order_date: new Date().toISOString(),
     subtotal: input.subtotal, tax: input.tax, total: input.total,
-    notes: JSON.stringify({ buyer: input.buyer, paymentMethod: input.paymentMethod, shippingMethod: input.shippingMethod })
+    notes: JSON.stringify({
+      buyer: input.buyer,
+      paymentMethod: PAYMENT_LABELS[input.paymentMethod] || input.paymentMethod,
+      shippingMethod: input.shippingMethod === '3pl' && input.carrierName
+        ? `Vận chuyển 3PL - ${input.carrierName}`
+        : SHIPPING_LABELS[input.shippingMethod] || input.shippingMethod
+    })
   });
   for (const [index, item] of input.items.entries()) {
     const skuId = skuIds[index];

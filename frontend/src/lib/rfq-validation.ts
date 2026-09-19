@@ -10,7 +10,7 @@ export interface NormalizedRfqPayload {
   email: string;
   phone: string;
   address: string;
-  hub: number;
+  hub?: number;
   industry: string;
   message: string;
   scheduled_delivery?: boolean;
@@ -148,7 +148,6 @@ function normalizePhone(value: unknown, state: ValidationState): string | undefi
 
 function normalizeHub(value: unknown, state: ValidationState): number | undefined {
   if (value === undefined || value === null || value === '') {
-    addMissing(state, 'hub');
     return undefined;
   }
 
@@ -280,7 +279,7 @@ export function validateRfqPayload(input: unknown): RfqValidationResult {
         code: 'UNPROCESSABLE_ENTITY',
         message: 'RFQ payload is invalid.',
         details: {
-          missingFields: ['company', 'contact', 'email', 'phone', 'hub', 'industry']
+          missingFields: ['company', 'contact', 'email', 'phone', 'industry']
         }
       }
     };
@@ -306,7 +305,7 @@ export function validateRfqPayload(input: unknown): RfqValidationResult {
     addMissing(state, 'address');
   }
 
-  const hub = normalizeHub(record.hub, state);
+  const hub = normalizeHub(record.hub, state);  // hub is optional now
   const items = Array.isArray(record.items) ? normalizeItems(record.items, state) : undefined;
   const industry = normalizeSlug(record.industry, state, 'industry');
 
@@ -346,7 +345,7 @@ export function validateRfqPayload(input: unknown): RfqValidationResult {
       email: email as string,
       phone: phone as string,
       address: address as string,
-      hub: hub as number,
+      ...(hub ? { hub } : {}),
       industry: industry as string,
       message: message as string,
       scheduled_delivery: scheduledDelivery,

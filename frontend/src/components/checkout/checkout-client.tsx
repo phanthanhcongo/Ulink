@@ -17,6 +17,7 @@ import {
   CreditCard,
   Truck,
   X,
+  Search,
   Wallet,
   Landmark,
   ShoppingBag,
@@ -80,8 +81,11 @@ export default function CheckoutClient({
 
   const [paymentMethod, setPaymentMethod] = useState<'bank' | 'cod' | 'wallet' | 'vnpay'>('vnpay');
   const [shippingMethod, setShippingMethod] = useState<'standard' | 'express' | '3pl'>('standard');
-  const [carrierName, setCarrierName] = useState('Viettel Post');
+  const [carrierName, setCarrierName] = useState('');
   const [carrierAccount, setCarrierAccount] = useState('');
+  const [show3plModal, setShow3plModal] = useState(false);
+  const [carrierSearch, setCarrierSearch] = useState('');
+  const [unsupportedToast, setUnsupportedToast] = useState('');
 
   // Validation state
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -281,6 +285,7 @@ export default function CheckoutClient({
           buyer: formData,
           paymentMethod,
           shippingMethod,
+          carrierName: shippingMethod === '3pl' ? carrierName : undefined,
           subtotal,
           tax: vat,
           total: grandTotal,
@@ -568,32 +573,6 @@ export default function CheckoutClient({
                   </div>
                 </button>
 
-                {/* Bank Transfer Option */}
-                <button
-                  type="button"
-                  onClick={() => setPaymentMethod('bank')}
-                  className={cn(
-                    'flex gap-4 p-4 rounded-[8px] border text-left cursor-pointer transition-all items-center w-full',
-                    paymentMethod === 'bank'
-                      ? 'border-2 border-[#1769E2] bg-white'
-                      : 'border border-[#CAD5E2] bg-white hover:bg-slate-50/50'
-                  )}
-                >
-                  <div className="w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 border-[#1769E2]">
-                    {paymentMethod === 'bank' && (
-                      <div className="w-2.5 h-2.5 rounded-full bg-[#1769E2]" />
-                    )}
-                  </div>
-                  <div className="space-y-1 flex-1">
-                    <p className="text-[15px] font-semibold text-[#162233]">
-                      Chuyển khoản tài khoản ngân hàng Doanh nghiệp
-                    </p>
-                    <p className="text-[13px] font-normal text-[#617084]">
-                      Hỗ trợ xuất hóa đơn tài chính VAT nhanh. Nhận thông tin chuyển khoản ngay sau khi đặt hàng.
-                    </p>
-                  </div>
-                </button>
-
                 {/* COD Option */}
                 <button
                   type="button"
@@ -623,24 +602,31 @@ export default function CheckoutClient({
                   </div>
                 </button>
 
+                {/* Bank Transfer Option */}
+                <button
+                  type="button"
+                  onClick={() => { setUnsupportedToast('Chuyển khoản ngân hàng hiện chưa được hỗ trợ. Vui lòng chọn phương thức khác.'); setTimeout(() => setUnsupportedToast(''), 3000); }}
+                  className="flex gap-4 p-4 rounded-[8px] border text-left cursor-pointer transition-all items-center w-full border border-[#CAD5E2] bg-white hover:bg-slate-50/50 opacity-60"
+                >
+                  <div className="w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 border-[#CAD5E2]">
+                  </div>
+                  <div className="space-y-1 flex-1">
+                    <p className="text-[15px] font-semibold text-[#162233]">
+                      Chuyển khoản tài khoản ngân hàng Doanh nghiệp
+                    </p>
+                    <p className="text-[13px] font-normal text-[#617084]">
+                      Hỗ trợ xuất hóa đơn tài chính VAT nhanh. Nhận thông tin chuyển khoản ngay sau khi đặt hàng.
+                    </p>
+                  </div>
+                </button>
+
                 {/* E-Wallet Option */}
                 <button
                   type="button"
-                  onClick={() => setPaymentMethod('wallet')}
-                  className={cn(
-                    'flex gap-4 p-4 rounded-[8px] border text-left cursor-pointer transition-all items-center w-full',
-                    paymentMethod === 'wallet'
-                      ? 'border-2 border-[#1769E2] bg-white'
-                      : 'border border-[#CAD5E2] bg-white hover:bg-slate-50/50'
-                  )}
+                  onClick={() => { setUnsupportedToast('Ví điện tử doanh nghiệp hiện chưa được hỗ trợ. Vui lòng chọn phương thức khác.'); setTimeout(() => setUnsupportedToast(''), 3000); }}
+                  className="flex gap-4 p-4 rounded-[8px] border text-left cursor-pointer transition-all items-center w-full border border-[#CAD5E2] bg-white hover:bg-slate-50/50 opacity-60"
                 >
-                  <div className={cn(
-                    "w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0",
-                    paymentMethod === 'wallet' ? "border-[#1769E2]" : "border-[#CAD5E2]"
-                  )}>
-                    {paymentMethod === 'wallet' && (
-                      <div className="w-2.5 h-2.5 rounded-full bg-[#1769E2]" />
-                    )}
+                  <div className="w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 border-[#CAD5E2]">
                   </div>
                   <div className="space-y-1 flex-1">
                     <p className="text-[15px] font-semibold text-[#162233]">
@@ -806,7 +792,7 @@ export default function CheckoutClient({
                 {/* 3PL */}
                 <button
                   type="button"
-                  onClick={() => setShippingMethod('3pl')}
+                  onClick={() => { setShippingMethod('3pl'); setCarrierSearch(''); setShow3plModal(true); }}
                   className={cn(
                     'flex gap-4 p-4 rounded-[8px] border text-left cursor-pointer transition-all items-center w-full justify-between',
                     shippingMethod === '3pl'
@@ -835,41 +821,16 @@ export default function CheckoutClient({
                   <span className="text-[15px] font-bold text-[#162233] shrink-0">Theo báo giá</span>
                 </button>
 
-                {shippingMethod === '3pl' && (
-                  <div className="mt-2 p-4 border border-dashed border-slate-200 bg-slate-50/50 rounded-[6px] space-y-4 text-left animate-fadeIn">
-                    <div className="grid gap-4 sm:grid-cols-2">
-                      <div className="space-y-1.5 text-left">
-                        <label className="text-[13px] font-bold text-slate-600 block">
-                          {t('carrierName')}
-                        </label>
-                        <div className="flex gap-3 items-center">
-                          {renderCarrierIcon(carrierName)}
-                          <select
-                            value={carrierName}
-                            onChange={(e) => setCarrierName(e.target.value)}
-                            className="flex-1 rounded-[6px] border border-slate-200 bg-white px-3 py-2 text-[13px] outline-none transition-all focus:border-[#1769E2] focus:ring-1 focus:ring-[#1769E2] font-medium cursor-pointer"
-                          >
-                            <option value="Viettel Post">Viettel Post</option>
-                            <option value="Giao Hàng Nhanh">Giao Hàng Nhanh</option>
-                            <option value="Giao Hàng Tiết Kiệm">Giao Hàng Tiết Kiệm</option>
-                            <option value="J&T Express">J&T Express</option>
-                            <option value="Ninja Van">Ninja Van</option>
-                            <option value="Khác">Khác / Tự thỏa thuận</option>
-                          </select>
-                        </div>
-                      </div>
-                      <div className="space-y-1.5 text-left">
-                        <label className="text-[13px] font-bold text-slate-600 block">
-                          {t('carrierAccount')}
-                        </label>
-                        <input
-                          type="text"
-                          value={carrierAccount}
-                          onChange={(e) => setCarrierAccount(e.target.value)}
-                          className="w-full rounded-[6px] border border-slate-200 bg-white px-3 py-2 text-[13px] outline-none transition-all focus:border-[#1769E2] focus:ring-1 focus:ring-[#1769E2] font-medium"
-                        />
+                {shippingMethod === '3pl' && carrierName && (
+                  <div className="mt-2 p-4 border border-dashed border-slate-200 bg-slate-50/50 rounded-[6px] text-left animate-fadeIn flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      {renderCarrierIcon(carrierName)}
+                      <div>
+                        <p className="text-[14px] font-semibold text-[#162233]">{carrierName}</p>
+                        {carrierAccount && <p className="text-[12px] text-[#617084]">Mã TK: {carrierAccount}</p>}
                       </div>
                     </div>
+                    <button type="button" onClick={() => setShow3plModal(true)} className="text-[13px] text-[#1769E2] font-medium hover:underline">Thay đổi</button>
                   </div>
                 )}
               </div>
@@ -1118,6 +1079,76 @@ export default function CheckoutClient({
             >
               {t('btnBackHome')}
             </button>
+          </div>
+        </div>
+      )}
+
+      {unsupportedToast && (
+        <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50 bg-[#1E293B] text-white px-6 py-3 rounded-lg shadow-lg text-[14px] font-medium animate-fadeIn flex items-center gap-2 max-w-[480px]">
+          <ShieldCheck className="h-5 w-5 text-yellow-400 shrink-0" />
+          {unsupportedToast}
+        </div>
+      )}
+
+      {show3plModal && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-sm p-4">
+          <div className="bg-white rounded-xl shadow-xl max-w-[440px] w-full relative animate-scaleIn">
+            <div className="flex items-center justify-between px-6 pt-6 pb-4">
+              <h3 className="text-[17px] font-bold text-[#162233]">Chọn đơn vị vận chuyển 3PL</h3>
+              <button type="button" onClick={() => setShow3plModal(false)} className="text-slate-400 hover:text-slate-600 transition-colors">
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+            <div className="px-6 pb-2">
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+                <input type="text" value={carrierSearch} onChange={(e) => setCarrierSearch(e.target.value)} placeholder="Tìm kiếm đơn vị vận chuyển..." className="w-full rounded-lg border border-slate-200 bg-slate-50 pl-10 pr-4 py-2.5 text-[13px] outline-none focus:border-[#1769E2] focus:ring-1 focus:ring-[#1769E2]" />
+              </div>
+            </div>
+            <div className="px-6 pt-3 pb-2">
+              <p className="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Đơn vị đề xuất ({formData.province ? `hoạt động tại ${formData.province}` : '5 hãng hoạt động'})</p>
+            </div>
+            <div className="px-4 pb-6 space-y-2">
+              {[
+                { name: 'Giao Hàng Nhanh', displayName: 'Giao Hàng Nhanh (GHN)', desc: 'Vận chuyển nhanh toàn quốc, tối ưu cho đơn hàng sỉ nhẹ & trung bình.', price: '45.000đ', time: '2 - 3 ngày' },
+                { name: 'Giao Hàng Tiết Kiệm', displayName: 'Giao Hàng Tiết Kiệm (GHTK)', desc: 'Chi phí tối ưu nhất cho khu vực nội tỉnh và liên tỉnh phía Bắc.', price: '35.000đ', time: '3 - 4 ngày' },
+                { name: 'Viettel Post', displayName: 'Viettel Post', desc: 'Mạng lưới bưu cục phủ khắp 63 tỉnh thành, hỗ trợ kiện hàng sỉ cực lớn.', price: '60.000đ', time: '1 - 2 ngày' },
+                { name: 'J&T Express', displayName: 'J&T Express', desc: 'Phủ sóng rộng, có hỗ trợ lấy hàng tận xưởng/kho sỉ vào ngày chủ nhật.', price: '40.000đ', time: '2 - 4 ngày' },
+              ].filter((c) => {
+                if (!carrierSearch.trim()) return true;
+                const q = carrierSearch.toLowerCase();
+                return c.displayName.toLowerCase().includes(q) || c.name.toLowerCase().includes(q) || c.desc.toLowerCase().includes(q);
+              }).map((carrier) => (
+                <button
+                  key={carrier.name}
+                  type="button"
+                  onClick={() => { setCarrierName(carrier.name); setShow3plModal(false); }}
+                  className={cn(
+                    'flex items-center gap-3 w-full p-4 rounded-lg border text-left transition-all hover:bg-blue-50/50',
+                    carrierName === carrier.name ? 'border-2 border-[#1769E2] bg-blue-50/30' : 'border-slate-200'
+                  )}
+                >
+                  <div className={cn(
+                    "w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0",
+                    carrierName === carrier.name ? "border-[#1769E2]" : "border-[#CAD5E2]"
+                  )}>
+                    {carrierName === carrier.name && <div className="w-2.5 h-2.5 rounded-full bg-[#1769E2]" />}
+                  </div>
+                  {renderCarrierIcon(carrier.name)}
+                  <div className="flex-1 min-w-0">
+                    <p className="text-[14px] font-bold text-[#162233]">{carrier.displayName}</p>
+                    <p className="text-[12px] text-[#617084] mt-0.5">{carrier.desc}</p>
+                  </div>
+                  <div className="text-right shrink-0">
+                    <p className="text-[14px] font-bold text-[#1769E2]">{carrier.price}</p>
+                    <p className="text-[11px] text-[#617084]">{carrier.time}</p>
+                  </div>
+                </button>
+              ))}
+            </div>
+            <div className="px-6 pb-5 pt-2 border-t border-slate-100">
+              <p className="text-[12px] text-[#617084]">Giá cước thực tế phụ thuộc kích thước kiện hàng.</p>
+            </div>
           </div>
         </div>
       )}
