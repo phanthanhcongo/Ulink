@@ -98,11 +98,7 @@ export default async function ProductsSearchPage({ params, searchParams }: PageP
           }
         }
       } catch (e) {
-        if (typeof p.hero === 'string' && (p.hero.startsWith(//'/'/'' ) || p.hero.startsWith('http'))) {
-          resolvedImage = p.hero;
-        } else {
-          resolvedImage = resolveImageUrl(p.hero as any) ?? undefined;
-        }
+        resolvedImage = resolveImageUrl(p.hero as any) ?? undefined;
       }
     }
     if (!resolvedImage) {

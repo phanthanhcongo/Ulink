@@ -6,7 +6,7 @@ export function resolveImageUrl(value: unknown, frontendOrigin?: string): string
 
   if (typeof value !== 'string' || !value.trim()) return null;
 
-  let imagePath = value.trim();
+  const imagePath = value.trim();
 
   // Handle JSON string arrays: '["/images/...", ...]'
   if (imagePath.startsWith('[')) {
@@ -15,7 +15,7 @@ export function resolveImageUrl(value: unknown, frontendOrigin?: string): string
       if (Array.isArray(parsed) && parsed.length > 0) {
         return resolveImageUrl(parsed[0], frontendOrigin);
       }
-    } catch {
+    } catch (e) {
       // Not valid JSON, continue with raw string
     }
   }

@@ -125,7 +125,7 @@ export default async function CatalogShowcase({ locale }: CatalogShowcaseProps) 
                             if (Array.isArray(parsed) && parsed[0]) {
                               imagePath = parsed[0];
                             }
-                          } catch {
+                          } catch (e) {
                             // Not valid JSON, treat as plain string
                           }
                         }
