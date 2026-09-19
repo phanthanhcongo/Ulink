@@ -2,13 +2,19 @@
 
 import React, { useState } from 'react';
 import Image from 'next/image';
-import { ChevronLeft, ChevronRight, Package } from 'lucide-react';
+import { ChevronLeft, ChevronRight, Package, Play } from 'lucide-react';
 import { cn } from '@/lib/utils';
+
+const VIDEO_EXTENSIONS = /\.(mp4|webm|mov|ogg)$/i;
+function isVideoSrc(src: string): boolean {
+  return VIDEO_EXTENSIONS.test(src);
+}
 
 interface GalleryImage {
   src: string;
   alt: string;
   label?: string;
+  type?: 'image' | 'video';
 }
 
 interface ProductImageGalleryProps {
@@ -50,16 +56,29 @@ export function ProductImageGallery({ images, productName }: ProductImageGallery
     <div className="flex flex-col gap-4 w-full lg:w-[420px] lg:h-[579px]">
       {/* MAIN SLIDE STAGE */}
       <div className="relative w-full aspect-square lg:w-[420px] lg:h-[471px] lg:aspect-auto rounded-[6px] overflow-hidden bg-[#f8fafc] border border-[#dce0e5] shadow-xs flex items-center justify-center group mx-auto lg:mx-0">
-        {/* Main Image Container */}
+        {/* Main Image / Video Container */}
         <div className="relative w-full h-full lg:w-[388px] lg:h-[435px] rounded-[6px] overflow-hidden">
-          <Image
-            src={currentImage.src}
-            alt={currentImage.alt || productName}
-            fill
-            className="object-cover"
-            sizes="(max-width: 1024px) 100vw, 388px"
-            priority
-          />
+          {(currentImage.type === 'video' || isVideoSrc(currentImage.src)) ? (
+            <video
+              key={currentImage.src}
+              src={currentImage.src}
+              controls
+              autoPlay
+              muted
+              loop
+              playsInline
+              className="w-full h-full object-cover"
+            />
+          ) : (
+            <Image
+              src={currentImage.src}
+              alt={currentImage.alt || productName}
+              fill
+              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 388px"
+              priority
+            />
+          )}
         </div>
 
         {/* Previous Arrow */}
@@ -112,13 +131,27 @@ export function ProductImageGallery({ images, productName }: ProductImageGallery
                 )}
               >
                 <div className="relative w-[64px] h-[64px]">
-                  <Image
-                    src={img.src}
-                    alt={img.alt || `Thumbnail ${idx + 1}`}
-                    fill
-                    className="object-cover rounded-[2px]"
-                    sizes="64px"
-                  />
+                  {(img.type === 'video' || isVideoSrc(img.src)) ? (
+                    <>
+                      <video
+                        src={img.src}
+                        muted
+                        playsInline
+                        className="w-full h-full object-cover rounded-[2px]"
+                      />
+                      <div className="absolute inset-0 flex items-center justify-center bg-black/20 rounded-[2px]">
+                        <Play className="h-5 w-5 text-white fill-white" />
+                      </div>
+                    </>
+                  ) : (
+                    <Image
+                      src={img.src}
+                      alt={img.alt || `Thumbnail ${idx + 1}`}
+                      fill
+                      className="object-cover rounded-[2px]"
+                      sizes="64px"
+                    />
+                  )}
                 </div>
               </button>
             );

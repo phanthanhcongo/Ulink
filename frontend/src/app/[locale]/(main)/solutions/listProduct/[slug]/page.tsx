@@ -118,7 +118,8 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
   const specs = product.specifications as Record<string, string> | null;
 
-  const productGalleryImages: Array<{ src: string; alt: string; label?: string }> = [];
+  const isVideoPath = (p: string) => /\.(mp4|webm|mov|ogg)$/i.test(p);
+  const productGalleryImages: Array<{ src: string; alt: string; label?: string; type?: 'image' | 'video' }> = [];
 
   const rawHero = product.hero;
   if (rawHero) {
@@ -148,13 +149,15 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
         }
       }
 
-      heroImages.forEach((imagePath, idx) => {
-        if (imagePath && (imagePath.startsWith('/') || imagePath.startsWith('http'))) {
-          if (!productGalleryImages.some((img) => img.src === imagePath)) {
+      heroImages.forEach((mediaPath, idx) => {
+        if (mediaPath && (mediaPath.startsWith('/') || mediaPath.startsWith('http'))) {
+          if (!productGalleryImages.some((img) => img.src === mediaPath)) {
+            const isVid = isVideoPath(mediaPath);
             productGalleryImages.push({
-              src: imagePath,
+              src: mediaPath,
               alt: `${productName} - Hero ${idx + 1}`,
-              label: `Ảnh ${idx + 1}`
+              label: isVid ? `Video ${idx + 1}` : `Ảnh ${idx + 1}`,
+              type: isVid ? 'video' : 'image'
             });
           }
         }
