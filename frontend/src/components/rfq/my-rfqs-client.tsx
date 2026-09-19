@@ -21,7 +21,9 @@ import {
   MessageSquare,
   Package,
   Truck,
-  Calendar
+  Calendar,
+  Paperclip,
+  Download
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useTranslations } from 'next-intl';
@@ -43,6 +45,7 @@ interface RfqItem {
   date_created?: string;
   approval_note?: string | null;
   reject_reason?: string | null;
+  attachments?: Array<{ directus_files_id: string; filename: string }> | string | null;
 }
 
 type StatusFilter = 'all' | 'pending' | 'quoted' | 'rejected';
@@ -450,6 +453,46 @@ function RfqDetailModal({ rfq, onClose }: { rfq: RfqItem; onClose: () => void })
               </div>
             </section>
           )}
+
+          {/* Attachments */}
+          {(() => {
+            let files: Array<{ directus_files_id: string; filename: string }> = [];
+            if (rfq.attachments) {
+              if (typeof rfq.attachments === 'string') {
+                try { files = JSON.parse(rfq.attachments); } catch { /* ignore */ }
+              } else if (Array.isArray(rfq.attachments)) {
+                files = rfq.attachments;
+              }
+            }
+            if (files.length === 0) return null;
+            return (
+              <section>
+                <div className="flex items-center gap-2 mb-2">
+                  <Paperclip className="h-4 w-4 text-gray-400 shrink-0" />
+                  <p className="text-caption-responsive text-gray-500 font-medium">Tài liệu đính kèm</p>
+                </div>
+                <div className="space-y-2">
+                  {files.map((f, idx) => (
+                    <a
+                      key={idx}
+                      href={`${process.env.NEXT_PUBLIC_DIRECTUS_URL || 'http://localhost:8055'}/assets/${f.directus_files_id}?download`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-between p-3 bg-gray-50 border border-gray-200 rounded-lg hover:border-blue-300 hover:bg-blue-50/30 transition-all group"
+                    >
+                      <div className="flex items-center gap-3 min-w-0">
+                        <div className="h-8 w-8 rounded-lg bg-white border border-gray-200 flex items-center justify-center shrink-0">
+                          <FileText className="h-4 w-4 text-gray-500" />
+                        </div>
+                        <span className="text-sm font-medium text-gray-700 truncate group-hover:text-blue-600">{f.filename}</span>
+                      </div>
+                      <Download className="h-4 w-4 text-gray-400 group-hover:text-blue-600 shrink-0" />
+                    </a>
+                  ))}
+                </div>
+              </section>
+            );
+          })()}
 
           {/* Status & Notes */}
           <section className="border-t border-gray-100 pt-4">

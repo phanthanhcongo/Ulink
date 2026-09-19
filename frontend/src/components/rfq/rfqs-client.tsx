@@ -16,7 +16,9 @@ import {
   AlertCircle,
   Plus,
   CheckCircle2,
-  Sparkles
+  Sparkles,
+  Paperclip,
+  Download
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import type { RfqRequest } from '@/lib/directus';
@@ -776,6 +778,46 @@ export function RfqsClient({ user }: { user: AuthUser | null }) {
                   {selectedRfq.message || 'Không có ghi chú thêm.'}
                 </div>
               </div>
+
+              {/* Attachments */}
+              {(() => {
+                let files: Array<{ directus_files_id: string; filename: string }> = [];
+                if (selectedRfq.attachments) {
+                  if (typeof selectedRfq.attachments === 'string') {
+                    try { files = JSON.parse(selectedRfq.attachments); } catch { /* ignore */ }
+                  } else if (Array.isArray(selectedRfq.attachments)) {
+                    files = selectedRfq.attachments;
+                  }
+                }
+                if (files.length === 0) return null;
+                return (
+                  <div className="space-y-3">
+                    <h3 className="text-body-regular font-semibold text-foreground flex items-center gap-1.5 border-b border-border/50 pb-1.5">
+                      <Paperclip className="h-4 w-4 text-brand" />
+                      Tài liệu đính kèm
+                    </h3>
+                    <div className="space-y-2">
+                      {files.map((f, idx) => (
+                        <a
+                          key={idx}
+                          href={`${process.env.NEXT_PUBLIC_DIRECTUS_URL || 'http://localhost:8055'}/assets/${f.directus_files_id}?download`}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center justify-between p-3 rounded-[3px] border border-border/60 bg-muted/20 hover:border-brand/40 hover:bg-brand/5 transition-all group"
+                        >
+                          <div className="flex items-center gap-3 min-w-0">
+                            <div className="h-9 w-9 rounded-[3px] bg-muted/40 flex items-center justify-center shrink-0 border border-border/40">
+                              <FileText className="h-4 w-4 text-muted-foreground" />
+                            </div>
+                            <span className="text-body-regular font-medium text-foreground truncate group-hover:text-brand">{f.filename}</span>
+                          </div>
+                          <Download className="h-4 w-4 text-muted-foreground group-hover:text-brand shrink-0" />
+                        </a>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })()}
 
               {selectedRfq.status === 'approved' && selectedRfq.approval_note && (
                 <div className="space-y-2">

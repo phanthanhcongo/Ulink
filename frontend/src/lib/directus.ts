@@ -190,6 +190,7 @@ export interface RfqRequest {
   created_at?: string;
   approval_note?: string | null;
   reject_reason?: string | null;
+  attachments?: Array<{ directus_files_id: string; filename: string }> | string | null;
 }
 
 export interface RfqAssignmentRule {

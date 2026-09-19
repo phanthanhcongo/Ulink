@@ -126,7 +126,8 @@ export function buildPermissionDefs() {
         'source',
         'user',
         'scheduled_delivery',
-        'requested_delivery_date'
+        'requested_delivery_date',
+        'attachments'
       ]
     },
     {
@@ -141,7 +142,14 @@ export function buildPermissionDefs() {
       collection: 'rfq_requests',
       action: 'update',
       permissions: {},
-      fields: ['assigned_sales']
+      fields: ['assigned_sales', 'attachments']
+    },
+    {
+      policy: FRONTEND_SERVICE_POLICY_ID,
+      collection: 'directus_files',
+      action: 'create',
+      permissions: {},
+      fields: ['*']
     },
     {
       policy: FRONTEND_SERVICE_POLICY_ID,
@@ -310,6 +318,27 @@ export function buildPermissionDefs() {
       action: 'read',
       permissions: {},
       fields: ['*']
+    },
+    {
+      policy: CUSTOMER_POLICY_ID,
+      collection: 'directus_files',
+      action: 'create',
+      permissions: {},
+      fields: ['*']
+    },
+    {
+      policy: CUSTOMER_POLICY_ID,
+      collection: 'rfq_requests',
+      action: 'create',
+      permissions: {},
+      fields: ['*']
+    },
+    {
+      policy: CUSTOMER_POLICY_ID,
+      collection: 'rfq_requests',
+      action: 'update',
+      permissions: { user: { _eq: '$CURRENT_USER' } },
+      fields: ['attachments']
     }
   );
 

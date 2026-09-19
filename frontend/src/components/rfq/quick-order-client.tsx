@@ -76,6 +76,7 @@ interface MetaData {
 interface UploadedFile {
   name: string;
   size: number;
+  file: File;
 }
 
 /* ───────────────────── helpers ──────────────────── */
@@ -288,7 +289,7 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
       if (file.size > MAX_FILE_SIZE) continue;
       const ext = '.' + file.name.split('.').pop()?.toLowerCase();
       if (!ALLOWED_EXTENSIONS.includes(ext)) continue;
-      validFiles.push({ name: file.name, size: file.size });
+      validFiles.push({ name: file.name, size: file.size, file });
     }
     if (validFiles.length > 0) {
       setUploadedFiles((prev) => [...prev, ...validFiles]);
@@ -454,6 +455,24 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
       });
 
       setCreatedRfqId(json.data?.id || null);
+
+      // Upload attached files if any
+      if (uploadedFiles.length > 0 && json.data?.id) {
+        try {
+          const formData = new FormData();
+          formData.append('rfq_id', String(json.data.id));
+          uploadedFiles.forEach((uf) => {
+            formData.append('files', uf.file);
+          });
+          await fetch('/api/rfq/upload', {
+            method: 'POST',
+            body: formData
+          });
+        } catch (uploadErr) {
+          console.error('File upload failed (RFQ created OK):', uploadErr);
+        }
+      }
+
       setShowSuccess(true);
       saveCart([]);
       clearDraft();

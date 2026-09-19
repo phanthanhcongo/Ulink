@@ -22,7 +22,8 @@ const RFQ_FIELDS = [
   'requested_delivery_date',
   'created_at',
   'approval_note',
-  'reject_reason'
+  'reject_reason',
+  'attachments'
 ].join(',');
 
 /**
@@ -73,7 +74,8 @@ export async function GET(req: Request) {
           'requested_delivery_date',
           'created_at',
           'approval_note',
-          'reject_reason'
+          'reject_reason',
+          'attachments'
         ],
         filter: {
           user: { _eq: user.id }
