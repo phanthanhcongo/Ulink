@@ -38,6 +38,9 @@ export interface IndustryData {
   valueProps: ValueProp[];
   challengesIntro: string;
   challenges: ChallengeItem[];
+  tapesIntro?: string;
+  tapesCategories?: CategoryItem[];
+  tapesViewAll?: string;
   cleanroomIntro: string;
   cleanroomCategories: CategoryItem[];
   cleanroomViewAll: string;

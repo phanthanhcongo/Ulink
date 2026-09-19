@@ -35,6 +35,8 @@ import { IndustryCasesSection } from '@/components/industries/industry-cases-sec
 import { IndustryCtaBanner } from '@/components/industries/industry-cta-banner';
 import { ProductCard } from '@/components/solutions/product-card';
 import { PartnersLogosOnly } from '@/components/home/partners-logos-only';
+import { getTranslatedName } from '@/lib/i18n-content';
+import { resolveImageUrl } from '@/lib/image-url';
 
 interface FoodClientProps {
   industryData: IndustryData;
@@ -129,97 +131,35 @@ export default function FoodClient({
     }
   };
 
-  // 8 Product Cards Grid matching Figma Node #1119:10575
-  const gridProducts = [
-    {
-      id: 'p1',
-      slug: 'pallet-stretch-film',
-      name: isVi ? 'Màng quấn Pallet - Đóng kiện hàng.' : 'Pallet Stretch Film',
-      price: '39.500đ - 43.000đ',
-      unit: 'per kg',
-      moq: 'MOQ: 500 kg',
-      location: isVi ? 'Hub Hà Nam, Việt Nam' : 'Ha Nam Hub, Vietnam',
-      status: isVi ? 'Sản xuất theo yêu cầu' : 'Custom Order',
-      image: '/images/industries/food/product_1.png'
-    },
-    {
-      id: 'p2',
-      slug: 'pe-shrink-film-bottle-blocks',
-      name: isVi ? 'Màng co PE - Shrink Film Block Chai' : 'PE Shrink Film for Bottle Blocks',
-      price: '50.000đ - 55.000đ',
-      unit: 'per kg',
-      moq: 'MOQ: 500 kg',
-      location: isVi ? 'Hub Hà Nam, Việt Nam' : 'Ha Nam Hub, Vietnam',
-      status: isVi ? 'Sản xuất theo yêu cầu' : 'Custom Order',
-      image: '/images/industries/food/product_2.png'
-    },
-    {
-      id: 'p3',
-      slug: 'pe-bags-multi-sizes',
-      name: isVi ? 'Túi PE - Nhiều kích thước' : 'PE Bags - Multi Sizes',
-      price: '35.000đ - 39.000đ',
-      unit: 'per kg',
-      moq: 'MOQ: 500 kg',
-      location: isVi ? 'Hub Hà Nam, Việt Nam' : 'Ha Nam Hub, Vietnam',
-      status: isVi ? 'Sản xuất theo yêu cầu' : 'Custom Order',
-      image: '/images/industries/food/product_3.png'
-    },
-    {
-      id: 'p4',
-      slug: 'zipper-bags-multi-sizes',
-      name: isVi ? 'Túi Ziper - Nhiều kích thước' : 'Zipper Bags - Multi Sizes',
-      price: '59.500đ - 65.000đ',
-      unit: 'per kg',
-      moq: 'MOQ: 500 kg',
-      location: isVi ? 'Hub Hà Nam, Việt Nam' : 'Ha Nam Hub, Vietnam',
-      status: isVi ? 'Sản xuất theo yêu cầu' : 'Custom Order',
-      image: '/images/industries/food/product_4.png'
-    },
-    {
-      id: 'p5',
-      slug: 'pof-shrink-film-cups',
-      name: isVi ? 'Màng co POF - Shrink film cup' : 'POF Shrink Film for Cups',
-      price: '55.500đ - 60.000đ',
-      unit: 'per kg',
-      moq: 'MOQ: 500 kg',
-      location: isVi ? 'Hub Hà Nam, Việt Nam' : 'Ha Nam Hub, Vietnam',
-      status: isVi ? 'Sản xuất theo yêu cầu' : 'Custom Order',
-      image: '/images/industries/food/product_5.png'
-    },
-    {
-      id: 'p6',
-      slug: 'packaging-tape',
-      name: isVi ? 'Băng keo - Đóng kiện hàng.' : 'Packaging Tape',
-      price: '16.500đ - 29.000đ',
-      unit: 'per cuộn',
-      moq: 'MOQ: 500 kg',
-      location: isVi ? 'Hub Hà Nam, Việt Nam' : 'Ha Nam Hub, Vietnam',
-      status: isVi ? 'Sản xuất theo yêu cầu' : 'Custom Order',
-      image: '/images/industries/food/product_6.png'
-    },
-    {
-      id: 'p7',
-      slug: 'packaging-heavy-bags',
-      name: isVi ? 'Túi - Đóng kiện hàng.' : 'Packaging Heavy Bags',
-      price: '39.500đ - 43.000đ',
-      unit: 'per kg',
-      moq: 'MOQ: 500 kg',
-      location: isVi ? 'Hub Hà Nam, Việt Nam' : 'Ha Nam Hub, Vietnam',
-      status: isVi ? 'Sản xuất theo yêu cầu' : 'Custom Order',
-      image: '/images/industries/food/product_7.png'
-    },
-    {
-      id: 'p8',
-      slug: 'pallet-wrapping-film',
-      name: isVi ? 'Màng quấn Pallet - Đóng kiện hàng.' : 'Pallet Wrapping Film',
-      price: '39.500đ - 43.000đ',
-      unit: 'per kg',
-      moq: 'MOQ: 500 kg',
-      location: isVi ? 'Hub Hà Nam, Việt Nam' : 'Ha Nam Hub, Vietnam',
-      status: isVi ? 'Sản xuất theo yêu cầu' : 'Custom Order',
-      image: '/images/industries/food/product_8.png'
-    }
-  ];
+  // Map real products from API (no static fallback)
+  const displayProducts = Array.isArray(products) && products.length > 0
+    ? products.map((p: any, idx: number) => {
+        const firstSku = p.skus?.find((s: any) => s.status === 'published') || p.skus?.[0];
+        const rawImage = p.hero || (p.image ? p.image : `/images/industries/food/product_${(idx % 8) + 1}.png`);
+        const resolvedImg = resolveImageUrl(rawImage) || rawImage;
+
+        let formattedPrice = 'Liên hệ báo giá';
+        if (firstSku?.price != null) {
+          formattedPrice = `${Number(firstSku.price).toLocaleString('vi-VN')}đ`;
+        } else if (p.price) {
+          formattedPrice = String(p.price);
+        }
+
+        return {
+          id: p.id || `real-${idx}`,
+          slug: p.slug || `product-${idx}`,
+          name: getTranslatedName(p, locale) || p.name || 'Sản phẩm F&B',
+          price: formattedPrice,
+          unit: firstSku?.unit ? `per ${firstSku.unit}` : (p.unit || 'per kg'),
+          moq: firstSku?.moq
+            ? `MOQ: ${Number(firstSku.moq).toLocaleString('vi-VN')} ${firstSku.moq_unit || firstSku.unit || ''}`.trim()
+            : (p.moq || 'MOQ: 500 kg'),
+          location: isVi ? 'Hub Hà Nam, Việt Nam' : 'Ha Nam Hub, Vietnam',
+          status: isVi ? 'Sản xuất theo yêu cầu' : 'Custom Order',
+          image: resolvedImg
+        };
+      })
+    : [];
 
   return (
     <div className="min-h-screen bg-white text-[#141414] font-sans antialiased">
@@ -345,16 +285,28 @@ export default function FoodClient({
             </p>
           </div>
 
-          {/* 8 Product Cards Grid using Shared ProductCard Component */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-            {gridProducts.map((item) => (
-              <ProductCard
-                key={item.id}
-                product={item as any}
-                locale={locale}
-              />
-            ))}
-          </div>
+          {/* Product Cards Grid */}
+          {displayProducts.length > 0 ? (
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+              {displayProducts.map((item) => (
+                <ProductCard
+                  key={item.id}
+                  product={item as any}
+                  locale={locale}
+                />
+              ))}
+            </div>
+          ) : (
+            <div className="flex flex-col items-center justify-center py-16 text-center">
+              <Package className="h-16 w-16 text-[#C1C7CD] mb-4" />
+              <p className="text-[16px] font-semibold text-[#697077] mb-2">
+                {isVi ? 'Chưa có sản phẩm nào' : 'No products available'}
+              </p>
+              <p className="text-[14px] text-[#878D96] max-w-md">
+                {translations.noProductDesc}
+              </p>
+            </div>
+          )}
         </div>
       </section>
 

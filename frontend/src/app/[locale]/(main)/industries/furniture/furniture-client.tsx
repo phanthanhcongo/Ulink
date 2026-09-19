@@ -44,13 +44,14 @@ export default function FurnitureClient({
 
   const tabs = [
     { id: 'overview', label: translations.overview },
-    { id: 'cleanroom', label: isVi ? 'Bảo vệ bề mặt gỗ' : isJa ? '表面保護' : 'Surface Protection' },
-    { id: 'packaging', label: translations.packagingSol },
+    { id: 'tapes', label: isVi ? 'Băng Keo Công Nghiệp' : isJa ? '工業用テープ' : 'Industrial Tapes' },
+    { id: 'cleanroom', label: isVi ? 'Vật Tư Phòng Sạch' : isJa ? 'クリーンルーム資材' : 'Cleanroom Supplies' },
+    { id: 'packaging', label: isVi ? 'Bao Bì & Đóng Gói' : isJa ? '包装＆パッケージング' : 'Packaging & Wrapping' },
     { id: 'standards', label: industryData.standardsTitle },
     { id: 'cases', label: translations.cases }
   ];
 
-  const TAB_IDS = ['overview', 'cleanroom', 'packaging', 'standards', 'cases'];
+  const TAB_IDS = ['overview', 'tapes', 'cleanroom', 'packaging', 'standards', 'cases'];
 
   useEffect(() => {
     let isMounted = true;
@@ -137,24 +138,37 @@ export default function FurnitureClient({
 
       <IndustryOverviewSection industryData={industryData} locale={locale} />
 
+      {/* 1. Băng Keo Công Nghiệp */}
+      <IndustryCategorySection
+        id="tapes"
+        tagText={isVi ? 'BĂNG KEO CÔNG NGHIỆP' : isJa ? '工業用テープ' : 'INDUSTRIAL TAPES'}
+        title={isVi ? 'Băng keo dán, che sơn & bảo vệ bề mặt gỗ nội thất' : isJa ? '家具用マスキング＆表面保護テープ' : 'Masking & Surface Protection Tapes'}
+        intro={industryData.tapesIntro || (isVi ? 'Băng keo chuyên dụng che sơn, dán nẹp và bảo vệ bề mặt gỗ nội thất.' : 'Specialized masking & protective tapes for furniture.')}
+        categories={industryData.tapesCategories || []}
+        locale={locale}
+        defaultSlug="bang-keo-nhom"
+      />
+
+      {/* 2. Vật Tư Phòng Sạch */}
       <IndustryCategorySection
         id="cleanroom"
-        tagText={translations.cleanroomSol}
-        title={isVi ? 'Nhóm sản phẩm vật tư xưởng gỗ & sơn nội thất' : isJa ? '木工・塗料工場用資材グループ' : 'Woodworking Consumables Products'}
+        tagText={isVi ? 'VẬT TƯ PHÒNG SẠCH' : isJa ? 'クリーンルーム資材' : 'CLEANROOM SUPPLIES'}
+        title={isVi ? 'Nhóm vật tư phòng sạch & trang phục bảo hộ xưởng gỗ' : isJa ? '木工・塗装工場用クリーンルーム資材' : 'Cleanroom Supplies & Spray Room Apparel'}
         intro={industryData.cleanroomIntro}
         categories={industryData.cleanroomCategories}
         locale={locale}
-        defaultSlug="cleanroom-consumables"
+        defaultSlug="vat-tu-phong-sach"
       />
 
+      {/* 3. Bao Bì & Đóng Gói */}
       <IndustryCategorySection
         id="packaging"
-        tagText={translations.packagingSol}
+        tagText={isVi ? 'BAO BÌ & ĐÓNG GÓI' : isJa ? '包装＆パッケージング' : 'PACKAGING & WRAPPING'}
         title={isVi ? 'Bao bì & Đóng gói sản phẩm gỗ xuất khẩu' : isJa ? '輸出用木製品包装＆パッケージング' : 'Export Furniture Packaging'}
         intro={industryData.packagingIntro}
         categories={industryData.packagingCategories}
         locale={locale}
-        defaultSlug="industrial-packaging"
+        defaultSlug="bao-bi-dong-goi"
       />
 
       <IndustryStandardsSection industryData={industryData} locale={locale} />

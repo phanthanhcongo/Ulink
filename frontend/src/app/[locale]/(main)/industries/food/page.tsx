@@ -31,7 +31,7 @@ export default async function FoodIndustryPage({ params: { locale } }: Props) {
   }
 
   const { products } = await fetchProducts({
-    industry: CANONICAL_SLUG,
+    category: 'mang-quan-pallet-cat,thung-carton-cac-loai,bang-keo-cong-nghiep,tui-pe-pp-ziper,pallet-nhua-go,day-dai-dong-hang,vat-lieu-dem-lot',
     limit: 8
   });
 

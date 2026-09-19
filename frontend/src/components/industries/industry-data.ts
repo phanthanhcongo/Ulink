@@ -101,7 +101,7 @@ export function getIndustryDetails(slug: string, locale: string) {
           name: isVi ? 'Găng tay y tế & công nghiệp' : isJa ? '医療・工業用手袋' : 'Medical & Industrial Gloves',
           desc: isVi ? 'Găng tay Nitrile, Latex không bột, vô trùng chuyên dụng đạt tiêu chuẩn phẫu thuật và kiểm nghiệm phòng lab.' : 'Powder-free, sterile Nitrile & Latex gloves for surgical and lab testing.',
           image: '/images/industries/pharma/pharma_gloves.png',
-          slug: 'cleanroom-gloves'
+          slug: 'vat-tu-phong-sach'
         },
         {
           name: isVi ? 'Khăn lau phòng sạch' : isJa ? 'クリーンルームワイパー' : 'Cleanroom Wipers',
@@ -313,8 +313,8 @@ export function getIndustryDetails(slug: string, locale: string) {
       cleanroomIntro: isVi ? 'Duy trì môi trường sản xuất sạch sẽ, kiểm soát hạt bụi và tĩnh điện.' : isJa ? 'クリーンな製造環境を維持し、塵埃と静電気を制御します。' : 'Maintain a clean manufacturing environment, controlling dust particles and static electricity.',
       cleanroomCategories: [
         { name: isVi ? 'Quần áo phòng sạch' : isJa ? 'クリーンルームウェア＆用品' : 'Cleanroom Wear & Accessories', image: '/images/industries/electronics_hero.webp', slug: 'cleanroom-apparel' },
-        { name: isVi ? 'Găng tay phòng sạch' : isJa ? 'クリーンルーム手袋' : 'Cleanroom Gloves', image: '/images/industries/electronics_hero.webp', slug: 'cleanroom-gloves' },
-        { name: isVi ? 'Khẩu trang phòng sạch' : isJa ? 'クリーンルームマスク' : 'Cleanroom Masks', image: '/images/industries/electronics_hero.webp', slug: 'cleanroom-masks' },
+        { name: isVi ? 'Găng tay phòng sạch' : isJa ? 'クリーンルーム手袋' : 'Cleanroom Gloves', image: '/images/industries/electronics_hero.webp', slug: 'vat-tu-phong-sach' },
+        { name: isVi ? 'Khẩu trang phòng sạch' : isJa ? 'クリーンルームマスク' : 'Cleanroom Masks', image: '/images/industries/electronics_hero.webp', slug: 'vat-tu-phong-sach' },
         { name: isVi ? 'Thảm dính bụi' : isJa ? '粘着マット' : 'Sticky Mats', image: '/images/industries/electronics_hero.webp', slug: 'cleanroom-consumables' }
       ],
       cleanroomViewAll: isVi ? 'Xem tất cả sản phẩm phòng sạch' : isJa ? 'すべてのクリーンルーム製品を見る' : 'See all cleanroom products',
@@ -493,8 +493,8 @@ export function getIndustryDetails(slug: string, locale: string) {
       ],
       cleanroomIntro: isVi ? 'Giải pháp kiểm soát vệ sinh, trang phục bảo hộ đạt chuẩn tiếp xúc thực phẩm.' : isJa ? '食品接触基準に適合した衛生管理・防護服ソリューション。' : 'Sanitation control and protective wear solutions complying with food contact standards.',
       cleanroomCategories: [
-        { name: isVi ? 'Mũ bảo hộ & Khẩu trang thực phẩm' : isJa ? '食品用キャップ＆マスク' : 'Food Grade Caps & Masks', desc: isVi ? 'Thiết kế bao bọc toàn bộ tóc và mặt, ngăn rụng tóc và bắn nước bọt vào sản phẩm.' : isJa ? '毛髪や唾液の飛散を防止。' : 'Covers hair and face to prevent contamination.', image: '/images/industries/food/food_cap_mask.png', slug: 'cleanroom-masks' },
-        { name: isVi ? 'Găng tay cao su tiếp xúc thực phẩm' : isJa ? '食品接触用ゴム手袋' : 'Food Contact Rubber Gloves', desc: isVi ? 'Găng tay Nitrile/Latex không bột đạt chuẩn FDA 21 CFR tiếp xúc trực tiếp thực phẩm.' : isJa ? 'FDA適合パウダーフリー手袋。' : 'Powder-free gloves complying with FDA 21 CFR.', image: '/images/industries/food/food_gloves.png', slug: 'cleanroom-gloves' },
+        { name: isVi ? 'Mũ bảo hộ & Khẩu trang thực phẩm' : isJa ? '食品用キャップ＆マスク' : 'Food Grade Caps & Masks', desc: isVi ? 'Thiết kế bao bọc toàn bộ tóc và mặt, ngăn rụng tóc và bắn nước bọt vào sản phẩm.' : isJa ? '毛髪や唾液の飛散を防止。' : 'Covers hair and face to prevent contamination.', image: '/images/industries/food/food_cap_mask.png', slug: 'vat-tu-phong-sach' },
+        { name: isVi ? 'Găng tay cao su tiếp xúc thực phẩm' : isJa ? '食品接触用ゴム手袋' : 'Food Contact Rubber Gloves', desc: isVi ? 'Găng tay Nitrile/Latex không bột đạt chuẩn FDA 21 CFR tiếp xúc trực tiếp thực phẩm.' : isJa ? 'FDA適合パウダーフリー手袋。' : 'Powder-free gloves complying with FDA 21 CFR.', image: '/images/industries/food/food_gloves.png', slug: 'vat-tu-phong-sach' },
         { name: isVi ? 'Giấy lau băng tải không bụi' : isJa ? '無塵コンベアワイパー' : 'Lint-free Conveyor Wipers', desc: isVi ? 'Khăn lau không phát tán xơ vải, thấm hút dầu mỡ cực nhanh cho dây chuyền F&B.' : isJa ? '発塵防止、油分吸収性に優れたワイパー。' : 'Lint-free wipers with superior oil absorption.', image: '/images/industries/food/food_wipers.png', slug: 'cleanroom-wipers' },
         { name: isVi ? 'Màng PE co bọc hàng' : isJa ? 'PEシュリンクフィルム' : 'PE Shrink Packaging Film', desc: isVi ? 'Màng PE bảo vệ pallet khỏi ẩm mốc, bụi bẩn và va đập khi lưu kho và vận chuyển.' : isJa ? '保管・輸送時の防湿・防塵フィルム。' : 'PE film protecting pallets from moisture & dust.', image: '/images/industries/food/food_pe_shrink.png', slug: 'industrial-packaging' }
       ],
@@ -676,12 +676,12 @@ export function getIndustryDetails(slug: string, locale: string) {
         {
           name: isVi ? 'Găng tay bốc xếp kho' : isJa ? '倉庫・荷役用耐切創手袋' : 'Warehouse Handling Gloves',
           image: '/images/industries/logistics/product_1.png',
-          slug: 'cleanroom-gloves'
+          slug: 'vat-tu-phong-sach'
         },
         {
           name: isVi ? 'Khẩu trang & Kính bảo hộ' : isJa ? '倉庫作業用保護メガネ' : 'Warehouse Safety Goggles',
           image: '/images/industries/logistics/product_2.png',
-          slug: 'cleanroom-masks'
+          slug: 'vat-tu-phong-sach'
         },
         {
           name: isVi ? 'Màng PE quấn Pallet' : isJa ? 'PEパレットフィルム' : 'PE Pallet Stretch Film',
@@ -710,12 +710,12 @@ export function getIndustryDetails(slug: string, locale: string) {
         {
           name: isVi ? 'Găng tay bốc xếp kho' : isJa ? '倉庫・荷役用耐切創手袋' : 'Warehouse Handling Gloves',
           image: '/images/industries/logistics/product_1.png',
-          slug: 'cleanroom-gloves'
+          slug: 'vat-tu-phong-sach'
         },
         {
           name: isVi ? 'Khẩu trang & Kính bảo hộ' : isJa ? '倉庫作業用保護メガネ' : 'Warehouse Safety Goggles',
           image: '/images/industries/logistics/product_2.png',
-          slug: 'cleanroom-masks'
+          slug: 'vat-tu-phong-sach'
         }
       ],
       packagingViewAll: isVi ? 'Xem tất cả sản phẩm đóng gói kho' : isJa ? 'すべての包装製品を見る' : 'See all packaging products',
@@ -887,51 +887,75 @@ export function getIndustryDetails(slug: string, locale: string) {
           iconName: 'Package'
         }
       ],
-      cleanroomIntro: isVi ? 'Trang phục & vật tư che chắn cho phòng sơn nội thất gỗ.' : isJa ? '家具塗装室用保護ウェア＆マスキング資材。' : 'Protective apparel & masking supplies for furniture spray rooms.',
-      cleanroomCategories: [
-        {
-          name: isVi ? 'Màng PE bọc bảo vệ bề mặt gỗ cao cấp' : isJa ? '高級木材表面保護PEフィルム' : 'Premium Wood Surface PE Protective Film',
-          image: '/images/industries/furniture/product_1.png',
-          slug: 'industrial-packaging'
-        },
+      tapesIntro: isVi ? 'Băng keo chuyên dụng che sơn, dán nẹp và bảo vệ bề mặt gỗ nội thất.' : isJa ? '家具用マスキング・保護専用テープ。' : 'Specialized masking, joining & protective tapes for furniture.',
+      tapesCategories: [
         {
           name: isVi ? 'Băng keo giấy che sơn gỗ cao cấp' : isJa ? '高級木材塗装用マスキングテープ' : 'Premium Wood Masking Tape',
           image: '/images/industries/furniture/product_3.png',
-          slug: 'cleanroom-tapes'
+          slug: 'bang-keo-nhom'
         },
+        {
+          name: isVi ? 'Băng keo nhôm chịu nhiệt & bảo vệ' : isJa ? '耐熱・保護アルミテープ' : 'Heat-Resistant Aluminum Tape',
+          image: '/images/industries/furniture/product_1.png',
+          slug: 'bang-keo-nhom'
+        },
+        {
+          name: isVi ? 'Băng keo 2 mặt dán nẹp & phào chỉ gỗ' : isJa ? '木材用両面テープ' : 'Double-Sided Wood Joining Tape',
+          image: '/images/industries/furniture/product_3.png',
+          slug: 'bang-keo-nhom'
+        },
+        {
+          name: isVi ? 'Màng PE bọc bảo vệ bề mặt gỗ cao cấp' : isJa ? '高級木材表面保護PEフィルム' : 'Premium Wood Surface PE Protective Film',
+          image: '/images/industries/furniture/product_1.png',
+          slug: 'bang-keo-nhom'
+        }
+      ],
+      tapesViewAll: isVi ? 'Xem tất cả sản phẩm băng keo công nghiệp' : isJa ? 'すべての工業用テープを見る' : 'See all industrial tapes products',
+      cleanroomIntro: isVi ? 'Trang phục & vật tư che chắn cho phòng sơn nội thất gỗ.' : isJa ? '家具塗装室用保護ウェア＆マスキング資材。' : 'Protective apparel & masking supplies for furniture spray rooms.',
+      cleanroomCategories: [
         {
           name: isVi ? 'Trang phục & khẩu trang bảo hộ phòng sơn' : isJa ? '塗装作業用防護服＆マスク' : 'Spray Paint Protective Suit & Mask',
           image: '/images/industries/furniture/product_4.png',
-          slug: 'cleanroom-apparel'
+          slug: 'vat-tu-phong-sach'
         },
         {
           name: isVi ? 'Khăn lau bụi bề mặt gỗ trước khi sơn' : isJa ? '塗装前木材表面用無塵ワイパー' : 'Lint-Free Pre-Paint Wood Wipes',
           image: '/images/industries/furniture/product_5.png',
-          slug: 'cleanroom-wipes'
+          slug: 'vat-tu-phong-sach'
+        },
+        {
+          name: isVi ? 'Găng tay bảo hộ phòng sơn & vệ sinh' : isJa ? '塗装・清掃用保護手袋' : 'Paint & Cleaning Protective Gloves',
+          image: '/images/industries/pharma/pharma_gloves.png',
+          slug: 'vat-tu-phong-sach'
+        },
+        {
+          name: isVi ? 'Thảm dính bụi cửa phòng sơn' : isJa ? '塗装室入口用粘着マット' : 'Cleanroom Entrance Sticky Mats',
+          image: '/images/industries/pharma/pharma_mats.png',
+          slug: 'vat-tu-phong-sach'
         }
       ],
-      cleanroomViewAll: isVi ? 'Xem tất cả sản phẩm bảo vệ bề mặt' : isJa ? 'すべての表面保護製品を見る' : 'See all surface protection products',
+      cleanroomViewAll: isVi ? 'Xem tất cả sản phẩm vật tư phòng sạch' : isJa ? 'すべてのクリーンルーム資材を見る' : 'See all cleanroom supplies',
       packagingIntro: isVi ? 'Giải pháp đóng gói, nẹp góc xốp & chống ẩm mốc cho container xuất khẩu.' : isJa ? '輸出コンテナ用梱包・角当てフォーム・防湿ソリューション。' : 'Packaging, corner foam & moisture barrier solutions for export containers.',
       packagingCategories: [
         {
           name: isVi ? 'Xốp nẹp góc & Màng quấn Pallet đóng gói' : isJa ? '角当てフォーム＆パレット梱包フィルム' : 'Corner Guard Foam & Pallet Stretch Film',
           image: '/images/industries/furniture/product_2.png',
-          slug: 'industrial-packaging'
+          slug: 'bao-bi-dong-goi'
         },
         {
           name: isVi ? 'Túi chống ẩm & Thanh hút ẩm Container xuất khẩu' : isJa ? '輸出コンテナ用防湿剤＆乾燥ポール' : 'Export Container Desiccant Bags & Poles',
           image: '/images/industries/furniture/product_6.png',
-          slug: 'industrial-packaging'
+          slug: 'bao-bi-dong-goi'
         },
         {
           name: isVi ? 'Xốp PE Foam chèn lót bảo vệ tấm gỗ' : isJa ? '木材保護用PEフォームシート' : 'PE Foam Cushioning Sheets for Wood Panels',
           image: '/images/industries/furniture/product_7.png',
-          slug: 'industrial-packaging'
+          slug: 'bao-bi-dong-goi'
         },
         {
           name: isVi ? 'Màng PE bọc bảo vệ gỗ cao cấp' : isJa ? '高級木材保護PEフィルム' : 'Premium Wood Protection PE Film',
           image: '/images/industries/furniture/product_1.png',
-          slug: 'industrial-packaging'
+          slug: 'bao-bi-dong-goi'
         }
       ],
       packagingViewAll: isVi ? 'Xem tất cả sản phẩm bao bì đóng gói' : isJa ? 'すべての包装製品を見る' : 'See all packaging products',
@@ -1085,7 +1109,7 @@ export function getIndustryDetails(slug: string, locale: string) {
       ],
       cleanroomIntro: isVi ? 'Trang phục & găng tay bảo hộ cơ khí HVAC.' : isJa ? 'HVAC・機械作業用保護具。' : 'HVAC and mechanical safety gear.',
       cleanroomCategories: [
-        { name: isVi ? 'Găng tay chống cắt cấp 5' : isJa ? 'Level 5耐切創手袋' : 'Level 5 Cut Resistant Gloves', image: '/images/industries/construction/product_1.png', slug: 'cleanroom-gloves' }
+        { name: isVi ? 'Găng tay chống cắt cấp 5' : isJa ? 'Level 5耐切創手袋' : 'Level 5 Cut Resistant Gloves', image: '/images/industries/construction/product_1.png', slug: 'vat-tu-phong-sach' }
       ],
       cleanroomViewAll: isVi ? 'Xem tất cả sản phẩm an toàn lao động' : isJa ? 'すべての安全用品を見る' : 'See all safety products',
       packagingIntro: isVi ? 'Vật tư dán cách nhiệt & màng bọc bảo vệ tấm ốp.' : isJa ? '断熱テープ＆保護フィルム。' : 'Insulation tape & protective film.',
