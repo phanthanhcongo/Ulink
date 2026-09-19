@@ -3,6 +3,7 @@
 import { useSearchParams } from 'next/navigation';
 import { Suspense, useEffect, useState } from 'react';
 import Link from 'next/link';
+import { persistCart } from '@/components/rfq/cart-types';
 
 function PaymentResult() {
   const params = useSearchParams();
@@ -29,6 +30,7 @@ function PaymentResult() {
       .then(res => res.json())
       .then(data => {
         if (data.error) setConfirmError(data.error.message);
+        if (!data.error && isSuccess) persistCart([]);
       })
       .catch(() => setConfirmError('Không thể xác nhận thanh toán'))
       .finally(() => setConfirming(false));

@@ -306,8 +306,6 @@ export default function CheckoutClient({
         if (!paymentRes.ok) throw new Error('Không thể tạo link thanh toán.');
         const paymentData = await paymentRes.json();
         if (!paymentData.data?.paymentUrl) throw new Error('Không nhận được link thanh toán.');
-        persistCart([]);
-        setCart([]);
         window.location.href = paymentData.data.paymentUrl;
         return;
       }
