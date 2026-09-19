@@ -31,12 +31,13 @@ function sortObject(obj: Record<string, unknown>): Record<string, string> {
 }
 
 function formatDate(date: Date): string {
-  const y = date.getFullYear();
-  const m = String(date.getMonth() + 1).padStart(2, '0');
-  const d = String(date.getDate()).padStart(2, '0');
-  const h = String(date.getHours()).padStart(2, '0');
-  const min = String(date.getMinutes()).padStart(2, '0');
-  const s = String(date.getSeconds()).padStart(2, '0');
+  const vnDate = new Date(date.toLocaleString('en-US', { timeZone: 'Asia/Ho_Chi_Minh' }));
+  const y = vnDate.getFullYear();
+  const m = String(vnDate.getMonth() + 1).padStart(2, '0');
+  const d = String(vnDate.getDate()).padStart(2, '0');
+  const h = String(vnDate.getHours()).padStart(2, '0');
+  const min = String(vnDate.getMinutes()).padStart(2, '0');
+  const s = String(vnDate.getSeconds()).padStart(2, '0');
   return `${y}${m}${d}${h}${min}${s}`;
 }
 
