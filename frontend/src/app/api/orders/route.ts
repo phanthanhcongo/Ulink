@@ -10,7 +10,7 @@ export async function POST(req: Request) {
     const client = user ? createSessionDirectusClient(getRequestCookieHeader(req)) : createWriteDirectusClient(process.env.DIRECTUS_TOKEN);
     if (user && body.userId) {
       try {
-        const customers = await client.request(readItems('customers', { filter: { user: { _eq: String(body.userId) } }, limit: 1, fields: ['id'] }));
+        const customers = await client.request(readItems('customers' as any, { filter: { user: { _eq: String(body.userId) } }, limit: 1, fields: ['id'] } as any));
         body.userId = (customers as any[])[0]?.id ?? null;
       } catch { body.userId = null; }
     }

@@ -9,7 +9,7 @@ export async function POST(req: Request) {
 
     const client = createWriteDirectusClient();
 
-    const order = await client.request(readItem('orders', orderId, { fields: ['id', 'code', 'total', 'status', 'payment_status', 'notes'] })) as any;
+    const order = await client.request(readItem('orders' as any, orderId, { fields: ['id', 'code', 'total', 'status', 'payment_status', 'notes'] } as any)) as any;
     if (!order) return Response.json({ error: { code: 'PAYMENT_ORDER_NOT_FOUND', message: 'Order not found' } }, { status: 404 });
 
     if (order.status === 'confirmed' && order.payment_status === 'success') {
@@ -22,10 +22,10 @@ export async function POST(req: Request) {
     }
 
     // Check for existing pending payment to prevent duplicates
-    const existingPayments = await client.request(readItems('payments', {
+    const existingPayments = await client.request(readItems('payments' as any, {
       filter: { order: { _eq: orderId }, status: { _eq: 'pending' } },
       limit: 1, fields: ['id', 'vnp_txn_ref', 'date_created']
-    })) as any[];
+    } as any)) as any[];
 
     let txnRef: string;
     if (existingPayments.length > 0) {
@@ -42,7 +42,7 @@ export async function POST(req: Request) {
 
     const existingRef = existingPayments.find((p: any) => p.vnp_txn_ref === txnRef);
     if (!existingRef) {
-      await client.request(createItem('payments', {
+      await client.request((createItem as any)('payments', {
         order: orderId,
         amount,
         currency: 'VND',
@@ -50,7 +50,7 @@ export async function POST(req: Request) {
         vnp_txn_ref: txnRef,
         status: 'pending',
         metadata: { locale: locale || 'vn' }
-      }));
+      } as any));
     }
 
     const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || '127.0.0.1';
@@ -71,7 +71,7 @@ export async function POST(req: Request) {
       }
     );
 
-    await client.request(updateItem('orders', orderId, { status: 'payment_required', payment_status: 'pending' }));
+    await client.request(updateItem('orders' as any, orderId, { status: 'payment_required', payment_status: 'pending' } as any));
 
     return Response.json({
       data: {

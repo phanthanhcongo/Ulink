@@ -20,11 +20,11 @@ export async function POST(req: Request) {
 
     const client = createWriteDirectusClient();
 
-    const payments = await client.request(readItems('payments', {
+    const payments = await client.request(readItems('payments' as any, {
       filter: { vnp_txn_ref: { _eq: txnRef } },
       limit: 1,
       fields: ['id', 'order', 'status']
-    })) as any[];
+    } as any)) as any[];
 
     if (!payments.length) {
       return Response.json({ error: { code: 'PAYMENT_NOT_FOUND', message: 'Payment not found' } }, { status: 404 });
@@ -38,20 +38,20 @@ export async function POST(req: Request) {
 
     const isSuccess = result.vnp_ResponseCode === '00';
 
-    await client.request(updateItem('payments', payment.id, {
+    await client.request(updateItem('payments' as any, payment.id, {
       status: isSuccess ? 'success' : 'failed',
       response_code: result.vnp_ResponseCode,
       vnp_trans_id: result.vnp_TransactionNo,
       paid_at: isSuccess ? new Date().toISOString() : null,
       metadata: result.rawData
-    }));
+    } as any));
 
-    await client.request(updateItem('orders', payment.order, {
+    await client.request(updateItem('orders' as any, payment.order, {
       status: isSuccess ? 'confirmed' : 'payment_failed',
       payment_status: isSuccess ? 'success' : 'failed'
-    }));
+    } as any));
 
-    await client.request(createItem('payment_audit_log', {
+    await client.request((createItem as any)('payment_audit_log', {
       payment: payment.id,
       event_type: isSuccess ? 'status_changed' : 'error',
       status_from: 'pending',
