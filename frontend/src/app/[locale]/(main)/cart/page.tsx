@@ -8,6 +8,29 @@ import CartClient from '@/components/cart/cart-client';
 
 type Props = { params: { locale: string } };
 
+/** Parse hero field (JSON string array, plain array, or plain path) → first image URL */
+function parseHeroImage(hero: unknown): string | null {
+  if (!hero) return null;
+  if (typeof hero === 'string') {
+    if (hero.startsWith('[')) {
+      try {
+        const parsed = JSON.parse(hero);
+        if (Array.isArray(parsed) && parsed[0]) {
+          return parsed[0];
+        }
+      } catch { /* not valid JSON */ }
+    }
+    if (hero.startsWith('/') || hero.startsWith('http')) {
+      return hero;
+    }
+    return resolveImageUrl(hero);
+  }
+  if (Array.isArray(hero) && hero[0]) {
+    return hero[0];
+  }
+  return null;
+}
+
 export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'cartPage' });
   return {
@@ -27,10 +50,11 @@ export default async function CartPage({ params: { locale } }: Props) {
   const dbProductMap: Record<string, { hero: string | null; slug: string }> = {};
 
   for (const prod of allDbProducts) {
-    dbProductMap[prod.slug] = { hero: prod.hero || null, slug: prod.slug };
+    const heroImg = parseHeroImage(prod.hero);
+    dbProductMap[prod.slug] = { hero: heroImg, slug: prod.slug };
     if (prod.skus) {
       for (const s of prod.skus) {
-        dbProductMap[s.sku_code] = { hero: prod.hero || null, slug: prod.slug };
+        dbProductMap[s.sku_code] = { hero: heroImg, slug: prod.slug };
       }
     }
   }
@@ -61,11 +85,7 @@ export default async function CartPage({ params: { locale } }: Props) {
     const moqVal = sku?.pack_size ? parseInt(sku.pack_size, 10) || 500 : 500;
     const moqText = locale === 'vi' ? `MOQ: ${moqVal} ${unitLabel}` : `MOQ: ${moqVal} ${unitLabel}`;
 
-    const imageUrl = prod.hero
-      ? (prod.hero.startsWith('http') || prod.hero.startsWith('/'))
-        ? prod.hero
-        : resolveImageUrl(prod.hero)
-      : undefined;
+    const imageUrl = parseHeroImage(prod.hero);
 
     return {
       id: prod.id,
