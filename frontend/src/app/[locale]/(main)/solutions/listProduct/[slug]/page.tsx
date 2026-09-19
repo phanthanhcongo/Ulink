@@ -121,15 +121,47 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
   const productGalleryImages: Array<{ src: string; alt: string; label?: string }> = [];
 
   const rawHero = product.hero;
-  const heroId = typeof rawHero === 'object' && rawHero !== null ? (rawHero as any).id : rawHero;
+  if (rawHero) {
+    try {
+      let heroImages: string[] = [];
 
-  if (heroId) {
-    const heroSrc = resolveImageUrl(heroId);
-    if (heroSrc) productGalleryImages.push({
-      src: heroSrc,
-      alt: `${productName} - Ảnh đại diện Database`,
-      label: 'Ảnh chính DB'
-    });
+      if (typeof rawHero === 'string') {
+        try {
+          const parsed = JSON.parse(rawHero);
+          if (Array.isArray(parsed)) {
+            heroImages = parsed;
+          } else if (typeof parsed === 'string') {
+            heroImages = [parsed];
+          }
+        } catch (e) {
+          if (rawHero.startsWith('/') || rawHero.startsWith('http')) {
+            heroImages = [rawHero];
+          }
+        }
+      } else if (Array.isArray(rawHero)) {
+        heroImages = rawHero;
+      } else if (typeof rawHero === 'object' && rawHero !== null) {
+        const heroId = (rawHero as any).id;
+        if (heroId) {
+          const heroSrc = resolveImageUrl(heroId);
+          if (heroSrc) heroImages = [heroSrc];
+        }
+      }
+
+      heroImages.forEach((imagePath, idx) => {
+        if (imagePath && (imagePath.startsWith('/') || imagePath.startsWith('http'))) {
+          if (!productGalleryImages.some((img) => img.src === imagePath)) {
+            productGalleryImages.push({
+              src: imagePath,
+              alt: `${productName} - Hero ${idx + 1}`,
+              label: `Ảnh ${idx + 1}`
+            });
+          }
+        }
+      });
+    } catch (err) {
+      console.error('Error parsing hero images:', err);
+    }
   }
 
   gallery.forEach((fileObj, idx) => {

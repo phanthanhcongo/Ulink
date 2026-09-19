@@ -135,7 +135,25 @@ export default function FoodClient({
   const displayProducts = Array.isArray(products) && products.length > 0
     ? products.map((p: any, idx: number) => {
         const firstSku = p.skus?.find((s: any) => s.status === 'published') || p.skus?.[0];
-        const rawImage = p.hero || (p.image ? p.image : `/images/industries/food/product_${(idx % 8) + 1}.png`);
+        // hero from API is a JSON string like '["/images/...", ...]' — parse to get first image
+        let rawImage = `/images/industries/food/product_${(idx % 8) + 1}.png`;
+        if (p.hero) {
+          try {
+            const parsed = typeof p.hero === 'string' ? JSON.parse(p.hero) : p.hero;
+            if (Array.isArray(parsed) && parsed[0]) {
+              rawImage = parsed[0];
+            } else if (typeof parsed === 'string' && (parsed.startsWith('/') || parsed.startsWith('http'))) {
+              rawImage = parsed;
+            }
+          } catch {
+            // hero is a plain string path, not JSON
+            if (typeof p.hero === 'string' && (p.hero.startsWith('/') || p.hero.startsWith('http'))) {
+              rawImage = p.hero;
+            }
+          }
+        } else if (p.image) {
+          rawImage = p.image;
+        }
         const resolvedImg = resolveImageUrl(rawImage) || rawImage;
 
         let formattedPrice = 'Liên hệ báo giá';

@@ -11,6 +11,7 @@ interface Product {
   slug: string;
   description?: string | null;
   image?: string | null;
+  hero?: string | string[] | null;
   price?: string | number;
   moq?: string;
   moqUnit?: string | null;
@@ -100,6 +101,35 @@ export function ProductCard({
 
   const productLink = `/solutions/listProduct/${product.slug}`;
 
+  const getImageUrl = (): string | null => {
+    if (product.image && (product.image.startsWith('http') || product.image.startsWith('/'))) {
+      return product.image;
+    }
+
+    if (product.hero) {
+      try {
+        if (typeof product.hero === 'string') {
+          const parsed = JSON.parse(product.hero);
+          if (Array.isArray(parsed) && parsed[0]) {
+            return parsed[0];
+          }
+          if (product.hero.startsWith('/') || product.hero.startsWith('http')) {
+            return product.hero;
+          }
+        } else if (Array.isArray(product.hero) && product.hero[0]) {
+          return product.hero[0];
+        }
+      } catch (e) {
+        if (typeof product.hero === 'string' && (product.hero.startsWith('/') || product.hero.startsWith('http'))) {
+          return product.hero;
+        }
+      }
+    }
+    return null;
+  };
+
+  const imageUrl = getImageUrl();
+
   return (
     <div
       className={`bg-white rounded-[3px] border border-[#DCE0E5] overflow-hidden h-full flex flex-col group transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_8px_25px_-5px_rgba(23,105,226,0.2)] w-full lg:w-[300px] lg:max-w-[300px] ${className || ''}`}
@@ -107,10 +137,10 @@ export function ProductCard({
       <Link href={productLink} className="flex flex-col h-full">
         {/* IMAGE SECTION - Exact 270px height from Figma */}
         <div className="image-wrap relative w-full h-[350px] sm:h-[270px] bg-white flex items-center justify-center p-2.5 overflow-hidden">
-          {product.image && (product.image.startsWith('http') || product.image.startsWith('/')) ? (
+          {imageUrl ? (
             <div className="relative w-full h-full rounded-[3px] overflow-hidden">
               <Image
-                src={product.image}
+                src={imageUrl}
                 alt={product.name}
                 fill
                 className="object-cover transition-transform duration-500 group-hover:scale-105"

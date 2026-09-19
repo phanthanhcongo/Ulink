@@ -17,6 +17,7 @@ export interface ProductItem {
   shortDescription: string;
   stockStatus: 'in_stock' | 'low_stock' | 'on_order';
   image?: string;
+  hero?: string | string[] | null;
   specs?: string[];
   unit?: string;
   packSize?: string;
@@ -92,6 +93,7 @@ export function ProductsGrid({
             name: product.name,
             description: product.shortDescription,
             image: product.image,
+            hero: product.hero,
             price: formatPrice(product.price, locale),
             moq: `MOQ: ${product.packSize || 'Liên hệ'}`,
             moqUnit: product.unit,

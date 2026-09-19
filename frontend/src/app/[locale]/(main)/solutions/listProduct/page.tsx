@@ -100,9 +100,35 @@ export default async function ProductsCatalogPage({ params, searchParams }: Page
       ? getTranslatedName(catObj, locale) || catObj.name
       : 'Vật tư công nghiệp';
 
-    const resolvedImage = p.hero
-      ? resolveImageUrl(p.hero) ?? undefined
-      : ASSETS.home.solutionCleanroom;
+    let resolvedImage: string | undefined = undefined;
+    if (p.hero) {
+      try {
+        if (typeof p.hero === 'string') {
+          const parsed = JSON.parse(p.hero);
+          if (Array.isArray(parsed) && parsed[0]) {
+            resolvedImage = parsed[0];
+          } else if (typeof parsed === 'string') {
+            resolvedImage = parsed;
+          }
+        } else if (Array.isArray(p.hero) && p.hero[0]) {
+          resolvedImage = p.hero[0];
+        } else if (typeof p.hero === 'object' && p.hero !== null) {
+          const heroId = (p.hero as any).id;
+          if (heroId) {
+            resolvedImage = resolveImageUrl(heroId) ?? undefined;
+          }
+        }
+      } catch (e) {
+        if (typeof p.hero === 'string' && (p.hero.startsWith('/') || p.hero.startsWith('http'))) {
+          resolvedImage = p.hero;
+        } else {
+          resolvedImage = resolveImageUrl(p.hero as any) ?? undefined;
+        }
+      }
+    }
+    if (!resolvedImage) {
+      resolvedImage = ASSETS.home.solutionCleanroom;
+    }
 
     const productStandards = Array.isArray(p.standards)
       ? p.standards.map((s: any) => s.standards_id).filter(Boolean)
@@ -123,6 +149,7 @@ export default async function ProductsCatalogPage({ params, searchParams }: Page
         getTranslatedField(p, 'short_description', locale) || p.short_description || '',
       stockStatus: (firstSku?.stock_status as any) || 'in_stock',
       image: resolvedImage,
+      hero: p.hero,
       unit: firstSku?.unit ?? '',
       packSize: firstSku?.moq
         ? `${Number(firstSku.moq).toLocaleString('vi-VN')} ${firstSku.moq_unit || firstSku.unit || ''}`.trim()

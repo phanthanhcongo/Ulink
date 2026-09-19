@@ -34,6 +34,7 @@ export interface ProductItem {
   shortDescription: string;
   stockStatus: 'in_stock' | 'low_stock' | 'on_order';
   image?: string;
+  hero?: string | string[] | null;
   specs?: string[];
   unit?: string;
   packSize?: string;

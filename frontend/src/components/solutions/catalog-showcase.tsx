@@ -111,15 +111,40 @@ export default async function CatalogShowcase({ locale }: CatalogShowcaseProps) 
                       });
                     }
 
-                    // Convert Directus file ID to image URL
-                    const getImageUrl = (fileId: string | null | undefined) => {
-                      if (!fileId) return undefined;
-                      // Check if it's already a full URL
-                      if (fileId.startsWith('http://') || fileId.startsWith('https://') || fileId.startsWith('/')) {
-                        return fileId;
+                    // Convert hero (JSON string array or plain path) to image URL
+                    const getImageUrl = (raw: string | string[] | null | undefined): string | undefined => {
+                      if (!raw) return undefined;
+
+                      let imagePath: string | undefined;
+
+                      if (typeof raw === 'string') {
+                        // Try parsing as JSON array first (e.g. '["/images/...", ...]')
+                        if (raw.startsWith('[')) {
+                          try {
+                            const parsed = JSON.parse(raw);
+                            if (Array.isArray(parsed) && parsed[0]) {
+                              imagePath = parsed[0];
+                            }
+                          } catch {
+                            // Not valid JSON, treat as plain string
+                          }
+                        }
+                        // Plain string path or URL
+                        if (!imagePath) {
+                          imagePath = raw;
+                        }
+                      } else if (Array.isArray(raw) && raw[0]) {
+                        imagePath = raw[0];
                       }
-                      // It's a Directus file ID - convert to URL
-                      return resolveImageUrl(fileId);
+
+                      if (!imagePath) return undefined;
+
+                      // Already a full URL or absolute path
+                      if (imagePath.startsWith('http://') || imagePath.startsWith('https://') || imagePath.startsWith('/')) {
+                        return imagePath;
+                      }
+                      // Directus file ID - convert to URL
+                      return resolveImageUrl(imagePath) || undefined;
                     };
 
                     // Get price directly from DB (firstSku.price_min / price_max / price)
