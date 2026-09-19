@@ -78,7 +78,7 @@ export default function CheckoutClient({
     note: 'Giao hàng vào giờ hành chính, liên hệ trước 30 phút để chuẩn bị xe nâng hạ hàng.'
   });
 
-  const [paymentMethod, setPaymentMethod] = useState<'bank' | 'cod' | 'wallet'>('bank');
+  const [paymentMethod, setPaymentMethod] = useState<'bank' | 'cod' | 'wallet' | 'vnpay'>('vnpay');
   const [shippingMethod, setShippingMethod] = useState<'standard' | 'express' | '3pl'>('standard');
   const [carrierName, setCarrierName] = useState('Viettel Post');
   const [carrierAccount, setCarrierAccount] = useState('');
@@ -296,6 +296,22 @@ export default function CheckoutClient({
       if (!response.ok) throw new Error('Không thể tạo đơn hàng. Vui lòng thử lại.');
       const result = (await response.json()) as { data?: { id: string | number } };
       if (!result.data?.id) throw new Error('Đơn hàng chưa được tạo.');
+
+      if (paymentMethod === 'vnpay') {
+        const paymentRes = await fetch('/api/orders/create-payment-url', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ orderId: result.data.id, locale })
+        });
+        if (!paymentRes.ok) throw new Error('Không thể tạo link thanh toán.');
+        const paymentData = await paymentRes.json();
+        if (!paymentData.data?.paymentUrl) throw new Error('Không nhận được link thanh toán.');
+        persistCart([]);
+        setCart([]);
+        window.location.href = paymentData.data.paymentUrl;
+        return;
+      }
+
       persistCart([]);
       setCart([]);
       window.location.href = `/${locale}/order-confirmation?orderId=${result.data.id}`;
@@ -527,6 +543,33 @@ export default function CheckoutClient({
               <div className="h-[1px] w-full bg-[#DCE0E5]" />
 
               <div className="space-y-4">
+                {/* VNPay QR Option */}
+                <button
+                  type="button"
+                  onClick={() => setPaymentMethod('vnpay')}
+                  className={cn(
+                    'flex gap-4 p-4 rounded-[8px] border text-left cursor-pointer transition-all items-center w-full',
+                    paymentMethod === 'vnpay'
+                      ? 'border-2 border-[#1769E2] bg-white'
+                      : 'border border-[#CAD5E2] bg-white hover:bg-slate-50/50'
+                  )}
+                >
+                  <div className="w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 border-[#1769E2]">
+                    {paymentMethod === 'vnpay' && (
+                      <div className="w-2.5 h-2.5 rounded-full bg-[#1769E2]" />
+                    )}
+                  </div>
+                  <div className="space-y-1 flex-1">
+                    <p className="text-[15px] font-semibold text-[#162233] flex items-center gap-2">
+                      Thanh toán QR Code (VNPay)
+                      <QrCode className="h-4 w-4 text-[#1769E2]" />
+                    </p>
+                    <p className="text-[13px] font-normal text-[#617084]">
+                      Quét mã QR bằng ứng dụng ngân hàng hoặc ví điện tử. Xác nhận tức thì, không cần đăng nhập.
+                    </p>
+                  </div>
+                </button>
+
                 {/* Bank Transfer Option */}
                 <button
                   type="button"

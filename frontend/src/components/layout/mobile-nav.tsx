@@ -247,6 +247,7 @@ export function MobileNav({ items }: MobileNavProps) {
   const [open, setOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
   const [expandedItems, setExpandedItems] = useState<Record<string, boolean>>({});
+  const [hoveredHref, setHoveredHref] = useState<string | null>(null);
   const t = useTranslations('nav');
   const { status, user, logout } = useAuth();
   const isAdmin = isAdminUser(user);
@@ -354,31 +355,38 @@ export function MobileNav({ items }: MobileNavProps) {
               const richSubGroups = RICH_MOBILE_NAV_DATA[it.href];
               const hasRichData = !!richSubGroups && richSubGroups.length > 0;
               const isExpanded = !!expandedItems[it.href];
-              const isFeatured = meta.isFeatured;
+              const isHovered = hoveredHref === it.href;
+              const isActive = isExpanded || isHovered;
 
               return (
                 <div
                   key={it.href}
-                  className={`relative flex flex-col rounded-[3px] border transition-all ${
-                    isFeatured
-                      ? 'border-2 border-[#2168df] bg-gradient-to-br from-[#f8fbff] to-[#f1f6fd] p-4 shadow-[inset_4px_0_0_#2168df]'
-                      : 'border-[#e4e9f0] bg-white p-4 shadow-2xs hover:border-slate-300'
+                  onMouseEnter={() => setHoveredHref(it.href)}
+                  onMouseLeave={() => setHoveredHref(null)}
+                  className={`group relative flex flex-col rounded-[3px] border-2 p-4 transition-all duration-200 ${
+                    isActive
+                      ? 'border-[#2168df] bg-gradient-to-br from-[#f8fbff] to-[#f1f6fd] shadow-[inset_4px_0_0_#2168df]'
+                      : 'border-[#e4e9f0] bg-white shadow-2xs hover:border-[#2168df] hover:bg-gradient-to-br hover:from-[#f8fbff] hover:to-[#f1f6fd] hover:shadow-[inset_4px_0_0_#2168df]'
                   }`}
                 >
                   <div className="flex items-center justify-between gap-3">
                     <Link
                       href={it.href}
                       onClick={() => setOpen(false)}
-                      className="flex items-center gap-3 flex-1 min-w-0 group"
+                      className="flex items-center gap-3 flex-1 min-w-0"
                     >
                       <div
-                        className="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-[3px] border bg-white transition-transform group-hover:scale-105"
+                        className={`flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-[3px] border bg-white transition-all duration-200 ${
+                          isActive ? 'scale-105 shadow-xs' : 'group-hover:scale-105'
+                        }`}
                         style={{ color: meta.color, borderColor: `${meta.color}40` }}
                       >
                         <IconComp className="h-5 w-5" />
                       </div>
                       <div className="flex flex-col min-w-0">
-                        <b className="text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-bold text-[#152944] leading-tight group-hover:text-brand transition-colors">
+                        <b className={`text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-bold leading-tight transition-colors ${
+                          isActive ? 'text-brand' : 'text-[#152944] group-hover:text-brand'
+                        }`}>
                           {it.label}
                         </b>
                         <small className="mt-0.5 text-[12.5px] font-medium text-[#66717e] leading-snug">
@@ -390,7 +398,9 @@ export function MobileNav({ items }: MobileNavProps) {
                     <button
                       type="button"
                       onClick={() => toggleExpand(it.href)}
-                      className="p-1.5 text-slate-400 hover:text-brand transition-colors"
+                      className={`p-1.5 transition-colors ${
+                        isActive ? 'text-brand' : 'text-slate-400 group-hover:text-brand'
+                      }`}
                       aria-label={`Toggle ${it.label}`}
                     >
                       <ChevronDown
@@ -402,7 +412,7 @@ export function MobileNav({ items }: MobileNavProps) {
                   </div>
 
                   {isExpanded && (
-                    <div className="mt-3 flex flex-col gap-3.5 border-t border-slate-100 pt-3">
+                    <div className="mt-3 flex flex-col gap-3.5 border-t border-slate-200/80 pt-3">
                       {hasRichData ? (
                         richSubGroups.map((subGroup, sIdx) => (
                           <div key={sIdx} className="flex flex-col gap-2">
@@ -421,13 +431,13 @@ export function MobileNav({ items }: MobileNavProps) {
                                     key={iIdx}
                                     href={subItem.slug || subItem.link || subGroup.link}
                                     onClick={() => setOpen(false)}
-                                    className="flex items-start gap-3 rounded-[3px] border border-slate-100 bg-[#f8fafc]/70 p-2.5 transition-all hover:border-blue-200 hover:bg-blue-50/40 active:scale-[0.99]"
+                                    className="group/sub flex items-start gap-3 rounded-[3px] border border-slate-100 bg-[#f8fafc]/70 p-2.5 transition-all hover:border-[#2168df] hover:bg-blue-50/60 hover:shadow-[inset_3px_0_0_#2168df] active:scale-[0.99]"
                                   >
-                                    <div className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-[3px] ${subItem.color}`}>
+                                    <div className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-[3px] transition-transform group-hover/sub:scale-105 ${subItem.color}`}>
                                       <SubIcon className="h-4.5 w-4.5" />
                                     </div>
                                     <div className="flex flex-col min-w-0">
-                                      <span className="text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-bold text-[#152944] leading-snug truncate">
+                                      <span className="text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-bold text-[#152944] leading-snug truncate group-hover/sub:text-[#2168df] transition-colors">
                                         {subItem.title}
                                       </span>
                                       <span className="mt-0.5 text-[13px] font-medium text-[#66717e] leading-snug line-clamp-2">
@@ -446,10 +456,10 @@ export function MobileNav({ items }: MobileNavProps) {
                             key={child.href}
                             href={child.href}
                             onClick={() => setOpen(false)}
-                            className="relative pl-3 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-bold text-[#152944] transition-colors hover:text-[#2168df] flex items-center gap-2"
+                            className="group/child relative pl-3 py-1.5 rounded-[3px] text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] font-bold text-[#152944] transition-all hover:text-[#2168df] hover:bg-blue-50/50 hover:pl-4 flex items-center gap-2"
                           >
                             <span
-                              className="h-1.5 w-1.5 rounded-full shrink-0"
+                              className="h-1.5 w-1.5 rounded-full shrink-0 transition-transform group-hover/child:scale-125"
                               style={{ backgroundColor: meta.color }}
                             />
                             <span>{child.label}</span>

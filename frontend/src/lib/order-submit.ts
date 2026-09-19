@@ -21,9 +21,11 @@ export async function submitOrder(input: OrderInput, deps: OrderSubmitDeps) {
   }));
   const code = `UL-${Date.now().toString(36).toUpperCase()}`;
   const order = await deps.create('orders', {
-    code, status: 'confirmed', customer: input.userId || null, order_date: new Date().toISOString(),
+    code, status: input.paymentMethod === 'vnpay' ? 'payment_required' : 'confirmed',
+    ...(input.paymentMethod === 'vnpay' ? { payment_status: 'pending' } : {}),
+    customer: input.userId || null, order_date: new Date().toISOString(),
     subtotal: input.subtotal, tax: input.tax, total: input.total,
-    notes: JSON.stringify({ buyer: input.buyer, paymentMethod: input.paymentMethod, shippingMethod: input.shippingMethod, simulatedPayment: true })
+    notes: JSON.stringify({ buyer: input.buyer, paymentMethod: input.paymentMethod, shippingMethod: input.shippingMethod })
   });
   for (const [index, item] of input.items.entries()) {
     const skuId = skuIds[index];

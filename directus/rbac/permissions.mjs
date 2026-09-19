@@ -190,6 +190,27 @@ export function buildPermissionDefs() {
       { policy: FRONTEND_SERVICE_POLICY_ID, collection, action: 'create', permissions: {}, fields: ['*'] },
       { policy: FRONTEND_SERVICE_POLICY_ID, collection, action: 'update', permissions: {}, fields: ['*'] }
     ]),
+    { policy: FRONTEND_SERVICE_POLICY_ID, collection: 'product_skus', action: 'read', permissions: {}, fields: ['*'] },
+    { policy: FRONTEND_SERVICE_POLICY_ID, collection: 'products', action: 'read', permissions: {}, fields: ['*'] },
+    ...['orders', 'order_items', 'payments', 'payment_audit_log'].flatMap((collection) => [
+      { policy: FRONTEND_SERVICE_POLICY_ID, collection, action: 'read', permissions: {}, fields: ['*'] },
+      { policy: FRONTEND_SERVICE_POLICY_ID, collection, action: 'create', permissions: {}, fields: ['*'] },
+      { policy: FRONTEND_SERVICE_POLICY_ID, collection, action: 'update', permissions: {}, fields: ['*'] }
+    ]),
+    {
+      policy: FRONTEND_SERVICE_POLICY_ID,
+      collection: 'customers',
+      action: 'create',
+      permissions: {},
+      fields: ['*']
+    },
+    {
+      policy: FRONTEND_SERVICE_POLICY_ID,
+      collection: 'customers',
+      action: 'read',
+      permissions: {},
+      fields: ['*']
+    },
     {
       policy: FRONTEND_SERVICE_POLICY_ID,
       collection: 'sample_requests',

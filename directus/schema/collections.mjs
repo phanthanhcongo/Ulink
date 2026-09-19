@@ -464,11 +464,31 @@ export const COLLECTION_DEFS = [
               { text: 'Processing', value: 'processing' },
               { text: 'Shipped', value: 'shipped' },
               { text: 'Completed', value: 'completed' },
-              { text: 'Cancelled', value: 'cancelled' }
+              { text: 'Cancelled', value: 'cancelled' },
+              { text: 'Payment Required', value: 'payment_required' },
+              { text: 'Payment Failed', value: 'payment_failed' },
+              { text: 'Payment Expired', value: 'payment_expired' }
             ]
           }
         },
         schema: { default_value: 'pending' }
+      },
+      {
+        field: 'payment_status',
+        type: 'string',
+        meta: {
+          interface: 'select-dropdown',
+          options: {
+            choices: [
+              { text: 'None', value: 'none' },
+              { text: 'Pending', value: 'pending' },
+              { text: 'Success', value: 'success' },
+              { text: 'Failed', value: 'failed' },
+              { text: 'Expired', value: 'expired' }
+            ]
+          }
+        },
+        schema: { default_value: 'none' }
       },
       { field: 'code', type: 'string', meta: { interface: 'input', required: true }, schema: { is_unique: true } },
       { field: 'customer', type: 'integer', meta: { interface: 'select-dropdown-m2o', special: ['m2o'] } },
@@ -1021,6 +1041,70 @@ export const COLLECTION_DEFS = [
       { field: 'performed_by', type: 'uuid', meta: { interface: 'select-dropdown-m2o', special: ['m2o'] } },
       { field: 'note', type: 'text', meta: { interface: 'textarea' } },
       { field: 'date_created', type: 'timestamp', meta: { interface: 'datetime', readonly: true } }
+    ]
+  },
+  {
+    collection: 'payments',
+    meta: { icon: 'payment', note: 'Payment transactions' },
+    schema: {},
+    fields: [
+      ID_FIELD,
+      { field: 'order', type: 'integer', meta: { interface: 'select-dropdown-m2o', special: ['m2o'] } },
+      { field: 'amount', type: 'decimal', meta: { interface: 'input' }, schema: { numeric_precision: 15, numeric_scale: 2 } },
+      { field: 'currency', type: 'string', meta: { interface: 'input' }, schema: { default_value: 'VND' } },
+      { field: 'payment_method', type: 'string', meta: { interface: 'input' }, schema: { default_value: 'vnpay' } },
+      { field: 'vnp_txn_ref', type: 'string', meta: { interface: 'input' }, schema: { is_unique: true } },
+      { field: 'vnp_trans_id', type: 'string', meta: { interface: 'input' } },
+      {
+        field: 'status',
+        type: 'string',
+        meta: {
+          interface: 'select-dropdown',
+          options: {
+            choices: [
+              { text: 'Pending', value: 'pending' },
+              { text: 'Success', value: 'success' },
+              { text: 'Failed', value: 'failed' },
+              { text: 'Expired', value: 'expired' }
+            ]
+          }
+        },
+        schema: { default_value: 'pending' }
+      },
+      { field: 'response_code', type: 'string', meta: { interface: 'input' } },
+      { field: 'paid_at', type: 'timestamp', meta: { interface: 'datetime' } },
+      { field: 'metadata', type: 'json', meta: { interface: 'input-code', special: ['cast-json'], options: { language: 'json' } } },
+      { field: 'date_created', type: 'timestamp', meta: { interface: 'datetime', readonly: true, special: ['date-created'] } },
+      { field: 'date_updated', type: 'timestamp', meta: { interface: 'datetime', readonly: true, special: ['date-updated'] } }
+    ]
+  },
+  {
+    collection: 'payment_audit_log',
+    meta: { icon: 'receipt_long', note: 'Payment audit trail' },
+    schema: {},
+    fields: [
+      ID_FIELD,
+      { field: 'payment', type: 'integer', meta: { interface: 'select-dropdown-m2o', special: ['m2o'] } },
+      {
+        field: 'event_type',
+        type: 'string',
+        meta: {
+          interface: 'select-dropdown',
+          options: {
+            choices: [
+              { text: 'Created', value: 'created' },
+              { text: 'Webhook Received', value: 'webhook_received' },
+              { text: 'Status Changed', value: 'status_changed' },
+              { text: 'Error', value: 'error' }
+            ]
+          }
+        }
+      },
+      { field: 'status_from', type: 'string', meta: { interface: 'input' } },
+      { field: 'status_to', type: 'string', meta: { interface: 'input' } },
+      { field: 'actor', type: 'string', meta: { interface: 'input' }, schema: { default_value: 'system' } },
+      { field: 'details', type: 'json', meta: { interface: 'input-code', special: ['cast-json'], options: { language: 'json' } } },
+      { field: 'date_created', type: 'timestamp', meta: { interface: 'datetime', readonly: true, special: ['date-created'] } }
     ]
   }
 ];

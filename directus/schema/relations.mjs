@@ -51,5 +51,7 @@ export const RELATION_DEFS = [
   { collection: 'media_retention', field: 'deleted_by', related_collection: 'directus_users' },
   { collection: 'media_retention', field: 'hard_deleted_by', related_collection: 'directus_users' },
   { collection: 'media_audit_events', field: 'actor', related_collection: 'directus_users' },
+  { collection: 'payments', field: 'order', related_collection: 'orders', meta: { one_field: 'payments' } },
+  { collection: 'payment_audit_log', field: 'payment', related_collection: 'payments', meta: { one_field: 'audit_log' } },
   ...TRANSLATION_RELATION_DEFS
 ];
