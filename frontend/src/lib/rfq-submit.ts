@@ -8,7 +8,7 @@ type CreateRfqInput = {
   email: string;
   phone: string;
   address: string;
-  hub: number;
+  hub?: number;
   industry: string;
   message?: string;
   scheduled_delivery?: boolean;
@@ -134,7 +134,7 @@ export async function submitRfq(body: unknown, deps: SubmitRfqDeps): Promise<Sub
       email: validation.value.email,
       phone: validation.value.phone,
       address: validation.value.address,
-      hub: validation.value.hub,
+      ...(validation.value.hub ? { hub: validation.value.hub } : {}),
       industry: validation.value.industry,
       message: validation.value.message || '',
       scheduled_delivery: validation.value.scheduled_delivery,

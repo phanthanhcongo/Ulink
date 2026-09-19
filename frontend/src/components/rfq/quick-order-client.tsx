@@ -395,7 +395,6 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
           email: formEmail.trim(),
           phone: formPhone.trim(),
           address: formAddress.trim(),
-          hub: meta?.user?.hub || meta?.hubs?.[0]?.id || 1,
           industry: formIndustry,
           message: formMessage.trim(),
           items: validCartItems.map((item) => ({
