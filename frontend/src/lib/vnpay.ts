@@ -42,7 +42,7 @@ function formatDate(date: Date): string {
 
 export function createPaymentUrl(config: VnpayConfig, params: CreatePaymentParams): string {
   const date = new Date();
-  let vnpParams: Record<string, unknown> = {
+  const vnpParams: Record<string, unknown> = {
     vnp_Version: '2.1.0',
     vnp_Command: 'pay',
     vnp_TmnCode: config.tmnCode,
