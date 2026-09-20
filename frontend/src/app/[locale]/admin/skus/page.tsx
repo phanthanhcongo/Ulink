@@ -41,6 +41,7 @@ export default async function AdminSkusPage({ params: { locale } }: Props) {
             'unit',
             'pack_size',
             'status',
+            'attributes',
             'product.id',
             'product.name',
             'product.slug'

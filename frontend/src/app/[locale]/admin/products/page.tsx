@@ -63,8 +63,16 @@ export default async function AdminProductsPage({ params: { locale } }: Props) {
             'skus.unit',
             'skus.pack_size',
             'skus.status',
+            'skus.attributes',
             'assigned_attributes.id',
-            'assigned_attributes.product_attributes_id'
+            'assigned_attributes.product_attributes_id.id',
+            'assigned_attributes.product_attributes_id.name',
+            'assigned_attributes.product_attributes_id.slug',
+            'assigned_attributes.product_attributes_id.sort',
+            'assigned_attributes.product_attributes_id.options.id',
+            'assigned_attributes.product_attributes_id.options.value',
+            'assigned_attributes.product_attributes_id.options.sku_suffix',
+            'assigned_attributes.product_attributes_id.options.sort'
           ],
           sort: ['-id'],
           limit: -1

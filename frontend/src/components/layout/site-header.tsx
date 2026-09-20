@@ -9,15 +9,11 @@ import { HeaderAuthButton } from './header-auth-button';
 import { CartBadge } from './cart-badge';
 import { HeaderRfqButton } from './header-rfq-button';
 
-import { getCurrentUser, isAdminUser } from '@/lib/auth-helpers';
-
 /**
  * Header trang chủ — bám sát thiết kế Figma với Hover Dropdown Menu.
  */
 export async function SiteHeader() {
   const t = await getTranslations('nav');
-  const user = await getCurrentUser();
-  const isAdmin = isAdminUser(user);
 
   const items: NavItem[] = [
     {
@@ -30,8 +26,7 @@ export async function SiteHeader() {
     { href: '/solutions', label: t('products') },
     { href: '/industries', label: t('industries') },
     { href: '/resources', label: t('resources') },
-    { href: '/about', label: t('about') },
-    ...(isAdmin ? [{ href: '/admin', label: t('adminDashboard') }] : [])
+    { href: '/about', label: t('about') }
   ];
 
   return (

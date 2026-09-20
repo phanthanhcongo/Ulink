@@ -62,6 +62,8 @@ export function ProductsClient({
   );
   const [skuFormError, setSkuFormError] = useState('');
   const [productFormError, setProductFormError] = useState('');
+  const [skuListPopup, setSkuListPopup] = useState<{ product: Product } | null>(null);
+
   const [confirmState, setConfirmState] = useState<{
     isOpen: boolean;
     title?: string;
@@ -350,7 +352,7 @@ export function ProductsClient({
                   <th className="admin-table-cell admin-table-cell-sticky">Sản phẩm</th>
                   <th className="admin-table-cell min-w-[160px]">Thương hiệu / Danh mục</th>
                   <th className="admin-table-cell min-w-[100px]">Trạng thái</th>
-                  <th className="admin-table-cell min-w-[260px]">SKU & tồn kho</th>
+                  <th className="admin-table-cell min-w-[100px]">Số SKU</th>
                   <th className="admin-table-cell text-right sticky right-0 bg-slate-50 z-10 shadow-[-2px_0_5px_rgba(0,0,0,0.05)]">Hành động</th>
                 </tr>
               </thead>
@@ -415,50 +417,15 @@ export function ProductsClient({
                         </span>
                       </td>
 
-                      {/* SKUs List & Inline Update */}
-                      <td className="admin-table-cell py-3">
-                        {prod.skus && prod.skus.length > 0 ? (
-                          <div className="space-y-1.5">
-                            {prod.skus.map((sku) => (
-                              <div key={sku.id} className="flex flex-wrap items-center gap-1.5 rounded-[4px] bg-slate-50 px-2 py-1">
-                                <span className="text-[11px] font-mono font-semibold text-slate-700 select-all">
-                                  {sku.sku_code}
-                                </span>
-                                <span className="text-caption-responsive text-slate-400 font-medium hidden sm:inline">
-                                  {sku.pack_size ? `${sku.unit} (${sku.pack_size})` : sku.unit}
-                                </span>
-                                {(sku as any).price && (
-                                  <span className="text-[11px] font-semibold text-slate-700 px-1.5 py-0.5 rounded-[3px] bg-white border border-slate-200">
-                                    {((sku as any).price || 0).toLocaleString('vi-VN')}đ
-                                  </span>
-                                )}
-
-                                {/* Quick stock update */}
-                                <select
-                                  value={sku.stock_status || 'in_stock'}
-                                  onChange={(e) =>
-                                    handleSkuStockChange(sku.id, e.target.value as any)
-                                  }
-                                  className={cn(
-                                    'px-1.5 py-0.5 rounded-[3px] text-caption-responsive font-bold border focus:outline-none cursor-pointer text-xs sm:text-caption-responsive',
-                                    sku.stock_status === 'in_stock' &&
-                                      'bg-green-50 border-green-200 text-green-700',
-                                    sku.stock_status === 'low_stock' &&
-                                      'bg-orange-50 border-orange-200 text-orange-700',
-                                    sku.stock_status === 'out_of_stock' &&
-                                      'bg-red-50 border-red-200 text-red-700'
-                                  )}
-                                >
-                                  <option value="in_stock">Còn hàng</option>
-                                  <option value="low_stock">Sắp hết</option>
-                                  <option value="out_of_stock">Hết hàng</option>
-                                </select>
-                              </div>
-                            ))}
-                          </div>
-                        ) : (
-                          <span className="text-slate-400 italic text-caption-responsive">Chưa có mã SKU</span>
-                        )}
+                      {/* SKU Count */}
+                      <td className="admin-table-cell">
+                        <button
+                          onClick={() => setSkuListPopup({ product: prod })}
+                          className="inline-flex items-center justify-center min-w-[32px] px-2.5 py-1 rounded-lg bg-slate-100 text-[14px] font-bold text-slate-700 hover:bg-[#2163F5] hover:text-white transition-colors cursor-pointer"
+                          title="Xem danh sách SKU"
+                        >
+                          {prod.skus?.length ?? 0}
+                        </button>
                       </td>
 
                       {/* Actions */}
@@ -969,6 +936,57 @@ export function ProductsClient({
                 </button>
               </div>
             </form>
+          </div>
+        </div>
+      )}
+
+      {/* SKU List Popup */}
+      {skuListPopup && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center" onClick={() => setSkuListPopup(null)}>
+          <div className="absolute inset-0 bg-slate-900/30" />
+          <div className="relative bg-white rounded-xl shadow-xl border border-slate-200 w-full max-w-lg mx-4 max-h-[80vh] flex flex-col" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between px-5 py-4 border-b border-slate-100">
+              <div>
+                <h3 className="text-[16px] font-bold text-slate-800">Danh sách SKU</h3>
+                <p className="text-[13px] text-slate-500 mt-0.5">{skuListPopup.product.name}</p>
+              </div>
+              <button onClick={() => setSkuListPopup(null)} className="p-1.5 rounded-lg hover:bg-slate-100 text-slate-400 hover:text-slate-600 transition-colors">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            <div className="overflow-y-auto p-5">
+              {(skuListPopup.product.skus?.length ?? 0) === 0 ? (
+                <p className="text-center text-slate-500 py-6">Chưa có SKU nào</p>
+              ) : (
+                <div className="space-y-2.5">
+                  {skuListPopup.product.skus!.map((sku) => (
+                    <div key={sku.id} className="flex items-center justify-between p-3.5 rounded-lg border border-slate-200 hover:border-slate-300 hover:bg-slate-50/50 transition-colors">
+                      <div className="min-w-0 flex-1">
+                        <p className="text-[14px] font-bold text-slate-800 truncate">{sku.sku_code}</p>
+                        <div className="flex items-center gap-3 mt-1 text-[13px] text-slate-500">
+                          {sku.unit && <span>ĐVT: {sku.unit}</span>}
+                          {sku.pack_size && <span>Quy cách: {sku.pack_size}</span>}
+                        </div>
+                      </div>
+                      <div className="flex items-center gap-3 shrink-0 ml-3">
+                        {sku.price != null && (
+                          <span className="text-[13px] font-semibold text-slate-700">
+                            {new Intl.NumberFormat('vi-VN').format(sku.price)}đ
+                          </span>
+                        )}
+                        <span className={`inline-flex px-2 py-0.5 rounded-md text-[12px] font-semibold ${
+                          sku.stock_status === 'in_stock' ? 'bg-emerald-50 text-emerald-700' :
+                          sku.stock_status === 'low_stock' ? 'bg-amber-50 text-amber-700' :
+                          'bg-red-50 text-red-700'
+                        }`}>
+                          {sku.stock_status === 'in_stock' ? 'Còn hàng' : sku.stock_status === 'low_stock' ? 'Sắp hết' : 'Hết hàng'}
+                        </span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       )}

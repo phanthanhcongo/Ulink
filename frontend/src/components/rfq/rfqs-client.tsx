@@ -148,7 +148,13 @@ export function RfqsClient({ user }: { user: AuthUser | null }) {
     setFormEmail(customerMeta?.customer?.email || user?.email || '');
     setFormPhone(customerMeta?.customer?.phone || '');
     setFormAddress(customerMeta?.customer?.address || '');
-    setFormHub(customerMeta?.customer?.hub ? String(customerMeta.customer.hub) : '');
+    const haNameHub = customerMeta?.hubs?.find(
+      (h) => h.name.toLowerCase().includes('hà nam') || h.name.toLowerCase().includes('ha nam') || h.slug.includes('ha-nam')
+    );
+    const defaultHub = customerMeta?.customer?.hub
+      ? String(customerMeta.customer.hub)
+      : haNameHub ? String(haNameHub.id) : '';
+    setFormHub(defaultHub);
     setFormIndustry(customerMeta?.customer?.industry || '');
     setFormMessage('');
     setFormScheduled(false);
