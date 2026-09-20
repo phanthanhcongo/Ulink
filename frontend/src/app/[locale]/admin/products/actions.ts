@@ -339,6 +339,55 @@ export async function saveSku(data: {
 }
 
 /**
+ * Action: Upload a product image to frontend public folder.
+ * Returns the public path (e.g. /images/products/abc123.png).
+ */
+export async function uploadProductImage(formData: FormData): Promise<{ success: boolean; path?: string; error?: string }> {
+  await checkAuth();
+
+  try {
+    const file = formData.get('file') as File;
+    if (!file) throw new Error('No file provided');
+
+    const { writeFile, mkdir } = await import('fs/promises');
+    const nodePath = await import('path');
+
+    const ext = nodePath.extname(file.name) || '.png';
+    const safeName = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}${ext}`;
+    const dir = nodePath.join(process.cwd(), 'public', 'images', 'products');
+    await mkdir(dir, { recursive: true });
+
+    const buffer = Buffer.from(await file.arrayBuffer());
+    await writeFile(nodePath.join(dir, safeName), buffer);
+
+    return { success: true, path: `/images/products/${safeName}` };
+  } catch (err) {
+    console.error('Failed to upload product image:', err);
+    return { success: false, error: formatError(err) };
+  }
+}
+
+/**
+ * Action: Delete a product image from frontend public folder.
+ */
+export async function deleteProductImage(imagePath: string): Promise<{ success: boolean; error?: string }> {
+  await checkAuth();
+
+  try {
+    if (!imagePath.startsWith('/images/products/')) {
+      return { success: true };
+    }
+    const { unlink } = await import('fs/promises');
+    const nodePath = await import('path');
+    const fullPath = nodePath.join(process.cwd(), 'public', imagePath);
+    await unlink(fullPath).catch(() => {});
+    return { success: true };
+  } catch (err) {
+    return { success: false, error: formatError(err) };
+  }
+}
+
+/**
  * Action: Upload a file to Directus and return the file ID.
  */
 export async function uploadFileToDirectus(formData: FormData): Promise<{ success: boolean; fileId?: string; error?: string }> {

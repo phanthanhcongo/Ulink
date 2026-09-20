@@ -85,8 +85,14 @@ export default function ProductDetailClient({
   });
 
   // 2. Quantity state (Default MOQ 500 for B2B)
-  const [quantity, setQuantity] = useState<number>(1000);
+  const [quantityInput, setQuantityInput] = useState<string>('1000');
   const [added, setAdded] = useState(false);
+
+  // Derived numeric quantity (defaults to 1 if empty/invalid)
+  const numericQuantity = useMemo(() => {
+    const parsed = parseInt(quantityInput, 10);
+    return isNaN(parsed) || parsed < 1 ? 1 : parsed;
+  }, [quantityInput]);
 
   // Extract unique attributes list for rendering
   const attributes = useMemo(() => {
@@ -131,10 +137,10 @@ export default function ProductDetailClient({
 
   // Determine current active discount tier index based on quantity
   const activeTierIdx = useMemo(() => {
-    if (quantity >= 3000) return 2;
-    if (quantity >= 1000) return 1;
+    if (numericQuantity >= 3000) return 2;
+    if (numericQuantity >= 1000) return 1;
     return 0;
-  }, [quantity]);
+  }, [numericQuantity]);
 
   // Format currency
   const formatPrice = useCallback(
@@ -166,12 +172,12 @@ export default function ProductDetailClient({
     return priceTiers[activeTierIdx].price;
   }, [priceTiers, activeTierIdx]);
 
-  // Display unit price (e.g., 3.0 kg * 41.500đ/kg = 124.500đ/cuộn)
+  // Display unit price
   const currentUnitPrice = useMemo(() => {
     return activeTierPrice * sizeFactor;
   }, [activeTierPrice, sizeFactor]);
 
-  // Display unit label (if size is selected, unit is "cuộn" for rolls, otherwise unitLabel)
+  // Display unit label
   const displayUnitLabel = useMemo(() => {
     if (selections['size']) return locale === 'vi' ? 'cuộn' : 'roll';
     return unitLabel;
@@ -179,18 +185,37 @@ export default function ProductDetailClient({
 
   // Total order amount
   const totalAmount = useMemo(() => {
-    return activeTierPrice * quantity;
-  }, [activeTierPrice, quantity]);
+    return activeTierPrice * numericQuantity;
+  }, [activeTierPrice, numericQuantity]);
 
   const handleSelectAttribute = useCallback((attrName: string, value: string) => {
     setSelections((prev) => ({ ...prev, [attrName]: value }));
     setAdded(false);
   }, []);
 
-  const handleQuantityChange = useCallback((val: number) => {
-    if (isNaN(val)) return;
-    setQuantity(Math.max(1, val));
+  const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const val = e.target.value;
+    if (val === '' || /^\d+$/.test(val)) {
+      setQuantityInput(val);
+      setAdded(false);
+    }
   }, []);
+
+  const handleInputBlur = useCallback(() => {
+    if (!quantityInput || parseInt(quantityInput, 10) < 1) {
+      setQuantityInput('1');
+    }
+  }, [quantityInput]);
+
+  const handleStepQuantity = useCallback(
+    (delta: number) => {
+      const current = parseInt(quantityInput, 10) || 0;
+      const next = Math.max(1, current + delta);
+      setQuantityInput(String(next));
+      setAdded(false);
+    },
+    [quantityInput]
+  );
 
   const performAddToCart = useCallback(
     (targetQty: number) => {
@@ -236,19 +261,19 @@ export default function ProductDetailClient({
   );
 
   const handleAddToCart = useCallback(() => {
-    const success = performAddToCart(quantity);
+    const success = performAddToCart(numericQuantity);
     if (success) {
       setAdded(true);
       setTimeout(() => setAdded(false), 2500);
     }
-  }, [performAddToCart, quantity]);
+  }, [performAddToCart, numericQuantity]);
 
   const handleRequestQuote = useCallback(() => {
-    const success = performAddToCart(quantity);
+    const success = performAddToCart(numericQuantity);
     if (success) {
       router.push('/cart');
     }
-  }, [performAddToCart, quantity, router]);
+  }, [performAddToCart, numericQuantity, router]);
 
   return (
     <div className="w-full lg:w-[340px] p-4 sm:p-6 space-y-5 bg-[#f5f8fc] border border-[#dce0e5] rounded-[8px] text-left">
@@ -315,23 +340,25 @@ export default function ProductDetailClient({
               : `Order Qty ${unitLabel} (MOQ: 500 ${unitLabel})`}
           </p>
         </div>
-        <div className="flex items-center w-full h-[36px] bg-white rounded-[3px] border border-[#dce0e5] overflow-hidden">
+        <div className="flex items-center w-full h-[36px] bg-white rounded-[4px] border border-[#dce0e5] overflow-hidden focus-within:border-[#1769e2] transition-colors">
           <button
             type="button"
-            onClick={() => handleQuantityChange(quantity - 50 < 1 ? 1 : quantity - 50)}
+            onClick={() => handleStepQuantity(-50)}
             className="w-[40px] h-full flex items-center justify-center hover:bg-slate-50 text-slate-600 font-bold border-r border-[#dce0e5] select-none transition-colors cursor-pointer shrink-0"
           >
             <Minus className="h-4 w-4" />
           </button>
           <input
-            type="number"
-            value={quantity}
-            onChange={(e) => handleQuantityChange(parseInt(e.target.value, 10))}
-            className="flex-1 text-center font-semibold text-[14px] text-[#212529] focus:outline-none py-1 [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
+            type="text"
+            inputMode="numeric"
+            value={quantityInput}
+            onChange={handleInputChange}
+            onBlur={handleInputBlur}
+            className="flex-1 text-center font-semibold text-[14px] text-[#212529] focus:outline-none py-1 w-full"
           />
           <button
             type="button"
-            onClick={() => handleQuantityChange(quantity + 50)}
+            onClick={() => handleStepQuantity(50)}
             className="w-[40px] h-full flex items-center justify-center hover:bg-slate-50 text-slate-600 font-bold border-l border-[#dce0e5] select-none transition-colors cursor-pointer shrink-0"
           >
             <Plus className="h-4 w-4" />
@@ -382,7 +409,7 @@ export default function ProductDetailClient({
       </div>
 
       {/* 5. TOTAL BLOCK */}
-      <div className="space-y-1 text-left bg-white p-3.5 rounded-[6px] border border-[#dce0e5]">
+      <div className="space-y-1 text-left">
         <p className="text-[13px] font-semibold text-[#6B7280]">{locale === 'vi' ? 'Tổng giá trị tạm tính' : 'Estimated Total'}</p>
         <span className="text-[26px] font-bold text-[#1769e2] tracking-tight block leading-tight">
           {formatPrice(totalAmount)}

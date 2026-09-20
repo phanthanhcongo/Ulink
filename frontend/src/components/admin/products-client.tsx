@@ -31,7 +31,8 @@ import {
   deleteProduct,
   saveProduct,
   saveSku,
-  uploadFileToDirectus,
+  uploadProductImage,
+  deleteProductImage,
   updateProductHero,
   addProductGalleryImage,
   removeProductGalleryImage
@@ -553,34 +554,35 @@ export function ProductsClient({
                   <label className="text-caption-responsive font-bold text-slate-500 uppercase">Ảnh đại diện (Hero)</label>
                   <div className="flex flex-wrap items-start gap-3">
                     {(() => {
-                      let heroUrls: string[] = [];
+                      // Parse hero JSON array or single value into raw paths
+                      let heroPaths: string[] = [];
                       const raw = activeProduct.hero;
                       if (raw) {
                         if (Array.isArray(raw)) {
-                          heroUrls = raw.map((u: string) => resolveImageUrl(u) || '').filter(Boolean);
+                          heroPaths = raw.filter(Boolean);
                         } else if (typeof raw === 'string' && raw.trim().startsWith('[')) {
                           try {
                             const parsed = JSON.parse(raw);
-                            if (Array.isArray(parsed)) {
-                              heroUrls = parsed.map((u: string) => resolveImageUrl(u) || '').filter(Boolean);
-                            }
+                            if (Array.isArray(parsed)) heroPaths = parsed.filter(Boolean);
                           } catch { /* not JSON */ }
                         }
-                        if (heroUrls.length === 0) {
-                          const single = resolveImageUrl(raw);
-                          if (single) heroUrls = [single];
+                        if (heroPaths.length === 0 && raw) {
+                          heroPaths = [typeof raw === 'string' ? raw : String(raw)];
                         }
                       }
+
+                      const heroUrls = heroPaths.map((p) => resolveImageUrl(p) || '').filter(Boolean);
+
                       if (heroUrls.length === 0) {
                         return (
-                          <div className="w-32 h-32 rounded-lg border-2 border-dashed border-slate-300 flex flex-col items-center justify-center text-slate-400">
+                          <div className="w-28 h-28 rounded-lg border-2 border-dashed border-slate-300 flex flex-col items-center justify-center text-slate-400">
                             <ImageIcon className="w-8 h-8 mb-1" />
                             <span className="text-[11px]">Chưa có ảnh</span>
                           </div>
                         );
                       }
                       return heroUrls.map((url, idx) => (
-                        <div key={idx} className="relative w-32 h-32 rounded-lg overflow-hidden border border-slate-200 bg-white group">
+                        <div key={idx} className="relative w-28 h-28 rounded-lg overflow-hidden border border-slate-200 bg-white group">
                           <Image
                             src={url}
                             alt={`Ảnh ${idx + 1}`}
@@ -588,15 +590,32 @@ export function ProductsClient({
                             className="object-contain"
                             unoptimized
                           />
+                          <button
+                            type="button"
+                            onClick={async () => {
+                              const removedPath = heroPaths[idx];
+                              const updated = heroPaths.filter((_, i) => i !== idx);
+                              const newHero = updated.length > 0 ? JSON.stringify(updated) : null;
+                              if (activeProduct.id) {
+                                await updateProductHero(activeProduct.id, newHero);
+                              }
+                              if (removedPath) await deleteProductImage(removedPath);
+                              setActiveProduct({ ...activeProduct, hero: newHero ?? undefined });
+                            }}
+                            className="absolute top-1 right-1 p-1 bg-red-500 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                            title="Xóa ảnh này"
+                          >
+                            <Trash2 className="w-3 h-3" />
+                          </button>
                           <span className="absolute bottom-0 left-0 right-0 bg-black/50 text-white text-[10px] text-center py-0.5">
                             {idx === 0 ? 'Hero' : `Ảnh ${idx + 1}`}
                           </span>
                         </div>
                       ));
                     })()}
-                    <label className="flex items-center gap-2 px-3 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-semibold text-slate-600 hover:bg-slate-50 cursor-pointer transition-colors">
+                    <label className="flex items-center gap-2 px-3 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-semibold text-slate-600 hover:bg-slate-50 cursor-pointer transition-colors h-fit">
                       <Upload className="w-4 h-4" />
-                      <span>{activeProduct.hero ? 'Đổi ảnh' : 'Tải ảnh lên'}</span>
+                      <span>Thêm ảnh</span>
                       <input
                         type="file"
                         accept="image/*"
@@ -606,12 +625,27 @@ export function ProductsClient({
                           if (!file) return;
                           const fd = new FormData();
                           fd.append('file', file);
-                          const res = await uploadFileToDirectus(fd);
-                          if (res.success && res.fileId) {
-                            if (activeProduct.id) {
-                              await updateProductHero(activeProduct.id, res.fileId);
+                          const res = await uploadProductImage(fd);
+                          if (res.success && res.path) {
+                            let currentPaths: string[] = [];
+                            const raw = activeProduct.hero;
+                            if (raw) {
+                              if (Array.isArray(raw)) {
+                                currentPaths = raw.filter(Boolean);
+                              } else if (typeof raw === 'string' && raw.trim().startsWith('[')) {
+                                try {
+                                  const parsed = JSON.parse(raw);
+                                  if (Array.isArray(parsed)) currentPaths = parsed.filter(Boolean);
+                                } catch { /* ignore */ }
+                              }
+                              if (currentPaths.length === 0) currentPaths = [String(raw)];
                             }
-                            setActiveProduct({ ...activeProduct, hero: res.fileId });
+                            currentPaths.push(res.path);
+                            const newHero = JSON.stringify(currentPaths);
+                            if (activeProduct.id) {
+                              await updateProductHero(activeProduct.id, newHero);
+                            }
+                            setActiveProduct({ ...activeProduct, hero: newHero });
                           }
                           e.target.value = '';
                         }}

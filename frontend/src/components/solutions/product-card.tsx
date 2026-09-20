@@ -179,7 +179,11 @@ export function ProductCard({
             {/* MOQ / STATUS INFO */}
             <div className="flex items-baseline justify-between gap-2">
               <span className="text-[16px] leading-[24px] font-normal text-[#14181F]">
-                 {product.moq || '500 kg'}
+                {(() => {
+                  const rawMoq = product.moq || '500 kg';
+                  const cleanMoq = rawMoq.replace(/^(MOQ:\s*)+/i, '').trim();
+                  return `MOQ: ${cleanMoq}`;
+                })()}
               </span>
               <span className="text-[14px] leading-[20px] font-normal text-[#495057] text-right truncate">
                 {product.status || (locale === 'vi' ? 'Sản xuất theo yêu cầu' : 'Custom orders')}

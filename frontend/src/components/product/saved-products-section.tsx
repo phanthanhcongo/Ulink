@@ -79,7 +79,7 @@ export default function SavedProductsSection({ allProducts, currentSlug, locale 
       image: imageUrl,
       price: displayPrice,
       unit: firstSku?.unit || '/per kg',
-      moq: `MOQ: ${firstSku?.pack_size || 'Liên hệ'}`,
+      moq: firstSku?.pack_size || (locale === 'vi' ? 'Liên hệ' : 'Contact'),
       status: firstSku?.stock_status === 'in_stock' ? (locale === 'vi' ? 'Có sẵn tại Kho' : 'In Stock') : (locale === 'vi' ? 'Sản xuất theo yêu cầu' : 'Custom orders'),
       location: locale === 'vi' ? 'Hub Hà Nam, Việt Nam' : 'Ha Nam Hub, Vietnam'
     };

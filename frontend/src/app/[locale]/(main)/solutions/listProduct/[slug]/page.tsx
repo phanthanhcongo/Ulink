@@ -211,11 +211,12 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
       }
 
       heroImages.forEach((mediaPath, idx) => {
-        if (mediaPath && (mediaPath.startsWith('/') || mediaPath.startsWith('http'))) {
-          if (!productGalleryImages.some((img) => img.src === mediaPath)) {
-            const isVid = isVideoPath(mediaPath);
+        const resolved = resolveImageUrl(mediaPath);
+        if (resolved) {
+          if (!productGalleryImages.some((img) => img.src === resolved)) {
+            const isVid = isVideoPath(resolved);
             productGalleryImages.push({
-              src: mediaPath,
+              src: resolved,
               alt: `${productName} - Hero ${idx + 1}`,
               label: isVid ? `Video ${idx + 1}` : `Ảnh ${idx + 1}`,
               type: isVid ? 'video' : 'image'

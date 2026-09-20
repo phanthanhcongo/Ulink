@@ -95,7 +95,7 @@ export function ProductsGrid({
             image: product.image,
             hero: product.hero,
             price: formatPrice(product.price, locale),
-            moq: `MOQ: ${product.packSize || 'Liên hệ'}`,
+            moq: product.packSize || (locale === 'vi' ? 'Liên hệ' : 'Contact'),
             moqUnit: product.unit,
             status: product.stockStatus === 'in_stock' ? (locale === 'vi' ? 'Có sẵn tại Kho' : 'In Stock') : (locale === 'vi' ? 'Sản xuất theo yêu cầu' : 'Custom orders'),
             location: 'Hub Hà Nam, Việt Nam',
