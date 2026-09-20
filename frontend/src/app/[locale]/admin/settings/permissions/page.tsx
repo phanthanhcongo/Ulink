@@ -21,7 +21,20 @@ interface Permission {
 }
 
 const ACTIONS = ['create', 'read', 'update', 'delete'] as const;
+const ACTION_LABELS: Record<string, string> = {
+  create: 'Tạo mới',
+  read: 'Xem',
+  update: 'Sửa',
+  delete: 'Xóa',
+};
 const ADMIN_ROLE_ID = '78c7d3ca-5d25-487f-bd87-cf42e9edce13';
+
+const FILTER_PRESETS = [
+  { label: 'Không giới hạn', value: '{}', desc: 'Truy cập tất cả dữ liệu' },
+  { label: 'Chỉ dữ liệu của mình', value: '{"user_created":{"_eq":"$CURRENT_USER"}}', desc: 'Chỉ xem/sửa dữ liệu do mình tạo' },
+  { label: 'Chỉ dữ liệu đã xuất bản', value: '{"status":{"_eq":"published"}}', desc: 'Chỉ truy cập bản ghi có trạng thái "published"' },
+  { label: 'Tuỳ chỉnh...', value: '__custom__', desc: 'Tự nhập điều kiện lọc nâng cao' },
+];
 
 // --- Detail Modal ---
 function PermissionDetailModal({
@@ -41,8 +54,22 @@ function PermissionDetailModal({
   onSaved: (p: Permission) => void;
   onDeleted: (id: number) => void;
 }) {
-  const [fields, setFields] = useState(perm?.fields?.join(', ') ?? '*');
-  const [filter, setFilter] = useState(perm?.permissions ? JSON.stringify(perm.permissions, null, 2) : '{}');
+  const [allFields, setAllFields] = useState(
+    !perm?.fields || (perm.fields.length === 1 && perm.fields[0] === '*')
+  );
+  const [customFields, setCustomFields] = useState(
+    perm?.fields && !(perm.fields.length === 1 && perm.fields[0] === '*')
+      ? perm.fields.join(', ')
+      : ''
+  );
+
+  const permJson = perm?.permissions ? JSON.stringify(perm.permissions) : '{}';
+  const matchedPreset = FILTER_PRESETS.find((p) => p.value !== '__custom__' && p.value === permJson);
+  const [filterPreset, setFilterPreset] = useState(matchedPreset ? matchedPreset.value : '__custom__');
+  const [customFilter, setCustomFilter] = useState(
+    perm?.permissions ? JSON.stringify(perm.permissions, null, 2) : '{}'
+  );
+
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState('');
 
@@ -50,20 +77,20 @@ function PermissionDetailModal({
     setSaving(true);
     setError('');
 
+    const parsedFields = allFields
+      ? ['*']
+      : customFields.split(',').map((f) => f.trim()).filter(Boolean);
+    if (parsedFields.length === 0) parsedFields.push('*');
+
     let parsedFilter: Record<string, unknown> = {};
+    const filterValue = filterPreset === '__custom__' ? customFilter : filterPreset;
     try {
-      parsedFilter = JSON.parse(filter);
+      parsedFilter = JSON.parse(filterValue);
     } catch {
-      setError('Filter JSON không hợp lệ');
+      setError('Điều kiện lọc không hợp lệ');
       setSaving(false);
       return;
     }
-
-    const parsedFields = fields
-      .split(',')
-      .map((f) => f.trim())
-      .filter(Boolean);
-    if (parsedFields.length === 0) parsedFields.push('*');
 
     try {
       if (perm) {
@@ -107,74 +134,109 @@ function PermissionDetailModal({
   };
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4" onClick={onClose}>
-      <div className="bg-white rounded-xl shadow-2xl w-full max-w-lg p-6 space-y-4" onClick={(e) => e.stopPropagation()}>
-        <h3 className="text-lg font-bold text-gray-900">
-          {perm ? 'Chỉnh sửa' : 'Tạo'} Permission
-        </h3>
-        <div className="grid grid-cols-2 gap-3 text-sm">
-          <div>
-            <span className="text-gray-500">Collection:</span>
-            <span className="ml-2 font-mono font-medium">{collection}</span>
-          </div>
-          <div>
-            <span className="text-gray-500">Action:</span>
-            <span className="ml-2 font-medium uppercase">{action}</span>
-          </div>
-        </div>
-
-        <div className="space-y-1">
-          <label className="block text-sm font-medium text-gray-700">
-            Fields <span className="text-gray-400 font-normal">(dùng * cho tất cả, phân cách bằng dấu phẩy)</span>
-          </label>
-          <input
-            type="text"
-            value={fields}
-            onChange={(e) => setFields(e.target.value)}
-            placeholder="* hoặc field1, field2, field3"
-            className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 font-mono text-sm"
-          />
-          <p className="text-xs text-gray-400">Dùng !field_name để loại trừ (vd: *, !password)</p>
-        </div>
-
-        <div className="space-y-1">
-          <label className="block text-sm font-medium text-gray-700">
-            Filter (JSON) <span className="text-gray-400 font-normal">— bộ lọc row-level</span>
-          </label>
-          <textarea
-            value={filter}
-            onChange={(e) => setFilter(e.target.value)}
-            rows={4}
-            placeholder='{ "status": { "_eq": "published" } }'
-            className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 font-mono text-sm"
-          />
-          <p className="text-xs text-gray-400">
-            Để {'{}'} nếu không cần filter. Ví dụ: {`{"user": {"_eq": "$CURRENT_USER"}}`}
+    <div className="fixed inset-0 bg-slate-900/30 flex items-center justify-center z-50 p-4" onClick={onClose}>
+      <div className="bg-white rounded-[6px] shadow-xl w-full max-w-md admin-panel-pad space-y-5 border border-[#E4E9F0]" onClick={(e) => e.stopPropagation()}>
+        <div>
+          <h3 className="text-lg font-bold text-[#162233]">
+            {perm ? 'Chỉnh sửa quyền' : 'Cấp quyền mới'}
+          </h3>
+          <p className="text-sm text-slate-500 mt-1">
+            Quyền <strong>{ACTION_LABELS[action] ?? action}</strong> trên bảng <strong>{collection}</strong>
           </p>
         </div>
 
-        {error && <p className="text-sm text-red-600">{error}</p>}
+        {/* Fields section */}
+        <div className="space-y-3">
+          <label className="admin-input-label">Phạm vi cột dữ liệu</label>
+          <div className="space-y-2">
+            <label className="flex items-center gap-3 p-3 rounded-[6px] border border-[#E4E9F0] cursor-pointer hover:bg-[#F5F8FC] transition"
+              onClick={() => setAllFields(true)}>
+              <input type="radio" checked={allFields} onChange={() => setAllFields(true)} className="text-[#2163F5]" />
+              <div>
+                <div className="text-sm font-semibold text-[#162233]">Tất cả các cột</div>
+                <div className="text-xs text-slate-500">Truy cập toàn bộ thông tin trong bảng</div>
+              </div>
+            </label>
+            <label className="flex items-start gap-3 p-3 rounded-[6px] border border-[#E4E9F0] cursor-pointer hover:bg-[#F5F8FC] transition"
+              onClick={() => setAllFields(false)}>
+              <input type="radio" checked={!allFields} onChange={() => setAllFields(false)} className="mt-0.5 text-[#2163F5]" />
+              <div className="flex-1">
+                <div className="text-sm font-semibold text-[#162233]">Chỉ một số cột</div>
+                <div className="text-xs text-slate-500 mb-2">Giới hạn truy cập vào các cột cụ thể</div>
+                {!allFields && (
+                  <input
+                    type="text"
+                    value={customFields}
+                    onChange={(e) => setCustomFields(e.target.value)}
+                    placeholder="Nhập tên cột, cách nhau bằng dấu phẩy"
+                    className="admin-input"
+                    onClick={(e) => e.stopPropagation()}
+                  />
+                )}
+              </div>
+            </label>
+          </div>
+        </div>
 
-        <div className="flex gap-3 pt-2 border-t">
+        {/* Filter section */}
+        <div className="space-y-3">
+          <label className="admin-input-label">Giới hạn dữ liệu</label>
+          <div className="space-y-2">
+            {FILTER_PRESETS.map((preset) => (
+              <label
+                key={preset.value}
+                className={`flex items-start gap-3 p-3 rounded-[6px] border cursor-pointer hover:bg-[#F5F8FC] transition ${
+                  filterPreset === preset.value ? 'border-[#2163F5] bg-[#EFF6FF]' : 'border-[#E4E9F0]'
+                }`}
+                onClick={() => setFilterPreset(preset.value)}
+              >
+                <input
+                  type="radio"
+                  checked={filterPreset === preset.value}
+                  onChange={() => setFilterPreset(preset.value)}
+                  className="mt-0.5 text-[#2163F5]"
+                />
+                <div className="flex-1">
+                  <div className="text-sm font-semibold text-[#162233]">{preset.label}</div>
+                  <div className="text-xs text-slate-500">{preset.desc}</div>
+                  {preset.value === '__custom__' && filterPreset === '__custom__' && (
+                    <textarea
+                      value={customFilter}
+                      onChange={(e) => setCustomFilter(e.target.value)}
+                      rows={3}
+                      placeholder='{"field": {"_eq": "value"}}'
+                      className="admin-input mt-2 font-mono text-xs"
+                      onClick={(e) => e.stopPropagation()}
+                    />
+                  )}
+                </div>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        {error && <p className="text-sm text-red-600 bg-red-50 rounded-[6px] p-2">{error}</p>}
+
+        <div className="flex gap-3 pt-4 border-t border-[#E4E9F0]">
           <button
             onClick={handleSave}
             disabled={saving}
-            className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 text-sm font-medium"
+            className="admin-button admin-button-primary flex-1"
           >
-            {saving ? 'Đang lưu...' : perm ? 'Cập nhật' : 'Tạo Permission'}
+            {saving ? 'Đang lưu...' : perm ? 'Lưu thay đổi' : 'Cấp quyền'}
           </button>
           {perm && (
             <button
               onClick={handleDelete}
               disabled={saving}
-              className="px-4 py-2 bg-red-50 text-red-600 rounded-lg hover:bg-red-100 disabled:opacity-50 text-sm font-medium"
+              className="admin-button admin-button-danger"
             >
-              Xóa
+              Thu hồi
             </button>
           )}
           <button
             onClick={onClose}
-            className="px-4 py-2 bg-gray-100 text-gray-600 rounded-lg hover:bg-gray-200 text-sm"
+            className="admin-button admin-button-secondary"
           >
             Hủy
           </button>
@@ -242,7 +304,6 @@ export default function PermissionsPage() {
   const findPermission = (roleId: string, collection: string, action: string): Permission | undefined =>
     permissions.find((p) => p.role === roleId && p.collection === collection && p.action === action);
 
-  // Quick toggle: click checkbox area
   const quickToggle = async (collection: string, action: string) => {
     if (!selectedRole) return;
     const key = `${collection}:${action}`;
@@ -333,38 +394,42 @@ export default function PermissionsPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
-        <Loader2 className="w-8 h-8 animate-spin text-blue-600" />
+        <Loader2 className="w-8 h-8 animate-spin text-[#2163F5]" />
       </div>
     );
   }
 
   return (
-    <div className="p-6 max-w-[1200px] mx-auto">
-      <div className="flex items-center gap-3 mb-6">
-        <Shield className="w-6 h-6 text-blue-600" />
-        <h1 className="text-2xl font-bold text-gray-900">Quản lý Phân quyền</h1>
+    <div className="admin-page">
+      <div className="mb-6 md:mb-8">
+        <span className="admin-page-eyebrow">Cài đặt hệ thống</span>
+        <h1 className="admin-page-title flex items-center gap-2.5">
+          <Shield className="w-6 h-6 text-[#2163F5]" />
+          Quản lý Phân quyền
+        </h1>
+        <p className="admin-page-lead">Cấu hình quyền truy cập cho từng vai trò trong hệ thống</p>
       </div>
 
       {message && (
-        <div className={`mb-4 p-3 rounded-lg text-sm ${message.type === 'success' ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'}`}>
+        <div className={`mb-4 p-3 rounded-[6px] text-sm ${message.type === 'success' ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'}`}>
           {message.text}
         </div>
       )}
 
       {/* Role tabs */}
-      <div className="flex flex-wrap gap-2 mb-4">
+      <div className="flex flex-wrap gap-2 mb-5">
         {roles.map((role) => (
           <button
             key={role.id}
             onClick={() => setSelectedRole(role.id)}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition border ${
+            className={`admin-button ${
               role.id === selectedRole
-                ? 'bg-blue-600 text-white border-blue-600'
-                : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-50'
+                ? 'admin-button-primary'
+                : 'admin-button-secondary'
             }`}
           >
             {role.name}
-            <span className={`ml-2 text-xs ${role.id === selectedRole ? 'text-blue-200' : 'text-gray-400'}`}>
+            <span className={`text-xs ${role.id === selectedRole ? 'text-white/70' : 'text-slate-400'}`}>
               ({countPerms(role.id)})
             </span>
           </button>
@@ -372,48 +437,48 @@ export default function PermissionsPage() {
       </div>
 
       {selectedRoleObj && (
-        <div className="bg-blue-50 border border-blue-100 rounded-lg p-3 mb-4 text-sm">
-          <strong>{selectedRoleObj.name}</strong>
+        <div className="bg-[#EFF6FF] border border-[#D8E6F5] rounded-[6px] p-3 mb-5 text-sm">
+          <strong className="text-[#162233]">{selectedRoleObj.name}</strong>
           {selectedRoleObj.description && !selectedRoleObj.description.startsWith('$t:') && (
-            <span className="text-gray-600"> — {selectedRoleObj.description}</span>
+            <span className="text-slate-600"> — {selectedRoleObj.description}</span>
           )}
         </div>
       )}
 
       {/* Search + system toggle */}
-      <div className="flex flex-wrap gap-4 mb-4">
-        <div className="flex-1 min-w-[200px]">
+      <div className="admin-filter-bar mb-5">
+        <div className="admin-filter-group flex-1">
           <input
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Tìm collection..."
-            className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 text-sm"
+            placeholder="Tìm bảng dữ liệu..."
+            className="admin-input"
           />
         </div>
-        <label className="flex items-center gap-2 text-sm text-gray-600 cursor-pointer">
+        <label className="flex items-center gap-2 text-sm text-slate-600 cursor-pointer whitespace-nowrap">
           <input
             type="checkbox"
             checked={showSystem}
             onChange={(e) => setShowSystem(e.target.checked)}
-            className="rounded"
+            className="rounded-[3px]"
           />
-          Hiện bảng hệ thống (directus_*)
+          Hiện bảng hệ thống
         </label>
       </div>
 
       {/* Permissions matrix */}
-      <div className="bg-white rounded-lg shadow border overflow-x-auto">
-        <table className="w-full text-sm">
+      <div className="admin-panel admin-table-wrapper">
+        <table className="admin-table">
           <thead>
-            <tr className="bg-gray-50 border-b">
-              <th className="text-left px-4 py-3 font-medium text-gray-700 min-w-[250px]">Collection</th>
+            <tr className="admin-table-head">
+              <th className="admin-table-cell text-left min-w-[220px]">Bảng dữ liệu</th>
               {ACTIONS.map((action) => (
-                <th key={action} className="text-center px-3 py-3 font-medium text-gray-700 w-[120px] uppercase text-xs">
-                  {action}
+                <th key={action} className="admin-table-cell text-center w-[100px]">
+                  {ACTION_LABELS[action]}
                 </th>
               ))}
-              <th className="text-center px-3 py-3 font-medium text-gray-700 w-[80px]">All</th>
+              <th className="admin-table-cell text-center w-[80px]">Tất cả</th>
             </tr>
           </thead>
           <tbody>
@@ -426,39 +491,38 @@ export default function PermissionsPage() {
                 <React.Fragment key={group}>
                   {showGroupHeader && (
                     <tr
-                      className="bg-gray-100 cursor-pointer hover:bg-gray-200 transition"
+                      className="bg-slate-50 cursor-pointer hover:bg-slate-100 transition"
                       onClick={() => toggleGroup(group)}
                     >
-                      <td colSpan={6} className="px-4 py-2 font-medium text-gray-600 text-xs uppercase tracking-wide">
+                      <td colSpan={6} className="admin-table-cell font-semibold text-slate-500 text-xs uppercase tracking-wide">
                         <span className="inline-flex items-center gap-1">
-                          {isCollapsed ? <ChevronRight className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
+                          {isCollapsed ? <ChevronRight className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
                           {group} ({cols.length})
                         </span>
                       </td>
                     </tr>
                   )}
                   {!isCollapsed && cols.map((collection) => (
-                    <tr key={collection} className="border-b hover:bg-blue-50/30 transition">
-                      <td className="px-4 py-2 font-mono text-xs text-gray-800">{collection}</td>
+                    <tr key={collection} className="admin-table-row">
+                      <td className="admin-table-cell font-medium text-[#162233]">{collection}</td>
                       {ACTIONS.map((action) => {
                         const perm = findPermission(selectedRole, collection, action);
                         const isToggling = toggling === `${collection}:${action}`;
 
                         return (
-                          <td key={action} className="text-center px-3 py-2">
+                          <td key={action} className="admin-table-cell text-center">
                             <div className="flex items-center justify-center gap-1">
-                              {/* Toggle button */}
                               <button
                                 onClick={() => quickToggle(collection, action)}
                                 disabled={isToggling}
-                                className={`w-8 h-8 rounded-lg flex items-center justify-center transition ${
+                                className={`w-8 h-8 rounded-[6px] flex items-center justify-center transition ${
                                   isToggling
-                                    ? 'bg-gray-100'
+                                    ? 'bg-slate-100'
                                     : perm
                                     ? 'bg-green-100 text-green-700 hover:bg-green-200'
-                                    : 'bg-gray-100 text-gray-300 hover:bg-red-50 hover:text-red-400'
+                                    : 'bg-slate-100 text-slate-300 hover:bg-red-50 hover:text-red-400'
                                 }`}
-                                title={perm ? 'Có quyền — click để xóa' : 'Không có quyền — click để thêm'}
+                                title={perm ? 'Có quyền — click để thu hồi' : 'Không có quyền — click để cấp'}
                               >
                                 {isToggling ? (
                                   <Loader2 className="w-4 h-4 animate-spin" />
@@ -468,11 +532,10 @@ export default function PermissionsPage() {
                                   <X className="w-4 h-4" />
                                 )}
                               </button>
-                              {/* Detail/edit button */}
                               <button
                                 onClick={() => setEditModal({ collection, action })}
-                                className="w-6 h-6 rounded flex items-center justify-center text-gray-300 hover:text-blue-600 hover:bg-blue-50 transition"
-                                title="Cấu hình chi tiết (fields, filter)"
+                                className="w-6 h-6 rounded-[3px] flex items-center justify-center text-slate-300 hover:text-[#2163F5] hover:bg-[#EFF6FF] transition"
+                                title="Tuỳ chỉnh chi tiết"
                               >
                                 <Settings2 className="w-3.5 h-3.5" />
                               </button>
@@ -480,10 +543,10 @@ export default function PermissionsPage() {
                           </td>
                         );
                       })}
-                      <td className="text-center px-3 py-2">
+                      <td className="admin-table-cell text-center">
                         <button
                           onClick={() => toggleAllForCollection(collection)}
-                          className="text-xs text-blue-600 hover:text-blue-800 hover:underline"
+                          className="text-xs font-semibold text-[#2163F5] hover:text-[#1852D6] hover:underline"
                         >
                           {ACTIONS.every((a) => findPermission(selectedRole, collection, a)) ? 'Bỏ hết' : 'Cấp hết'}
                         </button>
@@ -498,18 +561,18 @@ export default function PermissionsPage() {
       </div>
 
       {/* Legend */}
-      <div className="mt-4 flex flex-wrap gap-6 text-xs text-gray-500">
+      <div className="mt-4 flex flex-wrap gap-6 text-xs text-slate-500">
         <span className="inline-flex items-center gap-1.5">
-          <span className="w-5 h-5 rounded bg-green-100 inline-flex items-center justify-center"><Check className="w-3 h-3 text-green-700" /></span>
+          <span className="w-5 h-5 rounded-[4px] bg-green-100 inline-flex items-center justify-center"><Check className="w-3 h-3 text-green-700" /></span>
           Có quyền
         </span>
         <span className="inline-flex items-center gap-1.5">
-          <span className="w-5 h-5 rounded bg-gray-100 inline-flex items-center justify-center"><X className="w-3 h-3 text-gray-300" /></span>
+          <span className="w-5 h-5 rounded-[4px] bg-slate-100 inline-flex items-center justify-center"><X className="w-3 h-3 text-slate-300" /></span>
           Không có quyền
         </span>
         <span className="inline-flex items-center gap-1.5">
-          <Settings2 className="w-3.5 h-3.5 text-gray-400" />
-          Cấu hình chi tiết (fields, filter)
+          <Settings2 className="w-3.5 h-3.5 text-slate-400" />
+          Tuỳ chỉnh chi tiết
         </span>
       </div>
 

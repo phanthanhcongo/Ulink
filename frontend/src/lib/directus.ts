@@ -62,10 +62,12 @@ export interface ProductSku {
   id: number;
   sku_code: string;
   product: number | Product | null;
+  name?: string | null;
   unit: string | null;
   pack_size: string | null;
   attributes: Record<string, unknown> | null;
   image?: string | null;
+  hero?: string | null;
   stock_status: 'in_stock' | 'low_stock' | 'out_of_stock';
   price?: number | null;
   price_min?: number | null;

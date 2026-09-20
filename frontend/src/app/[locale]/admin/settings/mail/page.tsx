@@ -74,128 +74,134 @@ export default function MailSettingsPage() {
   if (loading) {
     return (
       <div className="flex items-center justify-center min-h-[400px]">
-        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600" />
+        <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-[#2163F5]" />
       </div>
     );
   }
 
   return (
-    <div className="max-w-2xl mx-auto p-6">
-      <div className="flex items-center gap-3 mb-6">
-        <Mail className="w-6 h-6 text-blue-600" />
-        <h1 className="text-2xl font-bold text-gray-900">Cấu hình Mail SMTP</h1>
+    <div className="admin-page max-w-3xl">
+      <div className="mb-6 md:mb-8">
+        <span className="admin-page-eyebrow">Cài đặt hệ thống</span>
+        <h1 className="admin-page-title flex items-center gap-2.5">
+          <Mail className="w-6 h-6 text-[#2163F5]" />
+          Cấu hình Mail SMTP
+        </h1>
+        <p className="admin-page-lead">Quản lý cấu hình gửi mail OTP, thông báo cho khách hàng</p>
       </div>
 
       {message && (
-        <div className={`mb-4 p-3 rounded-lg text-sm ${message.type === 'success' ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'}`}>
+        <div className={`mb-4 p-3 rounded-[6px] text-sm ${message.type === 'success' ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'}`}>
           {message.text}
         </div>
       )}
 
-      <div className="bg-white rounded-lg shadow border p-6 space-y-4">
+      <div className="admin-panel admin-panel-pad space-y-5">
         {/* Enabled toggle */}
-        <div className="flex items-center justify-between pb-4 border-b">
+        <div className="flex items-center justify-between pb-4 border-b border-[#E4E9F0]">
           <div>
-            <label className="font-medium text-gray-900">Sử dụng cấu hình từ database</label>
-            <p className="text-sm text-gray-500">Nếu tắt sẽ dùng cấu hình từ file .env</p>
+            <label className="font-semibold text-[#162233]">Sử dụng cấu hình từ database</label>
+            <p className="text-sm text-slate-500 mt-0.5">Nếu tắt sẽ dùng cấu hình từ file .env</p>
           </div>
           <button
             onClick={() => setConfig((p) => ({ ...p, enabled: !p.enabled }))}
-            className={`relative w-12 h-6 rounded-full transition-colors ${config.enabled ? 'bg-blue-600' : 'bg-gray-300'}`}
+            className={`relative w-12 h-6 rounded-full transition-colors ${config.enabled ? 'bg-[#2163F5]' : 'bg-slate-300'}`}
           >
-            <span className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full transition-transform ${config.enabled ? 'translate-x-6' : ''}`} />
+            <span className={`absolute top-0.5 left-0.5 w-5 h-5 bg-white rounded-full transition-transform shadow-sm ${config.enabled ? 'translate-x-6' : ''}`} />
           </button>
         </div>
 
         <div className={config.enabled ? '' : 'opacity-50 pointer-events-none'}>
-          {/* Host */}
-          <div className="space-y-1">
-            <label className="block text-sm font-medium text-gray-700">SMTP Host</label>
-            <input
-              type="text"
-              value={config.host}
-              onChange={(e) => setConfig((p) => ({ ...p, host: e.target.value }))}
-              placeholder="smtp.gmail.com"
-              className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            />
-          </div>
-
-          {/* Port + Secure */}
-          <div className="grid grid-cols-2 gap-4 mt-4">
-            <div className="space-y-1">
-              <label className="block text-sm font-medium text-gray-700">Port</label>
+          <div className="admin-form-group">
+            {/* Host */}
+            <div className="admin-input-group">
+              <label className="admin-input-label">SMTP Host</label>
               <input
-                type="number"
-                value={config.port}
-                onChange={(e) => setConfig((p) => ({ ...p, port: Number(e.target.value) }))}
-                className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                type="text"
+                value={config.host}
+                onChange={(e) => setConfig((p) => ({ ...p, host: e.target.value }))}
+                placeholder="smtp.gmail.com"
+                className="admin-input"
               />
             </div>
-            <div className="space-y-1">
-              <label className="block text-sm font-medium text-gray-700">SSL/TLS</label>
-              <select
-                value={config.secure ? 'true' : 'false'}
-                onChange={(e) => setConfig((p) => ({ ...p, secure: e.target.value === 'true' }))}
-                className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-              >
-                <option value="false">STARTTLS (port 587)</option>
-                <option value="true">SSL/TLS (port 465)</option>
-              </select>
+
+            {/* Port + Secure */}
+            <div className="admin-form-row">
+              <div className="admin-form-col admin-input-group">
+                <label className="admin-input-label">Port</label>
+                <input
+                  type="number"
+                  value={config.port}
+                  onChange={(e) => setConfig((p) => ({ ...p, port: Number(e.target.value) }))}
+                  className="admin-input"
+                />
+              </div>
+              <div className="admin-form-col admin-input-group">
+                <label className="admin-input-label">SSL/TLS</label>
+                <select
+                  value={config.secure ? 'true' : 'false'}
+                  onChange={(e) => setConfig((p) => ({ ...p, secure: e.target.value === 'true' }))}
+                  className="admin-select"
+                >
+                  <option value="false">STARTTLS (port 587)</option>
+                  <option value="true">SSL/TLS (port 465)</option>
+                </select>
+              </div>
             </div>
-          </div>
 
-          {/* Username */}
-          <div className="space-y-1 mt-4">
-            <label className="block text-sm font-medium text-gray-700">Username (Email)</label>
-            <input
-              type="email"
-              value={config.username}
-              onChange={(e) => setConfig((p) => ({ ...p, username: e.target.value }))}
-              placeholder="your-email@gmail.com"
-              className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            />
-          </div>
-
-          {/* Password */}
-          <div className="space-y-1 mt-4">
-            <label className="block text-sm font-medium text-gray-700">Password / App Password</label>
-            <div className="relative">
+            {/* Username */}
+            <div className="admin-input-group">
+              <label className="admin-input-label">Username (Email)</label>
               <input
-                type={showPassword ? 'text' : 'password'}
-                value={config.password ?? ''}
-                onChange={(e) => setConfig((p) => ({ ...p, password: e.target.value }))}
-                placeholder="Để trống nếu không đổi"
-                className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 pr-10"
+                type="email"
+                value={config.username}
+                onChange={(e) => setConfig((p) => ({ ...p, username: e.target.value }))}
+                placeholder="your-email@gmail.com"
+                className="admin-input"
               />
-              <button
-                type="button"
-                onClick={() => setShowPassword(!showPassword)}
-                className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-600"
-              >
-                {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
-              </button>
             </div>
-          </div>
 
-          {/* From */}
-          <div className="space-y-1 mt-4">
-            <label className="block text-sm font-medium text-gray-700">Mail From</label>
-            <input
-              type="text"
-              value={config.mail_from}
-              onChange={(e) => setConfig((p) => ({ ...p, mail_from: e.target.value }))}
-              placeholder='ULINK <no-reply@ulink.com>'
-              className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-            />
+            {/* Password */}
+            <div className="admin-input-group">
+              <label className="admin-input-label">Password / App Password</label>
+              <div className="relative">
+                <input
+                  type={showPassword ? 'text' : 'password'}
+                  value={config.password ?? ''}
+                  onChange={(e) => setConfig((p) => ({ ...p, password: e.target.value }))}
+                  placeholder="Để trống nếu không đổi"
+                  className="admin-input pr-10"
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600"
+                >
+                  {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                </button>
+              </div>
+            </div>
+
+            {/* From */}
+            <div className="admin-input-group">
+              <label className="admin-input-label">Mail From</label>
+              <input
+                type="text"
+                value={config.mail_from}
+                onChange={(e) => setConfig((p) => ({ ...p, mail_from: e.target.value }))}
+                placeholder='ULINK <no-reply@ulink.com>'
+                className="admin-input"
+              />
+            </div>
           </div>
         </div>
 
         {/* Save button */}
-        <div className="pt-4 border-t flex gap-3">
+        <div className="pt-4 border-t border-[#E4E9F0]">
           <button
             onClick={handleSave}
             disabled={saving}
-            className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50"
+            className="admin-button admin-button-primary"
           >
             <Save className="w-4 h-4" />
             {saving ? 'Đang lưu...' : 'Lưu cấu hình'}
@@ -204,20 +210,20 @@ export default function MailSettingsPage() {
       </div>
 
       {/* Test email section */}
-      <div className="bg-white rounded-lg shadow border p-6 mt-6 space-y-4">
-        <h2 className="text-lg font-semibold text-gray-900">Gửi mail test</h2>
-        <div className="flex gap-3">
+      <div className="admin-panel admin-panel-pad mt-6 space-y-4">
+        <h2 className="text-lg font-bold text-[#162233]">Gửi mail test</h2>
+        <div className="flex flex-col sm:flex-row gap-3">
           <input
             type="email"
             value={testEmail}
             onChange={(e) => setTestEmail(e.target.value)}
             placeholder="email-nhan@example.com"
-            className="flex-1 px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+            className="admin-input flex-1"
           />
           <button
             onClick={handleTestMail}
             disabled={testing}
-            className="flex items-center gap-2 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 disabled:opacity-50"
+            className="admin-button bg-green-600 text-white hover:bg-green-700 shadow-sm disabled:opacity-50"
           >
             <Send className="w-4 h-4" />
             {testing ? 'Đang gửi...' : 'Gửi test'}
