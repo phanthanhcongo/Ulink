@@ -3,429 +3,613 @@
 import { useState } from 'react';
 import {
   Check,
-  Building2,
+  Ticket,
+  ShoppingBag,
+  Factory,
   Truck,
   Package,
-  MapPin,
-  Clock,
+  CheckCircle2,
   Copy,
-  ArrowLeft,
   ChevronRight,
-  FileText
+  AlertCircle,
+  Loader2
 } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import Image from 'next/image';
 import type { AuthUser } from '@/lib/auth-helpers';
 import { resolveImageUrl } from '@/lib/image-url';
+import { submitContactRequest } from '@/lib/contact-submit';
+import type { DetailedOrder } from '@/lib/order-data';
 
 interface OrderConfirmationClientProps {
   user: AuthUser | null;
   locale: string;
   dbProductMap?: Record<string, { hero: string | null; slug: string }>;
+  orderData?: DetailedOrder | null;
 }
 
 export default function OrderConfirmationClient({
   user,
   locale,
-  dbProductMap = {}
+  dbProductMap = {},
+  orderData = null
 }: OrderConfirmationClientProps) {
-  const t = useTranslations('orderConfirmationPage');
-  const DIRECTUS_URL = getDirectusUrlClient();
+  const [copiedCode, setCopiedCode] = useState(false);
+  const [vatSubmitting, setVatSubmitting] = useState(false);
+  const [vatSubmitted, setVatSubmitted] = useState(false);
+  const [vatError, setVatError] = useState<string | null>(null);
 
-  const [copiedTracking, setCopiedTracking] = useState(false);
-
-  function getDirectusUrlClient() {
-    return process.env.NEXT_PUBLIC_DIRECTUS_URL || 'http://localhost:8055';
-  }
+  const [vatFormData, setVatFormData] = useState({
+    companyName: orderData?.buyerName || '',
+    taxCode: orderData?.taxCode || '',
+    companyAddress: orderData?.address || '',
+    invoiceEmail: orderData?.email || '',
+    agreeTerms: true
+  });
 
   const formatPrice = (amount: number) => {
-    if (locale === 'vi') {
-      return new Intl.NumberFormat('vi-VN').format(amount) + 'đ';
-    }
-    return (
-      '$' +
-      new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(
-        amount / 25000
-      )
-    );
+    return new Intl.NumberFormat('vi-VN').format(amount) + 'đ';
   };
 
-  const handleCopyTracking = () => {
-    navigator.clipboard.writeText('TRK-HA-9817245');
-    setCopiedTracking(true);
-    setTimeout(() => setCopiedTracking(false), 2000);
+  if (!orderData) {
+    return (
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-8 lg:px-20 py-16 text-center space-y-6 font-sans">
+        <div className="w-16 h-16 rounded-full bg-slate-100 flex items-center justify-center mx-auto text-slate-400">
+          <AlertCircle className="w-8 h-8 text-[#617084]" />
+        </div>
+        <div className="space-y-2 max-w-md mx-auto">
+          <h1 className="text-2xl font-bold text-[#162233]">Không tìm thấy đơn hàng</h1>
+          <p className="text-sm text-[#617084]">
+            Vui lòng kiểm tra lại mã đơn hàng hoặc đường dẫn. Thông tin đơn hàng không tồn tại trong hệ thống.
+          </p>
+        </div>
+        <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <Link
+            href="/"
+            className="px-6 py-3 rounded-lg bg-[#1769E2] text-white font-semibold text-sm hover:bg-[#1257C0] transition-colors"
+          >
+            Quay lại trang chủ
+          </Link>
+          <Link
+            href="/order-tracking"
+            className="px-6 py-3 rounded-lg border border-[#DCE0E5] text-[#162233] font-semibold text-sm hover:bg-slate-50 transition-colors"
+          >
+            Danh sách đơn hàng
+          </Link>
+        </div>
+      </div>
+    );
+  }
+
+  const orderCode = orderData.code;
+  const orderDate = orderData.order_date;
+  const buyerName = orderData.buyerName || 'Chưa cập nhật';
+  const taxCode = orderData.taxCode || 'Chưa cập nhật';
+  const phone = orderData.phone || 'Chưa cập nhật';
+  const address = orderData.address || 'Chưa cập nhật';
+  const shippingMethod = orderData.shippingMethod || 'Giao hàng tiêu chuẩn ULink Fleet (Miễn phí)';
+  const paymentMethod = orderData.paymentMethod || 'Chuyển khoản tài khoản ngân hàng Doanh nghiệp';
+  const isPaid = orderData.payment_status === 'success' || orderData.payment_status === 'paid' || orderData.status === 'confirmed';
+
+  const subtotal = orderData.subtotal;
+  const tax = orderData.tax;
+  const total = orderData.total;
+  const itemsList = orderData.items || [];
+
+  const handleCopyOrderCode = () => {
+    navigator.clipboard.writeText(orderCode);
+    setCopiedCode(true);
+    setTimeout(() => setCopiedCode(false), 2000);
   };
+
+  const handleVatSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!vatFormData.agreeTerms) return;
+
+    setVatSubmitting(true);
+    setVatError(null);
+
+    const payload = {
+      name: vatFormData.companyName,
+      email: vatFormData.invoiceEmail,
+      phone: vatFormData.taxCode ? `MST:${vatFormData.taxCode}` : phone,
+      subject: `[Đăng ký nhận Hóa đơn VAT] Đơn hàng ${orderCode} - ${vatFormData.companyName}`,
+      message: `Yêu cầu xuất hóa đơn VAT điện tử B2B:\n- Mã đơn hàng: ${orderCode}\n- Tên doanh nghiệp: ${vatFormData.companyName}\n- Mã số thuế: ${vatFormData.taxCode}\n- Địa chỉ công ty: ${vatFormData.companyAddress}\n- Email nhận hóa đơn: ${vatFormData.invoiceEmail}`
+    };
+
+    const res = await submitContactRequest(payload);
+    setVatSubmitting(false);
+
+    if (res.ok) {
+      setVatSubmitted(true);
+    } else {
+      setVatError(res.message);
+    }
+  };
+
+  // Determine current active step (1 to 5) based on order status from DB
+  const getStepIndex = (status: string): number => {
+    const s = (status || '').toLowerCase();
+    if (s === 'completed' || s === 'delivered' || s === 'finished') return 5;
+    if (s === 'shipping' || s === 'delivering' || s === 'dispatched') return 4;
+    if (s === 'processing' || s === 'in_production') return 3;
+    if (s === 'confirmed' || s === 'pending') return 2;
+    return 1; // 'created', 'draft', 'payment_required'
+  };
+
+  const currentStep = getStepIndex(orderData.status);
+
+  const steps = [
+    { number: 1, label: 'Đặt hàng', icon: ShoppingBag },
+    { number: 2, label: 'Xác nhận', icon: Check },
+    { number: 3, label: 'Đang xử lý', icon: Factory },
+    { number: 4, label: 'Đang giao', icon: Truck },
+    { number: 5, label: 'Hoàn thành', icon: Package }
+  ];
 
   return (
-    <div className="page-container flex flex-col gap-4 sm:gap-6 text-left text-slate-800">
-      {/* Breadcrumbs */}
+    <div className="max-w-[1280px] mx-auto px-4 sm:px-8 lg:px-20 py-8 lg:py-12 space-y-8 font-sans text-[#162233]">
+      {/* Breadcrumb Navigation */}
       <nav
         aria-label="Breadcrumb"
-        className="flex flex-wrap items-center gap-1 sm:gap-1.5 text-[10px] sm:text-caption-responsive text-slate-400 font-medium overflow-x-auto"
+        className="flex items-center gap-2 text-xs sm:text-sm text-[#617084] font-medium"
       >
-        <Link href="/" className="hover:text-brand transition-colors shrink-0">
+        <Link href="/" className="hover:text-[#1769E2] transition-colors">
           Trang chủ
         </Link>
-        <ChevronRight className="h-2.5 w-2.5 sm:h-3 sm:w-3 opacity-60 shrink-0" />
-        <Link href="/order-tracking" className="hover:text-brand transition-colors shrink-0">
-          Đơn hàng
+        <ChevronRight className="h-3.5 w-3.5 text-[#617084]" />
+        <Link href="/order-tracking" className="hover:text-[#1769E2] transition-colors">
+          Đơn hàng B2B
         </Link>
-        <ChevronRight className="h-2.5 w-2.5 sm:h-3 sm:w-3 opacity-60 shrink-0" />
-        <span className="text-slate-600 font-semibold truncate">Chi tiết ULK-2026-98745</span>
+        <ChevronRight className="h-3.5 w-3.5 text-[#617084]" />
+        <span className="text-[#162233] font-semibold">Xác nhận {orderCode}</span>
       </nav>
 
-      {/* Header Row */}
-      <div className="flex flex-col gap-3 sm:gap-4 border-b border-slate-100 pb-4 sm:pb-5">
-        <div className="space-y-1.5 sm:space-y-1">
-          <div className="flex flex-col sm:flex-row sm:items-center gap-1.5 sm:gap-3 flex-wrap">
-            <h2 className="text-lg sm:text-card-title font-bold text-slate-900 tracking-tight truncate">
-              Đơn hàng ULK-2026-98745
-            </h2>
-            <span className="inline-flex items-center bg-blue-50 text-blue-600 text-[9px] sm:text-[10.5px] font-bold px-2 sm:px-2.5 py-0.5 rounded-full border border-blue-100 shrink-0">
-              Đang vận chuyển
+      {/* Section 1: Success Hero */}
+      <div className="bg-[#F5F8FC] border border-[#E9EFF6] rounded-2xl p-6 sm:p-10 flex flex-col items-center text-center gap-6 shadow-xs">
+        {/* Icon Container */}
+        <div className="w-16 h-16 rounded-full bg-[#DBEAFE] flex items-center justify-center shrink-0">
+          <Check className="w-8 h-8 text-[#1769E2] stroke-[3]" />
+        </div>
+
+        {/* Banner Text */}
+        <div className="space-y-3 max-w-3xl">
+          <h1 className="text-3xl sm:text-4xl lg:text-[48px] lg:leading-[56px] font-bold text-[#162233] tracking-tight">
+            Đặt hàng thành công!
+          </h1>
+          <p className="text-base sm:text-lg text-[#617084] font-normal leading-relaxed">
+            Cảm ơn quý khách đã tin tưởng và lựa chọn ULink Industries. Đơn hàng của bạn đang được xử lý tự động.
+          </p>
+        </div>
+
+        {/* Order Meta Info Pill */}
+        <div className="bg-white border border-[#CAD5E2] rounded-lg px-6 py-3 flex flex-wrap items-center justify-center gap-4 sm:gap-6 shadow-2xs">
+          <div className="flex items-center gap-2 text-sm sm:text-base">
+            <Ticket className="w-5 h-5 text-[#1769E2]" />
+            <span className="text-[#162233]">
+              Mã đơn hàng:{' '}
+              <strong className="text-[#1769E2] font-bold font-mono ml-1">{orderCode}</strong>
+            </span>
+            <button
+              onClick={handleCopyOrderCode}
+              title="Sao chép mã đơn hàng"
+              className="ml-1 text-[#1769E2] hover:text-[#1257C0] p-1 transition-colors cursor-pointer"
+            >
+              <Copy className="w-3.5 h-3.5" />
+            </button>
+            {copiedCode && <span className="text-xs text-emerald-600 font-semibold ml-1">Đã chép!</span>}
+          </div>
+
+          <div className="hidden sm:block w-px h-5 bg-[#CAD5E2]" />
+
+          <div className="flex items-center gap-2 text-sm sm:text-base text-[#617084]">
+            <span>
+              Ngày đặt:{' '}
+              <strong className="text-[#162233] font-semibold ml-1">{orderDate}</strong>
             </span>
           </div>
-          <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-3">
-            <p className="text-[10px] sm:text-caption-responsive text-slate-400 font-medium">
-              Đặt ngày 14/03/2026 • 15:20 | Cập nhật: 5 phút trước
-            </p>
-            <Link
-              href="/order-tracking/payment-invoice"
-              className="inline-flex items-center gap-1 text-[10px] sm:text-caption-responsive font-bold text-blue-600 hover:text-brand hover:underline transition-colors shrink-0"
-            >
-              <FileText className="h-3 w-3 sm:h-3.5 sm:w-3.5 shrink-0" />
-              <span className="hidden sm:inline">Xem Hóa đơn</span>
-              <span className="sm:hidden">Hóa đơn</span>
-            </Link>
+        </div>
+      </div>
+
+      {/* Section 2: Order Timeline Section */}
+      <div className="space-y-6">
+        <h2 className="text-xl font-semibold text-[#162233]">
+          Trạng thái xử lý đơn hàng B2B
+        </h2>
+
+        {/* Timeline Stepper Container */}
+        <div className="overflow-x-auto pb-4 pt-2">
+          <div className="flex items-center justify-between min-w-[700px] px-4">
+            {steps.map((step, index) => {
+              const Icon = step.icon;
+              const isPast = step.number < currentStep;
+              const isCurrent = step.number === currentStep;
+
+              return (
+                <div key={step.number} className="flex items-center flex-1 last:flex-none">
+                  <div className="flex flex-col items-center gap-3 text-center">
+                    <div
+                      className={
+                        isCurrent
+                          ? 'w-14 h-14 rounded-full bg-[#1257C0] flex items-center justify-center shadow-[0_0_16px_2px_rgba(18,87,192,0.2),0_4px_8px_0_rgba(18,87,192,0.1)] ring-4 ring-blue-100'
+                          : isPast
+                          ? 'w-12 h-12 rounded-full bg-[#1257C0] flex items-center justify-center shadow-[0_4px_8px_0_rgba(18,87,192,0.1)]'
+                          : 'w-12 h-12 rounded-full bg-[#F5F8FC] border-2 border-[#E9EFF6] flex items-center justify-center'
+                      }
+                    >
+                      <Icon
+                        className={
+                          isCurrent || isPast
+                            ? 'w-6 h-6 text-white'
+                            : 'w-6 h-6 text-[#617084]'
+                        }
+                      />
+                    </div>
+                    <div
+                      className={
+                        isCurrent
+                          ? 'bg-[#DBEAFE] px-3 py-1.5 rounded-xl'
+                          : 'bg-[#F5F8FC] px-3 py-1.5 rounded-xl'
+                      }
+                    >
+                      <span
+                        className={
+                          isCurrent
+                            ? 'text-sm font-semibold text-[#1257C0]'
+                            : isPast
+                            ? 'text-sm font-semibold text-[#162233]'
+                            : 'text-sm font-semibold text-[#617084]'
+                        }
+                      >
+                        {step.label}
+                      </span>
+                    </div>
+                  </div>
+
+                  {index < steps.length - 1 && (
+                    <div
+                      className={`flex-1 mx-2 h-1 rounded-full max-w-[120px] ${
+                        step.number < currentStep ? 'bg-[#1257C0]' : 'bg-[#E9EFF6]'
+                      }`}
+                    />
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
+      </div>
+
+      {/* Section 3: Two Column Details */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+        {/* Left Column: Shipping & Payment Cards */}
+        <div className="lg:col-span-7 space-y-6">
+          {/* Shipping Info Card */}
+          <div className="bg-white border border-[#DCE0E5] rounded-xl p-6 sm:p-8 space-y-5 shadow-2xs">
+            <h3 className="text-lg font-bold text-[#162233]">
+              Thông tin nhận hàng Doanh nghiệp
+            </h3>
+            <div className="border-b border-[#DCE0E5]" />
+
+            <div className="space-y-4 text-sm sm:text-base">
+              <div className="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-4">
+                <span className="sm:col-span-4 text-[#617084] font-medium">Tên doanh nghiệp:</span>
+                <span className="sm:col-span-8 font-semibold text-[#162233]">
+                  {buyerName}
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-4">
+                <span className="sm:col-span-4 text-[#617084] font-medium">Mã số thuế:</span>
+                <span className="sm:col-span-8 font-normal text-[#162233] font-mono">
+                  {taxCode}
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-4">
+                <span className="sm:col-span-4 text-[#617084] font-medium">Người nhận bàn giao:</span>
+                <span className="sm:col-span-8 font-normal text-[#162233]">
+                  {buyerName} - {phone}
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-4">
+                <span className="sm:col-span-4 text-[#617084] font-medium">Địa chỉ giao hàng:</span>
+                <span className="sm:col-span-8 font-normal text-[#162233] leading-relaxed">
+                  {address}
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-4">
+                <span className="sm:col-span-4 text-[#617084] font-medium">Phương thức vận chuyển:</span>
+                <span className="sm:col-span-8 font-semibold text-[#1769E2]">
+                  {shippingMethod}
+                </span>
+              </div>
+            </div>
+          </div>
+
+          {/* Payment Details Card */}
+          <div className="bg-white border border-[#DCE0E5] rounded-xl p-6 sm:p-8 space-y-5 shadow-2xs">
+            <div className="flex items-center justify-between flex-wrap gap-3">
+              <h3 className="text-lg font-bold text-[#162233]">
+                Trạng thái thanh toán B2B
+              </h3>
+              <div className={`px-3 py-1 rounded-full text-xs font-semibold flex items-center gap-1.5 ${isPaid ? 'bg-[#DBEAFE] text-[#1769E2]' : 'bg-amber-50 text-amber-600'}`}>
+                <CheckCircle2 className="w-4 h-4" />
+                <span>{isPaid ? 'Đã thanh toán' : 'Chờ xác nhận'}</span>
+              </div>
+            </div>
+            <div className="border-b border-[#DCE0E5]" />
+
+            <div className="space-y-4 text-sm sm:text-base">
+              <div className="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-4">
+                <span className="sm:col-span-4 text-[#617084] font-medium">Hình thức thanh toán:</span>
+                <span className="sm:col-span-8 font-normal text-[#162233]">
+                  {paymentMethod}
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-4">
+                <span className="sm:col-span-4 text-[#617084] font-medium">Ngân hàng giao dịch:</span>
+                <span className="sm:col-span-8 font-normal text-[#162233]">
+                  Vietcombank (VCB) - Chi nhánh Hồ Chí Minh
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-4">
+                <span className="sm:col-span-4 text-[#617084] font-medium">Chủ tài khoản:</span>
+                <span className="sm:col-span-8 font-semibold text-[#162233]">
+                  CÔNG TY TNHH ULINK VIỆT NAM
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-12 gap-1 sm:gap-4">
+                <span className="sm:col-span-4 text-[#617084] font-medium">Số tiền:</span>
+                <span className="sm:col-span-8 font-bold text-base text-[#1769E2]">
+                  {formatPrice(total)}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Right Column: Order Summary Sidebar */}
+        <div className="lg:col-span-5 space-y-6">
+          <div className="bg-[#F5F8FC] border border-[#DCE0E5] rounded-xl p-6 space-y-5 shadow-2xs">
+            <h3 className="text-lg font-bold text-[#162233]">
+              Đơn hàng đã đặt
+            </h3>
+            <div className="border-b border-[#DCE0E5]" />
+
+            {/* Cart Items List */}
+            <div className="space-y-4">
+              {itemsList.map((item, idx) => {
+                const rawHero =
+                  item.hero ||
+                  dbProductMap[item.sku]?.hero ||
+                  dbProductMap[item.productName]?.hero ||
+                  dbProductMap[item.productName?.trim()?.toLowerCase()]?.hero;
+
+                let resolvedHeroUrl = resolveImageUrl(rawHero);
+                if (
+                  resolvedHeroUrl &&
+                  /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(
+                    resolvedHeroUrl.replace(/^\//, '')
+                  )
+                ) {
+                  resolvedHeroUrl = `/api/files/${resolvedHeroUrl.replace(/^\//, '')}`;
+                }
+
+                return (
+                  <div key={idx} className="flex items-center gap-3">
+                    <div className="w-[60px] h-[60px] rounded bg-[#DDE1E6] shrink-0 overflow-hidden relative flex items-center justify-center border border-slate-200">
+                      {resolvedHeroUrl ? (
+                        <Image
+                          src={resolvedHeroUrl}
+                          alt={item.productName}
+                          fill
+                          className="object-cover"
+                        />
+                      ) : (
+                        <Package className="w-6 h-6 text-slate-400" />
+                      )}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <h4 className="text-sm font-semibold text-[#162233] truncate">
+                        {item.productName}
+                      </h4>
+                      <p className="text-xs text-[#617084] mt-0.5">
+                        SL: {item.quantity} x {formatPrice(item.unitPrice)}
+                      </p>
+                    </div>
+                    <span className="text-sm font-bold text-[#162233] shrink-0">
+                      {formatPrice(item.lineTotal)}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="border-b border-[#DCE0E5]" />
+
+            {/* Price Calculations */}
+            <div className="space-y-2.5 text-sm">
+              <div className="flex justify-between items-center">
+                <span className="text-[#495057]">Tạm tính</span>
+                <span className="font-semibold text-[#162233]">{formatPrice(subtotal)}</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-[#495057]">Thuế VAT (8%)</span>
+                <span className="font-semibold text-[#162233]">{formatPrice(tax)}</span>
+              </div>
+              <div className="flex justify-between items-center">
+                <span className="text-[#495057]">Phí vận chuyển</span>
+                <span className="font-semibold text-[#16A34A]">Miễn phí</span>
+              </div>
+              {!orderData && (
+                <div className="flex justify-between items-center">
+                  <span className="text-[#495057]">Mã giảm giá B2B</span>
+                  <span className="font-semibold text-[#E54333]">-1.500.000đ</span>
+                </div>
+              )}
+            </div>
+
+            <div className="border-b border-[#DCE0E5]" />
+
+            {/* Total Row */}
+            <div className="space-y-1">
+              <div className="flex justify-between items-baseline">
+                <span className="text-base font-bold text-[#162233]">Tổng cộng</span>
+                <span className="text-2xl font-bold text-[#1769E2]">{formatPrice(total)}</span>
+              </div>
+              <p className="text-xs text-[#617084]">
+                Đã bao gồm thuế GTGT nhập khẩu B2B đầy đủ.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Section 4: Action Bar */}
+      <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4 max-w-2xl mx-auto">
         <Link
-          href="/order-tracking"
-          className="inline-flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-caption-responsive font-bold text-slate-600 hover:text-brand transition-all w-fit sm:self-auto"
+          href="/products"
+          className="w-full sm:w-auto min-w-[240px] px-8 py-4 rounded-lg bg-white border-[1.5px] border-[#1769E2] text-[#212121] font-semibold text-lg hover:bg-slate-50 transition-colors text-center shadow-xs"
         >
-          <ArrowLeft className="h-3 w-3 sm:h-4 sm:w-4 shrink-0" />
-          <span className="hidden sm:inline">Quay lại danh sách</span>
-          <span className="sm:hidden">Quay lại</span>
+          Tiếp tục mua hàng
+        </Link>
+        <Link
+          href="/order-tracking/payment-invoice"
+          className="w-full sm:w-auto min-w-[240px] px-8 py-4 rounded-lg bg-[#2185F5] hover:bg-[#1769E2] text-white font-semibold text-lg transition-colors text-center shadow-sm"
+        >
+          Xem Hóa đơn
         </Link>
       </div>
 
-      {/* Progress Timeline Header */}
-      <div className="space-y-3 sm:space-y-4">
-        <h3 className="text-sm sm:text-body-regular font-bold text-slate-800 uppercase tracking-wider">
-          Hành trình đơn hàng
-        </h3>
-
-        {/* Step Progress Bar - Checkout styled */}
-        <div className="flex w-full overflow-hidden text-[10px] sm:text-caption-responsive font-semibold rounded-[3px] border border-slate-100">
-          {/* Step 1: Giỏ hàng */}
-          <div className="flex-1 flex items-center justify-center gap-1 sm:gap-2 py-2 sm:py-3 bg-blue-50/75 text-brand min-w-0">
-            <span className="flex h-4 w-4 sm:h-5 sm:w-5 items-center justify-center rounded-full bg-brand text-[8px] sm:text-caption-responsive font-bold text-white shrink-0">
-              ✓
-            </span>
-            <span className="font-bold tracking-wide hidden sm:inline truncate">Giỏ hàng</span>
-          </div>
-
-          {/* Step 2: Thanh toán */}
-          <div className="flex-1 flex items-center justify-center gap-1 sm:gap-2 py-2 sm:py-3 bg-brand text-white min-w-0">
-            <span className="flex h-4 w-4 sm:h-5 sm:w-5 items-center justify-center rounded-full bg-white text-[8px] sm:text-caption-responsive font-bold text-brand shrink-0">
-              2
-            </span>
-            <span className="font-bold tracking-wide hidden sm:inline truncate">Thanh toán</span>
-          </div>
-
-          {/* Step 3: Vận chuyển */}
-          <Link
-            href="/order-tracking/delivery-confirmation"
-            className="flex-1 flex items-center justify-center gap-1 sm:gap-2 py-2 sm:py-3 bg-slate-100 text-slate-400 hover:bg-slate-200/80 hover:text-slate-600 transition-colors cursor-pointer min-w-0"
-          >
-            <span className="flex h-4 w-4 sm:h-5 sm:w-5 items-center justify-center rounded-full bg-white text-[8px] sm:text-caption-responsive font-bold text-slate-300 shrink-0">
-              3
-            </span>
-            <span className="font-bold tracking-wide hidden sm:inline truncate">Vận chuyển</span>
-          </Link>
-
-          {/* Step 4: Hoàn tất */}
-          <div className="flex-1 flex items-center justify-center gap-1 sm:gap-2 py-2 sm:py-3 bg-slate-50 text-slate-300 min-w-0">
-            <span className="flex h-4 w-4 sm:h-5 sm:w-5 items-center justify-center rounded-full bg-white border border-border/40 text-[8px] sm:text-caption-responsive font-bold text-slate-200 shrink-0">
-              4
-            </span>
-            <span className="font-bold tracking-wide hidden sm:inline truncate">Hoàn tất</span>
-          </div>
+      {/* Section 5: VAT Invoice Registration Form */}
+      <div className="bg-white border border-[#DCE0E5] rounded-xl p-6 sm:p-10 space-y-6 shadow-2xs">
+        <div className="space-y-1.5">
+          <h2 className="text-xl sm:text-2xl font-bold text-[#162233] uppercase tracking-wide">
+            ĐĂNG KÝ NHẬN HÓA ĐƠN VAT
+          </h2>
+          <p className="text-sm text-[#617084]">
+            Vui lòng điền đầy đủ thông tin dưới đây để nhận hóa đơn VAT điện tử. Chúng tôi sẽ liên hệ lại trong vòng 24 giờ làm việc.
+          </p>
         </div>
-      </div>
 
-      {/* Grid Columns */}
-      <div className="grid gap-4 sm:gap-6 lg:grid-cols-12 pt-2">
-        {/* LEFT COLUMN: Shipping details, journey log, items list */}
-        <div className="lg:col-span-8 space-y-4 sm:space-y-6">
-          {/* Carrier Info Card */}
-          <div className="bg-white border border-slate-200/80 p-3 sm:p-5 rounded-[3px] shadow-sm space-y-3 sm:space-y-4">
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-2 sm:gap-0 border-b border-slate-100 pb-2 sm:pb-3">
-              <div className="flex items-center gap-2 font-bold text-slate-900 text-sm sm:text-body-regular">
-                <Truck className="h-4 w-4 sm:h-5 sm:w-5 text-brand shrink-0" />
-                Đơn vị vận chuyển B2B
-              </div>
-              <div className="flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-caption-responsive font-bold text-blue-600">
-                <Clock className="h-3.5 w-3.5 sm:h-4 sm:w-4 shrink-0" />
-                <span className="hidden sm:inline">Dự kiến nhận: 16/03/2026</span>
-                <span className="sm:hidden">16/03/2026</span>
-              </div>
-            </div>
-
-            <div className="grid gap-3 sm:gap-4 sm:grid-cols-2 text-[10px] sm:text-caption-responsive">
-              <div className="space-y-1">
-                <span className="text-slate-400 font-medium">Phương thức giao hàng:</span>
-                <p className="font-bold text-slate-800">ULink Fleet (Giao hàng hỏa tốc B2B)</p>
-              </div>
-              <div className="space-y-1">
-                <span className="text-slate-400 font-medium">Mã vận đơn B2B:</span>
-                <div className="flex items-center gap-2 mt-0.5">
-                  <span className="font-mono font-bold text-slate-800 text-caption-responsive">
-                    TRK-HA-9817245
-                  </span>
-                  <button
-                    onClick={handleCopyTracking}
-                    className="inline-flex items-center gap-1 bg-blue-50 text-blue-600 px-2 py-1 rounded text-caption-responsive font-bold hover:bg-blue-100 transition-colors border border-blue-100"
-                  >
-                    {copiedTracking ? 'Đã sao chép!' : 'Sao chép'}
-                    <Copy className="h-3 w-3" />
-                  </button>
-                </div>
-              </div>
+        {vatSubmitted ? (
+          <div className="bg-emerald-50 border border-emerald-200 rounded-lg p-5 text-emerald-800 flex items-center gap-3">
+            <CheckCircle2 className="w-6 h-6 text-emerald-600 shrink-0" />
+            <div>
+              <p className="font-bold text-sm">Đã gửi yêu cầu nhận hóa đơn VAT thành công!</p>
+              <p className="text-xs text-emerald-700 mt-0.5">
+                Hóa đơn VAT điện tử sẽ được khởi tạo và gửi tới email <strong className="font-semibold">{vatFormData.invoiceEmail}</strong> sau khi xác minh đơn hàng.
+              </p>
             </div>
           </div>
+        ) : (
+          <form onSubmit={handleVatSubmit} className="space-y-5">
+            {vatError && (
+              <div className="bg-red-50 border border-red-200 rounded-lg p-4 text-red-700 text-sm flex items-center gap-2.5">
+                <AlertCircle className="w-5 h-5 text-red-500 shrink-0" />
+                <span>{vatError}</span>
+              </div>
+            )}
 
-          {/* Journey Log Timeline Card */}
-          <div className="bg-white border border-slate-200/80 p-4 sm:p-6 rounded-[3px] shadow-sm space-y-4 sm:space-y-5">
-            <h4 className="text-sm sm:text-body-regular font-bold text-slate-900 border-b border-slate-100 pb-2 sm:pb-3 uppercase tracking-wider">
-              Lịch sử hành trình
-            </h4>
-
-            {/* Vertical timeline items */}
-            <div className="relative pl-4 sm:pl-6 border-l border-slate-200 space-y-4 sm:space-y-6 text-[10px] sm:text-caption-responsive">
-              {/* Event 1 */}
-              <div className="relative">
-                {/* Active blue marker circle */}
-                <div className="absolute -left-[31px] top-0 h-4.5 w-4.5 rounded-full bg-blue-100 border border-brand flex items-center justify-center">
-                  <div className="h-2 w-2 rounded-full bg-brand" />
-                </div>
-                <div className="space-y-1">
-                  <span className="font-bold text-blue-600">14:30 - 15/03/2026</span>
-                  <p className="font-bold text-slate-800 text-body-regular">HUB Đồng Văn IV, Hà Nam</p>
-                  <p className="text-slate-500 leading-relaxed">
-                    Đang xếp dỡ lên xe tải trung chuyển liên tỉnh (ULink Fleet #29H-882.15)
-                  </p>
-                </div>
+            {/* Grid Row 1: Tên công ty & Mã số thuế */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+              <div className="space-y-1.5">
+                <label className="block text-sm font-bold text-[#162233]">
+                  Tên công ty
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={vatFormData.companyName}
+                  onChange={(e) => setVatFormData({ ...vatFormData, companyName: e.target.value })}
+                  placeholder="Nhập tên công ty"
+                  className="w-full px-4 py-3 rounded-lg border border-[#DCE0E5] text-sm text-[#162233] placeholder-[#94A3B8] focus:outline-none focus:border-[#1769E2] focus:ring-1 focus:ring-[#1769E2] transition-colors"
+                />
               </div>
 
-              {/* Event 2 */}
-              <div className="relative">
-                {/* Gray marker circle */}
-                <div className="absolute -left-[30px] top-0 h-4 w-4 rounded-full bg-white border border-slate-300 flex items-center justify-center">
-                  <div className="h-1.5 w-1.5 rounded-full bg-slate-400" />
-                </div>
-                <div className="space-y-1">
-                  <span className="font-medium text-slate-400">09:15 - 15/03/2026</span>
-                  <p className="font-bold text-slate-800 text-body-regular">
-                    Nhà máy bao bì ULink, Kim Bảng, Hà Nam
-                  </p>
-                  <p className="text-slate-500 leading-relaxed">
-                    Hoàn tất kiểm định xuất xưởng (QA/QC Đạt), niêm phong Pallet thành công.
-                  </p>
-                </div>
-              </div>
-
-              {/* Event 3 */}
-              <div className="relative">
-                {/* Gray marker circle */}
-                <div className="absolute -left-[30px] top-0 h-4 w-4 rounded-full bg-white border border-slate-300 flex items-center justify-center">
-                  <div className="h-1.5 w-1.5 rounded-full bg-slate-400" />
-                </div>
-                <div className="space-y-1">
-                  <span className="font-medium text-slate-400">16:45 - 14/03/2026</span>
-                  <p className="font-bold text-slate-800 text-body-regular">Hệ thống B2B ULink</p>
-                  <p className="text-slate-500 leading-relaxed">
-                    Xác nhận thanh toán công nợ thành công. Đơn hàng chuyển sang bộ phận điều vận.
-                  </p>
-                </div>
-              </div>
-
-              {/* Event 4 */}
-              <div className="relative">
-                {/* Gray marker circle */}
-                <div className="absolute -left-[30px] top-0 h-4 w-4 rounded-full bg-white border border-slate-300 flex items-center justify-center">
-                  <div className="h-1.5 w-1.5 rounded-full bg-slate-400" />
-                </div>
-                <div className="space-y-1">
-                  <span className="font-medium text-slate-400">15:20 - 14/03/2026</span>
-                  <p className="font-bold text-slate-800 text-body-regular">Cổng thanh toán Doanh nghiệp</p>
-                  <p className="text-slate-500 leading-relaxed">
-                    Tiếp nhận yêu cầu mua hàng & hồ sơ RFQ tự động.
-                  </p>
-                </div>
+              <div className="space-y-1.5">
+                <label className="block text-sm font-bold text-[#162233]">
+                  Mã số thuế
+                </label>
+                <input
+                  type="text"
+                  required
+                  value={vatFormData.taxCode}
+                  onChange={(e) => setVatFormData({ ...vatFormData, taxCode: e.target.value })}
+                  placeholder="Nhập mã số thuế"
+                  className="w-full px-4 py-3 rounded-lg border border-[#DCE0E5] text-sm text-[#162233] placeholder-[#94A3B8] focus:outline-none focus:border-[#1769E2] focus:ring-1 focus:ring-[#1769E2] transition-colors font-mono"
+                />
               </div>
             </div>
-          </div>
 
-          {/* Ordered Products Card */}
-          <div className="bg-white border border-slate-200/80 p-4 sm:p-5 rounded-[3px] shadow-sm space-y-3 sm:space-y-4">
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-baseline gap-2 border-b border-slate-100 pb-2 sm:pb-3">
-              <h4 className="text-sm sm:text-body-regular font-bold text-slate-900 uppercase tracking-wider">
-                Sản phẩm đã đặt (02)
-              </h4>
-              <span className="text-[9px] sm:text-caption-responsive text-slate-400 font-semibold font-mono shrink-0">
-                Mã: ULK-PK-921
-              </span>
+            {/* Row 2: Địa chỉ công ty */}
+            <div className="space-y-1.5">
+              <label className="block text-sm font-bold text-[#162233]">
+                Địa chỉ công ty
+              </label>
+              <input
+                type="text"
+                required
+                value={vatFormData.companyAddress}
+                onChange={(e) => setVatFormData({ ...vatFormData, companyAddress: e.target.value })}
+                placeholder="Nhập địa chỉ công ty"
+                className="w-full px-4 py-3 rounded-lg border border-[#DCE0E5] text-sm text-[#162233] placeholder-[#94A3B8] focus:outline-none focus:border-[#1769E2] focus:ring-1 focus:ring-[#1769E2] transition-colors"
+              />
             </div>
 
-            <div className="divide-y divide-slate-100">
-              {/* Product 1 */}
-              <div className="flex flex-col gap-3 sm:gap-4 py-3 sm:py-3.5 first:pt-0 last:pb-0 sm:items-start sm:flex-row sm:justify-between">
-                <div className="flex gap-2.5 sm:gap-3.5 items-start flex-1 min-w-0">
-                  <Link
-                    href="/solutions/mang-quan-pallet-stretch-film"
-                    className="relative h-12 w-12 sm:h-14 sm:w-14 shrink-0 rounded-[3px] border border-slate-200 bg-white flex items-center justify-center overflow-hidden hover:opacity-95 transition-opacity block"
-                  >
-                    {dbProductMap['UL-PF-2002']?.hero ? (
-                      <Image
-                        src={resolveImageUrl(dbProductMap['UL-PF-2002'].hero) || '/images/banners/login-hero.webp'}
-                        alt="Màng quấn Pallet"
-                        fill
-                        className="object-contain p-1"
-                        sizes="48px"
-                      />
-                    ) : (
-                      <Package className="h-4 w-4 sm:h-5 sm:w-5 text-slate-300" />
-                    )}
-                  </Link>
-                  <div className="min-w-0 flex-1 space-y-0.5 sm:space-y-1 text-left">
-                    <Link
-                      href="/solutions/mang-quan-pallet-stretch-film"
-                      className="font-bold text-slate-900 text-[10px] sm:text-caption-responsive hover:text-brand transition-all block leading-tight"
-                    >
-                      Màng quấn Pallet - Stretch Film (Bản rộng 50cm)
-                    </Link>
-                    <p className="text-[9px] sm:text-caption-responsive text-slate-400 font-medium">
-                      500 kg x 39.500đ
-                    </p>
-                  </div>
-                </div>
-                <span className="text-sm sm:text-body-regular font-bold text-slate-800 shrink-0 self-end sm:self-start">
-                  {formatPrice(19750000)}
+            {/* Row 3: Email nhận hóa đơn */}
+            <div className="space-y-1.5">
+              <label className="block text-sm font-bold text-[#162233]">
+                Email nhận hóa đơn
+              </label>
+              <input
+                type="email"
+                required
+                value={vatFormData.invoiceEmail}
+                onChange={(e) => setVatFormData({ ...vatFormData, invoiceEmail: e.target.value })}
+                placeholder="Nhập email nhận hóa đơn"
+                className="w-full px-4 py-3 rounded-lg border border-[#DCE0E5] text-sm text-[#162233] placeholder-[#94A3B8] focus:outline-none focus:border-[#1769E2] focus:ring-1 focus:ring-[#1769E2] transition-colors"
+              />
+            </div>
+
+            {/* Row 4: Checkbox terms */}
+            <div className="pt-1">
+              <label className="inline-flex items-center gap-2 cursor-pointer select-none">
+                <input
+                  type="checkbox"
+                  checked={vatFormData.agreeTerms}
+                  onChange={(e) => setVatFormData({ ...vatFormData, agreeTerms: e.target.checked })}
+                  className="w-4 h-4 rounded text-[#1769E2] focus:ring-[#1769E2] accent-[#1769E2] border-[#DCE0E5] cursor-pointer"
+                />
+                <span className="text-sm font-semibold text-[#162233]">
+                  Tôi đồng ý với điều khoản đăng ký
                 </span>
-              </div>
-
-              {/* Product 2 */}
-              <div className="flex flex-col gap-3 sm:gap-4 py-3 sm:py-3.5 first:pt-0 last:pb-0 sm:items-start sm:flex-row sm:justify-between">
-                <div className="flex gap-2.5 sm:gap-3.5 items-start flex-1 min-w-0">
-                  <Link
-                    href="/solutions/tui-pe-trong-suot-dung-thuc-pham"
-                    className="relative h-12 w-12 sm:h-14 sm:w-14 shrink-0 rounded-[3px] border border-slate-200 bg-white flex items-center justify-center overflow-hidden hover:opacity-95 transition-opacity block"
-                  >
-                    {dbProductMap['UL-PE-1008']?.hero ? (
-                      <Image
-                        src={resolveImageUrl(dbProductMap['UL-PE-1008'].hero) || '/images/banners/login-hero.webp'}
-                        alt="Túi PE"
-                        fill
-                        className="object-contain p-1"
-                        sizes="48px"
-                      />
-                    ) : (
-                      <Package className="h-4 w-4 sm:h-5 sm:w-5 text-slate-300" />
-                    )}
-                  </Link>
-                  <div className="min-w-0 flex-1 space-y-0.5 sm:space-y-1 text-left">
-                    <Link
-                      href="/solutions/tui-pe-trong-suot-dung-thuc-pham"
-                      className="font-bold text-slate-900 text-[10px] sm:text-caption-responsive hover:text-brand transition-all block leading-tight"
-                    >
-                      Túi PE trong suốt siêu dai - Công nghiệp
-                    </Link>
-                    <p className="text-[9px] sm:text-caption-responsive text-slate-400 font-medium">
-                      200 kg x 28.000đ
-                    </p>
-                  </div>
-                </div>
-                <span className="text-sm sm:text-body-regular font-bold text-slate-800 shrink-0 self-end sm:self-start">
-                  {formatPrice(5600000)}
-                </span>
-              </div>
+              </label>
             </div>
-          </div>
-        </div>
 
-        {/* RIGHT COLUMN: Recipient Information & Totals Summary */}
-        <div className="lg:col-span-4 space-y-4 sm:space-y-6">
-          {/* Business Recipient Info */}
-          <div className="bg-white border border-slate-200/80 p-4 sm:p-5 rounded-[3px] shadow-sm space-y-3 sm:space-y-4">
-            <h4 className="text-sm sm:text-body-regular font-bold text-slate-900 border-b border-slate-100 pb-2 sm:pb-3 uppercase tracking-wider">
-              Thông tin nhận hàng
-            </h4>
-            <div className="space-y-2 sm:space-y-3.5 text-[10px] sm:text-caption-responsive text-left">
-              <div className="space-y-0.5 sm:space-y-1">
-                <span className="text-slate-400 font-medium">Tên doanh nghiệp:</span>
-                <p className="font-bold text-slate-800 text-[10px] sm:text-caption-responsive line-clamp-2">
-                  CÔNG TY TNHH ULINK PARTNER
-                </p>
-              </div>
-              <div className="space-y-0.5 sm:space-y-1">
-                <span className="text-slate-400 font-medium">Mã số thuế:</span>
-                <p className="font-bold text-slate-800 text-[10px] sm:text-caption-responsive font-mono">0110286665</p>
-              </div>
-              <div className="space-y-0.5 sm:space-y-1">
-                <span className="text-slate-400 font-medium">Người nhận:</span>
-                <p className="font-bold text-slate-800 text-[10px] sm:text-caption-responsive">
-                  Nguyễn Văn A - 0912345678
-                </p>
-              </div>
-              <div className="space-y-0.5 sm:space-y-1">
-                <span className="text-slate-400 font-medium">Địa chỉ:</span>
-                <p className="font-bold text-slate-700 leading-snug text-[10px] sm:text-caption-responsive">
-                  Lô CN05 KCN Đồng Văn IV, Hà Nam
-                </p>
-              </div>
+            {/* Row 5: Submit button */}
+            <div className="pt-2">
+              <button
+                type="submit"
+                disabled={!vatFormData.agreeTerms || vatSubmitting}
+                className="bg-[#1769E2] hover:bg-[#1257C0] disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold text-sm px-8 py-3 rounded-lg transition-colors shadow-xs cursor-pointer inline-flex items-center gap-2"
+              >
+                {vatSubmitting && <Loader2 className="w-4 h-4 animate-spin" />}
+                {vatSubmitting ? 'Đang gửi...' : 'Gửi đi'}
+              </button>
             </div>
-          </div>
-
-          {/* Totals Summary */}
-          <div className="bg-card border border-slate-200/80 p-4 sm:p-5 rounded-[3px] shadow-sm space-y-3 sm:space-y-4 text-left">
-            <h4 className="text-sm sm:text-body-regular font-bold text-slate-900 border-b border-slate-200/60 pb-2 sm:pb-3 uppercase tracking-wider">
-              Tổng cộng
-            </h4>
-
-            <div className="space-y-2 sm:space-y-3 text-[10px] sm:text-caption-responsive">
-              <div className="flex justify-between gap-2">
-                <span className="text-slate-500">Tạm tính</span>
-                <span className="font-bold text-slate-800 text-right">{formatPrice(25350000)}</span>
-              </div>
-              <div className="flex justify-between gap-2">
-                <span className="text-slate-500">Thuế VAT (8%)</span>
-                <span className="font-bold text-slate-800 text-right">{formatPrice(2028000)}</span>
-              </div>
-              <div className="flex justify-between items-baseline gap-2">
-                <span className="text-slate-500">Vận tải</span>
-                <span className="font-bold text-emerald-600 text-right">Miễn phí</span>
-              </div>
-
-              <hr className="border-slate-200" />
-
-              <div className="flex items-baseline justify-between pt-1 gap-2">
-                <span className="text-sm sm:text-body-regular font-bold text-slate-900">Tổng</span>
-                <div className="text-right">
-                  <span className="text-base sm:text-card-title font-bold text-[#006AA7] block leading-none">
-                    {formatPrice(27378000)}
-                  </span>
-                  <span className="text-[9px] sm:text-caption-responsive text-slate-400 font-medium block mt-1">
-                    Công nợ 30 ngày
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+          </form>
+        )}
       </div>
     </div>
   );
 }
+
 

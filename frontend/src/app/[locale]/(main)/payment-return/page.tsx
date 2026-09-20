@@ -1,12 +1,13 @@
 'use client';
 
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, useParams } from 'next/navigation';
 import { Suspense, useEffect, useState } from 'react';
 import Link from 'next/link';
 import { persistCart } from '@/components/rfq/cart-types';
 
 function PaymentResult() {
   const params = useSearchParams();
+  const { locale } = useParams();
   const responseCode = params.get('vnp_ResponseCode');
   const txnRef = params.get('vnp_TxnRef');
   const amount = params.get('vnp_Amount');
@@ -30,7 +31,11 @@ function PaymentResult() {
       .then(res => res.json())
       .then(data => {
         if (data.error) setConfirmError(data.error.message);
-        if (!data.error && isSuccess) persistCart([]);
+        if (!data.error && isSuccess) {
+          persistCart([]);
+          window.location.href = `/${locale}/order-confirmation?orderId=${txnRef}`;
+          return;
+        }
       })
       .catch(() => setConfirmError('Không thể xác nhận thanh toán'))
       .finally(() => setConfirming(false));
