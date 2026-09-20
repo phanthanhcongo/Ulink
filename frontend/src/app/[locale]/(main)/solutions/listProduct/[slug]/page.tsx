@@ -87,7 +87,68 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
   const category =
     typeof product.category === 'object' && product.category !== null ? product.category : null;
-  const categoryName = category ? getTranslatedName(category, locale) || category.name : null;
+  const rawCategoryName = category ? getTranslatedName(category, locale) || category.name : null;
+
+  const PARENT_CATEGORY_NAMES: Record<string, { vi: string; en: string }> = {
+    'cleanroom-consumables': { vi: 'Vật tư phòng sạch', en: 'Cleanroom Consumables' },
+    'industrial-packaging': { vi: 'Bao bì & Đóng gói', en: 'Packaging & Logistics' },
+    'bang-keo-nhom': { vi: 'Băng keo Nhôm', en: 'Aluminum Tape' }
+  };
+
+  // Map subcategory slug -> official URL parent category slug
+  const SUBCATEGORY_TO_PARENT_SLUG: Record<string, string> = {
+    // Cleanroom
+    'cleanroom-consumables': 'cleanroom-consumables',
+    'vat-tu-phong-sach': 'cleanroom-consumables',
+    'quan-ao-phong-sach': 'cleanroom-consumables',
+    'gang-tay-phong-sach': 'cleanroom-consumables',
+    'khau-trang-phong-sach': 'cleanroom-consumables',
+    'vai-lau-phong-sach': 'cleanroom-consumables',
+    'tham-dinh-bui': 'cleanroom-consumables',
+    'dung-cu-ve-sinh': 'cleanroom-consumables',
+    'phu-kien-khac': 'cleanroom-consumables',
+    'cleanroom-gloves': 'cleanroom-consumables',
+    'cleanroom-wipers': 'cleanroom-consumables',
+    'cleanroom-apparel': 'cleanroom-consumables',
+    'cleanroom-masks': 'cleanroom-consumables',
+    'cleanroom-chemicals': 'cleanroom-consumables',
+
+    // Industrial Packaging
+    'industrial-packaging': 'industrial-packaging',
+    'bao-bi-dong-goi': 'industrial-packaging',
+    'bao-bi-cong-nghiep': 'industrial-packaging',
+    'mang-quan-pallet-cat': 'industrial-packaging',
+    'thung-carton-cac-loai': 'industrial-packaging',
+    'bang-keo-cong-nghiep': 'industrial-packaging',
+    'tui-pe-pp-ziper': 'industrial-packaging',
+    'pallet-nhua-go': 'industrial-packaging',
+    'day-dai-dong-hang': 'industrial-packaging',
+    'vat-lieu-dem-lot': 'industrial-packaging',
+
+    // Aluminum Tape
+    'bang-keo-nhom': 'bang-keo-nhom',
+    'bang-keo-nhom-tieu-chuan': 'bang-keo-nhom',
+    'bang-keo-nhom-chiu-nhiet': 'bang-keo-nhom',
+    'bang-keo-nhom-gia-co-luoi': 'bang-keo-nhom',
+    'bang-keo-nhom-cach-nhiet-cat': 'bang-keo-nhom',
+    'bang-keo-nhom-ong-gio': 'bang-keo-nhom',
+    'bang-keo-nhom-ma-kem-cat': 'bang-keo-nhom',
+    'bang-keo-nhom-tu-dinh-cat': 'bang-keo-nhom'
+  };
+
+  const parentSlug = category
+    ? SUBCATEGORY_TO_PARENT_SLUG[category.slug] || category.slug
+    : null;
+
+  const parentCategoryName =
+    parentSlug && PARENT_CATEGORY_NAMES[parentSlug]
+      ? locale === 'vi'
+        ? PARENT_CATEGORY_NAMES[parentSlug].vi
+        : PARENT_CATEGORY_NAMES[parentSlug].en
+      : rawCategoryName;
+
+  const categorySlug = parentSlug || category?.slug || null;
+  const categoryName = parentCategoryName || rawCategoryName;
 
   const pricing = getProductPricing(product.slug, locale);
 
@@ -219,12 +280,12 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
               label: locale === 'vi' ? 'Sản phẩm' : 'Products',
               href: '/solutions/listProduct'
             },
-            ...(category ? [{
-              label: categoryName || '',
-              href: `/solutions/listProduct?category=${category.slug}`
-            }] : []),
             {
-              label: productName || ''
+              label: categoryName || (locale === 'vi' ? 'Danh mục sản phẩm' : 'Category'),
+              href: categorySlug ? `/solutions/listProduct?category=${categorySlug}` : undefined
+            },
+            {
+              label: productName
             }
           ]}
         />
@@ -321,7 +382,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
             <hr className="border-[#dce0e5]" />
 
             {/* 2x2 Key Specifications Grid */}
-            <div className="grid grid-cols-2 gap-y-4 gap-x-4 py-2">
+            <div className="grid grid-cols-[60%_1fr] gap-y-4 gap-x-4 py-2">
               <div className="flex flex-col gap-1">
                 <span className="text-[12px] font-semibold text-[#495057]">
                   {locale === 'vi' ? 'Độ dày màng' : 'Thickness'}

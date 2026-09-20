@@ -282,7 +282,7 @@ const viewAllLabels: Record<string, string> = {
 const categoryQueryById: Record<string, string> = {
   packaging: 'industrial-packaging',
   cleanroom: 'cleanroom-consumables',
-  aluminum: 'industrial-packaging'
+  aluminum: 'bang-keo-nhom'
 };
 
 export function buildCategoryProductsHref(category?: Pick<NavCategoryItem, 'id'> | null) {

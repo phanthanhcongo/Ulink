@@ -134,17 +134,13 @@ export function CategoryHeroBanner({
                     },
                     {
                       label: locale === 'vi' ? 'Sản phẩm' : 'Products',
-                      href: '/solutions/listProduct'
+                      href: categorySlug ? '/solutions/listProduct' : undefined
                     },
-                    {
-                      label: parentBanner
-                        ? parentBanner[bannerLocale].breadcrumbParent
-                        : currentCategoryName,
-                      href: `/solutions/listProduct?category=${categorySlug}`
-                    },
-                    {
-                      label: bannerTitle
-                    }
+                    ...(categorySlug ? [
+                      {
+                        label: currentCategoryName
+                      }
+                    ] : [])
                   ]
             }
           />

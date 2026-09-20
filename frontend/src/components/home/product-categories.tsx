@@ -63,7 +63,7 @@ export async function ProductCategories() {
       id: 'hvac-tape',
       title: t('categories.hvacTapeTitle'),
       description: t('categories.hvacTapeDesc'),
-      href: '/solutions/listProduct?category=industrial-packaging',
+      href: '/solutions/listProduct?category=bang-keo-nhom',
       image: ASSETS.home.cateHvacTape,
       accentBorder: 'border-l-brand'
     },
