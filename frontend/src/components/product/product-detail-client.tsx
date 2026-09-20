@@ -276,7 +276,7 @@ export default function ProductDetailClient({
   }, [performAddToCart, numericQuantity, router]);
 
   return (
-    <div className="w-full lg:w-[340px] p-4 sm:p-6 space-y-5 bg-[#f5f8fc] border border-[#dce0e5] rounded-[8px] text-left">
+    <div className="w-full lg:w-[340px] p-4 sm:p-6 space-y-5 bg-[#f5f8fc] border border-[#dce0e5] rounded-[3px] text-left">
       {/* 1. PRICE DISPLAY HEADER */}
       <div className="space-y-1">
         <div className="flex items-baseline gap-1 flex-wrap">
@@ -371,7 +371,7 @@ export default function ProductDetailClient({
         <p className="text-[12px] font-semibold text-[#212529]">
           {locale === 'vi' ? 'Chiết khấu B2B theo sản lượng' : 'B2B Volume Discount'}
         </p>
-        <div className="border border-[#dce0e5] rounded-[6px] overflow-hidden bg-white divide-y divide-[#dce0e5]">
+        <div className="border border-[#dce0e5] rounded-[3px] overflow-hidden bg-white divide-y divide-[#dce0e5]">
           {priceTiers.map((tier, idx) => {
             const isActive = activeTierIdx === idx;
             return (
@@ -428,7 +428,7 @@ export default function ProductDetailClient({
           onClick={handleAddToCart}
           disabled={!selectedSku}
           className={cn(
-            'w-full flex items-center justify-center gap-2 h-[46px] px-4 rounded-[6px] font-bold text-[14px] text-white bg-[#1769e2] hover:bg-[#1257c0] active:scale-[0.99] transition-all cursor-pointer shadow-xs',
+            'w-full flex items-center justify-center gap-2 h-[46px] px-4 rounded-[3px] font-bold text-[14px] text-white bg-[#1769e2] hover:bg-[#1257c0] active:scale-[0.99] transition-all cursor-pointer shadow-xs',
             !selectedSku && 'opacity-50 cursor-not-allowed'
           )}
         >
@@ -450,7 +450,7 @@ export default function ProductDetailClient({
           onClick={handleRequestQuote}
           disabled={!selectedSku}
           className={cn(
-            'w-full flex items-center justify-center gap-2 h-[46px] px-4 rounded-[6px] font-bold text-[14px] text-white bg-[#00b233] hover:bg-[#00962b] active:scale-[0.99] transition-all cursor-pointer shadow-xs',
+            'w-full flex items-center justify-center gap-2 h-[46px] px-4 rounded-[3px] font-bold text-[14px] text-white bg-[#00b233] hover:bg-[#00962b] active:scale-[0.99] transition-all cursor-pointer shadow-xs',
             !selectedSku && 'opacity-50 cursor-not-allowed'
           )}
         >

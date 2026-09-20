@@ -55,9 +55,9 @@ export function ProductImageGallery({ images, productName }: ProductImageGallery
   return (
     <div className="flex flex-col gap-4 w-full lg:w-[420px] lg:h-[579px]">
       {/* MAIN SLIDE STAGE */}
-      <div className="relative w-full aspect-square lg:w-[420px] lg:h-[471px] lg:aspect-auto rounded-[6px] overflow-hidden bg-[#f8fafc] border border-[#dce0e5] shadow-xs flex items-center justify-center group mx-auto lg:mx-0">
+      <div className="relative w-full aspect-square lg:w-[420px] lg:h-[471px] lg:aspect-auto rounded-[3px] overflow-hidden bg-[#f8fafc] border border-[#dce0e5] shadow-xs flex items-center justify-center group mx-auto lg:mx-0">
         {/* Main Image / Video Container */}
-        <div className="relative w-full h-full lg:w-[388px] lg:h-[435px] rounded-[6px] overflow-hidden">
+        <div className="relative w-full h-full lg:w-[388px] lg:h-[435px] rounded-[3px] overflow-hidden">
           {(currentImage.type === 'video' || isVideoSrc(currentImage.src)) ? (
             <video
               key={currentImage.src}

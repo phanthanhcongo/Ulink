@@ -33,6 +33,7 @@ import {
   saveSku,
   uploadProductImage,
   deleteProductImage,
+  uploadFileToDirectus,
   updateProductHero,
   addProductGalleryImage,
   removeProductGalleryImage

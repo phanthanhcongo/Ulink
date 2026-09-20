@@ -106,7 +106,7 @@ export default function ProductTabs({
               </h4>
               <div className="space-y-3.5">
                 <div className="flex items-center gap-3 text-sm text-[#212529] font-medium">
-                  <div className="w-8 h-8 rounded-[6px] bg-[#EBF3FE] flex items-center justify-center text-[#1769E2] shrink-0">
+                  <div className="w-8 h-8 rounded-[3px] bg-[#EBF3FE] flex items-center justify-center text-[#1769E2] shrink-0">
                     <Wrench className="h-4.5 w-4.5" />
                   </div>
                   <span>
@@ -116,7 +116,7 @@ export default function ProductTabs({
                   </span>
                 </div>
                 <div className="flex items-center gap-3 text-sm text-[#212529] font-medium">
-                  <div className="w-8 h-8 rounded-[6px] bg-[#EBF3FE] flex items-center justify-center text-[#1769E2] shrink-0">
+                  <div className="w-8 h-8 rounded-[3px] bg-[#EBF3FE] flex items-center justify-center text-[#1769E2] shrink-0">
                     <FileText className="h-4.5 w-4.5" />
                   </div>
                   <span>
@@ -126,7 +126,7 @@ export default function ProductTabs({
                   </span>
                 </div>
                 <div className="flex items-center gap-3 text-sm text-[#212529] font-medium">
-                  <div className="w-8 h-8 rounded-[6px] bg-[#EBF3FE] flex items-center justify-center text-[#1769E2] shrink-0">
+                  <div className="w-8 h-8 rounded-[3px] bg-[#EBF3FE] flex items-center justify-center text-[#1769E2] shrink-0">
                     <Truck className="h-4.5 w-4.5" />
                   </div>
                   <span>
@@ -136,7 +136,7 @@ export default function ProductTabs({
                   </span>
                 </div>
                 <div className="flex items-center gap-3 text-sm text-[#212529] font-medium">
-                  <div className="w-8 h-8 rounded-[6px] bg-[#EBF3FE] flex items-center justify-center text-[#1769E2] shrink-0">
+                  <div className="w-8 h-8 rounded-[3px] bg-[#EBF3FE] flex items-center justify-center text-[#1769E2] shrink-0">
                     <Shield className="h-4.5 w-4.5" />
                   </div>
                   <span>
@@ -152,7 +152,7 @@ export default function ProductTabs({
 
         {/* Technical specifications table (Figma Node 884:931) */}
         <div className="space-y-4">
-          <div className="border border-[#E5E7EB] rounded-[8px] overflow-hidden shadow-xs bg-white">
+          <div className="border border-[#E5E7EB] rounded-[3px] overflow-hidden shadow-xs bg-white">
             <table className="w-full text-left border-collapse">
               <thead>
                 <tr className="bg-[#1769E2] text-white text-xs sm:text-sm font-bold uppercase tracking-wider">
@@ -200,10 +200,10 @@ export default function ProductTabs({
         </div>
 
         {/* Packaging Info & Shipping Schedule Banner (Figma Node 882:4421) */}
-        <div className="border border-[#E5E7EB] rounded-[8px] p-6 sm:p-8 bg-white shadow-xs grid grid-cols-1 lg:grid-cols-12 gap-8 items-center text-left">
+        <div className="border border-[#E5E7EB] rounded-[3px] p-6 sm:p-8 bg-white shadow-xs grid grid-cols-1 lg:grid-cols-12 gap-8 items-center text-left">
           {/* Left image of Warehouse */}
           <div className="lg:col-span-4 flex flex-col items-center">
-            <div className="relative w-full aspect-[4/3] rounded-[8px] overflow-hidden border border-[#E5E7EB]">
+            <div className="relative w-full aspect-[4/3] rounded-[3px] overflow-hidden border border-[#E5E7EB]">
               <Image
                 src="/images/solutions/khoHang.png"
                 alt="Kho hàng"
@@ -260,8 +260,8 @@ export default function ProductTabs({
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Card 1: ISO 9001:2015 */}
-            <div className="p-4 sm:p-6 bg-white border border-[#E5E7EB] rounded-[6px] flex flex-col sm:flex-row gap-4 items-start shadow-2xs">
-              <div className="w-10 h-10 rounded-[6px] bg-[#EBF3FE] flex items-center justify-center text-[#1769E2] shrink-0">
+            <div className="p-4 sm:p-6 bg-white border border-[#E5E7EB] rounded-[3px] flex flex-col sm:flex-row gap-4 items-start shadow-2xs">
+              <div className="w-10 h-10 rounded-[3px] bg-[#EBF3FE] flex items-center justify-center text-[#1769E2] shrink-0">
                 <FileText className="h-5 w-5" />
               </div>
               <div className="space-y-1.5">
@@ -275,8 +275,8 @@ export default function ProductTabs({
             </div>
 
             {/* Card 2: RoHS Compliant */}
-            <div className="p-4 sm:p-6 bg-white border border-[#E5E7EB] rounded-[6px] flex flex-col sm:flex-row gap-4 items-start shadow-2xs">
-              <div className="w-10 h-10 rounded-[6px] bg-[#EBF3FE] flex items-center justify-center text-[#1769E2] shrink-0">
+            <div className="p-4 sm:p-6 bg-white border border-[#E5E7EB] rounded-[3px] flex flex-col sm:flex-row gap-4 items-start shadow-2xs">
+              <div className="w-10 h-10 rounded-[3px] bg-[#EBF3FE] flex items-center justify-center text-[#1769E2] shrink-0">
                 <Award className="h-5 w-5" />
               </div>
               <div className="space-y-1.5">
@@ -291,7 +291,7 @@ export default function ProductTabs({
           </div>
 
           {/* Footer banner */}
-          <div className="p-4 bg-[#F5F8FC] rounded-[6px] flex items-center gap-3.5 text-xs sm:text-sm text-[#495057] font-medium border border-[#E5E7EB]/60">
+          <div className="p-4 bg-[#F5F8FC] rounded-[3px] flex items-center gap-3.5 text-xs sm:text-sm text-[#495057] font-medium border border-[#E5E7EB]/60">
             <ClipboardCheck className="h-5 w-5 text-[#1769E2] shrink-0" />
             <span>
               {locale === 'vi'
@@ -312,7 +312,7 @@ export default function ProductTabs({
           <Link
             key={ind.id}
             href={`/${locale}/solutions?industry=${ind.slug}`}
-            className="flex flex-col items-center justify-center p-4 sm:p-6 rounded-[6px] border border-[#E5E7EB] bg-white hover:border-[#1769E2] hover:shadow-md transition-all text-center group"
+            className="flex flex-col items-center justify-center p-4 sm:p-6 rounded-[3px] border border-[#E5E7EB] bg-white hover:border-[#1769E2] hover:shadow-md transition-all text-center group"
           >
             <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-full bg-[#F5F8FC] flex items-center justify-center text-slate-500 group-hover:bg-[#EBF3FE] group-hover:text-[#1769E2] mb-2 sm:mb-4 shrink-0 transition-colors">
               <Cpu className="h-4 sm:h-5 w-4 sm:w-5" />
@@ -333,9 +333,9 @@ export default function ProductTabs({
         {standards.map((std) => (
           <div
             key={std.id}
-            className="flex items-start gap-4 p-4 sm:p-5 bg-white border border-[#E5E7EB] rounded-[6px] shadow-xs"
+            className="flex items-start gap-4 p-4 sm:p-5 bg-white border border-[#E5E7EB] rounded-[3px] shadow-xs"
           >
-            <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-[6px] bg-[#EBF3FE] border border-blue-100 flex items-center justify-center text-[#1769E2] shrink-0">
+            <div className="w-10 sm:w-12 h-10 sm:h-12 rounded-[3px] bg-[#EBF3FE] border border-blue-100 flex items-center justify-center text-[#1769E2] shrink-0">
               <Award className="h-5 sm:h-6 w-5 sm:w-6" />
             </div>
             <div>
@@ -381,7 +381,7 @@ export default function ProductTabs({
     return (
       <div className="space-y-6 py-4">
         {/* Rating Summary Card */}
-        <div className="bg-[#F5F8FC] border border-[#E5E7EB] p-4 sm:p-6 rounded-[6px] flex flex-col sm:flex-row gap-6 items-center justify-between">
+        <div className="bg-[#F5F8FC] border border-[#E5E7EB] p-4 sm:p-6 rounded-[3px] flex flex-col sm:flex-row gap-6 items-center justify-between">
           <div className="text-center sm:text-left space-y-1">
             <p className="text-2xl font-bold text-[#212529]">4.7 / 5.0</p>
             <div className="flex text-amber-400 justify-center sm:justify-start">
@@ -393,7 +393,7 @@ export default function ProductTabs({
               12 {locale === 'vi' ? 'đánh giá' : 'reviews'}
             </p>
           </div>
-          <div className="flex items-center gap-1.5 px-4 py-2 bg-white border border-[#E5E7EB] rounded-[6px] shadow-2xs whitespace-nowrap">
+          <div className="flex items-center gap-1.5 px-4 py-2 bg-white border border-[#E5E7EB] rounded-[3px] shadow-2xs whitespace-nowrap">
             <CheckCircle className="h-4.5 w-4.5 text-emerald-500 shrink-0" />
             <span className="text-xs sm:text-sm font-bold text-[#212529]">100% Hài lòng</span>
           </div>

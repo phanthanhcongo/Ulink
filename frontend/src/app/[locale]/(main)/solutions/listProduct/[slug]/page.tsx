@@ -304,7 +304,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
           <div className="w-full lg:flex-1 lg:min-w-0 space-y-6">
             {categoryName && (
               <div>
-                <span className="inline-block text-[14px] font-semibold text-[#1257c0] bg-[#f5f8fc] px-2 py-1 rounded-[24px]">
+                <span className="inline-block text-[14px] font-semibold text-[#1257c0] bg-[#f5f8fc] px-2 py-1 rounded-[3px]">
                   {categoryName}
                 </span>
               </div>
