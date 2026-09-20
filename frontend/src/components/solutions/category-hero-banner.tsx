@@ -207,7 +207,7 @@ export function CategoryHeroBanner({
                 onClick={onSearchSubmit}
                 className="bg-blue-600 hover:bg-blue-700 text-white font-bold text-caption-responsive px-6 py-2 rounded-full shadow-sm transition-colors cursor-pointer shrink-0"
               >
-                {locale === 'vi' ? 'Tìm lại' : 'Search again'}
+                {locale === 'vi' ? 'Tìm kiếm' : 'Search'}
               </button>
             </div>
           </div>
