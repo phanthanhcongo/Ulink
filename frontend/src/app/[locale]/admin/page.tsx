@@ -32,6 +32,9 @@ export default async function AdminDashboardPage({ params: { locale } }: { param
   const user = await getCurrentUser();
   let orders: any[] = [];
   let inventory: any[] = [];
+  let skus: any[] = [];
+  let hubs: any[] = [];
+  let rfqs: any[] = [];
 
   try {
     const client = await getSessionClient();
@@ -45,7 +48,32 @@ export default async function AdminDashboardPage({ params: { locale } }: { param
       ),
       client.request(
         readItems('inventory_stock' as any, {
-          fields: ['quantity_on_hand', 'hub.name'],
+          fields: [
+            'id', 'quantity_on_hand', 'quantity_reserved', 'reorder_level',
+            'hub.id', 'hub.name',
+            'sku.id', 'sku.sku_code', 'sku.stock_status',
+            'sku.product.name'
+          ],
+          limit: -1
+        } as any)
+      ),
+      client.request(
+        readItems('product_skus' as any, {
+          fields: ['id', 'sku_code', 'stock_status', 'product.name', 'unit'],
+          filter: { status: { _neq: 'archived' } },
+          limit: -1
+        } as any)
+      ),
+      client.request(
+        readItems('regional_hubs' as any, {
+          fields: ['id', 'name', 'operating_status'],
+          limit: -1
+        } as any)
+      ),
+      client.request(
+        readItems('rfq_requests' as any, {
+          fields: ['id', 'status', 'date_created'],
+          sort: ['-date_created'],
           limit: -1
         } as any)
       )
@@ -53,9 +81,12 @@ export default async function AdminDashboardPage({ params: { locale } }: { param
 
     if (results[0].status === 'fulfilled') orders = results[0].value || [];
     if (results[1].status === 'fulfilled') inventory = results[1].value || [];
+    if (results[2].status === 'fulfilled') skus = results[2].value || [];
+    if (results[3].status === 'fulfilled') hubs = results[3].value || [];
+    if (results[4].status === 'fulfilled') rfqs = results[4].value || [];
   } catch {
-    // Fallback to default mock data inside VMIDashboardClient if backend fetch fails
+    // Data will be empty arrays, dashboard shows zeros
   }
 
-  return <VMIDashboardClient user={user} orders={orders} inventory={inventory} />;
+  return <VMIDashboardClient user={user} orders={orders} inventory={inventory} skus={skus} hubs={hubs} rfqs={rfqs} />;
 }

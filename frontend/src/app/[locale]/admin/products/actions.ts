@@ -144,20 +144,26 @@ export async function saveProduct(data: {
   specifications?: Record<string, string>;
   status?: 'published' | 'draft' | 'archived';
   assignedAttributeIds?: number[];
+  meta_title?: string;
+  meta_description?: string;
+  hero?: string;
 }) {
   await checkAuth();
 
   try {
     const client = await getSessionClient();
-    const payload = {
+    const payload: Record<string, unknown> = {
       name: data.name,
       slug: data.slug,
       brand: data.brand || null,
       category: data.categoryId || null,
       short_description: data.short_description || null,
       specifications: data.specifications || null,
-      status: data.status || 'draft'
+      status: data.status || 'draft',
+      meta_title: data.meta_title ?? null,
+      meta_description: data.meta_description ?? null
     };
+    if (data.hero !== undefined) payload.hero = data.hero || null;
 
     let productId: number;
 
@@ -328,6 +334,92 @@ export async function saveSku(data: {
     return { success: true };
   } catch (err) {
     console.error('Failed to save SKU:', err);
+    return { success: false, error: formatError(err) };
+  }
+}
+
+/**
+ * Action: Upload a file to Directus and return the file ID.
+ */
+export async function uploadFileToDirectus(formData: FormData): Promise<{ success: boolean; fileId?: string; error?: string }> {
+  await checkAuth();
+
+  try {
+    const store = await cookies();
+    const sessionToken = store.get('directus_session_token')?.value;
+    const refreshToken = store.get('directus_refresh_token')?.value;
+
+    const url = getDirectusUrl();
+    const headers: Record<string, string> = {};
+    if (sessionToken) {
+      headers['cookie'] = `directus_session_token=${sessionToken}${refreshToken ? `; directus_refresh_token=${refreshToken}` : ''}`;
+    }
+
+    const res = await globalThis.fetch(`${url}/files`, {
+      method: 'POST',
+      headers,
+      body: formData
+    });
+
+    if (!res.ok) {
+      const errData = await res.json().catch(() => ({}));
+      throw new Error(errData?.errors?.[0]?.message || `Upload failed: ${res.status}`);
+    }
+
+    const result = await res.json();
+    return { success: true, fileId: result.data.id };
+  } catch (err) {
+    console.error('Failed to upload file:', err);
+    return { success: false, error: formatError(err) };
+  }
+}
+
+/**
+ * Action: Update product hero image.
+ */
+export async function updateProductHero(productId: number, heroFileId: string | null) {
+  await checkAuth();
+  try {
+    const client = await getSessionClient();
+    await client.request(updateItem('products', productId, { hero: heroFileId }));
+    revalidatePath('/[locale]/products', 'layout');
+    return { success: true };
+  } catch (err) {
+    return { success: false, error: formatError(err) };
+  }
+}
+
+/**
+ * Action: Add image to product gallery (M2M products_files junction).
+ */
+export async function addProductGalleryImage(productId: number, fileId: string) {
+  await checkAuth();
+  try {
+    const client = await getSessionClient();
+    await client.request(
+      createItem('products_files' as any, {
+        products_id: productId,
+        directus_files_id: fileId
+      })
+    );
+    revalidatePath('/[locale]/products', 'layout');
+    return { success: true };
+  } catch (err) {
+    return { success: false, error: formatError(err) };
+  }
+}
+
+/**
+ * Action: Remove image from product gallery.
+ */
+export async function removeProductGalleryImage(junctionId: number) {
+  await checkAuth();
+  try {
+    const client = await getSessionClient();
+    await client.request(deleteItem('products_files' as any, junctionId));
+    revalidatePath('/[locale]/products', 'layout');
+    return { success: true };
+  } catch (err) {
     return { success: false, error: formatError(err) };
   }
 }

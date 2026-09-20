@@ -1,3 +1,10 @@
+const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+
+function getDirectusAssetsUrl(): string {
+  const base = process.env.NEXT_PUBLIC_DIRECTUS_URL || process.env.DIRECTUS_PUBLIC_URL || 'http://localhost:8055';
+  return base.replace(/\/$/, '');
+}
+
 export function resolveImageUrl(value: unknown, frontendOrigin?: string): string | null {
   // Handle arrays: pick the first element
   if (Array.isArray(value)) {
@@ -18,6 +25,11 @@ export function resolveImageUrl(value: unknown, frontendOrigin?: string): string
     } catch (e) {
       // Not valid JSON, continue with raw string
     }
+  }
+
+  // Handle Directus file UUIDs
+  if (UUID_RE.test(imagePath)) {
+    return `${getDirectusAssetsUrl()}/assets/${imagePath}`;
   }
 
   if (/^(https?:|data:|blob:)/i.test(imagePath) || imagePath.startsWith('/')) {

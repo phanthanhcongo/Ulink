@@ -127,7 +127,7 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
       {/* Mobile Top Header Bar */}
       <div className="fixed top-0 left-0 right-0 h-16 bg-white/90 backdrop-blur-md border-b border-sky-100 flex items-center justify-between px-5 z-30 md:hidden shadow-sm">
         <div className="flex items-center gap-2.5">
-          <img src="/images/logo/ulink-mark.svg" alt="ULink" className="h-16 w-16 shrink-0 object-contain" />
+          <a href="/"><img src="/images/logo/ulink-mark.svg" alt="ULink" className="h-16 w-16 shrink-0 object-contain" /></a>
           <span className="font-bold text-body-regular tracking-tight text-slate-900">
             ULink Admin
           </span>
@@ -162,9 +162,9 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
           "relative p-3 border-b border-slate-100 flex items-center bg-white transition-all duration-300 min-h-[96px]",
           isCollapsed ? "justify-center" : "justify-between"
         )}>
-          <div className="flex items-center gap-2.5 pr-20">
+          <a href="/" className="flex items-center gap-2.5 pr-20">
             <img src={ASSETS.logo.full} alt="ULink Industries" className="h-20 w-[190px] shrink-0 object-contain object-left" />
-          </div>
+          </a>
 
           <div className="md:hidden">
             <button

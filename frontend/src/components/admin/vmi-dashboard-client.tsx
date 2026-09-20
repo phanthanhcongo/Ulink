@@ -1,32 +1,24 @@
 'use client';
 
-import React, { useState } from 'react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+import React, { useMemo } from 'react';
 import {
   Package,
-  Lock,
   Truck,
   Shield,
-  Calendar,
   Heart,
   TrendingUp,
   AlertTriangle,
   ShoppingCart,
-  Database,
   PieChart,
   FileText,
   FilePlus,
-  PlusCircle,
-  Clock,
-  ArrowRight,
-  Search,
-  ChevronDown,
-  Sparkles,
-  Download,
-  BarChart2,
   CalendarPlus,
-  CheckCircle2,
-  XCircle,
-  AlertCircle
+  ArrowRight,
+  BarChart2,
+  AlertCircle,
+  ClipboardList
 } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
@@ -39,147 +31,131 @@ interface VMIDashboardProps {
   } | null;
   orders?: any[];
   inventory?: any[];
+  skus?: any[];
+  hubs?: any[];
+  rfqs?: any[];
 }
 
-export function VMIDashboardClient({ user, orders = [], inventory = [] }: VMIDashboardProps) {
-  const [activeTab, setActiveTab] = useState<'all' | 'need_import'>('all');
-  const [warehouseView, setWarehouseView] = useState<'by_wh' | 'by_sku'>('by_wh');
+const fmt = (n: number) => new Intl.NumberFormat('vi-VN').format(n);
+const money = (n: number) => new Intl.NumberFormat('vi-VN').format(n) + 'đ';
 
+const statusLabel: Record<string, string> = {
+  pending: 'Chờ xử lý',
+  confirmed: 'Đã xác nhận',
+  processing: 'Đang xử lý',
+  shipped: 'Đang giao',
+  delivered: 'Hoàn thành',
+  completed: 'Hoàn thành',
+  cancelled: 'Đã hủy'
+};
+
+export function VMIDashboardClient({ user, orders = [], inventory = [], skus = [], hubs = [], rfqs = [] }: VMIDashboardProps) {
   const displayName = user?.first_name
     ? `${user.first_name} ${user.last_name || ''}`.trim()
-    : user?.email?.split('@')[0] || 'Nguyễn Thanh Chí';
+    : user?.email?.split('@')[0] || 'Admin';
 
-  // Sample SKU inventory data matching Figma node 1603:1717
-  const skuList = [
-    {
-      sku: 'UL-PE-01',
-      name: 'Màng co PE quấn Pallet 3.2kg',
-      start: '50,000',
-      in: '+20,000',
-      out: '-15,000',
-      end: '55,000',
-      status: 'sufficient',
-      statusLabel: 'Đủ hàng',
-      statusClass: 'bg-[#D9F2DE] text-[#177333]'
-    },
-    {
-      sku: 'UL-GT-N02',
-      name: 'Găng tay Nitrile Blue chống dầu',
-      start: '120,000',
-      in: '+40,000',
-      out: '-65,000',
-      end: '95,000',
-      status: 'sufficient',
-      statusLabel: 'Đủ hàng',
-      statusClass: 'bg-[#D9F2DE] text-[#177333]'
-    },
-    {
-      sku: 'UL-TM-S03',
-      name: 'Thảm dính phòng sạch Sticky Mat',
-      start: '8,500',
-      in: '+15,000',
-      out: '-11,200',
-      end: '12,300',
-      status: 'low',
-      statusLabel: 'Sắp hết',
-      statusClass: 'bg-[#FFF2D9] text-[#A6730D]'
-    },
-    {
-      sku: 'UL-KL-W04',
-      name: 'Khăn lau Cleanroom Wiper 1009',
-      start: '300,000',
-      in: '+120,000',
-      out: '-180,000',
-      end: '240,000',
-      status: 'sufficient',
-      statusLabel: 'Đủ hàng',
-      statusClass: 'bg-[#D9F2DE] text-[#177333]'
-    },
-    {
-      sku: 'UL-KT-M05',
-      name: 'Khẩu trang Y Tế 3 Lớp Kháng Khuẩn',
-      start: '450,000',
-      in: '+150,000',
-      out: '-200,000',
-      end: '400,000',
-      status: 'sufficient',
-      statusLabel: 'Đủ hàng',
-      statusClass: 'bg-[#D9F2DE] text-[#177333]'
-    },
-    {
-      sku: 'UL-QC-S06',
-      name: 'Quần áo phòng sạch chống tĩnh điện',
-      start: '12,000',
-      in: '+5,000',
-      out: '-3,500',
-      end: '13,500',
-      status: 'need_import',
-      statusLabel: 'Cần nhập',
-      statusClass: 'bg-[#FFE0E0] text-[#B22626]'
-    }
-  ];
+  const stats = useMemo(() => {
+    const totalOnHand = inventory.reduce((s, i) => s + Number(i.quantity_on_hand || 0), 0);
+    const totalReserved = inventory.reduce((s, i) => s + Number(i.quantity_reserved || 0), 0);
+    const available = totalOnHand - totalReserved;
 
-  const filteredSkuList = activeTab === 'need_import'
-    ? skuList.filter(item => item.status === 'need_import' || item.status === 'low')
-    : skuList;
+    const totalOrders = orders.length;
+    const pendingOrders = orders.filter(o => ['pending', 'confirmed', 'processing'].includes(o.status)).length;
+    const shippedOrders = orders.filter(o => o.status === 'shipped').length;
+    const completedOrders = orders.filter(o => ['delivered', 'completed'].includes(o.status)).length;
+    const cancelledOrders = orders.filter(o => o.status === 'cancelled').length;
+    const totalRevenue = orders
+      .filter(o => ['delivered', 'completed'].includes(o.status))
+      .reduce((s, o) => s + Number(o.total || 0), 0);
 
-  // Delivery schedule data matching Figma node 1603:1957
-  const deliverySchedules = [
-    { code: 'PO-3850', supplier: 'ULink Logistics Bắc Ninh', date: '24/10/2024', status: 'Đang vận chuyển', badgeClass: 'bg-[#FEF3C7] text-[#D97706]' },
-    { code: 'PO-3851', supplier: 'Kimberly-Clark VN', date: '25/10/2024', status: 'Đã giao hàng', badgeClass: 'bg-[#D1FAE5] text-[#059669]' },
-    { code: 'PO-3852', supplier: 'Bao Bì Hải Phòng Co.', date: '26/10/2024', status: 'Chờ xác nhận', badgeClass: 'bg-[#DBEAFE] text-[#1769E2]' },
-    { code: 'PO-3853', supplier: 'Sinopec Vina Poly', date: '28/10/2024', status: 'Chờ xác nhận', badgeClass: 'bg-[#DBEAFE] text-[#1769E2]' },
-  ];
+    const totalSkus = skus.length;
+    const inStockSkus = skus.filter((s: any) => s.stock_status === 'in_stock').length;
+    const lowStockSkus = skus.filter((s: any) => s.stock_status === 'low_stock').length;
+    const outOfStockSkus = skus.filter((s: any) => s.stock_status === 'out_of_stock').length;
+
+    const pendingRfqs = rfqs.filter((r: any) => ['pending', 'new'].includes(r.status)).length;
+    const totalRfqs = rfqs.length;
+
+    const activeHubs = hubs.filter((h: any) => h.operating_status === 'active').length;
+
+    const belowReorder = inventory.filter(
+      (i: any) => i.reorder_level > 0 && i.quantity_on_hand <= i.reorder_level
+    );
+
+    return {
+      totalOnHand, totalReserved, available,
+      totalOrders, pendingOrders, shippedOrders, completedOrders, cancelledOrders, totalRevenue,
+      totalSkus, inStockSkus, lowStockSkus, outOfStockSkus,
+      pendingRfqs, totalRfqs,
+      activeHubs, totalHubs: hubs.length,
+      belowReorder
+    };
+  }, [orders, inventory, skus, hubs, rfqs]);
+
+  // Inventory grouped by hub
+  const inventoryByHub = useMemo(() => {
+    const map: Record<string, { name: string; total: number }> = {};
+    inventory.forEach((item: any) => {
+      const hubName = item.hub?.name || 'Không xác định';
+      const hubId = item.hub?.id || 'unknown';
+      if (!map[hubId]) map[hubId] = { name: hubName, total: 0 };
+      map[hubId].total += Number(item.quantity_on_hand || 0);
+    });
+    return Object.values(map).sort((a, b) => b.total - a.total);
+  }, [inventory]);
+
+  // SKU stock table data from inventory
+  const skuInventoryRows = useMemo(() => {
+    return inventory
+      .filter((item: any) => item.sku)
+      .map((item: any) => ({
+        sku_code: item.sku?.sku_code || '---',
+        product_name: item.sku?.product?.name || '---',
+        hub_name: item.hub?.name || '---',
+        on_hand: Number(item.quantity_on_hand || 0),
+        reserved: Number(item.quantity_reserved || 0),
+        available: Number(item.quantity_on_hand || 0) - Number(item.quantity_reserved || 0),
+        reorder_level: Number(item.reorder_level || 0),
+        status: item.quantity_on_hand <= 0
+          ? 'out'
+          : item.reorder_level > 0 && item.quantity_on_hand <= item.reorder_level
+            ? 'low'
+            : 'ok'
+      }))
+      .sort((a, b) => {
+        const order = { out: 0, low: 1, ok: 2 };
+        return (order[a.status] ?? 2) - (order[b.status] ?? 2);
+      })
+      .slice(0, 10);
+  }, [inventory]);
+
+  const recentOrders = orders.slice(0, 6);
+
+  // Donut chart calculations
+  const donutData = useMemo(() => {
+    if (inventoryByHub.length === 0) return [];
+    const total = inventoryByHub.reduce((s, h) => s + h.total, 0);
+    if (total === 0) return [];
+    const colors = ['#1769E2', '#62C5B4', '#F59E0B', '#8B5CF6', '#EC4899', '#10B981'];
+    let offset = 0;
+    return inventoryByHub.map((hub, i) => {
+      const pct = (hub.total / total) * 100;
+      const item = { ...hub, pct, color: colors[i % colors.length], offset };
+      offset += pct;
+      return item;
+    });
+  }, [inventoryByHub]);
+
+  const totalDonut = donutData.reduce((s, d) => s + d.total, 0);
 
   return (
     <div className="p-4 sm:p-6 lg:p-8 space-y-6 bg-[#F8FAFC] min-h-screen text-[#162233] font-sans">
-      
-      {/* ── HEADER BAR (Figma #1603:1718) ── */}
+
+      {/* ── HEADER ── */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 pb-2 border-b border-slate-200">
         <div>
-          <h1 className="text-2xl font-bold text-[#162233] tracking-tight">VMI Inventory Control</h1>
-          <p className="text-sm text-[#617084] font-medium">Hệ Thống Quản Lý Xuất Nhập Tồn Kho</p>
-        </div>
-
-        <div className="flex flex-wrap items-center gap-3">
-          {/* Search box */}
-          <div className="relative min-w-[220px]">
-            <Search className="absolute left-3 top-2.5 h-4 w-4 text-[#617084]" />
-            <input
-              type="text"
-              placeholder="Tìm kiếm mã SKU, kho..."
-              className="w-full pl-9 pr-3 py-1.5 text-xs bg-white border border-[#CAD5E2] rounded-md focus:outline-none focus:ring-1 focus:ring-[#1769E2] text-[#162233]"
-            />
-          </div>
-
-          {/* Plant Selector */}
-          <button className="flex items-center gap-2 px-3 py-1.5 bg-white border border-[#CAD5E2] rounded-md text-xs font-semibold text-[#162233] hover:bg-slate-50 transition-colors">
-            <span>P5: Samsung Electronics</span>
-            <ChevronDown className="h-3.5 w-3.5 text-[#617084]" />
-          </button>
-
-          <div className="h-6 w-[1px] bg-[#CAD5E2] hidden sm:block" />
-
-          {/* User Profile */}
-          <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-full bg-[#1769E2] text-white flex items-center justify-center text-xs font-bold shadow-xs">
-              {displayName.charAt(0).toUpperCase()}
-            </div>
-            <div className="text-xs">
-              <div className="font-semibold text-[#162233]">{displayName}</div>
-              <div className="text-[11px] text-[#617084]">VMI Manager</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* ── SUB-HEADER / REAL-TIME STATUS BAR (Figma #1603:1735) ── */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between px-6 py-4 bg-white border border-[#E5E7EB] rounded-lg shadow-xs gap-2">
-        <div className="flex items-center gap-3">
-          <span className="text-xl font-bold text-[#111827]">Cập nhật</span>
-          <span className="text-sm text-[#6B7280]">
-            Theo thời gian thực - <strong className="text-[#2E7D32] font-bold">10:08:20</strong>
-          </span>
+          <h1 className="text-2xl font-bold text-[#162233] tracking-tight">Tổng quan vận hành</h1>
+          <p className="text-sm text-[#617084] font-medium">Chào mừng trở lại, {displayName}</p>
         </div>
         <div className="flex items-center gap-2 text-xs font-semibold text-[#1769E2]">
           <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
@@ -187,183 +163,57 @@ export function VMIDashboardClient({ user, orders = [], inventory = [] }: VMIDas
         </div>
       </div>
 
-      {/* ── KPI CARDS ROW (Figma #1603:1739 - 6 Cards Grid) ── */}
+      {/* ── KPI CARDS ── */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-3">
-        {/* Card 1: Tồn kho khả dụng */}
-        <div className="bg-white border border-[#CAD5E2] rounded-lg p-4 shadow-xs flex flex-col justify-between space-y-3">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-[#E8F5E9] flex items-center justify-center shrink-0">
-              <Package className="w-5 h-5 text-[#2E7D32]" />
-            </div>
-            <span className="text-xs font-semibold text-[#617084] leading-tight">Tồn kho khả dụng</span>
-          </div>
-          <div>
-            <div className="flex items-baseline gap-1">
-              <span className="text-2xl font-bold text-[#1257C0]">1,250,000</span>
-              <span className="text-xs text-[#617084]">pcs</span>
-            </div>
-            <div className="flex items-center gap-1 text-[11px] text-[#2E7D32] mt-1 font-medium">
-              <TrendingUp className="w-3 h-3" />
-              <span>12.5% so với tuần trước</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Card 2: Tồn kho đã reserved */}
-        <div className="bg-white border border-[#CAD5E2] rounded-lg p-4 shadow-xs flex flex-col justify-between space-y-3">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-[#E3F2FD] flex items-center justify-center shrink-0">
-              <Lock className="w-5 h-5 text-[#1565C0]" />
-            </div>
-            <span className="text-xs font-semibold text-[#617084] leading-tight">Tồn kho đã reserved</span>
-          </div>
-          <div>
-            <div className="flex items-baseline gap-1">
-              <span className="text-2xl font-bold text-[#1257C0]">350,000</span>
-              <span className="text-xs text-[#617084]">pcs</span>
-            </div>
-            <div className="flex items-center gap-1 text-[11px] text-[#1565C0] mt-1 font-medium">
-              <TrendingUp className="w-3 h-3" />
-              <span>8.3% so với tuần trước</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Card 3: Đang vận chuyển */}
-        <div className="bg-white border border-[#CAD5E2] rounded-lg p-4 shadow-xs flex flex-col justify-between space-y-3">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-[#F3E5F5] flex items-center justify-center shrink-0">
-              <Truck className="w-5 h-5 text-[#7B1FA2]" />
-            </div>
-            <span className="text-xs font-semibold text-[#617084] leading-tight">Đang vận chuyển</span>
-          </div>
-          <div>
-            <div className="flex items-baseline gap-1">
-              <span className="text-2xl font-bold text-[#1257C0]">420,000</span>
-              <span className="text-xs text-[#617084]">pcs</span>
-            </div>
-            <div className="flex items-center gap-1 text-[11px] text-[#7B1FA2] mt-1 font-medium">
-              <TrendingUp className="w-3 h-3" />
-              <span>15.2% so với tuần trước</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Card 4: Safety Stock */}
-        <div className="bg-white border border-[#CAD5E2] rounded-lg p-4 shadow-xs flex flex-col justify-between space-y-3">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-[#E8F5E9] flex items-center justify-center shrink-0">
-              <Shield className="w-5 h-5 text-[#2E7D32]" />
-            </div>
-            <span className="text-xs font-semibold text-[#617084] leading-tight">Safety Stock</span>
-          </div>
-          <div>
-            <div className="flex items-baseline gap-1">
-              <span className="text-2xl font-bold text-[#1257C0]">500,000</span>
-              <span className="text-xs text-[#617084]">pcs</span>
-            </div>
-            <span className="text-[11px] text-[#617084] mt-1 block">Đáp ứng nhu cầu dự phòng</span>
-          </div>
-        </div>
-
-        {/* Card 5: Số ngày tồn (Coverage) */}
-        <div className="bg-white border border-[#CAD5E2] rounded-lg p-4 shadow-xs flex flex-col justify-between space-y-3">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-[#FFF3E0] flex items-center justify-center shrink-0">
-              <Calendar className="w-5 h-5 text-[#E65100]" />
-            </div>
-            <span className="text-xs font-semibold text-[#617084] leading-tight">Số ngày tồn (Coverage)</span>
-          </div>
-          <div>
-            <div className="flex items-baseline gap-1">
-              <span className="text-2xl font-bold text-[#1257C0]">38</span>
-              <span className="text-xs text-[#617084]">Days</span>
-            </div>
-            <div className="flex items-center gap-1 text-[11px] text-[#E65100] mt-1 font-medium">
-              <TrendingUp className="w-3 h-3" />
-              <span>+5 ngày</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Card 6: Stock Health */}
-        <div className="bg-white border border-[#CAD5E2] rounded-lg p-4 shadow-xs flex flex-col justify-between space-y-3">
-          <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-full bg-[#E8F5E9] flex items-center justify-center shrink-0">
-              <Heart className="w-5 h-5 text-[#2E7D32]" />
-            </div>
-            <span className="text-xs font-semibold text-[#617084] leading-tight">Stock Health</span>
-          </div>
-          <div>
-            <span className="inline-block px-2.5 py-1 rounded bg-[#D1FAE5] text-[#059669] text-xs font-bold tracking-wide">
-              HEALTHY
-            </span>
-            <div className="flex items-center gap-1.5 text-[11px] text-[#2E7D32] mt-1 font-medium">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#2E7D32]" />
-              <span>Rủi ro: Thấp</span>
-            </div>
-          </div>
-        </div>
+        <KPICard icon={Package} iconBg="bg-[#E8F5E9]" iconColor="text-[#2E7D32]" label="Tồn kho khả dụng" value={fmt(stats.available)} unit="pcs" />
+        <KPICard icon={ShoppingCart} iconBg="bg-[#E3F2FD]" iconColor="text-[#1565C0]" label="Tổng đơn hàng" value={fmt(stats.totalOrders)} sub={`${stats.pendingOrders} cần xử lý`} subColor="text-[#D97706]" />
+        <KPICard icon={Truck} iconBg="bg-[#F3E5F5]" iconColor="text-[#7B1FA2]" label="Đang vận chuyển" value={fmt(stats.shippedOrders)} unit="đơn" />
+        <KPICard icon={Shield} iconBg="bg-[#E8F5E9]" iconColor="text-[#2E7D32]" label="Tổng doanh thu" value={money(stats.totalRevenue)} />
+        <KPICard icon={ClipboardList} iconBg="bg-[#FFF3E0]" iconColor="text-[#E65100]" label="Yêu cầu báo giá" value={fmt(stats.totalRfqs)} sub={`${stats.pendingRfqs} đang chờ`} subColor="text-[#E65100]" />
+        <KPICard icon={Heart} iconBg="bg-[#E8F5E9]" iconColor="text-[#2E7D32]" label="SKU hoạt động" value={fmt(stats.totalSkus)} sub={stats.outOfStockSkus > 0 ? `${stats.outOfStockSkus} hết hàng` : `${stats.inStockSkus} còn hàng`} subColor={stats.outOfStockSkus > 0 ? 'text-[#DC2626]' : 'text-[#2E7D32]'} />
       </div>
 
-      {/* ── MIDDLE SECTION (Figma #1603:1814 - Table & Warnings) ── */}
+      {/* ── MIDDLE: SKU Inventory Table + Warnings ── */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-start">
-        
-        {/* Left Column: SKU Inventory Table (9 cols) */}
-        <div className="lg:col-span-8 bg-white border border-[#C89A955C] border-slate-200 rounded-xl p-5 shadow-xs space-y-4">
+        {/* SKU Inventory Table */}
+        <div className="lg:col-span-8 bg-white border border-slate-200 rounded-xl p-5 shadow-xs space-y-4">
           <div className="flex items-center justify-between">
-            <h2 className="text-base font-bold text-[#162233]">Tồn Kho theo SKU (Inventory)</h2>
-            <div className="flex items-center gap-2">
-              <button
-                onClick={() => setActiveTab('all')}
-                className={cn(
-                  "px-3 py-1 rounded text-xs font-semibold transition-colors",
-                  activeTab === 'all'
-                    ? "bg-[#D1FAE5] text-[#059669]"
-                    : "bg-slate-100 text-slate-600 hover:bg-slate-200"
-                )}
-              >
-                Xem tất cả
-              </button>
-              <button
-                onClick={() => setActiveTab('need_import')}
-                className={cn(
-                  "px-3 py-1 rounded text-xs font-semibold transition-colors",
-                  activeTab === 'need_import'
-                    ? "bg-[#DBEAFE] text-[#1769E2]"
-                    : "bg-slate-100 text-slate-600 hover:bg-slate-200"
-                )}
-              >
-                SKU Cần Nhập
-              </button>
-            </div>
+            <h2 className="text-base font-bold text-[#162233]">Tồn kho theo SKU</h2>
           </div>
 
           <div className="overflow-x-auto">
             <table className="w-full text-xs text-left border-collapse">
               <thead>
                 <tr className="bg-[#F5F8FC] border-b border-slate-200 text-[#617084] font-semibold">
-                  <th className="py-2.5 px-3 min-w-[90px]">Mã SKU</th>
-                  <th className="py-2.5 px-3 min-w-[180px]">Tên hàng hóa</th>
-                  <th className="py-2.5 px-3 text-center min-w-[80px]">Đầu kỳ</th>
-                  <th className="py-2.5 px-3 text-center min-w-[80px]">Nhập</th>
-                  <th className="py-2.5 px-3 text-center min-w-[80px]">Xuất</th>
-                  <th className="py-2.5 px-3 text-center min-w-[80px]">Cuối kỳ</th>
+                  <th className="py-2.5 px-3 min-w-[100px]">Mã SKU</th>
+                  <th className="py-2.5 px-3 min-w-[160px]">Sản phẩm</th>
+                  <th className="py-2.5 px-3 min-w-[120px]">Kho</th>
+                  <th className="py-2.5 px-3 text-center min-w-[80px]">Tồn kho</th>
+                  <th className="py-2.5 px-3 text-center min-w-[80px]">Đã giữ</th>
+                  <th className="py-2.5 px-3 text-center min-w-[80px]">Khả dụng</th>
                   <th className="py-2.5 px-3 text-center min-w-[90px]">Trạng thái</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
-                {filteredSkuList.map((row, idx) => (
+                {skuInventoryRows.length === 0 && (
+                  <tr><td colSpan={7} className="py-8 text-center text-sm text-slate-500">Chưa có dữ liệu tồn kho</td></tr>
+                )}
+                {skuInventoryRows.map((row, idx) => (
                   <tr key={idx} className="hover:bg-slate-50 transition-colors">
-                    <td className="py-3 px-3 font-semibold text-[#1769E2]">{row.sku}</td>
-                    <td className="py-3 px-3 font-medium text-[#162233]">{row.name}</td>
-                    <td className="py-3 px-3 text-center text-[#617084]">{row.start}</td>
-                    <td className="py-3 px-3 text-center font-medium text-[#059669]">{row.in}</td>
-                    <td className="py-3 px-3 text-center font-medium text-[#DC2626]">{row.out}</td>
-                    <td className="py-3 px-3 text-center font-bold text-[#162233]">{row.end}</td>
+                    <td className="py-3 px-3 font-semibold text-[#1769E2]">{row.sku_code}</td>
+                    <td className="py-3 px-3 font-medium text-[#162233]">{row.product_name}</td>
+                    <td className="py-3 px-3 text-[#617084]">{row.hub_name}</td>
+                    <td className="py-3 px-3 text-center font-bold text-[#162233]">{fmt(row.on_hand)}</td>
+                    <td className="py-3 px-3 text-center text-[#617084]">{fmt(row.reserved)}</td>
+                    <td className="py-3 px-3 text-center font-semibold text-[#162233]">{fmt(row.available)}</td>
                     <td className="py-3 px-3 text-center">
-                      <span className={cn("px-2.5 py-0.5 rounded-full text-[11px] font-semibold inline-block", row.statusClass)}>
-                        {row.statusLabel}
+                      <span className={cn(
+                        "px-2.5 py-0.5 rounded-full text-[11px] font-semibold inline-block",
+                        row.status === 'ok' ? 'bg-[#D9F2DE] text-[#177333]' :
+                        row.status === 'low' ? 'bg-[#FFF2D9] text-[#A6730D]' :
+                        'bg-[#FFE0E0] text-[#B22626]'
+                      )}>
+                        {row.status === 'ok' ? 'Đủ hàng' : row.status === 'low' ? 'Sắp hết' : 'Hết hàng'}
                       </span>
                     </td>
                   </tr>
@@ -373,7 +223,7 @@ export function VMIDashboardClient({ user, orders = [], inventory = [] }: VMIDas
           </div>
 
           <div className="flex items-center justify-between pt-2 text-xs text-[#617084]">
-            <span>Hiển thị 1-{filteredSkuList.length} trong số 120 SKU</span>
+            <span>Hiển thị {skuInventoryRows.length} / {inventory.length} dòng tồn kho</span>
             <Link href="/admin/skus" className="text-[#1769E2] font-semibold hover:underline flex items-center gap-1">
               <span>Xem chi tiết danh sách SKU</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -381,185 +231,133 @@ export function VMIDashboardClient({ user, orders = [], inventory = [] }: VMIDas
           </div>
         </div>
 
-        {/* Right Column: Warnings Panel (4 cols) (Figma #1603:1894) */}
+        {/* Warnings Panel */}
         <div className="lg:col-span-4 bg-white border border-slate-200 rounded-xl p-5 shadow-xs space-y-4">
           <div className="flex items-center justify-between border-b border-slate-100 pb-3">
             <h2 className="text-base font-bold text-[#162233] flex items-center gap-2">
-              <span>Cảnh Báo VMI</span>
-              <span className="px-2 py-0.5 rounded-full bg-red-100 text-[#DC2626] text-xs font-bold">3</span>
+              <span>Cảnh báo</span>
+              {(stats.belowReorder.length + stats.outOfStockSkus) > 0 && (
+                <span className="px-2 py-0.5 rounded-full bg-red-100 text-[#DC2626] text-xs font-bold">
+                  {stats.belowReorder.length + stats.outOfStockSkus}
+                </span>
+              )}
             </h2>
             <AlertTriangle className="w-5 h-5 text-[#DC2626]" />
           </div>
 
           <div className="space-y-3">
-            {/* Alert 1 */}
-            <div className="p-3 bg-[#F5F8FC] border border-[#FEE2E2] rounded-lg space-y-1">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2 font-semibold text-xs text-[#162233]">
-                  <AlertCircle className="w-4 h-4 text-[#DC2626]" />
-                  <span>Dưới hạn mức an toàn</span>
-                </div>
-                <span className="w-2 h-2 rounded-full bg-[#DC2626]" />
-              </div>
-              <p className="text-xs text-[#617084] pl-6 leading-relaxed">
-                Màng co PE (PE-01) tại Kho phụ chỉ còn 2 ngày xuất hàng.
-              </p>
-            </div>
-
-            {/* Alert 2 */}
-            <div className="p-3 bg-[#F5F8FC] border border-slate-200 rounded-lg space-y-1">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2 font-semibold text-xs text-[#162233]">
-                  <ShoppingCart className="w-4 h-4 text-[#D97706]" />
-                  <span>Sắp chạm điểm đặt hàng</span>
-                </div>
-                <span className="w-2 h-2 rounded-full bg-[#D97706]" />
-              </div>
-              <p className="text-xs text-[#617084] pl-6 leading-relaxed">
-                Khăn lau Wiper 1009 (KL-W04) dự kiến chạm đáy sau 5 ngày nữa.
-              </p>
-            </div>
-
-            {/* Alert 3 */}
-            <div className="p-3 bg-[#F5F8FC] border border-slate-200 rounded-lg space-y-1">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2 font-semibold text-xs text-[#162233]">
-                  <Database className="w-4 h-4 text-[#1769E2]" />
-                  <span>Độ lệch tồn kho cao</span>
-                </div>
-                <span className="w-2 h-2 rounded-full bg-[#1769E2]" />
-              </div>
-              <p className="text-xs text-[#617084] pl-6 leading-relaxed">
-                Găng tay Nitrile (GT-N02) lệch thực tế 4% so với số liệu ERP.
-              </p>
-            </div>
+            {stats.outOfStockSkus > 0 && (
+              <WarningCard
+                icon={AlertCircle}
+                iconColor="text-[#DC2626]"
+                borderColor="border-[#FEE2E2]"
+                dotColor="bg-[#DC2626]"
+                title="SKU hết hàng"
+                description={`Có ${stats.outOfStockSkus} SKU đang hết hàng hoàn toàn.`}
+              />
+            )}
+            {stats.lowStockSkus > 0 && (
+              <WarningCard
+                icon={ShoppingCart}
+                iconColor="text-[#D97706]"
+                borderColor="border-slate-200"
+                dotColor="bg-[#D97706]"
+                title="SKU sắp hết hàng"
+                description={`Có ${stats.lowStockSkus} SKU đang ở mức tồn kho thấp.`}
+              />
+            )}
+            {stats.belowReorder.length > 0 && (
+              <WarningCard
+                icon={Package}
+                iconColor="text-[#1769E2]"
+                borderColor="border-slate-200"
+                dotColor="bg-[#1769E2]"
+                title="Dưới mức đặt hàng lại"
+                description={`${stats.belowReorder.length} mặt hàng trong kho dưới mức reorder level.`}
+              />
+            )}
+            {stats.pendingOrders > 0 && (
+              <WarningCard
+                icon={ShoppingCart}
+                iconColor="text-[#D97706]"
+                borderColor="border-slate-200"
+                dotColor="bg-[#D97706]"
+                title="Đơn hàng chờ xử lý"
+                description={`${stats.pendingOrders} đơn hàng đang chờ xác nhận hoặc xử lý.`}
+              />
+            )}
+            {stats.pendingRfqs > 0 && (
+              <WarningCard
+                icon={ClipboardList}
+                iconColor="text-[#E65100]"
+                borderColor="border-slate-200"
+                dotColor="bg-[#E65100]"
+                title="RFQ chờ phản hồi"
+                description={`${stats.pendingRfqs} yêu cầu báo giá đang chờ xử lý.`}
+              />
+            )}
+            {stats.outOfStockSkus === 0 && stats.lowStockSkus === 0 && stats.belowReorder.length === 0 && stats.pendingOrders === 0 && stats.pendingRfqs === 0 && (
+              <div className="py-6 text-center text-sm text-slate-500">Không có cảnh báo nào</div>
+            )}
           </div>
         </div>
       </div>
 
-      {/* ── BOTTOM SECTION (Figma #1603:1917 - Warehouse & Schedule & Metrics) ── */}
+      {/* ── BOTTOM: Inventory by Hub + Recent Orders + Quick Actions ── */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
-        
-        {/* 1. Inventory by Warehouse (4 cols) (Figma #1603:1918) */}
+
+        {/* Inventory by Hub - Donut */}
         <div className="lg:col-span-4 bg-white border border-slate-200 rounded-xl p-5 shadow-xs flex flex-col justify-between space-y-4">
-          <div className="flex items-center justify-between">
-            <h2 className="text-base font-bold text-[#162233] flex items-center gap-2">
-              <PieChart className="w-5 h-5 text-[#1769E2]" />
-              <span>Inventory theo Kho</span>
-            </h2>
+          <div className="flex items-center gap-2">
+            <PieChart className="w-5 h-5 text-[#1769E2]" />
+            <h2 className="text-base font-bold text-[#162233]">Tồn kho theo Hub</h2>
           </div>
 
-          {/* View Toggle */}
-          <div className="flex bg-[#F0F2F5] p-0.5 rounded-lg text-xs font-semibold">
-            <button
-              onClick={() => setWarehouseView('by_wh')}
-              className={cn(
-                "flex-1 py-1.5 rounded-md transition-all text-center",
-                warehouseView === 'by_wh' ? "bg-white text-[#162233] shadow-xs" : "text-[#617084]"
-              )}
-            >
-              Theo Kho
-            </button>
-            <button
-              onClick={() => setWarehouseView('by_sku')}
-              className={cn(
-                "flex-1 py-1.5 rounded-md transition-all text-center",
-                warehouseView === 'by_sku' ? "bg-white text-[#162233] shadow-xs" : "text-[#617084]"
-              )}
-            >
-              Tổng cộng theo SKU
-            </button>
-          </div>
+          {donutData.length > 0 ? (
+            <>
+              <div className="flex flex-col items-center justify-center py-2">
+                <div className="relative w-32 h-32 flex items-center justify-center">
+                  <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                    <path className="text-slate-100" strokeWidth="4" stroke="currentColor" fill="none"
+                      d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    {donutData.map((seg, i) => (
+                      <path key={i} stroke={seg.color} strokeDasharray={`${seg.pct}, 100`}
+                        strokeDashoffset={`-${seg.offset}`} strokeWidth="4.5" fill="none"
+                        d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    ))}
+                  </svg>
+                  <div className="absolute text-center">
+                    <span className="text-[11px] text-[#617084] block">Tổng kho</span>
+                    <span className="text-sm font-bold text-[#162233]">{stats.activeHubs} Hub</span>
+                  </div>
+                </div>
+              </div>
 
-          {/* Donut Visual */}
-          <div className="flex flex-col items-center justify-center py-2">
-            <div className="relative w-32 h-32 flex items-center justify-center">
-              <svg className="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
-                <path
-                  className="text-slate-100"
-                  strokeWidth="4"
-                  stroke="currentColor"
-                  fill="none"
-                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                />
-                {/* Segment 1: 60% Kho chính */}
-                <path
-                  className="text-[#1769E2]"
-                  strokeDasharray="60, 100"
-                  strokeWidth="4.5"
-                  stroke="currentColor"
-                  fill="none"
-                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                />
-                {/* Segment 2: 25% Kho phụ */}
-                <path
-                  className="text-[#62C5B4]"
-                  strokeDasharray="25, 100"
-                  strokeDashoffset="-60"
-                  strokeWidth="4.5"
-                  stroke="currentColor"
-                  fill="none"
-                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                />
-                {/* Segment 3: 15% Transit */}
-                <path
-                  className="text-[#F59E0B]"
-                  strokeDasharray="15, 100"
-                  strokeDashoffset="-85"
-                  strokeWidth="4.5"
-                  stroke="currentColor"
-                  fill="none"
-                  d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"
-                />
-              </svg>
-              <div className="absolute text-center">
-                <span className="text-[11px] text-[#617084] block">Tổng kho</span>
-                <span className="text-sm font-bold text-[#162233]">3 Kho</span>
+              <div className="space-y-2 text-xs">
+                {donutData.map((hub, i) => (
+                  <div key={i} className="flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: hub.color }} />
+                      <span className="font-semibold text-[#162233]">{hub.name}</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <span className="font-bold text-[#162233]">{hub.pct.toFixed(0)}%</span>
+                      <span className="text-[#617084]">{fmt(hub.total)}</span>
+                    </div>
+                  </div>
+                ))}
               </div>
-            </div>
-          </div>
-
-          {/* Warehouse Legend List */}
-          <div className="space-y-2 text-xs">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#1769E2]" />
-                <span className="font-semibold text-[#162233]">Kho chính (Bắc Ninh)</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="font-bold text-[#162233]">60%</span>
-                <span className="text-[#617084]">750,000 pcs</span>
-              </div>
-            </div>
-
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#62C5B4]" />
-                <span className="font-semibold text-[#162233]">Kho phụ (Hà Nam)</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="font-bold text-[#162233]">25%</span>
-                <span className="text-[#617084]">312,500 pcs</span>
-              </div>
-            </div>
-
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#F59E0B]" />
-                <span className="font-semibold text-[#162233]">Transit (Đang vận chuyển)</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="font-bold text-[#162233]">15%</span>
-                <span className="text-[#617084]">187,500 pcs</span>
-              </div>
-            </div>
-          </div>
+            </>
+          ) : (
+            <div className="py-8 text-center text-sm text-slate-500">Chưa có dữ liệu tồn kho</div>
+          )}
         </div>
 
-        {/* 2. Delivery Schedule (5 cols) (Figma #1603:1957) */}
+        {/* Recent Orders */}
         <div className="lg:col-span-5 bg-white border border-slate-200 rounded-xl p-5 shadow-xs space-y-4 flex flex-col justify-between">
           <div className="flex items-center justify-between">
-            <h2 className="text-base font-bold text-[#162233]">Lịch Giao Hàng Dự Kiến</h2>
+            <h2 className="text-base font-bold text-[#162233]">Đơn hàng gần đây</h2>
+            <Link href="/admin/orders" className="text-xs font-semibold text-[#1769E2] hover:underline">Xem tất cả</Link>
           </div>
 
           <div className="overflow-x-auto">
@@ -567,20 +365,29 @@ export function VMIDashboardClient({ user, orders = [], inventory = [] }: VMIDas
               <thead>
                 <tr className="bg-[#F5F8FC] border-b border-slate-200 text-[#617084] font-semibold">
                   <th className="py-2.5 px-3">Mã đơn</th>
-                  <th className="py-2.5 px-3">Nhà cung cấp</th>
-                  <th className="py-2.5 px-3">Ngày giao</th>
+                  <th className="py-2.5 px-3">Khách hàng</th>
+                  <th className="py-2.5 px-3 text-right">Tổng tiền</th>
                   <th className="py-2.5 px-3 text-right">Trạng thái</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100">
-                {deliverySchedules.map((item, i) => (
-                  <tr key={i} className="hover:bg-slate-50 transition-colors">
-                    <td className="py-3 px-3 font-semibold text-[#162233]">{item.code}</td>
-                    <td className="py-3 px-3 font-medium text-[#617084]">{item.supplier}</td>
-                    <td className="py-3 px-3 text-[#617084]">{item.date}</td>
+                {recentOrders.length === 0 && (
+                  <tr><td colSpan={4} className="py-6 text-center text-sm text-slate-500">Chưa có đơn hàng</td></tr>
+                )}
+                {recentOrders.map((o: any) => (
+                  <tr key={o.id} className="hover:bg-slate-50 transition-colors">
+                    <td className="py-3 px-3 font-semibold text-[#1769E2]">{o.code || `#${o.id}`}</td>
+                    <td className="py-3 px-3 font-medium text-[#617084]">{o.customer?.name || 'Khách vãng lai'}</td>
+                    <td className="py-3 px-3 text-right font-semibold text-[#162233]">{money(o.total || 0)}</td>
                     <td className="py-3 px-3 text-right">
-                      <span className={cn("px-2 py-0.5 rounded text-[11px] font-semibold inline-block", item.badgeClass)}>
-                        {item.status}
+                      <span className={cn(
+                        "px-2 py-0.5 rounded text-[11px] font-semibold inline-block",
+                        ['delivered', 'completed'].includes(o.status) ? 'bg-[#D1FAE5] text-[#059669]' :
+                        o.status === 'cancelled' ? 'bg-red-100 text-[#DC2626]' :
+                        o.status === 'shipped' ? 'bg-[#FEF3C7] text-[#D97706]' :
+                        'bg-[#DBEAFE] text-[#1769E2]'
+                      )}>
+                        {statusLabel[o.status] || o.status || '---'}
                       </span>
                     </td>
                   </tr>
@@ -590,236 +397,86 @@ export function VMIDashboardClient({ user, orders = [], inventory = [] }: VMIDas
           </div>
         </div>
 
-        {/* 3. Performance Metrics (3 cols) (Figma #1603:1994) */}
+        {/* Quick Actions */}
         <div className="lg:col-span-3 bg-white border border-slate-200 rounded-xl p-5 shadow-xs space-y-4 flex flex-col justify-between">
-          <h2 className="text-base font-bold text-[#162233]">Chỉ Số Vận Hành (VMI)</h2>
-
-          <div className="grid grid-cols-2 gap-3">
-            {/* Metric 1 */}
-            <div className="p-3 bg-[#F5F8FC] rounded-lg text-center flex flex-col items-center justify-center space-y-1">
-              <span className="text-[11px] text-[#617084] font-medium leading-tight">Giao đúng hẹn (OTD)</span>
-              <div className="w-12 h-12 rounded-full border-4 border-[#1769E2] flex items-center justify-center font-bold text-xs text-[#1769E2]">
-                99.2%
-              </div>
-            </div>
-
-            {/* Metric 2 */}
-            <div className="p-3 bg-[#F5F8FC] rounded-lg text-center flex flex-col items-center justify-center space-y-1">
-              <span className="text-[11px] text-[#617084] font-medium leading-tight">Độ chuẩn dự báo</span>
-              <div className="w-12 h-12 rounded-full border-4 border-[#059669] flex items-center justify-center font-bold text-xs text-[#059669]">
-                98.7%
-              </div>
-            </div>
-
-            {/* Metric 3 */}
-            <div className="p-3 bg-[#F5F8FC] rounded-lg text-center flex flex-col items-center justify-center space-y-1">
-              <span className="text-[11px] text-[#617084] font-medium leading-tight">Fill Rate</span>
-              <div className="w-12 h-12 rounded-full border-4 border-[#D97706] flex items-center justify-center font-bold text-xs text-[#D97706]">
-                99.5%
-              </div>
-            </div>
-
-            {/* Metric 4 */}
-            <div className="p-3 bg-[#F5F8FC] rounded-lg text-center flex flex-col items-center justify-center space-y-1">
-              <span className="text-[11px] text-[#617084] font-medium leading-tight">OFR Rate</span>
-              <div className="w-12 h-12 rounded-full border-4 border-[#1769E2] flex items-center justify-center font-bold text-xs text-[#1769E2]">
-                98.5%
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      {/* ── AI FORECAST & THAO TÁC NHANH SECTION (Figma #1603:2023) ── */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
-        
-        {/* Left: AI Forecast Chart (7 cols) (Figma #1603:2024) */}
-        <div className="lg:col-span-7 bg-white border border-slate-200 rounded-xl p-6 shadow-xs space-y-4 flex flex-col justify-between">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Sparkles className="w-5 h-5 text-[#1769E2]" />
-              <h2 className="text-lg font-bold text-[#0F172A]">AI Forecast - 90 Ngày Tới</h2>
-            </div>
-            <div className="flex items-center gap-4 text-xs font-semibold">
-              <div className="flex items-center gap-1.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#1769E2]" />
-                <span className="text-[#64748B]">Thực tế</span>
-              </div>
-              <div className="flex items-center gap-1.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-[#EF4444]" />
-                <span className="text-[#64748B]">Dự báo</span>
-              </div>
-            </div>
+          <div className="flex items-center gap-2 border-b border-slate-100 pb-3">
+            <span className="w-1 h-4 rounded bg-[#1769E2]" />
+            <h2 className="text-base font-bold text-[#162233]">Thao tác nhanh</h2>
           </div>
 
-          {/* Trend Chart Mock Graphic */}
-          <div className="h-44 w-full relative pt-4">
-            <svg viewBox="0 0 500 120" className="w-full h-full overflow-visible">
-              {/* Grid Lines */}
-              <line x1="0" y1="20" x2="500" y2="20" stroke="#F1F5F9" strokeWidth="1" />
-              <line x1="0" y1="50" x2="500" y2="50" stroke="#F1F5F9" strokeWidth="1" />
-              <line x1="0" y1="80" x2="500" y2="80" stroke="#F1F5F9" strokeWidth="1" />
-              <line x1="0" y1="110" x2="500" y2="110" stroke="#F1F5F9" strokeWidth="1" />
-
-              {/* Actual Line (Blue Solid) */}
-              <path
-                d="M 0 100 Q 120 75, 250 50 T 500 20"
-                fill="none"
-                stroke="#1769E2"
-                strokeWidth="2.5"
-              />
-
-              {/* Forecast Line (Red Dashed) */}
-              <path
-                d="M 0 105 Q 120 85, 250 65 T 500 10"
-                fill="none"
-                stroke="#EF4444"
-                strokeWidth="2.5"
-                strokeDasharray="4 4"
-              />
-
-              {/* Points */}
-              <circle cx="0" cy="100" r="3" fill="#1769E2" />
-              <circle cx="125" cy="75" r="3" fill="#1769E2" />
-              <circle cx="250" cy="50" r="3" fill="#1769E2" />
-              <circle cx="375" cy="35" r="3" fill="#1769E2" />
-              <circle cx="500" cy="20" r="3" fill="#1769E2" />
-
-              <circle cx="0" cy="105" r="3" fill="#EF4444" />
-              <circle cx="125" cy="85" r="3" fill="#EF4444" />
-              <circle cx="250" cy="65" r="3" fill="#EF4444" />
-              <circle cx="375" cy="38" r="3" fill="#EF4444" />
-              <circle cx="500" cy="10" r="3" fill="#EF4444" />
-            </svg>
-
-            <div className="flex justify-between items-center text-xs text-[#64748B] pt-2">
-              <span>T6</span>
-              <span>T10</span>
-              <span className="text-[#EF4444] font-semibold">T11 (Dự báo)</span>
-            </div>
+          <div className="grid grid-cols-1 gap-2.5">
+            <QuickAction href="/admin/orders" icon={FilePlus} label="Quản lý đơn hàng" color="#1769E2" bg="bg-[#F0F9FF]" />
+            <QuickAction href="/admin/rfqs" icon={FileText} label="Quản lý RFQ" color="#15803D" bg="bg-[#F0FDF4]" />
+            <QuickAction href="/admin/products" icon={Package} label="Quản lý sản phẩm" color="#7C3AED" bg="bg-[#FAF5FF]" />
+            <QuickAction href="/admin/skus" icon={BarChart2} label="Quản lý SKU" color="#059669" bg="bg-[#ECFDF5]" />
+            <QuickAction href="/admin/orders" icon={CalendarPlus} label="Yêu cầu giao gấp" color="#DC2626" bg="bg-[#FEF2F2]" />
+            <QuickAction href="/admin/orders" icon={Truck} label="Lịch giao hàng" color="#0284C7" bg="bg-[#F0F9FF]" />
           </div>
-
-          {/* Alert Banner */}
-          <div className="p-3 bg-[#FEF3C7] border border-[#F59E0B]/30 rounded-lg flex items-center gap-3">
-            <AlertTriangle className="w-5 h-5 text-[#92400E] shrink-0" />
-            <p className="text-xs text-[#92400E] font-medium leading-relaxed">
-              Dự báo: Tháng tới cần nhập thêm 150,000 sản phẩm để đáp ứng nhu cầu tăng 22% trong Q4.
-            </p>
-          </div>
-        </div>
-
-        {/* Right: Thao tác nhanh (5 cols) (Figma #1603:2072) */}
-        <div className="lg:col-span-5 bg-white border border-slate-200 rounded-xl p-6 shadow-xs space-y-4 flex flex-col justify-between">
-          <div className="flex items-center justify-between border-b border-slate-100 pb-3">
-            <div className="flex items-center gap-2">
-              <span className="w-1 h-4 rounded bg-[#1769E2]" />
-              <h2 className="text-lg font-bold text-[#162233]">Thao tác nhanh</h2>
-            </div>
-            <span className="px-2 py-0.5 rounded bg-[#E0F2FE] text-[#1769E2] text-[11px] font-bold tracking-wider uppercase">
-              Procurement
-            </span>
-          </div>
-
-          {/* Quick Actions Grid */}
-          <div className="grid grid-cols-2 gap-3">
-            {/* Btn 1: Tạo PO */}
-            <Link
-              href="/admin/orders"
-              className="flex items-center justify-between p-3 rounded-lg bg-[#F0F9FF] border border-[#1769E2] text-[#162233] hover:bg-blue-100 transition-all group"
-            >
-              <div className="flex items-center gap-2.5">
-                <FilePlus className="w-4 h-4 text-[#1769E2]" />
-                <span className="text-xs font-semibold">Tạo PO</span>
-              </div>
-              <ArrowRight className="w-3.5 h-3.5 text-[#1769E2] opacity-60 group-hover:opacity-100 transition-opacity" />
-            </Link>
-
-            {/* Btn 2: Tạo RFQ */}
-            <Link
-              href="/admin/rfqs"
-              className="flex items-center justify-between p-3 rounded-lg bg-[#F0FDF4] border border-[#15803D] text-[#162233] hover:bg-emerald-100 transition-all group"
-            >
-              <div className="flex items-center gap-2.5">
-                <FileText className="w-4 h-4 text-[#15803D]" />
-                <span className="text-xs font-semibold">Tạo RFQ</span>
-              </div>
-              <ArrowRight className="w-3.5 h-3.5 text-[#15803D] opacity-60 group-hover:opacity-100 transition-opacity" />
-            </Link>
-
-            {/* Btn 3: Yêu cầu giao gấp */}
-            <Link
-              href="/admin/orders"
-              className="flex items-center justify-between p-3 rounded-lg bg-[#FEF2F2] border border-[#DC2626] text-[#162233] hover:bg-red-100 transition-all group"
-            >
-              <div className="flex items-center gap-2.5">
-                <CalendarPlus className="w-4 h-4 text-[#DC2626]" />
-                <span className="text-xs font-semibold">Yêu cầu giao gấp</span>
-              </div>
-              <ArrowRight className="w-3.5 h-3.5 text-[#DC2626] opacity-60 group-hover:opacity-100 transition-opacity" />
-            </Link>
-
-            {/* Btn 4: Xuất báo cáo tồn kho */}
-            <Link
-              href="/admin/products"
-              className="flex items-center justify-between p-3 rounded-lg bg-[#ECFDF5] border border-[#059669] text-[#162233] hover:bg-emerald-100 transition-all group"
-            >
-              <div className="flex items-center gap-2.5">
-                <BarChart2 className="w-4 h-4 text-[#059669]" />
-                <span className="text-xs font-semibold">Xuất báo cáo tồn kho</span>
-              </div>
-              <ArrowRight className="w-3.5 h-3.5 text-[#059669] opacity-60 group-hover:opacity-100 transition-opacity" />
-            </Link>
-
-            {/* Btn 5: Báo cáo tiêu thụ */}
-            <Link
-              href="/admin/products"
-              className="flex items-center justify-between p-3 rounded-lg bg-[#FAF5FF] border border-[#7C3AED] text-[#162233] hover:bg-purple-100 transition-all group"
-            >
-              <div className="flex items-center gap-2.5">
-                <PieChart className="w-4 h-4 text-[#7C3AED]" />
-                <span className="text-xs font-semibold">Báo cáo tiêu thụ</span>
-              </div>
-              <ArrowRight className="w-3.5 h-3.5 text-[#7C3AED] opacity-60 group-hover:opacity-100 transition-opacity" />
-            </Link>
-
-            {/* Btn 6: Lịch giao hàng */}
-            <Link
-              href="/admin/orders"
-              className="flex items-center justify-between p-3 rounded-lg bg-[#F0F9FF] border border-[#0284C7] text-[#162233] hover:bg-sky-100 transition-all group"
-            >
-              <div className="flex items-center gap-2.5">
-                <Truck className="w-4 h-4 text-[#0284C7]" />
-                <span className="text-xs font-semibold">Lịch giao hàng</span>
-              </div>
-              <ArrowRight className="w-3.5 h-3.5 text-[#0284C7] opacity-60 group-hover:opacity-100 transition-opacity" />
-            </Link>
-          </div>
-
-          {/* Full Width Action */}
-          <Link
-            href="/admin/orders"
-            className="flex items-center justify-between p-3 rounded-lg bg-[#FAF5FF] border border-[#7C3AED] text-[#162233] hover:bg-purple-100 transition-all group w-full"
-          >
-            <div className="flex items-center gap-2.5">
-              <Truck className="w-4 h-4 text-[#7C3AED]" />
-              <span className="text-xs font-semibold">Xem Báo cáo Xuất Kho hôm nay</span>
-            </div>
-            <ArrowRight className="w-3.5 h-3.5 text-[#7C3AED] opacity-60 group-hover:opacity-100 transition-opacity" />
-          </Link>
         </div>
       </div>
 
-      {/* ── FOOTER CONTENT (Figma #1603:2133) ── */}
+      {/* ── FOOTER ── */}
       <div className="pt-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-[#6B7280]">
-        <div>ULink Industries | VMI Platform</div>
-        <div className="flex items-center gap-6">
-          <a href="#" className="hover:text-[#1769E2] transition-colors">Privacy Policy</a>
-          <a href="#" className="hover:text-[#1769E2] transition-colors">Terms of Service</a>
-          <a href="#" className="hover:text-[#1769E2] transition-colors">Support</a>
-        </div>
+        <div>ULink Industries | B2B Platform</div>
       </div>
-
     </div>
+  );
+}
+
+function KPICard({ icon: Icon, iconBg, iconColor, label, value, unit, sub, subColor }: {
+  icon: any; iconBg: string; iconColor: string; label: string; value: string; unit?: string; sub?: string; subColor?: string;
+}) {
+  return (
+    <div className="bg-white border border-[#CAD5E2] rounded-lg p-4 shadow-xs flex flex-col justify-between space-y-3">
+      <div className="flex items-center gap-3">
+        <div className={cn("w-10 h-10 rounded-full flex items-center justify-center shrink-0", iconBg)}>
+          <Icon className={cn("w-5 h-5", iconColor)} />
+        </div>
+        <span className="text-xs font-semibold text-[#617084] leading-tight">{label}</span>
+      </div>
+      <div>
+        <div className="flex items-baseline gap-1">
+          <span className="text-2xl font-bold text-[#1257C0]">{value}</span>
+          {unit && <span className="text-xs text-[#617084]">{unit}</span>}
+        </div>
+        {sub && (
+          <div className={cn("flex items-center gap-1 text-[11px] mt-1 font-medium", subColor || 'text-[#617084]')}>
+            <TrendingUp className="w-3 h-3" />
+            <span>{sub}</span>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function WarningCard({ icon: Icon, iconColor, borderColor, dotColor, title, description }: {
+  icon: any; iconColor: string; borderColor: string; dotColor: string; title: string; description: string;
+}) {
+  return (
+    <div className={cn("p-3 bg-[#F5F8FC] border rounded-lg space-y-1", borderColor)}>
+      <div className="flex items-center justify-between">
+        <div className="flex items-center gap-2 font-semibold text-xs text-[#162233]">
+          <Icon className={cn("w-4 h-4", iconColor)} />
+          <span>{title}</span>
+        </div>
+        <span className={cn("w-2 h-2 rounded-full", dotColor)} />
+      </div>
+      <p className="text-xs text-[#617084] pl-6 leading-relaxed">{description}</p>
+    </div>
+  );
+}
+
+function QuickAction({ href, icon: Icon, label, color, bg }: {
+  href: string; icon: any; label: string; color: string; bg: string;
+}) {
+  return (
+    <Link href={href} className={cn("flex items-center justify-between p-3 rounded-lg border text-[#162233] hover:opacity-80 transition-all group", bg)} style={{ borderColor: color }}>
+      <div className="flex items-center gap-2.5">
+        <Icon className="w-4 h-4" style={{ color }} />
+        <span className="text-xs font-semibold">{label}</span>
+      </div>
+      <ArrowRight className="w-3.5 h-3.5 opacity-60 group-hover:opacity-100 transition-opacity" style={{ color }} />
+    </Link>
   );
 }

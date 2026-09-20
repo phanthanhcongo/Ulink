@@ -143,7 +143,7 @@ export function ProductCard({
                 src={imageUrl}
                 alt={product.name}
                 fill
-                className="object-cover transition-transform duration-500 group-hover:scale-105"
+                className="object-contain transition-transform duration-500 group-hover:scale-105"
                 sizes="(max-width: 640px) 100vw, 300px"
                 onError={(e) => {
                   e.currentTarget.style.display = 'none';

@@ -18,7 +18,10 @@ import {
   PlusCircle,
   X,
   AlertTriangle,
-  ImageIcon
+  ImageIcon,
+  Upload,
+  Trash2,
+  Video
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ConfirmModal } from './confirm-modal';
@@ -27,7 +30,11 @@ import {
   updateSkuStock,
   deleteProduct,
   saveProduct,
-  saveSku
+  saveSku,
+  uploadFileToDirectus,
+  updateProductHero,
+  addProductGalleryImage,
+  removeProductGalleryImage
 } from '@/app/[locale]/admin/products/actions';
 
 interface ProductsClientProps {
@@ -156,7 +163,9 @@ export function ProductsClient({
         short_description: activeProduct.short_description || undefined,
         specifications: Object.keys(specRecord).length > 0 ? specRecord : undefined,
         status: activeProduct.status || 'draft',
-        assignedAttributeIds: selectedAttributeIds
+        assignedAttributeIds: selectedAttributeIds,
+        meta_title: activeProduct.meta_title || undefined,
+        meta_description: activeProduct.meta_description || undefined
       });
 
       if (res.success) {
@@ -532,6 +541,154 @@ export function ProductsClient({
                   <span>{productFormError}</span>
                 </div>
               )}
+              {/* Section 0: Ảnh & Video sản phẩm */}
+              <div className="bg-slate-50/40 border border-slate-200 rounded-[3px] p-5 space-y-4">
+                <h4 className="text-caption-responsive font-bold text-slate-800 uppercase tracking-wider border-b border-slate-100 pb-2">
+                  Ảnh & Video sản phẩm
+                </h4>
+
+                {/* Hero Image */}
+                <div className="space-y-2">
+                  <label className="text-caption-responsive font-bold text-slate-500 uppercase">Ảnh đại diện (Hero)</label>
+                  <div className="flex items-start gap-3">
+                    {activeProduct.hero ? (
+                      <div className="relative w-32 h-32 rounded-lg overflow-hidden border border-slate-200 bg-white group">
+                        <Image
+                          src={resolveImageUrl(activeProduct.hero as string) || ''}
+                          alt="Ảnh đại diện"
+                          fill
+                          className="object-contain"
+                          unoptimized
+                        />
+                        {activeProduct.id && (
+                          <button
+                            type="button"
+                            onClick={async () => {
+                              if (!activeProduct.id) return;
+                              const res = await updateProductHero(activeProduct.id, null);
+                              if (res.success) {
+                                setActiveProduct({ ...activeProduct, hero: undefined });
+                              }
+                            }}
+                            className="absolute top-1 right-1 p-1 bg-red-500 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                            title="Xóa ảnh đại diện"
+                          >
+                            <Trash2 className="w-3 h-3" />
+                          </button>
+                        )}
+                        <span className="absolute bottom-0 left-0 right-0 bg-black/50 text-white text-[10px] text-center py-0.5">Hero</span>
+                      </div>
+                    ) : (
+                      <div className="w-32 h-32 rounded-lg border-2 border-dashed border-slate-300 flex flex-col items-center justify-center text-slate-400">
+                        <ImageIcon className="w-8 h-8 mb-1" />
+                        <span className="text-[11px]">Chưa có ảnh</span>
+                      </div>
+                    )}
+                    <label className="flex items-center gap-2 px-3 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-semibold text-slate-600 hover:bg-slate-50 cursor-pointer transition-colors">
+                      <Upload className="w-4 h-4" />
+                      <span>{activeProduct.hero ? 'Đổi ảnh' : 'Tải ảnh lên'}</span>
+                      <input
+                        type="file"
+                        accept="image/*"
+                        className="hidden"
+                        onChange={async (e) => {
+                          const file = e.target.files?.[0];
+                          if (!file) return;
+                          const fd = new FormData();
+                          fd.append('file', file);
+                          const res = await uploadFileToDirectus(fd);
+                          if (res.success && res.fileId) {
+                            if (activeProduct.id) {
+                              await updateProductHero(activeProduct.id, res.fileId);
+                            }
+                            setActiveProduct({ ...activeProduct, hero: res.fileId });
+                          }
+                          e.target.value = '';
+                        }}
+                      />
+                    </label>
+                  </div>
+                </div>
+
+                {/* Gallery */}
+                {activeProduct.id && (
+                  <div className="space-y-2">
+                    <label className="text-caption-responsive font-bold text-slate-500 uppercase">Bộ sưu tập ảnh & video</label>
+                    <div className="flex flex-wrap gap-3">
+                      {activeProduct.gallery?.map((g: any, idx: number) => {
+                        const fileId = typeof g.directus_files_id === 'string' ? g.directus_files_id : g.directus_files_id?.id;
+                        const junctionId = g.id;
+                        if (!fileId) return null;
+                        const imgUrl = resolveImageUrl(fileId);
+                        const isVideo = imgUrl?.match(/\.(mp4|webm|mov|avi)$/i);
+                        return (
+                          <div key={idx} className="relative w-28 h-28 rounded-lg overflow-hidden border border-slate-200 bg-white group">
+                            {isVideo ? (
+                              <div className="w-full h-full flex items-center justify-center bg-slate-100">
+                                <Video className="w-8 h-8 text-slate-400" />
+                                <span className="absolute bottom-0 left-0 right-0 bg-black/50 text-white text-[10px] text-center py-0.5">Video</span>
+                              </div>
+                            ) : (
+                              <Image src={imgUrl || ''} alt={`Gallery ${idx + 1}`} fill className="object-contain" unoptimized />
+                            )}
+                            {junctionId && (
+                              <button
+                                type="button"
+                                onClick={async () => {
+                                  const res = await removeProductGalleryImage(junctionId);
+                                  if (res.success) {
+                                    setActiveProduct({
+                                      ...activeProduct,
+                                      gallery: activeProduct.gallery?.filter((_: any, i: number) => i !== idx)
+                                    });
+                                  }
+                                }}
+                                className="absolute top-1 right-1 p-1 bg-red-500 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
+                                title="Xóa ảnh"
+                              >
+                                <Trash2 className="w-3 h-3" />
+                              </button>
+                            )}
+                          </div>
+                        );
+                      })}
+
+                      {/* Upload button */}
+                      <label className="w-28 h-28 rounded-lg border-2 border-dashed border-slate-300 flex flex-col items-center justify-center text-slate-400 hover:border-blue-400 hover:text-blue-500 cursor-pointer transition-colors">
+                        <PlusCircle className="w-6 h-6 mb-1" />
+                        <span className="text-[10px] font-semibold">Thêm ảnh/video</span>
+                        <input
+                          type="file"
+                          accept="image/*,video/*"
+                          className="hidden"
+                          onChange={async (e) => {
+                            const file = e.target.files?.[0];
+                            if (!file || !activeProduct.id) return;
+                            const fd = new FormData();
+                            fd.append('file', file);
+                            const res = await uploadFileToDirectus(fd);
+                            if (res.success && res.fileId) {
+                              const addRes = await addProductGalleryImage(activeProduct.id, res.fileId);
+                              if (addRes.success) {
+                                setActiveProduct({
+                                  ...activeProduct,
+                                  gallery: [
+                                    ...(activeProduct.gallery || []),
+                                    { directus_files_id: res.fileId } as any
+                                  ]
+                                });
+                                window.location.reload();
+                              }
+                            }
+                            e.target.value = '';
+                          }}
+                        />
+                      </label>
+                    </div>
+                  </div>
+                )}
+              </div>
+
               {/* Section 1: Thông tin cơ bản */}
               <div className="bg-slate-50/40 border border-slate-200 rounded-[3px] p-5 space-y-5">
                 <h4 className="text-caption-responsive font-bold text-slate-800 uppercase tracking-wider border-b border-slate-100 pb-2">
@@ -773,6 +930,39 @@ export function ProductsClient({
                       Chưa thêm thông số nào
                     </span>
                   )}
+                </div>
+              </div>
+
+              {/* Section 4: SEO */}
+              <div className="bg-slate-50/40 border border-slate-200 rounded-[3px] p-5 space-y-5">
+                <h4 className="text-caption-responsive font-bold text-slate-800 uppercase tracking-wider border-b border-slate-100 pb-2">
+                  4. SEO & Meta
+                </h4>
+                <div className="space-y-4">
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-caption-responsive font-bold text-slate-500 uppercase">Meta Title</label>
+                    <input
+                      type="text"
+                      value={activeProduct.meta_title || ''}
+                      onChange={(e) => setActiveProduct({ ...activeProduct, meta_title: e.target.value })}
+                      placeholder="Tiêu đề hiển thị trên Google (tối đa 60 ký tự)"
+                      maxLength={120}
+                      className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                    />
+                    <span className="text-[11px] text-slate-400">{(activeProduct.meta_title || '').length}/60 ký tự</span>
+                  </div>
+                  <div className="flex flex-col gap-1.5">
+                    <label className="text-caption-responsive font-bold text-slate-500 uppercase">Meta Description</label>
+                    <textarea
+                      rows={2}
+                      value={activeProduct.meta_description || ''}
+                      onChange={(e) => setActiveProduct({ ...activeProduct, meta_description: e.target.value })}
+                      placeholder="Mô tả hiển thị trên kết quả tìm kiếm Google (tối đa 160 ký tự)"
+                      maxLength={300}
+                      className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600 w-full"
+                    />
+                    <span className="text-[11px] text-slate-400">{(activeProduct.meta_description || '').length}/160 ký tự</span>
+                  </div>
                 </div>
               </div>
 
