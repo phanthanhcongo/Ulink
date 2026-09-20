@@ -349,7 +349,7 @@ export default function ElectronicsClient({
               </div>
               <div className="px-6 pb-6 pt-2">
                 <Link
-                  href={`/${locale}/products?category=cleanroom-consumables`}
+                  href={`/${locale}/solutions/listProduct?category=cleanroom-consumables`}
                   className="inline-flex items-center gap-2 text-[#1257C0] font-semibold text-[14px] hover:text-[#1769E2] transition-colors group"
                 >
                   <span>{isVi ? 'Xem chi tiết' : isJa ? '詳細を見る' : 'View Details'}</span>
@@ -408,7 +408,7 @@ export default function ElectronicsClient({
               </div>
               <div className="px-6 pb-6 pt-2">
                 <Link
-                  href={`/${locale}/products?category=esd-supplies`}
+                  href={`/${locale}/solutions/listProduct?category=esd-supplies`}
                   className="inline-flex items-center gap-2 text-[#1257C0] font-semibold text-[14px] hover:text-[#1769E2] transition-colors group"
                 >
                   <span>{isVi ? 'Xem chi tiết' : isJa ? '詳細を見る' : 'View Details'}</span>
@@ -467,7 +467,7 @@ export default function ElectronicsClient({
               </div>
               <div className="px-6 pb-6 pt-2">
                 <Link
-                  href={`/${locale}/products?category=industrial-packaging`}
+                  href={`/${locale}/solutions/listProduct?category=industrial-packaging`}
                   className="inline-flex items-center gap-2 text-[#1257C0] font-semibold text-[14px] hover:text-[#1769E2] transition-colors group"
                 >
                   <span>{isVi ? 'Xem chi tiết' : isJa ? '詳細を見る' : 'View Details'}</span>
@@ -526,7 +526,7 @@ export default function ElectronicsClient({
               </div>
               <div className="px-6 pb-6 pt-2">
                 <Link
-                  href={`/${locale}/products?category=industrial-packaging`}
+                  href={`/${locale}/solutions/listProduct?category=industrial-packaging`}
                   className="inline-flex items-center gap-2 text-[#1257C0] font-semibold text-[14px] hover:text-[#1769E2] transition-colors group"
                 >
                   <span>{isVi ? 'Xem chi tiết' : isJa ? '詳細を見る' : 'View Details'}</span>
@@ -585,7 +585,7 @@ export default function ElectronicsClient({
               </div>
               <div className="px-6 pb-6 pt-2">
                 <Link
-                  href={`/${locale}/products?category=cleanroom-consumables`}
+                  href={`/${locale}/solutions/listProduct?category=cleanroom-consumables`}
                   className="inline-flex items-center gap-2 text-[#1257C0] font-semibold text-[14px] hover:text-[#1769E2] transition-colors group"
                 >
                   <span>{isVi ? 'Xem chi tiết' : isJa ? '詳細を見る' : 'View Details'}</span>
@@ -644,7 +644,7 @@ export default function ElectronicsClient({
               </div>
               <div className="px-6 pb-6 pt-2">
                 <Link
-                  href={`/${locale}/products?category=industrial-packaging`}
+                  href={`/${locale}/solutions/listProduct?category=industrial-packaging`}
                   className="inline-flex items-center gap-2 text-[#1257C0] font-semibold text-[14px] hover:text-[#1769E2] transition-colors group"
                 >
                   <span>{isVi ? 'Xem chi tiết' : isJa ? '詳細を見る' : 'View Details'}</span>
