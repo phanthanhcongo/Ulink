@@ -67,14 +67,14 @@ export function ProductImageGallery({ images, productName }: ProductImageGallery
               muted
               loop
               playsInline
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain"
             />
           ) : (
             <Image
               src={currentImage.src}
               alt={currentImage.alt || productName}
               fill
-              className="object-cover"
+              className="object-contain"
               sizes="(max-width: 1024px) 100vw, 388px"
               priority
             />
@@ -137,7 +137,7 @@ export function ProductImageGallery({ images, productName }: ProductImageGallery
                         src={img.src}
                         muted
                         playsInline
-                        className="w-full h-full object-cover rounded-[2px]"
+                        className="w-full h-full object-contain rounded-[2px]"
                       />
                       <div className="absolute inset-0 flex items-center justify-center bg-black/20 rounded-[2px]">
                         <Play className="h-5 w-5 text-white fill-white" />
@@ -148,7 +148,7 @@ export function ProductImageGallery({ images, productName }: ProductImageGallery
                       src={img.src}
                       alt={img.alt || `Thumbnail ${idx + 1}`}
                       fill
-                      className="object-cover rounded-[2px]"
+                      className="object-contain rounded-[2px]"
                       sizes="64px"
                     />
                   )}
