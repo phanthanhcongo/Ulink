@@ -149,33 +149,35 @@
     @apply text-caption-responsive inline-flex items-center rounded-full px-3 py-1 font-semibold;
   }
 
+  /* ─── Admin Design System v2 ─── */
+
   .admin-page {
-    @apply mx-auto w-full max-w-[1440px] px-4 py-6 sm:px-6 sm:py-8 md:px-8 md:py-10 lg:px-10 lg:py-12;
+    @apply mx-auto w-full max-w-[1400px] px-4 py-5 sm:px-6 sm:py-7 md:px-8 md:py-8 lg:px-10 lg:py-10;
   }
 
   .admin-panel {
-    @apply rounded-[6px] border border-[#E4E9F0] bg-white shadow-sm;
+    @apply rounded-xl border border-slate-200/80 bg-white shadow-[0_1px_3px_rgba(0,0,0,0.04),0_1px_2px_rgba(0,0,0,0.02)];
   }
 
   .admin-panel-pad {
-    @apply p-4 sm:p-5 md:p-6;
+    @apply p-5 sm:p-6 md:p-7;
   }
 
   .admin-page-eyebrow {
-    @apply text-caption-responsive uppercase font-bold text-slate-400;
+    @apply text-[12px] sm:text-[13px] uppercase font-semibold tracking-wider text-slate-400;
   }
 
   .admin-page-title {
-    @apply text-section-title mt-1 font-bold text-primary;
+    @apply text-[20px] sm:text-[24px] lg:text-[28px] mt-1.5 font-bold text-slate-800 leading-tight tracking-tight;
   }
 
   .admin-page-lead {
-    @apply text-body-regular mt-1 font-medium text-slate-500;
+    @apply text-[14px] sm:text-[15px] mt-1 font-normal text-slate-500 leading-relaxed;
   }
 
-  /* Responsive Admin Components */
+  /* Layout Components */
   .admin-header {
-    @apply flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between mb-6 md:mb-8;
+    @apply flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between mb-6 md:mb-8;
   }
 
   .admin-header-content {
@@ -195,7 +197,7 @@
   }
 
   .admin-table-wrapper {
-    @apply overflow-x-auto;
+    @apply overflow-x-auto rounded-xl;
   }
 
   .admin-table-container {
@@ -207,28 +209,28 @@
   }
 
   .admin-form-group {
-    @apply space-y-3 md:space-y-4;
+    @apply space-y-4 md:space-y-5;
   }
 
   .admin-form-row {
-    @apply flex flex-col gap-3 md:flex-row md:gap-4;
+    @apply flex flex-col gap-4 md:flex-row md:gap-5;
   }
 
   .admin-form-col {
     @apply flex-1;
   }
 
-  /* Responsive Table */
+  /* Table */
   .admin-table {
-    @apply w-full text-left text-caption-responsive;
+    @apply w-full text-left text-[14px];
   }
 
   .admin-table-head {
-    @apply bg-[#EFF6FF] border-b border-[#E4E9F0] text-caption-responsive font-semibold text-[#162233] uppercase tracking-[0.4px];
+    @apply bg-slate-50 border-b border-slate-200 text-[12px] sm:text-[13px] font-semibold text-slate-500 uppercase tracking-wider;
   }
 
   .admin-table-cell {
-    @apply px-3 py-3 sm:px-4 md:px-6 md:py-4;
+    @apply px-4 py-3.5 sm:px-5 md:px-6 md:py-4;
   }
 
   .admin-table-cell-sticky {
@@ -236,10 +238,10 @@
   }
 
   .admin-table-row {
-    @apply border-b border-[#E4E9F0] hover:bg-[#F5F8FC] transition-colors;
+    @apply border-b border-slate-100 hover:bg-slate-50/70 transition-colors;
   }
 
-  /* Responsive KPI Cards */
+  /* KPI Cards */
   .admin-kpi-grid {
     @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6;
   }
@@ -248,43 +250,48 @@
     @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6 lg:gap-8;
   }
 
-  /* Responsive Form Input */
+  /* Form Input */
   .admin-input-group {
     @apply flex flex-col;
   }
 
   .admin-input-label {
-    @apply block text-caption-responsive font-semibold text-slate-700 mb-1.5;
+    @apply block text-[13px] sm:text-[14px] font-semibold text-slate-700 mb-2;
   }
 
   .admin-input {
-    @apply w-full px-3 sm:px-4 py-2.5 md:py-3 rounded-[6px] border border-[#E4E9F0] bg-white text-caption-responsive sm:text-body-regular font-medium focus:outline-none focus:ring-1 focus:ring-[#2163F5] focus:border-[#2163F5];
+    @apply w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 bg-white text-[14px] sm:text-[15px] text-slate-800 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#2163F5]/20 focus:border-[#2163F5] transition-shadow;
   }
 
   .admin-select {
-    @apply w-full px-3 sm:px-4 py-2.5 md:py-3 rounded-[6px] border border-[#E4E9F0] bg-white text-caption-responsive sm:text-body-regular font-medium focus:outline-none focus:ring-1 focus:ring-[#2163F5] focus:border-[#2163F5];
+    @apply w-full px-3.5 sm:px-4 py-2.5 sm:py-3 rounded-lg border border-slate-200 bg-white text-[14px] sm:text-[15px] text-slate-800 focus:outline-none focus:ring-2 focus:ring-[#2163F5]/20 focus:border-[#2163F5] transition-shadow;
   }
 
+  /* Buttons */
   .admin-button {
-    @apply inline-flex items-center justify-center gap-2 px-3 sm:px-4 md:px-5 py-2 sm:py-2.5 md:py-3 rounded-[6px] text-caption-responsive sm:text-body-regular font-semibold transition-colors whitespace-nowrap;
+    @apply inline-flex items-center justify-center gap-2 px-4 sm:px-5 py-2.5 sm:py-3 rounded-lg text-[13px] sm:text-[14px] font-semibold transition-all whitespace-nowrap cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed;
   }
 
   .admin-button-primary {
-    @apply bg-[#2163F5] text-white hover:bg-[#1852D6] shadow-sm;
+    @apply bg-[#2163F5] text-white hover:bg-[#1a56db] active:bg-[#1649be] shadow-sm hover:shadow-md;
   }
 
   .admin-button-secondary {
-    @apply bg-slate-100 text-slate-700 hover:bg-slate-200 border border-slate-200;
+    @apply bg-white text-slate-700 hover:bg-slate-50 active:bg-slate-100 border border-slate-200 hover:border-slate-300;
   }
 
   .admin-button-danger {
-    @apply bg-red-50 text-red-600 hover:bg-red-100 border border-red-200;
+    @apply bg-white text-red-600 hover:bg-red-50 active:bg-red-100 border border-red-200 hover:border-red-300;
+  }
+
+  .admin-button-success {
+    @apply bg-emerald-600 text-white hover:bg-emerald-700 active:bg-emerald-800 shadow-sm;
   }
 
   /* Mobile-friendly spacing adjustments */
   @media (max-width: 640px) {
     .admin-page {
-      @apply px-3 py-6;
+      @apply px-4 py-5;
     }
 
     .admin-table-cell {

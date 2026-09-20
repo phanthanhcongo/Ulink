@@ -135,7 +135,7 @@ function PermissionDetailModal({
 
   return (
     <div className="fixed inset-0 bg-slate-900/30 flex items-center justify-center z-50 p-4" onClick={onClose}>
-      <div className="bg-white rounded-[6px] shadow-xl w-full max-w-md admin-panel-pad space-y-5 border border-[#E4E9F0]" onClick={(e) => e.stopPropagation()}>
+      <div className="bg-white rounded-lg shadow-xl w-full max-w-md admin-panel-pad space-y-5 border border-slate-200/80" onClick={(e) => e.stopPropagation()}>
         <div>
           <h3 className="text-lg font-bold text-[#162233]">
             {perm ? 'Chỉnh sửa quyền' : 'Cấp quyền mới'}
@@ -149,7 +149,7 @@ function PermissionDetailModal({
         <div className="space-y-3">
           <label className="admin-input-label">Phạm vi cột dữ liệu</label>
           <div className="space-y-2">
-            <label className="flex items-center gap-3 p-3 rounded-[6px] border border-[#E4E9F0] cursor-pointer hover:bg-[#F5F8FC] transition"
+            <label className="flex items-center gap-3 p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-[#F5F8FC] transition"
               onClick={() => setAllFields(true)}>
               <input type="radio" checked={allFields} onChange={() => setAllFields(true)} className="text-[#2163F5]" />
               <div>
@@ -157,7 +157,7 @@ function PermissionDetailModal({
                 <div className="text-xs text-slate-500">Truy cập toàn bộ thông tin trong bảng</div>
               </div>
             </label>
-            <label className="flex items-start gap-3 p-3 rounded-[6px] border border-[#E4E9F0] cursor-pointer hover:bg-[#F5F8FC] transition"
+            <label className="flex items-start gap-3 p-3 rounded-lg border border-slate-200 cursor-pointer hover:bg-[#F5F8FC] transition"
               onClick={() => setAllFields(false)}>
               <input type="radio" checked={!allFields} onChange={() => setAllFields(false)} className="mt-0.5 text-[#2163F5]" />
               <div className="flex-1">
@@ -185,8 +185,8 @@ function PermissionDetailModal({
             {FILTER_PRESETS.map((preset) => (
               <label
                 key={preset.value}
-                className={`flex items-start gap-3 p-3 rounded-[6px] border cursor-pointer hover:bg-[#F5F8FC] transition ${
-                  filterPreset === preset.value ? 'border-[#2163F5] bg-[#EFF6FF]' : 'border-[#E4E9F0]'
+                className={`flex items-start gap-3 p-3 rounded-lg border cursor-pointer hover:bg-[#F5F8FC] transition ${
+                  filterPreset === preset.value ? 'border-[#2163F5] bg-[#EFF6FF]' : 'border-slate-200'
                 }`}
                 onClick={() => setFilterPreset(preset.value)}
               >
@@ -215,9 +215,9 @@ function PermissionDetailModal({
           </div>
         </div>
 
-        {error && <p className="text-sm text-red-600 bg-red-50 rounded-[6px] p-2">{error}</p>}
+        {error && <p className="text-sm text-red-600 bg-red-50 rounded-lg p-2">{error}</p>}
 
-        <div className="flex gap-3 pt-4 border-t border-[#E4E9F0]">
+        <div className="flex gap-3 pt-4 border-t border-slate-200">
           <button
             onClick={handleSave}
             disabled={saving}
@@ -411,7 +411,7 @@ export default function PermissionsPage() {
       </div>
 
       {message && (
-        <div className={`mb-4 p-3 rounded-[6px] text-sm ${message.type === 'success' ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'}`}>
+        <div className={`mb-4 p-3 rounded-lg text-sm ${message.type === 'success' ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'}`}>
           {message.text}
         </div>
       )}
@@ -437,7 +437,7 @@ export default function PermissionsPage() {
       </div>
 
       {selectedRoleObj && (
-        <div className="bg-[#EFF6FF] border border-[#D8E6F5] rounded-[6px] p-3 mb-5 text-sm">
+        <div className="bg-[#EFF6FF] border border-[#D8E6F5] rounded-lg p-3 mb-5 text-sm">
           <strong className="text-[#162233]">{selectedRoleObj.name}</strong>
           {selectedRoleObj.description && !selectedRoleObj.description.startsWith('$t:') && (
             <span className="text-slate-600"> — {selectedRoleObj.description}</span>
@@ -515,7 +515,7 @@ export default function PermissionsPage() {
                               <button
                                 onClick={() => quickToggle(collection, action)}
                                 disabled={isToggling}
-                                className={`w-8 h-8 rounded-[6px] flex items-center justify-center transition ${
+                                className={`w-8 h-8 rounded-lg flex items-center justify-center transition ${
                                   isToggling
                                     ? 'bg-slate-100'
                                     : perm

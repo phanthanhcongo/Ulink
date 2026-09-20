@@ -28,7 +28,7 @@ export function AdminLayoutWrapper({ children }: { children: React.ReactNode }) 
   };
 
   return (
-    <div className="min-h-screen bg-[#F5F8FC] text-[#162233] flex flex-col md:flex-row">
+    <div className="min-h-screen bg-[#f8f9fb] text-slate-800 flex flex-col md:flex-row">
       {/* Navigation panel */}
       <AdminSidebar isCollapsed={isCollapsed} toggleCollapse={toggleCollapse} />
 
@@ -40,7 +40,7 @@ export function AdminLayoutWrapper({ children }: { children: React.ReactNode }) 
         )}
       >
         <div className="flex-1 overflow-y-auto w-full">
-          <header className="sticky top-0 z-20 flex h-14 items-center justify-end border-b border-[#E4E9F0] bg-white/90 px-4 backdrop-blur-md md:px-6">
+          <header className="sticky top-0 z-20 flex h-14 items-center justify-end border-b border-slate-200/80 bg-white/95 px-4 backdrop-blur-md md:px-6">
             <div className="relative">
               <button onClick={() => setIsUserMenuOpen(value => !value)} title="Mở menu tài khoản" aria-expanded={isUserMenuOpen} className="flex h-9 items-center gap-2 rounded-[3px] border border-sky-200 bg-sky-50 px-2 text-sky-700 transition-colors hover:bg-sky-100">
                 <span className="flex h-7 w-7 items-center justify-center rounded-[3px] bg-sky-100"><User className="h-4 w-4" /></span>

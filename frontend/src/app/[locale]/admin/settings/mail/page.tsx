@@ -91,14 +91,14 @@ export default function MailSettingsPage() {
       </div>
 
       {message && (
-        <div className={`mb-4 p-3 rounded-[6px] text-sm ${message.type === 'success' ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'}`}>
+        <div className={`mb-4 p-3 rounded-lg text-sm ${message.type === 'success' ? 'bg-green-50 text-green-700 border border-green-200' : 'bg-red-50 text-red-700 border border-red-200'}`}>
           {message.text}
         </div>
       )}
 
       <div className="admin-panel admin-panel-pad space-y-5">
         {/* Enabled toggle */}
-        <div className="flex items-center justify-between pb-4 border-b border-[#E4E9F0]">
+        <div className="flex items-center justify-between pb-4 border-b border-slate-200">
           <div>
             <label className="font-semibold text-[#162233]">Sử dụng cấu hình từ database</label>
             <p className="text-sm text-slate-500 mt-0.5">Nếu tắt sẽ dùng cấu hình từ file .env</p>
@@ -197,7 +197,7 @@ export default function MailSettingsPage() {
         </div>
 
         {/* Save button */}
-        <div className="pt-4 border-t border-[#E4E9F0]">
+        <div className="pt-4 border-t border-slate-200">
           <button
             onClick={handleSave}
             disabled={saving}

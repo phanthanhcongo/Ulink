@@ -91,11 +91,11 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
       label: 'Chi nhánh / Hubs',
       icon: MapPin
     },
-    {
-      href: '/admin/industrial-zones',
-      label: 'Khu công nghiệp (KCN)',
-      icon: Factory
-    },
+    // {
+    //   href: '/admin/industrial-zones',
+    //   label: 'Khu công nghiệp (KCN)',
+    //   icon: Factory
+    // },
     {
       href: '/admin/users',
       label: 'Tài khoản User',
@@ -152,14 +152,14 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
       {/* Sidebar Panel */}
       <aside
         className={cn(
-          'fixed top-0 bottom-0 left-0 z-50 bg-[#EFF6FF] text-[#162233] flex flex-col justify-between transition-all duration-300 ease-in-out md:translate-x-0 border-r border-[#D8E6F5] shadow-none',
+          'fixed top-0 bottom-0 left-0 z-50 bg-white text-slate-800 flex flex-col justify-between transition-all duration-300 ease-in-out md:translate-x-0 border-r border-slate-200/80 shadow-none',
           isOpen ? 'translate-x-0' : '-translate-x-full',
           isCollapsed ? 'w-20' : 'w-[228px]'
         )}
       >
         {/* Header Branding */}
         <div className={cn(
-          "relative p-3 border-b border-sky-100 flex items-center bg-white/70 backdrop-blur-sm transition-all duration-300 min-h-[96px]",
+          "relative p-3 border-b border-slate-100 flex items-center bg-white transition-all duration-300 min-h-[96px]",
           isCollapsed ? "justify-center" : "justify-between"
         )}>
           <div className="flex items-center gap-2.5 pr-20">
@@ -197,7 +197,7 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
         </div>
 
         {/* Navigation Items */}
-        <nav className="flex-1 overflow-y-auto px-3 py-3 space-y-1">
+        <nav className="flex-1 overflow-y-auto px-3 py-4 space-y-0.5">
           {menuItems.map((item) => {
             const isActive = item.exact
               ? pathname === item.href
@@ -212,17 +212,17 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
                 className={cn(
                   'flex items-center transition-all group',
                   isCollapsed
-                    ? 'justify-center h-10 w-10 mx-auto rounded-[3px]'
-                    : 'gap-3 px-3 py-2.5 rounded-[3px] text-sm font-bold',
+                    ? 'justify-center h-10 w-10 mx-auto rounded-lg'
+                    : 'gap-3 px-3.5 py-2.5 rounded-lg text-[14px] font-medium',
                   isActive
-                    ? 'bg-sky-600 text-white shadow-sm shadow-sky-300/40'
-                    : 'text-slate-600 hover:text-slate-900 hover:bg-sky-100/80'
+                    ? 'bg-[#2163F5] text-white shadow-sm'
+                    : 'text-slate-600 hover:text-slate-800 hover:bg-slate-50'
                 )}
               >
                 <item.icon
                   className={cn(
-                    'h-4 w-4 shrink-0 transition-transform group-hover:scale-105 duration-200',
-                    isActive ? 'text-white' : 'text-sky-500 group-hover:text-sky-700'
+                    'h-[18px] w-[18px] shrink-0 transition-transform group-hover:scale-105 duration-200',
+                    isActive ? 'text-white' : 'text-slate-400 group-hover:text-slate-600'
                   )}
                 />
                 {!isCollapsed && <span>{item.label}</span>}
