@@ -4,7 +4,7 @@ import { aggregateDashboardOrders, aggregateStockByHub, DashboardOrder } from '@
 
 type Props = { orders: DashboardOrder[]; inventory: Array<{ hub?: { name?: string } | null; quantity_on_hand?: number | string | null }> };
 const money = (value: number) => new Intl.NumberFormat('vi-VN', { notation: 'compact', maximumFractionDigits: 1 }).format(value) + 'đ';
-const statusLabels: Record<string, string> = { pending: 'Chờ xử lý', confirmed: 'Đã xác nhận', processing: 'Đang xử lý', shipped: 'Đã giao', completed: 'Hoàn tất', cancelled: 'Đã hủy', unknown: 'Khác' };
+const statusLabels: Record<string, string> = { pending: 'Đặt hàng', confirmed: 'Đã xác nhận', processing: 'Đang xử lý', shipped: 'Đang giao', delivered: 'Hoàn thành', completed: 'Hoàn thành', cancelled: 'Đã hủy', unknown: 'Khác' };
 const colors = ['#2163F5', '#0F766E', '#F59E0B', '#8B5CF6', '#E11D48', '#64748B'];
 
 export default function DashboardCharts({ orders, inventory }: Props) {

@@ -90,10 +90,29 @@ export default function CheckoutClient({
   // Validation state
   const [errors, setErrors] = useState<Record<string, string>>({});
 
+  // Promo code states
+  const [promoCode, setPromoCode] = useState('');
+  const [appliedVoucher, setAppliedVoucher] = useState<{ code: string; name: string } | null>(null);
+  const [discountAmount, setDiscountAmount] = useState(0);
+  const [promoLoading, setPromoLoading] = useState(false);
+  const [promoError, setPromoError] = useState<string | null>(null);
+  const [promoSuccess, setPromoSuccess] = useState<string | null>(null);
+
   useEffect(() => {
     setCart(readCart());
-    // Generate mock order ID
     setOrderId('UL-' + Math.floor(100000 + Math.random() * 900000));
+    try {
+      const savedVoucherStr = localStorage.getItem('ulink_applied_voucher');
+      if (savedVoucherStr) {
+        const parsed = JSON.parse(savedVoucherStr);
+        if (parsed?.code) {
+          setPromoCode(parsed.code);
+          setAppliedVoucher(parsed.voucher || { code: parsed.code, name: 'Chiết khấu B2B' });
+          setDiscountAmount(parsed.discountAmount || 0);
+          setPromoSuccess(`Đã áp dụng mã "${parsed.code}" từ giỏ hàng.`);
+        }
+      }
+    } catch {}
   }, []);
 
   // Simple client-side directus url fallback
@@ -156,7 +175,59 @@ export default function CheckoutClient({
     return 0; // standard is free, 3PL is quote (we default to display text)
   }, [shippingMethod]);
 
-  const grandTotal = useMemo(() => subtotal + vat + shippingFee, [subtotal, vat, shippingFee]);
+  const grandTotal = useMemo(
+    () => Math.max(0, subtotal + vat + shippingFee - discountAmount),
+    [subtotal, vat, shippingFee, discountAmount]
+  );
+
+  const handleApplyPromo = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setPromoError(null);
+    setPromoSuccess(null);
+
+    const code = promoCode.trim().toUpperCase();
+    if (!code) {
+      setPromoError('Vui lòng nhập mã giảm giá.');
+      return;
+    }
+
+    setPromoLoading(true);
+    try {
+      const res = await fetch('/api/vouchers/validate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code, subtotal })
+      });
+      const data = await res.json();
+      setPromoLoading(false);
+
+      if (res.ok && data.valid) {
+        setAppliedVoucher(data.voucher);
+        setDiscountAmount(data.discountAmount);
+        setPromoSuccess(data.message);
+        try {
+          localStorage.setItem(
+            'ulink_applied_voucher',
+            JSON.stringify({
+              code: data.voucher.code,
+              discountAmount: data.discountAmount,
+              voucher: data.voucher
+            })
+          );
+        } catch {}
+      } else {
+        setAppliedVoucher(null);
+        setDiscountAmount(0);
+        setPromoError(data.message || 'Mã giảm giá không hợp lệ.');
+        try {
+          localStorage.removeItem('ulink_applied_voucher');
+        } catch {}
+      }
+    } catch {
+      setPromoLoading(false);
+      setPromoError('Không thể kết nối máy chủ kiểm tra mã giảm giá.');
+    }
+  };
 
   const formatPrice = (amount: number) => {
     if (locale === 'vi') {
@@ -289,6 +360,8 @@ export default function CheckoutClient({
           subtotal,
           tax: vat,
           total: grandTotal,
+          voucherCode: appliedVoucher?.code || promoCode || undefined,
+          discountAmount: discountAmount || 0,
           items: resolvedItems.map((item) => ({
             sku: item.sku,
             productName: item.product_name,
@@ -945,10 +1018,48 @@ export default function CheckoutClient({
                       : 'Miễn phí'}
                   </span>
                 </div>
-                <div className="flex justify-between items-center text-[14px]">
-                  <span className="font-normal text-[#495057]">Mã giảm giá B2B</span>
-                  <span className="font-semibold text-[#218C21]">-1.500.000đ</span>
-                </div>
+                {discountAmount > 0 && (
+                  <div className="flex justify-between items-center text-[14px]">
+                    <span className="font-semibold text-[#16A34A] flex items-center gap-1">
+                      <Tag className="w-3.5 h-3.5" />
+                      {appliedVoucher ? `Chiết khấu (${appliedVoucher.code})` : 'Chiết khấu B2B'}
+                    </span>
+                    <span className="font-semibold text-[#16A34A]">- {formatPrice(discountAmount)}</span>
+                  </div>
+                )}
+
+                {/* Promo Code Input Form in Checkout */}
+                <form onSubmit={handleApplyPromo} className="space-y-1.5 pt-1">
+                  <label className="text-[12px] font-semibold text-[#212529] block">
+                    Mã giảm giá B2B
+                  </label>
+                  <div className="flex gap-2">
+                    <input
+                      type="text"
+                      value={promoCode}
+                      onChange={(e) => setPromoCode(e.target.value)}
+                      placeholder="NHẬP MÃ..."
+                      className="flex-1 h-[36px] rounded-[4px] border border-[#DCE0E5] bg-white px-3 text-[13px] font-semibold text-[#212529] placeholder:text-[#94A3B8] focus:outline-none focus:border-[#1769E2] uppercase"
+                    />
+                    <button
+                      type="submit"
+                      disabled={promoLoading}
+                      className="h-[36px] rounded-[4px] bg-[#DBEAFE] text-[#1257C0] text-[13px] font-bold px-3 transition-colors hover:bg-blue-100 cursor-pointer shrink-0 disabled:opacity-60"
+                    >
+                      {promoLoading ? '...' : 'Áp dụng'}
+                    </button>
+                  </div>
+                  {promoError && (
+                    <span className="text-[11px] text-rose-500 font-semibold block">
+                      {promoError}
+                    </span>
+                  )}
+                  {promoSuccess && (
+                    <span className="text-[11px] text-emerald-600 font-semibold block">
+                      {promoSuccess}
+                    </span>
+                  )}
+                </form>
               </div>
 
               <div className="h-[1px] w-full bg-[#DCE0E5]" />
@@ -958,7 +1069,7 @@ export default function CheckoutClient({
                 <div className="flex items-baseline justify-between">
                   <span className="text-[16px] font-bold text-[#162233]">Tổng cộng</span>
                   <span className="text-[22px] font-bold text-[#1769E2]">
-                    {grandTotal > 0 ? formatPrice(grandTotal - 1500000) : '27.378.000đ'}
+                    {formatPrice(grandTotal)}
                   </span>
                 </div>
                 <p className="text-[12px] font-normal text-[#617084]">

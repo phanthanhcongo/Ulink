@@ -6,15 +6,15 @@ import { parseOrderNotes } from '@/lib/order-notes';
 const money = (n: number) => new Intl.NumberFormat('vi-VN').format(Number(n || 0)) + 'đ';
 
 const statusLabel: Record<string, string> = {
-  pending: 'Chờ xử lý', confirmed: 'Đã xác nhận', processing: 'Đang xử lý',
-  shipped: 'Đã giao', completed: 'Hoàn tất', cancelled: 'Đã hủy',
+  pending: 'Đặt hàng (Chờ xử lý)', confirmed: 'Đã xác nhận', processing: 'Đang xử lý',
+  shipped: 'Đang giao', delivered: 'Hoàn thành', completed: 'Hoàn thành', cancelled: 'Đã hủy',
   payment_required: 'Chờ thanh toán', payment_failed: 'TT thất bại', payment_expired: 'TT hết hạn'
 };
 
 const statusColor: Record<string, string> = {
-  pending: 'bg-amber-100 text-amber-800', confirmed: 'bg-emerald-100 text-emerald-800',
-  processing: 'bg-blue-100 text-blue-800', shipped: 'bg-indigo-100 text-indigo-800',
-  completed: 'bg-green-100 text-green-800', cancelled: 'bg-red-100 text-red-800',
+  pending: 'bg-amber-100 text-amber-800', confirmed: 'bg-blue-100 text-blue-800',
+  processing: 'bg-indigo-100 text-indigo-800', shipped: 'bg-sky-100 text-sky-800',
+  delivered: 'bg-emerald-100 text-emerald-800', completed: 'bg-emerald-100 text-emerald-800', cancelled: 'bg-red-100 text-red-800',
   payment_required: 'bg-yellow-100 text-yellow-800', payment_failed: 'bg-red-100 text-red-800',
   payment_expired: 'bg-slate-100 text-slate-600'
 };

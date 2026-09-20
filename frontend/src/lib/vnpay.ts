@@ -15,7 +15,19 @@ interface CreatePaymentParams {
   locale?: string;
 }
 
-function sortObject(obj: Record<string, unknown>): Record<string, string> {
+function formatDate(date: Date): string {
+  // GMT+7 (Asia/Ho_Chi_Minh) timestamp string format: YYYYMMDDHHmmss
+  const vnTime = new Date(date.getTime() + 7 * 60 * 60 * 1000);
+  const y = vnTime.getUTCFullYear();
+  const m = String(vnTime.getUTCMonth() + 1).padStart(2, '0');
+  const d = String(vnTime.getUTCDate()).padStart(2, '0');
+  const h = String(vnTime.getUTCHours()).padStart(2, '0');
+  const min = String(vnTime.getUTCMinutes()).padStart(2, '0');
+  const s = String(vnTime.getUTCSeconds()).padStart(2, '0');
+  return `${y}${m}${d}${h}${min}${s}`;
+}
+
+function sortObject(obj: Record<string, string>): Record<string, string> {
   const sorted: Record<string, string> = {};
   const keys: string[] = [];
   for (const key in obj) {
@@ -25,58 +37,63 @@ function sortObject(obj: Record<string, unknown>): Record<string, string> {
   }
   keys.sort();
   for (const key of keys) {
-    sorted[key] = encodeURIComponent(String(obj[decodeURIComponent(key)])).replace(/%20/g, '+');
+    const rawKey = decodeURIComponent(key);
+    sorted[key] = encodeURIComponent(String(obj[rawKey])).replace(/%20/g, '+');
   }
   return sorted;
 }
 
-function formatDate(date: Date): string {
-  const vnDate = new Date(date.toLocaleString('en-US', { timeZone: 'Asia/Ho_Chi_Minh' }));
-  const y = vnDate.getFullYear();
-  const m = String(vnDate.getMonth() + 1).padStart(2, '0');
-  const d = String(vnDate.getDate()).padStart(2, '0');
-  const h = String(vnDate.getHours()).padStart(2, '0');
-  const min = String(vnDate.getMinutes()).padStart(2, '0');
-  const s = String(vnDate.getSeconds()).padStart(2, '0');
-  return `${y}${m}${d}${h}${min}${s}`;
-}
-
 export function createPaymentUrl(config: VnpayConfig, params: CreatePaymentParams): string {
   const date = new Date();
-  const vnpParams: Record<string, unknown> = {
+  const createDate = formatDate(date);
+  const expireDate = formatDate(new Date(date.getTime() + 15 * 60 * 1000));
+
+  const rawParams: Record<string, string> = {
     vnp_Version: '2.1.0',
     vnp_Command: 'pay',
-    vnp_TmnCode: config.tmnCode,
+    vnp_TmnCode: (config.tmnCode || '').trim(),
     vnp_Locale: params.locale || 'vn',
     vnp_CurrCode: 'VND',
-    vnp_TxnRef: params.txnRef,
-    vnp_OrderInfo: params.orderInfo,
+    vnp_TxnRef: (params.txnRef || '').trim(),
+    vnp_OrderInfo: (params.orderInfo || '').trim(),
     vnp_OrderType: 'other',
-    vnp_Amount: params.amount * 100,
-    vnp_ReturnUrl: config.returnUrl,
-    vnp_IpAddr: params.ipAddr,
-    vnp_CreateDate: formatDate(date),
-    vnp_ExpireDate: formatDate(new Date(date.getTime() + 15 * 60 * 1000))
+    vnp_Amount: String(Math.round(params.amount * 100)),
+    vnp_ReturnUrl: (config.returnUrl || '').trim(),
+    vnp_IpAddr: params.ipAddr || '127.0.0.1',
+    vnp_CreateDate: createDate,
+    vnp_ExpireDate: expireDate
   };
 
-  const sorted = sortObject(vnpParams);
-  const signData = Object.entries(sorted).map(([k, v]) => `${k}=${v}`).join('&');
-  const hmac = crypto.createHmac('sha512', config.hashSecret);
+  const sortedParams = sortObject(rawParams);
+
+  const signData = Object.entries(sortedParams)
+    .map(([key, val]) => `${key}=${val}`)
+    .join('&');
+
+  const hmac = crypto.createHmac('sha512', (config.hashSecret || '').trim());
   const signed = hmac.update(Buffer.from(signData, 'utf-8')).digest('hex');
 
-  sorted['vnp_SecureHash'] = signed;
-  return config.vnpayUrl + '?' + Object.entries(sorted).map(([k, v]) => `${k}=${v}`).join('&');
+  sortedParams['vnp_SecureHash'] = signed;
+
+  const queryStr = Object.entries(sortedParams)
+    .map(([key, val]) => `${key}=${val}`)
+    .join('&');
+
+  return `${config.vnpayUrl}?${queryStr}`;
 }
 
 export function verifyReturnData(hashSecret: string, query: Record<string, string>) {
-  const vnpParams: Record<string, unknown> = { ...query };
-  const secureHash = String(vnpParams['vnp_SecureHash']);
+  const vnpParams: Record<string, string> = { ...query };
+  const secureHash = vnpParams['vnp_SecureHash'];
   delete vnpParams['vnp_SecureHash'];
   delete vnpParams['vnp_SecureHashType'];
 
-  const sorted = sortObject(vnpParams);
-  const signData = Object.entries(sorted).map(([k, v]) => `${k}=${v}`).join('&');
-  const hmac = crypto.createHmac('sha512', hashSecret);
+  const sortedParams = sortObject(vnpParams);
+  const signData = Object.entries(sortedParams)
+    .map(([key, val]) => `${key}=${val}`)
+    .join('&');
+
+  const hmac = crypto.createHmac('sha512', (hashSecret || '').trim());
   const expectedHash = hmac.update(Buffer.from(signData, 'utf-8')).digest('hex');
 
   return {
@@ -92,3 +109,4 @@ export function verifyReturnData(hashSecret: string, query: Record<string, strin
     rawData: query
   };
 }
+

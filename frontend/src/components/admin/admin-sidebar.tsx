@@ -20,8 +20,11 @@ import {
   Home,
   ChevronLeft,
   ChevronRight,
-  Factory
-  ,ShoppingCart
+  Tag,
+  Factory,
+  ShoppingCart,
+  Settings,
+  Shield
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ASSETS } from '@/lib/assets';
@@ -47,6 +50,11 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
       href: '/admin/orders',
       label: 'Quản lý Order',
       icon: ShoppingCart
+    },
+    {
+      href: '/admin/vouchers',
+      label: 'Quản lý Voucher',
+      icon: Tag
     },
     {
       href: '/admin/inventory',
@@ -97,6 +105,16 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
       href: '/admin/contact-requests',
       label: 'Liên hệ gửi về',
       icon: Mail
+    },
+    {
+      href: '/admin/settings/mail',
+      label: 'Cấu hình Mail',
+      icon: Settings
+    },
+    {
+      href: '/admin/settings/permissions',
+      label: 'Phân quyền',
+      icon: Shield
     }
   ];
 

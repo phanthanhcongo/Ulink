@@ -50,7 +50,7 @@ export default async function OrderConfirmationPage({ params: { locale }, search
   }
 
   return (
-    <section className="relative overflow-hidden bg-white min-h-screen py-8 lg:py-12">
+    <section className="relative overflow-hidden bg-white min-h-screen pt-2 pb-12">
       <OrderConfirmationClient
         user={user}
         locale={locale}

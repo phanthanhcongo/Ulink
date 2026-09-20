@@ -6,7 +6,18 @@ import { cancelOrder, updateOrderStatus } from '@/app/[locale]/admin/orders/acti
 import { parseOrderNotes } from '@/lib/order-notes';
 
 const statuses = ['pending', 'confirmed', 'processing', 'shipped', 'completed', 'cancelled', 'payment_required', 'payment_failed', 'payment_expired'];
-const labels: Record<string, string> = { pending: 'Chờ xử lý', confirmed: 'Đã xác nhận', processing: 'Đang xử lý', shipped: 'Đã giao', completed: 'Hoàn tất', cancelled: 'Đã hủy', payment_required: 'Chờ thanh toán', payment_failed: 'TT thất bại', payment_expired: 'TT hết hạn' };
+const labels: Record<string, string> = {
+  pending: 'Đặt hàng (Chờ xử lý)',
+  confirmed: 'Đã xác nhận',
+  processing: 'Đang xử lý',
+  shipped: 'Đang giao',
+  delivered: 'Hoàn thành',
+  completed: 'Hoàn thành',
+  cancelled: 'Đã hủy',
+  payment_required: 'Chờ thanh toán',
+  payment_failed: 'TT thất bại',
+  payment_expired: 'TT hết hạn'
+};
 const paymentLabels: Record<string, string> = { none: '—', pending: 'Đang chờ', success: 'Thành công', failed: 'Thất bại', expired: 'Hết hạn' };
 const paymentColors: Record<string, string> = { none: 'text-slate-400', pending: 'text-amber-600', success: 'text-emerald-600', failed: 'text-red-600', expired: 'text-slate-500' };
 const money = (n: number) => new Intl.NumberFormat('vi-VN').format(Number(n || 0)) + 'đ';

@@ -5,7 +5,7 @@ import { createAuthenticatedDirectusClient } from '@/lib/directus';
 import { getCurrentUser } from '@/lib/auth-helpers';
 export async function updateOrderStatus(id: number, status: string) {
   if (!(await getCurrentUser())) throw new Error('Unauthorized');
-  const allowed = ['pending', 'confirmed', 'processing', 'shipped', 'completed', 'cancelled', 'payment_required', 'payment_failed', 'payment_expired'];
+  const allowed = ['pending', 'confirmed', 'processing', 'shipped', 'delivered', 'da_giao', 'completed', 'cancelled', 'payment_required', 'payment_failed', 'payment_expired'];
   if (!allowed.includes(status)) throw new Error('Invalid status');
   const client = await createAuthenticatedDirectusClient();
   await client.request(updateItem('orders' as any, id, { status } as any));

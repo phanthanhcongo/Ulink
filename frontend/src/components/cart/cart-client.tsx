@@ -166,13 +166,26 @@ export default function CartClient({
 
   const [cart, setCart] = useState<CartItem[]>([]);
   const [promoCode, setPromoCode] = useState('');
-  const [discountPercent, setDiscountPercent] = useState(0);
+  const [appliedVoucher, setAppliedVoucher] = useState<{ code: string; name: string } | null>(null);
+  const [discountAmount, setDiscountAmount] = useState(0);
+  const [promoLoading, setPromoLoading] = useState(false);
   const [promoError, setPromoError] = useState<string | null>(null);
   const [promoSuccess, setPromoSuccess] = useState<string | null>(null);
 
-  // Load cart on mount
+  // Load cart and saved voucher on mount
   useEffect(() => {
     setCart(readCart());
+    try {
+      const savedVoucherStr = localStorage.getItem('ulink_applied_voucher');
+      if (savedVoucherStr) {
+        const parsed = JSON.parse(savedVoucherStr);
+        if (parsed?.code) {
+          setPromoCode(parsed.code);
+          setAppliedVoucher(parsed.voucher || { code: parsed.code, name: 'Chiết khấu B2B' });
+          setDiscountAmount(parsed.discountAmount || 0);
+        }
+      }
+    } catch {}
   }, []);
 
   const saveCart = useCallback((newCart: CartItem[]) => {
@@ -202,27 +215,6 @@ export default function CartClient({
     },
     [cart, saveCart]
   );
-
-  const handleApplyPromo = (e: React.FormEvent) => {
-    e.preventDefault();
-    setPromoError(null);
-    setPromoSuccess(null);
-
-    const code = promoCode.trim().toUpperCase();
-    if (!code) return;
-
-    if (code === 'ULINKB2B') {
-      setDiscountPercent(10);
-      setPromoSuccess(
-        locale === 'vi'
-          ? 'Áp dụng mã giảm giá 10% thành công!'
-          : 'Applied 10% discount successfully!'
-      );
-    } else {
-      setPromoError(locale === 'vi' ? 'Mã giảm giá không hợp lệ.' : 'Invalid discount code.');
-      setDiscountPercent(0);
-    }
-  };
 
   /* ── calculations ── */
   const resolvedItems = useMemo(() => {
@@ -261,14 +253,59 @@ export default function CartClient({
   }, [resolvedItems]);
 
   const vat = useMemo(() => Math.round(subtotal * 0.08), [subtotal]);
-  const discountAmount = useMemo(
-    () => Math.round((subtotal + vat) * (discountPercent / 100)),
-    [subtotal, vat, discountPercent]
-  );
   const grandTotal = useMemo(
-    () => subtotal + vat - discountAmount,
+    () => Math.max(0, subtotal + vat - discountAmount),
     [subtotal, vat, discountAmount]
   );
+
+  const handleApplyPromo = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setPromoError(null);
+    setPromoSuccess(null);
+
+    const code = promoCode.trim().toUpperCase();
+    if (!code) {
+      setPromoError('Vui lòng nhập mã giảm giá.');
+      return;
+    }
+
+    setPromoLoading(true);
+    try {
+      const res = await fetch('/api/vouchers/validate', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ code, subtotal })
+      });
+      const data = await res.json();
+      setPromoLoading(false);
+
+      if (res.ok && data.valid) {
+        setAppliedVoucher(data.voucher);
+        setDiscountAmount(data.discountAmount);
+        setPromoSuccess(data.message);
+        try {
+          localStorage.setItem(
+            'ulink_applied_voucher',
+            JSON.stringify({
+              code: data.voucher.code,
+              discountAmount: data.discountAmount,
+              voucher: data.voucher
+            })
+          );
+        } catch {}
+      } else {
+        setAppliedVoucher(null);
+        setDiscountAmount(0);
+        setPromoError(data.message || 'Mã giảm giá không hợp lệ.');
+        try {
+          localStorage.removeItem('ulink_applied_voucher');
+        } catch {}
+      }
+    } catch {
+      setPromoLoading(false);
+      setPromoError('Không thể kết nối máy chủ kiểm tra mã giảm giá.');
+    }
+  };
 
   const formatPrice = (amount: number) => {
     if (locale === 'vi') {
@@ -632,6 +669,18 @@ export default function CartClient({
                   <span className="font-semibold text-[#1257c0] text-[14px] leading-[20px] tracking-[0.0071em]">{t('shippingContact')}</span>
                 </div>
 
+                {discountAmount > 0 && (
+                  <div className="flex justify-between items-center text-[16px] leading-[24px] pt-1 border-t border-dashed border-[#dce0e5]">
+                    <span className="text-[#16A34A] font-semibold text-[14px] flex items-center gap-1">
+                      <Tag className="w-3.5 h-3.5" />
+                      {appliedVoucher ? `Giảm giá (${appliedVoucher.code})` : 'Chiết khấu'}
+                    </span>
+                    <span className="font-semibold text-[#16A34A] text-[14px] leading-[20px]">
+                      -{formatPrice(discountAmount)}
+                    </span>
+                  </div>
+                )}
+
                 <hr className="border-[#dce0e5]" />
 
                 {/* Promo Code Input */}
@@ -649,9 +698,10 @@ export default function CartClient({
                     />
                     <button
                       type="submit"
-                      className="h-[38px] rounded-[4px] bg-[#dbeafe] text-[#1257c0] text-[14px] font-semibold leading-[20px] tracking-[0.0071em] px-4 transition-all hover:bg-blue-100 cursor-pointer shrink-0"
+                      disabled={promoLoading}
+                      className="h-[38px] rounded-[4px] bg-[#dbeafe] text-[#1257c0] text-[14px] font-semibold leading-[20px] tracking-[0.0071em] px-4 transition-all hover:bg-blue-100 cursor-pointer shrink-0 disabled:opacity-60"
                     >
-                      {t('promoApply')}
+                      {promoLoading ? 'Đang xử lý...' : t('promoApply')}
                     </button>
                   </div>
                   {promoError && (

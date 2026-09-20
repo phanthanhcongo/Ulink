@@ -2,6 +2,22 @@ import { createItem, readItems } from '@directus/sdk';
 import { getCurrentUser, getRequestCookieHeader } from '@/lib/auth-helpers';
 import { createSessionDirectusClient, createWriteDirectusClient } from '@/lib/directus';
 import { submitOrder, type OrderInput } from '@/lib/order-submit';
+import { fetchOrderById } from '@/lib/order-data';
+
+export async function GET(req: Request) {
+  try {
+    const { searchParams } = new URL(req.url);
+    const code = searchParams.get('code');
+    if (!code) {
+      return Response.json({ error: 'Missing code' }, { status: 400 });
+    }
+    const order = await fetchOrderById(code);
+    return Response.json({ order });
+  } catch (error) {
+    console.error('[GET /api/orders] error:', error);
+    return Response.json({ error: 'Internal error' }, { status: 500 });
+  }
+}
 
 export async function POST(req: Request) {
   try {

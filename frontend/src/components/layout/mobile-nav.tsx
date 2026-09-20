@@ -518,6 +518,14 @@ export function MobileNav({ items }: MobileNavProps) {
                     </Link>
                   )}
                   <Link
+                    href="/order-tracking"
+                    onClick={() => setOpen(false)}
+                    className="flex items-center gap-2.5 rounded-[3px] px-2.5 py-2 text-[13px] font-medium text-[#152944] transition-colors hover:bg-white"
+                  >
+                    <ShoppingBag className="h-4 w-4 text-[#2168df]" />
+                    <span>Danh sách đơn hàng</span>
+                  </Link>
+                  <Link
                     href="/my-rfqs"
                     onClick={() => setOpen(false)}
                     className="flex items-center gap-2.5 rounded-[3px] px-2.5 py-2 text-[13px] font-medium text-[#152944] transition-colors hover:bg-white"

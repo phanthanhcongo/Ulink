@@ -14,7 +14,7 @@ async function getSessionClient() {
   return createDirectus<Schema>(process.env.DIRECTUS_PUBLIC_URL || 'http://localhost:8055', { globals: { fetch: cookieFetch } }).with(rest());
 }
 const money = (value: number) => new Intl.NumberFormat('vi-VN').format(Number(value || 0)) + 'đ';
-const statusLabel: Record<string, string> = { pending: 'Chờ xử lý', confirmed: 'Đã xác nhận', processing: 'Đang xử lý', shipped: 'Đã giao', completed: 'Hoàn tất', cancelled: 'Đã hủy' };
+const statusLabel: Record<string, string> = { pending: 'Đặt hàng', confirmed: 'Đã xác nhận', processing: 'Đang xử lý', shipped: 'Đang giao', delivered: 'Hoàn thành', completed: 'Hoàn thành', cancelled: 'Đã hủy' };
 
 export default async function AdminDashboardPage({ params: { locale } }: { params: { locale: string } }) {
   setRequestLocale(locale); const user = await getCurrentUser(); let orders: any[] = []; let inventory: any[] = []; let stats = { orders: 0, pending: 0, stock: 0 }; let error = '';

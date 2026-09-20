@@ -34,10 +34,10 @@ export async function POST(req: Request) {
       if (Date.now() - createdAt < 1000) {
         txnRef = existing.vnp_txn_ref;
       } else {
-        txnRef = `ORD_${orderId}_${Date.now()}`;
+        txnRef = `ORD_${orderId}_${Date.now()}`.replace(/[^a-zA-Z0-9_]/g, '_');
       }
     } else {
-      txnRef = `ORD_${orderId}_${Date.now()}`;
+      txnRef = `ORD_${orderId}_${Date.now()}`.replace(/[^a-zA-Z0-9_]/g, '_');
     }
 
     const existingRef = existingPayments.find((p: any) => p.vnp_txn_ref === txnRef);
@@ -54,6 +54,7 @@ export async function POST(req: Request) {
     }
 
     const ip = req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() || '127.0.0.1';
+    const cleanCode = String(order.code || order.id).replace(/[^a-zA-Z0-9_-]/g, '');
 
     const paymentUrl = createPaymentUrl(
       {
@@ -65,7 +66,7 @@ export async function POST(req: Request) {
       {
         amount,
         txnRef,
-        orderInfo: `Thanh toan don hang ${order.code}`,
+        orderInfo: `Thanh toan don hang ${cleanCode}`,
         ipAddr: ip,
         locale: locale || 'vn'
       }

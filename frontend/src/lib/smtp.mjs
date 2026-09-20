@@ -256,8 +256,49 @@ export function readMailConfig(env = process.env) {
   };
 }
 
+let _dbConfigCache = null;
+let _dbConfigCacheTime = 0;
+const DB_CACHE_TTL = 60_000; // 1 minute
+
+async function readMailConfigFromDb(env = process.env) {
+  if (_dbConfigCache && Date.now() - _dbConfigCacheTime < DB_CACHE_TTL) {
+    return _dbConfigCache;
+  }
+  try {
+    const pg = await import('pg');
+    const dbUrl = env.DATABASE_URL
+      ?? `postgresql://${env.POSTGRES_USER ?? 'ulink'}:${env.POSTGRES_PASSWORD ?? 'change-me-strong-password'}@${env.POSTGRES_HOST ?? 'localhost'}:${env.POSTGRES_PORT ?? '5460'}/${env.POSTGRES_DB ?? 'ulink'}`;
+    const client = new pg.default.Client({ connectionString: dbUrl });
+    await client.connect();
+    try {
+      const result = await client.query(
+        'SELECT host, port, secure, username, password, mail_from, enabled FROM mail_settings WHERE id = 1'
+      );
+      const row = result.rows[0];
+      if (row && row.enabled && row.host) {
+        _dbConfigCache = {
+          host: row.host,
+          port: row.port ?? 587,
+          secure: row.secure ?? false,
+          user: row.username ?? '',
+          password: row.password ?? '',
+          from: row.mail_from || env.MAIL_FROM || 'ULINK <no-reply@ulink.com>'
+        };
+        _dbConfigCacheTime = Date.now();
+        return _dbConfigCache;
+      }
+    } finally {
+      await client.end();
+    }
+  } catch {
+    // DB not available or table missing — fall through to env
+  }
+  return null;
+}
+
 export async function sendMail(message, env = process.env) {
-  const config = readMailConfig(env);
+  const dbConfig = await readMailConfigFromDb(env);
+  const config = dbConfig ?? readMailConfig(env);
   const from = String(message.from ?? config.from).trim();
   const to = String(message.to ?? '').trim();
   const subject = String(message.subject ?? '').trim();

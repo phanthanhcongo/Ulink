@@ -2,9 +2,13 @@ import type { Metadata } from 'next';
 import { setRequestLocale, getTranslations } from 'next-intl/server';
 import { getCurrentUser } from '@/lib/auth-helpers';
 import { fetchProducts } from '@/lib/product-data';
+import { fetchOrderById } from '@/lib/order-data';
 import PaymentInvoiceClient from '@/components/payment-invoice/payment-invoice-client';
 
-type Props = { params: { locale: string } };
+type Props = {
+  params: { locale: string };
+  searchParams?: { orderId?: string };
+};
 
 export async function generateMetadata({ params: { locale } }: Props): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'paymentInvoicePage' });
@@ -14,10 +18,13 @@ export async function generateMetadata({ params: { locale } }: Props): Promise<M
   };
 }
 
-export default async function PaymentInvoicePage({ params: { locale } }: Props) {
+export default async function PaymentInvoicePage({ params: { locale }, searchParams }: Props) {
   setRequestLocale(locale);
 
   const user = await getCurrentUser();
+  const rawOrderId = searchParams?.orderId || '';
+
+  const orderData = rawOrderId ? await fetchOrderById(rawOrderId) : null;
 
   // Fetch products to map thumbnails
   const { products: allDbProducts } = await fetchProducts({ limit: 100 });
@@ -34,7 +41,12 @@ export default async function PaymentInvoicePage({ params: { locale } }: Props) 
 
   return (
     <section className="relative overflow-hidden bg-white min-h-screen py-8 lg:py-12">
-      <PaymentInvoiceClient user={user} locale={locale} dbProductMap={dbProductMap} />
+      <PaymentInvoiceClient
+        user={user}
+        locale={locale}
+        dbProductMap={dbProductMap}
+        orderData={orderData}
+      />
     </section>
   );
 }
