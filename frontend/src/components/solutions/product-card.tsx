@@ -135,8 +135,8 @@ export function ProductCard({
       className={`bg-white rounded-[3px] border border-[#DCE0E5] overflow-hidden h-full flex flex-col group transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_0_1px_#1769E2,0_8px_25px_-5px_rgba(23,105,226,0.2)] w-full lg:w-[300px] lg:max-w-[300px] ${className || ''}`}
     >
       <Link href={productLink} className="flex flex-col h-full">
-        {/* IMAGE SECTION - Exact 270px height from Figma */}
-        <div className="image-wrap relative w-full h-[350px] sm:h-[270px] bg-white flex items-center justify-center p-2.5 overflow-hidden">
+        {/* IMAGE SECTION - Uniform aspect-square container with equal padding */}
+        <div className="image-wrap relative w-full aspect-square bg-white flex items-center justify-center p-3 overflow-hidden">
           {imageUrl ? (
             <div className="relative w-full h-full rounded-[3px] overflow-hidden">
               <Image

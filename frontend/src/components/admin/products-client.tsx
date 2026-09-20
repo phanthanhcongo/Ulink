@@ -861,7 +861,7 @@ export function ProductsClient({
                     className="inline-flex items-center gap-1.5 text-caption-responsive font-bold text-blue-600 hover:text-blue-700 transition-colors"
                   >
                     <Plus className="h-3.5 w-3.5" />
-                    Thêm thuộc tính
+                    + Thêm thông số
                   </button>
                 </div>
 
@@ -877,7 +877,7 @@ export function ProductsClient({
                           updated[idx].key = e.target.value;
                           setActiveProductSpecs(updated);
                         }}
-                        placeholder="Tên thông số (e.g. Chất liệu)"
+                        placeholder="Tên (VD: Chất liệu, Kích thước...)"
                         className="flex-1 px-3 py-1.5 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
                       />
                       <input
@@ -913,7 +913,7 @@ export function ProductsClient({
               <div className="bg-slate-50/40 border border-slate-200 rounded-[3px] p-5 space-y-4">
                 <div className="flex items-center justify-between border-b border-slate-100 pb-2">
                   <h4 className="text-caption-responsive font-bold text-slate-800 uppercase tracking-wider">
-                    4. Đặc tính nổi bật (Feature Badges)
+                    4. Điểm nổi bật
                   </h4>
                   <button
                     type="button"
@@ -938,7 +938,7 @@ export function ProductsClient({
                           updated[idx] = e.target.value;
                           setActiveProduct({ ...activeProduct, features: updated } as any);
                         }}
-                        placeholder="Ví dụ: Co giãn 400%"
+                        placeholder="VD: Co giãn 400%, Chống ẩm, Tái chế..."
                         className="flex-1 px-3 py-1.5 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
                       />
                       <button
@@ -955,7 +955,7 @@ export function ProductsClient({
                   ))}
                   {(!Array.isArray((activeProduct as any).features) || (activeProduct as any).features.length === 0) && (
                     <span className="text-slate-400 italic text-caption-responsive block text-center py-2">
-                      Chưa thêm đặc tính nào — hiển thị trên trang chi tiết sản phẩm
+                      Thêm điểm nổi bật để hiển thị trên trang sản phẩm
                     </span>
                   )}
                 </div>
@@ -964,28 +964,28 @@ export function ProductsClient({
               {/* Section 5: SEO */}
               <div className="bg-slate-50/40 border border-slate-200 rounded-[3px] p-5 space-y-5">
                 <h4 className="text-caption-responsive font-bold text-slate-800 uppercase tracking-wider border-b border-slate-100 pb-2">
-                  4. SEO & Meta
+                  5. Tối ưu tìm kiếm (SEO)
                 </h4>
                 <div className="space-y-4">
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-caption-responsive font-bold text-slate-500 uppercase">Meta Title</label>
+                    <label className="text-caption-responsive font-bold text-slate-500 uppercase">Tiêu đề SEO</label>
                     <input
                       type="text"
                       value={activeProduct.meta_title || ''}
                       onChange={(e) => setActiveProduct({ ...activeProduct, meta_title: e.target.value })}
-                      placeholder="Tiêu đề hiển thị trên Google (tối đa 60 ký tự)"
+                      placeholder="Tiêu đề hiển thị trên Google"
                       maxLength={120}
                       className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
                     />
                     <span className="text-[11px] text-slate-400">{(activeProduct.meta_title || '').length}/60 ký tự</span>
                   </div>
                   <div className="flex flex-col gap-1.5">
-                    <label className="text-caption-responsive font-bold text-slate-500 uppercase">Meta Description</label>
+                    <label className="text-caption-responsive font-bold text-slate-500 uppercase">Mô tả SEO</label>
                     <textarea
                       rows={2}
                       value={activeProduct.meta_description || ''}
                       onChange={(e) => setActiveProduct({ ...activeProduct, meta_description: e.target.value })}
-                      placeholder="Mô tả hiển thị trên kết quả tìm kiếm Google (tối đa 160 ký tự)"
+                      placeholder="Mô tả ngắn hiển thị trên Google"
                       maxLength={300}
                       className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600 w-full"
                     />
