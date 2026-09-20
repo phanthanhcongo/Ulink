@@ -314,24 +314,12 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
               {productName}
             </h1>
 
-            {/* SKU and Rating row */}
-            <div className="flex items-center gap-4 text-[14px] font-semibold text-[#495057]">
-              {skuCode && <span>SKU: {skuCode}</span>}
-              {skuCode && <div className="w-[1px] h-[12px] bg-[#dce0e5]" />}
-              <div className="flex items-center gap-1.5">
-                <span className="text-[14px] font-semibold text-[#212529]">4.8</span>
-                <div className="flex text-amber-500 text-[14px] gap-0.5 leading-none">
-                  <span>★</span>
-                  <span>★</span>
-                  <span>★</span>
-                  <span>★</span>
-                  <span>★</span>
-                </div>
-                <span className="text-[12px] font-semibold text-[#495057]">
-                  (48 {locale === 'vi' ? 'đánh giá' : 'reviews'})
-                </span>
+            {/* SKU row */}
+            {skuCode && (
+              <div className="flex items-center gap-4 text-[14px] font-semibold text-[#495057]">
+                <span>SKU: {skuCode}</span>
               </div>
-            </div>
+            )}
 
             <hr className="border-[#dce0e5]" />
 
@@ -341,87 +329,40 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
               </p>
             )}
 
-            {/* 4 Feature Icon Badges */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 py-2">
-              <div className="flex flex-col items-center justify-center p-2 sm:py-2.5 sm:px-1 gap-2 border border-[#c89a955c] rounded-[3px] bg-white">
-                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#f5f8fc] border border-[#c89a955c] flex items-center justify-center text-[#1769e2] shrink-0">
-                  <Maximize2 className="h-4 w-4 sm:h-5 sm:w-5" />
-                </div>
-                <span className="text-[11px] sm:text-[12px] font-semibold text-[#495057] leading-tight text-center px-1">
-                  {locale === 'vi' ? 'Co giãn 400%' : 'Stretch 400%'}
-                </span>
-              </div>
+            {/* Feature Badges — dynamic from product.features JSON */}
+            {(() => {
+              const features = Array.isArray((product as any).features) ? (product as any).features : [];
+              if (features.length === 0) return null;
+              return (
+                <>
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3 py-2">
+                    {features.slice(0, 4).map((feat: string, idx: number) => (
+                      <div key={idx} className="flex flex-col items-center justify-center p-2 sm:py-2.5 sm:px-1 gap-2 border border-[#c89a955c] rounded-[3px] bg-white">
+                        <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#f5f8fc] border border-[#c89a955c] flex items-center justify-center text-[#1769e2] shrink-0">
+                          <ShieldCheck className="h-4 w-4 sm:h-5 sm:w-5" />
+                        </div>
+                        <span className="text-[11px] sm:text-[12px] font-semibold text-[#495057] leading-tight text-center px-1">
+                          {feat}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                  <hr className="border-[#dce0e5]" />
+                </>
+              );
+            })()}
 
-              <div className="flex flex-col items-center justify-center p-2 sm:py-2.5 sm:px-1 gap-2 border border-[#c89a955c] rounded-[3px] bg-white">
-                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#f5f8fc] border border-[#c89a955c] flex items-center justify-center text-[#1769e2] shrink-0">
-                  <ShieldCheck className="h-4 w-4 sm:h-5 sm:w-5" />
-                </div>
-                <span className="text-[11px] sm:text-[12px] font-semibold text-[#495057] leading-tight text-center px-1">
-                  {locale === 'vi' ? 'Dai & Khó rách' : 'Tear Resistant'}
-                </span>
+            {/* Key Specifications — first 4 from specifications JSON */}
+            {specs && Object.keys(specs).length > 0 && (
+              <div className="grid grid-cols-[60%_1fr] gap-y-4 gap-x-4 py-2">
+                {Object.entries(specs).slice(0, 4).map(([key, value]) => (
+                  <div key={key} className="flex flex-col gap-1">
+                    <span className="text-[12px] font-semibold text-[#495057]">{key}</span>
+                    <span className="text-[14px] font-normal text-[#212529]">{value}</span>
+                  </div>
+                ))}
               </div>
-
-              <div className="flex flex-col items-center justify-center p-2 sm:py-2.5 sm:px-1 gap-2 border border-[#c89a955c] rounded-[3px] bg-white">
-                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#f5f8fc] border border-[#c89a955c] flex items-center justify-center text-[#1769e2] shrink-0">
-                  <Droplets className="h-4 w-4 sm:h-5 sm:w-5" />
-                </div>
-                <span className="text-[11px] sm:text-[12px] font-semibold text-[#495057] leading-tight text-center px-1">
-                  {locale === 'vi' ? 'Chống ẩm ướt' : 'Moisture Proof'}
-                </span>
-              </div>
-
-              <div className="flex flex-col items-center justify-center p-2 sm:py-2.5 sm:px-1 gap-2 border border-[#c89a955c] rounded-[3px] bg-white">
-                <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-[#f5f8fc] border border-[#c89a955c] flex items-center justify-center text-[#1769e2] shrink-0">
-                  <RefreshCw className="h-4 w-4 sm:h-5 sm:w-5" />
-                </div>
-                <span className="text-[11px] sm:text-[12px] font-semibold text-[#495057] leading-tight text-center px-1">
-                  {locale === 'vi' ? 'PE Tái chế' : 'Recyclable PE'}
-                </span>
-              </div>
-            </div>
-
-            <hr className="border-[#dce0e5]" />
-
-            {/* 2x2 Key Specifications Grid */}
-            <div className="grid grid-cols-[60%_1fr] gap-y-4 gap-x-4 py-2">
-              <div className="flex flex-col gap-1">
-                <span className="text-[12px] font-semibold text-[#495057]">
-                  {locale === 'vi' ? 'Độ dày màng' : 'Thickness'}
-                </span>
-                <span className="text-[14px] font-normal text-[#212529]">
-                  {specs?.['Độ dày'] || specs?.['Thickness'] || '17 mic / 20 mic / 23 mic'}
-                </span>
-              </div>
-
-              <div className="flex flex-col gap-1">
-                <span className="text-[12px] font-semibold text-[#495057]">
-                  {locale === 'vi' ? 'Chất liệu chính' : 'Material'}
-                </span>
-                <span className="text-[14px] font-normal text-[#212529]">
-                  {specs?.['Chất liệu'] || specs?.['Material'] || '100% LLDPE Nguyên Sinh'}
-                </span>
-              </div>
-
-              <div className="flex flex-col gap-1">
-                <span className="text-[12px] font-semibold text-[#495057]">
-                  {locale === 'vi' ? 'Quy cách cuộn' : 'Specification'}
-                </span>
-                <span className="text-[14px] font-normal text-[#212529]">
-                  {specs?.['Đóng gói'] ||
-                    specs?.['Specification'] ||
-                    'Khổ rộng 50cm, cân nặng theo yêu cầu'}
-                </span>
-              </div>
-
-              <div className="flex flex-col gap-1">
-                <span className="text-[12px] font-semibold text-[#495057]">
-                  {locale === 'vi' ? 'Màu sắc' : 'Color'}
-                </span>
-                <span className="text-[14px] font-normal text-[#212529]">
-                  {specs?.['Màu sắc'] || specs?.['Color'] || 'Trắng trong'}
-                </span>
-              </div>
-            </div>
+            )}
 
             {/* Quality Standards Achieved */}
             {standards.length > 0 && (

@@ -54,6 +54,7 @@ export default async function AdminProductsPage({ params: { locale } }: Props) {
             'brand',
             'short_description',
             'specifications',
+            'features',
             'meta_title',
             'meta_description',
             'status',

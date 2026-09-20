@@ -147,6 +147,7 @@ export async function saveProduct(data: {
   meta_title?: string;
   meta_description?: string;
   hero?: string;
+  features?: string[];
 }) {
   await checkAuth();
 
@@ -164,6 +165,7 @@ export async function saveProduct(data: {
       meta_description: data.meta_description ?? null
     };
     if (data.hero !== undefined) payload.hero = data.hero || null;
+    if (data.features !== undefined) payload.features = data.features.length > 0 ? data.features : null;
 
     let productId: number;
 

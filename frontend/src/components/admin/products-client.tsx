@@ -33,10 +33,7 @@ import {
   saveSku,
   uploadProductImage,
   deleteProductImage,
-  uploadFileToDirectus,
-  updateProductHero,
-  addProductGalleryImage,
-  removeProductGalleryImage
+  updateProductHero
 } from '@/app/[locale]/admin/products/actions';
 
 interface ProductsClientProps {
@@ -167,7 +164,8 @@ export function ProductsClient({
         status: activeProduct.status || 'draft',
         assignedAttributeIds: selectedAttributeIds,
         meta_title: activeProduct.meta_title || undefined,
-        meta_description: activeProduct.meta_description || undefined
+        meta_description: activeProduct.meta_description || undefined,
+        features: Array.isArray((activeProduct as any).features) ? (activeProduct as any).features.filter((f: string) => f.trim()) : undefined
       });
 
       if (res.success) {
@@ -552,7 +550,7 @@ export function ProductsClient({
 
                 {/* Hero Images */}
                 <div className="space-y-2">
-                  <label className="text-caption-responsive font-bold text-slate-500 uppercase">Ảnh đại diện (Hero)</label>
+                  <label className="text-caption-responsive font-bold text-slate-500 uppercase">Ảnh sản phẩm</label>
                   <div className="flex flex-wrap items-start gap-3">
                     {(() => {
                       // Parse hero JSON array or single value into raw paths
@@ -582,15 +580,23 @@ export function ProductsClient({
                           </div>
                         );
                       }
-                      return heroUrls.map((url, idx) => (
+                      return heroUrls.map((url, idx) => {
+                        const isVid = /\.(mp4|webm|mov|avi|ogg)$/i.test(url);
+                        return (
                         <div key={idx} className="relative w-28 h-28 rounded-lg overflow-hidden border border-slate-200 bg-white group">
-                          <Image
-                            src={url}
-                            alt={`Ảnh ${idx + 1}`}
-                            fill
-                            className="object-contain"
-                            unoptimized
-                          />
+                          {isVid ? (
+                            <div className="w-full h-full flex items-center justify-center bg-slate-100">
+                              <Video className="w-8 h-8 text-slate-400" />
+                            </div>
+                          ) : (
+                            <Image
+                              src={url}
+                              alt={`Ảnh ${idx + 1}`}
+                              fill
+                              className="object-contain"
+                              unoptimized
+                            />
+                          )}
                           <button
                             type="button"
                             onClick={async () => {
@@ -609,17 +615,18 @@ export function ProductsClient({
                             <Trash2 className="w-3 h-3" />
                           </button>
                           <span className="absolute bottom-0 left-0 right-0 bg-black/50 text-white text-[10px] text-center py-0.5">
-                            {idx === 0 ? 'Hero' : `Ảnh ${idx + 1}`}
+                            {isVid ? 'Video' : idx === 0 ? 'Hero' : `Ảnh ${idx + 1}`}
                           </span>
                         </div>
-                      ));
+                        );
+                      });
                     })()}
                     <label className="flex items-center gap-2 px-3 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-semibold text-slate-600 hover:bg-slate-50 cursor-pointer transition-colors h-fit">
                       <Upload className="w-4 h-4" />
-                      <span>Thêm ảnh</span>
+                      <span>Thêm ảnh/video</span>
                       <input
                         type="file"
-                        accept="image/*"
+                        accept="image/*,video/*"
                         className="hidden"
                         onChange={async (e) => {
                           const file = e.target.files?.[0];
@@ -655,83 +662,7 @@ export function ProductsClient({
                   </div>
                 </div>
 
-                {/* Gallery */}
-                {activeProduct.id && (
-                  <div className="space-y-2">
-                    <label className="text-caption-responsive font-bold text-slate-500 uppercase">Bộ sưu tập ảnh & video</label>
-                    <div className="flex flex-wrap gap-3">
-                      {activeProduct.gallery?.map((g: any, idx: number) => {
-                        const fileId = typeof g.directus_files_id === 'string' ? g.directus_files_id : g.directus_files_id?.id;
-                        const junctionId = g.id;
-                        if (!fileId) return null;
-                        const imgUrl = resolveImageUrl(fileId);
-                        const isVideo = imgUrl?.match(/\.(mp4|webm|mov|avi)$/i);
-                        return (
-                          <div key={idx} className="relative w-28 h-28 rounded-lg overflow-hidden border border-slate-200 bg-white group">
-                            {isVideo ? (
-                              <div className="w-full h-full flex items-center justify-center bg-slate-100">
-                                <Video className="w-8 h-8 text-slate-400" />
-                                <span className="absolute bottom-0 left-0 right-0 bg-black/50 text-white text-[10px] text-center py-0.5">Video</span>
-                              </div>
-                            ) : (
-                              <Image src={imgUrl || ''} alt={`Gallery ${idx + 1}`} fill className="object-contain" unoptimized />
-                            )}
-                            {junctionId && (
-                              <button
-                                type="button"
-                                onClick={async () => {
-                                  const res = await removeProductGalleryImage(junctionId);
-                                  if (res.success) {
-                                    setActiveProduct({
-                                      ...activeProduct,
-                                      gallery: activeProduct.gallery?.filter((_: any, i: number) => i !== idx)
-                                    });
-                                  }
-                                }}
-                                className="absolute top-1 right-1 p-1 bg-red-500 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
-                                title="Xóa ảnh"
-                              >
-                                <Trash2 className="w-3 h-3" />
-                              </button>
-                            )}
-                          </div>
-                        );
-                      })}
-
-                      {/* Upload button */}
-                      <label className="w-28 h-28 rounded-lg border-2 border-dashed border-slate-300 flex flex-col items-center justify-center text-slate-400 hover:border-blue-400 hover:text-blue-500 cursor-pointer transition-colors">
-                        <PlusCircle className="w-6 h-6 mb-1" />
-                        <span className="text-[10px] font-semibold">Thêm ảnh/video</span>
-                        <input
-                          type="file"
-                          accept="image/*,video/*"
-                          className="hidden"
-                          onChange={async (e) => {
-                            const file = e.target.files?.[0];
-                            if (!file || !activeProduct.id) return;
-                            const fd = new FormData();
-                            fd.append('file', file);
-                            const res = await uploadFileToDirectus(fd);
-                            if (res.success && res.fileId) {
-                              const addRes = await addProductGalleryImage(activeProduct.id, res.fileId);
-                              if (addRes.success) {
-                                setActiveProduct({
-                                  ...activeProduct,
-                                  gallery: [
-                                    ...(activeProduct.gallery || []),
-                                    { directus_files_id: res.fileId } as any
-                                  ]
-                                });
-                                window.location.reload();
-                              }
-                            }
-                            e.target.value = '';
-                          }}
-                        />
-                      </label>
-                    </div>
-                  </div>
-                )}
+                {/* All images stored in hero JSON array */}
               </div>
 
               {/* Section 1: Thông tin cơ bản */}
@@ -922,7 +853,7 @@ export function ProductsClient({
               <div className="bg-slate-50/40 border border-slate-200 rounded-[3px] p-5 space-y-4">
                 <div className="flex items-center justify-between border-b border-slate-100 pb-2">
                   <h4 className="text-caption-responsive font-bold text-slate-800 uppercase tracking-wider">
-                    3. Bảng Thông số Kỹ thuật
+                    3. Thông số kỹ thuật
                   </h4>
                   <button
                     type="button"
@@ -978,7 +909,59 @@ export function ProductsClient({
                 </div>
               </div>
 
-              {/* Section 4: SEO */}
+              {/* Section 4: Đặc tính nổi bật */}
+              <div className="bg-slate-50/40 border border-slate-200 rounded-[3px] p-5 space-y-4">
+                <div className="flex items-center justify-between border-b border-slate-100 pb-2">
+                  <h4 className="text-caption-responsive font-bold text-slate-800 uppercase tracking-wider">
+                    4. Đặc tính nổi bật (Feature Badges)
+                  </h4>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const current = Array.isArray((activeProduct as any).features) ? (activeProduct as any).features : [];
+                      setActiveProduct({ ...activeProduct, features: [...current, ''] } as any);
+                    }}
+                    className="inline-flex items-center gap-1.5 text-caption-responsive font-bold text-blue-600 hover:text-blue-700 transition-colors"
+                  >
+                    <Plus className="h-3.5 w-3.5" />
+                    Thêm
+                  </button>
+                </div>
+                <div className="space-y-2">
+                  {(Array.isArray((activeProduct as any).features) ? (activeProduct as any).features : []).map((feat: string, idx: number) => (
+                    <div key={idx} className="flex items-center gap-3">
+                      <input
+                        type="text"
+                        value={feat}
+                        onChange={(e) => {
+                          const updated = [...((activeProduct as any).features || [])];
+                          updated[idx] = e.target.value;
+                          setActiveProduct({ ...activeProduct, features: updated } as any);
+                        }}
+                        placeholder="Ví dụ: Co giãn 400%"
+                        className="flex-1 px-3 py-1.5 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                      />
+                      <button
+                        type="button"
+                        onClick={() => {
+                          const updated = ((activeProduct as any).features || []).filter((_: string, i: number) => i !== idx);
+                          setActiveProduct({ ...activeProduct, features: updated } as any);
+                        }}
+                        className="p-1.5 text-slate-400 hover:text-red-600 rounded-[3px] hover:bg-red-50 transition-colors shrink-0"
+                      >
+                        <X className="h-4 w-4" />
+                      </button>
+                    </div>
+                  ))}
+                  {(!Array.isArray((activeProduct as any).features) || (activeProduct as any).features.length === 0) && (
+                    <span className="text-slate-400 italic text-caption-responsive block text-center py-2">
+                      Chưa thêm đặc tính nào — hiển thị trên trang chi tiết sản phẩm
+                    </span>
+                  )}
+                </div>
+              </div>
+
+              {/* Section 5: SEO */}
               <div className="bg-slate-50/40 border border-slate-200 rounded-[3px] p-5 space-y-5">
                 <h4 className="text-caption-responsive font-bold text-slate-800 uppercase tracking-wider border-b border-slate-100 pb-2">
                   4. SEO & Meta

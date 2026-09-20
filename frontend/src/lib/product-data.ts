@@ -223,6 +223,7 @@ export async function fetchProductBySlug(slug: string): Promise<Product | null> 
       'brand',
       'short_description',
       'specifications',
+      'features',
       'hero',
       'meta_title',
       'meta_description',
