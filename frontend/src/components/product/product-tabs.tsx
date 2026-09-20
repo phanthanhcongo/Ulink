@@ -235,11 +235,11 @@ export default function ProductTabs({
 
             {/* Chips */}
             <div className="flex flex-wrap gap-3 pt-2">
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#F3F4F6] border border-[#E5E7EB] rounded-full text-xs font-semibold text-[#111827]">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#F3F4F6] border border-[#E5E7EB] rounded-[3px] text-xs font-semibold text-[#111827]">
                 <Truck className="h-4 w-4 text-[#1769E2]" />
                 <span>{locale === 'vi' ? 'Giao hàng toàn quốc' : 'Nationwide Shipping'}</span>
               </div>
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#F3F4F6] border border-[#E5E7EB] rounded-full text-xs font-semibold text-[#111827]">
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#F3F4F6] border border-[#E5E7EB] rounded-[3px] text-xs font-semibold text-[#111827]">
                 <Package className="h-4 w-4 text-[#1769E2]" />
                 <span>{locale === 'vi' ? 'Lưu kho dễ dàng' : 'Easy Storage'}</span>
               </div>
