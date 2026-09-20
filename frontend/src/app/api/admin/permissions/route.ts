@@ -16,15 +16,12 @@ export async function GET(req: NextRequest) {
 
   let path: string;
   if (type === 'roles') {
-    path = '/roles?fields=id,name,icon,description&limit=-1';
-  } else if (type === 'policies') {
-    path = '/policies?fields=id,name,admin_access,app_access&limit=-1';
-  } else if (type === 'access') {
-    path = '/access?fields=id,role,policy&limit=-1';
+    path = '/roles?fields=id,name,icon,description,admin_access&limit=-1&sort=name';
   } else if (type === 'collections') {
     path = '/collections';
   } else {
-    path = '/permissions?fields=id,policy,collection,action,fields,permissions&limit=-1';
+    // Directus v10: permissions have `role` field (not policy)
+    path = '/permissions?fields=id,role,collection,action,fields,permissions&limit=-1';
   }
 
   const res = await proxyToDirectus(path, { cookieHeader: cookie });

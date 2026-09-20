@@ -8,24 +8,12 @@ interface Role {
   name: string;
   icon: string | null;
   description: string | null;
-}
-
-interface Policy {
-  id: string;
-  name: string;
   admin_access: boolean;
-  app_access: boolean;
-}
-
-interface AccessLink {
-  id: string;
-  role: string | null;
-  policy: string;
 }
 
 interface Permission {
   id: number;
-  policy: string;
+  role: string | null;
   collection: string;
   action: string;
   fields: string[] | null;
@@ -33,11 +21,10 @@ interface Permission {
 }
 
 const ACTIONS = ['create', 'read', 'update', 'delete'] as const;
+const ADMIN_ROLE_ID = '78c7d3ca-5d25-487f-bd87-cf42e9edce13';
 
 export default function PermissionsPage() {
   const [roles, setRoles] = useState<Role[]>([]);
-  const [policies, setPolicies] = useState<Policy[]>([]);
-  const [accessLinks, setAccessLinks] = useState<AccessLink[]>([]);
   const [permissions, setPermissions] = useState<Permission[]>([]);
   const [collections, setCollections] = useState<string[]>([]);
   const [selectedRole, setSelectedRole] = useState<string>('');
@@ -51,23 +38,26 @@ export default function PermissionsPage() {
   const fetchAll = useCallback(async () => {
     setLoading(true);
     try {
-      const [roleRes, polRes, accessRes, permRes, colRes] = await Promise.all([
+      const [roleRes, permRes, colRes] = await Promise.all([
         fetch('/api/admin/permissions?type=roles'),
-        fetch('/api/admin/permissions?type=policies'),
-        fetch('/api/admin/permissions?type=access'),
         fetch('/api/admin/permissions?type=permissions'),
         fetch('/api/admin/permissions?type=collections'),
       ]);
       const roleData = await roleRes.json();
-      const polData = await polRes.json();
-      const accessData = await accessRes.json();
       const permData = await permRes.json();
       const colData = await colRes.json();
 
-      const r: Role[] = roleData.data ?? [];
+      // Filter out admin roles
+      const allRoles: Role[] = roleData.data ?? [];
+      const r = allRoles.filter((role) => {
+        if (role.admin_access) return false;
+        if (role.name === 'Administrator') return false;
+        if (role.id === ADMIN_ROLE_ID) return false;
+        // Also filter system admin by description
+        if (role.description?.includes('$t:admin')) return false;
+        return true;
+      });
       setRoles(r);
-      setPolicies(polData.data ?? []);
-      setAccessLinks(accessData.data ?? []);
       setPermissions(permData.data ?? []);
 
       const cols = (colData.data ?? [])
@@ -88,30 +78,11 @@ export default function PermissionsPage() {
 
   useEffect(() => { fetchAll(); }, []);
 
-  // Get all policy IDs linked to the selected role
-  const getPoliciesForRole = (roleId: string): string[] => {
-    return accessLinks
-      .filter((a) => a.role === roleId)
-      .map((a) => a.policy);
-  };
-
-  // Find permission for any of the role's policies
+  // Directus v10: permissions use `role` directly (null = public)
   const findPermission = (roleId: string, collection: string, action: string): Permission | undefined => {
-    const policyIds = getPoliciesForRole(roleId);
     return permissions.find(
-      (p) => policyIds.includes(p.policy) && p.collection === collection && p.action === action
+      (p) => p.role === roleId && p.collection === collection && p.action === action
     );
-  };
-
-  // Get the "primary" (non-admin, first) policy for a role — used for creating new permissions
-  const getPrimaryPolicy = (roleId: string): string | null => {
-    const policyIds = getPoliciesForRole(roleId);
-    // Prefer a non-admin policy
-    const nonAdmin = policyIds.find((pid) => {
-      const pol = policies.find((p) => p.id === pid);
-      return pol && !pol.admin_access;
-    });
-    return nonAdmin ?? policyIds[0] ?? null;
   };
 
   const togglePermission = async (collection: string, action: string) => {
@@ -128,13 +99,11 @@ export default function PermissionsPage() {
         if (!res.ok) throw new Error('Xóa permission thất bại');
         setPermissions((prev) => prev.filter((p) => p.id !== existing.id));
       } else {
-        const policyId = getPrimaryPolicy(selectedRole);
-        if (!policyId) throw new Error('Role chưa có policy nào');
         const res = await fetch('/api/admin/permissions', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            policy: policyId,
+            role: selectedRole,
             collection,
             action,
             fields: ['*'],
@@ -155,8 +124,6 @@ export default function PermissionsPage() {
   const toggleAllForCollection = async (collection: string) => {
     if (!selectedRole) return;
     const allExist = ACTIONS.every((a) => findPermission(selectedRole, collection, a));
-    const policyId = getPrimaryPolicy(selectedRole);
-    if (!policyId) return;
 
     for (const action of ACTIONS) {
       const existing = findPermission(selectedRole, collection, action);
@@ -167,7 +134,7 @@ export default function PermissionsPage() {
         const res = await fetch('/api/admin/permissions', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ policy: policyId, collection, action, fields: ['*'], permissions: {} }),
+          body: JSON.stringify({ role: selectedRole, collection, action, fields: ['*'], permissions: {} }),
         });
         const data = await res.json();
         if (data.data) setPermissions((prev) => [...prev, data.data]);
@@ -177,8 +144,6 @@ export default function PermissionsPage() {
 
   const toggleAllForAction = async (action: string) => {
     if (!selectedRole) return;
-    const policyId = getPrimaryPolicy(selectedRole);
-    if (!policyId) return;
     const filtered = filteredCollections;
     const allExist = filtered.every((c) => findPermission(selectedRole, c, action));
 
@@ -191,7 +156,7 @@ export default function PermissionsPage() {
         const res = await fetch('/api/admin/permissions', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ policy: policyId, collection, action, fields: ['*'], permissions: {} }),
+          body: JSON.stringify({ role: selectedRole, collection, action, fields: ['*'], permissions: {} }),
         });
         const data = await res.json();
         if (data.data) setPermissions((prev) => [...prev, data.data]);
@@ -200,9 +165,9 @@ export default function PermissionsPage() {
   };
 
   const selectedRoleObj = roles.find((r) => r.id === selectedRole);
-  const rolePolicies = selectedRole
-    ? getPoliciesForRole(selectedRole).map((pid) => policies.find((p) => p.id === pid)).filter(Boolean)
-    : [];
+
+  const countPerms = (roleId: string) =>
+    permissions.filter((p) => p.role === roleId).length;
 
   const filteredCollections = collections.filter((c) => {
     if (!showSystem && c.startsWith('directus_')) return false;
@@ -210,7 +175,6 @@ export default function PermissionsPage() {
     return true;
   });
 
-  // Group by prefix
   const grouped: Record<string, string[]> = {};
   for (const col of filteredCollections) {
     const parts = col.split('_');
@@ -226,12 +190,6 @@ export default function PermissionsPage() {
       if (next.has(group)) next.delete(group); else next.add(group);
       return next;
     });
-  };
-
-  // Count permissions for a role
-  const countPerms = (roleId: string) => {
-    const policyIds = getPoliciesForRole(roleId);
-    return permissions.filter((p) => policyIds.includes(p.policy)).length;
   };
 
   if (loading) {
@@ -257,38 +215,30 @@ export default function PermissionsPage() {
 
       {/* Role tabs */}
       <div className="flex flex-wrap gap-2 mb-4">
-        {roles.map((role) => {
-          const isAdmin = rolePolicies.some((p) => p?.admin_access) && role.id === selectedRole;
-          return (
-            <button
-              key={role.id}
-              onClick={() => setSelectedRole(role.id)}
-              className={`px-4 py-2 rounded-lg text-sm font-medium transition border ${
-                role.id === selectedRole
-                  ? 'bg-blue-600 text-white border-blue-600'
-                  : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-50'
-              }`}
-            >
-              {role.name}
-              <span className={`ml-2 text-xs ${role.id === selectedRole ? 'text-blue-200' : 'text-gray-400'}`}>
-                ({countPerms(role.id)})
-              </span>
-            </button>
-          );
-        })}
+        {roles.map((role) => (
+          <button
+            key={role.id}
+            onClick={() => setSelectedRole(role.id)}
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition border ${
+              role.id === selectedRole
+                ? 'bg-blue-600 text-white border-blue-600'
+                : 'bg-white text-gray-700 border-gray-200 hover:bg-gray-50'
+            }`}
+          >
+            {role.name}
+            <span className={`ml-2 text-xs ${role.id === selectedRole ? 'text-blue-200' : 'text-gray-400'}`}>
+              ({countPerms(role.id)})
+            </span>
+          </button>
+        ))}
       </div>
 
-      {/* Role info */}
       {selectedRoleObj && (
         <div className="bg-blue-50 border border-blue-100 rounded-lg p-3 mb-4 text-sm">
           <strong>{selectedRoleObj.name}</strong>
-          {selectedRoleObj.description && <span className="text-gray-600"> — {selectedRoleObj.description}</span>}
-          <div className="mt-1 text-xs text-gray-500">
-            Policies: {rolePolicies.map((p) => p?.name).join(', ') || 'Chưa có'}
-            {rolePolicies.some((p) => p?.admin_access) && (
-              <span className="ml-2 text-red-600 font-medium">⚠ Admin (full access — không cần cấp quyền)</span>
-            )}
-          </div>
+          {selectedRoleObj.description && !selectedRoleObj.description.startsWith('$t:') && (
+            <span className="text-gray-600"> — {selectedRoleObj.description}</span>
+          )}
         </div>
       )}
 
