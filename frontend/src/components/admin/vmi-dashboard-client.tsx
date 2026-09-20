@@ -123,7 +123,7 @@ export function VMIDashboardClient({ user, orders = [], inventory = [], skus = [
             : 'ok'
       }))
       .sort((a, b) => {
-        const order = { out: 0, low: 1, ok: 2 };
+        const order: Record<string, number> = { out: 0, low: 1, ok: 2 };
         return (order[a.status] ?? 2) - (order[b.status] ?? 2);
       })
       .slice(0, 10);
