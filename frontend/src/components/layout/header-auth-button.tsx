@@ -60,44 +60,44 @@ export function HeaderAuthButton() {
           </button>
 
           {/* Dropdown */}
-          <div className="invisible absolute right-0 top-full z-50 mt-2 min-w-[200px] rounded-[3px] border border-border bg-card py-1 shadow-lg opacity-0 transition-all group-hover:visible group-hover:opacity-100">
+          <div className="invisible absolute right-0 top-full z-50 mt-2 min-w-[230px] w-max rounded-[4px] border border-border bg-card py-1.5 shadow-xl opacity-0 transition-all group-hover:visible group-hover:opacity-100">
             {isAdmin && (
               <Link
                 href="/admin"
-                className="flex items-center gap-2 border-b border-border px-4 py-2 text-[13px] font-bold text-brand transition-colors hover:bg-blue-50"
+                className="flex items-center gap-2.5 border-b border-border/80 px-4 py-2.5 text-[14px] font-bold text-brand transition-colors hover:bg-blue-50/80 whitespace-nowrap"
               >
-                <ShieldCheck className="h-4 w-4 text-brand" aria-hidden="true" />
-                {t('adminDashboard')}
+                <ShieldCheck className="h-4 w-4 text-brand shrink-0" aria-hidden="true" />
+                <span>{t('adminDashboard')}</span>
               </Link>
             )}
             <Link
               href="/order-tracking"
-              className="flex items-center gap-2 px-4 py-2 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] text-foreground transition-colors hover:bg-muted"
+              className="flex items-center gap-2.5 px-4 py-2.5 text-[14px] text-foreground transition-colors hover:bg-muted whitespace-nowrap font-medium"
             >
-              <ShoppingBag className="h-4 w-4 text-brand" aria-hidden="true" />
-              Danh sách đơn hàng
+              <ShoppingBag className="h-4 w-4 text-brand shrink-0" aria-hidden="true" />
+              <span>Danh sách đơn hàng</span>
             </Link>
             <Link
               href="/my-rfqs"
-              className="flex items-center gap-2 px-4 py-2 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] text-foreground transition-colors hover:bg-muted"
+              className="flex items-center gap-2.5 px-4 py-2.5 text-[14px] text-foreground transition-colors hover:bg-muted whitespace-nowrap font-medium"
             >
-              <ClipboardList className="h-4 w-4" aria-hidden="true" />
-              {t('myRfqs')}
+              <ClipboardList className="h-4 w-4 text-slate-500 shrink-0" aria-hidden="true" />
+              <span>{t('myRfqs')}</span>
             </Link>
             <Link
               href="/sample-requests"
-              className="flex items-center gap-2 px-4 py-2 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] text-foreground transition-colors hover:bg-muted"
+              className="flex items-center gap-2.5 px-4 py-2.5 text-[14px] text-foreground transition-colors hover:bg-muted whitespace-nowrap font-medium"
             >
-              <Package className="h-4 w-4" aria-hidden="true" />
-              {t('sampleRequests')}
+              <Package className="h-4 w-4 text-slate-500 shrink-0" aria-hidden="true" />
+              <span>{t('sampleRequests')}</span>
             </Link>
             <button
               type="button"
               onClick={() => logout()}
-              className="flex w-full items-center gap-2 px-4 py-2 text-[13px] sm:text-[14px] lg:text-[15px] xl:text-[16px] text-foreground transition-colors hover:bg-muted"
+              className="flex w-full items-center gap-2.5 px-4 py-2.5 text-[14px] text-slate-600 transition-colors hover:bg-rose-50 hover:text-rose-600 whitespace-nowrap font-medium cursor-pointer border-t border-border/40 mt-1"
             >
-              <LogOut className="h-4 w-4" aria-hidden="true" />
-              {t('logout')}
+              <LogOut className="h-4 w-4 shrink-0" aria-hidden="true" />
+              <span>{t('logout')}</span>
             </button>
           </div>
         </div>

@@ -292,6 +292,26 @@ export function buildCategoryProductsHref(category?: Pick<NavCategoryItem, 'id'>
   return `/solutions/listProduct?category=${encodeURIComponent(categorySlug)}`;
 }
 
+const industryPathMap: Record<string, string> = {
+  food: '/industries/food',
+  'food-beverage': '/industries/food',
+  medical: '/industries/pharmaceutical',
+  pharmaceutical: '/industries/pharmaceutical',
+  'pharmaceutical-cosmetics': '/industries/pharmaceutical',
+  electronics: '/industries/electronics',
+  logistics: '/industries/logistics',
+  furniture: '/industries/furniture',
+  hvac: '/industries/construction',
+  construction: '/industries/construction'
+};
+
+export function getIndustryHref(ind?: { id: string; slug?: string } | null) {
+  if (!ind) return '/industries';
+  if (ind.id && industryPathMap[ind.id]) return industryPathMap[ind.id];
+  if (ind.slug && industryPathMap[ind.slug]) return industryPathMap[ind.slug];
+  return `/industries/${ind.slug || ind.id}`;
+}
+
 const partnerItems = [
   {
     title: 'Mạng lưới phân phối rộng khắp',
@@ -1544,9 +1564,12 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                     <div className="flex flex-col gap-1.5">
                       {industriesData.map((ind) => {
                         const isIndActive = activeIndustry === ind.id;
+                        const indHref = getIndustryHref(ind);
                         return (
-                          <div
+                          <Link
                             key={ind.id}
+                            href={indHref}
+                            onClick={() => setActiveMenu(null)}
                             className={`relative flex items-center justify-between pl-8 pr-4 py-3 rounded-lg cursor-pointer transition-all duration-300 ${
                               isIndActive
                                 ? 'bg-blue-50/80 text-blue-600 font-bold shadow-[0_0_0_1px_#1769E2,0_4px_15px_-3px_rgba(23,105,226,0.15)]'
@@ -1563,7 +1586,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                                 isIndActive ? 'text-blue-600 translate-x-0.5' : 'text-slate-400'
                               }`}
                             />
-                          </div>
+                          </Link>
                         );
                       })}
                     </div>
@@ -1576,17 +1599,17 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                         <span className="text-body-regular font-bold text-slate-800">
                           Giải pháp ngành {currentIndustryData?.id === 'food' ? 'Thực phẩm & Đồ uống' : currentIndustryData?.name}
                         </span>
-                        <div className="h-[2px] w-8 bg-blue-655 bg-blue-600 rounded-full" />
+                        <div className="h-[2px] w-8 bg-blue-600 rounded-full" />
                       </div>
 
                       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6">
                         {currentIndustryData?.hubs.map((hub, idx) => {
                           const IconComp = IconMap[hub.icon] || Package;
-                          const industrySlug = (currentIndustryData as any)?.slug || currentIndustryData?.id || 'food-beverage';
+                          const industryHref = getIndustryHref(currentIndustryData);
                           return (
                             <Link
                               key={idx}
-                              href={`/industries/${industrySlug}`}
+                              href={industryHref}
                               onClick={() => setActiveMenu(null)}
                               className="flex items-start gap-3.5 group p-3 -m-2 rounded-[6px] border border-transparent transition-all duration-300 hover:-translate-y-0.5 hover:bg-blue-50/40 hover:shadow-[0_0_0_1px_#1769E2,0_8px_25px_-5px_rgba(23,105,226,0.2)]"
                             >
@@ -1609,7 +1632,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                         {/* 9th Grid Item: View All Link */}
                         <div className="flex items-center">
                           <Link
-                            href={`/industries/${(currentIndustryData as any)?.slug || currentIndustryData?.id || 'food-beverage'}`}
+                            href={getIndustryHref(currentIndustryData)}
                             onClick={() => setActiveMenu(null)}
                             className="group inline-flex items-center gap-1.5 text-body-regular font-bold text-blue-600 hover:text-blue-700 transition-colors"
                           >

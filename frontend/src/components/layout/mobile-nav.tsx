@@ -178,7 +178,7 @@ const RICH_MOBILE_NAV_DATA: Record<string, Array<{
   '/industries': [
     {
       title: 'Thực phẩm & Đồ uống',
-      link: '/industries',
+      link: '/industries/food',
       items: [
         { title: 'Đóng gói thực phẩm khô', desc: 'Màng co, túi PE, bao bì gia vị & ngũ cốc', icon: Package, color: 'bg-blue-50 text-blue-600' },
         { title: 'Bao bì thực phẩm tươi sống', desc: 'Khay xốp, màng bọc thực phẩm, hút chân không', icon: ClipboardList, color: 'bg-blue-50 text-blue-600' },
@@ -187,7 +187,7 @@ const RICH_MOBILE_NAV_DATA: Record<string, Array<{
     },
     {
       title: 'Dược phẩm & Y tế',
-      link: '/industries',
+      link: '/industries/pharmaceutical',
       items: [
         { title: 'Bao bì dược phẩm', desc: 'Màng nhôm ép vỉ, chai lọ nhựa dược', icon: Archive, color: 'bg-blue-50 text-blue-600' },
         { title: 'Vật tư phòng sạch y tế', desc: 'Khăn lau vô trùng, khẩu trang y tế', icon: Shield, color: 'bg-indigo-50 text-indigo-600' },
@@ -195,7 +195,7 @@ const RICH_MOBILE_NAV_DATA: Record<string, Array<{
     },
     {
       title: 'Điện tử & Linh kiện',
-      link: '/industries',
+      link: '/industries/electronics',
       items: [
         { title: 'Bao bì chống tĩnh điện ESD', desc: 'Túi shielding bag, túi bong bóng ESD', icon: Zap, color: 'bg-amber-50 text-amber-600' },
         { title: 'Khay chứa linh kiện', desc: 'Khay nhựa định hình ESD, hộp chống tĩnh điện', icon: Grid, color: 'bg-violet-50 text-violet-600' },
@@ -203,7 +203,7 @@ const RICH_MOBILE_NAV_DATA: Record<string, Array<{
     },
     {
       title: 'Logistics & Vận tải',
-      link: '/industries',
+      link: '/industries/logistics',
       items: [
         { title: 'Đóng gói pallet', desc: 'Màng quấn stretch film, dây đai PET', icon: Layers, color: 'bg-blue-50 text-blue-600' },
         { title: 'Túi khí chèn container', desc: 'Dunnage bag, hạt hút ẩm công nghiệp', icon: Briefcase, color: 'bg-orange-50 text-orange-600' },

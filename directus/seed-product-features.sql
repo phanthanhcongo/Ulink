@@ -365,3 +365,48 @@ UPDATE products SET
   features = '["IPA 99.9%", "Cleanroom Grade", "Lau rửa SMT", "Khử trùng"]',
   specifications = '{"Nồng độ": "99.9%", "Loại": "Cleanroom Grade", "Đóng gói": "Can 5L / 20L", "Ứng dụng": "Lau bo mạch SMT, khử trùng"}'
 WHERE slug = 'ipa-cleanroom-grade-999';
+
+UPDATE products SET
+  features = '["Không để lại cặn ion", "Khô nhanh", "An toàn bo mạch", "Tẩy Flux"]',
+  specifications = '{"Loại": "PCB Cleaner", "Tẩy": "Flux, nhựa cây", "Đóng gói": "Chai 1L / Can 5L", "Ứng dụng": "Bo mạch SMT sau hàn"}'
+WHERE slug = 'smt-pcb-cleaner-fluid';
+
+UPDATE products SET
+  features = '["Chống ẩm muối", "Phủ Acrylic", "Xịt nhanh", "Bảo vệ mạch"]',
+  specifications = '{"Loại": "Conformal Coating Acrylic", "Chống": "Ẩm, muối, oxy hóa", "Đóng gói": "Chai xịt 400ml", "Ứng dụng": "Bo mạch vùng duyên hải"}'
+WHERE slug = 'conformal-coating-acrylic';
+
+UPDATE products SET
+  features = '["pH 7.0 trung tính", "Không ion Na/K", "An toàn ESD", "Phòng sạch"]',
+  specifications = '{"pH": "7.0", "Chất liệu": "Detergent trung tính", "Đóng gói": "Can 5L / 20L", "Ứng dụng": "Lau sàn phòng sạch"}'
+WHERE slug = 'cleanroom-neutral-cleaner-detergent';
+
+UPDATE products SET
+  features = '["Tẩy keo kem hàn", "Stencil SMT", "Không ăn mòn", "Bay hơi nhanh"]',
+  specifications = '{"Loại": "Stencil Cleaner", "Đóng gói": "Chai 500ml", "Tẩy": "Keo kem hàn trên Stencil", "Ứng dụng": "Máy in keo tự động"}'
+WHERE slug = 'stencil-cleaning-fluid-smt';
+
+UPDATE products SET
+  features = '["Tẩy nhựa thông", "Khô nhanh 30s", "Xịt tiện lợi", "Không cặn"]',
+  specifications = '{"Loại": "Flux Remover", "Dung tích": "400ml", "Khô": "< 30 giây", "Ứng dụng": "Sửa chữa điện tử"}'
+WHERE slug = 'flux-remover-spray-400ml';
+
+UPDATE products SET
+  features = '["Chống bám tĩnh điện", "Lau kính", "Không vết loang", "Xịt phun sương"]',
+  specifications = '{"Loại": "Antistatic Cleaner", "Đóng gói": "Chai xịt 500ml", "Tính năng": "Ngăn hút bụi tĩnh điện", "Ứng dụng": "Kính máy soi, màn hình"}'
+WHERE slug = 'antistatic-surface-cleaner-spray';
+
+UPDATE products SET
+  features = '["18.2 MΩ.cm", "Siêu tinh khiết", "Khử ion hoàn toàn", "Pha dung dịch"]',
+  specifications = '{"Điện trở": "18.2 MΩ.cm", "Loại": "DI Water (Deionized)", "Đóng gói": "Can 5L / 20L", "Ứng dụng": "Pha dung dịch, rửa ống nghiệm"}'
+WHERE slug = 'deionized-di-water-cleanroom';
+
+UPDATE products SET
+  features = '["Tẩy dầu mỡ", "Không cháy nổ", "Khô nhanh", "An toàn công nghiệp"]',
+  specifications = '{"Loại": "Degreaser Solvent", "Đóng gói": "Can 5L / 20L", "Tẩy": "Dầu mỡ bôi trơn", "An toàn": "Không cháy nổ"}'
+WHERE slug = 'degreaser-solvent-industrial';
+
+UPDATE products SET
+  features = '["Không dẫn điện", "Bay hơi sạch", "Xịt chính xác", "3M chính hãng"]',
+  specifications = '{"Model": "3M Contact Cleaner", "Dung tích": "16oz (453ml)", "Tính năng": "Không dẫn điện", "Ứng dụng": "Tiếp điểm, relay, công tắc"}'
+WHERE slug = 'contact-cleaner-spray-3m';
