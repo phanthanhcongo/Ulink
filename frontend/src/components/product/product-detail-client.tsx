@@ -353,16 +353,23 @@ export default function ProductDetailClient({
                 className={cn(
                   'flex justify-between items-center px-[12px] py-[10px] text-[12px] transition-colors',
                   isActive
-                    ? 'bg-[#f5f8fc] text-[#1769e2] font-semibold'
-                    : 'text-[#495057] bg-white font-semibold'
+                    ? 'bg-[#EBF3FE] border-l-4 border-l-[#1769e2] text-[#1769e2] font-bold'
+                    : 'text-[#495057] bg-white font-medium hover:bg-slate-50'
                 )}
               >
-                <span>
-                  {tier.label} {unitLabel}
-                </span>
+                <div className="flex items-center gap-2">
+                  <span>
+                    {tier.label} {unitLabel}
+                  </span>
+                  {isActive && (
+                    <span className="px-1.5 py-0.5 rounded text-[10px] bg-[#1769e2] text-white font-semibold">
+                      {locale === 'vi' ? 'Đang áp dụng' : 'Active'}
+                    </span>
+                  )}
+                </div>
                 <span
                   className={cn(
-                    'font-semibold',
+                    'font-bold',
                     isActive ? 'text-[#1769e2]' : 'text-[#212529]'
                   )}
                 >
@@ -375,15 +382,15 @@ export default function ProductDetailClient({
       </div>
 
       {/* 5. TOTAL BLOCK */}
-      <div className="space-y-1 text-left">
-        <p className="text-[14px] font-semibold text-[#212529]">{locale === 'vi' ? 'Tổng cộng' : 'Total'}</p>
-        <span className="text-[28px] font-semibold text-[#1769e2] tracking-tight block leading-tight">
+      <div className="space-y-1 text-left bg-white p-3.5 rounded-[6px] border border-[#dce0e5]">
+        <p className="text-[13px] font-semibold text-[#6B7280]">{locale === 'vi' ? 'Tổng giá trị tạm tính' : 'Estimated Total'}</p>
+        <span className="text-[26px] font-bold text-[#1769e2] tracking-tight block leading-tight">
           {formatPrice(totalAmount)}
         </span>
-        <p className="text-[12px] text-[#495057] italic font-normal">
+        <p className="text-[11px] text-[#6B7280] italic font-normal">
           {locale === 'vi'
-            ? '*Giá bán sỉ ưu đãi khi mua số lượng lớn.'
-            : '*Wholesale price discount applied for high volumes.'}
+            ? '*Đã áp dụng mức chiết khấu sỉ B2B.'
+            : '*Wholesale volume discount applied.'}
         </p>
       </div>
 
@@ -394,18 +401,18 @@ export default function ProductDetailClient({
           onClick={handleAddToCart}
           disabled={!selectedSku}
           className={cn(
-            'w-full flex items-center justify-center gap-2 py-3 px-4 rounded-[3px] font-semibold text-[14px] text-white bg-[#1769e2] hover:bg-[#155fcb] transition-colors cursor-pointer shadow-xs',
+            'w-full flex items-center justify-center gap-2 h-[46px] px-4 rounded-[6px] font-bold text-[14px] text-white bg-[#1769e2] hover:bg-[#1257c0] active:scale-[0.99] transition-all cursor-pointer shadow-xs',
             !selectedSku && 'opacity-50 cursor-not-allowed'
           )}
         >
           {added ? (
             <>
-              <Check className="h-4 w-4 stroke-[2.5]" />
+              <Check className="h-4.5 w-4.5 stroke-[2.5]" />
               <span>{locale === 'vi' ? 'Đã thêm vào giỏ hàng' : 'Added to Cart'}</span>
             </>
           ) : (
             <>
-              <ShoppingCart className="h-4 w-4" />
+              <ShoppingCart className="h-4.5 w-4.5" />
               <span>{locale === 'vi' ? 'Thêm vào giỏ hàng' : labels.addToCart}</span>
             </>
           )}
@@ -416,11 +423,11 @@ export default function ProductDetailClient({
           onClick={handleRequestQuote}
           disabled={!selectedSku}
           className={cn(
-            'w-full flex items-center justify-center gap-2 h-[50px] px-4 rounded-[3px] font-semibold text-[14px] text-white bg-[#00b233] hover:bg-[#009b2c] transition-colors cursor-pointer shadow-xs',
+            'w-full flex items-center justify-center gap-2 h-[46px] px-4 rounded-[6px] font-bold text-[14px] text-white bg-[#00b233] hover:bg-[#00962b] active:scale-[0.99] transition-all cursor-pointer shadow-xs',
             !selectedSku && 'opacity-50 cursor-not-allowed'
           )}
         >
-          <span>{labels.requestQuote || (locale === 'vi' ? 'Thanh toán' : 'Checkout')}</span>
+          <span>{labels.requestQuote || (locale === 'vi' ? 'Thanh toán / Báo giá' : 'Checkout / Quote')}</span>
           <span className="text-[16px]">→</span>
         </button>
       </div>
@@ -428,27 +435,27 @@ export default function ProductDetailClient({
       <hr className="border-[#dce0e5]" />
 
       {/* 7. TRUST & DELIVERY BADGES */}
-      <div className="space-y-2 pt-1 text-[12px] text-[#495057] font-normal">
-        <div className="flex items-center gap-2">
-          <Settings2 className="h-4 w-4 text-slate-500 shrink-0" />
+      <div className="space-y-2.5 text-[12px] text-[#495057] font-medium">
+        <div className="flex items-center gap-2.5">
+          <Settings2 className="h-4 w-4 text-[#1769e2] shrink-0" />
           <span>
             {locale === 'vi'
               ? 'Sản xuất theo yêu cầu doanh nghiệp'
               : 'Custom manufacturing upon request'}
           </span>
         </div>
-        <div className="flex items-center gap-2">
-          <Clock className="h-4 w-4 text-slate-500 shrink-0" />
+        <div className="flex items-center gap-2.5">
+          <Clock className="h-4 w-4 text-[#1769e2] shrink-0" />
           <span>
             {locale === 'vi' ? 'Thời gian giao hàng: 3-5 ngày' : 'Delivery: 3-5 business days'}
           </span>
         </div>
-        <div className="flex items-center gap-2">
-          <MapPin className="h-4 w-4 text-slate-500 shrink-0" />
+        <div className="flex items-center gap-2.5">
+          <MapPin className="h-4 w-4 text-[#1769e2] shrink-0" />
           <span>
             {locale === 'vi'
-              ? 'Xuất xưởng: Hub Hà Nam, Việt Nam'
-              : 'Warehouse: Ha Nam Hub, Vietnam'}
+              ? 'Xuất xưởng: HUB Hà Nam, Việt Nam'
+              : 'Warehouse: Ha Nam HUB, Vietnam'}
           </span>
         </div>
       </div>

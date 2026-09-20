@@ -464,6 +464,7 @@ export function ProductsClient({
                           {/* Edit Product */}
                           <button
                             onClick={() => {
+                              console.log('[Edit Product] hero:', JSON.stringify(prod.hero), '| gallery:', JSON.stringify(prod.gallery));
                               setActiveProduct(prod);
                               const specRows = Object.entries(prod.specifications || {}).map(
                                 ([key, val]) => ({
@@ -547,43 +548,52 @@ export function ProductsClient({
                   Ảnh & Video sản phẩm
                 </h4>
 
-                {/* Hero Image */}
+                {/* Hero Images */}
                 <div className="space-y-2">
                   <label className="text-caption-responsive font-bold text-slate-500 uppercase">Ảnh đại diện (Hero)</label>
-                  <div className="flex items-start gap-3">
-                    {activeProduct.hero ? (
-                      <div className="relative w-32 h-32 rounded-lg overflow-hidden border border-slate-200 bg-white group">
-                        <Image
-                          src={resolveImageUrl(activeProduct.hero as string) || ''}
-                          alt="Ảnh đại diện"
-                          fill
-                          className="object-contain"
-                          unoptimized
-                        />
-                        {activeProduct.id && (
-                          <button
-                            type="button"
-                            onClick={async () => {
-                              if (!activeProduct.id) return;
-                              const res = await updateProductHero(activeProduct.id, null);
-                              if (res.success) {
-                                setActiveProduct({ ...activeProduct, hero: undefined });
-                              }
-                            }}
-                            className="absolute top-1 right-1 p-1 bg-red-500 text-white rounded-full opacity-0 group-hover:opacity-100 transition-opacity"
-                            title="Xóa ảnh đại diện"
-                          >
-                            <Trash2 className="w-3 h-3" />
-                          </button>
-                        )}
-                        <span className="absolute bottom-0 left-0 right-0 bg-black/50 text-white text-[10px] text-center py-0.5">Hero</span>
-                      </div>
-                    ) : (
-                      <div className="w-32 h-32 rounded-lg border-2 border-dashed border-slate-300 flex flex-col items-center justify-center text-slate-400">
-                        <ImageIcon className="w-8 h-8 mb-1" />
-                        <span className="text-[11px]">Chưa có ảnh</span>
-                      </div>
-                    )}
+                  <div className="flex flex-wrap items-start gap-3">
+                    {(() => {
+                      let heroUrls: string[] = [];
+                      const raw = activeProduct.hero;
+                      if (raw) {
+                        if (Array.isArray(raw)) {
+                          heroUrls = raw.map((u: string) => resolveImageUrl(u) || '').filter(Boolean);
+                        } else if (typeof raw === 'string' && raw.trim().startsWith('[')) {
+                          try {
+                            const parsed = JSON.parse(raw);
+                            if (Array.isArray(parsed)) {
+                              heroUrls = parsed.map((u: string) => resolveImageUrl(u) || '').filter(Boolean);
+                            }
+                          } catch { /* not JSON */ }
+                        }
+                        if (heroUrls.length === 0) {
+                          const single = resolveImageUrl(raw);
+                          if (single) heroUrls = [single];
+                        }
+                      }
+                      if (heroUrls.length === 0) {
+                        return (
+                          <div className="w-32 h-32 rounded-lg border-2 border-dashed border-slate-300 flex flex-col items-center justify-center text-slate-400">
+                            <ImageIcon className="w-8 h-8 mb-1" />
+                            <span className="text-[11px]">Chưa có ảnh</span>
+                          </div>
+                        );
+                      }
+                      return heroUrls.map((url, idx) => (
+                        <div key={idx} className="relative w-32 h-32 rounded-lg overflow-hidden border border-slate-200 bg-white group">
+                          <Image
+                            src={url}
+                            alt={`Ảnh ${idx + 1}`}
+                            fill
+                            className="object-contain"
+                            unoptimized
+                          />
+                          <span className="absolute bottom-0 left-0 right-0 bg-black/50 text-white text-[10px] text-center py-0.5">
+                            {idx === 0 ? 'Hero' : `Ảnh ${idx + 1}`}
+                          </span>
+                        </div>
+                      ));
+                    })()}
                     <label className="flex items-center gap-2 px-3 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-semibold text-slate-600 hover:bg-slate-50 cursor-pointer transition-colors">
                       <Upload className="w-4 h-4" />
                       <span>{activeProduct.hero ? 'Đổi ảnh' : 'Tải ảnh lên'}</span>
