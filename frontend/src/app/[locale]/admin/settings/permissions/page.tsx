@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useEffect, useState, useCallback } from 'react';
-import { Shield, Check, X, Loader2, ChevronDown, ChevronRight } from 'lucide-react';
+import { Shield, Check, X, Loader2, ChevronDown, ChevronRight, Settings2 } from 'lucide-react';
 
 interface Role {
   id: string;
@@ -23,6 +23,168 @@ interface Permission {
 const ACTIONS = ['create', 'read', 'update', 'delete'] as const;
 const ADMIN_ROLE_ID = '78c7d3ca-5d25-487f-bd87-cf42e9edce13';
 
+// --- Detail Modal ---
+function PermissionDetailModal({
+  perm,
+  collection,
+  action,
+  roleId,
+  onClose,
+  onSaved,
+  onDeleted,
+}: {
+  perm: Permission | null;
+  collection: string;
+  action: string;
+  roleId: string;
+  onClose: () => void;
+  onSaved: (p: Permission) => void;
+  onDeleted: (id: number) => void;
+}) {
+  const [fields, setFields] = useState(perm?.fields?.join(', ') ?? '*');
+  const [filter, setFilter] = useState(perm?.permissions ? JSON.stringify(perm.permissions, null, 2) : '{}');
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState('');
+
+  const handleSave = async () => {
+    setSaving(true);
+    setError('');
+
+    let parsedFilter: Record<string, unknown> = {};
+    try {
+      parsedFilter = JSON.parse(filter);
+    } catch {
+      setError('Filter JSON không hợp lệ');
+      setSaving(false);
+      return;
+    }
+
+    const parsedFields = fields
+      .split(',')
+      .map((f) => f.trim())
+      .filter(Boolean);
+    if (parsedFields.length === 0) parsedFields.push('*');
+
+    try {
+      if (perm) {
+        const res = await fetch('/api/admin/permissions', {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ id: perm.id, fields: parsedFields, permissions: parsedFilter }),
+        });
+        if (!res.ok) throw new Error('Cập nhật thất bại');
+        onSaved({ ...perm, fields: parsedFields, permissions: parsedFilter });
+      } else {
+        const res = await fetch('/api/admin/permissions', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ role: roleId, collection, action, fields: parsedFields, permissions: parsedFilter }),
+        });
+        if (!res.ok) throw new Error('Tạo thất bại');
+        const data = await res.json();
+        if (data.data) onSaved(data.data);
+      }
+      onClose();
+    } catch (err: unknown) {
+      setError(err instanceof Error ? err.message : 'Lỗi');
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const handleDelete = async () => {
+    if (!perm) return;
+    setSaving(true);
+    try {
+      await fetch(`/api/admin/permissions?id=${perm.id}`, { method: 'DELETE' });
+      onDeleted(perm.id);
+      onClose();
+    } catch {
+      setError('Xóa thất bại');
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  return (
+    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4" onClick={onClose}>
+      <div className="bg-white rounded-xl shadow-2xl w-full max-w-lg p-6 space-y-4" onClick={(e) => e.stopPropagation()}>
+        <h3 className="text-lg font-bold text-gray-900">
+          {perm ? 'Chỉnh sửa' : 'Tạo'} Permission
+        </h3>
+        <div className="grid grid-cols-2 gap-3 text-sm">
+          <div>
+            <span className="text-gray-500">Collection:</span>
+            <span className="ml-2 font-mono font-medium">{collection}</span>
+          </div>
+          <div>
+            <span className="text-gray-500">Action:</span>
+            <span className="ml-2 font-medium uppercase">{action}</span>
+          </div>
+        </div>
+
+        <div className="space-y-1">
+          <label className="block text-sm font-medium text-gray-700">
+            Fields <span className="text-gray-400 font-normal">(dùng * cho tất cả, phân cách bằng dấu phẩy)</span>
+          </label>
+          <input
+            type="text"
+            value={fields}
+            onChange={(e) => setFields(e.target.value)}
+            placeholder="* hoặc field1, field2, field3"
+            className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 font-mono text-sm"
+          />
+          <p className="text-xs text-gray-400">Dùng !field_name để loại trừ (vd: *, !password)</p>
+        </div>
+
+        <div className="space-y-1">
+          <label className="block text-sm font-medium text-gray-700">
+            Filter (JSON) <span className="text-gray-400 font-normal">— bộ lọc row-level</span>
+          </label>
+          <textarea
+            value={filter}
+            onChange={(e) => setFilter(e.target.value)}
+            rows={4}
+            placeholder='{ "status": { "_eq": "published" } }'
+            className="w-full px-3 py-2 border rounded-lg focus:ring-2 focus:ring-blue-500 font-mono text-sm"
+          />
+          <p className="text-xs text-gray-400">
+            Để {'{}'} nếu không cần filter. Ví dụ: {`{"user": {"_eq": "$CURRENT_USER"}}`}
+          </p>
+        </div>
+
+        {error && <p className="text-sm text-red-600">{error}</p>}
+
+        <div className="flex gap-3 pt-2 border-t">
+          <button
+            onClick={handleSave}
+            disabled={saving}
+            className="flex-1 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50 text-sm font-medium"
+          >
+            {saving ? 'Đang lưu...' : perm ? 'Cập nhật' : 'Tạo Permission'}
+          </button>
+          {perm && (
+            <button
+              onClick={handleDelete}
+              disabled={saving}
+              className="px-4 py-2 bg-red-50 text-red-600 rounded-lg hover:bg-red-100 disabled:opacity-50 text-sm font-medium"
+            >
+              Xóa
+            </button>
+          )}
+          <button
+            onClick={onClose}
+            className="px-4 py-2 bg-gray-100 text-gray-600 rounded-lg hover:bg-gray-200 text-sm"
+          >
+            Hủy
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// --- Main Page ---
 export default function PermissionsPage() {
   const [roles, setRoles] = useState<Role[]>([]);
   const [permissions, setPermissions] = useState<Permission[]>([]);
@@ -34,6 +196,7 @@ export default function PermissionsPage() {
   const [search, setSearch] = useState('');
   const [collapsedGroups, setCollapsedGroups] = useState<Set<string>>(new Set());
   const [showSystem, setShowSystem] = useState(false);
+  const [editModal, setEditModal] = useState<{ collection: string; action: string } | null>(null);
 
   const fetchAll = useCallback(async () => {
     setLoading(true);
@@ -47,13 +210,11 @@ export default function PermissionsPage() {
       const permData = await permRes.json();
       const colData = await colRes.json();
 
-      // Filter out admin roles
       const allRoles: Role[] = roleData.data ?? [];
       const r = allRoles.filter((role) => {
         if (role.admin_access) return false;
         if (role.name === 'Administrator') return false;
         if (role.id === ADMIN_ROLE_ID) return false;
-        // Also filter system admin by description
         if (role.description?.includes('$t:admin')) return false;
         return true;
       });
@@ -78,39 +239,29 @@ export default function PermissionsPage() {
 
   useEffect(() => { fetchAll(); }, []);
 
-  // Directus v10: permissions use `role` directly (null = public)
-  const findPermission = (roleId: string, collection: string, action: string): Permission | undefined => {
-    return permissions.find(
-      (p) => p.role === roleId && p.collection === collection && p.action === action
-    );
-  };
+  const findPermission = (roleId: string, collection: string, action: string): Permission | undefined =>
+    permissions.find((p) => p.role === roleId && p.collection === collection && p.action === action);
 
-  const togglePermission = async (collection: string, action: string) => {
+  // Quick toggle: click checkbox area
+  const quickToggle = async (collection: string, action: string) => {
     if (!selectedRole) return;
     const key = `${collection}:${action}`;
     setToggling(key);
     setMessage(null);
 
     const existing = findPermission(selectedRole, collection, action);
-
     try {
       if (existing) {
         const res = await fetch(`/api/admin/permissions?id=${existing.id}`, { method: 'DELETE' });
-        if (!res.ok) throw new Error('Xóa permission thất bại');
+        if (!res.ok) throw new Error('Xóa thất bại');
         setPermissions((prev) => prev.filter((p) => p.id !== existing.id));
       } else {
         const res = await fetch('/api/admin/permissions', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            role: selectedRole,
-            collection,
-            action,
-            fields: ['*'],
-            permissions: {},
-          }),
+          body: JSON.stringify({ role: selectedRole, collection, action, fields: ['*'], permissions: {} }),
         });
-        if (!res.ok) throw new Error('Tạo permission thất bại');
+        if (!res.ok) throw new Error('Tạo thất bại');
         const data = await res.json();
         if (data.data) setPermissions((prev) => [...prev, data.data]);
       }
@@ -124,7 +275,6 @@ export default function PermissionsPage() {
   const toggleAllForCollection = async (collection: string) => {
     if (!selectedRole) return;
     const allExist = ACTIONS.every((a) => findPermission(selectedRole, collection, a));
-
     for (const action of ACTIONS) {
       const existing = findPermission(selectedRole, collection, action);
       if (allExist && existing) {
@@ -142,32 +292,8 @@ export default function PermissionsPage() {
     }
   };
 
-  const toggleAllForAction = async (action: string) => {
-    if (!selectedRole) return;
-    const filtered = filteredCollections;
-    const allExist = filtered.every((c) => findPermission(selectedRole, c, action));
-
-    for (const collection of filtered) {
-      const existing = findPermission(selectedRole, collection, action);
-      if (allExist && existing) {
-        await fetch(`/api/admin/permissions?id=${existing.id}`, { method: 'DELETE' });
-        setPermissions((prev) => prev.filter((p) => p.id !== existing.id));
-      } else if (!allExist && !existing) {
-        const res = await fetch('/api/admin/permissions', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ role: selectedRole, collection, action, fields: ['*'], permissions: {} }),
-        });
-        const data = await res.json();
-        if (data.data) setPermissions((prev) => [...prev, data.data]);
-      }
-    }
-  };
-
   const selectedRoleObj = roles.find((r) => r.id === selectedRole);
-
-  const countPerms = (roleId: string) =>
-    permissions.filter((p) => p.role === roleId).length;
+  const countPerms = (roleId: string) => permissions.filter((p) => p.role === roleId).length;
 
   const filteredCollections = collections.filter((c) => {
     if (!showSystem && c.startsWith('directus_')) return false;
@@ -190,6 +316,18 @@ export default function PermissionsPage() {
       if (next.has(group)) next.delete(group); else next.add(group);
       return next;
     });
+  };
+
+  const handleModalSaved = (p: Permission) => {
+    setPermissions((prev) => {
+      const idx = prev.findIndex((x) => x.id === p.id);
+      if (idx >= 0) { const next = [...prev]; next[idx] = p; return next; }
+      return [...prev, p];
+    });
+  };
+
+  const handleModalDeleted = (id: number) => {
+    setPermissions((prev) => prev.filter((p) => p.id !== id));
   };
 
   if (loading) {
@@ -271,14 +409,8 @@ export default function PermissionsPage() {
             <tr className="bg-gray-50 border-b">
               <th className="text-left px-4 py-3 font-medium text-gray-700 min-w-[250px]">Collection</th>
               {ACTIONS.map((action) => (
-                <th key={action} className="text-center px-3 py-3 font-medium text-gray-700 w-[100px]">
-                  <button
-                    onClick={() => toggleAllForAction(action)}
-                    className="hover:text-blue-600 transition uppercase text-xs"
-                    title={`Toggle tất cả ${action}`}
-                  >
-                    {action}
-                  </button>
+                <th key={action} className="text-center px-3 py-3 font-medium text-gray-700 w-[120px] uppercase text-xs">
+                  {action}
                 </th>
               ))}
               <th className="text-center px-3 py-3 font-medium text-gray-700 w-[80px]">All</th>
@@ -305,51 +437,28 @@ export default function PermissionsPage() {
                       </td>
                     </tr>
                   )}
-                  {!isCollapsed && cols.map((collection) => {
-                    const hasFilter = ACTIONS.some((a) => {
-                      const p = findPermission(selectedRole, collection, a);
-                      return p?.permissions && Object.keys(p.permissions).length > 0;
-                    });
+                  {!isCollapsed && cols.map((collection) => (
+                    <tr key={collection} className="border-b hover:bg-blue-50/30 transition">
+                      <td className="px-4 py-2 font-mono text-xs text-gray-800">{collection}</td>
+                      {ACTIONS.map((action) => {
+                        const perm = findPermission(selectedRole, collection, action);
+                        const isToggling = toggling === `${collection}:${action}`;
 
-                    return (
-                      <tr key={collection} className="border-b hover:bg-blue-50/30 transition">
-                        <td className="px-4 py-2 font-mono text-xs text-gray-800">
-                          {collection}
-                          {hasFilter && (
-                            <span className="ml-2 text-[10px] bg-yellow-100 text-yellow-700 px-1.5 py-0.5 rounded">
-                              filter
-                            </span>
-                          )}
-                        </td>
-                        {ACTIONS.map((action) => {
-                          const perm = findPermission(selectedRole, collection, action);
-                          const isToggling = toggling === `${collection}:${action}`;
-                          const hasRowFilter = perm?.permissions && Object.keys(perm.permissions).length > 0;
-                          const hasFieldLimit = perm?.fields && !perm.fields.includes('*');
-
-                          return (
-                            <td key={action} className="text-center px-3 py-2">
+                        return (
+                          <td key={action} className="text-center px-3 py-2">
+                            <div className="flex items-center justify-center gap-1">
+                              {/* Toggle button */}
                               <button
-                                onClick={() => togglePermission(collection, action)}
+                                onClick={() => quickToggle(collection, action)}
                                 disabled={isToggling}
-                                className={`w-8 h-8 rounded-lg flex items-center justify-center mx-auto transition ${
+                                className={`w-8 h-8 rounded-lg flex items-center justify-center transition ${
                                   isToggling
                                     ? 'bg-gray-100'
                                     : perm
-                                    ? hasRowFilter || hasFieldLimit
-                                      ? 'bg-yellow-100 text-yellow-700 hover:bg-yellow-200'
-                                      : 'bg-green-100 text-green-700 hover:bg-green-200'
+                                    ? 'bg-green-100 text-green-700 hover:bg-green-200'
                                     : 'bg-gray-100 text-gray-300 hover:bg-red-50 hover:text-red-400'
                                 }`}
-                                title={
-                                  perm
-                                    ? hasRowFilter
-                                      ? `Filter: ${JSON.stringify(perm.permissions)}`
-                                      : hasFieldLimit
-                                      ? `Fields: ${perm.fields?.join(', ')}`
-                                      : 'Full access — click để xóa'
-                                    : 'Không có quyền — click để thêm'
-                                }
+                                title={perm ? 'Có quyền — click để xóa' : 'Không có quyền — click để thêm'}
                               >
                                 {isToggling ? (
                                   <Loader2 className="w-4 h-4 animate-spin" />
@@ -359,22 +468,28 @@ export default function PermissionsPage() {
                                   <X className="w-4 h-4" />
                                 )}
                               </button>
-                            </td>
-                          );
-                        })}
-                        <td className="text-center px-3 py-2">
-                          <button
-                            onClick={() => toggleAllForCollection(collection)}
-                            className="text-xs text-blue-600 hover:text-blue-800 hover:underline"
-                          >
-                            {ACTIONS.every((a) => findPermission(selectedRole, collection, a))
-                              ? 'Bỏ hết'
-                              : 'Cấp hết'}
-                          </button>
-                        </td>
-                      </tr>
-                    );
-                  })}
+                              {/* Detail/edit button */}
+                              <button
+                                onClick={() => setEditModal({ collection, action })}
+                                className="w-6 h-6 rounded flex items-center justify-center text-gray-300 hover:text-blue-600 hover:bg-blue-50 transition"
+                                title="Cấu hình chi tiết (fields, filter)"
+                              >
+                                <Settings2 className="w-3.5 h-3.5" />
+                              </button>
+                            </div>
+                          </td>
+                        );
+                      })}
+                      <td className="text-center px-3 py-2">
+                        <button
+                          onClick={() => toggleAllForCollection(collection)}
+                          className="text-xs text-blue-600 hover:text-blue-800 hover:underline"
+                        >
+                          {ACTIONS.every((a) => findPermission(selectedRole, collection, a)) ? 'Bỏ hết' : 'Cấp hết'}
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
                 </React.Fragment>
               );
             })}
@@ -383,20 +498,33 @@ export default function PermissionsPage() {
       </div>
 
       {/* Legend */}
-      <div className="mt-4 flex flex-wrap gap-4 text-xs text-gray-500">
-        <span className="inline-flex items-center gap-1">
-          <span className="w-4 h-4 rounded bg-green-100 inline-flex items-center justify-center"><Check className="w-3 h-3 text-green-700" /></span>
-          Full access
+      <div className="mt-4 flex flex-wrap gap-6 text-xs text-gray-500">
+        <span className="inline-flex items-center gap-1.5">
+          <span className="w-5 h-5 rounded bg-green-100 inline-flex items-center justify-center"><Check className="w-3 h-3 text-green-700" /></span>
+          Có quyền
         </span>
-        <span className="inline-flex items-center gap-1">
-          <span className="w-4 h-4 rounded bg-yellow-100 inline-flex items-center justify-center"><Check className="w-3 h-3 text-yellow-700" /></span>
-          Có filter / giới hạn fields
-        </span>
-        <span className="inline-flex items-center gap-1">
-          <span className="w-4 h-4 rounded bg-gray-100 inline-flex items-center justify-center"><X className="w-3 h-3 text-gray-300" /></span>
+        <span className="inline-flex items-center gap-1.5">
+          <span className="w-5 h-5 rounded bg-gray-100 inline-flex items-center justify-center"><X className="w-3 h-3 text-gray-300" /></span>
           Không có quyền
         </span>
+        <span className="inline-flex items-center gap-1.5">
+          <Settings2 className="w-3.5 h-3.5 text-gray-400" />
+          Cấu hình chi tiết (fields, filter)
+        </span>
       </div>
+
+      {/* Detail modal */}
+      {editModal && (
+        <PermissionDetailModal
+          perm={findPermission(selectedRole, editModal.collection, editModal.action) ?? null}
+          collection={editModal.collection}
+          action={editModal.action}
+          roleId={selectedRole}
+          onClose={() => setEditModal(null)}
+          onSaved={handleModalSaved}
+          onDeleted={handleModalDeleted}
+        />
+      )}
     </div>
   );
 }

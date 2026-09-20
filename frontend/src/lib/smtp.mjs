@@ -265,17 +265,20 @@ async function readMailConfigFromDb(env = process.env) {
     return _dbConfigCache;
   }
   try {
-    const pg = await import('pg');
-    const dbUrl = env.DATABASE_URL
-      ?? `postgresql://${env.POSTGRES_USER ?? 'ulink'}:${env.POSTGRES_PASSWORD ?? 'change-me-strong-password'}@${env.POSTGRES_HOST ?? 'localhost'}:${env.POSTGRES_PORT ?? '5460'}/${env.POSTGRES_DB ?? 'ulink'}`;
-    const client = new pg.default.Client({ connectionString: dbUrl });
-    await client.connect();
-    try {
-      const result = await client.query(
-        'SELECT host, port, secure, username, password, mail_from, enabled FROM mail_settings WHERE id = 1'
-      );
-      const row = result.rows[0];
-      if (row && row.enabled && row.host) {
+    const directusUrl = env.DIRECTUS_URL ?? 'http://localhost:8055';
+    const token = env.DIRECTUS_TOKEN ?? '';
+    const res = await fetch(`${directusUrl}/items/mail_settings?limit=1`, {
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    });
+    if (!res.ok) return null;
+    const json = await res.json();
+    const items = json.data;
+    if (Array.isArray(items) && items.length > 0) {
+      const row = items[0];
+      if (row.enabled && row.host) {
         _dbConfigCache = {
           host: row.host,
           port: row.port ?? 587,
@@ -287,11 +290,9 @@ async function readMailConfigFromDb(env = process.env) {
         _dbConfigCacheTime = Date.now();
         return _dbConfigCache;
       }
-    } finally {
-      await client.end();
     }
   } catch {
-    // DB not available or table missing — fall through to env
+    // Directus not available or collection missing — fall through to env
   }
   return null;
 }

@@ -2,17 +2,17 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { getCurrentUser, isAdminUser } from '@/lib/auth-helpers';
+import { readItems, createItem, updateItem } from '@directus/sdk';
+import { createWriteDirectusClient } from '@/lib/directus';
 
-const DATABASE_URL =
-  process.env.DATABASE_URL ??
-  `postgresql://${process.env.POSTGRES_USER ?? 'ulink'}:${process.env.POSTGRES_PASSWORD ?? 'change-me-strong-password'}@${process.env.POSTGRES_HOST ?? 'localhost'}:${process.env.POSTGRES_PORT ?? '5460'}/${process.env.POSTGRES_DB ?? 'ulink'}`;
-
-async function getDbClient() {
-  const pg = await import('pg');
-  const client = new pg.default.Client({ connectionString: DATABASE_URL });
-  await client.connect();
-  return client;
-}
+const DEFAULT_SETTINGS = {
+  host: '',
+  port: 587,
+  secure: false,
+  username: '',
+  mail_from: '',
+  enabled: false,
+};
 
 export async function GET() {
   const user = await getCurrentUser();
@@ -20,19 +20,24 @@ export async function GET() {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
 
-  const client = await getDbClient();
   try {
-    const result = await client.query(
-      'SELECT host, port, secure, username, mail_from, enabled FROM mail_settings WHERE id = 1'
-    );
-    if (result.rows.length === 0) {
-      return NextResponse.json({
-        data: { host: '', port: 587, secure: false, username: '', mail_from: '', enabled: false },
-      });
+    const client = createWriteDirectusClient();
+    const items = await client.request(
+      readItems('mail_settings' as any, {
+        limit: 1,
+        fields: ['id', 'host', 'port', 'secure', 'username', 'mail_from', 'enabled'],
+      } as any)
+    ) as any[];
+
+    if (!items || items.length === 0) {
+      return NextResponse.json({ data: DEFAULT_SETTINGS });
     }
-    return NextResponse.json({ data: result.rows[0] });
-  } finally {
-    await client.end();
+
+    return NextResponse.json({ data: items[0] });
+  } catch (error) {
+    console.error('[mail-settings GET]', error);
+    // If collection doesn't exist yet, return defaults
+    return NextResponse.json({ data: DEFAULT_SETTINGS });
   }
 }
 
@@ -45,49 +50,46 @@ export async function PUT(req: NextRequest) {
   const body = await req.json();
   const { host, port, secure, username, password, mail_from, enabled } = body;
 
-  const client = await getDbClient();
   try {
-    // Ensure table + row exist
-    await client.query(`
-      CREATE TABLE IF NOT EXISTS mail_settings (
-        id INTEGER PRIMARY KEY DEFAULT 1 CHECK (id = 1),
-        host VARCHAR(255),
-        port INTEGER,
-        secure BOOLEAN DEFAULT false,
-        username VARCHAR(255),
-        password VARCHAR(255),
-        mail_from VARCHAR(500),
-        enabled BOOLEAN DEFAULT false,
-        updated_at TIMESTAMPTZ DEFAULT NOW()
+    const client = createWriteDirectusClient();
+
+    // Check if a record already exists
+    const existing = await client.request(
+      readItems('mail_settings' as any, { limit: 1, fields: ['id'] } as any)
+    ) as any[];
+
+    const updateData: Record<string, unknown> = {};
+    if (host !== undefined) updateData.host = host;
+    if (port !== undefined) updateData.port = port;
+    if (secure !== undefined) updateData.secure = secure;
+    if (username !== undefined) updateData.username = username;
+    if (password !== undefined && password !== '') updateData.password = password;
+    if (mail_from !== undefined) updateData.mail_from = mail_from;
+    if (enabled !== undefined) updateData.enabled = enabled;
+
+    if (existing && existing.length > 0) {
+      await client.request(
+        updateItem('mail_settings' as any, existing[0].id, updateData as any)
       );
-    `);
-    await client.query(`
-      INSERT INTO mail_settings (id) VALUES (1) ON CONFLICT (id) DO NOTHING;
-    `);
-
-    // Build dynamic update
-    const fields: string[] = [];
-    const values: unknown[] = [];
-    let idx = 1;
-
-    if (host !== undefined) { fields.push(`host = $${idx++}`); values.push(host); }
-    if (port !== undefined) { fields.push(`port = $${idx++}`); values.push(port); }
-    if (secure !== undefined) { fields.push(`secure = $${idx++}`); values.push(secure); }
-    if (username !== undefined) { fields.push(`username = $${idx++}`); values.push(username); }
-    if (password !== undefined && password !== '') { fields.push(`password = $${idx++}`); values.push(password); }
-    if (mail_from !== undefined) { fields.push(`mail_from = $${idx++}`); values.push(mail_from); }
-    if (enabled !== undefined) { fields.push(`enabled = $${idx++}`); values.push(enabled); }
-    fields.push(`updated_at = NOW()`);
-
-    if (fields.length > 1) {
-      await client.query(
-        `UPDATE mail_settings SET ${fields.join(', ')} WHERE id = 1`,
-        values
+    } else {
+      await client.request(
+        (createItem as any)('mail_settings', {
+          host: host ?? '',
+          port: port ?? 587,
+          secure: secure ?? false,
+          username: username ?? '',
+          password: password ?? '',
+          mail_from: mail_from ?? '',
+          enabled: enabled ?? false,
+          ...updateData,
+        })
       );
     }
 
     return NextResponse.json({ success: true });
-  } finally {
-    await client.end();
+  } catch (error) {
+    console.error('[mail-settings PUT]', error);
+    const message = error instanceof Error ? error.message : 'Failed to update mail settings';
+    return NextResponse.json({ error: message }, { status: 500 });
   }
 }
