@@ -11,7 +11,7 @@ import {
 import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 import { ConfirmModal } from './confirm-modal';
-import { saveEvent, deleteEvent } from '@/app/[locale]/admin/events/actions';
+import { saveEvent, deleteEvent, uploadEventImage } from '@/app/[locale]/admin/events/actions';
 import { resolveImageUrl } from '@/lib/image-url';
 
 interface EventRecord {
@@ -504,12 +504,33 @@ export function EventsAdminClient({ initialEvents, error }: Props) {
                         <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">Ảnh bìa sự kiện</label>
                         <div className="flex items-start gap-3">
                           {activeEvent.image && (resolveImageUrl(activeEvent.image) || activeEvent.image) && (
-                            <div className="relative h-20 w-32 rounded-[3px] border border-slate-200 overflow-hidden bg-slate-50 shrink-0">
+                            <div className="relative h-20 w-32 rounded-[3px] border border-slate-200 overflow-hidden bg-slate-50 shrink-0 group">
                               <img src={resolveImageUrl(activeEvent.image) || activeEvent.image} alt="Preview" className="h-full w-full object-cover" />
+                              <button type="button" onClick={() => set('image', '')}
+                                className="absolute top-1 right-1 h-5 w-5 rounded-full bg-red-500 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity"
+                                title="Xoá ảnh">
+                                <X className="h-3 w-3" />
+                              </button>
                             </div>
                           )}
-                          <input type="text" value={activeEvent.image || ''} onChange={(e) => set('image', e.target.value)} placeholder="Nhập đường dẫn ảnh hoặc UUID từ Directus..."
-                            className={cn(inputCls, 'flex-1')} />
+                          <input
+                            type="file"
+                            accept="image/*"
+                            onChange={async (e) => {
+                              const file = e.target.files?.[0];
+                              if (!file) return;
+                              const formData = new FormData();
+                              formData.append('file', file);
+                              const res = await uploadEventImage(formData);
+                              if (res.success && res.id) {
+                                set('image', res.id);
+                                toast.success('Tải ảnh lên thành công');
+                              } else {
+                                toast.error(res.error || 'Tải ảnh thất bại');
+                              }
+                            }}
+                            className="flex-1 text-caption-responsive file:mr-2 file:py-1.5 file:px-3 file:rounded-[3px] file:border file:border-slate-200 file:text-caption-responsive file:font-bold file:bg-white file:text-slate-600 hover:file:bg-slate-50"
+                          />
                         </div>
                       </div>
                     </div>

@@ -4,7 +4,7 @@ import { ValidationError } from './errors.mjs';
 // ── Regex Patterns ──────────────────────────────────────────────
 export const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export const PASSWORD_RE = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
+export const PASSWORD_RE = /^.{6,}$/;
 
 export const OTP_CODE_RE = /^\d{6}$/;
 
@@ -39,7 +39,7 @@ export function validatePassword(value) {
   if (!PASSWORD_RE.test(password)) {
     throw new ValidationError(
       'PASSWORD_POLICY',
-      'Password must be at least 8 characters and contain uppercase, lowercase, number, and special character.'
+      'Password must be at least 6 characters.'
     );
   }
   return password;

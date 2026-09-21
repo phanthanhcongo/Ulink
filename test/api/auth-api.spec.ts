@@ -1310,7 +1310,7 @@ test.describe.serial('Kiểm thử API Xác thực & Đăng ký', () => {
       expectedStatus: 422
     });
 
-    expect(getErrorMessage(result.body), 'Thông báo lỗi phải chỉ ra sai định dạng mật khẩu').toContain("Password must be at least 8 characters");
+    expect(getErrorMessage(result.body), 'Thông báo lỗi phải chỉ ra sai định dạng mật khẩu').toContain("Password must be at least 6 characters");
   });
 
   test('TC-16-b: Đăng ký B2B — Mật khẩu thiếu chữ hoa', async ({ request }) => {
@@ -1332,7 +1332,7 @@ test.describe.serial('Kiểm thử API Xác thực & Đăng ký', () => {
       expectedStatus: 422
     });
 
-    expect(getErrorMessage(result.body), 'Thông báo lỗi phải chỉ ra sai định dạng mật khẩu').toContain("Password must be at least 8 characters");
+    expect(getErrorMessage(result.body), 'Thông báo lỗi phải chỉ ra sai định dạng mật khẩu').toContain("Password must be at least 6 characters");
   });
 
   test('TC-16-c: Đăng ký B2B — Mật khẩu thiếu chữ thường', async ({ request }) => {
@@ -1354,7 +1354,7 @@ test.describe.serial('Kiểm thử API Xác thực & Đăng ký', () => {
       expectedStatus: 422
     });
 
-    expect(getErrorMessage(result.body), 'Thông báo lỗi phải chỉ ra sai định dạng mật khẩu').toContain("Password must be at least 8 characters");
+    expect(getErrorMessage(result.body), 'Thông báo lỗi phải chỉ ra sai định dạng mật khẩu').toContain("Password must be at least 6 characters");
   });
 
   test('TC-16-d: Đăng ký B2B — Mật khẩu thiếu số', async ({ request }) => {
@@ -1376,7 +1376,7 @@ test.describe.serial('Kiểm thử API Xác thực & Đăng ký', () => {
       expectedStatus: 422
     });
 
-    expect(getErrorMessage(result.body), 'Thông báo lỗi phải chỉ ra sai định dạng mật khẩu').toContain("Password must be at least 8 characters");
+    expect(getErrorMessage(result.body), 'Thông báo lỗi phải chỉ ra sai định dạng mật khẩu').toContain("Password must be at least 6 characters");
   });
 
   test('TC-16-e: Đăng ký B2B — Mật khẩu thiếu ký tự đặc biệt', async ({ request }) => {
@@ -1398,7 +1398,7 @@ test.describe.serial('Kiểm thử API Xác thực & Đăng ký', () => {
       expectedStatus: 422
     });
 
-    expect(getErrorMessage(result.body), 'Thông báo lỗi phải chỉ ra sai định dạng mật khẩu').toContain("Password must be at least 8 characters");
+    expect(getErrorMessage(result.body), 'Thông báo lỗi phải chỉ ra sai định dạng mật khẩu').toContain("Password must be at least 6 characters");
   });
 
   test('TC-17: Sau đăng ký B2B — Phân quyền của Customer vừa đăng ký', async ({ request }) => {

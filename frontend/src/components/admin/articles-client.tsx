@@ -775,9 +775,9 @@ export function ArticlesClient({
                           type="text"
                           required
                           value={activeArticle.slug || ''}
-                          readOnly
+                          onChange={(e) => setActiveArticle((prev) => prev ? { ...prev, slug: e.target.value } : null)}
                           placeholder="Tự động tạo từ tiêu đề..."
-                          className="w-full px-4 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-mono text-slate-450 focus:outline-none bg-slate-50 cursor-not-allowed select-none"
+                          className="w-full px-4 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-mono text-slate-600 focus:outline-none focus:ring-1 focus:ring-brand"
                         />
                       </div>
 
@@ -819,21 +819,25 @@ export function ArticlesClient({
                         <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
                           Danh mục
                         </label>
-                        <select
+                        <input
+                          type="text"
+                          list="article-category-list"
                           value={activeArticle.category || ''}
                           onChange={(e) =>
                             setActiveArticle({ ...activeArticle, category: e.target.value })
                           }
-                          className="w-full px-4 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-700 focus:outline-none bg-white shadow-sm"
-                        >
-                          <option value="">-- Chọn danh mục --</option>
-                          <option value="Tin tức">Tin tức</option>
-                          <option value="Catalogue">Catalogue</option>
-                          <option value="Tài liệu kỹ thuật">Tài liệu kỹ thuật</option>
-                          <option value="Hướng dẫn">Hướng dẫn</option>
-                          <option value="Case Study">Nghiên cứu điển hình</option>
-                          <option value="Sự kiện">Sự kiện</option>
-                        </select>
+                          placeholder="Chọn hoặc nhập danh mục..."
+                          className="w-full px-4 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand bg-white shadow-sm"
+                        />
+                        <datalist id="article-category-list">
+                          <option value="Tin tức" />
+                          <option value="Catalogue" />
+                          <option value="Tài liệu kỹ thuật" />
+                          <option value="Hướng dẫn" />
+                          <option value="Nghiên cứu điển hình" />
+                          <option value="Sự kiện" />
+                          <option value="Khu công nghiệp" />
+                        </datalist>
                       </div>
 
                       {/* Author Role */}

@@ -115,6 +115,41 @@ export async function saveEvent(data: {
   }
 }
 
+export async function uploadEventImage(formData: FormData) {
+  await checkAuth();
+
+  try {
+    const store = await cookies();
+    const sessionToken = store.get('directus_session_token')?.value;
+    const refreshToken = store.get('directus_refresh_token')?.value;
+
+    const cookieHeader = [
+      sessionToken ? `directus_session_token=${sessionToken}` : null,
+      refreshToken ? `directus_refresh_token=${refreshToken}` : null
+    ]
+      .filter(Boolean)
+      .join('; ');
+
+    const url = getDirectusUrl();
+    const res = await fetch(`${url}/files`, {
+      method: 'POST',
+      headers: { cookie: cookieHeader },
+      body: formData
+    });
+
+    if (!res.ok) {
+      const errText = await res.text();
+      throw new Error(errText || 'Upload failed');
+    }
+
+    const json = await res.json();
+    return { success: true, id: json.data.id };
+  } catch (err) {
+    console.error('Failed to upload event image:', err);
+    return { success: false, error: extractErrorMessage(err) };
+  }
+}
+
 export async function deleteEvent(id: number) {
   await checkAuth();
 

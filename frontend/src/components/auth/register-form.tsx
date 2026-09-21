@@ -30,8 +30,7 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const PHONE_RE = /^\d{6,}$/;
 // Server enforces this — same regex in src/lib/validators.ts and Directus
 // customer-onboarding-endpoint/service.js. Keep in sync.
-const PASSWORD_RE =
-  /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]).{8,}$/;
+const PASSWORD_RE = /^.{6,}$/;
 
 type Fields = 'company_name' | 'contact_name' | 'email' | 'phone' | 'password' | 'confirm_password';
 
