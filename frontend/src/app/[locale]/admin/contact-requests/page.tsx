@@ -9,6 +9,7 @@ import { getCurrentUser } from '@/lib/auth-helpers';
 import { createWriteDirectusClient, Schema } from '@/lib/directus';
 import { getDirectusUrl } from '@/lib/directus-runtime.mjs';
 import { ContactRequestsClient } from '@/components/admin/contact-requests-client';
+import { extractErrorMessage } from '@/lib/api-error';
 
 async function getSessionClient() {
   const store = await cookies();
@@ -82,7 +83,7 @@ export default async function AdminContactRequestsPage({ params }: Props) {
     try {
       error = JSON.stringify(err, null, 2);
     } catch {
-      error = String(err);
+      error = extractErrorMessage(err);
     }
   }
 

@@ -8,6 +8,7 @@ import { createDirectus, rest, readUsers, readRoles } from '@directus/sdk';
 import { cookies } from 'next/headers';
 import { getDirectusUrl } from '@/lib/directus-runtime.mjs';
 import { UsersClient } from '@/components/admin/users-client';
+import { extractErrorMessage } from '@/lib/api-error';
 
 async function getSessionClient() {
   const store = await cookies();
@@ -88,7 +89,7 @@ export default async function AdminUsersPage({ params }: PageProps) {
     try {
       error = JSON.stringify(err, null, 2);
     } catch {
-      error = String(err);
+      error = extractErrorMessage(err);
     }
   }
 

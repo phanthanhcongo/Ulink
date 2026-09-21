@@ -8,6 +8,7 @@ import { revalidatePath } from 'next/cache';
 import { getCurrentUser } from '@/lib/auth-helpers';
 import { getDirectusUrl } from '@/lib/directus-runtime.mjs';
 import { cookies } from 'next/headers';
+import { extractErrorMessage } from '@/lib/api-error';
 
 function formatError(err: any): string {
   if (err && typeof err === 'object') {
@@ -21,10 +22,10 @@ function formatError(err: any): string {
       };
       return JSON.stringify(errorObj, null, 2);
     } catch {
-      return String(err);
+      return extractErrorMessage(err);
     }
   }
-  return String(err);
+  return extractErrorMessage(err);
 }
 
 async function getSessionClient() {

@@ -2,7 +2,7 @@
 
 /* eslint-disable @next/next/no-img-element, @typescript-eslint/no-explicit-any, @typescript-eslint/no-unused-vars */
 
-import React, { useState, useTransition, useRef } from 'react';
+import React, { useState, useTransition, useRef, useCallback } from 'react';
 import toast from 'react-hot-toast';
 import {
   Plus,
@@ -22,6 +22,7 @@ import {
 import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 import { ConfirmModal } from './confirm-modal';
+import { RichTextEditor } from './rich-text-editor';
 import { getDirectusUrlClient } from '@/lib/directus-runtime.mjs';
 import { getTranslatedField } from '@/lib/i18n-content';
 import { resolveImageUrl } from '@/lib/image-url';
@@ -48,6 +49,20 @@ interface Article {
   category?: string | null;
   published_at?: string | null;
   translations?: Translation[];
+}
+
+const SUPPORTED_LANGS = [
+  { code: 'vi', label: 'Tiếng Việt', flag: '\u{1F1FB}\u{1F1F3}' },
+  { code: 'en', label: 'English', flag: '\u{1F1EC}\u{1F1E7}' },
+  { code: 'ja', label: '日本語', flag: '\u{1F1EF}\u{1F1F5}' },
+] as const;
+
+interface TranslationDraft {
+  title: string;
+  description: string;
+  body: string;
+  meta_title: string;
+  meta_description: string;
 }
 
 interface ArticlesClientProps {
@@ -94,39 +109,47 @@ export function ArticlesClient({
 
   // Upload state
   const fileInputRef = useRef<HTMLInputElement>(null);
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
-
-  const insertTag = (openTag: string, closeTag: string) => {
-    const el = textareaRef.current;
-    if (!el) return;
-
-    const start = el.selectionStart;
-    const end = el.selectionEnd;
-    const text = el.value;
-    const selected = text.substring(start, end);
-    const replacement = openTag + selected + closeTag;
-
-    const newValue = text.substring(0, start) + replacement + text.substring(end);
-    setActiveArticle((prev) => (prev ? { ...prev, body: newValue } : null));
-
-    // Restore cursor position and selection
-    setTimeout(() => {
-      el.focus();
-      el.setSelectionRange(start + openTag.length, start + openTag.length + selected.length);
-    }, 0);
-  };
 
   const [isUploading, setIsUploading] = useState(false);
   const [activeFormTab, setActiveFormTab] = useState<'content' | 'seo'>('content');
+  const [statusFilter, setStatusFilter] = useState<'all' | 'published' | 'draft'>('all');
+  const [isDirty, setIsDirty] = useState(false);
+  const initialArticleRef = useRef<string>('');
 
-  // Filter articles by search query
+  const [editLocale, setEditLocale] = useState(locale);
+  const [translationDrafts, setTranslationDrafts] = useState<Record<string, TranslationDraft>>({});
+
+  const currentDraft = translationDrafts[editLocale] || { title: '', description: '', body: '', meta_title: '', meta_description: '' };
+  const updateCurrentDraft = useCallback((patch: Partial<TranslationDraft>) => {
+    setTranslationDrafts(prev => ({
+      ...prev,
+      [editLocale]: { ...(prev[editLocale] || { title: '', description: '', body: '', meta_title: '', meta_description: '' }), ...patch }
+    }));
+    setIsDirty(true);
+  }, [editLocale]);
+
+  const handleCloseModal = useCallback(() => {
+    if (isDirty) {
+      const confirmed = window.confirm('Bạn có thay đổi chưa lưu. Bạn có chắc muốn đóng?');
+      if (!confirmed) return;
+    }
+    setModalOpen(false);
+    setActiveArticle(null);
+    setFormError('');
+    setIsDirty(false);
+  }, [isDirty]);
+
+  const trackChange = useCallback(() => {
+    setIsDirty(true);
+  }, []);
+
+  // Filter articles by search query and status
   const filteredArticles = articles.filter((art) => {
+    if (statusFilter !== 'all' && art.status !== statusFilter) return false;
     const title = getTranslatedField(art, 'title', locale).toLowerCase();
-    const slug = art.slug.toLowerCase();
     const author = (art.author || '').toLowerCase();
     const q = searchQuery.toLowerCase();
-
-    return title.includes(q) || slug.includes(q) || author.includes(q);
+    return title.includes(q) || author.includes(q);
   });
 
   // Handle upload cover image
@@ -153,41 +176,65 @@ export function ArticlesClient({
     }
   };
 
-  // Submit Save Article
+  // Submit Save Article — saves all non-empty translation drafts
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setFormError('');
-    if (!activeArticle?.title || !activeArticle?.slug) {
-      setFormError('Vui lòng nhập tiêu đề bài viết và slug.');
+
+    const primaryDraft = translationDrafts[locale];
+    if (!primaryDraft?.title?.trim() || !activeArticle?.slug) {
+      setFormError('Vui lòng nhập tiêu đề bài viết (ngôn ngữ chính).');
       return;
     }
 
     startTransition(async () => {
-      const res = await saveArticle({
-        id: activeArticle.id,
-        title: activeArticle.title || '',
-        description: activeArticle.description || '',
-        slug: activeArticle.slug || '',
-        body: activeArticle.body || '',
-        cover: activeArticle.cover,
-        author: activeArticle.author || undefined,
-        author_role: activeArticle.author_role || undefined,
-        author_avatar: activeArticle.author_avatar || undefined,
-        category: activeArticle.category || undefined,
-        published_at: activeArticle.published_at || null,
-        status: activeArticle.status || 'draft',
-        meta_title: activeArticle.meta_title || '',
-        meta_description: activeArticle.meta_description || '',
-        locale
-      });
+      let lastError = '';
+      let savedCount = 0;
 
-      if (res.success) {
+      const localesToSave = Object.entries(translationDrafts).filter(
+        ([, draft]) => draft.title.trim().length > 0
+      );
+
+      for (const [langCode, draft] of localesToSave) {
+        const res = await saveArticle({
+          id: activeArticle.id,
+          title: draft.title,
+          description: draft.description || '',
+          slug: activeArticle.slug || '',
+          body: draft.body || '',
+          cover: activeArticle.cover,
+          author: activeArticle.author || undefined,
+          author_role: activeArticle.author_role || undefined,
+          author_avatar: activeArticle.author_avatar || undefined,
+          category: activeArticle.category || undefined,
+          published_at: activeArticle.published_at || null,
+          status: activeArticle.status || 'draft',
+          meta_title: draft.meta_title || '',
+          meta_description: draft.meta_description || '',
+          locale: langCode
+        });
+
+        if (res.success) {
+          savedCount++;
+        } else {
+          lastError = res.error || '';
+        }
+      }
+
+      if (savedCount > 0 && !lastError) {
         setModalOpen(false);
         setActiveArticle(null);
         setFormError('');
+        setIsDirty(false);
+        const langNames = localesToSave.map(([code]) => SUPPORTED_LANGS.find(l => l.code === code)?.label || code).join(', ');
+        toast.success(
+          activeArticle.id
+            ? `Đã cập nhật bài viết thành công (${langNames}).`
+            : `Đã tạo bài viết mới thành công (${langNames}).`
+        );
         window.location.reload();
       } else {
-        setFormError(res.error || 'Không thể lưu bài viết. Vui lòng thử lại.');
+        setFormError(lastError || 'Không thể lưu bài viết. Vui lòng thử lại.');
       }
     });
   };
@@ -241,6 +288,7 @@ export function ArticlesClient({
           </Link>
           <button
             onClick={() => {
+              const emptyDraft: TranslationDraft = { title: '', description: '', body: '', meta_title: '', meta_description: '' };
               setActiveArticle({
                 status: 'draft',
                 title: '',
@@ -256,8 +304,12 @@ export function ArticlesClient({
                 meta_description: '',
                 cover: null
               });
+              setTranslationDrafts({ vi: { ...emptyDraft }, en: { ...emptyDraft }, ja: { ...emptyDraft } });
+              setEditLocale(locale);
               setModalOpen(true);
               setFormError('');
+              setIsDirty(false);
+              setActiveFormTab('content');
             }}
             className="admin-button admin-button-primary"
           >
@@ -272,27 +324,46 @@ export function ArticlesClient({
         <div className="mb-6 p-3 sm:p-4 bg-rose-50 border border-rose-200 rounded-[3px] text-rose-800 text-caption-responsive font-semibold flex items-start gap-2.5 shadow-sm">
           <AlertTriangle className="h-5 w-5 text-rose-500 shrink-0 mt-0.5 flex-shrink-0" />
           <div className="flex-1 min-w-0">
-            <span className="font-bold text-rose-900 block mb-1">
-              Đã xảy ra lỗi khi tải dữ liệu bài viết từ API
+            <span className="font-bold text-rose-900 block">
+              Không thể tải dữ liệu bài viết
             </span>
-            <pre className="font-mono text-caption-responsive bg-white/60 p-2 sm:p-2.5 rounded-[3px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all text-xs">
+            <span className="text-rose-700 text-caption-responsive mt-1 block">
               {error}
-            </pre>
+            </span>
           </div>
         </div>
       )}
 
-      {/* Search Filter */}
+      {/* Search & Filter */}
       <div className="bg-white border border-slate-100 rounded-[3px] p-4 sm:p-5 md:p-6 shadow-sm mb-6 md:mb-8">
-        <div className="relative">
-          <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
-          <input
-            type="text"
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Tìm kiếm bài viết theo tiêu đề, slug, tác giả..."
-            className="w-full pl-10 pr-4 py-2.5 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
-          />
+        <div className="flex flex-col sm:flex-row gap-3">
+          <div className="relative flex-1">
+            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-400" />
+            <input
+              type="text"
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              placeholder="Tìm kiếm bài viết theo tiêu đề, tác giả..."
+              className="w-full pl-10 pr-4 py-2.5 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+            />
+          </div>
+          <div className="flex items-center gap-1 bg-slate-50 rounded-[3px] p-1 border border-slate-100">
+            {([['all', 'Tất cả'], ['published', 'Công khai'], ['draft', 'Bản nháp']] as const).map(([val, label]) => (
+              <button
+                key={val}
+                type="button"
+                onClick={() => setStatusFilter(val)}
+                className={cn(
+                  'px-3 py-1.5 rounded-[3px] text-caption-responsive font-bold transition-all',
+                  statusFilter === val
+                    ? 'bg-white text-blue-600 shadow-sm border border-slate-200'
+                    : 'text-slate-500 hover:text-slate-700'
+                )}
+              >
+                {label}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
@@ -397,24 +468,17 @@ export function ArticlesClient({
                           <div className="flex items-center justify-end gap-2">
                             <button
                               onClick={() => {
-                                const existingTitle = getTranslatedField(art, 'title', locale);
-                                const existingBody = getTranslatedField(art, 'body', locale);
-                                const existingMetaTitle = getTranslatedField(
-                                  art,
-                                  'meta_title',
-                                  locale
-                                );
-                                const existingMetaDescription = getTranslatedField(
-                                  art,
-                                  'meta_description',
-                                  locale
-                                );
-
-                                const existingDescription = getTranslatedField(
-                                  art,
-                                  'description',
-                                  locale
-                                );
+                                const drafts: Record<string, TranslationDraft> = {};
+                                for (const lang of SUPPORTED_LANGS) {
+                                  drafts[lang.code] = {
+                                    title: getTranslatedField(art, 'title', lang.code),
+                                    description: getTranslatedField(art, 'description', lang.code),
+                                    body: getTranslatedField(art, 'body', lang.code),
+                                    meta_title: getTranslatedField(art, 'meta_title', lang.code),
+                                    meta_description: getTranslatedField(art, 'meta_description', lang.code),
+                                  };
+                                }
+                                const primary = drafts[locale];
                                 setActiveArticle({
                                   id: art.id,
                                   slug: art.slug,
@@ -427,14 +491,17 @@ export function ArticlesClient({
                                   published_at: art.published_at
                                     ? new Date(art.published_at).toISOString().substring(0, 16)
                                     : null,
-                                  title: existingTitle,
-                                  description: existingDescription,
-                                  body: existingBody,
-                                  meta_title: existingMetaTitle,
-                                  meta_description: existingMetaDescription
+                                  title: primary.title,
+                                  description: primary.description,
+                                  body: primary.body,
+                                  meta_title: primary.meta_title,
+                                  meta_description: primary.meta_description
                                 });
+                                setTranslationDrafts(drafts);
+                                setEditLocale(locale);
                                 setModalOpen(true);
                                 setFormError('');
+                                setIsDirty(false);
                               }}
                               className="p-1.5 rounded-[3px] hover:bg-slate-100 text-slate-400 hover:text-blue-600 transition-colors"
                               title="Sửa bài viết"
@@ -513,12 +580,17 @@ export function ArticlesClient({
                       <div className="flex justify-end gap-1.5 mt-3 pt-2 border-t border-slate-100">
                         <button
                           onClick={() => {
-                            const existingTitle = getTranslatedField(art, 'title', locale);
-                            const existingBody = getTranslatedField(art, 'body', locale);
-                            const existingMetaTitle = getTranslatedField(art, 'meta_title', locale);
-                            const existingMetaDescription = getTranslatedField(art, 'meta_description', locale);
-
-                            const existingDescription = getTranslatedField(art, 'description', locale);
+                            const drafts: Record<string, TranslationDraft> = {};
+                            for (const lang of SUPPORTED_LANGS) {
+                              drafts[lang.code] = {
+                                title: getTranslatedField(art, 'title', lang.code),
+                                description: getTranslatedField(art, 'description', lang.code),
+                                body: getTranslatedField(art, 'body', lang.code),
+                                meta_title: getTranslatedField(art, 'meta_title', lang.code),
+                                meta_description: getTranslatedField(art, 'meta_description', lang.code),
+                              };
+                            }
+                            const primary = drafts[locale];
                             setActiveArticle({
                               id: art.id,
                               slug: art.slug,
@@ -531,14 +603,17 @@ export function ArticlesClient({
                               published_at: art.published_at
                                 ? new Date(art.published_at).toISOString().substring(0, 16)
                                 : null,
-                              title: existingTitle,
-                              description: existingDescription,
-                              body: existingBody,
-                              meta_title: existingMetaTitle,
-                              meta_description: existingMetaDescription
+                              title: primary.title,
+                              description: primary.description,
+                              body: primary.body,
+                              meta_title: primary.meta_title,
+                              meta_description: primary.meta_description
                             });
+                            setTranslationDrafts(drafts);
+                            setEditLocale(locale);
                             setModalOpen(true);
                             setFormError('');
+                            setIsDirty(false);
                           }}
                           className="flex items-center gap-1.5 px-3 py-1.5 rounded-[3px] hover:bg-slate-50 text-slate-655 text-caption-responsive font-bold transition-colors border border-slate-200"
                         >
@@ -574,19 +649,48 @@ export function ArticlesClient({
                   {activeArticle.id ? 'Cập nhật bài viết' : 'Soạn bài viết mới'}
                 </h2>
                 <p className="text-caption-responsive text-slate-400 font-medium mt-0.5">
-                  Viết nội dung bài viết và tối ưu hóa SEO để tăng lượng truy cập.
+                  Viết nội dung bài viết, thêm ảnh bìa và tùy chỉnh hiển thị trên Google.
                 </p>
               </div>
               <button
-                onClick={() => {
-                  setModalOpen(false);
-                  setActiveArticle(null);
-                  setFormError('');
-                }}
+                onClick={handleCloseModal}
                 className="p-1.5 rounded-[3px] hover:bg-slate-150 text-slate-400 hover:text-slate-650 transition-colors"
               >
                 <X className="h-5 w-5" />
               </button>
+            </div>
+
+            {/* Language Switcher */}
+            <div className="flex items-center gap-2 px-6 py-2.5 bg-slate-50 border-b border-slate-100">
+              <span className="text-caption-responsive font-bold text-slate-400 uppercase tracking-wider mr-1">Ngôn ngữ:</span>
+              {SUPPORTED_LANGS.map((lang) => {
+                const draft = translationDrafts[lang.code];
+                const hasContent = draft && draft.title.trim().length > 0;
+                return (
+                  <button
+                    key={lang.code}
+                    type="button"
+                    onClick={() => setEditLocale(lang.code)}
+                    className={cn(
+                      'inline-flex items-center gap-1.5 px-3 py-1.5 rounded-[3px] text-caption-responsive font-bold transition-all border',
+                      editLocale === lang.code
+                        ? 'bg-blue-600 text-white border-blue-600 shadow-sm'
+                        : hasContent
+                          ? 'bg-white text-slate-700 border-slate-200 hover:border-blue-300'
+                          : 'bg-white text-slate-400 border-dashed border-slate-200 hover:border-blue-300'
+                    )}
+                  >
+                    <span>{lang.flag}</span>
+                    <span>{lang.label}</span>
+                    {hasContent && editLocale !== lang.code && (
+                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                    )}
+                    {!hasContent && editLocale !== lang.code && (
+                      <span className="text-[10px] text-slate-300">trống</span>
+                    )}
+                  </button>
+                );
+              })}
             </div>
 
             {/* Tab Navigation */}
@@ -615,7 +719,7 @@ export function ArticlesClient({
                 )}
               >
                 <Globe className="h-4 w-4" />
-                Ảnh bìa & Cấu hình SEO
+                Ảnh bìa & Tìm kiếm Google
               </button>
             </div>
 
@@ -638,33 +742,34 @@ export function ArticlesClient({
                       <input
                         type="text"
                         required
-                        value={activeArticle.title || ''}
+                        value={currentDraft.title}
                         onChange={(e) => {
                           const title = e.target.value;
-                          const slug = activeArticle.id
-                            ? activeArticle.slug || ''
-                            : title
+                          updateCurrentDraft({ title });
+                          if (!activeArticle.id && editLocale === locale) {
+                            const slug = title
                                 .toLowerCase()
                                 .normalize('NFD')
-                                .replace(/[\u0300-\u036f]/g, '')
+                                .replace(/[̀-ͯ]/g, '')
                                 .replace(/[đĐ]/g, 'd')
                                 .replace(/[^a-z0-9\s-]/g, '')
                                 .replace(/\s+/g, '-')
                                 .replace(/-+/g, '-')
                                 .replace(/^-+|-+$/g, '');
-                          setActiveArticle({ ...activeArticle, title, slug });
+                            setActiveArticle((prev) => prev ? { ...prev, slug } : null);
+                          }
                         }}
                         placeholder="Nhập tiêu đề bài viết..."
                         className="w-full px-4 py-2.5 rounded-[3px] border border-slate-200 text-body-regular font-bold text-primary focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand shadow-sm"
                       />
                     </div>
 
-                    {/* Grid: Slug, Author, Status, Published At */}
+                    {/* Grid: Slug, Author */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       {/* Slug */}
                       <div className="flex flex-col gap-1.5">
                         <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
-                          Slug (Đường dẫn tĩnh) *
+                          Đường dẫn bài viết *
                         </label>
                         <input
                           type="text"
@@ -701,10 +806,8 @@ export function ArticlesClient({
                       </label>
                       <textarea
                         rows={2}
-                        value={activeArticle.description || ''}
-                        onChange={(e) =>
-                          setActiveArticle({ ...activeArticle, description: e.target.value })
-                        }
+                        value={currentDraft.description}
+                        onChange={(e) => updateCurrentDraft({ description: e.target.value })}
                         placeholder="Mô tả ngắn gọn nội dung bài viết, hiển thị ở trang chi tiết..."
                         className="w-full px-4 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand leading-relaxed"
                       />
@@ -728,7 +831,7 @@ export function ArticlesClient({
                           <option value="Catalogue">Catalogue</option>
                           <option value="Tài liệu kỹ thuật">Tài liệu kỹ thuật</option>
                           <option value="Hướng dẫn">Hướng dẫn</option>
-                          <option value="Case Study">Case Study</option>
+                          <option value="Case Study">Nghiên cứu điển hình</option>
                           <option value="Sự kiện">Sự kiện</option>
                         </select>
                       </div>
@@ -797,8 +900,8 @@ export function ArticlesClient({
                           }
                           className="w-full px-4 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-700 focus:outline-none bg-white shadow-sm"
                         >
-                          <option value="draft">Bản nháp (Draft)</option>
-                          <option value="published">Công khai (Published)</option>
+                          <option value="draft">Bản nháp</option>
+                          <option value="published">Công khai</option>
                         </select>
                       </div>
 
@@ -819,98 +922,15 @@ export function ArticlesClient({
                       </div>
                     </div>
 
-                    {/* Body textarea */}
-                    <div className="flex flex-col gap-1">
+                    {/* Body — Rich Text Editor */}
+                    <div className="flex flex-col gap-1.5">
                       <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
-                        Nội dung bài viết (HTML / Text)
+                        Nội dung bài viết
                       </label>
-
-                      {/* Responsive formatting toolbar */}
-                      <div className="flex flex-wrap items-center gap-1 p-1.5 bg-slate-50 border border-slate-200 border-b-0 rounded-[3px] overflow-x-auto scrollbar-none select-none max-w-full">
-                        <button
-                          type="button"
-                          onClick={() => insertTag('<h2>', '</h2>')}
-                          className="px-2 py-1 text-caption-responsive font-bold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
-                          title="Tiêu đề lớn H2"
-                        >
-                          H2
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => insertTag('<h3>', '</h3>')}
-                          className="px-2 py-1 text-caption-responsive font-bold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
-                          title="Tiêu đề phụ H3"
-                        >
-                          H3
-                        </button>
-                        <span className="w-px h-3 bg-slate-200 self-center mx-1" />
-                        <button
-                          type="button"
-                          onClick={() => insertTag('<strong>', '</strong>')}
-                          className="px-2 py-1 text-caption-responsive font-bold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
-                          title="Chữ đậm"
-                        >
-                          B
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => insertTag('<em>', '</em>')}
-                          className="px-2 py-1 text-caption-responsive italic font-bold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
-                          title="Chữ nghiêng"
-                        >
-                          I
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => insertTag('<u>', '</u>')}
-                          className="px-2 py-1 text-caption-responsive underline font-bold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
-                          title="Gạch chân"
-                        >
-                          U
-                        </button>
-                        <span className="w-px h-3 bg-slate-200 self-center mx-1" />
-                        <button
-                          type="button"
-                          onClick={() => insertTag('<p>', '</p>')}
-                          className="px-2 py-1 text-caption-responsive font-bold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
-                          title="Thẻ đoạn văn P"
-                        >
-                          P
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => insertTag('<a href="" target="_blank">', '</a>')}
-                          className="px-2 py-1 text-caption-responsive font-bold text-blue-600 hover:bg-blue-50 active:bg-blue-100 rounded-[3px] transition-all"
-                          title="Chèn liên kết"
-                        >
-                          Link
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => insertTag('<ul>\n  <li>', '</li>\n</ul>')}
-                          className="px-2 py-1 text-caption-responsive font-bold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
-                          title="Danh sách không thứ tự"
-                        >
-                          UL
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => insertTag('<ol>\n  <li>', '</li>\n</ol>')}
-                          className="px-2 py-1 text-caption-responsive font-bold text-slate-700 hover:bg-slate-200/70 active:bg-slate-300/80 rounded-[3px] transition-all"
-                          title="Danh sách có thứ tự"
-                        >
-                          OL
-                        </button>
-                      </div>
-                      <textarea
-                        ref={textareaRef}
-                        rows={10}
-                        value={activeArticle.body || ''}
-                        onChange={(e) =>
-                          setActiveArticle({ ...activeArticle, body: e.target.value })
-                        }
-                        placeholder="Soạn thảo nội dung bài viết. Bạn có thể sử dụng các thẻ HTML như <p>, <h2>, <strong> hoặc các nút trợ giúp định dạng nhanh trên thanh công cụ ở trên..."
-                        className="w-full px-4 py-3 rounded-[3px] border border-slate-200 text-caption-responsive font-medium font-mono focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand bg-slate-50/10 leading-relaxed min-h-[220px]"
+                      <RichTextEditor
+                        value={currentDraft.body}
+                        onChange={(html) => updateCurrentDraft({ body: html })}
+                        placeholder="Soạn thảo nội dung bài viết..."
                       />
                     </div>
                   </div>
@@ -922,7 +942,7 @@ export function ArticlesClient({
                     {/* Left side: Cover Image upload */}
                     <div className="flex flex-col gap-4">
                       <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
-                        Ảnh bìa bài viết (Cover Image)
+                        Ảnh bìa bài viết
                       </label>
 
                       <div className="border-2 border-dashed border-slate-200 rounded-[3px] p-6 flex flex-col items-center justify-center text-center bg-slate-50/20 hover:bg-slate-50/50 transition-colors">
@@ -985,22 +1005,20 @@ export function ArticlesClient({
                       <div className="flex items-center gap-1.5 pb-2 border-b border-slate-100 mb-2">
                         <Globe className="h-4 w-4 text-blue-500" />
                         <h3 className="text-caption-responsive font-bold text-primary uppercase tracking-wider">
-                          Tối ưu hóa tìm kiếm (SEO Metadata)
+                          Hiển thị trên Google
                         </h3>
                       </div>
 
                       {/* Meta Title */}
                       <div className="flex flex-col gap-1.5">
                         <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
-                          Thẻ tiêu đề SEO (Meta Title)
+                          Tiêu đề hiển thị trên Google
                         </label>
                         <input
                           type="text"
-                          value={activeArticle.meta_title || ''}
-                          onChange={(e) =>
-                            setActiveArticle({ ...activeArticle, meta_title: e.target.value })
-                          }
-                          placeholder="Nhập Meta Title (Khoảng 50-60 ký tự)..."
+                          value={currentDraft.meta_title}
+                          onChange={(e) => updateCurrentDraft({ meta_title: e.target.value })}
+                          placeholder="Tiêu đề người dùng thấy khi tìm trên Google (50-60 ký tự)..."
                           className="w-full px-4 py-2.5 rounded-[3px] border border-slate-200 text-caption-responsive font-semibold focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand"
                         />
                       </div>
@@ -1008,15 +1026,13 @@ export function ArticlesClient({
                       {/* Meta Description */}
                       <div className="flex flex-col gap-1.5">
                         <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
-                          Thẻ mô tả SEO (Meta Description)
+                          Mô tả hiển thị trên Google
                         </label>
                         <textarea
                           rows={4}
-                          value={activeArticle.meta_description || ''}
-                          onChange={(e) =>
-                            setActiveArticle({ ...activeArticle, meta_description: e.target.value })
-                          }
-                          placeholder="Mô tả bài viết một cách ngắn gọn, súc tích (Khoảng 150-160 ký tự)..."
+                          value={currentDraft.meta_description}
+                          onChange={(e) => updateCurrentDraft({ meta_description: e.target.value })}
+                          placeholder="Mô tả ngắn hiển thị dưới tiêu đề trên Google (150-160 ký tự)..."
                           className="w-full px-4 py-2.5 rounded-[3px] border border-slate-200 text-caption-responsive font-semibold focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand leading-relaxed"
                         />
                       </div>
@@ -1029,11 +1045,7 @@ export function ArticlesClient({
               <div className="flex items-center justify-end gap-3 px-6 py-4 border-t border-slate-100 bg-slate-50/50">
                 <button
                   type="button"
-                  onClick={() => {
-                    setModalOpen(false);
-                    setFormError('');
-                    setActiveArticle(null);
-                  }}
+                  onClick={handleCloseModal}
                   className="px-5 py-2.5 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-550 hover:bg-slate-100 transition-colors"
                 >
                   Hủy bỏ

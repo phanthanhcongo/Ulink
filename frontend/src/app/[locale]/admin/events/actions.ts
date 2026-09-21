@@ -8,6 +8,7 @@ import { revalidatePath } from 'next/cache';
 import { getCurrentUser } from '@/lib/auth-helpers';
 import { getDirectusUrl } from '@/lib/directus-runtime.mjs';
 import { cookies } from 'next/headers';
+import { extractErrorMessage } from '@/lib/api-error';
 
 async function getSessionClient() {
   const store = await cookies();
@@ -110,7 +111,7 @@ export async function saveEvent(data: {
     return { success: true };
   } catch (err: any) {
     console.error('Failed to save event:', err);
-    return { success: false, error: err?.message || String(err) };
+    return { success: false, error: extractErrorMessage(err) };
   }
 }
 
@@ -126,6 +127,6 @@ export async function deleteEvent(id: number) {
     return { success: true };
   } catch (err: any) {
     console.error('Failed to delete event:', err);
-    return { success: false, error: err?.message || String(err) };
+    return { success: false, error: extractErrorMessage(err) };
   }
 }

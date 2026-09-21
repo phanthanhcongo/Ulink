@@ -51,6 +51,26 @@ export class ApiError extends Error {
   }
 }
 
+/**
+ * Extract a human-readable message from any thrown value.
+ * Handles Directus SDK errors (plain objects with `.errors[]`),
+ * standard Error instances, and unknown types.
+ */
+export function extractErrorMessage(err: unknown): string {
+  if (err instanceof Error) return err.message;
+  if (typeof err === 'object' && err !== null) {
+    const obj = err as Record<string, unknown>;
+    if (Array.isArray(obj.errors) && obj.errors.length > 0) {
+      const first = obj.errors[0];
+      if (typeof first === 'object' && first !== null && 'message' in first) {
+        return String((first as Record<string, unknown>).message);
+      }
+    }
+    if (typeof obj.message === 'string') return obj.message;
+  }
+  return String(err);
+}
+
 // ─── Predefined errors ───────────────────────────────────────────────────────
 
 export const ERRORS = {

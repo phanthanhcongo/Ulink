@@ -9,6 +9,7 @@ import { createDirectus, rest, readItems, readUsers } from '@directus/sdk';
 import { cookies } from 'next/headers';
 import { getDirectusUrl } from '@/lib/directus-runtime.mjs';
 import { SampleRequestsClient } from '@/components/admin/sample-requests-client';
+import { extractErrorMessage } from '@/lib/api-error';
 
 async function getSessionClient() {
   const store = await cookies();
@@ -123,7 +124,7 @@ export default async function SampleRequestsPage({ params }: Props) {
     try {
       error = JSON.stringify(err, null, 2);
     } catch {
-      error = String(err);
+      error = extractErrorMessage(err);
     }
   }
 

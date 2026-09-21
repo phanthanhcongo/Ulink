@@ -7,6 +7,7 @@ import { createDirectus, rest, readItems } from '@directus/sdk';
 import { cookies } from 'next/headers';
 import { getDirectusUrl } from '@/lib/directus-runtime.mjs';
 import { ArticlesClient } from '@/components/admin/articles-client';
+import { extractErrorMessage } from '@/lib/api-error';
 
 async function getSessionClient() {
   const store = await cookies();
@@ -85,11 +86,7 @@ export default async function AdminArticlesPage({ params }: PageProps) {
     articles = res || [];
   } catch (err) {
     console.error('Failed to load articles in admin dashboard:', err);
-    try {
-      error = JSON.stringify(err, null, 2);
-    } catch {
-      error = String(err);
-    }
+    error = extractErrorMessage(err);
   }
 
   return <ArticlesClient initialArticles={articles} locale={locale} error={error} />;

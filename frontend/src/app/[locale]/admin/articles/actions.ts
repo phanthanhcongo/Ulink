@@ -8,27 +8,7 @@ import { revalidatePath } from 'next/cache';
 import { getCurrentUser } from '@/lib/auth-helpers';
 import { getDirectusUrl } from '@/lib/directus-runtime.mjs';
 import { cookies } from 'next/headers';
-
-/**
- * Helper: Định dạng thông điệp lỗi trả về từ Directus SDK.
- */
-function formatError(err: any): string {
-  if (err && typeof err === 'object') {
-    try {
-      const errorObj = {
-        message: err.message,
-        errors: err.errors,
-        status: err.status,
-        code: err.code,
-        extensions: err.extensions
-      };
-      return JSON.stringify(errorObj, null, 2);
-    } catch {
-      return String(err);
-    }
-  }
-  return String(err);
-}
+import { extractErrorMessage } from '@/lib/api-error';
 
 /**
  * Helper: Khởi tạo Directus client với session cookie
@@ -179,7 +159,7 @@ export async function saveArticle(data: {
     return { success: true };
   } catch (err) {
     console.error('Failed to save article:', err);
-    return { success: false, error: formatError(err) };
+    return { success: false, error: extractErrorMessage(err) };
   }
 }
 
@@ -204,7 +184,7 @@ export async function deleteArticle(id: number) {
     return { success: true };
   } catch (err) {
     console.error('Failed to delete article:', err);
-    return { success: false, error: formatError(err) };
+    return { success: false, error: extractErrorMessage(err) };
   }
 }
 
@@ -244,6 +224,6 @@ export async function uploadImage(formData: FormData) {
     return { success: true, id: json.data.id };
   } catch (err) {
     console.error('Failed to upload image file:', err);
-    return { success: false, error: String(err) };
+    return { success: false, error: extractErrorMessage(err) };
   }
 }

@@ -8,6 +8,7 @@ import { createDirectus, rest, readItems } from '@directus/sdk';
 import { cookies } from 'next/headers';
 import { getDirectusUrl } from '@/lib/directus-runtime.mjs';
 import { EventsAdminClient } from '@/components/admin/events-client';
+import { extractErrorMessage } from '@/lib/api-error';
 
 async function getSessionClient() {
   const store = await cookies();
@@ -58,7 +59,7 @@ export default async function AdminEventsPage({ params }: PageProps) {
     events = res || [];
   } catch (err: any) {
     console.error('Failed to load events:', err);
-    error = err?.message || String(err);
+    error = extractErrorMessage(err);
   }
 
   return <EventsAdminClient initialEvents={events} error={error} />;
