@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { setRequestLocale } from 'next-intl/server';
 import { ResourcesClient } from '@/components/resources/resources-client';
 import { loadResourceCatalog } from '@/components/resources/resource-catalog.server';
+import { fetchEvents, mapEventToListItem } from '@/lib/event-data';
 
 type Props = { params: { locale: string } };
 
@@ -25,11 +26,15 @@ export async function generateMetadata({ params: { locale } }: Props): Promise<M
 export default async function ResourcesPage({ params: { locale } }: Props) {
   setRequestLocale(locale);
 
-  const allResources = await loadResourceCatalog();
+  const [allResources, directusEvents] = await Promise.all([
+    loadResourceCatalog(),
+    fetchEvents(),
+  ]);
+  const events = directusEvents.map(mapEventToListItem);
 
   return (
     <section className="relative min-h-screen">
-      <ResourcesClient initialResources={allResources} />
+      <ResourcesClient initialResources={allResources} events={events} />
     </section>
   );
 }

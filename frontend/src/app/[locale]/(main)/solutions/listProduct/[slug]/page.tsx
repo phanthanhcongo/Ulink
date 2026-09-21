@@ -22,7 +22,6 @@ import {
   Plus,
   ArrowRight
 } from 'lucide-react';
-import { getDirectusUrl } from '@/lib/directus-runtime.mjs';
 import { resolveImageUrl } from '@/lib/image-url';
 import {
   getTranslatedName,
@@ -32,9 +31,10 @@ import {
 import {
   fetchProductBySlug,
   fetchProducts,
-  getProductPricing,
+  fetchProductReviews,
   ProductSku,
-  Product
+  Product,
+  ProductReview
 } from '@/lib/product-data';
 import ProductDetailClient from '@/components/product/product-detail-client';
 import ProductTabs from '@/components/product/product-tabs';
@@ -80,7 +80,6 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
     notFound();
   }
 
-  const directusUrl = process.env.NEXT_PUBLIC_DIRECTUS_URL || getDirectusUrl();
   const productName = getTranslatedName(product, locale) || product.name;
   const productDescription =
     getTranslatedField(product, 'short_description', locale) || product.short_description;
@@ -89,70 +88,22 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
     typeof product.category === 'object' && product.category !== null ? product.category : null;
   const rawCategoryName = category ? getTranslatedName(category, locale) || category.name : null;
 
-  const PARENT_CATEGORY_NAMES: Record<string, { vi: string; en: string }> = {
-    'cleanroom-consumables': { vi: 'Vật tư phòng sạch', en: 'Cleanroom Consumables' },
-    'industrial-packaging': { vi: 'Bao bì & Đóng gói', en: 'Packaging & Logistics' },
-    'bang-keo-nhom': { vi: 'Băng keo Nhôm', en: 'Aluminum Tape' }
-  };
+  const parentCat = category?.parent && typeof category.parent === 'object' ? category.parent : null;
+  const parentCategoryName = parentCat
+    ? getTranslatedName(parentCat, locale) || parentCat.name
+    : rawCategoryName;
 
-  // Map subcategory slug -> official URL parent category slug
-  const SUBCATEGORY_TO_PARENT_SLUG: Record<string, string> = {
-    // Cleanroom
-    'cleanroom-consumables': 'cleanroom-consumables',
-    'vat-tu-phong-sach': 'cleanroom-consumables',
-    'quan-ao-phong-sach': 'cleanroom-consumables',
-    'gang-tay-phong-sach': 'cleanroom-consumables',
-    'khau-trang-phong-sach': 'cleanroom-consumables',
-    'vai-lau-phong-sach': 'cleanroom-consumables',
-    'tham-dinh-bui': 'cleanroom-consumables',
-    'dung-cu-ve-sinh': 'cleanroom-consumables',
-    'phu-kien-khac': 'cleanroom-consumables',
-    'cleanroom-gloves': 'cleanroom-consumables',
-    'cleanroom-wipers': 'cleanroom-consumables',
-    'cleanroom-apparel': 'cleanroom-consumables',
-    'cleanroom-masks': 'cleanroom-consumables',
-    'cleanroom-chemicals': 'cleanroom-consumables',
-
-    // Industrial Packaging
-    'industrial-packaging': 'industrial-packaging',
-    'bao-bi-dong-goi': 'industrial-packaging',
-    'bao-bi-cong-nghiep': 'industrial-packaging',
-    'mang-quan-pallet-cat': 'industrial-packaging',
-    'thung-carton-cac-loai': 'industrial-packaging',
-    'bang-keo-cong-nghiep': 'industrial-packaging',
-    'tui-pe-pp-ziper': 'industrial-packaging',
-    'pallet-nhua-go': 'industrial-packaging',
-    'day-dai-dong-hang': 'industrial-packaging',
-    'vat-lieu-dem-lot': 'industrial-packaging',
-
-    // Aluminum Tape
-    'bang-keo-nhom': 'bang-keo-nhom',
-    'bang-keo-nhom-tieu-chuan': 'bang-keo-nhom',
-    'bang-keo-nhom-chiu-nhiet': 'bang-keo-nhom',
-    'bang-keo-nhom-gia-co-luoi': 'bang-keo-nhom',
-    'bang-keo-nhom-cach-nhiet-cat': 'bang-keo-nhom',
-    'bang-keo-nhom-ong-gio': 'bang-keo-nhom',
-    'bang-keo-nhom-ma-kem-cat': 'bang-keo-nhom',
-    'bang-keo-nhom-tu-dinh-cat': 'bang-keo-nhom'
-  };
-
-  const parentSlug = category
-    ? SUBCATEGORY_TO_PARENT_SLUG[category.slug] || category.slug
-    : null;
-
-  const parentCategoryName =
-    parentSlug && PARENT_CATEGORY_NAMES[parentSlug]
-      ? locale === 'vi'
-        ? PARENT_CATEGORY_NAMES[parentSlug].vi
-        : PARENT_CATEGORY_NAMES[parentSlug].en
-      : rawCategoryName;
-
-  const categorySlug = parentSlug || category?.slug || null;
+  const categorySlug = parentCat?.slug || category?.slug || null;
   const categoryName = parentCategoryName || rawCategoryName;
 
-  const pricing = getProductPricing(product.slug, locale);
+  const skusRaw: ProductSku[] = (product.skus as ProductSku[]) || [];
+  const firstSku = skusRaw.find((s) => s.price != null) || skusRaw[0];
+  const pricing = {
+    price: firstSku?.price ?? null,
+    unit: firstSku?.unit || (locale === 'vi' ? 'hộp' : 'box'),
+  };
 
-  const skus: ProductSku[] = (product.skus as ProductSku[]) || [];
+  const skus = skusRaw;
   const gallery = Array.isArray(product.gallery) ? product.gallery : [];
   const documents = Array.isArray(product.documents) ? product.documents : [];
   const standards = Array.isArray(product.standards)
@@ -164,18 +115,6 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
     : [];
 
   const skuCode = skus[0]?.sku_code ?? null;
-
-  const formatPrice = (amount: number) => {
-    if (locale === 'vi') {
-      return new Intl.NumberFormat('vi-VN').format(amount) + 'đ';
-    }
-    return (
-      '$' +
-      new Intl.NumberFormat('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(
-        amount / 25000
-      )
-    );
-  };
 
   const specs = product.specifications as Record<string, string> | null;
 
@@ -264,7 +203,10 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
     }
   });
 
-  const { products: allDbProducts } = await fetchProducts({ limit: 20 });
+  const [{ products: allDbProducts }, reviews] = await Promise.all([
+    fetchProducts({ limit: 20 }),
+    fetchProductReviews(product.id)
+  ]);
 
   return (
     <div className="min-h-screen bg-white">
@@ -433,7 +375,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
               }))}
               productName={productName}
               locale={locale}
-              basePrice={pricing.price}
+              basePrice={pricing.price ?? 0}
                 unitLabel={pricing.unit}
                 labels={{
                   addToCart: locale === 'vi' ? 'Thêm vào giỏ hàng' : 'Add to Cart',
@@ -452,11 +394,13 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
             locale={locale}
             productName={productName}
             skuCode={skus[0]?.sku_code || ''}
-            brand={product.brand || 'ULink'}
+            brand={product.brand || ''}
             categoryName={categoryName || ''}
+            description={(product as any).description || null}
             specifications={specs}
             industries={industries}
             standards={standards}
+            reviews={reviews}
             skus={skus}
           />
         </div>

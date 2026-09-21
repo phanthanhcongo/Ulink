@@ -1,12 +1,13 @@
-import React from 'react';
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
+import React from 'react';
 import { redirect } from '@/i18n/navigation';
 import { getCurrentUser } from '@/lib/auth-helpers';
 import { createWriteDirectusClient, Schema } from '@/lib/directus';
 import { createDirectus, rest, readItems } from '@directus/sdk';
 import { cookies } from 'next/headers';
 import { getDirectusUrl } from '@/lib/directus-runtime.mjs';
-import { ArticlesClient } from '@/components/admin/articles-client';
+import { EventsAdminClient } from '@/components/admin/events-client';
 
 async function getSessionClient() {
   const store = await cookies();
@@ -17,9 +18,7 @@ async function getSessionClient() {
     const cookieHeader = [
       `directus_session_token=${sessionToken}`,
       refreshToken ? `directus_refresh_token=${refreshToken}` : null
-    ]
-      .filter(Boolean)
-      .join('; ');
+    ].filter(Boolean).join('; ');
 
     const cookieFetch: typeof globalThis.fetch = (input, init) => {
       const headers = new Headers(init?.headers);
@@ -30,67 +29,37 @@ async function getSessionClient() {
     const url = getDirectusUrl();
     return createDirectus<Schema>(url, { globals: { fetch: cookieFetch } }).with(rest());
   }
-
   return createWriteDirectusClient();
 }
 
 interface PageProps {
-  params: Promise<{
-    locale: string;
-  }>;
+  params: Promise<{ locale: string }>;
 }
 
-export default async function AdminArticlesPage({ params }: PageProps) {
+export default async function AdminEventsPage({ params }: PageProps) {
   const { locale } = await params;
 
-  // 1. Authenticate user
   const user = await getCurrentUser();
   if (!user) {
     redirect({ href: '/login', locale });
   }
 
-  let articles: any[] = [];
+  let events: any[] = [];
   let error: string | undefined;
   try {
     const client = await getSessionClient();
-    // 2. Fetch blog posts
     const res = await client.request(
-      readItems(
-        'blog_posts' as any,
-        {
-          filter: { status: { _in: ['published', 'draft'] } },
-          fields: [
-            'id',
-            'status',
-            'slug',
-            'cover',
-            'author',
-            'author_role',
-            'author_avatar',
-            'category',
-            'published_at',
-            'translations.id',
-            'translations.languages_code',
-            'translations.title',
-            'translations.description',
-            'translations.body',
-            'translations.meta_title',
-            'translations.meta_description'
-          ],
-          sort: ['-id'],
-          limit: -1
-        } as any
-      )
+      readItems('events' as any, {
+        filter: { status: { _in: ['published', 'draft'] } },
+        sort: ['-id'],
+        limit: -1
+      } as any)
     );
-    articles = res || [];
-  } catch (err) {
-    console.error('Failed to load articles in admin dashboard:', err);
-    try {
-      error = JSON.stringify(err, null, 2);
-    } catch {
-      error = String(err);
-    }
+    events = res || [];
+  } catch (err: any) {
+    console.error('Failed to load events:', err);
+    error = err?.message || String(err);
   }
 
-  return <ArticlesClient initialArticles={articles} locale={locale} error={error} />;
+  return <EventsAdminClient initialEvents={events} error={error} />;
 }

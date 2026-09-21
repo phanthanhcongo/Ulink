@@ -13,11 +13,15 @@ import { MOST_VIEWED_ARTICLES, TABS, UPCOMING_EVENTS, MOCK_RESOURCES } from './m
 import { getResourceHref } from './resource-utils';
 import { ResourceCard } from './resource-card';
 import { EventCard } from './event-card';
+import { resolveImageUrl } from '@/lib/image-url';
+import type { EventListItem } from '@/components/events/events-client';
 
 export function ResourcesClient({
-  initialResources = []
+  initialResources = [],
+  events = [],
 }: {
   initialResources?: ResourceItem[];
+  events?: EventListItem[];
   directusUrl?: string;
 } = {}) {
   const locale = useLocale() as 'vi' | 'en' | 'ja';
@@ -317,9 +321,26 @@ export function ResourcesClient({
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-            {UPCOMING_EVENTS.map((event) => (
+            {(events.length > 0 ? events.slice(0, 3).map((ev) => {
+              const mapped: ResourceItem = {
+                id: ev.id,
+                category: 'event',
+                badge: { vi: 'Sự kiện', en: 'Event', ja: 'イベント' },
+                title: { vi: ev.title, en: ev.title, ja: ev.title },
+                description: { vi: ev.summary, en: ev.summary, ja: ev.summary },
+                date: ev.date,
+                image: resolveImageUrl(ev.image) || '/images/resources/events/event (2).png',
+                author: { name: { vi: '', en: '', ja: '' }, role: { vi: '', en: '', ja: '' }, avatar: '' },
+                readTime: { vi: 'Đăng ký ngay', en: 'Register now', ja: '今すぐ登録' },
+                time: ev.time,
+                location: { vi: ev.locationName || ev.location, en: ev.locationName || ev.location, ja: ev.locationName || ev.location },
+                price: ev.price ? { vi: ev.price, en: ev.price, ja: ev.price } : undefined,
+                sections: [],
+              };
+              return <EventCard key={ev.id} event={mapped} locale={locale} />;
+            }) : UPCOMING_EVENTS.map((event) => (
               <EventCard key={event.id} event={event} locale={locale} />
-            ))}
+            )))}
           </div>
         </div>
       </div>

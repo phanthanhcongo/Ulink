@@ -7,6 +7,8 @@ import {
   LayoutDashboard,
   Package,
   FileSpreadsheet,
+  FileText,
+  Calendar,
   Users,
   Mail,
   LogOut,
@@ -80,6 +82,16 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
       href: '/admin/skus',
       label: 'Mã SKUs',
       icon: Layers
+    },
+    {
+      href: '/admin/articles',
+      label: 'Bài viết & Tin tức',
+      icon: FileText
+    },
+    {
+      href: '/admin/events',
+      label: 'Sự kiện',
+      icon: Calendar
     },
     {
       href: '/admin/rfqs',

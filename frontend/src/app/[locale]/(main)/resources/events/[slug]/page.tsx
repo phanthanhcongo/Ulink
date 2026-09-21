@@ -6,7 +6,9 @@ import { setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { Breadcrumb } from '@/components/ui/breadcrumb';
 import { getEventDetailBySlug } from '@/components/events/event-detail-data';
+import { fetchEventBySlug } from '@/lib/event-data';
 import { EventSidebar } from '@/components/events/event-sidebar';
+import { resolveImageUrl } from '@/lib/image-url';
 
 const SPONSOR_LOGOS: Record<string, React.ReactNode> = {
   SHELLS: (
@@ -61,12 +63,10 @@ type Props = {
 };
 
 export async function generateMetadata({ params: { slug } }: Props): Promise<Metadata> {
-  const event = getEventDetailBySlug(slug);
+  const event = await fetchEventBySlug(slug) || getEventDetailBySlug(slug);
 
   if (!event) {
-    return {
-      title: 'Sự kiện không tồn tại'
-    };
+    return { title: 'Sự kiện không tồn tại' };
   }
 
   return {
@@ -79,7 +79,40 @@ export default async function EventDetailPage({ params }: Props) {
   const { slug } = params;
   setRequestLocale(params.locale);
 
-  const event = getEventDetailBySlug(slug);
+  const dbEvent = await fetchEventBySlug(slug);
+  const hardcodedEvent = getEventDetailBySlug(slug);
+
+  const event = dbEvent ? {
+    slug: dbEvent.slug,
+    title: dbEvent.title,
+    summary: dbEvent.summary || '',
+    image: resolveImageUrl(dbEvent.image) || '/images/resources/autohtml/thumb16.png',
+    images: dbEvent.image ? [resolveImageUrl(dbEvent.image) || '/images/resources/autohtml/thumb16.png'] : [],
+    date: dbEvent.date || '',
+    time: dbEvent.time || '',
+    startTime: dbEvent.start_time || undefined,
+    endTime: dbEvent.end_time || undefined,
+    timezone: 'UTC+07:00',
+    location: dbEvent.location || '',
+    locationName: dbEvent.location_name || undefined,
+    address: dbEvent.address || undefined,
+    registrationStatus: dbEvent.registration_status || 'UPCOMING',
+    price: dbEvent.price || undefined,
+    overview: dbEvent.overview || '',
+    highlights: dbEvent.highlights || [],
+    agenda: dbEvent.agenda || [],
+    speakers: dbEvent.speakers || [],
+    hosts: dbEvent.hosts || [],
+    sponsors: dbEvent.sponsors || [],
+    benefits: dbEvent.benefits || [],
+    organizer: {
+      name: dbEvent.organizer_name || 'ULink Industries',
+      description: dbEvent.organizer_description || '',
+      contact: dbEvent.organizer_contact || '',
+      logo: dbEvent.organizer_logo || undefined,
+      role: dbEvent.organizer_role || undefined
+    }
+  } : hardcodedEvent;
 
   if (!event) {
     notFound();

@@ -36,11 +36,13 @@ export default async function AdminProductsPage({ params: { locale } }: Props) {
   let products: any[] = [];
   let categories: any[] = [];
   let globalAttributes: any[] = [];
+  let allIndustries: any[] = [];
+  let allStandards: any[] = [];
 
   try {
     console.log('[Admin Products] JWT present:', !!jwt, '| JWT length:', jwt?.length);
     const client = createWriteDirectusClient(jwt);
-    const [productsRes, categoriesRes, attrsRes] = await Promise.all([
+    const [productsRes, categoriesRes, attrsRes, industriesRes, standardsRes] = await Promise.all([
       client.request(
         readItems('products', {
           filter: { status: { _in: ['published', 'draft'] } },
@@ -53,6 +55,7 @@ export default async function AdminProductsPage({ params: { locale } }: Props) {
             'gallery.directus_files_id',
             'brand',
             'short_description',
+            'description',
             'specifications',
             'features',
             'meta_title',
@@ -77,7 +80,11 @@ export default async function AdminProductsPage({ params: { locale } }: Props) {
             'assigned_attributes.product_attributes_id.options.id',
             'assigned_attributes.product_attributes_id.options.value',
             'assigned_attributes.product_attributes_id.options.sku_suffix',
-            'assigned_attributes.product_attributes_id.options.sort'
+            'assigned_attributes.product_attributes_id.options.sort',
+            'industries.id',
+            'industries.industries_id',
+            'standards.id',
+            'standards.standards_id'
           ],
           sort: ['-id'],
           limit: -1
@@ -102,12 +109,28 @@ export default async function AdminProductsPage({ params: { locale } }: Props) {
             limit: -1
           } as any
         )
+      ),
+      client.request(
+        readItems('industries' as any, {
+          fields: ['id', 'name', 'slug'],
+          sort: ['id'],
+          limit: -1
+        } as any)
+      ),
+      client.request(
+        readItems('standards' as any, {
+          fields: ['id', 'name', 'slug'],
+          sort: ['id'],
+          limit: -1
+        } as any)
       )
     ]);
 
     products = productsRes || [];
     categories = categoriesRes || [];
     globalAttributes = attrsRes || [];
+    allIndustries = industriesRes || [];
+    allStandards = standardsRes || [];
     console.log('[Admin Products] Loaded:', products.length, 'products,', categories.length, 'categories,', globalAttributes.length, 'attrs');
   } catch (err: any) {
     console.error('[Admin Products] FAILED:', err?.message || err);
@@ -120,6 +143,8 @@ export default async function AdminProductsPage({ params: { locale } }: Props) {
         initialProducts={products}
         categories={categories}
         globalAttributes={globalAttributes}
+        allIndustries={allIndustries}
+        allStandards={allStandards}
       />
     </section>
   );

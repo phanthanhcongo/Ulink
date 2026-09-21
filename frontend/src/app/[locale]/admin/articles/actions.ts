@@ -75,10 +75,14 @@ async function checkAuth() {
 export async function saveArticle(data: {
   id?: number;
   title: string;
+  description?: string;
   slug: string;
   body?: string;
   cover?: string | null;
   author?: string;
+  author_role?: string;
+  author_avatar?: string | null;
+  category?: string;
   published_at?: string | null;
   status?: 'published' | 'draft' | 'archived';
   meta_title?: string;
@@ -111,20 +115,20 @@ export async function saveArticle(data: {
 
       const translationsPayload: any[] = [];
       if (translationForLocale) {
-        // Update existing translation row
         translationsPayload.push({
           id: translationForLocale.id,
           languages_code: data.locale,
           title: data.title,
+          description: data.description || null,
           body: data.body || null,
           meta_title: data.meta_title || null,
           meta_description: data.meta_description || null
         });
       } else {
-        // Create new translation row
         translationsPayload.push({
           languages_code: data.locale,
           title: data.title,
+          description: data.description || null,
           body: data.body || null,
           meta_title: data.meta_title || null,
           meta_description: data.meta_description || null
@@ -135,6 +139,9 @@ export async function saveArticle(data: {
         slug: data.slug,
         cover: data.cover || null,
         author: data.author || null,
+        author_role: data.author_role || null,
+        author_avatar: data.author_avatar || null,
+        category: data.category || null,
         published_at: data.published_at || null,
         status: data.status || 'draft',
         translations: translationsPayload
@@ -147,12 +154,16 @@ export async function saveArticle(data: {
         slug: data.slug,
         cover: data.cover || null,
         author: data.author || null,
+        author_role: data.author_role || null,
+        author_avatar: data.author_avatar || null,
+        category: data.category || null,
         published_at: data.published_at || null,
         status: data.status || 'draft',
         translations: [
           {
             languages_code: data.locale,
             title: data.title,
+            description: data.description || null,
             body: data.body || null,
             meta_title: data.meta_title || null,
             meta_description: data.meta_description || null

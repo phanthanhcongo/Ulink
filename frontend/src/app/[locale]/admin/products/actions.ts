@@ -141,6 +141,7 @@ export async function saveProduct(data: {
   brand?: string;
   categoryId?: number;
   short_description?: string;
+  description?: string;
   specifications?: Record<string, string>;
   status?: 'published' | 'draft' | 'archived';
   assignedAttributeIds?: number[];
@@ -148,6 +149,8 @@ export async function saveProduct(data: {
   meta_description?: string;
   hero?: string;
   features?: string[];
+  industryIds?: number[];
+  standardIds?: number[];
 }) {
   await checkAuth();
 
@@ -159,6 +162,7 @@ export async function saveProduct(data: {
       brand: data.brand || null,
       category: data.categoryId || null,
       short_description: data.short_description || null,
+      description: data.description ?? null,
       specifications: data.specifications || null,
       status: data.status || 'draft',
       meta_title: data.meta_title ?? null,
@@ -266,6 +270,66 @@ export async function saveProduct(data: {
             product_attributes_id: attrId
           })
         );
+      }
+    }
+
+    // Sync M2M industries
+    if (data.industryIds !== undefined) {
+      const existingInd = (await client.request(
+        readItems('products_industries' as any, {
+          filter: { products_id: { _eq: productId } },
+          fields: ['id', 'industries_id'],
+          limit: -1
+        } as any)
+      )) as any[];
+
+      const existingIndIds = new Set(existingInd.map((e: any) => e.industries_id));
+      const desiredIndIds = new Set(data.industryIds);
+
+      for (const item of existingInd) {
+        if (!desiredIndIds.has(item.industries_id)) {
+          await client.request(deleteItem('products_industries' as any, item.id));
+        }
+      }
+      for (const indId of data.industryIds) {
+        if (!existingIndIds.has(indId)) {
+          await client.request(
+            createItem('products_industries' as any, {
+              products_id: productId,
+              industries_id: indId
+            })
+          );
+        }
+      }
+    }
+
+    // Sync M2M standards
+    if (data.standardIds !== undefined) {
+      const existingStd = (await client.request(
+        readItems('products_standards' as any, {
+          filter: { products_id: { _eq: productId } },
+          fields: ['id', 'standards_id'],
+          limit: -1
+        } as any)
+      )) as any[];
+
+      const existingStdIds = new Set(existingStd.map((e: any) => e.standards_id));
+      const desiredStdIds = new Set(data.standardIds);
+
+      for (const item of existingStd) {
+        if (!desiredStdIds.has(item.standards_id)) {
+          await client.request(deleteItem('products_standards' as any, item.id));
+        }
+      }
+      for (const stdId of data.standardIds) {
+        if (!existingStdIds.has(stdId)) {
+          await client.request(
+            createItem('products_standards' as any, {
+              products_id: productId,
+              standards_id: stdId
+            })
+          );
+        }
       }
     }
 

@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { setRequestLocale } from 'next-intl/server';
 import { EventsClient } from '@/components/events/events-client';
+import { fetchEvents, mapEventToListItem } from '@/lib/event-data';
 
 type Props = { params: { locale: string } };
 
@@ -24,9 +25,12 @@ export async function generateMetadata({ params: { locale } }: Props): Promise<M
 export default async function EventsPage({ params: { locale } }: Props) {
   setRequestLocale(locale);
 
+  const directusEvents = await fetchEvents();
+  const events = directusEvents.map(mapEventToListItem);
+
   return (
     <section className="relative min-h-screen">
-      <EventsClient />
+      <EventsClient events={events} />
     </section>
   );
 }

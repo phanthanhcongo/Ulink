@@ -36,16 +36,26 @@ import {
   updateProductHero
 } from '@/app/[locale]/admin/products/actions';
 
+interface SimpleItem {
+  id: number;
+  name: string;
+  slug: string;
+}
+
 interface ProductsClientProps {
   initialProducts: Product[];
   categories: ProductCategory[];
   globalAttributes: ProductAttribute[];
+  allIndustries: SimpleItem[];
+  allStandards: SimpleItem[];
 }
 
 export function ProductsClient({
   initialProducts,
   categories,
-  globalAttributes
+  globalAttributes,
+  allIndustries,
+  allStandards
 }: ProductsClientProps) {
   const [products, setProducts] = useState<Product[]>(initialProducts);
   const directusUrl = getDirectusUrl();
@@ -61,6 +71,8 @@ export function ProductsClient({
     []
   );
   const [selectedAttributeIds, setSelectedAttributeIds] = useState<number[]>([]);
+  const [selectedIndustryIds, setSelectedIndustryIds] = useState<number[]>([]);
+  const [selectedStandardIds, setSelectedStandardIds] = useState<number[]>([]);
 
   const [skuModalOpen, setSkuModalOpen] = useState(false);
   const [activeSku, setActiveSku] = useState<(Partial<ProductSku> & { productId?: number }) | null>(
@@ -160,12 +172,15 @@ export function ProductsClient({
         brand: activeProduct.brand || undefined,
         categoryId: activeProduct.category ? Number(activeProduct.category) : undefined,
         short_description: activeProduct.short_description || undefined,
+        description: (activeProduct as any).description || undefined,
         specifications: Object.keys(specRecord).length > 0 ? specRecord : undefined,
         status: activeProduct.status || 'draft',
         assignedAttributeIds: selectedAttributeIds,
         meta_title: activeProduct.meta_title || undefined,
         meta_description: activeProduct.meta_description || undefined,
-        features: Array.isArray((activeProduct as any).features) ? (activeProduct as any).features.filter((f: string) => f.trim()) : undefined
+        features: Array.isArray((activeProduct as any).features) ? (activeProduct as any).features.filter((f: string) => f.trim()) : undefined,
+        industryIds: selectedIndustryIds,
+        standardIds: selectedStandardIds
       });
 
       if (res.success) {
@@ -272,6 +287,8 @@ export function ProductsClient({
             setActiveProduct({ status: 'draft' });
             setActiveProductSpecs([]);
             setSelectedAttributeIds([]);
+            setSelectedIndustryIds([]);
+            setSelectedStandardIds([]);
             setProductModalOpen(true);
             setProductFormError('');
           }}
@@ -464,7 +481,6 @@ export function ProductsClient({
                           {/* Edit Product */}
                           <button
                             onClick={() => {
-                              console.log('[Edit Product] hero:', JSON.stringify(prod.hero), '| gallery:', JSON.stringify(prod.gallery));
                               setActiveProduct(prod);
                               const specRows = Object.entries(prod.specifications || {}).map(
                                 ([key, val]) => ({
@@ -481,6 +497,14 @@ export function ProductsClient({
                                 )
                                 .filter(Boolean);
                               setSelectedAttributeIds(attrIds);
+                              const indIds = (prod.industries || [])
+                                .map((i: any) => typeof i.industries_id === 'object' ? i.industries_id.id : i.industries_id)
+                                .filter(Boolean);
+                              setSelectedIndustryIds(indIds);
+                              const stdIds = (prod.standards || [])
+                                .map((s: any) => typeof s.standards_id === 'object' ? s.standards_id.id : s.standards_id)
+                                .filter(Boolean);
+                              setSelectedStandardIds(stdIds);
                               setProductModalOpen(true);
                               setProductFormError('');
                             }}
@@ -783,6 +807,22 @@ export function ProductsClient({
                     className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600 w-full"
                   />
                 </div>
+
+                {/* Description (long) */}
+                <div className="flex flex-col gap-1.5">
+                  <label className="text-caption-responsive font-bold text-slate-500 uppercase">
+                    Mô tả chi tiết sản phẩm
+                  </label>
+                  <textarea
+                    rows={5}
+                    value={(activeProduct as any).description || ''}
+                    onChange={(e) =>
+                      setActiveProduct({ ...activeProduct, description: e.target.value } as any)
+                    }
+                    placeholder="Mô tả chi tiết hiển thị trong tab Thông số kỹ thuật (hỗ trợ HTML)..."
+                    className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600 w-full"
+                  />
+                </div>
               </div>
 
               {/* Section 2: Thuộc tính biến thể */}
@@ -961,10 +1001,91 @@ export function ProductsClient({
                 </div>
               </div>
 
-              {/* Section 5: SEO */}
+              {/* Section 5: Ngành nghề & Chứng nhận */}
+              <div className="bg-slate-50/40 border border-slate-200 rounded-[3px] p-5 space-y-4">
+                <h4 className="text-caption-responsive font-bold text-slate-800 uppercase tracking-wider border-b border-slate-100 pb-2">
+                  5. Ngành nghề ứng dụng & Chứng nhận
+                </h4>
+
+                {/* Industries */}
+                <div className="space-y-2">
+                  <span className="text-caption-responsive text-slate-500 font-bold uppercase">
+                    Ngành nghề ứng dụng
+                  </span>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                    {allIndustries.map((ind) => {
+                      const checked = selectedIndustryIds.includes(ind.id);
+                      return (
+                        <label
+                          key={ind.id}
+                          className={cn(
+                            'flex items-center gap-2 p-2.5 rounded-[3px] border cursor-pointer transition-colors text-caption-responsive font-medium',
+                            checked
+                              ? 'bg-blue-50 border-blue-200 text-blue-800'
+                              : 'bg-white border-slate-200 hover:bg-slate-50 text-slate-700'
+                          )}
+                        >
+                          <input
+                            type="checkbox"
+                            checked={checked}
+                            onChange={() => {
+                              setSelectedIndustryIds(
+                                checked
+                                  ? selectedIndustryIds.filter((id) => id !== ind.id)
+                                  : [...selectedIndustryIds, ind.id]
+                              );
+                            }}
+                            className="rounded border-slate-300"
+                          />
+                          {ind.name}
+                        </label>
+                      );
+                    })}
+                  </div>
+                </div>
+
+                {/* Standards */}
+                <div className="space-y-2">
+                  <span className="text-caption-responsive text-slate-500 font-bold uppercase">
+                    Chứng nhận chất lượng
+                  </span>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+                    {allStandards.map((std) => {
+                      const checked = selectedStandardIds.includes(std.id);
+                      return (
+                        <label
+                          key={std.id}
+                          className={cn(
+                            'flex items-center gap-2 p-2.5 rounded-[3px] border cursor-pointer transition-colors text-caption-responsive font-medium',
+                            checked
+                              ? 'bg-green-50 border-green-200 text-green-800'
+                              : 'bg-white border-slate-200 hover:bg-slate-50 text-slate-700'
+                          )}
+                        >
+                          <input
+                            type="checkbox"
+                            checked={checked}
+                            onChange={() => {
+                              setSelectedStandardIds(
+                                checked
+                                  ? selectedStandardIds.filter((id) => id !== std.id)
+                                  : [...selectedStandardIds, std.id]
+                              );
+                            }}
+                            className="rounded border-slate-300"
+                          />
+                          {std.name}
+                        </label>
+                      );
+                    })}
+                  </div>
+                </div>
+              </div>
+
+              {/* Section 6: SEO */}
               <div className="bg-slate-50/40 border border-slate-200 rounded-[3px] p-5 space-y-5">
                 <h4 className="text-caption-responsive font-bold text-slate-800 uppercase tracking-wider border-b border-slate-100 pb-2">
-                  5. Tối ưu tìm kiếm (SEO)
+                  6. Tối ưu tìm kiếm (SEO)
                 </h4>
                 <div className="space-y-4">
                   <div className="flex flex-col gap-1.5">

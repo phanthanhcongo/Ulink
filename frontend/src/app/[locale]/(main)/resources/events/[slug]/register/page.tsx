@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation';
 import { setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { getEventDetailBySlug } from '@/components/events/event-detail-data';
+import { fetchEventBySlug } from '@/lib/event-data';
 import { EventRegisterForm } from '@/components/events/event-register-form';
 import { Breadcrumb } from '@/components/ui/breadcrumb';
 
@@ -13,8 +14,36 @@ type Props = {
   };
 };
 
+async function getEvent(slug: string) {
+  const directusEvent = await fetchEventBySlug(slug);
+  if (directusEvent) {
+    return {
+      slug: directusEvent.slug,
+      title: directusEvent.title,
+      date: directusEvent.date || '',
+      time: directusEvent.time || '',
+      location: directusEvent.location || '',
+      locationName: directusEvent.location_name || '',
+      price: directusEvent.price || '',
+    };
+  }
+  const hardcoded = getEventDetailBySlug(slug);
+  if (hardcoded) {
+    return {
+      slug: hardcoded.slug,
+      title: hardcoded.title,
+      date: hardcoded.date,
+      time: hardcoded.time,
+      location: hardcoded.location,
+      locationName: hardcoded.locationName,
+      price: hardcoded.price,
+    };
+  }
+  return null;
+}
+
 export async function generateMetadata({ params: { locale, slug } }: Props): Promise<Metadata> {
-  const event = getEventDetailBySlug(slug);
+  const event = await getEvent(slug);
   const isVi = locale === 'vi';
   const isJa = locale === 'ja';
 
@@ -33,7 +62,7 @@ export default async function EventRegisterPage({ params }: Props) {
   const { locale, slug } = params;
   setRequestLocale(locale);
 
-  const event = getEventDetailBySlug(slug);
+  const event = await getEvent(slug);
 
   if (!event) {
     notFound();

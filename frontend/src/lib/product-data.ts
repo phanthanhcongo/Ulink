@@ -222,6 +222,7 @@ export async function fetchProductBySlug(slug: string): Promise<Product | null> 
       'slug',
       'brand',
       'short_description',
+      'description',
       'specifications',
       'features',
       'hero',
@@ -235,6 +236,11 @@ export async function fetchProductBySlug(slug: string): Promise<Product | null> 
       'category.id',
       'category.name',
       'category.slug',
+      'category.parent.id',
+      'category.parent.name',
+      'category.parent.slug',
+      'category.parent.translations.languages_code',
+      'category.parent.translations.name',
       'category.translations.languages_code',
       'category.translations.name',
       'category.translations.description',
@@ -295,6 +301,39 @@ export async function fetchProductBySlug(slug: string): Promise<Product | null> 
   } catch (error) {
     console.error('Failed to fetch product by slug:', error);
     return getFallbackProduct(slug);
+  }
+}
+
+export interface ProductReview {
+  id: number;
+  reviewer_name: string;
+  reviewer_company: string | null;
+  rating: number;
+  title: string | null;
+  content: string;
+  is_verified: boolean;
+  date_created: string;
+}
+
+export async function fetchProductReviews(productId: number): Promise<ProductReview[]> {
+  try {
+    const base = getDirectusUrl();
+    const url = new URL('/items/product_reviews', base);
+    url.searchParams.set(
+      'filter',
+      JSON.stringify({ product: { _eq: productId }, status: { _eq: 'published' } })
+    );
+    url.searchParams.set('sort', '-date_created');
+    url.searchParams.set('limit', '50');
+    for (const f of ['id', 'reviewer_name', 'reviewer_company', 'rating', 'title', 'content', 'is_verified', 'date_created']) {
+      url.searchParams.append('fields[]', f);
+    }
+    const res = await fetch(url.toString(), { cache: 'no-store' });
+    if (!res.ok) return [];
+    const json = (await res.json()) as { data: ProductReview[] };
+    return json.data || [];
+  } catch {
+    return [];
   }
 }
 

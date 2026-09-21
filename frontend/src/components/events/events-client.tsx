@@ -8,6 +8,10 @@ import { Calendar, Clock, MapPin, Ticket, ArrowRight, ArrowLeft } from 'lucide-r
 import { cn } from '@/lib/utils';
 import { UPCOMING_EVENTS } from '@/components/resources/mock-data';
 import { ResourcesNews } from '@/components/home';
+import { resolveImageUrl } from '@/lib/image-url';
+import type { EventListItem } from '@/lib/event-data';
+
+export type { EventListItem };
 
 const L = {
   vi: {
@@ -133,19 +137,29 @@ const NEWS_ARTICLES = [
   }
 ];
 
-export function EventsClient() {
+export function EventsClient({ events }: { events?: EventListItem[] }) {
   const locale = useLocale() as 'vi' | 'en' | 'ja';
   const t = L[locale];
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 2; // Split into 2 items per page to showcase working pagination
+  const hasDirectusEvents = events && events.length > 0;
 
-  const paginatedEvents = useMemo(() => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 2;
+
+  const paginatedDirectusEvents = useMemo(() => {
+    if (!hasDirectusEvents) return [];
+    const start = (currentPage - 1) * itemsPerPage;
+    return events.slice(start, start + itemsPerPage);
+  }, [currentPage, events, hasDirectusEvents]);
+
+  const paginatedMockEvents = useMemo(() => {
+    if (hasDirectusEvents) return [];
     const start = (currentPage - 1) * itemsPerPage;
     return UPCOMING_EVENTS.slice(start, start + itemsPerPage);
-  }, [currentPage]);
+  }, [currentPage, hasDirectusEvents]);
 
-  const totalPages = Math.ceil(UPCOMING_EVENTS.length / itemsPerPage);
+  const totalItems = hasDirectusEvents ? events.length : UPCOMING_EVENTS.length;
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
 
   const handleScrollToEvents = () => {
     const listSection = document.getElementById('events-list-section');
@@ -192,14 +206,86 @@ export function EventsClient() {
       {/* Events List Section */}
       <div id="events-list-section" className="mx-auto max-w-[1200px] px-3 sm:px-4 md:px-6 py-8 sm:py-12 md:py-16 lg:py-20">
         <div className="space-y-4 sm:space-y-6 md:space-y-8 lg:space-y-10">
-          {paginatedEvents.map((event) => {
+          {hasDirectusEvents ? paginatedDirectusEvents.map((event) => {
+            const detailHref = `/resources/events/${event.slug}`;
+            const imgSrc = resolveImageUrl(event.image) || '/images/resources/events/event (2).png';
+
+            return (
+              <div
+                key={event.id}
+                className="group ui-card-hover flex flex-col lg:flex-row bg-white border border-slate-100 rounded-[3px] overflow-hidden shadow-sm hover:shadow-md transition-shadow"
+              >
+                <div className="relative w-full lg:w-[280px] xl:w-[380px] aspect-[16/10] lg:aspect-auto overflow-hidden shrink-0">
+                  <Image
+                    src={imgSrc}
+                    alt={event.title}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 380px"
+                    className="object-cover"
+                  />
+                  <div className="absolute top-2 sm:top-3 md:top-4 left-2 sm:left-3 md:left-4 bg-blue-600 text-white text-xs sm:text-caption-responsive font-bold px-2 sm:px-3 md:px-4 py-1 sm:py-2 rounded-[3px] shadow-md z-10">
+                    {event.date}
+                  </div>
+                </div>
+
+                <div className="p-4 sm:p-5 md:p-7 lg:p-8 xl:p-10 flex-1 flex flex-col justify-between">
+                  <div>
+                    <span className="inline-block text-xs sm:text-caption-responsive font-bold text-blue-600 uppercase tracking-widest mb-2 sm:mb-3">
+                      {t.eventLabel}
+                    </span>
+
+                    <h3 className="text-base sm:text-lg md:text-xl font-bold text-[#0E2142] group-hover:text-blue-600 transition-colors duration-300 leading-snug line-clamp-2 sm:line-clamp-none">
+                      <Link href={detailHref} className="hover:underline">
+                        {event.title}
+                      </Link>
+                    </h3>
+
+                    {event.summary && (
+                      <p className="mt-2 sm:mt-3 md:mt-4 text-xs sm:text-sm md:text-base text-slate-500 font-normal leading-relaxed line-clamp-2 sm:line-clamp-3">
+                        {event.summary}
+                      </p>
+                    )}
+
+                    <div className="mt-4 sm:mt-5 md:mt-6 grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 md:gap-4 border-t border-slate-100 pt-4 sm:pt-5 md:pt-6">
+                      <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-caption-responsive text-slate-600">
+                        <Calendar className="h-3 sm:h-4 w-3 sm:w-4 text-blue-600 shrink-0" />
+                        <span className="font-semibold text-slate-700 truncate">{event.date}</span>
+                      </div>
+                      <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-caption-responsive text-slate-600">
+                        <Clock className="h-3 sm:h-4 w-3 sm:w-4 text-blue-600 shrink-0" />
+                        <span className="font-semibold text-slate-700 truncate">{event.time}</span>
+                      </div>
+                      <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-caption-responsive text-slate-600 sm:col-span-2">
+                        <MapPin className="h-3 sm:h-4 w-3 sm:w-4 text-blue-600 shrink-0" />
+                        <span className="font-semibold text-slate-700 truncate">{event.locationName || event.location}</span>
+                      </div>
+                      {event.price && (
+                        <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-caption-responsive text-slate-600 sm:col-span-2">
+                          <Ticket className="h-3 sm:h-4 w-3 sm:w-4 text-blue-600 shrink-0" />
+                          <span className="font-bold text-blue-600">{event.price}</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="mt-4 sm:mt-5 md:mt-6 lg:mt-8">
+                    <Link
+                      href={detailHref}
+                      className="inline-flex items-center justify-center w-full sm:w-auto px-4 sm:px-5 md:px-6 py-2 sm:py-2.5 md:py-3 border border-[#1769E2] hover:bg-[#EBF3FE] text-[#1769E2] font-bold rounded-[3px] text-xs sm:text-caption-responsive md:text-sm transition-all duration-300 shadow-xs group-hover:bg-[#1769E2] group-hover:text-white"
+                    >
+                      {t.registerBtn}
+                      <ArrowRight className="ml-1.5 sm:ml-2 h-3 sm:h-4 w-3 sm:w-4" />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            );
+          }) : paginatedMockEvents.map((event) => {
             const titleText = event.title[locale] || event.title.en;
             const descText = event.description?.[locale] || event.description?.en || '';
             const locationText = event.location ? (event.location[locale] || event.location.en) : '';
             const priceText = event.price?.[locale] || event.price?.en || '';
             const badgeText = event.badge?.[locale] || event.badge?.en || t.eventLabel;
-
-            // Extract detail URL slug: extract 'ev-001' from link '/events/ev-001/register'
             const detailSlug = event.id.toLowerCase();
             const detailHref = `/resources/events/${detailSlug}`;
 
@@ -208,7 +294,6 @@ export function EventsClient() {
                 key={event.id}
                 className="group ui-card-hover flex flex-col lg:flex-row bg-white border border-slate-100 rounded-[3px] overflow-hidden shadow-sm hover:shadow-md transition-shadow"
               >
-                {/* Event Image */}
                 <div className="relative w-full lg:w-[280px] xl:w-[380px] aspect-[16/10] lg:aspect-auto overflow-hidden shrink-0">
                   <Image
                     src={event.images && event.images[1] ? event.images[1] : event.image}
@@ -217,66 +302,51 @@ export function EventsClient() {
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 100vw, 380px"
                     className="object-cover"
                   />
-                  {/* Overlay Date Badge */}
                   <div className="absolute top-2 sm:top-3 md:top-4 left-2 sm:left-3 md:left-4 bg-blue-600 text-white text-xs sm:text-caption-responsive font-bold px-2 sm:px-3 md:px-4 py-1 sm:py-2 rounded-[3px] shadow-md z-10">
                     {event.date}
                   </div>
                 </div>
 
-                {/* Event Content */}
                 <div className="p-4 sm:p-5 md:p-7 lg:p-8 xl:p-10 flex-1 flex flex-col justify-between">
                   <div>
-                    {/* Badge Category */}
                     <span className="inline-block text-xs sm:text-caption-responsive font-bold text-blue-600 uppercase tracking-widest mb-2 sm:mb-3">
                       {badgeText}
                     </span>
 
-                    {/* Title */}
                     <h3 className="text-base sm:text-lg md:text-xl font-bold text-[#0E2142] group-hover:text-blue-600 transition-colors duration-300 leading-snug line-clamp-2 sm:line-clamp-none">
                       <Link href={detailHref} className="hover:underline">
                         {titleText}
                       </Link>
                     </h3>
 
-                    {/* Description */}
                     {descText && (
                       <p className="mt-2 sm:mt-3 md:mt-4 text-xs sm:text-sm md:text-base text-slate-500 font-normal leading-relaxed line-clamp-2 sm:line-clamp-3">
                         {descText}
                       </p>
                     )}
 
-                    {/* Metadata details */}
                     <div className="mt-4 sm:mt-5 md:mt-6 grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 md:gap-4 border-t border-slate-100 pt-4 sm:pt-5 md:pt-6">
                       <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-caption-responsive text-slate-600">
                         <Calendar className="h-3 sm:h-4 w-3 sm:w-4 text-blue-600 shrink-0" />
-                        <span className="font-semibold text-slate-700 truncate">
-                          {event.date}
-                        </span>
+                        <span className="font-semibold text-slate-700 truncate">{event.date}</span>
                       </div>
                       <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-caption-responsive text-slate-600">
                         <Clock className="h-3 sm:h-4 w-3 sm:w-4 text-blue-600 shrink-0" />
-                        <span className="font-semibold text-slate-700 truncate">
-                          {event.time}
-                        </span>
+                        <span className="font-semibold text-slate-700 truncate">{event.time}</span>
                       </div>
                       <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-caption-responsive text-slate-600 sm:col-span-2">
                         <MapPin className="h-3 sm:h-4 w-3 sm:w-4 text-blue-600 shrink-0" />
-                        <span className="font-semibold text-slate-700 truncate">
-                          {locationText}
-                        </span>
+                        <span className="font-semibold text-slate-700 truncate">{locationText}</span>
                       </div>
                       {priceText && (
                         <div className="flex items-center gap-2 sm:gap-3 text-xs sm:text-caption-responsive text-slate-600 sm:col-span-2">
                           <Ticket className="h-3 sm:h-4 w-3 sm:w-4 text-blue-600 shrink-0" />
-                          <span className="font-bold text-blue-600">
-                            {priceText}
-                          </span>
+                          <span className="font-bold text-blue-600">{priceText}</span>
                         </div>
                       )}
                     </div>
                   </div>
 
-                  {/* Register CTA Button */}
                   <div className="mt-4 sm:mt-5 md:mt-6 lg:mt-8">
                     <Link
                       href={detailHref}

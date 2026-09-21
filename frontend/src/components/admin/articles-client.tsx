@@ -31,6 +31,7 @@ interface Translation {
   id?: number;
   languages_code: string;
   title: string;
+  description?: string | null;
   body?: string | null;
   meta_title?: string | null;
   meta_description?: string | null;
@@ -42,6 +43,9 @@ interface Article {
   slug: string;
   cover?: string | null;
   author?: string | null;
+  author_role?: string | null;
+  author_avatar?: string | null;
+  category?: string | null;
   published_at?: string | null;
   translations?: Translation[];
 }
@@ -68,6 +72,7 @@ export function ArticlesClient({
   const [activeArticle, setActiveArticle] = useState<
     | (Partial<Article> & {
         title: string;
+        description: string;
         body: string;
         meta_title: string;
         meta_description: string;
@@ -161,10 +166,14 @@ export function ArticlesClient({
       const res = await saveArticle({
         id: activeArticle.id,
         title: activeArticle.title || '',
+        description: activeArticle.description || '',
         slug: activeArticle.slug || '',
         body: activeArticle.body || '',
         cover: activeArticle.cover,
         author: activeArticle.author || undefined,
+        author_role: activeArticle.author_role || undefined,
+        author_avatar: activeArticle.author_avatar || undefined,
+        category: activeArticle.category || undefined,
         published_at: activeArticle.published_at || null,
         status: activeArticle.status || 'draft',
         meta_title: activeArticle.meta_title || '',
@@ -235,9 +244,13 @@ export function ArticlesClient({
               setActiveArticle({
                 status: 'draft',
                 title: '',
+                description: '',
                 body: '',
                 slug: '',
                 author: '',
+                author_role: '',
+                author_avatar: null,
+                category: '',
                 published_at: new Date().toISOString().substring(0, 16),
                 meta_title: '',
                 meta_description: '',
@@ -397,16 +410,25 @@ export function ArticlesClient({
                                   locale
                                 );
 
+                                const existingDescription = getTranslatedField(
+                                  art,
+                                  'description',
+                                  locale
+                                );
                                 setActiveArticle({
                                   id: art.id,
                                   slug: art.slug,
                                   status: art.status,
                                   cover: art.cover,
                                   author: art.author,
+                                  author_role: art.author_role,
+                                  author_avatar: art.author_avatar,
+                                  category: art.category,
                                   published_at: art.published_at
                                     ? new Date(art.published_at).toISOString().substring(0, 16)
                                     : null,
                                   title: existingTitle,
+                                  description: existingDescription,
                                   body: existingBody,
                                   meta_title: existingMetaTitle,
                                   meta_description: existingMetaDescription
@@ -496,16 +518,21 @@ export function ArticlesClient({
                             const existingMetaTitle = getTranslatedField(art, 'meta_title', locale);
                             const existingMetaDescription = getTranslatedField(art, 'meta_description', locale);
 
+                            const existingDescription = getTranslatedField(art, 'description', locale);
                             setActiveArticle({
                               id: art.id,
                               slug: art.slug,
                               status: art.status,
                               cover: art.cover,
                               author: art.author,
+                              author_role: art.author_role,
+                              author_avatar: art.author_avatar,
+                              category: art.category,
                               published_at: art.published_at
                                 ? new Date(art.published_at).toISOString().substring(0, 16)
                                 : null,
                               title: existingTitle,
+                              description: existingDescription,
                               body: existingBody,
                               meta_title: existingMetaTitle,
                               meta_description: existingMetaDescription
@@ -664,6 +691,93 @@ export function ArticlesClient({
                           placeholder="ULink Team"
                           className="w-full px-4 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-semibold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand"
                         />
+                      </div>
+                    </div>
+
+                    {/* Description */}
+                    <div className="flex flex-col gap-1.5">
+                      <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
+                        Mô tả ngắn (Hiển thị dưới tiêu đề)
+                      </label>
+                      <textarea
+                        rows={2}
+                        value={activeArticle.description || ''}
+                        onChange={(e) =>
+                          setActiveArticle({ ...activeArticle, description: e.target.value })
+                        }
+                        placeholder="Mô tả ngắn gọn nội dung bài viết, hiển thị ở trang chi tiết..."
+                        className="w-full px-4 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand leading-relaxed"
+                      />
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      {/* Category */}
+                      <div className="flex flex-col gap-1.5">
+                        <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
+                          Danh mục
+                        </label>
+                        <select
+                          value={activeArticle.category || ''}
+                          onChange={(e) =>
+                            setActiveArticle({ ...activeArticle, category: e.target.value })
+                          }
+                          className="w-full px-4 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-700 focus:outline-none bg-white shadow-sm"
+                        >
+                          <option value="">-- Chọn danh mục --</option>
+                          <option value="Tin tức">Tin tức</option>
+                          <option value="Catalogue">Catalogue</option>
+                          <option value="Tài liệu kỹ thuật">Tài liệu kỹ thuật</option>
+                          <option value="Hướng dẫn">Hướng dẫn</option>
+                          <option value="Case Study">Case Study</option>
+                          <option value="Sự kiện">Sự kiện</option>
+                        </select>
+                      </div>
+
+                      {/* Author Role */}
+                      <div className="flex flex-col gap-1.5">
+                        <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
+                          Chức vụ tác giả
+                        </label>
+                        <input
+                          type="text"
+                          value={activeArticle.author_role || ''}
+                          onChange={(e) =>
+                            setActiveArticle({ ...activeArticle, author_role: e.target.value })
+                          }
+                          placeholder="VD: Trưởng phòng Đóng gói"
+                          className="w-full px-4 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-semibold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand"
+                        />
+                      </div>
+
+                      {/* Author Avatar */}
+                      <div className="flex flex-col gap-1.5">
+                        <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
+                          Ảnh tác giả
+                        </label>
+                        <div className="flex items-center gap-2">
+                          {activeArticle.author_avatar && (
+                            <img
+                              src={resolveImageUrl(activeArticle.author_avatar) || ''}
+                              alt="Avatar"
+                              className="h-8 w-8 rounded-full object-cover border border-slate-200"
+                            />
+                          )}
+                          <input
+                            type="file"
+                            accept="image/*"
+                            onChange={async (e) => {
+                              const file = e.target.files?.[0];
+                              if (!file) return;
+                              const formData = new FormData();
+                              formData.append('file', file);
+                              const res = await uploadImage(formData);
+                              if (res.success && res.id) {
+                                setActiveArticle((prev) => prev ? { ...prev, author_avatar: res.id } : null);
+                              }
+                            }}
+                            className="w-full text-caption-responsive file:mr-2 file:py-1 file:px-3 file:rounded-[3px] file:border file:border-slate-200 file:text-caption-responsive file:font-bold file:bg-white file:text-slate-600 hover:file:bg-slate-50"
+                          />
+                        </div>
                       </div>
                     </div>
 
