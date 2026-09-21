@@ -388,17 +388,25 @@
     },
     "targetSegments": {
       "sectionTitle": "INDUSTRIAL SERVICES & SOLUTIONS",
+      "sectionTitleMobile": "INDUSTRIAL SERVICES & SOLUTIONS",
       "sectionSubTitle": "Accompanying the Growth of Enterprises",
       "fdiTitle": "FDI Enterprises",
       "fdiDesc": "Comprehensive solutions meeting the strictest standards of foreign partners.",
+      "fdiDescMobile": "Comprehensive solutions meeting the strictest standards of foreign partners.",
       "fdiCheck1": "Complies with strict ISO standards",
+      "fdiCheck1Mobile": "Complies with strict ISO standards",
       "fdiCheck2": "Long-term contracts, stable pricing",
+      "fdiCheck2Mobile": "Long-term contracts, stable pricing",
       "fdiCheck3": "Fast delivery - Connecting industrial zones nationwide",
       "fdiCheck4": "Technical support & optimal solution consulting",
       "smeTitle": "Domestic Manufacturing Enterprises",
+      "smeTitleMobile": "Domestic Manufacturing Enterprises",
       "smeDesc": "Operational cost optimization for large-scale domestic factories.",
+      "smeDescMobile": "Operational cost optimization for large-scale domestic factories.",
       "smeCheck1": "High volume-based discounts",
+      "smeCheck1Mobile": "High volume-based discounts",
       "smeCheck2": "24/7 on-site technical consulting",
+      "smeCheck2Mobile": "24/7 on-site technical consulting",
       "smeCheck3": "Professional 24/7 consulting team",
       "smeCheck4": "Nationwide warehouse coverage",
       "viewDetail": "View Details"
@@ -640,6 +648,15 @@
         "feat2": "Multiple sizes",
         "feat3": "High heat resistance",
         "feat4": "Excellent adhesion"
+      },
+      "pallet": {
+        "category": "PALLET WRAP FILM",
+        "title": "Cost-optimized packaging",
+        "desc": "Packaging · Protection · Safe transportation",
+        "feat1": "Virgin PE material",
+        "feat2": "High adhesion strength",
+        "feat3": "Waterproof protection",
+        "feat4": "Superior durability"
       }
     },
     "carousel": {

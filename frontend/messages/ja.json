@@ -190,8 +190,8 @@
     "home": "ホーム",
     "favorites": "お気に入り",
     "hubs": "地域ハブ",
-    "solutions": "Solutions",
-    "products": "Products",
+    "solutions": "ソリューション",
+    "products": "製品",
     "industries": "業界",
     "resources": "リソース",
     "events": "イベント",
@@ -212,12 +212,7 @@
   },
   "home": {
     "hero": {
-      "eyebrow": "クリーンルーム用手袋とトータルソリューションの専門サプライヤー",
-      "titleLine1": "細部まで清潔に、",
-      "titleLine2": "未来をもっと安全に。",
       "description": "ULINK Industriesは、あらゆる製造プロセスにおいて生産ニーズに応え品質を保証する総合ソリューションと高品質製品を提供します。",
-      "ctaOrder": "今すぐ注文する",
-      "ctaSolutions": "ソリューションを見る",
       "eyebrowTop": "産業資材の製造・販売メーカー",
       "eyebrowSub": "クリーンルーム用品および梱包資材",
       "title": "生産のための産業消耗品ソリューション。",
