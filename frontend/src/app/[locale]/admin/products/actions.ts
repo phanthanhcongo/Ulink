@@ -85,6 +85,85 @@ async function checkAuth() {
 }
 
 /**
+ * Upsert i18n translation rows for a source item (Directus translations pattern).
+ *
+ * Reads existing rows in `translationCollection` filtered by the source id,
+ * maps them by `languages_code`, then updates the matching row or creates a new
+ * one. Rows whose translatable fields are all empty are skipped (and deleted if
+ * they previously existed), so clearing a locale in the admin form removes it.
+ *
+ * @param sourceField e.g. 'products_id' or 'product_skus_id'
+ * @param translations each row must carry `languages_code` plus translated fields
+ */
+async function upsertTranslations(
+  client: any,
+  translationCollection: string,
+  sourceField: string,
+  sourceId: number,
+  translations: Array<Record<string, any>>
+) {
+  const existing = (await client.request(
+    (readItems as any)(translationCollection, {
+      filter: { [sourceField]: { _eq: sourceId } },
+      fields: ['*'],
+      limit: -1
+    })
+  )) as any[];
+
+  const existingByLocale = new Map<string, any>(
+    existing.map((row: any) => [row.languages_code, row])
+  );
+
+  for (const t of translations) {
+    const locale = t.languages_code;
+    if (!locale) continue;
+
+    // Determine which translatable fields carry a non-empty value.
+    const fieldEntries = Object.entries(t).filter(([k]) => k !== 'languages_code');
+    const hasContent = fieldEntries.some(([, v]) => {
+      if (v == null) return false;
+      if (typeof v === 'string') return v.trim() !== '';
+      if (typeof v === 'object') return Object.keys(v).length > 0;
+      return true;
+    });
+
+    const current = existingByLocale.get(locale);
+
+    if (!hasContent) {
+      // No content for this locale — remove any stale row so it doesn't linger.
+      if (current) {
+        await client.request((deleteItem as any)(translationCollection, current.id));
+      }
+      continue;
+    }
+
+    // Normalise: send null (not undefined) for missing/blank fields.
+    const payload: Record<string, unknown> = {};
+    for (const [k, v] of fieldEntries) {
+      if (typeof v === 'string') {
+        payload[k] = v.trim() === '' ? null : v;
+      } else if (v && typeof v === 'object') {
+        payload[k] = Object.keys(v).length > 0 ? v : null;
+      } else {
+        payload[k] = v ?? null;
+      }
+    }
+
+    if (current) {
+      await client.request((updateItem as any)(translationCollection, current.id, payload));
+    } else {
+      await client.request(
+        (createItem as any)(translationCollection, {
+          [sourceField]: sourceId,
+          languages_code: locale,
+          ...payload
+        })
+      );
+    }
+  }
+}
+
+/**
  * Action: Update the stock status of a specific SKU.
  */
 export async function updateSkuStock(
@@ -152,6 +231,14 @@ export async function saveProduct(data: {
   features?: string[];
   industryIds?: number[];
   standardIds?: number[];
+  translations?: Array<{
+    languages_code: string;
+    name?: string;
+    short_description?: string;
+    specifications?: Record<string, string>;
+    meta_title?: string;
+    meta_description?: string;
+  }>;
 }) {
   await checkAuth();
 
@@ -334,6 +421,17 @@ export async function saveProduct(data: {
       }
     }
 
+    // Sync i18n translations (en/ja) into products_translations
+    if (data.translations !== undefined) {
+      await upsertTranslations(
+        client,
+        'products_translations',
+        'products_id',
+        productId,
+        data.translations
+      );
+    }
+
     revalidatePath('/[locale]/products', 'layout');
     revalidatePath('/[locale]/admin/skus', 'layout');
     return { success: true };
@@ -356,6 +454,12 @@ export async function saveSku(data: {
   attributes?: Record<string, string>;
   stock_status?: 'in_stock' | 'low_stock' | 'out_of_stock';
   status?: 'published' | 'draft' | 'archived';
+  translations?: Array<{
+    languages_code: string;
+    name?: string;
+    unit?: string;
+    pack_size?: string;
+  }>;
 }) {
   await checkAuth();
 
@@ -391,10 +495,24 @@ export async function saveSku(data: {
       status: data.status || 'published'
     };
 
+    let skuId: number;
     if (data.id) {
       await client.request(updateItem('product_skus', data.id, payload));
+      skuId = data.id;
     } else {
-      await client.request(createItem('product_skus', payload));
+      const created = await client.request(createItem('product_skus', payload));
+      skuId = (created as any).id;
+    }
+
+    // Sync i18n translations (en/ja) into product_skus_translations
+    if (data.translations !== undefined) {
+      await upsertTranslations(
+        client,
+        'product_skus_translations',
+        'product_skus_id',
+        skuId,
+        data.translations
+      );
     }
 
     revalidatePath('/[locale]/products', 'layout');

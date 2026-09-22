@@ -70,6 +70,7 @@ const PRODUCT_LIST_FIELDS = [
   'translations.languages_code',
   'translations.name',
   'translations.short_description',
+  'translations.specifications',
   'translations.meta_title',
   'translations.meta_description',
   'category.id',
@@ -78,6 +79,10 @@ const PRODUCT_LIST_FIELDS = [
   'category.translations.languages_code',
   'category.translations.name',
   'skus.*',
+  'skus.translations.languages_code',
+  'skus.translations.name',
+  'skus.translations.unit',
+  'skus.translations.pack_size',
   'industries.industries_id.id',
   'industries.industries_id.name',
   'industries.industries_id.slug',
@@ -231,6 +236,7 @@ export async function fetchProductBySlug(slug: string): Promise<Product | null> 
       'translations.languages_code',
       'translations.name',
       'translations.short_description',
+      'translations.specifications',
       'translations.meta_title',
       'translations.meta_description',
       'category.id',
@@ -253,6 +259,10 @@ export async function fetchProductBySlug(slug: string): Promise<Product | null> 
       'skus.attributes',
       'skus.images',
       'skus.status',
+      'skus.translations.languages_code',
+      'skus.translations.name',
+      'skus.translations.unit',
+      'skus.translations.pack_size',
       'industries.industries_id.id',
       'industries.industries_id.name',
       'industries.industries_id.slug',
@@ -343,24 +353,57 @@ function getFallbackProduct(slug: string): Product {
     .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
     .join(' ');
 
+  const specsVi = {
+    'Tiêu chuẩn': 'ISO 9001 / ISO Class 5',
+    'Thương hiệu': 'ULINK Industries',
+    'Đóng gói': 'Tiêu chuẩn nhà máy công nghiệp',
+    'Xuất xứ': 'Chính hãng ULink'
+  };
+  const specsEn = {
+    Standard: 'ISO 9001 / ISO Class 5',
+    Brand: 'ULINK Industries',
+    Packaging: 'Industrial factory standard',
+    Origin: 'Genuine ULINK'
+  };
+  const specsJa = {
+    規格: 'ISO 9001 / ISO クラス5',
+    ブランド: 'ULINK Industries',
+    梱包: '工業用工場基準',
+    原産: 'ULINK 正規品'
+  };
+
   return {
     id: 999,
     name: `Sản phẩm ${titleFormatted} ULINK`,
     slug: slug,
     brand: 'ULINK Industries',
     short_description: `Sản phẩm ${titleFormatted} cao cấp chuyên dùng cho các nhà máy sản xuất công nghiệp, phòng sạch và đóng gói bao bì tiêu chuẩn quốc tế ISO / ESD / FDA.`,
-    specifications: {
-      'Tiêu chuẩn': 'ISO 9001 / ISO Class 5',
-      'Thương hiệu': 'ULINK Industries',
-      'Đóng gói': 'Tiêu chuẩn nhà máy công nghiệp',
-      'Xuất xứ': 'Chính hãng ULink'
-    },
+    specifications: specsVi,
+    // Locale rows so getTranslated* resolvers render en/ja without a DB record.
+    translations: [
+      {
+        languages_code: 'en',
+        name: `${titleFormatted} — ULINK`,
+        short_description: `Premium ${titleFormatted} for industrial manufacturing, cleanrooms and packaging, meeting international ISO / ESD / FDA standards.`,
+        specifications: specsEn
+      },
+      {
+        languages_code: 'ja',
+        name: `${titleFormatted} — ULINK`,
+        short_description: `工業製造・クリーンルーム・包装向けの高品質な${titleFormatted}。国際規格 ISO / ESD / FDA に準拠。`,
+        specifications: specsJa
+      }
+    ],
     hero: null,
     status: 'published',
     category: {
       id: 1,
       name: 'Vật tư công nghiệp',
-      slug: 'cleanroom-consumables'
+      slug: 'cleanroom-consumables',
+      translations: [
+        { languages_code: 'en', name: 'Industrial supplies' },
+        { languages_code: 'ja', name: '工業用資材' }
+      ]
     },
     skus: [
       {
@@ -369,7 +412,11 @@ function getFallbackProduct(slug: string): Product {
         stock_status: 'in_stock',
         unit: 'cái',
         pack_size: 'Thùng / Hộp',
-        status: 'published'
+        status: 'published',
+        translations: [
+          { languages_code: 'en', unit: 'pcs', pack_size: 'Carton / Box' },
+          { languages_code: 'ja', unit: '個', pack_size: 'カートン / 箱' }
+        ]
       }
     ],
     industries: [],
@@ -446,20 +493,22 @@ export async function fetchProductCategories(): Promise<ProductCategory[]> {
 }
 
 export function getProductPricing(slug: string, locale: string = 'vi') {
-  const isVi = locale === 'vi';
+  // Unit label per locale: [vi, en, ja]
+  const pick = (vi: string, en: string, ja: string) =>
+    locale === 'en' ? en : locale === 'ja' ? ja : vi;
   const pricingMap: Record<string, { price: number; unit: string }> = {
-    'nitrile-cleanroom-gloves': { price: 2500, unit: isVi ? 'đôi' : 'pair' },
-    'polyester-cleanroom-wipers': { price: 250000, unit: isVi ? 'gói' : 'pack' },
-    'tyvek-cleanroom-coverall': { price: 180000, unit: isVi ? 'bộ' : 'pcs' },
-    'cleanroom-face-mask-3ply': { price: 75000, unit: isVi ? 'hộp' : 'box' },
-    'esd-wrist-strap': { price: 45000, unit: isVi ? 'cái' : 'pcs' },
-    'esd-table-mat-2layer': { price: 1200000, unit: isVi ? 'cuộn' : 'roll' },
-    'ipa-cleanroom-grade-999': { price: 95000, unit: isVi ? 'chai' : 'bottle' },
-    'sticky-mat-30-layers': { price: 150000, unit: isVi ? 'tấm' : 'sheet' },
-    'esd-shielding-bag': { price: 3500, unit: isVi ? 'túi' : 'bag' },
-    'sterile-latex-cleanroom-gloves': { price: 4500, unit: isVi ? 'đôi' : 'pair' }
+    'nitrile-cleanroom-gloves': { price: 2500, unit: pick('đôi', 'pair', '組') },
+    'polyester-cleanroom-wipers': { price: 250000, unit: pick('gói', 'pack', 'パック') },
+    'tyvek-cleanroom-coverall': { price: 180000, unit: pick('bộ', 'pcs', '着') },
+    'cleanroom-face-mask-3ply': { price: 75000, unit: pick('hộp', 'box', '箱') },
+    'esd-wrist-strap': { price: 45000, unit: pick('cái', 'pcs', '個') },
+    'esd-table-mat-2layer': { price: 1200000, unit: pick('cuộn', 'roll', 'ロール') },
+    'ipa-cleanroom-grade-999': { price: 95000, unit: pick('chai', 'bottle', '本') },
+    'sticky-mat-30-layers': { price: 150000, unit: pick('tấm', 'sheet', '枚') },
+    'esd-shielding-bag': { price: 3500, unit: pick('túi', 'bag', '袋') },
+    'sterile-latex-cleanroom-gloves': { price: 4500, unit: pick('đôi', 'pair', '組') }
   };
-  return pricingMap[slug] || { price: 41500, unit: isVi ? 'kg' : 'kg' };
+  return pricingMap[slug] || { price: 41500, unit: pick('kg', 'kg', 'kg') };
 }
 
 export async function fetchIndustryProductCounts(): Promise<Record<string, number>> {

@@ -569,6 +569,12 @@ async function fetchDirectusArticles(): Promise<ResourceItem[]> {
 
       const categoryVi = post.category || 'Tin tức';
       const categoryMap: Record<string, { en: string; ja: string }> = {
+        'Hướng dẫn kỹ thuật': { en: 'Technical Guide', ja: '技術ガイド' },
+        'Tiêu chuẩn': { en: 'Standards', ja: '規格・認証' },
+        'Case Study': { en: 'Case Study', ja: '導入事例' },
+        'Nghiên cứu điển hình': { en: 'Case Study', ja: '導入事例' },
+        'Infographic': { en: 'Infographic', ja: 'インフォグラフィック' },
+        'Sự kiện': { en: 'Events', ja: 'イベント' },
         'Kho lạnh & Thực phẩm': { en: 'Cold Storage & Food', ja: '冷蔵・食品物流' },
         'Cảng biển & Container': { en: 'Seaport & Container', ja: '港湾・コンテナ' },
         'Khu công nghiệp': { en: 'Industrial Park', ja: '工業団地' },
@@ -576,10 +582,16 @@ async function fetchDirectusArticles(): Promise<ResourceItem[]> {
         'Tin tức': { en: 'News', ja: 'ニュース' }
       };
       const categoryLocalized = categoryMap[categoryVi] || { en: categoryVi, ja: categoryVi };
+      const categoryCode: ResourceItem['category'] =
+        categoryVi === 'Hướng dẫn kỹ thuật' ? 'guide' :
+        categoryVi === 'Tiêu chuẩn' ? 'standard' :
+        categoryVi === 'Case Study' || categoryVi === 'Nghiên cứu điển hình' ? 'case-study' :
+        categoryVi === 'Sự kiện' ? 'event' :
+        'news';
 
       return {
         id: post.slug || `article-${post.id}`,
-        category: 'news' as const,
+        category: categoryCode,
         badge: {
           vi: categoryVi,
           en: categoryLocalized.en,

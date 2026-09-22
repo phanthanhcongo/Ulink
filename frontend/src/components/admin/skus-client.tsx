@@ -15,6 +15,39 @@ interface SkusClientProps {
   products: Product[];
 }
 
+// Secondary locales the admin can translate SKU labels into (base is Vietnamese).
+const I18N_LOCALES = ['en', 'ja'] as const;
+type I18nLocale = (typeof I18N_LOCALES)[number];
+const I18N_LABELS: Record<I18nLocale, string> = { en: 'English', ja: '日本語' };
+
+interface SkuTransForm {
+  name: string;
+  unit: string;
+  pack_size: string;
+}
+
+const emptySkuTrans = (): SkuTransForm => ({ name: '', unit: '', pack_size: '' });
+const emptySkuTransMap = (): Record<I18nLocale, SkuTransForm> => ({
+  en: emptySkuTrans(),
+  ja: emptySkuTrans()
+});
+
+/** Build the per-locale SKU translation form state from a Directus SKU. */
+function loadSkuTranslations(sku: any): Record<I18nLocale, SkuTransForm> {
+  const map = emptySkuTransMap();
+  const rows = Array.isArray(sku?.translations) ? sku.translations : [];
+  for (const lc of I18N_LOCALES) {
+    const row = rows.find((r: any) => r.languages_code === lc);
+    if (!row) continue;
+    map[lc] = {
+      name: row.name || '',
+      unit: row.unit || '',
+      pack_size: row.pack_size || ''
+    };
+  }
+  return map;
+}
+
 export function SkusClient({ initialSkus, products }: SkusClientProps) {
   const [skus, setSkus] = useState<ProductSku[]>(initialSkus);
   const [searchQuery, setSearchQuery] = useState('');
@@ -63,6 +96,8 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
   const [activeSku, setActiveSku] = useState<(Partial<ProductSku> & { productId?: number }) | null>(
     null
   );
+  const [skuTrans, setSkuTrans] = useState<Record<I18nLocale, SkuTransForm>>(emptySkuTransMap());
+  const [activeSkuTransLocale, setActiveSkuTransLocale] = useState<I18nLocale>('en');
 
   // Attribute selections state: { [attributeId]: optionId }
   const [selectedOptions, setSelectedOptions] = useState<Record<number, number>>({});
@@ -222,6 +257,16 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
         ? buildAttributesJson(selectedOptions, activeProductAttrs)
         : undefined;
 
+    const skuTranslations = I18N_LOCALES.map((lc) => {
+      const t = skuTrans[lc];
+      return {
+        languages_code: lc,
+        name: t.name.trim() || undefined,
+        unit: t.unit.trim() || undefined,
+        pack_size: t.pack_size.trim() || undefined
+      };
+    });
+
     startTransition(async () => {
       const res = await saveSku({
         id: activeSku.id,
@@ -232,7 +277,8 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
         price: (activeSku as any).price || null,
         attributes: attributesJson,
         stock_status: activeSku.stock_status || 'in_stock',
-        status: activeSku.status || 'published'
+        status: activeSku.status || 'published',
+        translations: skuTranslations
       });
 
       if (res.success) {
@@ -288,6 +334,8 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
           onClick={() => {
             setSelectedOptions({});
             setActiveSku({ stock_status: 'in_stock', status: 'published', sku_code: '' });
+            setSkuTrans(emptySkuTransMap());
+            setActiveSkuTransLocale('en');
             setSkuModalOpen(true);
             setFormError('');
           }}
@@ -638,6 +686,8 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                                 stock_status: sku.stock_status,
                                 status: sku.status
                               } as any);
+                              setSkuTrans(loadSkuTranslations(sku));
+                              setActiveSkuTransLocale('en');
                               setSkuModalOpen(true);
                               setFormError('');
                             }}
@@ -869,6 +919,66 @@ export function SkusClient({ initialSkus, products }: SkusClientProps) {
                   placeholder="Ví dụ: 100 đôi/hộp, 10 cuộn/thùng"
                   className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
                 />
+              </div>
+
+              {/* Multilingual SKU labels */}
+              <div className="rounded-[3px] border border-slate-200 bg-slate-50/40 p-4 space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-caption-responsive font-bold text-slate-500 uppercase">
+                    Bản dịch (ĐVT / Quy cách)
+                  </span>
+                  <div className="inline-flex rounded-[3px] border border-slate-200 overflow-hidden">
+                    {I18N_LOCALES.map((lc) => (
+                      <button
+                        key={lc}
+                        type="button"
+                        onClick={() => setActiveSkuTransLocale(lc)}
+                        className={cn(
+                          'px-3 py-1 text-caption-responsive font-bold transition-colors',
+                          activeSkuTransLocale === lc
+                            ? 'bg-blue-600 text-white'
+                            : 'bg-white text-slate-500 hover:bg-slate-50'
+                        )}
+                      >
+                        {I18N_LABELS[lc]}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                {(() => {
+                  const lc = activeSkuTransLocale;
+                  const t = skuTrans[lc];
+                  const setField = (field: keyof SkuTransForm, value: string) =>
+                    setSkuTrans((prev) => ({ ...prev, [lc]: { ...prev[lc], [field]: value } }));
+                  return (
+                    <div className="space-y-3">
+                      <div className="flex flex-col gap-1.5">
+                        <label className="text-caption-responsive font-bold text-slate-500 uppercase">
+                          Đơn vị tính ({I18N_LABELS[lc]})
+                        </label>
+                        <input
+                          type="text"
+                          value={t.unit}
+                          onChange={(e) => setField('unit', e.target.value)}
+                          placeholder={lc === 'ja' ? '箱、組、ロール…' : 'Box, Pair, Roll…'}
+                          className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                        />
+                      </div>
+                      <div className="flex flex-col gap-1.5">
+                        <label className="text-caption-responsive font-bold text-slate-500 uppercase">
+                          Quy cách đóng gói ({I18N_LABELS[lc]})
+                        </label>
+                        <input
+                          type="text"
+                          value={t.pack_size}
+                          onChange={(e) => setField('pack_size', e.target.value)}
+                          placeholder={lc === 'ja' ? '100組/箱' : '100 pairs/box'}
+                          className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                        />
+                      </div>
+                    </div>
+                  );
+                })()}
               </div>
 
               {/* Price */}

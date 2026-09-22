@@ -82,6 +82,7 @@ export const COLLECTION_DEFS = [
     fields: [
       ID_FIELD,
       STATUS_FIELD,
+      createTranslationAliasField(),
       { field: 'sku_code', type: 'string', meta: { interface: 'input', required: true }, schema: { is_unique: true } },
       { field: 'product', type: 'integer', meta: { interface: 'select-dropdown-m2o', special: ['m2o'] } },
       {

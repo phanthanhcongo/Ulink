@@ -56,6 +56,25 @@ export interface Product {
   meta_title?: string | null;
   meta_description?: string | null;
   status: 'published' | 'draft' | 'archived';
+  translations?: ProductTranslation[];
+}
+
+export interface ProductTranslation {
+  id?: number;
+  languages_code: string;
+  name?: string | null;
+  short_description?: string | null;
+  specifications?: Record<string, string> | null;
+  meta_title?: string | null;
+  meta_description?: string | null;
+}
+
+export interface ProductSkuTranslation {
+  id?: number;
+  languages_code: string;
+  name?: string | null;
+  unit?: string | null;
+  pack_size?: string | null;
 }
 
 export interface ProductSku {
@@ -75,6 +94,7 @@ export interface ProductSku {
   moq?: number | null;
   moq_unit?: string | null;
   status: 'published' | 'draft' | 'archived';
+  translations?: ProductSkuTranslation[];
 }
 
 export interface ProductAttribute {

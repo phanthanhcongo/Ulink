@@ -26,7 +26,9 @@ import { resolveImageUrl } from '@/lib/image-url';
 import {
   getTranslatedName,
   getTranslatedField,
-  getTranslatedDescription
+  getTranslatedDescription,
+  getTranslatedSpecifications,
+  getTranslatedSkuField
 } from '@/lib/i18n-content';
 import {
   fetchProductBySlug,
@@ -97,13 +99,20 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
   const categoryName = parentCategoryName || rawCategoryName;
 
   const skusRaw: ProductSku[] = (product.skus as ProductSku[]) || [];
-  const firstSku = skusRaw.find((s) => s.price != null) || skusRaw[0];
+  // Resolve per-locale SKU labels (unit / pack_size / name) once, so all
+  // downstream components render the correct language without re-resolving.
+  const skus: ProductSku[] = skusRaw.map((s) => ({
+    ...s,
+    name: getTranslatedSkuField(s, 'name', locale) || s.name,
+    unit: getTranslatedSkuField(s, 'unit', locale) || s.unit,
+    pack_size: getTranslatedSkuField(s, 'pack_size', locale) || s.pack_size
+  }));
+  const firstSku = skus.find((s) => s.price != null) || skus[0];
   const pricing = {
     price: firstSku?.price ?? null,
-    unit: firstSku?.unit || (locale === 'vi' ? 'hộp' : 'box'),
+    unit: firstSku?.unit || (locale === 'vi' ? 'hộp' : locale === 'ja' ? '箱' : 'box'),
   };
 
-  const skus = skusRaw;
   const gallery = Array.isArray(product.gallery) ? product.gallery : [];
   const documents = Array.isArray(product.documents) ? product.documents : [];
   const standards = Array.isArray(product.standards)
@@ -116,7 +125,11 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
 
   const skuCode = skus[0]?.sku_code ?? null;
 
-  const specs = product.specifications as Record<string, string> | null;
+  const specsResolved = getTranslatedSpecifications(product, locale);
+  const specs =
+    Object.keys(specsResolved).length > 0
+      ? specsResolved
+      : (product.specifications as Record<string, string> | null);
 
   const isVideoPath = (p: string) => /\.(mp4|webm|mov|ogg)$/i.test(p);
   const productGalleryImages: Array<{ src: string; alt: string; label?: string; type?: 'image' | 'video' }> = [];

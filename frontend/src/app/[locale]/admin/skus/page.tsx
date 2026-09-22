@@ -44,7 +44,12 @@ export default async function AdminSkusPage({ params: { locale } }: Props) {
             'attributes',
             'product.id',
             'product.name',
-            'product.slug'
+            'product.slug',
+            'translations.id',
+            'translations.languages_code',
+            'translations.name',
+            'translations.unit',
+            'translations.pack_size'
           ],
           sort: ['-id'],
           limit: -1

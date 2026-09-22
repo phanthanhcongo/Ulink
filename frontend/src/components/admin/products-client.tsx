@@ -42,6 +42,84 @@ interface SimpleItem {
   slug: string;
 }
 
+// Secondary locales the admin can translate into (base content is Vietnamese).
+const I18N_LOCALES = ['en', 'ja'] as const;
+type I18nLocale = (typeof I18N_LOCALES)[number];
+const I18N_LABELS: Record<I18nLocale, string> = { en: 'English', ja: '日本語' };
+
+interface ProductTransForm {
+  name: string;
+  short_description: string;
+  meta_title: string;
+  meta_description: string;
+  specs: Record<string, string>;
+}
+
+const emptyProductTrans = (): ProductTransForm => ({
+  name: '',
+  short_description: '',
+  meta_title: '',
+  meta_description: '',
+  specs: {}
+});
+
+const emptyProductTransMap = (): Record<I18nLocale, ProductTransForm> => ({
+  en: emptyProductTrans(),
+  ja: emptyProductTrans()
+});
+
+/** Build the per-locale product translation form state from a Directus product. */
+function loadProductTranslations(prod: any): Record<I18nLocale, ProductTransForm> {
+  const map = emptyProductTransMap();
+  const rows = Array.isArray(prod?.translations) ? prod.translations : [];
+  for (const lc of I18N_LOCALES) {
+    const row = rows.find((r: any) => r.languages_code === lc);
+    if (!row) continue;
+    const specs: Record<string, string> = {};
+    if (row.specifications && typeof row.specifications === 'object') {
+      for (const [k, v] of Object.entries(row.specifications)) {
+        specs[k] = v == null ? '' : String(v);
+      }
+    }
+    map[lc] = {
+      name: row.name || '',
+      short_description: row.short_description || '',
+      meta_title: row.meta_title || '',
+      meta_description: row.meta_description || '',
+      specs
+    };
+  }
+  return map;
+}
+
+interface SkuTransForm {
+  name: string;
+  unit: string;
+  pack_size: string;
+}
+
+const emptySkuTrans = (): SkuTransForm => ({ name: '', unit: '', pack_size: '' });
+const emptySkuTransMap = (): Record<I18nLocale, SkuTransForm> => ({
+  en: emptySkuTrans(),
+  ja: emptySkuTrans()
+});
+
+/** Build the per-locale SKU translation form state from a Directus SKU. */
+function loadSkuTranslations(sku: any): Record<I18nLocale, SkuTransForm> {
+  const map = emptySkuTransMap();
+  const rows = Array.isArray(sku?.translations) ? sku.translations : [];
+  for (const lc of I18N_LOCALES) {
+    const row = rows.find((r: any) => r.languages_code === lc);
+    if (!row) continue;
+    map[lc] = {
+      name: row.name || '',
+      unit: row.unit || '',
+      pack_size: row.pack_size || ''
+    };
+  }
+  return map;
+}
+
 interface ProductsClientProps {
   initialProducts: Product[];
   categories: ProductCategory[];
@@ -73,11 +151,17 @@ export function ProductsClient({
   const [selectedAttributeIds, setSelectedAttributeIds] = useState<number[]>([]);
   const [selectedIndustryIds, setSelectedIndustryIds] = useState<number[]>([]);
   const [selectedStandardIds, setSelectedStandardIds] = useState<number[]>([]);
+  const [productTrans, setProductTrans] = useState<Record<I18nLocale, ProductTransForm>>(
+    emptyProductTransMap()
+  );
+  const [activeTransLocale, setActiveTransLocale] = useState<I18nLocale>('en');
 
   const [skuModalOpen, setSkuModalOpen] = useState(false);
   const [activeSku, setActiveSku] = useState<(Partial<ProductSku> & { productId?: number }) | null>(
     null
   );
+  const [skuTrans, setSkuTrans] = useState<Record<I18nLocale, SkuTransForm>>(emptySkuTransMap());
+  const [activeSkuTransLocale, setActiveSkuTransLocale] = useState<I18nLocale>('en');
   const [skuFormError, setSkuFormError] = useState('');
   const [productFormError, setProductFormError] = useState('');
   const [skuListPopup, setSkuListPopup] = useState<{ product: Product } | null>(null);
@@ -164,6 +248,25 @@ export function ProductsClient({
       if (s.key.trim()) specRecord[s.key.trim()] = s.val.trim();
     });
 
+    // Build per-locale translation rows (keyed to base spec keys).
+    const translations = I18N_LOCALES.map((lc) => {
+      const t = productTrans[lc];
+      const transSpecs: Record<string, string> = {};
+      activeProductSpecs.forEach((s) => {
+        const k = s.key.trim();
+        const v = (t.specs[k] || '').trim();
+        if (k && v) transSpecs[k] = v;
+      });
+      return {
+        languages_code: lc,
+        name: t.name.trim() || undefined,
+        short_description: t.short_description.trim() || undefined,
+        specifications: Object.keys(transSpecs).length > 0 ? transSpecs : undefined,
+        meta_title: t.meta_title.trim() || undefined,
+        meta_description: t.meta_description.trim() || undefined
+      };
+    });
+
     startTransition(async () => {
       const res = await saveProduct({
         id: activeProduct.id,
@@ -180,7 +283,8 @@ export function ProductsClient({
         meta_description: activeProduct.meta_description || undefined,
         features: Array.isArray((activeProduct as any).features) ? (activeProduct as any).features.filter((f: string) => f.trim()) : undefined,
         industryIds: selectedIndustryIds,
-        standardIds: selectedStandardIds
+        standardIds: selectedStandardIds,
+        translations
       });
 
       if (res.success) {
@@ -203,6 +307,16 @@ export function ProductsClient({
       return;
     }
 
+    const skuTranslations = I18N_LOCALES.map((lc) => {
+      const t = skuTrans[lc];
+      return {
+        languages_code: lc,
+        name: t.name.trim() || undefined,
+        unit: t.unit.trim() || undefined,
+        pack_size: t.pack_size.trim() || undefined
+      };
+    });
+
     startTransition(async () => {
       const res = await saveSku({
         id: activeSku.id,
@@ -212,7 +326,8 @@ export function ProductsClient({
         pack_size: activeSku.pack_size || undefined,
         price: (activeSku as any).price || null,
         stock_status: activeSku.stock_status || 'in_stock',
-        status: 'published'
+        status: 'published',
+        translations: skuTranslations
       });
 
       if (res.success) {
@@ -289,6 +404,8 @@ export function ProductsClient({
             setSelectedAttributeIds([]);
             setSelectedIndustryIds([]);
             setSelectedStandardIds([]);
+            setProductTrans(emptyProductTransMap());
+            setActiveTransLocale('en');
             setProductModalOpen(true);
             setProductFormError('');
           }}
@@ -463,6 +580,8 @@ export function ProductsClient({
                             onClick={() => {
                               if (!canCreateSku) return;
                               setActiveSku({ productId: prod.id, stock_status: 'in_stock' });
+                              setSkuTrans(emptySkuTransMap());
+                              setActiveSkuTransLocale('en');
                               setSkuModalOpen(true);
                             }}
                             title={
@@ -505,6 +624,8 @@ export function ProductsClient({
                                 .map((s: any) => typeof s.standards_id === 'object' ? s.standards_id.id : s.standards_id)
                                 .filter(Boolean);
                               setSelectedStandardIds(stdIds);
+                              setProductTrans(loadProductTranslations(prod));
+                              setActiveTransLocale('en');
                               setProductModalOpen(true);
                               setProductFormError('');
                             }}
@@ -1115,6 +1236,142 @@ export function ProductsClient({
                 </div>
               </div>
 
+              {/* Section 7: Đa ngôn ngữ (Bản dịch) */}
+              <div className="bg-slate-50/40 border border-slate-200 rounded-[3px] p-5 space-y-4">
+                <div className="flex items-center justify-between border-b border-slate-100 pb-2">
+                  <h4 className="text-caption-responsive font-bold text-slate-800 uppercase tracking-wider">
+                    7. Đa ngôn ngữ (Bản dịch)
+                  </h4>
+                  <div className="inline-flex rounded-[3px] border border-slate-200 overflow-hidden">
+                    {I18N_LOCALES.map((lc) => (
+                      <button
+                        key={lc}
+                        type="button"
+                        onClick={() => setActiveTransLocale(lc)}
+                        className={cn(
+                          'px-3 py-1 text-caption-responsive font-bold transition-colors',
+                          activeTransLocale === lc
+                            ? 'bg-blue-600 text-white'
+                            : 'bg-white text-slate-500 hover:bg-slate-50'
+                        )}
+                      >
+                        {I18N_LABELS[lc]}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                <p className="text-[11px] text-slate-400 -mt-1">
+                  Để trống sẽ tự động dùng nội dung tiếng Việt (bản gốc) khi hiển thị.
+                </p>
+
+                {(() => {
+                  const lc = activeTransLocale;
+                  const t = productTrans[lc];
+                  const setField = (field: keyof ProductTransForm, value: string) =>
+                    setProductTrans((prev) => ({ ...prev, [lc]: { ...prev[lc], [field]: value } }));
+                  return (
+                    <div className="space-y-4">
+                      {/* Name */}
+                      <div className="flex flex-col gap-1.5">
+                        <label className="text-caption-responsive font-bold text-slate-500 uppercase">
+                          Tên sản phẩm ({I18N_LABELS[lc]})
+                        </label>
+                        <input
+                          type="text"
+                          value={t.name}
+                          onChange={(e) => setField('name', e.target.value)}
+                          placeholder={lc === 'ja' ? '製品名' : 'Product name'}
+                          className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                        />
+                      </div>
+
+                      {/* Short description */}
+                      <div className="flex flex-col gap-1.5">
+                        <label className="text-caption-responsive font-bold text-slate-500 uppercase">
+                          Mô tả tóm tắt ({I18N_LABELS[lc]})
+                        </label>
+                        <textarea
+                          rows={2}
+                          value={t.short_description}
+                          onChange={(e) => setField('short_description', e.target.value)}
+                          placeholder={lc === 'ja' ? '短い説明' : 'Short summary'}
+                          className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600 w-full"
+                        />
+                      </div>
+
+                      {/* Translated specs (mirror base keys) */}
+                      {activeProductSpecs.filter((s) => s.key.trim()).length > 0 && (
+                        <div className="space-y-2">
+                          <label className="text-caption-responsive font-bold text-slate-500 uppercase">
+                            Thông số kỹ thuật ({I18N_LABELS[lc]})
+                          </label>
+                          <div className="space-y-2">
+                            {activeProductSpecs
+                              .filter((s) => s.key.trim())
+                              .map((spec) => {
+                                const k = spec.key.trim();
+                                return (
+                                  <div key={k} className="flex items-center gap-3">
+                                    <span
+                                      className="w-2/5 shrink-0 truncate text-caption-responsive font-semibold text-slate-500"
+                                      title={`${k}${spec.val ? ` — ${spec.val}` : ''}`}
+                                    >
+                                      {k}
+                                    </span>
+                                    <input
+                                      type="text"
+                                      value={t.specs[k] || ''}
+                                      onChange={(e) =>
+                                        setProductTrans((prev) => ({
+                                          ...prev,
+                                          [lc]: {
+                                            ...prev[lc],
+                                            specs: { ...prev[lc].specs, [k]: e.target.value }
+                                          }
+                                        }))
+                                      }
+                                      placeholder={spec.val || (lc === 'ja' ? '値' : 'Value')}
+                                      className="flex-1 px-3 py-1.5 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                                    />
+                                  </div>
+                                );
+                              })}
+                          </div>
+                        </div>
+                      )}
+
+                      {/* SEO meta */}
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div className="flex flex-col gap-1.5">
+                          <label className="text-caption-responsive font-bold text-slate-500 uppercase">
+                            Tiêu đề SEO ({I18N_LABELS[lc]})
+                          </label>
+                          <input
+                            type="text"
+                            value={t.meta_title}
+                            onChange={(e) => setField('meta_title', e.target.value)}
+                            maxLength={120}
+                            className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                          />
+                        </div>
+                        <div className="flex flex-col gap-1.5">
+                          <label className="text-caption-responsive font-bold text-slate-500 uppercase">
+                            Mô tả SEO ({I18N_LABELS[lc]})
+                          </label>
+                          <input
+                            type="text"
+                            value={t.meta_description}
+                            onChange={(e) => setField('meta_description', e.target.value)}
+                            maxLength={300}
+                            className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                          />
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })()}
+              </div>
+
               {skuFormError && (
                 <div className="rounded-[3px] border border-red-200 bg-red-50 px-3.5 py-3 text-caption-responsive font-medium text-red-700">
                   {skuFormError}
@@ -1245,6 +1502,66 @@ export function ProductsClient({
                   <option value="low_stock">Sắp hết (Low Stock)</option>
                   <option value="out_of_stock">Tạm hết hàng (Out of Stock)</option>
                 </select>
+              </div>
+
+              {/* Multilingual SKU labels */}
+              <div className="rounded-[3px] border border-slate-200 bg-slate-50/40 p-4 space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-caption-responsive font-bold text-slate-500 uppercase">
+                    Bản dịch (Đơn vị / Quy cách)
+                  </span>
+                  <div className="inline-flex rounded-[3px] border border-slate-200 overflow-hidden">
+                    {I18N_LOCALES.map((lc) => (
+                      <button
+                        key={lc}
+                        type="button"
+                        onClick={() => setActiveSkuTransLocale(lc)}
+                        className={cn(
+                          'px-3 py-1 text-caption-responsive font-bold transition-colors',
+                          activeSkuTransLocale === lc
+                            ? 'bg-blue-600 text-white'
+                            : 'bg-white text-slate-500 hover:bg-slate-50'
+                        )}
+                      >
+                        {I18N_LABELS[lc]}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+                {(() => {
+                  const lc = activeSkuTransLocale;
+                  const t = skuTrans[lc];
+                  const setField = (field: keyof SkuTransForm, value: string) =>
+                    setSkuTrans((prev) => ({ ...prev, [lc]: { ...prev[lc], [field]: value } }));
+                  return (
+                    <div className="space-y-3">
+                      <div className="flex flex-col gap-1.5">
+                        <label className="text-caption-responsive font-bold text-slate-500 uppercase">
+                          Đơn vị tính ({I18N_LABELS[lc]})
+                        </label>
+                        <input
+                          type="text"
+                          value={t.unit}
+                          onChange={(e) => setField('unit', e.target.value)}
+                          placeholder={lc === 'ja' ? '箱、組、ケース…' : 'Box, Pair, Case…'}
+                          className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                        />
+                      </div>
+                      <div className="flex flex-col gap-1.5">
+                        <label className="text-caption-responsive font-bold text-slate-500 uppercase">
+                          Quy cách đóng gói ({I18N_LABELS[lc]})
+                        </label>
+                        <input
+                          type="text"
+                          value={t.pack_size}
+                          onChange={(e) => setField('pack_size', e.target.value)}
+                          placeholder={lc === 'ja' ? '100組/箱' : '100 pairs/box'}
+                          className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
+                        />
+                      </div>
+                    </div>
+                  );
+                })()}
               </div>
 
               {skuFormError && (
