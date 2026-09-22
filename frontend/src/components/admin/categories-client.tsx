@@ -2,7 +2,7 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import React, { useState, useTransition, useMemo } from 'react';
+import React, { useState, useTransition, useMemo, useCallback } from 'react';
 import toast from 'react-hot-toast';
 import { Plus, Search, FolderTree, AlertTriangle, Edit, Trash, Folder, X, ChevronRight, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -32,6 +32,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
   const [modalOpen, setModalOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState<Partial<Category> | null>(null);
   const [formError, setFormError] = useState('');
+  const [isDirty, setIsDirty] = useState(false);
   const [confirmState, setConfirmState] = useState<{
     isOpen: boolean;
     title?: string;
@@ -101,6 +102,17 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
     return false;
   }, [collapsedIds]);
 
+  const handleCloseModal = useCallback(() => {
+    if (isDirty) {
+      const confirmed = window.confirm('Bạn có thay đổi chưa lưu. Bạn có chắc muốn đóng?');
+      if (!confirmed) return;
+    }
+    setModalOpen(false);
+    setActiveCategory(null);
+    setFormError('');
+    setIsDirty(false);
+  }, [isDirty]);
+
   // Filter and build tree
   const displayCategories = useMemo(() => {
     if (searchQuery.trim() !== '') {
@@ -133,7 +145,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
           const res = await deleteCategory(id);
           if (res.success) {
             setCategories((prev) => prev.filter((c) => c.id !== id));
-            toast.success('Đã xóa danh mục thành công.');
+            toast.success('Đã lưu trữ danh mục thành công.');
           } else {
             toast.error('Không thể xóa danh mục: ' + res.error);
           }
@@ -147,7 +159,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
     e.preventDefault();
     setFormError('');
     if (!activeCategory?.name || !activeCategory?.slug) {
-      setFormError('Vui lòng điền tên danh mục và slug.');
+      setFormError('Vui lòng nhập tên danh mục.');
       return;
     }
 
@@ -162,9 +174,11 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
       });
 
       if (res.success) {
+        setIsDirty(false);
         setModalOpen(false);
         setActiveCategory(null);
         setFormError('');
+        toast.success(activeCategory.id ? 'Đã cập nhật danh mục thành công.' : 'Đã tạo danh mục mới thành công.');
         window.location.reload(); // Reload to fetch updated hierarchical data
       } else {
         setFormError(res.error || 'Không thể lưu danh mục. Vui lòng thử lại.');
@@ -193,6 +207,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
             setActiveCategory({ status: 'published', parent: null });
             setModalOpen(true);
             setFormError('');
+            setIsDirty(false);
           }}
           className="admin-button admin-button-primary w-full sm:w-auto"
         >
@@ -206,12 +221,12 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
         <div className="mb-6 p-3 sm:p-4 bg-rose-50 border border-rose-200 rounded-[3px] text-rose-800 text-caption-responsive font-semibold flex items-start gap-2.5 shadow-sm">
           <AlertTriangle className="h-5 w-5 text-rose-500 shrink-0 mt-0.5 flex-shrink-0" />
           <div className="flex-1 min-w-0">
-            <span className="font-bold text-rose-900 block mb-1">
-              Đã xảy ra lỗi khi tải dữ liệu danh mục từ API
+            <span className="font-bold text-rose-900 block">
+              Không thể tải dữ liệu danh mục
             </span>
-            <pre className="font-mono text-caption-responsive bg-white/60 p-2 sm:p-2.5 rounded-[3px] mt-2 overflow-x-auto border border-rose-100/50 max-h-40 whitespace-pre-wrap select-all text-xs">
+            <span className="text-rose-700 text-caption-responsive mt-1 block">
               {error}
-            </pre>
+            </span>
           </div>
         </div>
       )}
@@ -224,7 +239,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
             type="text"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            placeholder="Tìm kiếm danh mục theo tên, slug, mô tả..."
+            placeholder="Tìm kiếm danh mục theo tên, mô tả..."
             className="w-full pl-10 pr-4 py-2.5 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
           />
         </div>
@@ -330,16 +345,16 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
                           )}
                         >
                           {cat.status === 'published'
-                            ? 'Đã xuất bản'
+                            ? 'Công khai'
                             : cat.status === 'draft'
-                              ? 'Bản thảo'
+                              ? 'Bản nháp'
                               : 'Lưu trữ'}
                         </span>
                       </td>
 
                       {/* Actions with group-hover visibility */}
                       <td className="px-6 py-3.5 text-right">
-                        <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex items-center justify-end gap-1.5">
+                        <div className="transition-colors flex items-center justify-end gap-1.5">
                           {/* Add child */}
                           <button
                             type="button"
@@ -350,6 +365,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
                               });
                               setModalOpen(true);
                               setFormError('');
+                              setIsDirty(false);
                             }}
                             className="p-1 rounded-[3px] hover:bg-slate-100 text-slate-400 hover:text-blue-600 transition-colors"
                             title="Thêm danh mục con"
@@ -373,6 +389,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
                               });
                               setModalOpen(true);
                               setFormError('');
+                              setIsDirty(false);
                             }}
                             className="p-1 rounded-[3px] hover:bg-slate-100 text-slate-400 hover:text-slate-650 transition-colors"
                             title="Sửa danh mục"
@@ -410,11 +427,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
                 {activeCategory.id ? 'Cập nhật danh mục' : 'Tạo danh mục mới'}
               </h2>
               <button
-                onClick={() => {
-                   setModalOpen(false);
-                   setActiveCategory(null);
-                   setFormError('');
-                 }}
+                onClick={handleCloseModal}
                 className="p-1 rounded-[3px] hover:bg-slate-100 text-slate-400 hover:text-slate-600 transition-colors"
               >
                 <X className="h-5 w-5" />
@@ -443,9 +456,15 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
                       ? activeCategory.slug || ''
                       : name
                           .toLowerCase()
-                          .replace(/[^a-z0-9]+/g, '-')
-                          .replace(/(^-|-$)+/g, '');
+                          .normalize('NFD')
+                          .replace(/[̀-ͯ]/g, '')
+                          .replace(/[đĐ]/g, 'd')
+                          .replace(/[^a-z0-9\s-]/g, '')
+                          .replace(/\s+/g, '-')
+                          .replace(/-+/g, '-')
+                          .replace(/^-+|-+$/g, '');
                     setActiveCategory({ ...activeCategory, name, slug });
+                    setIsDirty(true);
                   }}
                   placeholder="Ví dụ: Găng tay phòng sạch, Quần áo..."
                   className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
@@ -455,7 +474,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
               {/* Slug */}
               <div className="flex flex-col gap-1.5">
                 <label className="text-caption-responsive font-bold text-slate-500 uppercase">
-                  Slug (Đường dẫn tĩnh) *
+                  Đường dẫn danh mục *
                 </label>
                 <input
                   type="text"
@@ -479,6 +498,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
                       ...activeCategory,
                       parent: id ? { id, name } : null
                     });
+                    setIsDirty(true);
                   }}
                   className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600 bg-white"
                 >
@@ -499,9 +519,10 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
                 <textarea
                   rows={3}
                   value={activeCategory.description || ''}
-                  onChange={(e) =>
-                    setActiveCategory({ ...activeCategory, description: e.target.value })
-                  }
+                  onChange={(e) => {
+                    setActiveCategory({ ...activeCategory, description: e.target.value });
+                    setIsDirty(true);
+                  }}
                   placeholder="Mô tả sơ lược về danh mục sản phẩm này..."
                   className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-blue-600"
                 />
@@ -514,16 +535,17 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
                 </label>
                 <select
                   value={activeCategory.status || 'published'}
-                  onChange={(e) =>
+                  onChange={(e) => {
                     setActiveCategory({
                       ...activeCategory,
                       status: e.target.value as 'published' | 'draft' | 'archived'
-                    })
-                  }
+                    });
+                    setIsDirty(true);
+                  }}
                   className="px-3.5 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-700 focus:outline-none bg-white"
                 >
-                  <option value="published">Đã xuất bản (Công khai)</option>
-                  <option value="draft">Bản thảo (Nháp)</option>
+                  <option value="published">Công khai</option>
+                  <option value="draft">Bản nháp</option>
                 </select>
               </div>
 
@@ -531,11 +553,7 @@ export function CategoriesClient({ initialCategories, error }: CategoriesClientP
               <div className="flex items-center justify-end gap-3 mt-4 border-t border-slate-100 pt-4">
                 <button
                   type="button"
-                  onClick={() => {
-                    setModalOpen(false);
-                    setFormError('');
-                    setActiveCategory(null);
-                  }}
+                  onClick={handleCloseModal}
                   className="px-4 py-2.5 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-500 hover:bg-slate-50 transition-colors"
                 >
                   Hủy bỏ

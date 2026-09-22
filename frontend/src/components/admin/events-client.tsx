@@ -2,16 +2,17 @@
 
 /* eslint-disable @next/next/no-img-element, @typescript-eslint/no-explicit-any */
 
-import React, { useState, useTransition } from 'react';
+import React, { useState, useTransition, useRef, useCallback } from 'react';
 import toast from 'react-hot-toast';
 import {
   Plus, Search, Edit, Trash, CalendarDays, X, AlertTriangle,
-  MapPin, Clock, Home, Users
+  MapPin, Clock, Home, Users, Upload, Image as ImageIcon
 } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
 import { ConfirmModal } from './confirm-modal';
 import { saveEvent, deleteEvent } from '@/app/[locale]/admin/events/actions';
+import { uploadImage } from '@/app/[locale]/admin/articles/actions';
 import { resolveImageUrl } from '@/lib/image-url';
 
 interface EventRecord {
@@ -59,6 +60,9 @@ export function EventsAdminClient({ initialEvents, error }: Props) {
   const [activeEvent, setActiveEvent] = useState<Partial<EventRecord> | null>(null);
   const [formError, setFormError] = useState('');
   const [formTab, setFormTab] = useState<FormTab>('basic');
+  const [isDirty, setIsDirty] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [confirmState, setConfirmState] = useState<{
     isOpen: boolean; title?: string; message: string; onConfirm: () => void; type?: 'danger' | 'warning' | 'info';
   }>({ isOpen: false, message: '', onConfirm: () => {} });
@@ -80,6 +84,7 @@ export function EventsAdminClient({ initialEvents, error }: Props) {
     setModalOpen(true);
     setFormError('');
     setFormTab('basic');
+    setIsDirty(false);
   };
 
   const openEdit = (ev: EventRecord) => {
@@ -87,12 +92,13 @@ export function EventsAdminClient({ initialEvents, error }: Props) {
     setModalOpen(true);
     setFormError('');
     setFormTab('basic');
+    setIsDirty(false);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!activeEvent?.title || !activeEvent?.slug) {
-      setFormError('Vui lòng nhập tiêu đề và slug.');
+      setFormError('Vui lòng nhập tiêu đề sự kiện.');
       return;
     }
     startTransition(async () => {
@@ -128,6 +134,8 @@ export function EventsAdminClient({ initialEvents, error }: Props) {
       if (res.success) {
         setModalOpen(false);
         setActiveEvent(null);
+        setIsDirty(false);
+        toast.success(activeEvent.id ? 'Đã cập nhật sự kiện thành công.' : 'Đã tạo sự kiện mới thành công.');
         window.location.reload();
       } else {
         setFormError(res.error || 'Không thể lưu sự kiện.');
@@ -154,7 +162,18 @@ export function EventsAdminClient({ initialEvents, error }: Props) {
     });
   };
 
-  const set = (key: string, value: any) => setActiveEvent((prev) => prev ? { ...prev, [key]: value } : null);
+  const handleCloseModal = useCallback(() => {
+    if (isDirty) {
+      const confirmed = window.confirm('Bạn có thay đổi chưa lưu. Bạn có chắc muốn đóng?');
+      if (!confirmed) return;
+    }
+    setModalOpen(false);
+    setActiveEvent(null);
+    setFormError('');
+    setIsDirty(false);
+  }, [isDirty]);
+
+  const set = (key: string, value: any) => { setActiveEvent((prev) => prev ? { ...prev, [key]: value } : null); setIsDirty(true); };
 
   const inputCls = "w-full px-3 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-400 transition-colors";
 
@@ -354,7 +373,7 @@ export function EventsAdminClient({ initialEvents, error }: Props) {
                     </span>
                     <span className={cn('inline-flex items-center px-2 py-0.5 rounded-[3px] text-caption-responsive font-bold border',
                       ev.registration_status === 'UPCOMING' ? 'bg-blue-50 text-blue-700 border-blue-100' : 'bg-slate-50 text-slate-600 border-slate-200')}>
-                      {ev.registration_status}
+                      {ev.registration_status === 'UPCOMING' ? 'Sắp diễn ra' : ev.registration_status === 'OPEN' ? 'Mở đăng ký' : ev.registration_status === 'CLOSED' ? 'Đã đóng' : ev.registration_status === 'COMPLETED' ? 'Đã kết thúc' : ev.registration_status}
                     </span>
                   </div>
                   <h3 className="font-bold text-primary text-body-regular line-clamp-2 leading-snug mt-1">{ev.title}</h3>
@@ -388,7 +407,7 @@ export function EventsAdminClient({ initialEvents, error }: Props) {
                 <CalendarDays className="h-5 w-5 text-blue-500" />
                 {activeEvent.id ? 'Cập nhật sự kiện' : 'Tạo sự kiện mới'}
               </h2>
-              <button onClick={() => { setModalOpen(false); setActiveEvent(null); }} className="p-1.5 rounded-[3px] hover:bg-slate-100 text-slate-400">
+              <button onClick={handleCloseModal} className="p-1.5 rounded-[3px] hover:bg-slate-100 text-slate-400">
                 <X className="h-5 w-5" />
               </button>
             </div>
@@ -427,7 +446,7 @@ export function EventsAdminClient({ initialEvents, error }: Props) {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="flex flex-col gap-1.5">
-                        <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">Slug *</label>
+                        <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">Đường dẫn sự kiện *</label>
                         <input type="text" required readOnly value={activeEvent.slug || ''} className="w-full px-4 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-mono text-slate-450 bg-slate-50 cursor-not-allowed" />
                       </div>
                       <div className="flex flex-col gap-1.5">
@@ -449,7 +468,7 @@ export function EventsAdminClient({ initialEvents, error }: Props) {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="flex flex-col gap-1.5">
                         <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">Ngày</label>
-                        <input type="text" value={activeEvent.date || ''} onChange={(e) => set('date', e.target.value)} placeholder="VD: 15/08/2024"
+                        <input type="date" value={activeEvent.date || ''} onChange={(e) => set('date', e.target.value)} placeholder="Chọn ngày sự kiện"
                           className="w-full px-4 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-brand" />
                       </div>
                       <div className="flex flex-col gap-1.5">
@@ -461,12 +480,12 @@ export function EventsAdminClient({ initialEvents, error }: Props) {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="flex flex-col gap-1.5">
                         <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">Giờ bắt đầu</label>
-                        <input type="text" value={activeEvent.start_time || ''} onChange={(e) => set('start_time', e.target.value)} placeholder="09:00 AM"
+                        <input type="time" value={activeEvent.start_time || ''} onChange={(e) => set('start_time', e.target.value)} placeholder="Chọn giờ"
                           className="w-full px-4 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-brand" />
                       </div>
                       <div className="flex flex-col gap-1.5">
                         <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">Giờ kết thúc</label>
-                        <input type="text" value={activeEvent.end_time || ''} onChange={(e) => set('end_time', e.target.value)} placeholder="17:00 PM"
+                        <input type="time" value={activeEvent.end_time || ''} onChange={(e) => set('end_time', e.target.value)} placeholder="Chọn giờ"
                           className="w-full px-4 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-brand" />
                       </div>
                     </div>
@@ -484,7 +503,7 @@ export function EventsAdminClient({ initialEvents, error }: Props) {
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="flex flex-col gap-1.5">
                         <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">Trạng thái đăng ký</label>
                         <select value={activeEvent.registration_status || 'UPCOMING'} onChange={(e) => set('registration_status', e.target.value)}
@@ -500,16 +519,40 @@ export function EventsAdminClient({ initialEvents, error }: Props) {
                         <input type="text" value={activeEvent.price || ''} onChange={(e) => set('price', e.target.value)} placeholder="VD: 500.000 VNĐ hoặc Miễn phí"
                           className="w-full px-4 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-brand" />
                       </div>
-                      <div className="flex flex-col gap-1.5">
-                        <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">Ảnh bìa sự kiện</label>
-                        <div className="flex items-start gap-3">
-                          {activeEvent.image && (resolveImageUrl(activeEvent.image) || activeEvent.image) && (
-                            <div className="relative h-20 w-32 rounded-[3px] border border-slate-200 overflow-hidden bg-slate-50 shrink-0">
-                              <img src={resolveImageUrl(activeEvent.image) || activeEvent.image} alt="Preview" className="h-full w-full object-cover" />
-                            </div>
-                          )}
-                          <input type="text" value={activeEvent.image || ''} onChange={(e) => set('image', e.target.value)} placeholder="Nhập đường dẫn ảnh hoặc UUID từ Directus..."
-                            className={cn(inputCls, 'flex-1')} />
+                    </div>
+
+                    <div className="flex flex-col gap-1.5 col-span-full">
+                      <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">Ảnh bìa sự kiện</label>
+                      <div className="flex items-start gap-4">
+                        {activeEvent.image && (
+                          <div className="relative h-24 w-40 rounded-[3px] border border-slate-200 overflow-hidden bg-slate-50 shrink-0">
+                            <img src={resolveImageUrl(activeEvent.image) || activeEvent.image} alt="Preview" className="h-full w-full object-cover" />
+                            <button type="button" onClick={() => set('image', null)}
+                              className="absolute top-1 right-1 p-1 rounded-[3px] bg-black/70 hover:bg-black/90 text-white" title="Xóa ảnh">
+                              <X className="h-3 w-3" />
+                            </button>
+                          </div>
+                        )}
+                        <div className="flex flex-col gap-2">
+                          <input type="file" accept="image/*" ref={fileInputRef} onChange={async (e) => {
+                            const file = e.target.files?.[0];
+                            if (!file) return;
+                            setIsUploading(true);
+                            try {
+                              const formData = new FormData();
+                              formData.append('file', file);
+                              const res = await uploadImage(formData);
+                              if (res.success && res.id) { set('image', res.id); }
+                              else { setFormError('Upload ảnh thất bại: ' + res.error); }
+                            } catch (err) { setFormError('Lỗi upload: ' + String(err)); }
+                            finally { setIsUploading(false); }
+                          }} className="hidden" />
+                          <button type="button" disabled={isUploading} onClick={() => fileInputRef.current?.click()}
+                            className="inline-flex h-9 items-center gap-1.5 px-4 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-primary hover:bg-slate-50 bg-white shadow-sm disabled:opacity-50">
+                            <Upload className="h-3.5 w-3.5 text-slate-400" />
+                            {isUploading ? 'Đang tải lên...' : activeEvent.image ? 'Thay đổi ảnh' : 'Chọn ảnh bìa'}
+                          </button>
+                          <span className="text-[11px] text-slate-400">Khuyến nghị tỷ lệ 16:9</span>
                         </div>
                       </div>
                     </div>
@@ -582,7 +625,7 @@ export function EventsAdminClient({ initialEvents, error }: Props) {
               </div>
 
               <div className="flex items-center justify-end gap-3 px-6 py-4 border-t border-slate-100 bg-slate-50/50">
-                <button type="button" onClick={() => { setModalOpen(false); setActiveEvent(null); }}
+                <button type="button" onClick={handleCloseModal}
                   className="px-5 py-2.5 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-550 hover:bg-slate-100">Hủy bỏ</button>
                 <button type="submit" disabled={isPending}
                   className="px-5 py-2.5 rounded-[3px] bg-blue-600 text-caption-responsive font-bold text-white shadow-sm hover:bg-blue-700 disabled:opacity-50">
