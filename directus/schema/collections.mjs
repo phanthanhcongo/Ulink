@@ -248,6 +248,8 @@ export const COLLECTION_DEFS = [
       { field: 'body', type: 'text', meta: { interface: 'wysiwyg' } },
       { field: 'cover', type: 'uuid', meta: { interface: 'file-image', special: ['file'] } },
       { field: 'author', type: 'string', meta: { interface: 'input' } },
+      { field: 'industry', type: 'integer', meta: { interface: 'select-dropdown-m2o', special: ['m2o'], width: 'half' } },
+      { field: 'badge', type: 'string', meta: { interface: 'input', width: 'half' } },
       { field: 'published_at', type: 'timestamp', meta: { interface: 'datetime' } },
       { field: 'meta_title', type: 'string', meta: { interface: 'input' } },
       { field: 'meta_description', type: 'text', meta: { interface: 'textarea' } }

@@ -537,7 +537,11 @@ async function fetchDirectusArticles(): Promise<ResourceItem[]> {
 
     if (!posts?.length) return [];
 
-    return posts.map((post) => {
+    const localResourceImages = Array.from({ length: 19 }, (_, index) =>
+      `/images/resources/autohtml/thumb${index}.png`
+    );
+
+    return posts.map((post, index) => {
       const t = (lang: string, field: string) => {
         const tr = post.translations?.find((t: any) => t.languages_code === lang);
         return tr?.[field] || '';
@@ -561,7 +565,14 @@ async function fetchDirectusArticles(): Promise<ResourceItem[]> {
         ja: t('ja', 'body') || t('en', 'body') || t('vi', 'body') || '',
       };
 
-      const image = resolveImageUrl(post.cover) || '/images/resources/default-article.jpg';
+      // Resource images must be served by the frontend. Directus cover UUIDs
+      // are intentionally ignored because their production permissions can
+      // differ between environments.
+      const cover = typeof post.cover === 'string' ? post.cover.trim() : '';
+      const isDirectusAssetId = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(cover);
+      const image = isDirectusAssetId
+        ? localResourceImages[index % localResourceImages.length]
+        : (cover.startsWith('/') ? cover : '/images/resources/autohtml/thumb0.png');
 
       const date = post.published_at
         ? new Date(post.published_at).toLocaleDateString('vi-VN', { month: 'long', year: 'numeric' })
@@ -569,6 +580,7 @@ async function fetchDirectusArticles(): Promise<ResourceItem[]> {
 
       const categoryVi = post.category || 'Tin tức';
       const categoryMap: Record<string, { en: string; ja: string }> = {
+        'market-news': { en: 'Market News', ja: '市場ニュース' },
         'Hướng dẫn kỹ thuật': { en: 'Technical Guide', ja: '技術ガイド' },
         'Tiêu chuẩn': { en: 'Standards', ja: '規格・認証' },
         'Case Study': { en: 'Case Study', ja: '導入事例' },
@@ -582,7 +594,11 @@ async function fetchDirectusArticles(): Promise<ResourceItem[]> {
         'Tin tức': { en: 'News', ja: 'ニュース' }
       };
       const categoryLocalized = categoryMap[categoryVi] || { en: categoryVi, ja: categoryVi };
+      // Market-news posts store the raw code 'market-news' as their category;
+      // show a friendly Vietnamese badge instead of the raw slug.
+      const badgeVi = categoryVi === 'market-news' ? 'Tin thị trường' : categoryVi;
       const categoryCode: ResourceItem['category'] =
+        categoryVi === 'market-news' ? 'market-news' :
         categoryVi === 'Hướng dẫn kỹ thuật' ? 'guide' :
         categoryVi === 'Tiêu chuẩn' ? 'standard' :
         categoryVi === 'Case Study' || categoryVi === 'Nghiên cứu điển hình' ? 'case-study' :
@@ -593,7 +609,7 @@ async function fetchDirectusArticles(): Promise<ResourceItem[]> {
         id: post.slug || `article-${post.id}`,
         category: categoryCode,
         badge: {
-          vi: categoryVi,
+          vi: badgeVi,
           en: categoryLocalized.en,
           ja: categoryLocalized.ja,
         },

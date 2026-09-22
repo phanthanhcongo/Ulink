@@ -11,6 +11,7 @@ export const RELATION_DEFS = [
   { collection: 'documents', field: 'file', related_collection: 'directus_files', schema: { on_delete: 'SET NULL' } },
   { collection: 'iso_certifications', field: 'file', related_collection: 'directus_files', schema: { on_delete: 'SET NULL' } },
   { collection: 'case_studies', field: 'industry', related_collection: 'industries' },
+  { collection: 'blog_posts', field: 'industry', related_collection: 'industries', schema: { on_delete: 'SET NULL' } },
   { collection: 'customers', field: 'user', related_collection: 'directus_users' },
   { collection: 'customers', field: 'sales_owner', related_collection: 'directus_users' },
   { collection: 'orders', field: 'customer', related_collection: 'customers', meta: { one_field: 'orders' } },

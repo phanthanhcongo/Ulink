@@ -299,10 +299,10 @@ async function seedData() {
   for (const t of productTranslations) {
     const productId = productIdMap[t.productSlug];
     if (!productId) { console.warn(`   ⚠  Missing product: ${t.productSlug}`); continue; }
-    await helpers.ensureTranslation('products', productId, t.lang, {
-      name: t.name,
-      short_description: t.short_description
-    });
+    // Pass all translatable fields (name, short_description, specifications,
+    // meta_title, meta_description) — routing keys stripped.
+    const { productSlug, lang, ...fields } = t;
+    await helpers.ensureTranslation('products', productId, lang, fields);
   }
 
   // ── 2.11 Junction Tables ──

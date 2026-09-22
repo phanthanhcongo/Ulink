@@ -50,14 +50,17 @@ export default function ProductTabs({
 }: ProductTabsProps) {
   const [activeTab, setActiveTab] = useState<'specs' | 'apps' | 'certs' | 'reviews'>('specs');
 
-  const packSize =
-    skus[0]?.pack_size ?? (locale === 'vi' ? 'Liên hệ' : 'Contact us');
+  // Pick a UI label by locale (vi = base, en, ja).
+  const t = (vi: string, en: string, ja: string) =>
+    locale === 'ja' ? ja : locale === 'en' ? en : vi;
+
+  const packSize = skus[0]?.pack_size ?? t('Liên hệ', 'Contact us', 'お問い合わせ');
 
   const tabs = [
-    { id: 'specs', label: locale === 'vi' ? 'Thông số kỹ thuật' : 'Specifications' },
-    { id: 'apps', label: locale === 'vi' ? 'Ứng dụng' : 'Applications' },
-    { id: 'certs', label: locale === 'vi' ? 'Chứng nhận' : 'Certifications' },
-    { id: 'reviews', label: locale === 'vi' ? 'Đánh giá' : 'Reviews' }
+    { id: 'specs', label: t('Thông số kỹ thuật', 'Specifications', '仕様') },
+    { id: 'apps', label: t('Ứng dụng', 'Applications', '用途') },
+    { id: 'certs', label: t('Chứng nhận', 'Certifications', '認証') },
+    { id: 'reviews', label: t('Đánh giá', 'Reviews', 'レビュー') }
   ] as const;
 
   const INDUSTRY_ICONS = [Wrench, Cpu, Truck, Shield, FileText, Package];
@@ -78,9 +81,11 @@ export default function ProductTabs({
               />
             ) : (
               <p className="text-sm text-[#495057] leading-relaxed">
-                {locale === 'vi'
-                  ? `Thông tin chi tiết về sản phẩm ${productName} đang được cập nhật.`
-                  : `Detailed information about ${productName} is being updated.`}
+                {t(
+                  `Thông tin chi tiết về sản phẩm ${productName} đang được cập nhật.`,
+                  `Detailed information about ${productName} is being updated.`,
+                  `${productName}の詳細情報は更新中です。`
+                )}
               </p>
             )}
           </div>
@@ -90,7 +95,7 @@ export default function ProductTabs({
             <div className="lg:col-span-4">
               <div className="bg-[#F5F8FC] border-l-[3px] border-l-[#0F62FE] p-6 rounded-[3px] space-y-4 shadow-2xs">
                 <h4 className="text-base font-bold text-[#212529]">
-                  {locale === 'vi' ? 'Ứng dụng thực tế' : 'Real-world Applications'}
+                  {t('Ứng dụng thực tế', 'Real-world Applications', '実際の用途')}
                 </h4>
                 <div className="space-y-3.5">
                   {industries.slice(0, 4).map((ind, idx) => {
@@ -118,16 +123,16 @@ export default function ProductTabs({
                 <thead>
                   <tr className="bg-[#1769E2] text-white text-xs sm:text-sm font-bold uppercase tracking-wider">
                     <th className="px-4 sm:px-6 py-3 w-1/3 sm:w-80">
-                      {locale === 'vi' ? 'Thông số' : 'Parameter'}
+                      {t('Thông số', 'Parameter', '項目')}
                     </th>
-                    <th className="px-4 sm:px-6 py-3">{locale === 'vi' ? 'Chi tiết' : 'Details'}</th>
+                    <th className="px-4 sm:px-6 py-3">{t('Chi tiết', 'Details', '詳細')}</th>
                   </tr>
                 </thead>
                 <tbody className="text-xs sm:text-sm text-[#212529] divide-y divide-[#E5E7EB]/50">
                   {skuCode && (
                     <tr className="bg-white">
                       <td className="px-4 sm:px-6 py-3 font-semibold text-[#495057]">
-                        {locale === 'vi' ? 'Mã sản phẩm' : 'Product Code'}
+                        {t('Mã sản phẩm', 'Product Code', '製品コード')}
                       </td>
                       <td className="px-4 sm:px-6 py-3 font-bold text-[#212529]">{skuCode}</td>
                     </tr>
@@ -135,7 +140,7 @@ export default function ProductTabs({
                   {brand && (
                     <tr className="bg-[#F4F4F4]">
                       <td className="px-4 sm:px-6 py-3 font-semibold text-[#495057]">
-                        {locale === 'vi' ? 'Thương hiệu' : 'Brand'}
+                        {t('Thương hiệu', 'Brand', 'ブランド')}
                       </td>
                       <td className="px-4 sm:px-6 py-3 font-bold text-[#212529]">{brand}</td>
                     </tr>
@@ -143,7 +148,7 @@ export default function ProductTabs({
                   {categoryName && (
                     <tr className="bg-white">
                       <td className="px-4 sm:px-6 py-3 font-semibold text-[#495057]">
-                        {locale === 'vi' ? 'Danh mục' : 'Category'}
+                        {t('Danh mục', 'Category', 'カテゴリー')}
                       </td>
                       <td className="px-4 sm:px-6 py-3 font-bold text-[#212529]">{categoryName}</td>
                     </tr>
@@ -167,21 +172,21 @@ export default function ProductTabs({
             <div className="relative w-full aspect-[4/3] rounded-[3px] overflow-hidden border border-[#E5E7EB]">
               <Image
                 src="/images/solutions/khoHang.png"
-                alt={locale === 'vi' ? 'Kho hàng' : 'Warehouse'}
+                alt={t('Kho hàng', 'Warehouse', '倉庫')}
                 fill
                 className="object-cover"
                 sizes="(max-width: 768px) 100vw, 360px"
               />
             </div>
             <span className="text-xs font-semibold text-[#6B7280] uppercase tracking-wider mt-2.5">
-              {locale === 'vi' ? 'Kho hàng' : 'Warehouse'}
+              {t('Kho hàng', 'Warehouse', '倉庫')}
             </span>
           </div>
 
           <div className="lg:col-span-8 space-y-4">
             <div className="space-y-1">
               <span className="text-sm font-semibold text-[#2563EB] uppercase tracking-wider block">
-                {locale === 'vi' ? 'Thông tin đóng gói' : 'Packaging Information'}
+                {t('Thông tin đóng gói', 'Packaging Information', '梱包情報')}
               </span>
               <h3 className="text-xl sm:text-2xl font-bold text-[#212529]">
                 {packSize}
@@ -191,11 +196,11 @@ export default function ProductTabs({
             <div className="flex flex-wrap gap-3 pt-2">
               <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#F3F4F6] border border-[#E5E7EB] rounded-[3px] text-xs font-semibold text-[#111827]">
                 <Truck className="h-4 w-4 text-[#1769E2]" />
-                <span>{locale === 'vi' ? 'Giao hàng toàn quốc' : 'Nationwide Shipping'}</span>
+                <span>{t('Giao hàng toàn quốc', 'Nationwide Shipping', '全国配送')}</span>
               </div>
               <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-[#F3F4F6] border border-[#E5E7EB] rounded-[3px] text-xs font-semibold text-[#111827]">
                 <Package className="h-4 w-4 text-[#1769E2]" />
-                <span>{locale === 'vi' ? 'Lưu kho dễ dàng' : 'Easy Storage'}</span>
+                <span>{t('Lưu kho dễ dàng', 'Easy Storage', '保管が容易')}</span>
               </div>
             </div>
           </div>
@@ -206,10 +211,10 @@ export default function ProductTabs({
           <div className="space-y-6 pt-6 border-t border-[#E5E7EB] text-left">
             <div className="space-y-1">
               <h3 className="text-base sm:text-lg font-bold text-[#1769E2]">
-                {locale === 'vi' ? 'Tiêu chuẩn & Cam kết' : 'Standards & Commitments'}
+                {t('Tiêu chuẩn & Cam kết', 'Standards & Commitments', '基準とコミットメント')}
               </h3>
               <p className="text-sm sm:text-base font-semibold text-[#212529]">
-                {locale === 'vi' ? 'Chứng nhận chất lượng sản phẩm' : 'Product Quality Certifications'}
+                {t('Chứng nhận chất lượng sản phẩm', 'Product Quality Certifications', '製品品質認証')}
               </p>
             </div>
 
@@ -241,7 +246,7 @@ export default function ProductTabs({
       return (
         <div className="py-12 text-center text-sm text-[#6B7280]">
           <Cpu className="h-10 w-10 mx-auto mb-3 text-[#D1D5DB]" />
-          <p>{locale === 'vi' ? 'Thông tin ứng dụng đang được cập nhật.' : 'Application information is being updated.'}</p>
+          <p>{t('Thông tin ứng dụng đang được cập nhật.', 'Application information is being updated.', '用途情報は更新中です。')}</p>
         </div>
       );
     }
@@ -273,7 +278,7 @@ export default function ProductTabs({
       return (
         <div className="py-12 text-center text-sm text-[#6B7280]">
           <Award className="h-10 w-10 mx-auto mb-3 text-[#D1D5DB]" />
-          <p>{locale === 'vi' ? 'Thông tin chứng nhận đang được cập nhật.' : 'Certification information is being updated.'}</p>
+          <p>{t('Thông tin chứng nhận đang được cập nhật.', 'Certification information is being updated.', '認証情報は更新中です。')}</p>
         </div>
       );
     }
@@ -307,12 +312,14 @@ export default function ProductTabs({
         <div className="py-12 text-center text-sm text-[#6B7280]">
           <MessageSquare className="h-10 w-10 mx-auto mb-3 text-[#D1D5DB]" />
           <p className="font-semibold text-[#495057] mb-1">
-            {locale === 'vi' ? 'Chưa có đánh giá nào' : 'No reviews yet'}
+            {t('Chưa có đánh giá nào', 'No reviews yet', 'まだレビューがありません')}
           </p>
           <p>
-            {locale === 'vi'
-              ? 'Hãy là người đầu tiên đánh giá sản phẩm này.'
-              : 'Be the first to review this product.'}
+            {t(
+              'Hãy là người đầu tiên đánh giá sản phẩm này.',
+              'Be the first to review this product.',
+              '最初のレビューを投稿してください。'
+            )}
           </p>
         </div>
       );
@@ -338,7 +345,7 @@ export default function ProductTabs({
               ))}
             </div>
             <span className="text-sm text-[#6B7280]">
-              {reviews.length} {locale === 'vi' ? 'đánh giá' : 'reviews'}
+              {reviews.length} {t('đánh giá', 'reviews', '件のレビュー')}
             </span>
           </div>
           <div className="flex-1 space-y-1.5 w-full">
@@ -368,7 +375,7 @@ export default function ProductTabs({
                     {review.is_verified && (
                       <span className="inline-flex items-center gap-1 text-[11px] font-semibold text-green-700 bg-green-50 px-1.5 py-0.5 rounded">
                         <CheckCircle className="h-3 w-3" />
-                        {locale === 'vi' ? 'Đã xác thực' : 'Verified'}
+                        {t('Đã xác thực', 'Verified', '認証済み')}
                       </span>
                     )}
                   </div>
@@ -377,7 +384,7 @@ export default function ProductTabs({
                   )}
                 </div>
                 <span className="text-xs text-[#9CA3AF] whitespace-nowrap">
-                  {new Date(review.date_created).toLocaleDateString(locale === 'vi' ? 'vi-VN' : 'en-US', {
+                  {new Date(review.date_created).toLocaleDateString(t('vi-VN', 'en-US', 'ja-JP'), {
                     year: 'numeric',
                     month: 'short',
                     day: 'numeric'

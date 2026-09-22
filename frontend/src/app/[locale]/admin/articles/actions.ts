@@ -63,6 +63,8 @@ export async function saveArticle(data: {
   author_role?: string;
   author_avatar?: string | null;
   category?: string;
+  industry?: number | null;
+  badge?: string;
   published_at?: string | null;
   status?: 'published' | 'draft' | 'archived';
   is_featured?: boolean;
@@ -98,6 +100,7 @@ export async function saveArticle(data: {
         title: data.title,
         description: data.description || null,
         body: data.body || null,
+        badge: data.badge || null,
         meta_title: data.meta_title || null,
         meta_description: data.meta_description || null
       };
@@ -123,6 +126,8 @@ export async function saveArticle(data: {
         author_role: data.author_role || null,
         author_avatar: data.author_avatar || null,
         category: data.category || null,
+        industry: data.industry ?? null,
+        badge: data.badge || null,
         published_at: data.published_at || null,
         status: data.status || 'draft',
         is_featured: !!data.is_featured,
@@ -139,6 +144,8 @@ export async function saveArticle(data: {
         author_role: data.author_role || null,
         author_avatar: data.author_avatar || null,
         category: data.category || null,
+        industry: data.industry ?? null,
+        badge: data.badge || null,
         published_at: data.published_at || null,
         status: data.status || 'draft',
         is_featured: !!data.is_featured,
@@ -148,6 +155,7 @@ export async function saveArticle(data: {
             title: data.title,
             description: data.description || null,
             body: data.body || null,
+            badge: data.badge || null,
             meta_title: data.meta_title || null,
             meta_description: data.meta_description || null
           }

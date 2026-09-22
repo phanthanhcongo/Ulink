@@ -27,6 +27,8 @@ const getBadgeColorClass = (category: string) => {
       return 'bg-purple-600 text-white';
     case 'news':
       return 'bg-rose-600 text-white';
+    case 'market-news':
+      return 'bg-amber-500 text-white';
     case 'event':
       return 'bg-slate-800 text-white';
     default:

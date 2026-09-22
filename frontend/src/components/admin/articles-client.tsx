@@ -34,6 +34,7 @@ interface Translation {
   title: string;
   description?: string | null;
   body?: string | null;
+  badge?: string | null;
   meta_title?: string | null;
   meta_description?: string | null;
 }
@@ -47,9 +48,22 @@ interface Article {
   author_role?: string | null;
   author_avatar?: string | null;
   category?: string | null;
+  industry?: number | null;
+  badge?: string | null;
   published_at?: string | null;
   is_featured?: boolean;
   translations?: Translation[];
+}
+
+interface IndustryTranslation {
+  languages_code: string;
+  name?: string | null;
+}
+
+interface Industry {
+  id: number;
+  slug: string;
+  translations?: IndustryTranslation[];
 }
 
 const SUPPORTED_LANGS = [
@@ -62,12 +76,23 @@ interface TranslationDraft {
   title: string;
   description: string;
   body: string;
+  badge: string;
   meta_title: string;
   meta_description: string;
 }
 
+const EMPTY_DRAFT: TranslationDraft = {
+  title: '',
+  description: '',
+  body: '',
+  badge: '',
+  meta_title: '',
+  meta_description: ''
+};
+
 interface ArticlesClientProps {
   initialArticles: Article[];
+  industries?: Industry[];
   locale: string;
   directusUrl?: string;
   error?: string;
@@ -75,10 +100,24 @@ interface ArticlesClientProps {
 
 export function ArticlesClient({
   initialArticles,
+  industries = [],
   locale,
   directusUrl = getDirectusUrlClient(),
   error
 }: ArticlesClientProps) {
+  // Resolve an industry's display name for the current locale (fallback vi/en).
+  const industryName = useCallback(
+    (ind: Industry) => {
+      const trs = ind.translations || [];
+      const byLoc = (l: string) => trs.find((t) => t.languages_code === l)?.name;
+      return byLoc(locale) || byLoc('vi') || byLoc('en') || ind.slug;
+    },
+    [locale]
+  );
+  const industryById = useCallback(
+    (id?: number | null) => (id == null ? undefined : industries.find((i) => i.id === id)),
+    [industries]
+  );
   const [articles, setArticles] = useState<Article[]>(initialArticles);
   const [searchQuery, setSearchQuery] = useState('');
   const [isPending, startTransition] = useTransition();
@@ -114,17 +153,18 @@ export function ArticlesClient({
   const [isUploading, setIsUploading] = useState(false);
   const [activeFormTab, setActiveFormTab] = useState<'content' | 'seo'>('content');
   const [statusFilter, setStatusFilter] = useState<'all' | 'published' | 'draft'>('all');
+  const [industryFilter, setIndustryFilter] = useState<'all' | number>('all');
   const [isDirty, setIsDirty] = useState(false);
   const initialArticleRef = useRef<string>('');
 
   const [editLocale, setEditLocale] = useState(locale);
   const [translationDrafts, setTranslationDrafts] = useState<Record<string, TranslationDraft>>({});
 
-  const currentDraft = translationDrafts[editLocale] || { title: '', description: '', body: '', meta_title: '', meta_description: '' };
+  const currentDraft = translationDrafts[editLocale] || EMPTY_DRAFT;
   const updateCurrentDraft = useCallback((patch: Partial<TranslationDraft>) => {
     setTranslationDrafts(prev => ({
       ...prev,
-      [editLocale]: { ...(prev[editLocale] || { title: '', description: '', body: '', meta_title: '', meta_description: '' }), ...patch }
+      [editLocale]: { ...(prev[editLocale] || EMPTY_DRAFT), ...patch }
     }));
     setIsDirty(true);
   }, [editLocale]);
@@ -144,9 +184,10 @@ export function ArticlesClient({
     setIsDirty(true);
   }, []);
 
-  // Filter articles by search query and status
+  // Filter articles by search query, status and industry
   const filteredArticles = articles.filter((art) => {
     if (statusFilter !== 'all' && art.status !== statusFilter) return false;
+    if (industryFilter !== 'all' && art.industry !== industryFilter) return false;
     const title = getTranslatedField(art, 'title', locale).toLowerCase();
     const author = (art.author || '').toLowerCase();
     const q = searchQuery.toLowerCase();
@@ -208,6 +249,8 @@ export function ArticlesClient({
           author_role: activeArticle.author_role || undefined,
           author_avatar: activeArticle.author_avatar || undefined,
           category: activeArticle.category || undefined,
+          industry: activeArticle.industry ?? null,
+          badge: draft.badge || '',
           published_at: activeArticle.published_at || null,
           status: activeArticle.status || 'draft',
           is_featured: !!activeArticle.is_featured,
@@ -290,7 +333,6 @@ export function ArticlesClient({
           </Link>
           <button
             onClick={() => {
-              const emptyDraft: TranslationDraft = { title: '', description: '', body: '', meta_title: '', meta_description: '' };
               setActiveArticle({
                 status: 'draft',
                 title: '',
@@ -301,12 +343,14 @@ export function ArticlesClient({
                 author_role: '',
                 author_avatar: null,
                 category: '',
+                industry: null,
+                badge: '',
                 published_at: new Date().toISOString().substring(0, 16),
                 meta_title: '',
                 meta_description: '',
                 cover: null
               });
-              setTranslationDrafts({ vi: { ...emptyDraft }, en: { ...emptyDraft }, ja: { ...emptyDraft } });
+              setTranslationDrafts({ vi: { ...EMPTY_DRAFT }, en: { ...EMPTY_DRAFT }, ja: { ...EMPTY_DRAFT } });
               setEditLocale(locale);
               setModalOpen(true);
               setFormError('');
@@ -366,6 +410,24 @@ export function ArticlesClient({
               </button>
             ))}
           </div>
+
+          {/* Industry filter */}
+          {industries.length > 0 && (
+            <select
+              value={industryFilter === 'all' ? 'all' : String(industryFilter)}
+              onChange={(e) =>
+                setIndustryFilter(e.target.value === 'all' ? 'all' : Number(e.target.value))
+              }
+              className="px-3 py-2 rounded-[3px] border border-slate-200 bg-white text-caption-responsive font-bold text-slate-700 focus:outline-none focus:ring-1 focus:ring-blue-600 shadow-sm"
+            >
+              <option value="all">Tất cả ngành</option>
+              {industries.map((ind) => (
+                <option key={ind.id} value={String(ind.id)}>
+                  {industryName(ind)}
+                </option>
+              ))}
+            </select>
+          )}
         </div>
       </div>
 
@@ -433,6 +495,14 @@ export function ArticlesClient({
                               <span className="text-caption-responsive text-slate-400 font-mono mt-1 select-all">
                                 /{art.slug}
                               </span>
+                              {(() => {
+                                const ind = industryById(art.industry);
+                                return ind ? (
+                                  <span className="inline-flex w-fit items-center gap-1 mt-1.5 px-2 py-0.5 rounded-[3px] bg-blue-50 text-blue-700 text-[10px] font-bold border border-blue-100 uppercase tracking-wide">
+                                    {industryName(ind)}
+                                  </span>
+                                ) : null;
+                              })()}
                             </div>
                           </div>
                         </td>
@@ -476,6 +546,7 @@ export function ArticlesClient({
                                     title: getTranslatedField(art, 'title', lang.code),
                                     description: getTranslatedField(art, 'description', lang.code),
                                     body: getTranslatedField(art, 'body', lang.code),
+                                    badge: getTranslatedField(art, 'badge', lang.code),
                                     meta_title: getTranslatedField(art, 'meta_title', lang.code),
                                     meta_description: getTranslatedField(art, 'meta_description', lang.code),
                                   };
@@ -490,6 +561,8 @@ export function ArticlesClient({
                                   author_role: art.author_role,
                                   author_avatar: art.author_avatar,
                                   category: art.category,
+                                  industry: art.industry ?? null,
+                                  badge: art.badge,
                                   is_featured: !!art.is_featured,
                                   published_at: art.published_at
                                     ? new Date(art.published_at).toISOString().substring(0, 16)
@@ -570,6 +643,14 @@ export function ArticlesClient({
                       <h3 className="font-bold text-primary text-body-regular line-clamp-2 leading-snug mt-1">
                         {title}
                       </h3>
+                      {(() => {
+                        const ind = industryById(art.industry);
+                        return ind ? (
+                          <span className="inline-flex w-fit items-center gap-1 px-2 py-0.5 rounded-[3px] bg-blue-50 text-blue-700 text-[10px] font-bold border border-blue-100 uppercase tracking-wide">
+                            {industryName(ind)}
+                          </span>
+                        ) : null;
+                      })()}
                       <div className="flex items-center justify-between gap-4 mt-auto pt-3 border-t border-slate-50 text-caption-responsive text-slate-500 font-medium">
                         <span className="flex items-center gap-1">
                           <User className="h-3.5 w-3.5 text-slate-400" />
@@ -589,6 +670,7 @@ export function ArticlesClient({
                                 title: getTranslatedField(art, 'title', lang.code),
                                 description: getTranslatedField(art, 'description', lang.code),
                                 body: getTranslatedField(art, 'body', lang.code),
+                                badge: getTranslatedField(art, 'badge', lang.code),
                                 meta_title: getTranslatedField(art, 'meta_title', lang.code),
                                 meta_description: getTranslatedField(art, 'meta_description', lang.code),
                               };
@@ -603,6 +685,8 @@ export function ArticlesClient({
                               author_role: art.author_role,
                               author_avatar: art.author_avatar,
                               category: art.category,
+                              industry: art.industry ?? null,
+                              badge: art.badge,
                               published_at: art.published_at
                                 ? new Date(art.published_at).toISOString().substring(0, 16)
                                 : null,
@@ -814,6 +898,55 @@ export function ArticlesClient({
                         placeholder="Mô tả ngắn gọn nội dung bài viết, hiển thị ở trang chi tiết..."
                         className="w-full px-4 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand leading-relaxed"
                       />
+                    </div>
+
+                    {/* Industry link + Badge (for /industries case cards) */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                      {/* Industry */}
+                      <div className="flex flex-col gap-1.5">
+                        <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">
+                          Ngành áp dụng
+                        </label>
+                        <select
+                          value={activeArticle.industry != null ? String(activeArticle.industry) : ''}
+                          onChange={(e) => {
+                            setActiveArticle({
+                              ...activeArticle,
+                              industry: e.target.value ? Number(e.target.value) : null
+                            });
+                            trackChange();
+                          }}
+                          className="w-full px-4 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand bg-white shadow-sm"
+                        >
+                          <option value="">— Không gắn ngành —</option>
+                          {industries.map((ind) => (
+                            <option key={ind.id} value={String(ind.id)}>
+                              {industryName(ind)}
+                            </option>
+                          ))}
+                        </select>
+                        <span className="text-[10px] text-slate-400 font-medium">
+                          Gắn ngành để bài hiện thành thẻ &quot;Trường hợp áp dụng&quot; trên trang ngành.
+                        </span>
+                      </div>
+
+                      {/* Badge (per-language) */}
+                      <div className="flex flex-col gap-1.5">
+                        <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider flex items-center gap-1.5">
+                          Nhãn nổi bật (Badge)
+                          <span className="text-[10px] text-blue-500 normal-case">{editLocale.toUpperCase()}</span>
+                        </label>
+                        <input
+                          type="text"
+                          value={currentDraft.badge}
+                          onChange={(e) => updateCurrentDraft({ badge: e.target.value })}
+                          placeholder="VD: Giảm 32% lỗi, Xuất khẩu EU..."
+                          className="w-full px-4 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand"
+                        />
+                        <span className="text-[10px] text-slate-400 font-medium">
+                          Hiển thị trên thẻ case; nhập riêng cho từng ngôn ngữ.
+                        </span>
+                      </div>
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">

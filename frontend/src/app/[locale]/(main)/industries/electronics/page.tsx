@@ -4,6 +4,7 @@ import { notFound } from 'next/navigation';
 import { fetchProducts } from '@/lib/product-data';
 import ElectronicsClient from './electronics-client';
 import { getIndustryDetails } from '@/components/industries/industry-data';
+import { fetchCaseStudiesByIndustry } from '@/lib/industry-cases';
 
 interface Props {
   params: { locale: string };
@@ -35,6 +36,13 @@ export default async function ElectronicsIndustryPage({ params: { locale } }: Pr
     limit: 8
   });
 
+  // Case-study cards now come from Directus (blog_posts linked to industry);
+  // fall back to the static content when nothing is seeded yet.
+  const dbCases = await fetchCaseStudiesByIndustry(CANONICAL_SLUG, locale);
+  const industryDataFinal = dbCases.length
+    ? { ...industryData, cases: dbCases }
+    : industryData;
+
   const isVi = locale === 'vi';
   const isJa = locale === 'ja';
 
@@ -58,7 +66,7 @@ export default async function ElectronicsIndustryPage({ params: { locale } }: Pr
 
   return (
     <ElectronicsClient
-      industryData={industryData}
+      industryData={industryDataFinal}
       products={products}
       locale={locale}
       currentSlug={ROUTE_SLUG}

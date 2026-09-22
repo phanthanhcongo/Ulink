@@ -1,4 +1,4 @@
-import { FileText, BookOpen, ShieldCheck, Briefcase, Newspaper, CalendarDays } from 'lucide-react';
+import { FileText, BookOpen, ShieldCheck, Briefcase, Newspaper, CalendarDays, TrendingUp } from 'lucide-react';
 import { ResourceItem } from './types';
 
 // Updated 6 Tabs configuration matching the HTML design
@@ -18,6 +18,11 @@ export const TABS = [
     id: 'case-study',
     label: { vi: 'Nghiên cứu điển hình', en: 'Case Studies', ja: 'ケーススタディ' },
     icon: Briefcase
+  },
+  {
+    id: 'market-news',
+    label: { vi: 'Tin thị trường', en: 'Market News', ja: '市場ニュース' },
+    icon: TrendingUp
   },
   { id: 'news', label: { vi: 'Tin tức', en: 'News', ja: 'ニュース' }, icon: Newspaper },
   { id: 'event', label: { vi: 'Sự kiện', en: 'Events', ja: 'イベント' }, icon: CalendarDays }

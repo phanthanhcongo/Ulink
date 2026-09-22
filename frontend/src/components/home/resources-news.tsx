@@ -8,9 +8,10 @@ import {
   TrendingUp,
   Zap
 } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { useTranslations, useLocale } from 'next-intl';
 import { Link } from '@/i18n/navigation';
 import { ASSETS } from '@/lib/assets';
+import { fetchMarketNews, type MarketNewsItem } from '@/lib/market-news';
 import { NewsCard } from './news-card';
 import { DocSection } from './doc-section';
 import { SupportSection } from './support-section';
@@ -18,10 +19,24 @@ import { ComingSoonModal } from './coming-soon-modal';
 
 export function ResourcesNews() {
   const t = useTranslations('home.resourcesSection');
+  const locale = useLocale();
   const [showComingSoon, setShowComingSoon] = useState(false);
   const [selectedDocTitle, setSelectedDocTitle] = useState('');
   const newsRef = useRef<HTMLDivElement>(null);
   const [newsVisible, setNewsVisible] = useState(false);
+  // Market-news items pulled live from Directus (category = 'market-news').
+  // Empty until loaded → the hardcoded fallback below is shown meanwhile.
+  const [dbNews, setDbNews] = useState<MarketNewsItem[]>([]);
+
+  useEffect(() => {
+    let active = true;
+    fetchMarketNews(locale, 4).then((items) => {
+      if (active && items.length) setDbNews(items);
+    });
+    return () => {
+      active = false;
+    };
+  }, [locale]);
 
   useEffect(() => {
     const el = newsRef.current;
@@ -122,6 +137,18 @@ export function ResourcesNews() {
     }
   ];
 
+  // Prefer live DB market-news; fall back to the static i18n cards above.
+  const displayCards = dbNews.length
+    ? dbNews.map((n) => ({
+        slug: n.slug,
+        date: n.date,
+        title: n.description ? `${n.title} - ${n.description}` : n.title,
+        image: n.image,
+        category: n.badge || t('doc1Category'),
+        author: n.author
+      }))
+    : newsData;
+
   const supportData = [
     { num: 1, icon: CheckSquare, title: t('supp1Title'), desc: t('supp1Desc') },
     { num: 2, icon: Shield, title: t('supp2Title'), desc: t('supp2Desc') },
@@ -144,7 +171,7 @@ export function ResourcesNews() {
 
         {/* ── 3. 4 NEWS CARDS GRID ── */}
         <div ref={newsRef} className="mt-8 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
-          {newsData.map((news, idx) => (
+          {displayCards.map((news, idx) => (
             <div
               key={news.slug}
               className={`transition-all duration-500 ${newsVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'

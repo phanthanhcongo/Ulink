@@ -93,6 +93,8 @@ export function ResourcesClient({
         return 'bg-purple-500/10 text-purple-600 border border-purple-200';
       case 'news':
         return 'bg-rose-500/10 text-rose-600 border border-rose-200';
+      case 'market-news':
+        return 'bg-amber-500/10 text-amber-600 border border-amber-200';
       case 'event':
         return 'bg-slate-900/10 text-slate-800 border border-slate-300';
       default:

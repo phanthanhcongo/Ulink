@@ -12,6 +12,7 @@ export interface CaseStudyItem {
   description: string;
   image: string;
   badge: string;
+  slug?: string;
 }
 
 export interface ValueProp {

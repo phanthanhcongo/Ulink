@@ -54,44 +54,73 @@ export default async function AdminArticlesPage({ params }: PageProps) {
   }
 
   let articles: any[] = [];
+  let industries: any[] = [];
   let error: string | undefined;
   try {
     const client = await getSessionClient();
-    // 2. Fetch blog posts
-    const res = await client.request(
-      readItems(
-        'blog_posts' as any,
-        {
-          filter: { status: { _in: ['published', 'draft'] } },
-          fields: [
-            'id',
-            'status',
-            'slug',
-            'cover',
-            'author',
-            'author_role',
-            'author_avatar',
-            'category',
-            'is_featured',
-            'published_at',
-            'translations.id',
-            'translations.languages_code',
-            'translations.title',
-            'translations.description',
-            'translations.body',
-            'translations.meta_title',
-            'translations.meta_description'
-          ],
-          sort: ['-id'],
-          limit: -1
-        } as any
+    // 2. Fetch blog posts + industries (for the industry filter + assignment)
+    const [res, indRes] = await Promise.all([
+      client.request(
+        readItems(
+          'blog_posts' as any,
+          {
+            filter: { status: { _in: ['published', 'draft'] } },
+            fields: [
+              'id',
+              'status',
+              'slug',
+              'cover',
+              'author',
+              'author_role',
+              'author_avatar',
+              'category',
+              'badge',
+              'industry',
+              'is_featured',
+              'published_at',
+              'translations.id',
+              'translations.languages_code',
+              'translations.title',
+              'translations.description',
+              'translations.body',
+              'translations.badge',
+              'translations.meta_title',
+              'translations.meta_description'
+            ],
+            sort: ['-id'],
+            limit: -1
+          } as any
+        )
+      ),
+      client.request(
+        readItems(
+          'industries' as any,
+          {
+            fields: [
+              'id',
+              'slug',
+              'translations.languages_code',
+              'translations.name'
+            ],
+            sort: ['id'],
+            limit: -1
+          } as any
+        )
       )
-    );
+    ]);
     articles = res || [];
+    industries = indRes || [];
   } catch (err) {
     console.error('Failed to load articles in admin dashboard:', err);
     error = extractErrorMessage(err);
   }
 
-  return <ArticlesClient initialArticles={articles} locale={locale} error={error} />;
+  return (
+    <ArticlesClient
+      initialArticles={articles}
+      industries={industries}
+      locale={locale}
+      error={error}
+    />
+  );
 }

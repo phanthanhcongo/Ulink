@@ -81,6 +81,7 @@ export const TRANSLATION_FIELDS = {
   ],
   blog_posts: [
     { field: 'title', type: 'string', meta: { interface: 'input', required: true } },
+    { field: 'badge', type: 'string', meta: { interface: 'input' } },
     { field: 'body', type: 'text', meta: { interface: 'wysiwyg' } },
     { field: 'meta_title', type: 'string', meta: { interface: 'input' } },
     { field: 'meta_description', type: 'text', meta: { interface: 'textarea' } }
