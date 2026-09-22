@@ -27,7 +27,18 @@ function renderParagraphs(value: string) {
 }
 
 function renderTranslatedText(item: TranslatedString, locale: 'vi' | 'en' | 'ja') {
-  return item[locale];
+  return item[locale] || item.en || item.vi || item.ja || '';
+}
+
+function localizeResourceDate(date: string, locale: 'vi' | 'en' | 'ja') {
+  const match = date.match(/Tháng\s+(\d{1,2}),?\s+(\d{4})/i);
+  if (!match) return date;
+
+  const month = Number(match[1]);
+  const year = Number(match[2]);
+  if (locale === 'en') return new Intl.DateTimeFormat('en-US', { month: 'long', year: 'numeric' }).format(new Date(year, month - 1, 1));
+  if (locale === 'ja') return `${year}年${month}月`;
+  return `Tháng ${String(month).padStart(2, '0')}, ${year}`;
 }
 
 function renderSection(section: Section, locale: 'vi' | 'en' | 'ja') {
@@ -248,7 +259,7 @@ export function resourceToDetailData(
     category: renderTranslatedText(resource.badge, locale),
     title: renderTranslatedText(resource.title, locale),
     description: renderTranslatedText(resource.description, locale),
-    date: resource.date,
+    date: localizeResourceDate(resource.date, locale),
     author: renderTranslatedText(resource.author.name, locale),
     readTime: renderTranslatedText(resource.readTime, locale),
     coverImage: resource.image,
