@@ -30,7 +30,7 @@ export default async function ResourcesPage({ params: { locale } }: Props) {
     loadResourceCatalog(),
     fetchEvents(),
   ]);
-  const events = directusEvents.map(mapEventToListItem);
+  const events = directusEvents.map((e) => mapEventToListItem(e, locale));
 
   return (
     <section className="relative min-h-screen">

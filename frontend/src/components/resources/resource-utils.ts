@@ -133,12 +133,56 @@ export function resourceToDetailData(
     resource.aiSummary?.intro?.[locale] || resource.description[locale] || fallbackIntro;
   const highlights = summaryBullets.map((bullet) => bullet[locale]).filter(Boolean);
 
+  const rawBody = resource.bodyHtml?.[locale]?.trim();
+
+  // Extract H2 headings from body HTML → auto-generate TOC + inject ids for anchors
+  let bodyWithAnchors = '';
+  const extractedTocSections: Section[] = [];
+  if (rawBody) {
+    const slugify = (s: string) =>
+      s.toLowerCase()
+        .normalize('NFD')
+        .replace(/[̀-ͯ]/g, '')
+        .replace(/đ/g, 'd')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/(^-|-$)/g, '')
+        .slice(0, 60) || 'section';
+
+      const usedIds = new Set<string>();
+      let counter = 0;
+      bodyWithAnchors = rawBody.replace(
+        /<h2([^>]*)>([\s\S]*?)<\/h2>/gi,
+        (_match, attrs: string, inner: string) => {
+          counter += 1;
+          const plain = inner.replace(/<[^>]+>/g, '').trim();
+          let id = slugify(plain);
+          if (usedIds.has(id)) id = `${id}-${counter}`;
+          usedIds.add(id);
+          const hasId = /\sid=/.test(attrs);
+          const finalAttrs = hasId ? attrs : `${attrs} id="${id}"`;
+          extractedTocSections.push({
+            id,
+            num: `${counter}.`,
+            title: { vi: plain, en: plain, ja: plain },
+            content: { vi: '', en: '', ja: '' }
+          });
+          return `<h2${finalAttrs}>${inner}</h2>`;
+        }
+      );
+  }
+
   const effectiveSections =
     resource.sections && resource.sections.length > 0
       ? resource.sections
-      : getDefaultSections(resource);
+      : extractedTocSections.length > 0
+        ? extractedTocSections
+        : rawBody
+          ? []
+          : getDefaultSections(resource);
 
-  const sectionsHtml = effectiveSections.map((section) => renderSection(section, locale)).join('');
+  const sectionsHtml = rawBody
+    ? `<section class="prose prose-slate max-w-none text-body-regular leading-7 text-slate-700 [&_h2]:text-card-title [&_h2]:font-bold [&_h2]:text-slate-900 [&_h2]:mt-8 [&_h2]:mb-4 [&_h3]:text-body-regular [&_h3]:font-bold [&_h3]:text-slate-800 [&_h3]:mt-6 [&_h3]:mb-3 [&_ul]:list-disc [&_ul]:pl-6 [&_ol]:list-decimal [&_ol]:pl-6 [&_p]:mb-4 [&_a]:text-brand [&_a]:underline">${bodyWithAnchors || rawBody}</section>`
+    : effectiveSections.map((section) => renderSection(section, locale)).join('');
 
   const summaryHtml =
     intro || highlights.length > 0
@@ -209,6 +253,7 @@ export function resourceToDetailData(
     readTime: renderTranslatedText(resource.readTime, locale),
     coverImage: resource.image,
     contentHtml: [metaHtml, summaryHtml, sectionsHtml].join(''),
+    bodyHtml: rawBody ? bodyWithAnchors || rawBody : undefined,
     highlights,
     sections: effectiveSections.map((sec) => ({
       id: sec.id,

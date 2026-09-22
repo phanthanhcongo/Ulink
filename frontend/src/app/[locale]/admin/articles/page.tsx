@@ -9,6 +9,9 @@ import { getDirectusUrl } from '@/lib/directus-runtime.mjs';
 import { ArticlesClient } from '@/components/admin/articles-client';
 import { extractErrorMessage } from '@/lib/api-error';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 async function getSessionClient() {
   const store = await cookies();
   const sessionToken = store.get('directus_session_token')?.value;
@@ -25,7 +28,7 @@ async function getSessionClient() {
     const cookieFetch: typeof globalThis.fetch = (input, init) => {
       const headers = new Headers(init?.headers);
       headers.set('cookie', cookieHeader);
-      return globalThis.fetch(input, { ...init, headers });
+      return globalThis.fetch(input, { ...init, headers, cache: 'no-store' });
     };
 
     const url = getDirectusUrl();
@@ -69,6 +72,7 @@ export default async function AdminArticlesPage({ params }: PageProps) {
             'author_role',
             'author_avatar',
             'category',
+            'is_featured',
             'published_at',
             'translations.id',
             'translations.languages_code',

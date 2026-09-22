@@ -1,12 +1,15 @@
 import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { getTranslations } from 'next-intl/server';
 
 interface CustomSolutionsProps {
   locale: string;
 }
 
-export default function CustomSolutions({ locale }: CustomSolutionsProps) {
+export default async function CustomSolutions({ locale }: CustomSolutionsProps) {
+  const t = await getTranslations({ locale, namespace: 'customSolutions' });
+
   return (
     <section className="w-full bg-white py-16 lg:py-24 border-t border-gray-150">
       <div className="page-container">
@@ -14,17 +17,17 @@ export default function CustomSolutions({ locale }: CustomSolutionsProps) {
           {/* Left Column: Text Content */}
           <div className="lg:col-span-6 flex flex-col justify-center">
             <h2 className="text-lg sm:text-3xl lg:text-[48px] lg:leading-[56px] font-bold text-slate-900 tracking-tight">
-              Giải pháp thiết kế riêng cho Doanh nghiệp
+              {t('title')}
             </h2>
             <p className="mt-6 text-sm sm:text-base lg:text-[20px] lg:leading-[30px] font-normal text-slate-600">
-              Giải pháp đóng gói thông minh dành riêng cho Doanh nghiệp, giúp tối ưu chi phí vật liệu, giảm thiểu hao hụt và tự động hóa quy trình đóng gói theo quy mô đơn hàng. Tích hợp dễ dàng với hệ thống quản lý kho vận hiện có, đảm bảo vận hành liền mạch và tiết kiệm lên đến 30% chi phí logistics.
+              {t('description')}
             </p>
             <div className="mt-8">
               <Link
                 href={`/${locale}/contact`}
                 className="inline-flex items-center justify-center rounded-[3px] bg-blue-600 px-6 py-3 text-sm sm:text-base lg:text-[16px] font-semibold text-white shadow-sm hover:bg-blue-700 transition-colors"
               >
-                Kết nối với Chuyên gia
+                {t('cta')}
               </Link>
             </div>
           </div>
@@ -33,7 +36,7 @@ export default function CustomSolutions({ locale }: CustomSolutionsProps) {
           <div className="lg:col-span-6 ui-card-hover relative aspect-[4/3] w-full overflow-hidden bg-slate-50 border border-gray-100 rounded-[3px]">
             <Image
               src="/images/solutions/Stretch-Hood-Packaging.png"
-              alt="Giải pháp thiết kế riêng cho Doanh nghiệp"
+              alt={t('title')}
               fill
               priority
               className="object-cover"
@@ -45,4 +48,3 @@ export default function CustomSolutions({ locale }: CustomSolutionsProps) {
     </section>
   );
 }
-

@@ -65,6 +65,7 @@ export async function saveArticle(data: {
   category?: string;
   published_at?: string | null;
   status?: 'published' | 'draft' | 'archived';
+  is_featured?: boolean;
   meta_title?: string;
   meta_description?: string;
   locale: string;
@@ -93,27 +94,27 @@ export async function saveArticle(data: {
         (t) => t.languages_code === data.locale
       );
 
-      const translationsPayload: any[] = [];
-      if (translationForLocale) {
-        translationsPayload.push({
-          id: translationForLocale.id,
-          languages_code: data.locale,
-          title: data.title,
-          description: data.description || null,
-          body: data.body || null,
-          meta_title: data.meta_title || null,
-          meta_description: data.meta_description || null
-        });
-      } else {
-        translationsPayload.push({
-          languages_code: data.locale,
-          title: data.title,
-          description: data.description || null,
-          body: data.body || null,
-          meta_title: data.meta_title || null,
-          meta_description: data.meta_description || null
-        });
-      }
+      const translationFields = {
+        title: data.title,
+        description: data.description || null,
+        body: data.body || null,
+        meta_title: data.meta_title || null,
+        meta_description: data.meta_description || null
+      };
+
+      // Use Directus { create, update } M2M syntax so we don't wipe
+      // sibling-language translations by sending a plain replacement array.
+      const translationsPayload = translationForLocale
+        ? {
+            update: [{ id: translationForLocale.id, ...translationFields }],
+            create: [],
+            delete: []
+          }
+        : {
+            create: [{ languages_code: data.locale, ...translationFields }],
+            update: [],
+            delete: []
+          };
 
       const payload = {
         slug: data.slug,
@@ -124,6 +125,7 @@ export async function saveArticle(data: {
         category: data.category || null,
         published_at: data.published_at || null,
         status: data.status || 'draft',
+        is_featured: !!data.is_featured,
         translations: translationsPayload
       };
 
@@ -139,6 +141,7 @@ export async function saveArticle(data: {
         category: data.category || null,
         published_at: data.published_at || null,
         status: data.status || 'draft',
+        is_featured: !!data.is_featured,
         translations: [
           {
             languages_code: data.locale,

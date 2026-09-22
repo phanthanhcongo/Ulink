@@ -79,8 +79,8 @@ export function ResourcesNews() {
       image: ASSETS.home.news1,
       category: t('doc1Category') || 'Catalogue',
       author: {
-        name: 'Nguyễn Minh Tuấn',
-        role: 'Trưởng phòng Đóng gói',
+        name: t('card1AuthorName'),
+        role: t('card1AuthorRole'),
         avatar: ASSETS.home.avatar2
       }
     },
@@ -91,8 +91,8 @@ export function ResourcesNews() {
       image: ASSETS.home.news2,
       category: t('doc2Category') || 'Tài liệu kỹ thuật',
       author: {
-        name: 'Lê Quốc Hưng',
-        role: 'Quản lý Kho vận',
+        name: t('card2AuthorName'),
+        role: t('card2AuthorRole'),
         avatar: ASSETS.home.avatar4
       }
     },
@@ -103,8 +103,8 @@ export function ResourcesNews() {
       image: ASSETS.home.news3,
       category: t('doc1Category') || 'Catalogue',
       author: {
-        name: 'Trần Thị Hồng Nhung',
-        role: 'Giám đốc Sản xuất',
+        name: t('card3AuthorName'),
+        role: t('card3AuthorRole'),
         avatar: ASSETS.home.avatar1
       }
     },
@@ -115,8 +115,8 @@ export function ResourcesNews() {
       image: ASSETS.home.news4Eco,
       category: t('doc2Category') || 'Tài liệu kỹ thuật',
       author: {
-        name: 'Phạm Thanh Sơn',
-        role: 'Chuyên viên kỹ thuật',
+        name: t('card4AuthorName'),
+        role: t('card4AuthorRole'),
         avatar: ASSETS.home.avatar3
       }
     }

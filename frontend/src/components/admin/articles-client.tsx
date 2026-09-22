@@ -48,6 +48,7 @@ interface Article {
   author_avatar?: string | null;
   category?: string | null;
   published_at?: string | null;
+  is_featured?: boolean;
   translations?: Translation[];
 }
 
@@ -209,6 +210,7 @@ export function ArticlesClient({
           category: activeArticle.category || undefined,
           published_at: activeArticle.published_at || null,
           status: activeArticle.status || 'draft',
+          is_featured: !!activeArticle.is_featured,
           meta_title: draft.meta_title || '',
           meta_description: draft.meta_description || '',
           locale: langCode
@@ -488,6 +490,7 @@ export function ArticlesClient({
                                   author_role: art.author_role,
                                   author_avatar: art.author_avatar,
                                   category: art.category,
+                                  is_featured: !!art.is_featured,
                                   published_at: art.published_at
                                     ? new Date(art.published_at).toISOString().substring(0, 16)
                                     : null,
@@ -924,6 +927,27 @@ export function ArticlesClient({
                           className="w-full px-4 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-semibold text-slate-650 focus:outline-none focus:ring-1 focus:ring-brand focus:border-brand bg-white"
                         />
                       </div>
+                    </div>
+
+                    {/* Featured */}
+                    <div className="flex items-start gap-2.5 p-3 rounded-[3px] border border-slate-200 bg-slate-50/50">
+                      <input
+                        type="checkbox"
+                        id="is_featured"
+                        checked={!!activeArticle.is_featured}
+                        onChange={(e) =>
+                          setActiveArticle({ ...activeArticle, is_featured: e.target.checked })
+                        }
+                        className="mt-0.5 h-4 w-4 accent-brand rounded-[3px] cursor-pointer"
+                      />
+                      <label htmlFor="is_featured" className="cursor-pointer">
+                        <span className="text-caption-responsive font-bold text-slate-700 block">
+                          Bài xem nhiều
+                        </span>
+                        <span className="text-caption-responsive text-slate-500 block mt-0.5">
+                          Tick để hiển thị ở section &quot;Bài xem nhiều&quot; ở trang Resources.
+                        </span>
+                      </label>
                     </div>
 
                     {/* Body — Rich Text Editor */}

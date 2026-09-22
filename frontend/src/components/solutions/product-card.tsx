@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Image from 'next/image';
 import { MapPin, Bookmark } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
+import { useTranslations } from 'next-intl';
 
 interface Product {
   id: number | string;
@@ -33,6 +34,7 @@ export function ProductCard({
   showWishlist = true,
   className
 }: ProductCardProps) {
+  const t = useTranslations('productCard');
   const [isWishlisted, setIsWishlisted] = useState(false);
 
   React.useEffect(() => {
@@ -153,7 +155,7 @@ export function ProductCard({
           ) : (
             <div className="text-slate-400 text-center p-4">
               <div className="text-4xl mb-2">📦</div>
-              <p className="text-sm font-medium">{locale === 'vi' ? 'Chưa có hình ảnh' : 'No image'}</p>
+              <p className="text-sm font-medium">{t('noImage')}</p>
             </div>
           )}
         </div>
@@ -169,7 +171,7 @@ export function ProductCard({
             {/* PRICE INFO */}
             <div className="flex items-baseline gap-1.5">
               <span className="text-[16px] leading-[24px] font-normal text-[#14181F]">
-                {product.price || 'Liên hệ báo giá'}
+                {product.price || t('quote')}
               </span>
               <span className="text-[14px] sm:text-[16px] leading-[24px] font-normal text-[#495057]">
                 {product.unit ? `${product.unit.startsWith('/') ? '' : '/'}${product.unit}` : '/per kg'}
@@ -180,13 +182,13 @@ export function ProductCard({
             <div className="flex items-baseline justify-between gap-2">
               <span className="text-[16px] leading-[24px] font-normal text-[#14181F]">
                 {(() => {
-                  const rawMoq = product.moq || '500 kg';
+                  const rawMoq = product.moq || `500 ${t('kg')}`;
                   const cleanMoq = rawMoq.replace(/^(MOQ:\s*)+/i, '').trim();
-                  return `MOQ: ${cleanMoq}`;
+                  return `${t('moq')}: ${cleanMoq}`;
                 })()}
               </span>
               <span className="text-[14px] leading-[20px] font-normal text-[#495057] text-right truncate">
-                {product.status || (locale === 'vi' ? 'Sản xuất theo yêu cầu' : 'Custom orders')}
+                {product.status === 'in_stock' ? t('inStock') : product.status || t('customOrders')}
               </span>
             </div>
 
@@ -194,7 +196,7 @@ export function ProductCard({
             <div className="flex items-center gap-2 pt-0.5">
               <MapPin className="h-[18px] w-[18px] text-[#495057] opacity-50 shrink-0" />
               <span className="text-[14px] sm:text-[16px] leading-[24px] font-normal text-[#495057] truncate">
-                {product.location || 'Hub Hà Nam, Việt Nam'}
+                {product.location || t('location')}
               </span>
             </div>
           </div>
@@ -209,7 +211,7 @@ export function ProductCard({
               }}
               className="flex-1 h-[40px] bg-[#1769E2] hover:bg-[#1257BD] text-white font-medium text-[15px] rounded-[3px] transition-colors shadow-xs cursor-pointer flex items-center justify-center px-3"
             >
-              {locale === 'vi' ? 'Đặt hàng' : 'Order'}
+              {t('order')}
             </button>
 
             {showWishlist && (
@@ -220,7 +222,7 @@ export function ProductCard({
                     ? 'bg-[#1769E2] text-white hover:bg-[#1257BD]'
                     : 'bg-[#E0EDFF] text-[#1769E2] hover:bg-[#d0e3ff]'
                 }`}
-                title={locale === 'vi' ? 'Lưu sản phẩm' : 'Bookmark product'}
+                title={t('bookmark')}
               >
                 <Bookmark
                   className="h-[20px] w-[20px] stroke-[2]"

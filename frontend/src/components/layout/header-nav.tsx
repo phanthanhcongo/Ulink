@@ -38,6 +38,7 @@ import {
   Factory
 } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
+import { useTranslations } from 'next-intl';
 
 export interface NavProductItem {
   title: string;
@@ -108,54 +109,54 @@ const IconMap: Record<string, React.ComponentType<any>> = {
 const categoriesData: NavCategoryItem[] = [
   {
     id: 'packaging',
-    name: 'Bao bì & Đóng gói',
+    name: 'mega.solutions.categories.packaging.name',
     link: '/solutions/listProduct',
     products: [
       {
-        title: 'Màng co POF',
-        description: 'Màng co nhiệt đa năng, độ trong suốt cao, ứng dụng bao gói thực phẩm & hàng tiêu dùng',
+        title: 'mega.solutions.categories.packaging.items.pof.title',
+        description: 'mega.solutions.categories.packaging.items.pof.desc',
         icon: 'package',
         bgColor: 'bg-blue-50 text-blue-600',
       },
       {
-        title: 'Băng keo đóng gói',
-        description: 'Băng keo OPP, băng keo in logo, băng keo 2 mặt cho dán thùng & niêm phong',
+        title: 'mega.solutions.categories.packaging.items.tape.title',
+        description: 'mega.solutions.categories.packaging.items.tape.desc',
         icon: 'wrench',
         bgColor: 'bg-violet-50 text-violet-600',
       },
       {
-        title: 'Màng co PE (Shrink Film)',
-        description: 'Màng co nhiệt bọc kín sản phẩm chống bụi & ẩm, tăng tính thẩm mỹ',
+        title: 'mega.solutions.categories.packaging.items.shrinkPe.title',
+        description: 'mega.solutions.categories.packaging.items.shrinkPe.desc',
         icon: 'file-text',
         bgColor: 'bg-indigo-50 text-indigo-600',
       },
       {
-        title: 'Màng quấn Pallet',
-        description: 'Màng stretch quấn pallet chịu lực cao, bảo vệ hàng hóa khi vận chuyển',
+        title: 'mega.solutions.categories.packaging.items.palletWrap.title',
+        description: 'mega.solutions.categories.packaging.items.palletWrap.desc',
         icon: 'briefcase',
         bgColor: 'bg-orange-50 text-orange-600',
       },
       {
-        title: 'Thùng carton',
-        description: 'Thùng carton 3-5-7 lớp in flexo chất lượng cao theo yêu cầu',
+        title: 'mega.solutions.categories.packaging.items.carton.title',
+        description: 'mega.solutions.categories.packaging.items.carton.desc',
         icon: 'users',
         bgColor: 'bg-teal-50 text-teal-600',
       },
       {
-        title: 'Màng HIPS/PP',
-        description: 'Định hình khay chứa linh kiện chống tĩnh điện, bảo vệ lưu kho',
+        title: 'mega.solutions.categories.packaging.items.hipsPp.title',
+        description: 'mega.solutions.categories.packaging.items.hipsPp.desc',
         icon: 'clipboard-list',
         bgColor: 'bg-amber-50 text-amber-600',
       },
       {
-        title: 'Túi PE / HD',
-        description: 'Túi đựng hàng công nghiệp, túi lót thùng carton đa dạng kích thước',
+        title: 'mega.solutions.categories.packaging.items.peHdBag.title',
+        description: 'mega.solutions.categories.packaging.items.peHdBag.desc',
         icon: 'archive',
         bgColor: 'bg-emerald-50 text-emerald-600',
       },
       {
-        title: 'Pallet gỗ / nhựa',
-        description: 'Pallet tiêu chuẩn EUR, pallet xuất khẩu đạt chứng nhận ISPM15',
+        title: 'mega.solutions.categories.packaging.items.palletWood.title',
+        description: 'mega.solutions.categories.packaging.items.palletWood.desc',
         icon: 'milestone',
         bgColor: 'bg-rose-50 text-rose-600',
       },
@@ -163,54 +164,54 @@ const categoriesData: NavCategoryItem[] = [
   },
   {
     id: 'cleanroom',
-    name: 'Vật tư phòng sạch',
+    name: 'mega.solutions.categories.cleanroom.name',
     link: '/solutions/listProduct',
     products: [
       {
-        title: 'Găng tay phòng sạch',
-        description: 'Găng tay Nitrile, Latex không bột, đạt chuẩn ISO phòng sạch',
+        title: 'mega.solutions.categories.cleanroom.items.gloves.title',
+        description: 'mega.solutions.categories.cleanroom.items.gloves.desc',
         icon: 'hand',
         bgColor: 'bg-blue-50 text-blue-600',
       },
       {
-        title: 'Giấy lau phòng sạch',
-        description: 'Giấy lau không bụi, khăn lau polyester dùng trong phòng sạch',
+        title: 'mega.solutions.categories.cleanroom.items.wipes.title',
+        description: 'mega.solutions.categories.cleanroom.items.wipes.desc',
         icon: 'brush',
         bgColor: 'bg-orange-50 text-orange-600',
       },
       {
-        title: 'Túi phòng sạch',
-        description: 'Túi PE phòng sạch, túi chống tĩnh điện ESD đóng gói sản phẩm',
+        title: 'mega.solutions.categories.cleanroom.items.bags.title',
+        description: 'mega.solutions.categories.cleanroom.items.bags.desc',
         icon: 'shopping-bag',
         bgColor: 'bg-violet-50 text-violet-600',
       },
       {
-        title: 'Quần áo phòng sạch',
-        description: 'Bộ áo liền quần, áo choàng, mũ trùm đầu chống tĩnh điện',
+        title: 'mega.solutions.categories.cleanroom.items.apparel.title',
+        description: 'mega.solutions.categories.cleanroom.items.apparel.desc',
         icon: 'layers',
         bgColor: 'bg-indigo-50 text-indigo-600',
       },
       {
-        title: 'Bọc giày phòng sạch',
-        description: 'Bọc giày PE, CPE chống trượt cho khu vực kiểm soát',
+        title: 'mega.solutions.categories.cleanroom.items.shoeCover.title',
+        description: 'mega.solutions.categories.cleanroom.items.shoeCover.desc',
         icon: 'footprints',
         bgColor: 'bg-emerald-50 text-emerald-600',
       },
       {
-        title: 'Vật tư tiêu hao',
-        description: 'Bảng dính phòng sạch, sticky mat, swab bông lau công nghiệp',
+        title: 'mega.solutions.categories.cleanroom.items.consumables.title',
+        description: 'mega.solutions.categories.cleanroom.items.consumables.desc',
         icon: 'recycle',
         bgColor: 'bg-amber-50 text-amber-600',
       },
       {
-        title: 'Khẩu trang phòng sạch',
-        description: 'Khẩu trang 3 lớp, N95 cho môi trường phòng sạch',
+        title: 'mega.solutions.categories.cleanroom.items.mask.title',
+        description: 'mega.solutions.categories.cleanroom.items.mask.desc',
         icon: 'shield',
         bgColor: 'bg-teal-50 text-teal-600',
       },
       {
-        title: 'Kính bảo hộ',
-        description: 'Kính chống bụi, chống hóa chất đạt chuẩn phòng sạch',
+        title: 'mega.solutions.categories.cleanroom.items.goggles.title',
+        description: 'mega.solutions.categories.cleanroom.items.goggles.desc',
         icon: 'eye',
         bgColor: 'bg-rose-50 text-rose-600',
       },
@@ -218,54 +219,54 @@ const categoriesData: NavCategoryItem[] = [
   },
   {
     id: 'aluminum',
-    name: 'Băng keo Nhôm',
+    name: 'mega.solutions.categories.aluminum.name',
     link: '/solutions/listProduct',
     products: [
       {
-        title: 'Băng keo nhôm chịu nhiệt',
-        description: 'Băng keo nhôm chịu nhiệt độ cao, dùng trong HVAC, cách nhiệt công nghiệp',
+        title: 'mega.solutions.categories.aluminum.items.heatResist.title',
+        description: 'mega.solutions.categories.aluminum.items.heatResist.desc',
         icon: 'thermometer',
         bgColor: 'bg-rose-50 text-rose-600',
       },
       {
-        title: 'Băng keo nhôm chống ẩm',
-        description: 'Băng keo nhôm chống thấm, bảo vệ đường ống và bề mặt kim loại',
+        title: 'mega.solutions.categories.aluminum.items.moistResist.title',
+        description: 'mega.solutions.categories.aluminum.items.moistResist.desc',
         icon: 'droplet',
         bgColor: 'bg-teal-50 text-teal-600',
       },
       {
-        title: 'Băng keo nhôm dán ống gió',
-        description: 'Chuyên dán nối ống gió, hệ thống thông gió HVAC công nghiệp',
+        title: 'mega.solutions.categories.aluminum.items.ductTape.title',
+        description: 'mega.solutions.categories.aluminum.items.ductTape.desc',
         icon: 'wind',
         bgColor: 'bg-blue-50 text-blue-600',
       },
       {
-        title: 'Băng keo nhôm dẫn nhiệt',
-        description: 'Băng keo nhôm tản nhiệt cho linh kiện điện tử, LED và bo mạch',
+        title: 'mega.solutions.categories.aluminum.items.thermal.title',
+        description: 'mega.solutions.categories.aluminum.items.thermal.desc',
         icon: 'cpu',
         bgColor: 'bg-indigo-50 text-indigo-600',
       },
       {
-        title: 'Băng keo nhôm trang trí',
-        description: 'Băng keo nhôm bóng, mờ dùng trang trí nội thất và quảng cáo',
+        title: 'mega.solutions.categories.aluminum.items.decor.title',
+        description: 'mega.solutions.categories.aluminum.items.decor.desc',
         icon: 'palette',
         bgColor: 'bg-violet-50 text-violet-600',
       },
       {
-        title: 'Băng keo nhôm tự dính',
-        description: 'Băng keo nhôm tự dính áp lực, dễ thi công, không cần gia nhiệt',
+        title: 'mega.solutions.categories.aluminum.items.selfAdhesive.title',
+        description: 'mega.solutions.categories.aluminum.items.selfAdhesive.desc',
         icon: 'pin',
         bgColor: 'bg-amber-50 text-amber-600',
       },
       {
-        title: 'Băng keo nhôm cách điện',
-        description: 'Băng keo nhôm cách điện, chống nhiễu EMI/RFI cho thiết bị điện tử',
+        title: 'mega.solutions.categories.aluminum.items.insul.title',
+        description: 'mega.solutions.categories.aluminum.items.insul.desc',
         icon: 'zap',
         bgColor: 'bg-yellow-50 text-yellow-600',
       },
       {
-        title: 'Băng keo nhôm gia cường',
-        description: 'Băng keo nhôm có lưới sợi thủy tinh, độ bền kéo cao',
+        title: 'mega.solutions.categories.aluminum.items.reinforced.title',
+        description: 'mega.solutions.categories.aluminum.items.reinforced.desc',
         icon: 'grid',
         bgColor: 'bg-emerald-50 text-emerald-600',
       },
@@ -274,9 +275,9 @@ const categoriesData: NavCategoryItem[] = [
 ];
 
 const viewAllLabels: Record<string, string> = {
-  packaging: 'Bao bì & Đóng gói',
-  cleanroom: 'Phòng sạch',
-  aluminum: 'Băng keo Nhôm'
+  packaging: 'mega.solutions.viewAllShort.packaging',
+  cleanroom: 'mega.solutions.viewAllShort.cleanroom',
+  aluminum: 'mega.solutions.viewAllShort.aluminum'
 };
 
 const categoryQueryById: Record<string, string> = {
@@ -314,38 +315,38 @@ export function getIndustryHref(ind?: { id: string; slug?: string } | null) {
 
 const partnerItems = [
   {
-    title: 'Mạng lưới phân phối rộng khắp',
-    description: 'Tăng cường độ phủ thị trường và tiếp cận khách hàng trên toàn quốc.',
+    title: 'mega.hubs.partnerItems.network.title',
+    description: 'mega.hubs.partnerItems.network.desc',
     icon: 'map-pin',
     bgColor: 'bg-blue-50 text-blue-600',
   },
   {
-    title: 'Khám phá Danh mục sản phẩm',
-    description: 'Hơn 1000 + SKU sẵn sàng giao nhanh toàn quốc.',
+    title: 'mega.hubs.partnerItems.catalog.title',
+    description: 'mega.hubs.partnerItems.catalog.desc',
     icon: 'factory',
     bgColor: 'bg-indigo-50 text-indigo-600',
   },
   {
-    title: 'Đào tạo sản phẩm',
-    description: 'Cung cấp kiến thức chuyên sâu về tính năng và ứng dụng sản phẩm.',
+    title: 'mega.hubs.partnerItems.training.title',
+    description: 'mega.hubs.partnerItems.training.desc',
     icon: 'users',
     bgColor: 'bg-sky-50 text-sky-600',
   },
   {
-    title: 'Hỗ trợ kỹ thuật chuyên sâu',
-    description: 'Đội ngũ kỹ sư chuyên nghiệp hỗ trợ triển khai và bảo hành sản phẩm.',
+    title: 'mega.hubs.partnerItems.support.title',
+    description: 'mega.hubs.partnerItems.support.desc',
     icon: 'wrench',
     bgColor: 'bg-orange-50 text-orange-600',
   },
   {
-    title: 'Sản xuất Bao bì Plastics',
-    description: 'Danh sách các sản phẩm sản xuất tại Hub Hà Nam.',
+    title: 'mega.hubs.partnerItems.hanamProd.title',
+    description: 'mega.hubs.partnerItems.hanamProd.desc',
     icon: 'pin',
     bgColor: 'bg-violet-50 text-violet-650',
   },
   {
-    title: 'Chính sách giá cạnh tranh',
-    description: 'Cơ chế chiết khấu linh hoạt theo doanh số và cam kết lâu dài.',
+    title: 'mega.hubs.partnerItems.pricing.title',
+    description: 'mega.hubs.partnerItems.pricing.desc',
     icon: 'grid',
     bgColor: 'bg-amber-50 text-amber-600',
   }
@@ -354,57 +355,57 @@ const partnerItems = [
 const regionsData: NavRegionItem[] = [
   {
     id: 'north',
-    name: 'Miền Bắc',
+    name: 'mega.hubs.regions.north.name',
     link: '/quick-order',
     hubName: 'HUB Hà Nam',
     hubLink: '/regional-hubs/cum-2',
     hubImage: '/images/regional_hubs/hub-2/hanam-warehouse-shelves.jpg',
     hubs: [
       {
-        title: 'KCN Đình Vũ',
-        description: 'Hải Phòng, kết nối cảng biển quốc tế, vị trí chiến lược cho công nghiệp nặng',
+        title: 'mega.hubs.regions.north.items.dinhVu.title',
+        description: 'mega.hubs.regions.north.items.dinhVu.desc',
         icon: 'map-pin',
         bgColor: 'bg-blue-50 text-blue-600',
       },
       {
-        title: 'KCN Thăng Long',
-        description: 'Hà Nội, liên doanh Nhật Bản uy tín, hạ tầng hoàn thiện cho điện tử & ô tô',
+        title: 'mega.hubs.regions.north.items.thangLong.title',
+        description: 'mega.hubs.regions.north.items.thangLong.desc',
         icon: 'factory',
         bgColor: 'bg-orange-50 text-orange-600',
       },
       {
-        title: 'KCN Quế Võ',
-        description: 'Bắc Ninh, kết nối quốc lộ 18, gần sân bay Nội Bài, thu hút cơ khí & linh kiện',
+        title: 'mega.hubs.regions.north.items.queVo.title',
+        description: 'mega.hubs.regions.north.items.queVo.desc',
         icon: 'factory',
         bgColor: 'bg-teal-50 text-teal-600',
       },
       {
-        title: 'KCN Phúc Điền',
-        description: 'Hải Dương, vị trí giao thương thuận lợi, tập trung dệt may & thực phẩm',
+        title: 'mega.hubs.regions.north.items.phucDien.title',
+        description: 'mega.hubs.regions.north.items.phucDien.desc',
         icon: 'factory',
         bgColor: 'bg-emerald-50 text-emerald-600',
       },
       {
-        title: 'KCN Yên Phong',
-        description: 'Bắc Ninh, thủ phủ sản xuất Samsung, công nghệ cao & dịch vụ phụ trợ hiện đại',
+        title: 'mega.hubs.regions.north.items.yenPhong.title',
+        description: 'mega.hubs.regions.north.items.yenPhong.desc',
         icon: 'factory',
         bgColor: 'bg-violet-50 text-violet-600',
       },
       {
-        title: 'KCN Đại An',
-        description: 'Hải Dương, thu hút mạnh mẽ vốn đầu tư nước ngoài FDI, đa dạng lắp ráp cơ khí',
+        title: 'mega.hubs.regions.north.items.daiAn.title',
+        description: 'mega.hubs.regions.north.items.daiAn.desc',
         icon: 'factory',
         bgColor: 'bg-rose-50 text-rose-600',
       },
       {
-        title: 'KCN Tiên Sơn',
-        description: 'Bắc Ninh, hạ tầng kỹ thuật đồng bộ, chế tạo máy chính xác & vật liệu xây dựng',
+        title: 'mega.hubs.regions.north.items.tienSon.title',
+        description: 'mega.hubs.regions.north.items.tienSon.desc',
         icon: 'factory',
         bgColor: 'bg-amber-50 text-amber-600',
       },
       {
-        title: 'KCN Nam Sách',
-        description: 'Hải Dương, thích hợp công nghiệp sạch, chế biến hàng xuất khẩu & bao bì',
+        title: 'mega.hubs.regions.north.items.namSach.title',
+        description: 'mega.hubs.regions.north.items.namSach.desc',
         icon: 'map-pin',
         bgColor: 'bg-indigo-50 text-indigo-600',
       },
@@ -412,57 +413,57 @@ const regionsData: NavRegionItem[] = [
   },
   {
     id: 'center',
-    name: 'Miền Trung',
+    name: 'mega.hubs.regions.center.name',
     link: '/quick-order',
     hubName: 'HUB Hà Nam',
     hubLink: '/regional-hubs/cum-2',
     hubImage: '/images/regional_hubs/hub-2/hanam-warehouse-shelves.jpg',
     hubs: [
       {
-        title: 'KCN Phú Bài',
-        description: 'Thừa Thiên Huế, vị trí chiến lược gần sân bay quốc tế, công nghiệp nhẹ & chế biến',
+        title: 'mega.hubs.regions.center.items.phuBai.title',
+        description: 'mega.hubs.regions.center.items.phuBai.desc',
         icon: 'map-pin',
         bgColor: 'bg-blue-50 text-blue-600',
       },
       {
-        title: 'KCN Điện Nam – Điện Ngọc',
-        description: 'Quảng Nam, trung tâm công nghiệp lớn nhất miền Trung, dệt may & da giày',
+        title: 'mega.hubs.regions.center.items.dienNam.title',
+        description: 'mega.hubs.regions.center.items.dienNam.desc',
         icon: 'factory',
         bgColor: 'bg-orange-50 text-orange-600',
       },
       {
-        title: 'KCN Hòa Khánh',
-        description: 'Đà Nẵng, khu công nghiệp lâu đời, đa ngành từ cơ khí đến thực phẩm',
+        title: 'mega.hubs.regions.center.items.hoaKhanh.title',
+        description: 'mega.hubs.regions.center.items.hoaKhanh.desc',
         icon: 'factory',
         bgColor: 'bg-teal-50 text-teal-600',
       },
       {
-        title: 'KCN Phú Tài',
-        description: 'Bình Định, cảng biển Quy Nhơn, chế biến gỗ & nông sản xuất khẩu',
+        title: 'mega.hubs.regions.center.items.phuTai.title',
+        description: 'mega.hubs.regions.center.items.phuTai.desc',
         icon: 'factory',
         bgColor: 'bg-emerald-50 text-emerald-600',
       },
       {
-        title: 'KCN Dung Quất',
-        description: 'Quảng Ngãi, liền kề khu kinh tế Dung Quất, lọc hóa dầu & công nghiệp nặng',
+        title: 'mega.hubs.regions.center.items.dungQuat.title',
+        description: 'mega.hubs.regions.center.items.dungQuat.desc',
         icon: 'factory',
         bgColor: 'bg-violet-50 text-violet-600',
       },
       {
-        title: 'KCN Tịnh Phong',
-        description: 'Quảng Ngãi, thu hút FDI mạnh, sản xuất vật liệu xây dựng & cơ khí',
+        title: 'mega.hubs.regions.center.items.tinhPhong.title',
+        description: 'mega.hubs.regions.center.items.tinhPhong.desc',
         icon: 'factory',
         bgColor: 'bg-rose-50 text-rose-600',
       },
       {
-        title: 'KCN Phong Điền',
-        description: 'Thừa Thiên Huế, hạ tầng đồng bộ, công nghệ cao & điện tử',
+        title: 'mega.hubs.regions.center.items.phongDien.title',
+        description: 'mega.hubs.regions.center.items.phongDien.desc',
         icon: 'factory',
         bgColor: 'bg-amber-50 text-amber-600',
       },
       {
-        title: 'KCN Chu Lai',
-        description: 'Quảng Nam, đặc khu kinh tế mở, lắp ráp ô tô & linh kiện cơ khí',
+        title: 'mega.hubs.regions.center.items.chuLai.title',
+        description: 'mega.hubs.regions.center.items.chuLai.desc',
         icon: 'map-pin',
         bgColor: 'bg-blue-50 text-blue-600',
       },
@@ -470,57 +471,57 @@ const regionsData: NavRegionItem[] = [
   },
   {
     id: 'south',
-    name: 'Miền Nam',
+    name: 'mega.hubs.regions.south.name',
     link: '/quick-order',
     hubName: 'HUB Hà Nam',
     hubLink: '/regional-hubs/cum-2',
     hubImage: '/images/regional_hubs/hub-2/hanam-warehouse-shelves.jpg',
     hubs: [
       {
-        title: 'KCN VSIP Bình Dương',
-        description: 'Khu công nghiệp Việt Nam - Singapore, quy mô 500ha, đa ngành sản xuất',
+        title: 'mega.hubs.regions.south.items.vsipBd.title',
+        description: 'mega.hubs.regions.south.items.vsipBd.desc',
         icon: 'users',
         bgColor: 'bg-blue-50 text-blue-600',
       },
       {
-        title: 'KCN Nhơn Trạch',
-        description: 'Đồng Nai, chuyên chế biến và sản xuất công nghiệp nặng, gần cảng Cát Lái',
+        title: 'mega.hubs.regions.south.items.nhonTrach.title',
+        description: 'mega.hubs.regions.south.items.nhonTrach.desc',
         icon: 'briefcase',
         bgColor: 'bg-orange-50 text-orange-600',
       },
       {
-        title: 'KCN Long Hậu',
-        description: 'Long An, vị trí chiến lược gần cảng biển, phù hợp logistics & xuất khẩu',
+        title: 'mega.hubs.regions.south.items.longHau.title',
+        description: 'mega.hubs.regions.south.items.longHau.desc',
         icon: 'navigation',
         bgColor: 'bg-emerald-50 text-emerald-600',
       },
       {
-        title: 'KCN Tân Thuận',
-        description: 'TP.HCM, khu chế xuất lớn nhất miền Nam, hơn 200 doanh nghiệp FDI',
+        title: 'mega.hubs.regions.south.items.tanThuan.title',
+        description: 'mega.hubs.regions.south.items.tanThuan.desc',
         icon: 'globe',
         bgColor: 'bg-emerald-50 text-emerald-600',
       },
       {
-        title: 'KCN Mỹ Phước',
-        description: 'Bình Dương, đa ngành từ điện tử đến cơ khí, hạ tầng hiện đại',
+        title: 'mega.hubs.regions.south.items.myPhuoc.title',
+        description: 'mega.hubs.regions.south.items.myPhuoc.desc',
         icon: 'grid',
         bgColor: 'bg-violet-50 text-violet-600',
       },
       {
-        title: 'KCN Phú Mỹ',
-        description: 'Bà Rịa - Vũng Tàu, công nghiệp nặng và hóa chất, gần cảng nước sâu',
+        title: 'mega.hubs.regions.south.items.phuMy.title',
+        description: 'mega.hubs.regions.south.items.phuMy.desc',
         icon: 'flask',
         bgColor: 'bg-rose-50 text-rose-600',
       },
       {
-        title: 'KCN Đức Hòa',
-        description: 'Long An, trung tâm kho vận và logistics kết nối TP.HCM - ĐBSCL',
+        title: 'mega.hubs.regions.south.items.ducHoa.title',
+        description: 'mega.hubs.regions.south.items.ducHoa.desc',
         icon: 'package',
         bgColor: 'bg-amber-50 text-amber-600',
       },
       {
-        title: 'KCN Biên Hòa',
-        description: 'Đồng Nai, KCN lâu đời nhất Việt Nam, đa dạng ngành nghề sản xuất',
+        title: 'mega.hubs.regions.south.items.bienHoa.title',
+        description: 'mega.hubs.regions.south.items.bienHoa.desc',
         icon: 'map-pin',
         bgColor: 'bg-blue-50 text-blue-600',
       },
@@ -532,53 +533,53 @@ const industriesData = [
   {
     id: 'food',
     slug: 'food-beverage',
-    name: 'Thực phẩm',
+    name: 'mega.industries.food.name',
     hubs: [
       {
-        title: 'Đóng gói thực phẩm khô',
-        description: 'Màng co, túi PE, bao bì cho snack, ngũ cốc, gia vị',
+        title: 'mega.industries.food.hubs.dryFood.title',
+        description: 'mega.industries.food.hubs.dryFood.desc',
         icon: 'package',
         bgColor: 'bg-blue-50 text-blue-600',
       },
       {
-        title: 'Bao bì thực phẩm tươi sống',
-        description: 'Khay xốp, màng bọc thực phẩm, hút chân không',
+        title: 'mega.industries.food.hubs.fresh.title',
+        description: 'mega.industries.food.hubs.fresh.desc',
         icon: 'clipboard-list',
         bgColor: 'bg-blue-50 text-blue-600',
       },
       {
-        title: 'Pallet & kệ hàng F&B',
-        description: 'Pallet nhựa chuyên thực phẩm, kệ inox nhà kho lạnh',
+        title: 'mega.industries.food.hubs.palletFb.title',
+        description: 'mega.industries.food.hubs.palletFb.desc',
         icon: 'archive',
         bgColor: 'bg-rose-50 text-rose-600',
       },
       {
-        title: 'Bao bì thực phẩm đông lạnh',
-        description: 'Túi PA/PE chịu nhiệt âm, màng co chuyên dụng',
+        title: 'mega.industries.food.hubs.frozen.title',
+        description: 'mega.industries.food.hubs.frozen.desc',
         icon: 'briefcase',
         bgColor: 'bg-orange-50 text-orange-600',
       },
       {
-        title: 'Đóng gói bánh kẹo',
-        description: 'Túi OPP trong suốt, hộp carton gift box, ribbon',
+        title: 'mega.industries.food.hubs.confection.title',
+        description: 'mega.industries.food.hubs.confection.desc',
         icon: 'wrench',
         bgColor: 'bg-violet-50 text-violet-600',
       },
       {
-        title: 'Thùng chứa & sọt nhựa',
-        description: 'Thùng rổ nhựa xếp chồng, thùng IBC, can đựng dung dịch',
+        title: 'mega.industries.food.hubs.bins.title',
+        description: 'mega.industries.food.hubs.bins.desc',
         icon: 'clipboard-list',
         bgColor: 'bg-amber-50 text-amber-600',
       },
       {
-        title: 'Đóng gói đồ uống',
-        description: 'Màng co nhóm chai, lốc lon, shrink sleeve nhãn',
+        title: 'mega.industries.food.hubs.beverage.title',
+        description: 'mega.industries.food.hubs.beverage.desc',
         icon: 'navigation',
         bgColor: 'bg-indigo-50 text-indigo-600',
       },
       {
-        title: 'Vật tư vệ sinh ATTP',
-        description: 'Găng tay, khẩu trang, bao giày, mũ trùm',
+        title: 'mega.industries.food.hubs.hygiene.title',
+        description: 'mega.industries.food.hubs.hygiene.desc',
         icon: 'users',
         bgColor: 'bg-emerald-50 text-emerald-600',
       }
@@ -587,29 +588,29 @@ const industriesData = [
   {
     id: 'medical',
     slug: 'pharmaceutical-cosmetics',
-    name: 'Dược phẩm & Y tế',
+    name: 'mega.industries.medical.name',
     hubs: [
       {
-        title: 'Bao bì dược phẩm',
-        description: 'Màng nhôm ép vỉ, chai lọ nhựa dược phẩm',
+        title: 'mega.industries.medical.hubs.pharmaPack.title',
+        description: 'mega.industries.medical.hubs.pharmaPack.desc',
         icon: 'archive',
         bgColor: 'bg-blue-50 text-blue-600',
       },
       {
-        title: 'Vật tư phòng sạch y tế',
-        description: 'Khăn lau vô trùng, khẩu trang y tế 3 lớp',
+        title: 'mega.industries.medical.hubs.cleanroomMed.title',
+        description: 'mega.industries.medical.hubs.cleanroomMed.desc',
         icon: 'shield',
         bgColor: 'bg-indigo-50 text-indigo-600',
       },
       {
-        title: 'Đồ bảo hộ y tế',
-        description: 'Quần áo bảo hộ, găng tay khám bệnh nitrile',
+        title: 'mega.industries.medical.hubs.ppeMed.title',
+        description: 'mega.industries.medical.hubs.ppeMed.desc',
         icon: 'users',
         bgColor: 'bg-sky-50 text-sky-600',
       },
       {
-        title: 'Đóng gói vắc-xin',
-        description: 'Hộp cách nhiệt, túi đá gel giữ lạnh chuyên dụng',
+        title: 'mega.industries.medical.hubs.vaccine.title',
+        description: 'mega.industries.medical.hubs.vaccine.desc',
         icon: 'package',
         bgColor: 'bg-rose-50 text-rose-600',
       }
@@ -618,29 +619,29 @@ const industriesData = [
   {
     id: 'electronics',
     slug: 'electronics',
-    name: 'Điện tử & Linh kiện',
+    name: 'mega.industries.electronics.name',
     hubs: [
       {
-        title: 'Bao bì chống tĩnh điện ESD',
-        description: 'Túi shielding bag, túi bong bóng ESD',
+        title: 'mega.industries.electronics.hubs.esdBag.title',
+        description: 'mega.industries.electronics.hubs.esdBag.desc',
         icon: 'zap',
         bgColor: 'bg-amber-50 text-amber-600',
       },
       {
-        title: 'Khay chứa linh kiện',
-        description: 'Khay nhựa định hình ESD, hộp nhựa chống tĩnh điện',
+        title: 'mega.industries.electronics.hubs.tray.title',
+        description: 'mega.industries.electronics.hubs.tray.desc',
         icon: 'grid',
         bgColor: 'bg-violet-50 text-violet-600',
       },
       {
-        title: 'Vật tư phòng sạch điện tử',
-        description: 'Găng tay phủ PU ESD, thảm dính bụi sticky mat',
+        title: 'mega.industries.electronics.hubs.esdRoom.title',
+        description: 'mega.industries.electronics.hubs.esdRoom.desc',
         icon: 'users',
         bgColor: 'bg-blue-50 text-blue-600',
       },
       {
-        title: 'Băng keo chịu nhiệt',
-        description: 'Băng keo Kapton, băng keo nhôm chống nhiễu',
+        title: 'mega.industries.electronics.hubs.kaptonTape.title',
+        description: 'mega.industries.electronics.hubs.kaptonTape.desc',
         icon: 'wrench',
         bgColor: 'bg-emerald-50 text-emerald-600',
       }
@@ -649,29 +650,29 @@ const industriesData = [
   {
     id: 'logistics',
     slug: 'logistics',
-    name: 'Logistics & Vận tải',
+    name: 'mega.industries.logistics.name',
     hubs: [
       {
-        title: 'Đóng gói pallet',
-        description: 'Màng quấn pallet stretch film, dây đai nhựa PET',
+        title: 'mega.industries.logistics.hubs.palletPack.title',
+        description: 'mega.industries.logistics.hubs.palletPack.desc',
         icon: 'layers',
         bgColor: 'bg-blue-50 text-blue-600',
       },
       {
-        title: 'Túi khí chèn hàng',
-        description: 'Túi khí chèn container dunnage bag, hạt hút ẩm',
+        title: 'mega.industries.logistics.hubs.airbag.title',
+        description: 'mega.industries.logistics.hubs.airbag.desc',
         icon: 'briefcase',
         bgColor: 'bg-orange-50 text-orange-600',
       },
       {
-        title: 'Niêm phong hàng hóa',
-        description: 'Seal niêm phong kim loại, tem niêm phong security',
+        title: 'mega.industries.logistics.hubs.seal.title',
+        description: 'mega.industries.logistics.hubs.seal.desc',
         icon: 'shield',
         bgColor: 'bg-rose-50 text-rose-600',
       },
       {
-        title: 'Thùng chứa vận chuyển',
-        description: 'Thùng carton 5 lớp/7 lớp, pallet gỗ/nhựa',
+        title: 'mega.industries.logistics.hubs.shipBox.title',
+        description: 'mega.industries.logistics.hubs.shipBox.desc',
         icon: 'package',
         bgColor: 'bg-indigo-50 text-indigo-600',
       }
@@ -680,29 +681,29 @@ const industriesData = [
   {
     id: 'furniture',
     slug: 'furniture',
-    name: 'Nội thất',
+    name: 'mega.industries.furniture.name',
     hubs: [
       {
-        title: 'Bảo vệ bề mặt',
-        description: 'Màng bảo vệ bề mặt PE chống trầy xước',
+        title: 'mega.industries.furniture.hubs.surfaceProt.title',
+        description: 'mega.industries.furniture.hubs.surfaceProt.desc',
         icon: 'shield',
         bgColor: 'bg-sky-50 text-sky-600',
       },
       {
-        title: 'Đóng gói chi tiết gỗ',
-        description: 'Màng xốp PE foam, màng co nhiệt POF',
+        title: 'mega.industries.furniture.hubs.woodPack.title',
+        description: 'mega.industries.furniture.hubs.woodPack.desc',
         icon: 'archive',
         bgColor: 'bg-amber-50 text-amber-600',
       },
       {
-        title: 'Vật liệu liên kết',
-        description: 'Băng keo hai mặt chịu lực, keo dán công nghiệp',
+        title: 'mega.industries.furniture.hubs.adhesive.title',
+        description: 'mega.industries.furniture.hubs.adhesive.desc',
         icon: 'wrench',
         bgColor: 'bg-emerald-50 text-emerald-600',
       },
       {
-        title: 'Thùng carton đựng nội thất',
-        description: 'Hộp carton sóng khổ lớn đựng tủ, bàn ghế',
+        title: 'mega.industries.furniture.hubs.largeBox.title',
+        description: 'mega.industries.furniture.hubs.largeBox.desc',
         icon: 'package',
         bgColor: 'bg-blue-50 text-blue-600',
       }
@@ -711,29 +712,29 @@ const industriesData = [
   {
     id: 'hvac',
     slug: 'construction',
-    name: 'Xây dựng & HVAC',
+    name: 'mega.industries.hvac.name',
     hubs: [
       {
-        title: 'Băng keo bảo ôn',
-        description: 'Băng keo nhôm, băng keo bạc dán ống gió',
+        title: 'mega.industries.hvac.hubs.insulTape.title',
+        description: 'mega.industries.hvac.hubs.insulTape.desc',
         icon: 'zap',
         bgColor: 'bg-yellow-50 text-yellow-600',
       },
       {
-        title: 'Vật liệu cách nhiệt',
-        description: 'Mút xốp cách nhiệt, bông thủy tinh bảo ôn',
+        title: 'mega.industries.hvac.hubs.insulMat.title',
+        description: 'mega.industries.hvac.hubs.insulMat.desc',
         icon: 'grid',
         bgColor: 'bg-rose-50 text-rose-600',
       },
       {
-        title: 'Màng chống thấm',
-        description: 'Màng PE lót sàn bê tông, màng chống thấm dột',
+        title: 'mega.industries.hvac.hubs.waterproof.title',
+        description: 'mega.industries.hvac.hubs.waterproof.desc',
         icon: 'layers',
         bgColor: 'bg-blue-50 text-blue-600',
       },
       {
-        title: 'Vật tư thông gió',
-        description: 'Ống gió mềm nhôm, cổ dê xiết ống gió',
+        title: 'mega.industries.hvac.hubs.vent.title',
+        description: 'mega.industries.hvac.hubs.vent.desc',
         icon: 'wrench',
         bgColor: 'bg-indigo-50 text-indigo-600',
       }
@@ -744,53 +745,53 @@ const industriesData = [
 const resourcesData = [
   {
     id: 'expert',
-    name: 'Chuyên ngành',
+    name: 'mega.resources.tabs.expert.name',
     hubs: [
       {
-        title: 'Hướng dẫn chọn màng co',
-        description: 'So sánh màng co POF, PE, PVC: ưu nhược điểm và ứng dụng thực tế',
+        title: 'mega.resources.tabs.expert.hubs.shrinkGuide.title',
+        description: 'mega.resources.tabs.expert.hubs.shrinkGuide.desc',
         icon: 'package',
         bgColor: 'bg-blue-50 text-blue-600',
       },
       {
-        title: 'Tra cứu kích thước carton',
-        description: 'Bảng thông số thùng chuẩn theo trọng lượng & thể tích hàng',
+        title: 'mega.resources.tabs.expert.hubs.cartonLookup.title',
+        description: 'mega.resources.tabs.expert.hubs.cartonLookup.desc',
         icon: 'clipboard-list',
         bgColor: 'bg-blue-50 text-blue-600',
       },
       {
-        title: 'Blog ngành bao bì',
-        description: 'Các bài phân tích sâu về vật liệu xanh, công nghệ hạt nhựa',
+        title: 'mega.resources.tabs.expert.hubs.blog.title',
+        description: 'mega.resources.tabs.expert.hubs.blog.desc',
         icon: 'archive',
         bgColor: 'bg-rose-50 text-rose-600',
       },
       {
-        title: 'Cẩm nang đóng gói xuất khẩu',
-        description: 'Tiêu chuẩn ISPM15, quy cách pallet gỗ và quy định từng thị trường lớn',
+        title: 'mega.resources.tabs.expert.hubs.exportGuide.title',
+        description: 'mega.resources.tabs.expert.hubs.exportGuide.desc',
         icon: 'briefcase',
         bgColor: 'bg-orange-50 text-orange-600',
       },
       {
-        title: 'Video hướng dẫn kỹ thuật',
-        description: 'Vận hành máy đóng đai, máy quấn màng, máy hàn miệng túi',
+        title: 'mega.resources.tabs.expert.hubs.video.title',
+        description: 'mega.resources.tabs.expert.hubs.video.desc',
         icon: 'wrench',
         bgColor: 'bg-violet-50 text-violet-600',
       },
       {
-        title: 'Infographic & Tài liệu trực quan',
-        description: 'Checklist tiêu chuẩn đóng gói nhanh và bảng so sánh các vật liệu',
+        title: 'mega.resources.tabs.expert.hubs.infographic.title',
+        description: 'mega.resources.tabs.expert.hubs.infographic.desc',
         icon: 'clipboard-list',
         bgColor: 'bg-amber-50 text-amber-600',
       },
       {
-        title: 'Quy trình đóng gói an toàn',
-        description: 'Quy trình SOP đóng hàng dễ vỡ, máy móc siêu trường siêu trọng',
+        title: 'mega.resources.tabs.expert.hubs.safetyProc.title',
+        description: 'mega.resources.tabs.expert.hubs.safetyProc.desc',
         icon: 'navigation',
         bgColor: 'bg-indigo-50 text-indigo-600',
       },
       {
-        title: 'Webinar & Workshop',
-        description: 'Cập nhật lịch thảo luận về bao bì sinh học và tự động hóa 4.0',
+        title: 'mega.resources.tabs.expert.hubs.webinar.title',
+        description: 'mega.resources.tabs.expert.hubs.webinar.desc',
         icon: 'users',
         bgColor: 'bg-emerald-50 text-emerald-600',
       }
@@ -798,29 +799,29 @@ const resourcesData = [
   },
   {
     id: 'technical',
-    name: 'Tài liệu kỹ thuật',
+    name: 'mega.resources.tabs.technical.name',
     hubs: [
       {
-        title: 'TDS (Technical Data Sheet)',
-        description: 'Bảng thông số kỹ thuật chi tiết của tất cả sản phẩm',
+        title: 'mega.resources.tabs.technical.hubs.tds.title',
+        description: 'mega.resources.tabs.technical.hubs.tds.desc',
         icon: 'archive',
         bgColor: 'bg-blue-50 text-blue-600',
       },
       {
-        title: 'MSDS (Material Safety Data Sheet)',
-        description: 'Tài liệu an toàn hóa chất & chỉ dẫn an toàn vật liệu',
+        title: 'mega.resources.tabs.technical.hubs.msds.title',
+        description: 'mega.resources.tabs.technical.hubs.msds.desc',
         icon: 'shield',
         bgColor: 'bg-indigo-50 text-indigo-600',
       },
       {
-        title: 'Bản vẽ thiết kế 2D/3D',
-        description: 'Bản vẽ kỹ thuật CAD cho thùng carton và pallet nhựa',
+        title: 'mega.resources.tabs.technical.hubs.cad.title',
+        description: 'mega.resources.tabs.technical.hubs.cad.desc',
         icon: 'grid',
         bgColor: 'bg-sky-50 text-sky-600',
       },
       {
-        title: 'Hướng dẫn sử dụng thiết bị',
-        description: 'Sách HDSD máy đóng đai, máy quấn màng tự động',
+        title: 'mega.resources.tabs.technical.hubs.equipManual.title',
+        description: 'mega.resources.tabs.technical.hubs.equipManual.desc',
         icon: 'wrench',
         bgColor: 'bg-rose-50 text-rose-600',
       }
@@ -828,29 +829,29 @@ const resourcesData = [
   },
   {
     id: 'cases',
-    name: 'Case Studies',
+    name: 'mega.resources.tabs.cases.name',
     hubs: [
       {
-        title: 'Tối ưu hóa bao bì F&B',
-        description: 'Cách ULink giúp đối tác giảm 15% chi phí đóng gói nhựa',
+        title: 'mega.resources.tabs.cases.hubs.fbOpt.title',
+        description: 'mega.resources.tabs.cases.hubs.fbOpt.desc',
         icon: 'briefcase',
         bgColor: 'bg-amber-50 text-amber-600',
       },
       {
-        title: 'Giải pháp ESD cho nhà máy điện tử',
-        description: 'Khắc phục 99% lỗi phóng tĩnh điện bằng bao bì ESD',
+        title: 'mega.resources.tabs.cases.hubs.esdCase.title',
+        description: 'mega.resources.tabs.cases.hubs.esdCase.desc',
         icon: 'zap',
         bgColor: 'bg-violet-50 text-violet-600',
       },
       {
-        title: 'Logistics xanh trong xuất khẩu',
-        description: 'Hành trình thay thế pallet gỗ sang pallet nhựa tái chế',
+        title: 'mega.resources.tabs.cases.hubs.greenLog.title',
+        description: 'mega.resources.tabs.cases.hubs.greenLog.desc',
         icon: 'globe',
         bgColor: 'bg-blue-50 text-blue-600',
       },
       {
-        title: 'Tự động hóa dây chuyền đóng gói',
-        description: 'Tăng 50% năng suất nhờ nâng cấp máy quấn màng robot',
+        title: 'mega.resources.tabs.cases.hubs.autoLine.title',
+        description: 'mega.resources.tabs.cases.hubs.autoLine.desc',
         icon: 'wrench',
         bgColor: 'bg-emerald-50 text-emerald-600',
       }
@@ -858,29 +859,29 @@ const resourcesData = [
   },
   {
     id: 'quality',
-    name: 'Chất lượng & Chứng nhận',
+    name: 'mega.resources.tabs.quality.name',
     hubs: [
       {
-        title: 'Chứng nhận ISO 9001:2015',
-        description: 'Hệ thống quản lý chất lượng tiêu chuẩn quốc tế',
+        title: 'mega.resources.tabs.quality.hubs.iso9001.title',
+        description: 'mega.resources.tabs.quality.hubs.iso9001.desc',
         icon: 'shield',
         bgColor: 'bg-blue-50 text-blue-600',
       },
       {
-        title: 'Chứng chỉ RoHS & Reach',
-        description: 'Cam kết vật liệu thân thiện môi trường, không độc hại',
+        title: 'mega.resources.tabs.quality.hubs.rohs.title',
+        description: 'mega.resources.tabs.quality.hubs.rohs.desc',
         icon: 'globe',
         bgColor: 'bg-orange-50 text-orange-600',
       },
       {
-        title: 'Tiêu chuẩn FDA cho bao bì thực phẩm',
-        description: 'Đảm bảo an toàn tiếp xúc thực phẩm trực tiếp',
+        title: 'mega.resources.tabs.quality.hubs.fda.title',
+        description: 'mega.resources.tabs.quality.hubs.fda.desc',
         icon: 'package',
         bgColor: 'bg-rose-50 text-rose-600',
       },
       {
-        title: 'Chứng chỉ phòng sạch Class 100-10000',
-        description: 'Đạt chuẩn đóng gói thiết bị y tế và bán dẫn',
+        title: 'mega.resources.tabs.quality.hubs.cleanroomCert.title',
+        description: 'mega.resources.tabs.quality.hubs.cleanroomCert.desc',
         icon: 'factory',
         bgColor: 'bg-indigo-50 text-indigo-600',
       }
@@ -888,29 +889,29 @@ const resourcesData = [
   },
   {
     id: 'events',
-    name: 'Sự kiện',
+    name: 'mega.resources.tabs.events.name',
     hubs: [
       {
-        title: 'Triển lãm ProPak Vietnam 2026',
-        description: 'Gặp gỡ ULink tại gian hàng công nghệ bao bì chế biến',
+        title: 'mega.resources.tabs.events.hubs.propak.title',
+        description: 'mega.resources.tabs.events.hubs.propak.desc',
         icon: 'globe',
         bgColor: 'bg-sky-50 text-sky-600',
       },
       {
-        title: 'Hội thảo Bao bì sinh học bền vững',
-        description: 'Thảo luận giải pháp thay thế nhựa dùng một lần',
+        title: 'mega.resources.tabs.events.hubs.biopack.title',
+        description: 'mega.resources.tabs.events.hubs.biopack.desc',
         icon: 'users',
         bgColor: 'bg-amber-50 text-amber-600',
       },
       {
-        title: 'Khóa đào tạo kỹ thuật đóng gói',
-        description: 'Chương trình đào tạo SOP miễn phí cho khách hàng VIP',
+        title: 'mega.resources.tabs.events.hubs.trainCourse.title',
+        description: 'mega.resources.tabs.events.hubs.trainCourse.desc',
         icon: 'wrench',
         bgColor: 'bg-emerald-50 text-emerald-600',
       },
       {
-        title: 'Lịch sự kiện & Workshop năm',
-        description: 'Xem chi tiết lịch trình các hoạt động kết nối cộng đồng',
+        title: 'mega.resources.tabs.events.hubs.calendar.title',
+        description: 'mega.resources.tabs.events.hubs.calendar.desc',
         icon: 'clipboard-list',
         bgColor: 'bg-blue-50 text-blue-600',
       }
@@ -921,47 +922,47 @@ const resourcesData = [
 const aboutData = [
   {
     id: 'hub-prod',
-    name: 'Trung tâm Sản xuất và Phân phối',
+    name: 'mega.about.tabs.hubProd.name',
     hubs: [
       {
-        title: 'Về ULink Industries',
-        description: 'Hơn 15 năm kinh nghiệm cung cấp giải pháp bao bì công nghiệp toàn diện',
+        title: 'mega.about.tabs.hubProd.hubs.about.title',
+        description: 'mega.about.tabs.hubProd.hubs.about.desc',
         icon: 'package',
         bgColor: 'bg-blue-50 text-blue-600',
       },
       {
-        title: 'Năng lực cung ứng',
-        description: '15 năm kinh nghiệm sản xuất bao bì, phục vụ 500 doanh nghiệp với năng lực đáp ứng đơn hàng lớn.',
+        title: 'mega.about.tabs.hubProd.hubs.capacity.title',
+        description: 'mega.about.tabs.hubProd.hubs.capacity.desc',
         icon: 'clipboard-list',
         bgColor: 'bg-blue-50 text-blue-600',
       },
       {
-        title: 'Trung tâm phân phối Hà Nam',
-        description: 'Kho logistics 10.000m², phục vụ miền Bắc, giao hàng trong 24h cho khu vực Hà Nội & lân cận',
+        title: 'mega.about.tabs.hubProd.hubs.hanam.title',
+        description: 'mega.about.tabs.hubProd.hubs.hanam.desc',
         icon: 'factory',
         bgColor: 'bg-blue-50 text-blue-600',
       },
       {
-        title: 'Giá trị cốt lõi',
-        description: 'Chất lượng, Đổi mới, Bền vững, Khách hàng là trung tâm',
+        title: 'mega.about.tabs.hubProd.hubs.values.title',
+        description: 'mega.about.tabs.hubProd.hubs.values.desc',
         icon: 'navigation',
         bgColor: 'bg-indigo-50 text-indigo-600',
       },
       {
-        title: 'Đối tác & Khách hàng',
-        description: '500+ doanh nghiệp tin dùng: Samsung, Vinamilk, Nestlé, Masan...',
+        title: 'mega.about.tabs.hubProd.hubs.partners.title',
+        description: 'mega.about.tabs.hubProd.hubs.partners.desc',
         icon: 'wrench',
         bgColor: 'bg-violet-50 text-violet-650',
       },
       {
-        title: 'Yêu cầu báo giá',
-        description: 'Form RFQ nhanh, phản hồi trong 24h, tư vấn miễn phí',
+        title: 'mega.about.tabs.hubProd.hubs.rfq.title',
+        description: 'mega.about.tabs.hubProd.hubs.rfq.desc',
         icon: 'clipboard-list',
         bgColor: 'bg-amber-50 text-amber-600',
       },
       {
-        title: 'Cam kết bền vững',
-        description: 'ESG, bao bì tái chế, giảm carbon footprint trong chuỗi cung ứng',
+        title: 'mega.about.tabs.hubProd.hubs.sustain.title',
+        description: 'mega.about.tabs.hubProd.hubs.sustain.desc',
         icon: 'users',
         bgColor: 'bg-emerald-50 text-emerald-600',
       }
@@ -969,29 +970,29 @@ const aboutData = [
   },
   {
     id: 'standards',
-    name: 'Tiêu chuẩn & Chứng nhận',
+    name: 'mega.about.tabs.standards.name',
     hubs: [
       {
-        title: 'Hệ thống quản lý chất lượng',
-        description: 'Đạt chứng nhận ISO 9001:2015 trên toàn hệ thống nhà máy',
+        title: 'mega.about.tabs.standards.hubs.qms.title',
+        description: 'mega.about.tabs.standards.hubs.qms.desc',
         icon: 'shield',
         bgColor: 'bg-blue-50 text-blue-600',
       },
       {
-        title: 'An toàn thực phẩm',
-        description: 'Đạt chứng chỉ HACCP và ISO 22000 cho dây chuyền bao bì F&B',
+        title: 'mega.about.tabs.standards.hubs.foodSafety.title',
+        description: 'mega.about.tabs.standards.hubs.foodSafety.desc',
         icon: 'package',
         bgColor: 'bg-indigo-50 text-indigo-600',
       },
       {
-        title: 'Tiêu chuẩn phòng sạch',
-        description: 'Nhà máy đạt chuẩn Class 100.000 phục vụ bao bì y tế và linh kiện',
+        title: 'mega.about.tabs.standards.hubs.cleanroomStd.title',
+        description: 'mega.about.tabs.standards.hubs.cleanroomStd.desc',
         icon: 'factory',
         bgColor: 'bg-sky-50 text-sky-600',
       },
       {
-        title: 'Chứng nhận an toàn vật liệu',
-        description: 'Đầy đủ CO/CQ, đạt tiêu chuẩn xuất khẩu RoHS, REACH, SGS',
+        title: 'mega.about.tabs.standards.hubs.materialSafety.title',
+        description: 'mega.about.tabs.standards.hubs.materialSafety.desc',
         icon: 'archive',
         bgColor: 'bg-rose-50 text-rose-600',
       }
@@ -999,29 +1000,29 @@ const aboutData = [
   },
   {
     id: 'eco',
-    name: 'Phát triển bền vững',
+    name: 'mega.about.tabs.eco.name',
     hubs: [
       {
-        title: 'Bao bì phân hủy sinh học',
-        description: 'Dòng sản phẩm túi và hộp tự phân hủy hoàn toàn thân thiện',
+        title: 'mega.about.tabs.eco.hubs.biodeg.title',
+        description: 'mega.about.tabs.eco.hubs.biodeg.desc',
         icon: 'archive',
         bgColor: 'bg-emerald-50 text-emerald-600',
       },
       {
-        title: 'Chiến dịch giảm thiểu nhựa',
-        description: 'Tối ưu độ dày màng co giúp đối tác giảm 20% hạt nhựa sử dụng',
+        title: 'mega.about.tabs.eco.hubs.plasticReduce.title',
+        description: 'mega.about.tabs.eco.hubs.plasticReduce.desc',
         icon: 'briefcase',
         bgColor: 'bg-orange-50 text-orange-600',
       },
       {
-        title: 'Kinh tế tuần hoàn',
-        description: 'Chương trình thu hồi và tái chế hạt nhựa từ phế liệu nhà máy',
+        title: 'mega.about.tabs.eco.hubs.circular.title',
+        description: 'mega.about.tabs.eco.hubs.circular.desc',
         icon: 'shield',
         bgColor: 'bg-violet-50 text-violet-600',
       },
       {
-        title: 'Năng lượng sạch',
-        description: 'Nhà máy ULink Hà Nam sử dụng 100% điện mặt trời áp mái',
+        title: 'mega.about.tabs.eco.hubs.cleanEnergy.title',
+        description: 'mega.about.tabs.eco.hubs.cleanEnergy.desc',
         icon: 'zap',
         bgColor: 'bg-blue-50 text-blue-600',
       }
@@ -1029,29 +1030,29 @@ const aboutData = [
   },
   {
     id: 'careers',
-    name: 'Cơ hội nghề nghiệp',
+    name: 'mega.about.tabs.careers.name',
     hubs: [
       {
-        title: 'Môi trường làm việc',
-        description: 'Trải nghiệm văn hóa chuyên nghiệp, tôn trọng sự sáng tạo và thăng tiến',
+        title: 'mega.about.tabs.careers.hubs.workEnv.title',
+        description: 'mega.about.tabs.careers.hubs.workEnv.desc',
         icon: 'users',
         bgColor: 'bg-blue-50 text-blue-600',
       },
       {
-        title: 'Chính sách đãi ngộ',
-        description: 'Lương thưởng cạnh tranh, bảo hiểm toàn diện và du lịch nghỉ mát năm',
+        title: 'mega.about.tabs.careers.hubs.benefits.title',
+        description: 'mega.about.tabs.careers.hubs.benefits.desc',
         icon: 'briefcase',
         bgColor: 'bg-orange-50 text-orange-600',
       },
       {
-        title: 'Vị trí tuyển dụng',
-        description: 'Xem chi tiết các cơ hội việc làm mới nhất tại các chi nhánh',
+        title: 'mega.about.tabs.careers.hubs.positions.title',
+        description: 'mega.about.tabs.careers.hubs.positions.desc',
         icon: 'grid',
         bgColor: 'bg-rose-50 text-rose-600',
       },
       {
-        title: 'Đăng ký hồ sơ ứng viên',
-        description: 'Nộp hồ sơ trực tuyến nhanh chóng vào kho tài năng của ULink',
+        title: 'mega.about.tabs.careers.hubs.apply.title',
+        description: 'mega.about.tabs.careers.hubs.apply.desc',
         icon: 'package',
         bgColor: 'bg-indigo-50 text-indigo-600',
       }
@@ -1059,29 +1060,29 @@ const aboutData = [
   },
   {
     id: 'contact',
-    name: 'Liên hệ',
+    name: 'mega.about.tabs.contact.name',
     hubs: [
       {
-        title: 'Hotline & Hỗ trợ',
-        description: 'Tổng đài tư vấn giải pháp 24/7 và giải đáp RFQ nhanh chóng',
+        title: 'mega.about.tabs.contact.hubs.hotline.title',
+        description: 'mega.about.tabs.contact.hubs.hotline.desc',
         icon: 'users',
         bgColor: 'bg-sky-50 text-sky-600',
       },
       {
-        title: 'Văn phòng & Nhà máy',
-        description: 'Địa chỉ chi tiết của trụ sở Hà Nội, nhà máy Hà Nam và Bình Dương',
+        title: 'mega.about.tabs.contact.hubs.offices.title',
+        description: 'mega.about.tabs.contact.hubs.offices.desc',
         icon: 'factory',
         bgColor: 'bg-amber-50 text-amber-600',
       },
       {
-        title: 'Kênh thông tin mạng xã hội',
-        description: 'Kết nối với ULink qua LinkedIn, Facebook và Zalo OA',
+        title: 'mega.about.tabs.contact.hubs.social.title',
+        description: 'mega.about.tabs.contact.hubs.social.desc',
         icon: 'globe',
         bgColor: 'bg-emerald-50 text-emerald-600',
       },
       {
-        title: 'Gửi yêu cầu trực tiếp',
-        description: 'Form gửi câu hỏi thắc mắc hoặc yêu cầu gặp trực tiếp kỹ sư',
+        title: 'mega.about.tabs.contact.hubs.directRequest.title',
+        description: 'mega.about.tabs.contact.hubs.directRequest.desc',
         icon: 'clipboard-list',
         bgColor: 'bg-blue-50 text-blue-600',
       }
@@ -1114,6 +1115,7 @@ interface HeaderNavProps {
 }
 
 export function HeaderNav({ items, categoriesData: dynamicCategoriesData, regionsData: dynamicRegionsData }: HeaderNavProps) {
+  const t = useTranslations('nav');
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const [activeCategory, setActiveCategory] = useState<string>('packaging');
   const [activeRegion, setActiveRegion] = useState<string>('north');
@@ -1278,7 +1280,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                             {isCatActive && (
                               <div className="absolute left-3.5 top-1/2 -translate-y-1/2 w-[3px] h-[18px] bg-blue-600 rounded-full" />
                             )}
-                            <span className="text-body-regular leading-none">{cat.name}</span>
+                            <span className="text-body-regular leading-none">{t(cat.name)}</span>
                             <ChevronRight
                               className={`h-4 w-4 transition-transform ${
                                 isCatActive ? 'text-blue-600 translate-x-0.5' : 'text-slate-400'
@@ -1295,7 +1297,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-6">
                         <span className="text-body-regular font-bold text-slate-800">
-                          Danh mục Sản phẩm — {currentCategoryData?.name}
+                          {t('mega.headings.productsInCategory', { name: currentCategoryData ? t(currentCategoryData.name) : '' })}
                         </span>
                         <div className="h-[2px] w-8 bg-blue-600 rounded-full" />
                       </div>
@@ -1317,10 +1319,10 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
 
                               <div className="flex flex-col">
                                 <span className="text-body-regular font-bold text-slate-800 transition-colors group-hover:text-blue-600">
-                                  {prod.title}
+                                  {t(prod.title)}
                                 </span>
                                 <span className="mt-1 text-caption-responsive text-slate-400 leading-relaxed font-medium">
-                                  {prod.description}
+                                  {t(prod.description)}
                                 </span>
                               </div>
                             </Link>
@@ -1335,8 +1337,9 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                             className="group inline-flex items-center gap-1.5 text-body-regular font-bold text-blue-600 hover:text-blue-700 transition-colors"
                           >
                             <span>
-                              Xem tất cả sản phẩm{' '}
-                              {viewAllLabels[currentCategoryData?.id || ''] || currentCategoryData?.name}
+                              {t('mega.cta.viewAllProducts', {
+                                name: t(viewAllLabels[currentCategoryData?.id || ''] || currentCategoryData?.name || 'mega.solutions.categories.packaging.name')
+                              })}
                             </span>
                             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                           </Link>
@@ -1350,16 +1353,16 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                 <div className="border-t border-slate-100 bg-[#F8FAFC] w-full">
                   <div className="page-container flex items-center py-3.5">
                     <span className="inline-flex items-center justify-center bg-blue-600 text-white text-caption-responsive font-bold px-2 py-0.5 rounded-[2px] tracking-wider">
-                      MỚI
+                      {t('mega.badges.new')}
                     </span>
                     <span className="text-caption-responsive text-slate-500 font-bold ml-3">
-                      Giải pháp AI cho nhà máy thông minh —{' '}
+                      {t('mega.promo.aiSolution')} —{' '}
                       <Link
                         href="/solutions"
                         onClick={() => setActiveMenu(null)}
                         className="text-blue-600 hover:text-blue-700 hover:underline"
                       >
-                        Tìm hiểu thêm →
+                        {t('mega.cta.learnMore')}
                       </Link>
                     </span>
                   </div>
@@ -1392,7 +1395,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                             {isRegActive && (
                               <div className="absolute left-3.5 top-1/2 -translate-y-1/2 w-[3px] h-[18px] bg-blue-600 rounded-full" />
                             )}
-                            <span className="text-body-regular leading-none">{reg.name}</span>
+                            <span className="text-body-regular leading-none">{t(reg.name)}</span>
                             <ChevronRight
                               className={`h-4 w-4 transition-transform ${
                                 isRegActive ? 'text-blue-600 translate-x-0.5' : 'text-slate-400'
@@ -1434,7 +1437,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                         <>
                           <div className="flex items-center gap-3 mb-6">
                             <span className="text-body-regular font-bold text-slate-800">
-                              Trở thành Đối tác phân phối - ULink Industries
+                              {t('mega.headings.becomePartner')}
                             </span>
                             <div className="h-[2px] w-8 bg-[#F2994A] rounded-full" />
                           </div>
@@ -1455,10 +1458,10 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
 
                                   <div className="flex flex-col">
                                     <span className="text-body-regular font-bold text-slate-800 transition-colors group-hover:text-blue-600">
-                                      {partner.title}
+                                      {t(partner.title)}
                                     </span>
                                     <span className="mt-1 text-caption-responsive text-slate-400 leading-relaxed font-medium">
-                                      {partner.description}
+                                      {t(partner.description)}
                                     </span>
                                   </div>
                                 </Link>
@@ -1472,7 +1475,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                                 onClick={() => setActiveMenu(null)}
                                 className="group inline-flex items-center gap-1.5 text-body-regular font-bold text-blue-600 hover:text-blue-700 transition-colors"
                               >
-                                <span>Đăng ký đối tác ngay</span>
+                                <span>{t('mega.cta.registerPartner')}</span>
                                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                               </Link>
                             </div>
@@ -1482,7 +1485,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                         <>
                           <div className="flex items-center gap-3 mb-6">
                             <span className="text-body-regular font-bold text-slate-850">
-                              Cụm / Khu công nghiệp — {currentRegionData?.name}
+                              {t('mega.headings.parksInRegion', { name: currentRegionData ? t(currentRegionData.name) : '' })}
                             </span>
                             <div className="h-[2px] w-8 bg-blue-600 rounded-full" />
                           </div>
@@ -1503,10 +1506,10 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
 
                                   <div className="flex flex-col">
                                     <span className="text-body-regular font-bold text-slate-800 transition-colors group-hover:text-blue-600">
-                                      {hub.title}
+                                      {t(hub.title)}
                                     </span>
                                     <span className="mt-1 text-caption-responsive text-slate-400 leading-relaxed font-medium">
-                                      {hub.description}
+                                      {t(hub.description)}
                                     </span>
                                   </div>
                                 </Link>
@@ -1520,7 +1523,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                                 onClick={() => setActiveMenu(null)}
                                 className="group inline-flex items-center gap-1.5 text-body-regular font-bold text-blue-600 hover:text-blue-700 transition-colors"
                               >
-                                <span>Xem tất cả Khu công nghiệp</span>
+                                <span>{t('mega.cta.viewAllParks')}</span>
                                 <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                               </Link>
                             </div>
@@ -1535,16 +1538,16 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                 <div className="border-t border-slate-100 bg-[#F8FAFC] w-full">
                   <div className="page-container flex items-center py-3.5">
                     <span className="inline-flex items-center justify-center bg-blue-600 text-white text-caption-responsive font-bold px-2 py-0.5 rounded-[2px] tracking-wider">
-                      MỚI
+                      {t('mega.badges.new')}
                     </span>
                     <span className="text-caption-responsive text-slate-500 font-bold ml-3">
-                      Giải pháp AI cho nhà máy thông minh —{' '}
+                      {t('mega.promo.aiSolution')} —{' '}
                       <Link
                         href="/solutions"
                         onClick={() => setActiveMenu(null)}
                         className="text-blue-600 hover:text-blue-700 hover:underline"
                       >
-                        Tìm hiểu thêm →
+                        {t('mega.cta.learnMore')}
                       </Link>
                     </span>
                   </div>
@@ -1580,7 +1583,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                             {isIndActive && (
                               <div className="absolute left-3.5 top-1/2 -translate-y-1/2 w-[3px] h-[18px] bg-blue-600 rounded-full" />
                             )}
-                            <span className="text-body-regular leading-none">{ind.name}</span>
+                            <span className="text-body-regular leading-none">{t(ind.name)}</span>
                             <ChevronRight
                               className={`h-4 w-4 transition-transform ${
                                 isIndActive ? 'text-blue-600 translate-x-0.5' : 'text-slate-400'
@@ -1597,7 +1600,9 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-6">
                         <span className="text-body-regular font-bold text-slate-800">
-                          Giải pháp ngành {currentIndustryData?.id === 'food' ? 'Thực phẩm & Đồ uống' : currentIndustryData?.name}
+                          {currentIndustryData?.id === 'food'
+                            ? t('mega.headings.industrySolutionsFood')
+                            : t('mega.headings.industrySolutions', { name: currentIndustryData ? t(currentIndustryData.name) : '' })}
                         </span>
                         <div className="h-[2px] w-8 bg-blue-600 rounded-full" />
                       </div>
@@ -1619,10 +1624,10 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
 
                               <div className="flex flex-col">
                                 <span className="text-body-regular font-bold text-slate-800 transition-colors group-hover:text-blue-600">
-                                  {hub.title}
+                                  {t(hub.title)}
                                 </span>
                                 <span className="mt-1 text-caption-responsive text-slate-400 leading-relaxed font-medium">
-                                  {hub.description}
+                                  {t(hub.description)}
                                 </span>
                               </div>
                             </Link>
@@ -1636,7 +1641,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                             onClick={() => setActiveMenu(null)}
                             className="group inline-flex items-center gap-1.5 text-body-regular font-bold text-blue-600 hover:text-blue-700 transition-colors"
                           >
-                            <span>Xem tất cả {currentIndustryData?.name || 'giải pháp ngành'}</span>
+                            <span>{t('mega.cta.viewAllIndustry', { name: currentIndustryData ? t(currentIndustryData.name) : '' })}</span>
                             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                           </Link>
                         </div>
@@ -1691,7 +1696,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                             {isResActive && (
                               <div className="absolute left-3.5 top-1/2 -translate-y-1/2 w-[3px] h-[18px] bg-blue-600 rounded-full" />
                             )}
-                            <span className="text-body-regular leading-none">{res.name}</span>
+                            <span className="text-body-regular leading-none">{t(res.name)}</span>
                             <ChevronRight
                               className={`h-4 w-4 transition-transform ${
                                 isResActive ? 'text-blue-600 translate-x-0.5' : 'text-slate-400'
@@ -1708,7 +1713,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-6">
                         <span className="text-body-regular font-bold text-slate-800">
-                          Kiến thức đóng gói chuyên nghiệp
+                          {t('mega.headings.resourcesKnowledge')}
                         </span>
                         <div className="h-[2px] w-8 bg-blue-600 rounded-full" />
                       </div>
@@ -1730,10 +1735,10 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
 
                               <div className="flex flex-col">
                                 <span className="text-body-regular font-bold text-slate-800 transition-colors group-hover:text-blue-600">
-                                  {hub.title}
+                                  {t(hub.title)}
                                 </span>
                                 <span className="mt-1 text-caption-responsive text-slate-400 leading-relaxed font-medium">
-                                  {hub.description}
+                                  {t(hub.description)}
                                 </span>
                               </div>
                             </Link>
@@ -1747,7 +1752,11 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                             onClick={() => setActiveMenu(null)}
                             className="group inline-flex items-center gap-1.5 text-body-regular font-bold text-blue-600 hover:text-blue-700 transition-colors"
                           >
-                            <span>Xem tất cả {currentResourceData?.name || 'tài nguyên'}</span>
+                            <span>
+                              {t('mega.cta.viewAllResources', {
+                                name: currentResourceData ? t(currentResourceData.name) : t('resources')
+                              })}
+                            </span>
                             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                           </Link>
                         </div>
@@ -1760,7 +1769,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                 <div className="border-t border-slate-100 bg-[#F8FAFC] w-full">
                   <div className="page-container flex items-center py-3.5">
                     <span className="inline-flex items-center justify-center bg-blue-600 text-white text-caption-responsive font-bold px-2 py-0.5 rounded-[2px] tracking-wider">
-                      MỚI
+                      {t('mega.badges.new')}
                     </span>
                     <span className="text-caption-responsive text-slate-500 font-bold ml-3">
                       Ebook miễn phí — 10 Sai lầm phổ biến khi đóng gói hàng xuất khẩu —{' '}
@@ -1802,7 +1811,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                             {isAbActive && (
                               <div className="absolute left-3.5 top-1/2 -translate-y-1/2 w-[3px] h-[18px] bg-blue-600 rounded-full" />
                             )}
-                            <span className="text-body-regular leading-none">{ab.name}</span>
+                            <span className="text-body-regular leading-none">{t(ab.name)}</span>
                             <ChevronRight
                               className={`h-4 w-4 transition-transform ${
                                 isAbActive ? 'text-blue-600 translate-x-0.5' : 'text-slate-400'
@@ -1819,7 +1828,9 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                     <div className="flex-1">
                       <div className="flex items-center gap-3 mb-6">
                         <span className="text-body-regular font-bold text-slate-800">
-                          {activeAboutTab === 'hub-prod' ? 'Hub Hà Nam' : currentAboutData?.name}
+                          {activeAboutTab === 'hub-prod'
+                            ? t('mega.headings.aboutHubProd')
+                            : currentAboutData ? t(currentAboutData.name) : ''}
                         </span>
                         <div className="h-[2px] w-8 bg-blue-600 rounded-full" />
                       </div>
@@ -1840,10 +1851,10 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
 
                               <div className="flex flex-col">
                                 <span className="text-body-regular font-bold text-slate-800 transition-colors group-hover:text-blue-600">
-                                  {hub.title}
+                                  {t(hub.title)}
                                 </span>
                                 <span className="mt-1 text-caption-responsive text-slate-400 leading-relaxed font-medium">
-                                  {hub.description}
+                                  {t(hub.description)}
                                 </span>
                               </div>
                             </Link>
@@ -1857,7 +1868,7 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                             onClick={() => setActiveMenu(null)}
                             className="group inline-flex items-center gap-1.5 text-body-regular font-bold text-blue-600 hover:text-blue-700 transition-colors"
                           >
-                            <span>Xem thêm về chúng tôi</span>
+                            <span>{t('mega.cta.aboutMore')}</span>
                             <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
                           </Link>
                         </div>
@@ -1870,16 +1881,16 @@ export function HeaderNav({ items, categoriesData: dynamicCategoriesData, region
                 <div className="border-t border-slate-100 bg-[#F8FAFC] w-full">
                   <div className="page-container flex items-center py-3.5">
                     <span className="inline-flex items-center justify-center bg-blue-600 text-white text-caption-responsive font-bold px-2 py-0.5 rounded-[2px] tracking-wider">
-                      MỚI
+                      {t('mega.badges.new')}
                     </span>
                     <span className="text-caption-responsive text-slate-500 font-bold ml-3">
-                      Tuyển dụng: ULink đang tìm kiếm Trưởng phòng Kinh doanh B2B (Bao bì) —{' '}
+                      {t('mega.promo.hiringBd')} —{' '}
                       <Link
                         href="/about"
                         onClick={() => setActiveMenu(null)}
                         className="text-blue-600 hover:text-blue-700 hover:underline"
                       >
-                        Ứng tuyển ngay →
+                        {t('mega.cta.applyNow')}
                       </Link>
                     </span>
                   </div>

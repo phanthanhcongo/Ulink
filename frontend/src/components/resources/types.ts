@@ -50,4 +50,6 @@ export interface ResourceItem {
   price?: TranslatedString;
   images?: string[];
   link?: string;
+  bodyHtml?: TranslatedString;
+  isFeatured?: boolean;
 }

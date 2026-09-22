@@ -208,7 +208,985 @@
     "myRfqs": "見積履歴",
     "logout": "ログアウト",
     "search": "検索",
-    "cart": "カート"
+    "cart": "カート",
+    "mega": {
+      "badges": {
+        "new": "新着",
+        "hot": "人気"
+      },
+      "cta": {
+        "viewAllProducts": "{name}の全製品を見る",
+        "viewAllParks": "すべての工業団地を見る",
+        "viewAllIndustry": "{name}をすべて見る",
+        "viewAllResources": "{name}をすべて見る",
+        "aboutMore": "私たちについてもっと見る",
+        "registerPartner": "パートナー登録",
+        "learnMore": "詳しく見る →",
+        "downloadNow": "今すぐダウンロード →",
+        "applyNow": "今すぐ応募 →"
+      },
+      "headings": {
+        "productsInCategory": "製品カタログ — {name}",
+        "parksInRegion": "工業団地 — {name}",
+        "becomePartner": "販売パートナーになる — ULink Industries",
+        "industrySolutions": "{name}向けソリューション",
+        "industrySolutionsFood": "食品・飲料向けソリューション",
+        "resourcesKnowledge": "プロフェッショナル梱包ナレッジ",
+        "aboutHubProd": "ハーナムハブ"
+      },
+      "promo": {
+        "aiSolution": "スマート工場向けAIソリューション",
+        "ecoSolution": "グリーン包装ソリューション — F&B向け生分解性包装",
+        "ebookMistakes": "無料電子書籍 — 輸出梱包でよくある10の間違い",
+        "hiringBd": "採用情報：ULinkはB2B(包装)営業マネージャーを募集中"
+      },
+      "hubDefaultName": "HUBハーナム",
+      "solutions": {
+        "categories": {
+          "packaging": {
+            "name": "包装",
+            "items": {
+              "pof": {
+                "title": "POFシュリンクフィルム",
+                "desc": "透明度の高い多用途熱収縮フィルム、食品・消費財の包装に使用"
+              },
+              "tape": {
+                "title": "梱包テープ",
+                "desc": "OPPテープ、ロゴ印刷テープ、梱包・封印用両面テープ"
+              },
+              "shrinkPe": {
+                "title": "PEシュリンクフィルム",
+                "desc": "製品を防塵・防湿で密封する熱収縮フィルム、外観も向上"
+              },
+              "palletWrap": {
+                "title": "パレットラップフィルム",
+                "desc": "高強度ストレッチフィルムでパレットを包み、輸送中の商品を保護"
+              },
+              "carton": {
+                "title": "段ボール箱",
+                "desc": "3〜7層のフレキソ印刷段ボール箱、高品質でオーダーメイド"
+              },
+              "hipsPp": {
+                "title": "HIPS/PPフィルム",
+                "desc": "静電気防止部品トレイを成形し、保管中の製品を保護"
+              },
+              "peHdBag": {
+                "title": "PE/HDバッグ",
+                "desc": "産業用袋、様々なサイズの段ボール内袋"
+              },
+              "palletWood": {
+                "title": "木製/プラスチックパレット",
+                "desc": "EUR規格パレット、ISPM15認証取得の輸出用パレット"
+              }
+            }
+          },
+          "cleanroom": {
+            "name": "クリーンルーム用品",
+            "items": {
+              "gloves": {
+                "title": "クリーンルーム用手袋",
+                "desc": "パウダーフリーのニトリル・ラテックス手袋、クリーンルームISO基準に適合"
+              },
+              "wipes": {
+                "title": "クリーンルーム用ワイプ",
+                "desc": "防塵ワイプ、クリーンルーム用ポリエステルクロス"
+              },
+              "bags": {
+                "title": "クリーンルーム用バッグ",
+                "desc": "クリーンルーム用PE袋、製品包装用ESD静電気防止袋"
+              },
+              "apparel": {
+                "title": "クリーンルーム用衣類",
+                "desc": "静電気防止つなぎ服、ガウン、フード"
+              },
+              "shoeCover": {
+                "title": "クリーンルーム用靴カバー",
+                "desc": "管理区域用の滑り止めPE/CPE靴カバー"
+              },
+              "consumables": {
+                "title": "消耗品",
+                "desc": "クリーンルーム用粘着マット、ステッキーマット、産業用綿棒"
+              },
+              "mask": {
+                "title": "クリーンルーム用マスク",
+                "desc": "クリーンルーム環境向けの3層マスク、N95マスク"
+              },
+              "goggles": {
+                "title": "保護ゴーグル",
+                "desc": "クリーンルーム基準に適合した防塵・耐薬品ゴーグル"
+              }
+            }
+          },
+          "aluminum": {
+            "name": "アルミテープ",
+            "items": {
+              "heatResist": {
+                "title": "耐熱アルミテープ",
+                "desc": "HVACや産業用断熱に使用される高温耐性アルミテープ"
+              },
+              "moistResist": {
+                "title": "防湿アルミテープ",
+                "desc": "パイプや金属表面を保護する防水アルミテープ"
+              },
+              "ductTape": {
+                "title": "ダクト用アルミテープ",
+                "desc": "産業用HVAC換気システムのダクト接合専用"
+              },
+              "thermal": {
+                "title": "熱伝導アルミテープ",
+                "desc": "電子部品、LED、基板の放熱用アルミテープ"
+              },
+              "decor": {
+                "title": "装飾用アルミテープ",
+                "desc": "インテリア装飾や広告用の光沢・マットアルミテープ"
+              },
+              "selfAdhesive": {
+                "title": "自己粘着アルミテープ",
+                "desc": "加熱不要で施工しやすい感圧自己粘着アルミテープ"
+              },
+              "insul": {
+                "title": "絶縁アルミテープ",
+                "desc": "電子機器のEMI/RFIシールド用絶縁アルミテープ"
+              },
+              "reinforced": {
+                "title": "補強アルミテープ",
+                "desc": "ガラス繊維で補強された高引張強度のアルミテープ"
+              }
+            }
+          }
+        },
+        "viewAllShort": {
+          "packaging": "包装",
+          "cleanroom": "クリーンルーム",
+          "aluminum": "アルミテープ"
+        }
+      },
+      "hubs": {
+        "regions": {
+          "north": {
+            "name": "北部",
+            "items": {
+              "dinhVu": {
+                "title": "ディンブー工業団地",
+                "desc": "ハイフォン、国際港と直結し重工業の戦略拠点"
+              },
+              "thangLong": {
+                "title": "タンロン工業団地",
+                "desc": "ハノイ、信頼できる日系合弁で電子・自動車向けインフラが充実"
+              },
+              "queVo": {
+                "title": "クエヴォ工業団地",
+                "desc": "バクニン、国道18号線に接続、ノイバイ空港に近く機械・部品産業を誘致"
+              },
+              "phucDien": {
+                "title": "フックディエン工業団地",
+                "desc": "ハイズオン、交易に便利な立地で繊維・食品産業が集中"
+              },
+              "yenPhong": {
+                "title": "イエンフォン工業団地",
+                "desc": "バクニン、サムスン生産拠点、ハイテク・現代的な支援サービス"
+              },
+              "daiAn": {
+                "title": "ダイアン工業団地",
+                "desc": "ハイズオン、海外直接投資(FDI)を強く誘致し多様な機械組立を展開"
+              },
+              "tienSon": {
+                "title": "ティエンソン工業団地",
+                "desc": "バクニン、統一された技術インフラで精密機械製造・建築資材を展開"
+              },
+              "namSach": {
+                "title": "ナムサック工業団地",
+                "desc": "ハイズオン、クリーン産業に適し輸出品加工・包装を展開"
+              }
+            }
+          },
+          "center": {
+            "name": "中部",
+            "items": {
+              "phuBai": {
+                "title": "フーバイ工業団地",
+                "desc": "トゥアティエンフエ、国際空港に近い戦略的立地で軽工業・加工業を展開"
+              },
+              "dienNam": {
+                "title": "ディエンナム・ディエンゴック工業団地",
+                "desc": "クアンナム、中部最大の工業центер、繊維・靴産業"
+              },
+              "hoaKhanh": {
+                "title": "ホアカイン工業団地",
+                "desc": "ダナン、歴史ある工業団地で機械から食品まで多分野を展開"
+              },
+              "phuTai": {
+                "title": "フータイ工業団地",
+                "desc": "ビンディン、クイニョン港、木材加工・輸出農産物"
+              },
+              "dungQuat": {
+                "title": "ズンクワット工業団地",
+                "desc": "クアンガイ、ズンクワット経済区に隣接し石油化学・重工業を展開"
+              },
+              "tinhPhong": {
+                "title": "ティンフォン工業団地",
+                "desc": "クアンガイ、FDIを強く誘致し建材・機械生産を展開"
+              },
+              "phongDien": {
+                "title": "フォンディエン工業団地",
+                "desc": "トゥアティエンフエ、統一されたインフラでハイテク・電子産業を展開"
+              },
+              "chuLai": {
+                "title": "チュライ工業団地",
+                "desc": "クアンナム、開放経済特区で自動車組立・機械部品を展開"
+              }
+            }
+          },
+          "south": {
+            "name": "南部",
+            "items": {
+              "vsipBd": {
+                "title": "VSIPビンズオン工業団地",
+                "desc": "ベトナム・シンガポール工業団地、500ha規模で多分野の製造業"
+              },
+              "nhonTrach": {
+                "title": "ニョンチャック工業団地",
+                "desc": "ドンナイ、重工業加工・製造に特化しカットライ港に近い"
+              },
+              "longHau": {
+                "title": "ロンハウ工業団地",
+                "desc": "ロンアン、港に近い戦略的立地で物流・輸出に適する"
+              },
+              "tanThuan": {
+                "title": "タンツアン工業団地",
+                "desc": "ホーチミン市、南部最大の輸出加工区で200社以上のFDI企業"
+              },
+              "myPhuoc": {
+                "title": "ミーフォック工業団地",
+                "desc": "ビンズオン、電子から機械まで多分野で現代的なインフラ"
+              },
+              "phuMy": {
+                "title": "フーミー工業団地",
+                "desc": "バリア・ブンタウ、重工業・化学産業で深水港に近い"
+              },
+              "ducHoa": {
+                "title": "ドックホア工業団地",
+                "desc": "ロンアン、ホーチミン市とメコンデルタを結ぶ倉庫・物流拠点"
+              },
+              "bienHoa": {
+                "title": "ビエンホア工業団地",
+                "desc": "ドンナイ、ベトナム最古の工業団地で多様な製造業を展開"
+              }
+            }
+          }
+        },
+        "partnerItems": {
+          "network": {
+            "title": "広範な流通ネットワーク",
+            "desc": "市場カバー率を高め、全国の顧客にアプローチ。"
+          },
+          "catalog": {
+            "title": "製品カタログを見る",
+            "desc": "1000以上のSKUが全国即納可能。"
+          },
+          "training": {
+            "title": "製品トレーニング",
+            "desc": "製品の機能と用途に関する専門知識を提供。"
+          },
+          "support": {
+            "title": "専門的な技術サポート",
+            "desc": "専門エンジニアチームが導入と製品保証をサポート。"
+          },
+          "hanamProd": {
+            "title": "プラスチック包装製造",
+            "desc": "ハーナムハブで製造される製品一覧。"
+          },
+          "pricing": {
+            "title": "競争力のある価格政策",
+            "desc": "売上高と長期契約に基づく柔軟な割引制度。"
+          }
+        }
+      },
+      "industries": {
+        "food": {
+          "name": "食品",
+          "hubs": {
+            "dryFood": {
+              "title": "乾物食品包装",
+              "desc": "シュリンクフィルム、PE袋、スナック・穀物・調味料用包装"
+            },
+            "fresh": {
+              "title": "生鮮食品包装",
+              "desc": "発泡トレイ、食品ラップ、真空包装"
+            },
+            "palletFb": {
+              "title": "F&Bパレット・棚",
+              "desc": "食品専用プラスチックパレット、冷蔵倉庫用ステンレス棚"
+            },
+            "frozen": {
+              "title": "冷凍食品包装",
+              "desc": "耐低温PA/PE袋、専用シュリンクフィルム"
+            },
+            "confection": {
+              "title": "菓子包装",
+              "desc": "透明OPP袋、ギフトボックス、リボン"
+            },
+            "bins": {
+              "title": "コンテナ・プラスチック容器",
+              "desc": "スタック可能なプラスチックかご、IBCタンク、液体容器"
+            },
+            "beverage": {
+              "title": "飲料包装",
+              "desc": "ボトルまとめ用シュリンクフィルム、缶パック用フィルム、シュリンクスリーブラベル"
+            },
+            "hygiene": {
+              "title": "食品衛生用品",
+              "desc": "手袋、マスク、靴カバー、フード"
+            }
+          }
+        },
+        "medical": {
+          "name": "医薬品・ヘルスケア",
+          "hubs": {
+            "pharmaPack": {
+              "title": "医薬品包装",
+              "desc": "アルミブリスターフォイル、医薬品用プラスチック容器"
+            },
+            "cleanroomMed": {
+              "title": "医療用クリーンルーム用品",
+              "desc": "滅菌ワイプ、3層医療用マスク"
+            },
+            "ppeMed": {
+              "title": "医療用防護具",
+              "desc": "防護服、ニトリル検診手袋"
+            },
+            "vaccine": {
+              "title": "ワクチン包装",
+              "desc": "断熱ボックス、専用保冷ジェルパック"
+            }
+          }
+        },
+        "electronics": {
+          "name": "電子・部品",
+          "hubs": {
+            "esdBag": {
+              "title": "ESD静電気防止包装",
+              "desc": "シールディングバッグ、ESDバブルバッグ"
+            },
+            "tray": {
+              "title": "部品トレイ",
+              "desc": "ESD成形プラスチックトレイ、静電気防止プラスチックボックス"
+            },
+            "esdRoom": {
+              "title": "電子産業用クリーンルーム用品",
+              "desc": "PUコーティングESD手袋、粘着ダストマット"
+            },
+            "kaptonTape": {
+              "title": "耐熱テープ",
+              "desc": "カプトンテープ、EMIシールドアルミテープ"
+            }
+          }
+        },
+        "logistics": {
+          "name": "物流・輸送",
+          "hubs": {
+            "palletPack": {
+              "title": "パレット梱包",
+              "desc": "パレット用ストレッチラップフィルム、PETプラスチックストラップ"
+            },
+            "airbag": {
+              "title": "エアダンネージバッグ",
+              "desc": "コンテナ用ダンネージエアバッグ、乾燥剤"
+            },
+            "seal": {
+              "title": "貨物封印",
+              "desc": "金属製セキュリティシール、セキュリティ封印ラベル"
+            },
+            "shipBox": {
+              "title": "輸送用容器",
+              "desc": "5〜7層段ボール箱、木製/プラスチックパレット"
+            }
+          }
+        },
+        "furniture": {
+          "name": "家具",
+          "hubs": {
+            "surfaceProt": {
+              "title": "表面保護",
+              "desc": "傷防止PE表面保護フィルム"
+            },
+            "woodPack": {
+              "title": "木部品包装",
+              "desc": "PEフォームフィルム、POF熱収縮フィルム"
+            },
+            "adhesive": {
+              "title": "接着材料",
+              "desc": "高強度両面テープ、産業用接着剤"
+            },
+            "largeBox": {
+              "title": "家具用段ボール箱",
+              "desc": "棚・テーブル・椅子用の大型段ボール箱"
+            }
+          }
+        },
+        "hvac": {
+          "name": "建設・HVAC",
+          "hubs": {
+            "insulTape": {
+              "title": "断熱テープ",
+              "desc": "アルミテープ、ダクト用シルバーテープ"
+            },
+            "insulMat": {
+              "title": "断熱材",
+              "desc": "断熱フォーム、グラスウール断熱材"
+            },
+            "waterproof": {
+              "title": "防水膜",
+              "desc": "コンクリート床用PEフィルム、防水膜"
+            },
+            "vent": {
+              "title": "換気用品",
+              "desc": "フレキシブルアルミダクト、ダクトクランプ"
+            }
+          }
+        }
+      },
+      "resources": {
+        "tabs": {
+          "expert": {
+            "name": "専門分野",
+            "hubs": {
+              "shrinkGuide": {
+                "title": "シュリンクフィルム選定ガイド",
+                "desc": "POF、PE、PVCシュリンクフィルムの比較：長所短所と実用例"
+              },
+              "cartonLookup": {
+                "title": "段ボールサイズ検索",
+                "desc": "重量・容量別の標準段ボール規格表"
+              },
+              "blog": {
+                "title": "包装業界ブログ",
+                "desc": "グリーン素材やプラスチック樹脂技術に関する詳細記事"
+              },
+              "exportGuide": {
+                "title": "輸出梱包ハンドブック",
+                "desc": "ISPM15基準、木製パレット規格、主要市場ごとの規制"
+              },
+              "video": {
+                "title": "技術指導動画",
+                "desc": "ストラッピングマシン、ラッピングマシン、シーラーの操作方法"
+              },
+              "infographic": {
+                "title": "インフォグラフィック・視覚資料",
+                "desc": "梱包基準の簡易チェックリストと素材比較表"
+              },
+              "safetyProc": {
+                "title": "安全梱包手順",
+                "desc": "壊れやすい商品や超重量機械の梱包SOP"
+              },
+              "webinar": {
+                "title": "ウェビナー・ワークショップ",
+                "desc": "バイオ包装とインダストリー4.0自動化に関する討論スケジュール更新"
+              }
+            }
+          },
+          "technical": {
+            "name": "技術資料",
+            "hubs": {
+              "tds": {
+                "title": "TDS（技術データシート）",
+                "desc": "全製品の詳細な技術仕様書"
+              },
+              "msds": {
+                "title": "MSDS（製品安全データシート）",
+                "desc": "化学物質安全資料・材料安全ガイダンス"
+              },
+              "cad": {
+                "title": "2D/3D設計図",
+                "desc": "段ボール箱・プラスチックパレット用CAD技術図面"
+              },
+              "equipManual": {
+                "title": "機器取扱説明書",
+                "desc": "ストラッピングマシン・自動ラッピングマシンの取扱説明書"
+              }
+            }
+          },
+          "cases": {
+            "name": "事例",
+            "hubs": {
+              "fbOpt": {
+                "title": "F&B包装最適化",
+                "desc": "ULinkがパートナーのプラスチック包装コストを15%削減した方法"
+              },
+              "esdCase": {
+                "title": "電子工場向けESDソリューション",
+                "desc": "ESD包装で静電気放電不良を99%解消"
+              },
+              "greenLog": {
+                "title": "輸出におけるグリーン物流",
+                "desc": "木製パレットからリサイクルプラスチックパレットへの移行"
+              },
+              "autoLine": {
+                "title": "梱包ライン自動化",
+                "desc": "ロボット式ラッピングマシンへのアップグレードで生産性50%向上"
+              }
+            }
+          },
+          "quality": {
+            "name": "品質・認証",
+            "hubs": {
+              "iso9001": {
+                "title": "ISO 9001:2015認証",
+                "desc": "国際標準の品質管理システム"
+              },
+              "rohs": {
+                "title": "RoHS・REACH認証",
+                "desc": "環境に優しく無害な素材へのコミットメント"
+              },
+              "fda": {
+                "title": "食品包装のFDA基準",
+                "desc": "食品への直接接触の安全性を確保"
+              },
+              "cleanroomCert": {
+                "title": "クリーンルームクラス100〜10000認証",
+                "desc": "医療機器・半導体包装の基準に適合"
+              }
+            }
+          },
+          "events": {
+            "name": "イベント",
+            "hubs": {
+              "propak": {
+                "title": "ProPak Vietnam 2026展示会",
+                "desc": "加工・包装技術ブースでULinkと会いましょう"
+              },
+              "biopack": {
+                "title": "持続可能なバイオ包装セミナー",
+                "desc": "使い捨てプラスチックの代替ソリューションを議論"
+              },
+              "trainCourse": {
+                "title": "梱包技術トレーニングコース",
+                "desc": "VIP顧客向け無料SOPトレーニングプログラム"
+              },
+              "calendar": {
+                "title": "年間イベント・ワークショップカレンダー",
+                "desc": "コミュニティ交流活動の詳細スケジュールを見る"
+              }
+            }
+          }
+        }
+      },
+      "about": {
+        "tabs": {
+          "hubProd": {
+            "name": "製造・流通センター",
+            "hubs": {
+              "about": {
+                "title": "ULink Industriesについて",
+                "desc": "包括的な産業用包装ソリューションを提供して15年以上の経験"
+              },
+              "capacity": {
+                "title": "供給能力",
+                "desc": "包装製造15年の経験、500社にサービス提供し大口注文にも対応可能な生産能力。"
+              },
+              "hanam": {
+                "title": "ハーナム流通センター",
+                "desc": "10,000㎡の物流倉庫で北部にサービス、ハノイ及び周辺地域に24時間以内配送"
+              },
+              "values": {
+                "title": "コアバリュー",
+                "desc": "品質、革新、持続可能性、顧客中心主義"
+              },
+              "partners": {
+                "title": "パートナー・顧客",
+                "desc": "500社以上が信頼：サムスン、ビナミルク、ネスレ、マサンなど"
+              },
+              "rfq": {
+                "title": "見積依頼",
+                "desc": "簡単なRFQフォーム、24時間以内に回答、無料相談"
+              },
+              "sustain": {
+                "title": "サステナビリティへのコミットメント",
+                "desc": "ESG、リサイクル包装、サプライチェーン全体でのカーボンフットプリント削減"
+              }
+            }
+          },
+          "standards": {
+            "name": "基準・認証",
+            "hubs": {
+              "qms": {
+                "title": "品質管理システム",
+                "desc": "全工場システムでISO 9001:2015認証を取得"
+              },
+              "foodSafety": {
+                "title": "食品安全",
+                "desc": "F&B包装ラインでHACCPおよびISO 22000認証を取得"
+              },
+              "cleanroomStd": {
+                "title": "クリーンルーム基準",
+                "desc": "クラス100,000認証工場で医療包装・部品に対応"
+              },
+              "materialSafety": {
+                "title": "材料安全認証",
+                "desc": "CO/CQ完備、RoHS、REACH、SGS輸出基準に適合"
+              }
+            }
+          },
+          "eco": {
+            "name": "サステナビリティ",
+            "hubs": {
+              "biodeg": {
+                "title": "生分解性包装",
+                "desc": "完全生分解性で環境に優しい袋・箱の製品ライン"
+              },
+              "plasticReduce": {
+                "title": "プラスチック削減キャンペーン",
+                "desc": "シュリンクフィルムの厚さ最適化でパートナーのプラスチック使用量を20%削減"
+              },
+              "circular": {
+                "title": "循環型経済",
+                "desc": "工場廃棄物からプラスチック樹脂を回収・リサイクルするプログラム"
+              },
+              "cleanEnergy": {
+                "title": "クリーンエネルギー",
+                "desc": "ULinkハーナム工場は屋上太陽光発電100%で稼働"
+              }
+            }
+          },
+          "careers": {
+            "name": "キャリア機会",
+            "hubs": {
+              "workEnv": {
+                "title": "職場環境",
+                "desc": "創造性とキャリア成長を重視するプロフェッショナルな文化を体験"
+              },
+              "benefits": {
+                "title": "待遇制度",
+                "desc": "競争力のある給与、包括的な保険、年次社員旅行"
+              },
+              "positions": {
+                "title": "募集職種",
+                "desc": "各支店の最新求人情報の詳細を見る"
+              },
+              "apply": {
+                "title": "応募登録",
+                "desc": "ULinkの人材プールにオンラインで迅速に応募"
+              }
+            }
+          },
+          "contact": {
+            "name": "お問い合わせ",
+            "hubs": {
+              "hotline": {
+                "title": "ホットライン・サポート",
+                "desc": "24時間365日の相談ホットラインと迅速なRFQ対応"
+              },
+              "offices": {
+                "title": "オフィス・工場",
+                "desc": "ハノイ本社、ハーナム・ビンズオン工場の詳細住所"
+              },
+              "social": {
+                "title": "ソーシャルメディアチャンネル",
+                "desc": "LinkedIn、Facebook、Zalo OAでULinkとつながる"
+              },
+              "directRequest": {
+                "title": "直接リクエストを送信",
+                "desc": "質問の送信やエンジニアとの直接面談リクエスト用フォーム"
+              }
+            }
+          }
+        }
+      }
+    },
+    "mobile": {
+      "exploreTitle": "ULink Industriesを探る",
+      "menuLabel": "メニュー",
+      "menuAria": "ナビゲーションメニュー",
+      "searchAria": "検索",
+      "cartAria": "カート",
+      "closeMenuAria": "メニューを閉じる",
+      "accountTitle": "ULinkアカウント",
+      "accountSubtitle": "ログインして見積を確認",
+      "orderList": "注文一覧",
+      "smartAutomation": "スマート製造自動化ソリューション2026",
+      "subtitles": {
+        "hubs": "全国の工業団地・ハブ情報。",
+        "solutions": "当社のソリューションと製品を探る。",
+        "industries": "各業界向けの専用ソリューション。",
+        "resources": "ブログ、事例、技術資料。",
+        "about": "私たちのチームとミッションについて。",
+        "default": "ULinkの情報を探る"
+      },
+      "groups": {
+        "solutions": {
+          "packaging": {
+            "title": "包装",
+            "items": {
+              "pof": {
+                "title": "POFシュリンクフィルム",
+                "desc": "食品・消費財の包装"
+              },
+              "tape": {
+                "title": "梱包テープ",
+                "desc": "OPPテープ、ロゴ印刷、封印"
+              },
+              "shrinkPe": {
+                "title": "PEシュリンクフィルム",
+                "desc": "防塵・防湿の熱収縮フィルム密封"
+              },
+              "palletWrap": {
+                "title": "パレットラップフィルム",
+                "desc": "高強度パレット用ストレッチラップフィルム"
+              },
+              "carton": {
+                "title": "段ボール箱",
+                "desc": "3〜7層フレキソ印刷段ボール箱"
+              },
+              "hipsPp": {
+                "title": "HIPS/PPフィルム",
+                "desc": "静電気防止部品トレイ"
+              },
+              "peHdBag": {
+                "title": "PE/HDバッグ",
+                "desc": "産業用袋、段ボール内袋"
+              },
+              "palletWood": {
+                "title": "木製/プラスチックパレット",
+                "desc": "EUR規格輸出用パレット"
+              }
+            }
+          },
+          "cleanroom": {
+            "title": "クリーンルーム用品",
+            "items": {
+              "gloves": {
+                "title": "クリーンルーム用手袋",
+                "desc": "ニトリル・ラテックス手袋、ISO規格"
+              },
+              "wipes": {
+                "title": "クリーンルーム用ワイプ",
+                "desc": "防塵ワイプ、ポリエステルクロス"
+              },
+              "bags": {
+                "title": "クリーンルーム用バッグ",
+                "desc": "PE袋、ESD静電気防止袋"
+              },
+              "apparel": {
+                "title": "クリーンルーム用衣類",
+                "desc": "つなぎ服、ESDフード"
+              },
+              "shoeCover": {
+                "title": "クリーンルーム用靴カバー",
+                "desc": "滑り止めPE/CPE靴カバー"
+              },
+              "consumables": {
+                "title": "消耗品",
+                "desc": "粘着マット、ステッキーマット、綿棒"
+              }
+            }
+          },
+          "aluminum": {
+            "title": "アルミテープ",
+            "items": {
+              "heatResist": {
+                "title": "耐熱アルミテープ",
+                "desc": "高温耐性、HVAC用途"
+              },
+              "moistResist": {
+                "title": "防湿アルミテープ",
+                "desc": "防水でパイプを保護"
+              },
+              "ductTape": {
+                "title": "ダクト用アルミテープ",
+                "desc": "産業用HVACダクトの接合"
+              },
+              "thermal": {
+                "title": "熱伝導アルミテープ",
+                "desc": "部品・基板の放熱"
+              }
+            }
+          }
+        },
+        "hubs": {
+          "north": {
+            "title": "北部主要工業団地",
+            "items": {
+              "dinhVu": {
+                "title": "ディンブー工業団地",
+                "desc": "ハイフォン、国際港と接続"
+              },
+              "thangLong": {
+                "title": "タンロン工業団地",
+                "desc": "ハノイ、電子・自動車組立"
+              },
+              "queVo": {
+                "title": "クエヴォ工業団地",
+                "desc": "バクニン、機械・部品"
+              },
+              "yenPhong": {
+                "title": "イエンフォン工業団地",
+                "desc": "バクニン、サムスン・ハイテク拠点"
+              }
+            }
+          },
+          "center": {
+            "title": "中部工業団地",
+            "items": {
+              "phuBai": {
+                "title": "フーバイ工業団地",
+                "desc": "トゥアティエンフエ、加工・消費財"
+              },
+              "hoaKhanh": {
+                "title": "ホアカイン工業団地",
+                "desc": "ダナン、機械から食品まで多分野"
+              },
+              "dungQuat": {
+                "title": "ズンクワット工業団地",
+                "desc": "クアンガイ、石油化学・重工業"
+              }
+            }
+          },
+          "south": {
+            "title": "南部工業団地",
+            "items": {
+              "vsipBd": {
+                "title": "VSIPビンズオン工業団地",
+                "desc": "500ha規模、多分野製造業"
+              },
+              "nhonTrach": {
+                "title": "ニョンチャック工業団地",
+                "desc": "ドンナイ、カットライ港に近い"
+              },
+              "longHau": {
+                "title": "ロンハウ工業団地",
+                "desc": "ロンアン、倉庫・輸出物流"
+              }
+            }
+          },
+          "hanamHub": {
+            "title": "ハーナム流通センター・ハブ",
+            "items": {
+              "hub": {
+                "title": "HUBハーナム（物流センター）",
+                "desc": "北部拠点の10,000㎡物流倉庫"
+              },
+              "factory": {
+                "title": "ULinkハーナム包装工場",
+                "desc": "シュリンクフィルム、PE袋、プラスチックトレイ、アルミテープの製造"
+              }
+            }
+          }
+        },
+        "industries": {
+          "food": {
+            "title": "食品・飲料",
+            "items": {
+              "dryFood": {
+                "title": "乾物食品包装",
+                "desc": "シュリンクフィルム、PE袋、調味料・穀物包装"
+              },
+              "fresh": {
+                "title": "生鮮食品包装",
+                "desc": "発泡トレイ、食品ラップ、真空包装"
+              },
+              "palletFb": {
+                "title": "F&Bパレット・棚",
+                "desc": "食品用プラスチックパレット、冷蔵倉庫棚"
+              }
+            }
+          },
+          "medical": {
+            "title": "医薬品・ヘルスケア",
+            "items": {
+              "pharmaPack": {
+                "title": "医薬品包装",
+                "desc": "アルミブリスターフォイル、医薬品用プラスチック容器"
+              },
+              "cleanroomMed": {
+                "title": "医療用クリーンルーム用品",
+                "desc": "滅菌ワイプ、医療用マスク"
+              }
+            }
+          },
+          "electronics": {
+            "title": "電子・部品",
+            "items": {
+              "esdBag": {
+                "title": "ESD静電気防止包装",
+                "desc": "シールディングバッグ、ESDバブルバッグ"
+              },
+              "tray": {
+                "title": "部品トレイ",
+                "desc": "ESD成形プラスチックトレイ、静電気防止ボックス"
+              }
+            }
+          },
+          "logistics": {
+            "title": "物流・輸送",
+            "items": {
+              "palletPack": {
+                "title": "パレット梱包",
+                "desc": "ストレッチラップフィルム、PETストラップ"
+              },
+              "airbag": {
+                "title": "コンテナ用エアバッグ",
+                "desc": "ダンネージバッグ、産業用乾燥剤"
+              }
+            }
+          }
+        },
+        "resources": {
+          "expert": {
+            "title": "専門分野",
+            "items": {
+              "shrinkGuide": {
+                "title": "シュリンクフィルム選定ガイド",
+                "desc": "POF、PE、PVCシュリンクフィルムの比較"
+              },
+              "cartonLookup": {
+                "title": "段ボールサイズ検索",
+                "desc": "標準段ボール規格表"
+              },
+              "exportGuide": {
+                "title": "輸出ハンドブック",
+                "desc": "ISPM15基準・輸出用パレット"
+              }
+            }
+          },
+          "technical": {
+            "title": "技術資料",
+            "items": {
+              "tds": {
+                "title": "TDS（技術データシート）",
+                "desc": "詳細な技術仕様書"
+              },
+              "msds": {
+                "title": "MSDS (Material Safety)",
+                "desc": "化学物質・材料安全"
+              },
+              "cad": {
+                "title": "CAD図面 2D/3D",
+                "desc": "段ボール箱・プラスチックパレット"
+              }
+            }
+          }
+        },
+        "about": {
+          "intro": {
+            "title": "紹介・能力",
+            "items": {
+              "about": {
+                "title": "ULink Industriesについて",
+                "desc": "産業用包装ソリューション15年"
+              },
+              "hanam": {
+                "title": "ハーナム流通センター",
+                "desc": "北部にサービス提供する10,000㎡物流倉庫"
+              },
+              "iso": {
+                "title": "ISO 9001:2015基準",
+                "desc": "国際品質管理システム"
+              }
+            }
+          }
+        }
+      }
+    }
   },
   "home": {
     "hero": {
@@ -486,6 +1464,14 @@
       "card3Title": "最適化された産業用梱包ソリューション - ケース梱包の効率化と物流コスト削減のご紹介。",
       "card4Date": "2026年7月22日",
       "card4Title": "最適化された産業用梱包ソリューション - ケース梱包の効率化と物流コスト削減のご紹介。",
+      "card1AuthorName": "Nguyễn Minh Tuấn",
+      "card1AuthorRole": "包装部門マネージャー",
+      "card2AuthorName": "Lê Quốc Hưng",
+      "card2AuthorRole": "倉庫・物流マネージャー",
+      "card3AuthorName": "Trần Thị Hồng Nhung",
+      "card3AuthorRole": "生産ディレクター",
+      "card4AuthorName": "Phạm Thanh Sơn",
+      "card4AuthorRole": "技術スペシャリスト",
       "readMore": "続きを読む",
       "docsTitle": "資料・カタログ",
       "doc1Category": "カタログ",
@@ -884,6 +1870,7 @@
   "aboutHub": {
     "hero": {
       "eyebrow": "HÀ NAM 物流センター",
+      "title": "ハナムハブ - 製造企業向け資材供給",
       "titleLine1": "最適な効率。",
       "titleLine2": "揺るぎない信頼。",
       "intro": "ULink Industries の Hà Nam 物流センターは、先進技術を活用し最新の国際基準で運営する、現代的な物流拠点を目指して構築されています。",
@@ -1695,5 +2682,21 @@
     "evidenceUploadText": "技術サポートチームによる迅速な対応のため、ここに写真をアップロードしてください",
     "submitFeedbackSuccess": "ご評価いただきありがとうございます！",
     "submitIncidentSuccess": "事故報告が送信されました。技術サポートチームより追ってご連絡いたします。"
+  },
+  "customSolutions": {
+    "title": "企業向けカスタムソリューション",
+    "description": "企業のニーズに合わせたスマートな梱包ソリューション。資材コストと廃棄を削減し、注文量に応じた梱包工程の自動化を実現します。既存の倉庫管理システムと簡単に連携でき、円滑な運用と最大30%の物流コスト削減を支援します。",
+    "cta": "専門家に相談する"
+  },
+  "productCard": {
+    "noImage": "画像なし",
+    "quote": "見積もりを依頼",
+    "kg": "kg",
+    "moq": "最小発注量",
+    "inStock": "在庫あり",
+    "customOrders": "受注生産",
+    "location": "ハナムハブ（ベトナム）",
+    "order": "注文",
+    "bookmark": "製品を保存"
   }
 }

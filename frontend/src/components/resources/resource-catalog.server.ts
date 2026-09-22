@@ -1,9 +1,10 @@
 import { readItems } from '@directus/sdk';
 import { publicDirectus } from '@/lib/directus';
-import { MOCK_RESOURCES, MOST_VIEWED_ARTICLES } from './mock-data';
+// MOCK_RESOURCES / MOST_VIEWED_ARTICLES have been migrated to Directus (see scripts/seed-resources.mjs).
 import { ResourceItem } from './types';
+import { resolveImageUrl } from '@/lib/image-url';
 
-const CASE_STUDIES_MAP: Record<string, ResourceItem> = {
+export const CASE_STUDIES_MAP: Record<string, ResourceItem> = {
   'hvac-office-building': {
     id: 'hvac-office-building',
     category: 'case-study',
@@ -518,13 +519,105 @@ const CASE_STUDIES_MAP: Record<string, ResourceItem> = {
   }
 };
 
+async function fetchDirectusArticles(): Promise<ResourceItem[]> {
+  try {
+    const posts = (await publicDirectus.request(
+      readItems('blog_posts' as any, {
+        filter: { status: { _eq: 'published' } },
+        fields: [
+          'id', 'slug', 'cover', 'author', 'author_role', 'author_avatar',
+          'category', 'published_at', 'is_featured',
+          'translations.languages_code', 'translations.title',
+          'translations.description', 'translations.body'
+        ],
+        sort: ['-published_at'],
+        limit: -1
+      } as any)
+    )) as any[];
+
+    if (!posts?.length) return [];
+
+    return posts.map((post) => {
+      const t = (lang: string, field: string) => {
+        const tr = post.translations?.find((t: any) => t.languages_code === lang);
+        return tr?.[field] || '';
+      };
+
+      const title = {
+        vi: t('vi', 'title') || t('en', 'title'),
+        en: t('en', 'title') || t('vi', 'title'),
+        ja: t('ja', 'title') || t('en', 'title') || t('vi', 'title'),
+      };
+
+      const description = {
+        vi: t('vi', 'description') || t('en', 'description') || '',
+        en: t('en', 'description') || t('vi', 'description') || '',
+        ja: t('ja', 'description') || t('en', 'description') || '',
+      };
+
+      const bodyHtml = {
+        vi: t('vi', 'body') || t('en', 'body') || t('ja', 'body') || '',
+        en: t('en', 'body') || t('vi', 'body') || t('ja', 'body') || '',
+        ja: t('ja', 'body') || t('en', 'body') || t('vi', 'body') || '',
+      };
+
+      const image = resolveImageUrl(post.cover) || '/images/resources/default-article.jpg';
+
+      const date = post.published_at
+        ? new Date(post.published_at).toLocaleDateString('vi-VN', { month: 'long', year: 'numeric' })
+        : '';
+
+      const categoryVi = post.category || 'Tin tức';
+      const categoryMap: Record<string, { en: string; ja: string }> = {
+        'Kho lạnh & Thực phẩm': { en: 'Cold Storage & Food', ja: '冷蔵・食品物流' },
+        'Cảng biển & Container': { en: 'Seaport & Container', ja: '港湾・コンテナ' },
+        'Khu công nghiệp': { en: 'Industrial Park', ja: '工業団地' },
+        'Tòa nhà thương mại': { en: 'Commercial Building', ja: '商業施設' },
+        'Tin tức': { en: 'News', ja: 'ニュース' }
+      };
+      const categoryLocalized = categoryMap[categoryVi] || { en: categoryVi, ja: categoryVi };
+
+      return {
+        id: post.slug || `article-${post.id}`,
+        category: 'news' as const,
+        badge: {
+          vi: categoryVi,
+          en: categoryLocalized.en,
+          ja: categoryLocalized.ja,
+        },
+        title,
+        description,
+        date,
+        image,
+        author: {
+          name: { vi: post.author || 'ULink', en: post.author || 'ULink', ja: post.author || 'ULink' },
+          role: { vi: post.author_role || '', en: post.author_role || '', ja: post.author_role || '' },
+          avatar: resolveImageUrl(post.author_avatar) || '/images/logo/image.png',
+        },
+        readTime: { vi: '5 phút đọc', en: '5 min read', ja: '5分で読める' },
+        bodyHtml,
+        isFeatured: !!post.is_featured,
+      } satisfies ResourceItem;
+    });
+  } catch (err) {
+    console.error('Failed to fetch articles from Directus:', err);
+    return [];
+  }
+}
+
 export async function loadResourceCatalog() {
-  const caseStudiesList = Object.values(CASE_STUDIES_MAP);
-  return [...caseStudiesList, ...MOCK_RESOURCES, ...MOST_VIEWED_ARTICLES];
+  // All resources now come from Directus (seeded via scripts/seed-resources.mjs).
+  const directusArticles = await fetchDirectusArticles();
+  return directusArticles;
 }
 
 export async function loadResourceBySlug(slug: string) {
   const lowerSlug = (slug || '').toLowerCase().trim();
+
+  // Check Directus articles first
+  const directusArticles = await fetchDirectusArticles();
+  const directusMatch = directusArticles.find((a) => a.id.toLowerCase() === lowerSlug);
+  if (directusMatch) return directusMatch;
 
   // Direct lookup from explicit case studies map
   if (CASE_STUDIES_MAP[lowerSlug]) {

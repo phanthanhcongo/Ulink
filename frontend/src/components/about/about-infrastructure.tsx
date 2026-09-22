@@ -1,35 +1,20 @@
 import Image from 'next/image';
 import { AboutSectionHeader } from './about-section-header';
+import { getTranslations } from 'next-intl/server';
 
-const items = [
-  {
-    image: '/images/about/gallery/cleanroom-materials-warehouse.png',
-    title: 'Hệ thống kho hiện đại',
-    desc: 'Thiết kế tối ưu công năng, đảm bảo an toàn, bảo quản vô trùng cho các lô hàng nhạy cảm.'
-  },
-  {
-    image: '/images/about/gallery/smart-wms-warehouse.png',
-    title: 'Quản lý thông minh WMS',
-    desc: 'Ứng dụng hệ thống quản lý kho tiên tiến, giám sát vị trí hàng hóa và tồn kho theo thời gian thực.'
-  },
-  {
-    image: '/images/about/gallery/logistics-delivery-truck.png',
-    title: 'Mạng lưới linh hoạt',
-    desc: 'Kết nối nhanh chóng với đội xe vận chuyển nội bộ, tối ưu lộ trình và tiến độ giao nhận.'
-  },
-  {
-    image: '/images/about/gallery/operation-team.png',
-    title: 'Đội ngũ chuyên nghiệp',
-    desc: 'Kỹ sư và nhân sự vận hành được đào tạo bài bản, sẵn sàng giải quyết bài toán chuỗi cung ứng phức tạp.'
-  }
-];
-
-export function AboutInfrastructure() {
+export async function AboutInfrastructure() {
+  const t = await getTranslations('aboutHub.operations');
+  const items = [
+    { image: '/images/about/gallery/cleanroom-materials-warehouse.png', title: t('warehouse'), desc: t('warehouseDesc') },
+    { image: '/images/about/gallery/smart-wms-warehouse.png', title: t('wms'), desc: t('wmsDesc') },
+    { image: '/images/about/gallery/logistics-delivery-truck.png', title: t('network'), desc: t('networkDesc') },
+    { image: '/images/about/gallery/operation-team.png', title: t('team'), desc: t('teamDesc') }
+  ];
   return (
     <section className="py-6 lg:py-8 xl:py-10">
       <AboutSectionHeader
-        eyebrow="Vận hành hiện đại – Thông minh"
-        title="Hạ tầng kỹ thuật & Hệ thống tối ưu"
+        eyebrow={t('title')}
+        title={t('title')}
       />
 
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">

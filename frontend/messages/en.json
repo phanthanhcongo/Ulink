@@ -208,7 +208,985 @@
     "myRfqs": "RFQ History",
     "logout": "Log out",
     "search": "Search",
-    "cart": "Cart"
+    "cart": "Cart",
+    "mega": {
+      "badges": {
+        "new": "NEW",
+        "hot": "HOT"
+      },
+      "cta": {
+        "viewAllProducts": "View all {name} products",
+        "viewAllParks": "View all industrial parks",
+        "viewAllIndustry": "View all {name}",
+        "viewAllResources": "View all {name}",
+        "aboutMore": "More about us",
+        "registerPartner": "Register as partner",
+        "learnMore": "Learn more →",
+        "downloadNow": "Download now →",
+        "applyNow": "Apply now →"
+      },
+      "headings": {
+        "productsInCategory": "Product catalog — {name}",
+        "parksInRegion": "Industrial parks — {name}",
+        "becomePartner": "Become a Distribution Partner — ULink Industries",
+        "industrySolutions": "Solutions for {name}",
+        "industrySolutionsFood": "Food & Beverage Solutions",
+        "resourcesKnowledge": "Professional Packaging Knowledge",
+        "aboutHubProd": "Ha Nam Hub"
+      },
+      "promo": {
+        "aiSolution": "AI solutions for smart factories",
+        "ecoSolution": "Green packaging solutions — Biodegradable packaging for F&B",
+        "ebookMistakes": "Free ebook — 10 common mistakes in export packaging",
+        "hiringBd": "Hiring: ULink is looking for a B2B (Packaging) Sales Manager"
+      },
+      "hubDefaultName": "HUB Ha Nam",
+      "solutions": {
+        "categories": {
+          "packaging": {
+            "name": "Packaging",
+            "items": {
+              "pof": {
+                "title": "POF Shrink Film",
+                "desc": "Versatile heat-shrink film with high clarity, used for food & consumer goods packaging"
+              },
+              "tape": {
+                "title": "Packing Tape",
+                "desc": "OPP tape, printed-logo tape, double-sided tape for carton sealing"
+              },
+              "shrinkPe": {
+                "title": "PE Shrink Film",
+                "desc": "Heat-shrink film that seals products against dust & moisture, improving appearance"
+              },
+              "palletWrap": {
+                "title": "Pallet Wrap Film",
+                "desc": "High-strength stretch film for wrapping pallets, protecting goods during transport"
+              },
+              "carton": {
+                "title": "Corrugated Cartons",
+                "desc": "3/5/7-ply corrugated cartons with high-quality flexo printing, made to order"
+              },
+              "hipsPp": {
+                "title": "HIPS/PP Film",
+                "desc": "Forms anti-static component trays, protecting items in storage"
+              },
+              "peHdBag": {
+                "title": "PE / HD Bags",
+                "desc": "Industrial goods bags, carton liner bags in various sizes"
+              },
+              "palletWood": {
+                "title": "Wooden / Plastic Pallets",
+                "desc": "EUR-standard pallets, export pallets certified to ISPM15"
+              }
+            }
+          },
+          "cleanroom": {
+            "name": "Cleanroom Supplies",
+            "items": {
+              "gloves": {
+                "title": "Cleanroom Gloves",
+                "desc": "Powder-free Nitrile & Latex gloves, meeting cleanroom ISO standards"
+              },
+              "wipes": {
+                "title": "Cleanroom Wipes",
+                "desc": "Dust-free wipes, polyester cloths for cleanroom use"
+              },
+              "bags": {
+                "title": "Cleanroom Bags",
+                "desc": "Cleanroom PE bags, ESD anti-static bags for product packaging"
+              },
+              "apparel": {
+                "title": "Cleanroom Apparel",
+                "desc": "Anti-static coveralls, gowns, and hoods"
+              },
+              "shoeCover": {
+                "title": "Cleanroom Shoe Covers",
+                "desc": "Anti-slip PE/CPE shoe covers for controlled areas"
+              },
+              "consumables": {
+                "title": "Consumables",
+                "desc": "Cleanroom adhesive mats, sticky mats, industrial cotton swabs"
+              },
+              "mask": {
+                "title": "Cleanroom Masks",
+                "desc": "3-ply masks, N95 masks for cleanroom environments"
+              },
+              "goggles": {
+                "title": "Safety Goggles",
+                "desc": "Dust-proof, chemical-resistant goggles meeting cleanroom standards"
+              }
+            }
+          },
+          "aluminum": {
+            "name": "Aluminum Tape",
+            "items": {
+              "heatResist": {
+                "title": "Heat-Resistant Aluminum Tape",
+                "desc": "High-temperature aluminum tape used in HVAC and industrial insulation"
+              },
+              "moistResist": {
+                "title": "Moisture-Resistant Aluminum Tape",
+                "desc": "Waterproof aluminum tape protecting pipes and metal surfaces"
+              },
+              "ductTape": {
+                "title": "Duct Aluminum Tape",
+                "desc": "Specialized for joining ducts in industrial HVAC ventilation systems"
+              },
+              "thermal": {
+                "title": "Thermal Conductive Aluminum Tape",
+                "desc": "Heat-dissipating aluminum tape for electronic components, LEDs and PCBs"
+              },
+              "decor": {
+                "title": "Decorative Aluminum Tape",
+                "desc": "Glossy and matte aluminum tape for interior decoration and advertising"
+              },
+              "selfAdhesive": {
+                "title": "Self-Adhesive Aluminum Tape",
+                "desc": "Pressure-sensitive self-adhesive aluminum tape, easy to apply without heating"
+              },
+              "insul": {
+                "title": "Insulating Aluminum Tape",
+                "desc": "Insulating aluminum tape with EMI/RFI shielding for electronic devices"
+              },
+              "reinforced": {
+                "title": "Reinforced Aluminum Tape",
+                "desc": "Fiberglass-reinforced aluminum tape with high tensile strength"
+              }
+            }
+          }
+        },
+        "viewAllShort": {
+          "packaging": "Packaging",
+          "cleanroom": "Cleanroom",
+          "aluminum": "Aluminum Tape"
+        }
+      },
+      "hubs": {
+        "regions": {
+          "north": {
+            "name": "Northern Region",
+            "items": {
+              "dinhVu": {
+                "title": "Dinh Vu Industrial Park",
+                "desc": "Hai Phong, connected to international seaports, a strategic location for heavy industry"
+              },
+              "thangLong": {
+                "title": "Thang Long Industrial Park",
+                "desc": "Hanoi, a reputable Japanese joint venture with complete infrastructure for electronics & automotive"
+              },
+              "queVo": {
+                "title": "Que Vo Industrial Park",
+                "desc": "Bac Ninh, connected to National Highway 18, near Noi Bai airport, attracting mechanics & components industries"
+              },
+              "phucDien": {
+                "title": "Phuc Dien Industrial Park",
+                "desc": "Hai Duong, favorable trading location, focused on textiles & food"
+              },
+              "yenPhong": {
+                "title": "Yen Phong Industrial Park",
+                "desc": "Bac Ninh, the Samsung manufacturing hub, high-tech and modern supporting services"
+              },
+              "daiAn": {
+                "title": "Dai An Industrial Park",
+                "desc": "Hai Duong, strongly attracting FDI, diverse mechanical assembly"
+              },
+              "tienSon": {
+                "title": "Tien Son Industrial Park",
+                "desc": "Bac Ninh, synchronized technical infrastructure, precision machining & construction materials"
+              },
+              "namSach": {
+                "title": "Nam Sach Industrial Park",
+                "desc": "Hai Duong, suitable for clean industry, export goods processing & packaging"
+              }
+            }
+          },
+          "center": {
+            "name": "Central Region",
+            "items": {
+              "phuBai": {
+                "title": "Phu Bai Industrial Park",
+                "desc": "Thua Thien Hue, strategic location near an international airport, light industry & processing"
+              },
+              "dienNam": {
+                "title": "Dien Nam – Dien Ngoc Industrial Park",
+                "desc": "Quang Nam, the largest industrial center in Central Vietnam, textiles & footwear"
+              },
+              "hoaKhanh": {
+                "title": "Hoa Khanh Industrial Park",
+                "desc": "Da Nang, a long-established industrial park, multi-sector from mechanics to food"
+              },
+              "phuTai": {
+                "title": "Phu Tai Industrial Park",
+                "desc": "Binh Dinh, Quy Nhon seaport, wood processing & export agriculture"
+              },
+              "dungQuat": {
+                "title": "Dung Quat Industrial Park",
+                "desc": "Quang Ngai, adjacent to Dung Quat Economic Zone, petrochemicals & heavy industry"
+              },
+              "tinhPhong": {
+                "title": "Tinh Phong Industrial Park",
+                "desc": "Quang Ngai, strongly attracting FDI, construction materials & mechanical production"
+              },
+              "phongDien": {
+                "title": "Phong Dien Industrial Park",
+                "desc": "Thua Thien Hue, synchronized infrastructure, high-tech & electronics"
+              },
+              "chuLai": {
+                "title": "Chu Lai Industrial Park",
+                "desc": "Quang Nam, an open economic zone, automotive assembly & mechanical components"
+              }
+            }
+          },
+          "south": {
+            "name": "Southern Region",
+            "items": {
+              "vsipBd": {
+                "title": "VSIP Binh Duong Industrial Park",
+                "desc": "A Vietnam–Singapore industrial park, 500ha in scale, multi-sector manufacturing"
+              },
+              "nhonTrach": {
+                "title": "Nhon Trach Industrial Park",
+                "desc": "Dong Nai, specializing in heavy industrial processing & manufacturing, near Cat Lai port"
+              },
+              "longHau": {
+                "title": "Long Hau Industrial Park",
+                "desc": "Long An, strategically located near seaports, suitable for logistics & export"
+              },
+              "tanThuan": {
+                "title": "Tan Thuan Industrial Park",
+                "desc": "Ho Chi Minh City, the largest export processing zone in the South, over 200 FDI enterprises"
+              },
+              "myPhuoc": {
+                "title": "My Phuoc Industrial Park",
+                "desc": "Binh Duong, multi-sector from electronics to mechanics, modern infrastructure"
+              },
+              "phuMy": {
+                "title": "Phu My Industrial Park",
+                "desc": "Ba Ria – Vung Tau, heavy industry and chemicals, near a deep-water port"
+              },
+              "ducHoa": {
+                "title": "Duc Hoa Industrial Park",
+                "desc": "Long An, a warehousing & logistics hub connecting Ho Chi Minh City and the Mekong Delta"
+              },
+              "bienHoa": {
+                "title": "Bien Hoa Industrial Park",
+                "desc": "Dong Nai, the oldest industrial park in Vietnam, diverse manufacturing sectors"
+              }
+            }
+          }
+        },
+        "partnerItems": {
+          "network": {
+            "title": "Extensive Distribution Network",
+            "desc": "Expand market coverage and reach customers nationwide."
+          },
+          "catalog": {
+            "title": "Explore the Product Catalog",
+            "desc": "Over 1,000+ SKUs ready for fast nationwide delivery."
+          },
+          "training": {
+            "title": "Product Training",
+            "desc": "Provide in-depth knowledge of product features and applications."
+          },
+          "support": {
+            "title": "In-Depth Technical Support",
+            "desc": "Professional engineering team supporting deployment and product warranty."
+          },
+          "hanamProd": {
+            "title": "Plastics Packaging Manufacturing",
+            "desc": "List of products manufactured at the Ha Nam Hub."
+          },
+          "pricing": {
+            "title": "Competitive Pricing Policy",
+            "desc": "Flexible discount mechanism based on sales volume and long-term commitment."
+          }
+        }
+      },
+      "industries": {
+        "food": {
+          "name": "Food",
+          "hubs": {
+            "dryFood": {
+              "title": "Dry Food Packaging",
+              "desc": "Shrink film, PE bags, packaging for snacks, cereals, spices"
+            },
+            "fresh": {
+              "title": "Fresh Food Packaging",
+              "desc": "Foam trays, food wrap, vacuum sealing"
+            },
+            "palletFb": {
+              "title": "F&B Pallets & Shelving",
+              "desc": "Food-grade plastic pallets, stainless steel shelving for cold storage"
+            },
+            "frozen": {
+              "title": "Frozen Food Packaging",
+              "desc": "Cold-resistant PA/PE bags, specialized shrink film"
+            },
+            "confection": {
+              "title": "Confectionery Packaging",
+              "desc": "Clear OPP bags, carton gift boxes, ribbons"
+            },
+            "bins": {
+              "title": "Containers & Plastic Bins",
+              "desc": "Stackable plastic crates, IBC totes, liquid containers"
+            },
+            "beverage": {
+              "title": "Beverage Packaging",
+              "desc": "Bottle multipack shrink film, can multipack film, shrink sleeve labels"
+            },
+            "hygiene": {
+              "title": "Food Safety Hygiene Supplies",
+              "desc": "Gloves, masks, shoe covers, hoods"
+            }
+          }
+        },
+        "medical": {
+          "name": "Pharmaceuticals & Healthcare",
+          "hubs": {
+            "pharmaPack": {
+              "title": "Pharmaceutical Packaging",
+              "desc": "Aluminum blister foil, pharmaceutical plastic bottles & jars"
+            },
+            "cleanroomMed": {
+              "title": "Medical Cleanroom Supplies",
+              "desc": "Sterile wipes, 3-ply medical masks"
+            },
+            "ppeMed": {
+              "title": "Medical Protective Gear",
+              "desc": "Protective clothing, nitrile examination gloves"
+            },
+            "vaccine": {
+              "title": "Vaccine Packaging",
+              "desc": "Insulated boxes, specialized cold gel packs"
+            }
+          }
+        },
+        "electronics": {
+          "name": "Electronics & Components",
+          "hubs": {
+            "esdBag": {
+              "title": "ESD Anti-Static Packaging",
+              "desc": "Shielding bags, ESD bubble bags"
+            },
+            "tray": {
+              "title": "Component Trays",
+              "desc": "ESD-formed plastic trays, anti-static plastic boxes"
+            },
+            "esdRoom": {
+              "title": "Electronics Cleanroom Supplies",
+              "desc": "PU-coated ESD gloves, sticky dust mats"
+            },
+            "kaptonTape": {
+              "title": "Heat-Resistant Tape",
+              "desc": "Kapton tape, EMI-shielding aluminum tape"
+            }
+          }
+        },
+        "logistics": {
+          "name": "Logistics & Transportation",
+          "hubs": {
+            "palletPack": {
+              "title": "Pallet Packaging",
+              "desc": "Pallet stretch wrap film, PET plastic strapping"
+            },
+            "airbag": {
+              "title": "Dunnage Air Bags",
+              "desc": "Container dunnage air bags, desiccant packs"
+            },
+            "seal": {
+              "title": "Cargo Sealing",
+              "desc": "Metal security seals, security seal labels"
+            },
+            "shipBox": {
+              "title": "Shipping Containers",
+              "desc": "5/7-ply corrugated cartons, wooden/plastic pallets"
+            }
+          }
+        },
+        "furniture": {
+          "name": "Furniture",
+          "hubs": {
+            "surfaceProt": {
+              "title": "Surface Protection",
+              "desc": "PE surface protection film against scratches"
+            },
+            "woodPack": {
+              "title": "Wood Component Packaging",
+              "desc": "PE foam film, POF heat-shrink film"
+            },
+            "adhesive": {
+              "title": "Bonding Materials",
+              "desc": "High-strength double-sided tape, industrial adhesive"
+            },
+            "largeBox": {
+              "title": "Furniture Cartons",
+              "desc": "Large-format corrugated boxes for cabinets, tables and chairs"
+            }
+          }
+        },
+        "hvac": {
+          "name": "Construction & HVAC",
+          "hubs": {
+            "insulTape": {
+              "title": "Insulation Tape",
+              "desc": "Aluminum tape, silver duct tape"
+            },
+            "insulMat": {
+              "title": "Insulation Materials",
+              "desc": "Insulating foam, fiberglass wool insulation"
+            },
+            "waterproof": {
+              "title": "Waterproof Membrane",
+              "desc": "PE film for concrete floor lining, waterproof membrane"
+            },
+            "vent": {
+              "title": "Ventilation Supplies",
+              "desc": "Flexible aluminum ducting, duct clamps"
+            }
+          }
+        }
+      },
+      "resources": {
+        "tabs": {
+          "expert": {
+            "name": "Specialized",
+            "hubs": {
+              "shrinkGuide": {
+                "title": "Shrink Film Selection Guide",
+                "desc": "Comparing POF, PE, and PVC shrink films: pros, cons and practical applications"
+              },
+              "cartonLookup": {
+                "title": "Carton Size Lookup",
+                "desc": "Standard carton spec table by weight & volume"
+              },
+              "blog": {
+                "title": "Packaging Industry Blog",
+                "desc": "In-depth articles on green materials and plastic resin technology"
+              },
+              "exportGuide": {
+                "title": "Export Packaging Handbook",
+                "desc": "ISPM15 standards, wooden pallet specs and regulations for major markets"
+              },
+              "video": {
+                "title": "Technical Instructional Videos",
+                "desc": "Operating strapping machines, wrapping machines, bag sealers"
+              },
+              "infographic": {
+                "title": "Infographics & Visual Materials",
+                "desc": "Quick packaging standard checklists and material comparison charts"
+              },
+              "safetyProc": {
+                "title": "Safe Packaging Procedures",
+                "desc": "SOPs for packing fragile goods and oversized/heavy machinery"
+              },
+              "webinar": {
+                "title": "Webinars & Workshops",
+                "desc": "Updates on discussions about bio-packaging and Industry 4.0 automation"
+              }
+            }
+          },
+          "technical": {
+            "name": "Technical Documents",
+            "hubs": {
+              "tds": {
+                "title": "TDS (Technical Data Sheet)",
+                "desc": "Detailed technical specification sheets for all products"
+              },
+              "msds": {
+                "title": "MSDS (Material Safety Data Sheet)",
+                "desc": "Chemical safety documentation & material safety guidance"
+              },
+              "cad": {
+                "title": "2D/3D Design Drawings",
+                "desc": "CAD technical drawings for cartons and plastic pallets"
+              },
+              "equipManual": {
+                "title": "Equipment User Manuals",
+                "desc": "User manuals for strapping machines, automatic wrapping machines"
+              }
+            }
+          },
+          "cases": {
+            "name": "Case Studies",
+            "hubs": {
+              "fbOpt": {
+                "title": "F&B Packaging Optimization",
+                "desc": "How ULink helped a partner cut plastic packaging costs by 15%"
+              },
+              "esdCase": {
+                "title": "ESD Solutions for Electronics Factories",
+                "desc": "Eliminating 99% of electrostatic discharge failures with ESD packaging"
+              },
+              "greenLog": {
+                "title": "Green Logistics in Exports",
+                "desc": "The journey of switching from wooden pallets to recycled plastic pallets"
+              },
+              "autoLine": {
+                "title": "Packaging Line Automation",
+                "desc": "Increasing productivity by 50% by upgrading to robotic wrapping machines"
+              }
+            }
+          },
+          "quality": {
+            "name": "Quality & Certifications",
+            "hubs": {
+              "iso9001": {
+                "title": "ISO 9001:2015 Certification",
+                "desc": "International-standard quality management system"
+              },
+              "rohs": {
+                "title": "RoHS & REACH Certificates",
+                "desc": "Commitment to eco-friendly, non-toxic materials"
+              },
+              "fda": {
+                "title": "FDA Standards for Food Packaging",
+                "desc": "Ensuring safety for direct food contact"
+              },
+              "cleanroomCert": {
+                "title": "Cleanroom Class 100–10000 Certification",
+                "desc": "Meets standards for medical device and semiconductor packaging"
+              }
+            }
+          },
+          "events": {
+            "name": "Events",
+            "hubs": {
+              "propak": {
+                "title": "ProPak Vietnam 2026 Exhibition",
+                "desc": "Meet ULink at our processing & packaging technology booth"
+              },
+              "biopack": {
+                "title": "Sustainable Bio-Packaging Seminar",
+                "desc": "Discussing alternatives to single-use plastics"
+              },
+              "trainCourse": {
+                "title": "Packaging Technical Training Course",
+                "desc": "Free SOP training program for VIP customers"
+              },
+              "calendar": {
+                "title": "Annual Event & Workshop Calendar",
+                "desc": "View the detailed schedule of community networking activities"
+              }
+            }
+          }
+        }
+      },
+      "about": {
+        "tabs": {
+          "hubProd": {
+            "name": "Manufacturing & Distribution Center",
+            "hubs": {
+              "about": {
+                "title": "About ULink Industries",
+                "desc": "Over 15 years of experience providing comprehensive industrial packaging solutions"
+              },
+              "capacity": {
+                "title": "Supply Capacity",
+                "desc": "15 years of packaging manufacturing experience, serving 500 businesses with large-order fulfillment capacity."
+              },
+              "hanam": {
+                "title": "Ha Nam Distribution Center",
+                "desc": "A 10,000m² logistics warehouse serving the North, delivering within 24 hours to Hanoi and surrounding areas"
+              },
+              "values": {
+                "title": "Core Values",
+                "desc": "Quality, Innovation, Sustainability, Customer-Centricity"
+              },
+              "partners": {
+                "title": "Partners & Customers",
+                "desc": "Trusted by 500+ businesses: Samsung, Vinamilk, Nestlé, Masan..."
+              },
+              "rfq": {
+                "title": "Request a Quote",
+                "desc": "Quick RFQ form, response within 24h, free consultation"
+              },
+              "sustain": {
+                "title": "Sustainability Commitment",
+                "desc": "ESG, recycled packaging, reducing carbon footprint across the supply chain"
+              }
+            }
+          },
+          "standards": {
+            "name": "Standards & Certifications",
+            "hubs": {
+              "qms": {
+                "title": "Quality Management System",
+                "desc": "ISO 9001:2015 certified across the entire factory system"
+              },
+              "foodSafety": {
+                "title": "Food Safety",
+                "desc": "HACCP and ISO 22000 certified for F&B packaging lines"
+              },
+              "cleanroomStd": {
+                "title": "Cleanroom Standards",
+                "desc": "Class 100,000 certified facility serving medical packaging and components"
+              },
+              "materialSafety": {
+                "title": "Material Safety Certification",
+                "desc": "Complete CO/CQ documentation, meeting RoHS, REACH, SGS export standards"
+              }
+            }
+          },
+          "eco": {
+            "name": "Sustainability",
+            "hubs": {
+              "biodeg": {
+                "title": "Biodegradable Packaging",
+                "desc": "A product line of fully biodegradable, eco-friendly bags and boxes"
+              },
+              "plasticReduce": {
+                "title": "Plastic Reduction Campaign",
+                "desc": "Optimizing shrink film thickness to help partners reduce plastic resin use by 20%"
+              },
+              "circular": {
+                "title": "Circular Economy",
+                "desc": "Program to collect and recycle plastic resin from factory waste"
+              },
+              "cleanEnergy": {
+                "title": "Clean Energy",
+                "desc": "The ULink Ha Nam factory runs on 100% rooftop solar power"
+              }
+            }
+          },
+          "careers": {
+            "name": "Career Opportunities",
+            "hubs": {
+              "workEnv": {
+                "title": "Work Environment",
+                "desc": "Experience a professional culture that values creativity and career growth"
+              },
+              "benefits": {
+                "title": "Benefits Policy",
+                "desc": "Competitive salary, comprehensive insurance and annual company trips"
+              },
+              "positions": {
+                "title": "Open Positions",
+                "desc": "View details of the latest job openings at our branches"
+              },
+              "apply": {
+                "title": "Submit Your Application",
+                "desc": "Quickly submit your application online to ULink's talent pool"
+              }
+            }
+          },
+          "contact": {
+            "name": "Contact",
+            "hubs": {
+              "hotline": {
+                "title": "Hotline & Support",
+                "desc": "24/7 consultation hotline and quick RFQ responses"
+              },
+              "offices": {
+                "title": "Offices & Factories",
+                "desc": "Detailed addresses of the Hanoi headquarters, Ha Nam and Binh Duong factories"
+              },
+              "social": {
+                "title": "Social Media Channels",
+                "desc": "Connect with ULink via LinkedIn, Facebook and Zalo OA"
+              },
+              "directRequest": {
+                "title": "Send a Direct Request",
+                "desc": "Form to submit questions or request a direct meeting with an engineer"
+              }
+            }
+          }
+        }
+      }
+    },
+    "mobile": {
+      "exploreTitle": "Explore ULink Industries",
+      "menuLabel": "MENU",
+      "menuAria": "Navigation menu",
+      "searchAria": "Search",
+      "cartAria": "Cart",
+      "closeMenuAria": "Close menu",
+      "accountTitle": "ULink Account",
+      "accountSubtitle": "Sign in to view quotes",
+      "orderList": "Order list",
+      "smartAutomation": "Smart Manufacturing Automation Solutions 2026",
+      "subtitles": {
+        "hubs": "Information on industrial parks & hubs nationwide.",
+        "solutions": "Explore our solutions and products.",
+        "industries": "Solutions tailored to specific industries.",
+        "resources": "Blog, case studies and technical documents.",
+        "about": "Learn about our team and mission.",
+        "default": "Explore ULink information"
+      },
+      "groups": {
+        "solutions": {
+          "packaging": {
+            "title": "Packaging",
+            "items": {
+              "pof": {
+                "title": "POF Shrink Film",
+                "desc": "Food & consumer goods packaging"
+              },
+              "tape": {
+                "title": "Packing Tape",
+                "desc": "OPP tape, logo printing, sealing"
+              },
+              "shrinkPe": {
+                "title": "PE Shrink Film",
+                "desc": "Heat-shrink film sealing against dust & moisture"
+              },
+              "palletWrap": {
+                "title": "Pallet Wrap Film",
+                "desc": "High-strength stretch pallet wrap film"
+              },
+              "carton": {
+                "title": "Corrugated Cartons",
+                "desc": "3/5/7-ply flexo-printed cartons"
+              },
+              "hipsPp": {
+                "title": "HIPS/PP Film",
+                "desc": "Anti-static component trays"
+              },
+              "peHdBag": {
+                "title": "PE / HD Bags",
+                "desc": "Industrial bags, carton liner bags"
+              },
+              "palletWood": {
+                "title": "Wooden / Plastic Pallets",
+                "desc": "EUR-standard export pallets"
+              }
+            }
+          },
+          "cleanroom": {
+            "title": "Cleanroom Supplies",
+            "items": {
+              "gloves": {
+                "title": "Cleanroom Gloves",
+                "desc": "Nitrile & Latex gloves, ISO standard"
+              },
+              "wipes": {
+                "title": "Cleanroom Wipes",
+                "desc": "Dust-free wipes, polyester cloths"
+              },
+              "bags": {
+                "title": "Cleanroom Bags",
+                "desc": "PE bags, ESD anti-static bags"
+              },
+              "apparel": {
+                "title": "Cleanroom Apparel",
+                "desc": "Coveralls, ESD hoods"
+              },
+              "shoeCover": {
+                "title": "Cleanroom Shoe Covers",
+                "desc": "Anti-slip PE/CPE shoe covers"
+              },
+              "consumables": {
+                "title": "Consumables",
+                "desc": "Adhesive mats, sticky mats, cotton swabs"
+              }
+            }
+          },
+          "aluminum": {
+            "title": "Aluminum Tape",
+            "items": {
+              "heatResist": {
+                "title": "Heat-Resistant Aluminum Tape",
+                "desc": "High-temperature resistant, used in HVAC"
+              },
+              "moistResist": {
+                "title": "Moisture-Resistant Aluminum Tape",
+                "desc": "Waterproof, protects piping"
+              },
+              "ductTape": {
+                "title": "Duct Aluminum Tape",
+                "desc": "Joins industrial HVAC ducting"
+              },
+              "thermal": {
+                "title": "Thermal Conductive Aluminum Tape",
+                "desc": "Heat dissipation for components & PCBs"
+              }
+            }
+          }
+        },
+        "hubs": {
+          "north": {
+            "title": "Key Industrial Parks in the North",
+            "items": {
+              "dinhVu": {
+                "title": "Dinh Vu Industrial Park",
+                "desc": "Hai Phong, connected to international seaports"
+              },
+              "thangLong": {
+                "title": "Thang Long Industrial Park",
+                "desc": "Hanoi, electronics & automotive assembly"
+              },
+              "queVo": {
+                "title": "Que Vo Industrial Park",
+                "desc": "Bac Ninh, mechanics & components"
+              },
+              "yenPhong": {
+                "title": "Yen Phong Industrial Park",
+                "desc": "Bac Ninh, the Samsung & high-tech hub"
+              }
+            }
+          },
+          "center": {
+            "title": "Central Region Industrial Parks",
+            "items": {
+              "phuBai": {
+                "title": "Phu Bai Industrial Park",
+                "desc": "Thua Thien Hue, processing & consumer goods"
+              },
+              "hoaKhanh": {
+                "title": "Hoa Khanh Industrial Park",
+                "desc": "Da Nang, multi-sector from mechanics to food"
+              },
+              "dungQuat": {
+                "title": "Dung Quat Industrial Park",
+                "desc": "Quang Ngai, petrochemicals & heavy industry"
+              }
+            }
+          },
+          "south": {
+            "title": "Southern Region Industrial Parks",
+            "items": {
+              "vsipBd": {
+                "title": "VSIP Binh Duong Industrial Park",
+                "desc": "500ha in scale, multi-sector manufacturing"
+              },
+              "nhonTrach": {
+                "title": "Nhon Trach Industrial Park",
+                "desc": "Dong Nai, near Cat Lai port"
+              },
+              "longHau": {
+                "title": "Long Hau Industrial Park",
+                "desc": "Long An, warehousing & export logistics"
+              }
+            }
+          },
+          "hanamHub": {
+            "title": "Ha Nam Distribution Center & Hub",
+            "items": {
+              "hub": {
+                "title": "HUB Ha Nam (Logistics Center)",
+                "desc": "10,000m² logistics warehouse in the Northern hub"
+              },
+              "factory": {
+                "title": "ULink Ha Nam Packaging Factory",
+                "desc": "Manufacturing shrink film, PE bags, plastic trays & aluminum tape"
+              }
+            }
+          }
+        },
+        "industries": {
+          "food": {
+            "title": "Food & Beverage",
+            "items": {
+              "dryFood": {
+                "title": "Dry Food Packaging",
+                "desc": "Shrink film, PE bags, spice & cereal packaging"
+              },
+              "fresh": {
+                "title": "Fresh Food Packaging",
+                "desc": "Foam trays, food wrap, vacuum sealing"
+              },
+              "palletFb": {
+                "title": "F&B Pallets & Shelving",
+                "desc": "Food-grade plastic pallets, cold storage shelving"
+              }
+            }
+          },
+          "medical": {
+            "title": "Pharmaceuticals & Healthcare",
+            "items": {
+              "pharmaPack": {
+                "title": "Pharmaceutical Packaging",
+                "desc": "Aluminum blister foil, pharmaceutical plastic bottles"
+              },
+              "cleanroomMed": {
+                "title": "Medical Cleanroom Supplies",
+                "desc": "Sterile wipes, medical masks"
+              }
+            }
+          },
+          "electronics": {
+            "title": "Electronics & Components",
+            "items": {
+              "esdBag": {
+                "title": "ESD Anti-Static Packaging",
+                "desc": "Shielding bags, ESD bubble bags"
+              },
+              "tray": {
+                "title": "Component Trays",
+                "desc": "ESD-formed plastic trays, anti-static boxes"
+              }
+            }
+          },
+          "logistics": {
+            "title": "Logistics & Transportation",
+            "items": {
+              "palletPack": {
+                "title": "Pallet Packaging",
+                "desc": "Stretch wrap film, PET strapping"
+              },
+              "airbag": {
+                "title": "Container Dunnage Bags",
+                "desc": "Dunnage bags, industrial desiccant"
+              }
+            }
+          }
+        },
+        "resources": {
+          "expert": {
+            "title": "Specialized",
+            "items": {
+              "shrinkGuide": {
+                "title": "Shrink Film Selection Guide",
+                "desc": "Comparing POF, PE, PVC shrink film"
+              },
+              "cartonLookup": {
+                "title": "Carton Size Lookup",
+                "desc": "Standard carton spec table"
+              },
+              "exportGuide": {
+                "title": "Export Handbook",
+                "desc": "ISPM15 standards & export pallets"
+              }
+            }
+          },
+          "technical": {
+            "title": "Technical Documents",
+            "items": {
+              "tds": {
+                "title": "TDS (Technical Data Sheet)",
+                "desc": "Detailed technical spec sheet"
+              },
+              "msds": {
+                "title": "MSDS (Material Safety)",
+                "desc": "Chemical & material safety"
+              },
+              "cad": {
+                "title": "2D/3D CAD Drawings",
+                "desc": "Cartons & plastic pallets"
+              }
+            }
+          }
+        },
+        "about": {
+          "intro": {
+            "title": "Introduction & Capabilities",
+            "items": {
+              "about": {
+                "title": "About ULink Industries",
+                "desc": "15 years of industrial packaging solutions"
+              },
+              "hanam": {
+                "title": "Ha Nam Distribution Center",
+                "desc": "10,000m² logistics warehouse serving the North"
+              },
+              "iso": {
+                "title": "ISO 9001:2015 Standard",
+                "desc": "International quality management system"
+              }
+            }
+          }
+        }
+      }
+    }
   },
   "home": {
     "hero": {
@@ -491,6 +1469,14 @@
       "card3Title": "Optimal industrial packaging solution - securing bottle bundles and beverage cartons into solid blocks for easy warehousing and distribution.",
       "card4Date": "July 22, 2026",
       "card4Title": "Optimal industrial packaging solution - securing bottle bundles and beverage cartons into solid blocks for easy warehousing and distribution.",
+      "card1AuthorName": "Nguyễn Minh Tuấn",
+      "card1AuthorRole": "Packaging Manager",
+      "card2AuthorName": "Lê Quốc Hưng",
+      "card2AuthorRole": "Warehouse & Logistics Manager",
+      "card3AuthorName": "Trần Thị Hồng Nhung",
+      "card3AuthorRole": "Production Director",
+      "card4AuthorName": "Phạm Thanh Sơn",
+      "card4AuthorRole": "Technical Specialist",
       "readMore": "Read more",
       "docsTitle": "Documents & Catalogue",
       "doc1Category": "Catalogue",
@@ -886,6 +1872,7 @@
   "aboutHub": {
     "hero": {
       "eyebrow": "HÀ NAM DISTRIBUTION CENTER",
+      "title": "Ha Nam Hub - Supplying materials for manufacturing businesses",
       "titleLine1": "Optimal efficiency.",
       "titleLine2": "Lasting trust.",
       "intro": "ULink Industries' Hà Nam Distribution Center is built to become a modern logistics hub, applying advanced technology and operating to the latest international standards.",
@@ -1712,5 +2699,21 @@
     "evidenceUploadText": "Upload photos here for prompt technical support team resolution",
     "submitFeedbackSuccess": "Thank you for your rating!",
     "submitIncidentSuccess": "Incident report submitted. Our technical support team will contact you shortly!"
+  },
+  "customSolutions": {
+    "title": "Custom Solutions for Your Business",
+    "description": "Smart packaging solutions tailored to your business, helping optimize material costs, reduce waste, and automate packaging processes based on order volume. Easily integrated with your existing warehouse management system for seamless operations and logistics savings of up to 30%.",
+    "cta": "Connect with an Expert"
+  },
+  "productCard": {
+    "noImage": "No image",
+    "quote": "Request a quote",
+    "kg": "kg",
+    "moq": "MOQ",
+    "inStock": "In Stock",
+    "customOrders": "Custom orders",
+    "location": "Ha Nam Hub, Vietnam",
+    "order": "Order",
+    "bookmark": "Bookmark product"
   }
 }

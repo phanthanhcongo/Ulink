@@ -208,7 +208,985 @@
     "myRfqs": "Lịch sử báo giá",
     "logout": "Đăng xuất",
     "search": "Tìm kiếm",
-    "cart": "Giỏ hàng"
+    "cart": "Giỏ hàng",
+    "mega": {
+      "badges": {
+        "new": "MỚI",
+        "hot": "HOT"
+      },
+      "cta": {
+        "viewAllProducts": "Xem tất cả sản phẩm {name}",
+        "viewAllParks": "Xem tất cả Khu công nghiệp",
+        "viewAllIndustry": "Xem tất cả {name}",
+        "viewAllResources": "Xem tất cả {name}",
+        "aboutMore": "Xem thêm về chúng tôi",
+        "registerPartner": "Đăng ký đối tác ngay",
+        "learnMore": "Tìm hiểu thêm →",
+        "downloadNow": "Tải ngay →",
+        "applyNow": "Ứng tuyển ngay →"
+      },
+      "headings": {
+        "productsInCategory": "Danh mục Sản phẩm — {name}",
+        "parksInRegion": "Cụm / Khu công nghiệp — {name}",
+        "becomePartner": "Trở thành Đối tác phân phối - ULink Industries",
+        "industrySolutions": "Giải pháp ngành {name}",
+        "industrySolutionsFood": "Giải pháp ngành Thực phẩm & Đồ uống",
+        "resourcesKnowledge": "Kiến thức đóng gói chuyên nghiệp",
+        "aboutHubProd": "Hub Hà Nam"
+      },
+      "promo": {
+        "aiSolution": "Giải pháp AI cho nhà máy thông minh",
+        "ecoSolution": "Giải pháp bao bì xanh — Bao bì phân hủy sinh học cho ngành F&B",
+        "ebookMistakes": "Ebook miễn phí — 10 Sai lầm phổ biến khi đóng gói hàng xuất khẩu",
+        "hiringBd": "Tuyển dụng: ULink đang tìm kiếm Trưởng phòng Kinh doanh B2B (Bao bì)"
+      },
+      "hubDefaultName": "HUB Hà Nam",
+      "solutions": {
+        "categories": {
+          "packaging": {
+            "name": "Bao bì & Đóng gói",
+            "items": {
+              "pof": {
+                "title": "Màng co POF",
+                "desc": "Màng co nhiệt đa năng, độ trong suốt cao, ứng dụng bao gói thực phẩm & hàng tiêu dùng"
+              },
+              "tape": {
+                "title": "Băng keo đóng gói",
+                "desc": "Băng keo OPP, băng keo in logo, băng keo 2 mặt cho dán thùng & niêm phong"
+              },
+              "shrinkPe": {
+                "title": "Màng co PE (Shrink Film)",
+                "desc": "Màng co nhiệt bọc kín sản phẩm chống bụi & ẩm, tăng tính thẩm mỹ"
+              },
+              "palletWrap": {
+                "title": "Màng quấn Pallet",
+                "desc": "Màng stretch quấn pallet chịu lực cao, bảo vệ hàng hóa khi vận chuyển"
+              },
+              "carton": {
+                "title": "Thùng carton",
+                "desc": "Thùng carton 3-5-7 lớp in flexo chất lượng cao theo yêu cầu"
+              },
+              "hipsPp": {
+                "title": "Màng HIPS/PP",
+                "desc": "Định hình khay chứa linh kiện chống tĩnh điện, bảo vệ lưu kho"
+              },
+              "peHdBag": {
+                "title": "Túi PE / HD",
+                "desc": "Túi đựng hàng công nghiệp, túi lót thùng carton đa dạng kích thước"
+              },
+              "palletWood": {
+                "title": "Pallet gỗ / nhựa",
+                "desc": "Pallet tiêu chuẩn EUR, pallet xuất khẩu đạt chứng nhận ISPM15"
+              }
+            }
+          },
+          "cleanroom": {
+            "name": "Vật tư phòng sạch",
+            "items": {
+              "gloves": {
+                "title": "Găng tay phòng sạch",
+                "desc": "Găng tay Nitrile, Latex không bột, đạt chuẩn ISO phòng sạch"
+              },
+              "wipes": {
+                "title": "Giấy lau phòng sạch",
+                "desc": "Giấy lau không bụi, khăn lau polyester dùng trong phòng sạch"
+              },
+              "bags": {
+                "title": "Túi phòng sạch",
+                "desc": "Túi PE phòng sạch, túi chống tĩnh điện ESD đóng gói sản phẩm"
+              },
+              "apparel": {
+                "title": "Quần áo phòng sạch",
+                "desc": "Bộ áo liền quần, áo choàng, mũ trùm đầu chống tĩnh điện"
+              },
+              "shoeCover": {
+                "title": "Bọc giày phòng sạch",
+                "desc": "Bọc giày PE, CPE chống trượt cho khu vực kiểm soát"
+              },
+              "consumables": {
+                "title": "Vật tư tiêu hao",
+                "desc": "Bảng dính phòng sạch, sticky mat, swab bông lau công nghiệp"
+              },
+              "mask": {
+                "title": "Khẩu trang phòng sạch",
+                "desc": "Khẩu trang 3 lớp, N95 cho môi trường phòng sạch"
+              },
+              "goggles": {
+                "title": "Kính bảo hộ",
+                "desc": "Kính chống bụi, chống hóa chất đạt chuẩn phòng sạch"
+              }
+            }
+          },
+          "aluminum": {
+            "name": "Băng keo Nhôm",
+            "items": {
+              "heatResist": {
+                "title": "Băng keo nhôm chịu nhiệt",
+                "desc": "Băng keo nhôm chịu nhiệt độ cao, dùng trong HVAC, cách nhiệt công nghiệp"
+              },
+              "moistResist": {
+                "title": "Băng keo nhôm chống ẩm",
+                "desc": "Băng keo nhôm chống thấm, bảo vệ đường ống và bề mặt kim loại"
+              },
+              "ductTape": {
+                "title": "Băng keo nhôm dán ống gió",
+                "desc": "Chuyên dán nối ống gió, hệ thống thông gió HVAC công nghiệp"
+              },
+              "thermal": {
+                "title": "Băng keo nhôm dẫn nhiệt",
+                "desc": "Băng keo nhôm tản nhiệt cho linh kiện điện tử, LED và bo mạch"
+              },
+              "decor": {
+                "title": "Băng keo nhôm trang trí",
+                "desc": "Băng keo nhôm bóng, mờ dùng trang trí nội thất và quảng cáo"
+              },
+              "selfAdhesive": {
+                "title": "Băng keo nhôm tự dính",
+                "desc": "Băng keo nhôm tự dính áp lực, dễ thi công, không cần gia nhiệt"
+              },
+              "insul": {
+                "title": "Băng keo nhôm cách điện",
+                "desc": "Băng keo nhôm cách điện, chống nhiễu EMI/RFI cho thiết bị điện tử"
+              },
+              "reinforced": {
+                "title": "Băng keo nhôm gia cường",
+                "desc": "Băng keo nhôm có lưới sợi thủy tinh, độ bền kéo cao"
+              }
+            }
+          }
+        },
+        "viewAllShort": {
+          "packaging": "Bao bì & Đóng gói",
+          "cleanroom": "Phòng sạch",
+          "aluminum": "Băng keo Nhôm"
+        }
+      },
+      "hubs": {
+        "regions": {
+          "north": {
+            "name": "Miền Bắc",
+            "items": {
+              "dinhVu": {
+                "title": "KCN Đình Vũ",
+                "desc": "Hải Phòng, kết nối cảng biển quốc tế, vị trí chiến lược cho công nghiệp nặng"
+              },
+              "thangLong": {
+                "title": "KCN Thăng Long",
+                "desc": "Hà Nội, liên doanh Nhật Bản uy tín, hạ tầng hoàn thiện cho điện tử & ô tô"
+              },
+              "queVo": {
+                "title": "KCN Quế Võ",
+                "desc": "Bắc Ninh, kết nối quốc lộ 18, gần sân bay Nội Bài, thu hút cơ khí & linh kiện"
+              },
+              "phucDien": {
+                "title": "KCN Phúc Điền",
+                "desc": "Hải Dương, vị trí giao thương thuận lợi, tập trung dệt may & thực phẩm"
+              },
+              "yenPhong": {
+                "title": "KCN Yên Phong",
+                "desc": "Bắc Ninh, thủ phủ sản xuất Samsung, công nghệ cao & dịch vụ phụ trợ hiện đại"
+              },
+              "daiAn": {
+                "title": "KCN Đại An",
+                "desc": "Hải Dương, thu hút mạnh mẽ vốn đầu tư nước ngoài FDI, đa dạng lắp ráp cơ khí"
+              },
+              "tienSon": {
+                "title": "KCN Tiên Sơn",
+                "desc": "Bắc Ninh, hạ tầng kỹ thuật đồng bộ, chế tạo máy chính xác & vật liệu xây dựng"
+              },
+              "namSach": {
+                "title": "KCN Nam Sách",
+                "desc": "Hải Dương, thích hợp công nghiệp sạch, chế biến hàng xuất khẩu & bao bì"
+              }
+            }
+          },
+          "center": {
+            "name": "Miền Trung",
+            "items": {
+              "phuBai": {
+                "title": "KCN Phú Bài",
+                "desc": "Thừa Thiên Huế, vị trí chiến lược gần sân bay quốc tế, công nghiệp nhẹ & chế biến"
+              },
+              "dienNam": {
+                "title": "KCN Điện Nam – Điện Ngọc",
+                "desc": "Quảng Nam, trung tâm công nghiệp lớn nhất miền Trung, dệt may & da giày"
+              },
+              "hoaKhanh": {
+                "title": "KCN Hòa Khánh",
+                "desc": "Đà Nẵng, khu công nghiệp lâu đời, đa ngành từ cơ khí đến thực phẩm"
+              },
+              "phuTai": {
+                "title": "KCN Phú Tài",
+                "desc": "Bình Định, cảng biển Quy Nhơn, chế biến gỗ & nông sản xuất khẩu"
+              },
+              "dungQuat": {
+                "title": "KCN Dung Quất",
+                "desc": "Quảng Ngãi, liền kề khu kinh tế Dung Quất, lọc hóa dầu & công nghiệp nặng"
+              },
+              "tinhPhong": {
+                "title": "KCN Tịnh Phong",
+                "desc": "Quảng Ngãi, thu hút FDI mạnh, sản xuất vật liệu xây dựng & cơ khí"
+              },
+              "phongDien": {
+                "title": "KCN Phong Điền",
+                "desc": "Thừa Thiên Huế, hạ tầng đồng bộ, công nghệ cao & điện tử"
+              },
+              "chuLai": {
+                "title": "KCN Chu Lai",
+                "desc": "Quảng Nam, đặc khu kinh tế mở, lắp ráp ô tô & linh kiện cơ khí"
+              }
+            }
+          },
+          "south": {
+            "name": "Miền Nam",
+            "items": {
+              "vsipBd": {
+                "title": "KCN VSIP Bình Dương",
+                "desc": "Khu công nghiệp Việt Nam - Singapore, quy mô 500ha, đa ngành sản xuất"
+              },
+              "nhonTrach": {
+                "title": "KCN Nhơn Trạch",
+                "desc": "Đồng Nai, chuyên chế biến và sản xuất công nghiệp nặng, gần cảng Cát Lái"
+              },
+              "longHau": {
+                "title": "KCN Long Hậu",
+                "desc": "Long An, vị trí chiến lược gần cảng biển, phù hợp logistics & xuất khẩu"
+              },
+              "tanThuan": {
+                "title": "KCN Tân Thuận",
+                "desc": "TP.HCM, khu chế xuất lớn nhất miền Nam, hơn 200 doanh nghiệp FDI"
+              },
+              "myPhuoc": {
+                "title": "KCN Mỹ Phước",
+                "desc": "Bình Dương, đa ngành từ điện tử đến cơ khí, hạ tầng hiện đại"
+              },
+              "phuMy": {
+                "title": "KCN Phú Mỹ",
+                "desc": "Bà Rịa - Vũng Tàu, công nghiệp nặng và hóa chất, gần cảng nước sâu"
+              },
+              "ducHoa": {
+                "title": "KCN Đức Hòa",
+                "desc": "Long An, trung tâm kho vận và logistics kết nối TP.HCM - ĐBSCL"
+              },
+              "bienHoa": {
+                "title": "KCN Biên Hòa",
+                "desc": "Đồng Nai, KCN lâu đời nhất Việt Nam, đa dạng ngành nghề sản xuất"
+              }
+            }
+          }
+        },
+        "partnerItems": {
+          "network": {
+            "title": "Mạng lưới phân phối rộng khắp",
+            "desc": "Tăng cường độ phủ thị trường và tiếp cận khách hàng trên toàn quốc."
+          },
+          "catalog": {
+            "title": "Khám phá Danh mục sản phẩm",
+            "desc": "Hơn 1000 + SKU sẵn sàng giao nhanh toàn quốc."
+          },
+          "training": {
+            "title": "Đào tạo sản phẩm",
+            "desc": "Cung cấp kiến thức chuyên sâu về tính năng và ứng dụng sản phẩm."
+          },
+          "support": {
+            "title": "Hỗ trợ kỹ thuật chuyên sâu",
+            "desc": "Đội ngũ kỹ sư chuyên nghiệp hỗ trợ triển khai và bảo hành sản phẩm."
+          },
+          "hanamProd": {
+            "title": "Sản xuất Bao bì Plastics",
+            "desc": "Danh sách các sản phẩm sản xuất tại Hub Hà Nam."
+          },
+          "pricing": {
+            "title": "Chính sách giá cạnh tranh",
+            "desc": "Cơ chế chiết khấu linh hoạt theo doanh số và cam kết lâu dài."
+          }
+        }
+      },
+      "industries": {
+        "food": {
+          "name": "Thực phẩm",
+          "hubs": {
+            "dryFood": {
+              "title": "Đóng gói thực phẩm khô",
+              "desc": "Màng co, túi PE, bao bì cho snack, ngũ cốc, gia vị"
+            },
+            "fresh": {
+              "title": "Bao bì thực phẩm tươi sống",
+              "desc": "Khay xốp, màng bọc thực phẩm, hút chân không"
+            },
+            "palletFb": {
+              "title": "Pallet & kệ hàng F&B",
+              "desc": "Pallet nhựa chuyên thực phẩm, kệ inox nhà kho lạnh"
+            },
+            "frozen": {
+              "title": "Bao bì thực phẩm đông lạnh",
+              "desc": "Túi PA/PE chịu nhiệt âm, màng co chuyên dụng"
+            },
+            "confection": {
+              "title": "Đóng gói bánh kẹo",
+              "desc": "Túi OPP trong suốt, hộp carton gift box, ribbon"
+            },
+            "bins": {
+              "title": "Thùng chứa & sọt nhựa",
+              "desc": "Thùng rổ nhựa xếp chồng, thùng IBC, can đựng dung dịch"
+            },
+            "beverage": {
+              "title": "Đóng gói đồ uống",
+              "desc": "Màng co nhóm chai, lốc lon, shrink sleeve nhãn"
+            },
+            "hygiene": {
+              "title": "Vật tư vệ sinh ATTP",
+              "desc": "Găng tay, khẩu trang, bao giày, mũ trùm"
+            }
+          }
+        },
+        "medical": {
+          "name": "Dược phẩm & Y tế",
+          "hubs": {
+            "pharmaPack": {
+              "title": "Bao bì dược phẩm",
+              "desc": "Màng nhôm ép vỉ, chai lọ nhựa dược phẩm"
+            },
+            "cleanroomMed": {
+              "title": "Vật tư phòng sạch y tế",
+              "desc": "Khăn lau vô trùng, khẩu trang y tế 3 lớp"
+            },
+            "ppeMed": {
+              "title": "Đồ bảo hộ y tế",
+              "desc": "Quần áo bảo hộ, găng tay khám bệnh nitrile"
+            },
+            "vaccine": {
+              "title": "Đóng gói vắc-xin",
+              "desc": "Hộp cách nhiệt, túi đá gel giữ lạnh chuyên dụng"
+            }
+          }
+        },
+        "electronics": {
+          "name": "Điện tử & Linh kiện",
+          "hubs": {
+            "esdBag": {
+              "title": "Bao bì chống tĩnh điện ESD",
+              "desc": "Túi shielding bag, túi bong bóng ESD"
+            },
+            "tray": {
+              "title": "Khay chứa linh kiện",
+              "desc": "Khay nhựa định hình ESD, hộp nhựa chống tĩnh điện"
+            },
+            "esdRoom": {
+              "title": "Vật tư phòng sạch điện tử",
+              "desc": "Găng tay phủ PU ESD, thảm dính bụi sticky mat"
+            },
+            "kaptonTape": {
+              "title": "Băng keo chịu nhiệt",
+              "desc": "Băng keo Kapton, băng keo nhôm chống nhiễu"
+            }
+          }
+        },
+        "logistics": {
+          "name": "Logistics & Vận tải",
+          "hubs": {
+            "palletPack": {
+              "title": "Đóng gói pallet",
+              "desc": "Màng quấn pallet stretch film, dây đai nhựa PET"
+            },
+            "airbag": {
+              "title": "Túi khí chèn hàng",
+              "desc": "Túi khí chèn container dunnage bag, hạt hút ẩm"
+            },
+            "seal": {
+              "title": "Niêm phong hàng hóa",
+              "desc": "Seal niêm phong kim loại, tem niêm phong security"
+            },
+            "shipBox": {
+              "title": "Thùng chứa vận chuyển",
+              "desc": "Thùng carton 5 lớp/7 lớp, pallet gỗ/nhựa"
+            }
+          }
+        },
+        "furniture": {
+          "name": "Nội thất",
+          "hubs": {
+            "surfaceProt": {
+              "title": "Bảo vệ bề mặt",
+              "desc": "Màng bảo vệ bề mặt PE chống trầy xước"
+            },
+            "woodPack": {
+              "title": "Đóng gói chi tiết gỗ",
+              "desc": "Màng xốp PE foam, màng co nhiệt POF"
+            },
+            "adhesive": {
+              "title": "Vật liệu liên kết",
+              "desc": "Băng keo hai mặt chịu lực, keo dán công nghiệp"
+            },
+            "largeBox": {
+              "title": "Thùng carton đựng nội thất",
+              "desc": "Hộp carton sóng khổ lớn đựng tủ, bàn ghế"
+            }
+          }
+        },
+        "hvac": {
+          "name": "Xây dựng & HVAC",
+          "hubs": {
+            "insulTape": {
+              "title": "Băng keo bảo ôn",
+              "desc": "Băng keo nhôm, băng keo bạc dán ống gió"
+            },
+            "insulMat": {
+              "title": "Vật liệu cách nhiệt",
+              "desc": "Mút xốp cách nhiệt, bông thủy tinh bảo ôn"
+            },
+            "waterproof": {
+              "title": "Màng chống thấm",
+              "desc": "Màng PE lót sàn bê tông, màng chống thấm dột"
+            },
+            "vent": {
+              "title": "Vật tư thông gió",
+              "desc": "Ống gió mềm nhôm, cổ dê xiết ống gió"
+            }
+          }
+        }
+      },
+      "resources": {
+        "tabs": {
+          "expert": {
+            "name": "Chuyên ngành",
+            "hubs": {
+              "shrinkGuide": {
+                "title": "Hướng dẫn chọn màng co",
+                "desc": "So sánh màng co POF, PE, PVC: ưu nhược điểm và ứng dụng thực tế"
+              },
+              "cartonLookup": {
+                "title": "Tra cứu kích thước carton",
+                "desc": "Bảng thông số thùng chuẩn theo trọng lượng & thể tích hàng"
+              },
+              "blog": {
+                "title": "Blog ngành bao bì",
+                "desc": "Các bài phân tích sâu về vật liệu xanh, công nghệ hạt nhựa"
+              },
+              "exportGuide": {
+                "title": "Cẩm nang đóng gói xuất khẩu",
+                "desc": "Tiêu chuẩn ISPM15, quy cách pallet gỗ và quy định từng thị trường lớn"
+              },
+              "video": {
+                "title": "Video hướng dẫn kỹ thuật",
+                "desc": "Vận hành máy đóng đai, máy quấn màng, máy hàn miệng túi"
+              },
+              "infographic": {
+                "title": "Infographic & Tài liệu trực quan",
+                "desc": "Checklist tiêu chuẩn đóng gói nhanh và bảng so sánh các vật liệu"
+              },
+              "safetyProc": {
+                "title": "Quy trình đóng gói an toàn",
+                "desc": "Quy trình SOP đóng hàng dễ vỡ, máy móc siêu trường siêu trọng"
+              },
+              "webinar": {
+                "title": "Webinar & Workshop",
+                "desc": "Cập nhật lịch thảo luận về bao bì sinh học và tự động hóa 4.0"
+              }
+            }
+          },
+          "technical": {
+            "name": "Tài liệu kỹ thuật",
+            "hubs": {
+              "tds": {
+                "title": "TDS (Technical Data Sheet)",
+                "desc": "Bảng thông số kỹ thuật chi tiết của tất cả sản phẩm"
+              },
+              "msds": {
+                "title": "MSDS (Material Safety Data Sheet)",
+                "desc": "Tài liệu an toàn hóa chất & chỉ dẫn an toàn vật liệu"
+              },
+              "cad": {
+                "title": "Bản vẽ thiết kế 2D/3D",
+                "desc": "Bản vẽ kỹ thuật CAD cho thùng carton và pallet nhựa"
+              },
+              "equipManual": {
+                "title": "Hướng dẫn sử dụng thiết bị",
+                "desc": "Sách HDSD máy đóng đai, máy quấn màng tự động"
+              }
+            }
+          },
+          "cases": {
+            "name": "Case Studies",
+            "hubs": {
+              "fbOpt": {
+                "title": "Tối ưu hóa bao bì F&B",
+                "desc": "Cách ULink giúp đối tác giảm 15% chi phí đóng gói nhựa"
+              },
+              "esdCase": {
+                "title": "Giải pháp ESD cho nhà máy điện tử",
+                "desc": "Khắc phục 99% lỗi phóng tĩnh điện bằng bao bì ESD"
+              },
+              "greenLog": {
+                "title": "Logistics xanh trong xuất khẩu",
+                "desc": "Hành trình thay thế pallet gỗ sang pallet nhựa tái chế"
+              },
+              "autoLine": {
+                "title": "Tự động hóa dây chuyền đóng gói",
+                "desc": "Tăng 50% năng suất nhờ nâng cấp máy quấn màng robot"
+              }
+            }
+          },
+          "quality": {
+            "name": "Chất lượng & Chứng nhận",
+            "hubs": {
+              "iso9001": {
+                "title": "Chứng nhận ISO 9001:2015",
+                "desc": "Hệ thống quản lý chất lượng tiêu chuẩn quốc tế"
+              },
+              "rohs": {
+                "title": "Chứng chỉ RoHS & Reach",
+                "desc": "Cam kết vật liệu thân thiện môi trường, không độc hại"
+              },
+              "fda": {
+                "title": "Tiêu chuẩn FDA cho bao bì thực phẩm",
+                "desc": "Đảm bảo an toàn tiếp xúc thực phẩm trực tiếp"
+              },
+              "cleanroomCert": {
+                "title": "Chứng chỉ phòng sạch Class 100-10000",
+                "desc": "Đạt chuẩn đóng gói thiết bị y tế và bán dẫn"
+              }
+            }
+          },
+          "events": {
+            "name": "Sự kiện",
+            "hubs": {
+              "propak": {
+                "title": "Triển lãm ProPak Vietnam 2026",
+                "desc": "Gặp gỡ ULink tại gian hàng công nghệ bao bì chế biến"
+              },
+              "biopack": {
+                "title": "Hội thảo Bao bì sinh học bền vững",
+                "desc": "Thảo luận giải pháp thay thế nhựa dùng một lần"
+              },
+              "trainCourse": {
+                "title": "Khóa đào tạo kỹ thuật đóng gói",
+                "desc": "Chương trình đào tạo SOP miễn phí cho khách hàng VIP"
+              },
+              "calendar": {
+                "title": "Lịch sự kiện & Workshop năm",
+                "desc": "Xem chi tiết lịch trình các hoạt động kết nối cộng đồng"
+              }
+            }
+          }
+        }
+      },
+      "about": {
+        "tabs": {
+          "hubProd": {
+            "name": "Trung tâm Sản xuất và Phân phối",
+            "hubs": {
+              "about": {
+                "title": "Về ULink Industries",
+                "desc": "Hơn 15 năm kinh nghiệm cung cấp giải pháp bao bì công nghiệp toàn diện"
+              },
+              "capacity": {
+                "title": "Năng lực cung ứng",
+                "desc": "15 năm kinh nghiệm sản xuất bao bì, phục vụ 500 doanh nghiệp với năng lực đáp ứng đơn hàng lớn."
+              },
+              "hanam": {
+                "title": "Trung tâm phân phối Hà Nam",
+                "desc": "Kho logistics 10.000m², phục vụ miền Bắc, giao hàng trong 24h cho khu vực Hà Nội & lân cận"
+              },
+              "values": {
+                "title": "Giá trị cốt lõi",
+                "desc": "Chất lượng, Đổi mới, Bền vững, Khách hàng là trung tâm"
+              },
+              "partners": {
+                "title": "Đối tác & Khách hàng",
+                "desc": "500+ doanh nghiệp tin dùng: Samsung, Vinamilk, Nestlé, Masan..."
+              },
+              "rfq": {
+                "title": "Yêu cầu báo giá",
+                "desc": "Form RFQ nhanh, phản hồi trong 24h, tư vấn miễn phí"
+              },
+              "sustain": {
+                "title": "Cam kết bền vững",
+                "desc": "ESG, bao bì tái chế, giảm carbon footprint trong chuỗi cung ứng"
+              }
+            }
+          },
+          "standards": {
+            "name": "Tiêu chuẩn & Chứng nhận",
+            "hubs": {
+              "qms": {
+                "title": "Hệ thống quản lý chất lượng",
+                "desc": "Đạt chứng nhận ISO 9001:2015 trên toàn hệ thống nhà máy"
+              },
+              "foodSafety": {
+                "title": "An toàn thực phẩm",
+                "desc": "Đạt chứng chỉ HACCP và ISO 22000 cho dây chuyền bao bì F&B"
+              },
+              "cleanroomStd": {
+                "title": "Tiêu chuẩn phòng sạch",
+                "desc": "Nhà máy đạt chuẩn Class 100.000 phục vụ bao bì y tế và linh kiện"
+              },
+              "materialSafety": {
+                "title": "Chứng nhận an toàn vật liệu",
+                "desc": "Đầy đủ CO/CQ, đạt tiêu chuẩn xuất khẩu RoHS, REACH, SGS"
+              }
+            }
+          },
+          "eco": {
+            "name": "Phát triển bền vững",
+            "hubs": {
+              "biodeg": {
+                "title": "Bao bì phân hủy sinh học",
+                "desc": "Dòng sản phẩm túi và hộp tự phân hủy hoàn toàn thân thiện"
+              },
+              "plasticReduce": {
+                "title": "Chiến dịch giảm thiểu nhựa",
+                "desc": "Tối ưu độ dày màng co giúp đối tác giảm 20% hạt nhựa sử dụng"
+              },
+              "circular": {
+                "title": "Kinh tế tuần hoàn",
+                "desc": "Chương trình thu hồi và tái chế hạt nhựa từ phế liệu nhà máy"
+              },
+              "cleanEnergy": {
+                "title": "Năng lượng sạch",
+                "desc": "Nhà máy ULink Hà Nam sử dụng 100% điện mặt trời áp mái"
+              }
+            }
+          },
+          "careers": {
+            "name": "Cơ hội nghề nghiệp",
+            "hubs": {
+              "workEnv": {
+                "title": "Môi trường làm việc",
+                "desc": "Trải nghiệm văn hóa chuyên nghiệp, tôn trọng sự sáng tạo và thăng tiến"
+              },
+              "benefits": {
+                "title": "Chính sách đãi ngộ",
+                "desc": "Lương thưởng cạnh tranh, bảo hiểm toàn diện và du lịch nghỉ mát năm"
+              },
+              "positions": {
+                "title": "Vị trí tuyển dụng",
+                "desc": "Xem chi tiết các cơ hội việc làm mới nhất tại các chi nhánh"
+              },
+              "apply": {
+                "title": "Đăng ký hồ sơ ứng viên",
+                "desc": "Nộp hồ sơ trực tuyến nhanh chóng vào kho tài năng của ULink"
+              }
+            }
+          },
+          "contact": {
+            "name": "Liên hệ",
+            "hubs": {
+              "hotline": {
+                "title": "Hotline & Hỗ trợ",
+                "desc": "Tổng đài tư vấn giải pháp 24/7 và giải đáp RFQ nhanh chóng"
+              },
+              "offices": {
+                "title": "Văn phòng & Nhà máy",
+                "desc": "Địa chỉ chi tiết của trụ sở Hà Nội, nhà máy Hà Nam và Bình Dương"
+              },
+              "social": {
+                "title": "Kênh thông tin mạng xã hội",
+                "desc": "Kết nối với ULink qua LinkedIn, Facebook và Zalo OA"
+              },
+              "directRequest": {
+                "title": "Gửi yêu cầu trực tiếp",
+                "desc": "Form gửi câu hỏi thắc mắc hoặc yêu cầu gặp trực tiếp kỹ sư"
+              }
+            }
+          }
+        }
+      }
+    },
+    "mobile": {
+      "exploreTitle": "Khám phá ULink Industries",
+      "menuLabel": "MENU",
+      "menuAria": "Menu điều hướng",
+      "searchAria": "Tìm kiếm",
+      "cartAria": "Giỏ hàng",
+      "closeMenuAria": "Đóng menu",
+      "accountTitle": "Tài khoản ULink",
+      "accountSubtitle": "Đăng nhập để xem báo giá",
+      "orderList": "Danh sách đơn hàng",
+      "smartAutomation": "Giải pháp Tự động hóa sản xuất thông minh 2026",
+      "subtitles": {
+        "hubs": "Thông tin các Khu công nghiệp & Hub toàn quốc.",
+        "solutions": "Khám phá giải pháp và sản phẩm của chúng tôi.",
+        "industries": "Giải pháp theo từng ngành nghề cụ thể.",
+        "resources": "Blog, case studies và tài liệu kỹ thuật.",
+        "about": "Tìm hiểu về đội ngũ và sứ mệnh của chúng tôi.",
+        "default": "Khám phá thông tin ULink"
+      },
+      "groups": {
+        "solutions": {
+          "packaging": {
+            "title": "Bao bì & Đóng gói",
+            "items": {
+              "pof": {
+                "title": "Màng co POF",
+                "desc": "Bao gói thực phẩm & hàng tiêu dùng"
+              },
+              "tape": {
+                "title": "Băng keo đóng gói",
+                "desc": "Băng keo OPP, in logo, niêm phong"
+              },
+              "shrinkPe": {
+                "title": "Màng co PE",
+                "desc": "Màng co nhiệt bọc kín chống bụi & ẩm"
+              },
+              "palletWrap": {
+                "title": "Màng quấn Pallet",
+                "desc": "Màng stretch quấn pallet chịu lực"
+              },
+              "carton": {
+                "title": "Thùng carton",
+                "desc": "Thùng carton 3-5-7 lớp in flexo"
+              },
+              "hipsPp": {
+                "title": "Màng HIPS/PP",
+                "desc": "Khay chứa linh kiện chống tĩnh điện"
+              },
+              "peHdBag": {
+                "title": "Túi PE / HD",
+                "desc": "Túi đựng hàng công nghiệp, túi lót thùng"
+              },
+              "palletWood": {
+                "title": "Pallet gỗ / nhựa",
+                "desc": "Pallet EUR tiêu chuẩn xuất khẩu"
+              }
+            }
+          },
+          "cleanroom": {
+            "title": "Vật tư phòng sạch",
+            "items": {
+              "gloves": {
+                "title": "Găng tay phòng sạch",
+                "desc": "Găng Nitrile, Latex chuẩn ISO"
+              },
+              "wipes": {
+                "title": "Giấy lau phòng sạch",
+                "desc": "Giấy lau không bụi, khăn polyester"
+              },
+              "bags": {
+                "title": "Túi phòng sạch",
+                "desc": "Túi PE, túi chống tĩnh điện ESD"
+              },
+              "apparel": {
+                "title": "Quần áo phòng sạch",
+                "desc": "Bộ áo liền quần, mũ trùm ESD"
+              },
+              "shoeCover": {
+                "title": "Bọc giày phòng sạch",
+                "desc": "Bọc giày PE, CPE chống trượt"
+              },
+              "consumables": {
+                "title": "Vật tư tiêu hao",
+                "desc": "Bảng dính, sticky mat, swab bông"
+              }
+            }
+          },
+          "aluminum": {
+            "title": "Băng keo Nhôm",
+            "items": {
+              "heatResist": {
+                "title": "Băng keo nhôm chịu nhiệt",
+                "desc": "Chịu nhiệt độ cao, dùng HVAC"
+              },
+              "moistResist": {
+                "title": "Băng keo nhôm chống ẩm",
+                "desc": "Chống thấm bảo vệ đường ống"
+              },
+              "ductTape": {
+                "title": "Băng keo nhôm dán ống gió",
+                "desc": "Dán nối ống gió HVAC công nghiệp"
+              },
+              "thermal": {
+                "title": "Băng keo nhôm dẫn nhiệt",
+                "desc": "Tản nhiệt cho linh kiện & bo mạch"
+              }
+            }
+          }
+        },
+        "hubs": {
+          "north": {
+            "title": "KCN Trọng điểm Miền Bắc",
+            "items": {
+              "dinhVu": {
+                "title": "KCN Đình Vũ",
+                "desc": "Hải Phòng, kết nối cảng biển quốc tế"
+              },
+              "thangLong": {
+                "title": "KCN Thăng Long",
+                "desc": "Hà Nội, điện tử & lắp ráp ô tô"
+              },
+              "queVo": {
+                "title": "KCN Quế Võ",
+                "desc": "Bắc Ninh, cơ khí & linh kiện"
+              },
+              "yenPhong": {
+                "title": "KCN Yên Phong",
+                "desc": "Bắc Ninh, thủ phủ Samsung & hitech"
+              }
+            }
+          },
+          "center": {
+            "title": "KCN Miền Trung",
+            "items": {
+              "phuBai": {
+                "title": "KCN Phú Bài",
+                "desc": "Thừa Thiên Huế, chế biến & hàng tiêu dùng"
+              },
+              "hoaKhanh": {
+                "title": "KCN Hòa Khánh",
+                "desc": "Đà Nẵng, đa ngành từ cơ khí đến thực phẩm"
+              },
+              "dungQuat": {
+                "title": "KCN Dung Quất",
+                "desc": "Quảng Ngãi, lọc hóa dầu & công nghiệp nặng"
+              }
+            }
+          },
+          "south": {
+            "title": "KCN Miền Nam",
+            "items": {
+              "vsipBd": {
+                "title": "KCN VSIP Bình Dương",
+                "desc": "Quy mô 500ha, sản xuất đa ngành"
+              },
+              "nhonTrach": {
+                "title": "KCN Nhơn Trạch",
+                "desc": "Đồng Nai, gần cảng Cát Lái"
+              },
+              "longHau": {
+                "title": "KCN Long Hậu",
+                "desc": "Long An, kho vận & logistics xuất khẩu"
+              }
+            }
+          },
+          "hanamHub": {
+            "title": "Trung tâm Phân phối & HUB Hà Nam",
+            "items": {
+              "hub": {
+                "title": "HUB Hà Nam (Trung tâm Logistics)",
+                "desc": "Kho logistics 10.000m² trung tâm Miền Bắc"
+              },
+              "factory": {
+                "title": "Nhà máy bao bì ULink Hà Nam",
+                "desc": "Sản xuất màng co, túi PE, khay nhựa & băng keo nhôm"
+              }
+            }
+          }
+        },
+        "industries": {
+          "food": {
+            "title": "Thực phẩm & Đồ uống",
+            "items": {
+              "dryFood": {
+                "title": "Đóng gói thực phẩm khô",
+                "desc": "Màng co, túi PE, bao bì gia vị & ngũ cốc"
+              },
+              "fresh": {
+                "title": "Bao bì thực phẩm tươi sống",
+                "desc": "Khay xốp, màng bọc thực phẩm, hút chân không"
+              },
+              "palletFb": {
+                "title": "Pallet & kệ hàng F&B",
+                "desc": "Pallet nhựa thực phẩm, kệ kho lạnh"
+              }
+            }
+          },
+          "medical": {
+            "title": "Dược phẩm & Y tế",
+            "items": {
+              "pharmaPack": {
+                "title": "Bao bì dược phẩm",
+                "desc": "Màng nhôm ép vỉ, chai lọ nhựa dược"
+              },
+              "cleanroomMed": {
+                "title": "Vật tư phòng sạch y tế",
+                "desc": "Khăn lau vô trùng, khẩu trang y tế"
+              }
+            }
+          },
+          "electronics": {
+            "title": "Điện tử & Linh kiện",
+            "items": {
+              "esdBag": {
+                "title": "Bao bì chống tĩnh điện ESD",
+                "desc": "Túi shielding bag, túi bong bóng ESD"
+              },
+              "tray": {
+                "title": "Khay chứa linh kiện",
+                "desc": "Khay nhựa định hình ESD, hộp chống tĩnh điện"
+              }
+            }
+          },
+          "logistics": {
+            "title": "Logistics & Vận tải",
+            "items": {
+              "palletPack": {
+                "title": "Đóng gói pallet",
+                "desc": "Màng quấn stretch film, dây đai PET"
+              },
+              "airbag": {
+                "title": "Túi khí chèn container",
+                "desc": "Dunnage bag, hạt hút ẩm công nghiệp"
+              }
+            }
+          }
+        },
+        "resources": {
+          "expert": {
+            "title": "Chuyên ngành",
+            "items": {
+              "shrinkGuide": {
+                "title": "Hướng dẫn chọn màng co",
+                "desc": "So sánh màng co POF, PE, PVC"
+              },
+              "cartonLookup": {
+                "title": "Tra cứu kích thước carton",
+                "desc": "Bảng thông số thùng chuẩn"
+              },
+              "exportGuide": {
+                "title": "Cẩm nang xuất khẩu",
+                "desc": "Tiêu chuẩn ISPM15 & pallet xuất khẩu"
+              }
+            }
+          },
+          "technical": {
+            "title": "Tài liệu kỹ thuật",
+            "items": {
+              "tds": {
+                "title": "TDS (Technical Data Sheet)",
+                "desc": "Bảng thông số kỹ thuật chi tiết"
+              },
+              "msds": {
+                "title": "MSDS (Material Safety)",
+                "desc": "An toàn hóa chất & vật liệu"
+              },
+              "cad": {
+                "title": "Bản vẽ CAD 2D/3D",
+                "desc": "Thùng carton & pallet nhựa"
+              }
+            }
+          }
+        },
+        "about": {
+          "intro": {
+            "title": "Giới thiệu & Năng lực",
+            "items": {
+              "about": {
+                "title": "Về ULink Industries",
+                "desc": "15 năm giải pháp bao bì công nghiệp"
+              },
+              "hanam": {
+                "title": "Trung tâm phân phối Hà Nam",
+                "desc": "Kho logistics 10.000m² phục vụ miền Bắc"
+              },
+              "iso": {
+                "title": "Tiêu chuẩn ISO 9001:2015",
+                "desc": "Hệ thống quản lý chất lượng quốc tế"
+              }
+            }
+          }
+        }
+      }
+    }
   },
   "home": {
     "hero": {
@@ -491,6 +1469,14 @@
       "card3Title": "Giải pháp đóng gói công nghiệp tối ưu - để cố định cụm nhiều chai nước ngọt, bia, hoặc lốc sữa hộp thành các khối chắc chắn, tiện lợi cho việc lưu kho và phân phối.",
       "card4Date": "Ngày 22/7/2026",
       "card4Title": "Giải pháp đóng gói công nghiệp tối ưu - để cố định cụm nhiều chai nước ngọt, bia, hoặc lốc sữa hộp thành các khối chắc chắn, tiện lợi cho việc lưu kho và phân phối.",
+      "card1AuthorName": "Nguyễn Minh Tuấn",
+      "card1AuthorRole": "Trưởng phòng Đóng gói",
+      "card2AuthorName": "Lê Quốc Hưng",
+      "card2AuthorRole": "Quản lý Kho vận",
+      "card3AuthorName": "Trần Thị Hồng Nhung",
+      "card3AuthorRole": "Giám đốc Sản xuất",
+      "card4AuthorName": "Phạm Thanh Sơn",
+      "card4AuthorRole": "Chuyên viên kỹ thuật",
       "readMore": "Đọc thêm",
       "docsTitle": "Tài liệu & Catalogue",
       "doc1Category": "Catalogue",
@@ -886,6 +1872,7 @@
   "aboutHub": {
     "hero": {
       "eyebrow": "TRUNG TÂM PHÂN PHỐI HÀ NAM",
+      "title": "Hub Hà Nam - Cung ứng vật tư cho Doanh nghiệp sản xuất",
       "titleLine1": "Hiệu quả tối ưu.",
       "titleLine2": "Niềm tin bền vững.",
       "intro": "Trung tâm phân phối Hà Nam của ULink Industries được xây dựng với định hướng trở thành trung tâm logistics hiện đại, ứng dụng công nghệ tiên tiến và vận hành theo tiêu chuẩn quốc tế mới nhất.",
@@ -1712,5 +2699,21 @@
     "evidenceUploadText": "Tải ảnh lên tại đây để nhân viên kỹ thuật hỗ trợ kịp thời",
     "submitFeedbackSuccess": "Cảm ơn bạn đã gửi đánh giá!",
     "submitIncidentSuccess": "Báo cáo sự cố đã được gửi đi. Đội ngũ hỗ trợ kỹ thuật sẽ liên hệ bạn sớm nhất!"
+  },
+  "customSolutions": {
+    "title": "Giải pháp thiết kế riêng cho Doanh nghiệp",
+    "description": "Giải pháp đóng gói thông minh dành riêng cho Doanh nghiệp, giúp tối ưu chi phí vật liệu, giảm thiểu hao hụt và tự động hóa quy trình đóng gói theo quy mô đơn hàng. Tích hợp dễ dàng với hệ thống quản lý kho vận hiện có, đảm bảo vận hành liền mạch và tiết kiệm lên đến 30% chi phí logistics.",
+    "cta": "Kết nối với Chuyên gia"
+  },
+  "productCard": {
+    "noImage": "Chưa có hình ảnh",
+    "quote": "Liên hệ báo giá",
+    "kg": "kg",
+    "moq": "MOQ",
+    "inStock": "Còn hàng",
+    "customOrders": "Sản xuất theo yêu cầu",
+    "location": "Hub Hà Nam, Việt Nam",
+    "order": "Đặt hàng",
+    "bookmark": "Lưu sản phẩm"
   }
 }

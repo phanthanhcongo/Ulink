@@ -9,7 +9,7 @@ import { cn } from '@/lib/utils';
 import { useLocale } from 'next-intl';
 
 import { ResourceItem } from './types';
-import { MOST_VIEWED_ARTICLES, TABS, UPCOMING_EVENTS, MOCK_RESOURCES } from './mock-data';
+import { TABS } from './mock-data';
 import { getResourceHref } from './resource-utils';
 import { ResourceCard } from './resource-card';
 import { EventCard } from './event-card';
@@ -26,17 +26,8 @@ export function ResourcesClient({
 } = {}) {
   const locale = useLocale() as 'vi' | 'en' | 'ja';
 
-  const allAvailableResources = useMemo(() => {
-    const combined = [...initialResources];
-
-    MOCK_RESOURCES.forEach((mock) => {
-      if (!combined.some((item) => item.id === mock.id)) {
-        combined.push(mock);
-      }
-    });
-
-    return combined;
-  }, [initialResources]);
+  // Resources now come solely from Directus via `initialResources`.
+  const allAvailableResources = useMemo(() => [...initialResources], [initialResources]);
 
   const [activeTab, setActiveTab] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
@@ -300,9 +291,15 @@ export function ResourcesClient({
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {MOST_VIEWED_ARTICLES.slice(0, 4).map((art) => (
-              <ResourceCard key={art.id} resource={art} locale={locale} />
-            ))}
+            {(() => {
+              const featured = allAvailableResources.filter((r) => r.isFeatured);
+              const list = featured.length > 0
+                ? featured
+                : allAvailableResources.filter((r) => r.category !== 'event');
+              return list.slice(0, 4).map((art) => (
+                <ResourceCard key={art.id} resource={art} locale={locale} />
+              ));
+            })()}
           </div>
         </div>
 
@@ -321,7 +318,7 @@ export function ResourcesClient({
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-            {(events.length > 0 ? events.slice(0, 3).map((ev) => {
+            {events.slice(0, 3).map((ev) => {
               const mapped: ResourceItem = {
                 id: ev.id,
                 category: 'event',
@@ -338,9 +335,7 @@ export function ResourcesClient({
                 sections: [],
               };
               return <EventCard key={ev.id} event={mapped} locale={locale} />;
-            }) : UPCOMING_EVENTS.map((event) => (
-              <EventCard key={event.id} event={event} locale={locale} />
-            )))}
+            })}
           </div>
         </div>
       </div>

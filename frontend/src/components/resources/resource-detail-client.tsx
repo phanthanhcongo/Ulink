@@ -45,6 +45,7 @@ export interface ResourceData {
   pdfUrl?: string;
   pdfSize?: string;
   contentHtml: string;
+  bodyHtml?: string;
   highlights?: string[];
   sections?: {
     id: string;
@@ -384,8 +385,15 @@ export function ResourceDetailClient({ data, locale }: ResourceDetailClientProps
               />
             </div>
 
-            {/* Loop render sections if available, otherwise render html */}
-            {data.sections && data.sections.length > 0 ? (
+            {/* Render body HTML directly when available (from CMS rich text),
+                otherwise fall back to per-section rendering, otherwise raw contentHtml */}
+            {data.bodyHtml ? (
+              <div
+                suppressHydrationWarning
+                className="prose prose-slate max-w-none text-body-regular leading-relaxed text-slate-700 font-normal [&_h2]:text-card-title [&_h2]:font-bold [&_h2]:text-slate-900 [&_h2]:mt-8 [&_h2]:mb-4 [&_h2]:scroll-mt-28 [&_h3]:text-body-regular [&_h3]:font-bold [&_h3]:text-slate-800 [&_h3]:mt-6 [&_h3]:mb-3 [&_ul]:list-disc [&_ul]:pl-6 [&_ul]:my-4 [&_ol]:list-decimal [&_ol]:pl-6 [&_ol]:my-4 [&_p]:mb-4 [&_a]:text-brand [&_a]:underline [&_li]:mb-1 [&_strong]:font-bold"
+                dangerouslySetInnerHTML={{ __html: data.bodyHtml }}
+              />
+            ) : data.sections && data.sections.length > 0 ? (
               <div className="space-y-10">
                 {data.sections.map((sec) => (
                   <section key={sec.id} id={sec.id} className="scroll-mt-28 space-y-4">

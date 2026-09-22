@@ -6,7 +6,7 @@ import { setRequestLocale } from 'next-intl/server';
 import { Link } from '@/i18n/navigation';
 import { Breadcrumb } from '@/components/ui/breadcrumb';
 import { getEventDetailBySlug } from '@/components/events/event-detail-data';
-import { fetchEventBySlug } from '@/lib/event-data';
+import { fetchEventBySlug, tEvent, tEventArray } from '@/lib/event-data';
 import { EventSidebar } from '@/components/events/event-sidebar';
 import { resolveImageUrl } from '@/lib/image-url';
 
@@ -62,30 +62,49 @@ type Props = {
   };
 };
 
-export async function generateMetadata({ params: { slug } }: Props): Promise<Metadata> {
-  const event = await fetchEventBySlug(slug) || getEventDetailBySlug(slug);
+export async function generateMetadata({ params: { slug, locale } }: Props): Promise<Metadata> {
+  const dbEvent = await fetchEventBySlug(slug);
+  const fallback = getEventDetailBySlug(slug);
 
-  if (!event) {
+  if (!dbEvent && !fallback) {
     return { title: 'Sự kiện không tồn tại' };
   }
 
+  const title = dbEvent ? (tEvent(dbEvent, 'title', locale) || dbEvent.title) : fallback!.title;
+  const summary = dbEvent ? (tEvent(dbEvent, 'summary', locale) || dbEvent.summary || '') : fallback!.summary;
+
   return {
-    title: `${event.title} | Chi tiết sự kiện`,
-    description: event.summary
+    title: `${title} | Chi tiết sự kiện`,
+    description: summary
   };
 }
 
+const L = {
+  overview: { vi: 'Tổng quan', en: 'Overview', ja: '概要' },
+  schedule: { vi: 'Thời gian tổ chức', en: 'Schedule', ja: '開催日時' },
+  venue: { vi: 'Địa điểm tổ chức', en: 'Venue', ja: '開催場所' },
+  agenda: { vi: 'Agenda chương trình', en: 'Agenda', ja: 'アジェンダ' },
+  benefits: { vi: 'Quyền lợi người tham gia', en: 'Participant Benefits', ja: '参加者特典' },
+  speakers: { vi: 'Diễn giả', en: 'Speakers', ja: '登壇者' },
+  hosts: { vi: 'Host / MC', en: 'Host', ja: '司会' },
+  organizer: { vi: 'Đơn vị tổ chức', en: 'Organizer', ja: '主催者' },
+  date: { vi: 'Ngày', en: 'Date', ja: '日付' },
+  time: { vi: 'Thời gian', en: 'Time', ja: '時間' },
+  address: { vi: 'Địa chỉ', en: 'Address', ja: '住所' }
+} as const;
+
 export default async function EventDetailPage({ params }: Props) {
-  const { slug } = params;
-  setRequestLocale(params.locale);
+  const { slug, locale } = params;
+  setRequestLocale(locale);
+  const l = (locale === 'en' || locale === 'ja' ? locale : 'vi') as 'vi' | 'en' | 'ja';
 
   const dbEvent = await fetchEventBySlug(slug);
   const hardcodedEvent = getEventDetailBySlug(slug);
 
   const event = dbEvent ? {
     slug: dbEvent.slug,
-    title: dbEvent.title,
-    summary: dbEvent.summary || '',
+    title: tEvent(dbEvent, 'title', locale) || dbEvent.title,
+    summary: tEvent(dbEvent, 'summary', locale) || dbEvent.summary || '',
     image: resolveImageUrl(dbEvent.image) || '/images/resources/autohtml/thumb16.png',
     images: dbEvent.image ? [resolveImageUrl(dbEvent.image) || '/images/resources/autohtml/thumb16.png'] : [],
     date: dbEvent.date || '',
@@ -94,23 +113,23 @@ export default async function EventDetailPage({ params }: Props) {
     endTime: dbEvent.end_time || undefined,
     timezone: 'UTC+07:00',
     location: dbEvent.location || '',
-    locationName: dbEvent.location_name || undefined,
-    address: dbEvent.address || undefined,
+    locationName: tEvent(dbEvent, 'location_name', locale) || dbEvent.location_name || undefined,
+    address: tEvent(dbEvent, 'address', locale) || dbEvent.address || undefined,
     registrationStatus: dbEvent.registration_status || 'UPCOMING',
-    price: dbEvent.price || undefined,
-    overview: dbEvent.overview || '',
-    highlights: dbEvent.highlights || [],
-    agenda: dbEvent.agenda || [],
-    speakers: dbEvent.speakers || [],
-    hosts: dbEvent.hosts || [],
+    price: tEvent(dbEvent, 'price', locale) || dbEvent.price || undefined,
+    overview: tEvent(dbEvent, 'overview', locale) || dbEvent.overview || '',
+    highlights: tEventArray<string>(dbEvent, 'highlights', locale),
+    agenda: tEventArray<any>(dbEvent, 'agenda', locale),
+    speakers: tEventArray<any>(dbEvent, 'speakers', locale),
+    hosts: tEventArray<any>(dbEvent, 'hosts', locale),
     sponsors: dbEvent.sponsors || [],
-    benefits: dbEvent.benefits || [],
+    benefits: tEventArray<string>(dbEvent, 'benefits', locale),
     organizer: {
-      name: dbEvent.organizer_name || 'ULink Industries',
-      description: dbEvent.organizer_description || '',
+      name: tEvent(dbEvent, 'organizer_name', locale) || dbEvent.organizer_name || 'ULink Industries',
+      description: tEvent(dbEvent, 'organizer_description', locale) || dbEvent.organizer_description || '',
       contact: dbEvent.organizer_contact || '',
       logo: dbEvent.organizer_logo || undefined,
-      role: dbEvent.organizer_role || undefined
+      role: tEvent(dbEvent, 'organizer_role', locale) || dbEvent.organizer_role || undefined
     }
   } : hardcodedEvent;
 
@@ -167,7 +186,7 @@ export default async function EventDetailPage({ params }: Props) {
 
             {/* Overview Section */}
             <div className="mt-6 sm:mt-7 md:mt-8">
-              <h2 className="text-lg sm:text-xl md:text-2xl font-black text-slate-900 tracking-tight text-left">Overview</h2>
+              <h2 className="text-lg sm:text-xl md:text-2xl font-black text-slate-900 tracking-tight text-left">{L.overview[l]}</h2>
               <div className="mt-3 sm:mt-4 text-slate-600 leading-relaxed text-xs sm:text-sm md:text-base text-justify whitespace-pre-line font-sans">
                 {event.overview}
               </div>
@@ -175,27 +194,27 @@ export default async function EventDetailPage({ params }: Props) {
 
             {/* Thời gian tổ chức */}
             <div className="mt-6 sm:mt-8 md:mt-10 border-t border-slate-100 pt-6 sm:pt-7 md:pt-8">
-              <h2 className="text-lg sm:text-xl md:text-2xl font-black text-slate-900 tracking-tight text-left">Thời gian tổ chức</h2>
+              <h2 className="text-lg sm:text-xl md:text-2xl font-black text-slate-900 tracking-tight text-left">{L.schedule[l]}</h2>
               <div className="mt-3 sm:mt-4 text-slate-600 text-xs sm:text-sm md:text-base space-y-1.5 sm:space-y-2 font-sans">
                 <p className="font-semibold text-slate-900">
-                  Ngày: <span className="font-normal text-slate-600">{event.date}</span>
+                  {L.date[l]}: <span className="font-normal text-slate-600">{event.date}</span>
                 </p>
                 <p className="font-semibold text-slate-900">
-                  Thời gian: <span className="font-normal text-slate-600">{event.time} {event.timezone ? `(${event.timezone})` : ''}</span>
+                  {L.time[l]}: <span className="font-normal text-slate-600">{event.time} {event.timezone ? `(${event.timezone})` : ''}</span>
                 </p>
               </div>
             </div>
 
             {/* Địa điểm tổ chức */}
             <div className="mt-6 sm:mt-8 md:mt-10 border-t border-slate-100 pt-6 sm:pt-7 md:pt-8">
-              <h2 className="text-lg sm:text-xl md:text-2xl font-black text-slate-900 tracking-tight text-left">Địa điểm tổ chức</h2>
+              <h2 className="text-lg sm:text-xl md:text-2xl font-black text-slate-900 tracking-tight text-left">{L.venue[l]}</h2>
               <div className="mt-3 sm:mt-4 text-slate-600 text-xs sm:text-sm md:text-base space-y-1.5 sm:space-y-2 font-sans">
                 <p className="font-bold text-slate-900">
                   {event.locationName || event.location}
                 </p>
                 {event.address && (
                   <p className="text-slate-500">
-                    Địa chỉ: {event.address}
+                    {L.address[l]}: {event.address}
                   </p>
                 )}
               </div>
@@ -204,7 +223,7 @@ export default async function EventDetailPage({ params }: Props) {
             {/* Agenda Section */}
             {event.agenda && event.agenda.length > 0 && (
               <div className="mt-6 sm:mt-8 md:mt-10 border-t border-slate-100 pt-6 sm:pt-7 md:pt-8">
-                <h2 className="text-lg sm:text-xl md:text-2xl font-black text-slate-900 tracking-tight text-left">Agenda chương trình</h2>
+                <h2 className="text-lg sm:text-xl md:text-2xl font-black text-slate-900 tracking-tight text-left">{L.agenda[l]}</h2>
                 <div className="mt-4 sm:mt-5 md:mt-6 space-y-3 sm:space-y-4 font-sans">
                   {event.agenda.map((item, index) => (
                     <div
@@ -229,7 +248,7 @@ export default async function EventDetailPage({ params }: Props) {
             {/* Benefits Section */}
             {event.benefits && event.benefits.length > 0 && (
               <div className="mt-6 sm:mt-8 md:mt-10 border-t border-slate-100 pt-6 sm:pt-7 md:pt-8">
-                <h2 className="text-lg sm:text-xl md:text-2xl font-black text-slate-900 tracking-tight text-left">Quyền lợi người tham gia</h2>
+                <h2 className="text-lg sm:text-xl md:text-2xl font-black text-slate-900 tracking-tight text-left">{L.benefits[l]}</h2>
                 <div className="mt-4 sm:mt-5 md:mt-6 grid gap-3 sm:gap-4 grid-cols-1 sm:grid-cols-2 font-sans">
                   {event.benefits.map((item) => (
                     <div
@@ -246,7 +265,7 @@ export default async function EventDetailPage({ params }: Props) {
             {/* Speakers Section */}
             {event.speakers && event.speakers.length > 0 && (
               <div className="mt-6 sm:mt-8 md:mt-10 border-t border-slate-100 pt-6 sm:pt-7 md:pt-8">
-                <h2 className="text-lg sm:text-xl md:text-2xl font-black text-slate-900 tracking-tight text-left">Speakers</h2>
+                <h2 className="text-lg sm:text-xl md:text-2xl font-black text-slate-900 tracking-tight text-left">{L.speakers[l]}</h2>
                 <div className="mt-4 sm:mt-5 md:mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 md:gap-6 font-sans">
                   {event.speakers.map((speaker) => (
                     <div
@@ -280,7 +299,7 @@ export default async function EventDetailPage({ params }: Props) {
             {/* Host Section */}
             {event.hosts && event.hosts.length > 0 && (
               <div className="mt-6 sm:mt-8 md:mt-10 border-t border-slate-100 pt-6 sm:pt-7 md:pt-8">
-                <h2 className="text-lg sm:text-xl md:text-2xl font-black text-slate-900 tracking-tight text-left">Host</h2>
+                <h2 className="text-lg sm:text-xl md:text-2xl font-black text-slate-900 tracking-tight text-left">{L.hosts[l]}</h2>
                 <div className="mt-4 sm:mt-5 md:mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 md:gap-6 font-sans">
                   {event.hosts.map((host) => (
                     <div
@@ -313,7 +332,7 @@ export default async function EventDetailPage({ params }: Props) {
 
             {/* Organizer Section */}
             <div className="mt-6 sm:mt-8 md:mt-10 border-t border-slate-100 pt-6 sm:pt-7 md:pt-8">
-              <h2 className="text-lg sm:text-xl md:text-2xl font-black text-slate-900 tracking-tight text-left">Organizer</h2>
+              <h2 className="text-lg sm:text-xl md:text-2xl font-black text-slate-900 tracking-tight text-left">{L.organizer[l]}</h2>
               <div className="mt-4 sm:mt-5 md:mt-6 flex flex-col sm:flex-row gap-4 sm:gap-5 md:gap-6 p-4 sm:p-5 md:p-6 border border-slate-100 rounded-[3px] bg-white shadow-xs items-start font-sans">
                 <div className="relative h-20 sm:h-22 md:h-24 w-20 sm:w-22 md:w-24 overflow-hidden flex items-center justify-center shrink-0">
                   {event.organizer.logo ? (

@@ -26,7 +26,7 @@ export default async function EventsPage({ params: { locale } }: Props) {
   setRequestLocale(locale);
 
   const directusEvents = await fetchEvents();
-  const events = directusEvents.map(mapEventToListItem);
+  const events = directusEvents.map((e) => mapEventToListItem(e, locale));
 
   return (
     <section className="relative min-h-screen">

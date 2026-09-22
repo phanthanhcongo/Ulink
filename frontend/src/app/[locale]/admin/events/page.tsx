@@ -53,7 +53,8 @@ export default async function AdminEventsPage({ params }: PageProps) {
       readItems('events' as any, {
         filter: { status: { _in: ['published', 'draft'] } },
         sort: ['-id'],
-        limit: -1
+        limit: -1,
+        fields: ['*', 'translations.*']
       } as any)
     );
     events = res || [];
@@ -62,5 +63,5 @@ export default async function AdminEventsPage({ params }: PageProps) {
     error = extractErrorMessage(err);
   }
 
-  return <EventsAdminClient initialEvents={events} error={error} />;
+  return <EventsAdminClient initialEvents={events} error={error} locale={locale} />;
 }
