@@ -27,7 +27,7 @@ test.describe('Kiểm thử giao diện Đăng ký nhận tin (UI Newsletter)', 
   test('TC-UI-NEWS-01: Đăng ký nhận tin thành công với email hợp lệ (Happy Path)', async ({ page }) => {
     const emailInput = page.locator('footer input[type="email"]');
     const submitBtn = page.locator('footer form button[type="submit"]');
-    const successMsg = page.locator('text=Đăng ký nhận bản tin thành công');
+    const successMsg = page.locator('text=Đăng ký thành công');
 
     const email = uniqueEmail('ui-news-happy');
     
@@ -46,7 +46,7 @@ test.describe('Kiểm thử giao diện Đăng ký nhận tin (UI Newsletter)', 
   test('TC-UI-NEWS-02: Validate định dạng email (AC-Newsletter-01)', async ({ page }) => {
     const emailInput = page.locator('footer input[type="email"]');
     const submitBtn = page.locator('footer form button[type="submit"]');
-    const errorMsg = page.locator('text=Định dạng email không hợp lệ.');
+    const errorMsg = page.locator('text=Vui lòng nhập địa chỉ email hợp lệ.');
 
     // Kịch bản: Nhập email sai định dạng
     await emailInput.click();
@@ -63,7 +63,7 @@ test.describe('Kiểm thử giao diện Đăng ký nhận tin (UI Newsletter)', 
   test('TC-UI-NEWS-03: Báo lỗi khi đăng ký bằng email đã tồn tại (AC-Newsletter-02)', async ({ page }) => {
     const emailInput = page.locator('footer input[type="email"]');
     const submitBtn = page.locator('footer form button[type="submit"]');
-    const successMsg = page.locator('text=Đăng ký nhận bản tin thành công');
+    const successMsg = page.locator('text=Đăng ký thành công');
     const conflictMsg = page.locator('text=Email này đã được đăng ký trước đó');
 
     const email = uniqueEmail('ui-news-dup');

@@ -138,18 +138,21 @@ function LoginFormInner() {
 
         <form className="mt-6 space-y-4" onSubmit={onSubmit} noValidate>
           {formError && (
-            <div
+            <p
               role="alert"
               className="rounded-[3px] border border-rose-200 bg-rose-50/80 p-3.5 text-caption-responsive font-medium leading-relaxed text-rose-700"
             >
               {formError}
-            </div>
+            </p>
           )}
 
           <div>
-            <label htmlFor="email" className="mb-1.5 block text-caption-responsive font-semibold text-slate-700">
-              Email Doanh Nghiệp <span className="text-rose-500">*</span>
-            </label>
+            <div className="mb-1.5 flex items-center gap-1">
+              <label htmlFor="email" className="block text-caption-responsive font-semibold text-slate-700">
+                Email Doanh Nghiệp
+              </label>
+              <span className="text-rose-500" aria-hidden="true">*</span>
+            </div>
             <div className="relative">
               <Mail
                 className="absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-slate-400 transition-colors"
@@ -168,15 +171,16 @@ function LoginFormInner() {
               />
             </div>
             {fieldErrors.email && (
-              <p className="mt-1.5 text-caption-responsive font-medium text-rose-500">{fieldErrors.email}</p>
+              <p id="email-error" className="mt-1.5 text-caption-responsive font-medium text-rose-500">{fieldErrors.email}</p>
             )}
           </div>
 
           <div>
-            <div className="mb-1.5">
+            <div className="mb-1.5 flex items-center gap-1">
               <label htmlFor="password" className="block text-caption-responsive font-semibold text-slate-700">
-                Mật khẩu <span className="text-rose-500">*</span>
+                Mật khẩu
               </label>
+              <span className="text-rose-500" aria-hidden="true">*</span>
             </div>
             <div className="relative">
               <Lock
@@ -214,7 +218,7 @@ function LoginFormInner() {
               </Link>
             </div>
             {fieldErrors.password && (
-              <p className="mt-1.5 text-caption-responsive font-medium text-rose-500">{fieldErrors.password}</p>
+              <p id="password-error" className="mt-1.5 text-caption-responsive font-medium text-rose-500">{fieldErrors.password}</p>
             )}
           </div>
 

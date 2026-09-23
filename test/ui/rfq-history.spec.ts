@@ -40,8 +40,10 @@ async function registerRandomUser(page: any) {
   // 2. Đăng nhập
   await page.goto(`${BASE_URL}/vi/login`);
   await page.waitForLoadState('load');
-  await robustFill(page.getByLabel('Email', { exact: true }), email);
-  await robustFill(page.getByLabel('Mật khẩu', { exact: true }), password);
+  // Trang login dùng nhãn "Email Doanh Nghiệp" / "Mật khẩu" (khác trang đăng ký),
+  // nên định vị theo id ổn định hơn getByLabel.
+  await robustFill(page.locator('input#email'), email);
+  await robustFill(page.locator('input#password'), password);
   await page.getByRole('button', { name: 'Đăng nhập', exact: true }).click();
   await expect(page).not.toHaveURL(/.*\/login/, { timeout: 15000 });
   await page.waitForLoadState('load');
@@ -145,10 +147,10 @@ test.describe('Kiểm thử giao diện Lịch sử gửi RFQ (UI RFQ History)',
       await expect(cartItem).toBeVisible({ timeout: 15000 });
 
       // Chờ tự động điền email (đảm bảo profile state đã load xong)
-      const emailInput = page.getByPlaceholder('email@doanhnghiep.com');
+      const emailInput = page.getByPlaceholder('Viết dạng name@company.com');
       await expect(emailInput).toHaveValue(user.email, { timeout: 15000 });
 
-      const addressInput = page.getByPlaceholder('Số nhà, tên đường, khu công nghiệp...');
+      const addressInput = page.getByPlaceholder('Ghi cụ thể số nhà, tên đường, khu công nghiệp, tỉnh/thành...');
       await addressInput.click();
       await addressInput.fill('Lô CN1-1, KCN Yên Phong, Bắc Ninh');
       await page.waitForTimeout(1000); // Chờ 1 giây để tránh bị ghi đè do Next.js hydration
@@ -440,10 +442,10 @@ test.describe('Kiểm thử giao diện Lịch sử gửi RFQ (UI RFQ History)',
       await expect(cartItem).toBeVisible({ timeout: 15000 });
 
       // Chờ tự động điền email (đảm bảo profile state đã load xong)
-      const emailInput = page.getByPlaceholder('email@doanhnghiep.com');
+      const emailInput = page.getByPlaceholder('Viết dạng name@company.com');
       await expect(emailInput).toHaveValue(userA.email, { timeout: 15000 });
 
-      const addressInput = page.getByPlaceholder('Số nhà, tên đường, khu công nghiệp...');
+      const addressInput = page.getByPlaceholder('Ghi cụ thể số nhà, tên đường, khu công nghiệp, tỉnh/thành...');
       await addressInput.click();
       await addressInput.fill('Lô CN1-1, KCN Yên Phong, Bắc Ninh');
       await page.waitForTimeout(1000); // Chờ 1 giây để tránh bị ghi đè do Next.js hydration

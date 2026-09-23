@@ -70,19 +70,19 @@ test.describe('Kiểm thử giao diện Đăng ký (UI Register)', () => {
     const submitBtn = page.getByRole('button', { name: 'Tạo tài khoản', exact: true });
     const passwordError = page.locator('#password-error');
 
+    // Chính sách hiện tại: mật khẩu tối thiểu 6 ký tự (PASSWORD_RE = /^.{6,}$/).
+    // Không yêu cầu độ phức tạp (chữ hoa/thường/số/ký tự đặc biệt).
     const weakPasswords = [
-      'Sh0rt!',             // Dưới 8 ký tự
-      'no_uppercase_1!',    // Thiếu chữ hoa
-      'NO_LOWERCASE_1!',    // Thiếu chữ thường
-      'NoNumberHere!',      // Thiếu số
-      'NoSpecialChar1'      // Thiếu ký tự đặc biệt
+      '123',      // 3 ký tự
+      'Ab1!',     // 4 ký tự
+      'a2#',      // 3 ký tự
     ];
 
     for (const weakPassword of weakPasswords) {
       await robustFill(page, 'input#password', weakPassword);
       await submitBtn.click();
       await expect(passwordError).toBeVisible();
-      await expect(passwordError).toHaveText('Mật khẩu phải có tối thiểu 8 ký tự, gồm chữ hoa, chữ thường, số và ký tự đặc biệt.');
+      await expect(passwordError).toHaveText('Mật khẩu phải có tối thiểu 6 ký tự.');
     }
   });
 

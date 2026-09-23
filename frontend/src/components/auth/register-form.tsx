@@ -190,9 +190,12 @@ export function RegisterForm() {
     const err = errors[name];
     return (
       <div>
-        <label htmlFor={name} className="mb-1 sm:mb-1.5 block text-xs sm:text-caption-responsive font-semibold text-slate-700">
-          {opts.label} <span className="text-rose-500">*</span>
-        </label>
+        <div className="mb-1 sm:mb-1.5 flex items-center gap-1">
+          <label htmlFor={name} className="block text-xs sm:text-caption-responsive font-semibold text-slate-700">
+            {opts.label}
+          </label>
+          <span className="text-rose-500" aria-hidden="true">*</span>
+        </div>
         <div className="relative">
           <Icon
             className="absolute left-2.5 sm:left-3.5 top-1/2 h-3.5 sm:h-4 w-3.5 sm:w-4 -translate-y-1/2 text-slate-400 transition-colors"
@@ -289,9 +292,12 @@ export function RegisterForm() {
 
           {/* Password */}
           <div>
-            <label htmlFor="password" className="mb-1 sm:mb-1.5 block text-xs sm:text-caption-responsive font-semibold text-slate-700">
-              {t('passwordLabel')} <span className="text-rose-500">*</span>
-            </label>
+            <div className="mb-1 sm:mb-1.5 flex items-center gap-1">
+              <label htmlFor="password" className="block text-xs sm:text-caption-responsive font-semibold text-slate-700">
+                {t('passwordLabel')}
+              </label>
+              <span className="text-rose-500" aria-hidden="true">*</span>
+            </div>
             <div className="relative">
               <Lock
                 className="absolute left-2.5 sm:left-3.5 top-1/2 h-3.5 sm:h-4 w-3.5 sm:w-4 -translate-y-1/2 text-slate-400 transition-colors"

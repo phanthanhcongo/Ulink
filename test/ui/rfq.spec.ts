@@ -111,11 +111,11 @@ test.describe('Kiểm thử quy trình Yêu cầu Báo giá (UI RFQ Flow)', () =
       await page.waitForLoadState('load');
 
       // Đợi trường email được điền tự động (chứng tỏ đã fetch metadata xong, tránh ghi đè dữ liệu)
-      const emailInput = page.getByPlaceholder('email@doanhnghiep.com');
+      const emailInput = page.getByPlaceholder('Viết dạng name@company.com');
       await expect(emailInput).toHaveValue(user.email, { timeout: 15000 });
 
       // Điền địa chỉ nhận hàng
-      await robustFill(page.getByPlaceholder('Số nhà, tên đường, khu công nghiệp...'), 'Lô CN1-1, KCN Yên Phong, Bắc Ninh');
+      await robustFill(page.getByPlaceholder('Ghi cụ thể số nhà, tên đường, khu công nghiệp, tỉnh/thành...'), 'Lô CN1-1, KCN Yên Phong, Bắc Ninh');
 
       // Chọn Regional Hub nhận
       const hubSelect = page.getByRole('combobox').first();
@@ -212,10 +212,10 @@ test.describe('Kiểm thử quy trình Yêu cầu Báo giá (UI RFQ Flow)', () =
       await page.waitForLoadState('load');
 
       // Đợi trường email được điền tự động
-      const emailInput1 = page.getByPlaceholder('email@doanhnghiep.com');
+      const emailInput1 = page.getByPlaceholder('Viết dạng name@company.com');
       await expect(emailInput1).toHaveValue(user.email, { timeout: 15000 });
 
-      await robustFill(page.getByPlaceholder('Số nhà, tên đường, khu công nghiệp...'), 'Lô CN1-1, KCN Yên Phong, Bắc Ninh');
+      await robustFill(page.getByPlaceholder('Ghi cụ thể số nhà, tên đường, khu công nghiệp, tỉnh/thành...'), 'Lô CN1-1, KCN Yên Phong, Bắc Ninh');
       await page.getByRole('combobox').first().selectOption({ index: 1 });
       await page.getByRole('combobox').nth(1).selectOption({ index: 1 });
 
@@ -262,10 +262,10 @@ test.describe('Kiểm thử quy trình Yêu cầu Báo giá (UI RFQ Flow)', () =
       await page.waitForLoadState('load');
 
       // Đợi trường email được điền tự động
-      const emailInput2 = page.getByPlaceholder('email@doanhnghiep.com');
+      const emailInput2 = page.getByPlaceholder('Viết dạng name@company.com');
       await expect(emailInput2).toHaveValue(user.email, { timeout: 15000 });
 
-      await robustFill(page.getByPlaceholder('Số nhà, tên đường, khu công nghiệp...'), 'Lô CN1-1, KCN Yên Phong, Bắc Ninh');
+      await robustFill(page.getByPlaceholder('Ghi cụ thể số nhà, tên đường, khu công nghiệp, tỉnh/thành...'), 'Lô CN1-1, KCN Yên Phong, Bắc Ninh');
       await page.getByRole('combobox').first().selectOption({ index: 1 });
       await page.getByRole('combobox').nth(1).selectOption({ index: 1 });
 
@@ -331,11 +331,11 @@ test.describe('Kiểm thử quy trình Yêu cầu Báo giá (UI RFQ Flow)', () =
       await page.waitForLoadState('load');
 
       // Đợi trường email được điền tự động (chứng tỏ đã fetch metadata xong, tránh ghi đè dữ liệu)
-      const emailInput = page.getByPlaceholder('email@doanhnghiep.com');
+      const emailInput = page.getByPlaceholder('Viết dạng name@company.com');
       await expect(emailInput).toHaveValue(user.email, { timeout: 15000 });
 
       // Bỏ trống các trường bắt buộc và click gửi
-      await page.getByPlaceholder('Số nhà, tên đường, khu công nghiệp...').fill('');
+      await page.getByPlaceholder('Ghi cụ thể số nhà, tên đường, khu công nghiệp, tỉnh/thành...').fill('');
       await page.getByRole('combobox').first().selectOption('');
       await page.getByRole('combobox').nth(1).selectOption('');
 
@@ -374,10 +374,10 @@ test.describe('Kiểm thử quy trình Yêu cầu Báo giá (UI RFQ Flow)', () =
       await page.waitForLoadState('load');
 
       // Đợi trường email được điền tự động (chứng tỏ đã fetch metadata xong, tránh ghi đè dữ liệu)
-      const emailInput = page.getByPlaceholder('email@doanhnghiep.com');
+      const emailInput = page.getByPlaceholder('Viết dạng name@company.com');
       await expect(emailInput).toHaveValue(user.email, { timeout: 15000 });
 
-      await robustFill(page.getByPlaceholder('Số nhà, tên đường, khu công nghiệp...'), 'Lô CN1-1, KCN Yên Phong, Bắc Ninh');
+      await robustFill(page.getByPlaceholder('Ghi cụ thể số nhà, tên đường, khu công nghiệp, tỉnh/thành...'), 'Lô CN1-1, KCN Yên Phong, Bắc Ninh');
       await page.getByRole('combobox').first().selectOption({ index: 1 });
       await page.getByRole('combobox').nth(1).selectOption({ index: 1 });
     });
@@ -461,11 +461,11 @@ test.describe('Kiểm thử quy trình Yêu cầu Báo giá cho Khách vãng lai
       await page.waitForLoadState('load');
 
       // Điền các trường thông tin bắt buộc thủ công do là khách vãng lai
-      await robustFill(page.getByPlaceholder('email@doanhnghiep.com'), guestEmail);
-      await robustFill(page.getByPlaceholder('Nhập tên công ty...'), 'Công ty Khách Vãng Lai B2B');
-      await robustFill(page.getByPlaceholder('Tên người đại diện liên hệ...'), 'Khách Vãng Lai A');
-      await robustFill(page.getByPlaceholder('Số điện thoại liên hệ...'), '0987654321');
-      await robustFill(page.getByPlaceholder('Số nhà, tên đường, khu công nghiệp...'), 'Lô CN1-1, KCN Yên Phong, Bắc Ninh');
+      await robustFill(page.getByPlaceholder('Viết dạng name@company.com'), guestEmail);
+      await robustFill(page.getByPlaceholder('Ví dụ: Công ty Cổ phần Sản xuất & Thương mại An Phát'), 'Công ty Khách Vãng Lai B2B');
+      await robustFill(page.getByPlaceholder('Nhập họ và tên'), 'Khách Vãng Lai A');
+      await robustFill(page.getByPlaceholder('Ví dụ: 0987xxxxxxx'), '0987654321');
+      await robustFill(page.getByPlaceholder('Ghi cụ thể số nhà, tên đường, khu công nghiệp, tỉnh/thành...'), 'Lô CN1-1, KCN Yên Phong, Bắc Ninh');
 
       // Chọn Regional Hub nhận
       const hubSelect = page.getByRole('combobox').first();
@@ -556,11 +556,11 @@ test.describe('Kiểm thử quy trình Yêu cầu Báo giá cho Khách vãng lai
       await page.goto(`${BASE_URL}/vi/quick-order`);
       await page.waitForLoadState('load');
 
-      await robustFill(page.getByPlaceholder('email@doanhnghiep.com'), guestEmail);
-      await robustFill(page.getByPlaceholder('Nhập tên công ty...'), 'Công ty Khách Vãng Lai B2B');
-      await robustFill(page.getByPlaceholder('Tên người đại diện liên hệ...'), 'Khách Vãng Lai A');
-      await robustFill(page.getByPlaceholder('Số điện thoại liên hệ...'), '0987654321');
-      await robustFill(page.getByPlaceholder('Số nhà, tên đường, khu công nghiệp...'), 'Lô CN1-1, KCN Yên Phong, Bắc Ninh');
+      await robustFill(page.getByPlaceholder('Viết dạng name@company.com'), guestEmail);
+      await robustFill(page.getByPlaceholder('Ví dụ: Công ty Cổ phần Sản xuất & Thương mại An Phát'), 'Công ty Khách Vãng Lai B2B');
+      await robustFill(page.getByPlaceholder('Nhập họ và tên'), 'Khách Vãng Lai A');
+      await robustFill(page.getByPlaceholder('Ví dụ: 0987xxxxxxx'), '0987654321');
+      await robustFill(page.getByPlaceholder('Ghi cụ thể số nhà, tên đường, khu công nghiệp, tỉnh/thành...'), 'Lô CN1-1, KCN Yên Phong, Bắc Ninh');
       await page.getByRole('combobox').first().selectOption({ index: 1 });
       await page.getByRole('combobox').nth(1).selectOption({ index: 1 });
 
@@ -594,11 +594,11 @@ test.describe('Kiểm thử quy trình Yêu cầu Báo giá cho Khách vãng lai
       await page.goto(`${BASE_URL}/vi/quick-order`);
       await page.waitForLoadState('load');
 
-      await robustFill(page.getByPlaceholder('email@doanhnghiep.com'), guestEmail);
-      await robustFill(page.getByPlaceholder('Nhập tên công ty...'), 'Công ty Khách Vãng Lai B2B');
-      await robustFill(page.getByPlaceholder('Tên người đại diện liên hệ...'), 'Khách Vãng Lai A');
-      await robustFill(page.getByPlaceholder('Số điện thoại liên hệ...'), '0987654321');
-      await robustFill(page.getByPlaceholder('Số nhà, tên đường, khu công nghiệp...'), 'Lô CN1-1, KCN Yên Phong, Bắc Ninh');
+      await robustFill(page.getByPlaceholder('Viết dạng name@company.com'), guestEmail);
+      await robustFill(page.getByPlaceholder('Ví dụ: Công ty Cổ phần Sản xuất & Thương mại An Phát'), 'Công ty Khách Vãng Lai B2B');
+      await robustFill(page.getByPlaceholder('Nhập họ và tên'), 'Khách Vãng Lai A');
+      await robustFill(page.getByPlaceholder('Ví dụ: 0987xxxxxxx'), '0987654321');
+      await robustFill(page.getByPlaceholder('Ghi cụ thể số nhà, tên đường, khu công nghiệp, tỉnh/thành...'), 'Lô CN1-1, KCN Yên Phong, Bắc Ninh');
       await page.getByRole('combobox').first().selectOption({ index: 1 });
       await page.getByRole('combobox').nth(1).selectOption({ index: 1 });
 
@@ -648,11 +648,11 @@ test.describe('Kiểm thử quy trình Yêu cầu Báo giá cho Khách vãng lai
       await page.waitForLoadState('load');
 
       // Điền rồi xóa để trigger validation
-      await page.getByPlaceholder('email@doanhnghiep.com').fill('');
-      await page.getByPlaceholder('Nhập tên công ty...').fill('');
-      await page.getByPlaceholder('Tên người đại diện liên hệ...').fill('');
-      await page.getByPlaceholder('Số điện thoại liên hệ...').fill('');
-      await page.getByPlaceholder('Số nhà, tên đường, khu công nghiệp...').fill('');
+      await page.getByPlaceholder('Viết dạng name@company.com').fill('');
+      await page.getByPlaceholder('Ví dụ: Công ty Cổ phần Sản xuất & Thương mại An Phát').fill('');
+      await page.getByPlaceholder('Nhập họ và tên').fill('');
+      await page.getByPlaceholder('Ví dụ: 0987xxxxxxx').fill('');
+      await page.getByPlaceholder('Ghi cụ thể số nhà, tên đường, khu công nghiệp, tỉnh/thành...').fill('');
       await page.getByRole('combobox').first().selectOption('');
       await page.getByRole('combobox').nth(1).selectOption('');
 
@@ -690,11 +690,11 @@ test.describe('Kiểm thử quy trình Yêu cầu Báo giá cho Khách vãng lai
       await page.goto(`${BASE_URL}/vi/quick-order`);
       await page.waitForLoadState('load');
 
-      await robustFill(page.getByPlaceholder('email@doanhnghiep.com'), guestEmail);
-      await robustFill(page.getByPlaceholder('Nhập tên công ty...'), 'Công ty Khách Vãng Lai B2B');
-      await robustFill(page.getByPlaceholder('Tên người đại diện liên hệ...'), 'Khách Vãng Lai A');
-      await robustFill(page.getByPlaceholder('Số điện thoại liên hệ...'), '0987654321');
-      await robustFill(page.getByPlaceholder('Số nhà, tên đường, khu công nghiệp...'), 'Lô CN1-1, KCN Yên Phong, Bắc Ninh');
+      await robustFill(page.getByPlaceholder('Viết dạng name@company.com'), guestEmail);
+      await robustFill(page.getByPlaceholder('Ví dụ: Công ty Cổ phần Sản xuất & Thương mại An Phát'), 'Công ty Khách Vãng Lai B2B');
+      await robustFill(page.getByPlaceholder('Nhập họ và tên'), 'Khách Vãng Lai A');
+      await robustFill(page.getByPlaceholder('Ví dụ: 0987xxxxxxx'), '0987654321');
+      await robustFill(page.getByPlaceholder('Ghi cụ thể số nhà, tên đường, khu công nghiệp, tỉnh/thành...'), 'Lô CN1-1, KCN Yên Phong, Bắc Ninh');
       await page.getByRole('combobox').first().selectOption({ index: 1 });
       await page.getByRole('combobox').nth(1).selectOption({ index: 1 });
     });

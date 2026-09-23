@@ -30,7 +30,7 @@ test.describe('Kiểm thử giao diện Đăng nhập (UI Login)', () => {
 
     // Nhập thông tin tài khoản hợp lệ
     await robustFill(page, 'input#email', 'admin@ulink.com');
-    await robustFill(page, 'input#password', '1da94d36ee70396195b0527d0e4c841a');
+    await robustFill(page, 'input#password', 'change-me-admin-password');
 
     // Thực hiện click Đăng nhập
     await submitBtn.click();
@@ -131,7 +131,7 @@ test.describe('Kiểm thử giao diện Đăng nhập (UI Login)', () => {
     const adminLoginRes = await request.post(`${DIRECTUS_URL}/auth/login`, {
       data: {
         email: 'admin@ulink.com',
-        password: '1da94d36ee70396195b0527d0e4c841a',
+        password: 'change-me-admin-password',
         mode: 'json'
       }
     });
@@ -230,7 +230,7 @@ test.describe('Kiểm thử giao diện Đăng nhập (UI Login)', () => {
     const adminLoginRes = await request.post(`${DIRECTUS_URL}/auth/login`, {
       data: {
         email: 'admin@ulink.com',
-        password: '1da94d36ee70396195b0527d0e4c841a',
+        password: 'change-me-admin-password',
         mode: 'json'
       }
     });

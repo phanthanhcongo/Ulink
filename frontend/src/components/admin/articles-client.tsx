@@ -154,6 +154,7 @@ export function ArticlesClient({
   const [activeFormTab, setActiveFormTab] = useState<'content' | 'seo'>('content');
   const [statusFilter, setStatusFilter] = useState<'all' | 'published' | 'draft'>('all');
   const [industryFilter, setIndustryFilter] = useState<'all' | number>('all');
+  const [categoryFilter, setCategoryFilter] = useState<string>('all');
   const [isDirty, setIsDirty] = useState(false);
   const initialArticleRef = useRef<string>('');
 
@@ -188,6 +189,7 @@ export function ArticlesClient({
   const filteredArticles = articles.filter((art) => {
     if (statusFilter !== 'all' && art.status !== statusFilter) return false;
     if (industryFilter !== 'all' && art.industry !== industryFilter) return false;
+    if (categoryFilter !== 'all' && (art.category || '') !== categoryFilter) return false;
     const title = getTranslatedField(art, 'title', locale).toLowerCase();
     const author = (art.author || '').toLowerCase();
     const q = searchQuery.toLowerCase();
@@ -428,6 +430,22 @@ export function ArticlesClient({
               ))}
             </select>
           )}
+
+          {/* Category filter */}
+          <select
+            value={categoryFilter}
+            onChange={(e) => setCategoryFilter(e.target.value)}
+            className="px-3 py-2 rounded-[3px] border border-slate-200 bg-white text-caption-responsive font-bold text-slate-700 focus:outline-none focus:ring-1 focus:ring-blue-600 shadow-sm"
+          >
+            <option value="all">Tất cả danh mục</option>
+            {Array.from(new Set(articles.map((a) => a.category).filter(Boolean)))
+              .sort()
+              .map((cat) => (
+                <option key={cat as string} value={cat as string}>
+                  {cat === 'market-news' ? 'Tin thị trường (market-news)' : (cat as string)}
+                </option>
+              ))}
+          </select>
         </div>
       </div>
 
@@ -966,12 +984,15 @@ export function ArticlesClient({
                           className="w-full px-4 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-700 focus:outline-none focus:ring-1 focus:ring-brand bg-white shadow-sm"
                         />
                         <datalist id="article-category-list">
+                          <option value="market-news" label="Tin thị trường (tab riêng ở /resources)" />
                           <option value="Tin tức" />
-                          <option value="Catalogue" />
-                          <option value="Tài liệu kỹ thuật" />
-                          <option value="Hướng dẫn" />
+                          <option value="Hướng dẫn kỹ thuật" />
+                          <option value="Tiêu chuẩn" />
+                          <option value="Case Study" />
                           <option value="Nghiên cứu điển hình" />
                           <option value="Sự kiện" />
+                          <option value="Catalogue" />
+                          <option value="Tài liệu kỹ thuật" />
                           <option value="Khu công nghiệp" />
                         </datalist>
                       </div>

@@ -3,6 +3,7 @@ import { Link } from '@/i18n/navigation';
 import { FooterMobile } from './footer-mobile';
 import { FooterTablet } from './footer-tablet';
 import { FooterDesktop } from './footer-desktop';
+import { NewsletterForm } from './newsletter-form';
 
 export async function SiteFooter() {
   const t = await getTranslations('footer');
@@ -19,6 +20,11 @@ export async function SiteFooter() {
 
         {/* 3. DESKTOP VIEW (>= lg) */}
         <FooterDesktop />
+
+        {/* 4. NEWSLETTER SIGN-UP (common to all viewports) */}
+        <div className="mt-8 border-t border-slate-200 pt-8">
+          <NewsletterForm />
+        </div>
       </div>
 
       {/* ── BOTTOM BAR: COPYRIGHT & LEGAL LINKS (COMMON TO ALL VIEWPORTS) ── */}

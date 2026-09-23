@@ -1245,8 +1245,8 @@ export function QuickOrderClient({ user }: { user: AuthUser | null }) {
 
               <button
                 type="submit"
-                disabled={submitting}
-                className="inline-flex items-center justify-center gap-2 rounded-[3px] bg-brand px-6 py-3 text-body-regular font-semibold text-white shadow hover:bg-brand/90 transition-all disabled:opacity-50 w-full sm:w-auto"
+                disabled={submitting || !cart.some((item) => item.sku.trim() || item.product_name.trim())}
+                className="inline-flex items-center justify-center gap-2 rounded-[3px] bg-brand px-6 py-3 text-body-regular font-semibold text-white shadow hover:bg-brand/90 transition-all disabled:opacity-50 disabled:cursor-not-allowed w-full sm:w-auto"
               >
                 {submitting && <Loader2 className="h-4 w-4 animate-spin" />}
                 {submitting ? t('submitting') : t('submitRfq')}
