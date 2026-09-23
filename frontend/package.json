@@ -7,7 +7,10 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "test": "node --import tsx --test src/lib/directus.test.mjs src/lib/commercial-import.test.ts src/lib/auth.test.mjs src/lib/api-response.test.ts src/lib/api-response-next.test.ts src/lib/api-error.test.ts src/lib/rfq-validation.test.ts src/lib/rfq-sku.test.ts src/lib/rfq-anti-spam.test.ts src/lib/rfq-idempotency.test.ts src/lib/internal-auth.test.ts src/lib/rfq-notification.test.ts src/lib/rfq-submit.test.ts src/lib/content-revalidation.test.ts src/lib/sku-cache.test.ts src/lib/erp-outbound.test.ts src/lib/erp-outbox-worker.test.ts src/lib/order-submit.test.ts src/lib/order-notes.test.ts src/lib/dashboard-charts.test.ts src/lib/utils.test.ts src/lib/validators.test.ts src/lib/assets.test.ts src/lib/route-helpers.test.ts src/lib/image-url.test.ts src/lib/vnpay.test.ts src/lib/rfq-mailer.test.ts",
+    "test": "node --import tsx --test src/lib/directus.test.mjs src/lib/commercial-import.test.ts src/lib/auth.test.mjs src/lib/api-response.test.ts src/lib/api-response-next.test.ts src/lib/api-error.test.ts src/lib/rfq-validation.test.ts src/lib/rfq-sku.test.ts src/lib/rfq-anti-spam.test.ts src/lib/rfq-idempotency.test.ts src/lib/internal-auth.test.ts src/lib/rfq-notification.test.ts src/lib/rfq-submit.test.ts src/lib/content-revalidation.test.ts src/lib/sku-cache.test.ts src/lib/erp-outbound.test.ts src/lib/erp-outbox-worker.test.ts src/lib/order-submit.test.ts src/lib/order-notes.test.ts src/lib/dashboard-charts.test.ts src/lib/utils.test.ts src/lib/validators.test.ts src/lib/assets.test.ts src/lib/route-helpers.test.ts src/lib/image-url.test.ts src/lib/vnpay.test.ts src/lib/rfq-mailer.test.ts src/app/api/auth/login/route.test.ts src/app/api/rfq/route.test.ts",
+    "test:components": "vitest run src/components",
+    "test:all": "npm run test && npm run test:components",
+    "test:watch": "vitest watch",
     "typecheck": "tsc --noEmit",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
@@ -36,19 +39,26 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@testing-library/jest-dom": "^6.1.4",
+    "@testing-library/react": "^14.1.2",
+    "@testing-library/user-event": "^14.5.1",
     "@types/dompurify": "^3.2.0",
+    "@vitejs/plugin-react": "^4.2.1",
     "@types/node": "^20.16.11",
     "@types/react": "^18.3.11",
     "@types/react-dom": "^18.3.0",
+    "@vitest/ui": "^1.0.4",
     "autoprefixer": "^10.4.20",
     "eslint": "^8.57.1",
     "eslint-config-next": "^14.2.15",
+    "jsdom": "^23.0.1",
     "postcss": "^8.4.47",
     "prettier": "^3.3.3",
     "sharp": "^0.35.3",
     "tailwindcss": "^3.4.14",
     "tailwindcss-animate": "^1.0.7",
     "tsx": "^4.22.4",
-    "typescript": "^5.6.3"
+    "typescript": "^5.6.3",
+    "vitest": "^1.0.4"
   }
 }
