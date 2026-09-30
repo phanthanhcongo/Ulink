@@ -523,9 +523,34 @@ export async function saveSku(data: {
   }
 }
 
+/** Public base URL used to build browser-facing Directus asset links. */
+function getPublicAssetBase(): string {
+  const base =
+    process.env.NEXT_PUBLIC_DIRECTUS_URL ||
+    process.env.DIRECTUS_PUBLIC_URL ||
+    getDirectusUrl();
+  return base.replace(/\/$/, '');
+}
+
+/** Build the cookie header from the current Directus session, if any. */
+async function directusSessionCookieHeader(): Promise<Record<string, string>> {
+  const store = await cookies();
+  const sessionToken = store.get('directus_session_token')?.value;
+  const refreshToken = store.get('directus_refresh_token')?.value;
+  const headers: Record<string, string> = {};
+  if (sessionToken) {
+    headers['cookie'] = `directus_session_token=${sessionToken}${refreshToken ? `; directus_refresh_token=${refreshToken}` : ''}`;
+  }
+  return headers;
+}
+
 /**
- * Action: Upload a product image to frontend public folder.
- * Returns the public path (e.g. /images/products/abc123.png).
+ * Action: Upload a product image to Directus storage (S3 on prod, local in dev).
+ * Returns a full asset URL (e.g. https://<directus>/assets/<uuid>) stored in the
+ * product's hero JSON array. Legacy `/images/...` paths keep working unchanged.
+ *
+ * Note: previously wrote to `public/`, which fails on Vercel's read-only
+ * serverless filesystem (ENOENT mkdir '/var/task/frontend/public').
  */
 export async function uploadProductImage(formData: FormData): Promise<{ success: boolean; path?: string; error?: string }> {
   await checkAuth();
@@ -534,18 +559,23 @@ export async function uploadProductImage(formData: FormData): Promise<{ success:
     const file = formData.get('file') as File;
     if (!file) throw new Error('No file provided');
 
-    const { writeFile, mkdir } = await import('fs/promises');
-    const nodePath = await import('path');
+    const headers = await directusSessionCookieHeader();
+    const res = await globalThis.fetch(`${getDirectusUrl()}/files`, {
+      method: 'POST',
+      headers,
+      body: formData
+    });
 
-    const ext = nodePath.extname(file.name) || '.png';
-    const safeName = `${Date.now()}-${Math.random().toString(36).slice(2, 8)}${ext}`;
-    const dir = nodePath.join(process.cwd(), 'public', 'images', 'products');
-    await mkdir(dir, { recursive: true });
+    if (!res.ok) {
+      const errData = await res.json().catch(() => ({}));
+      throw new Error(errData?.errors?.[0]?.message || `Upload failed: ${res.status}`);
+    }
 
-    const buffer = Buffer.from(await file.arrayBuffer());
-    await writeFile(nodePath.join(dir, safeName), buffer);
+    const result = await res.json();
+    const fileId = result?.data?.id;
+    if (!fileId) throw new Error('Directus did not return a file id');
 
-    return { success: true, path: `/images/products/${safeName}` };
+    return { success: true, path: `${getPublicAssetBase()}/assets/${fileId}` };
   } catch (err) {
     console.error('Failed to upload product image:', err);
     return { success: false, error: formatError(err) };
@@ -553,19 +583,33 @@ export async function uploadProductImage(formData: FormData): Promise<{ success:
 }
 
 /**
- * Action: Delete a product image from frontend public folder.
+ * Action: Delete a product image.
+ * - Directus asset references (.../assets/<uuid> or a bare uuid) → delete the
+ *   Directus file so S3/local storage stays clean.
+ * - Legacy `/images/...` static paths → no-op (shipped with the frontend build).
  */
 export async function deleteProductImage(imagePath: string): Promise<{ success: boolean; error?: string }> {
   await checkAuth();
 
   try {
-    if (!imagePath.startsWith('/images/products/')) {
+    const uuidRe = /[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}/i;
+    const isAssetUrl = imagePath.includes('/assets/');
+    const isBareUuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(imagePath.trim());
+
+    if (!isAssetUrl && !isBareUuid) {
+      // Legacy static path or unknown value — nothing to delete from storage.
       return { success: true };
     }
-    const { unlink } = await import('fs/promises');
-    const nodePath = await import('path');
-    const fullPath = nodePath.join(process.cwd(), 'public', imagePath);
-    await unlink(fullPath).catch(() => {});
+
+    const fileId = isBareUuid ? imagePath.trim() : imagePath.match(uuidRe)?.[0];
+    if (!fileId) return { success: true };
+
+    const headers = await directusSessionCookieHeader();
+    await globalThis.fetch(`${getDirectusUrl()}/files/${fileId}`, {
+      method: 'DELETE',
+      headers
+    }).catch(() => {});
+
     return { success: true };
   } catch (err) {
     return { success: false, error: formatError(err) };
