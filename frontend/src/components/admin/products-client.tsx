@@ -6,6 +6,7 @@ import React, { useState, useTransition } from 'react';
 import Image from 'next/image';
 import { getDirectusUrl } from '@/lib/directus-runtime.mjs';
 import { resolveImageUrl } from '@/lib/image-url';
+import { compressImage } from '@/lib/compress-image';
 import {
   Search,
   Plus,
@@ -776,8 +777,9 @@ export function ProductsClient({
                         onChange={async (e) => {
                           const file = e.target.files?.[0];
                           if (!file) return;
+                          const compressed = await compressImage(file);
                           const fd = new FormData();
-                          fd.append('file', file);
+                          fd.append('file', compressed);
                           const res = await uploadProductImage(fd);
                           if (res.success && res.path) {
                             let currentPaths: string[] = [];

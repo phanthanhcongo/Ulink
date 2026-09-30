@@ -23,6 +23,7 @@ import {
   ChevronLeft,
   ChevronRight,
   Tag,
+  Briefcase,
   Factory,
   ShoppingCart,
   Settings,
@@ -92,6 +93,11 @@ export function AdminSidebar({ isCollapsed = false, toggleCollapse }: AdminSideb
       href: '/admin/events',
       label: 'Sự kiện',
       icon: Calendar
+    },
+    {
+      href: '/admin/jobs',
+      label: 'Tuyển dụng',
+      icon: Briefcase
     },
     {
       href: '/admin/rfqs',
