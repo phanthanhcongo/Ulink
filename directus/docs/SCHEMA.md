@@ -34,6 +34,7 @@ Conventions:
 | `case_studies` | `title`, `slug`, `summary`, `body`, `industry`, `cover`, `status` | Resource center content |
 | `iso_certifications` | `name`, `number`, `issuer`, `valid_until`, `file`, `status` | ISO certificates |
 | `pages` | `title`, `slug`, `body`, `status`, `meta_title`, `meta_description` | Static pages |
+| `job_openings` | `title`, `slug`, `code`, `department`, `location`, `employment_type`, `salary_range`, `is_urgent`, `deadline`, `sort`, `status` | Careers/recruitment; translations carry `title`, `summary`, `description`, `requirements`, `benefits` |
 
 SEO defaults live in singleton `site_settings`. Current bootstrap only adds
 `meta_title` and `meta_description` on content collections; `og_image` exists on
@@ -155,6 +156,8 @@ Customer row-level filters in bootstrap:
 - `rfq_assignment_rules.is_default`: boolean fallback rule marker
 - `documents.doc_type`: `tds`, `msds`, `certificate`, `brochure`
 - `regional_hubs.operating_status`: `active`, `stopped`, `maintenance`, `full`, `temporarily_closed`
+- `job_openings.department`: `kinh-doanh`, `ky-thuat`, `chuoi-cung-ung`
+- `job_openings.employment_type`: `full_time`, `part_time`, `internship`, `contract`
 
 ## ERP-ready fields
 

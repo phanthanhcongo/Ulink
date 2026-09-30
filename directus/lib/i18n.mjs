@@ -36,6 +36,7 @@ export const TRANSLATABLE_COLLECTIONS = [
   'case_studies',
   'iso_certifications',
   'pages',
+  'job_openings',
   'site_settings',
   'homepage'
 ];
@@ -100,6 +101,13 @@ export const TRANSLATION_FIELDS = {
     { field: 'body', type: 'text', meta: { interface: 'wysiwyg' } },
     { field: 'meta_title', type: 'string', meta: { interface: 'input' } },
     { field: 'meta_description', type: 'text', meta: { interface: 'textarea' } }
+  ],
+  job_openings: [
+    { field: 'title', type: 'string', meta: { interface: 'input', required: true } },
+    { field: 'summary', type: 'text', meta: { interface: 'textarea' } },
+    { field: 'description', type: 'text', meta: { interface: 'wysiwyg' } },
+    { field: 'requirements', type: 'text', meta: { interface: 'wysiwyg' } },
+    { field: 'benefits', type: 'text', meta: { interface: 'wysiwyg' } }
   ],
   site_settings: [
     { field: 'meta_title', type: 'string', meta: { interface: 'input' } },

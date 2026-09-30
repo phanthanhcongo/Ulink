@@ -20,7 +20,8 @@ export const CONTENT_COLLECTIONS = [
   'blog_posts',
   'case_studies',
   'iso_certifications',
-  'pages'
+  'pages',
+  'job_openings'
 ];
 
 export const PUBLIC_ALWAYS_READ_COLLECTIONS = ['site_settings', 'homepage', 'languages', ...TRANSLATION_COLLECTION_NAMES];

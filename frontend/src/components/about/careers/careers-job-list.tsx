@@ -4,41 +4,18 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { Search, MapPin, Briefcase, Wallet, ArrowRight, Target, Zap, HeartHandshake, User, Calendar } from 'lucide-react';
 
-const jobsData = [
-  {
-    id: '1',
-    slug: 'bd-01',
-    title: 'Chuyên viên Phát triển Kinh doanh',
-    code: 'BD-01',
-    isUrgent: true,
-    location: 'Hà Nam',
-    type: 'Toàn thời gian',
-    salary: '15 - 20 triệu',
-    daysLeft: 'Còn 10 ngày'
-  },
-  {
-    id: '2',
-    slug: 'pe-03',
-    title: 'Kỹ sư Dự án (Project Engineer)',
-    code: 'PE-03',
-    isUrgent: false,
-    location: 'Hà Nam',
-    type: 'Toàn thời gian',
-    salary: '18 - 25 triệu',
-    daysLeft: 'Còn 8 ngày'
-  },
-  {
-    id: '3',
-    slug: 'sce-02',
-    title: 'Chuyên viên Chuỗi cung ứng (Supply Chain Executive)',
-    code: 'SCE-02',
-    isUrgent: false,
-    location: 'Hà Nội',
-    type: 'Toàn thời gian',
-    salary: '12 - 18 triệu',
-    daysLeft: 'Còn 15 ngày'
-  }
-];
+export interface JobCardVM {
+  id: string;
+  slug: string;
+  title: string;
+  code: string;
+  isUrgent: boolean;
+  location: string;
+  type: string;
+  salary: string;
+  daysLeft: string;
+  department: string;
+}
 
 const benefitsData = [
   {
@@ -68,15 +45,16 @@ const benefitsData = [
   }
 ];
 
-export function CareersJobList() {
+export function CareersJobList({ jobs = [] }: { jobs?: JobCardVM[] }) {
   const [search, setSearch] = useState('');
   const [department, setDepartment] = useState('');
   const [location, setLocation] = useState('');
 
-  const filteredJobs = jobsData.filter((j) => {
+  const filteredJobs = jobs.filter((j) => {
     const matchesSearch = j.title.toLowerCase().includes(search.toLowerCase());
     const matchesLocation = location ? j.location.toLowerCase().includes(location.toLowerCase()) : true;
-    return matchesSearch && matchesLocation;
+    const matchesDepartment = department ? j.department === department : true;
+    return matchesSearch && matchesLocation && matchesDepartment;
   });
 
   return (
@@ -125,13 +103,18 @@ export function CareersJobList() {
               className="rounded-[3px] border border-slate-200 px-3 py-2.5 text-[#162233] font-normal text-sm lg:text-[14px] outline-none focus:border-[#1769E2] bg-white"
             >
               <option value="">Địa điểm</option>
-              <option value="hanoi">Hà Nội</option>
-              <option value="hanam">Hà Nam</option>
+              <option value="Hà Nội">Hà Nội</option>
+              <option value="Hà Nam">Hà Nam</option>
             </select>
           </div>
 
           {/* Job List */}
           <div className="flex flex-col gap-4">
+            {filteredJobs.length === 0 && (
+              <div className="rounded-[3px] border border-dashed border-slate-200 bg-slate-50/50 px-4 py-10 text-center text-[#617084] text-sm">
+                Hiện chưa có vị trí phù hợp với tiêu chí tìm kiếm.
+              </div>
+            )}
             {filteredJobs.map((job) => (
               <div
                 key={job.id}
@@ -182,20 +165,14 @@ export function CareersJobList() {
             ))}
           </div>
 
-          {/* Pagination */}
-          <div className="flex items-center justify-center gap-3.5 mt-8">
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#1769E2] text-sm font-semibold text-white shadow-xs">
-              1
-            </span>
-            {[2, 3, 4, 5, 6, 7, 8, 9, 10].map((page) => (
-              <span
-                key={page}
-                className="text-sm font-semibold text-[#617084] hover:text-[#1769E2] cursor-pointer transition-colors"
-              >
-                {page}
+          {/* Pagination — shown only when results exceed one page */}
+          {filteredJobs.length > 10 && (
+            <div className="flex items-center justify-center gap-3.5 mt-8">
+              <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#1769E2] text-sm font-semibold text-white shadow-xs">
+                1
               </span>
-            ))}
-          </div>
+            </div>
+          )}
         </div>
 
         {/* Right Column: Why Join ULink */}

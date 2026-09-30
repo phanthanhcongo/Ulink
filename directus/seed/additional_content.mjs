@@ -81,4 +81,71 @@ export async function seedAdditionalContent(helpers, ids, geography) {
     priority: 0,
     is_default: true
   });
+
+  // Job openings / Careers
+  const jobSeeds = [
+    {
+      slug: 'bd-01',
+      code: 'BD-01',
+      department: 'kinh-doanh',
+      location: 'Hà Nam',
+      employment_type: 'full_time',
+      salary_range: '15 - 20 triệu',
+      is_urgent: true,
+      deadline: '2026-10-31',
+      sort: 1,
+      status: 'published',
+      title: 'Chuyên viên Phát triển Kinh doanh',
+      summary: 'Tìm kiếm và phát triển khách hàng doanh nghiệp B2B trong lĩnh vực vật tư công nghiệp.',
+      description: '<p>Phát triển thị trường và chăm sóc khách hàng doanh nghiệp tại khu vực Hà Nam và lân cận.</p>',
+      requirements: '<ul><li>Tối thiểu 1 năm kinh nghiệm bán hàng B2B.</li><li>Kỹ năng giao tiếp và đàm phán tốt.</li></ul>',
+      benefits: '<ul><li>Lương cứng + hoa hồng hấp dẫn.</li><li>Bảo hiểm đầy đủ theo luật.</li></ul>'
+    },
+    {
+      slug: 'pe-03',
+      code: 'PE-03',
+      department: 'ky-thuat',
+      location: 'Hà Nam',
+      employment_type: 'full_time',
+      salary_range: '18 - 25 triệu',
+      is_urgent: false,
+      deadline: '2026-10-29',
+      sort: 2,
+      status: 'published',
+      title: 'Kỹ sư Dự án (Project Engineer)',
+      summary: 'Quản lý và triển khai các dự án cung ứng vật tư cho khách hàng công nghiệp.',
+      description: '<p>Chịu trách nhiệm khảo sát, tư vấn giải pháp kỹ thuật và triển khai dự án.</p>',
+      requirements: '<ul><li>Tốt nghiệp chuyên ngành kỹ thuật.</li><li>Kinh nghiệm quản lý dự án là lợi thế.</li></ul>',
+      benefits: '<ul><li>Cơ hội đào tạo và phát triển chuyên môn.</li><li>Môi trường làm việc chuyên nghiệp.</li></ul>'
+    },
+    {
+      slug: 'sce-02',
+      code: 'SCE-02',
+      department: 'chuoi-cung-ung',
+      location: 'Hà Nội',
+      employment_type: 'full_time',
+      salary_range: '12 - 18 triệu',
+      is_urgent: false,
+      deadline: '2026-11-05',
+      sort: 3,
+      status: 'published',
+      title: 'Chuyên viên Chuỗi cung ứng (Supply Chain Executive)',
+      summary: 'Điều phối và tối ưu hoạt động chuỗi cung ứng, tồn kho và logistics.',
+      description: '<p>Lập kế hoạch cung ứng, quản lý tồn kho và phối hợp với các hub khu vực.</p>',
+      requirements: '<ul><li>Kinh nghiệm về logistics / supply chain.</li><li>Thành thạo Excel và các công cụ phân tích.</li></ul>',
+      benefits: '<ul><li>Chế độ phúc lợi toàn diện.</li><li>Lộ trình thăng tiến rõ ràng.</li></ul>'
+    }
+  ];
+
+  for (const job of jobSeeds) {
+    const { title, summary, description, requirements, benefits, ...base } = job;
+    const jobId = await helpers.ensureItem('job_openings', 'slug', { ...base, title });
+    await helpers.ensureTranslation('job_openings', jobId, 'vi', {
+      title,
+      summary,
+      description,
+      requirements,
+      benefits
+    });
+  }
 }

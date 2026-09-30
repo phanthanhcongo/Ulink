@@ -256,6 +256,56 @@ export const COLLECTION_DEFS = [
     ]
   },
   {
+    collection: 'job_openings',
+    meta: { icon: 'work', note: 'Job Openings / Careers', sort_field: 'sort' },
+    schema: {},
+    fields: [
+      ID_FIELD,
+      STATUS_FIELD,
+      createTranslationAliasField(),
+      { field: 'sort', type: 'integer', meta: { interface: 'input', hidden: true } },
+      { field: 'title', type: 'string', meta: { interface: 'input', required: true } },
+      { field: 'slug', type: 'string', meta: { interface: 'input', required: true }, schema: { is_unique: true } },
+      { field: 'code', type: 'string', meta: { interface: 'input', width: 'half' } },
+      {
+        field: 'department',
+        type: 'string',
+        meta: {
+          interface: 'select-dropdown',
+          options: {
+            choices: [
+              { text: 'Kinh doanh', value: 'kinh-doanh' },
+              { text: 'Kỹ thuật', value: 'ky-thuat' },
+              { text: 'Chuỗi cung ứng', value: 'chuoi-cung-ung' }
+            ]
+          },
+          width: 'half'
+        }
+      },
+      { field: 'location', type: 'string', meta: { interface: 'input', width: 'half' } },
+      {
+        field: 'employment_type',
+        type: 'string',
+        meta: {
+          interface: 'select-dropdown',
+          options: {
+            choices: [
+              { text: 'Toàn thời gian', value: 'full_time' },
+              { text: 'Bán thời gian', value: 'part_time' },
+              { text: 'Thực tập', value: 'internship' },
+              { text: 'Hợp đồng', value: 'contract' }
+            ]
+          },
+          width: 'half'
+        },
+        schema: { default_value: 'full_time' }
+      },
+      { field: 'salary_range', type: 'string', meta: { interface: 'input', width: 'half' } },
+      { field: 'is_urgent', type: 'boolean', meta: { interface: 'boolean', width: 'half' }, schema: { default_value: false } },
+      { field: 'deadline', type: 'date', meta: { interface: 'datetime', width: 'half' } }
+    ]
+  },
+  {
     collection: 'case_studies',
     meta: { icon: 'quickreply', note: 'Case Studies' },
     schema: {},
