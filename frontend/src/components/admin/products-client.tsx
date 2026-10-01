@@ -2,7 +2,7 @@
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import React, { useState, useTransition } from 'react';
+import React, { useState, useTransition, useMemo } from 'react';
 import Image from 'next/image';
 import { getDirectusUrl } from '@/lib/directus-runtime.mjs';
 import { resolveImageUrl } from '@/lib/image-url';
@@ -142,6 +142,28 @@ export function ProductsClient({
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
   const [selectedStatus, setSelectedStatus] = useState<string>('all');
   const [isPending, startTransition] = useTransition();
+
+  // Group categories into parent → children for a hierarchical filter.
+  const categoryTree = useMemo(() => {
+    const parentIdOf = (c: ProductCategory): number | null => {
+      const p = c.parent as any;
+      if (p == null) return null;
+      return typeof p === 'object' ? p.id : Number(p);
+    };
+    const roots = categories.filter((c) => parentIdOf(c) == null);
+    const childrenOf = (id: number) => categories.filter((c) => parentIdOf(c) === id);
+    return roots.map((root) => ({ root, children: childrenOf(root.id) }));
+  }, [categories]);
+
+  // When a parent is selected, also accept its children's ids.
+  const acceptedCategoryIds = useMemo(() => {
+    if (selectedCategory === 'all') return null;
+    const match = categoryTree.find((n) => String(n.root.id) === selectedCategory);
+    if (match && match.children.length > 0) {
+      return new Set([String(match.root.id), ...match.children.map((c) => String(c.id))]);
+    }
+    return new Set([selectedCategory]);
+  }, [selectedCategory, categoryTree]);
 
   // Modals state
   const [productModalOpen, setProductModalOpen] = useState(false);
@@ -365,9 +387,10 @@ export function ProductsClient({
     // Category
     const categoryObj = p.category as any;
     const matchesCategory =
-      selectedCategory === 'all' ||
+      !acceptedCategoryIds ||
       (categoryObj &&
-        (String(categoryObj.id) === selectedCategory || categoryObj.slug === selectedCategory));
+        (acceptedCategoryIds.has(String(categoryObj.id)) ||
+          acceptedCategoryIds.has(categoryObj.slug)));
 
     // Status
     const matchesStatus = selectedStatus === 'all' || p.status === selectedStatus;
@@ -451,11 +474,22 @@ export function ProductsClient({
               className="admin-select flex-1 sm:flex-none"
             >
               <option value="all">Tất cả danh mục</option>
-              {categories.map((cat) => (
-                <option key={cat.id} value={cat.id}>
-                  {cat.name}
-                </option>
-              ))}
+              {categoryTree.map(({ root, children }) =>
+                children.length > 0 ? (
+                  <optgroup key={root.id} label={root.name}>
+                    <option value={root.id}>{root.name} (tất cả)</option>
+                    {children.map((child) => (
+                      <option key={child.id} value={child.id}>
+                        &nbsp;&nbsp;↳ {child.name}
+                      </option>
+                    ))}
+                  </optgroup>
+                ) : (
+                  <option key={root.id} value={root.id}>
+                    {root.name}
+                  </option>
+                )
+              )}
             </select>
           </div>
 
