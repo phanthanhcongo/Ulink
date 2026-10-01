@@ -6,43 +6,45 @@ Seed data hoàn chỉnh cho hệ thống product catalog, thay thế seed v1.
 
 ```
 1. regional_hubs        → 3 Hub vùng miền
-2. industrial_zones     → 24 KCN nổi bật
-3. team_members         → 24 nhân sự
+2. industrial_zones     → 1 KCN
+3. team_members         → 1 nhân sự
 4. industries           → 6 ngành công nghiệp
 5. standards            → 9 tiêu chuẩn chất lượng
-6. attributes           → 3 nhóm thuộc tính + 27 options
+6. attributes           → 3 nhóm thuộc tính + 11 options
 7. categories           → 3 cha + 21 con = 24 danh mục
-8. products_data        → 31 sản phẩm (đã map category con)
-9. skus_data            → 31 SKUs (giá + MOQ)
-10. translations        → 62 bản dịch EN/JA
+8. products_data        → 39 sản phẩm (đã map category con)
+9. skus_data            → 39 SKU base (runner expand S/M/L)
+10. translations        → 78 bản dịch EN/JA
 11. links               → Junction tables (SP↔Industry, SP↔Standard, SP↔Hub, SP↔Attribute)
 12. inventory_seed      → 93 tồn kho + 93 movements nhập kho
 13. documents           → 6 tài liệu (catalog, datasheet, certificate)
 ```
+
+> Các file data (mục 2–11, trừ inventory) được regenerate khớp DB local bằng
+> `node seed-v2/_regen-from-db.mjs`. Chạy lại script này mỗi khi DB thay đổi.
 
 ## Tổng quan số liệu
 
 | Bảng | Records | File |
 |------|---------|------|
 | `regional_hubs` | 3 | `regional_hubs.mjs` |
-| `hub_industrial_zones` | 24 | `industrial_zones.mjs` |
-| `hub_team_members` | 24 | `team_members.mjs` |
+| `hub_industrial_zones` | 1 | `industrial_zones.mjs` |
+| `hub_team_members` | 1 | `team_members.mjs` |
 | `industries` | 6 | `industries.mjs` |
 | `standards` | 9 | `standards.mjs` |
 | `product_attributes` | 3 | `attributes.mjs` |
-| `product_attribute_options` | 27 | `attributes.mjs` |
+| `product_attribute_options` | 11 | `attributes.mjs` |
 | `product_categories` | 24 | `categories.mjs` |
-| `products` | 31 | `products_data.mjs` |
-| `product_skus` | 31 | `skus_data.mjs` |
-| `products_translations` | 62 | `translations.mjs` |
-| `products_industries` | 44 | `links.mjs` |
-| `products_standards` | 24 | `links.mjs` |
+| `products` | 39 | `products_data.mjs` |
+| `product_skus` | 39 base (×S/M/L ở runner) | `skus_data.mjs` |
+| `products_translations` | 78 | `translations.mjs` |
+| `products_industries` | 79 | `links.mjs` |
+| `products_standards` | 39 | `links.mjs` |
 | `products_regional_hubs` | 93 | `links.mjs` |
-| `products_product_attributes` | 55 | `links.mjs` |
+| `products_product_attributes` | 93 | `links.mjs` |
 | `inventory_stock` | 93 | `inventory_seed.mjs` |
 | `inventory_movements` | 93 | `inventory_seed.mjs` |
 | `documents` | 6 | `documents.mjs` |
-| **TỔNG** | **~662 records** | **13 files** |
 
 ## Hub distribution (tồn kho)
 
