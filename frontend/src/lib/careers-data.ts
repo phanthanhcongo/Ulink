@@ -32,6 +32,89 @@ const EMPLOYMENT_TYPE_LABELS: Record<string, string> = {
   contract: 'Hợp đồng'
 };
 
+const DEPARTMENT_LABELS: Record<string, string> = {
+  'kinh-doanh': 'Kinh doanh',
+  'ky-thuat': 'Kỹ thuật',
+  'chuoi-cung-ung': 'Chuỗi cung ứng'
+};
+
+export function getDepartmentLabel(value: string | null): string {
+  if (!value) return '';
+  return DEPARTMENT_LABELS[value] || value;
+}
+
+/** Format an ISO date as dd/mm/yyyy (empty string when missing/invalid). */
+export function formatJobDate(value: string | null): string {
+  if (!value) return '';
+  const d = new Date(value);
+  if (Number.isNaN(d.getTime())) return '';
+  const dd = String(d.getDate()).padStart(2, '0');
+  const mm = String(d.getMonth() + 1).padStart(2, '0');
+  return `${dd}/${mm}/${d.getFullYear()}`;
+}
+
+/** Compact view-model consumed by the job detail components. */
+export interface JobDetailVM {
+  id: number;
+  slug: string;
+  code: string | null;
+  title: string;
+  summary: string | null;
+  description: string | null;
+  requirements: string | null;
+  benefits: string | null;
+  location: string | null;
+  salaryRange: string | null;
+  employmentTypeLabel: string;
+  departmentLabel: string;
+  deadline: string | null;
+  deadlineDate: string;
+  deadlineLabel: string;
+  isUrgent: boolean;
+}
+
+export function buildJobDetailVM(job: JobOpening, locale: string): JobDetailVM {
+  const t = getJobTranslation(job, locale);
+  return {
+    id: job.id,
+    slug: job.slug,
+    code: job.code,
+    title: t.title || job.title,
+    summary: t.summary,
+    description: t.description,
+    requirements: t.requirements,
+    benefits: t.benefits,
+    location: job.location,
+    salaryRange: job.salary_range,
+    employmentTypeLabel: getEmploymentTypeLabel(job.employment_type),
+    departmentLabel: getDepartmentLabel(job.department),
+    deadline: job.deadline,
+    deadlineDate: formatJobDate(job.deadline),
+    deadlineLabel: getDaysLeftLabel(job.deadline),
+    isUrgent: !!job.is_urgent
+  };
+}
+
+/** Summary shape for "similar / related" cards. */
+export interface JobCardVM {
+  slug: string;
+  title: string;
+  location: string | null;
+  employmentTypeLabel: string;
+  salaryRange: string | null;
+}
+
+export function toJobCardVM(job: JobOpening, locale: string): JobCardVM {
+  const t = getJobTranslation(job, locale);
+  return {
+    slug: job.slug,
+    title: t.title || job.title,
+    location: job.location,
+    employmentTypeLabel: getEmploymentTypeLabel(job.employment_type),
+    salaryRange: job.salary_range
+  };
+}
+
 const FIELDS = [
   'id', 'status', 'slug', 'code', 'department', 'location',
   'employment_type', 'salary_range', 'is_urgent', 'deadline', 'sort',

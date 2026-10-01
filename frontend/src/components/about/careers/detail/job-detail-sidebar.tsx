@@ -1,31 +1,31 @@
 'use client';
 
 import Link from 'next/link';
-import { UserCheck, Users, Briefcase, Calendar, Clock, Copy, Globe, Building2, ChevronRight, ExternalLink } from 'lucide-react';
-
-const generalInfo = [
-  { label: 'Cấp bậc', value: 'Chuyên viên', icon: UserCheck },
-  { label: 'Số lượng tuyển', value: '2 người', icon: Users },
-  { label: 'Hình thức làm việc', value: 'Toàn thời gian', icon: Briefcase },
-  { label: 'Giới tính', value: 'Không yêu cầu', icon: Calendar },
-  { label: 'Hạn nộp hồ sơ', value: '30/09/2026', icon: Clock }
-];
+import { UserCheck, Briefcase, MapPin, Clock, Copy, ChevronRight } from 'lucide-react';
+import type { JobDetailVM, JobCardVM } from '@/lib/careers-data';
 
 const companyDetails = [
   { label: 'SỐ LƯỢNG', value: '50–100 nhân viên' },
   { label: 'THÀNH LẬP', value: '2020' },
   { label: 'LĨNH VỰC', value: 'Công nghệ công nghiệp' },
-  { label: 'VĂN PHÒNG', value: 'Hà Nội, TP.HCM' },
+  { label: 'VĂN PHÒNG', value: 'Hà Nội, Hà Nam' },
   { label: 'WEBSITE', value: 'ulink.vn' }
 ];
 
-const similarJobs = [
-  { title: 'Trưởng nhóm Kinh doanh KCN', location: 'Hà Nội', exp: '5+ năm', slug: 'b2b-sales-lead' },
-  { title: 'Chuyên viên Marketing Công nghiệp', location: 'Hà Nội', exp: '2+ năm', slug: 'industrial-marketing' },
-  { title: 'Chuyên viên Hỗ trợ Khách hàng DN', location: 'Hà Nội', exp: '1+ năm', slug: 'customer-support' }
-];
+export function JobDetailSidebar({
+  job,
+  similarJobs
+}: {
+  job: JobDetailVM;
+  similarJobs: JobCardVM[];
+}) {
+  const generalInfo = [
+    { label: 'Phòng ban', value: job.departmentLabel || '—', icon: UserCheck },
+    { label: 'Hình thức làm việc', value: job.employmentTypeLabel || '—', icon: Briefcase },
+    { label: 'Địa điểm', value: job.location || '—', icon: MapPin },
+    { label: 'Hạn nộp hồ sơ', value: job.deadlineDate || 'Đang cập nhật', icon: Clock }
+  ];
 
-export function JobDetailSidebar() {
   return (
     <div className="flex flex-col gap-6 py-4 sm:py-6 lg:py-8">
       {/* Card 1: Thông tin chung */}
@@ -105,30 +105,32 @@ export function JobDetailSidebar() {
       </div>
 
       {/* Card 3: VỊ TRÍ TƯƠNG TỰ */}
-      <div className="rounded-[2px] bg-white p-5 border border-[#DDE3E8] shadow-xs flex flex-col gap-4">
-        <span className="text-[#617084] font-semibold text-xs uppercase tracking-wider">
-          VỊ TRÍ TƯƠNG TỰ
-        </span>
+      {similarJobs.length > 0 && (
+        <div className="rounded-[2px] bg-white p-5 border border-[#DDE3E8] shadow-xs flex flex-col gap-4">
+          <span className="text-[#617084] font-semibold text-xs uppercase tracking-wider">
+            VỊ TRÍ TƯƠNG TỰ
+          </span>
 
-        <div className="flex flex-col gap-3">
-          {similarJobs.map((job, idx) => (
-            <Link
-              key={idx}
-              href={`/about/careers/${job.slug}`}
-              className="group flex flex-col p-3 rounded-[2px] bg-[#F5F8FC]/60 border border-slate-100 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xs hover:border-[#1769E2] hover:bg-white"
-            >
-              <span className="text-[#162233] font-semibold text-xs lg:text-[14px] group-hover:text-[#1769E2] transition-colors leading-snug">
-                {job.title}
-              </span>
-              <div className="flex items-center gap-2 mt-1 text-[#617084] font-normal text-xs">
-                <span>{job.location}</span>
-                <span>·</span>
-                <span>{job.exp}</span>
-              </div>
-            </Link>
-          ))}
+          <div className="flex flex-col gap-3">
+            {similarJobs.map((sj) => (
+              <Link
+                key={sj.slug}
+                href={`/about/careers/${sj.slug}`}
+                className="group flex flex-col p-3 rounded-[2px] bg-[#F5F8FC]/60 border border-slate-100 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-xs hover:border-[#1769E2] hover:bg-white"
+              >
+                <span className="text-[#162233] font-semibold text-xs lg:text-[14px] group-hover:text-[#1769E2] transition-colors leading-snug">
+                  {sj.title}
+                </span>
+                <div className="flex items-center gap-2 mt-1 text-[#617084] font-normal text-xs">
+                  <span>{sj.location || '—'}</span>
+                  <span>·</span>
+                  <span>{sj.employmentTypeLabel}</span>
+                </div>
+              </Link>
+            ))}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

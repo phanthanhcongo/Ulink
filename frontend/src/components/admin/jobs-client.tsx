@@ -7,6 +7,7 @@ import toast from 'react-hot-toast';
 import { Search, Plus, Edit2, Trash2, X, Briefcase, MapPin, Zap } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { ConfirmModal } from './confirm-modal';
+import { RichTextEditor } from './rich-text-editor';
 import { saveJob, deleteJob, type JobFormData } from '@/app/[locale]/admin/jobs/actions';
 
 interface JobTranslation {
@@ -412,14 +413,14 @@ export function JobsClient({ initialJobs, locale, error }: JobsClientProps) {
               <Field label="Tóm tắt">
                 <textarea value={form.summary} onChange={(e) => set('summary', e.target.value)} rows={2} className={inputCls} />
               </Field>
-              <Field label="Mô tả công việc (HTML)">
-                <textarea value={form.description} onChange={(e) => set('description', e.target.value)} rows={4} className={cn(inputCls, 'font-mono text-xs')} />
+              <Field label="Mô tả công việc">
+                <RichTextEditor value={form.description} onChange={(html) => set('description', html)} placeholder="Nhập mô tả công việc..." />
               </Field>
-              <Field label="Yêu cầu (HTML)">
-                <textarea value={form.requirements} onChange={(e) => set('requirements', e.target.value)} rows={3} className={cn(inputCls, 'font-mono text-xs')} />
+              <Field label="Yêu cầu">
+                <RichTextEditor value={form.requirements} onChange={(html) => set('requirements', html)} placeholder="Nhập yêu cầu ứng viên..." />
               </Field>
-              <Field label="Quyền lợi (HTML)">
-                <textarea value={form.benefits} onChange={(e) => set('benefits', e.target.value)} rows={3} className={cn(inputCls, 'font-mono text-xs')} />
+              <Field label="Quyền lợi">
+                <RichTextEditor value={form.benefits} onChange={(html) => set('benefits', html)} placeholder="Nhập quyền lợi..." />
               </Field>
             </div>
 

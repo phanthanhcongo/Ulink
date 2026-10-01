@@ -31,9 +31,9 @@ export default async function AboutUsHub({ locale }: AboutUsHubProps) {
   ];
 
   return (
-    <section className="w-full mt-16 lg:mt-24 border-t border-slate-100 pt-16">
+    <section className="w-full page-container section-padding">
       {/* Section Header */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-10">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-8 sm:mb-10">
         <div className="flex items-start gap-3">
           {/* Blue decorative bar */}
           <div className="w-1.5 h-7 bg-blue-600 rounded-full shrink-0 mt-1" />

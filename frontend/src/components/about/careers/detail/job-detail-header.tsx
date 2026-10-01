@@ -2,39 +2,40 @@
 
 import Link from 'next/link';
 import { Wallet, MapPin, Briefcase, Clock, Heart, ArrowRight } from 'lucide-react';
+import type { JobDetailVM } from '@/lib/careers-data';
 
-const overviewCards = [
-  {
-    id: 'salary',
-    label: 'LƯƠNG',
-    value: '15 – 25M VND',
-    subtext: 'Thương lượng + thưởng KPI',
-    icon: Wallet
-  },
-  {
-    id: 'location',
-    label: 'ĐỊA ĐIỂM',
-    value: 'Hà Nội',
-    subtext: 'Trụ sở ULink Industries',
-    icon: MapPin
-  },
-  {
-    id: 'experience',
-    label: 'KINH NGHIỆM',
-    value: '2–5 năm',
-    subtext: 'Cấp chuyên viên',
-    icon: Briefcase
-  },
-  {
-    id: 'deadline',
-    label: 'HẠN NỘP',
-    value: '54 ngày',
-    subtext: '30/09/2026',
-    icon: Clock
-  }
-];
+export function JobDetailHeader({ job }: { job: JobDetailVM }) {
+  const overviewCards = [
+    {
+      id: 'salary',
+      label: 'LƯƠNG',
+      value: job.salaryRange || 'Thương lượng',
+      subtext: 'Thương lượng theo năng lực',
+      icon: Wallet
+    },
+    {
+      id: 'location',
+      label: 'ĐỊA ĐIỂM',
+      value: job.location || '—',
+      subtext: 'ULink Industries',
+      icon: MapPin
+    },
+    {
+      id: 'type',
+      label: 'LOẠI HÌNH',
+      value: job.employmentTypeLabel || '—',
+      subtext: job.departmentLabel || 'Toàn thời gian',
+      icon: Briefcase
+    },
+    {
+      id: 'deadline',
+      label: 'HẠN NỘP',
+      value: job.deadlineLabel || '—',
+      subtext: job.deadlineDate || 'Đang cập nhật',
+      icon: Clock
+    }
+  ];
 
-export function JobDetailHeader() {
   return (
     <section className="py-4 sm:py-6 lg:py-8">
       {/* Title & Action Row */}
@@ -46,19 +47,27 @@ export function JobDetailHeader() {
           </div>
           <div className="flex flex-col gap-2">
             <h1 className="text-[#162233] font-semibold text-xl sm:text-2xl lg:text-[28px] leading-snug lg:leading-[36px]">
-              Chuyên viên Phát triển Kinh doanh B2B — Khu Công nghiệp
+              {job.title}
             </h1>
             <div className="flex flex-wrap items-center gap-3 text-[#617084] font-normal text-xs sm:text-sm lg:text-[14px]">
-              <span className="flex items-center gap-1.5 bg-[#F5F8FC] px-2.5 py-1 rounded-[2px]">
-                <MapPin className="h-4 w-4 text-[#1769E2] stroke-[2.25]" /> Hà Nội, VN · Tại văn phòng
-              </span>
-              <span className="flex items-center gap-1.5 bg-[#F5F8FC] px-2.5 py-1 rounded-[2px]">
-                <Briefcase className="h-4 w-4 text-[#1769E2] stroke-[2.25]" /> Toàn thời gian
-              </span>
-              <span className="flex items-center gap-1.5 bg-[#F5F8FC] px-2.5 py-1 rounded-[2px]">
-                <Clock className="h-4 w-4 text-[#1769E2] stroke-[2.25]" /> 2–5 năm
-              </span>
-              <span className="text-[#617084] font-medium">Đăng 3 ngày trước</span>
+              {job.location && (
+                <span className="flex items-center gap-1.5 bg-[#F5F8FC] px-2.5 py-1 rounded-[2px]">
+                  <MapPin className="h-4 w-4 text-[#1769E2] stroke-[2.25]" /> {job.location} · Tại văn phòng
+                </span>
+              )}
+              {job.employmentTypeLabel && (
+                <span className="flex items-center gap-1.5 bg-[#F5F8FC] px-2.5 py-1 rounded-[2px]">
+                  <Briefcase className="h-4 w-4 text-[#1769E2] stroke-[2.25]" /> {job.employmentTypeLabel}
+                </span>
+              )}
+              {job.code && (
+                <span className="flex items-center gap-1.5 bg-[#F5F8FC] px-2.5 py-1 rounded-[2px]">
+                  <Clock className="h-4 w-4 text-[#1769E2] stroke-[2.25]" /> Mã: {job.code}
+                </span>
+              )}
+              {job.isUrgent && (
+                <span className="font-semibold text-[#B25E00]">Tuyển gấp</span>
+              )}
             </div>
           </div>
         </div>
@@ -73,7 +82,7 @@ export function JobDetailHeader() {
             <Heart className="h-5 w-5 stroke-[2.25]" />
           </button>
           <Link
-            href="/about/careers/b2b-sales/apply"
+            href={`/about/careers/${job.slug}/apply`}
             className="flex-1 lg:flex-none inline-flex items-center justify-center gap-2 rounded-full bg-[#023DA0] hover:bg-[#002B73] px-6 py-3 text-white font-semibold text-sm lg:text-[14px] shadow-sm transition-all hover:scale-[1.02] active:scale-95"
           >
             <span>Ứng tuyển ngay</span>
@@ -84,7 +93,7 @@ export function JobDetailHeader() {
         </div>
       </div>
 
-      {/* 4 Fixed Info Cards */}
+      {/* 4 Info Cards */}
       <div className="mt-6 sm:mt-8 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
         {overviewCards.map((card) => {
           const Icon = card.icon;

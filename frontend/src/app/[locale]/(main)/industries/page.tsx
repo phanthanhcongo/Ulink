@@ -297,9 +297,7 @@ export default async function IndustriesPage({ params: { locale } }: Props) {
       <CoreAdvantages locale={locale} />
 
       {/* About Us & Hub Ha Nam Section */}
-      <div className="page-container section-padding">
-        <AboutUsHub locale={locale} />
-      </div>
+      <AboutUsHub locale={locale} />
       {/* Customer Segments Section */}
       <TargetSegments />
 
