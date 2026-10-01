@@ -81,11 +81,11 @@ export function PartnersCertifications() {
       {/* ──────────────────────────────────────────────────────── */}
       <div className="hidden lg:flex flex-row items-center justify-between gap-3 mt-12 sm:mt-14 lg:mt-16 select-none">
         {/* Col 1+2: Title & Desc */}
-        <div className="flex w-[calc(212px*2+theme(gap.3))] h-[138px] shrink-0 flex-col justify-center bg-white px-4 text-left">
-          <h3 className="text-card-title text-primary leading-tight">
+        <div className="flex w-[calc(212px*2+theme(gap.3))] h-[138px] shrink-0 flex-col justify-center bg-white px-5 text-left">
+          <h3 className="text-section-title font-bold text-primary leading-tight">
             {t('partners.isoTitle')}
           </h3>
-          <p className="mt-2 text-caption-responsive leading-relaxed text-muted-foreground font-medium">
+          <p className="mt-2 text-body-large leading-relaxed text-muted-foreground font-medium">
             {t('partners.isoDesc')}
           </p>
         </div>
@@ -141,10 +141,10 @@ export function PartnersCertifications() {
       <div className="flex lg:hidden flex-col gap-6 mt-10 select-none">
         {/* Header Title & Subtitle */}
         <div className="text-left">
-          <h3 className="text-card-title text-primary leading-tight">
+          <h3 className="text-section-title font-bold text-primary leading-tight">
             {t('partners.isoTitle')}
           </h3>
-          <p className="mt-2 text-caption-responsive leading-relaxed text-slate-600 font-medium">
+          <p className="mt-2 text-body-large leading-relaxed text-slate-600 font-medium">
             {t('partners.isoDesc')}
           </p>
         </div>
