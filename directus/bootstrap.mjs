@@ -26,14 +26,6 @@ import { ensureRoles } from './rbac/roles.mjs';
 import { ensurePolicies } from './rbac/policies.mjs';
 import { ensureAccessLinks } from './rbac/access.mjs';
 import { ensurePermissions } from './rbac/permissions.mjs';
-import { seedGeography } from './seed/geography.mjs';
-// Import initialization seed content tasks
-import { seedInitialContent } from './seed/initial_content.mjs';
-import { seedDemoCommerce } from './seed/demo_commerce.mjs';
-import { seedAdditionalContent } from './seed/additional_content.mjs';
-import { seedProductAttributes } from './seed/product_attributes.mjs';
-import { seedProductImages } from './seed/seed_images.mjs';
-import { seedDevUsers } from './seed/dev-users.mjs';
 // Import helper to apply relational database index enhancements
 import { applyDbIndexes } from './lib/db-indexes.mjs';
 // Import constant identifier representing the visitor role
@@ -112,25 +104,21 @@ async function main() {
 
   // 4. Configure system-managed access roles
   await ensureRoles(helpers);
-  // 5. Build policy documents managing resource access boundaries
-  await ensurePolicies(helpers);
-  // 6. Map relationships linking roles to corresponding policies
-  await ensureAccessLinks(helpers);
-  // 7. Resolve the default public role policy ID and assign specific permissions
-  const publicPolicyId = await helpers.getPublicPolicyId();
-  await ensurePermissions(helpers, publicPolicyId);
+  // 5. Build policy documents managing resource access boundaries (if supported by Directus version)
+  try {
+    await ensurePolicies(helpers);
+    await ensureAccessLinks(helpers);
+    const publicPolicyId = await helpers.getPublicPolicyId();
+    await ensurePermissions(helpers, publicPolicyId);
+  } catch (err) {
+    console.warn('Policy/access setup skipped (handled by seed-permissions-v10.mjs):', err?.message || err);
+  }
   // 8. Provision configured localization locales
   await ensureLanguages();
   // 9. Enforce system directory structuring policies for file uploads
   await ensureFolders();
 
-  // 10. Seed default content, transactional models, and catalog listings
-  const geography = await seedGeography(helpers);
-  const ids = await seedInitialContent(helpers, client, geography);
-  await seedDemoCommerce(helpers, ids);
-  await seedAdditionalContent(helpers, ids, geography);
-  await seedProductAttributes(helpers, client);
-  await seedProductImages();
+  // 10. Seed content is handled separately via seed-v2/run-seed.mjs
 
   // 11. Create a specialized API user mapping to serve the Next.js frontend
   const frontendToken = process.env.DIRECTUS_FRONTEND_TOKEN;
@@ -146,9 +134,6 @@ async function main() {
     });
     console.log(`Frontend API token provisioned for frontend-api@ulink.vn`);
   }
-
-  // Seed dev users if SEED_DEV_USERS is true
-  await seedDevUsers(helpers);
 
   // 12. Run post-migration raw SQL statements setting up query optimizations
   await applyDbIndexes();

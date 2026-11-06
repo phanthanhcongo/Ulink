@@ -7,7 +7,8 @@
  * Usage:
  *   cd directus && node seed-v2/run-seed.mjs
  */
-import { createItem, readItems, deleteItems } from '@directus/sdk';
+import { createItem, readItems, updateItem, deleteItems } from '@directus/sdk';
+import { readFile } from 'fs/promises';
 import { createDirectusClient, loginAdmin } from '../lib/config.mjs';
 import { createEnsureHelpers } from '../lib/ensure-helpers.mjs';
 
@@ -56,6 +57,14 @@ async function getIdByField(collection, field, value) {
 
 async function truncateCollection(collection) {
   try {
+    if (collection === 'product_categories') {
+      try {
+        const parents = await client.request(readItems('product_categories', { filter: { parent: { _nnull: true } }, fields: ['id'], limit: -1 }));
+        for (const p of parents) {
+          await client.request(updateItem('product_categories', p.id, { parent: null }));
+        }
+      } catch {}
+    }
     const items = await client.request(readItems(collection, { fields: ['id'], limit: -1 }));
     if (items.length === 0) {
       console.log(`   ⏭  ${collection}: empty`);
@@ -134,6 +143,18 @@ async function seedData() {
   console.log('\n══════════════════════════════════════════');
   console.log('  STEP 2: SEEDING V2 DATA');
   console.log('══════════════════════════════════════════\n');
+
+  // ── 2.0 VN Provinces ──
+  console.log('── [0/13] VN Provinces ──');
+  try {
+    const provinces = JSON.parse(await readFile(new URL('./vn-provinces.json', import.meta.url), 'utf8'));
+    for (const province of provinces) {
+      await helpers.ensureItem('vn_provinces', 'code', province);
+    }
+    console.log(`   ✅ Seeded ${provinces.length} provinces`);
+  } catch (err) {
+    console.warn(`   ⚠ Failed seeding vn_provinces: ${err?.message}`);
+  }
 
   // ── 2.1 Regional Hubs ──
   console.log('── [1/13] Regional Hubs ──');
@@ -261,7 +282,7 @@ async function seedData() {
     const { categorySlug, imagePath, ...data } = prod;
     data.category = catIdMap[categorySlug];
     // Store the frontend-served image path directly.
-    data.hero = imagePath;
+    data.hero = Array.isArray(imagePath) ? JSON.stringify(imagePath) : (imagePath || null);
     const id = await helpers.ensureItem('products', 'slug', data);
     productIdMap[prod.slug] = id;
   }
