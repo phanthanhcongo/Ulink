@@ -2,11 +2,11 @@
 
 /* eslint-disable @next/next/no-img-element, @typescript-eslint/no-explicit-any */
 
-import React, { useState, useTransition, useCallback } from 'react';
+import React, { useState, useTransition, useRef, useCallback } from 'react';
 import toast from 'react-hot-toast';
 import {
   Plus, Search, Edit, Trash, CalendarDays, X, AlertTriangle,
-  MapPin, Clock, Home, Users
+  MapPin, Clock, Home, Users, Upload, Image as ImageIcon
 } from 'lucide-react';
 import { Link } from '@/i18n/navigation';
 import { cn } from '@/lib/utils';
@@ -114,6 +114,9 @@ export function EventsAdminClient({ initialEvents, error, locale }: Props) {
   const [formTab, setFormTab] = useState<FormTab>('basic');
   const [editLocale, setEditLocale] = useState(locale);
   const [translationDrafts, setTranslationDrafts] = useState<Record<string, TranslationDraft>>({});
+  const [isDirty, setIsDirty] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
   const [confirmState, setConfirmState] = useState<{
     isOpen: boolean; title?: string; message: string; onConfirm: () => void; type?: 'danger' | 'warning' | 'info';
   }>({ isOpen: false, message: '', onConfirm: () => {} });
@@ -148,6 +151,7 @@ export function EventsAdminClient({ initialEvents, error, locale }: Props) {
     setModalOpen(true);
     setFormError('');
     setFormTab('basic');
+    setIsDirty(false);
   };
 
   const openEdit = (ev: EventRecord) => {
@@ -177,13 +181,14 @@ export function EventsAdminClient({ initialEvents, error, locale }: Props) {
     setModalOpen(true);
     setFormError('');
     setFormTab('basic');
+    setIsDirty(false);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     const primaryDraft = translationDrafts[locale];
     if (!primaryDraft?.title?.trim() || !activeEvent?.slug) {
-      setFormError('Vui lòng nhập tiêu đề (ngôn ngữ chính) và slug.');
+      setFormError('Vui lòng nhập tiêu đề (ngôn ngữ chính) và đường dẫn sự kiện.');
       return;
     }
 
@@ -231,8 +236,9 @@ export function EventsAdminClient({ initialEvents, error, locale }: Props) {
       if (savedCount > 0 && !lastError) {
         setModalOpen(false);
         setActiveEvent(null);
+        setIsDirty(false);
         const langNames = localesToSave.map(([c]) => SUPPORTED_LANGS.find((l) => l.code === c)?.label || c).join(', ');
-        toast.success(`Đã lưu sự kiện (${langNames}).`);
+        toast.success(activeEvent.id ? `Đã cập nhật sự kiện (${langNames}).` : `Đã tạo sự kiện mới (${langNames}).`);
         window.location.reload();
       } else {
         setFormError(lastError || 'Không thể lưu sự kiện.');
@@ -259,7 +265,18 @@ export function EventsAdminClient({ initialEvents, error, locale }: Props) {
     });
   };
 
-  const set = (key: string, value: any) => setActiveEvent((prev) => prev ? { ...prev, [key]: value } : null);
+  const handleCloseModal = useCallback(() => {
+    if (isDirty) {
+      const confirmed = window.confirm('Bạn có thay đổi chưa lưu. Bạn có chắc muốn đóng?');
+      if (!confirmed) return;
+    }
+    setModalOpen(false);
+    setActiveEvent(null);
+    setFormError('');
+    setIsDirty(false);
+  }, [isDirty]);
+
+  const set = (key: string, value: any) => { setActiveEvent((prev) => prev ? { ...prev, [key]: value } : null); setIsDirty(true); };
 
   const inputCls = "w-full px-3 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-2 focus:ring-blue-500/30 focus:border-blue-400 transition-colors";
 
@@ -387,13 +404,19 @@ export function EventsAdminClient({ initialEvents, error, locale }: Props) {
                         <span className={cn('h-1 w-1 rounded-[3px]', ev.status === 'published' ? 'bg-emerald-500' : 'bg-amber-500')} />
                         {ev.status === 'published' ? 'Công khai' : 'Nháp'}
                       </span>
-                      <div className="flex gap-1">
-                        {SUPPORTED_LANGS.map((lang) => {
-                          const has = ev.translations?.some((t) => t.languages_code === lang.code && (t.title || '').trim().length > 0);
-                          return (
-                            <span key={lang.code} title={lang.label} className={cn('text-[10px] px-1 rounded-[3px] font-bold border', has ? 'bg-emerald-50 text-emerald-700 border-emerald-100' : 'bg-slate-50 text-slate-300 border-slate-100')}>{lang.code.toUpperCase()}</span>
-                          );
-                        })}
+                      <div className="flex items-center gap-1.5">
+                        <span className={cn('inline-flex items-center px-2 py-0.5 rounded-[3px] text-caption-responsive font-bold border',
+                          ev.registration_status === 'UPCOMING' ? 'bg-blue-50 text-blue-700 border-blue-100' : 'bg-slate-50 text-slate-600 border-slate-200')}>
+                          {ev.registration_status === 'UPCOMING' ? 'Sắp diễn ra' : ev.registration_status === 'OPEN' ? 'Mở đăng ký' : ev.registration_status === 'CLOSED' ? 'Đã đóng' : ev.registration_status === 'COMPLETED' ? 'Đã kết thúc' : ev.registration_status}
+                        </span>
+                        <div className="flex gap-1">
+                          {SUPPORTED_LANGS.map((lang) => {
+                            const has = ev.translations?.some((t) => t.languages_code === lang.code && (t.title || '').trim().length > 0);
+                            return (
+                              <span key={lang.code} title={lang.label} className={cn('text-[10px] px-1 rounded-[3px] font-bold border', has ? 'bg-emerald-50 text-emerald-700 border-emerald-100' : 'bg-slate-50 text-slate-300 border-slate-100')}>{lang.code.toUpperCase()}</span>
+                            );
+                          })}
+                        </div>
                       </div>
                     </div>
                     <h3 className="font-bold text-primary text-body-regular line-clamp-2 leading-snug mt-1">{displayTitle}</h3>
@@ -428,7 +451,7 @@ export function EventsAdminClient({ initialEvents, error, locale }: Props) {
                 <CalendarDays className="h-5 w-5 text-blue-500" />
                 {activeEvent.id ? 'Cập nhật sự kiện' : 'Tạo sự kiện mới'}
               </h2>
-              <button onClick={() => { setModalOpen(false); setActiveEvent(null); }} className="p-1.5 rounded-[3px] hover:bg-slate-100 text-slate-400">
+              <button onClick={handleCloseModal} className="p-1.5 rounded-[3px] hover:bg-slate-100 text-slate-400">
                 <X className="h-5 w-5" />
               </button>
             </div>
@@ -526,8 +549,10 @@ export function EventsAdminClient({ initialEvents, error, locale }: Props) {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="flex flex-col gap-1.5">
-                        <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">Slug *</label>
+                      <div className="flex flex-col gap-1.5">
+                        <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">Đường dẫn sự kiện *</label>
                         <input type="text" required value={activeEvent.slug || ''} onChange={(e) => set('slug', e.target.value)} className="w-full px-4 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-mono text-slate-600" />
+                      </div>
                       </div>
                       <div className="flex flex-col gap-1.5">
                         <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">Trạng thái</label>
@@ -548,7 +573,8 @@ export function EventsAdminClient({ initialEvents, error, locale }: Props) {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="flex flex-col gap-1.5">
                         <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">Ngày</label>
-                        <input type="text" value={activeEvent.date || ''} onChange={(e) => set('date', e.target.value)} placeholder="VD: 15/08/2024" className="w-full px-4 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium" />
+                        <input type="date" value={activeEvent.date || ''} onChange={(e) => set('date', e.target.value)} placeholder="Chọn ngày sự kiện"
+                          className="w-full px-4 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-brand" />
                       </div>
                       <div className="flex flex-col gap-1.5">
                         <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">Thời gian hiển thị</label>
@@ -558,11 +584,13 @@ export function EventsAdminClient({ initialEvents, error, locale }: Props) {
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="flex flex-col gap-1.5">
                         <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">Giờ bắt đầu</label>
-                        <input type="text" value={activeEvent.start_time || ''} onChange={(e) => set('start_time', e.target.value)} placeholder="09:00 AM" className="w-full px-4 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium" />
+                        <input type="time" value={activeEvent.start_time || ''} onChange={(e) => set('start_time', e.target.value)} placeholder="Chọn giờ"
+                          className="w-full px-4 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-brand" />
                       </div>
                       <div className="flex flex-col gap-1.5">
                         <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">Giờ kết thúc</label>
-                        <input type="text" value={activeEvent.end_time || ''} onChange={(e) => set('end_time', e.target.value)} placeholder="17:00 PM" className="w-full px-4 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium" />
+                        <input type="time" value={activeEvent.end_time || ''} onChange={(e) => set('end_time', e.target.value)} placeholder="Chọn giờ"
+                          className="w-full px-4 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium focus:outline-none focus:ring-1 focus:ring-brand" />
                       </div>
                     </div>
 
@@ -577,7 +605,7 @@ export function EventsAdminClient({ initialEvents, error, locale }: Props) {
                       </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="flex flex-col gap-1.5">
                         <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">Trạng thái đăng ký</label>
                         <select value={activeEvent.registration_status || 'UPCOMING'} onChange={(e) => set('registration_status', e.target.value)}
@@ -592,24 +620,47 @@ export function EventsAdminClient({ initialEvents, error, locale }: Props) {
                         <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">Giá vé ({editLocale})</label>
                         <input type="text" value={currentDraft.price} onChange={(e) => updateDraft({ price: e.target.value })} placeholder="VD: 500.000 VNĐ hoặc Miễn phí" className="w-full px-4 py-2 rounded-[3px] border border-slate-200 text-caption-responsive font-medium" />
                       </div>
-                      <div className="flex flex-col gap-1.5">
-                        <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">Ảnh bìa sự kiện</label>
-                        <div className="flex items-start gap-3">
-                          {activeEvent.image && (resolveImageUrl(activeEvent.image) || activeEvent.image) && (
-                            <div className="relative h-20 w-32 rounded-[3px] border border-slate-200 overflow-hidden bg-slate-50 shrink-0 group">
-                              <img src={resolveImageUrl(activeEvent.image) || activeEvent.image} alt="Preview" className="h-full w-full object-cover" />
-                              <button type="button" onClick={() => set('image', '')} className="absolute top-1 right-1 h-5 w-5 rounded-full bg-red-500 text-white flex items-center justify-center">
-                                <X className="h-3 w-3" />
-                              </button>
-                            </div>
-                          )}
-                          <input type="file" accept="image/*" onChange={async (e) => {
-                            const file = e.target.files?.[0]; if (!file) return;
-                            const formData = new FormData(); formData.append('file', file);
-                            const res = await uploadEventImage(formData);
-                            if (res.success && res.id) { set('image', res.id); toast.success('Tải ảnh lên thành công'); }
-                            else toast.error(res.error || 'Tải ảnh thất bại');
-                          }} className="flex-1 text-caption-responsive file:mr-2 file:py-1.5 file:px-3 file:rounded-[3px] file:border file:border-slate-200 file:text-caption-responsive file:font-bold file:bg-white file:text-slate-600 hover:file:bg-slate-50" />
+                    </div>
+
+                    <div className="flex flex-col gap-1.5 col-span-full">
+                      <label className="text-caption-responsive font-bold text-slate-450 uppercase tracking-wider">Ảnh bìa sự kiện</label>
+                      <div className="flex items-start gap-4">
+                        {activeEvent.image && (resolveImageUrl(activeEvent.image) || activeEvent.image) && (
+                          <div className="relative h-24 w-40 rounded-[3px] border border-slate-200 overflow-hidden bg-slate-50 shrink-0">
+                            <img src={resolveImageUrl(activeEvent.image) || activeEvent.image} alt="Preview" className="h-full w-full object-cover" />
+                            <button type="button" onClick={() => set('image', null)}
+                              className="absolute top-1 right-1 p-1 rounded-[3px] bg-black/70 hover:bg-black/90 text-white" title="Xóa ảnh">
+                              <X className="h-3 w-3" />
+                            </button>
+                          </div>
+                        )}
+                        <div className="flex flex-col gap-2">
+                          <input type="file" accept="image/*" ref={fileInputRef} onChange={async (e) => {
+                            const file = e.target.files?.[0];
+                            if (!file) return;
+                            setIsUploading(true);
+                            try {
+                              const formData = new FormData();
+                              formData.append('file', file);
+                              const res = await uploadEventImage(formData);
+                              if (res.success && res.id) {
+                                set('image', res.id);
+                                toast.success('Tải ảnh lên thành công');
+                              } else {
+                                toast.error('Upload ảnh thất bại: ' + (res.error || ''));
+                              }
+                            } catch (err) {
+                              toast.error('Lỗi upload: ' + String(err));
+                            } finally {
+                              setIsUploading(false);
+                            }
+                          }} className="hidden" />
+                          <button type="button" disabled={isUploading} onClick={() => fileInputRef.current?.click()}
+                            className="inline-flex h-9 items-center gap-1.5 px-4 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-primary hover:bg-slate-50 bg-white shadow-sm disabled:opacity-50">
+                            <Upload className="h-3.5 w-3.5 text-slate-400" />
+                            {isUploading ? 'Đang tải lên...' : activeEvent.image ? 'Thay đổi ảnh' : 'Chọn ảnh bìa'}
+                          </button>
+                          <span className="text-[11px] text-slate-400">Khuyến nghị tỷ lệ 16:9</span>
                         </div>
                       </div>
                     </div>
@@ -670,7 +721,7 @@ export function EventsAdminClient({ initialEvents, error, locale }: Props) {
               </div>
 
               <div className="flex items-center justify-end gap-3 px-6 py-4 border-t border-slate-100 bg-slate-50/50">
-                <button type="button" onClick={() => { setModalOpen(false); setActiveEvent(null); }}
+                <button type="button" onClick={handleCloseModal}
                   className="px-5 py-2.5 rounded-[3px] border border-slate-200 text-caption-responsive font-bold text-slate-550 hover:bg-slate-100">Hủy bỏ</button>
                 <button type="submit" disabled={isPending}
                   className="px-5 py-2.5 rounded-[3px] bg-blue-600 text-caption-responsive font-bold text-white shadow-sm hover:bg-blue-700 disabled:opacity-50">

@@ -201,6 +201,34 @@ services:
     ports:
       - '8056:8080'
 
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: ulink/frontend:local
+    restart: unless-stopped
+    environment:
+      DIRECTUS_URL: ${DIRECTUS_URL:-http://directus:8055}
+      NEXT_PUBLIC_SITE_URL: ${FRONTEND_PUBLIC_URL:-http://localhost:3000}
+      NEXT_PUBLIC_DIRECTUS_URL: ${DIRECTUS_PUBLIC_URL:-http://localhost:8055}
+      REDIS_URL: redis://redis:6379
+      SMTP_HOST: mailpit
+      SMTP_PORT: '1025'
+      SMTP_FROM: ${MAIL_FROM:-ULINK <no-reply@ulink.local>}
+      DIRECTUS_FRONTEND_TOKEN: ${DIRECTUS_FRONTEND_TOKEN:-}
+      DIRECTUS_TOKEN: ${DIRECTUS_TOKEN:-${DIRECTUS_FRONTEND_TOKEN:-}}
+      NODE_ENV: production
+      ERP_SYNC_ENABLED: 'false'
+    ports:
+      - '3000:3000'
+    depends_on:
+      directus:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      mailpit:
+        condition: service_started
+
 volumes:
   pgdata:
   redisdata:
