@@ -7,6 +7,12 @@ FROM directus/directus:10
 # overlay (docker-compose.prod.yml) drops those mounts and runs the extensions
 # straight from this self-contained image.
 USER root
+COPY lib /directus/lib
+RUN if [ -f "/directus/lib/package.json" ]; then \
+      echo "Installing deps in /directus/lib"; \
+      (cd /directus/lib && npm install --omit=dev --no-audit --no-fund); \
+    fi
+
 COPY extensions /directus/extensions
 RUN for d in /directus/extensions/*/; do \
       if [ -f "$d/package.json" ]; then \
@@ -21,6 +27,6 @@ RUN for d in /directus/extensions/*/; do \
         mkdir -p "$d/dist" && cp -a "$d/src/." "$d/dist/"; \
       fi; \
     done
-RUN chown -R node:node /directus/extensions
+RUN chown -R node:node /directus/extensions /directus/lib
 USER node
 # Entrypoint inherited from the parent image — runs directus bootstrap + start.
