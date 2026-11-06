@@ -1,7 +1,6 @@
 import { handleRoute, jsonOk } from '@/lib/route-helpers';
 import { changePasswordSchema, type ChangePasswordInput } from '@/lib/validators';
-
-const DIRECTUS_URL = process.env.DIRECTUS_URL ?? 'http://localhost:8055';
+import { getDirectusUrl } from '@/lib/directus-runtime.mjs';
 
 export const dynamic = 'force-dynamic';
 
@@ -21,7 +20,7 @@ export const dynamic = 'force-dynamic';
 export async function POST(req: Request) {
   return handleRoute<ChangePasswordInput>(req, { schema: changePasswordSchema }, async (data) => {
     try {
-      await fetch(`${DIRECTUS_URL}/password-reset-request/send`, {
+      await fetch(`${getDirectusUrl()}/password-reset-request/send`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

@@ -20,7 +20,7 @@ export function getDirectusUrl(url = process.env.DIRECTUS_URL ?? process.env.DIR
     finalUrl = 'https://' + finalUrl;
   }
   
-  return finalUrl;
+  return finalUrl.replace(/\/+$/, '');
 }
 
 export function getDirectusUrlClient(
@@ -34,7 +34,7 @@ export function getDirectusUrlClient(
     finalUrl = 'https://' + finalUrl;
   }
 
-  return finalUrl;
+  return finalUrl.replace(/\/+$/, '');
 }
 
 export function requireDirectusToken(token = process.env.DIRECTUS_TOKEN) {

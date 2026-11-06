@@ -1,6 +1,5 @@
 import { jsonOk } from '@/lib/route-helpers';
-
-const DIRECTUS_URL = process.env.DIRECTUS_URL ?? 'http://localhost:8055';
+import { getDirectusUrl } from '@/lib/directus-runtime.mjs';
 
 export async function POST(req: Request) {
   // Forward logout request to Directus — lấy cookie từ client request
@@ -13,7 +12,7 @@ export async function POST(req: Request) {
   // exploitable if Directus's session cleanup ever lags.
   let upstreamSetCookie: string | null = null;
   try {
-    const upstream = await fetch(`${DIRECTUS_URL}/auth/logout`, {
+    const upstream = await fetch(`${getDirectusUrl()}/auth/logout`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -1,7 +1,6 @@
 import { jsonOk, jsonErrorRaw } from '@/lib/route-helpers';
 import { getRequestCookieHeader, extractSetCookie } from '@/lib/auth-helpers';
-
-const DIRECTUS_URL = process.env.DIRECTUS_URL ?? 'http://localhost:8055';
+import { getDirectusUrl } from '@/lib/directus-runtime.mjs';
 
 export const dynamic = 'force-dynamic';
 
@@ -18,7 +17,7 @@ export async function POST(req: Request) {
     return jsonErrorRaw(401, 'unauthenticated', 'No active session.');
   }
 
-  const res = await fetch(`${DIRECTUS_URL}/auth/refresh`, {
+  const res = await fetch(`${getDirectusUrl()}/auth/refresh`, {
     method: 'POST',
     headers: {
       cookie: cookieHeader,

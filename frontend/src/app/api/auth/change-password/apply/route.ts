@@ -1,8 +1,8 @@
 import { handleRoute, jsonOk } from '@/lib/route-helpers';
 import { ApiError } from '@/lib/api-error';
 import { changePasswordInSessionSchema, type ChangePasswordInSessionInput } from '@/lib/validators';
+import { getDirectusUrl } from '@/lib/directus-runtime.mjs';
 
-const DIRECTUS_URL = process.env.DIRECTUS_URL ?? 'http://localhost:8055';
 const SESSION_COOKIE = 'directus_session_token';
 
 export const dynamic = 'force-dynamic';
@@ -34,6 +34,8 @@ export async function POST(req: Request) {
     req,
     { schema: changePasswordInSessionSchema },
     async (data) => {
+      const directusUrl = getDirectusUrl();
+
       // 1. Read session cookie — must be present.
       const cookieHeader = req.headers.get('cookie') ?? '';
       const cookies = parseCookies(cookieHeader);
@@ -48,7 +50,7 @@ export async function POST(req: Request) {
 
       // 2. Identify the user via /users/me. We need their id and email for
       //    the password-verification probe and the PATCH below.
-      const meRes = await fetch(`${DIRECTUS_URL}/users/me`, {
+      const meRes = await fetch(`${directusUrl}/users/me`, {
         headers: { cookie: cookieHeader },
         cache: 'no-store'
       });
@@ -67,7 +69,7 @@ export async function POST(req: Request) {
       //     guesses. Keyed on the session's own email.
       try {
         const statusRes = await fetch(
-          `${DIRECTUS_URL}/password-reset-request/password-change/status`,
+          `${directusUrl}/password-reset-request/password-change/status`,
           {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -101,7 +103,7 @@ export async function POST(req: Request) {
       // 3. Verify current_password by attempting a probe login. We do NOT
       //    forward the resulting session cookies back to the client — they
       //    belong to a throwaway session that we kill in step 6.
-      const probeRes = await fetch(`${DIRECTUS_URL}/auth/login`, {
+      const probeRes = await fetch(`${directusUrl}/auth/login`, {
         method: 'POST',
         headers: { 'content-type': 'application/json' },
         body: JSON.stringify({
@@ -117,7 +119,7 @@ export async function POST(req: Request) {
         let payload: Record<string, unknown> | undefined;
         try {
           const failRes = await fetch(
-            `${DIRECTUS_URL}/password-reset-request/password-change/fail`,
+            `${directusUrl}/password-reset-request/password-change/fail`,
             {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
@@ -147,7 +149,7 @@ export async function POST(req: Request) {
       //    extension runs a `users.update` filter that throws
       //    PASSWORD_SAME_AS_OLD (422) if the new password hashes to the
       //    same value as the existing one.
-      const patchRes = await fetch(`${DIRECTUS_URL}/users/${userId}`, {
+      const patchRes = await fetch(`${directusUrl}/users/${userId}`, {
         method: 'PATCH',
         headers: {
           cookie: cookieHeader,
@@ -190,7 +192,7 @@ export async function POST(req: Request) {
       const probeSetCookie = probeRes.headers.get('set-cookie');
       if (probeSetCookie) {
         try {
-          await fetch(`${DIRECTUS_URL}/auth/logout`, {
+          await fetch(`${directusUrl}/auth/logout`, {
             method: 'POST',
             headers: {
               'content-type': 'application/json',
@@ -208,7 +210,7 @@ export async function POST(req: Request) {
       //    successful change wipes any earlier misses. Failure here is
       //    not surfaced — the user already changed their password.
       try {
-        await fetch(`${DIRECTUS_URL}/password-reset-request/password-change/clear`, {
+        await fetch(`${directusUrl}/password-reset-request/password-change/clear`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email: userEmail }),

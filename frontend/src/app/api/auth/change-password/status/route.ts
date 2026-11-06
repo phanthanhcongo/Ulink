@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
-
-const DIRECTUS_URL = process.env.DIRECTUS_URL ?? 'http://localhost:8055';
+import { getDirectusUrl } from '@/lib/directus-runtime.mjs';
 
 export const dynamic = 'force-dynamic';
 
@@ -20,6 +19,7 @@ export const dynamic = 'force-dynamic';
  * Always returns 200 to avoid leaking info.
  */
 export async function POST(req: Request) {
+  const directusUrl = getDirectusUrl();
   try {
     const body = (await req.json().catch(() => ({}))) as { token?: string };
     const token = body?.token;
@@ -29,7 +29,7 @@ export async function POST(req: Request) {
     if (token && typeof token === 'string') {
       // Token mode: peek the token to resolve email
       try {
-        const peekRes = await fetch(`${DIRECTUS_URL}/password-reset-request/peek`, {
+        const peekRes = await fetch(`${directusUrl}/password-reset-request/peek`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ token }),
@@ -50,7 +50,7 @@ export async function POST(req: Request) {
       // Session mode: identify via cookie
       const cookieHeader = req.headers.get('cookie') ?? '';
       try {
-        const meRes = await fetch(`${DIRECTUS_URL}/users/me`, {
+        const meRes = await fetch(`${directusUrl}/users/me`, {
           headers: { cookie: cookieHeader },
           cache: 'no-store'
         });
@@ -74,7 +74,7 @@ export async function POST(req: Request) {
     // Check shared lockout status
     try {
       const statusRes = await fetch(
-        `${DIRECTUS_URL}/password-reset-request/password-change/status`,
+        `${directusUrl}/password-reset-request/password-change/status`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

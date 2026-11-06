@@ -13,7 +13,6 @@
 import { cookies } from 'next/headers';
 import { getDirectusUrl } from './directus-runtime.mjs';
 
-const DIRECTUS_URL = getDirectusUrl();
 const SESSION_COOKIE = 'directus_session_token';
 const REFRESH_COOKIE = 'directus_refresh_token';
 
@@ -62,7 +61,8 @@ export async function getCurrentUser(): Promise<AuthUser | null> {
   }
 
   try {
-    const res = await fetch(`${DIRECTUS_URL}/users/me`, {
+    const directusUrl = getDirectusUrl();
+    const res = await fetch(`${directusUrl}/users/me`, {
       headers: { cookie: cookieHeader },
       // We do NOT cache this — the user shape can change at any time.
       cache: 'no-store'
@@ -103,7 +103,8 @@ export async function proxyToDirectus(
   if (init.body && !headers.has('content-type')) {
     headers.set('content-type', 'application/json');
   }
-  return fetch(`${DIRECTUS_URL}${path}`, {
+  const directusUrl = getDirectusUrl();
+  return fetch(`${directusUrl}${path}`, {
     ...init,
     headers,
     body: typeof init.body === 'string' || init.body instanceof Uint8Array ? init.body : undefined

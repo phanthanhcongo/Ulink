@@ -1,8 +1,7 @@
 import { ApiError } from '@/lib/api-error';
 import { handleRoute, jsonOk } from '@/lib/route-helpers';
 import { registerSchema, type RegisterInput } from '@/lib/validators';
-
-const DIRECTUS_URL = process.env.DIRECTUS_URL ?? 'http://localhost:8055';
+import { getDirectusUrl } from '@/lib/directus-runtime.mjs';
 
 export const dynamic = 'force-dynamic';
 
@@ -26,7 +25,7 @@ async function directusFetch(path: string, init: RequestInit & { cookieHeader?: 
     headers.set('content-type', 'application/json');
   }
   if (init.cookieHeader) headers.set('cookie', init.cookieHeader);
-  return fetch(`${DIRECTUS_URL}${path}`, {
+  return fetch(`${getDirectusUrl()}${path}`, {
     ...init,
     headers,
     body: typeof init.body === 'string' ? init.body : undefined,

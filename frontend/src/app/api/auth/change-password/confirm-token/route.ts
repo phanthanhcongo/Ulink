@@ -1,8 +1,7 @@
 import { handleRoute, jsonOk } from '@/lib/route-helpers';
 import { ApiError } from '@/lib/api-error';
 import { changePasswordViaTokenSchema, type ChangePasswordViaTokenInput } from '@/lib/validators';
-
-const DIRECTUS_URL = process.env.DIRECTUS_URL ?? 'http://localhost:8055';
+import { getDirectusUrl } from '@/lib/directus-runtime.mjs';
 
 export const dynamic = 'force-dynamic';
 
@@ -43,6 +42,7 @@ export const dynamic = 'force-dynamic';
  *   502 upstream_error              — Directus unreachable
  */
 export async function POST(req: Request) {
+  const directusUrl = getDirectusUrl();
   return handleRoute<ChangePasswordViaTokenInput>(
     req,
     { schema: changePasswordViaTokenSchema },
@@ -50,7 +50,7 @@ export async function POST(req: Request) {
       // 1. Peek the token. Token email is the source of truth.
       let tokenEmail: string | null = null;
       try {
-        const peekRes = await fetch(`${DIRECTUS_URL}/password-reset-request/peek`, {
+        const peekRes = await fetch(`${directusUrl}/password-reset-request/peek`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ token: data.token }),
@@ -84,7 +84,7 @@ export async function POST(req: Request) {
       const cookieHeader = req.headers.get('cookie') ?? '';
       let sessionEmail: string | null = null;
       try {
-        const meRes = await fetch(`${DIRECTUS_URL}/users/me`, {
+        const meRes = await fetch(`${directusUrl}/users/me`, {
           headers: { cookie: cookieHeader },
           cache: 'no-store'
         });
@@ -116,7 +116,7 @@ export async function POST(req: Request) {
       //     attacker cannot spam-lock someone else's surface.
       try {
         const statusRes = await fetch(
-          `${DIRECTUS_URL}/password-reset-request/password-change/status`,
+          `${directusUrl}/password-reset-request/password-change/status`,
           {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -151,7 +151,7 @@ export async function POST(req: Request) {
       const probeEmail = tokenEmail;
       let probeSetCookie: string | null = null;
       try {
-        const probeRes = await fetch(`${DIRECTUS_URL}/auth/login`, {
+        const probeRes = await fetch(`${directusUrl}/auth/login`, {
           method: 'POST',
           headers: { 'content-type': 'application/json' },
           body: JSON.stringify({
@@ -170,7 +170,7 @@ export async function POST(req: Request) {
           let payload: Record<string, unknown> | undefined;
           try {
             const failRes = await fetch(
-              `${DIRECTUS_URL}/password-reset-request/password-change/fail`,
+              `${directusUrl}/password-reset-request/password-change/fail`,
               {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
@@ -217,7 +217,7 @@ export async function POST(req: Request) {
       //    password.
       let res: Response;
       try {
-        res = await fetch(`${DIRECTUS_URL}/password-reset-request/reset`, {
+        res = await fetch(`${directusUrl}/password-reset-request/reset`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
@@ -241,7 +241,7 @@ export async function POST(req: Request) {
       //    session into the void.
       if (probeSetCookie) {
         try {
-          await fetch(`${DIRECTUS_URL}/auth/logout`, {
+          await fetch(`${directusUrl}/auth/logout`, {
             method: 'POST',
             headers: {
               'content-type': 'application/json',
@@ -273,7 +273,7 @@ export async function POST(req: Request) {
       //    successful change wipes any earlier misses. Failure here is
       //    not surfaced — the user already changed their password.
       try {
-        await fetch(`${DIRECTUS_URL}/password-reset-request/password-change/clear`, {
+        await fetch(`${directusUrl}/password-reset-request/password-change/clear`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ email: tokenEmail }),

@@ -2,8 +2,7 @@ import { ApiError } from '@/lib/api-error';
 import { handleRoute, jsonOk, jsonErrorRaw } from '@/lib/route-helpers';
 import { extractSetCookie } from '@/lib/auth-helpers';
 import { loginSchema, type LoginInput } from '@/lib/validators';
-
-const DIRECTUS_URL = process.env.DIRECTUS_URL ?? 'http://localhost:8055';
+import { getDirectusUrl } from '@/lib/directus-runtime.mjs';
 
 export const dynamic = 'force-dynamic';
 
@@ -20,6 +19,8 @@ export const dynamic = 'force-dynamic';
  * redirect intelligently (e.g. to /portal vs. back to /login).
  */
 export async function POST(req: Request) {
+  const directusUrl = getDirectusUrl();
+
   return handleRoute<LoginInput>(req, { schema: loginSchema }, async (data) => {
     // Pre-check whether the target account is locked before we even burn
     // a probe login. Directus blocks sign-in for `status !== 'active'`,
@@ -30,7 +31,7 @@ export async function POST(req: Request) {
     // exists. If the lookup says "no user", fall through to the normal
     // 401 path so we don't leak which emails are registered.
     try {
-      const statusRes = await fetch(`${DIRECTUS_URL}/password-reset-request/user-status`, {
+      const statusRes = await fetch(`${directusUrl}/password-reset-request/user-status`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: data.email }),
@@ -58,7 +59,7 @@ export async function POST(req: Request) {
       /* non-fatal: fall through to /auth/login and let it 401 normally */
     }
 
-    const res = await fetch(`${DIRECTUS_URL}/auth/login`, {
+    const res = await fetch(`${directusUrl}/auth/login`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: data.email, password: data.password, mode: 'session' }),

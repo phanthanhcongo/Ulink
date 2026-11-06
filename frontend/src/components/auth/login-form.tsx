@@ -85,7 +85,7 @@ function LoginFormInner() {
     } catch (err) {
       if (err instanceof AuthError && err.code === 'account_locked') {
         setFormError(t('accountLockedContactAdmin'));
-      } else if (err instanceof AuthError && err.code === 'network_error') {
+      } else if (err instanceof AuthError && (err.code === 'network_error' || err.code === 'internal_error' || err.status >= 500)) {
         setFormError(t('errorNetwork'));
       } else {
         setFormError(t('errorInvalidCredentials'));

@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
-
-const DIRECTUS_URL = process.env.DIRECTUS_URL ?? 'http://localhost:8055';
+import { getDirectusUrl } from '@/lib/directus-runtime.mjs';
 
 export const dynamic = 'force-dynamic';
 
@@ -25,10 +24,11 @@ export async function POST(req: Request) {
       return NextResponse.json({ data: { locked: false } });
     }
 
+    const directusUrl = getDirectusUrl();
     // 1. Peek token to resolve email
     let email: string | null = null;
     try {
-      const peekRes = await fetch(`${DIRECTUS_URL}/password-reset-request/peek`, {
+      const peekRes = await fetch(`${directusUrl}/password-reset-request/peek`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ token }),
@@ -53,7 +53,7 @@ export async function POST(req: Request) {
     // 2. Check shared lockout status
     try {
       const statusRes = await fetch(
-        `${DIRECTUS_URL}/password-reset-request/password-change/status`,
+        `${directusUrl}/password-reset-request/password-change/status`,
         {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },

@@ -1,8 +1,7 @@
 import { ApiError } from '@/lib/api-error';
 import { handleRoute, jsonOk } from '@/lib/route-helpers';
 import { resetPasswordSchema, type ResetPasswordInput } from '@/lib/validators';
-
-const DIRECTUS_URL = process.env.DIRECTUS_URL ?? 'http://localhost:8055';
+import { getDirectusUrl } from '@/lib/directus-runtime.mjs';
 
 export const dynamic = 'force-dynamic';
 
@@ -38,11 +37,12 @@ interface EndpointErrorBody {
  * pre-check still ends in a 429 once the counter crosses CURRENT_PWD_FAIL_MAX.
  */
 export async function POST(req: Request) {
+  const directusUrl = getDirectusUrl();
   return handleRoute<ResetPasswordInput>(req, { schema: resetPasswordSchema }, async (data) => {
     // 0. Peek the token to resolve the email — needed for counter ops.
     let resolvedEmail: string | null = null;
     try {
-      const peekRes = await fetch(`${DIRECTUS_URL}/password-reset-request/peek`, {
+      const peekRes = await fetch(`${directusUrl}/password-reset-request/peek`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ token: data.token }),
@@ -65,7 +65,7 @@ export async function POST(req: Request) {
     if (resolvedEmail) {
       try {
         const statusRes = await fetch(
-          `${DIRECTUS_URL}/password-reset-request/password-change/status`,
+          `${directusUrl}/password-reset-request/password-change/status`,
           {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -98,7 +98,7 @@ export async function POST(req: Request) {
     }
 
     // 2. Forward to the actual reset endpoint.
-    const res = await fetch(`${DIRECTUS_URL}/password-reset-request/reset`, {
+    const res = await fetch(`${directusUrl}/password-reset-request/reset`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -141,7 +141,7 @@ export async function POST(req: Request) {
       if (resolvedEmail && code === 'PASSWORD_SAME_AS_OLD') {
         try {
           const failRes = await fetch(
-            `${DIRECTUS_URL}/password-reset-request/password-change/fail`,
+            `${directusUrl}/password-reset-request/password-change/fail`,
             {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },

@@ -1,8 +1,7 @@
 import { ApiError } from '@/lib/api-error';
 import { handleRoute, jsonOk } from '@/lib/route-helpers';
 import { forgotPasswordSchema, type ForgotPasswordInput } from '@/lib/validators';
-
-const DIRECTUS_URL = process.env.DIRECTUS_URL ?? 'http://localhost:8055';
+import { getDirectusUrl } from '@/lib/directus-runtime.mjs';
 
 export const dynamic = 'force-dynamic';
 
@@ -15,9 +14,10 @@ export const dynamic = 'force-dynamic';
  */
 export async function POST(req: Request) {
   return handleRoute<ForgotPasswordInput>(req, { schema: forgotPasswordSchema }, async (data) => {
+    const directusUrl = getDirectusUrl();
     // 1. Check if user exists in the backend
     try {
-      const statusRes = await fetch(`${DIRECTUS_URL}/password-reset-request/user-status`, {
+      const statusRes = await fetch(`${directusUrl}/password-reset-request/user-status`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: data.email }),
@@ -37,7 +37,7 @@ export async function POST(req: Request) {
 
     // 2. Trigger send reset email
     try {
-      await fetch(`${DIRECTUS_URL}/password-reset-request/send`, {
+      await fetch(`${directusUrl}/password-reset-request/send`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email: data.email, purpose: 'forgot' }),
