@@ -599,10 +599,10 @@ async function fetchDirectusArticles(): Promise<ResourceItem[]> {
       const badgeVi = categoryVi === 'market-news' ? 'Tin thị trường' : categoryVi;
       const categoryCode: ResourceItem['category'] =
         categoryVi === 'market-news' ? 'market-news' :
-        categoryVi === 'Hướng dẫn kỹ thuật' ? 'guide' :
-        categoryVi === 'Tiêu chuẩn' ? 'standard' :
-        categoryVi === 'Case Study' || categoryVi === 'Nghiên cứu điển hình' ? 'case-study' :
-        categoryVi === 'Sự kiện' ? 'event' :
+        categoryVi === 'Hướng dẫn kỹ thuật' || categoryVi === 'guide' ? 'guide' :
+        categoryVi === 'Tiêu chuẩn' || categoryVi === 'standard' ? 'standard' :
+        categoryVi === 'Case Study' || categoryVi === 'Nghiên cứu điển hình' || categoryVi === 'case-study' ? 'case-study' :
+        categoryVi === 'Sự kiện' || categoryVi === 'event' ? 'event' :
         'news';
 
       return {

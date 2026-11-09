@@ -29,6 +29,26 @@ export function BlogDetailClient({ post, locale }: BlogDetailClientProps) {
       )
     : '';
 
+  const sanitizedBody = useMemo(() => {
+    if (!t.body) return '';
+    if (typeof window !== 'undefined') {
+      try {
+        const purify =
+          DOMPurify && typeof (DOMPurify as any).sanitize === 'function'
+            ? DOMPurify
+            : typeof DOMPurify === 'function'
+              ? (DOMPurify as any)(window)
+              : null;
+        if (purify && typeof purify.sanitize === 'function') {
+          return purify.sanitize(t.body);
+        }
+      } catch (e) {
+        console.warn('DOMPurify error:', e);
+      }
+    }
+    return t.body;
+  }, [t.body]);
+
   return (
     <article className="min-h-screen bg-slate-50/50 pb-12 sm:pb-16 md:pb-20 pt-4 sm:pt-6 md:pt-8">
       <Breadcrumb
@@ -130,7 +150,7 @@ export function BlogDetailClient({ post, locale }: BlogDetailClientProps) {
                   prose-a:text-brand prose-a:font-semibold
                   prose-ul:list-disc prose-ol:list-decimal
                   prose-img:rounded-[3px] prose-img:border prose-img:border-slate-100"
-                dangerouslySetInnerHTML={{ __html: DOMPurify.sanitize(t.body || '') }}
+                dangerouslySetInnerHTML={{ __html: sanitizedBody }}
               />
             )}
           </div>
